@@ -18,3 +18,5 @@ AcousticJamm - Name idea
 Kristal Team - Creating the Kristal engine
 
 Toby Fox - Original author for Deltarune
+
+Sam Deluxe#0057 - X-Slash code
