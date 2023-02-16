@@ -13,7 +13,7 @@ An open source Kristal mod that anyone can contribute to
 5: Please don't make us add more rules like Rule 4 please.
 
 # Credits
-Racckoon - Mod idea
+Racckoon - Mod idea, Contributor
 
 BrandonK7200 - Making the GitHub page
 
