@@ -1,4 +1,4 @@
-# Dark-Place
+# Dark Place
 An open source Kristal mod that anyone can contribute to
 
 # Rouxls (Pronounced "Rules")
@@ -26,3 +26,5 @@ Kristal Team - Creating the Kristal engine
 Toby Fox - Original author for Deltarune
 
 Sam Deluxe#0057 - X-Slash code
+
+Cоrе#2611 - MoreBattle Library
