@@ -8,6 +8,8 @@ An open source Kristal mod that anyone can contribute to
 
 3: Don't just completely remove someone else's commit, although you can still edit what someone else has made.
 
+4: DON'T DOX PEOPLE THAT'S ILLEGIAL AND BAD
+
 # Credits
 Racckoon - Mod idea
 
