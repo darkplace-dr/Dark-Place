@@ -15,6 +15,8 @@ BrandonK7200 - Making the GitHub page
 
 AcousticJamm - Name idea
 
+Anonymously_Present - Contributor
+
 Kristal Team - Creating the Kristal engine
 
 Toby Fox - Original author for Deltarune
