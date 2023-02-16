@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.4",
+  tiledversion = "1.9.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
@@ -29,6 +30,7 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -72,6 +74,7 @@ return {
       height = 24,
       id = 2,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -112,6 +115,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -123,7 +127,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 80,
@@ -136,7 +140,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 120,
@@ -149,7 +153,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 160,
@@ -162,7 +166,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 280,
@@ -175,7 +179,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 280,
@@ -188,7 +192,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 360,
@@ -201,7 +205,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 400,
@@ -214,7 +218,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 680,
@@ -227,7 +231,7 @@ return {
         {
           id = 9,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 800,
@@ -240,7 +244,7 @@ return {
         {
           id = 10,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 920,
@@ -253,7 +257,7 @@ return {
         {
           id = 11,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 720,
@@ -266,7 +270,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 680,
@@ -279,7 +283,7 @@ return {
         {
           id = 14,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 400,
@@ -292,7 +296,7 @@ return {
         {
           id = 15,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 360,
@@ -305,7 +309,7 @@ return {
         {
           id = 16,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 120,
@@ -318,7 +322,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 440,
@@ -331,7 +335,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 440,
@@ -344,7 +348,7 @@ return {
         {
           id = 23,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 640,
@@ -357,7 +361,7 @@ return {
         {
           id = 24,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 640,
           y = 600,
@@ -370,7 +374,7 @@ return {
         {
           id = 25,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 640,
@@ -383,7 +387,7 @@ return {
         {
           id = 26,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 800,
@@ -400,6 +404,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -411,7 +416,7 @@ return {
         {
           id = 19,
           name = "npc",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 480,
           y = 840,
@@ -421,14 +426,13 @@ return {
           visible = true,
           properties = {
             ["actor"] = "starwalker",
-            ["text1"] = "* These [color:yellow]stairs[color:reset] are [color:yellow]Pissing[color:reset] me\noff...",
-            ["text2"] = "* I'm the original   [color:yellow]Starwalker[color:reset]"
+            ["cutscene"] = "room1.star"
           }
         },
         {
           id = 27,
           name = "savepoint",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 210,
@@ -444,7 +448,7 @@ return {
         {
           id = 28,
           name = "squeak",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 680,
           y = 600,
@@ -457,7 +461,7 @@ return {
         {
           id = 29,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 800,
           y = 200,
@@ -473,7 +477,7 @@ return {
         {
           id = 33,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 80,
@@ -489,7 +493,7 @@ return {
         {
           id = 35,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 300,
           y = 160,
@@ -499,8 +503,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "wall",
-            ["flagcheck"] = "wall_hit",
-            ["text1"] = "* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers."
+            ["cutscene"] = "room1.guardian",
+            ["flagcheck"] = "wall_hit"
           }
         }
       }
@@ -510,6 +514,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -521,7 +526,7 @@ return {
         {
           id = 20,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 300,
           y = 250,
@@ -534,7 +539,7 @@ return {
         {
           id = 30,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 760,
           y = 240,
