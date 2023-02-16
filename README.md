@@ -8,7 +8,9 @@ An open source Kristal mod that anyone can contribute to
 
 3: Don't just completely remove someone else's commit, although you can still edit what someone else has made.
 
-4: I can't believe I have to add this rule, but NO ADDING A SCRIPT THAT JUST DOXXES YOU
+4: Don't add doxxing scripts, or really any script that is dangerous to ones safety.
+
+5: Please don't make us add more rules like Rule 4 please.
 
 # Credits
 Racckoon - Mod idea
