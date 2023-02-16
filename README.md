@@ -8,7 +8,7 @@ An open source Kristal mod that anyone can contribute to
 
 3: Don't just completely remove someone else's commit, although you can still edit what someone else has made.
 
-4: DON'T DOX PEOPLE THAT'S ILLEGIAL AND BAD
+4: I can't believe I have to add this rule, but NO ADDING A SCRIPT THAT JUST DOXXES YOU
 
 # Credits
 Racckoon - Mod idea
@@ -17,6 +17,10 @@ BrandonK7200 - Making the GitHub page
 
 AcousticJamm - Name idea
 
+Anonymously_Present - Contributor
+
 Kristal Team - Creating the Kristal engine
 
 Toby Fox - Original author for Deltarune
+
+Sam Deluxe#0057 - X-Slash code
