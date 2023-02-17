@@ -33,6 +33,10 @@ function Mod:postInit(new_file)
         end
         return text
     end)
+
+    if new_file and Game:hasPartyMember("YOU") then
+        Game.world:startCutscene("react_to_YOU")
+    end
 end
 
 function Mod:getActionButtons(battler, buttons)
