@@ -21,6 +21,8 @@ AcousticJamm - Name idea
 
 Anonymously_Present - Contributor
 
+Simbel - Contributor
+
 Kristal Team - Creating the Kristal engine
 
 Toby Fox - Original author for Deltarune
@@ -28,3 +30,5 @@ Toby Fox - Original author for Deltarune
 Sam Deluxe#0057 - X-Slash code
 
 Cоrе#2611 - MoreBattle Library
+
+TheMaximus - Original author for Ribbit
