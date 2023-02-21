@@ -58,8 +58,14 @@
     "BRANDON": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
     "GHASTTEAR": "[style:GONER][spacing:3.2]HOLY SHIT!!!!!\nGHAST TEAR REAL!!!!!!!!!!",
     "AMOGUS": "[style:GONER][spacing:3.2]WHEN THE LIGHT IS\nRUNNING LOW!!! :flushed:",
-    "BLUE": "[style:GONER][spacing:3.2][color:blue]WHAT IS WRONG WITH YOU?\nWHY ARE YOU BLUE?"
+    "BLUE": "[style:GONER][spacing:3.2][color:blue]WHAT IS WRONG WITH YOU?\nWHY ARE YOU BLUE?",
+    "SPAMTON": "[style:GONER][spacing:3.2]GET YOUR OWN [Account\nName] YOU [!@?#]!!!",
+    "SOAMTON": "[style:GONER][spacing:3.2]YOU KNOW WHAT? I'LL\n[[Accept Terms &\nAgreements]] THIS TIME...",
+    "MORSHU": "[style:GONER][spacing:3.2]SORRY. I CAN'T LET YOU USE\nMY NAME! COME BACK WHEN\nYOU'RE A LITTLE...\nMMMMMM...ORIGINAL!",
+    "WALTER": "[style:GONER][spacing:3.2]I AM THE ONE WHO\nPROCEEDS.",
+    "PLAGUEIS": "[style:GONER][spacing:3.2]IT'S NOT A STORY THE\nLIGHTNERS WOULD TELL\nYOU..."
   },
+	"namesDeny": ["SPAMTON", "MORSHU"],
 
   // Config values for the engine and any libraries you may have.
   // These config values can control chapter-specific features as well.
