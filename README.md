@@ -15,13 +15,15 @@ An open source Kristal mod that anyone can contribute to
 # Credits
 Racckoon - Mod idea, Contributor
 
-BrandonK7200 - Making the GitHub page
+BrandonK7200 - Making the GitHub page, Contributor
 
 AcousticJamm - Name idea
 
 Anonymously_Present - Contributor
 
 Simbel - Contributor
+
+Just Another Random User - Contributor
 
 Kristal Team - Creating the Kristal engine
 
