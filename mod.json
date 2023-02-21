@@ -63,7 +63,8 @@
     "SOAMTON": "[style:GONER][spacing:3.2]YOU KNOW WHAT? I'LL\n[[Accept Terms &\nAgreements]] THIS TIME...",
     "MORSHU": "[style:GONER][spacing:3.2]SORRY. I CAN'T LET YOU USE\nMY NAME! COME BACK WHEN\nYOU'RE A LITTLE...\nMMMMMM...ORIGINAL!",
     "WALTER": "[style:GONER][spacing:3.2]I AM THE ONE WHO\nPROCEEDS.",
-    "PLAGUEIS": "[style:GONER][spacing:3.2]IT'S NOT A STORY THE\nLIGHTNERS WOULD TELL\nYOU..."
+    "PLAGUEIS": "[style:GONER][spacing:3.2]IT'S NOT A STORY THE\nLIGHTNERS WOULD TELL\nYOU...",
+    "JARU": "[style:GONER][spacing:3.2]NOTE: NOT TO BE CONFUSED\nWITH A CERTAIN DELTARUNE\nTHEORIST."
   },
 	"namesDeny": ["SPAMTON", "MORSHU"],
 
