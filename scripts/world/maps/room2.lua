@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.4",
+  tiledversion = "1.9.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 12,
+  nextobjectid = 14,
   properties = {
     ["name"] = "Test Map - Room 2"
   },
@@ -29,6 +30,7 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -60,6 +62,7 @@ return {
       height = 12,
       id = 2,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -88,6 +91,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -99,7 +103,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 120,
@@ -112,7 +116,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 400,
@@ -125,7 +129,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 120,
@@ -138,7 +142,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 80,
@@ -151,7 +155,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 280,
@@ -168,6 +172,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -179,7 +184,7 @@ return {
         {
           id = 5,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 360,
           y = 240,
@@ -192,7 +197,7 @@ return {
         {
           id = 8,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 40,
           y = 360,
@@ -209,6 +214,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -220,7 +226,7 @@ return {
         {
           id = 6,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 530,
           y = 220,
@@ -236,7 +242,7 @@ return {
         {
           id = 9,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = -40,
           y = 320,
@@ -247,6 +253,22 @@ return {
           properties = {
             ["map"] = "room1",
             ["marker"] = "entry"
+          }
+        },
+        {
+          id = 13,
+          name = "npc",
+          class = "",
+          shape = "rectangle",
+          x = 480,
+          y = 120,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "krischan",
+            ["cutscene"] = "room1.chan"
           }
         }
       }
