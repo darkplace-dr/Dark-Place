@@ -83,5 +83,20 @@ return {
 		cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...")
 		cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
 		cutscene:hideNametag()
+	end,
+
+	chan = function(cutscene, event)
+          local susie = cutscene:getCharacter("susie")
+          local krischan = cutscene:getCharacter("krischan")
+		cutscene:showNametag("Kris-Chan")
+		cutscene:text("* Go! Sonichu! Go out and zap to the extreme!")
+		cutscene:text("* Sonichu! Use EXPLOSION!!!")
+		cutscene:hideNametag()
+          krischan:explode()
+          cutscene:wait(3)
+		cutscene:showNametag("Susie")
+          cutscene:setSpeaker(susie)
+          cutscene:text("* What?", "shock")
+		cutscene:hideNametag()
 	end
 }
