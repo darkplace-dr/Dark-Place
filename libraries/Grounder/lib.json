@@ -1,0 +1,12 @@
+{
+    "id": "grounder",
+
+    "version": "v1.0.0",
+    "engineVer": "v0.8.0-dev",
+
+    "authors": [
+	    "Just another random user",
+		"Repainted Team for Deltarune Repainted assets",
+		"HUECYCLES for Custom BG code"
+    ]
+}
