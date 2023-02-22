@@ -12,7 +12,9 @@ return {
 
             -- All text from now is spoken by Susie
             cutscene:setSpeaker(susie)
+			cutscene:showNametag("Susie")
             cutscene:text("* Hey,[wait:5] think I can break\nthis wall?", "smile")
+			cutscene:hideNametag()
 
             -- Get the bottom-center of the broken wall
             local x = event.x + event.width/2
@@ -52,7 +54,9 @@ return {
             Assets.playSound("wing")
 
             cutscene:wait(1)
+			cutscene:showNametag("Susie")
             cutscene:text("* Guess not.", "nervous")
+			cutscene:hideNametag()
 
             -- Reset Susie's sprite
             susie:resetSprite()
@@ -66,5 +70,18 @@ return {
             cutscene:attachFollowers()
             Game:setFlag("wall_hit", true)
         end
-    end
+    end,
+	
+	guardian = function(cutscene, event)
+		cutscene:showNametag("Wall Guardian")
+		cutscene:text("* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers.")
+		cutscene:hideNametag()
+	end,
+	
+	star = function(cutscene, event)
+		cutscene:showNametag("Starwalker?")
+		cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...")
+		cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
+		cutscene:hideNametag()
+	end
 }

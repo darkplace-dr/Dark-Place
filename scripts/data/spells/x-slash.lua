@@ -35,8 +35,13 @@ function spell:onCast(user, target)
         end
 	local function XSlash(scale_x)
 		local cutAnim = Sprite("effects/attack/cut")
-		Assets.playSound("snd_scytheburst")
-		Assets.playSound("snd_criticalswing", 1.2, 1.3)
+		Assets.playSound("scytheburst")
+		Assets.playSound("criticalswing", 1.2, 1.3)
+		local afterimage1 = AfterImage(user, 0.5)
+		local afterimage2 = AfterImage(user, 0.6)
+		afterimage1.physics.speed_x = 2.5
+		afterimage2.physics.speed_x = 5
+		afterimage2:setLayer(afterimage1.layer - 1)
 		user:setAnimation("battle/attack", finishAnim)
 		cutAnim:setOrigin(0.5, 0.5)
 		cutAnim:setScale(2.5 * scale_x, 2.5)
@@ -44,6 +49,8 @@ function spell:onCast(user, target)
 		cutAnim.layer = target.layer + 0.01
 		cutAnim:play(1/15, false, function(s) s:remove() end)
 		user.parent:addChild(cutAnim)
+		user.parent:addChild(afterimage1)
+		user.parent:addChild(afterimage2)
 	end
 
 	Game.battle.timer:after(0.1/2, function()
