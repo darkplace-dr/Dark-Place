@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 12,
+  nextobjectid = 13,
   properties = {},
   tilesets = {
     {
@@ -265,6 +265,21 @@ return {
           properties = {
             ["actor"] = "alternatespam",
             ["cutscene"] = "spamroom.mandela"
+          }
+        },
+        {
+          id = 12,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 260,
+          y = 94,
+          width = 120,
+          height = 106,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "spamroom.poster"
           }
         }
       }
