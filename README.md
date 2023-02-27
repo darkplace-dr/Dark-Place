@@ -34,3 +34,5 @@ Sam Deluxe#0057 - X-Slash code
 Cоrе#2611 - MoreBattle Library
 
 TheMaximus - Original author for Ribbit
+
+RhenaudTheLukark - Original author for Unitale/Create Your Frisk
