@@ -95,7 +95,65 @@ function item:onWorldUse()
                 Game.world.music:resume()
             end
 			cutscene:text("* Must've been a wrong number.")
-			
+		elseif math.random(1, 100) == 97 then
+            if was_playing then
+                Game.world.music:pause()
+            end
+            local spam = Assets.playSound("spamcall")
+            cutscene:showNametag("Spamton G. Spamton")
+            cutscene:text("[noskip][voice:nil]* FUCK YOU CYBER CITY![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* IF YOU'RE [[Exploitable]] ENOUGH TO BUY A CAR THIS WEEKEND...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* YOU'RE A DESPERATE ENOUGH JOE SHMOE TO COME TO BIG SHOT AUTOS![wait:15]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* [[Ant-sized]] DEALS![wait:10]\n* CARS THAT [[Need auto insurance?]]![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* THIEVES![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* IF YOU THINK YOU'RE GOING TO FIND [[A free meal!]] AT BIG SHOT AUTOS...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* YOU CAN KISS MY [[Beautiful head]]!![wait:15]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* IT'S MY BELIEF THAT YOU'RE SUCH A [[Specil]] MOTHERFUCKER...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* THAT YOU'LL FALL FOR THIS [[Half-priced salamy]]![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* GUARANTEED![wait:20]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* IF YOU FIND A [[50% off]] DEAL,[wait:20] YOU CAN SHOVE [[1000 KROMER]] UP YOUR UGLY ASS![wait:25]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* YOU HEARD ME RIGHT...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* SHOVE IT UP YOUR UGLY ASS![wait:15]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* BRING YOUR [[100th customer!]]![wait:5]\n* BRING YOUR [[Wild prizes]]![wait:5]\n* BRING YOUR [[Hochi mama]]![wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* I'LL FUCK HER![wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* THAT'S RIGHT![wait:3] I'LL FUCK YOUR [[Hochi mama]]![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* BECAUSE AT BIG SHOT AUTOS,[wait:3] YOU'RE FUCKED SIX WAYS TO SUNDAY![wait:15]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* TAKE A HIKE TO BIG SHOT AUTOS![wait:15]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* HOME OF CHALLENGE [[Pipis.]]![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* THAT'S RIGHT,[wait:3] CHALLENGE [[Pipis.]]![wait:15]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* HOW DOES IT WORK?[wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* IF YOU CAN [[Pipis.]] SIX FEET IN THE AIR STRAIGHT AND NOT GET WET...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* YOU GET [[No money back guarantee]]![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* DON'T WAIT,[wait:3] DON'T DELAY...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* DON'T FUCK WITH ME OR I'LL RIP YOUR [[Eggs]] OFF![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* ONLY AT BIG SHOT AUTOS![wait:15]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* THE ONLY DEALER THAT TELLS YOU TO FUCK OFF![wait:20]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* HURY UP, ASSHOLE![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* THIS [[Specil deal]] ENDS THE MOMENT YOU WRITE US A CHECK...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* AND IT BETTER NOT BOUNCE OR YOU'RE A [[Permanently closed]] MOTHERFUCKER![wait:10]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* TAKE A GODDAMN VACATION STRAIGHT TO HELL![wait:40]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* ALSO KNOWN AS BIG SHOT AUTOS...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* CYBER CITY'S FILTHIEST...[wait:5]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* AND EXCLUSIVE HOME OF THE [[Biggest]] SON OF A BITCH IN THE DARK WORLD![wait:40]", nil, nil, {auto = true})
+            cutscene:text("[noskip][voice:nil]* GUARANTEED![wait:30]", nil, nil, {auto = true})
+            cutscene:hideNametag()
+		    cutscene:wait(function()
+			    if spam:isPlaying() then
+        		    return false
+        	    end
+
+        	    return true
+            end)
+            if was_playing then
+                Game.world.music:resume()
+            end
+            cutscene:text("* ...")
+            cutscene:text("* What.")
+            if cutscene:getCharacter("susie") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* The hell was THAT?", "nervous", "susie")
+                cutscene:hideNametag()
+            end
 		-- if anyone wants to add an additional easter egg, feel free to use the template below!
 		
 		--[[

@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.8",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 14,
+  nextobjectid = 15,
   properties = {
     ["name"] = "Test Map - Room 2"
   },
@@ -103,7 +103,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 120,
@@ -116,7 +116,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 400,
@@ -129,7 +129,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 120,
@@ -142,7 +142,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 80,
@@ -155,7 +155,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 280,
@@ -184,7 +184,7 @@ return {
         {
           id = 5,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 360,
           y = 240,
@@ -197,7 +197,7 @@ return {
         {
           id = 8,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 40,
           y = 360,
@@ -226,7 +226,7 @@ return {
         {
           id = 6,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 530,
           y = 220,
@@ -242,7 +242,7 @@ return {
         {
           id = 9,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 320,
@@ -258,7 +258,7 @@ return {
         {
           id = 13,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 120,
@@ -268,7 +268,24 @@ return {
           visible = true,
           properties = {
             ["actor"] = "krischan",
-            ["cutscene"] = "room1.chan"
+            ["cutscene"] = "room2.chan"
+          }
+        },
+        {
+          id = 14,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 680,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "poseur",
+            ["cutscene"] = "room2.poseur",
+            ["sprite"] = "idle_1"
           }
         }
       }
