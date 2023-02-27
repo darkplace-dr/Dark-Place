@@ -17,7 +17,7 @@ Racckoon - Mod idea, Contributor
 
 BrandonK7200 - Making the GitHub page, Contributor
 
-AcousticJamm - Name idea
+AcousticJamm - Name idea, Contributor
 
 Anonymously_Present - Contributor
 
