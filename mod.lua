@@ -33,6 +33,12 @@ function Mod:postInit(new_file)
         end
         return text
     end)
+    
+    	
+    --FUN Value
+    if new_file then
+        Game:setFlag("fun", love.math.random(1,100))
+    end
 
     if new_file and Game:hasPartyMember("YOU") then
         Game.world:startCutscene("react_to_YOU")
