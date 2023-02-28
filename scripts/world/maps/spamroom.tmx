@@ -3,6 +3,9 @@
  <editorsettings>
   <export target="spamroom.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="music" value="spamton_battle_eb"/>
+ </properties>
  <tileset firstgid="1" source="../tilesets/city_alleyway.tsx"/>
  <layer id="1" name="tiles" width="24" height="12">
   <data encoding="csv">

@@ -10,13 +10,14 @@ return {
   tileheight = 40,
   nextlayerid = 8,
   nextobjectid = 13,
-  properties = {},
+  properties = {
+    ["music"] = "spamton_battle_eb"
+  },
   tilesets = {
     {
       name = "city_alleyway",
       firstgid = 1,
-      filename = "../tilesets/city_alleyway.tsx",
-      exportfilename = "../tilesets/city_alleyway.lua"
+      filename = "../tilesets/city_alleyway.tsx"
     }
   },
   layers = {
