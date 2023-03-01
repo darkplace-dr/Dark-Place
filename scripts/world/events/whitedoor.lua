@@ -20,7 +20,13 @@ function WhiteDoor:onInteract(player, dir)
             choice = cutscene:choicer({"Yes", "No"}, options)
             if choice == 1 then
                 cutscene:text("* You opened the door...")
-                cutscene:mapTransition("whitespace", "spawn")
+                cutscene:fadeOut(2, {color = {1, 1, 1}, music = true})
+                cutscene:wait(2)
+                cutscene:mapTransition("whitespace", "entry")
+                Game.fader.fade_color = {1,1,1}
+				cutscene:look("down")
+                cutscene:fadeIn(2, {color = {1, 1, 1}})
+                cutscene:wait(2)
             else
                 cutscene:text("* You doorn't.")
 			end
@@ -34,7 +40,13 @@ function WhiteDoor:onInteract(player, dir)
             choice = cutscene:choicer({"Yes", "No"}, options)
             if choice == 1 then
                 cutscene:text("* You opened the door...")
-				cutscene:mapTransition("room3", "exit_whitespace")
+                cutscene:fadeOut(2, {color = {1, 1, 1}, music = true})
+                cutscene:wait(2)
+                cutscene:mapTransition("room3", "exit_whitespace")
+                Game.fader.fade_color = {1,1,1}
+				cutscene:look("down")
+                cutscene:fadeIn(2, {color = {1, 1, 1}})
+                cutscene:wait(2)
             else
                 cutscene:text("* You doorn't.")
 			end
