@@ -45,7 +45,7 @@ function actor:init(x, y)
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {}
 end
-
+--the actor:onWorldUpdate(chara) function below is used to make an NPC react to the morshu_dance variable in room3.
 function actor:onWorldUpdate(chara)
 	if Game.world.map.morshu_dance == true then
         chara.sprite.x = math.sin(Kristal.getTime()*12)*4
