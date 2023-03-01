@@ -9,8 +9,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 18,
-  properties = {},
+  nextobjectid = 22,
+  properties = {
+    ["music"] = "none"
+  },
   tilesets = {
     {
       name = "castle",
@@ -120,6 +122,32 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 20,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 640,
+          y = 0,
+          width = 40,
+          height = 200,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 21,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 760,
+          y = 0,
+          width = 40,
+          height = 200,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -194,6 +222,37 @@ return {
           gid = 50,
           visible = true,
           properties = {}
+        },
+        {
+          id = 18,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 420,
+          y = 262,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "morshu",
+            ["cutscene"] = "room3.morshu"
+          }
+        },
+        {
+          id = 19,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 800,
+          y = 120,
+          width = 80,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "room3.spam_graffiti"
+          }
         }
       }
     },
