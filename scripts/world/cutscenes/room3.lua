@@ -82,4 +82,21 @@ return {
             Game.world.music:resume("")
         end
     end
+    spam_graffiti = function(cutscene, event)
+        local susie = cutscene:getCharacter("susie")
+        cutscene:setSpeaker(susie)
+        cutscene:showNametag("Susie")
+        cutscene:text("* Isn't that the big shot guy who attacked us in Queen's Basement?", "suspicious")
+	if Game:hasPartyMember("YOU") then
+            cutscene:text("* Oh right,[wait:5] you don't know who this guy is,[wait:5] do ya YOU?", "sus_nervous")
+            cutscene:text("* Basically,[wait:5] he was some weird dude that scammed my friend Kris.", "neutral")
+            cutscene:text("* All he ever said was a bunch of weird stuff that didn't make sense.", "annoyed")
+            cutscene:text("* Stuff like puppets,[wait:5] strings,[wait:5] hands...", "annoyed_down")
+            cutscene:text("* Ralsei said he was just a corrupted program,[wait:5] or something like that...", "neutral_side")
+            cutscene:text("* But something tells me there was something else going on with that guy.", "suspicious")
+        else
+            cutscene:text("* The hell is he doing here?", "sus_nervous")
+	end
+        cutscene:hideNametag()
+    end
 }
