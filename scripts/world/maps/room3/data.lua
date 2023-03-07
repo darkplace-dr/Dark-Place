@@ -8,8 +8,8 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 5,
-  nextobjectid = 22,
+  nextlayerid = 6,
+  nextobjectid = 25,
   properties = {
     ["music"] = "none"
   },
@@ -253,6 +253,38 @@ return {
           properties = {
             ["cutscene"] = "room3.spam_graffiti"
           }
+        },
+        {
+          id = 22,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 140,
+          y = 420,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "doobie",
+            ["cutscene"] = "room3.doobie"
+          }
+        },
+        {
+          id = 23,
+          name = "setflag",
+          type = "",
+          shape = "rectangle",
+          x = 520,
+          y = 240,
+          width = 40,
+          height = 200,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "room3_doobie",
+            ["once"] = true
+          }
         }
       }
     },
@@ -320,6 +352,37 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "controllers",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 24,
+          name = "toggle",
+          type = "",
+          shape = "point",
+          x = 160,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "room3_doobie",
+            ["target"] = { id = 22 }
+          }
         }
       }
     }
