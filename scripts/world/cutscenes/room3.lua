@@ -61,7 +61,7 @@ return {
                         doobie:setAnimation("idle")
                     end
 
-                    cutscene:text("* (You stashed the Lamp Oil inside you [color:yellow]ITEMS[color:reset].)")
+                    cutscene:text("* (You stashed the Lamp Oil inside your [color:yellow]ITEMS[color:reset].)")
                 else
                     cutscene:text('* (There is no "inventory full"\nclip for Morshu,[wait:5] so all you get\nis this dinky-ass text box).')
                 end
