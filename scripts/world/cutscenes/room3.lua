@@ -1,6 +1,7 @@
 return {
 	morshu = function(cutscene, event)
 		local morshu = cutscene:getCharacter("morshu")
+		local doobie = cutscene:getCharacter("doobie")
 
 	    Game.world.music:pause("")
 
@@ -43,13 +44,24 @@ return {
                     m_anim.parallax_y = 0
                     m_anim:setScale(2)
                     Game.world:addChild(m_anim)
-			
+					
+                    --character dance animations
+                    if Game:getFlag("room3_doobie") then 
+                        doobie:setAnimation("dance")
+                    end
+
                     cutscene:wait(31)
                     Game.world.map.morshu_dance = false
                     Assets.stopSound("danceparty")
                     Game.world.music:resume("")
                     m_anim:remove()
-                    cutscene:text("* (You stashed the Lamp Oil inside you [color:yellow]ITEMS[color:reset].)")
+
+                    -- character idle animations
+                    if Game:getFlag("room3_doobie") then 
+                        doobie:setAnimation("idle")
+                    end
+
+                    cutscene:text("* (You stashed the Lamp Oil inside your [color:yellow]ITEMS[color:reset].)")
                 else
                     cutscene:text('* (There is no "inventory full"\nclip for Morshu,[wait:5] so all you get\nis this dinky-ass text box).')
                 end
@@ -81,13 +93,13 @@ return {
             menacing:remove()
             Game.world.music:resume("")
         end
-    end
+    end,
     spam_graffiti = function(cutscene, event)
         local susie = cutscene:getCharacter("susie")
         cutscene:setSpeaker(susie)
         cutscene:showNametag("Susie")
         cutscene:text("* Isn't that the big shot guy who attacked us in Queen's Basement?", "suspicious")
-	if Game:hasPartyMember("YOU") then
+	    if Game:hasPartyMember("YOU") then
             cutscene:text("* Oh right,[wait:5] you don't know who this guy is,[wait:5] do ya YOU?", "sus_nervous")
             cutscene:text("* Basically,[wait:5] he was some weird dude that scammed my friend Kris.", "neutral")
             cutscene:text("* All he ever said was a bunch of weird stuff that didn't make sense.", "annoyed")
@@ -96,7 +108,32 @@ return {
             cutscene:text("* But something tells me there was something else going on with that guy.", "suspicious")
         else
             cutscene:text("* The hell is he doing here?", "sus_nervous")
-	end
+        end
         cutscene:hideNametag()
-    end
+    end,
+    doobie = function(cutscene, event)
+        if Game:getFlag("room3_doobie") then
+            local susie = cutscene:getCharacter("susie")
+            local doobie = cutscene:getCharacter("doobie")
+            cutscene:setSpeaker(doobie)
+            cutscene:showNametag("Ralsei?")
+            cutscene:text("* doobie", "default")
+            cutscene:hideNametag()
+            cutscene:setSpeaker(susie)
+            cutscene:showNametag("Susie")
+            cutscene:text("* RALSEI!! WHY ARE YOU SMOKING WEED?!", "teeth_b")
+            cutscene:text("* JUST COME WITH US!", "teeth")
+            cutscene:hideNametag()
+            local alpha = doobie:addFX(AlphaFX())
+
+            Game.stage.timer:tween(1, alpha, {alpha = 0})
+            Assets.playSound("hypnosis")
+
+            cutscene:wait(2)
+            doobie:remove()
+            Game:setFlag("room3_doobie", false)
+
+            cutscene:look("down")
+        end
+	end
 }
