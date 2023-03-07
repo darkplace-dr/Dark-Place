@@ -41,6 +41,8 @@ RhenaudTheLukark - Original author for Unitale/Create Your Frisk
 
 STD Repaints - Original author for Deltarune Repainted
 
+RynoGG - Original author for Deltatraveler
+
 Stardust - NYCTBA Earthbound Remix (https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 
 OMOCAT, LLC - Original author for OMORI
