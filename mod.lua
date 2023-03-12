@@ -40,8 +40,6 @@ function Mod:postInit(new_file)
         Game:setFlag("fun", love.math.random(1,100))
     end
 
-    Game:setFlag("mewmew_outfit", love.math.random(1, 3))
-
     if new_file and Game:hasPartyMember("YOU") then
         Game.world:startCutscene("react_to_YOU")
     end
