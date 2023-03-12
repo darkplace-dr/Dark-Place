@@ -1,7 +1,7 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.8.4",
   name = "objects",
   tilewidth = 66,
   tileheight = 725,
@@ -89,7 +89,7 @@ return {
       height = 725
     },
     {
-      id = 7,
+      id = 10,
       image = "../../../assets/sprites/objects/spamton_graffiti.png",
       width = 66,
       height = 40

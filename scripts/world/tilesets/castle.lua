@@ -7,10 +7,10 @@ return {
   tileheight = 40,
   spacing = 4,
   margin = 2,
-  columns = 9,
+  columns = 6,
   image = "../../../assets/sprites/tilesets/castle.png",
-  imagewidth = 396,
-  imageheight = 308,
+  imagewidth = 264,
+  imageheight = 444,
   objectalignment = "unspecified",
   tileoffset = {
     x = 0,
@@ -23,6 +23,6 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 77,
+  tilecount = 60,
   tiles = {}
 }
