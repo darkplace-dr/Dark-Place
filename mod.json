@@ -20,7 +20,7 @@
   "map": "room1",
 
   // The party. The first character is the player.
-  "party": [ "YOU", "susie" ],
+  "party": [ "kris", "noelle" ],
 
   // The inventory. Contains three darkburgers, a cell phone and a shadow crystal by default.
   "inventory": {
