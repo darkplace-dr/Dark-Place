@@ -135,5 +135,158 @@ return {
 
             cutscene:look("down")
         end
-	end
+	end,
+    garbage = function(cutscene, event)
+        local garbage = cutscene:getCharacter("diamond_trash")
+        if event.interacted then
+            cutscene:showNametag("Trash Rudinn")
+            Assets.playSound("stillgarbage")
+            cutscene:text("[noskip][voice:nil]* Oh hi,[wait:1] thanks for checking in.[wait:2]\n* I'm...", nil, garbage, {auto = true})
+            cutscene:hideNametag()
+
+            local text1 = Game.world:spawnObject(Text("still", 210, 40, 300, 500, {style = "dark"}))
+            text1:setScale(2)
+            text1.fake_alpha = 1
+            text1.parallax_x = 0
+            text1.parallax_y = 0
+            cutscene:wait(0.2)
+
+            local text2 = Game.world:spawnObject(Text("a", 380, 40, 300, 500, {style = "dark"}))
+            text2:setScale(2)
+            text2.fake_alpha = 1
+            text2.parallax_x = 0
+            text2.parallax_y = 0
+            cutscene:wait(0.2)
+
+            local text3 = Game.world:spawnObject(Text("piece", 205, 110, 300, 500, {style = "dark"}))
+            text3:setScale(2)
+            text3.fake_alpha = 1
+            text3.parallax_x = 0
+            text3.parallax_y = 0
+            cutscene:wait(0.2)
+
+            local text4 = Game.world:spawnObject(Text("of", 370, 110, 300, 500, {style = "dark"}))
+            text4:setScale(2)
+            text4.fake_alpha = 1
+            text4.parallax_x = 0
+            text4.parallax_y = 0
+            cutscene:wait(0.2)
+            cutscene:fadeIn(2, {color = {1, 1, 1}})
+
+            local text5 = Game.world:spawnObject(Text("GARBAGE", 35, 160, 300, 500, {style = "GONER"}))
+            text5:setScale(6)
+            text5.alpha = 1
+            text5.parallax_x = 0
+            text5.parallax_y = 0
+		
+            local flash = Rectangle(0, 0, 640, 480)
+            flash.layer = 100
+            flash.color = {1, 1, 1}
+            flash.alpha = 1
+            flash.parallax_x = 0
+            flash.parallax_y = 0
+            Game.world:addChild(flash)
+		
+            Game.world.timer:tween(1.5, flash, {alpha = 0}, "linear", function()
+                flash:remove()
+            end)
+		
+            cutscene:wait(2)
+
+            Game.world.timer:tween(2, text1, {alpha = 0}, "linear", function()
+                text1:remove()
+            end)
+            Game.world.timer:tween(2, text2, {alpha = 0}, "linear", function()
+                text2:remove()
+            end)
+            Game.world.timer:tween(2, text3, {alpha = 0}, "linear", function()
+                text3:remove()
+            end)
+            Game.world.timer:tween(2, text4, {alpha = 0}, "linear", function()
+                text4:remove()
+            end)
+            Game.world.timer:tween(2, text5, {alpha = 0}, "linear", function()
+                text5:remove()
+            end)
+
+            cutscene:wait(3)
+            cutscene:look("down")
+        end
+        if not event.interacted then
+            cutscene:showNametag("Trash Rudinn")
+            Assets.playSound("garbage")
+            cutscene:text("[noskip][voice:nil]* Hellooo...[wait:1.5]", nil, garbage, {auto = true})
+            cutscene:hideNametag()
+
+            local text1 = Game.world:spawnObject(Text("I'm", 240, 40, 300, 500, {style = "dark"}))
+            text1:setScale(2)
+            text1.fake_alpha = 1
+            text1.parallax_x = 0
+            text1.parallax_y = 0
+            cutscene:wait(0.2)
+
+            local text2 = Game.world:spawnObject(Text("a", 360, 40, 300, 500, {style = "dark"}))
+            text2:setScale(2)
+            text2.fake_alpha = 1
+            text2.parallax_x = 0
+            text2.parallax_y = 0
+            cutscene:wait(0.1)
+
+            local text3 = Game.world:spawnObject(Text("piece", 205, 110, 300, 500, {style = "dark"}))
+            text3:setScale(2)
+            text3.fake_alpha = 1
+            text3.parallax_x = 0
+            text3.parallax_y = 0
+            cutscene:wait(0.2)
+
+            local text4 = Game.world:spawnObject(Text("of", 370, 110, 300, 500, {style = "dark"}))
+            text4:setScale(2)
+            text4.fake_alpha = 1
+            text4.parallax_x = 0
+            text4.parallax_y = 0
+            cutscene:wait(0.2)
+            cutscene:fadeIn(2, {color = {1, 1, 1}})
+
+            local text5 = Game.world:spawnObject(Text("GARBAGE", 35, 160, 300, 500, {style = "GONER"}))
+            text5:setScale(6)
+            text5.alpha = 1
+            text5.parallax_x = 0
+            text5.parallax_y = 0
+		
+            local flash = Rectangle(0, 0, 640, 480)
+            flash.layer = 100
+            flash.color = {1, 1, 1}
+            flash.alpha = 1
+            flash.parallax_x = 0
+            flash.parallax_y = 0
+            Game.world:addChild(flash)
+		
+            Game.world.timer:tween(1.5, flash, {alpha = 0}, "linear", function()
+                flash:remove()
+            end)
+		
+            cutscene:wait(2)
+
+            Game.world.timer:tween(2, text1, {alpha = 0}, "linear", function()
+                text1:remove()
+            end)
+            Game.world.timer:tween(2, text2, {alpha = 0}, "linear", function()
+                text2:remove()
+            end)
+            Game.world.timer:tween(2, text3, {alpha = 0}, "linear", function()
+                text3:remove()
+            end)
+            Game.world.timer:tween(2, text4, {alpha = 0}, "linear", function()
+                text4:remove()
+            end)
+            Game.world.timer:tween(2, text5, {alpha = 0}, "linear", function()
+                text5:remove()
+            end)
+
+            cutscene:wait(3)
+            cutscene:look("down")
+
+            event.interacted = true
+        end
+    end
 }
