@@ -50,7 +50,7 @@ function actor:init(x, y)
         ["takolyshit"] = {-5, -60}
     }
 
-    --This probably shouldn't be a actor function but I'm too lazy to extend Utils
+    --This probably shouldn't be an actor function but I'm too lazy to extend Utils
     self.map = function(input, inMin, inMax, outMin, outMax)
         local inputRange = inMax - inMin
         local outputRange = outMax - outMin
@@ -66,7 +66,6 @@ function actor:onWorldUpdate(chara)
         end
         local dist = Utils.dist(chara.x+chara.width/2, chara.y+chara.height/2, Game.world.player.x+Game.world.player.width, Game.world.player.y+Game.world.player.height)
         local vol = Utils.clamp(self.map(dist, 50, 150, 1, 0), 0, 1)
-        print(dist, vol, chara.sprite.anim)
         Game.world.map.ina:setVolume(vol)
         if vol>0 and chara.sprite.sprite == "idle" then
             chara:setAnimation("talk")
@@ -78,10 +77,6 @@ function actor:onWorldUpdate(chara)
             Game.world.map.ina:pause()
         end
     end
-end
-
-function actor:onRemove()
-    print("remo")
 end
 
 return actor
