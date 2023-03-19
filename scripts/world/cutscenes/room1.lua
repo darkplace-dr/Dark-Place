@@ -231,15 +231,12 @@ return {
                     cutscene:showNametag("Takolyshit")
                     Game.fader:fadeIn(nil, {speed = 0.8, color = {1, 1, 1}, alpha = 1})
                     event:setSprite("takolyshit")
+                    -- Credits to Dobby233Liu for making this not awful code
+                    local anim_table = { YOU = "date", susie = "shock", ralsei = "surprised_down", noelle = "shocked" }
                     for i,member in ipairs(Game.party) do
-                        if member.id == "YOU" then
-                            cutscene:getCharacter("YOU"):setSprite("date")
-                        elseif member.id == "susie" then
-                            cutscene:getCharacter("susie"):setSprite("shock")
-                        elseif member.id == "ralsei" then
-                            cutscene:getCharacter("ralsei"):setSprite("surprised_down")
-                        elseif member.id == "noelle" then
-                            cutscene:getCharacter("noelle"):setSprite("shocked")
+                        local anim = anim_table[member.id]
+                        if anim ~= nil then
+                          cutscene:getCharacter(member.id):setSprite(anim)
                         end
                     end
                 end
