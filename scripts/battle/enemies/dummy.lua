@@ -82,6 +82,9 @@ function Dummy:onAct(battler, name)
             -- S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
             Game.battle:startActCutscene("dummy", "susie_punch")
             return
+		elseif battler.chara.id == "dess" then
+            -- D-Action text
+            return "* Dess spun something around."
         else
             -- Text for any other character (like Noelle)
             return "* "..battler.chara:getName().." straightened the\ndummy's hat."

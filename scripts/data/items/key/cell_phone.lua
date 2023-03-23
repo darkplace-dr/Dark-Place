@@ -169,6 +169,20 @@ function item:onWorldUse()
             cutscene:text("")
 		]]
 		
+		
+		-- [[Char's]] easteregg
+		-- based on what I changed the cellphone to in an unreleased mod I made to test out how Kristal works that was called Kris and Susie Gamer Time.
+		elseif math.random(1, 100) <= 25 then
+            if was_playing then
+                Game.world.music:pause()
+            end
+            Assets.playSound("bbqbb")
+		    cutscene:wait(200/30)
+            if was_playing then
+                Game.world.music:resume()
+            end
+            cutscene:text("It's nothing but an old meme.")
+		
 		else
             if was_playing then
                 Game.world.music:pause()
