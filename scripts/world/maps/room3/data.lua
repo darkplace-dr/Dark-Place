@@ -1,7 +1,7 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.8.4",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 28,
@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 28,
+  nextobjectid = 29,
   properties = {
     ["music"] = "none"
   },
@@ -317,6 +317,22 @@ return {
           gid = 71,
           visible = true,
           properties = {}
+        },
+        {
+          id = 28,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 640,
+          y = 260,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "diamond_trash",
+            ["cutscene"] = "room3.garbage"
+          }
         }
       }
     },
@@ -405,8 +421,8 @@ return {
           name = "toggle",
           type = "",
           shape = "point",
-          x = 160,
-          y = 280,
+          x = 200,
+          y = 360,
           width = 0,
           height = 0,
           rotation = 0,
