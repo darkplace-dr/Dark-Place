@@ -52,7 +52,3 @@ function item:init()
         noelle = "Not the best, but it's fine."
 	}
 end
-
--- Function overrides go here
-
-return item
