@@ -154,41 +154,40 @@ function item:onWorldUse()
                 cutscene:text("* The hell was THAT?", "nervous", "susie")
                 cutscene:hideNametag()
             end
-		-- if anyone wants to add an additional easter egg, feel free to use the template below!
-		
-		--[[
-		elseif math.random(1, 100) == 100 then
+        -- if anyone wants to add an additional easter egg, feel free to use the template below!
+
+        --[[
+        elseif math.random(1, 100) == 100 then
             if was_playing then
                 Game.world.music:pause()
             end
             Assets.playSound("")
-		    cutscene:wait(200/30)
+            cutscene:wait(200/30)
             if was_playing then
                 Game.world.music:resume()
             end
             cutscene:text("")
-		]]
+        ]]
 		
 		
-		-- [[Char's]] easteregg
-		-- based on what I changed the cellphone to in an unreleased mod I made to test out how Kristal works that was called Kris and Susie Gamer Time.
-		elseif math.random(1, 100) <= 25 then
+        -- [[Char's]] easteregg
+        -- based on what I changed the cellphone to in an unreleased mod I made to test out how Kristal works that was called Kris and Susie Gamer Time.
+        elseif math.random(1, 100) >= 11 and math.random(1, 100) <= 25 then
             if was_playing then
                 Game.world.music:pause()
             end
             Assets.playSound("bbqbb")
-		    cutscene:wait(200/30)
+            cutscene:wait(200/30)
             if was_playing then
                 Game.world.music:resume()
             end
-            cutscene:text("It's nothing but an old meme.")
-		
-		else
+            cutscene:text("* It's nothing but an old meme.")
+        else
             if was_playing then
                 Game.world.music:pause()
             end
             Assets.playSound("smile")
-		    cutscene:wait(200/30)
+            cutscene:wait(200/30)
             if was_playing then
                 Game.world.music:resume()
             end

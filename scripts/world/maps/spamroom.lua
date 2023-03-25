@@ -1,7 +1,8 @@
 return {
-  version = "1.4",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.4.3",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -17,29 +18,7 @@ return {
     {
       name = "city_alleyway",
       firstgid = 1,
-      filename = "../../../../Github-Lmao/Dark-Place/scripts/world/tilesets/city_alleyway.tsx",
-      tilewidth = 40,
-      tileheight = 40,
-      spacing = 0,
-      margin = 0,
-      columns = 15,
-      image = "../../../../Github-Lmao/Dark-Place/assets/sprites/tilesets/bg_dw_city_alleyway.png",
-      imagewidth = 600,
-      imageheight = 840,
-      objectalignment = "unspecified",
-      tileoffset = {
-        x = 0,
-        y = 0
-      },
-      grid = {
-        orientation = "orthogonal",
-        width = 40,
-        height = 40
-      },
-      properties = {},
-      terrains = {},
-      tilecount = 315,
-      tiles = {}
+      filename = "../tilesets/city_alleyway.tsx"
     }
   },
   layers = {
@@ -51,10 +30,13 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -80,10 +62,13 @@ return {
       height = 12,
       id = 3,
       name = "props",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = -20,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -109,10 +94,13 @@ return {
       height = 12,
       id = 4,
       name = "props2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = -20,
       offsety = -20,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -135,16 +123,19 @@ return {
       draworder = "topdown",
       id = 5,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       objects = {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 0,
@@ -157,7 +148,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -170,7 +161,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 400,
@@ -183,7 +174,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 400,
@@ -196,7 +187,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 840,
           y = 0,
@@ -213,16 +204,19 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       objects = {
         {
           id = 7,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 480,
@@ -238,7 +232,7 @@ return {
         {
           id = 10,
           name = "npc",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 800,
           y = 240,
@@ -254,7 +248,7 @@ return {
         {
           id = 11,
           name = "npc",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 170,
           y = 280,
@@ -270,7 +264,7 @@ return {
         {
           id = 12,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 260,
           y = 94,
@@ -285,7 +279,7 @@ return {
         {
           id = 13,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 630,
           y = 140,
@@ -301,7 +295,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 590,
           y = 160,
@@ -322,16 +316,19 @@ return {
       draworder = "topdown",
       id = 7,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       objects = {
         {
           id = 9,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 480,
           y = 440,
@@ -344,7 +341,7 @@ return {
         {
           id = 15,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 680,
           y = 270,
