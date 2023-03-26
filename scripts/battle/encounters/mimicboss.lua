@@ -26,4 +26,8 @@ function UfoEncounter:onBattleStart()
 	Game.battle.encounter.bg.visible = true
 end
 
+function UfoEncounter:onBattleEnd() 
+    Game:setFlag("mimic_defeated", true)
+end
+
 return UfoEncounter

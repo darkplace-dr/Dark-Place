@@ -2,6 +2,7 @@ return {
 	morshu = function(cutscene, event)
 		local morshu = cutscene:getCharacter("morshu")
 		local doobie = cutscene:getCharacter("doobie")
+        local magolor = cutscene:getCharacter("magolor")
 
 	    Game.world.music:pause("")
 
@@ -49,6 +50,7 @@ return {
                     if Game:getFlag("room3_doobie") then 
                         doobie:setAnimation("dance")
                     end
+                    magolor:setAnimation("speen")
 
                     cutscene:wait(31)
                     Game.world.map.morshu_dance = false
@@ -60,6 +62,7 @@ return {
                     if Game:getFlag("room3_doobie") then 
                         doobie:setAnimation("idle")
                     end
+                    magolor:setSprite("shop")
 
                     cutscene:text("* (You stashed the Lamp Oil inside your [color:yellow]ITEMS[color:reset].)")
                 else
@@ -287,6 +290,130 @@ return {
             cutscene:look("down")
 
             event.interacted = true
+        end
+    end,
+    magshop = function (cutscene, event)
+        cutscene:showNametag("Magolor")
+        cutscene:text("* Welcome to my shoppe!", "happy", "magolor")
+        cutscene:text("* What would you like to buy?", "neutral", "magolor")
+        cutscene:hideNametag()
+        local opinion = cutscene:choicer({"Food", "Weapons", "Armor", "None"}, options)
+        if opinion == 1 then
+            cutscene:showNametag("Magolor")
+            cutscene:text("* What kind of food would you like?", "happy", "magolor")
+            cutscene:hideNametag()
+            local food = cutscene:choicer({"Pep Brew", "Apple", "Maxim Tomato", "None"}, options)
+            if food == 1 then
+                cutscene:showNametag("Magolor")
+                cutscene:text("* Do you want to buy some Pep Brew for 100D$?", "neutral", "magolor")
+                cutscene:hideNametag()
+                local buy = cutscene:choicer({"Yes", "No"}, options)
+                if buy == 1 then
+                    if Game.money >= 100 then
+                        local itemcheck = Game.inventory:addItem("pepbrew")
+                        if itemcheck then
+                            Game.money = Game.money - 100
+                            cutscene:showNametag("Magolor")
+                            cutscene:text("* Here you go!", "happy", "magolor")
+                            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
+                            cutscene:hideNametag()
+                        else
+                            cutscene:showNametag("Magolor")
+                            cutscene:text("* Your pockets look to full for this...", "unamused", "magolor")
+                            cutscene:hideNametag()
+                        end
+                    else
+                        cutscene:showNametag("Magolor")
+                        cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
+                        cutscene:hideNametag()
+                    end
+                else
+                    cutscene:showNametag("Magolor")
+                    cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
+                    cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
+                    cutscene:hideNametag()
+                end
+            elseif food == 2 then
+                cutscene:showNametag("Magolor")
+                cutscene:text("* Do you want to buy an Apple for 250D$?", "neutral", "magolor")
+                cutscene:hideNametag()
+                local buy = cutscene:choicer({"Yes", "No"}, options)
+                if buy == 1 then
+                    if Game.money >= 250 then
+                        local itemcheck = Game.inventory:addItem("apple_uneaten")
+                        if itemcheck then
+                            Game.money = Game.money - 250
+                            cutscene:showNametag("Magolor")
+                            cutscene:text("* Here you go!", "happy", "magolor")
+                            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
+                            cutscene:hideNametag()
+                        else
+                            cutscene:showNametag("Magolor")
+                            cutscene:text("* Your pockets look to full for this...", "unamused", "magolor")
+                            cutscene:hideNametag()
+                        end
+                    else
+                        cutscene:showNametag("Magolor")
+                        cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
+                        cutscene:hideNametag()
+                    end
+                else
+                    cutscene:showNametag("Magolor")
+                    cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
+                    cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
+                    cutscene:hideNametag()
+                end
+            elseif food == 3 then
+                cutscene:showNametag("Magolor")
+                cutscene:text("* Do you want to buy a Maxim Tomato for 5000D$?", "neutral", "magolor")
+                cutscene:hideNametag()
+                local buy = cutscene:choicer({"Yes", "No"}, options)
+                if buy == 1 then
+                    if Game.money >= 5000 then
+                        local itemcheck = Game.inventory:addItem("maximtomato")
+                        if itemcheck then
+                            Game.money = Game.money - 5000
+                            cutscene:showNametag("Magolor")
+                            cutscene:text("* Here you go!", "happy", "magolor")
+                            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
+                            cutscene:hideNametag()
+                        else
+                            cutscene:showNametag("Magolor")
+                            cutscene:text("* Your pockets look to full for this...", "unamused", "magolor")
+                            cutscene:hideNametag()
+                        end
+                    else
+                        cutscene:showNametag("Magolor")
+                        cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
+                        cutscene:hideNametag()
+                    end
+                else
+                    cutscene:showNametag("Magolor")
+                    cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
+                    cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
+                    cutscene:hideNametag()
+                end
+            else
+                cutscene:showNametag("Magolor")
+                cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
+                cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
+                cutscene:hideNametag()
+            end
+        elseif opinion == 2 then
+            cutscene:showNametag("Magolor")
+            --cutscene:text("* What weapon would you like to buy?", "happy", "magolor")
+            cutscene:text("* Sorry,[wait:5] I don't have any weapons right now.", "sad", "magolor")
+            cutscene:hideNametag()
+        elseif opinion == 3 then
+            cutscene:showNametag("Magolor")
+            --cutscene:text("* What sort of armor are you looking for?", "happy", "magolor")
+            cutscene:text("* Sorry,[wait:5] I don't have any armor right now.", "sad", "magolor")
+            cutscene:hideNametag()
+        else
+            cutscene:showNametag("Magolor")
+            cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
+            cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
+            cutscene:hideNametag()
         end
     end
 }

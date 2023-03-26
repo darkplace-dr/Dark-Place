@@ -1,17 +1,17 @@
-local actor, super = Class(Actor, "sans")
+local actor, super = Class(Actor, "magolor")
 
-function actor:init()
-    super.init(self)
+function actor:init(x, y)
+    super.init(self, x, y)
 
     -- Display name (optional)
-    self.name = "sans"
+    self.name = "Magolor"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 25
-    self.height = 32
+    self.width = 59
+    self.height = 83
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {0, 16, 25, 16}
+    self.hitbox = {0, 50, 59, 33}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {1, 0, 0}
@@ -20,25 +20,40 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npcs/sans"
+    self.path = "npcs/magolor"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-    self.default = "walk"
+    self.default = "shop"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "sans"
+    self.voice = "magolor"
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = "face/sans"
+    self.portrait_path = "face/magolor"
     -- Offset position for this actor's portrait (optional)
-    self.portrait_offset = nil
+    self.portrait_offset = {- 10, 0}
 
     -- Whether this actor as a follower will blush when close to the player
     self.can_blush = false
 
+    -- Table of talk sprites and their talk speeds (default 0.25)
+    self.talk_sprites = nil
+
     -- Table of sprite animations
-    self.animations = {}
+    self.animations = {
+        ["speen"] = {"speen", 0.01, true}
+    }
 
     -- Table of sprite offsets (indexed by sprite name)
-    self.offsets = {}
+    self.offsets = {
+        ["speen"] = {0, 0}
+    }
+end
+--the actor:onWorldUpdate(chara) function below is used to make an NPC react to the morshu_dance variable in room3.
+function actor:onWorldUpdate(chara)
+	if Game.world.map.morshu_dance == true then
+        chara.sprite.x = math.sin(Kristal.getTime()*12)*4
+	else
+	    chara.sprite.x = 0
+	end
 end
 
 return actor

@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 28,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 29,
+  nextobjectid = 30,
   properties = {
     ["music"] = "none"
   },
@@ -36,6 +37,7 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -67,6 +69,7 @@ return {
       height = 12,
       id = 6,
       name = "Calque de Tuiles 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -95,6 +98,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -106,7 +110,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 200,
@@ -119,7 +123,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 240,
@@ -132,7 +136,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 440,
@@ -145,7 +149,7 @@ return {
         {
           id = 11,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 200,
@@ -158,7 +162,7 @@ return {
         {
           id = 20,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 640,
           y = 0,
@@ -171,7 +175,7 @@ return {
         {
           id = 21,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 0,
@@ -188,6 +192,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -199,7 +204,7 @@ return {
         {
           id = 4,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1120,
           y = 240,
@@ -215,7 +220,7 @@ return {
         {
           id = 8,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 680,
           y = 40,
@@ -231,7 +236,7 @@ return {
         {
           id = 13,
           name = "whitedoor",
-          type = "",
+          class = "",
           shape = "point",
           x = 960,
           y = 244,
@@ -244,7 +249,7 @@ return {
         {
           id = 18,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 420,
           y = 262,
@@ -260,7 +265,7 @@ return {
         {
           id = 19,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 800,
           y = 120,
@@ -275,7 +280,7 @@ return {
         {
           id = 22,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 140,
           y = 420,
@@ -291,7 +296,7 @@ return {
         {
           id = 23,
           name = "setflag",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 240,
@@ -307,7 +312,7 @@ return {
         {
           id = 27,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 770,
           y = 180,
@@ -321,7 +326,7 @@ return {
         {
           id = 28,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 640,
           y = 260,
@@ -333,6 +338,22 @@ return {
             ["actor"] = "diamond_trash",
             ["cutscene"] = "room3.garbage"
           }
+        },
+        {
+          id = 29,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 240,
+          y = 262,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "magolor",
+            ["cutscene"] = "room3.magshop"
+          }
         }
       }
     },
@@ -341,6 +362,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -352,7 +374,7 @@ return {
         {
           id = 6,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 1080,
           y = 350,
@@ -365,7 +387,7 @@ return {
         {
           id = 7,
           name = "exit_spamroom",
-          type = "",
+          class = "",
           shape = "point",
           x = 720,
           y = 120,
@@ -378,7 +400,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1080,
           y = 350,
@@ -391,7 +413,7 @@ return {
         {
           id = 14,
           name = "exit_whitespace",
-          type = "",
+          class = "",
           shape = "point",
           x = 960,
           y = 280,
@@ -408,6 +430,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "controllers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -419,7 +442,7 @@ return {
         {
           id = 24,
           name = "toggle",
-          type = "",
+          class = "",
           shape = "point",
           x = 200,
           y = 360,
