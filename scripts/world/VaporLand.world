@@ -1,0 +1,27 @@
+{
+    "maps": [
+        {
+            "fileName": "maps/vapor/vapor_roomtest/vapor_roomtest.tmx",
+            "height": 960,
+            "width": 1280,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "fileName": "maps/vapor/pillars/pillars.tmx",
+            "height": 1120,
+            "width": 1120,
+            "x": -80,
+            "y": -1200
+        },
+        {
+            "fileName": "maps/vapor/bb_shop/bb_shop.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -720,
+            "y": 80
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}
