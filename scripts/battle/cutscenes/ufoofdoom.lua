@@ -5,7 +5,9 @@ return {
 		cutscene:text("* Okay here we go", "calm", "dess")
 			
 		cutscene:wait(2)
-		enemy:defeat("KILL", true)
+		Game.battle.killed = true
+		Game:addFlag("library_kills", 1)
+		enemy:defeat("KILLED", true)
 		enemy:explode(0, 0, false)
 		cutscene:wait(2)
 			

@@ -1,19 +1,28 @@
-local character, super = Class(PartyMember, "YOU")
+local character, super = Class(PartyMember, "kris")
 
 function character:init()
     super.init(self)
 
     -- Display name
-    self.name = "YOU"
+    self.name = "Kris"
 
     -- Actor (handles overworld/battle sprites)
-    self:setActor("you")
-    self:setLightActor("you_lw")
+    self:setActor("kris")
+    self:setLightActor("kris_lw")
 
+    self.love = 1
     -- Display level (saved to the save file)
-    self.level = 1
+    if Kristal.getLibConfig("leveling", "global_love") then
+        self.level = Game.chapter
+    else
+        self.level = self.love
+    end
     -- Default title / class (saved to the save file)
-    self.title = "Frog\nPotential heros.\nThe pression's on!"
+    if Game.chapter == 1 then
+        self.title = "Leader\nCommands the party\nwith various ACTs."
+    else
+        self.title = "Tactician\nCommands the party\nby ACTs. Sometimes."
+    end
 
     -- Determines which character the soul comes from (higher number = higher priority)
     self.soul_priority = 2
@@ -27,22 +36,34 @@ function character:init()
     -- Whether the party member can use their X-Action
     self.has_xact = true
     -- X-Action name (displayed in this character's spell menu)
-    self.xact_name = "Y-Action"
-
-    -- Current health (saved to the save file)
-    self.health = 90
+    self.xact_name = "K-Action"
 
     -- Base stats (saved to the save file)
-    self.stats = {
-        health = 90,
-        attack = 10,
-        defense = 2,
-        magic = 0
-    }
+    if Game.chapter == 1 then
+        self.stats = {
+            health = 90,
+            attack = 10,
+            defense = 2,
+            magic = 0
+        }
+    else
+        self.stats = {
+            health = 120,
+            attack = 12,
+            defense = 2,
+            magic = 0
+        }
+    end
     -- Max stats from level-ups
-    self.max_stats = {
-        health = 120
-    }
+    if Game.chapter == 1 then
+        self.max_stats = {
+            health = 120
+        }
+    else
+        self.max_stats = {
+            health = 160
+        }
+    end
 
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/sword"
@@ -70,11 +91,11 @@ function character:init()
     self.xact_color = {0.5, 1, 1}
 
     -- Head icon in the equip / power menu
-    self.menu_icon = "party/you/head"
+    self.menu_icon = "party/kris/head"
     -- Path to head icons used in battle
-    self.head_icons = "party/you/icon"
+    self.head_icons = "party/kris/icon"
     -- Name sprite
-    self.name_sprite = "party/you/name"
+    self.name_sprite = "party/kris/name"
 
     -- Effect shown above enemy after attacking it
     self.attack_sprite = "effects/attack/cut"
@@ -92,54 +113,6 @@ function character:init()
 
     -- Message shown on gameover (optional)
     self.gameover_message = nil
-end
-
-function character:levelUp()
-    self:increaseStat("health", 10)
-    self:increaseStat("attack", 1)
-    self:increaseStat("defense", 2)
-    self.love = self.love + 1
-    if self.love == 1 then
-        self.req_exp = 10
-    elseif self.love == 2 then
-        self.req_exp = 30
-    elseif self.love == 3 then
-        self.req_exp = 70
-    elseif self.love == 4 then
-        self.req_exp = 120
-    elseif self.love == 5 then
-        self.req_exp = 200
-    elseif self.love == 6 then
-        self.req_exp = 300
-    elseif self.love == 7 then
-        self.req_exp = 500
-    elseif self.love == 8 then
-        self.req_exp = 800
-    elseif self.love == 9 then
-        self.req_exp = 1200
-    elseif self.love == 10 then
-        self.req_exp = 1700
-    elseif self.love == 11 then
-        self.req_exp = 2500
-    elseif self.love == 12 then
-        self.req_exp = 3500
-    elseif self.love == 13 then
-        self.req_exp = 5000
-    elseif self.love == 14 then
-        self.req_exp = 7000
-    elseif self.love == 15 then
-        self.req_exp = 10000
-    elseif self.love == 16 then
-        self.req_exp = 15000
-    elseif self.love == 17 then
-        self.req_exp = 25000
-    elseif self.love == 18 then
-        self.req_exp = 50000
-    elseif self.love == 19 then
-        self.req_exp = 99999
-    elseif self.love == 20 then
-        self.req_exp = 0
-    end
 end
 
 function character:onLevelUp(level)

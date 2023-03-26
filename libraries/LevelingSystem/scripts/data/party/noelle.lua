@@ -1,19 +1,24 @@
-local character, super = Class(PartyMember, "dess")
+local character, super = Class(PartyMember, "noelle")
 
 function character:init()
     super.init(self)
 
     -- Display name
-    self.name = "Dess"
+    self.name = "Noelle"
 
-    -- Actor (handles overworld/battle sprites)
-    self:setActor("dess")
-    self:setLightActor("dess")
+    -- Actor (handles sprites)
+    self:setActor("noelle")
+    self:setLightActor("noelle_lw")
 
+    self.love = 1
     -- Display level (saved to the save file)
-    self.level = 1
+    if Kristal.getLibConfig("leveling", "global_love") then
+        self.level = Game.chapter
+    else
+        self.level = self.love
+    end
     -- Default title / class (saved to the save file)
-    self.title = "The Batter\nfrom OFF"
+    self.title = "Snowcaster\nMight be able to\nuse some cool moves."
 
     -- Determines which character the soul comes from (higher number = higher priority)
     self.soul_priority = 1
@@ -27,61 +32,65 @@ function character:init()
     -- Whether the party member can use their X-Action
     self.has_xact = true
     -- X-Action name (displayed in this character's spell menu)
-    self.xact_name = "D-Action"
-	
-	-- Spells
-	
-	-- man idk
-	--self:addSpell("wideangle")
+    self.xact_name = "N-Action"
+
+    -- Spells
+    self:addSpell("heal_prayer")
+    self:addSpell("sleep_mist")
+    self:addSpell("ice_shock")
 
     -- Current health (saved to the save file)
-    self.health = 120
+    self.health = 90
 
     -- Base stats (saved to the save file)
     self.stats = {
-        health = 120,
-        attack = 12,
-        defense = 2,
-        magic = 1
+        health = 90,
+        attack = 3,
+        defense = 1,
+        magic = 11
     }
 
     -- Weapon icon in equip menu
-    self.weapon_icon = "ui/menu/equip/bat"
+    self.weapon_icon = "ui/menu/equip/ring"
 
     -- Equipment (saved to the save file)
-    self:setWeapon("cracked_bat")
+    self:setWeapon("snowring")
+    self:setArmor(1, "silver_watch")
+    if Game.chapter >= 2 then
+        self:setArmor(2, "royalpin")
+    end
 
     -- Default light world equipment item IDs (saves current equipment)
-    --self.lw_weapon_default = "light/pencil"
-    --self.lw_armor_default = "light/bandage"
+    self.lw_weapon_default = "light/pencil"
+    self.lw_armor_default = "light/bandage"
 
     -- Character color (for action box outline and hp bar)
-    self.color = {1, 0, 0}
+    self.color = {1, 1, 0}
     -- Damage color (for the number when attacking enemies) (defaults to the main color)
-    self.dmg_color = {1, 0, 0}
+    self.dmg_color = {1, 1, 0.3}
     -- Attack bar color (for the target bar used in attack mode) (defaults to the main color)
-    self.attack_bar_color = {1, 128/255, 128/255}
+    self.attack_bar_color = {1, 1, 153/255}
     -- Attack box color (for the attack area in attack mode) (defaults to darkened main color)
-    self.attack_box_color = {1, 0, 0}
+    self.attack_box_color = {1, 1, 0}
     -- X-Action color (for the color of X-Action menu items) (defaults to the main color)
-    self.xact_color = {1, 0, 0}
+    self.xact_color = {1, 1, 0.5}
 
     -- Head icon in the equip / power menu
-    self.menu_icon = "party/dess/head"
+    self.menu_icon = "party/noelle/head"
     -- Path to head icons used in battle
-    self.head_icons = "party/dess/icon"
-    -- Name sprite
-    self.name_sprite = "party/dess/name"
+    self.head_icons = "party/noelle/icon"
+    -- Name sprite (optional)
+    self.name_sprite = "party/noelle/name"
 
     -- Effect shown above enemy after attacking it
-    self.attack_sprite = "effects/attack/bash"
+    self.attack_sprite = "effects/attack/slap_n"
     -- Sound played when this character attacks
     self.attack_sound = "laz_c"
     -- Pitch of the attack sound
-    self.attack_pitch = 0.8
+    self.attack_pitch = 1.5
 
     -- Battle position offset (optional)
-    self.battle_offset = {2, 1}
+    self.battle_offset = {0, 0}
     -- Head icon position offset (optional)
     self.head_icon_offset = nil
     -- Menu icon position offset (optional)
@@ -89,26 +98,48 @@ function character:init()
 
     -- Message shown on gameover (optional)
     self.gameover_message = nil
+
+    -- Character flags (saved to the save file)
+    self.flags = {
+        ["iceshocks_used"] = 0,
+        ["boldness"] = -12
+    }
 end
 
---function character:onLevelUp(level)
---    self:increaseStat("health", 2)
---    if level % 10 == 0 then
---        self:increaseStat("attack", 1)
---    end
---end
+function character:getTitle()
+    if self:checkWeapon("thornring") then
+        if Kristal.getLibConfig("leveling", "global_love") then
+            return "LV"..self.level.." Ice Trancer\nReceives pain to\nbecome stronger."
+        else
+            return "LV"..self.love.." Ice Trancer\nReceives pain to\nbecome stronger."
+        end
+    elseif self:getFlag("iceshocks_used", 0) > 0 then
+        if Kristal.getLibConfig("leveling", "global_love") then
+            return "LV"..self.level.." Frostmancer\nFreezes the enemy."
+        else
+            return "LV"..self.love.." Frostmancer\nFreezes the enemy."
+        end
+    else
+        if Kristal.getLibConfig("leveling", "global_love") then
+            return "LV1 "..self.title
+        else
+            return "LV"..self.love.." "..self.title
+        end
+    end
+end
 
---function character:onPowerSelect(menu)
-    --if Utils.random() < ((Game.chapter == 1) and 0.02 or 0.04) then
-    --    menu.kris_dog = true
-    --else
-    --    menu.kris_dog = false
-    --end
---end
+function character:onLevelUp(level)
+    self:increaseStat("health", 4)
+    if level % 4 == 0 then
+        self:increaseStat("attack", 1)
+        self:increaseStat("magic", 1)
+    end
+end
 
 function character:levelUp()
     self:increaseStat("health", 10)
-    self:increaseStat("attack", 2)
+    self:increaseStat("attack", 1)
+    self:increaseStat("magic", 3)
     self:increaseStat("defense", 1)
     self.love = self.love + 1
     if self.love == 1 then
@@ -156,32 +187,22 @@ end
 
 function character:drawPowerStat(index, x, y, menu)
     if index == 1 then
-        local icon = Assets.getTexture("ui/menu/icon/angry")
-		love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
-        love.graphics.print("Angy:", x, y)
-        love.graphics.print("Lots", x+130, y)
+        local icon = Assets.getTexture("ui/menu/icon/snow")
+        love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
+        love.graphics.print("Coldness", x, y)
+        local coldness = Utils.clamp(47 + (self:getFlag("iceshocks_used", 0) * 7), 47, 100)
+        love.graphics.print(coldness, x+130, y)
         return true
-	elseif index == 2 then
-        local icon = Assets.getTexture("ui/menu/icon/bbgum")
-		love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
-        love.graphics.print("Funny:", x, y)
-        love.graphics.print("Not", x+130, y)
+    elseif index == 2 then
+        local icon = Assets.getTexture("ui/menu/icon/exclamation")
+        love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
+        love.graphics.print("Boldness", x, y, 0, 0.8, 1)
+        love.graphics.print(self:getFlag("boldness", -12), x+130, y)
         return true
     elseif index == 3 then
         local icon = Assets.getTexture("ui/menu/icon/fire")
         love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
         love.graphics.print("Guts:", x, y)
-
-        love.graphics.draw(icon, x+90, y+6, 0, 2, 2)
-        love.graphics.draw(icon, x+110, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+130, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+150, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+170, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+190, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+210, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+230, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+250, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+270, y+6, 0, 2, 2)
         return true
     end
 end

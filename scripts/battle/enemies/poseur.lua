@@ -11,6 +11,7 @@ function Poseur:init()
     self.attack = 4
     self.defense = 1
     self.money = 20
+    self.experience = 10
 
     self.spare_points = 20
 

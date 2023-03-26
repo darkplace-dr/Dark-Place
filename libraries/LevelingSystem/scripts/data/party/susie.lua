@@ -10,8 +10,13 @@ function character:init()
     self:setActor("susie")
     self:setLightActor("susie_lw")
 
+    self.love = 1
     -- Display level (saved to the save file)
-    self.level = Game.chapter
+    if Kristal.getLibConfig("leveling", "global_love") then
+        self.level = Game.chapter
+    else
+        self.level = self.love
+    end
     -- Default title / class (saved to the save file)
     self.title = "Dark Knight\nDoes damage using\ndark energy."
 
@@ -31,7 +36,6 @@ function character:init()
 
     -- Spells
     self:addSpell("rude_buster")
-    self:addSpell("pacify")
     if Game.chapter >= 2 then
         self:addSpell("ultimate_heal")
     end
@@ -57,16 +61,6 @@ function character:init()
             attack = 16,
             defense = 2,
             magic = 1
-        }
-    end
-    -- Max stats from level-ups
-    if Game.chapter == 1 then
-        self.max_stats = {
-            health = 140
-        }
-    else
-        self.max_stats = {
-            health = 190
         }
     end
 
@@ -125,6 +119,30 @@ function character:init()
     }
 end
 
+function character:onTurnStart(battler)
+    if self:getFlag("auto_attack", false) then
+        Game.battle:pushForcedAction(battler, "AUTOATTACK", Game.battle:getActiveEnemies()[1], nil, {points = 150})
+    end
+end
+
+function character:onAttackHit(enemy, damage)
+    if damage > 0 then
+        Assets.playSound("impact", 0.8)
+        Game.battle:shakeCamera(4)
+    end
+end
+
+function character:onLevelUp(level)
+    self:increaseStat("health", 2)
+    if level % 2 == 0 then
+        self:increaseStat("health", 1)
+    end
+    if level % 10 == 0 then
+        self:increaseStat("attack", 1)
+        self:increaseStat("magic", 1)
+    end
+end
+
 function character:levelUp()
     self:increaseStat("health", 15)
     self:increaseStat("attack", 2)
@@ -171,30 +189,6 @@ function character:levelUp()
         self.req_exp = 99999
     elseif self.love == 20 then
         self.req_exp = 0
-    end
-end
-
-function character:onTurnStart(battler)
-    if self:getFlag("auto_attack", false) then
-        Game.battle:pushForcedAction(battler, "AUTOATTACK", Game.battle:getActiveEnemies()[1], nil, {points = 150})
-    end
-end
-
-function character:onAttackHit(enemy, damage)
-    if damage > 0 then
-        Assets.playSound("impact", 0.8)
-        Game.battle:shakeCamera(4)
-    end
-end
-
-function character:onLevelUp(level)
-    self:increaseStat("health", 2)
-    if level % 2 == 0 then
-        self:increaseStat("health", 1)
-    end
-    if level % 10 == 0 then
-        self:increaseStat("attack", 1)
-        self:increaseStat("magic", 1)
     end
 end
 

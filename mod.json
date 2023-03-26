@@ -73,6 +73,7 @@
   // These config values can control chapter-specific features as well.
   "config": {
     "kristal": {
+      "growStronger": false
       // End of config
     }
   }
