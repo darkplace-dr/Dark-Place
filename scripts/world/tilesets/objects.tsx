@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.4" name="objects" tilewidth="66" tileheight="725" tilecount="8" columns="0">
+<tileset version="1.8" tiledversion="1.8.6" name="objects" tilewidth="90" tileheight="725" tilecount="10" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -36,5 +36,11 @@
  </tile>
  <tile id="10">
   <image width="66" height="40" source="../../../assets/sprites/objects/spamton_graffiti.png"/>
+ </tile>
+ <tile id="11">
+  <image width="67" height="64" source="../../../assets/sprites/objects/vapor_palmtree_cyan.png"/>
+ </tile>
+ <tile id="12">
+  <image width="90" height="33" source="../../../assets/sprites/objects/bb_stand.png"/>
  </tile>
 </tileset>
