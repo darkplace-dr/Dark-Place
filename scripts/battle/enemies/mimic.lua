@@ -9,12 +9,12 @@ function Mimic:init()
     self:setActor("ufoofdoom")
 
     -- Enemy health
-    self.max_health = 6400
-    self.health = 6400
+    self.max_health = 4400
+    self.health = 4400
     -- Enemy attack (determines bullet damage)
     self.attack = 10
     -- Enemy defense (usually 0)
-    self.defense = 4
+    self.defense = 2
     -- Enemy reward
     self.money = 1000
 	self.experience = 0
@@ -25,16 +25,27 @@ function Mimic:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        --"starsides"
+        "mimic/starsidesmimic",
+		"mimic/starcirclemimic",
+		"mimic/starfademimic",
+		-- add more, please :)
+		-- (PS, bonus points if it's an upgraded version of another enemy's attack to stick with the theme)
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
     self.dialogue = {
-        --"..."
+        "Uheehee!",
+		"Here or there?",
+		"Can you see me?",
+		"Maybe, maybe not!",
+		"From the darkness\ncomes stars!",
+		"From the cold\ncomes warmth!",
+		"From the clock\ncomes destiny!",
+		"Will you find out?",
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "AT 10 DF 4\n* Uheehee!"
+    self.check = "AT 10 DF 2\n* Uheehee!"
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {

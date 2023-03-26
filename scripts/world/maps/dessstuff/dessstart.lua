@@ -393,7 +393,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "ufoofdoom",
-            ["encounter"] = "ufoofdooms"
+            ["encounter"] = "ufoofdooms",
+            ["flagcheck"] = "!mimicBossDone"
           }
         },
         {

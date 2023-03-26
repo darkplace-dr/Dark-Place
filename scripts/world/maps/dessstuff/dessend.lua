@@ -308,7 +308,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "ufoofdoom",
-            ["encounter"] = "mimicboss"
+            ["encounter"] = "mimicboss",
+            ["flagcheck"] = "!mimicBossDone"
           }
         },
         {
@@ -325,6 +326,7 @@ return {
           properties = {
             ["actor"] = "ufoofdoom",
             ["encounter"] = "ufoofdooms",
+            ["flagcheck"] = "!mimicBossDone",
             ["group"] = 1
           }
         },
@@ -342,6 +344,7 @@ return {
           properties = {
             ["actor"] = "ufoofdoom",
             ["encounter"] = "ufoofdooms",
+            ["flagcheck"] = "!mimicBossDone",
             ["group"] = 1
           }
         },
@@ -359,6 +362,7 @@ return {
           properties = {
             ["actor"] = "ufoofdoom",
             ["encounter"] = "ufoofdooms",
+            ["flagcheck"] = "!mimicBossDone",
             ["group"] = 2
           }
         },
@@ -376,6 +380,7 @@ return {
           properties = {
             ["actor"] = "ufoofdoom",
             ["encounter"] = "ufoofdooms",
+            ["flagcheck"] = "!mimicBossDone",
             ["group"] = 2
           }
         },
@@ -392,7 +397,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "ufoofdoom",
-            ["encounter"] = "ufoofdooms"
+            ["encounter"] = "ufoofdooms",
+            ["flagcheck"] = "!mimicBossDone"
           }
         },
         {
@@ -424,6 +430,7 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "desslmao.dessboss",
+            ["flagcheck"] = "!mimicBossDone",
             ["once"] = true
           }
         },

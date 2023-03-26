@@ -126,7 +126,18 @@ return {
 	dessboss = function(cutscene)
 	
 		local boss = cutscene:getCharacter("ufoofdoom", 1)
-	
+		
+		local susie = cutscene:getCharacter("susie")
+		local kris = cutscene:getCharacter("kris")
+		local YOU = cutscene:getCharacter("YOU")
+		local dess = cutscene:getCharacter("dess")
+		
+		cutscene:detachFollowers()
+		cutscene:detachCamera()
+		
+		cutscene:walkTo(YOU, dess.x, dess.y+16, 1, "up")
+		cutscene:walkTo(susie, dess.x, dess.y+32, 1, "up")
+
 		cutscene:showNametag("Susie")
 		cutscene:text("* Ugh,[wait:10] alright,[wait:5] is this the last one?!", "angry", "susie")
 		
@@ -135,12 +146,15 @@ return {
 		
 		cutscene:showNametag("Susie")
 		cutscene:text("* Alright...[wait:10] let's finally get outta here.", "annoyed_down", "susie")
+		cutscene:hideNametag()
 		
+		cutscene:wait(1)
 		boss:shake(8, 0)
-		cutscene:wait(0.7)
+		cutscene:wait(2)
 		
+		cutscene:showNametag("Susie")
 		cutscene:text("* Did you just see that??", "surprise_frown", "susie")
-		cutscene:text("* Why did it just shake?", "shy_down", "susie")
+		cutscene:text("* Why did it just shake?", "shy_b", "susie")
 		
 		cutscene:showNametag("Dess")
 		cutscene:text("* That's normal, all the other ones shake if you hit them", "neutral", "dess")
@@ -162,22 +176,150 @@ return {
 		boss:shake(16, 0)
 		cutscene:text("* Uheeheehee!!")
 		
-		boss:fadeTo(0.2, 0.05, function() boss:fadeTo(1, 0.05, callback) end)
-		boss:slideTo(boss.x, boss.y+64, 1, "in-out-quint")
+		boss:fadeTo(0, 0.1, function() boss:fadeTo(1, 0.05, callback) end)
+		cutscene:panTo(boss.x, boss.y+256, 2)
+		boss:slideTo(boss.x, boss.y+256, 2, "in-out-quint")
 		
 		cutscene:wait(0.8)
 		
+		cutscene:look(susie, "down")
+		cutscene:look(dess, "down")
+		if YOU then
+			cutscene:look(YOU, "down")
+		else
+			cutscene:look(kris, "down")
+		end
+		
+		cutscene:wait(1.2)
 		cutscene:text("* I'm sorry![wait:10]\n* I simply couldn't contain myself!")
 		cutscene:text("* Uheehee!")
 		
 		cutscene:showNametag("Susie")
 		cutscene:text("* Who the hell are you?!", "angry", "susie")
 		
+		cutscene:hideNametag()
+		
 		boss:fadeTo(0.2, 0.05)
-		boss:setSprite("party/susie/dark/walk/up", keep_anim)
+		cutscene:wait(1)
+		boss:setActor("susie")
+		cutscene:look(boss, "up")
+		boss:fadeTo(1, 0.05)
+		cutscene:wait(1)
 		cutscene:showNametag("???")
+		cutscene:text("* YOU![wait:10] Well,[wait:5] just you.[wait:10] Not YOU.")
 		
+		cutscene:showNametag("Susie")
+		cutscene:text("* Wha-?![wait:10] What the hell??", "surprise_frown", "susie")
 		
+		cutscene:hideNametag()
+		
+		boss:fadeTo(0.2, 0.05)
+		cutscene:wait(1)
+		boss:setActor("you")
+		cutscene:look(boss, "up")
+		boss:fadeTo(1, 0.05)
+		cutscene:wait(1)
+		cutscene:showNametag("???")
+		cutscene:text("* Oh well,[wait:5] NOW I'm YOU!")
+		cutscene:text("* Or Kris![wait:10] You couldn't tell from here![wait:10] Uheeheehee!")
+		cutscene:hideNametag()
+		
+		boss:fadeTo(0.2, 0.05)
+		cutscene:wait(1)
+		boss:setActor("ufoofdoom")
+		boss:fadeTo(1, 0.05)
+		cutscene:showNametag("Dess")
+		cutscene:text("* Whatever can we fight now", "condescending", "dess")
+		
+		cutscene:showNametag("???")
+		cutscene:text("* ...OH![wait:10] I see!")
+		cutscene:text("* ...Uheehee!")
+		cutscene:text("* You're even worse than me! Uhee!")
+		
+		cutscene:showNametag("Susie")
+		cutscene:text("* Uhh,[wait:10] what do they mean by that?", "nervous", "susie")
+		
+		cutscene:showNametag("???")
+		cutscene:text("* Uheehee![wait:10] You're much better!")
+		cutscene:text("* It's too easy to be who you want to be!")
+		cutscene:text("* I know that is not the real Dess Holiday!")
+		
+		cutscene:showNametag("Susie")
+		cutscene:text("* Huh???", "surprise_frown", "susie")
+		
+		cutscene:showNametag("???")
+		cutscene:text("* Don't act all surprised!")
+		cutscene:text("* I know that you aren't the real Susie either!")
+		
+		cutscene:showNametag("Susie")
+		cutscene:text("* ...???", "suspicious", "susie")
+		cutscene:text("* Uh.", "suspicious", "susie")
+		cutscene:text("* Alright,[wait:5] let's smash this guy into a pulp.", "teeth_smile", "susie")
+		
+		cutscene:showNametag("Dess")
+		cutscene:text("* Agreed", "neutral", "dess")
+		
+		cutscene:showNametag("???")
+		cutscene:text("* Suit yourself![wait:5] Uheehee!")
+		
+		cutscene:hideNametag()
+		
+		cutscene:attachCamera(1)
+		
+		cutscene:startEncounter("mimicboss", true, boss)
+		boss:remove()
+		
+		cutscene:attachFollowers(5)
+		
+		cutscene:wait(1)
+		
+		cutscene:showNametag("Dess")
+		cutscene:text("* Wow,[wait:10] we really learned a lot about each-other while on this journey.", "genuine", "dess")
+		
+		cutscene:showNametag("Susie")
+		cutscene:text("* WH-", "shock", "susie")
+		cutscene:text("* NO!!", "angry", "susie")
+		cutscene:text("* NO!!!!!", "angry_b", "susie")
+		cutscene:text("* You are NOT making this a 'touching' moment!", "angry_c", "susie")
+		
+		cutscene:showNametag("Dess")
+		cutscene:text("* No,[wait:5] I really think we really started to value our friendship there.", "genuine", "dess")
+		cutscene:text("* Whaddya say,[wait:5] after this...", "genuine", "dess")
+		cutscene:text("* You and I smoke a ciggie outside of a 7/11?", "kind", "dess")
+		
+		cutscene:showNametag("Susie")
+		cutscene:text("* I just want you to know right now...", "suspicious", "susie")
+		cutscene:text("* You are the absolute worst person I've ever met.", "suspicious", "susie")
+		
+		cutscene:showNametag("Dess")
+		cutscene:text("* Alright but can I stay on the team?", "neutral", "dess")
+		
+		cutscene:showNametag("Susie")
+		cutscene:text("* NO!", "teeth_b", "susie")
+		
+		cutscene:showNametag("Dess")
+		cutscene:text("* ...", "neutral", "dess")
+		cutscene:text("* Please?", "condescending", "dess")
+		
+		cutscene:showNametag("Susie")
+		cutscene:text("* NO!!![wait:20] NO NO NO!", "teeth_b", "susie")
+		
+		cutscene:showNametag("Dess")
+		cutscene:text("* If I do I'll give the other guy's position back as leader", "neutral", "dess")
+		
+		cutscene:showNametag("Susie")
+		cutscene:text("* ...", "teeth_b", "susie")
+		cutscene:text("* ALRIGHT, FINE!", "teeth_b", "susie")
+		cutscene:text("* But I am NOT talking to you anymore!", "angry", "susie")
+		
+		cutscene:showNametag("Dess")
+		cutscene:text("* Yippeee", "condescending", "dess")
+		
+		cutscene:detachFollowers()
+		Game:movePartyMember("dess", 2)
+		cutscene:attachFollowers(3)
+		
+		Game:setFlag("mimicBossDone", true)
 		
 		cutscene:hideNametag()
 		

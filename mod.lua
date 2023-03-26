@@ -93,6 +93,37 @@ function Mod:postInit(new_file)
 	
 	end
 	
+	-- and here's a function to check if a Bin Code exists
+	function Game.world.checkBinCode(world, code)
+	
+		for i=1,#binCodes do
+			if binCodes[i][1] == code then
+				-- Yep, code exists.
+				return true
+			end
+		end
+		
+		-- nope.
+		return false
+	
+	end
+	
+	-- and here's one to delete Bin Codes
+	function Game.world.deleteBinCode(world, code)
+		
+		for i=1,#binCodes do
+			if binCodes[i][1] == code then
+				-- See ya MAAAAAN
+				table.remove(binCodes, binCodes[i])
+				return true
+			end
+		end
+		
+		-- darn
+		return false
+	
+	end
+	
 	-- god I am so sorry for how shitty this code is
 	
 end

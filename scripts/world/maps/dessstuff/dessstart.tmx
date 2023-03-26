@@ -99,6 +99,7 @@
    <properties>
     <property name="actor" value="ufoofdoom"/>
     <property name="encounter" value="ufoofdooms"/>
+    <property name="flagcheck" value="!mimicBossDone"/>
    </properties>
   </object>
   <object id="54" name="transition" x="200" y="-40" width="200" height="40">

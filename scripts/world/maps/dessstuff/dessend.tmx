@@ -80,12 +80,14 @@
    <properties>
     <property name="actor" value="ufoofdoom"/>
     <property name="encounter" value="mimicboss"/>
+    <property name="flagcheck" value="!mimicBossDone"/>
    </properties>
   </object>
   <object id="54" name="enemy" x="240" y="600" width="40" height="40">
    <properties>
     <property name="actor" value="ufoofdoom"/>
     <property name="encounter" value="ufoofdooms"/>
+    <property name="flagcheck" value="!mimicBossDone"/>
     <property name="group" type="int" value="1"/>
    </properties>
   </object>
@@ -93,6 +95,7 @@
    <properties>
     <property name="actor" value="ufoofdoom"/>
     <property name="encounter" value="ufoofdooms"/>
+    <property name="flagcheck" value="!mimicBossDone"/>
     <property name="group" type="int" value="1"/>
    </properties>
   </object>
@@ -100,6 +103,7 @@
    <properties>
     <property name="actor" value="ufoofdoom"/>
     <property name="encounter" value="ufoofdooms"/>
+    <property name="flagcheck" value="!mimicBossDone"/>
     <property name="group" type="int" value="2"/>
    </properties>
   </object>
@@ -107,6 +111,7 @@
    <properties>
     <property name="actor" value="ufoofdoom"/>
     <property name="encounter" value="ufoofdooms"/>
+    <property name="flagcheck" value="!mimicBossDone"/>
     <property name="group" type="int" value="2"/>
    </properties>
   </object>
@@ -114,6 +119,7 @@
    <properties>
     <property name="actor" value="ufoofdoom"/>
     <property name="encounter" value="ufoofdooms"/>
+    <property name="flagcheck" value="!mimicBossDone"/>
    </properties>
   </object>
   <object id="59" name="interactable" x="240" y="70" width="120" height="90">
@@ -125,6 +131,7 @@
   <object id="60" name="script" x="240" y="280" width="120" height="80">
    <properties>
     <property name="cutscene" value="desslmao.dessboss"/>
+    <property name="flagcheck" value="!mimicBossDone"/>
     <property name="once" type="bool" value="true"/>
    </properties>
   </object>

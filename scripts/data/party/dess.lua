@@ -116,8 +116,8 @@ function character:drawPowerStat(index, x, y, menu)
 	elseif index == 2 then
         local icon = Assets.getTexture("ui/menu/icon/bbgum")
 		love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
-        love.graphics.print("Reference:", x, y)
-        love.graphics.print("NotFunny", x+130, y)
+        love.graphics.print("Funny:", x, y)
+        love.graphics.print("Not", x+130, y)
         return true
     elseif index == 3 then
         local icon = Assets.getTexture("ui/menu/icon/fire")
