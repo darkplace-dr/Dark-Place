@@ -15,6 +15,10 @@ return {
         cutscene:text("* REMEMB3R TO FOLLOW THE [T.H.I.N.K] PRINCIPLE, YOU [Little Sponge]!!", "", "alternatespam")
         cutscene:hideNametag()
     end,
+    soapton = function(cutscene, event)
+        cutscene:text("* There's a tagline written on the soap bar here...")
+        cutscene:text("* SPAMTON [Rank A] CLEANING SOAP\n* PERFECT FOR WASHING YOUR [Sorry @$$] AWAY!!")
+    end,
     poster = function(cutscene, event)
         cutscene:text("* (The poster is torn,[wait:5] revealing\na faded one underneath.)")
         cutscene:text("* BIG SHOT AUTOS![wait:5] TAKE A RIDE\nAROUND TOWN IN OUR SPECIAL")
