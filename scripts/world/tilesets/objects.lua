@@ -1,9 +1,9 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.8.4",
+  tiledversion = "1.8.6",
   name = "objects",
-  tilewidth = 66,
+  tilewidth = 90,
   tileheight = 725,
   spacing = 0,
   margin = 0,
@@ -20,7 +20,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 8,
+  tilecount = 10,
   tiles = {
     {
       id = 0,
@@ -93,6 +93,18 @@ return {
       image = "../../../assets/sprites/objects/spamton_graffiti.png",
       width = 66,
       height = 40
+    },
+    {
+      id = 11,
+      image = "../../../assets/sprites/objects/vapor_palmtree_cyan.png",
+      width = 67,
+      height = 64
+    },
+    {
+      id = 12,
+      image = "../../../assets/sprites/objects/bb_stand.png",
+      width = 90,
+      height = 33
     }
   }
 }
