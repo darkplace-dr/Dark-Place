@@ -1,7 +1,7 @@
 return {
-  version = "1.5",
+  version = "1.4",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.4.3",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 13,
+  nextobjectid = 16,
   properties = {
     ["music"] = "spamton_battle_eb"
   },
@@ -17,7 +17,29 @@ return {
     {
       name = "city_alleyway",
       firstgid = 1,
-      filename = "../tilesets/city_alleyway.tsx"
+      filename = "../../../../Github-Lmao/Dark-Place/scripts/world/tilesets/city_alleyway.tsx",
+      tilewidth = 40,
+      tileheight = 40,
+      spacing = 0,
+      margin = 0,
+      columns = 15,
+      image = "../../../../Github-Lmao/Dark-Place/assets/sprites/tilesets/bg_dw_city_alleyway.png",
+      imagewidth = 600,
+      imageheight = 840,
+      objectalignment = "unspecified",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 40,
+        height = 40
+      },
+      properties = {},
+      terrains = {},
+      tilecount = 315,
+      tiles = {}
     }
   },
   layers = {
@@ -33,8 +55,6 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -64,8 +84,6 @@ return {
       opacity = 1,
       offsetx = -20,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -95,8 +113,6 @@ return {
       opacity = 1,
       offsetx = -20,
       offsety = -20,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -104,7 +120,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 222, 223, 224, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 222, 223, 224, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 237, 238, 239, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -123,8 +139,6 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
@@ -191,19 +205,6 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
-        },
-        {
-          id = 6,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 625,
-          y = 177,
-          width = 114,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
         }
       }
     },
@@ -216,8 +217,6 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
@@ -282,6 +281,39 @@ return {
           properties = {
             ["cutscene"] = "spamroom.poster"
           }
+        },
+        {
+          id = 13,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 630,
+          y = 140,
+          width = 110,
+          height = 90,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "spamroom.warpbin",
+            ["solid"] = true
+          }
+        },
+        {
+          id = 14,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 590,
+          y = 160,
+          width = 40,
+          height = 46,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text1"] = "* There's an important looking note here.",
+            ["text2"] = "* \"If you're stuck, try putting in 00000000!\"",
+            ["text3"] = "* \"(Hint: to get back here put in the code 'spamroom'.)\""
+          }
         }
       }
     },
@@ -294,8 +326,6 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
@@ -305,6 +335,19 @@ return {
           shape = "point",
           x = 480,
           y = 440,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 15,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 680,
+          y = 270,
           width = 0,
           height = 0,
           rotation = 0,

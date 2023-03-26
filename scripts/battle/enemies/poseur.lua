@@ -61,7 +61,12 @@ function Poseur:onAct(battler, name)
 
     elseif name == "Standard" then
         self:addMercy(25)
-        return "* "..battler.chara:getName().." Used their X-Action."
+		if battler.chara.id == "dess" then
+            -- D-Action lmao
+            return "* "..battler.chara:getName().." Used their X-Action but like wrong somehow."
+		else
+			return "* "..battler.chara:getName().." Used their X-Action."
+		end
     end
 
     return super.onAct(self, battler, name)
