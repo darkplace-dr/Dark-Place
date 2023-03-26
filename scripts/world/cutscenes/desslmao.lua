@@ -137,7 +137,7 @@ return {
 		
 		cutscene:walkTo(YOU, dess.x, dess.y+16, 1, "up")
 		cutscene:walkTo(susie, dess.x, dess.y+32, 1, "up")
-		
+
 		cutscene:showNametag("Susie")
 		cutscene:text("* Ugh,[wait:10] alright,[wait:5] is this the last one?!", "angry", "susie")
 		
@@ -191,7 +191,6 @@ return {
 		end
 		
 		cutscene:wait(1.2)
-		
 		cutscene:text("* I'm sorry![wait:10]\n* I simply couldn't contain myself!")
 		cutscene:text("* Uheehee!")
 		
@@ -323,7 +322,6 @@ return {
 		Game:setFlag("mimicBossDone", true)
 		
 		cutscene:hideNametag()
-		
 		
 	end,
 	
