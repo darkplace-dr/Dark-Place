@@ -17,6 +17,10 @@ function UFOOfDoom:init()
     self.defense = 0
     -- Enemy reward
     self.money = 50
+<<<<<<< Updated upstream
+=======
+    self.experience = 13
+>>>>>>> Stashed changes
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 33

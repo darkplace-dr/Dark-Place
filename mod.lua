@@ -72,6 +72,10 @@ function Mod:postInit(new_file)
 			Game.world:showText("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
 			Game.world:addBinCode("sppispod", function() Game.world:showText({"* Since you found another one...", "* Here's a fun fact:", "* This was made as a way to showcase what the warp bin can do!"}) end)
 		end},
+<<<<<<< Updated upstream
+=======
+		{"bossrush", "thearena", nil},
+>>>>>>> Stashed changes
 	
 	}
 	

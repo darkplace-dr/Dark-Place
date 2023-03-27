@@ -5,7 +5,13 @@ return {
 		cutscene:text("* Okay here we go", "calm", "dess")
 			
 		cutscene:wait(2)
+<<<<<<< Updated upstream
 		enemy:defeat("KILL", true)
+=======
+		Game.battle.killed = true
+		Game:addFlag("library_kills", 1)
+		enemy:defeat("KILLED", true)
+>>>>>>> Stashed changes
 		enemy:explode(0, 0, false)
 		cutscene:wait(2)
 			

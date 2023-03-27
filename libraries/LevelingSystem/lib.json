@@ -1,0 +1,14 @@
+{
+  "id": "leveling",
+  "version": "1.1.0",
+  "engineVersion": "0.8.0",
+  "authors": [
+    "BrandonK7200"
+  ],
+  "config": {
+      //If LOVE will be shared throughout the entire party (true), or if it's gained individually (false)
+      "global_love": false,
+      //Whether freezing an enemy gives EXP to the entire party (false), or only to the person who used it (true) | (Requires 'global_love' to be set to "false")
+      "local_freezing": true
+  }
+}

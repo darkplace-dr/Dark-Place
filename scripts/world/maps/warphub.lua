@@ -1,7 +1,14 @@
 return {
+<<<<<<< Updated upstream
   version = "1.4",
   luaversion = "5.1",
   tiledversion = "1.4.3",
+=======
+  version = "1.9",
+  luaversion = "5.1",
+  tiledversion = "1.9.0",
+  class = "",
+>>>>>>> Stashed changes
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 23,
@@ -18,6 +25,7 @@ return {
       name = "castle",
       firstgid = 1,
       filename = "../tilesets/castle.tsx",
+<<<<<<< Updated upstream
       tilewidth = 40,
       tileheight = 40,
       spacing = 4,
@@ -94,6 +102,19 @@ return {
       terrains = {},
       tilecount = 9,
       tiles = {}
+=======
+      exportfilename = "../tilesets/castle.lua"
+    },
+    {
+      name = "whitespace",
+      firstgid = 61,
+      filename = "../tilesets/whitespace.tsx"
+    },
+    {
+      name = "city_alleyway",
+      firstgid = 70,
+      filename = "../tilesets/city_alleyway.tsx"
+>>>>>>> Stashed changes
     }
   },
   layers = {
@@ -105,10 +126,15 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
+<<<<<<< Updated upstream
+=======
+      class = "",
+>>>>>>> Stashed changes
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+<<<<<<< Updated upstream
       properties = {},
       encoding = "lua",
       data = {
@@ -136,6 +162,37 @@ return {
         380, 380, 380, 380, 381, 383, 383, 383, 383, 383, 383, 383, 383, 383, 383, 383, 383, 383, 379, 380, 380, 380, 380,
         380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380,
         380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380
+=======
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 61, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 63, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 64, 65, 65, 65, 65, 67, 68, 69, 65, 65, 65, 65, 66, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 64, 65, 65, 65, 65, 64, 65, 66, 65, 65, 65, 65, 66, 65, 65, 65, 65, 65,
+        65, 61, 62, 62, 62, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 62, 62, 62, 63, 65,
+        65, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 65,
+        65, 64, 65, 65, 65, 65, 65, 65, 65, 61, 62, 62, 62, 63, 65, 65, 65, 65, 65, 65, 65, 66, 65,
+        65, 64, 65, 65, 65, 65, 65, 65, 65, 64, 65, 65, 65, 66, 65, 65, 65, 65, 65, 65, 65, 66, 65,
+        65, 62, 62, 62, 63, 65, 65, 65, 65, 64, 65, 65, 65, 66, 65, 65, 65, 65, 61, 62, 62, 62, 65,
+        65, 65, 65, 65, 66, 65, 65, 65, 65, 67, 68, 68, 68, 69, 65, 65, 65, 65, 64, 65, 65, 65, 65,
+        65, 65, 65, 65, 66, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 64, 65, 65, 65, 65,
+        65, 65, 65, 65, 66, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 64, 65, 65, 65, 65,
+        65, 65, 65, 65, 66, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 64, 65, 65, 65, 65,
+        65, 65, 65, 65, 66, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 64, 65, 65, 65, 65,
+        65, 65, 65, 65, 66, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 64, 65, 65, 65, 65,
+        65, 65, 65, 65, 66, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 64, 65, 65, 65, 65,
+        65, 65, 65, 65, 66, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 64, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+        65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65
+>>>>>>> Stashed changes
       }
     },
     {
@@ -146,16 +203,26 @@ return {
       height = 24,
       id = 2,
       name = "decal",
+<<<<<<< Updated upstream
+=======
+      class = "",
+>>>>>>> Stashed changes
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+<<<<<<< Updated upstream
+=======
+      parallaxx = 1,
+      parallaxy = 1,
+>>>>>>> Stashed changes
       properties = {},
       encoding = "lua",
       data = {
         0, 0, 0, 0, 0, 43, 44, 45, 43, 44, 45, 0, 43, 44, 45, 43, 44, 45, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 49, 50, 51, 49, 50, 51, 0, 49, 50, 51, 49, 50, 51, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 55, 56, 57, 55, 56, 57, 0, 55, 56, 57, 55, 56, 57, 0, 0, 0, 0, 0,
+<<<<<<< Updated upstream
         0, 0, 0, 0, 0, 289, 289, 289, 289, 289, 289, 0, 289, 289, 289, 289, 289, 289, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -167,6 +234,19 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 282, 283, 284, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 297, 298, 299, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+=======
+        0, 0, 0, 0, 0, 298, 298, 298, 298, 298, 298, 0, 298, 298, 298, 298, 298, 298, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 43, 44, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43, 44, 45, 0,
+        0, 49, 50, 51, 0, 0, 0, 0, 0, 0, 294, 309, 115, 0, 0, 0, 0, 0, 0, 49, 50, 51, 0,
+        0, 55, 56, 57, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 55, 56, 57, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 298, 298, 298, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 291, 292, 293, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 306, 307, 308, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> Stashed changes
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -184,16 +264,29 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+<<<<<<< Updated upstream
+=======
+      class = "",
+>>>>>>> Stashed changes
       visible = true,
       opacity = 0.5,
       offsetx = 0,
       offsety = 0,
+<<<<<<< Updated upstream
+=======
+      parallaxx = 1,
+      parallaxy = 1,
+>>>>>>> Stashed changes
       properties = {},
       objects = {
         {
           id = 57,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 200,
           y = 120,
@@ -206,7 +299,11 @@ return {
         {
           id = 58,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 480,
           y = 120,
@@ -219,7 +316,11 @@ return {
         {
           id = 59,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 760,
           y = 360,
@@ -230,6 +331,7 @@ return {
           properties = {}
         },
         {
+<<<<<<< Updated upstream
           id = 60,
           name = "",
           type = "",
@@ -246,6 +348,11 @@ return {
           id = 61,
           name = "",
           type = "",
+=======
+          id = 61,
+          name = "",
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 40,
           y = 260,
@@ -258,7 +365,11 @@ return {
         {
           id = 62,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 200,
           y = 20,
@@ -271,7 +382,11 @@ return {
         {
           id = 63,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 480,
           y = 20,
@@ -284,7 +399,11 @@ return {
         {
           id = 64,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 760,
           y = 260,
@@ -297,7 +416,11 @@ return {
         {
           id = 65,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 0,
           y = -40,
@@ -310,7 +433,11 @@ return {
         {
           id = 66,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 920,
           y = -40,
@@ -323,7 +450,11 @@ return {
         {
           id = 67,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = -40,
           y = -40,
@@ -336,7 +467,11 @@ return {
         {
           id = 68,
           name = "",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 0,
           y = 960,
@@ -353,16 +488,29 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+<<<<<<< Updated upstream
+=======
+      class = "",
+>>>>>>> Stashed changes
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+<<<<<<< Updated upstream
+=======
+      parallaxx = 1,
+      parallaxy = 1,
+>>>>>>> Stashed changes
       properties = {},
       objects = {
         {
           id = 27,
           name = "savepoint",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 360,
           y = 560,
@@ -378,7 +526,11 @@ return {
         {
           id = 43,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 410,
           y = 480,
@@ -394,7 +546,11 @@ return {
         {
           id = 45,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 390,
           y = 260,
@@ -407,13 +563,22 @@ return {
             ["text1"] = "* There appears to be some advertisements for codes here.",
             ["text2"] = "* \"Go to code 'spamroom'! It's where all the big shots are!\"",
             ["text3"] = "* \"yo whaddup. go to 'desshere'.\"",
+<<<<<<< Updated upstream
             ["text4"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here."
+=======
+            ["text4"] = "* \"Want to fight boss you've prevously fought?[wait:10]\nGo to 'bossrush'!\"",
+            ["text5"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here."
+>>>>>>> Stashed changes
           }
         },
         {
           id = 46,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 60,
           y = 320,
@@ -422,15 +587,24 @@ return {
           rotation = 0,
           visible = true,
           properties = {
+<<<<<<< Updated upstream
             ["solid"] = true,
             ["text1"] = "* This room appears to be for rent.",
             ["text2"] = "* But,[wait:10] you don't know how to rent it."
+=======
+            ["cutscene"] = "warphub.spamgolor",
+            ["solid"] = true
+>>>>>>> Stashed changes
           }
         },
         {
           id = 52,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 220,
           y = 80,
@@ -447,7 +621,11 @@ return {
         {
           id = 53,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 340,
           y = 80,
@@ -464,7 +642,11 @@ return {
         {
           id = 54,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 500,
           y = 80,
@@ -481,7 +663,11 @@ return {
         {
           id = 55,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 620,
           y = 80,
@@ -498,7 +684,11 @@ return {
         {
           id = 56,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 780,
           y = 320,
@@ -519,16 +709,29 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+<<<<<<< Updated upstream
+=======
+      class = "",
+>>>>>>> Stashed changes
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+<<<<<<< Updated upstream
+=======
+      parallaxx = 1,
+      parallaxy = 1,
+>>>>>>> Stashed changes
       properties = {},
       objects = {
         {
           id = 20,
           name = "spawn",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "point",
           x = 460,
           y = 600,
@@ -548,10 +751,19 @@ return {
       height = 24,
       id = 7,
       name = "above",
+<<<<<<< Updated upstream
+=======
+      class = "",
+>>>>>>> Stashed changes
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+<<<<<<< Updated upstream
+=======
+      parallaxx = 1,
+      parallaxy = 1,
+>>>>>>> Stashed changes
       properties = {},
       encoding = "lua",
       data = {
@@ -561,7 +773,11 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+<<<<<<< Updated upstream
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 376, 377, 378, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+=======
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 61, 62, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> Stashed changes
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -589,10 +805,19 @@ return {
       height = 24,
       id = 8,
       name = "abovedecal",
+<<<<<<< Updated upstream
+=======
+      class = "",
+>>>>>>> Stashed changes
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+<<<<<<< Updated upstream
+=======
+      parallaxx = 1,
+      parallaxy = 1,
+>>>>>>> Stashed changes
       properties = {},
       encoding = "lua",
       data = {
@@ -602,7 +827,11 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+<<<<<<< Updated upstream
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 270, 0, 91, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+=======
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 279, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> Stashed changes
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

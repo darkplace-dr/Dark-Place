@@ -25,6 +25,8 @@ Simbel - Contributor
 
 Just Another Random User - Contributor
 
+Charbomber - Contributor
+
 Kristal Team - Creating the Kristal engine
 
 Toby Fox - Original author for Deltarune
@@ -46,3 +48,7 @@ RynoGG - Original author for Deltatraveler
 Stardust - NYCTBA Earthbound Remix (https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 
 OMOCAT, LLC - Original author for OMORI
+
+Ninomae Ina'nis - Creator and designer of the Takodachis
+
+HAL Laboratories - Original author for Kirby

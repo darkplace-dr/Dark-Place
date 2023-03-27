@@ -1,0 +1,41 @@
+{
+    "maps": [
+        {
+            "fileName": "maps/room1/room1.tmx",
+            "height": 960,
+            "width": 800,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "fileName": "maps/room2.tmx",
+            "height": 480,
+            "width": 800,
+            "x": 2080,
+            "y": -120
+        },
+        {
+            "fileName": "maps/room3/room3.tmx",
+            "height": 480,
+            "width": 1120,
+            "x": -1200,
+            "y": 480
+        },
+        {
+            "fileName": "maps/spamroom.tmx",
+            "height": 480,
+            "width": 960,
+            "x": -960,
+            "y": -40
+        },
+        {
+            "fileName": "maps/spamgolor_alley.tmx",
+            "height": 480,
+            "width": 1280,
+            "x": 800,
+            "y": 320
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}

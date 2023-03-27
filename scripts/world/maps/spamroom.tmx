@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="16">
+=======
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="16">
+>>>>>>> Stashed changes
  <editorsettings>
   <export target="spamroom.lua" format="lua"/>
  </editorsettings>

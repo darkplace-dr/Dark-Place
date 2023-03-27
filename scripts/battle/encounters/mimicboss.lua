@@ -26,4 +26,11 @@ function UfoEncounter:onBattleStart()
 	Game.battle.encounter.bg.visible = true
 end
 
+<<<<<<< Updated upstream
+=======
+function UfoEncounter:onBattleEnd() 
+    Game:setFlag("mimic_defeated", true)
+end
+
+>>>>>>> Stashed changes
 return UfoEncounter

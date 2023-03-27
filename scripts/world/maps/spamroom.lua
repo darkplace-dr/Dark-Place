@@ -1,7 +1,14 @@
 return {
+<<<<<<< Updated upstream
   version = "1.4",
   luaversion = "5.1",
   tiledversion = "1.4.3",
+=======
+  version = "1.9",
+  luaversion = "5.1",
+  tiledversion = "1.9.0",
+  class = "",
+>>>>>>> Stashed changes
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -51,6 +58,7 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -80,6 +88,7 @@ return {
       height = 12,
       id = 3,
       name = "props",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = -20,
@@ -109,6 +118,7 @@ return {
       height = 12,
       id = 4,
       name = "props2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = -20,
@@ -135,6 +145,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -144,7 +155,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 0,
@@ -157,7 +168,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -170,7 +181,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 400,
@@ -183,7 +194,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 400,
@@ -196,7 +207,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 840,
           y = 0,
@@ -213,6 +224,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -222,7 +234,7 @@ return {
         {
           id = 7,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 480,
@@ -238,7 +250,7 @@ return {
         {
           id = 10,
           name = "npc",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 800,
           y = 240,
@@ -254,7 +266,7 @@ return {
         {
           id = 11,
           name = "npc",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 170,
           y = 280,
@@ -270,7 +282,7 @@ return {
         {
           id = 12,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 260,
           y = 94,
@@ -285,7 +297,11 @@ return {
         {
           id = 13,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 630,
           y = 140,
@@ -301,7 +317,11 @@ return {
         {
           id = 14,
           name = "interactable",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "rectangle",
           x = 590,
           y = 160,
@@ -322,6 +342,7 @@ return {
       draworder = "topdown",
       id = 7,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -331,7 +352,7 @@ return {
         {
           id = 9,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 480,
           y = 440,
@@ -344,7 +365,11 @@ return {
         {
           id = 15,
           name = "spawn",
+<<<<<<< Updated upstream
           type = "",
+=======
+          class = "",
+>>>>>>> Stashed changes
           shape = "point",
           x = 680,
           y = 270,

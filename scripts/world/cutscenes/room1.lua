@@ -200,5 +200,74 @@ return {
         cutscene:hideNametag()
 
         Game.world.map.alreadySeen = true
+    end,
+
+    wah = function(cutscene, event)
+        if not Game.world.map.wah then
+            Game.world.map.wah = 1
+        end
+        local wah = Game.world.map.wah
+        local reset = false
+
+        cutscene:showNametag("Takodachi")
+
+        --The 1st WAH!
+        if wah == 1 then    
+            cutscene:text("* Pray to the 1st WAH![wait:10]\n* We Are Here!")
+        --The 2nd WAH!
+        elseif wah == 2 then
+            cutscene:text("* Pray to the 2nd WAH![wait:10]\n* We Are Happy!")
+        --The 3rd WAH!
+        elseif wah == 3 then
+            cutscene:text("* Pray to the 3rd WAH![wait:10]\n* We Are Hungry!")
+        --The 4th... wah..?
+        elseif wah == 4 then
+            cutscene:text("[noskip]* Pray to the 4th WAH![wait:10]\n[func:oshit]* We Are[wait:25][func:thicc][instant] H O R N Y![stopinstant][wait:15]", nil, nil, {functions={
+                oshit=function()
+                    Assets.stopAndPlaySound("the4thWah")
+                end,
+                thicc=function()
+                    reset = true
+                    cutscene:showNametag("Takolyshit")
+                    Game.fader:fadeIn(nil, {speed = 0.8, color = {1, 1, 1}, alpha = 1})
+                    event:setSprite("takolyshit")
+                    -- Credits to Dobby233Liu for making this not awful code
+                    local anim_table = { YOU = "date", susie = "shock", ralsei = "surprised_down", noelle = "shocked" }
+                    for i,member in ipairs(Game.party) do
+                        local anim = anim_table[member.id]
+                        if anim ~= nil then
+                          cutscene:getCharacter(member.id):setSprite(anim)
+                        end
+                    end
+                end
+            }})
+        else
+            cutscene:text("* Pray to the priestess,[wait:2] Ina!")
+        end
+
+        cutscene:hideNametag()
+        Game.world.map.wah = Game.world.map.wah + 1
+        if reset then
+            event:setSprite("idle")
+            for i,member in ipairs(Game.party) do
+                if member.id == "YOU" then
+                    cutscene:getCharacter("YOU"):resetSprite()
+                elseif member.id == "susie" then
+                    cutscene:getCharacter("susie"):resetSprite()
+                elseif member.id == "ralsei" then
+                    cutscene:getCharacter("ralsei"):resetSprite()
+                elseif member.id == "noelle" then
+                    cutscene:getCharacter("noelle"):resetSprite()
+                end
+            end
+        end
+    end,
+
+    transition = function(cutscene, event)
+        if math.random(1, 100) <= 5 then
+            Game.world:mapTransition("spamgolor_alley", "entrance")
+        else
+            Game.world:mapTransition("room2", "entry")
+        end
     end
 }
