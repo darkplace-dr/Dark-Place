@@ -1,7 +1,7 @@
 return {
-  version = "1.8",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -12,13 +12,17 @@ return {
   nextlayerid = 6,
   nextobjectid = 15,
   properties = {
+    ["border"] = "castle",
+    ["light"] = false,
+    ["music"] = "castletown_empty",
     ["name"] = "Test Map - Room 2"
   },
   tilesets = {
     {
       name = "castle",
       firstgid = 1,
-      filename = "../tilesets/castle.tsx"
+      filename = "../tilesets/castle.tsx",
+      exportfilename = "../tilesets/castle.lua"
     }
   },
   layers = {

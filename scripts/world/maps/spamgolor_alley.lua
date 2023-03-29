@@ -1,7 +1,7 @@
 return {
-  version = "1.8",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -11,7 +11,12 @@ return {
   tileheight = 40,
   nextlayerid = 6,
   nextobjectid = 14,
-  properties = {},
+  properties = {
+    ["border"] = "simple",
+    ["light"] = false,
+    ["music"] = "none",
+    ["name"] = "Mysterious Alleyway"
+  },
   tilesets = {
     {
       name = "castle",

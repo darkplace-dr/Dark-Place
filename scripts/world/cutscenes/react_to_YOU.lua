@@ -1,9 +1,13 @@
 return function(cutscene)
+
+	Game.world.music:stop()
+
 	local YOU = cutscene:getCharacter("YOU")
 
 	local susie = cutscene:getCharacter("susie")
 	if susie then
         cutscene:detachFollowers()
+		
 
         cutscene:setSpeaker(susie)
 		cutscene:showNametag("Susie")
@@ -57,5 +61,6 @@ return function(cutscene)
 		cutscene:alignFollowers()
 		cutscene:attachFollowersImmediate()
 		cutscene:attachCameraImmediate()
+		Game.world.music:play()
 	end
 end

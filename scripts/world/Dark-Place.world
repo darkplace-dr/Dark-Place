@@ -4,15 +4,15 @@
             "fileName": "maps/room1/room1.tmx",
             "height": 960,
             "width": 800,
-            "x": 0,
-            "y": 0
+            "x": 1020,
+            "y": 64
         },
         {
             "fileName": "maps/room2.tmx",
             "height": 480,
             "width": 800,
-            "x": 2080,
-            "y": -120
+            "x": 3780,
+            "y": -56
         },
         {
             "fileName": "maps/room3/room3.tmx",
@@ -32,8 +32,57 @@
             "fileName": "maps/spamgolor_alley.tmx",
             "height": 480,
             "width": 1280,
-            "x": 800,
-            "y": 320
+            "x": 2200,
+            "y": 280
+        },
+        {
+            "fileName": "maps/whitespace/whitespace.tmx",
+            "height": 4320,
+            "width": 5760,
+            "x": -2488,
+            "y": 2624
+        },
+        {
+            "fileName": "maps/dessstuff/dessend.tmx",
+            "height": 960,
+            "width": 640,
+            "x": 3440,
+            "y": 2000
+        },
+        {
+            "fileName": "maps/dessstuff/dessstart.tmx",
+            "height": 960,
+            "width": 800,
+            "x": 3440,
+            "y": 3040
+        },
+        {
+            "fileName": "maps/room_prefountain/data.tmx",
+            "height": 2000,
+            "width": 2000,
+            "x": -1520,
+            "y": -2040
+        },
+        {
+            "fileName": "maps/warphub.tmx",
+            "height": 960,
+            "width": 920,
+            "x": 4320,
+            "y": 3040
+        },
+        {
+            "fileName": "maps/thearena.tmx",
+            "height": 640,
+            "width": 960,
+            "x": 4300,
+            "y": 2264
+        },
+        {
+            "fileName": "maps/pizzatower/data.tmx",
+            "height": 560,
+            "width": 960,
+            "x": -20,
+            "y": 544
         }
     ],
     "onlyShowAdjacentMaps": false,

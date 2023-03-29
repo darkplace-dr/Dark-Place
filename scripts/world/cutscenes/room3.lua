@@ -141,6 +141,7 @@ return {
 	end,
     garbage = function(cutscene, event)
         local garbage = cutscene:getCharacter("diamond_trash")
+        Game.world.music:pause()
         if event.interacted then
             cutscene:showNametag("Trash Rudinn")
             Assets.playSound("stillgarbage")
@@ -291,6 +292,7 @@ return {
 
             event.interacted = true
         end
+        Game.world.music:resume()
     end,
     magshop = function (cutscene, event)
         cutscene:showNametag("Magolor")
@@ -414,6 +416,15 @@ return {
             cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
             cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
             cutscene:hideNametag()
+        end
+    end,
+
+
+    transition = function(cutscene, event)
+        if math.random(1, 50) <= 5 then
+            Game.world:mapTransition("pizzatower", "entrance")
+        else
+            Game.world:mapTransition("room1", "entry2")
         end
     end
 }

@@ -1,14 +1,17 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.0",
   name = "objects",
-  tilewidth = 90,
+  class = "",
+  tilewidth = 147,
   tileheight = 725,
   spacing = 0,
   margin = 0,
   columns = 0,
   objectalignment = "unspecified",
+  tilerendersize = "tile",
+  fillmode = "stretch",
   tileoffset = {
     x = 0,
     y = 0
@@ -20,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 10,
+  tilecount = 15,
   tiles = {
     {
       id = 0,
@@ -105,6 +108,36 @@ return {
       image = "../../../assets/sprites/objects/bb_stand.png",
       width = 90,
       height = 33
+    },
+    {
+      id = 13,
+      image = "../../../assets/sprites/objects/billboard.png",
+      width = 120,
+      height = 120
+    },
+    {
+      id = 14,
+      image = "../../../assets/sprites/worldbg/pizzatower/chris hansen.png",
+      width = 120,
+      height = 103
+    },
+    {
+      id = 15,
+      image = "../../../assets/sprites/worldbg/pizzatower/mooshroom.png",
+      width = 125,
+      height = 99
+    },
+    {
+      id = 16,
+      image = "../../../assets/sprites/worldbg/pizzatower/relthie.png",
+      width = 147,
+      height = 235
+    },
+    {
+      id = 17,
+      image = "../../../assets/sprites/worldbg/pizzatower/thuthie.png",
+      width = 118,
+      height = 138
     }
   }
 }
