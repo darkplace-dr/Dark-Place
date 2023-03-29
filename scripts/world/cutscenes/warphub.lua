@@ -9,8 +9,7 @@ return {
             cutscene:text("* Will you go inside?")
             local opinion = cutscene:choicer({"Yes", "No"}, options)
             if opinion == 1 then
-                cutscene:text("aaaaaaaa it's late i'll actually add this tomorrow")
-                cutscene:text("just use the debug menu to open the shop")
+                Game.world:shopTransition("spamgolor", {marker="door1", facing="down"})
             end
         end
     end
