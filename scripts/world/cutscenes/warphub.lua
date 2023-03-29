@@ -5,10 +5,13 @@ return {
             cutscene:text("* CURRENTLY OUT IN\n[[A room between]].", "", "spamgolor")
             cutscene:text("* COME CHECK BACK\n[[Coming soon]].", "", "spamgolor")
         else
-            cutscene:text("* There appears to be a note here...")
-            cutscene:text("* CURRENTLY [[Setting up wares]].", "", "spamgolor")
-            cutscene:text("* WILL [[Open for business]] ON-", "", "spamgolor")
-            cutscene:text("* The rest of the note is torn off.")
+            cutscene:text("* The door appears to be unlocked.")
+            cutscene:text("* Will you go inside?")
+            local opinion = cutscene:choicer({"Yes", "No"}, options)
+            if opinion == 1 then
+                cutscene:text("aaaaaaaa it's late i'll actually add this tomorrow")
+                cutscene:text("just use the debug menu to open the shop")
+            end
         end
     end
 }
