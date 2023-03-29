@@ -35,7 +35,7 @@ Toby Fox - Original author for Deltarune
 
 Sam Deluxe#0057 - X-Slash code
 
-Cоrе#2611 - MoreBattle Library
+Cоrе#2611 - MoreBattle Library, Light Transition Library, & more
 
 HUECYCLES - Custom BG Library code
 
