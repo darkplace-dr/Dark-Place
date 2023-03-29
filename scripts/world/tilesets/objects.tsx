@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.6" name="objects" tilewidth="90" tileheight="725" tilecount="10" columns="0">
+<tileset version="1.10" tiledversion="1.10.0" name="objects" tilewidth="147" tileheight="725" tilecount="15" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -42,5 +42,20 @@
  </tile>
  <tile id="12">
   <image width="90" height="33" source="../../../assets/sprites/objects/bb_stand.png"/>
+ </tile>
+ <tile id="13">
+  <image width="120" height="120" source="../../../assets/sprites/objects/billboard.png"/>
+ </tile>
+ <tile id="14">
+  <image width="120" height="103" source="../../../assets/sprites/worldbg/pizzatower/chris hansen.png"/>
+ </tile>
+ <tile id="15">
+  <image width="125" height="99" source="../../../assets/sprites/worldbg/pizzatower/mooshroom.png"/>
+ </tile>
+ <tile id="16">
+  <image width="147" height="235" source="../../../assets/sprites/worldbg/pizzatower/relthie.png"/>
+ </tile>
+ <tile id="17">
+  <image width="118" height="138" source="../../../assets/sprites/worldbg/pizzatower/thuthie.png"/>
  </tile>
 </tileset>

@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 144,
@@ -11,6 +12,7 @@ return {
   nextlayerid = 9,
   nextobjectid = 29,
   properties = {
+    ["border"] = "whitespace",
     ["music"] = "whitespace",
     ["name"] = "WHITE SPACE"
   },
@@ -18,7 +20,8 @@ return {
     {
       name = "whitespace",
       firstgid = 1,
-      filename = "../../tilesets/whitespace.tsx"
+      filename = "../../tilesets/whitespace.tsx",
+      exportfilename = "../../tilesets/whitespace.lua"
     },
     {
       name = "objects",
@@ -36,6 +39,7 @@ return {
       height = 108,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -160,6 +164,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -227,6 +232,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -268,6 +274,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -414,6 +421,7 @@ return {
       draworder = "topdown",
       id = 8,
       name = "objects_fg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

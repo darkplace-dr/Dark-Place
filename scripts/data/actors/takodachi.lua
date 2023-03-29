@@ -63,10 +63,17 @@ function actor:onWorldUpdate(chara)
     if chara.sprite.sprite ~= "takolyshit" then
         if not Game.world.map.ina:isPlaying() then
             Game.world.map.ina:resume()
+            --Game.world.music:fade(0.1, 0.1)
         end
         local dist = Utils.dist(chara.x+chara.width/2, chara.y+chara.height/2, Game.world.player.x+Game.world.player.width, Game.world.player.y+Game.world.player.height)
         local vol = Utils.clamp(self.map(dist, 50, 150, 1, 0), 0, 1)
         Game.world.map.ina:setVolume(vol)
+        if Game.world.map.ina.volume > 0 then
+            --Game.world.music:setVolume(vol - 0.9)
+            Game.world.music:fade(vol - 0.9, 0.5)
+        else
+            Game.world.music:fade(1, 0.5)
+        end
         if vol>0 and chara.sprite.sprite == "idle" then
             chara:setAnimation("talk")
         elseif vol == 0 and chara.sprite.anim == "talk" then
@@ -75,6 +82,7 @@ function actor:onWorldUpdate(chara)
     else
         if Game.world.map.ina:isPlaying() then
             Game.world.map.ina:pause()
+            --Game.world.music:fade(1, 1)
         end
     end
 end
