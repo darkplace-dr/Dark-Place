@@ -128,6 +128,19 @@ function Mod:postInit(new_file)
 	
 end
 
+-- I'm still sorry
+function Map:onEnter()
+    BinRect = UIBox((SCREEN_WIDTH / 2) - 64, 256, 128, 32)
+    Game.stage:addChild(BinRect)
+    --BinRect.color = {0, 0, 0}
+    BinRect.visible = false
+	
+    BinText = Text("", (SCREEN_WIDTH / 2) - 64, 256, 640, 480)
+    Game.stage:addChild(BinText)
+    --BinText:setLayer(9999999)
+    BinText.visible = false
+end
+
 Mod.wave_shader = love.graphics.newShader([[
     extern number wave_sine;
     extern number wave_mag;
@@ -150,11 +163,11 @@ end
 
 -- hee hee  -Char
 function Mod:postUpdate()
-	if TextInput.active then
-		if #Game.binInput[1] < 8 then
-			BinText:setText(Game.binInput[1].."_")
-		else
-			BinText:setText(Game.binInput[1])
-		end
-	end
+    if TextInput.active then
+        if #Game.binInput[1] < 8 then
+            BinText:setText(Game.binInput[1].."_")
+        else
+            BinText:setText(Game.binInput[1])
+        end
+    end
 end
