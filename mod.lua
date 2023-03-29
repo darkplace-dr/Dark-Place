@@ -46,15 +46,6 @@ function Mod:postInit(new_file)
 	
 	Game.binInput = {""}
 	
-	BinRect = Rectangle((SCREEN_WIDTH / 2) - 64, 256, 128, 32)
-	Game.stage:addChild(BinRect)
-	BinRect.color = {0, 0, 0}
-	BinRect.visible = false
-	
-	BinText = Text(Game.binInput[1], (SCREEN_WIDTH / 2) - 64, 256, 640, 480)
-	Game.stage:addChild(BinText)
-	--BinText:setLayer(9999999)
-	BinText.visible = false
 	
 	
 	-- I'm going to cause pain and suffering with one weird trick:
@@ -72,10 +63,7 @@ function Mod:postInit(new_file)
 			Game.world:showText("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
 			Game.world:addBinCode("sppispod", function() Game.world:showText({"* Since you found another one...", "* Here's a fun fact:", "* This was made as a way to showcase what the warp bin can do!"}) end)
 		end},
-<<<<<<< Updated upstream
-=======
 		{"bossrush", "thearena", nil},
->>>>>>> Stashed changes
 	
 	}
 	
@@ -129,6 +117,22 @@ function Mod:postInit(new_file)
 	
 	-- god I am so sorry for how shitty this code is
 	
+end
+
+
+-- I'm still sorry
+function Map:onEnter()
+
+	BinRect = UIBox((SCREEN_WIDTH / 2) - 64, 256, 128, 32)
+	Game.stage:addChild(BinRect)
+	--BinRect.color = {0, 0, 0}
+	BinRect.visible = false
+	
+	BinText = Text("", (SCREEN_WIDTH / 2) - 64, 256, 640, 480)
+	Game.stage:addChild(BinText)
+	--BinText:setLayer(9999999)
+	BinText.visible = false
+
 end
 
 function Mod:getActionButtons(battler, buttons)
