@@ -27,6 +27,8 @@ Just Another Random User - Contributor
 
 Charbomber - Contributor
 
+Bor - Contributor
+
 Kristal Team - Creating the Kristal engine
 
 Toby Fox - Original author for Deltarune
@@ -36,6 +38,8 @@ Sam Deluxe#0057 - X-Slash code
 Cоrе#2611 - MoreBattle Library
 
 HUECYCLES - Custom BG Library code
+
+Pinto Molhado#5175 - Edited "Gnome Forest" title card from Pizza Tower
 
 TheMaximus - Original author for Ribbit
 
@@ -52,3 +56,5 @@ OMOCAT, LLC - Original author for OMORI
 Ninomae Ina'nis - Creator and designer of the Takodachis
 
 HAL Laboratories - Original author for Kirby
+
+Tour de Pizza - Original authors for Pizza Tower
