@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 15,
+  nextobjectid = 19,
   properties = {
     ["music"] = "castle_funk"
   },
@@ -233,6 +233,36 @@ return {
           visible = true,
           properties = {
             ["actor"] = "tasquemanager"
+          }
+        },
+        {
+          id = 15,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 416,
+          y = 162,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "sweet"
+          }
+        },
+        {
+          id = 18,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 503,
+          y = 152,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "shadowman_player"
           }
         }
       }
