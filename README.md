@@ -39,6 +39,8 @@ Cоrе#2611 - MoreBattle Library
 
 HUECYCLES - Custom BG Library code
 
+Pinto Molhado#5175 - Edited "Gnome Forest" title card from Pizza Tower
+
 TheMaximus - Original author for Ribbit
 
 RhenaudTheLukark - Original author for Unitale/Create Your Frisk
@@ -54,3 +56,5 @@ OMOCAT, LLC - Original author for OMORI
 Ninomae Ina'nis - Creator and designer of the Takodachis
 
 HAL Laboratories - Original author for Kirby
+
+Tour de Pizza - Original authors for Pizza Tower

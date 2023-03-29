@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="15">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="19">
  <editorsettings>
   <export target="cafe_ch4.lua" format="lua"/>
  </editorsettings>
@@ -29,6 +29,18 @@
   <object id="14" name="npc" x="156" y="164">
    <properties>
     <property name="actor" value="tasquemanager"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="15" name="npc" x="416" y="162">
+   <properties>
+    <property name="actor" value="sweet"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="npc" x="503" y="152">
+   <properties>
+    <property name="actor" value="shadowman_player"/>
    </properties>
    <point/>
   </object>

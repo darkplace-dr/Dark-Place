@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -10,12 +9,11 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 15,
-  nextobjectid = 89,
+  nextobjectid = 93,
   properties = {
     ["border"] = "simple",
-    ["light"] = false,
     ["music"] = "mmm_yess_put_the_tree_on_my_pizza",
-    ["name"] = "Mysterious Alleyway"
+    ["name"] = "Gnome Forest...?"
   },
   tilesets = {
     {
@@ -27,45 +25,10 @@ return {
   },
   layers = {
     {
-      type = "tilelayer",
-      x = 0,
-      y = 0,
-      width = 24,
-      height = 14,
-      id = 1,
-      name = "Tile Layer 1",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      encoding = "lua",
-      data = {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-      }
-    },
-    {
       type = "imagelayer",
       image = "../../../../assets/sprites/worldbg/pizzatower/main.png",
       id = 6,
       name = "bg",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -81,7 +44,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -248,39 +210,6 @@ return {
           properties = {}
         },
         {
-          id = 29,
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 238.5,
-          y = 349,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 37, y = 9.5 },
-            { x = 36, y = -103 },
-            { x = -32, y = -91 },
-            { x = -6.5, y = -1 }
-          },
-          properties = {}
-        },
-        {
-          id = 30,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = -38.6667,
-          y = 400,
-          width = 38.6667,
-          height = 160,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 31,
           name = "",
           type = "",
@@ -325,19 +254,6 @@ return {
             { x = -157.061, y = -17.9394 },
             { x = -33.3939, y = -15.2727 }
           },
-          properties = {}
-        },
-        {
-          id = 36,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = -39.3333,
-          y = 200,
-          width = 39.3333,
-          height = 240,
-          rotation = 0,
-          visible = true,
           properties = {}
         },
         {
@@ -438,7 +354,6 @@ return {
       draworder = "topdown",
       id = 13,
       name = "objects_npcs2",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -468,7 +383,6 @@ return {
       draworder = "topdown",
       id = 12,
       name = "objects_npcs",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -512,7 +426,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -554,8 +467,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -580,7 +492,7 @@ return {
           }
         },
         {
-          id = 88,
+          id = 89,
           name = "transition",
           type = "",
           shape = "rectangle",
@@ -594,25 +506,9 @@ return {
             ["map"] = "room1",
             ["marker"] = "entry2"
           }
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 8,
-      name = "objects2",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
+        },
         {
-          id = 81,
+          id = 90,
           name = "interactable",
           type = "",
           shape = "rectangle",
@@ -628,7 +524,7 @@ return {
           }
         },
         {
-          id = 82,
+          id = 91,
           name = "interactable",
           type = "",
           shape = "rectangle",
@@ -644,7 +540,7 @@ return {
           }
         },
         {
-          id = 83,
+          id = 92,
           name = "interactable",
           type = "",
           shape = "rectangle",
@@ -662,43 +558,11 @@ return {
       }
     },
     {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 14,
-      name = "objects_3",
-      class = "",
-      visible = false,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 72,
-          name = "hideparty",
-          type = "",
-          shape = "rectangle",
-          x = -224.242,
-          y = -106.061,
-          width = 1400,
-          height = 809.091,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["tween"] = false
-          }
-        }
-      }
-    },
-    {
       type = "imagelayer",
       image = "../../../../assets/sprites/worldbg/pizzatower/parallax.png",
       id = 11,
-      name = "Copy of bg",
-      class = "",
-      visible = false,
+      name = "trees",
+      visible = true,
       opacity = 0,
       offsetx = 0,
       offsety = 0,

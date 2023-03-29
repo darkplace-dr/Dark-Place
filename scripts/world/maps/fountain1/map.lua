@@ -1,6 +1,6 @@
-local room, super = Class(Map)
+local Fountain1, super = Class(Map)
 
-function room:load()
+function Fountain1:load()
   super:load(self)
   
   --local flag = Game:getFlag("hasSealedFirstFountain", default)
@@ -14,4 +14,4 @@ function room:load()
 
 end
 
-return room
+return Fountain1
