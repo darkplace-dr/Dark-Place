@@ -499,5 +499,14 @@ return {
             cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
             cutscene:hideNametag()
         end
-    end
+    end,
+
+
+    transition = function(cutscene, event)
+        if math.random(1, 50) <= 5 then
+            Game.world:mapTransition("pizzatower", "entrance")
+        else
+            Game.world:mapTransition("room1", "entry2")
+        end
+    end,
 }
