@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 11,
-  nextobjectid = 40,
+  nextobjectid = 41,
   properties = {
     ["border"] = "city",
     ["music"] = "deltarune/cybercity_alt",
@@ -390,6 +390,19 @@ return {
           shape = "point",
           x = 1040,
           y = 1933,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 40,
+          name = "entry_fountain",
+          type = "",
+          shape = "point",
+          x = 1040,
+          y = 530,
           width = 0,
           height = 0,
           rotation = 0,

@@ -7,11 +7,16 @@ function Fountain1:load()
   
   --if flag == false or flag == default then
 
-    --Game.world:startCutscene("room_prefountain.fountain1")
-    
+	--Game.world:startCutscene("room_prefountain.fountain1")
+	
 
   --end
 
+end
+
+function Fountain1:onEnter()
+	print("what")
+  	Game.world:startCutscene("room_prefountain.fountain1")
 end
 
 return Fountain1
