@@ -27,6 +27,8 @@ Just Another Random User - Contributor
 
 Charbomber - Contributor
 
+Bor - Contributor
+
 Kristal Team - Creating the Kristal engine
 
 Toby Fox - Original author for Deltarune
