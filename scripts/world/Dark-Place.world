@@ -11,36 +11,36 @@
             "fileName": "maps/room2.tmx",
             "height": 480,
             "width": 800,
-            "x": 3780,
+            "x": 2900,
             "y": -56
         },
         {
             "fileName": "maps/room3/room3.tmx",
             "height": 480,
             "width": 1120,
-            "x": -1200,
-            "y": 480
+            "x": -180,
+            "y": 544
         },
         {
             "fileName": "maps/spamroom.tmx",
             "height": 480,
             "width": 960,
-            "x": -960,
-            "y": -40
+            "x": 60,
+            "y": 24
         },
         {
             "fileName": "maps/spamgolor_alley.tmx",
             "height": 480,
             "width": 1280,
-            "x": 2200,
-            "y": 280
+            "x": 1760,
+            "y": 400
         },
         {
             "fileName": "maps/whitespace/whitespace.tmx",
             "height": 4320,
             "width": 5760,
-            "x": -2488,
-            "y": 2624
+            "x": -2490,
+            "y": 2620
         },
         {
             "fileName": "maps/dessstuff/dessend.tmx",
@@ -57,11 +57,11 @@
             "y": 3040
         },
         {
-            "fileName": "maps/room_prefountain/data.tmx",
+            "fileName": "maps/room_prefountain/room_prefountain.tmx",
             "height": 2000,
             "width": 2000,
-            "x": -1520,
-            "y": -2040
+            "x": -500,
+            "y": -1980
         },
         {
             "fileName": "maps/warphub.tmx",
@@ -75,14 +75,14 @@
             "height": 640,
             "width": 960,
             "x": 4300,
-            "y": 2264
+            "y": 2260
         },
         {
-            "fileName": "maps/pizzatower/data.tmx",
+            "fileName": "maps/pizzatower/pizzatower.tmx",
             "height": 560,
             "width": 960,
-            "x": -20,
-            "y": 544
+            "x": 3440,
+            "y": 4240
         }
     ],
     "onlyShowAdjacentMaps": false,
