@@ -1,0 +1,20 @@
+{
+    "id": "achievements",
+    "version": "1.0.0",
+    "engineVersion": "0.8.0",
+    "authors": [
+        "AcousticJamm",
+        "SciSpace",
+        "BrandonK7200"
+    ],
+    "config": {
+        "achievements": {
+	    //If the achievements button will appear in the config menu
+            "config_button": true,
+	    //If the achievements are global (true) or local (false)
+	    "global_save": true,
+	    //If the full pop-up should show, or just the image and rarity
+	    "full": false,
+	}
+    },
+}

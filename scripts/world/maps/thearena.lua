@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -57,8 +57,8 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 0,
         0, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 0,
-        0, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0,
-        0, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0,
+        0, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 0,
+        0, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 0,
         0, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 0,
         0, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 0,
         0, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 2, 2, 2, 3, 5, 5, 5, 6, 0,
@@ -125,7 +125,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -138,7 +138,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 600,
@@ -151,7 +151,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 920,
           y = 0,
@@ -164,7 +164,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -177,7 +177,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 120,
@@ -190,7 +190,7 @@ return {
         {
           id = 9,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 120,
@@ -219,7 +219,7 @@ return {
         {
           id = 6,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 480,
           y = 400,
@@ -248,7 +248,7 @@ return {
         {
           id = 5,
           name = "savepoint",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 460,
           y = 300,
@@ -263,7 +263,7 @@ return {
         {
           id = 8,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 120,
@@ -278,7 +278,7 @@ return {
         {
           id = 10,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 120,
@@ -294,7 +294,7 @@ return {
         {
           id = 12,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 320,
@@ -310,7 +310,7 @@ return {
         {
           id = 13,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 200,
@@ -324,7 +324,7 @@ return {
         {
           id = 14,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 200,

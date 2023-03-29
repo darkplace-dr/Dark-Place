@@ -137,6 +137,12 @@ return {
             Game:setFlag("room3_doobie", false)
 
             cutscene:look("down")
+            local data = Kristal.callEvent("getAchievements")
+            for k,v in pairs(data.achievements) do
+                if v.id == "doobie" and v.earned == false then
+                    Kristal.callEvent("completeAchievement", "doobie")
+                end
+            end
         end
 	end,
     garbage = function(cutscene, event)
