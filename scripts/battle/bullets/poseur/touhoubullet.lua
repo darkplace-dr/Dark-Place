@@ -24,9 +24,9 @@ function TouhouBullet:update(dt)
     local posx = (70 * self.lerp) * math.sin(self.timer * self.negmult + self.offset)
     local posy = (70 * self.lerp) * math.cos(self.timer + self.offset) + self.lerp * 50
     self:move(posx, posy)
-    self.timer = self.timer + 1/40
+    self.timer = self.timer + (1/40)*DTMULT
 
-    self.lerp = self.lerp + 1/90
+    self.lerp = self.lerp + (1/90)*DTMULT
 	if self.lerp > 4 then
         self.lerp = 4
 	end

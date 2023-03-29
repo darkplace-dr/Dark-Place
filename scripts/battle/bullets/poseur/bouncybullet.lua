@@ -23,7 +23,7 @@ function BouncyBullet:update()
             self.vely = -4
         end
     end
-    self.vely = self.vely + 0.04
+    self.vely = self.vely + 0.04 * DTMULT
     self:move(self.velx, self.vely)
 
     super.update(self)
