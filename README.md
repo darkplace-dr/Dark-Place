@@ -12,6 +12,9 @@ An open source Kristal mod that anyone can contribute to
 
 5: Please don't make us add more rules like Rule 4 please.
 
+#Discord Server
+Invite Link: https://discord.gg/B2scNCB2
+
 # Credits
 Racckoon - Mod idea, Contributor
 
