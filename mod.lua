@@ -9,8 +9,8 @@ function Mod:postInit(new_file)
     if new_file and Game:hasPartyMember("YOU") then
         Game.world:startCutscene("react_to_YOU")
     end
-	
-	-- Mod:createBinUI()
+
+    Mod:initializeBin()
 end
 
 -- Hooks for YOU's "send" action
@@ -32,8 +32,7 @@ function Mod:initializeYOUHooks()
             end
             return false
         else
-            return orig(self)
-        end
+        return orig(self)
     end)
     Utils.hook(EnemyBattler, "getSpareText", function(orig, self, battler, success)
         local text = orig(self, battler, success)
@@ -82,7 +81,16 @@ Mod.binCodes = {
     {"bossrush", "thearena"},
 }
 
--- I'm sorry
+function Mod:initializeBin()
+    -- I'm sorry
+    Utils.hook(Map, "onEnter", function(orig, self)
+        Mod:createBinUI()
+        orig(self)
+    end)
+
+	-- Mod:createBinUI()
+end
+
 function Mod:tableContainsValueSatisfyingCondition1D(tbl, cond)
     for i = 1, #tbl do
         if cond(tbl[i]) then
@@ -129,11 +137,6 @@ function Mod:createBinUI()
     Game.stage:addChild(BinText)
     --BinText:setLayer(9999999)
     BinText.visible = false
-end
-
--- I'm still sorry
-function Map:onEnter()
-    Mod:createBinUI()
 end
 
 -- hee hee  -Char
