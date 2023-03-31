@@ -9,8 +9,6 @@ function Mod:postInit(new_file)
     if new_file and Game:hasPartyMember("YOU") then
         Game.world:startCutscene("react_to_YOU")
     end
-
-    Mod:initializeBin()
 end
 
 -- Hooks for YOU's "send" action
@@ -57,8 +55,6 @@ end
 -- Warp Bin
 -- god I am so sorry for how shitty this code is
 
-Mod.binInput = {""}
-
 -- I'm going to cause pain and suffering with one weird trick:
 -- here's the table containing any and all warp codes for the warp bin
 -- have fun :]   -Char
@@ -81,23 +77,14 @@ Mod.binCodes = {
     {"bossrush", "thearena"},
 }
 
-function Mod:initializeBin()
-    -- I'm sorry
-    Utils.hook(Map, "onEnter", function(orig, self)
-        Mod:createBinUI()
-        orig(self)
-    end)
-
-	-- Mod:createBinUI()
-end
-
-function Mod:tableContainsValueSatisfyingCondition1D(tbl, cond)
+-- I'm sorry
+function Mod:findItemThatContainsValueSatisfyingCond1D(tbl, cond)
     for i = 1, #tbl do
         if cond(tbl[i]) then
-            return true
+            return tbl[i]
         end
     end
-    return false
+    return nil
 end
 
 -- if you don't want to be cringe there's also this new totally cool helper function wowee
@@ -105,7 +92,7 @@ end
 function Mod:addBinCode(code, result, marker)
     marker = marker or "spawn"
 
-    if Mod:binCodeExists(code) then
+    if Mod:getBinCode(code) then
         -- whoops, no success
         return false
     end
@@ -115,39 +102,16 @@ function Mod:addBinCode(code, result, marker)
     return true
 end
 
--- and here's a function to check if a Bin Code exists
-function Mod:binCodeExists(code)
-    return Mod:tableContainsValueSatisfyingCondition1D(Mod.binCodes, function(v) return v[1] == code end)
+-- and here's a function to get a Bin Code by its Code like lmao
+function Mod:getBinCode(code)
+    return Mod:findItemThatContainsValueSatisfyingCond1D(Mod.binCodes, function(v) return v[1]:lower() == code:lower() end)
 end
 
 -- and here's one to delete Bin Codes
 function Mod:deleteBinCode(code)
     local old_size = #Mod.binCodes
-    Utils.filterInPlace(Mod.binCodes, function(v) return v[1] ~= code end)
+    Utils.filterInPlace(Mod.binCodes, function(v) return v[1]:lower() ~= code:lower() end)
     return #Mod.binCodes < old_size
-end
-
-function Mod:createBinUI()
-    BinRect = UIBox((SCREEN_WIDTH / 2) - 64, 256, 128, 32)
-    Game.stage:addChild(BinRect)
-    --BinRect.color = {0, 0, 0}
-    BinRect.visible = false
-	
-    BinText = Text("", (SCREEN_WIDTH / 2) - 64, 256, 640, 480)
-    Game.stage:addChild(BinText)
-    --BinText:setLayer(9999999)
-    BinText.visible = false
-end
-
--- hee hee  -Char
-function Mod:postUpdate()
-    if TextInput.active then
-        if #Mod.binInput[1] < 8 then
-            BinText:setText(Mod.binInput[1].."_")
-        else
-            BinText:setText(Mod.binInput[1])
-        end
-    end
 end
 
 -- Wavy VFX
@@ -164,3 +128,16 @@ Mod.wave_shader = love.graphics.newShader([[
         return Texel(texture, coords) * color;
     }
 ]])
+
+-- Other utilties
+
+function Mod:getLeader()
+    local YOU = Game:getPartyMember("YOU")
+    local kris = Game:getPartyMember("kris")
+    return YOU or kris
+end
+function Mod:getLeaderActor(cutscene)
+    local YOU = cutscene:getCharacter("YOU")
+    local kris = cutscene:getCharacter("kris")
+    return YOU or kris
+end
