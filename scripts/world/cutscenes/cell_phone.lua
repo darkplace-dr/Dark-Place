@@ -22,7 +22,7 @@ return function(cutscene)
         resumeMusic()
     end
     local function pacematchingMsg(text, wait, portrait, actor)
-        cutscene:text("[noskip][voice:nil]" .. text .. string.format("%g", wait), portrait, actor, { auto = true })
+        cutscene:text("[noskip][voice:nil]" .. text .. string.format("[wait:%g]", wait), portrait, actor, { auto = true })
     end
 
     Assets.playSound("phone", 0.7)
@@ -30,6 +30,12 @@ return function(cutscene)
     cutscene:wait(1+1/3)
 
     local event_num = love.math.random(1, 100)
+    if Kristal.Config["debug"] and Game.world.map.cell_phone_event_override then
+        event_num = Game.world.map.cell_phone_event_override
+        Game.world.map.cell_phone_event_override = nil
+        Kristal.Console:log("Overriden Cell Phone event to " .. event_num)
+    end
+
     if event_num <= 10 then
         garbageNoise("mcdonalds")
         cutscene:text("* Sounded like an angry customer.")
@@ -82,7 +88,7 @@ return function(cutscene)
         pacematchingMsg("* DON'T FUCK WITH ME OR I'LL RIP YOUR [[Eggs]] OFF!", 10)
         pacematchingMsg("* ONLY AT BIG SHOT AUTOS!", 15)
         pacematchingMsg("* THE ONLY DEALER THAT TELLS YOU TO FUCK OFF!", 20)
-        pacematchingMsg("* HURY UP, ASSHOLE!", 10)
+        pacematchingMsg("* HURRY UP, ASSHOLE!", 10)
         pacematchingMsg("* THIS [[Specil deal]] ENDS THE MOMENT YOU WRITE US A CHECK...", 5)
         pacematchingMsg("* AND IT BETTER NOT BOUNCE OR YOU'RE A [[Permanently closed]] MOTHERFUCKER!", 10)
         pacematchingMsg("* TAKE A GODDAMN VACATION STRAIGHT TO HELL!", 40)

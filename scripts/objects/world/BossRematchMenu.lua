@@ -109,7 +109,7 @@ function BossRematchMenu:onKeyPressed(key, is_repeat)
         if Game:getFlag(entry.flag) then
             self.ui_select:stop()
             self.ui_select:play()
-            self:close()
+            Game.world:closeMenu()
             Game:encounter(entry.encounter)
         else
             self.ui_cant_select:stop()
