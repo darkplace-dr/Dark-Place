@@ -35,7 +35,7 @@ end
 
 function elevator_input:onInteract()
 	Game.world:startCutscene(function(cutscene)
-		if #self.maps > 0 then
+		if #self.maps <= 0 then
 			cutscene:text("* It seems to be out of order.")
 			return
 		end
