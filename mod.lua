@@ -46,8 +46,13 @@ function Mod:initializeYOUHooks()
 end
 
 function Mod:getActionButtons(battler, buttons)
-    if battler.chara.id == "YOU" then
-        return { "fight", "act", "item", "send", "defend" }
+    if Game:getPartyMember(battler.chara.id).ribbit == true then
+        if Game:getPartyMember(battler.chara.id).name == "YOU" then
+            return {"fight", "act", "item", "send", "defend"}
+        else
+            return {"fight", "magic", "item", "send", "defend"}
+            --return {"fight", "magic", "item", "send", "defend"}
+        end
     end
     return buttons
 end
