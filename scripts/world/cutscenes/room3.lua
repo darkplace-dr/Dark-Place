@@ -362,6 +362,29 @@ return {
         onPurchaseComplete(item.post_purchase)
     end,
 
+    whitedoor = function(cutscene, event)
+        cutscene:text("* A white door casts a faint shadow...")
+        cutscene:text("* Will you enter it?")
+
+        local choice = cutscene:choicer({"Yes", "No"})
+        if choice == 2 then
+            cutscene:text("* You doorn't.")
+            return
+        end
+
+        cutscene:text("* You opened the door...")
+        cutscene:fadeOut(2, {color = {1, 1, 1}, music = true, blend = "add"})
+        cutscene:wait(2)
+        Game.fader.fade_color = {1, 1, 1} -- overwrite default for mapTransition
+        if Game.world.map.id == "room3" then
+            cutscene:mapTransition("whitespace", "entry")
+        elseif Game.world.map.id == "whitespace" then
+            cutscene:mapTransition("room3", "exit_whitespace")
+        end
+        cutscene:look("down")
+        cutscene:wait(cutscene:fadeIn(2, {color = {1, 1, 1}}))
+    end,
+
     transition = function(cutscene, event)
         if love.math.random(1, 50) <= 5 then
             Game.world:mapTransition("pizzatower", "entrance")

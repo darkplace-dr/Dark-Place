@@ -3,7 +3,7 @@ local elevatorInput, super = Class(Interactable)
 function elevatorInput:init(data)
 	super:init(self, data)
 
-	properties = data.properties or {}
+	local properties = data.properties or {}
 
 	self.transition = nil
 
@@ -45,8 +45,8 @@ function elevatorInput:update()
 end
 
 function elevatorInput:onInteract()
-	cutscene = self.world:startCutscene(function(cutscene)
-		if #self.maps>0 then
+	self.world:startCutscene(function(cutscene)
+		if #self.maps > 0 then
 			cutscene:text("* Where will you ride the elevator to?")
 			cutscene:choicer(self.maps_name)
 			self.transition.target["map"] = self.maps[cutscene.choice]

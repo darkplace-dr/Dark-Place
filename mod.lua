@@ -7,7 +7,7 @@ function Mod:postInit(new_file)
     Mod:initializeYOUHooks()
 
     if new_file and Game:hasPartyMember("YOU") then
-        Game.world:startCutscene("react_to_YOU")
+        Game.world:startCutscene("room1", "react_to_YOU")
     end
 end
 
