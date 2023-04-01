@@ -157,9 +157,7 @@ function Mod:getKrisActor(cutscene)
 end
 
 function Mod:hasAch(id)
-    local data = Kristal.callEvent("getAchievements")
-    local _, result = Mod:findItemThatContainsValueSatisfyingCond2D(data.achievements, function(_, v)
-        return v.id == id and v.earned == true
-    end)
-    return result
+    local ach = Kristal.callEvent("getAchievement", id)
+    if not ach then error("No such ach: " .. id) end
+    return not ach.earned
 end
