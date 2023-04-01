@@ -21,7 +21,7 @@ function StarsBG:update(dt)
     if self.offset > self.size*2 then
         self.offset = self.offset - self.size*2
     end
-	
+
 	self.alpha_fx.alpha = Game.battle.transition_timer / 10
 end
 

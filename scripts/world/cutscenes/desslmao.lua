@@ -174,7 +174,7 @@ return {
 
 		boss:fadeTo(0.2, 0.05)
 		cutscene:wait(1)
-		boss:setActor("you")
+		boss:setActor("YOU")
 		cutscene:look(boss, "up")
 		boss:fadeTo(1, 0.05)
 		cutscene:wait(1)

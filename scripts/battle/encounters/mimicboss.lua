@@ -11,16 +11,16 @@ function UfoEncounter:init()
     -- Enables the purple grid battle background
     self.background = false
 	self.hide_world = true
-	
+
 	self.energy = 0
 
     -- Add the dummy enemy to the encounter
     self:addEnemy("mimic")
-
 end
 
 function UfoEncounter:onBattleStart()
 	super:onBattleStart(self)
+
 	Game.battle.encounter.bg = StarsBG({1, 1, 1})
 	Game.battle:addChild(Game.battle.encounter.bg)
 	Game.battle.encounter.bg.visible = true

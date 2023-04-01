@@ -8,15 +8,10 @@ end
 function Spamgolor_Everything:onStart()
     self.timer:every(0.75, function()
         local attackers = self:getAttackers()
-
         for _, attacker in ipairs(attackers) do
-
             local x, y = attacker:getRelativePos(attacker.width/2, attacker.height/2)
-
             local angle = Utils.angle(x, y, Game.battle.soul.x, Game.battle.soul.y)
-
             local speed = love.math.random(5, 7) + love.math.random()
-
             self:spawnBullet("gemapple", x, y, angle, speed)
         end
     end)
@@ -60,12 +55,11 @@ function Spamgolor_Everything:onStart()
 		wait(0.1)
 		Assets.playSound("spearrise")
 		bullet:remove()
-		if self.top == true then
+		if self.top then
 			self:spawnBullet("deadlyneedle", SCREEN_WIDTH/2, Game.battle.arena.top, 0, 0)
 		else
 			self:spawnBullet("deadlyneedle", SCREEN_WIDTH/2, Game.battle.arena.bottom, math.rad(180), 0)
 		end
-
 	end)
 	self:spawnBullet("blackhole", SCREEN_WIDTH/2, 40, 0, 0)
     self.timer:every(1/2, function()
@@ -87,7 +81,6 @@ function Spamgolor_Everything:update()
     else
         Game.battle.soul.x = Game.battle.soul.x + (2 * DTMULT)
     end
-
     super.update(self)
 end
 

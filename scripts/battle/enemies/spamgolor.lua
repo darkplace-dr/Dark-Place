@@ -61,12 +61,11 @@ function Spamgolor:onAct(battler, name)
         if battler.chara.id == "susie" then
             Game.battle:startActCutscene("spamgolor", "susie_talk")
             return
-        else
-            return {
-                "* "..battler.chara:getName().." tried to make a deal...",
-                "* ... But they didn't know how to."
-            }
         end
+        return {
+            "* "..battler.chara:getName().." tried to make a deal...",
+            "* ... but they didn't know how to."
+        }
     end
 
     return super.onAct(self, battler, name)

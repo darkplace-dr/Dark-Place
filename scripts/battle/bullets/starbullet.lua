@@ -20,7 +20,7 @@ function Bullet:update()
     -- For more complicated bullet behaviours, code here gets called every update
 	
 	if self.alpha < 1 then
-		self.alpha = self.alpha + 0.05
+		self.alpha = self.alpha + (0.05 * DTMULT)
 	end
 	
 	--self.physics.speed = self.physics.speed * 1.05

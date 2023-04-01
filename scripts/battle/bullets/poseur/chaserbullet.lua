@@ -17,12 +17,12 @@ end
 
 function ChaserBullet:update()
     -- For more complicated bullet behaviours, code here gets called every update
-    local selfx, selfy = self:getRelativePos(self.width/2, self.height/2)
+    local selfx, selfy = self:getRelativePos(self.width / 2, self.height / 2)
     local xdifference = Game.battle.soul.x - selfx
     local ydifference = Game.battle.soul.y - selfy
-    self.xspeed = (self.xspeed / 2) + (xdifference / 100)
-    self.yspeed = (self.yspeed / 2) + (ydifference / 100)
-    self:move(self.xspeed, self.yspeed)
+    self.xspeed = (self.xspeed / 2) + ((xdifference / 100) * DTMULT)
+    self.yspeed = (self.yspeed / 2) + ((ydifference / 100) * DTMULT)
+    self:move(self.xspeed * DTMULT, self.yspeed * DTMULT)
 
     super.update(self)
 end

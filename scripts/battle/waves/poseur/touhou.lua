@@ -16,10 +16,4 @@ function Touhou:onStart()
     end)
 end
 
-function Touhou:update()
-    -- Code here gets called every frame
-
-    super.update(self)
-end
-
 return Touhou

@@ -13,7 +13,7 @@ return {
   properties = {
     ["border"] = "none",
     ["light"] = true,
-    ["name"] = "dogcheck"
+    ["name"] = "------------"
   },
   tilesets = {},
   layers = {

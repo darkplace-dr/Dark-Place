@@ -1,4 +1,4 @@
-local spell, super = Class(Spell, "x-slash")
+local spell, super = Class(Spell, "xslash")
 
 function spell:init()
     super.init(self)
@@ -29,11 +29,8 @@ end
 
 function spell:onCast(user, target)
 	local damage = math.floor((((user.chara:getStat("attack") * 150) / 20) - 3 * (target.defense)) * 1.3)
-    local function finishAnim()
-        anim_finished = true
-		user:setAnimation("battle/idle")
-        end
-	local function XSlash(scale_x)
+
+	local function generateSlash(scale_x)
 		local cutAnim = Sprite("effects/attack/cut")
 		Assets.playSound("scytheburst")
 		Assets.playSound("criticalswing", 1.2, 1.3)
@@ -42,7 +39,9 @@ function spell:onCast(user, target)
 		afterimage1.physics.speed_x = 2.5
 		afterimage2.physics.speed_x = 5
 		afterimage2:setLayer(afterimage1.layer - 1)
-		user:setAnimation("battle/attack", finishAnim)
+		user:setAnimation("battle/attack", function()
+			user:setAnimation("battle/idle")
+		end)
 		cutAnim:setOrigin(0.5, 0.5)
 		cutAnim:setScale(2.5 * scale_x, 2.5)
 		cutAnim:setPosition(target:getRelativePos(target.width/2, target.height/2))
@@ -54,16 +53,12 @@ function spell:onCast(user, target)
 	end
 
 	Game.battle.timer:after(0.1/2, function()
-	XSlash(1)
-	target:hurt(damage)
-	Game.battle.timer:after(1/2, function()
-		XSlash(-1)
+		generateSlash(1)
 		target:hurt(damage)
 		Game.battle.timer:after(1/2, function()
+			generateSlash(-1)
+			target:hurt(damage)
 		end)
-	end)
-    -- Code the cast effect here
-    -- If you return false, you can call Game.battle:finishAction() to finish the spell
 	end)
 end
 
