@@ -71,17 +71,20 @@ return {
             Game:setFlag("wall_hit", true)
         end
     end,
+
     guardian = function(cutscene, event)
         cutscene:showNametag("Wall Guardian")
         cutscene:text("* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers.")
         cutscene:hideNametag()
     end,
+
     star = function(cutscene, event)
         cutscene:showNametag("Starwalker?")
         cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...")
         cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
         cutscene:hideNametag()
     end,
+
     sans = function(cutscene, event)
         if cutscene:getCharacter("susie") then
             if event.interact_count == 1 then
@@ -194,6 +197,7 @@ return {
             cutscene:hideNametag()
         end
     end,
+
     wah = function(cutscene, event)
         local wah4_sprite_list = {
             YOU = "date",
@@ -203,6 +207,7 @@ return {
         }
 
         cutscene:showNametag("Takodachi")
+
         -- The 1st WAH!
         if event.interact_count == 1 then
             cutscene:text("* Pray to the 1st WAH![wait:10]\n* We Are Here!")
@@ -235,6 +240,7 @@ return {
                     end
                 }
             })
+
             event:setSprite("idle")
             for member, _ in pairs(wah4_sprite_list) do
                 local char = cutscene:getCharacter(member)
@@ -248,6 +254,7 @@ return {
 
         cutscene:hideNametag()
     end,
+
     transition = function()
         if love.math.random(1, 100) <= 5 then
             Game.world:mapTransition("spamgolor_alley", "entrance")

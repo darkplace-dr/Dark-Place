@@ -35,8 +35,8 @@ return {
 
 		cutscene:after(function()
 			local menu = WarpBinInputMenu()
-			menu.finish_cb = function()
-				-- I'm sorry
+			-- I'm sorry
+			menu.finish_cb = function(action)
 				Game.world:startCutscene("spamroom", "warpbin_proc", action)
 			end
 			Game.world:openMenu(menu)
@@ -44,35 +44,35 @@ return {
 	end,
 
 	warpbin_proc = function(cutscene, action)
-		if action then
-			if type(action.result) == "string" then
-				if Game.world.map.id == action.result then
-					cutscene:text("* But you're already there.")
-				else
-					cutscene:wait(0.2)
-
-					Game.world.music:stop()
-					-- Hell naw is this the only way to stop all sounds
-					-- for now?
-					for key,_ in pairs(Assets.sound_instances) do
-						Assets.stopSound(key, true)
-					end
-					Game.world.fader:fadeOut(nil, {
-						speed = 0,
-					})
-					cutscene:playSound("impact")
-
-					cutscene:wait(1)
-					cutscene:loadMap(action.result, action.marker, "down")
-					Game.world.fader:fadeIn(nil, {
-						speed = 0.25,
-					})
-				end
-			else
-				action.result(cutscene)
-			end
-		else
+		if not action then
 			cutscene:text("* That doesn't seem to work.")
+		end
+
+		if type(action.result) == "string" then
+			if Game.world.map.id == action.result then
+				cutscene:text("* But you're already there.")
+				return
+			end
+
+			cutscene:wait(0.2)
+
+			Game.world.music:stop()
+			-- Hell naw is this the only way to stop all sounds?
+			for key,_ in pairs(Assets.sound_instances) do
+				Assets.stopSound(key, true)
+			end
+			Game.world.fader:fadeOut(nil, {
+				speed = 0,
+			})
+			cutscene:playSound("impact")
+
+			cutscene:wait(1)
+			cutscene:loadMap(action.result, action.marker, "down")
+			Game.world.fader:fadeIn(nil, {
+				speed = 0.25,
+			})
+		else
+			action.result(cutscene)
 		end
     end,
 }

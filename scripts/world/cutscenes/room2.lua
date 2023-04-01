@@ -1,16 +1,21 @@
 return {
 	chan = function(cutscene, event)
-        local susie = cutscene:getCharacter("susie")
 		cutscene:showNametag("Kris-Chan")
 		cutscene:text("* Go! Sonichu! Go out and zap to the extreme!")
 		cutscene:text("* Sonichu! Use EXPLOSION!!!")
 		cutscene:hideNametag()
-        event:explode()
-        cutscene:wait(3)
-		cutscene:showNametag("Susie")
-        cutscene:setSpeaker(susie)
-        cutscene:text("* What?", "shock")
-		cutscene:hideNametag()
+
+        local explosion = event:explode()
+        cutscene:wait(function() return explosion:isRemoved() end)
+
+        local susie = cutscene:getCharacter("susie")
+        if susie then
+            cutscene:wait(3)
+            cutscene:showNametag("Susie")
+            cutscene:setSpeaker(susie)
+            cutscene:text("* What?", "shock")
+            cutscene:hideNametag()
+        end
 	end,
 
     poseur = function(cutscene, event)
