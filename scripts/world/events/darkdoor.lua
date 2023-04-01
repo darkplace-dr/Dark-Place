@@ -1,7 +1,9 @@
+---@class DarkDoor : Event
+---@overload fun(...) : DarkDoor
 local DarkDoor, super = Class(Event)
 
 function DarkDoor:init(data)
-    super.init(self, data.center_x, data.center_y, data.width, data.height)
+    super:init(self, data)
 
     self:setOrigin(0.5, 0.5)
     self:setSprite("world/darkdoor_closed")
