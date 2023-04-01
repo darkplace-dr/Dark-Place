@@ -8,7 +8,7 @@
 5. Please don't make us add more rules like Rule 4 please.
 
 ## Getting Started
-![The Fork button](https://cdn.discordapp.net/attachments/909928008893227068/1091744974770548796/image.png)
+![The Fork button](https://cdn.discordapp.com/attachments/909928008893227068/1091744974770548796/image.png)
 To start contributing to the mod, you should make a fork of our repo on GitHub. To do so, click the "Fork" button in the [GitHub repo](https://github.com/BrandonK7200/Dark-Place), shown in the image above. This creates a place to host your changes to the mod so you can submit it to here later.
 
 Then you can start working on the fork you just made. We can't cover everything about that here, so we suggest you to look for guides if you don't already know how to work with GitHub. Here's a very brief possible workflow that is hopefully useful for reference:
