@@ -41,7 +41,7 @@ return {
 		cutscene:setAnimation(dess, "battle/attack")
 		dess.flip_x = true
 		cutscene:wait(0.2)
-		local leader = Mod:getKris()
+		local leader = Mod:getKrisActor(cutscene)
 		local leader_x_backup = leader.x
 		local leader_y_backup = leader.y
 		leader:explode(0, 0, true)
@@ -79,7 +79,7 @@ return {
 			Game:setFlag("dessThingy", true)
 			event:remove()
 		else
-			local leader = Mod:getKris()
+			local leader = Mod:getKrisActor(cutscene)
 			leader.y = leader.y + 4
 
 			cutscene:showNametag("???")
@@ -92,7 +92,7 @@ return {
 		local boss = cutscene:getCharacter("ufoofdoom", 1)
 
 		local susie = cutscene:getCharacter("susie")
-		local leader = Mod:getKris()
+		local leader = Mod:getKrisActor(cutscene)
 		local dess = cutscene:getCharacter("dess")
 
 		cutscene:detachFollowers()

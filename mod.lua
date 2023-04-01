@@ -148,9 +148,7 @@ function Mod:getKris()
 end
 
 function Mod:getKrisActor(cutscene)
-    local YOU = cutscene:getCharacter("YOU")
-    local kris = cutscene:getCharacter("kris")
-    return YOU or kris
+    return cutscene:getCharacter(Mod:getKris().id)
 end
 
 function Mod:hasAch(id)

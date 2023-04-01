@@ -15,17 +15,21 @@ return {
 
     poseur = function(cutscene, event)
         cutscene:text("* It's a mannequin.[wait:10] Do you want to fight it?")
-        if cutscene:choicer({"Yes", "No"}) == 1 then
-            cutscene:startEncounter("poseur", true, {{"poseur", event}})
-            cutscene:wait(2)
-            event:explode()
-            cutscene:wait(5)
-            if cutscene:getCharacter("susie") then
-                cutscene:showNametag("Susie")
-                cutscene:text("* ...", "nervous_side", "susie")
-                cutscene:text("* That was weird.", "nervous", "susie")
-                cutscene:hideNametag()
-            end
+        if cutscene:choicer({"Yes", "No"}) == 2 then
+            return
+        end
+
+        cutscene:startEncounter("poseur", true, {{"poseur", event}})
+
+        cutscene:wait(2)
+        event:explode()
+        cutscene:wait(5)
+
+        if cutscene:getCharacter("susie") then
+            cutscene:showNametag("Susie")
+            cutscene:text("* ...", "nervous_side", "susie")
+            cutscene:text("* That was weird.", "nervous", "susie")
+            cutscene:hideNametag()
         end
     end
 }
