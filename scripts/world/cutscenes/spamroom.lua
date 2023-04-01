@@ -46,6 +46,7 @@ return {
 	warpbin_proc = function(cutscene, action)
 		if not action then
 			cutscene:text("* That doesn't seem to work.")
+			return
 		end
 
 		if type(action.result) == "string" then
