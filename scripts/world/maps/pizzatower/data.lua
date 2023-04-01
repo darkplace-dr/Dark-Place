@@ -26,7 +26,7 @@ return {
   layers = {
     {
       type = "imagelayer",
-      image = "../../../../assets/sprites/worldbg/pizzatower/main.png",
+      image = "../../../../assets/sprites/world/maps/pizzatower/main.png",
       id = 6,
       name = "bg",
       visible = true,
@@ -559,7 +559,7 @@ return {
     },
     {
       type = "imagelayer",
-      image = "../../../../assets/sprites/worldbg/pizzatower/parallax.png",
+      image = "../../../../assets/sprites/world/maps/pizzatower/parallax.png",
       id = 11,
       name = "trees",
       visible = true,

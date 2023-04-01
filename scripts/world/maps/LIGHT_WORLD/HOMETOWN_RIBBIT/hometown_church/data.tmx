@@ -48,7 +48,7 @@
 </data>
  </layer>
  <imagelayer id="11" name="bg" offsetx="10.9091" offsety="0">
-  <image source="../../../../../../assets/sprites/worldbg/hometown_ribbit/room_town_church.png" width="1520" height="1280"/>
+  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_church.png" width="1520" height="1280"/>
  </imagelayer>
  <objectgroup color="#1827f4" id="4" name="collision">
   <object id="75" x="0" y="840" width="800" height="440"/>
@@ -76,7 +76,7 @@
  <objectgroup color="#ffff7f" id="7" name="objects_misc">
   <object id="90" name="transition" x="0" y="680" width="80" height="160">
    <properties>
-    <property name="map" value="MISCELLANEOUS/dogcheck"/>
+    <property name="map" value="misc/dogcheck"/>
    </properties>
   </object>
   <object id="93" name="transition" x="788" y="1240" width="200.667" height="40">

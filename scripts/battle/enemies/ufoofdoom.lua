@@ -30,9 +30,7 @@ function UFOOfDoom:init()
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
-    self.dialogue = {
-        --"..."
-    }
+    self.dialogue = {}
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
     self.check = "AT 3 DF 0\n* HOLY SHIT"
@@ -51,11 +49,8 @@ end
 
 function UFOOfDoom:onAct(battler, name)
     if name == "SUPER ACT" then
-        
 		Game.battle:startActCutscene("ufoofdoom", "kill")
-		
         return
-
     elseif name == "Standard" then --X-Action
         if battler.chara.id == "ralsei" then
 			-- Give the enemy 50% mercy
@@ -70,19 +65,16 @@ function UFOOfDoom:onAct(battler, name)
 		elseif battler.chara.id == "dess" then
             -- D-Action text
             return "* Dess did absolutely nothing."
-        else
-            -- Give the enemy 50% mercy
-			self:addMercy(50)
-			-- Text for any other character (like Noelle)
-            return "* "..battler.chara:getName().." did something mysterious."
         end
+        -- Give the enemy 50% mercy
+        self:addMercy(50)
+        -- Text for any other character (like Noelle)
+        return "* "..battler.chara:getName().." did something mysterious."
     end
 
     -- If the act is none of the above, run the base onAct function
     -- (this handles the Check act)
     return super.onAct(self, battler, name)
 end
-
-
 
 return UFOOfDoom

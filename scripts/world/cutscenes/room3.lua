@@ -1,108 +1,103 @@
 return {
-	morshu = function(cutscene, event)
-		local morshu = cutscene:getCharacter("morshu")
-		local doobie = cutscene:getCharacter("doobie")
+    morshu = function(cutscene, event)
+        local doobie = cutscene:getCharacter("doobie")
         local magolor = cutscene:getCharacter("magolor")
 
-	    Game.world.music:pause("")
+        local cust_wait_timer = 0
 
-        local m_anim = Sprite("m_anim/rubies")
-		m_anim:play(0.095, false)
-		m_anim.layer = 1000
-		m_anim.parallax_x = 0
-		m_anim.parallax_y = 0
-		m_anim:setScale(2)
-		Assets.playSound("vo_mline")
-		Game.world:addChild(m_anim)
-		
-		cutscene:wait(8.8)
-		Game.world.music:resume("")
-		m_anim:remove()
-		
-        cutscene:text("* (Buy Lamp Oil for 40 dolla-[wait:5]\ner-[wait:5] rupee-[wait:5] er-[wait:5] rubies?)")
-		cutscene:showShop()
-
-        choice = cutscene:choicer({"Buy", "Do not"}, options)
-		
-        cutscene:hideShop()
-		
-        if choice == 1 then
-           if Game.money >= 40 then
-               itemget = Game.inventory:addItem("lampoil")
-               if itemget then
-                    Game.money = Game.money - 40
-                    Game.world.music:pause("")
-					
-                    Game.world.map.morshu_dance = true
-			
-                    local danceparty = Assets.playSound("danceparty")
-                    danceparty:setLooping(true)
-
-                    local m_anim = Sprite("m_anim/dance")
-                    m_anim:play(0.0001, true)
-                    m_anim.layer = 1000
-                    m_anim.parallax_x = 0
-                    m_anim.parallax_y = 0
-                    m_anim:setScale(2)
-                    Game.world:addChild(m_anim)
-					
-                    --character dance animations
-                    if Game:getFlag("room3_doobie") then 
-                        doobie:setAnimation("dance")
-                    end
-                    magolor:setAnimation("speen")
-
-                    cutscene:wait(31)
-                    Game.world.map.morshu_dance = false
-                    Assets.stopSound("danceparty")
-                    Game.world.music:resume("")
-                    m_anim:remove()
-
-                    -- character idle animations
-                    if Game:getFlag("room3_doobie") then 
-                        doobie:setAnimation("idle")
-                    end
-                    magolor:setSprite("shop")
-
-                    cutscene:text("* (You stashed the Lamp Oil inside your [color:yellow]ITEMS[color:reset].)")
-                else
-                    cutscene:text('* (There is no "inventory full"\nclip for Morshu,[wait:5] so all you get\nis this dinky-ass text box).')
+        local function waitForTimeOrUserCancellation(time)
+            cust_wait_timer = time
+            return function()
+                cust_wait_timer = Utils.approach(cust_wait_timer, 0, DT)
+                if Input.pressed("cancel") then
+                    cust_wait_timer = 0
+                    return true
                 end
-            else
-                local m_anim = Sprite("m_anim/richer")
-                m_anim:play(0.095, false)
-                m_anim.layer = 1000
-                m_anim.parallax_x = 0
-                m_anim.parallax_y = 0
-                m_anim:setScale(2)
-                Assets.playSound("vo_mline2")
-                Game.world:addChild(m_anim)
-				
-                cutscene:wait(7)
-                m_anim:remove()
-                Game.world.music:resume("")
+                return cust_wait_timer == 0
             end
-        else
-            Game.world.music:pause("")
-            Assets.playSound("menace")
-            local menacing = Sprite("m_anim/menacing")
-            menacing.layer = 1000
-            menacing.parallax_x = 0
-            menacing.parallax_y = 0
-            menacing:setScale(2)
-            Game.world:addChild(menacing)
-			
-            cutscene:wait(18.8)
-            menacing:remove()
-            Game.world.music:resume("")
         end
+        local function showMorshuAnim(sprite, speed)
+            local m_anim = Sprite("world/cutscenes/room3_morshu/" .. sprite)
+            m_anim:play(speed, true)
+            m_anim.layer = WORLD_LAYERS["top"]
+            m_anim.parallax_x = 0
+            m_anim.parallax_y = 0
+            m_anim:setScale(2)
+            Game.world:addChild(m_anim)
+            return m_anim, function(time, disallow_cancel)
+                cutscene:wait(not disallow_cancel and waitForTimeOrUserCancellation(time) or time)
+                m_anim:remove()
+            end
+        end
+        local function showMorshuAnimWithVoc(sprite, speed, clip, time, disallow_cancel)
+            local anim, rem = showMorshuAnim(sprite, speed)
+            Game.world.music:pause()
+            Assets.playSound(clip)
+            rem(time, disallow_cancel)
+            Assets.stopSound(clip)
+            Game.world.music:resume()
+            return anim
+        end
+
+        Input.clear("cancel")
+        showMorshuAnimWithVoc("rubies", 0.095, "vo_mline", 8.8)
+
+        cutscene:text("* (Buy Lamp Oil for 40 dolla-[wait:5]\ner-[wait:5] rupee-[wait:5] er-[wait:5] rubies?)")
+        cutscene:showShop()
+        local choice = cutscene:choicer({ "Buy", "Do not" })
+        cutscene:hideShop()
+
+        if choice == 2 then
+            showMorshuAnimWithVoc("menacing", 1, "menace", 18.8, false)
+            return
+        end
+
+        if Game.money < 40 then
+            showMorshuAnimWithVoc("richer", 0.095, "vo_mline2", 7)
+            return
+        end
+
+        if not Game.inventory:addItem("lampoil") then
+            cutscene:text('* (There is no "inventory full"\nclip for Morshu,[wait:5] so all you get\nis this dinky-ass text box.)')
+            return
+        end
+
+        Game.money = Game.money - 40
+
+        Game.world.map.morshu_dance = true
+
+        Game.world.music:pause()
+        Assets.playSound("danceparty"):setLooping(true)
+
+        -- show character dance animations
+        local _, dance_anim_rem = showMorshuAnim("dance", 0.0001)
+        if Game:getFlag("room3_doobie") then
+            doobie:setAnimation("dance")
+        end
+        magolor:setAnimation("speen")
+        dance_anim_rem(31, false)
+
+        -- show character idle animations
+        if Game:getFlag("room3_doobie") then
+            doobie:setAnimation("idle")
+        end
+        magolor:setSprite("shop")
+
+        Assets.stopSound("danceparty")
+        Game.world.music:resume()
+
+        Game.world.map.morshu_dance = false
+
+        cutscene:text("* (You stashed the Lamp Oil inside your [color:yellow]ITEMS[color:reset].)")
     end,
+
     spam_graffiti = function(cutscene, event)
         local susie = cutscene:getCharacter("susie")
+
         cutscene:setSpeaker(susie)
         cutscene:showNametag("Susie")
         cutscene:text("* Isn't that the big shot guy who attacked us in Queen's Basement?", "suspicious")
-	    if Game:hasPartyMember("YOU") then
+        if Game:hasPartyMember("YOU") then
             cutscene:text("* Oh right,[wait:5] you don't know who this guy is,[wait:5] do ya YOU?", "sus_nervous")
             cutscene:text("* Basically,[wait:5] he was some weird dude that scammed my friend Kris.", "neutral")
             cutscene:text("* All he ever said was a bunch of weird stuff that didn't make sense.", "annoyed")
@@ -114,402 +109,284 @@ return {
         end
         cutscene:hideNametag()
     end,
+
     doobie = function(cutscene, event)
-        if Game:getFlag("room3_doobie") then
-            local susie = cutscene:getCharacter("susie")
-            local doobie = cutscene:getCharacter("doobie")
-            cutscene:setSpeaker(doobie)
-            cutscene:showNametag("Ralsei?")
-            cutscene:text("* doobie", "default")
-            cutscene:hideNametag()
-            cutscene:setSpeaker(susie)
-            cutscene:showNametag("Susie")
-            cutscene:text("* RALSEI!! WHY ARE YOU SMOKING WEED?!", "teeth_b")
-            cutscene:text("* JUST COME WITH US!", "teeth")
-            cutscene:hideNametag()
-            local alpha = doobie:addFX(AlphaFX())
-
-            Game.stage.timer:tween(1, alpha, {alpha = 0})
-            Assets.playSound("hypnosis")
-
-            cutscene:wait(2)
-            doobie:remove()
-            Game:setFlag("room3_doobie", false)
-
-            cutscene:look("down")
-            local data = Kristal.callEvent("getAchievements")
-            for k,v in pairs(data.achievements) do
-                if v.id == "doobie" and v.earned == false then
-                    Kristal.callEvent("completeAchievement", "doobie")
-                end
-            end
+        if not Game:getFlag("room3_doobie") then
+            return
         end
-	end,
+
+        local susie = cutscene:getCharacter("susie")
+        local doobie = cutscene:getCharacter("doobie")
+
+        cutscene:setSpeaker(doobie)
+        cutscene:showNametag("Ralsei?")
+        cutscene:text("* doobie", "default")
+
+        cutscene:setSpeaker(susie)
+        cutscene:showNametag("Susie")
+        cutscene:text("* RALSEI!! WHY ARE YOU SMOKING WEED?!", "teeth_b")
+        cutscene:text("* JUST COME WITH US!", "teeth")
+        cutscene:hideNametag()
+
+        local alpha = doobie:addFX(AlphaFX())
+        Game.world.timer:tween(1, alpha, { alpha = 0 })
+        Assets.playSound("hypnosis")
+        cutscene:wait(2)
+        doobie:remove()
+        Game:setFlag("room3_doobie", false)
+
+        cutscene:look("down")
+
+        if not Mod:hasAch("doobie") then
+            Kristal.callEvent("completeAchievement", "doobie")
+        end
+    end,
+
     garbage = function(cutscene, event)
-        local garbage = cutscene:getCharacter("diamond_trash")
-        Game.world.music:pause()
-        if event.interacted then
-            cutscene:showNametag("Trash Rudinn")
-            Assets.playSound("stillgarbage")
-            cutscene:text("[noskip][voice:nil]* Oh hi,[wait:1] thanks for checking in.[wait:2]\n* I'm...", nil, garbage, {auto = true})
-            cutscene:hideNametag()
+        local texts = {}
+        local function genBigText(text, x, y, scale, goner, wait_time)
+            scale = scale or 2
+            wait_time = wait_time or 0.2
 
-            local text1 = Game.world:spawnObject(Text("still", 210, 40, 300, 500, {style = "dark"}))
-            text1:setScale(2)
-            text1.fake_alpha = 1
-            text1.parallax_x = 0
-            text1.parallax_y = 0
-            cutscene:wait(0.2)
+            local text = Game.world:spawnObject(Text(text, x, y, 300, 500, { style = goner and "GONER" or "dark" }))
+            text:setScale(scale)
+            text.parallax_x = 0
+            text.parallax_y = 0
+            if goner then
+                text.alpha = 1
+            end
+            table.insert(texts, text)
 
-            local text2 = Game.world:spawnObject(Text("a", 380, 40, 300, 500, {style = "dark"}))
-            text2:setScale(2)
-            text2.fake_alpha = 1
-            text2.parallax_x = 0
-            text2.parallax_y = 0
-            cutscene:wait(0.2)
+            cutscene:wait(wait_time)
 
-            local text3 = Game.world:spawnObject(Text("piece", 205, 110, 300, 500, {style = "dark"}))
-            text3:setScale(2)
-            text3.fake_alpha = 1
-            text3.parallax_x = 0
-            text3.parallax_y = 0
-            cutscene:wait(0.2)
-
-            local text4 = Game.world:spawnObject(Text("of", 370, 110, 300, 500, {style = "dark"}))
-            text4:setScale(2)
-            text4.fake_alpha = 1
-            text4.parallax_x = 0
-            text4.parallax_y = 0
-            cutscene:wait(0.2)
-            cutscene:fadeIn(2, {color = {1, 1, 1}})
-
-            local text5 = Game.world:spawnObject(Text("GARBAGE", 35, 160, 300, 500, {style = "GONER"}))
-            text5:setScale(6)
-            text5.alpha = 1
-            text5.parallax_x = 0
-            text5.parallax_y = 0
-		
-            local flash = Rectangle(0, 0, 640, 480)
+            return text
+        end
+        local function flashScreen()
+            local flash = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
             flash.layer = 100
-            flash.color = {1, 1, 1}
+            flash.color = { 1, 1, 1 }
             flash.alpha = 1
             flash.parallax_x = 0
             flash.parallax_y = 0
             Game.world:addChild(flash)
-		
-            Game.world.timer:tween(1.5, flash, {alpha = 0}, "linear", function()
+            Game.world.timer:tween(1.5, flash, { alpha = 0 }, "linear", function()
                 flash:remove()
             end)
-		
-            cutscene:wait(2)
-
-            Game.world.timer:tween(2, text1, {alpha = 0}, "linear", function()
-                text1:remove()
-            end)
-            Game.world.timer:tween(2, text2, {alpha = 0}, "linear", function()
-                text2:remove()
-            end)
-            Game.world.timer:tween(2, text3, {alpha = 0}, "linear", function()
-                text3:remove()
-            end)
-            Game.world.timer:tween(2, text4, {alpha = 0}, "linear", function()
-                text4:remove()
-            end)
-            Game.world.timer:tween(2, text5, {alpha = 0}, "linear", function()
-                text5:remove()
-            end)
-
-            cutscene:wait(3)
-            cutscene:look("down")
         end
-        if not event.interacted then
+        local function fadeOutBigText()
+            for _, v in ipairs(texts) do
+                Game.world.timer:tween(2, v, { alpha = 0 }, "linear", function()
+                    v:remove()
+                end)
+            end
+            cutscene:wait(2)
+        end
+
+        local garbage = cutscene:getCharacter("diamond_trash")
+
+        Game.world.music:pause()
+
+        if event.interact_count == 1 then
             cutscene:showNametag("Trash Rudinn")
             Assets.playSound("garbage")
-            cutscene:text("[noskip][voice:nil]* Hellooo...[wait:1.5]", nil, garbage, {auto = true})
+            cutscene:text("[noskip][voice:nil]* Hellooo...[wait:1.5]", nil, garbage, { auto = true })
             cutscene:hideNametag()
-
-            local text1 = Game.world:spawnObject(Text("I'm", 240, 40, 300, 500, {style = "dark"}))
-            text1:setScale(2)
-            text1.fake_alpha = 1
-            text1.parallax_x = 0
-            text1.parallax_y = 0
-            cutscene:wait(0.2)
-
-            local text2 = Game.world:spawnObject(Text("a", 360, 40, 300, 500, {style = "dark"}))
-            text2:setScale(2)
-            text2.fake_alpha = 1
-            text2.parallax_x = 0
-            text2.parallax_y = 0
-            cutscene:wait(0.1)
-
-            local text3 = Game.world:spawnObject(Text("piece", 205, 110, 300, 500, {style = "dark"}))
-            text3:setScale(2)
-            text3.fake_alpha = 1
-            text3.parallax_x = 0
-            text3.parallax_y = 0
-            cutscene:wait(0.2)
-
-            local text4 = Game.world:spawnObject(Text("of", 370, 110, 300, 500, {style = "dark"}))
-            text4:setScale(2)
-            text4.fake_alpha = 1
-            text4.parallax_x = 0
-            text4.parallax_y = 0
-            cutscene:wait(0.2)
-            cutscene:fadeIn(2, {color = {1, 1, 1}})
-
-            local text5 = Game.world:spawnObject(Text("GARBAGE", 35, 160, 300, 500, {style = "GONER"}))
-            text5:setScale(6)
-            text5.alpha = 1
-            text5.parallax_x = 0
-            text5.parallax_y = 0
-		
-            local flash = Rectangle(0, 0, 640, 480)
-            flash.layer = 100
-            flash.color = {1, 1, 1}
-            flash.alpha = 1
-            flash.parallax_x = 0
-            flash.parallax_y = 0
-            Game.world:addChild(flash)
-		
-            Game.world.timer:tween(1.5, flash, {alpha = 0}, "linear", function()
-                flash:remove()
-            end)
-		
-            cutscene:wait(2)
-
-            Game.world.timer:tween(2, text1, {alpha = 0}, "linear", function()
-                text1:remove()
-            end)
-            Game.world.timer:tween(2, text2, {alpha = 0}, "linear", function()
-                text2:remove()
-            end)
-            Game.world.timer:tween(2, text3, {alpha = 0}, "linear", function()
-                text3:remove()
-            end)
-            Game.world.timer:tween(2, text4, {alpha = 0}, "linear", function()
-                text4:remove()
-            end)
-            Game.world.timer:tween(2, text5, {alpha = 0}, "linear", function()
-                text5:remove()
-            end)
-
-            cutscene:wait(3)
-            cutscene:look("down")
-
-            event.interacted = true
+            genBigText("I'm", 240, 40)
+            genBigText("a", 360, 40, 2, false, 0.1)
+            genBigText("piece", 205, 110)
+            genBigText("of", 370, 110)
+            flashScreen()
+            genBigText("GARBAGE", 35, 160, 6, true, 2)
+            fadeOutBigText()
+        else
+            cutscene:showNametag("Trash Rudinn")
+            Assets.playSound("stillgarbage")
+            cutscene:text("[noskip][voice:nil]* Oh hi,[wait:1] thanks for checking in.[wait:2]\n* I'm...", nil, garbage, { auto = true })
+            cutscene:hideNametag()
+            genBigText("still", 210, 40)
+            genBigText("a", 380, 40, 2, false, 0.1)
+            genBigText("piece", 205, 110)
+            genBigText("of", 370, 110)
+            flashScreen()
+            genBigText("GARBAGE", 35, 160, 6, true, 2)
+            fadeOutBigText()
         end
+
+        cutscene:wait(1)
+        cutscene:look("down")
         Game.world.music:resume()
     end,
-    magshop = function (cutscene, event)
-        cutscene:showNametag("Magolor")
-        cutscene:text("* Welcome to my shoppe!", "happy", "magolor")
-        cutscene:text("* What would you like to buy?", "neutral", "magolor")
-        cutscene:hideNametag()
-        local opinion = cutscene:choicer({"Food", "Weapons", "Armor", "None"}, options)
-        if opinion == 1 then
-            cutscene:showNametag("Magolor")
-            cutscene:text("* What kind of food would you like?", "happy", "magolor")
-            cutscene:hideNametag()
-            local food = cutscene:choicer({"Pep Brew", "Apple", "Maxim Tomato", "None"}, options)
-            if food == 1 then
-                cutscene:showNametag("Magolor")
-                cutscene:text("* Do you want to buy some Pep Brew for 100D$?", "neutral", "magolor")
-                cutscene:hideNametag()
-                local buy = cutscene:choicer({"Yes", "No"}, options)
-                if buy == 1 then
-                    if Game.money >= 100 then
-                        local itemcheck = Game.inventory:addItem("pepbrew")
-                        if itemcheck then
-                            Game.money = Game.money - 100
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Here you go!", "happy", "magolor")
-                            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
-                            cutscene:hideNametag()
-                        else
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Your pockets look to full for this...", "unamused", "magolor") -- SPELLING MISTAKE !!!!!   - Char :]
-                            cutscene:hideNametag()
+
+    magshop = function(cutscene, event)
+        local menu = {
+            {
+                name = "food",
+                first_level_disp = "Food",
+                prompt = "kind of food",
+                items = {
+                    { id = "pepbrew", name = "Pep Brew", price = 100, some = "some" },
+                    { id = "apple_uneaten", name = "Apple", price = 250, some = "an" },
+                    { id = "maximtomato", name = "Maxim Tomato", price = 5000 },
+                }
+            },
+            {
+                name = "weapon",
+                name_counted = "weapons",
+                first_level_disp = "Weapons",
+                items = {
+                    { id = "mets_bat", name = "Mets Bat", price = 700, post_purchase = function()
+                        cutscene:text("* Actually,[wait:10] did you know...", "happy", "magolor")
+                        cutscene:text("* that this bat is signed and autographed by Daniel Vogelbach?", "wink",
+                        "magolor")
+                        cutscene:text("* I know![wait:10] I thought it was crazy too!", "pensive", "magolor")
+                        cutscene:text("* But it's true![wait:10] I met Daniel Vogelbach and I got this bat signed!", "happy", "magolor")
+                        cutscene:text("* Y'know I think it's really been a shame that...", "angry", "magolor")
+                        cutscene:text("* The Mets have been on a drystreak lately!", "angry", "magolor")
+                        cutscene:text("* And people keep making fun of them!", "upset", "magolor")
+                        cutscene:text("* BUT NOT ANYMORE BABY!!", "wink", "magolor")
+                        cutscene:text("* It's not about the theme parks anymore!", "sad", "magolor")
+                        cutscene:text("* IT'S ABOUT THE METS BABY, THE METS!", "happy", "magolor")
+                        if cutscene:getCharacter("dess") then
+                            cutscene:showNametag("Dess")
+                            cutscene:text("* YEAHHHHHH!", "condescending", "dess")
                         end
-                    else
-                        cutscene:showNametag("Magolor")
-                        cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
-                        cutscene:hideNametag()
-                    end
-                else
-                    cutscene:showNametag("Magolor")
-                    cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
-                    cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
-                    cutscene:hideNametag()
-                end
-            elseif food == 2 then
-                cutscene:showNametag("Magolor")
-                cutscene:text("* Do you want to buy an Apple for 250D$?", "neutral", "magolor")
-                cutscene:hideNametag()
-                local buy = cutscene:choicer({"Yes", "No"}, options)
-                if buy == 1 then
-                    if Game.money >= 250 then
-                        local itemcheck = Game.inventory:addItem("apple_uneaten")
-                        if itemcheck then
-                            Game.money = Game.money - 250
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Here you go!", "happy", "magolor")
-                            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
-                            cutscene:hideNametag()
-                        else
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Your pockets look to full for this...", "unamused", "magolor")
-                            cutscene:hideNametag()
-                        end
-                    else
-                        cutscene:showNametag("Magolor")
-                        cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
-                        cutscene:hideNametag()
-                    end
-                else
-                    cutscene:showNametag("Magolor")
-                    cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
-                    cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
-                    cutscene:hideNametag()
-                end
-            elseif food == 3 then
-                cutscene:showNametag("Magolor")
-                cutscene:text("* Do you want to buy a Maxim Tomato for 5000D$?", "neutral", "magolor")
-                cutscene:hideNametag()
-                local buy = cutscene:choicer({"Yes", "No"}, options)
-                if buy == 1 then
-                    if Game.money >= 5000 then
-                        local itemcheck = Game.inventory:addItem("maximtomato")
-                        if itemcheck then
-                            Game.money = Game.money - 5000
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Here you go!", "happy", "magolor")
-                            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
-                            cutscene:hideNametag()
-                        else
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Your pockets look to full for this...", "unamused", "magolor")
-                            cutscene:hideNametag()
-                        end
-                    else
-                        cutscene:showNametag("Magolor")
-                        cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
-                        cutscene:hideNametag()
-                    end
-                else
-                    cutscene:showNametag("Magolor")
-                    cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
-                    cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
-                    cutscene:hideNametag()
-                end
-            else
-                cutscene:showNametag("Magolor")
-                cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
-                cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
-                cutscene:hideNametag()
-            end
-        elseif opinion == 2 then
-            cutscene:showNametag("Magolor")
-            cutscene:text("* What weapon would you like to buy?", "happy", "magolor")
-            --cutscene:text("* Sorry,[wait:5] I don't have any weapons right now.", "sad", "magolor")
-            cutscene:hideNametag()
-            local weapon = cutscene:choicer({"Mets Bat", "PowerRing", "None"}, options)
-            if weapon == 1 then
-				cutscene:showNametag("Magolor")
-                cutscene:text("* Do you want to buy this Mets Bat for 700D$?", "neutral", "magolor")
-                cutscene:hideNametag()
-                local buy = cutscene:choicer({"Yes", "No"}, options)
-                if buy == 1 then
-                    if Game.money >= 700 then
-                        local itemcheck = Game.inventory:addItem("mets_bat")
-                        if itemcheck then
-                            Game.money = Game.money - 700
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Here you go!", "happy", "magolor")
-                            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
-	                    cutscene:text("* Actually,[wait:10] did you know...", "happy", "magolor")
-	                    cutscene:text("* that this bat is signed and autographed by Daniel Vogelbach?", "wink", "magolor")
-	                    cutscene:text("* I know![wait:10] I thought it was crazy too!", "pensive", "magolor")
-	                    cutscene:text("* But it's true![wait:10] I met Daniel Vogelbach and I got this bat signed!", "happy", "magolor")
-	                    cutscene:text("* Y'know I think it's really been a shame that...", "angry", "magolor")
-	                    cutscene:text("* The Mets have been on a drystreak lately!", "angry", "magolor")
-	                    cutscene:text("* And people keep making fun of them!", "upset", "magolor")
-	                    cutscene:text("* BUT NOT ANYMORE BABY!!", "wink", "magolor")
-	                    cutscene:text("* It's not about the theme parks anymore!", "sad", "magolor")
-	                    cutscene:text("* IT'S ABOUT THE METS BABY, THE METS!", "happy", "magolor")
-	                    if Game:hasPartyMember("dess") then
-	                        cutscene:text("* YEAHHHHHH!", "condescending", "dess")
-	                    end
-                            cutscene:hideNametag()
-                        else
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Your pockets look too full for this...", "unamused", "magolor") -- lmao
-                            cutscene:hideNametag()
-                        end
-                    else
-                        cutscene:showNametag("Magolor")
-                        cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
-                        cutscene:hideNametag()
-                    end
-                else
-                    cutscene:showNametag("Magolor")
-                    cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
-                    cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
-                    cutscene:hideNametag()
-                end
-			elseif weapon == 2 then
-				cutscene:showNametag("Magolor")
-                cutscene:text("* Do you want to buy this PowerRing for 1000D$?", "neutral", "magolor")
-                cutscene:hideNametag()
-                local buy = cutscene:choicer({"Yes", "No"}, options)
-                if buy == 1 then
-                    if Game.money >= 1000 then
-                        local itemcheck = Game.inventory:addItem("powerring")
-                        if itemcheck then
-                            Game.money = Game.money - 1000
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Here you go!", "happy", "magolor")
-                            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
-                            cutscene:hideNametag()
-                        else
-                            cutscene:showNametag("Magolor")
-                            cutscene:text("* Your pockets look too full for this...", "unamused", "magolor") -- lmao
-                            cutscene:hideNametag()
-                        end
-                    else
-                        cutscene:showNametag("Magolor")
-                        cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
-                        cutscene:hideNametag()
-                    end
-                else
-                    cutscene:showNametag("Magolor")
-                    cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
-                    cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
-                    cutscene:hideNametag()
-                end
-			else
-				cutscene:showNametag("Magolor")
-                cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
-                cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
-                cutscene:hideNametag()
-			end
-			
-            cutscene:hideNametag()
-        elseif opinion == 3 then
-            cutscene:showNametag("Magolor")
-            --cutscene:text("* What sort of armor are you looking for?", "happy", "magolor")
-            cutscene:text("* Sorry,[wait:5] I don't have any armor right now.", "sad", "magolor")
-            cutscene:hideNametag()
-        else
+                    end },
+                    { id = "powerring", name = "PowerRing", price = 1000 },
+                }
+            },
+            {
+                name = "armor",
+                name_counted = "armors",
+                first_level_disp = "Armor",
+                items = {}
+            }
+        }
+
+        local function onDeclined()
             cutscene:showNametag("Magolor")
             cutscene:text("* Uh,[wait:5] okay then.", "pensive", "magolor")
             cutscene:text("* Nobody likes a window shopper.", "unamused", "magolor")
             cutscene:hideNametag()
         end
+        local function onCateHasNoItems(category_name)
+            cutscene:showNametag("Magolor")
+            cutscene:text(string.format("* Sorry,[wait:5] I don't have any %s right now.", category_name), "sad", "magolor")
+            cutscene:hideNametag()
+        end
+        local function onCateSelected(prompt)
+            cutscene:showNametag("Magolor")
+            cutscene:text(string.format("* What %s would you like?", prompt), "happy", "magolor")
+            cutscene:hideNametag()
+        end
+        local function onItemSelected(item)
+            cutscene:showNametag("Magolor")
+            cutscene:text(string.format("* Do you want to buy %s %s for %dD$?", item.some or "a", item.name, item.price), "neutral", "magolor")
+            cutscene:hideNametag()
+        end
+        local function onMoneyNotEnough()
+            cutscene:showNametag("Magolor")
+            cutscene:text("* Come back when you can actually afford this...", "unamused", "magolor")
+            cutscene:hideNametag()
+        end
+        local function onInventoryFull()
+            cutscene:showNametag("Magolor")
+            cutscene:text("* Your pockets look too full for this...", "unamused", "magolor")
+            cutscene:hideNametag()
+        end
+        local function onPurchaseComplete(special_message)
+            special_message = special_message or function() end
+
+            cutscene:playSound("locker")
+            cutscene:showNametag("Magolor")
+            cutscene:text("* Here you go!", "happy", "magolor")
+            cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
+            special_message()
+            cutscene:hideNametag()
+        end
+
+        cutscene:showNametag("Magolor")
+        cutscene:text("* Welcome to my shoppe!", "happy", "magolor")
+        cutscene:text("* What would you like to buy?", "neutral", "magolor")
+        cutscene:hideNametag()
+
+        local fstlvl_opinion_list = {}
+        for _, v in ipairs(menu) do
+            table.insert(fstlvl_opinion_list, v.first_level_disp)
+        end
+        table.insert(fstlvl_opinion_list, "None")
+        local fstlvl_opinion = cutscene:choicer(fstlvl_opinion_list)
+        if fstlvl_opinion == #fstlvl_opinion_list then
+            onDeclined()
+            return
+        end
+
+        local cate = menu[fstlvl_opinion]
+        if #cate.items < 1 then
+            onCateHasNoItems(cate.name_counted or cate.name)
+            return
+        end
+        onCateSelected(cate.prompt or cate.name)
+        local sndlvl_opinion_list = {}
+        for _, v in ipairs(cate.items) do
+            table.insert(sndlvl_opinion_list, v.name)
+        end
+        table.insert(sndlvl_opinion_list, "None")
+        local sndlvl_opinion = cutscene:choicer(sndlvl_opinion_list)
+        if sndlvl_opinion == #sndlvl_opinion_list then
+            onDeclined()
+            return
+        end
+
+        local item = cate.items[sndlvl_opinion]
+        --cutscene:showShop()
+        onItemSelected(item)
+        local buy = cutscene:choicer({ "Yes", "No" })
+        --cutscene:hideShop()
+        if buy == 2 then
+            onDeclined()
+            return
+        end
+
+        if Game.money <= item.price then
+            onMoneyNotEnough()
+            return
+        end
+
+        local itemcheck = Game.inventory:addItem(item.id)
+        if not itemcheck then
+            onInventoryFull()
+            return
+        end
+        Game.money = Game.money - item.price
+
+        onPurchaseComplete(item.post_purchase)
     end,
 
+    whitedoor = function(cutscene, event)
+        cutscene:text("* A white door casts a faint shadow...")
+        cutscene:text("* Will you enter it?")
+
+        local choice = cutscene:choicer({"Yes", "No"})
+        if choice == 2 then
+            cutscene:text("* You doorn't.")
+            return
+        end
+
+        cutscene:text("* You opened the door...")
+        cutscene:fadeOut(2, {color = {1, 1, 1}, music = true, blend = "add"})
+        cutscene:wait(2)
+        Game.fader.fade_color = {1, 1, 1} -- overwrite default for mapTransition
+        if Game.world.map.id == "room3" then
+            cutscene:mapTransition("whitespace", "entry")
+        elseif Game.world.map.id == "whitespace" then
+            cutscene:mapTransition("room3", "exit_whitespace")
+        end
+        cutscene:look("down")
+        cutscene:wait(cutscene:fadeIn(2, {color = {1, 1, 1}}))
+    end,
 
     transition = function(cutscene, event)
-        if math.random(1, 50) <= 5 then
+        if love.math.random(1, 50) <= 5 then
             Game.world:mapTransition("pizzatower", "entrance")
         else
             Game.world:mapTransition("room1", "entry2")

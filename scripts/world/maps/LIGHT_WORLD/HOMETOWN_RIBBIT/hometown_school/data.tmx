@@ -32,7 +32,7 @@
 </data>
  </layer>
  <imagelayer id="11" name="bg">
-  <image source="../../../../../../assets/sprites/worldbg/hometown_ribbit/room_town_school.png" width="1160" height="640"/>
+  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_school.png" width="1160" height="640"/>
  </imagelayer>
  <objectgroup color="#1827f4" id="4" name="collision">
   <object id="105" x="0" y="0" width="480" height="400"/>

@@ -117,25 +117,25 @@ return {
     },
     {
       id = 14,
-      image = "../../../assets/sprites/worldbg/pizzatower/chris hansen.png",
+      image = "../../../assets/sprites/world/maps/pizzatower/chris hansen.png",
       width = 120,
       height = 103
     },
     {
       id = 15,
-      image = "../../../assets/sprites/worldbg/pizzatower/mooshroom.png",
+      image = "../../../assets/sprites/world/maps/pizzatower/mooshroom.png",
       width = 125,
       height = 99
     },
     {
       id = 16,
-      image = "../../../assets/sprites/worldbg/pizzatower/relthie.png",
+      image = "../../../assets/sprites/world/maps/pizzatower/relthie.png",
       width = 147,
       height = 235
     },
     {
       id = 17,
-      image = "../../../assets/sprites/worldbg/pizzatower/thuthie.png",
+      image = "../../../assets/sprites/world/maps/pizzatower/thuthie.png",
       width = 118,
       height = 138
     }

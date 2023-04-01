@@ -1,4 +1,4 @@
-local actor, super = Class(Actor, "you")
+local actor, super = Class(Actor, "YOU")
 
 function actor:init()
     super.init(self)
@@ -129,7 +129,7 @@ function actor:onWorldUpdate()
     super:onWorldUpdate(self)
 
     if self.cursed_song:isPlaying() and self.battle_music and not Game.battle then
-        if Game.world.player and Game.world.player.walk_speed==0 then
+        if Game.world.player and Game.world.player.walk_speed == 0 then
             Game.world.player.walk_speed = self.old_speed
             self.old_speed = nil
         end

@@ -53,7 +53,7 @@ function item:onWorldUse()
         cutscene:text("* (You tried to call on the Cell\nPhone.)", nil, nil, {advance = false})
         cutscene:wait(40/30)
         local was_playing = Game.world.music:isPlaying()
-		if math.random(1, 100) <= 10 then
+		if love.math.random(1, 100) <= 10 then
             if was_playing then
                 Game.world.music:pause()
             end
@@ -63,7 +63,7 @@ function item:onWorldUse()
                 Game.world.music:resume()
             end
             cutscene:text("* Sounded like an angry customer.")
-		elseif math.random(1, 100) >= 87 and math.random(1, 100) <= 93 then
+		elseif love.math.random(1, 100) >= 87 and love.math.random(1, 100) <= 93 then
             if was_playing then
                 Game.world.music:pause()
             end
@@ -79,7 +79,7 @@ function item:onWorldUse()
                 Game.world.music:resume()
             end
             cutscene:text("* It's nothing but useless information.")
-		elseif math.random(1, 100) == 39 then
+		elseif love.math.random(1, 100) == 39 then
             cutscene:text("* Hello!\n* Could I speak to G...")
 			cutscene:text("* ...[wait:5]\n* Wait a second.")
 			cutscene:text("* Is this the wrong number?")
@@ -95,7 +95,7 @@ function item:onWorldUse()
                 Game.world.music:resume()
             end
 			cutscene:text("* Must've been a wrong number.")
-		elseif math.random(1, 100) == 97 then
+		elseif love.math.random(1, 100) == 97 then
             if was_playing then
                 Game.world.music:pause()
             end
@@ -157,7 +157,7 @@ function item:onWorldUse()
         -- if anyone wants to add an additional easter egg, feel free to use the template below!
 
         --[[
-        elseif math.random(1, 100) == 100 then
+        elseif love.math.random(1, 100) == 100 then
             if was_playing then
                 Game.world.music:pause()
             end
@@ -172,7 +172,7 @@ function item:onWorldUse()
 		
         -- [[Char's]] easteregg
         -- based on what I changed the cellphone to in an unreleased mod I made to test out how Kristal works that was called Kris and Susie Gamer Time.
-        elseif math.random(1, 100) >= 11 and math.random(1, 100) <= 25 then
+        elseif love.math.random(1, 100) >= 11 and love.math.random(1, 100) <= 25 then
             if was_playing then
                 Game.world.music:pause()
             end

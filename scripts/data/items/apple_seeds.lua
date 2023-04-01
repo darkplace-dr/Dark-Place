@@ -56,25 +56,16 @@ function item:init()
 end
 
 function item:onWorldUse(target)
-    if target.id == "kris" then
-        target.health = math.max(1, target.health - 20)
-        Assets.playSound("hurt")
-    elseif target.id == "susie" then
-        target.health = math.max(1, target.health - 15)
-        Assets.playSound("hurt")
+    local health_dec = 20
+    if target.id == "susie" or target.id == "dess" then
+        health_dec = 15
     elseif target.id == "ralsei" then
-        target.health = math.max(1, target.health - 30)
-        Assets.playSound("hurt")
-    elseif target.id == "noelle" then
-        target.health = math.max(1, target.health - 20)
-        Assets.playSound("hurt")
+        health_dec = 30
     elseif target.id == "YOU" then
-        target.health = math.max(1, target.health - 50)
-        Assets.playSound("hurt")
-    elseif target.id == "dess" then
-        target.health = math.max(1, target.health - 15)
-        Assets.playSound("hurt")
+        health_dec = 50
     end
+    target.health = math.max(1, target.health - health_dec)
+    Assets.playSound("hurt")
     return true
 end
 

@@ -2,7 +2,7 @@ local FireWarning, super = Class(Bullet)
 
 function FireWarning:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super:init(self, x, y, "bullets/firewarning")
+    super:init(self, x, y, "battle/bullets/firewarning")
 
 	self:setScale(1, 1)
 

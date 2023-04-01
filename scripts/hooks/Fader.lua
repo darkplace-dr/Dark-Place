@@ -7,7 +7,7 @@ end
 
 function Fader:parseOptions(options, reset_values)
     super.parseOptions(self, options, reset_values)
-    self.blend = options["blend"] or (reset_values and "alpha" or self.blend)
+    self.blend = (options and options["blend"] or nil) or (reset_values and "alpha" or self.blend)
     return options
 end
 
