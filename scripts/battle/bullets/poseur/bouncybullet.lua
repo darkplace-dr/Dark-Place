@@ -21,8 +21,8 @@ function BouncyBullet:update()
     if x > Game.battle.arena.left and x < Game.battle.arena.right and y > Game.battle.arena.bottom - 8 then
         self.vely = -4
     end
-    self.vely = self.vely + (0.04 * DTMULT)
-    self:move(self.velx * DTMULT, self.vely * DTMULT)
+    self.vely = self.vely + 0.04
+    self:move(self.velx, self.vely, DTMULT)
 
     super.update(self)
 end
