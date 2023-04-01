@@ -32,7 +32,6 @@ function BossRematchMenu:init()
 
     self.currently_selected = 1
     self.page = 1
-    self.list_y_off = 10
     self.line_height = 30
     self.item_color_unk = {0.5, 0.5, 0.5}
     self.item_color = {1, 1, 1}
@@ -43,19 +42,22 @@ function BossRematchMenu:draw()
     love.graphics.setFont(self.font)
     love.graphics.print("Bosses", 200, 0)
 
+    local y_off = 20
+
     love.graphics.setFont(self.font_2)
     love.graphics.setColor(1, 0, 0)
-    love.graphics.draw(self.soul, 0, self.list_y_off + self.currently_selected * self.line_height)
+    love.graphics.draw(self.soul, 0, y_off + self.line_height * self.currently_selected)
     love.graphics.setColor(1, 1, 1)
 
-    local line_y = self.list_y_off + 30
+    local line_x = 24
+    local line_y = y_off + self.line_height * 1
     for i, v in ipairs(self.encounters) do
         if Game:getFlag(v.flag) then
             love.graphics.setColor(unpack(self.item_color))
-            love.graphics.print(v.name, 30, line_y)
+            love.graphics.print(v.name, line_x, line_y)
         else
             love.graphics.setColor(unpack(self.item_color_unk))
-            love.graphics.print(string.rep("?", #v.name), 30, line_y)
+            love.graphics.print(string.rep("?", utf8.len(v.name)), line_x, line_y)
         end
         love.graphics.setColor(1, 1, 1)
         line_y = line_y + self.line_height

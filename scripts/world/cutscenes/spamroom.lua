@@ -1,7 +1,6 @@
 return {
-    amogus = function(cutscene, event)
-    	local sus = cutscene:getCharacter("spamongus")
-        if sus.interact_count == 0 then
+    amogus = function(cutscene, sus)
+        if sus.interact_count == 1 then
             sus:setAnimation("dead")
             Assets.playSound("amoguskill", 0.7, 1)
 		else
@@ -34,75 +33,43 @@ return {
 			return
 		end
 
-		local binBox = UIBox((SCREEN_WIDTH / 2) - 64, 256, 128, 32)
-		binBox.parallax_x = 0
-		binBox.parallax_y = 0
-		Game.world:addChild(binBox)
-		local binInputDisp = Text("", (SCREEN_WIDTH / 2) - 64, 256, 640, 480)
-		binInputDisp.parallax_x = 0
-		binInputDisp.parallax_y = 0
-		Game.world:addChild(binInputDisp)
-
-		local binInput = {""}
-		local inputDone = false
-		TextInput.attachInput(binInput, {
-			multiline = false,
-			enter_submits = true,
-			clear_after_submit = false,
-			x = 0,
-			y = 0,
-		})
-		TextInput.text_callback = function()
-			if #binInput[1] > 8 then -- Limit the Bin's Digits
-				binInput[1] = string.sub(binInput[1], 1, 8)
+		cutscene:after(function()
+			local menu = WarpBinInputMenu()
+			menu.finish_cb = function(_action)
+				-- I'm sorry
+				Game.world:startCutscene("spamroom", "warpbin_proc")
 			end
-			-- only lowercase letters
-			binInput[1] = string.lower(binInput[1])
-		end
-		cutscene:during(function()
-			if not inputDone then
-				if #binInput[1] < 8 then
-					binInputDisp:setText(binInput[1].."_")
-				else
-					binInputDisp:setText(binInput[1])
-				end
-			end
+			Game.world:openMenu(menu)
 		end)
-		TextInput.submit_callback = function()
-			inputDone = true
-		end
-		
-		cutscene:wait(function() return inputDone end)
-		binInputDisp:remove()
-		binBox:remove()
-		TextInput.endInput()
-		
-		local result = Mod:getBinCode(Game.binInput[1])
-		if result then
-			if type(result[2]) == "string" then
-				if Game.world.map.id == result[2] then
+	end,
+
+	warpbin_proc = function(cutscene, action)
+		if action then
+			if type(action.result) == "string" then
+				if Game.world.map.id == action.result then
 					cutscene:text("* But you're already there.")
 				else
 					cutscene:wait(0.2)
+
+					Game.world.music:stop()
 					-- Hell naw is this the only way to stop all sounds
 					-- for now?
 					for key,_ in pairs(Assets.sound_instances) do
 						Assets.stopSound(key, true)
 					end
-					Assets.playSound("impact")
-					Game.world.music:stop()
-
 					Game.world.fader:fadeOut(nil, {
 						speed = 0,
 					})
+					cutscene:playSound("impact")
+
 					cutscene:wait(1)
-					cutscene:loadMap(result[2], result[3], "down")
+					cutscene:loadMap(action.result, action.marker, "down")
 					Game.world.fader:fadeIn(nil, {
 						speed = 0.25,
 					})
 				end
 			else
-				cutscene:after(result[2])
+				action.result(cutscene)
 			end
 		else
 			cutscene:text("* That doesn't seem to work.")
