@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -32,7 +32,7 @@ return {
     {
       name = "city_alleyway",
       firstgid = 70,
-      filename = "../../../../../Dark-Place-main/scripts/world/tilesets/city_alleyway.tsx"
+      filename = "../../tilesets/city_alleyway.tsx"
     }
   },
   layers = {
@@ -141,7 +141,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 280,
@@ -154,7 +154,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 280,
@@ -167,7 +167,7 @@ return {
         {
           id = 50,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 240,
@@ -180,7 +180,7 @@ return {
         {
           id = 51,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 320,
           y = 240,
@@ -193,7 +193,7 @@ return {
         {
           id = 62,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 40,
@@ -206,7 +206,7 @@ return {
         {
           id = 63,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 480,
           y = 80,
@@ -219,7 +219,7 @@ return {
         {
           id = 64,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -248,7 +248,7 @@ return {
         {
           id = 53,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 240,
@@ -265,7 +265,7 @@ return {
         {
           id = 54,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 600,
@@ -283,7 +283,7 @@ return {
         {
           id = 55,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 320,
           y = 600,
@@ -301,7 +301,7 @@ return {
         {
           id = 56,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 260,
           y = 480,
@@ -319,7 +319,7 @@ return {
         {
           id = 57,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 300,
           y = 480,
@@ -337,7 +337,7 @@ return {
         {
           id = 58,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 720,
@@ -354,7 +354,7 @@ return {
         {
           id = 59,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 70,
@@ -370,7 +370,7 @@ return {
         {
           id = 60,
           name = "script",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 280,
@@ -387,7 +387,7 @@ return {
         {
           id = 61,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 960,
@@ -419,7 +419,7 @@ return {
         {
           id = 20,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 300,
           y = 920,

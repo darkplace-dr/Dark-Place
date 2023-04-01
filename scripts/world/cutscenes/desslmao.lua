@@ -165,7 +165,7 @@ return {
 		boss:fadeTo(1, 0.05)
 		cutscene:wait(1)
 		cutscene:showNametag("???")
-		cutscene:text("* YOU!" .. cutscene:getCharacter("YOU") and "[wait:10] Well,[wait:5] just you.[wait:10] Not YOU." or "")
+		cutscene:text("* YOU![wait:10] Well,[wait:5] just you.[wait:10] Not YOU.")
 
 		cutscene:showNametag("Susie")
 		cutscene:text("* Wha-?![wait:10] What the hell??", "surprise_frown", "susie")
