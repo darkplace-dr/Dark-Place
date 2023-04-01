@@ -5,8 +5,7 @@ function elevator_input:init(data)
 
 	local properties = data.properties or {}
 
-	-- ["transition"] would be set to the transition object's ID
-	self.transition = Game.world.map:getEvent(properties.transition)
+	self.transition_id = properties.transition
 
 	self.door_l = Sprite("world/elevator_dt_frontdoor_l", 270, 352)
 	self.door_l:setScale(2)
@@ -45,7 +44,7 @@ function elevator_input:onInteract()
 
 		-- TODO: VFX
 
-		self.transition.target["map"] = self.maps[map]
+		Game.world.map:getEvent(self.transition_id).target["map"] = self.maps[map]
     end)
 end
 
