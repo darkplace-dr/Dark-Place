@@ -5,7 +5,7 @@
 2. If you're using assets that you didn't make, be sure to credit the original author(s)!
 3. Don't just completely remove someone else's commit, although you can still edit what someone else has made.
 4. Don't add doxxing scripts, or really any script that is dangerous to ones safety.
-5. For the love of the Angel, PLEASE test things before you PR them.
+5. Always remember to test your commits before making a pull request. We would like to keep this mod as a bug-free experience.
 6. Please don't make us add more rules like Rule 4 please.
 
 ## Getting Started
