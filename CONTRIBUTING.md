@@ -5,7 +5,8 @@
 2. If you're using assets that you didn't make, be sure to credit the original author(s)!
 3. Don't just completely remove someone else's commit, although you can still edit what someone else has made.
 4. Don't add doxxing scripts, or really any script that is dangerous to ones safety.
-5. Please don't make us add more rules like Rule 4 please.
+5. For the love of the Angel, PLEASE test things before you PR them.
+6. Please don't make us add more rules like Rule 4 please.
 
 ## Getting Started
 ![The Fork button](https://cdn.discordapp.com/attachments/909928008893227068/1091744974770548796/image.png)
