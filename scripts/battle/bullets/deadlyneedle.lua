@@ -1,7 +1,7 @@
 local DeadlyNeedle, super = Class(Bullet)
 
 function DeadlyNeedle:init(x, y, rot)
-    super.init(self, x, y, "bullets/arenahazard")
+    super.init(self, x, y, "battle/bullets/arenahazard")
 
     self.collider = Hitbox(self, 0, 0, self.width, self.height/1.5)
     self:setOrigin(0.5, 0)

@@ -7,12 +7,12 @@ function elevatorInput:init(data)
 
 	self.transition = nil
 
-	self.door_l = Sprite("elevator_dt_frontdoor_l", 270, 352)
+	self.door_l = Sprite("world/elevator_dt_frontdoor_l", 270, 352)
 	self.door_l:setScale(2)
 	self.door_l:setLayer(0.3)
 	Game.world:addChild(self.door_l)
 
-	self.door_r = Sprite("elevator_dt_frontdoor_r", 360, 352)
+	self.door_r = Sprite("world/elevator_dt_frontdoor_r", 360, 352)
 	self.door_r:setScale(2)
 	self.door_r:setLayer(0.3)
 	Game.world:addChild(self.door_r)

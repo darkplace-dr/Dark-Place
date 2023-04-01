@@ -24,7 +24,7 @@ return {
   tiles = {
     {
       id = 0,
-      image = "../../../assets/sprites/elevator-dt.png",
+      image = "../../../assets/sprites/world/elevator_dt.png",
       width = 320,
       height = 240
     }

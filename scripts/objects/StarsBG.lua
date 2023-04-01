@@ -10,6 +10,7 @@ function StarsBG:init(color, back_color, fill)
     self.size = 50
 	self.layer = BATTLE_LAYERS["bottom"]
 	self.alpha_fx = self:addFX(AlphaFX())
+    self.image = Assets.getTexture("battle/star_background")
 end
 
 function StarsBG:update(dt)
@@ -43,8 +44,7 @@ function StarsBG:drawBack()
     love.graphics.setColor(r,g,b, a or self.fade/2)
 	for x = -100, 740, 50 do
 		for y = -100, 580, 50 do
-			defaultbg = Assets.getTexture("bg/starbackground")
-			love.graphics.draw(defaultbg, x + self.offset/2, y + self.offset/2 + 10)
+			love.graphics.draw(self.image, x + self.offset/2, y + self.offset/2 + 10)
 		end
 	end
 end
@@ -54,8 +54,7 @@ function StarsBG:drawFront()
     love.graphics.setColor(r,g,b, a or self.fade)
 	for x = 0, 740, 50 do
 		for y = 0, 580, 50 do
-			defaultbg = Assets.getTexture("bg/starbackground")
-			love.graphics.draw(defaultbg, x - self.offset, y - self.offset)
+			love.graphics.draw(self.image, x - self.offset, y - self.offset)
 		end
 	end
 end

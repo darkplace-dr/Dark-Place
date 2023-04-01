@@ -2,7 +2,7 @@ local ChaserBullet, super = Class(Bullet)
 
 function ChaserBullet:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super.init(self, x, y, "bullets/poseurbullet")
+    super.init(self, x, y, "battle/bullets/poseurbullet")
     self:setScale(1, 1)
 
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)

@@ -2,7 +2,7 @@ local BouncyBullet, super = Class(Bullet)
 
 function BouncyBullet:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super.init(self, x, y, "bullets/poseurbullet")
+    super.init(self, x, y, "battle/bullets/poseurbullet")
     self:setScale(1, 1)
 
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
@@ -11,7 +11,7 @@ function BouncyBullet:init(x, y, dir, speed)
     self.physics.speed = speed
     self.destroy_on_hit = false
 
-    self.velx = 1 - 2*math.random()
+    self.velx = 1 - 2*love.math.random()
     self.vely = 0
 end
 

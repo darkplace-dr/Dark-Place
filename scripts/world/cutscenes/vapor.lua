@@ -1,6 +1,6 @@
 return {
     bb = function(cutscene, event)
-        local bb_sound = math.random(1, 3)
+        local bb_sound = love.math.random(1, 3)
         if bb_sound <= 1 then
 		    Assets.playSound("bb_hi")
         elseif bb_sound == 2 then

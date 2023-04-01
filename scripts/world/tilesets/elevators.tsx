@@ -5,6 +5,6 @@
  </editorsettings>
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
-  <image width="320" height="240" source="../../../assets/sprites/elevator-dt.png"/>
+  <image width="320" height="240" source="../../../assets/sprites/world/elevator_dt.png"/>
  </tile>
 </tileset>

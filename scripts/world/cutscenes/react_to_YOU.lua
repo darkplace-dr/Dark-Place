@@ -7,7 +7,6 @@ return function(cutscene)
 	local susie = cutscene:getCharacter("susie")
 	if susie then
         cutscene:detachFollowers()
-		
 
         cutscene:setSpeaker(susie)
 		cutscene:showNametag("Susie")
@@ -42,7 +41,7 @@ return function(cutscene)
 				Game.world.timer:after(1/2, function()
 					Game.world.camera:setZoom(6)
 					Game.world.timer:after(1/2, function()
-						emotion = Sprite("bigemotion", -9, 4)
+						emotion = Sprite("world/cutscenes/react_to_YOU/bigemotion", -9, 4)
 						emotion:setScale(0.125, 0.125)
 						Game.world.camera:setZoom(8)
 						cutscene:detachCamera()

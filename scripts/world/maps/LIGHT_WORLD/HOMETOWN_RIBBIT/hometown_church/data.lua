@@ -86,7 +86,7 @@ return {
     },
     {
       type = "imagelayer",
-      image = "../../../../../../assets/sprites/worldbg/hometown_ribbit/room_town_church.png",
+      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_church.png",
       id = 11,
       name = "bg",
       class = "",
@@ -357,7 +357,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "MISCELLANEOUS/dogcheck"
+            ["map"] = "misc/dogcheck"
           }
         },
         {

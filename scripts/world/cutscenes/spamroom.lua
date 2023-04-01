@@ -82,26 +82,25 @@ return {
 			if type(result[2]) == "string" then
 				if Game.world.map.id == result[2] then
 					cutscene:text("* But you're already there.")
-					break
-				end
-			
-				cutscene:wait(0.2)
-				-- Hell naw is this the only way to stop all sounds
-				-- for now?
-				for key,_ in pairs(Assets.sound_instances) do
-					Assets.stopSound(key, true)
-				end
-				Assets.playSound("impact")
-				Game.world.music:stop()
+				else
+					cutscene:wait(0.2)
+					-- Hell naw is this the only way to stop all sounds
+					-- for now?
+					for key,_ in pairs(Assets.sound_instances) do
+						Assets.stopSound(key, true)
+					end
+					Assets.playSound("impact")
+					Game.world.music:stop()
 
-				Game.world.fader:fadeOut(nil, {
-					speed = 0,
-				})
-				cutscene:wait(1)
-				cutscene:loadMap(result[2], result[3], "down")
-				Game.world.fader:fadeIn(nil, {
-					speed = 0.25,
-				})
+					Game.world.fader:fadeOut(nil, {
+						speed = 0,
+					})
+					cutscene:wait(1)
+					cutscene:loadMap(result[2], result[3], "down")
+					Game.world.fader:fadeIn(nil, {
+						speed = 0.25,
+					})
+				end
 			else
 				cutscene:after(result[2])
 			end

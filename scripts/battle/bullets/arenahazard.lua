@@ -2,7 +2,7 @@ local ArenaHazard, super = Class(Bullet)
 
 function ArenaHazard:init(x, y, rot)
     -- Last argument = sprite path
-    super.init(self, x, y, "bullets/arenahazard")
+    super.init(self, x, y, "battle/bullets/arenahazard")
 
     -- Top-center origin point (will be rotated around it)
     self:setOrigin(0.5, 0)

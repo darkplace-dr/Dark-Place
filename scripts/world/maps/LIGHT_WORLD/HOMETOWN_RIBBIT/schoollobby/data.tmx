@@ -38,7 +38,7 @@
 </data>
  </layer>
  <imagelayer id="19" name="bg_lockers" offsetx="69.9983" offsety="350">
-  <image source="../../../../../../assets/sprites/worldbg/hometown_ribbit/bg_lockers_l.png" width="120" height="200"/>
+  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/bg_lockers_l.png" width="120" height="200"/>
  </imagelayer>
  <layer id="18" name="Tile Layer 2" width="48" height="22">
   <data encoding="csv">

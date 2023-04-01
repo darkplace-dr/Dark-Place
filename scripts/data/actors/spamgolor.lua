@@ -14,7 +14,7 @@ function actor:init()
 
     self.flip = "right"
 
-    self.path = "npcs/spamgolor"
+    self.path = "world/npcs/spamgolor"
     self.default = "idle"
 
     self.voice = "spamgolor"

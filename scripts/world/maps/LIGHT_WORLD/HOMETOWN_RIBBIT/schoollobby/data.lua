@@ -76,7 +76,7 @@ return {
     },
     {
       type = "imagelayer",
-      image = "../../../../../../assets/sprites/worldbg/hometown_ribbit/bg_lockers_l.png",
+      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/bg_lockers_l.png",
       id = 19,
       name = "bg_lockers",
       class = "",

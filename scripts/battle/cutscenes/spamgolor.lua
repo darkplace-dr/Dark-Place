@@ -3,7 +3,7 @@ return {
         cutscene:text("* You took one of Spamgolor's deals.")
         Assets.playSound("ui_cancel")
         cutscene:text("* You felt your wallet becoming lighter.")
-        local loss = math.random(1, 100)
+        local loss = love.math.random(1, 100)
         Game.money = Game.money - loss
         cutscene:text("* You lost "..loss.." D$...")
     end,
@@ -11,12 +11,12 @@ return {
         cutscene:text("* You and Susie took some of Spamgolor's deals.")
         Assets.playSound("ui_cancel")
         cutscene:text("* You felt your wallet becoming lighter.")
-        local loss = math.random(50, 300)
+        local loss = love.math.random(50, 300)
         Game.money = Game.money - loss
         cutscene:text("* You lost $"..loss.."...")
     end,
     heal_deal = function(cutscene, battler, enemy)
-        local price = math.random(150, 300)
+        local price = love.math.random(150, 300)
         cutscene:text("* Spamgolor offered you a healing item for $"..price.."\n* You have $"..Game.money..".")
         cutscene:text("* Will you buy it?")
         opinion = cutscene:choicer({"Yes", "No"}, options)

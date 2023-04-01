@@ -2,7 +2,7 @@ local Bullet, super = Class(Bullet)
 
 function Bullet:init(x, y)
     -- Last argument = sprite path
-    super:init(self, x, y, "bullets/starbullet")
+    super:init(self, x, y, "battle/bullets/starbullet")
 	
 	self.element = "star"
 	

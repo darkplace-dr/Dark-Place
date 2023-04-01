@@ -3,7 +3,7 @@ local DeadlyNeedle, super = Class(Wave)
 function DeadlyNeedle:onStart()
 	local arenacenter = Game.battle.arena.left + Game.battle.arena.right
 	self.x = arenacenter / 2
-	if math.random(1,2) == 1 then
+	if love.math.random(1,2) == 1 then
 		self.y = Game.battle.arena.top + 35.5
 		self.top = true
 	else

@@ -6,7 +6,7 @@ return {
 
 	    Game.world.music:pause("")
 
-        local m_anim = Sprite("m_anim/rubies")
+        local m_anim = Sprite("world/cutscenes/room3_morshurubies")
 		m_anim:play(0.095, false)
 		m_anim.layer = 1000
 		m_anim.parallax_x = 0
@@ -38,7 +38,7 @@ return {
                     local danceparty = Assets.playSound("danceparty")
                     danceparty:setLooping(true)
 
-                    local m_anim = Sprite("m_anim/dance")
+                    local m_anim = Sprite("world/cutscenes/room3_morshudance")
                     m_anim:play(0.0001, true)
                     m_anim.layer = 1000
                     m_anim.parallax_x = 0
@@ -69,7 +69,7 @@ return {
                     cutscene:text('* (There is no "inventory full"\nclip for Morshu,[wait:5] so all you get\nis this dinky-ass text box).')
                 end
             else
-                local m_anim = Sprite("m_anim/richer")
+                local m_anim = Sprite("world/cutscenes/room3_morshuricher")
                 m_anim:play(0.095, false)
                 m_anim.layer = 1000
                 m_anim.parallax_x = 0
@@ -85,7 +85,7 @@ return {
         else
             Game.world.music:pause("")
             Assets.playSound("menace")
-            local menacing = Sprite("m_anim/menacing")
+            local menacing = Sprite("world/cutscenes/room3_morshumenacing")
             menacing.layer = 1000
             menacing.parallax_x = 0
             menacing.parallax_y = 0
@@ -509,7 +509,7 @@ return {
 
 
     transition = function(cutscene, event)
-        if math.random(1, 50) <= 5 then
+        if love.math.random(1, 50) <= 5 then
             Game.world:mapTransition("pizzatower", "entrance")
         else
             Game.world:mapTransition("room1", "entry2")

@@ -10,7 +10,7 @@
  </properties>
  <tileset firstgid="1" source="../../tilesets/objects.tsx"/>
  <imagelayer id="6" name="bg">
-  <image source="../../../../assets/sprites/worldbg/pizzatower/main.png" width="960" height="550"/>
+  <image source="../../../../assets/sprites/world/maps/pizzatower/main.png" width="960" height="550"/>
  </imagelayer>
  <objectgroup color="#0000ff" id="3" name="collision">
   <object id="17" x="-0.5" y="236">
@@ -96,6 +96,6 @@
   </object>
  </objectgroup>
  <imagelayer id="11" name="trees" opacity="0">
-  <image source="../../../../assets/sprites/worldbg/pizzatower/parallax.png" width="960" height="550"/>
+  <image source="../../../../assets/sprites/world/maps/pizzatower/parallax.png" width="960" height="550"/>
  </imagelayer>
 </map>

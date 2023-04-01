@@ -29,7 +29,7 @@ function Mod:initializeYOUHooks()
                 end
             end
             return false
-        else
+        end
         return orig(self)
     end)
     Utils.hook(EnemyBattler, "getSpareText", function(orig, self, battler, success)

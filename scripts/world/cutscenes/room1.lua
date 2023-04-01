@@ -264,7 +264,7 @@ return {
     end,
 
     transition = function(cutscene, event)
-        if math.random(1, 100) <= 5 then
+        if love.math.random(1, 100) <= 5 then
             Game.world:mapTransition("spamgolor_alley", "entrance")
         else
             Game.world:mapTransition("room2", "entry")

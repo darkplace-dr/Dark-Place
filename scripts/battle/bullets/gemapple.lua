@@ -1,11 +1,11 @@
 local GemApple, super = Class(Bullet)
 
 function GemApple:init(x, y, dir, speed)
-    super.init(self, x, y, "bullets/gemapple")
+    super.init(self, x, y, "battle/bullets/gemapple")
 
     self.physics.direction = dir
     self.physics.speed = speed
-    self.physics.friction = math.random(1,3) / 15
+    self.physics.friction = love.math.random(1,3) / 15
     self.scale = self:getScale()
     self.destroy_on_hit = false
 end

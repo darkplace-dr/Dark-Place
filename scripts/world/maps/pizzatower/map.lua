@@ -17,8 +17,8 @@ function room:onEnter()
     end
 
 
-    --local parallax = Sprite("worldbg/pizzatower/parallax", 0, 105)
-    local parallax = Sprite("worldbg/pizzatower/parallax", 0, 0)
+    --local parallax = Sprite("world/maps/pizzatower/parallax", 0, 105)
+    local parallax = Sprite("world/maps/pizzatower/parallax", 0, 0)
     parallax:setScale(1)
     parallax:setLayer(Game.world:parseLayer("objects2"))
     parallax.wrap_texture_x = true
