@@ -78,7 +78,7 @@ function BossRematchMenu:onKeyPressed(key, is_repeat)
     if Input.isMenu(key) or Input.isCancel(key) then
         self.ui_cancel_small:stop()
         self.ui_cancel_small:play()
-        self:close()
+        Game.world:closeMenu()
         return
     end
 
