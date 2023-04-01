@@ -20,7 +20,7 @@ function actor:init(x, y)
     self.flip = 0
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npcs/alternatespam"
+    self.path = "world/npcs/alternatespam"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = ""
 

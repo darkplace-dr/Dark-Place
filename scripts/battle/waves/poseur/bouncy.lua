@@ -6,7 +6,7 @@ function Bouncy:onStart()
         local posy = Game.battle.arena.top
 
         -- Spawn smallbullet going left with speed 8 (see scripts/battle/bullets/smallbullet.lua)
-        local bullet = self:spawnBullet("poseur/bouncybullet", posx, posy)
+        self:spawnBullet("poseur/bouncybullet", posx, posy)
     end)
 end
 

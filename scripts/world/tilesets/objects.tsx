@@ -47,15 +47,15 @@
   <image width="120" height="120" source="../../../assets/sprites/objects/billboard.png"/>
  </tile>
  <tile id="14">
-  <image width="120" height="103" source="../../../assets/sprites/worldbg/pizzatower/chris hansen.png"/>
+  <image width="120" height="103" source="../../../assets/sprites/world/maps/pizzatower/chris hansen.png"/>
  </tile>
  <tile id="15">
-  <image width="125" height="99" source="../../../assets/sprites/worldbg/pizzatower/mooshroom.png"/>
+  <image width="125" height="99" source="../../../assets/sprites/world/maps/pizzatower/mooshroom.png"/>
  </tile>
  <tile id="16">
-  <image width="147" height="235" source="../../../assets/sprites/worldbg/pizzatower/relthie.png"/>
+  <image width="147" height="235" source="../../../assets/sprites/world/maps/pizzatower/relthie.png"/>
  </tile>
  <tile id="17">
-  <image width="118" height="138" source="../../../assets/sprites/worldbg/pizzatower/thuthie.png"/>
+  <image width="118" height="138" source="../../../assets/sprites/world/maps/pizzatower/thuthie.png"/>
  </tile>
 </tileset>

@@ -7,8 +7,8 @@ function character:init()
     self.name = "YOU"
 
     -- Actor (handles overworld/battle sprites)
-    self:setActor("you")
-    self:setLightActor("you_lw")
+    self:setActor("YOU")
+    self:setLightActor("YOU_lw")
 
     -- Display level (saved to the save file)
     self.level = 1

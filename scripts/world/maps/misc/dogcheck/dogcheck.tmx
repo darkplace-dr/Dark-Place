@@ -6,7 +6,7 @@
  <properties>
   <property name="border" value="none"/>
   <property name="light" type="bool" value="true"/>
-  <property name="name" value="dogcheck"/>
+  <property name="name" value="------------"/>
  </properties>
  <objectgroup color="#1827f4" id="4" name="collision">
   <object id="89" x="0" y="0" width="640" height="480"/>

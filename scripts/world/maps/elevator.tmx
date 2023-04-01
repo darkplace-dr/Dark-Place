@@ -20,13 +20,14 @@
   <object id="11" x="360" y="400" width="40" height="80"/>
  </objectgroup>
  <objectgroup id="3" name="objects_above_elevator">
-  <object id="3" name="elevatorInput" x="372" y="160" width="34" height="62">
+  <object id="3" name="elevator_input" x="372" y="160" width="34" height="62">
    <properties>
     <property name="map1" value="whitespace"/>
     <property name="map2" value="spamroom"/>
+    <property name="transition" type="int" value="4"/>
    </properties>
   </object>
-  <object id="4" name="elevatorTransition" x="280" y="475" width="80" height="5">
+  <object id="4" name="transition" x="280" y="475" width="80" height="5">
    <properties>
     <property name="map" value="room1"/>
     <property name="marker" value="entry_elevator"/>

@@ -78,7 +78,7 @@
 </data>
  </layer>
  <imagelayer id="11" name="bg">
-  <image source="../../../../../../assets/sprites/worldbg/hometown_ribbit/room_town_shelter.png" width="640" height="2480"/>
+  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_shelter.png" width="640" height="2480"/>
  </imagelayer>
  <objectgroup color="#1827f4" id="4" name="collision">
   <object id="16" x="160" y="2280">

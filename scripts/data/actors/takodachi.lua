@@ -20,7 +20,7 @@ function actor:init(x, y)
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npcs/takodachi"
+    self.path = "world/npcs/takodachi"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "idle"
 
@@ -50,23 +50,17 @@ function actor:init(x, y)
         ["takolyshit"] = {-5, -60}
     }
 
-    --This probably shouldn't be an actor function but I'm too lazy to extend Utils
-    self.map = function(input, inMin, inMax, outMin, outMax)
-        local inputRange = inMax - inMin
-        local outputRange = outMax - outMin
-        local scaledValue = (input - inMin) / inputRange
-        return outMin + scaledValue * outputRange
-    end
 end
 
 function actor:onWorldUpdate(chara)
+    if not Game.world.map.ina then return end
     if chara.sprite.sprite ~= "takolyshit" then
         if not Game.world.map.ina:isPlaying() then
             Game.world.map.ina:resume()
             --Game.world.music:fade(0.1, 0.1)
         end
         local dist = Utils.dist(chara.x+chara.width/2, chara.y+chara.height/2, Game.world.player.x+Game.world.player.width, Game.world.player.y+Game.world.player.height)
-        local vol = Utils.clamp(self.map(dist, 50, 150, 1, 0), 0, 1)
+        local vol = Utils.clamp(Utils.clampMap(dist, 50, 150, 1, 0), 0, 1)
         Game.world.map.ina:setVolume(vol)
         if Game.world.map.ina.volume > 0 then
             --Game.world.music:setVolume(vol - 0.9)
@@ -74,7 +68,7 @@ function actor:onWorldUpdate(chara)
         else
             Game.world.music:fade(1, 0.5)
         end
-        if vol>0 and chara.sprite.sprite == "idle" then
+        if vol > 0 and chara.sprite.sprite == "idle" then
             chara:setAnimation("talk")
         elseif vol == 0 and chara.sprite.anim == "talk" then
             chara:setSprite("idle")

@@ -11,4 +11,8 @@ function Spamgolor:init()
     self:addEnemy("spamgolor")
 end
 
+function Spamgolor:onBattleEnd()
+    Game:setFlag("spamgolor_defeated", true)
+end
+
 return Spamgolor

@@ -187,7 +187,7 @@ return {
       objects = {
         {
           id = 3,
-          name = "elevatorInput",
+          name = "elevator_input",
           type = "",
           shape = "rectangle",
           x = 372,
@@ -198,12 +198,13 @@ return {
           visible = true,
           properties = {
             ["map1"] = "whitespace",
-            ["map2"] = "spamroom"
+            ["map2"] = "spamroom",
+            ["transition"] = 4
           }
         },
         {
           id = 4,
-          name = "elevatorTransition",
+          name = "transition",
           type = "",
           shape = "rectangle",
           x = 280,

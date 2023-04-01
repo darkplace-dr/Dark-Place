@@ -15,7 +15,7 @@ function GemApple:onStart()
 
             local angle = Utils.angle(x, y, Game.battle.soul.x, Game.battle.soul.y)
 
-            local speed = math.random(5, 7) + math.random()
+            local speed = love.math.random(5, 7) + love.math.random()
 
             self:spawnBullet("gemapple", x, y, angle, speed)
         end

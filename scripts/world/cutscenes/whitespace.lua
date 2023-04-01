@@ -18,10 +18,8 @@ return {
     lightbulb = function(cutscene, event)
         cutscene:text("* A lightbulb hangs from the ceiling,[wait:5] wherever it is.")
         cutscene:text("* Look into the lightbulb?")
-		
-        choice = cutscene:choicer({"Yes", "No"}, options)
 
-        if choice == 1 then
+        if cutscene:choicer({"Yes", "No"}) == 1 then
             cutscene:wait(0.2)
             cutscene:fadeOut(0.5)
             cutscene:wait(0.5)

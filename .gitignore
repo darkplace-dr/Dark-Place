@@ -1,0 +1,5 @@
+## Visual Studio Code
+.vscode/settings.json
+
+## Tiled
+*.tiled-session
