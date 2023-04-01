@@ -2,8 +2,8 @@
 ---@overload fun(...) : billboard
 local billboard, super = Class(Event)
 
-function billboard:init(x, y, width, height)
-    super.init(self, x, y, width, height)
+function billboard:init(data)
+    super:init(self, data)
 
     self:setOrigin(0.5, 0.5)
     self:setSprite("objects/billboard", 1/4)

@@ -41,30 +41,23 @@ return {
 	end,
 
 	prefountain1 = function(cutscene, event)
-		local kris = cutscene:getCharacter("kris")
 		local susie = cutscene:getCharacter("susie")
-		local you = cutscene:getCharacter("YOU")
 
 		if not susie then
 			return
 		end
 
-		if kris then
-			cutscene:showNametag("Susie")
-			cutscene:setSpeaker("susie")
+		cutscene:showNametag("Susie")
+		cutscene:setSpeaker("susie")
+		local fstmem = Game.party[1]
+		if fstmem.id == "kris" then
 			cutscene:text("* Hey, Kris, there's a... fountain, over there? Let's go seal it.", "smirk")
-			cutscene:hideNametag()
-		elseif you then
-			cutscene:showNametag("Susie")
-			cutscene:setSpeaker("susie")
+		elseif fstmem.id == "YOU" then
 			cutscene:text("* Hey, Kr-[wait:3]YOU, there's a... fountain, over there? Let's go seal it. ", "smirk")
-			cutscene:hideNametag()
 		else
-			cutscene:showNametag("Susie")
-			cutscene:setSpeaker("susie")
 			cutscene:text("* Hey, there's a... fountain, over there? Let's go seal it.", "smirk")
-			cutscene:hideNametag()
 		end
+		cutscene:hideNametag()
 
 		Game:setFlag("seenPreFountain1Event1", true)
 	end,

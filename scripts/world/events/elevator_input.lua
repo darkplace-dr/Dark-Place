@@ -1,11 +1,12 @@
-local elevatorInput, super = Class(Interactable)
+local elevator_input, super = Class(Interactable)
 
-function elevatorInput:init(data)
+function elevator_input:init(data)
 	super:init(self, data)
 
 	local properties = data.properties or {}
 
-	self.transition = nil
+	-- ["transition"] would be set to the transition object's ID
+	self.transition = Game.world.map:getEvent(properties.transition)
 
 	self.door_l = Sprite("world/elevator_dt_frontdoor_l", 270, 352)
 	self.door_l:setScale(2)
@@ -17,7 +18,7 @@ function elevatorInput:init(data)
 	self.door_r:setLayer(0.3)
 	Game.world:addChild(self.door_r)
 
-	self.door_between = Rectangle(270+self.door_l.width*2, 360, 74, 4)
+	self.door_between = Rectangle(270 + self.door_l.width*2, 360, 74, 4)
 	self.door_between:setLayer(0.3)
 	self.door_between:setColor(0, 0, 0)
 	Game.world:addChild(self.door_between)
@@ -25,35 +26,27 @@ function elevatorInput:init(data)
 	self.maps = Utils.parsePropertyList("map", properties)
 	self.maps_name = {}
 	for i=1, #self.maps do
+		self.maps_name[i] = self.maps[i]
 		if Registry.getMapData(self.maps[i]).properties and Registry.getMapData(self.maps[i]).properties.name then
-			self.maps_name[i] =  Registry.getMapData(self.maps[i]).properties.name
-		else
-			self.maps_name[i] =  self.maps[i]
+			self.maps_name[i] = Registry.getMapData(self.maps[i]).properties.name
 		end
 	end
 end
 
-function elevatorInput:update()
-	if not self.transition then
-		for i, t in ipairs(Game.stage:getObjects(Transition)) do
-			if t.id == "elevatorTransition" then
-				self.transition = t
-				break
-			end
-		end
-	end
-end
-
-function elevatorInput:onInteract()
-	self.world:startCutscene(function(cutscene)
+function elevator_input:onInteract()
+	Game.world:startCutscene(function(cutscene)
 		if #self.maps > 0 then
-			cutscene:text("* Where will you ride the elevator to?")
-			cutscene:choicer(self.maps_name)
-			self.transition.target["map"] = self.maps[cutscene.choice]
-		else
 			cutscene:text("* It seems to be out of order.")
+			return
 		end
+
+		cutscene:text("* Where will you ride the elevator to?")
+		local map = cutscene:choicer(self.maps_name)
+
+		-- TODO: VFX
+
+		self.transition.target["map"] = self.maps[map]
     end)
 end
 
-return elevatorInput
+return elevator_input
