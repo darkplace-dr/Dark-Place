@@ -67,7 +67,8 @@ return {
         Game.world.map.morshu_dance = true
 
         Game.world.music:pause()
-        Assets.playSound("danceparty"):setLooping(true)
+        local danceparty = Music("danceparty", 0.8)
+        danceparty:play()
 
         -- show character dance animations
         local _, dance_anim_rem = showMorshuAnim("dance", 0.0001)
@@ -83,7 +84,8 @@ return {
         end
         magolor:setSprite("shop")
 
-        Assets.stopSound("danceparty")
+        danceparty:stop()
+        danceparty:remove()
         Game.world.music:resume()
 
         Game.world.map.morshu_dance = false
