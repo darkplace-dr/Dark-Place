@@ -2,7 +2,6 @@ local room, super = Class(Map)
 
 function room:onEnter()
     super:onEnter(self)
-    --Game.world:spawnObject(VaporBG(0, 0), "objects_bg")
 
     if Game.world:getCharacter("susie") then
         Game.world:getCharacter("susie").visible = false
@@ -16,15 +15,13 @@ function room:onEnter()
         Game.world:getCharacter("ralsei").visible = false
     end
 
-
     --local parallax = Sprite("world/maps/pizzatower/parallax", 0, 105)
     local parallax = Sprite("world/maps/pizzatower/parallax", 0, 0)
     parallax:setScale(1)
-    parallax:setLayer(Game.world:parseLayer("objects2"))
     parallax.wrap_texture_x = true
     parallax.parallax_x = 1
     parallax.parallax_y = 1
-    Game.world:addChild(parallax)
+    Game.world:spawnObject(parallax, "objects2")
 end
 
 return room
