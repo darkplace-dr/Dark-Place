@@ -223,7 +223,7 @@ return {
                     end,
                     thicc = function()
                         cutscene:showNametag("Takolyshit")
-                        Game.world.fader:fadeIn(nil, { speed = 0.8, color = { 1, 1, 1 }, alpha = 1 })
+                        Game.fader:fadeIn(nil, { speed = 0.8, color = { 1, 1, 1 }, alpha = 1 })
                         event:setSprite("takolyshit")
                         -- Credits to Dobby233Liu for making this not awful code
                         for member, sprite in pairs(wah4_sprite_list) do

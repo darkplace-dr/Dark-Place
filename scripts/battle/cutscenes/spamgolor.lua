@@ -19,8 +19,7 @@ return {
         local price = love.math.random(150, 300)
         cutscene:text("* Spamgolor offered you a healing item for $"..price.."\n* You have $"..Game.money..".")
         cutscene:text("* Will you buy it?")
-        opinion = cutscene:choicer({"Yes", "No"}, options)
-        if opinion == 1 then
+        if cutscene:choicer({"Yes", "No"}) == 1 then
             if Game.money >= price then
                 Assets.playSound("equip")
                 Game.money = Game.money - price

@@ -1,12 +1,11 @@
 return {
 	chan = function(cutscene, event)
         local susie = cutscene:getCharacter("susie")
-        local krischan = cutscene:getCharacter("krischan")
 		cutscene:showNametag("Kris-Chan")
 		cutscene:text("* Go! Sonichu! Go out and zap to the extreme!")
 		cutscene:text("* Sonichu! Use EXPLOSION!!!")
 		cutscene:hideNametag()
-        krischan:explode()
+        event:explode()
         cutscene:wait(3)
 		cutscene:showNametag("Susie")
         cutscene:setSpeaker(susie)
@@ -16,12 +15,10 @@ return {
 
     poseur = function(cutscene, event)
         cutscene:text("* It's a mannequin.[wait:10] Do you want to fight it?")
-        opinion = cutscene:choicer({"Yes", "No"}) == 1
-        if opinion then
-            local poseur = cutscene:getEvent(14)
-            cutscene:startEncounter("poseur", true, {{"poseur", poseur}})
+        if cutscene:choicer({"Yes", "No"}) == 1 then
+            cutscene:startEncounter("poseur", true, {{"poseur", event}})
             cutscene:wait(2)
-            poseur:explode()
+            event:explode()
             cutscene:wait(5)
             if cutscene:getCharacter("susie") then
                 cutscene:showNametag("Susie")

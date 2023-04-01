@@ -80,16 +80,6 @@ Mod.binCodes = {
     { code = "bossrush", result = "thearena" },
 }
 
--- I'm sorry
-function Mod:findItemThatContainsValueSatisfyingCond1D(tbl, cond)
-    for _, v in ipairs(tbl) do
-        if cond(v) then
-            return v
-        end
-    end
-    return nil
-end
-
 -- if you don't want to be cringe there's also this new totally cool helper function wowee
 -- also returns success just in-case someone else steals your code before you get to use it.
 function Mod:addBinCode(code, result, marker)
@@ -132,6 +122,25 @@ Mod.wave_shader = love.graphics.newShader([[
 
 -- Other utilties
 
+-- I'm sorry
+function Mod:findItemThatContainsValueSatisfyingCond1D(tbl, cond)
+    for _, v in ipairs(tbl) do
+        if cond(v) then
+            return v
+        end
+    end
+    return nil
+end
+
+function Mod:findItemThatContainsValueSatisfyingCond2D(tbl, cond)
+    for k, v in pairs(tbl) do
+        if cond(k, v) then
+            return k, v
+        end
+    end
+    return nil, nil
+end
+
 function Mod:getKris()
     local YOU = Game:getPartyMember("YOU")
     local kris = Game:getPartyMember("kris")
@@ -142,4 +151,12 @@ function Mod:getKrisActor(cutscene)
     local YOU = cutscene:getCharacter("YOU")
     local kris = cutscene:getCharacter("kris")
     return YOU or kris
+end
+
+function Mod:hasAch(id)
+    local data = Kristal.callEvent("getAchievements")
+    local _, result = Mod:findItemThatContainsValueSatisfyingCond2D(data.achievements, function(_, v)
+        return v.id == id and v.earned == true
+    end)
+    return result
 end

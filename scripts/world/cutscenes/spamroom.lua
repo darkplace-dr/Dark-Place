@@ -35,9 +35,9 @@ return {
 
 		cutscene:after(function()
 			local menu = WarpBinInputMenu()
-			menu.finish_cb = function(_action)
+			menu.finish_cb = function()
 				-- I'm sorry
-				Game.world:startCutscene("spamroom", "warpbin_proc")
+				Game.world:startCutscene("spamroom", "warpbin_proc", action)
 			end
 			Game.world:openMenu(menu)
 		end)
