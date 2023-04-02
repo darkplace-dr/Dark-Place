@@ -1,4 +1,8 @@
 function Mod:postInit(new_file)
+    -- Accur acy
+    MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
+    MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
+
     -- FUN Value
     if new_file then
         Game:setFlag("fun", love.math.random(1, 100))

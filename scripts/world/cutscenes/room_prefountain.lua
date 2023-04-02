@@ -65,8 +65,7 @@ return {
 		local function textFinish(text)
 			return function() return text.done end
 		end
-		local function showText(obj, tbl, prefix)
-			prefix = prefix or "[noskip][speed:0.3][spacing:1.75]"
+		local function showText(obj, tbl)
 			local _tbl
 			if type(tbl) ~= "table" then
 				_tbl = {tbl}
@@ -74,10 +73,11 @@ return {
 				_tbl = Utils.copy(tbl)
 			end
 			for i, v in ipairs(_tbl) do
-				_tbl[i] = prefix .. v
+				_tbl[i] = "[noskip][speed:0.3][spacing:1.75][voice:nil]" .. v
 			end
 			obj:setText(_tbl)
-			return textFinish(obj)
+
+			cutscene:wait(textFinish(obj))
 		end
 
 		local used_fountain_once = Game:getFlag("used_fountain_once", false)
@@ -104,7 +104,7 @@ return {
 		local fountain = Game.world:getEvent(2)
 
 		cutscene:wait(party_walk_up_wait)
-		cutscene:wait(3)
+		cutscene:wait(used_fountain_once and 1.5 or 3)
 
 		local text = DialogueText({"ass"}, 100, 80, (SCREEN_WIDTH - 100 * 2) + 14, SCREEN_HEIGHT, nil, "dark")
 		text:setLayer(WORLD_LAYERS["textbox"])
@@ -112,27 +112,30 @@ return {
 
 		local first_diag = {
 			"[voice:susie]So here's the fountain of this place...",
-			"It feels... so different from the previous ones.",
-			"Like it's way more powerful... and stable.",
-			"Is it what [color:blue]PURE DARKNESS[color:reset] is like?",
-			"...",
-			"Something tells me we might not be able to seal it.",
-			members[1].id == "kris"
+			"[voice:susie]It feels... so different from the previous ones.",
+			"[voice:susie]Like it's way more powerful... and stable.",
+			"[voice:susie]Is it what [color:blue]PURE DARKNESS[color:reset] is like?",
+			"[voice:susie]...",
+			"[voice:susie]Something tells me we might not be able to seal it.",
+			"[voice:susie]"..
+			(members[1].id == "kris"
 				and "But I guess we can still try.\nRight, Kris?"
-				or string.format("Actually, %s... Can you even seal one?", members[1].actor.name)
+				or string.format("Actually, %s... Can you even seal one?", members[1].actor.name))
 		}
 		if used_fountain_once then
-			first_diag = {"[voice:nil](Do you want to return to the Light World?)"}
+			first_diag = {"[spacing:1][speed:1](Do you want to return to the Light World?)"}
 		end
-		cutscene:wait(showText(text, first_diag))
+		showText(text, first_diag)
 		text.alpha = 0 -- hide
 
 		if cutscene:choicer({"Yes", "No"}) == 1 then
 			cutscene:wait(cutscene:walkTo(leader, leader.x, 330, 2))
 			cutscene:wait(2)
 
+			--if not used_fountain_once then
 			text.alpha = 1 -- show
-			cutscene:wait(showText(text, "[voice:nil](It was as if your very SOUL was glowing...)"))
+			showText(text, "[spacing:1](It was as if your very SOUL was glowing...)")
+			--end
 			text:remove()
 
 			Game.world.music:stop()
@@ -155,28 +158,29 @@ return {
 
 			cutscene:playSound("snd_usefountain")
 			cutscene:wait(50/30)
-			fountain.adjust = 1
+			fountain.adjust = 1 -- fade color
 			Game.world.timer:tween(170/30, soul, {y = 160})
-			Game.world.timer:everyInstant(1/30, function()
-				fountain.eyebody = fountain.eyebody * 0.98
-			end, 170/30)
+			Game.world.timer:during(170/30, function()
+				fountain.eyebody = fountain.eyebody - (fountain.eyebody * (1 - 0.98) * DTMULT)
+			end)
 			cutscene:wait(170/30)
-			fountain.adjust = 2
+			fountain.adjust = 2 -- freeze in place
 
 			cutscene:wait(3)
 			cutscene:playSound("revival")
 			generateSoulAfterimage()
 			local flash_parts = {}
-			local flash_part_num = 11
+			local flash_part_num_o = 12
+			local flash_part_num = flash_part_num_o - 1
+			local flash_part_rs_incr = 0.5
 			for i = 1, flash_part_num do
-				local part = Rectangle(SCREEN_WIDTH / 2, 0, i*i*2, 500)
+				local part = Rectangle(SCREEN_WIDTH / 2, 0, i*i / 2, SCREEN_HEIGHT)
 				part:setOrigin(0.5, 0)
-				part.color = {1, 1, 1}
-				part.layer = soul.layer - i
-				part.graphics.grow_x = 0.5*i * 2
-				part.alpha = 0
-				part.graphics.fade = 0.5 / 16
-				part.graphics.fade_to = 1 - (i / 12)
+				part.layer = fountain.layer + (1 + flash_part_num - i)
+				part:setColor(1, 1, 1, -(i / flash_part_num_o))
+				part.graphics.fade = flash_part_rs_incr / 16
+				part.graphics.fade_to = math.huge
+				part.graphics.grow_x = flash_part_rs_incr*i / 2
 				table.insert(flash_parts, part)
 				Game.world:addChild(part)
 			end
