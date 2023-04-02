@@ -4,57 +4,9 @@ function Mod:postInit(new_file)
         Game:setFlag("fun", love.math.random(1, 100))
     end
 
-    Mod:initializeYOUHooks()
-
     if new_file and Game:hasPartyMember("YOU") then
         Game.world:startCutscene("room1", "react_to_YOU")
     end
-end
-
--- Hooks for YOU's "send" action
-
-function Mod:initializeYOUHooks()
-    Utils.hook(ActionButton, "select", function(orig, self)
-        if self.type == "send" then
-            Game.battle:setState("ENEMYSELECT", "SPARE")
-        else
-            orig(self)
-        end
-    end)
-    Utils.hook(ActionButton, "hasSpecial", function(orig, self)
-        if self.type == "send" then
-            for _, enemy in ipairs(Game.battle:getActiveEnemies()) do
-                if enemy.mercy >= 100 then
-                    return true
-                end
-            end
-            return false
-        end
-        return orig(self)
-    end)
-    Utils.hook(EnemyBattler, "getSpareText", function(orig, self, battler, success)
-        local text = orig(self, battler, success)
-        if battler.chara.id == "YOU" then
-            if type(text) == "table" then
-                text[1] = text[1]:gsub("spared", "sended")
-            else
-                text = text:gsub("spared", "sended")
-            end
-        end
-        return text
-    end)
-end
-
-function Mod:getActionButtons(battler, buttons)
-    if Game:getPartyMember(battler.chara.id).ribbit == true then
-        if Game:getPartyMember(battler.chara.id).name == "YOU" then
-            return {"fight", "act", "item", "send", "defend"}
-        else
-            return {"fight", "magic", "item", "send", "defend"}
-            --return {"fight", "magic", "item", "send", "defend"}
-        end
-    end
-    return buttons
 end
 
 -- Warp Bin

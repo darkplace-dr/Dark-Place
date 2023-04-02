@@ -1,6 +1,6 @@
 local lib = {}
 
-function lib:init()
+function lib:postInit()
     Utils.hook(DarkPowerMenu, "drawStats", function(orig, self)
         local party = self.party:getSelected()
 
@@ -90,24 +90,9 @@ function lib:init()
             orig(self, index, x, y, abilities, compare)
         end
     end)
-end
 
+    --///////////////// ACTION BUTTONS
 
-
-
-
-
---///////////////// ACTION BUTTONS
-
-
-
-
-
-
-
-
-
-function Mod:postInit(new_file)
     Utils.hook(ActionButton, "select", function(orig, self)
         if self.type == "send" then
             Game.battle:setState("ENEMYSELECT", "SPARE")
@@ -129,7 +114,7 @@ function Mod:postInit(new_file)
     end)
     Utils.hook(EnemyBattler, "getSpareText", function(orig, self, battler, success)
         local text = orig(self, battler, success)
-        if Game:getPartyMember(battler.chara.id).ribbit == true then
+        if Game:getPartyMember(battler.chara.id).ribbit then
             if type(text)=="table" then
                 text[1] = text[1]:gsub("spared", "sended")
             else
@@ -140,24 +125,8 @@ function Mod:postInit(new_file)
     end)
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function Mod:getActionButtons(battler, buttons)
-    if Game:getPartyMember(battler.chara.id).ribbit == true then
+function lib:getActionButtons(battler, buttons)
+    if Game:getPartyMember(battler.chara.id).ribbit then
         if Game:getPartyMember(battler.chara.id).name == "YOU" then
             return {"fight", "act", "item", "send", "defend"}
         else
@@ -167,9 +136,4 @@ function Mod:getActionButtons(battler, buttons)
     return buttons
 end
 
-
-
-
 return lib
-
-
