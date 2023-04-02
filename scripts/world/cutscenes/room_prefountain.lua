@@ -66,7 +66,7 @@ return {
 			return function() return text.done end
 		end
 		local function showText(obj, tbl, prefix)
-			prefix = prefix or "[noskip][voice:susie][speed:0.3][spacing:1.75]"
+			prefix = prefix or "[noskip][speed:0.3][spacing:1.75]"
 			local _tbl
 			if type(tbl) ~= "table" then
 				_tbl = {tbl}
@@ -111,7 +111,7 @@ return {
 		Game.world:addChild(text)
 
 		local first_diag = {
-			"So here's the fountain of this place...",
+			"[voice:susie]So here's the fountain of this place...",
 			"It feels... so different from the previous ones.",
 			"Like it's way more powerful... and stable.",
 			"Is it what [color:blue]PURE DARKNESS[color:reset] is like?",
@@ -122,7 +122,7 @@ return {
 				or string.format("Actually, %s... Can you even seal one?", members[1].actor.name)
 		}
 		if used_fountain_once then
-			first_diag = {"(Do you want to return to the Light World?)"}
+			first_diag = {"[voice:nil](Do you want to return to the Light World?)"}
 		end
 		cutscene:wait(showText(text, first_diag))
 		text.alpha = 0 -- hide
@@ -132,7 +132,7 @@ return {
 			cutscene:wait(2)
 
 			text.alpha = 1 -- show
-			cutscene:wait(showText(text, "(It was as if your very SOUL was glowing...)"))
+			cutscene:wait(showText(text, "[voice:nil](It was as if your very SOUL was glowing...)"))
 			text:remove()
 
 			Game.world.music:stop()
@@ -173,9 +173,9 @@ return {
 				part:setOrigin(0.5, 0)
 				part.color = {1, 1, 1}
 				part.layer = soul.layer - i
-				part.graphics.grow_x = 0.5*i
+				part.graphics.grow_x = 0.5*i / 4
 				part.alpha = 0
-				part.graphics.fade = (0.5 / 16)
+				part.graphics.fade = (0.5 / 16) / 2
 				part.graphics.fade_to = 1 - (i / 12)
 				table.insert(flash_parts, part)
 				Game.world:addChild(part)
