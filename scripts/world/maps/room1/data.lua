@@ -491,8 +491,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "* Silence echoes in the darkness\nof this familiar-yet-different\nscenery.",
-            ["text2"] = "* The power of avoiding copying\nofficial music shines within\nyou."
+            ["text1"] = "* A known music now echoes in the air.",
+            ["text2"] = "* The power of receiving a copyright strike might fill you soon."
           }
         },
         {

@@ -1,5 +1,8 @@
 ## Visual Studio Code
-.vscode/settings.json
+.vscode
 
 ## Tiled
 *.tiled-session
+
+## Aseprite
+*.ase

@@ -12,7 +12,7 @@ return {
   nextobjectid = 17,
   properties = {
     ["border"] = "simple",
-    ["music"] = "THE_HOLY",
+    ["music"] = "deltarune/THE_HOLY",
     ["name"] = "Dark Fountain"
   },
   tilesets = {},

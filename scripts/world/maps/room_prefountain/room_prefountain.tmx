@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="40">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="41">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -154,6 +154,9 @@
  </objectgroup>
  <objectgroup color="#7f00ff" id="2" name="markers">
   <object id="28" name="entry" x="1040" y="1933">
+   <point/>
+  </object>
+  <object id="40" name="entry_fountain" x="1040" y="530">
    <point/>
   </object>
  </objectgroup>
