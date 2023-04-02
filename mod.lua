@@ -159,5 +159,5 @@ end
 function Mod:hasAch(id)
     local ach = Kristal.callEvent("getAchievement", id)
     if not ach then error("No such ach: " .. id) end
-    return not ach.earned
+    return ach.earned
 end
