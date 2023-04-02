@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="48">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="48">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -111,12 +111,15 @@
   <object id="14" x="160" y="400" width="80" height="40"/>
   <object id="15" x="40" y="360" width="120" height="40"/>
   <object id="16" x="0" y="120" width="40" height="240"/>
-  <object id="17" x="200" y="440" width="40" height="240"/>
   <object id="18" x="360" y="440" width="40" height="240"/>
   <object id="23" x="600" y="640" width="40" height="40"/>
   <object id="24" x="640" y="600" width="120" height="40"/>
   <object id="25" x="760" y="640" width="40" height="160"/>
   <object id="26" x="600" y="800" width="160" height="40"/>
+  <object id="48" x="200" y="440" width="40" height="100"/>
+  <object id="49" x="200" y="580" width="40" height="100"/>
+  <object id="50" x="0" y="500" width="200" height="40"/>
+  <object id="51" x="0" y="580" width="200" height="40"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="4" name="objects">
   <object id="19" name="npc" x="480" y="840" width="40" height="40">
@@ -127,12 +130,8 @@
   </object>
   <object id="27" name="savepoint" x="80" y="210" width="40" height="40">
    <properties>
-    <property name="text1">* Silence echoes in the darkness
-of this familiar-yet-different
-scenery.</property>
-    <property name="text2">* The power of avoiding copying
-official music shines within
-you.</property>
+    <property name="text1" value="* A known music now echoes in the air."/>
+    <property name="text2" value="* The power of receiving a copyright strike might fill you soon."/>
    </properties>
   </object>
   <object id="28" name="squeak" x="680" y="600" width="40" height="40"/>
@@ -195,6 +194,13 @@ you.</property>
    </properties>
    <point/>
   </object>
+  <object id="52" name="transition" x="-10" y="540" width="10" height="40">
+   <properties>
+    <property name="facing" value="right"/>
+    <property name="marker" value="entry_j"/>
+    <property name="shop" value="jeku_shop"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="20" name="spawn" x="300" y="250">
@@ -207,6 +213,9 @@ you.</property>
    <point/>
   </object>
   <object id="46" name="entry_elevator" x="300" y="152">
+   <point/>
+  </object>
+  <object id="53" name="entry_j" x="30" y="570">
    <point/>
   </object>
  </objectgroup>

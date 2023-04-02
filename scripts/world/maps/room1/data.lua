@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
@@ -32,6 +33,7 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -72,6 +74,7 @@ return {
       image = "../../../../assets/sprites/tilesets/aroombetween.png",
       id = 7,
       name = "Image Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 600,
@@ -90,6 +93,7 @@ return {
       height = 24,
       id = 2,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -133,6 +137,7 @@ return {
       height = 24,
       id = 6,
       name = "elevator",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -173,6 +178,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -364,19 +370,6 @@ return {
           properties = {}
         },
         {
-          id = 17,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 200,
-          y = 440,
-          width = 40,
-          height = 240,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 18,
           name = "",
           type = "",
@@ -440,6 +433,58 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 48,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 440,
+          width = 40,
+          height = 100,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 580,
+          width = 40,
+          height = 100,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 50,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 500,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 580,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -448,6 +493,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -484,8 +530,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "* Silence echoes in the darkness\nof this familiar-yet-different\nscenery.",
-            ["text2"] = "* The power of avoiding copying\nofficial music shines within\nyou."
+            ["text1"] = "* A known music now echoes in the air.",
+            ["text2"] = "* The power of receiving a copyright strike might fill you soon."
           }
         },
         {
@@ -645,6 +691,23 @@ return {
             ["actor"] = "dog",
             ["cutscene"] = "room1.plaedmc2"
           }
+        },
+        {
+          id = 52,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = -10,
+          y = 540,
+          width = 10,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "right",
+            ["marker"] = "entry_j",
+            ["shop"] = "jeku_shop"
+          }
         }
       }
     },
@@ -653,6 +716,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -707,6 +771,19 @@ return {
           shape = "point",
           x = 300,
           y = 152,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 53,
+          name = "entry_j",
+          type = "",
+          shape = "point",
+          x = 30,
+          y = 570,
           width = 0,
           height = 0,
           rotation = 0,
