@@ -126,7 +126,6 @@ function lib:postInit()
 end
 
 function lib:getActionButtons(battler, buttons)
-    print("call")
     if Game:getPartyMember(battler.chara.id).ribbit then
         if Game:getPartyMember(battler.chara.id).name == "YOU" then
             return {"fight", "act", "item", "send", "defend"}
