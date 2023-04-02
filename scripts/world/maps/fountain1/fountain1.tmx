@@ -5,8 +5,8 @@
  </editorsettings>
  <properties>
   <property name="border" value="simple"/>
-  <property name="music" value="THE_HOLY"/>
-  <property name="name" value="deltarune/Dark Fountain"/>
+  <property name="music" value="deltarune/THE_HOLY"/>
+  <property name="name" value="Dark Fountain"/>
  </properties>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data encoding="csv">
