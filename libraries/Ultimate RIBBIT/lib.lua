@@ -90,24 +90,9 @@ function lib:init()
             orig(self, index, x, y, abilities, compare)
         end
     end)
-end
 
+    --///////////////// ACTION BUTTONS
 
-
-
-
-
---///////////////// ACTION BUTTONS
-
-
-
-
-
-
-
-
-
-function Mod:postInit(new_file)
     Utils.hook(ActionButton, "select", function(orig, self)
         if self.type == "send" then
             Game.battle:setState("ENEMYSELECT", "SPARE")
@@ -140,23 +125,7 @@ function Mod:postInit(new_file)
     end)
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function Mod:getActionButtons(battler, buttons)
+function lib:getActionButtons(battler, buttons)
     if Game:getPartyMember(battler.chara.id).ribbit == true then
         if Game:getPartyMember(battler.chara.id).name == "YOU" then
             return {"fight", "act", "item", "send", "defend"}
@@ -167,9 +136,4 @@ function Mod:getActionButtons(battler, buttons)
     return buttons
 end
 
-
-
-
 return lib
-
-
