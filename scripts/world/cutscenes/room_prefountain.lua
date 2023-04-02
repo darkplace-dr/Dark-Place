@@ -174,13 +174,14 @@ return {
 			local flash_part_num = flash_part_num_o - 1
 			local flash_part_rs_incr = 0.5
 			for i = 1, flash_part_num do
-				local part = Rectangle(SCREEN_WIDTH / 2, 0, i*i / 2, SCREEN_HEIGHT)
+				local part_w = i*i * 2
+				local part = Rectangle(SCREEN_WIDTH / 2, 0, part_w, SCREEN_HEIGHT)
 				part:setOrigin(0.5, 0)
 				part.layer = fountain.layer + (1 + flash_part_num - i)
 				part:setColor(1, 1, 1, -(i / flash_part_num_o))
 				part.graphics.fade = flash_part_rs_incr / 16
 				part.graphics.fade_to = math.huge
-				part.graphics.grow_x = flash_part_rs_incr*i / 2
+				part.graphics.grow_x = (flash_part_rs_incr*i) / part_w
 				table.insert(flash_parts, part)
 				Game.world:addChild(part)
 			end
