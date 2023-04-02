@@ -187,17 +187,29 @@ return {
 	            Game.world:addChild(s)
 	        end
 	        cutscene:wait(2)
+	        local h_layer = soul.layer - 5
 	        Game.world.timer:tween(1, soul, {alpha=0}, "linear", function()
 	            soul:remove()
 	        end)
-	        cutscene:wait(3)
-	        for i=1, 3 do
-	            Game.world.timer:tween(1, tab[i], {alpha=0}, "linear", function()
+	        cutscene:wait(1)
+	        local hider=Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+	        hider:setColor(0, 0, 0, 1)
+	        hider:setLayer(h_layer)
+	        Game.world:addChild(hider)
+	        for i=1, 5 do
+	            Game.world.timer:tween(4.5, tab[i], {alpha=0}, "linear", function()
 	                tab[i]:remove()
 	            end)
 	        end
 
+	        cutscene:wait(6)
+	        cutscene:wait(cutscene:fadeOut(1, {color={1, 1, 1}}))
+	        cutscene:mapTransition("warphub") -- "warphub" is temporary.
+	        cutscene:fadeIn(1)
+	        Kristal.showBorder(1)
+
 	        Game:setFlag("used_fountain_once", true)
+	        cutscene:endCutscene()
 	    else
 	    	cutscene:wait(2)
 	    	if not Game:getFlag("used_fountain_once", false) then
