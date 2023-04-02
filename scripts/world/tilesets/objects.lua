@@ -1,17 +1,14 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.8.6",
   name = "objects",
-  class = "",
   tilewidth = 147,
   tileheight = 725,
   spacing = 0,
   margin = 0,
   columns = 0,
   objectalignment = "unspecified",
-  tilerendersize = "tile",
-  fillmode = "stretch",
   tileoffset = {
     x = 0,
     y = 0
@@ -23,7 +20,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 15,
+  tilecount = 17,
   tiles = {
     {
       id = 0,
@@ -138,6 +135,18 @@ return {
       image = "../../../assets/sprites/world/maps/pizzatower/thuthie.png",
       width = 118,
       height = 138
+    },
+    {
+      id = 18,
+      image = "../../../assets/sprites/objects/pillar.png",
+      width = 29,
+      height = 90
+    },
+    {
+      id = 19,
+      image = "../../../assets/sprites/objects/spamgolor_door.png",
+      width = 51,
+      height = 40
     }
   }
 }
