@@ -52,7 +52,7 @@ function actor:onWorldUpdate(chara)
             chara.dance_anim_timer = 0
         end
         -- Animate
-        chara.sprite.x = math.sin(chara.dance_anim_timer * 12) * (Kristal.Config["simplifyVFX"] and 1 or 4)
+        chara.sprite.x = math.sin(chara.dance_anim_timer * (Kristal.Config["simplifyVFX"] and 12 or 8)) * 4
         chara.dance_anim_timer = chara.dance_anim_timer + DTMULT
     elseif chara.dance_anim_timer ~= nil and chara.dance_anim_timer ~= 0 then
 	    chara.sprite.x = 0

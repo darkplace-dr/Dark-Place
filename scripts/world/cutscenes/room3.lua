@@ -19,7 +19,7 @@ return {
         local function showMorshuAnim(sprite, speed)
             local m_anim = Sprite("world/cutscenes/room3_morshu/" .. sprite)
             m_anim:play(speed, true)
-            m_anim.layer = WORLD_LAYERS["top"]
+            m_anim.layer = WORLD_LAYERS["ui"]
             m_anim.parallax_x = 0
             m_anim.parallax_y = 0
             m_anim:setScale(2)
