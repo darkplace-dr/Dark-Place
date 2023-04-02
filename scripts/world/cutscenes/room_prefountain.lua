@@ -169,13 +169,13 @@ return {
 			local flash_parts = {}
 			local flash_part_num = 11
 			for i = 1, flash_part_num do
-				local part = Rectangle(SCREEN_WIDTH / 2, 0, i*i, 500)
+				local part = Rectangle(SCREEN_WIDTH / 2, 0, i*i*2, 500)
 				part:setOrigin(0.5, 0)
 				part.color = {1, 1, 1}
 				part.layer = soul.layer - i
-				part.graphics.grow_x = 0.5*i / 4
+				part.graphics.grow_x = 0.5*i * 2
 				part.alpha = 0
-				part.graphics.fade = (0.5 / 16) / 2
+				part.graphics.fade = 0.5 / 16
 				part.graphics.fade_to = 1 - (i / 12)
 				table.insert(flash_parts, part)
 				Game.world:addChild(part)
