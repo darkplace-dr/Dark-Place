@@ -1,6 +1,6 @@
 local lib = {}
 
-function lib:init()
+function lib:postInit()
     Utils.hook(DarkPowerMenu, "drawStats", function(orig, self)
         local party = self.party:getSelected()
 
@@ -114,7 +114,7 @@ function lib:init()
     end)
     Utils.hook(EnemyBattler, "getSpareText", function(orig, self, battler, success)
         local text = orig(self, battler, success)
-        if Game:getPartyMember(battler.chara.id).ribbit == true then
+        if Game:getPartyMember(battler.chara.id).ribbit then
             if type(text)=="table" then
                 text[1] = text[1]:gsub("spared", "sended")
             else
@@ -126,7 +126,8 @@ function lib:init()
 end
 
 function lib:getActionButtons(battler, buttons)
-    if Game:getPartyMember(battler.chara.id).ribbit == true then
+    print("call")
+    if Game:getPartyMember(battler.chara.id).ribbit then
         if Game:getPartyMember(battler.chara.id).name == "YOU" then
             return {"fight", "act", "item", "send", "defend"}
         else

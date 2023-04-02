@@ -6,6 +6,9 @@ function character:init()
     -- Display name
     self.name = "YOU"
 
+    -- Enable RIBBIT gimmicks.
+    self.ribbit = true
+
     -- Actor (handles overworld/battle sprites)
     self:setActor("YOU")
     self:setLightActor("YOU_lw")
