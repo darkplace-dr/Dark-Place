@@ -16,6 +16,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Just Another Random User - Contributor
 * Charbomber - Contributor
 * Bor - Contributor
+* vitellary - Contributor
+* Dobby233Liu - Contributor
 
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
@@ -24,7 +26,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Cоrе#2611 - MoreBattle Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
 * Pinto Molhado#5175 - Edited "Gnome Forest" title card from Pizza Tower
-* TheMaximus - Original author for Ribbit
+* TheMaxine - Original author for Ribbit
 * RhenaudTheLukark - Original author for Unitale/Create Your Frisk/Create Your Kris
 * STD Repaints - Original author for Deltarune Repainted
 * RynoGG - Original author for Deltatraveler
@@ -33,3 +35,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Ninomae Ina'nis - Creator and designer of the Takodachis
 * HAL Laboratories - Original author for Kirby
 * Tour de Pizza - Original authors for Pizza Tower
+* Eminus - Original author for Mario's Mystery Meat
