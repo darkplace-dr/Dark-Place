@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 47,
+  nextobjectid = 52,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -377,7 +377,7 @@ return {
           x = 200,
           y = 440,
           width = 40,
-          height = 240,
+          height = 100,
           rotation = 0,
           visible = true,
           properties = {}
@@ -442,6 +442,45 @@ return {
           x = 600,
           y = 800,
           width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 47,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 580,
+          width = 40,
+          height = 100,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 48,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 500,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 580,
+          width = 200,
           height = 40,
           rotation = 0,
           visible = true,
@@ -636,6 +675,23 @@ return {
             ["map"] = "elevator",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 50,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = -10,
+          y = 540,
+          width = 10,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "right",
+            ["marker"] = "entry_j",
+            ["shop"] = "jeku_shop"
+          }
         }
       }
     },
@@ -699,6 +755,19 @@ return {
           shape = "point",
           x = 300,
           y = 152,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "entry_j",
+          type = "",
+          shape = "point",
+          x = 30,
+          y = 570,
           width = 0,
           height = 0,
           rotation = 0,
