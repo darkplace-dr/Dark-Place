@@ -59,16 +59,6 @@ function character:init()
             magic = 1
         }
     end
-    -- Max stats from level-ups
-    if Game.chapter == 1 then
-        self.max_stats = {
-            health = 140
-        }
-    else
-        self.max_stats = {
-            health = 190
-        }
-    end
 
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/axe"

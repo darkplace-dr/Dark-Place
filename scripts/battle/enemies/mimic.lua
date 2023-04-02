@@ -17,7 +17,12 @@ function Mimic:init()
     self.defense = 2
     -- Enemy reward
     self.money = 1000
-	self.experience = 50
+    if Mod:isInTheArena() == true then
+        self.experience = 0
+    else
+        self.experience = 50
+    end
+	
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
@@ -118,28 +123,55 @@ function Mimic:hurt(amount, battler, color)
         Game.battle.state = "ACTIONSDONE"
         Game.battle:startCutscene(function(cutscene)
             self.death = true
+            local susie = cutscene:getCharacter("susie")
+            local dess = cutscene:getCharacter("dess")
             cutscene:wait(1)
             self:shake(5)
             Assets.playSound("wing")
-            cutscene:text("* Hey uh,[wait:5] something about this feels off...", "sad_frown", "susie")
+            if Mod:isInTheArena() == true then
+                if susie then
+                    cutscene:text("* Heh,[wait:5] looks like we've won.", "smile", "susie")  
+                end
+            else
+                cutscene:text("* Hey uh,[wait:5] something about this feels off...", "sad_frown", "susie")
+            end
             self:shake(5)
             Assets.playSound("wing")
             cutscene:wait(1)
             self:shake(5)
             Assets.playSound("wing")
             cutscene:wait(1)
-            cutscene:text("* idk looks fine to me lol", "kind", "dess")
+            if Mod:isInTheArena() == true then
+                if dess then
+                    cutscene:text("* funny explosion incomming", "kind", "dess")
+                end
+            else
+                cutscene:text("* idk looks fine to me lol", "kind", "dess")
+            end
             self:shake(5)
             Assets.playSound("wing")
             cutscene:wait(2)
             
-            Game.battle.killed = true
-            Game:addFlag("library_kills", 1)
-            self:defeat("KILLED", true)
+            if Mod:isInTheArena() ~= true then
+                Game.battle.killed = true
+                Game:addFlag("library_kills", 1)
+                self:defeat("KILLED", true)
+            else
+                self:defeat("VIOLENCE", true)
+            end
             self:explode(0, 0, false)
             cutscene:wait(2)
-            cutscene:text("* ...", "shock", "susie")
-            cutscene:text("* well erm... THAT just happened lol", "condescending", "dess")
+            if Mod:isInTheArena() == true then
+                if susie then
+                    cutscene:text("* That was too easy!", "smile", "susie")
+                end
+                if dess then
+                    cutscene:text("* gg ez", "condescending", "dess")
+                end
+            else
+                cutscene:text("* ...", "shock", "susie")
+                cutscene:text("* well erm... THAT just happened lol", "condescending", "dess")
+            end
         end)
     end
 end

@@ -117,3 +117,7 @@ function Mod:hasAch(id)
     if not ach then error("No such ach: " .. id) end
     return ach.earned
 end
+
+function Mod:isInTheArena()
+    return Game.world.map.id == "thearena"
+end
