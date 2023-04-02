@@ -181,7 +181,7 @@ return {
 				part:setColor(1, 1, 1, -(i / flash_part_num_o))
 				part.graphics.fade = flash_part_rs_incr / 16
 				part.graphics.fade_to = math.huge
-				part.graphics.grow_x = (flash_part_rs_incr*i) / part_w
+				part.graphics.grow_x = (flash_part_rs_incr*i * 2) / part_w
 				table.insert(flash_parts, part)
 				Game.world:addChild(part)
 			end
