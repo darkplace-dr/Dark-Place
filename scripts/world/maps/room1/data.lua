@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
@@ -10,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 47,
+  nextobjectid = 48,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -33,7 +32,6 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -74,7 +72,6 @@ return {
       image = "../../../../assets/sprites/tilesets/aroombetween.png",
       id = 7,
       name = "Image Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 600,
@@ -93,7 +90,6 @@ return {
       height = 24,
       id = 2,
       name = "decal",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -137,7 +133,6 @@ return {
       height = 24,
       id = 6,
       name = "elevator",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -178,7 +173,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -454,7 +448,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -491,8 +484,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "* A known music now echoes in the air.",
-            ["text2"] = "* The power of receiving a copyright strike might fill you soon."
+            ["text1"] = "* Silence echoes in the darkness\nof this familiar-yet-different\nscenery.",
+            ["text2"] = "* The power of avoiding copying\nofficial music shines within\nyou."
           }
         },
         {
@@ -636,6 +629,22 @@ return {
             ["map"] = "elevator",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 47,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 740,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "dog",
+            ["cutscene"] = "room1.plaedmc2"
+          }
         }
       }
     },
@@ -644,7 +653,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
