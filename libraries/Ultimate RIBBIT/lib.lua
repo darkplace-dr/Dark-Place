@@ -85,7 +85,11 @@ function lib:postInit()
                     love.graphics.setColor(0.25, 0.25, 0.25)
                 end
             end
-            love.graphics.print(name or "(NOTHING HERE)", x + 26, y - 6)
+            if self.state == "ITEMS" then
+                love.graphics.print(name or "(OR MAYBE NOT?)", x + 26, y - 6)
+            else
+                love.graphics.print(name or "(NOTHING HERE)", x + 26, y - 6)
+            end
         else
             orig(self, index, x, y, abilities, compare)
         end
@@ -116,9 +120,21 @@ function lib:postInit()
         local text = orig(self, battler, success)
         if Game:getPartyMember(battler.chara.id).ribbit then
             if type(text)=="table" then
-                text[1] = text[1]:gsub("spared", "sended")
+                --text[1] = text[1]:gsub("spared", "SENT")
+                
+                if success == true then
+                    text[1] = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!"
+                else
+                    text[1] = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!\n* But it wasn't [color:yellow]APPEASED[color:reset]..."
+                end
             else
-                text = text:gsub("spared", "sended")
+                --text = text:gsub("spared", "SENT")
+                if success == true then
+                    text = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!"
+                else
+                    text = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!\n* But it wasn't [color:yellow]APPEASED[color:reset]..."
+                end
+                
             end
         end
         return text
