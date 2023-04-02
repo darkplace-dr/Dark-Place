@@ -46,8 +46,13 @@ function Mod:initializeYOUHooks()
 end
 
 function Mod:getActionButtons(battler, buttons)
-    if battler.chara.id == "YOU" then
-        return { "fight", "act", "item", "send", "defend" }
+    if Game:getPartyMember(battler.chara.id).ribbit == true then
+        if Game:getPartyMember(battler.chara.id).name == "YOU" then
+            return {"fight", "act", "item", "send", "defend"}
+        else
+            return {"fight", "magic", "item", "send", "defend"}
+            --return {"fight", "magic", "item", "send", "defend"}
+        end
     end
     return buttons
 end
@@ -152,9 +157,7 @@ function Mod:getKrisActor(cutscene)
 end
 
 function Mod:hasAch(id)
-    local data = Kristal.callEvent("getAchievements")
-    local _, result = Mod:findItemThatContainsValueSatisfyingCond2D(data.achievements, function(_, v)
-        return v.id == id and v.earned == true
-    end)
-    return result
+    local ach = Kristal.callEvent("getAchievement", id)
+    if not ach then error("No such ach: " .. id) end
+    return ach.earned
 end
