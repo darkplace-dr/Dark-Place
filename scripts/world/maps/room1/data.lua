@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 52,
+  nextobjectid = 54,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -370,19 +370,6 @@ return {
           properties = {}
         },
         {
-          id = 17,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 200,
-          y = 440,
-          width = 40,
-          height = 100,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 18,
           name = "",
           type = "",
@@ -448,7 +435,20 @@ return {
           properties = {}
         },
         {
-          id = 47,
+          id = 48,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 440,
+          width = 40,
+          height = 100,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 49,
           name = "",
           type = "",
           shape = "rectangle",
@@ -461,7 +461,7 @@ return {
           properties = {}
         },
         {
-          id = 48,
+          id = 50,
           name = "",
           type = "",
           shape = "rectangle",
@@ -474,7 +474,7 @@ return {
           properties = {}
         },
         {
-          id = 49,
+          id = 51,
           name = "",
           type = "",
           shape = "rectangle",
@@ -530,8 +530,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "* A known music now echoes in the air.",
-            ["text2"] = "* The power of receiving a copyright strike might fill you soon."
+            ["text1"] = "* Silence echoes in the darkness\nof this familiar-yet-different\nscenery.",
+            ["text2"] = "* The power of avoiding copying\nofficial music shines within\nyou."
           }
         },
         {
@@ -677,7 +677,23 @@ return {
           }
         },
         {
-          id = 50,
+          id = 47,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 740,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "dog",
+            ["cutscene"] = "room1.plaedmc2"
+          }
+        },
+        {
+          id = 52,
           name = "transition",
           type = "",
           shape = "rectangle",
@@ -762,7 +778,7 @@ return {
           properties = {}
         },
         {
-          id = 51,
+          id = 53,
           name = "entry_j",
           type = "",
           shape = "point",
