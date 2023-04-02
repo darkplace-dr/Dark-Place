@@ -17,7 +17,7 @@ function Mimic:init()
     self.defense = 2
     -- Enemy reward
     self.money = 1000
-	self.experience = 0
+	self.experience = 50
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
@@ -105,6 +105,43 @@ function Mimic:onAct(battler, name)
     -- If the act is none of the above, run the base onAct function
     -- (this handles the Check act)
     return super.onAct(self, battler, name)
+end
+
+function Mimic:hurt(amount, battler, color)
+    self.health = self.health - amount
+    self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
+
+    self.hurt_timer = 1
+    self:onHurt(amount, battler)
+    if self.health <= 0 and self.death ~= true then
+        Game.battle.attack_done = true
+        Game.battle.state = "ACTIONSDONE"
+        Game.battle:startCutscene(function(cutscene)
+            self.death = true
+            cutscene:wait(1)
+            self:shake(5)
+            Assets.playSound("wing")
+            cutscene:text("* Hey uh,[wait:5] something about this feels off...", "sad_frown", "susie")
+            self:shake(5)
+            Assets.playSound("wing")
+            cutscene:wait(1)
+            self:shake(5)
+            Assets.playSound("wing")
+            cutscene:wait(1)
+            cutscene:text("* idk looks fine to me lol", "kind", "dess")
+            self:shake(5)
+            Assets.playSound("wing")
+            cutscene:wait(2)
+            
+            Game.battle.killed = true
+            Game:addFlag("library_kills", 1)
+            self:defeat("KILLED", true)
+            self:explode(0, 0, false)
+            cutscene:wait(2)
+            cutscene:text("* ...", "shock", "susie")
+            cutscene:text("* well erm... THAT just happened lol", "condescending", "dess")
+        end)
+    end
 end
 
 return Mimic
