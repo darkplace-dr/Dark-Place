@@ -318,5 +318,37 @@ return {
         else
             Game.world:mapTransition("room2", "entry")
         end
-    end
+    end,
+    plaedmc2 = function(cutscene, event)
+        local dog = cutscene:getCharacter("dog")
+
+        cutscene:text("* I'm just a dog, but I'm also...")
+
+        Game.world.music:pause()
+        local nokia = Music("nokia")
+        nokia:play()
+
+        cutscene:wait(2.5)
+        dog:setAnimation("holdphone")
+        cutscene:text("* Who the...")
+		cutscene:text("* Excuse me for a sec.")
+		nokia:remove()
+		dog:setAnimation("talkphone")
+		cutscene:text("* .[wait:5].[wait:5].[wait:10]Hello?")
+		
+        local dmc2 = Music("plaeDMC2")
+        dmc2:play()
+
+        cutscene:wait(2.5)
+        cutscene:text("* ...[wait:10]You again.")
+        cutscene:text("* I already told you...[wait:5]\nTHIS ISN'T FUNNY!")
+        dog:setAnimation("holdphone")
+        cutscene:text("* Hey...[wait:5] Hey![wait:5] HEEEY![wait:5] \nARE YOU LISTENING TO ME?")
+        cutscene:text("* I've had enough of this!")
+        cutscene:text("* I have your number you know,[wait:5]\nI know where you live.[wait:8]\n* YOU...[wait:10][shake:2]SCUM!!!")
+        
+		dmc2:remove()
+		dog:resetSprite()
+		Game.world.music:resume()
+    end,
 }
