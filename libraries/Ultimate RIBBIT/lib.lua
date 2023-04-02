@@ -116,9 +116,11 @@ function lib:postInit()
         local text = orig(self, battler, success)
         if Game:getPartyMember(battler.chara.id).ribbit then
             if type(text)=="table" then
-                text[1] = text[1]:gsub("spared", "sended")
+                --text[1] = text[1]:gsub("spared", "SENT")
+                text[1] = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!\n* But it wasn't [color:yellow]APPEASED[color:reset]..."
             else
-                text = text:gsub("spared", "sended")
+                --text = text:gsub("spared", "SENT")
+                text = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!\n* But it wasn't [color:yellow]APPEASED[color:reset]..."
             end
         end
         return text
