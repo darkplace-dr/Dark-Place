@@ -15,7 +15,7 @@ function item:init()
     self.icon = nil
 
     -- Battle description
-    self.effect = "Useless.\n+?? HP"
+    self.effect = "Useless."
     -- Shop description
     self.shop = "Not sure what's\ninside\n+?? HP"
     -- Menu description
