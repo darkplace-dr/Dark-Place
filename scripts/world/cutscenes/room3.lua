@@ -1,7 +1,7 @@
 return {
-    morshu = function(cutscene, event)
-        local doobie = cutscene:getCharacter("doobie")
+    morshu = function(cutscene, morshu)
         local magolor = cutscene:getCharacter("magolor")
+        local doobie = cutscene:getCharacter("doobie")
 
         local cust_wait_timer = 0
 
@@ -19,13 +19,15 @@ return {
         local function showMorshuAnim(sprite, speed)
             local m_anim = Sprite("world/cutscenes/room3_morshu/" .. sprite)
             m_anim:play(speed, true)
-            m_anim.layer = WORLD_LAYERS["top"]
+            m_anim.layer = WORLD_LAYERS["ui"]
             m_anim.parallax_x = 0
             m_anim.parallax_y = 0
             m_anim:setScale(2)
             Game.world:addChild(m_anim)
             return m_anim, function(time, disallow_cancel)
-                cutscene:wait(not disallow_cancel and waitForTimeOrUserCancellation(time) or time)
+                if time > 0 then
+                    cutscene:wait(not disallow_cancel and waitForTimeOrUserCancellation(time) or time)
+                end
                 m_anim:remove()
             end
         end
@@ -64,31 +66,32 @@ return {
 
         Game.money = Game.money - 40
 
-        Game.world.map.morshu_dance = true
-
         Game.world.music:pause()
         local danceparty = Music("danceparty", 0.8)
         danceparty:play()
 
         -- show character dance animations
-        local _, dance_anim_rem = showMorshuAnim("dance", 0.0001)
-        if Game:getFlag("room3_doobie") then
-            doobie:setAnimation("dance")
+        local svfx = Kristal.Config["simplifyVFX"]
+        local svfx_suffix = svfx and "_svfx" or ""
+        morshu.dance = true
+        local _, dance_anim_rem = showMorshuAnim("dance", svfx and 0.05 or 0.0001)
+        magolor.dance = true
+        magolor:setAnimation("speen".. svfx_suffix)
+        if doobie then
+            doobie:setAnimation("dance" .. svfx_suffix)
         end
-        magolor:setAnimation("speen")
-        dance_anim_rem(31, false)
+        dance_anim_rem(svfx and (9.694 * 2) or 31, true)
 
         -- show character idle animations
-        if Game:getFlag("room3_doobie") then
+        morshu.dance = false
+        magolor.dance = false
+        magolor:setSprite("shop")
+        if doobie then
             doobie:setAnimation("idle")
         end
-        magolor:setSprite("shop")
 
-        danceparty:stop()
         danceparty:remove()
         Game.world.music:resume()
-
-        Game.world.map.morshu_dance = false
 
         cutscene:text("* (You stashed the Lamp Oil inside your [color:yellow]ITEMS[color:reset].)")
     end,

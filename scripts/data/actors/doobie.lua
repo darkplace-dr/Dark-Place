@@ -41,6 +41,7 @@ function actor:init(x, y)
     self.animations = {
         ["idle"] = {"idle", 0.2, true},
         ["dance"] = {"dance", 0.01, true},
+        ["dance_svfx"] = {"dance", 0.05, true},
     }
 
     -- Table of sprite offsets (indexed by sprite name)
