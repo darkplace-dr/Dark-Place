@@ -53,6 +53,7 @@ function item:init()
         ralsei = "These really help?",
         noelle = "Sure?????",
 		dess = "These are for femboys",
+        brandon = "D-do I look cute?"
     }
 end
 

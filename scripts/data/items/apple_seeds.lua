@@ -52,6 +52,7 @@ function item:init()
         susie = "These taste... not bad?",
         ralsei = "I don't feel so well...",
         noelle = "(I feel like I'm gonna puke...)",
+        brandon = "Why did I eat that?"
     }
 end
 

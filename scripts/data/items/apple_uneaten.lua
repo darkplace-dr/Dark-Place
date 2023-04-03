@@ -52,6 +52,7 @@ function item:init()
         susie = "An apple a day keeps the doctor away.",
         ralsei = "It's really sweet!",
         noelle = "It's really crunchy!",
+        brandon = "I love apples!"
     }
 end
 

@@ -28,6 +28,7 @@ function item:init()
         ["noelle"] = 30,
         ["YOU"] = 30,
         ["dess"] = 30,
+        ["brandon"] = 30
 	}
 
     -- Default shop price (sell price is halved)
@@ -49,7 +50,8 @@ function item:init()
     self.reactions = {
         susie = "The sauce tastes like blood!",
         ralsei = "Isn't this just plastic?",
-        noelle = "Not the best, but it's fine."
+        noelle = "Not the best, but it's fine.",
+        brandon = "WAS THAT THE BITE OF 87?!"
 	}
 end
 

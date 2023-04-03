@@ -53,6 +53,7 @@ function item:init()
         ralsei = "I like the texture!",
         noelle = "That was underwhelming...",
 		dess = "This sucks",
+        brandon = "What."
     }
 end
 

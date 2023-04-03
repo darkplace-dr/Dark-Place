@@ -52,6 +52,7 @@ function item:init()
         susie = "Damn, I feel energized!",
         ralsei = "Tastes sweet!",
         noelle = "Wow, it's very fizzy.",
+        brandon = "*burp* Oh, excuse me."
     }
 end
 

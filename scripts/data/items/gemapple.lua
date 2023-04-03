@@ -49,6 +49,7 @@ function item:init()
         susie = "ARGH! I think I chipped a tooth!",
         ralsei = "Um, I don't think I can eat this...",
         noelle = "Did we get scammed?",
+        brandon = "The hell am I supposed to do with this?!"
     }
 end
 

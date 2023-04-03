@@ -52,6 +52,7 @@ function item:init()
         susie = "Who knew vegtables could taste so good!",
         ralsei = "I feel great!",
         noelle = "Wow, did that fully heal?",
+        brandon = "Wow, that tasted good!"
     }
 end
 

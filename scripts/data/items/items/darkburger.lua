@@ -57,6 +57,7 @@ function item:init()
         ralsei = "A bit burnt...?",
         noelle = "I-is this real meat...?",
 		dess = "Sorry man I only eat lettuce",
+        brandon = "I love burgers!"
     }
 end
 

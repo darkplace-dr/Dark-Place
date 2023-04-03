@@ -51,6 +51,7 @@ function item:init()
         ralsei = "Knock knock!",
         noelle = "Wh- uh... airline food?",
 		dess = "69 lmao",
+        brandon = "Sus Among U-"
     }
 end
 

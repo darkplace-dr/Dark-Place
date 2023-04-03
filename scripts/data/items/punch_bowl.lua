@@ -31,6 +31,7 @@ function item:init()
         ["ralsei"] = 100,
         ["noelle"] = 80,
 		["dess"] = 20,
+        ["brandon"] = 40
 	}
 
     -- Default shop price (sell price is halved)
@@ -62,6 +63,7 @@ function item:init()
         ralsei = "I love punch!",
         noelle = "Why is it called 'Punch?'",
 		dess = "I don't trust it",
+        brandon = "Never really been a fan."
     }
 end
 

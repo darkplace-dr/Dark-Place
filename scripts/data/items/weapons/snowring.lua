@@ -50,7 +50,8 @@ function item:init()
         susie = "Smells like Noelle",
         ralsei = "Are you... proposing?",
         noelle = "(Thank goodness...)",
-		dess = "You did snowgrave lmao"
+		dess = "You did snowgrave lmao",
+        brandon = "Uh, no thanks."
     }
 end
 

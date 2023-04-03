@@ -51,6 +51,7 @@ function item:init()
         ralsei = "I'm the Dark Prince...",
         noelle = "It's so bright it hurts my eyes!",
 		dess = "no",
+        brandon = "Die monster, you don't belong in this world!"
     }
 end
 

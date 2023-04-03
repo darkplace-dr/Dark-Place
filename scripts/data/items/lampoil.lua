@@ -26,7 +26,8 @@ function item:init()
         ["susie"] = 80,
         ["ralsei"] = -50,
         ["noelle"] = nil,
-		["dess"] = 90
+		["dess"] = 90,
+        ["brandon"] = nill
 	}
 
     -- Default shop price (sell price is halved)
@@ -50,6 +51,7 @@ function item:init()
         ralsei = "Cough! Cough! How is this edible?!",
         noelle = "Isn't this poisonous!?",
 		dess = "yummy",
+        brandon = "No."
 	}
 end
 

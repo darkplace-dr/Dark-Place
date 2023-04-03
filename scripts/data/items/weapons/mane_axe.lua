@@ -51,6 +51,7 @@ function item:init()
         ralsei = "Ummm... it's a bit big.",
         noelle = "It... smells nice...",
 		dess = "Too heavy",
+        brandon = "I can't carry THAT."
     }
 end
 

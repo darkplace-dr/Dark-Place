@@ -51,6 +51,7 @@ function item:init()
 		ralsei = "Who? I've never 'met' them!",
 		susie = "Never heard of em'.",
 		noelle = "Baseball is Dess' thing...",
+        brandon = "I prefer the Bluejays."
     }
 end
 

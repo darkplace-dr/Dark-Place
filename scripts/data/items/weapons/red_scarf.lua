@@ -51,6 +51,7 @@ function item:init()
         ralsei = "Comfy! Touch it, Kris!",
         noelle = "Huh? No, I'm not cold.",
 		dess = "I hate Ralsei they are my least favorite character god I hate them",
+        brandon = "It's soft!"
     }
 end
 

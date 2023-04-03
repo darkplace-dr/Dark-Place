@@ -47,7 +47,8 @@ function item:init()
         YOU = true,
         susie = true,
         ralsei = false,
-        noelle = true
+        noelle = true,
+        brandon = true
     }
 
     -- Character reactions
@@ -55,6 +56,7 @@ function item:init()
         susie = "It looks sick!",
         ralsei = "How is it supposed to work...?",
         noelle = "Oh it's just like that movie!",
+        brandon = "Does it say something?"
     }
 end
 

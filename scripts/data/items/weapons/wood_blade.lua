@@ -51,6 +51,7 @@ function item:init()
         ralsei = "That's yours, Kris...",
         noelle = "(It has bite marks...)",
 		dess = "I'm not a fucking nerd",
+        brandon = "How do you even hurt someone with this?"
     }
 end
 

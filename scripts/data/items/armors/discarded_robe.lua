@@ -50,6 +50,7 @@ function item:init()
         ralsei = "It's... really dirty",
         noelle = "Smells like cats...",
 		dess = "Yo is that a kirby reference??????",
+        brandon = "I look good in this!"
     }
 end
 
