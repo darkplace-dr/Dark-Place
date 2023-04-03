@@ -110,7 +110,6 @@ function GameOver:update()
                 end
                 table.insert(self.lines, full_line)
             end
-            print("Hello there, here the:"..self.force_message)
             if self.force_message then
             	if type(self.force_message)=="table" then
             		for i, message in ipairs(self.force_message) do
