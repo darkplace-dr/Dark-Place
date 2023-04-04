@@ -1,6 +1,6 @@
 ---@class PartyMember : PartyMember
 ---@overload fun(...) : PartyMember
-local PartyMember = Class(PartyMember, false)
+local PartyMember, super = Class(PartyMember, false)
 
 function PartyMember:init()
     super.init(self)

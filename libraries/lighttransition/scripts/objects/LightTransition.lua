@@ -2,7 +2,7 @@ local LightTransition, super = Class(Object)
 
 function LightTransition:init(x, y, data)
 	local data = data or {}
-	init(self, x, y, 100, 35)
+	super.init(self, x, y, 100, 35)
 
     if #Game.stage:getObjects(DarkTransition) > 0 then
 		self:remove()
@@ -39,17 +39,19 @@ function LightTransition:init(x, y, data)
 		walk_distance = 48,
 		
 		fadeOut_speed = 1.8,
-		fadeIn_speed = 1.8,
+		fadeIn_speed = 12.5/30,
 	}
 	
 	self.collider = CircleCollider(self, 0, 35, 35)
 	
 	self.newMap = {
 		name = data.map,
-		x = data.mapX or 0,
-		y = data.mapY or 0,
+		marker = data.marker or "spawn",
 		facing = data.mapFacing or 'down',
 	}
+	if not self.newMap.name then
+		error("Map name not set for LightTransition.")
+	end
 end
 
 local function point_distance(x1, y1, x2, y2)
@@ -68,19 +70,13 @@ function LightTransition:touchCallback(player)
 	return true
 end
 
-function LightTransition:changeMap(newMap)
-	if newMap.name == nil then return end
-	
-	Game.world:loadMap(newMap.name, newMap.x, newMap.y, newMap.facing)
-end
-
 function LightTransition.cutscene(cutscene, self, player)
     cutscene:detachFollowers()
 	local event = self.parent
 	local settings = self.cutsceneSettings
 	
 	local kris_only = self.kris_only
-    local kris = Mod.getKris and Mod:getKris() or cutscene:getCharacter("kris")
+    local kris = Mod.getKrisActor and Mod:getKrisActor(cutscene) or cutscene:getCharacter("kris")
     local susie = cutscene:getCharacter("susie")
     local ralsei = cutscene:getCharacter("ralsei")
 	
@@ -101,55 +97,51 @@ function LightTransition.cutscene(cutscene, self, player)
 	self:afterMoveCallback()
 	
 	if ralsei and self.ralsei_animation then ralsei:setAnimation("wave_start") end
-	
-	Assets.playSound("dtrans_lw")
+
+	cutscene:playSound("dtrans_lw")
 	
 	-- kris
     kris.visible = false
-	local fakeKris = Sprite("party/kris/dark_transition/dark", kris.x - 29, kris.y - 86)
+	local fakeKris = Sprite(kris.actor.path.."../dark_transition/dark", kris.x - 29, kris.y - 86)
 	fakeKris.physics.speed_y = settings.fake_speed_y
 	fakeKris.physics.gravity = settings.fake_gravity
-
 	fakeKris:setAnimation{"party/kris/dark_transition/dark", 0.1, true}
 	fakeKris:setScale(2)
-	
 	Game.world:spawnObject(fakeKris, settings.fake_layer)
 	
 	-- sus
 	local fakeSusie
-	
 	if susie and not kris_only then
 		susie.visible = false
 		fakeSusie = Sprite("party/susie/dark_transition/dark", susie.x - 29, susie.y - 86)
 		fakeSusie.physics.speed_y = settings.fake_speed_y
 		fakeSusie.physics.gravity = settings.fake_gravity
-
 		fakeSusie:setAnimation{"party/susie/dark_transition/dark", 0.1, true}
 		fakeSusie:setScale(2)
-		
 		Game.world:spawnObject(fakeSusie, settings.fake_layer)
 	end
-	--]]
 	
 	self:beforeFadeCallback()
-	cutscene:fadeOut(settings.fadeOut_speed, {color = {1, 1, 1}})
-	
-	self:changeMap(self.newMap)
+
+	cutscene:wait(cutscene:fadeOut(settings.fadeOut_speed, {color = {1, 1, 1}}))
+	cutscene:wait(0.75)
+
+	cutscene:loadMap(self.newMap.name, self.newMap.marker, self.newMap.facing)
 	self:afterFadeCallback()
 	
 	fakeKris:remove()
 	if fakeSusie then fakeSusie:remove() end
     kris.visible = true
     susie.visible = true
-	
+	cutscene:fadeOut(0)
 	cutscene:fadeIn(settings.fadeIn_speed, {color = {1, 1, 1}})
-	self:afterEndCallback()
-	
 	cutscene:interpolateFollowers()
+
+	self:afterEndCallback()
 end
 
 function LightTransition:update()
-	update(self)
+	super.update(self)
 	
 	self.particletimer = self.particletimer + (1 * DTMULT)
 	if (self.particletimer >= 2) then
@@ -222,7 +214,7 @@ function LightTransition:draw(moreAlpha)
 	-- love.graphics.scale(1, 0.5)
 	-- self.collider:draw(1, 0, 0, 1)
 	-- love.graphics.pop()
-	draw(self)
+	super:draw(self)
 	
 	self:drawLight(self:getLightAlpha())
 end
