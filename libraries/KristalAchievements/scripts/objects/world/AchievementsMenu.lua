@@ -51,7 +51,7 @@ function AchievementsMenu:draw()
         local frame = Assets.getTexture("achievements/frames/"..ach.rarity)
         local hide = ach.hidden and not ach.earned
         local percent_color = hide and {0.5, 0.5, 0.5} or {1, 1, 1}
-        local body_color = ach.earned and {0.5, 0.5, 0.5} or {1, 1, 1}
+        local body_color = ach.earned and {1, 1, 1} or {0.5, 0.5, 0.5}
         local name = hide and "???" or ach.name
         local desc = hide and ach.hint or ach.desc
 

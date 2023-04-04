@@ -8,11 +8,18 @@ end
 --- Called once loaded. Loads achievement objects from scripts/ach.
 function Lib:onRegistered()
     self.achievements = {}
-    for _, path, achievement_scr in Registry.iterScripts("ach") do
+    for _, path, achievement_scr in Registry.iterScripts("ach/") do
         assert(achievement_scr, '"ach/' .. path .. '.lua" does not return value')
         local achievement = achievement_scr()
         achievement.id = achievement.id or path
         self.achievements[achievement.id] = achievement
+    end
+
+    if Kristal.getLibConfig("achievements", "cooperative_ordering") then
+        local order = modRequire("scripts.ach_order")
+        for i,v in ipairs(order) do
+            self.achievements[v].index = i
+        end
     end
 end
 
@@ -34,7 +41,7 @@ end
 --- Loads data from the achievement savefile in the filesystem.
 function Lib:loadAchievements()
     local data = JSON.decode(love.filesystem.read(self:getAchFile()))
-    for name, info in pairs(data) do
+    for name, info in pairs(data.achievements) do
         local ach = self.achievements[name]
         if ach then
             ach:load(info)
@@ -45,7 +52,7 @@ end
 --- Writes data to the achievement savefile in the filesystem.
 function Lib:writeAchievements()
     local data = { achievements = {} }
-    for k, ach in pairs(self.achievements) do -- k is the ID, v is the info
+    for k, ach in pairs(self.achievements) do
         data.achievements[k] = ach:save()
     end
 
@@ -60,6 +67,11 @@ function Lib:postInit(_)
     else
         self:loadAchievements()
     end
+end
+
+--- Called during saving. Writes the achievement savefile to the filesystem.
+function Lib:save()
+    self:writeAchievements()
 end
 
 --- Gets a specific achievement from memory.
@@ -84,8 +96,6 @@ function Lib:addAchProgress(achievement, number, slient)
 
     ach_obj.progress = ach_obj.progress + number
     self:checkAchProgression(achievement, slient)
-
-    self:writeAchievements()
 end
 
 --- Decides if a specific achievement is complete or not.
