@@ -1,6 +1,6 @@
 ---@class DarkConfigMenu : DarkConfigMenu
 ---@overload fun(...) : DarkConfigMenu
-local DarkConfigMenu, super = Class("DarkConfigMenu", false)
+local DarkConfigMenu, super = Class("DarkConfigMenu", true)
 
 function DarkConfigMenu:update()
     if self.state == "MAIN" then

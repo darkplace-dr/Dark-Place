@@ -1,4 +1,4 @@
-local character, super = Class("ralsei", false)
+local character, super = Class("ralsei", true)
 
 function character:init()
     super.init(self)
