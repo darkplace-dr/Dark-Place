@@ -30,7 +30,7 @@ function DarkPowerMenu:draw()
     self:drawSpells()
     self:drawExp()
 
-    super.draw(self)
+    super.super.draw(self)
 end
 
 function DarkPowerMenu:getExp()

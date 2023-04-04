@@ -1,6 +1,6 @@
 ---@class DarkConfigMenu : DarkConfigMenu
 ---@overload fun(...) : DarkConfigMenu
-local DarkConfigMenu, super = Class(Object)
+local DarkConfigMenu, super = Class("DarkConfigMenu", false)
 
 function DarkConfigMenu:update()
     if self.state == "MAIN" then
@@ -82,12 +82,12 @@ function DarkConfigMenu:update()
 
     self.reset_flash_timer = math.max(self.reset_flash_timer - DTMULT, 0)
 
-    super.update(self)
+    super.super.update(self)
 end
 
 function DarkConfigMenu:draw()
     if Game.state == "EXIT" then
-        super.draw(self)
+        super.super.draw(self)
         return
     end
     love.graphics.setFont(self.font)
@@ -220,7 +220,7 @@ function DarkConfigMenu:draw()
 
     love.graphics.setColor(1, 1, 1, 1)
 
-    super.draw(self)
+    super.super.draw(self)
 end
 
 return DarkConfigMenu
