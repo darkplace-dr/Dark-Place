@@ -5,7 +5,7 @@ local DarkPowerMenu, super = Class(DarkPowerMenu, false)
 function DarkPowerMenu:init()
     super.init(self)
 
-    self.use_global_values = Kristal.getLibConfig("leveling", "global_love")
+    self.leveling_use_global_values = Kristal.getLibConfig("leveling", "global_love")
     self.love_global = Game:getFlag("library_love")
     self.experience_global = Game:getFlag("library_experience")
     self.nextlv_global = Game:getFlag("library_nextlv")
@@ -34,20 +34,20 @@ function DarkPowerMenu:draw()
 end
 
 function DarkPowerMenu:getExp()
-    return self.use_global_values
+    return self.leveling_use_global_values
         and self.experience_global
         or self.party:getSelected():getExp()
 end
 
 function DarkPowerMenu:getNextLv()
-    return self.use_global_values
+    return self.leveling_use_global_values
         and self.nextlv_global
         or self.party:getSelected():getNextLv()
 end
 
 function DarkPowerMenu:drawExp()
     love.graphics.setColor(1, 1, 1)
-    if self.use_global_values then
+    if self.leveling_use_global_values then
         love.graphics.print("LOVE:", 225, 240)
         love.graphics.print(self.love_global, 290, 240)
     end
