@@ -2,17 +2,17 @@ local LightTransition, super = Class(Object)
 
 function LightTransition:init(x, y, data)
 	local data = data or {}
-	super:init(self, x, y, 100, 35)
+	init(self, x, y, 100, 35)
+
+    if #Game.stage:getObjects(DarkTransition) > 0 then
+		self:remove()
+		return
+	end
 	
 	self.circle = Assets.getTexture("ui/lightcircle")
 	self.pillar = Assets.getTexture("ui/lightpillar")
 	
 	self.layer = 500000
-	
-    for _,dw in ipairs(Game.stage:getObjects(DarkTransition)) do
-		self:remove()
-		return
-	end
 	
 	self:setScale(1.5, 2)
 
@@ -80,7 +80,7 @@ function LightTransition.cutscene(cutscene, self, player)
 	local settings = self.cutsceneSettings
 	
 	local kris_only = self.kris_only
-    local kris = cutscene:getCharacter("kris")
+    local kris = Mod.getKris and Mod:getKris() or cutscene:getCharacter("kris")
     local susie = cutscene:getCharacter("susie")
     local ralsei = cutscene:getCharacter("ralsei")
 	
@@ -149,7 +149,7 @@ function LightTransition.cutscene(cutscene, self, player)
 end
 
 function LightTransition:update()
-	super:update(self)
+	update(self)
 	
 	self.particletimer = self.particletimer + (1 * DTMULT)
 	if (self.particletimer >= 2) then
@@ -157,7 +157,7 @@ function LightTransition:update()
 		local oy = self.y + self.height * .5
 		
 		-- instance_create(random_range((x - (sprite_width / 2)), (x + (sprite_width / 2))), (y - random(sprite_height)), obj_dw_transition_particle)
-		local particle = LightTransitionParticle(math.random((ox - (self.width * .75)), (ox + (self.width * .75))), (oy - math.random(self.height + 240)))
+		local particle = LightTransitionParticle(love.math.random((ox - (self.width * .75)), (ox + (self.width * .75))), (oy - love.math.random(self.height + 240)))
 		self:addChild(particle)
 		
 		self.particletimer = 0
@@ -222,7 +222,7 @@ function LightTransition:draw(moreAlpha)
 	-- love.graphics.scale(1, 0.5)
 	-- self.collider:draw(1, 0, 0, 1)
 	-- love.graphics.pop()
-	super:draw(self)
+	draw(self)
 	
 	self:drawLight(self:getLightAlpha())
 end

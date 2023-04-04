@@ -1,7 +1,7 @@
 local AchievementsMenu, super = Class(Object)
 
 function AchievementsMenu:init()
-    super:init(self, 82, 112, 477, 277)
+    init(self, 82, 112, 477, 277)
 
 	self.parallax_x = 0
     self.parallax_y = 0

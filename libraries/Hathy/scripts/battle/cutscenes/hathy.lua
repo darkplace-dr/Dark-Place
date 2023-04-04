@@ -6,7 +6,7 @@ return {
 
         cutscene:text("* You ordered Ralsei to flatter all the enemies!")
 
-        local dlg = math.random(1, 3)
+        local dlg = love.math.random(1, 3)
         if dlg == 1 then
             cutscene:text("* Out of anyone,[wait:5] I'm glad we randomly encountered all of you.", "smile", "ralsei")
         elseif dlg == 2 then
@@ -23,7 +23,7 @@ return {
 
         cutscene:text("* You ordered Susie to flatter all the enemies!")
 
-        local dlg = math.random(1, 3)
+        local dlg = love.math.random(1, 3)
         cutscene:text("* Can't believe my bozo teammates...", "neutral", "susie")
         if dlg == 1 then
             cutscene:text("* ... came back here just to see YOU guys.", "smile", "susie")
