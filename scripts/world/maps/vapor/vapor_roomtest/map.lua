@@ -1,7 +1,7 @@
 local VaporRoomTest, super = Class(Map)
 
 function VaporRoomTest:onEnter()
-    super:onEnter(self)
+    super.onEnter(self)
     Game.world:spawnObject(VaporBG(), "objects_bg")
 	
     local mountains = Sprite("objects/vaporbg/mountains", 0, 105)

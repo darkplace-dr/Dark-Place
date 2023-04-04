@@ -1,7 +1,7 @@
 local Mimic, super = Class(EnemyBattler)
 
 function Mimic:init()
-    super:init(self)
+    super.init(self)
 
     -- Enemy name
     self.name = "Mimic"

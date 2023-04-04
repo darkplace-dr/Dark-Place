@@ -1,7 +1,7 @@
 local WarpBinInputMenu, super = Class(Object)
 
 function WarpBinInputMenu:init()
-    super:init(self, SCREEN_WIDTH / 2 - 288 / 2, SCREEN_HEIGHT / 2 - 40 / 2, 288, 40)
+    super.init(self, SCREEN_WIDTH / 2 - 288 / 2, SCREEN_HEIGHT / 2 - 40 / 2, 288, 40)
 
     self.parallax_x = 0
     self.parallax_y = 0
@@ -67,7 +67,7 @@ function WarpBinInputMenu:draw()
 
     self.caret_flash_timer = (self.caret_flash_timer + 1 * DTMULT) % 30
 
-    super:draw(self)
+    super.draw(self)
 end
 
 function WarpBinInputMenu:close()

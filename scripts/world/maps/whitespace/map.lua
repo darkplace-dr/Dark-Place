@@ -1,7 +1,7 @@
 local WhiteSpace, super = Class(Map)
 
 function WhiteSpace:onLoad()
-    super:load(self)
+    super.load(self)
 end
 
 function WhiteSpace:update()
@@ -39,7 +39,7 @@ function WhiteSpace:update()
             end
         end
     end
-    super:update(self)
+    super.update(self)
 end
 
 return WhiteSpace

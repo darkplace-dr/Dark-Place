@@ -1,7 +1,7 @@
 local Spamgolor_Everything, super = Class(Wave)
 
 function Spamgolor_Everything:init()
-    super:init(self)
+    super.init(self)
 	self.time = 9
 end
 

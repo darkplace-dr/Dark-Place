@@ -2,7 +2,7 @@ local Bullet, super = Class(Bullet)
 
 function Bullet:init(x, y, dir, speed, speedup)
     -- Last argument = sprite path
-    super:init(self, x, y, "battle/bullets/starbullet")
+    super.init(self, x, y, "battle/bullets/starbullet")
 	
 	self.element = "star"
 	
@@ -25,7 +25,7 @@ function Bullet:update()
 	
 	--self.physics.speed = self.physics.speed * 1.05
 
-    super:update(self)
+    super.update(self)
 end
 
 return Bullet

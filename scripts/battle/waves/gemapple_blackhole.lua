@@ -1,7 +1,7 @@
 local GemApple_BlackHole, super = Class(Wave)
 
 function GemApple_BlackHole:init()
-    super:init(self)
+    super.init(self)
 	self.time = 9
 end
 

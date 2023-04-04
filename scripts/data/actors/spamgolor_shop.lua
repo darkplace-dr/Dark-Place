@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "spamgolor_shop")
 
 function actor:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name (optional)
     self.name = "Spamgolor"

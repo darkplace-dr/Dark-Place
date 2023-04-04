@@ -2,7 +2,7 @@ local GameOver, super = Class("GameOver")
 
 function GameOver:init(x, y, force_message)
     print(x, y, force_message)
-	super:init(self, x, y)
+	super.init(self, x, y)
 	print("hooked!")
 
 	self.force_message = force_message

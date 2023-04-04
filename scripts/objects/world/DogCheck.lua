@@ -1,7 +1,7 @@
 local DogCheck, super = Class(Rectangle) -- lmao
 
 function DogCheck:init()
-    super:init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+    super.init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 	self.color = {0, 0, 0}
     self.parallax_x = 0
     self.parallax_y = 0

@@ -1,7 +1,7 @@
 local UFOOfDoom, super = Class(EnemyBattler)
 
 function UFOOfDoom:init()
-    super:init(self)
+    super.init(self)
 
     -- Enemy name
     self.name = "UFO Of Doom"

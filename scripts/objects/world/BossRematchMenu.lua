@@ -1,7 +1,7 @@
 local BossRematchMenu, super = Class(Object)
 
 function BossRematchMenu:init()
-    super:init(self, SCREEN_WIDTH / 2 - 480 / 2, SCREEN_HEIGHT / 2 - 320 / 2, 480, 320)
+    super.init(self, SCREEN_WIDTH / 2 - 480 / 2, SCREEN_HEIGHT / 2 - 320 / 2, 480, 320)
 
     self.parallax_x = 0
     self.parallax_y = 0
@@ -71,7 +71,7 @@ function BossRematchMenu:draw()
         love.graphics.draw(self.down_sprite, 470, 262, 0, 1, 1)
     end
 
-    super:draw(self)
+    super.draw(self)
 end
 
 function BossRematchMenu:onKeyPressed(key, is_repeat)

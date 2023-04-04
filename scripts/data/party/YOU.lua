@@ -1,7 +1,7 @@
 local character, super = Class("YOU", false)
 
 function character:init()
-    super:init(self)
+    super.init(self)
 
     self.max_stats = {}
 end
