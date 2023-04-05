@@ -10,6 +10,7 @@ function LightEquipItem:onWorldUse(target)
     Game.world:startCutscene(function(cutscene)
         local char_id = 1
         if #Game.party > 1 then
+            cutscene:text("* Who will equip " .. self:getName() .. "?")
             local choices = {}
             for _, mem in ipairs(Game.party) do
                 table.insert(choices, mem:getName())
