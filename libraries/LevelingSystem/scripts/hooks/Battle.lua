@@ -331,20 +331,9 @@ function Battle:onStateChange(old,new)
         self.current_selecting = 0
         self.battle_ui:clearEncounterText()
 
+        self:setWaves(self.encounter:getNextWaves())
         if self.state_reason then
             self:setWaves(self.state_reason)
-            local enemy_found = false
-            for i,enemy in ipairs(self.enemies) do
-                if Utils.containsValue(enemy.waves, self.state_reason[1]) then
-                    enemy.selected_wave = self.state_reason[1]
-                    enemy_found = true
-                end
-            end
-            if not enemy_found then
-                self.enemies[love.math.random(1, #self.enemies)].selected_wave = self.state_reason[1]
-            end
-        else
-            self:setWaves(self.encounter:getNextWaves())
         end
 
         if self.arena then
@@ -353,7 +342,6 @@ function Battle:onStateChange(old,new)
 
         local soul_x, soul_y, soul_offset_x, soul_offset_y
         local arena_x, arena_y, arena_w, arena_h, arena_shape
-        local has_arena = true
         for _,wave in ipairs(self.waves) do
             soul_x = wave.soul_start_x or soul_x
             soul_y = wave.soul_start_y or soul_y
@@ -366,28 +354,20 @@ function Battle:onStateChange(old,new)
             if wave.arena_shape then
                 arena_shape = wave.arena_shape
             end
-            if not wave.has_arena then
-                has_arena = false
-            end
         end
 
-        local center_x, center_y
-        if has_arena then
-            if not arena_shape then
-                arena_w, arena_h = arena_w or 142, arena_h or 142
-                arena_shape = {{0, 0}, {arena_w, 0}, {arena_w, arena_h}, {0, arena_h}}
-            end
-
-            local arena = Arena(arena_x or SCREEN_WIDTH/2, arena_y or (SCREEN_HEIGHT - 155)/2 + 10, arena_shape)
-            arena.layer = BATTLE_LAYERS["arena"]
-
-            self.arena = arena
-            self:addChild(arena)
-            center_x, center_y = arena:getCenter()
-        else
-            center_x, center_y = SCREEN_WIDTH/2, (SCREEN_HEIGHT - 155)/2 + 10
+        if not arena_shape then
+            arena_w, arena_h = arena_w or 142, arena_h or 142
+            arena_shape = {{0, 0}, {arena_w, 0}, {arena_w, arena_h}, {0, arena_h}}
         end
 
+        local arena = Arena(arena_x or SCREEN_WIDTH/2, arena_y or (SCREEN_HEIGHT - 155)/2 + 10, arena_shape)
+        arena.layer = BATTLE_LAYERS["arena"]
+
+        self.arena = arena
+        self:addChild(arena)
+
+        local center_x, center_y = arena:getCenter()
         soul_x = soul_x or (soul_offset_x and center_x + soul_offset_x)
         soul_y = soul_y or (soul_offset_y and center_y + soul_offset_y)
         self:spawnSoul(soul_x or center_x, soul_y or center_y)
