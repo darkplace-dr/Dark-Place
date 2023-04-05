@@ -32,8 +32,8 @@ function AchievementPopUp:update()
 			self.phase = 2
 		end
 	elseif self.phase == 2 then
-		self.timer = self.timer + DT
-		if self.timer >= 4 then
+		self.timer = Utils.approach(self.timer, 4, 1 * DT)
+		if self.timer == 4 then
 			self.phase = 3
 		end
 	else
