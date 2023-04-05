@@ -1,8 +1,10 @@
-function Mod:postInit(new_file)
+function Mod:init()
     -- Accur acy
     MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
+end
 
+function Mod:postInit(new_file)
     -- FUN Value
     if new_file then
         Game:setFlag("fun", love.math.random(1, 100))
@@ -39,6 +41,7 @@ Mod.binCodes = {
         end
     },
     { code = "bossrush", result = "thearena" },
+    { code = "devdiner", result = "devstart" },
 }
 
 -- if you don't want to be cringe there's also this new totally cool helper function wowee

@@ -20,7 +20,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 17,
+  tilecount = 21,
   tiles = {
     {
       id = 0,
@@ -147,6 +147,30 @@ return {
       image = "../../../assets/sprites/objects/spamgolor_door.png",
       width = 51,
       height = 40
+    },
+    {
+      id = 20,
+      image = "../../../assets/sprites/objects/diner_table.png",
+      width = 50,
+      height = 35
+    },
+    {
+      id = 21,
+      image = "../../../assets/sprites/objects/devroom_doorway.png",
+      width = 40,
+      height = 60
+    },
+    {
+      id = 22,
+      image = "../../../assets/sprites/objects/cabinet.png",
+      width = 145,
+      height = 64
+    },
+    {
+      id = 23,
+      image = "../../../assets/sprites/objects/devroom_counter.png",
+      width = 100,
+      height = 30
     }
   }
 }
