@@ -1,7 +1,7 @@
 local Grounder, super = Class(EnemyBattler)
 
 function Grounder:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Grounder"
     self:setActor("grounder")
@@ -108,7 +108,7 @@ function Grounder:onAct(battler, name)
             return
         end
     end
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Grounder:getEnemyDialogue()

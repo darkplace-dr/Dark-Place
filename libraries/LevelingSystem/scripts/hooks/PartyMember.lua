@@ -1,4 +1,4 @@
----@class PartyMember : PartyMember
+---@class _PartyMember : PartyMember
 ---@overload fun(...) : PartyMember
 local PartyMember, super = Class(PartyMember, true)
 

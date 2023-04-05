@@ -1,4 +1,4 @@
----@class EnemyBattler : EnemyBattler
+---@class _EnemyBattler : EnemyBattler
 ---@overload fun(...) : EnemyBattler
 local EnemyBattler, super = Class(EnemyBattler, true)
 

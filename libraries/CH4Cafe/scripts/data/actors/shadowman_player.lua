@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "shadowman_player")
 
 function actor:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name (optional)
     self.name = "Shadowman"

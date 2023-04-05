@@ -27,7 +27,7 @@ function item:init()
         ["ralsei"] = -50,
         ["noelle"] = nil,
 		["dess"] = 90,
-        ["brandon"] = nill
+        ["brandon"] = nil
 	}
 
     -- Default shop price (sell price is halved)

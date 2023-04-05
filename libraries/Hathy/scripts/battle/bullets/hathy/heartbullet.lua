@@ -17,8 +17,8 @@ function HeartBullet:init(x, y, dir, speed)
     self.index = 0
 end
 
-function HeartBullet:update(dt)
-    super.update(self, dt)
+function HeartBullet:update()
+    super.update(self)
     if self.type == 0 then
         if self.radius > self.maxradius then
             self.radius = self.radius - 2.5

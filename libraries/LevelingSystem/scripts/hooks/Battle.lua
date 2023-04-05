@@ -1,4 +1,4 @@
----@class Battle : Battle
+---@class _Battle : Battle
 ---@overload fun(...) : Battle
 local Battle, super = Class(Battle, true)
 

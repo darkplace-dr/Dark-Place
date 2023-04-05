@@ -1,7 +1,7 @@
 local Achievement, super = Class(Object)
 
 function Achievement:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "example" -- Display name
 
@@ -15,7 +15,7 @@ function Achievement:init()
     self.completion = false -- Shows a percent indicator (progress/completion) if a number, nothing if false.
     self.index = math.huge -- Order in which the achievements will show up on the menu.
     self.earned = false
-    self.progress = type(completion) ~= "number" and false or 0 -- Do this yourself manually
+    self.progress = type(self.completion) ~= "number" and false or 0 -- Do this yourself manually
 end
 
 function Achievement:save()

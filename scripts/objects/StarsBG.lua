@@ -13,8 +13,8 @@ function StarsBG:init(color, back_color, fill)
     self.image = Assets.getTexture("battle/star_background")
 end
 
-function StarsBG:update(dt)
-    super.update(self, dt)
+function StarsBG:update()
+    super.update(self)
     self.fade = Game.battle.transition_timer / 10
 	self.offset = self.offset + self.speed*DTMULT
 

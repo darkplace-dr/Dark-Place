@@ -1,7 +1,7 @@
 local DiamondMix, super = Class(Bullet)
 
 function DiamondMix:init(x, y, dir)
-    super:init(self, x, y, "bullets/grounder/diamond_mix")
+    super.init(self, x, y, "bullets/grounder/diamond_mix")
 	
 	self.alpha = 0
 	self:fadeTo(1, 0.1)
@@ -11,13 +11,13 @@ function DiamondMix:init(x, y, dir)
 	self.physics.gravity = 0.2
 end
 
-function DiamondMix:update(dt)
+function DiamondMix:update()
 	if (self.scale_x <= 1) or (self.scale_y <= 1) then
 		self.graphics.grow = 0
 	else
 		self.graphics.grow = -0.1
 	end
-	super:update(self, dt)
+	super.update(self)
 end
 
 return DiamondMix

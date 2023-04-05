@@ -214,7 +214,7 @@ function LightTransition:draw(moreAlpha)
 	-- love.graphics.scale(1, 0.5)
 	-- self.collider:draw(1, 0, 0, 1)
 	-- love.graphics.pop()
-	super:draw(self)
+	super.draw(self)
 	
 	self:drawLight(self:getLightAlpha())
 end

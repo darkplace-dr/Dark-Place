@@ -1,7 +1,7 @@
 local RibbitBG, super = Class(Object)
 
 function RibbitBG:init(color)
-    super:init(self)
+    super.init(self)
 
 
 	self.colors = {
