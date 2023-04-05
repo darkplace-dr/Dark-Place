@@ -51,7 +51,7 @@ end
 function Grounder:onShortAct(battler, name)
     if name == "Lecture" then
 		self:setAnimation("tired")
-		self.setTired(true)
+		self:setTired(true)
         if battler.chara.id == "kris" then
             return "* You lectured the enemies on eating healthy."
         else
