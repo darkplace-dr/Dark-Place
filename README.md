@@ -6,7 +6,7 @@ An open source Kristal mod that anyone can contribute to
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforementioned document before contributing** as it contains the very important contribution rouxls (pronounced "rules").
 
-# Credits
+## Credits
 *(for Dark Place itself)*
 * Racckoon - Mod idea, Contributor
 * BrandonK7200 - Making the GitHub page, Contributor
