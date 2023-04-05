@@ -49,15 +49,16 @@ function WarpBinInputMenu:draw()
 
     local draw_x = 0
     local draw_y = 0
+    local actual_input_len = utf8.len(self.input[1])
     for i = 1, self.code_len do
-        local actual_input_len = utf8.len(self.input[1])
         if actual_input_len >= i then
             local char_off = utf8.offset(self.input[1], i)
             local char = self.input[1]:sub(char_off, char_off)
             love.graphics.printf(char, draw_x, draw_y, self.char_w, "center")
         end
 
-        if i ~= actual_input_len + 1 or self.caret_flash_timer <= 15 then
+        if i ~= (actual_input_len == self.code_len and actual_input_len or actual_input_len + 1)
+            or self.caret_flash_timer <= 15 then
             local line_y = draw_y + self.char_h + 2
             love.graphics.line(draw_x, line_y, draw_x + self.char_w, line_y)
         end
