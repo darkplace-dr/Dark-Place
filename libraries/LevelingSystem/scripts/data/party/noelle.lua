@@ -16,8 +16,11 @@ function character:getTitle()
         return "LV"..self:getLevel().." Ice Trancer\nReceives pain to\nbecome stronger."
     elseif self:getFlag("iceshocks_used", 0) > 0 then
         return "LV"..self:getLevel().." Frostmancer\nFreezes the enemy."
+    elseif Kristal.getLibConfig("leveling", "global_love") then
+        return "LV1 "..self.title
+    else
+        return "LV"..self:getLevel().." "..self.title
     end
-    return super.getTitle(self)
 end
 
 function character:levelUp()
