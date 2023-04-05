@@ -28,7 +28,7 @@ function WarpBinInputMenu:init()
         multiline = false,
         enter_submits = true,
         text_restriction = function(c)
-            if utf8.len(self.input[1]) == self.code_len then return "" end
+            if utf8.len(self.input[1]) == self.code_len then return end
             self.caret_flash_timer = 0
             return c:upper()
         end
