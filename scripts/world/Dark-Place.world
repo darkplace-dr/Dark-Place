@@ -24,8 +24,8 @@
         {
             "fileName": "maps/spamroom.tmx",
             "height": 480,
-            "width": 960,
-            "x": 60,
+            "width": 2160,
+            "x": -1140,
             "y": 24
         },
         {
@@ -83,6 +83,27 @@
             "width": 960,
             "x": 3440,
             "y": 4240
+        },
+        {
+            "fileName": "maps/warphub/warphub.tmx",
+            "height": 960,
+            "width": 920,
+            "x": 4320,
+            "y": 3040
+        },
+        {
+            "fileName": "maps/devstart.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 4560,
+            "y": 4280
+        },
+        {
+            "fileName": "maps/devroom/devroom.tmx",
+            "height": 480,
+            "width": 1760,
+            "x": 5280,
+            "y": 4280
         }
     ],
     "onlyShowAdjacentMaps": false,
