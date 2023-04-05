@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.6" name="objects" tilewidth="147" tileheight="725" tilecount="17" columns="0">
+<tileset version="1.8" tiledversion="1.8.6" name="objects" tilewidth="147" tileheight="725" tilecount="21" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -63,5 +63,17 @@
  </tile>
  <tile id="19">
   <image width="51" height="40" source="../../../assets/sprites/objects/spamgolor_door.png"/>
+ </tile>
+ <tile id="20">
+  <image width="50" height="35" source="../../../assets/sprites/objects/diner_table.png"/>
+ </tile>
+ <tile id="21">
+  <image width="40" height="60" source="../../../assets/sprites/objects/devroom_doorway.png"/>
+ </tile>
+ <tile id="22">
+  <image width="145" height="64" source="../../../assets/sprites/objects/cabinet.png"/>
+ </tile>
+ <tile id="23">
+  <image width="100" height="30" source="../../../assets/sprites/objects/devroom_counter.png"/>
  </tile>
 </tileset>
