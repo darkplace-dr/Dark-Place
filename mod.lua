@@ -41,6 +41,7 @@ Mod.binCodes = {
         end
     },
     { code = "bossrush", result = "thearena" },
+    { code = "devdiner", result = "devstart" },
 }
 
 -- if you don't want to be cringe there's also this new totally cool helper function wowee
