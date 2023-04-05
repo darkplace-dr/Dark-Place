@@ -1,7 +1,7 @@
 local item, super = Class(HealItem, "lampoil")
 
 function item:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name
     self.name = "Lamp Oil"
@@ -16,7 +16,7 @@ function item:init()
     -- Battle description
     self.effect = "Healing\ngreatly\nvaries"
     -- Shop description
-    self.shop = "Is this\nreally food?\nhealingn\varies."
+    self.shop = "Is this\nreally food?\nHealing\nvaries."
     -- Menu description
     self.description = "It's pretty tasty, and all things considered,\nnot the WORST way to go out. Heals +??HP"
 
@@ -27,7 +27,7 @@ function item:init()
         ["ralsei"] = -50,
         ["noelle"] = nil,
 		["dess"] = 90,
-        ["brandon"] = nill
+        ["brandon"] = nil
 	}
 
     -- Default shop price (sell price is halved)

@@ -1,20 +1,25 @@
 {
     "id": "achievements",
-    "version": "1.0.0",
+    "version": "1.1.0+darkplace",
     "engineVersion": "0.8.0",
     "authors": [
         "AcousticJamm",
         "SciSpace",
-        "BrandonK7200"
+        "BrandonK7200",
+        "Dobby233Liu"
     ],
     "config": {
-        "achievements": {
-	    //If the achievements button will appear in the config menu
-            "config_button": true,
-	    //If the achievements are global (true) or local (false)
-	    "global_save": true,
-	    //If the full pop-up should show, or just the image and rarity
-	    "full": false,
-	}
-    },
+        // If the achievements button will appear in the config menu
+        "config_button": true,
+        // If the achievements are global (true) or local (false)
+        // Local ach data is only saved when save progress is invoked
+        // Warning: existing global savefile does not migrate
+        "global_save": true,
+        // If the full pop-up should show, or just the image and rarity
+        // TODO: not ready
+        "full": false,
+        // Load ach order from scripts/ach_order.lua (which evaluates to a table of ach IDs)
+        // DP hack
+        "cooperative_ordering": false
+    }
 }

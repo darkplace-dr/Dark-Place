@@ -18,7 +18,7 @@ function item:init()
     self.icon = nil
 
     -- Battle description
-    self.effect = "Lots of\nJuice."
+    self.effect = "Lots of\njuice"
     -- Shop description
     self.shop = "It's a\npunch bowl."
     -- Menu description
@@ -61,7 +61,7 @@ function item:init()
     self.reactions = {
         susie = "Too much juice.",
         ralsei = "I love punch!",
-        noelle = "Why is it called 'Punch?'",
+        noelle = 'Why is it called "punch?"',
 		dess = "I don't trust it",
         brandon = "Never really been a fan."
     }

@@ -1,7 +1,7 @@
 local Dogcheck, super = Class(Map)
 
 function Dogcheck:onEnter()
-    super:onEnter(self)
+    super.onEnter(self)
 
     Game.world:startCutscene(function(cutscene)
         Game.world.music:stop()

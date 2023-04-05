@@ -1,7 +1,7 @@
 local item, super = Class(HealItem, "mediumpizza")
 
 function item:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name
     self.name = "Medium Pizza"
@@ -46,7 +46,6 @@ function item:init()
     self.instant = false
 
     -- Character reactions (key = party member id)
-
     self.reactions = {
         susie = "The sauce tastes like blood!",
         ralsei = "Isn't this just plastic?",

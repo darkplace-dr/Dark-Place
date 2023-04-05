@@ -195,7 +195,7 @@ return {
     },
     {
       type = "imagelayer",
-      image = "../../../assets/sprites/worldbg/ebott/room_area12.png",
+      image = "../../../assets/sprites/world/maps/ebott/room_area12.png",
       id = 7,
       name = "bg1",
       class = "",

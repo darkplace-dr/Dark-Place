@@ -1,7 +1,7 @@
 local GemApple_DeadlyNeedle, super = Class(Wave)
 
 function GemApple_DeadlyNeedle:init()
-    super:init(self)
+    super.init(self)
 	self.time = 9
 end
 

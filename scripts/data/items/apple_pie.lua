@@ -15,7 +15,7 @@ function item:init()
     self.icon = nil
 
     -- Battle description
-    self.effect = "All\nAmerican."
+    self.effect = "All\nAmerican"
     -- Shop description
     self.shop = "Why does\nthis exist"
     -- Menu description

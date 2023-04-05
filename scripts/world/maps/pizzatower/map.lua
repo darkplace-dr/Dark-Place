@@ -1,7 +1,7 @@
 local room, super = Class(Map)
 
 function room:onEnter()
-    super:onEnter(self)
+    super.onEnter(self)
 
     if Game.world:getCharacter("susie") then
         Game.world:getCharacter("susie").visible = false

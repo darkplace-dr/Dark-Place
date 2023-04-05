@@ -1,129 +1,18 @@
-local DarkConfigMenu, super = Class(Object)
+---@class _DarkConfigMenu : DarkConfigMenu
+---@overload fun(...) : _DarkConfigMenu
+local DarkConfigMenu, super = Class("DarkConfigMenu", true)
 
 function DarkConfigMenu:init()
-    super:init(self, 82, 112, 477, 277)
+    super.init(self)
 
-    self.draw_children_below = 0
-
-    self.font = Assets.getFont("main")
-
-    self.ui_move = Assets.newSound("ui_move")
-    self.ui_select = Assets.newSound("ui_select")
-    self.ui_cant_select = Assets.newSound("ui_cant_select")
-    self.ui_cancel_small = Assets.newSound("ui_cancel_small")
-
-    self.heart_sprite = Assets.getTexture("player/heart")
-    self.arrow_sprite = Assets.getTexture("ui/page_arrow_down")
-
-    self.tp_sprite = Assets.getTexture("ui/menu/caption_tp")
-
-    self.bg = UIBox(0, 0, self.width, self.height)
-    self.bg.layer = -1
-    self.bg.debug_select = false
-    self:addChild(self.bg)
-
-    -- MAIN, VOLUME, CONTROLS
-    self.state = "MAIN"
-
-    self.currently_selected = 0
-    self.noise_timer = 0
-
-    self.reset_flash_timer = 0
-    self.rebinding = false
-end
-
-function DarkConfigMenu:getBindNumberFromIndex(current_index)
-    local shown_bind = 1
-    local alias = Input.orderedNumberToKey(current_index)
-    local keys = Input.getBoundKeys(alias, Input.usingGamepad())
-    for index, current_key in ipairs(keys) do
-        if Input.usingGamepad() then
-            if Utils.startsWith(current_key, "gamepad:") then
-                shown_bind = index
-                break
-            end
-        else
-            if not Utils.startsWith(current_key, "gamepad:") then
-                shown_bind = index
-                break
-            end
-        end
-    end
-    return shown_bind
-end
-
-function DarkConfigMenu:onKeyPressed(key)
-
-    if self.state == "CONTROLS" then
-        if self.rebinding then
-            local gamepad = Utils.startsWith(key, "gamepad:")
-
-            local worked = key ~= "escape" and Input.setBind(Input.orderedNumberToKey(self.currently_selected), 1, key, gamepad)
-
-            self.rebinding = false
-
-            if worked then
-                self.ui_select:stop()
-                self.ui_select:play()
-            else
-                self.ui_cant_select:stop()
-                self.ui_cant_select:play()
-            end
-
-            return
-        end
-        if Input.pressed("confirm") then
-
-            if self.currently_selected < 8 then
-                self.ui_select:stop()
-                self.ui_select:play()
-                self.rebinding = true
-                return
-            end
-
-            if self.currently_selected == 8 then
-                Assets.playSound("levelup")
-
-                if USING_CONSOLE then
-                    Input.resetBinds(true) -- Console, no keyboard, only reset gamepad binds
-                elseif Input.hasGamepad() then
-                    Input.resetBinds() -- PC, keyboard and gamepad, reset all binds
-                else
-                    Input.resetBinds(false) -- PC, no gamepad, only reset keyboard binds
-                end
-                Input.saveBinds()
-                self.reset_flash_timer = 10
-            end
-
-            if self.currently_selected == 9 then
-                self.reset_flash_timer = 0
-                self.state = "MAIN"
-                self.currently_selected = 2
-                self.ui_select:stop()
-                self.ui_select:play()
-                Input.clear("confirm", true)
-            end
-            return
-        end
-
-        local old_selected = self.currently_selected
-        if Input.pressed("up") then
-            self.currently_selected = self.currently_selected - 1
-        end
-        if Input.pressed("down") then
-            self.currently_selected = self.currently_selected + 1
-        end
-
-        self.currently_selected = Utils.clamp(self.currently_selected, 1, 9)
-
-        if old_selected ~= self.currently_selected then
-            self.ui_move:stop()
-            self.ui_move:play()
-        end
-    end
+    self.show_ach = Kristal.getLibConfig("achievements", "config_button")
 end
 
 function DarkConfigMenu:update()
+    if not self.show_ach then
+        return super.update(self)
+    end
+
     if self.state == "MAIN" then
         if Input.pressed("confirm") then
             self.ui_select:stop()
@@ -203,12 +92,16 @@ function DarkConfigMenu:update()
 
     self.reset_flash_timer = math.max(self.reset_flash_timer - DTMULT, 0)
 
-    super:update(self)
+    super.super.update(self)
 end
 
 function DarkConfigMenu:draw()
+    if not self.show_ach then
+        return super.draw(self)
+    end
+
     if Game.state == "EXIT" then
-        super:draw(self)
+        super.super.draw(self)
         return
     end
     love.graphics.setFont(self.font)
@@ -242,6 +135,10 @@ function DarkConfigMenu:draw()
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))
     else
+
+        -- NOTE: This is forced to true if using a PlayStation in DELTARUNE... Kristal doesn't have a PlayStation port though.
+        local dualshock = Input.getControllerType() == "ps4"
+
         love.graphics.print("Function", 23,  -12)
         -- Console accuracy for the Heck of it
         if not USING_CONSOLE then
@@ -263,7 +160,12 @@ function DarkConfigMenu:draw()
                     love.graphics.setColor(PALETTE["world_text_hover"])
                 end
             end
-            love.graphics.print(name:gsub("_", " "):upper(),  23, -4 + (28 * index) + 4)
+
+            if dualshock then
+                love.graphics.print(name:gsub("_", " "):upper(),  23, -4 + (29 * index))
+            else
+                love.graphics.print(name:gsub("_", " "):upper(),  23, -4 + (28 * index) + 4)
+            end
 
             local shown_bind = self:getBindNumberFromIndex(index)
 
@@ -286,7 +188,11 @@ function DarkConfigMenu:draw()
                 local alias = Input.getBoundKeys(name, true)[1]
                 if alias then
                     local btn_tex = Input.getButtonTexture(alias)
-                    love.graphics.draw(btn_tex, 353 + 42 + 16 - 6, -2 + (28 * index) + 11 - 6 + 1, 0, 2, 2, btn_tex:getWidth()/2, 0)
+                    if dualshock then
+                        love.graphics.draw(btn_tex, 353 + 42, -2 + (29 * index), 0, 2, 2, btn_tex:getWidth()/2, 0)
+                    else
+                        love.graphics.draw(btn_tex, 353 + 42 + 16 - 6, -2 + (28 * index) + 11 - 6 + 1, 0, 2, 2, btn_tex:getWidth()/2, 0)
+                    end
                 end
             end
         end
@@ -300,21 +206,35 @@ function DarkConfigMenu:draw()
             love.graphics.setColor(Utils.mergeColor(PALETTE["world_text_hover"], PALETTE["world_text_selected"], ((self.reset_flash_timer / 10) - 0.1)))
         end
 
-        love.graphics.print("Reset to default", 23, -4 + (28 * 8) + 4)
+        if dualshock then
+            love.graphics.print("Reset to default", 23, -4 + (29 * 8))
+        else
+            love.graphics.print("Reset to default", 23, -4 + (28 * 8) + 4)
+        end
 
         love.graphics.setColor(PALETTE["world_text"])
         if self.currently_selected == 9 then
             love.graphics.setColor(PALETTE["world_text_hover"])
         end
-        love.graphics.print("Finish", 23, -4 + (28 * 9) + 4)
+
+        if dualshock then
+            love.graphics.print("Finish", 23, -4 + (29 * 9))
+        else
+            love.graphics.print("Finish", 23, -4 + (28 * 9) + 4)
+        end
 
         love.graphics.setColor(Game:getSoulColor())
-        love.graphics.draw(self.heart_sprite,  -2, 34 + ((self.currently_selected - 1) * 28) + 2)
+
+        if dualshock then
+            love.graphics.draw(self.heart_sprite,  -2, 34 + ((self.currently_selected - 1) * 29))
+        else
+            love.graphics.draw(self.heart_sprite,  -2, 34 + ((self.currently_selected - 1) * 28) + 2)
+        end
     end
 
     love.graphics.setColor(1, 1, 1, 1)
 
-    super:draw(self)
+    super.super.draw(self)
 end
 
 return DarkConfigMenu

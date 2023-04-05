@@ -1,0 +1,10 @@
+{
+    "id": "CH4Cafe",
+
+    "version": "v1.0.0+darkplace",
+    "engineVer": "v0.8.0-dev",
+
+    "authors": [
+        "Just another random user."
+    ]
+}

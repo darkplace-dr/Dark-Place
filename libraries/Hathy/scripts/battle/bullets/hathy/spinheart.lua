@@ -17,7 +17,7 @@ function SpinHeart:init(x, y, dir, speed)
     self.hmax = 0
 end
 
-function SpinHeart:update(dt)
+function SpinHeart:update()
     -- For more complicated bullet behaviours, code here gets called every update
     if self.con == 0 then
         self.alpha = self.alpha + 0.1
@@ -81,7 +81,7 @@ function SpinHeart:update(dt)
         end
     end
 
-    super.update(self, dt)
+    super.update(self)
 end
 
 return SpinHeart

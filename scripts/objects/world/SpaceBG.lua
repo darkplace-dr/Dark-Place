@@ -1,7 +1,7 @@
 local SpaceBG, super = Class(Object)
 
 function SpaceBG:init()
-    super:init(self)
+    super.init(self)
 
     self.parallax_x = 0
     self.parallax_y = 0

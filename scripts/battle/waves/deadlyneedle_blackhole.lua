@@ -69,7 +69,7 @@ function DeadlyNeedle_BlackHole:update()
         Game.battle.soul.x = Game.battle.soul.x + (2 * DTMULT)
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 return DeadlyNeedle_BlackHole

@@ -23,49 +23,26 @@ function spell:init()
     self.tags = {"rude", "damage"}
 end
 
-function spell:getName()
-
-    if Game:getPartyMember("robo_susie") ~= nil then
-        if Game:getPartyMember("robo_susie").level < 20 then
-            self.name = "skldfkopw"
-        elseif Game:getPartyMember("robo_susie").level >= 20 then
-            self.name = "Strainer"
-        end
-    end
-
-    return self.name
+local function isRSusieLv20andUp()
+    local sus = Game:getPartyMember("robo_susie")
+    return sus and sus.level >= 20
 end
 
-function spell:getCastName()
-    return self.cast_name or self:getName():upper()
+function spell:getName()
+    return not isRSusieLv20andUp() and "skldfkopw" or "Strainer"
 end
 
 function spell:getDescription()
-
-    if Game:getPartyMember("robo_susie") ~= nil then
-        if Game:getPartyMember("robo_susie").level < 20 then
-            self.description = "Susie spent many hours coming up with this\nattack's name. When utilized, enemies go ouch."
-        elseif Game:getPartyMember("robo_susie").level >= 20 then
-            self.description = "In your absence, Susie refined the spell's name.\nWhen used, hurt ensues."
-        end
-    end
-
-    return self.description
+    return not isRSusieLv20andUp()
+        and "Susie spent many hours coming up with this\nattack's name. When utilized, enemies go ouch."
+        or "In your absence, Susie refined the spell's name.\nWhen used, hurt ensues."
 end
 
 function spell:getBattleDescription()
-
-    if Game:getPartyMember("robo_susie") ~= nil then
-        if Game:getPartyMember("robo_susie").level < 20 then
-            self.effect = "Enemy\ngo ouch"
-        elseif Game:getPartyMember("robo_susie").level >= 20 then
-            self.effect = "Enemy\nKiller"
-        end
-    end
-
-    return self.effect
+    return not isRSusieLv20andUp()
+        and "Enemy\ngo ouch"
+        or "Enemy\nKiller"
 end
-
 
 function spell:getCastMessage(user, target)
     return "* "..user.chara:getName().." used "..self:getCastName().."!"

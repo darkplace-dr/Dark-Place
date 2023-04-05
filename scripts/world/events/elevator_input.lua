@@ -1,7 +1,7 @@
 local elevator_input, super = Class(Interactable)
 
 function elevator_input:init(data)
-	super:init(self, data)
+	super.init(self, data)
 
 	local properties = data.properties or {}
 

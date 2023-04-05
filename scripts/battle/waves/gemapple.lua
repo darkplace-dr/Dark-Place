@@ -1,7 +1,7 @@
 local GemApple, super = Class(Wave)
 
 function GemApple:init()
-    super:init(self)
+    super.init(self)
 	self.time = 9
 end
 

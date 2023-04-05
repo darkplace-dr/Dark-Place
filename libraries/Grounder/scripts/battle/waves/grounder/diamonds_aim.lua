@@ -1,7 +1,7 @@
 local DiamondsAim, super = Class(Wave)
 
 function DiamondsAim:init()
-	super:init(self)
+	super.init(self)
 end
 
 function DiamondsAim:onStart()

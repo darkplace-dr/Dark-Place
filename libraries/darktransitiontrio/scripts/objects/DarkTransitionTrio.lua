@@ -8,7 +8,7 @@ DarkTransitionTrio.SPRITE_DEPENDENCIES = {
 }
 
 function DarkTransitionTrio:init(final_y, options)
-    super:init(self)
+    super.init(self)
 
     options = options or {}
 
@@ -232,7 +232,7 @@ function DarkTransitionTrio:drawDoor(x, y, xscale, yscale, rot, color)
 end
 
 function DarkTransitionTrio:update()
-    super:update(self)
+    super.update(self)
 
     -- Process audio fading
     if self.drone_get_louder then
@@ -1224,7 +1224,7 @@ function DarkTransitionTrio:draw()
     --love.graphics.draw(self.canvas, 0, 0, 0, 2, 2)
 
     --self.stage:draw()
-    super:draw(self)
+    super.draw(self)
 end
 
 return DarkTransitionTrio

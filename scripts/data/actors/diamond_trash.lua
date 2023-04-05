@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "diamond_trash")
 
-function actor:init(x, y)
-    super.init(self, x, y)
+function actor:init()
+    super.init(self)
 
     -- Display name (optional)
     self.name = "Trash Rudinn"

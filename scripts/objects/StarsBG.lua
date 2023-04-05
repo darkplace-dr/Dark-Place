@@ -1,7 +1,7 @@
 local StarsBG, super = Class(Object)
 
 function StarsBG:init(color, back_color, fill)
-    super:init(self)
+    super.init(self)
     self.color = color
     self.back_color = back_color or color
     self.fill = fill or {0, 0, 0}
@@ -13,8 +13,8 @@ function StarsBG:init(color, back_color, fill)
     self.image = Assets.getTexture("battle/star_background")
 end
 
-function StarsBG:update(dt)
-    super:update(self, dt)
+function StarsBG:update()
+    super.update(self)
     self.fade = Game.battle.transition_timer / 10
 	self.offset = self.offset + self.speed*DTMULT
 
@@ -26,7 +26,7 @@ function StarsBG:update(dt)
 end
 
 function StarsBG:draw()
-    super:draw(self)
+    super.draw(self)
 
     self:drawFill()
 	self:drawBack()

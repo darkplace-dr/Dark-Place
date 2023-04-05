@@ -1,7 +1,7 @@
 local VaporBG, super = Class(Object)
 
 function VaporBG:init()
-    super:init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+    super.init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 
     self.parallax_x = 0
     self.parallax_y = 0

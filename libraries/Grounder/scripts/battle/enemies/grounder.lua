@@ -1,7 +1,7 @@
 local Grounder, super = Class(EnemyBattler)
 
 function Grounder:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Grounder"
     self:setActor("grounder")
@@ -51,8 +51,7 @@ end
 function Grounder:onShortAct(battler, name)
     if name == "Lecture" then
 		self:setAnimation("tired")
-		self.setTired(true)
-        print("You lectured the enemies on eating healthy.")
+		self:setTired(true)
         if battler.chara.id == "kris" then
             return "* You lectured the enemies on eating healthy."
         else
@@ -108,7 +107,7 @@ function Grounder:onAct(battler, name)
             return
         end
     end
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Grounder:getEnemyDialogue()

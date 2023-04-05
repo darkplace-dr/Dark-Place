@@ -21,7 +21,7 @@ function TouhouBullet:update()
     self.timer = self.timer + (1/40 * DTMULT)
     self.lerp = Utils.approach(self.lerp, 4, 1/90 * DTMULT)
 
-    super:update(self)
+    super.update(self)
 end
 
 return TouhouBullet

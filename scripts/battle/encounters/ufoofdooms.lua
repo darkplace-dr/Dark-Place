@@ -19,7 +19,7 @@ function UfoEncounter:init()
 end
 
 function UfoEncounter:onBattleStart()
-	super:onBattleStart(self)
+	super.onBattleStart(self)
 	Game.battle.encounter.bg = StarsBG({1, 1, 1})
 	Game.battle:addChild(Game.battle.encounter.bg)
 	Game.battle.encounter.bg.visible = true

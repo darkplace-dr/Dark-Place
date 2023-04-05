@@ -1,113 +1,174 @@
-local Lib = {}
+local lib = {}
 
-function Lib:init()
-  print("Achievement library loaded -Courtesy of SciSpace, BrandonK7200, and AcousticJamm")
+--- Called when the game is loaded. Registers achievement scripts.
+function lib:onRegistered()
+    self.achievements_data = {}
+    for _, path, achievement_scr in Registry.iterScripts("ach/") do
+        assert(achievement_scr, '"ach/' .. path .. '.lua" does not return value')
+        self.achievements_data[path] = achievement_scr
+    end
+
+    if Kristal.getLibConfig("achievements", "cooperative_ordering") then
+        self.ach_order = modRequire("scripts.ach_order")
+    end
+
+    self.global = Kristal.getLibConfig("achievements", "global_save")
 end
 
-function Lib:onRegistered()
-    self.achievements = { }
-    
-    for _,path,achievement in Registry.iterScripts("ach") do
-        assert(achievement ~= nil, '"ach/' .. path .. '.lua" does not return value')
+--- Called when the game is started. Loads achievement objects (and order), then prints an intro.
+function lib:init()
+    self.achievements = {}
+    for path, achievement_scr in pairs(self.achievements_data) do
+        local achievement = achievement_scr()
         achievement.id = achievement.id or path
         self.achievements[achievement.id] = achievement
     end
+
+    if self.ach_order then
+        for i,v in ipairs(self.ach_order) do
+            self.achievements[v].index = i
+        end
+    end
+
+    print("[ACH] Achievement library loaded - courtesy of SciSpace, BrandonK7200, AcousticJamm, and Dobby233Liu")
 end
 
-function Lib:createAchievement(id, ...)
-    if self.achievements[id] then
-        return self.achievements[id](...)
+--- Called after the game's initalization. Creates or loads the achievements savefile.
+function lib:postInit()
+    if self.global then
+        if not love.filesystem.getInfo(self:getGlobalAchFile()) then
+            love.filesystem.createDirectory("saves/" .. Mod.info.id)
+            self:writeGlobalAchievements()
+        else
+            self:loadGlobalAchievements()
+        end
+    end
+end
+
+--- Called during loading. Loads the achievement savedata.
+function lib:load(data)
+    if self.global then
+        return
+    end
+
+    if not data.achievements then
+        data.achievements = self:generateAchSaveData()
     else
-        error("Attempt to create nonexistent achievement \"" .. tostring(id) .. "\"")
+        self:loadAchievements(data.achievements)
     end
 end
 
-function Lib:postInit(new_file)
-    if new_file then
-        local data = {}
-        
-        data.achievements = {}
-        for k,v in pairs(self.achievements) do -- k is the ID, v is the info
-            local ach = self:createAchievement(k)
-			
-            data.achievements[k] = ach:save()
-        end
-	
-	if not love.filesystem.getInfo("saves/"..Mod.info.id.."/achievements.json") then
-	    love.filesystem.createDirectory("saves/"..Mod.info.id)
-	    love.filesystem.write("saves/"..Mod.info.id.."/achievements.json", JSON.encode(data))
+--- Called during saving. Writes the achievement savedata.
+function lib:save(data)
+    if self.global then
+        self:writeGlobalAchievements()
+    else
+        data.achievements = self:generateAchSaveData()
+    end
+end
+
+--- Gets the achievement table from memory.
+---@return table achievements
+function lib:getAchievements()
+    return self.achievements
+end
+
+--- Gets the path of the achievement savefile in the filesystem.
+---@return string path
+function lib:getGlobalAchFile()
+    return "saves/" .. Mod.info.id .. "/achievements.json"
+end
+
+--- Loads data from the achievement savefile in the filesystem.
+function lib:loadGlobalAchievements()
+    local data = JSON.decode(love.filesystem.read(self:getGlobalAchFile()))
+    self:loadAchievements(data.achievements)
+end
+
+--- Loads data from a hashtable of achievements.
+function lib:loadAchievements(data)
+    for name, info in pairs(data) do
+        local ach = self.achievements[name]
+        if ach then
+            ach:load(info)
+        else
+            print("[ACH][WARNING] Tried to load completion data for nonexistent achievement: "..name)
         end
     end
 end
 
-function Lib:getAchievements()
-    local data = JSON.decode(love.filesystem.read("saves/"..Mod.info.id.."/achievements.json"))
+--- Generates save data from the achievements.
+---@return table data
+function lib:generateAchSaveData()
+    local data = {}
+    for k, ach in pairs(self.achievements) do
+        data[k] = ach:save()
+    end
     return data
 end
 
-function Lib:getAchievement(achievement)
-    local data = self:getAchievements()
-	
-    for k,v in pairs(data.achievements) do -- k is the ID, v is the info
-        if k == achievement then
-            return v
+--- Writes data to the achievement savefile in the filesystem.
+function lib:writeGlobalAchievements()
+    local data = { achievements = self:generateAchSaveData() }
+
+    love.filesystem.write(self:getGlobalAchFile(), JSON.encode(data))
+end
+
+--- Gets a specific achievement from memory.
+---@return Achievement ach
+function lib:getAchievement(achievement)
+    for name, ach in pairs(self.achievements) do
+        if name == achievement then
+            return ach
         end
+    end
+
+    error("Achievement "..achievement.." does not exist")
+end
+
+--- Gets the progression of a specific achievement.
+---@return boolean|number progress
+function lib:getAchProgress(achievement)
+    return self:getAchievement(achievement).progress
+end
+
+--- Adds progression to a specific achievement.
+function lib:addAchProgress(achievement, number, slient)
+    local ach_obj = self:getAchievement(achievement)
+
+    ach_obj.progress = ach_obj.progress + number
+    self:checkAchProgression(achievement, slient)
+end
+
+--- Decides if a specific achievement is complete or not.
+function lib:checkAchProgression(achievement, slient)
+    local ach_obj = self:getAchievement(achievement)
+
+    local completion = ach_obj.completion
+    local progress = ach_obj.progress
+    if type(completion) == "number" and progress >= completion then
+        self:completeAchievement(achievement, slient)
+    elseif progress then
+        self:completeAchievement(achievement, slient)
     end
 end
 
-function Lib:getAchProgress(achievement)
-    local data = self:getAchievements()
-	
-    for k,v in pairs(data.achievements) do -- k is the ID, v is the info
-        if k == achievement then
-            return data.achievements[k].progress
+--- Marks an achievement as complete.
+function lib:completeAchievement(achievement, slient)
+    local ach_obj = self:getAchievement(achievement)
+
+    if not ach_obj.earned then
+        ach_obj.earned = true
+        ach_obj.progress = type(ach_obj.completion) == "number" and ach_obj.completion or true
+
+        if not slient then
+            Game.stage:addChild(AchievementPopUp(achievement))
         end
+    end
+
+    if self.global then
+        self:writeGlobalAchievements()
     end
 end
 
-function Lib:addAchProgress(achievement, number)
-    local data = self:getAchievements()
-	
-    for k,v in pairs(data.achievements) do -- k is the ID, v is the info
-        if k == achievement then
-            local completion = data.achievements[k].completion
-			
-            data.achievements[k].progress = data.achievements[k].progress + number
-			
-            if type(completion) == "number" then
-                if data.achievements[k].progress >= completion then
-					self:completeAchievement(achievement)
-                end
-            elseif completion == true then
-                if data.achievements[k].progress >= 1 then
-					self:completeAchievement(achievement)
-                end
-            end
-        end
-    end
-	
-    self:writeAchievements(data)
-end
-
-function Lib:completeAchievement(achievement)
-    local data = self:getAchievements()
-	
-    for k,v in pairs(data.achievements) do -- k is the ID, v is the info
-        if k == achievement then
-            if not data.achievements[k].earned then
-                data.achievements[k].earned = true
-			
-                apu = AchievementPopUp(achievement)
-                Game.stage:addChild(apu)
-            end
-        end
-    end
-	
-    self:writeAchievements(data)
-end
-
-function Lib:writeAchievements(data)
-    love.filesystem.write("saves/"..Mod.info.id.."/achievements.json", JSON.encode(data))
-end
-
-return Lib
+return lib

@@ -1,14 +1,14 @@
-local actor, super = Class("YOU", false)
+local actor, super = Class("YOU", true)
 
 function actor:init()
-    super:init(self)
+    super.init(self)
 
     self.cursed_song = Music("cursed")
     self.cursed_song:stop()
 end
 
 function actor:onWorldUpdate()
-    super:onWorldUpdate(self)
+    super.onWorldUpdate(self)
 
     if self.cursed_song:isPlaying() and self.battle_music and not Game.battle then
         if Game.world.player and Game.world.player.walk_speed == 0 then
@@ -25,7 +25,7 @@ function actor:onWorldUpdate()
 end
 
 function actor:onSetSprite(sprite, texture, callback)
-    super:onSetSprite(self, sprite, texture, callback)
+    super.onSetSprite(self, sprite, texture, callback)
     if texture == "cursed" then
         self.old_speed = Game.world.player.walk_speed
         Game.world.player.walk_speed = 0

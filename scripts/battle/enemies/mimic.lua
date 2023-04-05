@@ -1,7 +1,7 @@
 local Mimic, super = Class(EnemyBattler)
 
 function Mimic:init()
-    super:init(self)
+    super.init(self)
 
     -- Enemy name
     self.name = "Mimic"
@@ -17,12 +17,7 @@ function Mimic:init()
     self.defense = 2
     -- Enemy reward
     self.money = 1000
-    if Mod:isInTheArena() == true then
-        self.experience = 0
-    else
-        self.experience = 50
-    end
-	
+    self.experience = Mod:isInTheArena() and 0 or 50
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
@@ -64,6 +59,8 @@ function Mimic:init()
     self:registerAct("Mutate", "TP to\nEnergy", nil, 10)
 	self:registerAct("X-Mutate", "All to\nEnergy", "all", 25)
 	self:registerAct("Send", "Send All\nEnergy", "all")
+
+    self.exit_on_defeat = false
 end
 
 function Mimic:onAct(battler, name)
@@ -112,68 +109,14 @@ function Mimic:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
-function Mimic:hurt(amount, battler, color)
-    self.health = self.health - amount
-    self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
-
-    self.hurt_timer = 1
-    self:onHurt(amount, battler)
-    if self.health <= 0 and self.death ~= true then
-        Game.battle.attack_done = true
-        Game.battle.state = "ACTIONSDONE"
-        Game.battle:startCutscene(function(cutscene)
-            self.death = true
-            local susie = cutscene:getCharacter("susie")
-            local dess = cutscene:getCharacter("dess")
-            cutscene:wait(1)
-            self:shake(5)
-            Assets.playSound("wing")
-            if Mod:isInTheArena() == true then
-                if susie then
-                    cutscene:text("* Heh,[wait:5] looks like we've won.", "smile", "susie")  
-                end
-            else
-                cutscene:text("* Hey uh,[wait:5] something about this feels off...", "sad_frown", "susie")
-            end
-            self:shake(5)
-            Assets.playSound("wing")
-            cutscene:wait(1)
-            self:shake(5)
-            Assets.playSound("wing")
-            cutscene:wait(1)
-            if Mod:isInTheArena() == true then
-                if dess then
-                    cutscene:text("* funny explosion incomming", "kind", "dess")
-                end
-            else
-                cutscene:text("* idk looks fine to me lol", "kind", "dess")
-            end
-            self:shake(5)
-            Assets.playSound("wing")
-            cutscene:wait(2)
-            
-            if Mod:isInTheArena() ~= true then
-                Game.battle.killed = true
-                Game:addFlag("library_kills", 1)
-                self:defeat("KILLED", true)
-            else
-                self:defeat("VIOLENCE", true)
-            end
-            self:explode(0, 0, false)
-            cutscene:wait(2)
-            if Mod:isInTheArena() == true then
-                if susie then
-                    cutscene:text("* That was too easy!", "smile", "susie")
-                end
-                if dess then
-                    cutscene:text("* gg ez", "condescending", "dess")
-                end
-            else
-                cutscene:text("* ...", "shock", "susie")
-                cutscene:text("* well erm... THAT just happened lol", "condescending", "dess")
-            end
-        end)
+function Mimic:onDefeat(damage, battler)
+    if not Mod:isInTheArena() then
+        self:defeat("KILLED", true)
+    else
+        self:defeat("VIOLENCE", true)
     end
+
+    Game.battle:startActCutscene("mimic.dies", battler, self)
 end
 
 return Mimic

@@ -9,8 +9,8 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 6,
-  nextobjectid = 18,
+  nextlayerid = 9,
+  nextobjectid = 19,
   properties = {},
   tilesets = {
     {
@@ -22,10 +22,10 @@ return {
   },
   layers = {
     {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 2,
-      name = "objects_elevator",
+      type = "imagelayer",
+      image = "../../../assets/sprites/world/elevator_dt.png",
+      id = 8,
+      name = "elevator",
       class = "",
       visible = true,
       opacity = 1,
@@ -33,44 +33,17 @@ return {
       offsety = 0,
       parallaxx = 1,
       parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 1,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 0,
-          y = 480,
-          width = 640,
-          height = 480,
-          rotation = 0,
-          gid = 1,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 2,
-          name = "",
-          type = "",
-          shape = "point",
-          x = 240,
-          y = 280,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      repeatx = false,
+      repeaty = false,
+      properties = {}
     },
     {
       type = "objectgroup",
       draworder = "topdown",
       id = 4,
-      name = "collisions",
+      name = "collision",
       class = "",
-      visible = false,
+      visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -239,7 +212,7 @@ return {
           name = "spawn",
           type = "",
           shape = "point",
-          x = 240,
+          x = 320,
           y = 280,
           width = 0,
           height = 0,

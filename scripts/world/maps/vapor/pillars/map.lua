@@ -1,7 +1,7 @@
 local Pillars, super = Class(Map)
 
 function Pillars:onEnter()
-    super:onEnter(self)
+    super.onEnter(self)
     Game.world:spawnObject(VaporBG(0, 0), "objects_bg")
 	
     local mountains = Sprite("objects/vaporbg/mountains", 0, 105)

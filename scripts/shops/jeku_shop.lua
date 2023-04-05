@@ -204,7 +204,7 @@ function JekuShop:startTalk(talk)
 end
 
 function JekuShop:onStateChange(old, new)
-    super:onStateChange(self, old, new)
+    super.onStateChange(self, old, new)
     if old == "DIALOGUE" and new == "TALKMENU" then
         if self:getFlag("threaten_jeku") == 6 then
             love.filesystem.write("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id, 1)

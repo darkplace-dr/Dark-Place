@@ -53,7 +53,7 @@ end
 function DeadlyNeedle:update()
     -- Code here gets called every frame
 
-    super:update(self)
+    super.update(self)
 end
 
 return DeadlyNeedle
