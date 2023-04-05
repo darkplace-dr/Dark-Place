@@ -145,7 +145,10 @@ function lib:checkAchProgression(achievement, slient)
     local ach_obj = self:getAchievement(achievement)
 
     local completion = ach_obj.completion
-    if completion ~= false and ach_obj.progress >= (type(completion) == "number" and completion or 1) then
+    local progress = ach_obj.progress
+    if type(completion) == "number" and progress >= completion then
+        self:completeAchievement(achievement, slient)
+    elseif progress then
         self:completeAchievement(achievement, slient)
     end
 end
@@ -156,9 +159,7 @@ function lib:completeAchievement(achievement, slient)
 
     if not ach_obj.earned then
         ach_obj.earned = true
-        if ach_obj.completion == false then
-            ach_obj.progress = true
-        end
+        ach_obj.progress = type(ach_obj.completion) == "number" and ach_obj.completion or true
 
         if not slient then
             Game.stage:addChild(AchievementPopUp(achievement))

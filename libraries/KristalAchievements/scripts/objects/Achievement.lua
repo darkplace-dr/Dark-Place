@@ -9,19 +9,13 @@ function Achievement:init()
     self.menuicon = nil -- Optional, icon used for the acheivements menu
     self.desc = "description" -- Description
     self.menudesc = nil -- Optional, description for the achievements menu
-    self.hint = "hint" -- If info hidden is true then this will show up in place of description, used for hints
-    self.hidden = true -- Doesn't show up in the menu if not collected
+    self.hint = nil -- If info hidden is true then this will show up in place of description, used for hints
+    self.hidden = true -- Shows dimmed in the menu if not collected
     self.rarity = "Common" -- An indicator on how difficult this achievement is. "Common", "Uncommon", "Rare", "Epic" "Legendary", "Unique", "Impossible"
-    -- Shows a percent indicator if true, shows x/int if an integer, nothing if false.
-    -- FIXME: ??? antilogical
-    self.completion = false
+    self.completion = false -- Shows a percent indicator (progress/completion) if a number, nothing if false.
     self.index = math.huge -- Order in which the achievements will show up on the menu.
     self.earned = false
-    if self.completion == false then
-        self.progress = false
-    else
-        self.progress = 0
-    end
+    self.progress = type(completion) ~= "number" and false or 0 -- Do this yourself manually
 end
 
 function Achievement:save()
@@ -34,9 +28,14 @@ end
 
 function Achievement:load(data)
 	self.progress = data.progress
+    if type(self.completion) == "number" and type(self.progress) == "boolean" then
+        self.progress = self.progress and self.completion or 0
+    end
 	self.earned = data.earned
     if not self.earned then
         Kristal.callEvent("checkAchProgression", self.id, true)
+    else
+        self.progress = type(self.completion) == "number" and self.completion or true
     end
 end
 

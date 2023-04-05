@@ -39,6 +39,7 @@ function AchievementsMenu:init()
     table.sort(self.achievements_sorted, function(a,b) return a.index < b.index end)
 
     self.items_per_page = 3
+    self.line_height = 102
 end
 
 function AchievementsMenu:draw()
@@ -47,39 +48,43 @@ function AchievementsMenu:draw()
 
     love.graphics.setFont(self.font_2)
     local achs_to_display = { unpack(self.achievements_sorted, self.page, self.page + (self.items_per_page - 1) )}
-    for _,ach in ipairs(achs_to_display) do
-        local frame = Assets.getTexture("achievements/frames/"..ach.rarity)
+    for i,ach in ipairs(achs_to_display) do
+        local rel_y = (i - 1) * self.line_height
+
+        local frame = Assets.getTexture("achievements/frames/" .. ach.rarity)
         local hide = ach.hidden and not ach.earned
         local percent_color = hide and {0.5, 0.5, 0.5} or {1, 1, 1}
         local body_color = ach.earned and {1, 1, 1} or {0.5, 0.5, 0.5}
         local name = hide and "???" or ach.name
-        local desc = hide and ach.hint or ach.desc
+        local desc = (hide and ach.hint) and ach.hint or ach.desc
 
-        love.graphics.draw(frame, 0, 30, 0, 2, 2)
-
-        if ach.completion ~= false then
-            local completion_percent = ach.progress / ach.completion
-
-            love.graphics.setColor(self.progress_color_bg)
-            love.graphics.rectangle("fill", 90, 90, 150, 12)
-
-            love.graphics.setColor(self.progress_color)
-            love.graphics.rectangle("fill", 90, 90, (completion_percent * 150), 12)
-            love.graphics.setColor(percent_color)
-            local completion_percent_2 = completion_percent * 100
-            love.graphics.print(completion_percent_2.."%", 245, 87)
-        end
+        love.graphics.draw(frame, 0, rel_y + 30, 0, 2, 2)
 
         love.graphics.setColor(body_color)
         if not hide and ach.icon then
+            -- TODO: implement animating
             local icon = Assets.getTexture(ach.icon)
-            love.graphics.draw(icon, 8, 38, 0, 2, 2)
+            love.graphics.draw(icon, 8, rel_y + 38, 0, 2, 2)
         end
-        love.graphics.print(name, 90, 35)
-        love.graphics.print(desc, 90, 55)
+        love.graphics.print(name, 90, rel_y + 35)
+        love.graphics.print(desc, 90, rel_y + 55)
+
+        if type(ach.completion) == "number" then
+            local completion_percent = ach.progress / ach.completion
+
+            love.graphics.setColor(self.progress_color_bg)
+            love.graphics.rectangle("fill", 90, rel_y + 90, 150, 12)
+
+            love.graphics.setColor(self.progress_color)
+            love.graphics.rectangle("fill", 90, rel_y + 90, (completion_percent * 150), 12)
+            love.graphics.setColor(percent_color)
+            local completion_percent_2 = completion_percent * 100
+            love.graphics.print(tostring(completion_percent_2).."%", 245, rel_y + 87)
+        end
+
+        love.graphics.setColor(1, 1, 1)
     end
 
-	love.graphics.setColor(1, 1, 1)
 	if self.page > 1 then
 		love.graphics.draw(self.up_sprite, 470, 0, 0, 1, 1)
 	end

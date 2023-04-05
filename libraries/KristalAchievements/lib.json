@@ -14,7 +14,6 @@
         // If the achievements are global (true) or local (false)
         // Local ach data is only saved when save progress is invoked
         // Warning: existing global savefile does not migrate
-        // TODO: not ready
         "global_save": true,
         // If the full pop-up should show, or just the image and rarity
         // TODO: not ready
