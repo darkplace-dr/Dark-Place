@@ -115,10 +115,8 @@ end
 
 function item:onBattleUse(user, target)
     if love.math.random(0, 1) == 1 then
-        print("heal")
         target:heal(target.chara.stats["health"]/2)
     else
-        print("hurt")
         target:hurt(target.chara.stats["health"]/2, true)
     end
 end
