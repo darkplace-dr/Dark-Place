@@ -15,7 +15,7 @@ function item:init()
     self.icon = nil
 
     -- Battle description
-    self.effect = "Heals\nall HP"
+    self.effect = "Heals\nAll HP"
     -- Shop description
     self.shop = "Fully heals"
     -- Menu description
@@ -49,7 +49,7 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {
-        susie = "Who knew vegtables could taste so good!",
+        susie = "Who knew vegetables could taste so good!",
         ralsei = "I feel great!",
         noelle = "Wow, did that fully heal?",
         brandon = "Wow, that tasted good!"

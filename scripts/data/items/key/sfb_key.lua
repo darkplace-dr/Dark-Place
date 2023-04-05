@@ -50,8 +50,9 @@ end
 function item:onWorldUse()
     Game.world:startCutscene(function(cutscene)
         Assets.playSound("tada")
+
         local world_music = false
-        if Game.world.music:isPlaying() and Game.world.music.volume>0 then
+        if Game.world.music:isPlaying() and Game.world.music.volume > 0 then
             world_music = true
             Game.world.music:pause()
         end
@@ -68,6 +69,7 @@ function item:onWorldUse()
             key:setPosition(leader.width/2, 0)
             leader:addChild(key)
         end
+        Input.clear("confirm")
         cutscene:wait(1/60) -- Wait for a frame so the confirm input from selecting the item doesn't affect the wait condition below
         cutscene:wait(function()
             return Input.pressed("confirm")

@@ -54,10 +54,9 @@ function item:init()
 end
 
 function item:getBattleText(user, target)
-    return {
-        "* "..user.chara:getName().." used the "..self:getUseName().."!",
-        "* ...Nothing happened."
-    }
+    return
+        "* "..user.chara:getName().." used the "..self:getUseName().."!"
+        .."\n* ...but nothing happened."
 end
 
 function item:onWorldUse(target)
