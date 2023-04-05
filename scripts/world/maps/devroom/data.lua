@@ -558,8 +558,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "shadowsalesman",
-            ["cutscene"] = "devroom.shoptransition"
+            ["actor"] = "shadowsalesman"
           }
         },
         {

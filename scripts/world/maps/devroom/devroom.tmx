@@ -71,7 +71,6 @@
   <object id="58" name="npc" x="425" y="153">
    <properties>
     <property name="actor" value="shadowsalesman"/>
-    <property name="cutscene" value="devroom.shoptransition"/>
    </properties>
    <point/>
   </object>
