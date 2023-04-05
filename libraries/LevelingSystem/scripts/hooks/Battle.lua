@@ -1,6 +1,6 @@
 ---@class _Battle : Battle
 ---@overload fun(...) : Battle
-local Battle, super = Class(Battle, true)
+local Battle, super = Class("Battle", true)
 
 function Battle:init()
     super.init(self)

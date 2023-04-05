@@ -1,6 +1,6 @@
 ---@class _EnemyBattler : EnemyBattler
 ---@overload fun(...) : EnemyBattler
-local EnemyBattler, super = Class(EnemyBattler, true)
+local EnemyBattler, super = Class("EnemyBattler", true)
 
 function EnemyBattler:onDefeatFatal(damage, battler)
     super.onDefeatFatal(self, damage, battler)

@@ -1,6 +1,6 @@
 ---@class _LightEquipItem : LightEquipItem
 ---@overload fun(...) : LightEquipItem
-local LightEquipItem, super = Class(LightEquipItem, true)
+local LightEquipItem, super = Class("LightEquipItem", true)
 
 function LightEquipItem:showEquipText(cutscene, chara)
     cutscene:text("* " .. chara:getName() .. " equipped the " .. self:getName() .. ".")

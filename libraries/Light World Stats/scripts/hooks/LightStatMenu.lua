@@ -1,6 +1,6 @@
 ---@class _LightStatMenu : LightStatMenu
 ---@overload fun(...) : LightStatMenu
-local LightStatMenu, super = Class(LightStatMenu, true)
+local LightStatMenu, super = Class("LightStatMenu", true)
 
 function LightStatMenu:init()
     super.init(self)
@@ -51,6 +51,8 @@ function LightStatMenu:draw()
         and PALETTE["world_text"]
         or PALETTE["world_gray"])
     love.graphics.draw(self.arrow_right, 20, 20, 0, 1, 1, 0, 0)
+
+    love.graphics.setColor(PALETTE["world_text"])
 
     love.graphics.print("LV  "..chara:getLightLV(), 4, 68)
     love.graphics.print("HP  "..chara:getHealth().." / "..chara:getStat("health"), 4, 100)
