@@ -45,12 +45,18 @@ function PartyMember:addExp(amount)
     Utils.clamp(self.exp, 0, 99999)
 end
 
-function PartyMember:levelUp()
+function PartyMember:onLevelUpLVLib()
     self:increaseStat("health", 10)
     self:increaseStat("attack", 2)
     self:increaseStat("defense", 2)
-    self.love = self.love + 1
-    self.req_exp = self.exp_needed[self.love + 1] or 0
+end
+
+function PartyMember:levelUp()
+    self:onLevelUpLVLib()
+    if not Kristal.getLibConfig("leveling", "global_love") then
+        self.love = self.love + 1
+        self.req_exp = self.exp_needed[self.love + 1] or 0
+    end
 end
 
 function PartyMember:getExp()

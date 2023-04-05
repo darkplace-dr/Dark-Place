@@ -216,102 +216,53 @@ function Battle:onStateChange(old,new)
         --     win_text == "* You won the battle!"
         -- end
         if self.used_violence then
+            local leveled_up
             if self.killed then
                 if Kristal.getLibConfig("leveling", "global_love") then
                     Game:addFlag("library_experience", self.xp)
                     if Game:getFlag("library_experience", 0) > 99999 then
                         Game:setFlag("library_experience", 99999)
                     end
-                    if Game:getFlag("library_experience") >= Game:getFlag("library_reqexp") and Game:getFlag("library_love", 0) < Game:getFlag("library_maxlove") then
-                        local kris = Game:getPartyMember("kris")
-                        local ralsei = Game:getPartyMember("ralsei")
-                        local susie = Game:getPartyMember("susie")
-                        local noelle = Game:getPartyMember("noelle")
-                        while Game:getFlag("library_experience") >= Game:getFlag("library_reqexp") and Game:getFlag("library_love", 0) < Game:getFlag("library_maxlove") do
-                            Game:addFlag("library_love", 1)
-                            if Game:getFlag("library_love", 0) == 1 then
-                                Game:setFlag("library_reqexp", 10)
-                            elseif Game:getFlag("library_love", 0) == 2 then
-                                Game:setFlag("library_reqexp", 30)
-                            elseif Game:getFlag("library_love", 0) == 3 then
-                                Game:setFlag("library_reqexp", 70)
-                            elseif Game:getFlag("library_love", 0) == 4 then
-                                Game:setFlag("library_reqexp", 120)
-                            elseif Game:getFlag("library_love", 0) == 5 then
-                                Game:setFlag("library_reqexp", 200)
-                            elseif Game:getFlag("library_love", 0) == 6 then
-                                Game:setFlag("library_reqexp", 300)
-                            elseif Game:getFlag("library_love", 0) == 7 then
-                                Game:setFlag("library_reqexp", 500)
-                            elseif Game:getFlag("library_love", 0) == 8 then
-                                Game:setFlag("library_reqexp", 800)
-                            elseif Game:getFlag("library_love", 0) == 9 then
-                                Game:setFlag("library_reqexp", 1200)
-                            elseif Game:getFlag("library_love", 0) == 10 then
-                                Game:setFlag("library_reqexp", 1700)
-                            elseif Game:getFlag("library_love", 0) == 11 then
-                                Game:setFlag("library_reqexp", 2500)
-                            elseif Game:getFlag("library_love", 0) == 12 then
-                                Game:setFlag("library_reqexp", 3500)
-                            elseif Game:getFlag("library_love", 0) == 13 then
-                                Game:setFlag("library_reqexp", 5000)
-                            elseif Game:getFlag("library_love", 0) == 14 then
-                                Game:setFlag("library_reqexp", 7000)
-                            elseif Game:getFlag("library_love", 0) == 15 then
-                                Game:setFlag("library_reqexp", 10000)
-                            elseif Game:getFlag("library_love", 0) == 16 then
-                                Game:setFlag("library_reqexp", 15000)
-                            elseif Game:getFlag("library_love", 0) == 17 then
-                                Game:setFlag("library_reqexp", 25000)
-                            elseif Game:getFlag("library_love", 0) == 18 then
-                                Game:setFlag("library_reqexp", 50000)
-                            elseif Game:getFlag("library_love", 0) == 19 then
-                                Game:setFlag("library_reqexp", 99999)
-                            elseif Game:getFlag("library_love", 0) == 20 then
-                                Game:setFlag("library_reqexp", 0)
-                            end
-                            kris:increaseStat("health", 10)
-                            kris:increaseStat("attack", 2)
-                            kris:increaseStat("defense", 2)
-                            ralsei:increaseStat("health", 10)
-                            ralsei:increaseStat("attack", 1)
-                            ralsei:increaseStat("magic", 2)
-                            ralsei:increaseStat("defense", 1)
-                            susie:increaseStat("health", 15)
-                            susie:increaseStat("attack", 2)
-                            susie:increaseStat("magic", 1)
-                            susie:increaseStat("defense", 1)
-                            noelle:increaseStat("health", 10)
-                            noelle:increaseStat("attack", 1)
-                            noelle:increaseStat("magic", 3)
-                            noelle:increaseStat("defense", 1)
+                    local req_table = Kristal.callEvent("getGlobalLevelupRequirementsTable")
+                    while
+                        Game:getFlag("library_experience") >= Game:getFlag("library_reqexp")
+                        and Game:getFlag("library_love", 1) < Game:getFlag("library_maxlove")
+                    do
+                        leveled_up = true
+                        Game:addFlag("library_love", 1)
+                        local love = Game:getFlag("library_love")
+                        Game:setFlag("library_reqexp", req_table[love + 1] or 0)
+                        for _,battler in ipairs(self.party) do
+                            battler:levelUp()
                         end
-                        Game:setFlag("library_nextlv", Utils.clamp(Game:getFlag("library_reqexp") - Game:getFlag("library_experience"), 0, 99999))
+                    end
+                    Game:setFlag("library_nextlv", Utils.clamp(Game:getFlag("library_reqexp") - Game:getFlag("library_experience"), 0, 99999))
+                    if leveled_up then
                         Assets.playSound("levelup")
                         win_text = "* You won!\n* Got " .. self.xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort")..".\n* Your LOVE increased."
-                    else
-                        Game:setFlag("library_nextlv", Utils.clamp(Game:getFlag("library_reqexp") - Game:getFlag("library_experience"), 0, 99999))
-                        win_text = "* You won!\n* Got " .. self.xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
                     end
                 else
-                    local levelUp = false
                     for _,battler in ipairs(self.party) do
                         battler.chara:addExp(self.xp)
-                        if battler.chara.exp >= battler.chara.req_exp then
-                            levelUp = true
-                            while battler.chara.exp >= battler.chara.req_exp do
-                                battler.chara:levelUp()
-                            end
+                        while battler.chara.exp >= battler.chara.req_exp do
+                            leveled_up = true
+                            battler.chara:levelUp()
                         end
-                        battler.chara.next_lv = battler.chara.req_exp - battler.chara.exp
-                        Utils.clamp(battler.chara.next_lv, 0, 99999)
+                        battler.chara.next_lv = Utils.clamp(battler.chara.req_exp - battler.chara.exp, 0, 99999)
                     end
                     if Kristal.getLibConfig("leveling", "local_freezing") then
                         for _,battler in ipairs(self.party) do
-                            if battler.chara:hasSpell("ice_shock") then
+                            local can_freeze
+                            for _,spell in ipairs(battler.chara.spells) do
+                                if spell:hasTag("ice") then
+                                    can_freeze = true
+                                    break
+                                end
+                            end
+                            if can_freeze then
                                 battler.chara:addExp(self.freeze_xp)
                                 if battler.chara.exp >= battler.chara.req_exp then
-                                    levelUp = true
+                                    leveled_up = true
                                     while battler.chara.exp >= battler.chara.req_exp do
                                         battler.chara:levelUp()
                                     end
@@ -321,7 +272,7 @@ function Battle:onStateChange(old,new)
                             end
                         end
                     end
-                    if levelUp == true then
+                    if leveled_up then
                         Assets.playSound("levelup")
                         win_text = "* You won!\n* Got " .. self.xp + self.freeze_xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort")..".\n* Your LOVE increased."
                     else

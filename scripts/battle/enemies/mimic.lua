@@ -111,8 +111,6 @@ end
 
 function Mimic:onDefeat(damage, battler)
     if not Mod:isInTheArena() then
-        Game.battle.killed = true
-        Game:addFlag("library_kills", 1)
         self:defeat("KILLED", true)
     else
         self:defeat("VIOLENCE", true)

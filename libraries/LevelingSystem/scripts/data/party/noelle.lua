@@ -23,13 +23,11 @@ function character:getTitle()
     end
 end
 
-function character:levelUp()
+function character:onLevelUpLVLib()
     self:increaseStat("health", 10)
     self:increaseStat("attack", 1)
     self:increaseStat("magic", 3)
     self:increaseStat("defense", 1)
-    self.love = self.love + 1
-    self.req_exp = self.exp_needed[self.love + 1] or 0
 end
 
 return character
