@@ -57,7 +57,7 @@ function WarpBinInputMenu:draw()
             love.graphics.printf(char, draw_x, draw_y, self.char_w, "center")
         end
 
-        if i ~= actual_input_len + 1 or self.caret_flash_timer < 15 then
+        if i ~= actual_input_len + 1 or self.caret_flash_timer <= 15 then
             local line_y = draw_y + self.char_h + 2
             love.graphics.line(draw_x, line_y, draw_x + self.char_w, line_y)
         end
