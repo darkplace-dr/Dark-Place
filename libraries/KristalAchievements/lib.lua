@@ -30,7 +30,7 @@ function lib:init()
         end
     end
 
-    print("[ACH] Achievement library loaded - courtesy of SciSpace, BrandonK7200, and AcousticJamm")
+    print("[ACH] Achievement library loaded - courtesy of SciSpace, BrandonK7200, AcousticJamm, and Dobby233Liu")
 end
 
 --- Called after the game's initalization. Creates or loads the achievements savefile.
