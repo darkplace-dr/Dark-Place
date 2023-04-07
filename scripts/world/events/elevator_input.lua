@@ -30,6 +30,8 @@ function elevator_input:init(data)
 			self.maps_name[i] = Registry.getMapData(self.maps[i]).properties.name
 		end
 	end
+
+	self.markers = Utils.parsePropertyList("marker", properties)
 end
 
 function elevator_input:onInteract()
@@ -45,6 +47,7 @@ function elevator_input:onInteract()
 		-- TODO: VFX
 
 		Game.world.map:getEvent(self.transition_id).target["map"] = self.maps[map]
+		Game.world.map:getEvent(self.transition_id).target["marker"] = self.markers[map]
     end)
 end
 
