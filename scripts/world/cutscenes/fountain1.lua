@@ -1,4 +1,4 @@
-return function(cutscene, event)
+return function(cutscene)
     local function textFinish(text)
         return function() return text.done end
     end
@@ -21,29 +21,30 @@ return function(cutscene, event)
     end
 
     local fountain = Game.world:getEvent(2)
+    local susie = cutscene:getCharacter("susie")
 
     local used_fountain_once = Game:getFlag("used_fountain_once", false)
 
-    cutscene:detachFollowers()
     cutscene:wait(cutscene:fadeOut(0)) -- remove fadein
     cutscene:fadeIn(3)
 
+    cutscene:detachFollowers()
     local members = {}
+    for _, member in ipairs(Game.party) do
+        table.insert(members, cutscene:getCharacter(member.id))
+    end
+    local leader = members[1]
     local party_poss = {
         { initial = {320, 600}, walk_up = {380, 10} },
         { initial = {250, 640}, walk_up = {420, 10} },
         { initial = {380, 680}, walk_up = {460, 10} },
     }
     local party_walk_up_wait = nil
-    for i, member in ipairs(Game.party) do
-        local me_actor = cutscene:getCharacter(member.id)
-        table.insert(members, me_actor)
+    for i, member in ipairs(members) do
         local pos = party_poss[i]
-        me_actor:setPosition(unpack(pos.initial))
-        party_walk_up_wait = cutscene:walkTo(me_actor, me_actor.x, unpack(pos.walk_up))
+        member:setPosition(unpack(pos.initial))
+        party_walk_up_wait = cutscene:walkTo(member, member.x, unpack(pos.walk_up))
     end
-    local leader = members[1]
-
     cutscene:wait(party_walk_up_wait) -- 220/30
     cutscene:wait(used_fountain_once and 1.25 or 2)
 
@@ -53,27 +54,27 @@ return function(cutscene, event)
 
     local v_susie = "[spacing:1.75][voice:susie]"
 
-    showText(text, not used_fountain_once and
-    {
-        v_susie.."So here's the fountain of this place...",
-        v_susie.."It feels... so different from the previous ones.",
-        v_susie.."Like it's way more powerful... and stable.",
-        v_susie.."Is it what [color:blue]PURE DARKNESS[color:reset] is like?",
-        v_susie.."...",
-        v_susie.."Something tells me we might not be able to seal it."
-    }
-    or {"[speed:1](Do you want to return to the Light World?)"})
     if not used_fountain_once then
-        cutscene:look(cutscene:getCharacter("susie"), "right")
+        showText(text, {
+            v_susie.."So here's the fountain of this place...",
+            v_susie.."It feels... so different from the previous ones.",
+            v_susie.."Like it's way more powerful... and stable.",
+            v_susie.."Is it what [color:blue]PURE DARKNESS[color:reset] is like?",
+            v_susie.."...",
+            v_susie.."Something tells me we might not be able to seal it."
+        })
+        cutscene:look(susie, "right")
         showText(text,
             leader.id == "kris"
             and v_susie.."But I guess we can still try.\nRight, Kris?"
             or v_susie..string.format("Actually, %s... Can you even seal one?", leader.actor.name)
         )
+    else
+        showText(text, "[speed:1](Do you want to return to the Light World?)")
     end
 
     local seal = cutscene:choicer({"Yes", "No"})
-    cutscene:look(cutscene:getCharacter("susie"), "up")
+    cutscene:look(susie, "up")
 
     if seal == 1 then
         Game:setFlag("used_fountain_once", true)
