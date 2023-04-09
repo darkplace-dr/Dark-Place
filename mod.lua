@@ -105,9 +105,13 @@ function Mod:findItemThatContainsValueSatisfyingCond2D(tbl, cond)
     return nil, nil
 end
 
+function Mod:getPartyMemberOnlyIfTheyreInTheParty(chara)
+    return Game:hasPartyMember(chara) and Game:getPartyMember(chara) or nil
+end
+
 function Mod:getKris()
-    local YOU = Game:getPartyMember("YOU")
-    local kris = Game:getPartyMember("kris")
+    local YOU = Mod:getPartyMemberOnlyIfTheyreInTheParty("YOU")
+    local kris = Mod:getPartyMemberOnlyIfTheyreInTheParty("kris")
     return YOU or kris
 end
 
