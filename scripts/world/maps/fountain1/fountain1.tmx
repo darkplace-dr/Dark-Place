@@ -45,7 +45,7 @@
  <objectgroup color="#ff00ff" id="4" name="objects">
   <object id="6" name="interactable" x="200" y="160" width="240" height="120">
    <properties>
-    <property name="cutscene" value="room_prefountain.fountain1"/>
+    <property name="cutscene" value="fountain1"/>
    </properties>
   </object>
  </objectgroup>

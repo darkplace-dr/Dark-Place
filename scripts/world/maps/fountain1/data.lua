@@ -228,7 +228,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "room_prefountain.fountain1"
+            ["cutscene"] = "fountain1"
           }
         }
       }
