@@ -36,6 +36,9 @@ function WarpBinInputMenu:init()
     TextInput.pressed_callback = function(c)
         self.caret_flash_timer = 0
     end
+    TextInput.text_callback = function()
+        self.input[1] = self.input[1]:sub(1, utf8.offset(self.input[1], self.code_len))
+    end
     TextInput.submit_callback = function()
         if self.finish_cb then
             self.finish_cb(Mod:getBinCode(self.input[1]))
