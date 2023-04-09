@@ -61,6 +61,7 @@ function Mimic:init()
 	self:registerAct("Send", "Send All\nEnergy", "all")
 
     self.exit_on_defeat = false
+    self.killable = false
 end
 
 function Mimic:onAct(battler, name)

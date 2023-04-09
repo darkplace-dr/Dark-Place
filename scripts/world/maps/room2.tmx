@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="52" height="36" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="72">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="52" height="36" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="72">
  <editorsettings>
   <export target="room2.lua" format="lua"/>
  </editorsettings>
@@ -220,6 +220,7 @@
    <properties>
     <property name="actor" value="poseur"/>
     <property name="cutscene" value="room2.poseur"/>
+    <property name="flagcheck" value="!poseur_killed"/>
     <property name="sprite" value="idle_1"/>
    </properties>
    <point/>

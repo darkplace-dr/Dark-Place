@@ -24,17 +24,45 @@ return {
             return
         end
 
-        cutscene:startEncounter("poseur", true, {{"poseur", event}})
+        local encounter = cutscene:startEncounter("poseur", true, {{"poseur", event}})
 
-        cutscene:wait(2)
-        event:explode()
-        cutscene:wait(5)
+        local defeated_enemies = encounter:getDefeatedEnemies()
 
-        if cutscene:getCharacter("susie") then
-            cutscene:showNametag("Susie")
-            cutscene:text("* ...", "nervous_side", "susie")
-            cutscene:text("* That was weird.", "nervous", "susie")
-            cutscene:hideNametag()
+        local done_state = defeated_enemies[1].done_state
+
+        if done_state == "KILLED" then
+            Game.world.music:fade(0, 0.5)
+            event:remove()
+            Game:setFlag("poseur_killed", true)
+            cutscene:wait(2)
+
+            if cutscene:getCharacter("susie") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...", "neutral_side", "susie")
+                cutscene:text("* This feels...", "annoyed_down", "susie")
+                cutscene:text("* Not right at all...", "shy_down", "susie")
+                if cutscene:getCharacter("dess") then
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* idk what your talking about this feels just fine", "kind", "dess")
+                    cutscene:text("* I mean sure we just killed someone", "neutral", "dess")
+                    cutscene:text("* But they deserved it", "condescending", "dess")
+                    cutscene:text("* probably", "calm", "dess")
+                    cutscene:text("* If God wanted him to live He would not have created me", "condescending", "dess")
+                    Assets.playSound("ominous")
+                end
+                cutscene:hideNametag()
+            end
+        else
+            cutscene:wait(2)
+            event:explode()
+            cutscene:wait(5)
+
+            if cutscene:getCharacter("susie") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...", "nervous_side", "susie")
+                cutscene:text("* That was weird.", "nervous", "susie")
+                cutscene:hideNametag()
+            end
         end
     end
 }

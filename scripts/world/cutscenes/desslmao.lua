@@ -276,5 +276,21 @@ return {
 		cutscene:detachFollowers()
 		Game:movePartyMember("dess", 2)
 		cutscene:attachFollowers(3)
+		if Game:getFlag("library_kills") >= 9 then
+			cutscene:wait(3)
+			cutscene:showNametag("Dess")
+			cutscene:text("* Hey actually wait", "genuine", "dess")
+			cutscene:text("* wouldn't it be cool if like...", "kind", "dess")
+			cutscene:text("* All of the sensless murder we've been doing like...", "condescending", "dess")
+			cutscene:text("* Allowed us to actually kill people normally?", "kind", "dess")
+			cutscene:showNametag("Dess", {top = true})
+			cutscene:text("* That'd be a cool reference to hit Deltarune fangame made by RynoGG know as Deltatraveler where in the section 2 obliteration route you can actually kill the animals and people if you clear out all the enemies in the first few rooms", "condescending", "dess", {top = true})
+			cutscene:showNametag("Susie")
+			cutscene:text("* ...", "neutral_side", "susie")
+			cutscene:text("* Oooookay then...", "neutral", "susie")
+			Assets.playSound("ominous")
+			Game:setFlag("can_kill", true)
+			cutscene:hideNametag()
+		end
 	end,
 }
