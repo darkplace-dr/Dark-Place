@@ -101,6 +101,7 @@ return function(cutscene, player_name_override)
     cutscene:wait(cutscene:fadeOut(2))
     cutscene:wait(0.5)
     cutscene:after(function()
+        love.system.openURL("https://github.com/KristalTeam/Kristal/wiki/Playing-Kristal#source-code")
         Game.world:loadMap("misc/dogcheck")
     end)
 end
