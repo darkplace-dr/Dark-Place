@@ -6,7 +6,7 @@ function Dogcheck:onEnter()
     Game.world:startCutscene(function(cutscene)
         Game.world.music:stop()
         Game.world:addChild(DogCheck())
-        cutscene:wait(function() return false end)
+        cutscene:wait(function() return false end) -- Trap the player
     end)
 end
 

@@ -1,5 +1,5 @@
-return function(cutscene, event)
-    local player_name_u = Game.save_name:upper()
+return function(cutscene, player_name_override)
+    local player_name = (player_name_override or Game.save_name):upper()
 
     Game.world.music:stop()
 
@@ -9,7 +9,7 @@ return function(cutscene, event)
     dark:setLayer(WORLD_LAYERS["below_ui"])
     Game.world:addChild(dark)
 
-    cutscene:wait(10/30)
+    cutscene:wait(20/30)
 
     local flowey = Sprite("rise", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, nil, nil, "objects/flowey")
     flowey:setScale(2)
@@ -49,20 +49,22 @@ return function(cutscene, event)
     textF("* Welp.[wait:5]\n* That's all that your old pal Flowey has to say!", "nice")
     textF("* In the meantime though...", "nicesideum")
     textF("* I'll just leave you with the dog.", "sassy")
-    textF("* See ya around,[wait:5] "..player_name_u..".", "wink")
+    textF("* See ya around,[wait:5] "..player_name..".", "wink")
     flowey:setSprite("nice")
     cutscene:hideNametag()
 
     cutscene:wait(2)
 
-    if player_name_u == "BLUE" then
+    if player_name == "BLUE" or player_name == "PLAGUEIS" then
         cutscene:showNametag("Flowey")
         textF("* Wait a second...", "plain")
         textF("* Your name is...")
-        textF("* "..player_name_u.."?", "nice")
+        textF("* "..player_name.."?", "nice")
         cutscene:hideNametag()
-
         cutscene:wait(3)
+    end
+
+    if player_name == "BLUE" then
         cutscene:showNametag("Flowey")
         textF("* Y'know,[wait:5] I've been wondering...", "nicesideum")
         textF("* Why exactly ARE you blue?", "plain")
@@ -72,14 +74,7 @@ return function(cutscene, event)
         textF("* After all...", "niceside")
         textF("* I'm not some balding, middle-aged human who has his own drug business.", "nice")
         cutscene:hideNametag()
-    elseif player_name_u == "PLAGUEIS" then
-        cutscene:showNametag("Flowey")
-        textF("* Wait a second...", "plain")
-        textF("* Your name is...")
-        textF("* "..player_name_u.."?", "nice")
-        cutscene:hideNametag()
-
-        cutscene:wait(3)
+    elseif player_name == "PLAGUEIS" then
         cutscene:showNametag("Flowey")
         textF("* Y'know,[wait:5] I've actually heard a legend of someone who went by that name once...", "nicesideum")
         textF("* It was said that he had the power to save the ones he loved from death.", "plain")
@@ -102,7 +97,9 @@ return function(cutscene, event)
     end
     flowey:setSprite("nice")
 
-    cutscene:wait(5)
+    cutscene:wait(1)
+    cutscene:wait(cutscene:fadeOut(2))
+    cutscene:wait(0.5)
     cutscene:after(function()
         Game.world:loadMap("misc/dogcheck")
     end)
