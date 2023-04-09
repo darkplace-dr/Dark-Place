@@ -23,16 +23,16 @@ end
 -- have fun :]   -Char
 -- Also for reference: first in a table is the code, second in a table is the result, and third in a table is the marker you wanna go (optional but defaults to spawn).
 -- If the result is a string then it goes to that map, if the last argument is a function it will run the function.
-Mod.binCodes = {
-    { code = "00000000", result = "warphub" },
-    { code = "spamroom", result = "spamroom" },
-    { code = "desshere", result = "dessstuff/dessstart" },
+Mod.warp_bin_codes = {
+    ["00000000"] = { result = "warphub" },
+    ["spamroom"] = { result = "spamroom" },
+    ["desshere"] = { result = "dessstuff/dessstart" },
     {
         code = "wtf1998s",
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
-            Mod:addBinCode("sppispod", function(cutscene)
-                cutscene:text({
+            Mod:addBinCode("sppispod", function(cutscene2)
+                cutscene2:text({
                     "* Since you found another one...",
                     "* Here's a fun fact:",
                     "* This was made as a way to showcase what the warp bin can do!"
@@ -40,8 +40,8 @@ Mod.binCodes = {
             end)
         end
     },
-    { code = "bossrush", result = "thearena" },
-    { code = "devdiner", result = "devstart" },
+    ["bossrush"] = { result = "thearena" },
+    ["devdiner"] = { result = "devstart" },
 }
 
 -- if you don't want to be cringe there's also this new totally cool helper function wowee
@@ -53,20 +53,22 @@ function Mod:addBinCode(code, result, marker)
     end
 
     -- lmao
-    table.insert(Mod.binCodes, { code = code, result = result, marker = marker or "spawn" })
+    Mod.warp_bin_codes[code:lower()] = { result = result, marker = marker or "spawn" }
     return true
 end
 
 -- and here's a function to get a Bin Code by its Code like lmao
 function Mod:getBinCode(code)
-    return Mod:findItemThatContainsValueSatisfyingCond1D(Mod.binCodes, function(v) return v.code:lower() == code:lower() end)
+    return Mod.warp_bin_codes[code:lower()]
 end
 
 -- and here's one to delete Bin Codes
 function Mod:deleteBinCode(code)
-    local old_size = #Mod.binCodes
-    Utils.filterInPlace(Mod.binCodes, function(v) return v.code:lower() ~= code:lower() end)
-    return #Mod.binCodes < old_size
+    code = code:lower()
+
+    if not Mod:getBinCode(code) then return false end
+    Mod.warp_bin_codes[code] = nil
+    return true
 end
 
 -- Wavy VFX
@@ -86,37 +88,18 @@ Mod.wave_shader = love.graphics.newShader([[
 
 -- Other utilties
 
--- I'm sorry
-function Mod:findItemThatContainsValueSatisfyingCond1D(tbl, cond)
-    for _, v in ipairs(tbl) do
-        if cond(v) then
-            return v
-        end
-    end
-    return nil
-end
-
-function Mod:findItemThatContainsValueSatisfyingCond2D(tbl, cond)
-    for k, v in pairs(tbl) do
-        if cond(k, v) then
-            return k, v
-        end
-    end
-    return nil, nil
-end
-
-function Mod:getPartyMemberOnlyIfTheyreInTheParty(chara)
+function Mod:getPartyMemberIfInParty(chara)
     return Game:hasPartyMember(chara) and Game:getPartyMember(chara) or nil
 end
 
 function Mod:getKris()
-    local YOU = Mod:getPartyMemberOnlyIfTheyreInTheParty("YOU")
-    local kris = Mod:getPartyMemberOnlyIfTheyreInTheParty("kris")
+    local YOU = Mod:getPartyMemberIfInParty("YOU")
+    local kris = Mod:getPartyMemberIfInParty("kris")
     return YOU or kris
 end
 
-function Mod:getKrisActor(cutscene)
-    return cutscene:getCharacter(Mod:getKris().id)
+function Mod:getKrisActor()
+    return Game.world:getCharacter(Mod:getKris().id)
 end
 
 function Mod:hasAch(id)
