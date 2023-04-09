@@ -24,12 +24,12 @@ function Mimic:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        --"mimic/starsidesmimic",
-		--"mimic/starcirclemimic",
+        "mimic/starsidesmimic",
+		"mimic/starcirclemimic",
 		"mimic/starfademimic",
-        --"mimic/diamonds_aimmimic",
-        --"mimic/diamonds_upmimic",
-        --"mimic/bouncymimic",
+        "mimic/diamonds_aimmimic",
+        "mimic/diamonds_upmimic",
+        "mimic/bouncymimic",
 		-- add more, please :)
 		-- (PS, bonus points if it's an upgraded version of another enemy's attack to stick with the theme)
     }
