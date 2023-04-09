@@ -57,7 +57,7 @@ function actor:onWorldUpdate(chara)
         -- Animate
         chara.sprite.x = math.sin(chara.dance_anim_timer * 12) * 4
         chara.dance_anim_timer = chara.dance_anim_timer + DTMULT
-    elseif chara.dance_anim_timer ~= nil and chara.dance_anim_timer ~= 0 then
+    elseif chara.dance_anim_timer ~= nil then
 	    chara.sprite.x = 0
         chara.dance_anim_timer = 0
 	end
