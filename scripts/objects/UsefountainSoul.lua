@@ -19,6 +19,7 @@ function USFSoul:draw()
     local r,g,b,a = self:getDrawColor()
     local function drawSprite(x_scale, y_scale, alpha)
         love.graphics.setColor(r, g, b, a * alpha)
+        -- FIXME: the x/y math here
         love.graphics.draw(self.texture, -self.width * (x_scale - 1) / 2, -self.height * (y_scale - 1) / 2, nil, self.scale_x * x_scale, self.scale_y * y_scale)
     end
 
