@@ -27,6 +27,9 @@ function Mimic:init()
         "mimic/starsidesmimic",
 		"mimic/starcirclemimic",
 		"mimic/starfademimic",
+        "mimic/diamonds_aimmimic",
+        "mimic/diamonds_upmimic",
+        "mimic/bouncymimic",
 		-- add more, please :)
 		-- (PS, bonus points if it's an upgraded version of another enemy's attack to stick with the theme)
     }
@@ -62,6 +65,8 @@ function Mimic:init()
 
     self.exit_on_defeat = false
     self.killable = false
+
+    self.current_actor = "ufoofdoom"
 end
 
 function Mimic:onAct(battler, name)
