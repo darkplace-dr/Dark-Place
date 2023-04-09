@@ -139,9 +139,9 @@ return function(cutscene)
         cutscene:wait(cutscene:fadeOut(100/30, {color = {0, 0, 0}}))
         cutscene:wait(1)
 
-        cutscene:loadMap("warphub") -- temporary
         cutscene:fadeIn(1, {color = {1, 1, 1}})
         Kristal.showBorder(1)
+        cutscene:loadMap("warphub") -- temporary
     else
         cutscene:wait(1)
 
