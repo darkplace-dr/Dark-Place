@@ -9,7 +9,7 @@ return {
             cust_wait_timer = time
             return function()
                 cust_wait_timer = Utils.approach(cust_wait_timer, 0, DT)
-                if Input.pressed("cancel") then
+                if morshu.interact_count > 1 and Input.pressed("cancel") then
                     cust_wait_timer = 0
                     return true
                 end
@@ -42,9 +42,10 @@ return {
         end
 
         Input.clear("cancel")
+
         showMorshuAnimWithVoc("rubies", 0.095, "vo_mline", 8.8)
 
-        cutscene:text("* (Buy Lamp Oil for 40 dolla-[wait:5]\ner-[wait:5] rupee-[wait:5] er-[wait:5] rubies?)")
+        cutscene:text("* (Buy Lamp Oil for 40 dolla-[wait:5] er-[wait:5] rupee-[wait:5] er-[wait:5] rubies?)")
         cutscene:showShop()
         local choice = cutscene:choicer({ "Buy", "Do not" })
         cutscene:hideShop()
@@ -60,7 +61,7 @@ return {
         end
 
         if not Game.inventory:addItem("lampoil") then
-            cutscene:text('* (There is no "inventory full"\nclip for Morshu,[wait:5] so all you get\nis this dinky-ass text box.)')
+            cutscene:text('* (There is no "inventory full" clip for Morshu,[wait:5] so all you get is this dinky-ass text box.)')
             return
         end
 

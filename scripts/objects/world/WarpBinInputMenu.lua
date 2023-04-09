@@ -1,7 +1,9 @@
 local WarpBinInputMenu, super = Class(Object)
 
 function WarpBinInputMenu:init()
-    super.init(self, SCREEN_WIDTH / 2 - 288 / 2, SCREEN_HEIGHT / 2 - 40 / 2, 288, 40)
+    local w = 288
+    local h = 40
+    super.init(self, SCREEN_WIDTH / 2 - w / 2, SCREEN_HEIGHT / 2 - h / 2, w, h)
 
     self.parallax_x = 0
     self.parallax_y = 0
@@ -20,7 +22,7 @@ function WarpBinInputMenu:init()
     self.char_h = self.char_w
     self.char_spacing = 5
 
-    -- a table of lines
+    -- a table of lines (except our input is not multiline)
     self.input = {""}
     self.code_len = 8
 
@@ -35,6 +37,9 @@ function WarpBinInputMenu:init()
     })
     TextInput.pressed_callback = function(c)
         self.caret_flash_timer = 0
+    end
+    TextInput.text_callback = function()
+        self.input[1] = self.input[1]:sub(1, utf8.offset(self.input[1], self.code_len))
     end
     TextInput.submit_callback = function()
         if self.finish_cb then
