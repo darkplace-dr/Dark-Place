@@ -27,8 +27,7 @@ Mod.warp_bin_codes = {
     ["00000000"] = { result = "warphub" },
     ["spamroom"] = { result = "spamroom" },
     ["desshere"] = { result = "dessstuff/dessstart" },
-    {
-        code = "wtf1998s",
+    ["wtf1998s"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
             Mod:addBinCode("sppispod", function(cutscene2)
