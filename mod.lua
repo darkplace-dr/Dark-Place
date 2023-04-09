@@ -5,13 +5,13 @@ function Mod:init()
 end
 
 function Mod:postInit(new_file)
-    -- FUN Value
     if new_file then
+        -- FUN Value
         Game:setFlag("fun", love.math.random(1, 100))
-    end
 
-    if new_file and Game:hasPartyMember("YOU") then
-        Game.world:startCutscene("room1", "react_to_YOU")
+        if Game:hasPartyMember("YOU") then
+            Game.world:startCutscene("room1", "react_to_YOU")
+        end
     end
 end
 
