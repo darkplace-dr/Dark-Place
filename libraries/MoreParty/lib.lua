@@ -216,31 +216,31 @@ function Lib:init()
 	Utils.hook(AttackBox, 'update', function(orig, self, ...)
       if #Game.battle.party <= 3 then return orig(self, ...) end
 		
-		if Game.battle.cancel_attack then
-			self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, DTMULT/20)
-		end
+      if Game.battle.cancel_attack then
+          self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, DTMULT/20)
+      end
 
-		if not self.attacked then
-			self.bolt:move(-AttackBox.BOLTSPEED * DTMULT, 0)
+      if not self.attacked then
+          self.bolt:move(-AttackBox.BOLTSPEED * DTMULT, 0)
 
-			self.afterimage_timer = self.afterimage_timer + DTMULT/2
-			while math.floor(self.afterimage_timer) > self.afterimage_count do
-				self.afterimage_count = self.afterimage_count + 1
-				local afterimg = AttackBar(self.bolt_start_x - (self.afterimage_count * AttackBox.BOLTSPEED * 2), 0, 6, self.realHeight)
-				afterimg.layer = 3
-				afterimg.alpha = 0.4
-				afterimg:fadeOutAndRemove()
-				self:addChild(afterimg)
-			end
-		end
+          self.afterimage_timer = self.afterimage_timer + DTMULT/2
+          while math.floor(self.afterimage_timer) > self.afterimage_count do
+              self.afterimage_count = self.afterimage_count + 1
+              local afterimg = AttackBar(self.bolt_start_x - (self.afterimage_count * AttackBox.BOLTSPEED * 2), 0, 6, self.realHeight)
+              afterimg.layer = 3
+              afterimg.alpha = 0.4
+              afterimg:fadeOutSpeedAndRemove()
+              self:addChild(afterimg)
+          end
+      end
 
-		if not Game.battle.cancel_attack and Input.pressed("confirm") then
-			self.flash = 1
-		else
-			self.flash = Utils.approach(self.flash, 0, DTMULT/5)
-		end
+      if not Game.battle.cancel_attack and Input.pressed("confirm") then
+          self.flash = 1
+      else
+          self.flash = Utils.approach(self.flash, 0, DTMULT/5)
+      end
 
-		Object.update(self)
+      Object.update(self)
 	end)
 	
 	Utils.hook(AttackBox, 'draw', function(orig, self, ...)
@@ -383,65 +383,23 @@ function Lib:init()
 		end
 	end)
    
-   Utils.hook(DarkPowerMenu, 'draw', function(orig, self)
-		if #Game.party <= 3 then orig(self) return end
+   Utils.hook(DarkPowerMenu, 'init', function(orig, self, ...)
+		orig(self, ...)
+		if #Game.party <= 3 then return end
       
-      local DarkPowerMenu, super = Class(Object)
       self.party:setPosition(-15, 48)
-      love.graphics.setFont(self.font)
-
-      love.graphics.setColor(PALETTE["world_border"])
-      love.graphics.rectangle("fill", -24, 104, 525, 6)
-      love.graphics.rectangle("fill", 212, 104, 6, 200)
-
-      love.graphics.setColor(1, 1, 1, 1)
-      love.graphics.draw(self.caption_sprites[  "char"],  42, -28, 0, 2, 2)
-      love.graphics.draw(self.caption_sprites[ "stats"],  42,  98, 0, 2, 2)
-      love.graphics.draw(self.caption_sprites["spells"], 298,  98, 0, 2, 2)
-
-      self:drawChar()
-      self:drawStats()
-      self:drawSpells()
-
-      super:draw(self)
    end)
    
-   Utils.hook(DarkEquipMenu, 'draw', function(orig, self)
-		if #Game.party <= 3 then orig(self) return end
+   Utils.hook(DarkEquipMenu, 'init', function(orig, self, ...)
+		orig(self, ...)
+		if #Game.party <= 3 then return end
       
-      local DarkEquipMenu, super = Class(Object)
       self.party:setPosition(-15, 48)
-      love.graphics.setFont(self.font)
-
-      love.graphics.setColor(PALETTE["world_border"])
-      love.graphics.rectangle("fill", 188, -24,  6,  139)
-      love.graphics.rectangle("fill", -24, 109, 58,  6)
-      love.graphics.rectangle("fill", 130, 109, 160, 6)
-      love.graphics.rectangle("fill", 422, 109, 81,  6)
-      love.graphics.rectangle("fill", 241, 109, 6,   192)
-
-      love.graphics.setColor(1, 1, 1, 1)
-      love.graphics.draw(self.caption_sprites[    "char"],  36, -26, 0, 2, 2)
-      love.graphics.draw(self.caption_sprites["equipped"], 294, -26, 0, 2, 2)
-      love.graphics.draw(self.caption_sprites[   "stats"],  34, 104, 0, 2, 2)
-      if self.selected_slot == 1 then
-          love.graphics.draw(self.caption_sprites["weapons"], 290, 104, 0, 2, 2)
-      else
-          love.graphics.draw(self.caption_sprites["armors"], 290, 104, 0, 2, 2)
-      end
-
-      self:drawChar()
-      self:drawEquipped()
-      self:drawItems()
-      self:drawStats()
-
-      super:draw(self)
    end)
    
    Utils.hook(OverworldActionBox, 'draw', function(orig, self)
 		if #Game.party <= 3 then orig(self) return end
       
-      local OverworldActionBox, super = Class(Object)
       local parent = self.parent
       
 		local x = 0
@@ -523,16 +481,15 @@ function Lib:init()
       
       love.graphics.translate(-10, 0)
 
-      super:draw(self)
+		Object.draw(self)
 	end)
    
    Utils.hook(Shop, 'draw', function(orig, self)
 		if #Game.party <= 3 then orig(self) return end
       
-      local Shop, super = Class(Object, "shop")
       self:drawBackground()
 
-      super:draw(self)
+      Object.draw(self)
 
       love.graphics.setFont(self.font)
       if self.state == "MAINMENU" then
