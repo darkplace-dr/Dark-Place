@@ -33,7 +33,8 @@ function Achievement:load(data)
     end
 	self.earned = data.earned
     if not self.earned then
-        Kristal.callEvent("checkAchProgression", self.id, true)
+        -- Commenting out this line for now because this function is a bit broken
+        --Kristal.callEvent("checkAchProgression", self.id, true)
     else
         self.progress = type(self.completion) == "number" and self.completion or true
     end

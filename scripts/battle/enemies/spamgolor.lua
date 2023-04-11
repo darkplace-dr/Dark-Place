@@ -40,6 +40,8 @@ function Spamgolor:init()
     self:registerAct("Deal")
     self:registerAct("X-Deal", "", {"susie"})
     self:registerAct("Heal Deal", "Requires\nMoney", nil, 25)
+
+    self.killable = false
 end
 
 function Spamgolor:onAct(battler, name)

@@ -39,7 +39,7 @@ function AchievementsMenu:init()
     table.sort(self.achievements_sorted, function(a,b) return a.index < b.index end)
 
     self.items_per_page = 3
-    self.line_height = 102
+    self.line_height = 90
 end
 
 function AchievementsMenu:draw()
