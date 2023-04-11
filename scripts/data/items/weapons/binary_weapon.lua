@@ -9,7 +9,7 @@ function item:init()
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
     -- Item icon (for equipment)
-    self.icon = "ui/menu/icon/sword"
+    self.icon = ""
 
     -- Battle description
     self.effect = ""
@@ -48,6 +48,7 @@ function item:init()
         susie = true,
         ralsei = false,
         noelle = true,
+        dess = true,
         brandon = true
     }
 
@@ -56,6 +57,7 @@ function item:init()
         susie = "It looks sick!",
         ralsei = "How is it supposed to work...?",
         noelle = "Oh it's just like that movie!",
+        dess = "LMAO wtf is that?",
         brandon = "Does it say something?"
     }
 end
