@@ -146,8 +146,10 @@ function lib:checkAchProgression(achievement, slient)
 
     local completion = ach_obj.completion
     local progress = ach_obj.progress
-    if type(completion) == "number" and progress >= completion then
-        self:completeAchievement(achievement, slient)
+    if type(completion) == "number" then
+        if progress >= completion then
+            self:completeAchievement(achievement, slient)
+        end
     elseif progress then
         self:completeAchievement(achievement, slient)
     end
