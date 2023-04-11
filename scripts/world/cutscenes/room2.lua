@@ -18,6 +18,32 @@ return {
         end
 	end,
 
+    toriel3d = function(cutscene, event)
+        local susie = cutscene:getCharacter("susie")
+        if susie then
+            cutscene:showNametag("Susie")
+            cutscene:setSpeaker(susie)
+            cutscene:text("Hey, isn't that Kris' mom?", "suspicious")
+            cutscene:hideNametag()
+        end
+
+		cutscene:setSpeaker(default)
+        cutscene:text("* Silence my child")
+		cutscene:hideNametag()
+
+        local explosion = event:explode()
+        cutscene:wait(function() return explosion:isRemoved() end)
+
+        local susie = cutscene:getCharacter("susie")
+        if susie then
+            cutscene:wait(3)
+            cutscene:showNametag("Susie")
+            cutscene:setSpeaker(susie)
+            cutscene:text("* What the fu-", "shock")
+            cutscene:hideNametag()
+        end
+	end,
+
     poseur = function(cutscene, event)
         cutscene:text("* It's a mannequin.[wait:10] Do you want to fight it?")
         if cutscene:choicer({"Yes", "No"}) == 2 then

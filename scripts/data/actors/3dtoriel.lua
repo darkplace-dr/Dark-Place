@@ -1,4 +1,4 @@
-local actor, super = Class(Actor, "3D Toriel")
+local actor, super = Class(Actor, "3dtoriel")
 
 function actor:init()
     super.init(self)
@@ -20,7 +20,7 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "world/npcs/Toriel3D"
+    self.path = "world/npcs/toriel_3D"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = ""
 

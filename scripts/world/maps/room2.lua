@@ -774,8 +774,25 @@ return {
           properties = {
             ["cutscene"] = "underground.enter"
           }
-        }
+          
+        },
+        {
+          id = 16,
+          name = "npc",
+          class = "",
+          shape = "rectangle",
+          x = 280,
+          y = 113,
+          width = 80,
+          height = 73,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "3D Toriel",
+            ["cutscene"] = "room2.toriel3d",
+          }
       }
     }
   }
+}
 }
