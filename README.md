@@ -1,7 +1,7 @@
 # Dark Place
 An open source Kristal mod that anyone can contribute to
 
-[Discord Server](https://discord.gg/B2scNCB2)
+[Discord Server](https://discord.gg/ZJm9WhVvZP)
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforementioned document before contributing** as it contains the very important contribution rouxls (pronounced "rules").

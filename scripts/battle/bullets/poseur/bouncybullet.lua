@@ -11,7 +11,7 @@ function BouncyBullet:init(x, y, dir, speed)
     self.physics.speed = speed
     self.destroy_on_hit = false
 
-    self.velx = 1 - 2*love.math.random()
+    self.velx = 1 - 2*math.random()
     self.vely = 0
 end
 
@@ -21,8 +21,8 @@ function BouncyBullet:update()
     if x > Game.battle.arena.left and x < Game.battle.arena.right and y > Game.battle.arena.bottom - 8 then
         self.vely = -4
     end
-    self.vely = self.vely + 0.04
-    self:move(self.velx, self.vely, DTMULT)
+    self.vely = self.vely + (0.04 * DTMULT)
+    self:move(self.velx, self.vely)
 
     super.update(self)
 end

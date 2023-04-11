@@ -30,7 +30,7 @@ function lib:init()
         end
     end
 
-    print("[ACH] Achievement library loaded - courtesy of SciSpace, BrandonK7200, AcousticJamm, and Dobby233Liu")
+    print("Achievement library loaded - courtesy of SciSpace, BrandonK7200, AcousticJamm, and Dobby233Liu")
 end
 
 --- Called after the game's initalization. Creates or loads the achievements savefile.
@@ -92,7 +92,7 @@ function lib:loadAchievements(data)
         if ach then
             ach:load(info)
         else
-            print("[ACH][WARNING] Tried to load completion data for nonexistent achievement: "..name)
+            print("ACH: tried to load completion data for nonexistent achievement - "..name)
         end
     end
 end

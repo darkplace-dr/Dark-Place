@@ -1,4 +1,4 @@
-return function(cutscene)
+return function(cutscene, cell_phone_event_override)
     local had_music = Game.world.music:isPlaying()
 
     local function pauseMusic()
@@ -29,12 +29,7 @@ return function(cutscene)
     cutscene:text("* (You tried to call on the Cell\nPhone.)", nil, nil, { advance = false })
     cutscene:wait(1+1/3)
 
-    local event_num = love.math.random(1, 100)
-    if Kristal.Config["debug"] and Game.world.map.cell_phone_event_override then
-        event_num = Game.world.map.cell_phone_event_override
-        Game.world.map.cell_phone_event_override = nil
-        Kristal.Console:log("Overriden Cell Phone event to " .. event_num)
-    end
+    local event_num = cell_phone_event_override ~= nil and cell_phone_event_override or love.math.random(1, 100)
 
     if event_num <= 10 then
         garbageNoise("mcdonalds")

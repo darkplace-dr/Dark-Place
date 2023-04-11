@@ -51,6 +51,7 @@ function item:init()
         ralsei = "U-um... No thanks.",
         noelle = "I-it's not deer season, is it?",
 		dess = "pew pew",
+        brandon = "Uh, okay then?"
     }
 end
 

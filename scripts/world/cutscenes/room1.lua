@@ -133,6 +133,9 @@ return {
         cutscene:showNametag("Wall Guardian")
         cutscene:text("* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers.")
         cutscene:hideNametag()
+        if not Mod:hasAch("wallguardian") then
+            Kristal.callEvent("completeAchievement", "wallguardian")
+        end
     end,
 
     star = function(cutscene, event)
@@ -140,6 +143,9 @@ return {
         cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...")
         cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
         cutscene:hideNametag()
+        if not Mod:hasAch("starwalker") then
+            Kristal.callEvent("completeAchievement", "starwalker")
+        end
     end,
 
     sans = function(cutscene, event)
