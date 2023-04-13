@@ -19,6 +19,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * vitellary - Contributor
 * Dobby233Liu - Contributor
 * Willow with a W - Contributor
+* DeltaVelvet - Contributor
 
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
