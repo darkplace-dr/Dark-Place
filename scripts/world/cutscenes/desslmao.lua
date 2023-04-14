@@ -2,6 +2,11 @@ return {
 	dessbegin = function(cutscene)
 		local dess = cutscene:getCharacter("dess")
 
+		if cutscene:getCharacter("brandon") then
+			cutscene:showNametag("Brandon")
+			cutscene:text("* (Oh god...[wait:5] it's HER.)", "miffed", "brandon")
+		end
+
 		cutscene:showNametag("Dess Holiday?")
 		cutscene:text("* Yo is that-", "condescending", "dess")
 		Assets.playSound("lowqualityburp")
@@ -22,6 +27,17 @@ return {
 
 		cutscene:showNametag("Dess")
 		cutscene:text("* Man idk anymore", "condescending", "dess")
+		if cutscene:getCharacter("brandon") then
+			cutscene:text("* Oh hey is that the dude?", "kind", "dess")
+			cutscene:showNametag("Brandon")
+			cutscene:text("[noskip][speed:0.3]* ...", "miffed", "brandon")
+			cutscene:showNametag("Dess")
+			cutscene:text("* uhhhh Brandish was it?", "neutral", "dess")
+			cutscene:showNametag("Brandon")
+			cutscene:text("* ... Brandon.[wait:10]\n* Or Brenda if you prefer.", "miffed", "brandon")
+			cutscene:showNametag("Dess")
+			cutscene:text("* yeah I knew that", "condescending", "dess")
+		end
 		cutscene:text("* Oh yeah can I join your team btw", "neutral", "dess")
 
 		cutscene:hideNametag()
@@ -74,6 +90,10 @@ return {
 			cutscene:showNametag("Susie")
 			cutscene:text("* ...", "annoyed", "susie")
 			cutscene:text("* (We need to get rid of her as fast as possible.)", "annoyed", "susie")
+			if cutscene:getCharacter("brandon") then
+				cutscene:showNametag("Brandon")
+				cutscene:text("* (Agreed.)", "miffed", "brandon")
+			end
 			cutscene:hideNametag()
 
 			Game:setFlag("dessThingy", true)
@@ -94,12 +114,16 @@ return {
 		local susie = cutscene:getCharacter("susie")
 		local leader = Mod:getKrisActor()
 		local dess = cutscene:getCharacter("dess")
+		local brandon = cutscene:getCharacter("brandon")
 
 		cutscene:detachFollowers()
 		cutscene:detachCamera()
 
 		cutscene:walkTo(leader, dess.x, dess.y+16, 1, "up")
 		cutscene:walkTo(susie, dess.x, dess.y+32, 1, "up")
+		if brandon then
+			cutscene:walkTo(brandon, dess.x, dess.y+48, 1, "up")
+		end
 
 		cutscene:showNametag("Susie")
 		cutscene:text("* Ugh,[wait:10] alright,[wait:5] is this the last one?!", "angry", "susie")
@@ -148,6 +172,9 @@ return {
 		cutscene:look(susie, "down")
 		cutscene:look(dess, "down")
 		cutscene:look(leader, "down")
+		if brandon then
+			cutscene:look(brandon, "down")
+		end
 
 		cutscene:wait(1.2)
 		cutscene:text("* I'm sorry![wait:10]\n* I simply couldn't contain myself!")
@@ -218,6 +245,11 @@ return {
 		cutscene:showNametag("Dess")
 		cutscene:text("* Agreed", "neutral", "dess")
 
+		if brandon then
+			cutscene:showNametag("Brandon")
+			cutscene:text("* Let's do this.", "happy", "brandon")
+		end
+
 		cutscene:showNametag("???")
 		cutscene:text("* Suit yourself![wait:5] Uheehee!")
 
@@ -248,6 +280,11 @@ return {
 		cutscene:text("* I just want you to know right now...", "suspicious", "susie")
 		cutscene:text("* You are the absolute worst person I've ever met.", "suspicious", "susie")
 
+		if brandon then
+			cutscene:showNametag("Brandon")
+			cutscene:text("* Now you know how I feel.", "miffed", "brandon")
+		end
+
 		cutscene:showNametag("Dess")
 		cutscene:text("* Alright but can I stay on the team?", "neutral", "dess")
 
@@ -271,6 +308,10 @@ return {
 
 		cutscene:showNametag("Dess")
 		cutscene:text("* Yippeee", "condescending", "dess")
+		if brandon then
+			cutscene:showNametag("Brandon")
+			cutscene:text("* (God damnit.)", "miffed", "brandon")
+		end
 		cutscene:hideNametag()
 
 		cutscene:detachFollowers()
@@ -288,6 +329,10 @@ return {
 			cutscene:showNametag("Susie")
 			cutscene:text("* ...", "neutral_side", "susie")
 			cutscene:text("* Oooookay then...", "neutral", "susie")
+			if brandon then
+				cutscene:showNametag("Brandon")
+				cutscene:text("[speed:0.3]* ...", "frown", "brandon")
+			end
 			Assets.playSound("ominous")
 			Game:setFlag("can_kill", true)
 			cutscene:hideNametag()

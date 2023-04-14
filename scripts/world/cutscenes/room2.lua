@@ -74,9 +74,13 @@ return {
                     cutscene:text("* But they deserved it", "condescending", "dess")
                     cutscene:text("* probably", "calm", "dess")
                     cutscene:text("* If God wanted him to live He would not have created me", "condescending", "dess")
-                    Assets.playSound("ominous")
+                end
+                if cutscene:getCharacter("brandon") then
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Um...[wait:5] alright then.", "frown", "brandon")
                 end
                 cutscene:hideNametag()
+                Assets.playSound("ominous")
             end
         else
             cutscene:wait(2)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="63">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="64">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -75,6 +75,14 @@
    <point/>
   </object>
   <object id="61" gid="24" x="325" y="187" width="200" height="60"/>
+  <object id="63" name="npc" x="810" y="180">
+   <properties>
+    <property name="actor" value="brandon"/>
+    <property name="cutscene" value="devroom.brandon"/>
+    <property name="flagcheck" value="!brandon_inparty"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="50" name="entry" x="40" y="280">
