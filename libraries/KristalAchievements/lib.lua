@@ -117,13 +117,7 @@ end
 --- Gets a specific achievement from memory.
 ---@return Achievement ach
 function lib:getAchievement(achievement)
-    for name, ach in pairs(self.achievements) do
-        if name == achievement then
-            return ach
-        end
-    end
-
-    error("Achievement "..achievement.." does not exist")
+    return self.achievements[achievement]
 end
 
 --- Gets the progression of a specific achievement.
@@ -132,40 +126,49 @@ function lib:getAchProgress(achievement)
     return self:getAchievement(achievement).progress
 end
 
+function lib:earnedAch(achievement)
+    return self:getAchievement(achievement).earned
+end
+
 --- Adds progression to a specific achievement.
-function lib:addAchProgress(achievement, number, slient)
+function lib:addAchProgress(achievement, number, silent)
     local ach_obj = self:getAchievement(achievement)
 
-    ach_obj.progress = ach_obj.progress + number
-    self:checkAchProgression(achievement, slient)
+    if type(ach_obj.completion) ~= "number" then
+        error("Achievement " + achievement + " doesn't use progress")
+    end
+
+    ach_obj.progress = math.min(ach_obj.progress + number, ach_obj.completion)
+
+    self:checkAchProgression(achievement, silent)
 end
 
 --- Decides if a specific achievement is complete or not.
-function lib:checkAchProgression(achievement, slient)
+function lib:checkAchProgression(achievement, silent)
     local ach_obj = self:getAchievement(achievement)
 
     local completion = ach_obj.completion
     local progress = ach_obj.progress
     if type(completion) == "number" then
         if progress >= completion then
-            self:completeAchievement(achievement, slient)
+            self:completeAchievement(achievement, silent)
         end
     elseif progress then
-        self:completeAchievement(achievement, slient)
+        self:completeAchievement(achievement, silent)
     end
 end
 
 --- Marks an achievement as complete.
-function lib:completeAchievement(achievement, slient)
+function lib:completeAchievement(achievement, silent)
     local ach_obj = self:getAchievement(achievement)
 
-    if not ach_obj.earned then
-        ach_obj.earned = true
-        ach_obj.progress = type(ach_obj.completion) == "number" and ach_obj.completion or true
+    silent = ach_obj.earned or silent
 
-        if not slient then
-            Game.stage:addChild(AchievementPopUp(achievement))
-        end
+    ach_obj.earned = true
+    ach_obj.progress = type(ach_obj.completion) == "number" and ach_obj.completion or true
+
+    if not silent then
+        Game.stage:addChild(AchievementPopUp(achievement))
     end
 
     if self.global then

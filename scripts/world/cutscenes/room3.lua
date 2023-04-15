@@ -143,9 +143,7 @@ return {
 
         cutscene:look("down")
 
-        if not Mod:hasAch("doobie") then
-            Kristal.callEvent("completeAchievement", "doobie")
-        end
+        Kristal.callEvent("completeAchievement", "doobie")
     end,
 
     garbage = function(cutscene, event)

@@ -63,7 +63,7 @@ function item:onWorldUse(target)
     if target.id ~= "susie" then
         return true
     end
-    target.health = math.max(1, target.health - 1)
+    target:setHealth(math.max(1, target:getHealth() - 1))
     Assets.playSound("hurt")
     return true
 end
