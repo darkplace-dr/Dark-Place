@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="85">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="85">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -13,7 +13,8 @@
  <tileset firstgid="70" source="../../tilesets/city_alleyway.tsx"/>
  <tileset firstgid="385" source="../../tilesets/objects.tsx"/>
  <tileset firstgid="409" source="../../tilesets/space.tsx"/>
- <objectgroup id="9" name="objects_bg">
+ <objectgroup id="9" name="objects_bg"/>
+ <objectgroup id="10" name="objects_doors">
   <object id="83" gid="404" x="70" y="360" width="102" height="80"/>
  </objectgroup>
  <layer id="1" name="tiles" width="23" height="24">
