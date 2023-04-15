@@ -354,4 +354,16 @@ return {
             cutscene:hideNametag()
 	    end
     end,
+    wardrobe = function(cutscene, event)
+        cutscene:text("* (It's a wardrobe.)\n* (What drawer would you like to open?)")
+
+        local choice = cutscene:choicer({ "Party", "Costumes" })
+
+        if choice == 2 then
+        else
+            cutscene:after(function()
+                Game.world:openMenu(Costumes())
+            end)
+        end
+    end,
 }
