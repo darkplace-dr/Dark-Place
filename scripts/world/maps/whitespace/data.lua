@@ -11,6 +11,7 @@ return {
   nextlayerid = 9,
   nextobjectid = 29,
   properties = {
+    ["border"] = "omori",
     ["music"] = "whitespace",
     ["name"] = "WHITE SPACE"
   },
@@ -18,7 +19,8 @@ return {
     {
       name = "whitespace",
       firstgid = 1,
-      filename = "../../tilesets/whitespace.tsx"
+      filename = "../../tilesets/whitespace.tsx",
+      exportfilename = "../../tilesets/whitespace.lua"
     },
     {
       name = "objects",

@@ -3,7 +3,7 @@ local DeadlyNeedle_BlackHole, super = Class(Wave)
 function DeadlyNeedle_BlackHole:onStart()
 	local arenacenter = Game.battle.arena.left + Game.battle.arena.right
 	self.x = arenacenter / 2
-	if math.random(1,2) == 1 then
+	if love.math.random(1,2) == 1 then
 		self.y = Game.battle.arena.top + 35.5
 		self.top = true
 	else
@@ -69,7 +69,7 @@ function DeadlyNeedle_BlackHole:update()
         Game.battle.soul.x = Game.battle.soul.x + (2 * DTMULT)
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 return DeadlyNeedle_BlackHole

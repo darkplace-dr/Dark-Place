@@ -51,7 +51,8 @@ function item:init()
         susie = "It's made of plastic!",
         ralsei = "Are you sure that's magic?",
         noelle = "It's... powerful?",
-		dess = "NOOO, MY PRECIOUS POWER RING, LOST FOREVER, AUGHHHHHHHHH"
+		dess = "NOOO, MY PRECIOUS POWER RING, GONE FOREVER, AUGHHHHHHHHH",
+        brandon = "I'm taken, sorry."
     }
 end
 

@@ -16,7 +16,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "Maybe an Earthbound reference,\n maybe not."
+    self.description = "Maybe an EarthBound reference,\nmaybe not."
 
     -- Default shop price (sell price is halved)
     self.price = 1200
@@ -53,6 +53,7 @@ function item:init()
 		ralsei = "I'm not good enough!",
 		susie = "You know what? Sure.",
 		noelle = "I'm not good at baseball!!",
+		brandon = "I don't play sports."
     }
 end
 

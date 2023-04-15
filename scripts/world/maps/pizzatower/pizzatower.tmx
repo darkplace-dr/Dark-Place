@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="93">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="simple"/>
+  <property name="music" value="mmm_yess_put_the_tree_on_my_pizza"/>
+  <property name="name" value="Gnome Forest...?"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/objects.tsx"/>
+ <imagelayer id="6" name="bg">
+  <image source="../../../../assets/sprites/world/maps/pizzatower/main.png" width="960" height="550"/>
+ </imagelayer>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="17" x="-0.5" y="236">
+   <polygon points="0,0 123.591,72 120.5,4"/>
+  </object>
+  <object id="18" x="123.078" y="307.984">
+   <polygon points="0,0 51.9219,28.5156 36.9219,-27.9844 -3.07813,-67.9844"/>
+  </object>
+  <object id="19" x="174.984" y="336.453">
+   <polygon points="0,0 85.3793,40.0923 65.0156,-16.4531 -14.9844,-56.4531"/>
+  </object>
+  <object id="20" x="0.125" y="305.25">
+   <polygon points="0,0 150.33,91.5682 -0.125,94.75"/>
+  </object>
+  <object id="22" x="260.375" y="296.521" width="717.583" height="73"/>
+  <object id="23" x="260.545" y="357.455" width="47.4545" height="19.8182"/>
+  <object id="24" x="307.978" y="377.267">
+   <polygon points="0,0 13.9111,-7.88889 -0.0222222,-7.77778"/>
+  </object>
+  <object id="27" x="738.182" y="369.091">
+   <polygon points="0,0 14.4848,10.5758 257.818,40.9091 253.818,-43.0909 21.1515,-21.7576"/>
+  </object>
+  <object id="28" x="260" y="376.375">
+   <polygon points="0,0 9.4375,-4.3125 4.3125,-28.6875 -9.875,-24.9375"/>
+  </object>
+  <object id="31" x="-36.6667" y="550" width="1036.67" height="40"/>
+  <object id="32" x="960" y="160" width="40" height="400"/>
+  <object id="33" x="150.727" y="397.273">
+   <polygon points="0,0 -26.7273,7.06061 -110.061,17.3939 -163.727,18.0606 -157.061,-17.9394 -33.3939,-15.2727"/>
+  </object>
+  <object id="37" x="858" y="360" width="142" height="200"/>
+  <object id="41" x="-40" y="160" width="53.3333" height="440"/>
+  <object id="46" x="388" y="468.5" width="66.5" height="44.5"/>
+  <object id="47" x="451.091" y="495.091" width="56.5455" height="12"/>
+  <object id="84" x="360" y="266" width="104" height="140"/>
+  <object id="85" x="467.333" y="231.333" width="128.667" height="164.667"/>
+  <object id="86" x="597.455" y="281.5" width="111.045" height="120.864"/>
+ </objectgroup>
+ <objectgroup color="#ffaaff" id="13" name="objects_npcs2">
+  <object id="71" name="ralgay" gid="17" x="457.833" y="404.5" width="147" height="235"/>
+ </objectgroup>
+ <objectgroup id="12" name="objects_npcs">
+  <object id="68" name="susy" gid="18" x="356.939" y="411.333" width="118" height="138"/>
+  <object id="70" name="chris hansen" gid="15" x="592.333" y="407.333" width="120" height="103"/>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="9" name="entrance" x="146" y="355.667">
+   <point/>
+  </object>
+  <object id="12" name="spawn" x="146.333" y="355.606">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects" visible="0">
+  <object id="34" gid="16" x="382.167" y="519.333" width="125" height="99">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="89" name="transition" x="-40" y="160" width="103.667" height="218.333">
+   <properties>
+    <property name="map" value="room1"/>
+    <property name="marker" value="entry2"/>
+   </properties>
+  </object>
+  <object id="90" name="interactable" x="359" y="261" width="106.5" height="148">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="gosh dan it, hansen. where are we"/>
+   </properties>
+  </object>
+  <object id="91" name="interactable" x="467" y="238.5" width="129" height="159.5">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="dubie"/>
+   </properties>
+  </object>
+  <object id="92" name="interactable" x="596.5" y="276.5" width="115" height="127">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* (Holy hell, it's Kris Deltarune!)"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <imagelayer id="11" name="trees" opacity="0">
+  <image source="../../../../assets/sprites/world/maps/pizzatower/parallax.png" width="960" height="550"/>
+ </imagelayer>
+</map>

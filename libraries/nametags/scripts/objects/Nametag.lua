@@ -1,7 +1,7 @@
 local Nametag, super = Class(Object)
 
 function Nametag:init(text, options)
-	super:init(self, 56, 290)
+	super.init(self, 56, 290)
 	
 	self.options = options or {}
 	
@@ -44,11 +44,11 @@ end
 
 function Nametag:update()
 	self.timer = self.timer + DTMULT
-	super:update(self)
+	super.update(self)
 end
 
 function Nametag:draw()
-    super:draw(self)
+    super.draw(self)
 	love.graphics.setFont(self.font)
 
     -- love.graphics.print(self.name, 2, -14)
@@ -77,8 +77,8 @@ function Nametag:draw()
 
         if white then
             love.graphics.setShader(shader)
-            shader:sendColor("from", white and COLORS.dkgray or state.color)
-            shader:sendColor("to", white and COLORS.navy or state.color)
+            shader:sendColor("from", white and COLORS.dkgray or self.color)
+            shader:sendColor("to", white and COLORS.navy or self.color)
             --love.graphics.setColor(cr, cg, cb, ca * (white and 1 or 0.3))
             local mult = white and 1 or 0.3
             love.graphics.setColor(1*mult, 1*mult, 1*mult, 1)
@@ -117,8 +117,8 @@ function Nametag:draw()
 
         if white then
             love.graphics.setShader(shader)
-            shader:sendColor("from", white and COLORS.dkgray or state.color)
-            shader:sendColor("to", white and COLORS.navy or state.color)
+            shader:sendColor("from", white and COLORS.dkgray or self.color)
+            shader:sendColor("to", white and COLORS.navy or self.color)
             --love.graphics.setColor(cr, cg, cb, ca * (white and 1 or 0.3))
             local mult = white and 1 or 0.3
             love.graphics.setColor(1*mult, 1*mult, 1*mult, 1)

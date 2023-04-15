@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "doobie")
 
-function actor:init(x, y)
-    super.init(self, x, y)
+function actor:init()
+    super.init(self)
 
     -- Display name (optional)
     self.name = "Ralsei?"
@@ -20,7 +20,7 @@ function actor:init(x, y)
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npcs/doobie"
+    self.path = "world/npcs/doobie"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "idle"
 
@@ -41,6 +41,7 @@ function actor:init(x, y)
     self.animations = {
         ["idle"] = {"idle", 0.2, true},
         ["dance"] = {"dance", 0.01, true},
+        ["dance_svfx"] = {"dance", 0.05, true},
     }
 
     -- Table of sprite offsets (indexed by sprite name)

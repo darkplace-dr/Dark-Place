@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "ufoofdoom")
 
 function actor:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name (optional)
     self.name = "UFO Of Doom"
@@ -20,7 +20,7 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "enemies/ufoofdoom"
+    self.path = "battle/enemies/ufoofdoom"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "idle"
 

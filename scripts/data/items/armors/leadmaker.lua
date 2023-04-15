@@ -44,6 +44,7 @@ function item:init()
     self.can_equip = {
 		noelle = false,
 		dess = false,
+        brandon = false
 	}
 
     -- Character reactions
@@ -52,6 +53,7 @@ function item:init()
         ralsei = "I'll work hard!",
         noelle = "What? How do I use it?",
 		dess = "I hate work",
+        brandon = "How the hell does this work?"
     }
 end
 

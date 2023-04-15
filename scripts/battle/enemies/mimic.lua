@@ -1,7 +1,7 @@
 local Mimic, super = Class(EnemyBattler)
 
 function Mimic:init()
-    super:init(self)
+    super.init(self)
 
     -- Enemy name
     self.name = "Mimic"
@@ -17,8 +17,7 @@ function Mimic:init()
     self.defense = 2
     -- Enemy reward
     self.money = 1000
-	self.experience = 0
-	
+    self.experience = Mod:isInTheArena() and 0 or 50
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
@@ -28,6 +27,9 @@ function Mimic:init()
         "mimic/starsidesmimic",
 		"mimic/starcirclemimic",
 		"mimic/starfademimic",
+        "mimic/diamonds_aimmimic",
+        "mimic/diamonds_upmimic",
+        "mimic/bouncymimic",
 		-- add more, please :)
 		-- (PS, bonus points if it's an upgraded version of another enemy's attack to stick with the theme)
     }
@@ -60,77 +62,52 @@ function Mimic:init()
     self:registerAct("Mutate", "TP to\nEnergy", nil, 10)
 	self:registerAct("X-Mutate", "All to\nEnergy", "all", 25)
 	self:registerAct("Send", "Send All\nEnergy", "all")
+
+    self.exit_on_defeat = false
+    self.killable = false
+
+    self.current_actor = "ufoofdoom"
 end
 
 function Mimic:onAct(battler, name)
     if name == "Mutate" then
-        
 		Assets.playSound("sparkle_gem")
-		for i=1,#Game.battle.party do
-			Game.battle.party[i]:sparkle(1, 1, 1)
+		for _, ally in ipairs(Game.battle.party) do
+			ally:sparkle(1, 1, 1)
 		end
-		
 		self.encounter.energy = self.encounter.energy + 10
-		
 		if self.encounter.energy >= 100 then
 			self.encounter.energy = 150
 			return "* Energy raised to "..self.encounter.energy.."%![wait:10]\n* Full power!"
 		end
-		
         return "* Energy raised to "..self.encounter.energy.."%!"
-	
 	elseif name == "X-Mutate" then
-        
 		Assets.playSound("boost")
-		for i=1,#Game.battle.party do
-			Game.battle.party[i]:sparkle(1, 1, 1)
-			Game.battle.party[i]:flash()
+		for _, ally in ipairs(Game.battle.party) do
+			ally:sparkle(1, 1, 1)
+            ally:flash()
 		end
-		
 		self.encounter.energy = self.encounter.energy + 25
-		
 		if self.encounter.energy >= 100 then
 			self.encounter.energy = 150
 			return "* Energy raised to "..self.encounter.energy.."%!!![wait:10]\n* Full power!"
 		end
-		
         return "* Energy raised to "..self.encounter.energy.."%!!!"
-
 	elseif name == "Send" then
-		
-		if self.encounter.energy > 0 then
-		
-			Assets.playSound("scytheburst")
-			self:flash()
-		
-			self:addMercy(self.encounter.energy / 5)
-			self.encounter.energy = 0
-			
-			return "* Energy was sent to Mimic!"
-		else
-		
+		if self.encounter.energy <= 0 then
 			return "* There's nothing to send!"
-		
 		end
 
+        Assets.playSound("scytheburst")
+        self:flash()
+    
+        self:addMercy(self.encounter.energy / 5)
+        self.encounter.energy = 0
+        
+        return "* Energy was sent to Mimic!"
     elseif name == "Standard" then --X-Action
-        if battler.chara.id == "ralsei" then
-			self.encounter.energy = self.encounter.energy + 5
-            -- R-Action text
-            return "* Ralsei generated a bit of energy!"
-        elseif battler.chara.id == "susie" then
-			self.encounter.energy = self.encounter.energy + 5
-			-- S-Action text
-            return "* Susie generated a bit of energy!"
-		elseif battler.chara.id == "dess" then
-			self.encounter.energy = self.encounter.energy + 5
-            -- D-Action text
-            return "* Dess generated a bit of energy!"
-        else
-			self.encounter.energy = self.encounter.energy + 5
-			-- Text for any other character (like Noelle)
-            return "* "..battler.chara:getName().." generated a bit of energy!"
-        end
+        self.encounter.energy = self.encounter.energy + 5
+		return "* "..battler.chara:getName().." generated a bit of energy!"
     end
 
     -- If the act is none of the above, run the base onAct function
@@ -138,6 +115,14 @@ function Mimic:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
+function Mimic:onDefeat(damage, battler)
+    if not Mod:isInTheArena() then
+        self:defeat("KILLED", true)
+    else
+        self:defeat("VIOLENCE", true)
+    end
 
+    Game.battle:startActCutscene("mimic.dies", battler, self)
+end
 
 return Mimic

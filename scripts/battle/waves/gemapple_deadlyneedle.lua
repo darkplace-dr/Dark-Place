@@ -1,7 +1,7 @@
 local GemApple_DeadlyNeedle, super = Class(Wave)
 
 function GemApple_DeadlyNeedle:init()
-    super:init(self)
+    super.init(self)
 	self.time = 9
 end
 
@@ -15,14 +15,14 @@ function GemApple_DeadlyNeedle:onStart()
 
             local angle = Utils.angle(x, y, Game.battle.soul.x, Game.battle.soul.y)
 
-            local speed = math.random(5, 7) + math.random()
+            local speed = love.math.random(5, 7) + love.math.random()
 
             self:spawnBullet("gemapple", x, y, angle, speed)
         end
     end)
     local arenacenter = Game.battle.arena.left + Game.battle.arena.right
 	self.x = arenacenter / 2
-	if math.random(1,2) == 1 then
+	if love.math.random(1,2) == 1 then
 		self.y = Game.battle.arena.top + 35.5
 		self.top = true
 	else

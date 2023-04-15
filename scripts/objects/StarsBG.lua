@@ -1,7 +1,7 @@
 local StarsBG, super = Class(Object)
 
 function StarsBG:init(color, back_color, fill)
-    super:init(self)
+    super.init(self)
     self.color = color
     self.back_color = back_color or color
     self.fill = fill or {0, 0, 0}
@@ -10,22 +10,23 @@ function StarsBG:init(color, back_color, fill)
     self.size = 50
 	self.layer = BATTLE_LAYERS["bottom"]
 	self.alpha_fx = self:addFX(AlphaFX())
+    self.image = Assets.getTexture("battle/star_background")
 end
 
-function StarsBG:update(dt)
-    super:update(self, dt)
+function StarsBG:update()
+    super.update(self)
     self.fade = Game.battle.transition_timer / 10
 	self.offset = self.offset + self.speed*DTMULT
 
     if self.offset > self.size*2 then
         self.offset = self.offset - self.size*2
     end
-	
+
 	self.alpha_fx.alpha = Game.battle.transition_timer / 10
 end
 
 function StarsBG:draw()
-    super:draw(self)
+    super.draw(self)
 
     self:drawFill()
 	self:drawBack()
@@ -43,8 +44,7 @@ function StarsBG:drawBack()
     love.graphics.setColor(r,g,b, a or self.fade/2)
 	for x = -100, 740, 50 do
 		for y = -100, 580, 50 do
-			defaultbg = Assets.getTexture("bg/starbackground")
-			love.graphics.draw(defaultbg, x + self.offset/2, y + self.offset/2 + 10)
+			love.graphics.draw(self.image, x + self.offset/2, y + self.offset/2 + 10)
 		end
 	end
 end
@@ -54,8 +54,7 @@ function StarsBG:drawFront()
     love.graphics.setColor(r,g,b, a or self.fade)
 	for x = 0, 740, 50 do
 		for y = 0, 580, 50 do
-			defaultbg = Assets.getTexture("bg/starbackground")
-			love.graphics.draw(defaultbg, x - self.offset, y - self.offset)
+			love.graphics.draw(self.image, x - self.offset, y - self.offset)
 		end
 	end
 end

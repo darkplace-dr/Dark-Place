@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 28,
@@ -10,9 +9,11 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 30,
+  nextobjectid = 31,
   properties = {
-    ["music"] = "none"
+    ["border"] = "castle",
+    ["music"] = "deltarune/castletown_empty",
+    ["name"] = "Test Map - Room 3"
   },
   tilesets = {
     {
@@ -37,7 +38,6 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -62,43 +62,10 @@ return {
       }
     },
     {
-      type = "tilelayer",
-      x = 0,
-      y = 0,
-      width = 28,
-      height = 12,
-      id = 6,
-      name = "Calque de Tuiles 2",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      encoding = "lua",
-      data = {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-      }
-    },
-    {
       type = "objectgroup",
       draworder = "topdown",
       id = 2,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -110,7 +77,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 200,
@@ -123,7 +90,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 240,
@@ -136,7 +103,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 440,
@@ -149,7 +116,7 @@ return {
         {
           id = 11,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 200,
@@ -162,7 +129,7 @@ return {
         {
           id = 20,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 0,
@@ -175,7 +142,7 @@ return {
         {
           id = 21,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 0,
@@ -192,7 +159,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -203,8 +169,8 @@ return {
       objects = {
         {
           id = 4,
-          name = "transition",
-          class = "",
+          name = "script",
+          type = "",
           shape = "rectangle",
           x = 1120,
           y = 240,
@@ -213,14 +179,14 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "room1",
-            ["marker"] = "entry2"
+            ["cutscene"] = "room3.transition",
+            ["once"] = false
           }
         },
         {
           id = 8,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 40,
@@ -236,7 +202,7 @@ return {
         {
           id = 13,
           name = "whitedoor",
-          class = "",
+          type = "",
           shape = "point",
           x = 960,
           y = 244,
@@ -249,7 +215,7 @@ return {
         {
           id = 18,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 420,
           y = 262,
@@ -265,7 +231,7 @@ return {
         {
           id = 19,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 800,
           y = 120,
@@ -280,7 +246,7 @@ return {
         {
           id = 22,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 140,
           y = 420,
@@ -296,7 +262,7 @@ return {
         {
           id = 23,
           name = "setflag",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 240,
@@ -312,7 +278,7 @@ return {
         {
           id = 27,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 770,
           y = 180,
@@ -326,7 +292,7 @@ return {
         {
           id = 28,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 640,
           y = 260,
@@ -342,7 +308,7 @@ return {
         {
           id = 29,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 240,
           y = 262,
@@ -362,7 +328,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -374,7 +339,7 @@ return {
         {
           id = 6,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 1080,
           y = 350,
@@ -387,7 +352,7 @@ return {
         {
           id = 7,
           name = "exit_spamroom",
-          class = "",
+          type = "",
           shape = "point",
           x = 720,
           y = 120,
@@ -400,7 +365,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1080,
           y = 350,
@@ -413,7 +378,7 @@ return {
         {
           id = 14,
           name = "exit_whitespace",
-          class = "",
+          type = "",
           shape = "point",
           x = 960,
           y = 280,
@@ -430,7 +395,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "controllers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -442,7 +406,7 @@ return {
         {
           id = 24,
           name = "toggle",
-          class = "",
+          type = "",
           shape = "point",
           x = 200,
           y = 360,

@@ -19,14 +19,12 @@ function UfoEncounter:init()
 end
 
 function UfoEncounter:onBattleStart()
-	super:onBattleStart(self)
+	super.onBattleStart(self)
 	Game.battle.encounter.bg = StarsBG({1, 1, 1})
 	Game.battle:addChild(Game.battle.encounter.bg)
 	Game.battle.encounter.bg.visible = true
 end
 
-<<<<<<< Updated upstream
-=======
 function UfoEncounter:onReturnToWorld(events)
     -- check whether the enemies were killed
     if Game.battle.killed then
@@ -41,5 +39,4 @@ function UfoEncounter:onReturnToWorld(events)
     end
 end
 
->>>>>>> Stashed changes
 return UfoEncounter

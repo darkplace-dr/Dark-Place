@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,8 +10,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 45,
+  nextobjectid = 48,
   properties = {
+    ["border"] = "castle",
+    ["music"] = "deltarune/castletown_empty",
     ["name"] = "Test Map - Room 1"
   },
   tilesets = {
@@ -188,7 +190,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 80,
@@ -201,7 +203,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 120,
@@ -214,7 +216,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 160,
@@ -227,7 +229,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 280,
@@ -240,7 +242,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 280,
@@ -253,7 +255,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 360,
@@ -266,7 +268,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 400,
@@ -279,7 +281,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 680,
@@ -292,7 +294,7 @@ return {
         {
           id = 9,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 800,
@@ -305,7 +307,7 @@ return {
         {
           id = 10,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 920,
@@ -318,7 +320,7 @@ return {
         {
           id = 12,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 680,
@@ -331,7 +333,7 @@ return {
         {
           id = 14,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 400,
@@ -344,7 +346,7 @@ return {
         {
           id = 15,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 360,
@@ -357,7 +359,7 @@ return {
         {
           id = 16,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 120,
@@ -368,22 +370,9 @@ return {
           properties = {}
         },
         {
-          id = 17,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 200,
-          y = 440,
-          width = 40,
-          height = 240,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 18,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 440,
@@ -396,7 +385,7 @@ return {
         {
           id = 23,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 640,
@@ -409,7 +398,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 600,
@@ -422,7 +411,7 @@ return {
         {
           id = 25,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 640,
@@ -435,11 +424,63 @@ return {
         {
           id = 26,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 800,
           width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 48,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 440,
+          width = 40,
+          height = 100,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 580,
+          width = 40,
+          height = 100,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 50,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 500,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 580,
+          width = 200,
           height = 40,
           rotation = 0,
           visible = true,
@@ -464,7 +505,7 @@ return {
         {
           id = 19,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 840,
@@ -480,7 +521,7 @@ return {
         {
           id = 27,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 210,
@@ -489,14 +530,14 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "* Silence echoes in the darkness\nof this familiar-yet-different\nscenery.",
-            ["text2"] = "* The power of avoiding copying\nofficial music shines within\nyou."
+            ["text1"] = "* A known music now echoes in the air.",
+            ["text2"] = "* The power of receiving a copyright strike might fill you soon."
           }
         },
         {
           id = 28,
           name = "squeak",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 600,
@@ -509,7 +550,7 @@ return {
         {
           id = 29,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 800,
           y = 200,
@@ -525,7 +566,7 @@ return {
         {
           id = 33,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 80,
@@ -541,7 +582,7 @@ return {
         {
           id = 35,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 460,
           y = 160,
@@ -558,7 +599,7 @@ return {
         {
           id = 39,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 720,
@@ -574,9 +615,9 @@ return {
         {
           id = 40,
           name = "NPC",
-          class = "",
+          type = "",
           shape = "point",
-          x = 300,
+          x = 380,
           y = 140,
           width = 0,
           height = 0,
@@ -590,7 +631,7 @@ return {
         {
           id = 43,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 560,
           y = 740,
@@ -606,7 +647,7 @@ return {
         {
           id = 44,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 120,
@@ -617,6 +658,55 @@ return {
           properties = {
             ["text1"] = "* A room between...",
             ["text2"] = "* There is a room between..."
+          }
+        },
+        {
+          id = 45,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 258,
+          y = 122,
+          width = 84,
+          height = 5,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "elevator",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 47,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 740,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "dog",
+            ["cutscene"] = "room1.plaedmc2"
+          }
+        },
+        {
+          id = 52,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = -10,
+          y = 540,
+          width = 10,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "right",
+            ["marker"] = "entry_j",
+            ["shop"] = "jeku_shop"
           }
         }
       }
@@ -638,7 +728,7 @@ return {
         {
           id = 20,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 300,
           y = 250,
@@ -651,7 +741,7 @@ return {
         {
           id = 30,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 760,
           y = 240,
@@ -664,10 +754,36 @@ return {
         {
           id = 37,
           name = "entry2",
-          class = "",
+          type = "",
           shape = "point",
           x = 40,
           y = 840,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 46,
+          name = "entry_elevator",
+          type = "",
+          shape = "point",
+          x = 300,
+          y = 152,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 53,
+          name = "entry_j",
+          type = "",
+          shape = "point",
+          x = 30,
+          y = 570,
           width = 0,
           height = 0,
           rotation = 0,

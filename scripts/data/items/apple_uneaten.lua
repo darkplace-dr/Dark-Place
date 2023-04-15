@@ -2,7 +2,7 @@
 local item, super = Class(HealItem, "apple_uneaten")
 
 function item:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name
     self.name = "Apple"
@@ -52,7 +52,8 @@ function item:init()
         susie = "An apple a day keeps the doctor away.",
         ralsei = "It's really sweet!",
         noelle = "It's really crunchy!",
-		dess = "it's red like ME",
+		dess = "sweet",
+        brandon = "I love apples!"
     }
 end
 

@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "magolor")
 
-function actor:init(x, y)
-    super.init(self, x, y)
+function actor:init()
+    super.init(self)
 
     -- Display name (optional)
     self.name = "Magolor"
@@ -20,7 +20,7 @@ function actor:init(x, y)
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npcs/magolor"
+    self.path = "world/npcs/magolor"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "shop"
 
@@ -39,7 +39,8 @@ function actor:init(x, y)
 
     -- Table of sprite animations
     self.animations = {
-        ["speen"] = {"speen", 0.01, true}
+        ["speen"] = {"speen", 0.01, true},
+        ["speen_svfx"] = {"speen", 0.05, true},
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -47,12 +48,18 @@ function actor:init(x, y)
         ["speen"] = {0, 0}
     }
 end
---the actor:onWorldUpdate(chara) function below is used to make an NPC react to the morshu_dance variable in room3.
+
 function actor:onWorldUpdate(chara)
-	if Game.world.map.morshu_dance == true then
-        chara.sprite.x = math.sin(Kristal.getTime()*12)*4
-	else
+	if chara.dance then
+        if chara.dance_anim_timer == nil then
+            chara.dance_anim_timer = 0
+        end
+        -- Animate
+        chara.sprite.x = math.sin(chara.dance_anim_timer * 12) * 4
+        chara.dance_anim_timer = chara.dance_anim_timer + DT
+    elseif chara.dance_anim_timer ~= nil then
 	    chara.sprite.x = 0
+        chara.dance_anim_timer = nil
 	end
 end
 

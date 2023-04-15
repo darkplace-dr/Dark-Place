@@ -1,7 +1,7 @@
 local BG, super = Class(Object)
 
 function BG:init(color, back_color, fill)
-    super:init(self)
+    super.init(self)
     self.color = color
     self.back_color = back_color or color
     self.fill = fill or {0, 0, 0}
@@ -9,10 +9,11 @@ function BG:init(color, back_color, fill)
     self.speed = 1
     self.size = 50
 	self.layer = BATTLE_LAYERS["bottom"]
+    self.image = Assets.getTexture("repaintedbg")
 end
 
-function BG:update(dt)
-    super:update(self, dt)
+function BG:update()
+    super.update(self)
     self.fade = Game.battle.transition_timer / 10
 	self.offset = self.offset + self.speed*DTMULT
 
@@ -22,7 +23,7 @@ function BG:update(dt)
 end
 
 function BG:draw()
-    super:draw(self)
+    super.draw(self)
 
     self:drawFill()
 	self:drawBack()
@@ -40,8 +41,7 @@ function BG:drawBack()
     love.graphics.setColor(r,g,b, a or self.fade/2)
 	for x = -100, 740, 50 do
 		for y = -100, 580, 50 do
-			repaintedbg = Assets.getTexture("repaintedbg")
-			love.graphics.draw(repaintedbg, x + self.offset/2, y + self.offset/2 + 10)
+			love.graphics.draw(self.image, x + self.offset/2, y + self.offset/2 + 10)
 		end
 	end
 end
@@ -51,8 +51,7 @@ function BG:drawFront()
     love.graphics.setColor(r,g,b, a or self.fade)
 	for x = 0, 740, 50 do
 		for y = 0, 580, 50 do
-			repaintedbg = Assets.getTexture("repaintedbg")
-			love.graphics.draw(repaintedbg, x - self.offset, y - self.offset)
+			love.graphics.draw(self.image, x - self.offset, y - self.offset)
 		end
 	end
 end

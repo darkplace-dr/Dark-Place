@@ -1,7 +1,8 @@
 return {
-  version = "1.4",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.4.3",
+  tiledversion = "1.10.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
@@ -11,6 +12,7 @@ return {
   nextlayerid = 7,
   nextobjectid = 56,
   properties = {
+    ["border"] = "whitespace",
     ["music"] = "gimmieyourwalletmiss",
     ["name"] = "Dess - THE BEGINNING"
   },
@@ -19,55 +21,13 @@ return {
       name = "castle",
       firstgid = 1,
       filename = "../../tilesets/castle.tsx",
-      tilewidth = 40,
-      tileheight = 40,
-      spacing = 4,
-      margin = 2,
-      columns = 6,
-      image = "../../../../assets/sprites/tilesets/castle.png",
-      imagewidth = 264,
-      imageheight = 444,
-      objectalignment = "unspecified",
-      tileoffset = {
-        x = 0,
-        y = 0
-      },
-      grid = {
-        orientation = "orthogonal",
-        width = 40,
-        height = 40
-      },
-      properties = {},
-      terrains = {},
-      tilecount = 60,
-      tiles = {}
+      exportfilename = "../../tilesets/castle.lua"
     },
     {
       name = "whitespace",
       firstgid = 61,
       filename = "../../tilesets/whitespace.tsx",
-      tilewidth = 40,
-      tileheight = 40,
-      spacing = 0,
-      margin = 0,
-      columns = 3,
-      image = "../../../../assets/sprites/tilesets/whitespace.png",
-      imagewidth = 120,
-      imageheight = 120,
-      objectalignment = "unspecified",
-      tileoffset = {
-        x = 0,
-        y = 0
-      },
-      grid = {
-        orientation = "orthogonal",
-        width = 40,
-        height = 40
-      },
-      properties = {},
-      terrains = {},
-      tilecount = 9,
-      tiles = {}
+      exportfilename = "../../tilesets/whitespace.lua"
     }
   },
   layers = {
@@ -79,10 +39,13 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -120,10 +83,13 @@ return {
       height = 24,
       id = 2,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -158,10 +124,13 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       objects = {
         {
@@ -340,10 +309,13 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       objects = {
         {
@@ -420,10 +392,13 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
       properties = {},
       objects = {
         {

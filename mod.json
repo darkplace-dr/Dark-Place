@@ -4,12 +4,12 @@
   // Displays on the main menu.
   "name": "Dark Place",
   // Displays underneath the name. Optional.
-  "subtitle": "",
+  "subtitle": "An open source Kristal mod that anyone can contribute to",
 
   // The version of your mod.
   "version": "v1.0.0",
   // What version of the engine your mod was made with.
-  "engineVer": "v0.8.0-dev",
+  "engineVer": "v0.8.0",
 
   // The Deltarune chapter you'd like to base your mod off of.
   // Do keep in mind that you can control chapter-specific features
@@ -20,27 +20,46 @@
   "map": "room1",
 
   // The party. The first character is the player.
-  "party": [ "YOU", "susie" ],
-
+  "party": [
+    "YOU",
+    "susie"
+  ],
   // The inventory. Contains three darkburgers, a cell phone and a shadow crystal by default.
   "inventory": {
-    "items": [ "glowshard", "darkburger", "darkburger", "darkburger" ],
-    "key_items": [ "cell_phone", "shadowcrystal" ]
+    "items": [
+      "glowshard",
+      "darkburger",
+      "darkburger",
+      "darkburger"
+    ],
+    "key_items": [
+      "cell_phone",
+      "shadowcrystal"
+    ]
   },
 
   // Equipment for your party. Not specifying equipment defaults to the following.
   "equipment": {
     "kris": {
       "weapon": "wood_blade",
-      "armor": [ "amber_card", "amber_card" ]
+      "armor": [
+        "amber_card",
+        "amber_card"
+      ]
     },
     "susie": {
       "weapon": "mane_ax",
-      "armor": [ "amber_card", "amber_card" ]
+      "armor": [
+        "amber_card",
+        "amber_card"
+      ]
     },
     "ralsei": {
       "weapon": "red_scarf",
-      "armor": [ "amber_card", "amber_card" ]
+      "armor": [
+        "amber_card",
+        "amber_card"
+      ]
     }
   },
 
@@ -54,8 +73,10 @@
   // Whether the mod is hidden from the mod selection.
   "hidden": false,
 
+  // Reaction messages for specific names that players may input in the naming screen.
   "namesMessages": {
     "BRANDON": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
+    "BRENDA": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
     "GHASTTEAR": "[style:GONER][spacing:3.2]HOLY SHIT!!!!!\nGHAST TEAR REAL!!!!!!!!!!",
     "AMOGUS": "[style:GONER][spacing:3.2]WHEN THE LIGHT IS\nRUNNING LOW!!! :flushed:",
     "BLUE": "[style:GONER][spacing:3.2][color:blue]WHAT IS WRONG WITH YOU?\nWHY ARE YOU BLUE?",
@@ -67,14 +88,20 @@
     "JARU": "[style:GONER][spacing:3.2]NOTE: NOT TO BE CONFUSED\nWITH A CERTAIN DELTARUNE\nTHEORIST.",
     "GARFZONE": "[style:GONER][spacing:3.2]GEE...SOME PEOPLE ENJOY\nA LITTLE MUSIC IN THE\nMORNING..."
   },
-	"namesDeny": ["SPAMTON", "MORSHU"],
+  // Names to disallow player from using in the naming screen.
+  "namesDeny": [
+    "SPAMTON",
+    "MORSHU"
+  ],
 
   // Config values for the engine and any libraries you may have.
   // These config values can control chapter-specific features as well.
   "config": {
     "kristal": {
       "growStronger": false
-      // End of config
+    },
+    "achievements": {
+      "cooperative_ordering": true
     }
   }
 }

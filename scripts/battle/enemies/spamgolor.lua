@@ -40,6 +40,8 @@ function Spamgolor:init()
     self:registerAct("Deal")
     self:registerAct("X-Deal", "", {"susie"})
     self:registerAct("Heal Deal", "Requires\nMoney", nil, 25)
+
+    self.killable = false
 end
 
 function Spamgolor:onAct(battler, name)
@@ -61,12 +63,11 @@ function Spamgolor:onAct(battler, name)
         if battler.chara.id == "susie" then
             Game.battle:startActCutscene("spamgolor", "susie_talk")
             return
-        else
-            return {
-                "* "..battler.chara:getName().." tried to make a deal...",
-                "* ... But they didn't know how to."
-            }
         end
+        return {
+            "* "..battler.chara:getName().." tried to make a deal...",
+            "* ... but they didn't know how to."
+        }
     end
 
     return super.onAct(self, battler, name)

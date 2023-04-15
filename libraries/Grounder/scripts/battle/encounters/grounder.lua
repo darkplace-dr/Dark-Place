@@ -1,7 +1,7 @@
 local Grounder, super = Class(Encounter)
 
 function Grounder:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* Grounder drew near!"
@@ -15,20 +15,13 @@ function Grounder:init()
     self:addEnemy("grounder")
 end
 
--- TODO: Glowshard functions in enemies
-function Grounder:onGlowshardUse(user)
+function Grounder:onGlowshardUse(item, user)
     local lines = ""
     for _, enemy in ipairs(Game.battle.enemies) do
         lines = lines .. "* " .. enemy.name .. " became enraptured!\n"
         enemy:addMercy(100)
     end
-    local inventory = Game.inventory:getStorage("item")
-    for index,item in ipairs(inventory) do
-        if item.id == "glowshard" then
-            Game.inventory:removeItem("item", index)
-            break
-        end
-    end
+    Game.inventory:removeItem(item)
     return {
         "* "..user.chara.name.." used the GLOWSHARD!",
         lines,
@@ -54,7 +47,7 @@ function Grounder:onManualUse(user)
 end
 
 function Grounder:onBattleInit()
-	super:onBattleInit(self)
+	super.onBattleInit(self)
 	Game.battle.repainted_bg = RepaintedBG({1, 1, 1})
 	Game.battle:addChild(Game.battle.repainted_bg)
 end

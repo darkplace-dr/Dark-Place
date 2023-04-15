@@ -1,0 +1,8 @@
+## Visual Studio Code
+.vscode
+
+## Tiled
+*.tiled-session
+
+## Aseprite
+*.ase

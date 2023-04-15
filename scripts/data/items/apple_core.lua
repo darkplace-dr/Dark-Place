@@ -2,7 +2,7 @@
 local item, super = Class(HealItem, "apple_core")
 
 function item:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name
     self.name = "AppleCore"
@@ -29,6 +29,7 @@ function item:init()
         noelle = 5,
         YOU = 10,
         dess = 15,
+        brandon = 5
     }
 
     -- Default shop price (sell price is halved)
@@ -59,7 +60,8 @@ function item:init()
         susie = "Better than nothing...",
         ralsei = "This tastes... not good...",
         noelle = "Wh-why did you make me eat this?!",
-		dess = "no it's fine",
+		dess = "yeah this is still good",
+        brandon = "...Ew."
     }
 end
 

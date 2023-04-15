@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="28" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="30">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="28" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="31">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="music" value="none"/>
+  <property name="border" value="castle"/>
+  <property name="music" value="deltarune/castletown_empty"/>
+  <property name="name" value="Test Map - Room 3"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/castle.tsx"/>
  <tileset firstgid="61" source="../../tilesets/objects.tsx"/>
@@ -24,22 +26,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="6" name="Calque de Tuiles 2" width="28" height="12">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
  <objectgroup color="#0000ff" id="2" name="collision">
   <object id="1" x="120" y="200" width="560" height="40"/>
   <object id="2" x="80" y="240" width="40" height="200"/>
@@ -49,10 +35,10 @@
   <object id="21" x="760" y="0" width="40" height="200"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
-  <object id="4" name="transition" x="1120" y="240" width="40" height="200">
+  <object id="4" name="script" x="1120" y="240" width="40" height="200">
    <properties>
-    <property name="map" value="room1"/>
-    <property name="marker" value="entry2"/>
+    <property name="cutscene" value="room3.transition"/>
+    <property name="once" type="bool" value="false"/>
    </properties>
   </object>
   <object id="8" name="transition" x="680" y="40" width="80" height="40">

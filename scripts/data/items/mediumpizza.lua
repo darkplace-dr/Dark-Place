@@ -1,7 +1,7 @@
 local item, super = Class(HealItem, "mediumpizza")
 
 function item:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name
     self.name = "Medium Pizza"
@@ -27,7 +27,8 @@ function item:init()
         ["ralsei"] = 30,
         ["noelle"] = 30,
         ["YOU"] = 30,
-        ["dess"] = 50,
+        ["dess"] = 25,
+        ["brandon"] = 30
 	}
 
     -- Default shop price (sell price is halved)
@@ -45,12 +46,12 @@ function item:init()
     self.instant = false
 
     -- Character reactions (key = party member id)
-
     self.reactions = {
         susie = "The sauce tastes like blood!",
         ralsei = "Isn't this just plastic?",
         noelle = "Not the best, but it's fine.",
-		dess = "I LOVE FREDDY FAZBEAR",
+		dess = "ew fnaf",
+        brandon = "WAS THAT THE BITE OF 87?!"
 	}
 end
 

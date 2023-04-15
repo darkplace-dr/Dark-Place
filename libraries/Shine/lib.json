@@ -1,0 +1,10 @@
+{
+    "id": "Shine",
+
+    "version": "v1.0.0+darkplace",
+    "engineVer": "v0.8.0-dev",
+
+    "authors": [
+	    "Bor"
+    ]
+}

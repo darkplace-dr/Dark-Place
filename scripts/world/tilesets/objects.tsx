@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.4" name="objects" tilewidth="66" tileheight="725" tilecount="8" columns="0">
+<tileset version="1.8" tiledversion="1.8.6" name="objects" tilewidth="147" tileheight="725" tilecount="21" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -36,5 +36,44 @@
  </tile>
  <tile id="10">
   <image width="66" height="40" source="../../../assets/sprites/objects/spamton_graffiti.png"/>
+ </tile>
+ <tile id="11">
+  <image width="67" height="64" source="../../../assets/sprites/objects/vapor_palmtree_cyan.png"/>
+ </tile>
+ <tile id="12">
+  <image width="90" height="33" source="../../../assets/sprites/objects/bb_stand.png"/>
+ </tile>
+ <tile id="13">
+  <image width="120" height="120" source="../../../assets/sprites/objects/billboard.png"/>
+ </tile>
+ <tile id="14">
+  <image width="120" height="103" source="../../../assets/sprites/world/maps/pizzatower/chris hansen.png"/>
+ </tile>
+ <tile id="15">
+  <image width="125" height="99" source="../../../assets/sprites/world/maps/pizzatower/mooshroom.png"/>
+ </tile>
+ <tile id="16">
+  <image width="147" height="235" source="../../../assets/sprites/world/maps/pizzatower/relthie.png"/>
+ </tile>
+ <tile id="17">
+  <image width="118" height="138" source="../../../assets/sprites/world/maps/pizzatower/thuthie.png"/>
+ </tile>
+ <tile id="18">
+  <image width="29" height="90" source="../../../assets/sprites/objects/pillar.png"/>
+ </tile>
+ <tile id="19">
+  <image width="51" height="40" source="../../../assets/sprites/objects/spamgolor_door.png"/>
+ </tile>
+ <tile id="20">
+  <image width="50" height="35" source="../../../assets/sprites/objects/diner_table.png"/>
+ </tile>
+ <tile id="21">
+  <image width="40" height="60" source="../../../assets/sprites/objects/devroom_doorway.png"/>
+ </tile>
+ <tile id="22">
+  <image width="145" height="64" source="../../../assets/sprites/objects/cabinet.png"/>
+ </tile>
+ <tile id="23">
+  <image width="100" height="30" source="../../../assets/sprites/objects/devroom_counter.png"/>
  </tile>
 </tileset>

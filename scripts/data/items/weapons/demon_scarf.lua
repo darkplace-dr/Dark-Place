@@ -53,6 +53,7 @@ function item:init()
         ralsei = "...o- okay????",
         noelle = "That thing is scary!",
 		dess = "ahh evil scary demon",
+        brandon = "Somebody get me some holy water."
     }
 end
 

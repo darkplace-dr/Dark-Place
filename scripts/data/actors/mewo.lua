@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "mewo")
 
-function actor:init(x, y)
-    super.init(self, x, y)
+function actor:init()
+    super.init(self)
 
     -- Display name (optional)
     self.name = "Mewo"
@@ -20,7 +20,7 @@ function actor:init(x, y)
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npcs/mewo"
+    self.path = "world/npcs/mewo"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = ""
 

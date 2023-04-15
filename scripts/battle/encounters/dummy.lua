@@ -17,6 +17,7 @@ function Dummy:init()
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
 end
+
 function Dummy:onReturnToWorld(events)
     -- check whether the enemies were killed
     if Game.battle.killed then

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="25">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="vaporwave"/>
+  <property name="music" value="forest"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/vapor.tsx"/>
+ <tileset firstgid="22" source="../../../tilesets/objects.tsx"/>
+ <objectgroup color="#ffaaff" id="2" name="objects_bg"/>
+ <imagelayer id="3" name="mountains" offsetx="0" offsety="105">
+  <image source="../../../../../assets/sprites/objects/vaporbg/mountains.png" width="640" height="480"/>
+ </imagelayer>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,1,1,1,2,3,3,6,7,5,3,3,4,0,0,
+0,0,1,1,2,3,3,6,7,5,3,3,4,1,0,0,
+0,0,1,2,3,3,6,7,5,3,3,4,1,1,1,1,
+0,0,2,3,3,6,7,5,3,3,4,1,1,1,1,1,
+0,0,3,3,6,7,5,3,3,4,1,1,1,1,8,8,
+0,0,3,6,7,5,3,3,4,1,1,1,1,1,0,0,
+0,0,9,10,10,9,9,9,8,8,8,8,8,8,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="4" name="collision">
+  <object id="1" x="80" y="80" width="480" height="40"/>
+  <object id="2" x="560" y="120" width="40" height="40"/>
+  <object id="3" x="560" y="160" width="80" height="40"/>
+  <object id="4" x="560" y="280" width="80" height="40"/>
+  <object id="5" x="560" y="320" width="40" height="40"/>
+  <object id="6" x="80" y="360" width="480" height="40"/>
+  <object id="7" x="40" y="120" width="40" height="240"/>
+  <object id="15" x="166" y="120" width="35" height="40"/>
+  <object id="17" x="438" y="120" width="35" height="40"/>
+  <object id="23" x="236" y="160" width="170" height="40"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="5" name="objects">
+  <object id="9" name="transition" x="640" y="200" width="40" height="80">
+   <properties>
+    <property name="map" value="vapor/vapor_roomtest"/>
+    <property name="marker" value="entry3"/>
+   </properties>
+  </object>
+  <object id="10" gid="33" x="134" y="160" width="134" height="128"/>
+  <object id="12" gid="2147483681" x="371" y="160" width="134" height="128"/>
+  <object id="22" gid="34" x="231" y="200" width="180" height="66"/>
+  <object id="24" name="interactable" x="241" y="160" width="160" height="40">
+   <properties>
+    <property name="cutscene" value="vapor.bb"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="6" name="markers">
+  <object id="8" name="entry_bb" x="600" y="240">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

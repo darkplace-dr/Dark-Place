@@ -2,7 +2,7 @@ local Bullet, super = Class(Bullet)
 
 function Bullet:init(x, y)
     -- Last argument = sprite path
-    super:init(self, x, y, "bullets/starbullet")
+    super.init(self, x, y, "battle/bullets/starbullet")
 	
 	self.element = "star"
 	
@@ -20,12 +20,12 @@ function Bullet:update()
     -- For more complicated bullet behaviours, code here gets called every update
 	
 	if self.alpha <= 1 and (not self.out) then
-		self.alpha = self.alpha + 0.02
+		self.alpha = self.alpha + 0.02 * DTMULT
 		if self.alpha >= 1 then
 			self.out = true
 		end
 	elseif self.alpha > 0 and self.out then
-		self.alpha = self.alpha - 0.05
+		self.alpha = self.alpha - 0.05 * DTMULT
 		if self.alpha <= 0 then
 			self:remove()
 		end
@@ -40,11 +40,11 @@ function Bullet:update()
 	
 	--self.physics.speed = self.physics.speed * 1.05
 
-    super:update(self)
+    super.update(self)
 end
 
 function Bullet:onCollide(soul)
-    if soul.inv_timer == 0 and self.hitplayer then
+    if soul.inv_timer <= 0 and self.hitplayer then
         self:onDamage(soul)
     end
 

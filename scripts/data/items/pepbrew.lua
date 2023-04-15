@@ -2,7 +2,7 @@
 local item, super = Class(HealItem, "pepbrew")
 
 function item:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name
     self.name = "PepBrew"
@@ -23,10 +23,6 @@ function item:init()
 
     -- Amount healed (HealItem variable)
     self.heal_amount = 70
-	-- lmao
-	self.heal_amounts = {
-        ["dess"] = 50,
-	}
 
     -- Default shop price (sell price is halved)
     self.price = 100
@@ -56,7 +52,8 @@ function item:init()
         susie = "Damn, I feel energized!",
         ralsei = "Tastes sweet!",
         noelle = "Wow, it's very fizzy.",
-		dess = "Pepsi is better",
+		dess = "big soda fan",
+        brandon = "*burp* Oh, excuse me."
     }
 end
 
