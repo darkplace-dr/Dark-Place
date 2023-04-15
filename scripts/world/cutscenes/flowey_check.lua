@@ -1,5 +1,4 @@
 return function(cutscene, player_name_override)
-    local player_name = (player_name_override or Game.save_name):upper()
     local required_version = SemVer(Mod.info.engineVer)
     local pre = required_version.prerelease
     local windows = love.system.getOS() == "Windows"
@@ -8,7 +7,10 @@ return function(cutscene, player_name_override)
         and (repo .. "/releases/tag/" .. "v" .. tostring(required_version))
         or repo .. "/wiki/Playing-Kristal#source-code"
 
+    local player_name = (player_name_override or Game.save_name):upper()
+
     Game.world.music:stop()
+    cutscene:setTextboxTop(false)
 
     local dark = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
     dark:setColor(0, 0, 0)
@@ -16,14 +18,17 @@ return function(cutscene, player_name_override)
     dark:setLayer(WORLD_LAYERS["below_ui"])
     Game.world:addChild(dark)
 
-    cutscene:wait(20/30)
-
     local flowey = Sprite("", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, nil, nil, "objects/flowey")
     flowey:setScale(2)
     flowey:setOrigin(0.5, 1)
     flowey:setLayer(dark.layer + 1)
     dark:addChild(flowey)
+    local function textF(text, emotion, altv)
+        if emotion then flowey:setSprite(emotion) end
+        cutscene:text("[voice:flowey"..(altv and "2" or "1").."]"..text)
+    end
 
+    cutscene:wait(20/30)
     flowey:setSprite("rise_plain")
     flowey:play(0.05, false, function()
         flowey:setSprite("plain")
@@ -31,29 +36,25 @@ return function(cutscene, player_name_override)
     end)
     cutscene:wait(4)
 
-    local function textF(text, emotion, altv)
-        if emotion then flowey:setSprite(emotion) end
-        cutscene:text("[voice:flowey"..(altv and "2" or "1").."]"..text)
-    end
-
     cutscene:showNametag("Flowey")
     textF("* Uh...[wait:5] Howdy.")
     cutscene:hideNametag()
 
     cutscene:wait(3)
+
     cutscene:showNametag("Flowey")
     textF("* So, uh...", "side")
     textF("* I just thought I'd let you know...", "plain")
-    textF("* You're using an outdated version of this engine to play this mod.")
+    textF("* You're using an outdated version of Kristal to play this mod.")
     textF("* You'll need version "..tostring(required_version).." in order to play it.")
-    --if pre then
-    --    textF("* With said version,[wait:5] being the source code for the engine.", "side")
-    --end
+    if pre then
+        textF("* With said version,[wait:5] being an in-dev version of the engine.", "side")
+    end
     textF("* But don't worry!", "nice")
     textF("* It's VERY easy to set up!", "nicesideum")
-    textF("* All you need to do is go to the Kristal Github page...", "niceside")
+    textF("* All you need to do is go to Kristal's GitHub page...", "niceside")
     if pre then
-        textF("* Click the green button,[wait:5] and then download it!", "nice")
+        textF("* Then click the green button to download the engine!", "nice")
         if windows then
             textF("* And, of course,[wait:5] you'll also have to download LÖVE...", "niceside")
         end
@@ -114,15 +115,12 @@ return function(cutscene, player_name_override)
     end
 
     -- HACK
-    local rise_r_frames = Utils.reverse(Assets.getFrames(flowey.path.."/rise"))
-    local rise_r_anim = {
-        rise_r_frames,
+    flowey:setAnimation({
+        Utils.reverse(Assets.getFrames(flowey.path.."/rise")),
         0.05,
-        callback = function()
-            flowey.visible = false
-        end
-    }
-    flowey:setAnimation(rise_r_anim)
+        false,
+        callback = function() flowey:setSprite("") end
+    })
 
     cutscene:wait(3)
 
