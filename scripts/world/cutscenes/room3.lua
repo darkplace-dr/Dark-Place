@@ -256,13 +256,16 @@ return {
                         end
                     end },
                     { id = "powerring", name = "PowerRing", price = 1000 },
+                    { id = "superscope", name = "SuperScope", price = 650},
                 }
             },
             {
                 name = "armor",
                 name_counted = "armors",
                 first_level_disp = "Armor",
-                items = {}
+                items = {
+                    {id = "leadmaker", name = "Leadmaker", price = 750}
+                }
             }
         }
 
@@ -342,10 +345,10 @@ return {
         end
 
         local item = cate.items[sndlvl_opinion]
-        --cutscene:showShop()
+        cutscene:showShop()
         onItemSelected(item)
         local buy = cutscene:choicer({ "Yes", "No" })
-        --cutscene:hideShop()
+        cutscene:hideShop()
         if buy == 2 then
             onDeclined()
             return
