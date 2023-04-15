@@ -74,6 +74,11 @@ function Costumes:init()
             skin1 = "DEFAULT",
             skin2 = "FLIMBO"
         },
+        [6] = {
+            name = "Brandon",
+            skin1 = "DEFAULT",
+            skin2 = "BRENDA"
+        }
     }
 end
 
@@ -87,14 +92,16 @@ function Costumes:draw()
     char_icon3 = Assets.getTexture("ui/partyselect/noelle")
     char_icon4 = Assets.getTexture("ui/partyselect/you")
     char_icon5 = Assets.getTexture("ui/partyselect/dess_lol")
+    char_icon6 = Assets.getTexture("ui/partyselect/brandon")
 	
     love.graphics.rectangle("line", 100, 100, 200, 140)
 	
-    love.graphics.draw(char_icon1, 190, 330, 0, 1, 1)
-    love.graphics.draw(char_icon2, 240, 330, 0, 1, 1)
-    love.graphics.draw(char_icon3, 290, 330, 0, 1, 1)
-    love.graphics.draw(char_icon4, 340, 330, 0, 1, 1)
-    love.graphics.draw(char_icon5, 390, 330, 0, 1, 1)
+    love.graphics.draw(char_icon1, 170, 330, 0, 1, 1)
+    love.graphics.draw(char_icon2, 220, 330, 0, 1, 1)
+    love.graphics.draw(char_icon3, 270, 330, 0, 1, 1)
+    love.graphics.draw(char_icon4, 320, 330, 0, 1, 1)
+    love.graphics.draw(char_icon5, 370, 330, 0, 1, 1)
+    love.graphics.draw(char_icon6, 420, 330, 0, 1, 1)
 	
 -- Kris
 	
@@ -208,6 +215,20 @@ function Costumes:draw()
         preview = Assets.getTexture("party/dess/walk/down_1")
         love.graphics.draw(preview, 168, 132, 0, 2, 2)
     end
+
+-- Brandon
+
+    if self.selected_index == 6 then
+        love.graphics.setColor(1, 1, 1)
+		love.graphics.print(self.costumes[6].name, 100, 235, 0, 0.5, 1)
+		love.graphics.print(self.costumes[6].skin1, 360, 95, 0, 1, 1)
+		love.graphics.print(self.costumes[6].skin2, 360, 125, 0, 1, 1)
+    end
+
+    if self.selected_index == 6 and self.skin_index == 1 then
+        preview = Assets.getTexture("party/brandon/dark/walk/down_1")
+        love.graphics.draw(preview, 176, 145, 0, 2, 2)
+    end
 end
 
 function Costumes:close()
@@ -287,6 +308,10 @@ function Costumes:update()
 
     if self.selected_index == 5 then
 	    self.char_box.color = {1, 0, 0}
+    end
+
+    if self.selected_index == 6 then
+        self.char_box.color = {0, 0, 1}
     end
 	
 	
