@@ -58,7 +58,8 @@ function item:init()
 end
 
 function item:onEquip(character)
-	character.health = character.health - 100
+	character:setHealth(math.max(1, character:getHealth() - 100))
+    Assets.playSound("hurt")
 	return true
 end
 

@@ -14,7 +14,6 @@ function BlackHole:onStart()
 end
 
 function BlackHole:update()
-    -- Code here gets called every frame
     Game.battle.soul.y = Game.battle.soul.y - (2 * DTMULT)
     if Game.battle.soul.x > SCREEN_WIDTH/2 then
         Game.battle.soul.x = Game.battle.soul.x - (2 * DTMULT)
