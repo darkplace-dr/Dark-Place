@@ -23,19 +23,7 @@ function Achievement:init()
     end
 end
 
---- Generates progress data
----@return table data
-function Achievement:save()
-    local data = {
-		progress = self.progress,
-        earned = self.earned
-    }
-    return data
-end
-
---- Loads progress data from table, dealing with incorrectly saved info in process
-function Achievement:load(data)
-	self.progress = data.progress
+function Achievement:_correctProgressType()
     if type(self.completion) == "number" then
         if type(self.progress) == "boolean" then
             self.progress = self.progress and self.completion or 0
@@ -45,13 +33,26 @@ function Achievement:load(data)
             self.progress = self.progress > 0
         end
     end
+end
+
+--- Generates progress data
+---@return table data
+function Achievement:save()
+    self:_correctProgressType()
+
+    return {
+		progress = self.progress,
+        earned = self.earned
+    }
+end
+
+--- Loads progress data from table, dealing with incorrectly saved info in process
+function Achievement:load(data)
+	self.progress = data.progress
+    self:_correctProgressType()
 
 	self.earned = data.earned
-    if not self.earned then
-        Kristal.callEvent("checkAchProgression", self.id, true)
-    else
-        self.progress = type(self.completion) == "number" and self.completion or true
-    end
+    Kristal.callEvent("checkAchProgression", self.id, true)
 end
 
 return Achievement

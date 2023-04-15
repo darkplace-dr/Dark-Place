@@ -162,9 +162,7 @@ end
 function lib:completeAchievement(achievement, silent)
     local ach_obj = self:getAchievement(achievement)
 
-    if ach_obj.earned then
-        return
-    end
+    silent = ach_obj.earned or silent
 
     ach_obj.earned = true
     ach_obj.progress = type(ach_obj.completion) == "number" and ach_obj.completion or true
