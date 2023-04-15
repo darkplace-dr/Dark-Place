@@ -4,4 +4,6 @@ return {
     "wallguardian",
     "squeaks",
     "dummy",
+    "blankiequest",
+    "velvetsqueak",
 }

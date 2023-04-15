@@ -595,7 +595,23 @@ return {
             ["cutscene"] = "devroom.brandon",
             ["flagcheck"] = "!brandon_inparty"
           }
-        }
+        },
+        {
+          id = 79,
+          name = "npc",
+          type = "",
+          shape = "rectangle",
+          x = 185,
+          y = 232,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "velvet",
+            ["cutscene"] = "devroom.velvet",
+          }
+        },
       }
     },
     {
