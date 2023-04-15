@@ -3,9 +3,7 @@
 local SavepointUT, super = Class(Savepoint)
 
 function SavepointUT:init(data)
-    super.init(self, data.x, data.y, data.properties)
-
-    self:setSprite("world/events/savepointut", 1/2)
+    super.init(self, data.center_x, data.center_y, Utils.merge(data.properties, { light = true }))
 end
 
 return SavepointUT
