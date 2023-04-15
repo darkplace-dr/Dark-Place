@@ -101,12 +101,6 @@ function Mod:getKrisActor()
     return Game.world:getCharacter(Mod:getKris().id)
 end
 
-function Mod:hasAch(id)
-    local ach = Kristal.callEvent("getAchievement", id)
-    if not ach then error("No such ach: " .. id) end
-    return ach.earned
-end
-
 function Mod:isInTheArena()
     return Game.world.map.id == "thearena"
 end
