@@ -2,7 +2,7 @@ return {
     brandon = function(cutscene, event)
         cutscene:showNametag("Brandon")
         if not Game:getFlag("brandon_talkedto") then
-            if not cutscene:getCharacter("kris") then
+            if cutscene:getCharacter("kris") then
                 cutscene:text("* Well,[wait:5] if it isn't Kris Deltarune themself.", "happy", "brandon")
                 cutscene:showNametag("Susie")
                 cutscene:text("* Okay,[wait:5] first of all,[wait:5] that isn't their last name.", "annoyed", "susie")
