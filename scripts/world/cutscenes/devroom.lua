@@ -342,9 +342,7 @@ return {
             velvet:resetSprite()
             Game.world.music:resume()
 
-            if not Mod:hasAch("velvetsqueak") then
-                Kristal.callEvent("completeAchievement", "velvetsqueak")
-            end
+            Kristal.callEvent("completeAchievement", "velvetsqueak")
 
         else
             local velvet = cutscene:getCharacter("velvet")
