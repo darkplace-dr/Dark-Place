@@ -29,6 +29,8 @@ return {
             cutscene:hideNametag()
         end
 
+        cutscene:showNametag("3D Toriel")
+		    cutscene:setSpeaker(default)
         cutscene:text("* Silence my child")
 
         local explosion = event:explode()

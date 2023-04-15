@@ -11,7 +11,8 @@ return {
   nextlayerid = 6,
   nextobjectid = 18,
   properties = {
-    ["music"] = "greenroom"
+    ["music"] = "greenroom",
+    ["name"] = "Warp Room - Dev Diner",
   },
   tilesets = {
     {
@@ -284,7 +285,23 @@ return {
             ["cutscene"] = "spamroom.warpbin",
             ["solid"] = true
           }
-        }
+        },
+        {
+          id = 56,
+          name = "savepoint",
+          type = "",
+          shape = "rectangle",
+          x = 140,
+          y = 276,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text1"] = "* While you may have not ordered anything...",
+            ["text2"] = "* The power of dev contribution fills your stomach!"
+          }
+        },
       }
     },
     {
