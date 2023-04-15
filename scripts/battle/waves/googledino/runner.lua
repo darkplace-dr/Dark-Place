@@ -5,8 +5,9 @@ function Runner:init()
 
     self.time = 14
 
-	self:setArenaSize(300, 150)
-	--self:setArenaPosition(320, 180)
+    self:setArenaSize(300, 150)
+
+    self:setSoulOffset(-110, 20)
 
     --soul starting position
     self:setSoulPosition(200, 210)
@@ -16,7 +17,7 @@ function Runner:onStart()
     Game.battle:swapSoul(BlueSoul())
 
     --ground texture
-	self.ground = self:spawnObjectTo(Game.battle.mask, Sprite("battle/bullets/dino_ground", 0, 220))
+    self.ground = self:spawnObjectTo(Game.battle.mask, Sprite("battle/bullets/dino_ground", 0, 220))
     self.ground:setScale(2)
     self.ground.wrap_texture_x = true
 
