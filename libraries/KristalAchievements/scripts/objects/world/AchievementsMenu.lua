@@ -40,8 +40,7 @@ function AchievementsMenu:init()
 
     self.items_per_page = 3
     self.ach_num = #self.achievements_sorted
-    local rem = self.ach_num % self.items_per_page
-    self.max_page = (self.ach_num - rem)
+    self.max_page = math.max(self.ach_num - (self.items_per_page - 1), 1)
     self.line_height = 90
 end
 
