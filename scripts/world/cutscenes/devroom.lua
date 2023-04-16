@@ -239,7 +239,7 @@ return {
         cutscene:text("* (It's a wardrobe.)\n* (What drawer would you like to open?)")
 
         local menu = cutscene:choicer({ "Party", "Costumes" })
-        if menu == 1 then
+        if menu == 2 then
             cutscene:after(function()
                 Game.world:openMenu(Costumes())
             end)
