@@ -216,8 +216,9 @@ function Battle:onStateChange(old,new)
         --     win_text == "* You won the battle!"
         -- end
         if self.used_violence then
-            local leveled_up
             if self.killed then
+                local leveled_up
+
                 if Kristal.getLibConfig("leveling", "global_love") then
                     Game:addFlag("library_experience", self.xp)
                     if Game:getFlag("library_experience", 0) > 99999 then
