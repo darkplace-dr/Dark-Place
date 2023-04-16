@@ -41,6 +41,12 @@ function AchievementsMenu:init()
     self.ach_num = #self.achievements
     self.max_page = math.max(self.ach_num - (self.items_per_page - 1), 1)
     self.line_height = 90
+
+    self.anim_timer = 0
+end
+
+function AchievementsMenu:update()
+    self.anim_timer = self.anim_timer + DT
 end
 
 function AchievementsMenu:draw()
@@ -61,15 +67,16 @@ function AchievementsMenu:draw()
         local percent_color = hide and {0.5, 0.5, 0.5} or {1, 1, 1}
         local body_color = ach.earned and {1, 1, 1} or {0.5, 0.5, 0.5}
         local name = hide and "???" or ach.name
-        local desc = (hide and ach.hint) and ach.hint or ach.desc
+        local desc = (hide and ach.hint) and ach.hint or (ach.menudesc or ach.desc)
 
         love.graphics.draw(frame, 0, rel_y, 0, 2, 2)
 
         love.graphics.setColor(body_color)
-        if not hide and ach.icon then
-            -- TODO: implement animating
-            local icon = Assets.getTexture(ach.icon)
-            love.graphics.draw(icon, 8, rel_y + 8, 0, 2, 2)
+        if not hide and (ach.menuicon or ach.icon) then
+            local icon = Assets.getFramesOrTexture(ach.menuicon or ach.icon)
+            local icon_anim_delay = ach.menuicon_anim_delay ~= nil and ach.menuicon_anim_delay or ach.icon_anim_delay
+            local icon_frame = Utils.clampWrap(math.floor(self.anim_timer / icon_anim_delay) + 1, #icon)
+            love.graphics.draw(icon[icon_frame], 8, rel_y + 8, 0, 2, 2)
         end
         love.graphics.print(name, 90, rel_y + 5)
         love.graphics.print(desc, 90, rel_y + 25)

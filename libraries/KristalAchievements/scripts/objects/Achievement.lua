@@ -7,10 +7,12 @@ function Achievement:init()
 
     self.icon = "path" -- Normal icon
     self.menuicon = nil -- Optional, icon used for the acheivements menu
+    self.icon_anim_delay = 1
+    self.menuicon_anim_delay = 1
     self.desc = "description" -- Description
     self.menudesc = nil -- Optional, description for the achievements menu
     self.hint = nil -- If info hidden is true then this will show up in place of description, used for hints
-    self.hidden = true -- Shows dimmed in the menu if not collected
+    self.hidden = false -- Shows dimmed in the menu if not collected
     self.rarity = "Common" -- An indicator on how difficult this achievement is. "Common", "Uncommon", "Rare", "Epic" "Legendary", "Unique", "Impossible"
     self.completion = false -- Shows a percent indicator (progress/completion) if a number, nothing if false.
     self.index = math.huge -- Order in which the achievements will show up on the menu.
