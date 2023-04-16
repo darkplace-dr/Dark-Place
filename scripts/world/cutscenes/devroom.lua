@@ -366,4 +366,17 @@ return {
             end)
         end
     end,
+	
+	
+	dumbie = function(cutscene, event)
+     cutscene:showNametag("Dummy?")
+            cutscene:text("* I'm a Dummy", "fear", "dumbie")
+	 cutscene:showNametag("Susie")
+			cutscene:text("* Uhm, no you're not?", "sus_nervous", "susie")
+	 cutscene:showNametag("Dumbie")
+			cutscene:text("* Well, your mom didn't say that!", "angryforward", "dumbie")
+			cutscene:text("* ...", "confused", "dumbie")
+			cutscene:text("* I'm a Dummy", "fear", "dumbie")
+	 cutscene:hideNametag("Dumbie")
+         end
 }
