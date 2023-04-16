@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.6" name="objects" tilewidth="147" tileheight="725" tilecount="21" columns="0">
+<tileset version="1.8" tiledversion="1.8.6" name="objects" tilewidth="418" tileheight="725" tilecount="24" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -75,5 +75,14 @@
  </tile>
  <tile id="23">
   <image width="100" height="30" source="../../../assets/sprites/objects/devroom_counter.png"/>
+ </tile>
+ <tile id="24">
+  <image width="232" height="110" source="../../../assets/sprites/world/maps/hometown_ribbit/building_library.png"/>
+ </tile>
+ <tile id="25">
+  <image width="120" height="200" source="../../../assets/sprites/world/maps/hometown_ribbit/lockers_l.png"/>
+ </tile>
+ <tile id="26">
+  <image width="418" height="240" source="../../../assets/sprites/world/maps/hometown_ribbit/shelter.png"/>
  </tile>
 </tileset>
