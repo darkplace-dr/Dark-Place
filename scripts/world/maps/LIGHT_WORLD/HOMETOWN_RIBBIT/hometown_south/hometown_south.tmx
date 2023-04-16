@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="66" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="107">
+ <editorsettings>
+  <export target="../hometown_church/data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="leaves"/>
+  <property name="light" type="bool" value="true"/>
+  <property name="music" value="town"/>
+  <property name="name" value="Bunker"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../tilesets/castle.tsx"/>
+ <tileset firstgid="61" source="../../../../tilesets/objects.tsx"/>
+ <imagelayer id="11" name="bg">
+  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_south.png" width="2640" height="480"/>
+ </imagelayer>
+ <layer id="14" name="tiles" width="66" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#1827f4" id="4" name="collision">
+  <object id="98" x="80" y="0" width="1520" height="240"/>
+  <object id="99" x="1800" y="0" width="840" height="240"/>
+  <object id="100" x="1800" y="422" width="840" height="80"/>
+  <object id="101" x="80" y="422" width="1520" height="80"/>
+  <object id="103" x="1589" y="80" width="240" height="40"/>
+  <object id="106" x="80" y="418">
+   <polygon points="0,0 60,-178 1.93548,-178"/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ffff7f" id="7" name="objects">
+  <object id="90" name="transition" x="1589" y="-120" width="216.667" height="160">
+   <properties>
+    <property name="map" value="misc/dogcheck"/>
+   </properties>
+  </object>
+  <object id="93" name="transition" x="1589" y="440" width="227.167" height="40">
+   <properties>
+    <property name="map" value="LIGHT_WORLD/HOMETOWN_RIBBIT/hometown_church"/>
+    <property name="marker" value="entrydown"/>
+   </properties>
+  </object>
+  <object id="104" name="transition" x="2589" y="240" width="40" height="200">
+   <properties>
+    <property name="map" value="LIGHT_WORLD/HOMETOWN_RIBBIT/hometown_school"/>
+    <property name="marker" value="entryleft"/>
+   </properties>
+  </object>
+  <object id="105" gid="85" x="1920" y="220" width="464" height="220"/>
+ </objectgroup>
+ <objectgroup color="#ff2525" id="2" name="markers">
+  <object id="94" name="entrysc" x="2549" y="360">
+   <point/>
+  </object>
+  <object id="95" name="entry" x="1700.5" y="413.5">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

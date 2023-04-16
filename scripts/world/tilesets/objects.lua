@@ -3,7 +3,7 @@ return {
   luaversion = "5.1",
   tiledversion = "1.8.6",
   name = "objects",
-  tilewidth = 147,
+  tilewidth = 418,
   tileheight = 725,
   spacing = 0,
   margin = 0,
@@ -20,7 +20,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 21,
+  tilecount = 24,
   tiles = {
     {
       id = 0,
@@ -171,6 +171,24 @@ return {
       image = "../../../assets/sprites/objects/devroom_counter.png",
       width = 100,
       height = 30
+    },
+    {
+      id = 24,
+      image = "../../../assets/sprites/world/maps/hometown_ribbit/building_library.png",
+      width = 232,
+      height = 110
+    },
+    {
+      id = 25,
+      image = "../../../assets/sprites/world/maps/hometown_ribbit/lockers_l.png",
+      width = 120,
+      height = 200
+    },
+    {
+      id = 26,
+      image = "../../../assets/sprites/world/maps/hometown_ribbit/shelter.png",
+      width = 418,
+      height = 240
     }
   }
 }

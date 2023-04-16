@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 31,
@@ -20,10 +19,10 @@ return {
   },
   tilesets = {
     {
-      name = "schooltiles",
+      name = "schooltiles2",
       firstgid = 1,
-      filename = "../../../../tilesets/schooltiles.tsx",
-      exportfilename = "../../../../tilesets/schooltiles.lua"
+      filename = "../../../../tilesets/schooltiles2.tsx",
+      exportfilename = "../../../../tilesets/schooltiles2.lua"
     }
   },
   layers = {
@@ -35,7 +34,6 @@ return {
       height = 12,
       id = 17,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -67,7 +65,6 @@ return {
       height = 12,
       id = 18,
       name = "Tile Layer 2",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -96,7 +93,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -138,20 +134,7 @@ return {
           shape = "rectangle",
           x = 120,
           y = 200,
-          width = 880,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 94,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1080,
-          y = 200,
-          width = 40,
+          width = 1000,
           height = 40,
           rotation = 0,
           visible = true,
@@ -216,7 +199,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -258,7 +240,6 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

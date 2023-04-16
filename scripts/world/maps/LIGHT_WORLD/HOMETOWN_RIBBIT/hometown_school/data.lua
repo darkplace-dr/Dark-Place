@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 29,
@@ -10,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 15,
-  nextobjectid = 117,
+  nextobjectid = 119,
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
@@ -19,19 +18,28 @@ return {
   },
   tilesets = {
     {
-      name = "bunker",
-      firstgid = 1,
-      filename = "../../../../tilesets/bunker.tsx",
-      exportfilename = "../../../../tilesets/bunker.lua"
-    },
-    {
       name = "castle",
-      firstgid = 2,
+      firstgid = 1,
       filename = "../../../../tilesets/castle.tsx",
       exportfilename = "../../../../tilesets/castle.lua"
     }
   },
   layers = {
+    {
+      type = "imagelayer",
+      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_school.png",
+      id = 11,
+      name = "bg",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      repeatx = false,
+      repeaty = false,
+      properties = {}
+    },
     {
       type = "tilelayer",
       x = 0,
@@ -40,7 +48,6 @@ return {
       height = 16,
       id = 14,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -69,27 +76,10 @@ return {
       }
     },
     {
-      type = "imagelayer",
-      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_school.png",
-      id = 11,
-      name = "bg",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      repeatx = false,
-      repeaty = false,
-      properties = {}
-    },
-    {
       type = "objectgroup",
       draworder = "topdown",
       id = 4,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -105,8 +95,8 @@ return {
           shape = "rectangle",
           x = 0,
           y = 0,
-          width = 480,
-          height = 400,
+          width = 435,
+          height = 360,
           rotation = 0,
           visible = true,
           properties = {}
@@ -116,9 +106,9 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 480,
+          x = 505,
           y = 0,
-          width = 200,
+          width = 160,
           height = 280,
           rotation = 0,
           visible = true,
@@ -155,9 +145,9 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 920,
+          x = 915,
           y = 0,
-          width = 160,
+          width = 100,
           height = 280,
           rotation = 0,
           visible = true,
@@ -232,45 +222,40 @@ return {
             { x = 0, y = 40 }
           },
           properties = {}
+        },
+        {
+          id = 117,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1000,
+          y = 200,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 118,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 400,
+          y = 200,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
     {
       type = "objectgroup",
       draworder = "topdown",
-      id = 8,
-      name = "objects_mirror",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {}
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 5,
-      name = "objects_npcs",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {}
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
       id = 7,
-      name = "objects_misc",
-      class = "",
+      name = "objects",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -316,39 +301,8 @@ return {
     {
       type = "objectgroup",
       draworder = "topdown",
-      id = 6,
-      name = "objects_scripts",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {}
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 3,
-      name = "objects_save",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {}
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
       id = 2,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -384,21 +338,6 @@ return {
           properties = {}
         }
       }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 10,
-      name = "objects_party",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {}
     }
   }
 }
