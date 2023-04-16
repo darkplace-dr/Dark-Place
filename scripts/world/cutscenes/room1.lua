@@ -14,7 +14,7 @@ return {
         cutscene:text("* So uh...", "sus_nervous")
         cutscene:hideNametag()
         cutscene:look(YOU, "left")
-        cutscene:wait(cutscene:walkTo(susie, YOU.x-60, YOU.y))
+        cutscene:wait(cutscene:walkTo(susie, YOU.x - 60, YOU.y))
         cutscene:look(susie, "right")
         cutscene:showNametag("Susie")
         cutscene:text("* Who are you supposed to be?", "nervous_side")
@@ -31,28 +31,30 @@ return {
 
         cutscene:look(YOU, "down")
         cutscene:wait(2)
+
         local zoom_sfx = cutscene:playSound("forestalt")
-        Game.world.camera:setZoom(2)
-        cutscene:wait(1/4)
-        Game.world.camera:setZoom(3)
-        cutscene:wait(1/4)
-        Game.world.camera:setZoom(4)
-        cutscene:wait(1/2)
-        Game.world.camera:setZoom(6)
-        cutscene:wait(1/2)
+        local function zoom(scale, wait)
+            Game.world.camera:setZoom(scale)
+            cutscene:wait(wait)
+        end
+        local tx, ty = YOU:getRelativePos(YOU.width/2, YOU.height/2)
+        cutscene:detachCamera()
+        Game.world.camera:setPosition(tx, ty)
+        zoom(2, 1/4)
+        zoom(3, 1/4)
+        zoom(4, 1/2)
+        zoom(6, 1/2)
         local emotion = Sprite("world/cutscenes/react_to_YOU/bigemotion", -9, 4)
         emotion:setScale(0.125, 0.125)
-        Game.world.camera:setZoom(8)
-        cutscene:detachCamera()
-        Game.world.camera.y = Game.world.camera.y - 18
         YOU:addChild(emotion)
-        cutscene:wait(zoom_sfx)
+        Game.world.camera.y = Game.world.camera.y - 18
+        zoom(8, zoom_sfx)
         emotion:remove()
-        Game.world.camera:setZoom(1)
-
-        cutscene:alignFollowers()
         cutscene:attachFollowersImmediate()
+        cutscene:look(susie, "down")
+        zoom(1, 0)
         cutscene:attachCameraImmediate()
+
         Game.world.music:play()
     end,
 
@@ -298,26 +300,31 @@ return {
     end,
 
     wah = function(cutscene, event)
-        local wah4_sprite_list = {
-            YOU = "date",
-            susie = "shock",
-            ralsei = "surprised_down",
-            noelle = "shocked"
-        }
-
-        cutscene:showNametag("Takodachi")
-
-        -- The 1st WAH!
         if event.interact_count == 1 then
+            -- The 1st WAH!
+            cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the 1st WAH![wait:10]\n* We Are Here!")
-            -- The 2nd WAH!
+            cutscene:hideNametag()
         elseif event.interact_count == 2 then
+            -- The 2nd WAH!
+            cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the 2nd WAH![wait:10]\n* We Are Happy!")
-            -- The 3rd WAH!
+            cutscene:hideNametag()
         elseif event.interact_count == 3 then
+            -- The 3rd WAH!
+            cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the 3rd WAH![wait:10]\n* We Are Hungry!")
-            -- The 4th... wah..?
+            cutscene:hideNametag()
         elseif event.interact_count == 4 then
+            -- The 4th... wah..?
+            local wah4_sprite_list = {
+                YOU = "date",
+                susie = "shock",
+                ralsei = "surprised_down",
+                noelle = "shocked"
+            }
+
+            cutscene:showNametag("Takodachi")
             cutscene:text(
             "[noskip]* Pray to the 4th WAH![wait:10]\n[func:oshit]* We Are[wait:25][func:thicc][instant] H O R N Y![stopinstant][wait:15]",
             nil, nil, {
@@ -339,6 +346,7 @@ return {
                     end
                 }
             })
+            cutscene:hideNametag()
 
             event:setSprite("idle")
             for member, _ in pairs(wah4_sprite_list) do
@@ -348,10 +356,49 @@ return {
                 end
             end
         else
+            cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the priestess,[wait:2] Ina!")
+            cutscene:hideNametag()
         end
+    end,
 
+    plaedmc2 = function(cutscene, event)
+        local dog = cutscene:getCharacter("dog")
+
+        cutscene:showNametag("Dog")
+        cutscene:text("* I'm just a dog, but I'm also...")
         cutscene:hideNametag()
+
+        Game.world.music:pause()
+        local nokia = Music("nokia")
+        nokia:play()
+        cutscene:wait(2.5)
+
+        cutscene:showNametag("Dog")
+        dog:setAnimation("holdphone")
+        cutscene:text("* Who the...")
+		cutscene:text("* Excuse me for a sec.")
+		nokia:remove()
+		dog:setAnimation("talkphone")
+		cutscene:text("* .[wait:5].[wait:5].[wait:10]Hello?")
+        cutscene:hideNametag()
+
+        local dmc2 = Music("plaeDMC2")
+        dmc2:play()
+        cutscene:wait(2.5)
+
+        cutscene:showNametag("Dog")
+        cutscene:text("* ...[wait:10]You again.")
+        cutscene:text("* I already told you...[wait:5]\nTHIS ISN'T FUNNY!")
+        dog:setAnimation("holdphone")
+        cutscene:text("* Hey...[wait:5] Hey![wait:5] HEEEY![wait:5] \nARE YOU LISTENING TO ME?")
+        cutscene:text("* I've had enough of this!")
+        cutscene:text("* I have your number you know,[wait:5]\nI know where you live.[wait:8]\n* YOU...[wait:10][shake:2]SCUM!!!")
+        cutscene:hideNametag()
+
+		dmc2:remove()
+		Game.world.music:resume()
+		dog:resetSprite()
     end,
 
     transition = function()
@@ -360,37 +407,5 @@ return {
         else
             Game.world:mapTransition("room2", "entry")
         end
-    end,
-    plaedmc2 = function(cutscene, event)
-        local dog = cutscene:getCharacter("dog")
-
-        cutscene:text("* I'm just a dog, but I'm also...")
-
-        Game.world.music:pause()
-        local nokia = Music("nokia")
-        nokia:play()
-
-        cutscene:wait(2.5)
-        dog:setAnimation("holdphone")
-        cutscene:text("* Who the...")
-		cutscene:text("* Excuse me for a sec.")
-		nokia:remove()
-		dog:setAnimation("talkphone")
-		cutscene:text("* .[wait:5].[wait:5].[wait:10]Hello?")
-		
-        local dmc2 = Music("plaeDMC2")
-        dmc2:play()
-
-        cutscene:wait(2.5)
-        cutscene:text("* ...[wait:10]You again.")
-        cutscene:text("* I already told you...[wait:5]\nTHIS ISN'T FUNNY!")
-        dog:setAnimation("holdphone")
-        cutscene:text("* Hey...[wait:5] Hey![wait:5] HEEEY![wait:5] \nARE YOU LISTENING TO ME?")
-        cutscene:text("* I've had enough of this!")
-        cutscene:text("* I have your number you know,[wait:5]\nI know where you live.[wait:8]\n* YOU...[wait:10][shake:2]SCUM!!!")
-        
-		dmc2:remove()
-		dog:resetSprite()
-		Game.world.music:resume()
-    end,
+    end
 }
