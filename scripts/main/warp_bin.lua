@@ -1,6 +1,10 @@
 -- Warp Bin
 -- god I am so sorry for how shitty this code is
 
+--- The thing you put in the Warp Bin to warp to places like yeah \
+--- must be 8-characters and be in lower case
+---@alias WarpBinCode string
+
 --- defines the behavior of a Warp Bin code
 ---@class WarpBinCodeInfo
 --- what to do after the code is entered. \
@@ -10,13 +14,12 @@
 ---@field marker string|nil in case result is a string, the name of the marker you want to teleport the player to
 
 -- I'm going to cause pain and suffering with one weird trick:
--- here's the table containing any and all warp codes for the warp bin
--- have fun :]   -Char
--- well its NOT that bad
-
--- for reference, to add new codes you'd add new entries of "type" WarpBinCodeInfo to the table below
+-- here's the table containing any and all warp codes for the 
+-- warp bin.
+-- have fun :]   -Char                 (well its NOT that bad) \
+-- to add new codes you'd add new entries of "type" WarpBinCodeInfo to the table below.
 -- If you have sumneko's Lua LS you should be able to get nice annonations
----@type table<string, WarpBinCodeInfo>
+---@type table<WarpBinCode, WarpBinCodeInfo>
 Mod.warp_bin_codes = {
     ["00000000"] = { result = "warphub" },
     ["spamroom"] = { result = "spamroom" },
@@ -34,21 +37,20 @@ Mod.warp_bin_codes = {
         end
     },
     ["bossrush"] = { result = "thearena" },
-    ["devdiner"] = { result = "devstart" },
+    ["devdiner"] = { result = "devstart" }
 }
 
 -- heres some new totally cool helper functions wowee
 
 --- get a Bin Code's info
----@param code string
+---@param code WarpBinCode
 ---@return WarpBinCodeInfo info
 function Mod:getBinCode(code)
     return Mod.warp_bin_codes[code:lower()]
 end
 
 --- adds a code to the warp bin code table
----
----@param code string if you came from the raw table, put this as the key of your new entry
+---@param code WarpBinCode if you came from the raw table, put this as the key of your new entry
 ---@param result string|fun(cutscene: WorldCutscene) see WarpBinCodeInfo.result
 ---@param marker? string see WarpBinCodeInfo.marker
 ---@param overwrite? boolean whether to overwrite existing entries or not
@@ -65,7 +67,7 @@ function Mod:addBinCode(code, result, marker, overwrite)
 end
 
 --- delets a Bin Code
----@param code string
+---@param code WarpBinCode
 ---@return boolean success false if the code doesnt exist
 function Mod:deleteBinCode(code)
     code = code:lower()
