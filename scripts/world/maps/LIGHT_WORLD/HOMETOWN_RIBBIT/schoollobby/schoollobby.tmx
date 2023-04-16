@@ -6,7 +6,7 @@
  <properties>
   <property name="border" value="leaves"/>
   <property name="light" type="bool" value="true"/>
-  <property name="music" value="mus_school"/>
+  <property name="music" value="deltarune/mus_school"/>
   <property name="name" value="School"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/schooltiles2.tsx"/>

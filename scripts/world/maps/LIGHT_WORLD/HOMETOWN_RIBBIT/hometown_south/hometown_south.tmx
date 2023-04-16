@@ -6,7 +6,7 @@
  <properties>
   <property name="border" value="leaves"/>
   <property name="light" type="bool" value="true"/>
-  <property name="music" value="town"/>
+  <property name="music" value="deltarune/town"/>
   <property name="name" value="Bunker"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/castle.tsx"/>
