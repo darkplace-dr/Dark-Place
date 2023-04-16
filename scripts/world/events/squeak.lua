@@ -6,7 +6,9 @@ end
 
 function Squeak:onInteract(player, dir)
     Assets.playSound("squeak")
-    Kristal.callEvent("addAchProgress", "squeaks", 1)
+    if not Mod:hasAch("squeaks") then
+        Kristal.callEvent("addAchProgress", "squeaks", 1)
+    end
     return true
 end
 

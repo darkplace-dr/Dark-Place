@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="65">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="64">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -83,19 +83,15 @@
    </properties>
    <point/>
   </object>
-  <object id="64" name="npc" x="1119" y="180">
-   <properties>
-    <property name="actor" value="dumbie"/>
-    <property name="cutscene" value="devroom.dumbie"/>
-   </properties>
-   <point/>
-  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="50" name="entry" x="40" y="280">
    <point/>
   </object>
   <object id="51" name="entry1" x="1440" y="180">
+   <point/>
+  </object>
+  <object id="52" name="spawn" x="40" y="280">
    <point/>
   </object>
  </objectgroup>

@@ -28,7 +28,7 @@ function item:init()
         ralsei = 5,
         noelle = 5,
         YOU = 10,
-        dess = 5,
+        dess = 15,
         brandon = 5
     }
 
@@ -60,6 +60,7 @@ function item:init()
         susie = "Better than nothing...",
         ralsei = "This tastes... not good...",
         noelle = "Wh-why did you make me eat this?!",
+		dess = "yeah this is still good",
         brandon = "...Ew."
     }
 end

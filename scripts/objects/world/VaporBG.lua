@@ -19,7 +19,7 @@ function VaporBG:init()
     local sun = Sprite("objects/vaporbg/sun", 0, 0)
     sun:setScale(2)
 	sun.alpha = 0.8
-    sun:addFX(ShaderFX(Mod.wave_shader, {
+    sun:addFX(ShaderFX(Mod.shaders["wave"], {
         ["wave_sine"] = function() return Kristal.getTime() * 100 end,
         ["wave_mag"] = 4,
         ["wave_height"] = 16,

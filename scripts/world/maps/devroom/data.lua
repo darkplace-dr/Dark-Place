@@ -1,7 +1,7 @@
 return {
   version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 65,
+  nextobjectid = 64,
   properties = {
     ["music"] = "greenroom",
     ["name"] = "Warp Room - Dev Diner"
@@ -597,21 +597,21 @@ return {
           }
         },
         {
-          id = 64,
+          id = 79,
           name = "npc",
-          class = "",
-          shape = "point",
-          x = 1119,
-          y = 180,
+          type = "",
+          shape = "rectangle",
+          x = 185,
+          y = 232,
           width = 0,
           height = 0,
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "dumbie",
-            ["cutscene"] = "devroom.dumbie"
+            ["actor"] = "velvet",
+            ["cutscene"] = "devroom.velvet",
           }
-        }
+        },
       }
     },
     {
@@ -648,6 +648,19 @@ return {
           shape = "point",
           x = 1440,
           y = 180,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 52,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 40,
+          y = 280,
           width = 0,
           height = 0,
           rotation = 0,

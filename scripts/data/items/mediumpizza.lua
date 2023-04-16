@@ -27,7 +27,7 @@ function item:init()
         ["ralsei"] = 30,
         ["noelle"] = 30,
         ["YOU"] = 30,
-        ["dess"] = 30,
+        ["dess"] = 25,
         ["brandon"] = 30
 	}
 
@@ -50,6 +50,7 @@ function item:init()
         susie = "The sauce tastes like blood!",
         ralsei = "Isn't this just plastic?",
         noelle = "Not the best, but it's fine.",
+		dess = "ew fnaf",
         brandon = "WAS THAT THE BITE OF 87?!"
 	}
 end

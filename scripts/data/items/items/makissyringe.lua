@@ -70,10 +70,9 @@ function item:onWorldUse(target)
                         Game.world:showText("* ("..feel.." better now.)")
                         return false
                     end
-                    local char_health = target:getHealth()
-                    if char_health > 1 then
+                    if target.health > 1 then
                         Assets.playSound("hurt")
-                        target:setHealth(char_health - 1)
+                        target.health = target.health - 1
                         poison_left = poison_left - 1
                     else
                         poison_left = 0

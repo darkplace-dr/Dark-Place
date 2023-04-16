@@ -1,3 +1,4 @@
+---@class WarpBinInputMenu : Object
 local WarpBinInputMenu, super = Class(Object)
 
 function WarpBinInputMenu:init()
@@ -26,6 +27,9 @@ function WarpBinInputMenu:init()
     self.input = {""}
     self.code_len = 8
 
+    ---@type function|nil
+    self.finish_cb = nil
+
     TextInput.attachInput(self.input, {
         multiline = false,
         enter_submits = true,
@@ -39,7 +43,7 @@ function WarpBinInputMenu:init()
         self.caret_flash_timer = 0
     end
     TextInput.text_callback = function()
-        self.input[1] = Utils.sub(self.input[1], 1, self.code_len)
+        self.input[1] = self.input[1]:sub(1, utf8.offset(self.input[1], self.code_len))
     end
     TextInput.submit_callback = function()
         if self.finish_cb then
@@ -47,8 +51,6 @@ function WarpBinInputMenu:init()
         end
         Game.world:closeMenu()
     end
-
-    self.finish_cb = nil
 end
 
 function WarpBinInputMenu:draw()
@@ -61,7 +63,8 @@ function WarpBinInputMenu:draw()
     assert(actual_input_len <= self.code_len)
     for i = 1, self.code_len do
         if actual_input_len >= i then
-            local char = Utils.sub(self.input[1], i, i)
+            local char_off = utf8.offset(self.input[1], i)
+            local char = self.input[1]:sub(char_off, char_off)
             love.graphics.printf(char, draw_x, draw_y, self.char_w, "center")
         end
 

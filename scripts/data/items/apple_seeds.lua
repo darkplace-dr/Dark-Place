@@ -52,6 +52,7 @@ function item:init()
         susie = "These taste... not bad?",
         ralsei = "I don't feel so well...",
         noelle = "(I feel like I'm gonna puke...)",
+		dess= "yummy cyanide",
         brandon = "Why did I eat that?"
     }
 end
@@ -64,8 +65,10 @@ function item:onWorldUse(target)
         health_dec = 30
     elseif target.id == "YOU" then
         health_dec = 50
+	elseif target.id == "dess" then
+        health_dec = -10
     end
-    target:setHealth(math.max(1, target:getHealth() - health_dec))
+    target.health = math.max(1, target.health - health_dec)
     Assets.playSound("hurt")
     return true
 end
@@ -83,9 +86,8 @@ function item:onBattleUse(user, target)
         if poison_left == 0 then
             return false
         end
-        local char_health = target.chara:getHealth()
-        if char_health > 1 then
-            target.chara:setHealth(char_health - 1)
+        if target.chara.health > 1 then
+            target.chara.health = target.chara.health - 1
             poison_left = poison_left - 1
         else
             poison_left = 0
