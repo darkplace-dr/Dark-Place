@@ -14,7 +14,7 @@ return {
         cutscene:text("* So uh...", "sus_nervous")
         cutscene:hideNametag()
         cutscene:look(YOU, "left")
-        cutscene:wait(cutscene:walkTo(susie, YOU.x-60, YOU.y))
+        cutscene:wait(cutscene:walkTo(susie, YOU.x - 60, YOU.y))
         cutscene:look(susie, "right")
         cutscene:showNametag("Susie")
         cutscene:text("* Who are you supposed to be?", "nervous_side")
@@ -31,28 +31,30 @@ return {
 
         cutscene:look(YOU, "down")
         cutscene:wait(2)
+
         local zoom_sfx = cutscene:playSound("forestalt")
-        Game.world.camera:setZoom(2)
-        cutscene:wait(1/4)
-        Game.world.camera:setZoom(3)
-        cutscene:wait(1/4)
-        Game.world.camera:setZoom(4)
-        cutscene:wait(1/2)
-        Game.world.camera:setZoom(6)
-        cutscene:wait(1/2)
+        local function zoom(scale, wait)
+            Game.world.camera:setZoom(scale)
+            cutscene:wait(wait)
+        end
+        local tx, ty = YOU:getRelativePos(YOU.width/2, YOU.height/2)
+        cutscene:detachCamera()
+        Game.world.camera:setPosition(tx, ty)
+        zoom(2, 1/4)
+        zoom(3, 1/4)
+        zoom(4, 1/2)
+        zoom(6, 1/2)
         local emotion = Sprite("world/cutscenes/react_to_YOU/bigemotion", -9, 4)
         emotion:setScale(0.125, 0.125)
-        Game.world.camera:setZoom(8)
-        cutscene:detachCamera()
-        Game.world.camera.y = Game.world.camera.y - 18
         YOU:addChild(emotion)
-        cutscene:wait(zoom_sfx)
+        Game.world.camera.y = Game.world.camera.y - 18
+        zoom(8, zoom_sfx)
         emotion:remove()
-        Game.world.camera:setZoom(1)
-
-        cutscene:alignFollowers()
         cutscene:attachFollowersImmediate()
+        cutscene:look(susie, "down")
+        zoom(1, 0)
         cutscene:attachCameraImmediate()
+
         Game.world.music:play()
     end,
 
@@ -156,39 +158,54 @@ return {
                 if cutscene:getCharacter("YOU") then
                     cutscene:text("* No,[wait:2] not you, YOU..[wait:5]\n[face:teeth_b]* THAT guy!!", "sus_nervous", "susie")
                 end
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* hey.", "neutral", "sans")
+
                 cutscene:showNametag("Susie")
                 cutscene:text("* What are you DOING here??", "teeth", "susie")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* i'm keeping people away from this elevator.", "look_left", "sans")
+
                 cutscene:showNametag("Susie")
                 cutscene:text("* WHY??", "teeth", "susie")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* it's not finished yet.", "neutral", "sans")
+
                 cutscene:showNametag("Susie")
                 cutscene:text("* ...[wait:3]It looks pretty finished to me.", "neutral", "susie")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* that's just how tilesets are.", "joking", "sans")
                 cutscene:text("[font:sans]* give them a while,[wait:1] figuring out how an elevator works take some time.", "wink", "sans")
+
                 cutscene:showNametag("Susie")
                 cutscene:text("* (What is he even talking about??)", "sus_nervous", "susie")
                 cutscene:hideNametag()
             else
                 cutscene:showNametag("Susie")
                 cutscene:text("* How are you here by the way?", "neutral", "susie")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* i don't know. i'm just here for the work.", "neutral", "sans")
+
                 cutscene:showNametag("Susie")
                 cutscene:text("* Do you even know something?", "annoyed", "susie")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* hey, if you have a complaint[wait:1] you can tell my manager.", "joking", "sans")
+
                 cutscene:showNametag("Susie")
                 cutscene:text("* And who would that be?", "neutral_side", "susie")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* me.", "neutral", "sans")
+
                 cutscene:showNametag("Susie")
                 cutscene:text("* Aren't you already the cashier at Hometown??", "angry", "susie")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* nah, i'm the janitor.", "wink", "sans")
                 cutscene:hideNametag()
@@ -197,91 +214,119 @@ return {
             if event.interact_count == 1 then
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* hey.", "neutral", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* Uhm...[wait:4] Hello?", "smile_closed", "noelle")
                 cutscene:text("* Wait, aren't you the guy keeping the store in Hometown?", "smile", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* nah, i'm just the cashier.", "neutral", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* Oh? But isn't the store named after you?", "question", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* nah, that's the name of the owner.", "look_left", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* Oh! Sorry for the confusion![wait:3] Can I ask for your name then?", "smile_closed", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* wow there girl, you don't just ask a hard worker like me his name. it's weird.", "joking", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* O-Oh... Sorry.", "surprise_frown_b", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* it's okay.[wait:3] i don't get pay enough to get mad at people.", "wink", "sans")
                 cutscene:hideNametag()
             else
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* what's up?", "neutral", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* Nothing special, mister... Uh..", "smile_closed", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* sans.[wait:2] sans the skeleton.", "wink", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* Oh okay, mister...[wait:4] [face:confused_surprise]Sans..?[wait:4][face:confused_surprise_b] Skeleton??[wait:4][face:question] The Skeleton???", "smile", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* how about you just call me sans?[wait:3] sounds nicer, right?", "look_left",
                 "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* I guess so, yeah..", "smile_side", "noelle")
                 cutscene:text("* Wait... So your name IS Sans!", "surprise_smile_b", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* that's me.", "neutral", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* I thought I shouldn't ask an hard worker his name!", "smile_closed", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* wow, the guy who told you that must be really weird.", "joking", "sans")
                 cutscene:text("[font:sans]* there's nothing wrong with knowing someone's name, you know?", "wink", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* ...", "what", "noelle")
                 cutscene:text("* Then uh.. Aren't you the owner of the shop in Hometown?", "question", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* nah, i'm their janitor.", "neutral", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* But didn't you tell us you were their cashier?", "frown", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* i'm just filling in.[wait:3] employees are hard to find nowadays.", "look_left", "sans")
+
                 cutscene:showNametag("Noelle")
                 cutscene:text("* Did you try to start some employment campaign?", "smile_closed_b", "noelle")
+
                 cutscene:showNametag("Sans")
                 cutscene:text("[font:sans]* can't do that on a janitor's salary unfortunately.", "eyes_closed", "sans")
                 cutscene:hideNametag()
             end
         else
+            local kid = #Game.party > 1 and "kids" or "kid"
             cutscene:showNametag("Sans")
-            cutscene:text(string.format("[font:sans]* hey %s.[wait:5] sorry but you can't access this elevator yet.", #Game.party > 1 and "kids" or "kid"))
-            cutscene:text("[font:sans]* it's kinda..[wait:5] not finished.")
-            cutscene:text("[font:sans]* so come back later,[wait:2] 'k?")
+            cutscene:text(string.format("* hey %s.[wait:5] sorry but you can't access this elevator yet.", kid), "neutral", "sans")
+            cutscene:text("* it's kinda..[wait:5] not finished.", "look_left", "sans")
+            cutscene:text("* so come back later,[wait:2] 'k?", "wink", "sans")
             cutscene:hideNametag()
         end
     end,
 
     wah = function(cutscene, event)
-        local wah4_sprite_list = {
-            YOU = "date",
-            susie = "shock",
-            ralsei = "surprised_down",
-            noelle = "shocked"
-        }
-
-        cutscene:showNametag("Takodachi")
-
-        -- The 1st WAH!
         if event.interact_count == 1 then
+            -- The 1st WAH!
+            cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the 1st WAH![wait:10]\n* We Are Here!")
-            -- The 2nd WAH!
+            cutscene:hideNametag()
         elseif event.interact_count == 2 then
+            -- The 2nd WAH!
+            cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the 2nd WAH![wait:10]\n* We Are Happy!")
-            -- The 3rd WAH!
+            cutscene:hideNametag()
         elseif event.interact_count == 3 then
+            -- The 3rd WAH!
+            cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the 3rd WAH![wait:10]\n* We Are Hungry!")
-            -- The 4th... wah..?
+            cutscene:hideNametag()
         elseif event.interact_count == 4 then
+            -- The 4th... wah..?
+            local wah4_sprite_list = {
+                YOU = "date",
+                susie = "shock",
+                ralsei = "surprised_down",
+                noelle = "shocked"
+            }
+
+            cutscene:showNametag("Takodachi")
             cutscene:text(
             "[noskip]* Pray to the 4th WAH![wait:10]\n[func:oshit]* We Are[wait:25][func:thicc][instant] H O R N Y![stopinstant][wait:15]",
             nil, nil, {
@@ -303,6 +348,7 @@ return {
                     end
                 }
             })
+            cutscene:hideNametag()
 
             event:setSprite("idle")
             for member, _ in pairs(wah4_sprite_list) do
@@ -312,10 +358,49 @@ return {
                 end
             end
         else
+            cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the priestess,[wait:2] Ina!")
+            cutscene:hideNametag()
         end
+    end,
 
+    plaedmc2 = function(cutscene, event)
+        local dog = cutscene:getCharacter("dog")
+
+        cutscene:showNametag("Dog")
+        cutscene:text("* I'm just a dog, but I'm also...")
         cutscene:hideNametag()
+
+        Game.world.music:pause()
+        local nokia = Music("nokia")
+        nokia:play()
+        cutscene:wait(2.5)
+
+        cutscene:showNametag("Dog")
+        dog:setAnimation("holdphone")
+        cutscene:text("* Who the...")
+		cutscene:text("* Excuse me for a sec.")
+		nokia:remove()
+		dog:setAnimation("talkphone")
+		cutscene:text("* .[wait:5].[wait:5].[wait:10]Hello?")
+        cutscene:hideNametag()
+
+        local dmc2 = Music("plaeDMC2")
+        dmc2:play()
+        cutscene:wait(2.5)
+
+        cutscene:showNametag("Dog")
+        cutscene:text("* ...[wait:10]You again.")
+        cutscene:text("* I already told you...[wait:5]\nTHIS ISN'T FUNNY!")
+        dog:setAnimation("holdphone")
+        cutscene:text("* Hey...[wait:5] Hey![wait:5] HEEEY![wait:5] \nARE YOU LISTENING TO ME?")
+        cutscene:text("* I've had enough of this!")
+        cutscene:text("* I have your number you know,[wait:5]\nI know where you live.[wait:8]\n* YOU...[wait:10][shake:2]SCUM!!!")
+        cutscene:hideNametag()
+
+		dmc2:remove()
+		Game.world.music:resume()
+		dog:resetSprite()
     end,
 
     transition = function()
@@ -324,37 +409,5 @@ return {
         else
             Game.world:mapTransition("room2", "entry")
         end
-    end,
-    plaedmc2 = function(cutscene, event)
-        local dog = cutscene:getCharacter("dog")
-
-        cutscene:text("* I'm just a dog, but I'm also...")
-
-        Game.world.music:pause()
-        local nokia = Music("nokia")
-        nokia:play()
-
-        cutscene:wait(2.5)
-        dog:setAnimation("holdphone")
-        cutscene:text("* Who the...")
-		cutscene:text("* Excuse me for a sec.")
-		nokia:remove()
-		dog:setAnimation("talkphone")
-		cutscene:text("* .[wait:5].[wait:5].[wait:10]Hello?")
-		
-        local dmc2 = Music("plaeDMC2")
-        dmc2:play()
-
-        cutscene:wait(2.5)
-        cutscene:text("* ...[wait:10]You again.")
-        cutscene:text("* I already told you...[wait:5]\nTHIS ISN'T FUNNY!")
-        dog:setAnimation("holdphone")
-        cutscene:text("* Hey...[wait:5] Hey![wait:5] HEEEY![wait:5] \nARE YOU LISTENING TO ME?")
-        cutscene:text("* I've had enough of this!")
-        cutscene:text("* I have your number you know,[wait:5]\nI know where you live.[wait:8]\n* YOU...[wait:10][shake:2]SCUM!!!")
-        
-		dmc2:remove()
-		dog:resetSprite()
-		Game.world.music:resume()
-    end,
+    end
 }

@@ -17,7 +17,7 @@ function Mimic:init()
     self.defense = 2
     -- Enemy reward
     self.money = 1000
-    self.experience = Mod:isInTheArena() and 0 or 50
+    self.experience = Mod:isInRematchMode() and 0 or 50
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
@@ -116,7 +116,7 @@ function Mimic:onAct(battler, name)
 end
 
 function Mimic:onDefeat(damage, battler)
-    if not Mod:isInTheArena() then
+    if not Mod:isInRematchMode() then
         self:defeat("KILLED", true)
     else
         self:defeat("VIOLENCE", true)

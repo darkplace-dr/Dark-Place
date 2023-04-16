@@ -107,7 +107,7 @@ end
     --end
 --end
 
-function character:onLevelUpLVLib()
+function character:onLevelUpLVLib(level)
     self:increaseStat("health", 10)
     self:increaseStat("attack", 2)
     self:increaseStat("defense", 1)

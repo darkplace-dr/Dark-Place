@@ -36,6 +36,7 @@ return {
 		cutscene:after(function()
 			local menu = WarpBinInputMenu()
 			-- I'm sorry
+			---@param action WarpBinCodeInfo
 			menu.finish_cb = function(action)
 				Game.world:startCutscene("spamroom", "warpbin_proc", action)
 			end
@@ -43,6 +44,8 @@ return {
 		end)
 	end,
 
+	---@param cutscene WorldCutscene
+	---@param action WarpBinCodeInfo
 	warpbin_proc = function(cutscene, action)
 		if not action then
 			cutscene:text("* That doesn't seem to work.")

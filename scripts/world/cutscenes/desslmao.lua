@@ -9,8 +9,15 @@ return {
 
 		cutscene:showNametag("Dess Holiday?")
 		cutscene:text("* Yo is that-", "condescending", "dess")
-		Assets.playSound("lowqualityburp")
-		cutscene:text("* (Low quality burp sound effect like that one time in Rick and Morty like what they do in the show)", "neutral", "dess")
+		cutscene:text("* ([func:sound]Low quality burp sound effect like that one time in Rick and Morty like what they do in the show)", "neutral", "dess",
+		{
+			functions = {
+				sound = function ()
+					Assets.stopAndPlaySound("lowqualityburp")
+				end
+			}
+		})
+		Assets.stopSound("lowqualityburp")
 		cutscene:text("* Is that the fuckin' uhh 'Kris where the hell are we' guy??", "condescending", "dess")
 
 		cutscene:showNametag("Susie")
@@ -29,12 +36,16 @@ return {
 		cutscene:text("* Man idk anymore", "condescending", "dess")
 		if cutscene:getCharacter("brandon") then
 			cutscene:text("* Oh hey is that the dude?", "kind", "dess")
+
 			cutscene:showNametag("Brandon")
 			cutscene:text("[noskip][speed:0.3]* ...", "miffed", "brandon")
+
 			cutscene:showNametag("Dess")
 			cutscene:text("* uhhhh Brandish was it?", "neutral", "dess")
+
 			cutscene:showNametag("Brandon")
 			cutscene:text("* ... Brandon.[wait:10]\n* Or Brenda if you prefer.", "miffed", "brandon")
+
 			cutscene:showNametag("Dess")
 			cutscene:text("* yeah I knew that", "condescending", "dess")
 		end
@@ -57,7 +68,7 @@ return {
 		cutscene:setAnimation(dess, "battle/attack")
 		dess.flip_x = true
 		cutscene:wait(0.2)
-		local leader = Mod:getKrisActor()
+		local leader = Game.world.player
 		local leader_x_backup = leader.x
 		local leader_y_backup = leader.y
 		leader:explode(0, 0, true)
@@ -102,7 +113,7 @@ return {
 			Game:setFlag("dessThingy", true)
 			event:remove()
 		else
-			local leader = Mod:getKrisActor()
+			local leader = Game.world.player
 			leader.y = leader.y + 4
 
 			cutscene:showNametag("???")
@@ -115,7 +126,7 @@ return {
 		local boss = cutscene:getCharacter("ufoofdoom", 1)
 
 		local susie = cutscene:getCharacter("susie")
-		local leader = Mod:getKrisActor()
+		local leader = Game.world.player
 		local dess = cutscene:getCharacter("dess")
 		local brandon = cutscene:getCharacter("brandon")
 

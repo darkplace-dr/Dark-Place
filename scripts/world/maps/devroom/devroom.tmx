@@ -91,5 +91,8 @@
   <object id="51" name="entry1" x="1440" y="180">
    <point/>
   </object>
+  <object id="52" name="spawn" x="40" y="280">
+   <point/>
+  </object>
  </objectgroup>
 </map>
