@@ -13,7 +13,7 @@ return {
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
-    ["music"] = "town",
+    ["music"] = "deltarune/town",
     ["name"] = "Bunker"
   },
   tilesets = {
