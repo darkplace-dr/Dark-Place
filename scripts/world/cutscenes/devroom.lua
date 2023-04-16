@@ -185,7 +185,6 @@ return {
                 velvet:setAnimation("pissed_talk")
                 cutscene:text("* Yea no... Fat chance!", "pissed_b", "velvet")
                 cutscene:hideNametag()
-
             elseif velvet.interact_count >= 6 and velvet.interact_count <= 9 then
                 cutscene:showNametag("Susie")
                 cutscene:text("* Squeak...", "smile", "susie")
