@@ -1,0 +1,48 @@
+{
+    "maps": [
+        {
+            "fileName": "maps/LIGHT_WORLD/HOMETOWN_RIBBIT/hometown_church/hometown_chruch.tmx",
+            "height": 1280,
+            "width": 1520,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "fileName": "maps/LIGHT_WORLD/HOMETOWN_RIBBIT/hometown_south/hometown_south.tmx",
+            "height": 480,
+            "width": 2640,
+            "x": -829,
+            "y": -520
+        },
+        {
+            "fileName": "maps/LIGHT_WORLD/HOMETOWN_RIBBIT/hometown_school/hometown_school.tmx",
+            "height": 640,
+            "width": 1160,
+            "x": 1811,
+            "y": -680
+        },
+        {
+            "fileName": "maps/LIGHT_WORLD/HOMETOWN_RIBBIT/schoollobby/schoollobby.tmx",
+            "height": 840,
+            "width": 1880,
+            "x": 1636,
+            "y": -1544
+        },
+        {
+            "fileName": "maps/LIGHT_WORLD/HOMETOWN_RIBBIT/schooldoor/schooldoor.tmx",
+            "height": 480,
+            "width": 1240,
+            "x": 1956,
+            "y": -2064
+        },
+        {
+            "fileName": "maps/LIGHT_WORLD/HOMETOWN_RIBBIT/hometown_bunker/hometown_bunker.tmx",
+            "height": 2480,
+            "width": 640,
+            "x": 571,
+            "y": 1283
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}

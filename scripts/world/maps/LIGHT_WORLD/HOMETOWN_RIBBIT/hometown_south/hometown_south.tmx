@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="66" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="107">
  <editorsettings>
-  <export target="../hometown_church/data.lua" format="lua"/>
+  <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="border" value="leaves"/>
   <property name="light" type="bool" value="true"/>
-  <property name="music" value="town"/>
+  <property name="music" value="deltarune/town"/>
   <property name="name" value="Bunker"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/castle.tsx"/>

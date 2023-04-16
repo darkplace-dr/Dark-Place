@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 26,
+  nextobjectid = 30,
   properties = {
     ["music"] = "spamton_battle_eb"
   },
@@ -361,6 +361,37 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "room_prefountain.moss2"
+          }
+        },
+        {
+          id = 27,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 1200,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "cungaderospamton",
+            ["cutscene"] = "spamroom.cungadero"
+          }
+        },
+        {
+          id = 28,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 1520,
+          y = 390,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "velvetspam"
           }
         }
       }
