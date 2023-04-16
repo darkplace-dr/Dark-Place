@@ -1,14 +1,12 @@
 return {
     brandon = function(cutscene, event)
+        cutscene:showNametag("Brandon")
         if not Game:getFlag("brandon_talkedto") then
             if cutscene:getCharacter("kris") then
-                cutscene:showNametag("Brandon")
                 cutscene:text("* Well,[wait:5] if it isn't Kris Deltarune themself.", "happy", "brandon")
-
                 cutscene:showNametag("Susie")
                 cutscene:text("* Okay,[wait:5] first of all,[wait:5] that isn't their last name.", "annoyed", "susie")
                 cutscene:text("* Second of all,[wait:5] how the hell do you know their name?", "sus_nervous", "susie")
-
                 cutscene:showNametag("Brandon")
                 cutscene:text("* Eh,[wait:5] that isn't really important.", "happy", "brandon")
                 cutscene:text("* Anyways...", "neutral", "brandon")
@@ -16,247 +14,401 @@ return {
             cutscene:text("* It's so cool that you guys showed up here.", "happy", "brandon")
             if cutscene:getCharacter("dess") then
                 cutscene:text("* ... Minus one of you...", "miffed", "brandon")
-
                 cutscene:showNametag("Dess")
                 cutscene:text("* Gee I wonder who that could be lol", "condescending", "dess")
+                cutscene:showNametag("Brandon")
             end
-
-            cutscene:showNametag("Brandon")
             cutscene:text("* Hey,[wait:5] could I join the party?", "happy", "brandon")
-            cutscene:hideNametag()
         else
-            cutscene:showNametag("Brandon")
             cutscene:text("* So,[wait:5] did you change your mind?", "happy", "brandon")
-            cutscene:hideNametag()
         end
-
-        if cutscene:choicer({"Yes", "No"}) == 1 then
+        cutscene:hideNametag()
+        local opinion = cutscene:choicer({"Yes", "No"})
+        if opinion == 1 then
             cutscene:showNametag("Brandon")
             cutscene:text("* Nice,[wait:5] thanks!", "happy", "brandon")
-            cutscene:hideNametag()
-
             Game:addPartyMember("brandon")
-            event:convertToFollower()
+            if cutscene:getCharacter("dess") then
+                event:convertToFollower(3)
+            else
+                event:convertToFollower(2)
+            end
+            cutscene:hideNametag()
             cutscene:attachFollowers()
-
             cutscene:text("* Brandon joined the party.")
-
+            cutscene:wait(0.5)
             Game:setFlag("brandon_inparty", true)
         else
             cutscene:showNametag("Brandon")
             cutscene:text("* Ah,[wait:5] okay then.", "frown", "brandon")
             cutscene:text("* Well,[wait:5] I'm always here if you change your mind.", "happy", "brandon")
-            cutscene:hideNametag()
-
             Game:setFlag("brandon_talkedto", true)
         end
+        cutscene:hideNametag()
     end,
 
-	velvet = function(cutscene, velvet)
-        local susie = cutscene:getCharacter("susie")
-        local has_special_interaction = susie
 
-        if velvet.interact_count == 1 then
+	velvet = function(cutscene, event)
+        if event.interact_count == 1 then
+            local velvet = cutscene:getCharacter("velvet")
             cutscene:showNametag("Velvet")
             cutscene:text("* .....", "looking_down", "velvet")
             cutscene:hideNametag()
-
             cutscene:wait(1)
-
             velvet:setAnimation("phone_look_up")
             cutscene:showNametag("Velvet")
             cutscene:text("* ...?", "default", "velvet")
+            cutscene:setSpeaker(velvet)
             cutscene:text("* Sup!", "pissed_b", "velvet")
             cutscene:hideNametag()
-        elseif velvet.interact_count == 2 then
+            velvet:resetSprite()
+        
+        elseif event.interact_count == 2 then
+            local velvet = cutscene:getCharacter("velvet")
             cutscene:showNametag("Velvet")
             cutscene:text("* .....", "looking_down", "velvet")
             cutscene:hideNametag()
-
             cutscene:wait(1)
-
             velvet:setAnimation("phone_look_up")
-            cutscene:showNametag("Velvet")
-            cutscene:text("* ...", "default", "velvet")
+            cutscene:wait(1)
+            cutscene:setSpeaker(velvet)
             velvet:setAnimation("pissed_talk")
+            cutscene:showNametag("Velvet")
             cutscene:text("* How can I help?", "default", "velvet")
+            velvet:setAnimation("phone_look_up")
             cutscene:hideNametag()
 
+            local susie = cutscene:getCharacter("susie")
             if susie then
-                velvet:setAnimation("phone_look_up")
-
                 cutscene:showNametag("Susie")
-                cutscene:text("* Dunno... you just look like a Maus.", "neutral", "susie")
-                cutscene:text("* Except all depressed and gray-looking.", "nervous", "susie")
-                cutscene:hideNametag()
-
-                cutscene:showNametag("Velvet")
-                cutscene:text("* .....", "surprised", "velvet")
-                velvet:setAnimation("pissed_talk")
-                cutscene:text("* Okay then?", "surprised_b", "velvet")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Dunno... you just look like a Maus.", "neutral")
+                cutscene:text("* Except all depressed and gray-looking.", "nervous")
                 cutscene:hideNametag()
             end
-        elseif velvet.interact_count == 3 or not has_special_interaction then
+
+            cutscene:showNametag("Velvet")
+            cutscene:text("* .....", "surprised", "velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("pissed_talk")
+            cutscene:text("* Okay then?", "surprised_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+
+        elseif event.interact_count == 3 then
+            local velvet = cutscene:getCharacter("velvet")
             velvet:setAnimation("phone_look_up")
             cutscene:showNametag("Velvet")
             cutscene:text("* What?", "pissed", "velvet")
             cutscene:hideNametag()
 
+            local susie = cutscene:getCharacter("susie")
             if susie then
                 cutscene:showNametag("Susie")
-                cutscene:text("* Stop looking at your phone!", "annoyed", "susie")
-                cutscene:hideNametag()
-
-                velvet:setAnimation("pissed_talk")
-                cutscene:showNametag("Velvet")
-                cutscene:text("* So?", "pissed", "velvet")
-                cutscene:text("* I get to decide if I want to ignore people...", "pissed_b", "velvet")
-                cutscene:text("* That includes rude purple dinosaurs!", "smile_b", "velvet")
-                cutscene:hideNametag()
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* ...... ", "shy_b", "susie")
-                cutscene:text("* Geez that rat is feisty...", "shy_b", "susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Stop looking at your phone!", "annoyed")
                 cutscene:hideNametag()
             end
-        elseif susie then
-            if velvet.interact_count == 4 then
+
+            cutscene:showNametag("Velvet")
+            velvet:setAnimation("pissed_talk")
+            cutscene:setSpeaker(velvet)
+            cutscene:text("* So?", "pissed", "velvet")
+            cutscene:text("* I get to decide if I want to ignore people...", "pissed_b", "velvet")
+            cutscene:text("* That includes rude purple dinosaurs!", "smile_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+
+            local susie = cutscene:getCharacter("susie")
+            if susie then
                 cutscene:showNametag("Susie")
-                cutscene:text("* Hey YOU watch this...\n * This is gonna make her talk for sure!", "smile", "susie")
-                cutscene:text("* You're the one who gave Spamton a blanket, right?", "sincere_smile", "susie")
-                cutscene:hideNametag()
-
-                velvet:setAnimation("smile_look_up")
-                cutscene:showNametag("Velvet")
-                cutscene:text("* !!!", "shock", "velvet")
-                velvet:setAnimation("smile_talk")
-                cutscene:text("* Did I hear that right?\n * You said Spamton with a blanket?", "surprised_b", "velvet")
-                cutscene:hideNametag()
-                velvet:setAnimation("smile_look_up")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* Absolutely! Is that really you?", "sincere_smile", "susie")
-                cutscene:hideNametag()
-
-                velvet:setAnimation("smile_no_phone")
-                cutscene:showNametag("Velvet")
-                cutscene:text("* Glad you asked! I am the creator!", "smile_b", "velvet")
-                cutscene:text("* Wanna hear more about him?", "smile", "velvet")
-                cutscene:hideNametag()
-                velvet:setAnimation("idle_smile_no_phone")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* ......", "sus_nervous", "susie")
-                cutscene:text("* Actually, nevermind. I don't wanna hear it...", "nervous", "susie")
-                cutscene:hideNametag()
-
-                cutscene:showNametag("Velvet")
-                velvet:setAnimation("smile_no_phone")
-                cutscene:text("* Oh it's fine... No hard feelings!", "smile_b", "velvet")
-                velvet:setAnimation("pissed_no_phone")
-                cutscene:text("* After all... I don't talk to mean purple lizards...", "pissed_b", "velvet")
-                velvet:setAnimation("idle_pissed_no_phone")
-                cutscene:hideNametag()
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* ...... ", "surprise", "susie")
-                cutscene:text("* What did I even say? ", "surprise_frown", "susie")
-                cutscene:hideNametag()
-            elseif velvet.interact_count == 5 then
-                cutscene:showNametag("Susie")
-                cutscene:text("* Hey if you're a Maus, can you squeak?", "nervous_side", "susie")
-                cutscene:hideNametag()
-
-                velvet:setAnimation("phone_look_up")
-                cutscene:showNametag("Velvet")
-                cutscene:text("* .....", "surprised", "velvet")
-                velvet:setAnimation("pissed_talk")
-                cutscene:text("* Say what now?", "surprised_b", "velvet")
-                cutscene:hideNametag()
-                velvet:setAnimation("phone_look_up")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* If you can squeak like a Maus?", "nervous_side", "susie")
-                cutscene:hideNametag()
-
-                velvet:setAnimation("phone_look_up")
-                cutscene:showNametag("Velvet")
-                cutscene:text("* .....", "pissed", "velvet")
-                velvet:setAnimation("pissed_talk")
-                cutscene:text("* Yea no... Fat chance!", "pissed_b", "velvet")
-                cutscene:hideNametag()
-            elseif velvet.interact_count >= 6 and velvet.interact_count <= 9 then
-                cutscene:showNametag("Susie")
-                cutscene:text("* Squeak...", "smile", "susie")
-                cutscene:hideNametag()
-
-                cutscene:showNametag("Velvet")
-                velvet:setAnimation("pissed_talk")
-                cutscene:text("* No...", "pissed_b", "velvet")
-                cutscene:hideNametag()
-            elseif velvet.interact_count == 10 then
-                velvet:setAnimation("phone_look_up")
-                cutscene:showNametag("Velvet")
-                cutscene:text("* Okay fine, you wanna to hear it so you can shut up?", "pissed", "velvet")
-                cutscene:text("* Well, here it is...", "pissed_b", "velvet")
-                cutscene:hideNametag()
-
-                Game.world.music:pause()
-                cutscene:wait(2.5)
-
-                cutscene:showNametag("Velvet")
-                cutscene:text("[voice:nil]* [func:sound]Squeak!", "smile_b", "velvet", {
-                    functions = {
-                        sound = function()
-                            Assets.stopAndPlaySound("velvetsqueak")
-                        end
-                    }
-                })
-                Assets.stopSound("velvetsqueak")
-                cutscene:hideNametag()
-
-                cutscene:wait(1)
-
-                cutscene:showNametag("Velvet")
-                cutscene:text("* There I squeaked!\n * Never going to do that again!", "default", "velvet")
-                cutscene:hideNametag()
-
-                Game.world.music:resume()
-
-                Kristal.callEvent("completeAchievement", "velvetsqueak")
-            else
-                velvet:setAnimation("phone_look_up")
-                cutscene:showNametag("Velvet")
-                cutscene:text("* Stop bothering me...\n * I squeaked once and I am not gonna do it again!", "pissed_b", "velvet")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* ...... ", "shy_b")
+                cutscene:text("* Geez that rat is feisty...", "shy_b")
                 cutscene:hideNametag()
             end
-        end
 
-        velvet:resetSprite()
+        elseif event.interact_count == 4 then
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Hey YOU watch this...\n * This is gonna make her talk for sure!", "smile")
+                cutscene:text("* You're the one who gave Spamton a blanket, right?", "sincere_smile")
+                cutscene:hideNametag()
+            end
+            
+            local velvet = cutscene:getCharacter("velvet")
+            cutscene:showNametag("Velvet")
+            velvet:setAnimation("smile_look_up")
+            cutscene:text("* !!!", "shock", "velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("smile_talk")
+            cutscene:text("* Did I hear that right?\n * You said Spamton with a blanket?", "surprised_b", "velvet")
+            velvet:setAnimation("smile_look_up")
+            cutscene:hideNametag()
+
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Absolutely! Is that really you?", "sincere_smile")
+                cutscene:hideNametag()
+            end
+           
+            velvet:setAnimation("smile_no_phone")
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            cutscene:text("* Glad you asked! I am the creator!", "smile_b", "velvet")
+            cutscene:text("* Wanna hear more about him?", "smile", "velvet")
+            velvet:setAnimation("idle_smile_no_phone")
+            cutscene:hideNametag()
+
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* ......", "sus_nervous")
+                cutscene:text("* Actually, nevermind. I don't wanna hear it...", "nervous")
+                cutscene:hideNametag()
+            end
+
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("smile_no_phone")
+            cutscene:text("* Oh it's fine... No hard feelings!", "smile_b", "velvet")
+            velvet:setAnimation("pissed_no_phone")
+            cutscene:text("* After all... I don't talk to mean purple lizards...", "pissed_b", "velvet")
+            cutscene:hideNametag()
+            velvet:setAnimation("idle_pissed_no_phone")
+
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* ...... ", "surprise")
+                cutscene:text("* What did I even say? ", "surprise_frown")
+                cutscene:hideNametag()
+            end
+
+            velvet:resetSprite()
+
+        elseif event.interact_count == 5 then
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Hey if you're a Maus, can you squeak?", "nervous_side")
+                cutscene:hideNametag()
+            end
+
+            local velvet = cutscene:getCharacter("velvet")
+            velvet:setAnimation("phone_look_up")
+            cutscene:showNametag("Velvet")
+            cutscene:text("* .....", "surprised", "velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("pissed_talk")
+            cutscene:text("* Say what now?", "surprised_b", "velvet")
+            cutscene:hideNametag()
+            velvet:setAnimation("phone_look_up")
+
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* If you can squeak like a Maus?", "nervous_side")
+                cutscene:hideNametag()
+            end
+
+            velvet:setAnimation("phone_look_up")
+            cutscene:showNametag("Velvet")
+            cutscene:text("* .....", "pissed", "velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("pissed_talk")
+            cutscene:text("* Yea no... Fat chance!", "pissed_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+
+        elseif event.interact_count == 6 then
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Squeak...", "smile")
+                cutscene:hideNametag()
+            end
+
+            local velvet = cutscene:getCharacter("velvet")
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("pissed_talk")
+            cutscene:text("* No...", "pissed_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+
+
+        elseif event.interact_count == 6 then
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Squeak...", "smile")
+                cutscene:hideNametag()
+            end
+
+            local velvet = cutscene:getCharacter("velvet")
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("phone_look_up")
+            cutscene:text("* No...", "pissed_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+
+        elseif event.interact_count == 7 then
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Squeak...", "smile")
+                cutscene:hideNametag()
+            end
+
+            local velvet = cutscene:getCharacter("velvet")
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("phone_look_up")
+            cutscene:text("* No...", "pissed_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+
+        elseif event.interact_count == 8 then
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Squeak...", "smile")
+                cutscene:hideNametag()
+            end
+
+            local velvet = cutscene:getCharacter("velvet")
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("phone_look_up")
+            cutscene:text("* No...", "pissed_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+
+        elseif event.interact_count == 9 then
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Squeak...", "smile")
+                cutscene:hideNametag()
+            end
+
+            local velvet = cutscene:getCharacter("velvet")
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("phone_look_up")
+            cutscene:text("* No...", "pissed_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+
+        elseif event.interact_count == 10 then
+            local velvet = cutscene:getCharacter("velvet")
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("phone_look_up")
+            cutscene:text("* Okay fine, you wanna to hear it so you can shut up?", "pissed", "velvet")
+            cutscene:text("* Well, here it is...", "pissed_b", "velvet")
+            cutscene:hideNametag()
+
+            Game.world.music:pause()
+            cutscene:wait(2.5)
+            Assets.playSound("velvetsqueak")
+            cutscene:setSpeaker(default)
+            cutscene:showNametag("Velvet")
+            cutscene:text("* Squeak!", "smile_b", "velvet")
+            cutscene:hideNametag()
+
+            cutscene:wait(1)
+
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            cutscene:text("* There I squeaked!\n * Never going to do that again!", "default", "velvet")
+            cutscene:hideNametag()
+
+            velvet:resetSprite()
+            Game.world.music:resume()
+
+            Kristal.callEvent("completeAchievement", "velvetsqueak")
+
+        else
+            local velvet = cutscene:getCharacter("velvet")
+            cutscene:showNametag("Velvet")
+            cutscene:setSpeaker(velvet)
+            velvet:setAnimation("phone_look_up")
+            cutscene:text("* Stop bothering me...\n * I squeaked once and I am not gonna do it again!", "pissed_b", "velvet")
+            velvet:resetSprite()
+            cutscene:hideNametag()
+	    end
     end,
-
     wardrobe = function(cutscene, event)
         cutscene:text("* (It's a wardrobe.)\n* (What drawer would you like to open?)")
 
-        local menu = cutscene:choicer({ "Party", "Costumes" })
-        if menu == 2 then
+        local choice = cutscene:choicer({ "Party", "Costumes" })
+
+        if choice == 2 then
+        else
             cutscene:after(function()
                 Game.world:openMenu(Costumes())
             end)
         end
     end,
-
+	
+	
 	dumbie = function(cutscene, event)
-        cutscene:showNametag("Dummy?")
-        cutscene:text("* I'm a Dummy", "fear", "dumbie")
-
-	    cutscene:showNametag("Susie")
-		cutscene:text("* Uhm, no you're not?", "sus_nervous", "susie")
-
-	    cutscene:showNametag("Dumbie")
-		cutscene:text("* Well, your mom didn't say that!", "angryforward", "dumbie")
-		cutscene:text("* ...", "confused", "dumbie")
-		cutscene:text("* I'm a Dummy", "fear", "dumbie")
-	    cutscene:hideNametag()
+        if event.interact_count == 1 then
+            local dumbie = cutscene:getCharacter("dumbie")
+            cutscene:showNametag("Dummy?")
+            cutscene:text("* I'm a Dummy.", "fear", "dumbie")
+			cutscene:showNametag("Susie")
+			cutscene:text("* Uh, no you're not?", "sus_annoyed", "susie")
+			cutscene:showNametag("Dumbie")
+			cutscene:text("* Well, your mom didn't say that!", "angryforward", "dumbie")
+			cutscene:text("* ...", "confused", "dumbie")
+			cutscene:text("* I'm a Dummy.", "fear", "dumbie")
+			cutscene:hideNametag()
+			
+			elseif event.interact_count == 2 then
+            local dumbie = cutscene:getCharacter("dumbie")
+			cutscene:showNametag("Dumbie")
+			cutscene:text("* Hey, your party is a bit, empty, do you want me to enter?", "eyeshappy", "dumbie")
+			cutscene:hideNametag("Dumbie")
+	         local opinion = cutscene:choicer({"Yes", "No"})
+        if opinion == 1 then
+            cutscene:showNametag("Dumbie")
+            cutscene:text("* Heck yeah!", "veryhappy", "dumbie")
+            Game:addPartyMember("dumbie")
+            if cutscene:getCharacter("dess") then
+                event:convertToFollower(3)
+            else
+                event:convertToFollower(2)
+            end
+            cutscene:hideNametag()
+            cutscene:attachFollowers()
+            cutscene:text("* Dumbie joined the party.")
+            cutscene:wait(0.5)
+            Game:setFlag("dumbie_inparty", true)
+        else
+            cutscene:showNametag("Dumbie")
+            cutscene:text("* So, go to penis!", "angryforward", "dumbie")
+            cutscene:text("* But, i'm here if you change your mind.", "normal", "dumbie")
+            Game:setFlag("dumbie_talkedto", true)
+			cutscene:hideNametag()
+        end
+		end
     end
+
 }
