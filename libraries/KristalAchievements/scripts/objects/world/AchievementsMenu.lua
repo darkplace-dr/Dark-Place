@@ -31,18 +31,22 @@ function AchievementsMenu:init()
     self.bg.debug_select = false
     self:addChild(self.bg)
 
-    self.achievements = Kristal.callEvent("getAchievements")
-    self.achievements_sorted = {}
-    for _,v in pairs(self.achievements) do
-        table.insert(self.achievements_sorted, v)
+    self.achievements = {}
+    for _,v in pairs(Kristal.callEvent("getAchievements")) do
+        table.insert(self.achievements, v)
     end
-    table.sort(self.achievements_sorted, function(a,b) return a.index < b.index end)
+    table.sort(self.achievements, function(a,b) return a.index < b.index end)
 
     self.items_per_page = 3
-    self.ach_num = #self.achievements_sorted
-    local rem = self.ach_num % self.items_per_page
-    self.max_page = (self.ach_num - rem)
+    self.ach_num = #self.achievements
+    self.max_page = math.max(self.ach_num - (self.items_per_page - 1), 1)
     self.line_height = 90
+
+    self.anim_timer = 0
+end
+
+function AchievementsMenu:update()
+    self.anim_timer = self.anim_timer + DT
 end
 
 function AchievementsMenu:draw()
@@ -53,40 +57,41 @@ function AchievementsMenu:draw()
     for i = self.page, self.page + (self.items_per_page - 1) do
         if i > self.ach_num then break end
 
-        local ach = self.achievements_sorted[i]
+        local ach = self.achievements[i]
 
         local ri = i - self.page
-        local rel_y = ri * self.line_height
+        local rel_y = 30 + ri * self.line_height
 
         local frame = Assets.getTexture("achievements/frames/" .. ach.rarity)
         local hide = ach.hidden and not ach.earned
         local percent_color = hide and {0.5, 0.5, 0.5} or {1, 1, 1}
         local body_color = ach.earned and {1, 1, 1} or {0.5, 0.5, 0.5}
         local name = hide and "???" or ach.name
-        local desc = (hide and ach.hint) and ach.hint or ach.desc
+        local desc = (hide and ach.hint) and ach.hint or (ach.menudesc or ach.desc)
 
-        love.graphics.draw(frame, 0, rel_y + 30, 0, 2, 2)
+        love.graphics.draw(frame, 0, rel_y, 0, 2, 2)
 
         love.graphics.setColor(body_color)
-        if not hide and ach.icon then
-            -- TODO: implement animating
-            local icon = Assets.getTexture(ach.icon)
-            love.graphics.draw(icon, 8, rel_y + 38, 0, 2, 2)
+        if not hide and (ach.menuicon or ach.icon) then
+            local icon = Assets.getFramesOrTexture(ach.menuicon or ach.icon)
+            local icon_anim_delay = ach.menuicon_anim_delay ~= nil and ach.menuicon_anim_delay or ach.icon_anim_delay
+            local icon_frame = Utils.clampWrap(math.floor(self.anim_timer / icon_anim_delay) + 1, #icon)
+            love.graphics.draw(icon[icon_frame], 8, rel_y + 8, 0, 2, 2)
         end
-        love.graphics.print(name, 90, rel_y + 35)
-        love.graphics.print(desc, 90, rel_y + 55)
+        love.graphics.print(name, 90, rel_y + 5)
+        love.graphics.print(desc, 90, rel_y + 25)
 
         if type(ach.completion) == "number" then
             local completion_percent = ach.progress / ach.completion
 
             love.graphics.setColor(self.progress_color_bg)
-            love.graphics.rectangle("fill", 90, rel_y + 90, 150, 12)
+            love.graphics.rectangle("fill", 90, rel_y + 60, 150, 12)
 
             love.graphics.setColor(self.progress_color)
-            love.graphics.rectangle("fill", 90, rel_y + 90, (completion_percent * 150), 12)
+            love.graphics.rectangle("fill", 90, rel_y + 60, (completion_percent * 150), 12)
             love.graphics.setColor(percent_color)
             local completion_percent_2 = completion_percent * 100
-            love.graphics.print(tostring(completion_percent_2).."%", 245, rel_y + 87)
+            love.graphics.print(tostring(completion_percent_2).."%", 245, rel_y + 57)
         end
 
         love.graphics.setColor(1, 1, 1)
@@ -110,7 +115,7 @@ function AchievementsMenu:onKeyPressed(key, repeatable)
         return
     end
 
-    if Input.is("up", key) then 
+    if Input.is("up", key) then
         if self.page > 1 then
             self.page = self.page - 1
             self.ui_move:stop()

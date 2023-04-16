@@ -1,3 +1,4 @@
+---@class WarpBinInputMenu : Object
 local WarpBinInputMenu, super = Class(Object)
 
 function WarpBinInputMenu:init()
@@ -26,6 +27,9 @@ function WarpBinInputMenu:init()
     self.input = {""}
     self.code_len = 8
 
+    ---@type function|nil
+    self.finish_cb = nil
+
     TextInput.attachInput(self.input, {
         multiline = false,
         enter_submits = true,
@@ -47,8 +51,6 @@ function WarpBinInputMenu:init()
         end
         Game.world:closeMenu()
     end
-
-    self.finish_cb = nil
 end
 
 function WarpBinInputMenu:draw()

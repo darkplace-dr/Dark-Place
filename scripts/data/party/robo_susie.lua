@@ -6,7 +6,7 @@ function character:init()
     self.max_stats = {}
 end
 
-function character:onLevelUpLVLib()
+function character:onLevelUpLVLib(level)
     self:increaseStat("health", 15)
     self:increaseStat("attack", 2)
     self:increaseStat("magic", 1)

@@ -10,7 +10,7 @@ return {
         Assets.playSound("wing")
 
         if susie then
-            if Mod:isInTheArena() then
+            if Mod:isInRematchMode() then
                 cutscene:text("* Heh,[wait:5] looks like we've won.", "smile", "susie")
             else
                 cutscene:text("* Hey uh,[wait:5] something about this feels off...", "sad_frown", "susie")
@@ -25,7 +25,7 @@ return {
         cutscene:wait(1)
 
         if dess then
-            if Mod:isInTheArena() then
+            if Mod:isInRematchMode() then
                 cutscene:text("* funny explosion incomming", "kind", "dess")
             else
                 cutscene:text("* idk looks fine to me lol", "kind", "dess")
@@ -39,7 +39,7 @@ return {
         enemy:explode(0, 0, false)
         cutscene:wait(2)
 
-        if Mod:isInTheArena() then
+        if Mod:isInRematchMode() then
             if susie then
                 cutscene:text("* That was too easy!", "smile", "susie")
             end

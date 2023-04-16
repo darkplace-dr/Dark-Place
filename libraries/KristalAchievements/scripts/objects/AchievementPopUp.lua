@@ -14,6 +14,7 @@ function AchievementPopUp:init(achievement)
 	self.iconsprite = Sprite(self.icon, 8, 8)
 	self.raritysprite:setScale(2, 2)
 	self.iconsprite:setScale(2, 2)
+	self.iconsprite:play(self.achievement.icon_anim_delay)
 	self:addChild(self.raritysprite)
 	self:addChild(self.iconsprite)
 
