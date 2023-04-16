@@ -369,14 +369,46 @@ return {
 	
 	
 	dumbie = function(cutscene, event)
-     cutscene:showNametag("Dummy?")
-            cutscene:text("* I'm a Dummy", "fear", "dumbie")
-	 cutscene:showNametag("Susie")
-			cutscene:text("* Uhm, no you're not?", "sus_nervous", "susie")
-	 cutscene:showNametag("Dumbie")
+        if event.interact_count == 1 then
+            local dumbie = cutscene:getCharacter("dumbie")
+            cutscene:showNametag("Dummy?")
+            cutscene:text("* I'm a Dummy.", "fear", "dumbie")
+			cutscene:showNametag("Susie")
+			cutscene:text("* Uh, no you're not?", "sus_annoyed", "susie")
+			cutscene:showNametag("Dumbie")
 			cutscene:text("* Well, your mom didn't say that!", "angryforward", "dumbie")
 			cutscene:text("* ...", "confused", "dumbie")
-			cutscene:text("* I'm a Dummy", "fear", "dumbie")
-	 cutscene:hideNametag("Dumbie")
-         end
+			cutscene:text("* I'm a Dummy.", "fear", "dumbie")
+			cutscene:hideNametag()
+			
+			elseif event.interact_count == 2 then
+            local dumbie = cutscene:getCharacter("dumbie")
+			cutscene:showNametag("Dumbie")
+			cutscene:text("* Hey, your party is a bit, empty, do you want me to enter?", "eyeshappy", "dumbie")
+			cutscene:hideNametag("Dumbie")
+	         local opinion = cutscene:choicer({"Yes", "No"})
+        if opinion == 1 then
+            cutscene:showNametag("Dumbie")
+            cutscene:text("* Heck yeah!", "veryhappy", "dumbie")
+            Game:addPartyMember("dumbie")
+            if cutscene:getCharacter("dess") then
+                event:convertToFollower(3)
+            else
+                event:convertToFollower(2)
+            end
+            cutscene:hideNametag()
+            cutscene:attachFollowers()
+            cutscene:text("* Dumbie joined the party.")
+            cutscene:wait(0.5)
+            Game:setFlag("dumbie_inparty", true)
+        else
+            cutscene:showNametag("Dumbie")
+            cutscene:text("* So, go to penis!", "angryforward", "dumbie")
+            cutscene:text("* But, i'm here if you change your mind.", "normal", "dumbie")
+            Game:setFlag("dumbie_talkedto", true)
+			cutscene:hideNametag()
+        end
+		end
+    end
+
 }
