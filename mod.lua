@@ -41,6 +41,17 @@ Mod.warp_bin_codes = {
     },
     ["bossrush"] = { result = "thearena" },
     ["devdiner"] = { result = "devstart" },
+	["scrtachv"] = { result = function(cutscene)
+		
+			if not Mod:hasAch("codebreaker") then
+				Kristal.callEvent("completeAchievement", "codebreaker")
+				cutscene:text("* Congratulations![wait:10] We're all so proud of you![wait:10] What a crazy achievement!")
+			else
+				cutscene:text("* Okay,[wait:5] are you fucking done?")
+			end
+			
+		
+		end},
 }
 
 -- if you don't want to be cringe there's also this new totally cool helper function wowee
@@ -99,6 +110,12 @@ end
 
 function Mod:getKrisActor()
     return Game.world:getCharacter(Mod:getKris().id)
+end
+
+function Mod:hasAch(id)
+    local ach = Kristal.callEvent("getAchievement", id)
+    if not ach then error("No such ach: " .. id) end
+    return ach.earned
 end
 
 function Mod:isInTheArena()

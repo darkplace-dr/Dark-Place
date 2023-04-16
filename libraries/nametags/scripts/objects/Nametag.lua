@@ -5,6 +5,14 @@ function Nametag:init(text, options)
 	
 	self.options = options or {}
 	
+	local player_x, player_y = Game.world.player:localToScreenPos()
+	if self.options["top"] == false then
+		-- Just to make sure locational top doesn't prioritize over options bottom.
+		-- Don't need to do anything here; it's already where we want it.
+	elseif (self.options["top"] and self.options["top"]) or player_y > 260 then
+		self.y = 185
+	end
+	
     self.box = UIBox(0, 0, 92, 6)
     self.box.layer = -1
     self:addChild(self.box)
@@ -24,7 +32,6 @@ function Nametag:init(text, options)
 	self.box_width = self.options["width"] or self.font:getWidth(text)
 	self.box.width = self.box_width + 4
 	
-	local player_x = Game.world.player:localToScreenPos()
 	if self.options["right"] == false then
 		-- Just to make sure locational top doesn't prioritize over options bottom.
 		-- Don't need to do anything here; it's already where we want it.

@@ -1,28 +1,20 @@
 return {
     deal = function(cutscene, battler, enemy)
         cutscene:text("* You took one of Spamgolor's deals.")
-
         Assets.playSound("ui_cancel")
         cutscene:text("* You felt your wallet becoming lighter.")
-
         local loss = love.math.random(1, 100)
         Game.money = Game.money - loss
         cutscene:text("* You lost "..loss.." D$...")
-
-        enemy.dialogue_override = "PLEASURE DOING\n[[Shady Business]]\nWITH YOU, KID!"
     end,
 
     x_deal = function(cutscene, battler, enemy)
         cutscene:text("* You and Susie took some of Spamgolor's deals.")
-
         Assets.playSound("ui_cancel")
         cutscene:text("* You felt your wallet becoming lighter.")
-
         local loss = love.math.random(50, 300)
         Game.money = Game.money - loss
         cutscene:text("* You lost $"..loss.."...")
-
-        enemy.dialogue_override = "PLEASURE DOING\n[[Shady Business]]\nWITH YOU TWO!"
     end,
 
     heal_deal = function(cutscene, battler, enemy)
@@ -32,31 +24,23 @@ return {
         cutscene:text("* Will you buy it?")
 
         if cutscene:choicer({"Yes", "No"}) == 2 then
-            cutscene:text("* You decided not to buy anything.")
-
             enemy.dialogue_override = "DON'T BE A\n[Windows 95]\nSHOPPER!"
-
+            cutscene:text("* You decided not to buy anything.")
             return
         end
 
-        if Game.money < price then
-            cutscene:text("* You didn't have enough money...")
-
+        if Game.money >= price then
+            Assets.playSound("equip")
+            Game.money = Game.money - price
+            cutscene:text("* You bought the healing item!")
+            for _,battler in ipairs(Game.battle.party) do
+                battler:heal(60)
+            end
+            cutscene:text("* Everyone was healed!")
+        else
             enemy.dialogue_override = "[Money] NO."
-
-            return
+            cutscene:text("* You didn't have enough money...")
         end
-
-        Assets.playSound("equip")
-        Game.money = Game.money - price
-        cutscene:text("* You bought the healing item!")
-
-        for _,battler in ipairs(Game.battle.party) do
-            battler:heal(60)
-        end
-        cutscene:text("* Everyone was healed!")
-
-        enemy.dialogue_override = "ENJOY YOUR\n[Healing Item]!"
     end,
 
     susie_talk = function(cutscene, battler, enemy)

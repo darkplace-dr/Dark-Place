@@ -122,7 +122,7 @@ function Mimic:onDefeat(damage, battler)
         self:defeat("VIOLENCE", true)
     end
 
-    Game.battle:startActCutscene("mimic.dies")
+    Game.battle:startActCutscene("mimic.dies", battler, self)
 end
 
 return Mimic

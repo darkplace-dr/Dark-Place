@@ -11,7 +11,6 @@ function ach:init()
     self.hidden = true -- Doesn't show up in the menu if not collected
     self.rarity = "Common" -- An indicator on how difficult this achievement is. "Common", "Uncommon", "Rare", "Epic" "Legendary", "Unique", "Impossible"
     self.completion = false -- Shows a percent indicator (progress/completion) if a number, nothing if false.
-    self.progress = false
 end
 
 return ach

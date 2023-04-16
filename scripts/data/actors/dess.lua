@@ -34,28 +34,32 @@ function actor:init()
     -- Table of sprite animations
     self.animations = {
         -- Battle animations
-        ["battle/idle"]         = {"battle/idle", 0.2, true},
+        ["battle/idle"]          = {"battle/idle", 0.2, true},
 
-        ["battle/attack"]       = {"battle/attack", 1/23, false},
-        ["battle/act"]          = {"battle/act", 1/15, false},
-        ["battle/spell"]        = {"battle/spell", 1/10, false, next="battle/idle"},
-        ["battle/item"]         = {"battle/item", 1/18, false, next="battle/idle"},
-        ["battle/spare"]        = {"battle/spell", 1/10, false, next="battle/idle"},
+        ["battle/attack"]        = {"battle/attack", 1/23, false},
+        ["battle/act"]           = {"battle/act", 1/15, false},
+        ["battle/spell"]         = {"battle/spell", 1/10, false, next="battle/idle"},
+        ["battle/item"]          = {"battle/item", 1/18, false, next="battle/idle"},
+        ["battle/spare"]         = {"battle/spell", 1/10, false, next="battle/idle"},
 
-        ["battle/attack_ready"] = {"battle/attackready", 0.2, true},
-        ["battle/act_ready"]    = {"battle/actready", 0.2, true, },
-        ["battle/spell_ready"]  = {"battle/spellready", 0.2, true},
-        ["battle/item_ready"]   = {"battle/itemready", 0.2, true},
-        ["battle/defend_ready"] = {"battle/defend", 1/15, false},
+        ["battle/attack_ready"]  = {"battle/attackready", 0.2, true},
+        ["battle/act_ready"]     = {"battle/actready", 0.2, true, },
+        ["battle/spell_ready"]   = {"battle/spellready", 0.2, true},
+        ["battle/item_ready"]    = {"battle/itemready", 0.2, true},
+        ["battle/defend_ready"]  = {"battle/defend", 1/15, false},
 
-        ["battle/actend"]      = {"battle/actend", 1/15, false, next="battle/idle"},
+        ["battle/actend"]        = {"battle/actend", 1/15, false, next="battle/idle"},
 
-        ["battle/hurt"]         = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
-        ["battle/defeat"]       = {"battle/defeat", 1/15, false},
+        ["battle/hurt"]          = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
+        ["battle/defeat"]        = {"battle/defeat", 1/15, false},
 		
-		["battle/transition"]   = {"battle/transition", 1/15, false},
-        ["battle/intro"]   		= {"battle/intro", 1/15, false},
-        ["battle/victory"]      = {"battle/victory", 1/10, false},
+		["battle/transition"]    = {"battle/transition", 1/15, false},
+        ["battle/intro"]   		 = {"battle/intro", 1/15, false},
+        ["battle/victory"]       = {"battle/victory", 1/10, false},
+		
+		["battle/snap"]          = {"battle/snap", 2/30, false, next="battle/idle"},
+		["battle/spellsuper"]    = {"battle/spellsuper", 2/30, false, next="battle/spellsuperend"},
+		["battle/spellsuperend"] = {"battle/spellsuperend", 2/30, true},
 
         -- Cutscene animations
         --["laugh"]               = {"laugh", 4/30, true},
@@ -89,6 +93,9 @@ function actor:init()
 		["battle/transition"] = {-4, 0},
         ["battle/intro"] = {-4, 0},
         ["battle/victory"] = {-8, 0},
+		
+		["battle/snap"] = {0, 0},
+		["battle/spellsuper"] = {0, 0},
     }
 end
 

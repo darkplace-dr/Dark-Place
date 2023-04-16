@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 54,
@@ -10,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 28,
+  nextobjectid = 26,
   properties = {
     ["music"] = "spamton_battle_eb"
   },
@@ -30,7 +29,6 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -62,7 +60,6 @@ return {
       height = 12,
       id = 3,
       name = "props",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = -20,
@@ -94,7 +91,6 @@ return {
       height = 12,
       id = 4,
       name = "props2",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = -20,
@@ -123,7 +119,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -135,7 +130,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 0,
@@ -148,7 +143,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1720,
           y = 400,
@@ -161,7 +156,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2040,
           y = 0,
@@ -174,7 +169,7 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1760,
           y = 0,
@@ -187,7 +182,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 800,
           y = 0,
@@ -200,7 +195,7 @@ return {
         {
           id = 25,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 800,
           y = 400,
@@ -217,7 +212,6 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -229,7 +223,7 @@ return {
         {
           id = 7,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1640,
           y = 480,
@@ -245,7 +239,7 @@ return {
         {
           id = 10,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2000,
           y = 240,
@@ -261,7 +255,7 @@ return {
         {
           id = 11,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1360,
           y = 200,
@@ -277,7 +271,7 @@ return {
         {
           id = 12,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1460,
           y = 94,
@@ -292,7 +286,7 @@ return {
         {
           id = 13,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1830,
           y = 140,
@@ -308,7 +302,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1790,
           y = 160,
@@ -325,7 +319,7 @@ return {
         {
           id = 16,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 1840,
           y = 395,
@@ -341,7 +335,7 @@ return {
         {
           id = 20,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1600,
           y = 0,
@@ -357,7 +351,7 @@ return {
         {
           id = 22,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 800,
           y = 200,
@@ -368,22 +362,6 @@ return {
           properties = {
             ["cutscene"] = "room_prefountain.moss2"
           }
-        },
-        {
-          id = 27,
-          name = "npc",
-          class = "",
-          shape = "point",
-          x = 1200,
-          y = 240,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "cungaderospamton",
-            ["cutscene"] = "spamroom.cungadero"
-          }
         }
       }
     },
@@ -392,7 +370,6 @@ return {
       draworder = "topdown",
       id = 7,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -404,7 +381,7 @@ return {
         {
           id = 9,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 1680,
           y = 440,
@@ -417,7 +394,7 @@ return {
         {
           id = 15,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 1880,
           y = 270,
@@ -430,7 +407,7 @@ return {
         {
           id = 23,
           name = "entry1",
-          class = "",
+          type = "",
           shape = "point",
           x = 1680,
           y = 105,

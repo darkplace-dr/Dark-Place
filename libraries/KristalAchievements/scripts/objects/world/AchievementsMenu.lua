@@ -39,9 +39,6 @@ function AchievementsMenu:init()
     table.sort(self.achievements_sorted, function(a,b) return a.index < b.index end)
 
     self.items_per_page = 3
-    self.ach_num = #self.achievements_sorted
-    local rem = self.ach_num % self.items_per_page
-    self.max_page = (self.ach_num - rem)
     self.line_height = 90
 end
 
@@ -50,13 +47,9 @@ function AchievementsMenu:draw()
 	love.graphics.print("Achievements", 150, -10)
 
     love.graphics.setFont(self.font_2)
-    for i = self.page, self.page + (self.items_per_page - 1) do
-        if i > self.ach_num then break end
-
-        local ach = self.achievements_sorted[i]
-
-        local ri = i - self.page
-        local rel_y = ri * self.line_height
+    local achs_to_display = { unpack(self.achievements_sorted, self.page, self.page + (self.items_per_page - 1) )}
+    for i,ach in ipairs(achs_to_display) do
+        local rel_y = (i - 1) * self.line_height
 
         local frame = Assets.getTexture("achievements/frames/" .. ach.rarity)
         local hide = ach.hidden and not ach.earned
@@ -95,7 +88,8 @@ function AchievementsMenu:draw()
 	if self.page > 1 then
 		love.graphics.draw(self.up_sprite, 470, 0, 0, 1, 1)
 	end
-	if self.page < self.max_page then
+    local rem = #self.achievements_sorted % self.items_per_page
+	if self.page < (#self.achievements_sorted - rem) then
 		love.graphics.draw(self.down_sprite, 470, 262, 0, 1, 1)
 	end
 
@@ -109,7 +103,6 @@ function AchievementsMenu:onKeyPressed(key, repeatable)
         Game.world:closeMenu()
         return
     end
-
     if Input.is("up", key) then 
         if self.page > 1 then
             self.page = self.page - 1
@@ -121,7 +114,8 @@ function AchievementsMenu:onKeyPressed(key, repeatable)
         end
     end
     if Input.is("down", key) then
-        if self.page < self.max_page then
+        local rem = #self.achievements_sorted % self.items_per_page
+        if self.page < (#self.achievements_sorted - rem) then
             self.page = self.page + 1
             self.ui_move:stop()
             self.ui_move:play()

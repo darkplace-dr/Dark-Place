@@ -71,6 +71,9 @@ return {
 
 		cutscene:showNametag("Dess")
 		cutscene:text("* Ok lets go", "neutral", "dess")
+		if not Mod:hasAch("starstruck") then
+            Kristal.callEvent("completeAchievement", "starstruck")
+        end
 		cutscene:hideNametag()
 
 		cutscene:attachFollowers(1)
