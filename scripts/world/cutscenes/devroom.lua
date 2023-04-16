@@ -205,13 +205,14 @@ return {
                 cutscene:wait(2.5)
 
                 cutscene:showNametag("Velvet")
-                cutscene:text("[voice:nil][func:sound]* Squeak!", "smile_b", "velvet", {
+                cutscene:text("[voice:nil]* [func:sound]Squeak!", "smile_b", "velvet", {
                     functions = {
                         sound = function()
                             Assets.stopAndPlaySound("velvetsqueak")
                         end
                     }
                 })
+                Assets.stopSound("velvetsqueak")
                 cutscene:hideNametag()
 
                 cutscene:wait(1)
