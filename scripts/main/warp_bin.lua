@@ -1,6 +1,7 @@
 -- Warp Bin
 -- god I am so sorry for how shitty this code is
 
+--- defines the behavior of a Warp Bin code
 ---@class WarpBinCodeInfo
 --- what to do after the code is entered. \
 --- if a string, treated as a map's id and the player is teleported there; \
@@ -13,8 +14,8 @@
 -- have fun :]   -Char
 -- well its NOT that bad
 
--- for reference, to add new codes you'd add tables to the table below
--- see Mod:addBinCode for
+-- for reference, to add new codes you'd add new entries of "type" WarpBinCodeInfo to the table below
+-- If you have sumneko's Lua LS you should be able to get nice annonations
 ---@type table<string, WarpBinCodeInfo>
 Mod.warp_bin_codes = {
     ["00000000"] = { result = "warphub" },
