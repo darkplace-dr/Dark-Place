@@ -131,7 +131,7 @@ function Mod:registerDebugOptions(debug)
 
             Assets.stopAndPlaySound("power")
         end
-    end)
+    end, "GAME")
 
     debug:registerOption("main", "Create Current Ach. List Image", "Just for muscle flexing. LMAO", function()
         local achievements_sorted = {}
@@ -190,11 +190,13 @@ function Mod:registerDebugOptions(debug)
 
         local ach_list_im = ach_list_canvas:newImageData()
         local ach_list_im_file = "saves/"..Mod.info.id.."/ach_list_"..os.date("%Y-%m-%d-%H%M%S")..".png"
+        local ach_list_im_file_full = love.filesystem.getSaveDirectory() .. "/" .. ach_list_im_file
         ach_list_im:encode("png", ach_list_im_file)
         ach_list_im:release()
         ach_list_canvas:release()
 
-        Kristal.Console:log(string.format("Ach. list saved to %s/%s", love.filesystem.getSaveDirectory(), ach_list_im_file))
         Assets.stopAndPlaySound("voice/sans")
+        Kristal.Console:log("Ach. list saved to " .. ach_list_im_file_full)
+        love.system.openURL("file://"..ach_list_im_file_full)
     end, "GAME")
 end
