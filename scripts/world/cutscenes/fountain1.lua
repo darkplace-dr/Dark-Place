@@ -96,13 +96,17 @@ return function(cutscene)
 
         cutscene:playSound("snd_usefountain")
         cutscene:wait(50/30)
-        fountain.adjust = 1 -- fade color
+        fountain.adjust = 1 -- fade out color
         Game.world.timer:tween(170/30, soul, {y = 160})
-        Game.world.timer:during(170/30, function()
-            fountain.eyebody = fountain.eyebody - (fountain.eyebody * (1 - 0.98) * DTMULT)
-        end)
+        --[[
+            -- fade out the depth texture
+            Game.world.timer:during(170/30, function()
+                fountain.eyebody = fountain.eyebody - (fountain.eyebody * (1 - 0.98) * DTMULT)
+            end)
+        ]]
         cutscene:wait(170/30)
-        fountain.adjust = 2 -- freeze in place
+        -- fountain.adjust = 2 -- freeze in place
+        fountain.adjust = 4 -- fade to white
         cutscene:wait(3)
 
         cutscene:playSound("revival")
