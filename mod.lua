@@ -24,7 +24,6 @@ function Mod:postInit(new_file)
         end
     end
 end
-
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/debugsystem")
 

@@ -16,9 +16,9 @@ function Spamgolor:init()
     self.tired_percentage = 0
 
     self.waves = {
-        "spamgolor/gemapple",
-        "spamgolor/deadlyneedle",
-        "spamgolor/blackhole"
+        "gemapple",
+        "deadlyneedle",
+        "blackhole"
     }
 
     self.dialogue = {
@@ -47,18 +47,21 @@ end
 function Spamgolor:onAct(battler, name)
     if name == "Deal" then
         self:addMercy(10)
-        Game.battle:startActCutscene("spamgolor.deal")
+        self.dialogue_override = "PLEASURE DOING\n[[Shady Business]]\nWITH YOU, KID!"
+        Game.battle:startActCutscene("spamgolor", "deal")
         return
     elseif name == "X-Deal" then
         self:addMercy(25)
-        Game.battle:startActCutscene("spamgolor.x_deal")
+        self.dialogue_override = "PLEASURE DOING\n[[Shady Business]]\nWITH YOU TWO!"
+        Game.battle:startActCutscene("spamgolor", "x_deal")
         return
     elseif name == "Heal Deal" then
-        Game.battle:startActCutscene("spamgolor.heal_deal")
+        self.dialogue_override = "ENJOY YOUR\n[Healing Item]!"
+        Game.battle:startActCutscene("spamgolor", "heal_deal")
         return
     elseif name == "Standard" then
         if battler.chara.id == "susie" then
-            Game.battle:startActCutscene("spamgolor.susie_talk")
+            Game.battle:startActCutscene("spamgolor", "susie_talk")
             return
         end
         return {
@@ -70,17 +73,19 @@ function Spamgolor:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
-function Spamgolor:getNextWaves()
-    if self.health <= 600 or self.mercy >= 50 then
-        return {
-            "spamgolor/gemapple_deadlyneedle",
-            "spamgolor/gemapple_blackhole",
-            "spamgolor/deadlyneedle_blackhole"
+function Spamgolor:update()
+    super.update(self)
+    if self.health <= 300 or self.mercy >= 75 then
+        self.waves = {
+            "spamgolor_everything"
         }
-    elseif self.health <= 300 or self.mercy >= 75 then
-        return {"spamgolor/everything"}
+    elseif self.health <= 600 or self.mercy >= 50 then
+        self.waves = {
+            "gemapple_deadlyneedle",
+            "gemapple_blackhole",
+            "deadlyneedle_blackhole"
+        }
     end
-    return super.getNextWaves(self)
 end
 
 return Spamgolor
