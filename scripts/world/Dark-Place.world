@@ -104,6 +104,13 @@
             "width": 1760,
             "x": 5280,
             "y": 4280
+        },
+        {
+            "fileName": "maps/partyroom.tmx",
+            "height": 720,
+            "width": 960,
+            "x": 6080,
+            "y": 3520
         }
     ],
     "onlyShowAdjacentMaps": false,
