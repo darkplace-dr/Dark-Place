@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="64">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="65">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -80,6 +80,13 @@
     <property name="actor" value="brandon"/>
     <property name="cutscene" value="devroom.brandon"/>
     <property name="flagcheck" value="!brandon_inparty"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="64" name="npc" x="1119" y="180">
+   <properties>
+    <property name="actor" value="dumbie"/>
+    <property name="cutscene" value="devroom.dumbie"/>
    </properties>
    <point/>
   </object>
