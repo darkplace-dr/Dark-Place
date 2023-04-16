@@ -104,3 +104,32 @@ end
 function Mod:isInTheArena()
     return Game.world.map.id == "thearena"
 end
+
+-- Debug Menu options
+
+---@param debug DebugSystem
+function Mod:registerDebugOptions(debug)
+    -- Stole this idea from ULCA Deltarune
+    debug:registerOption("main", "Replenish Party", "Replenishes health.", function()
+        if Game.battle then
+            for _,party in ipairs(Game.battle.party) do
+                party:heal(math.huge)
+            end
+        else
+            for i, chara in ipairs(Game.party) do
+                local prev_health = chara:getHealth()
+                chara:heal(math.huge, false)
+                local amount = chara:getHealth() - prev_health
+
+                if not Game:isLight() and Game.world.healthbar then
+                    local actionbox = Game.world.healthbar.action_boxes[i]
+                    local text = HPText("+" .. amount, Game.world.healthbar.x + actionbox.x + 69, Game.world.healthbar.y + actionbox.y + 15)
+                    text.layer = WORLD_LAYERS["ui"] + 1
+                    Game.world:addChild(text)
+                end
+            end
+
+            Assets.stopAndPlaySound("power")
+        end
+    end)
+end
