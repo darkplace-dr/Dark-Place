@@ -4,8 +4,10 @@
 -- I'm going to cause pain and suffering with one weird trick:
 -- here's the table containing any and all warp codes for the warp bin
 -- have fun :]   -Char
--- Also for reference: first in a table is the code, second in a table is the result, and third in a table is the marker you wanna go (optional but defaults to spawn).
--- If the result is a string then it goes to that map, if the last argument is a function it will run the function.
+-- well its NOT that bad
+
+-- for reference, to add new codes you'd add tables to the table below
+-- see Mod:addBinCode for
 Mod.warp_bin_codes = {
     ["00000000"] = { result = "warphub" },
     ["spamroom"] = { result = "spamroom" },
@@ -26,10 +28,24 @@ Mod.warp_bin_codes = {
     ["devdiner"] = { result = "devstart" },
 }
 
--- if you don't want to be cringe there's also this new totally cool helper function wowee
--- also returns success just in-case someone else steals your code before you get to use it.
-function Mod:addBinCode(code, result, marker)
-    if Mod:getBinCode(code) then
+-- heres some new totally cool helper functions wowee
+
+--- get a Bin Code's info
+---@param code string
+---@return table info
+function Mod:getBinCode(code)
+    return Mod.warp_bin_codes[code:lower()]
+end
+
+--- adds a code to the warp bin code table
+---
+---@param code string if you came from the raw table, put this as the key of your new entry
+---@param result string|function what to do after the code is entered; if a string, treated as a map's id and the player is teleported there; if the last argument is a function, the function is run
+---@param marker? string in case result is a string, the name of the marker you want to teleport the player to
+---@param overwrite? boolean whether to overwrite existing entries or not
+---@return boolean success false if the code already exists and overwrite is false. just in-case someone else steals your code before you get to use it.
+function Mod:addBinCode(code, result, marker, overwrite)
+    if Mod:getBinCode(code) and not overwrite then
         -- whoops, no success
         return false
     end
@@ -39,12 +55,9 @@ function Mod:addBinCode(code, result, marker)
     return true
 end
 
--- and here's a function to get a Bin Code by its Code like lmao
-function Mod:getBinCode(code)
-    return Mod.warp_bin_codes[code:lower()]
-end
-
--- and here's one to delete Bin Codes
+--- delets a Bin Code
+---@param code string
+---@return boolean success false if the code doesnt exist
 function Mod:deleteBinCode(code)
     code = code:lower()
 
