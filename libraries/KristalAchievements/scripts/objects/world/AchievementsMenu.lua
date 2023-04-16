@@ -31,15 +31,14 @@ function AchievementsMenu:init()
     self.bg.debug_select = false
     self:addChild(self.bg)
 
-    self.achievements = Kristal.callEvent("getAchievements")
-    self.achievements_sorted = {}
-    for _,v in pairs(self.achievements) do
-        table.insert(self.achievements_sorted, v)
+    self.achievements = {}
+    for _,v in pairs(Kristal.callEvent("getAchievements")) do
+        table.insert(self.achievements, v)
     end
-    table.sort(self.achievements_sorted, function(a,b) return a.index < b.index end)
+    table.sort(self.achievements, function(a,b) return a.index < b.index end)
 
     self.items_per_page = 3
-    self.ach_num = #self.achievements_sorted
+    self.ach_num = #self.achievements
     self.max_page = math.max(self.ach_num - (self.items_per_page - 1), 1)
     self.line_height = 90
 end
@@ -52,7 +51,7 @@ function AchievementsMenu:draw()
     for i = self.page, self.page + (self.items_per_page - 1) do
         if i > self.ach_num then break end
 
-        local ach = self.achievements_sorted[i]
+        local ach = self.achievements[i]
 
         local ri = i - self.page
         local rel_y = 30 + ri * self.line_height
@@ -109,7 +108,7 @@ function AchievementsMenu:onKeyPressed(key, repeatable)
         return
     end
 
-    if Input.is("up", key) then 
+    if Input.is("up", key) then
         if self.page > 1 then
             self.page = self.page - 1
             self.ui_move:stop()
