@@ -666,6 +666,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 52,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 40,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }
