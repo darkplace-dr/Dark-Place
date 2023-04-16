@@ -86,7 +86,8 @@
     "WALTER": "[style:GONER][spacing:3.2]I AM THE ONE WHO\nPROCEEDS.",
     "PLAGUEIS": "[style:GONER][spacing:3.2]IT'S NOT A STORY THE\nLIGHTNERS WOULD TELL\nYOU...",
     "JARU": "[style:GONER][spacing:3.2]NOTE: NOT TO BE CONFUSED\nWITH A CERTAIN DELTARUNE\nTHEORIST.",
-    "GARFZONE": "[style:GONER][spacing:3.2]GEE...SOME PEOPLE ENJOY\nA LITTLE MUSIC IN THE\nMORNING..."
+    "GARFZONE": "[style:GONER][spacing:3.2]GEE...SOME PEOPLE ENJOY\nA LITTLE MUSIC IN THE\nMORNING...",
+    "VELVET": "[style:GONER][spacing:3.2]WAIT WHICH ONE ARE YOU\nTALKING ABOUT???\nTHERE'S THE FABRIC, CAKE,\nAND THE MOUSE.\nWHICH ONE?",
   },
   // Names to disallow player from using in the naming screen.
   "namesDeny": [
