@@ -55,7 +55,7 @@ function AchievementsMenu:draw()
         local ach = self.achievements_sorted[i]
 
         local ri = i - self.page
-        local rel_y = ri * self.line_height
+        local rel_y = 30 + ri * self.line_height
 
         local frame = Assets.getTexture("achievements/frames/" .. ach.rarity)
         local hide = ach.hidden and not ach.earned
@@ -64,28 +64,28 @@ function AchievementsMenu:draw()
         local name = hide and "???" or ach.name
         local desc = (hide and ach.hint) and ach.hint or ach.desc
 
-        love.graphics.draw(frame, 0, rel_y + 30, 0, 2, 2)
+        love.graphics.draw(frame, 0, rel_y, 0, 2, 2)
 
         love.graphics.setColor(body_color)
         if not hide and ach.icon then
             -- TODO: implement animating
             local icon = Assets.getTexture(ach.icon)
-            love.graphics.draw(icon, 8, rel_y + 38, 0, 2, 2)
+            love.graphics.draw(icon, 8, rel_y + 8, 0, 2, 2)
         end
-        love.graphics.print(name, 90, rel_y + 35)
-        love.graphics.print(desc, 90, rel_y + 55)
+        love.graphics.print(name, 90, rel_y + 5)
+        love.graphics.print(desc, 90, rel_y + 25)
 
         if type(ach.completion) == "number" then
             local completion_percent = ach.progress / ach.completion
 
             love.graphics.setColor(self.progress_color_bg)
-            love.graphics.rectangle("fill", 90, rel_y + 90, 150, 12)
+            love.graphics.rectangle("fill", 90, rel_y + 60, 150, 12)
 
             love.graphics.setColor(self.progress_color)
-            love.graphics.rectangle("fill", 90, rel_y + 90, (completion_percent * 150), 12)
+            love.graphics.rectangle("fill", 90, rel_y + 60, (completion_percent * 150), 12)
             love.graphics.setColor(percent_color)
             local completion_percent_2 = completion_percent * 100
-            love.graphics.print(tostring(completion_percent_2).."%", 245, rel_y + 87)
+            love.graphics.print(tostring(completion_percent_2).."%", 245, rel_y + 57)
         end
 
         love.graphics.setColor(1, 1, 1)
