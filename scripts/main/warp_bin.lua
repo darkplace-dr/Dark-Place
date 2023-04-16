@@ -1,6 +1,13 @@
 -- Warp Bin
 -- god I am so sorry for how shitty this code is
 
+---@class WarpBinCodeInfo
+--- what to do after the code is entered. \
+--- if a string, treated as a map's id and the player is teleported there; \
+--- if the last argument is a function, the function is run
+---@field result string|function
+---@field marker string|nil in case result is a string, the name of the marker you want to teleport the player to
+
 -- I'm going to cause pain and suffering with one weird trick:
 -- here's the table containing any and all warp codes for the warp bin
 -- have fun :]   -Char
@@ -8,6 +15,7 @@
 
 -- for reference, to add new codes you'd add tables to the table below
 -- see Mod:addBinCode for
+---@type table<string, WarpBinCodeInfo>
 Mod.warp_bin_codes = {
     ["00000000"] = { result = "warphub" },
     ["spamroom"] = { result = "spamroom" },
@@ -32,7 +40,7 @@ Mod.warp_bin_codes = {
 
 --- get a Bin Code's info
 ---@param code string
----@return table info
+---@return WarpBinCodeInfo info
 function Mod:getBinCode(code)
     return Mod.warp_bin_codes[code:lower()]
 end
@@ -40,8 +48,8 @@ end
 --- adds a code to the warp bin code table
 ---
 ---@param code string if you came from the raw table, put this as the key of your new entry
----@param result string|function what to do after the code is entered; if a string, treated as a map's id and the player is teleported there; if the last argument is a function, the function is run
----@param marker? string in case result is a string, the name of the marker you want to teleport the player to
+---@param result string|function see WarpBinCodeInfo.result
+---@param marker? string see WarpBinCodeInfo.marker
 ---@param overwrite? boolean whether to overwrite existing entries or not
 ---@return boolean success false if the code already exists and overwrite is false. just in-case someone else steals your code before you get to use it.
 function Mod:addBinCode(code, result, marker, overwrite)
