@@ -6,7 +6,7 @@
 --- what to do after the code is entered. \
 --- if a string, treated as a map's id and the player is teleported there; \
 --- if the last argument is a function, the function is run
----@field result string|function
+---@field result string|fun(cutscene: WorldCutscene)
 ---@field marker string|nil in case result is a string, the name of the marker you want to teleport the player to
 
 -- I'm going to cause pain and suffering with one weird trick:
@@ -49,7 +49,7 @@ end
 --- adds a code to the warp bin code table
 ---
 ---@param code string if you came from the raw table, put this as the key of your new entry
----@param result string|function see WarpBinCodeInfo.result
+---@param result string|fun(cutscene: WorldCutscene) see WarpBinCodeInfo.result
 ---@param marker? string see WarpBinCodeInfo.marker
 ---@param overwrite? boolean whether to overwrite existing entries or not
 ---@return boolean success false if the code already exists and overwrite is false. just in-case someone else steals your code before you get to use it.
