@@ -18,19 +18,18 @@ function actor:init(x, y)
     self.path_night = "world/npcs/velvetspam/candle"
     self.default = "idle"
 
-    self.voice = "spam"
+    self.voice = "spamton"
     self.portrait_path = nil
     self.portrait_offset = {0, 0}
 
     self.animations = {
         ["idle"] = {"idle", 1, true},
-        ["candle/idle"] = {"candle/idle", 1, true},
+        ["talk"] = {"talk", 0.2, true},
+        ["candle_idle"] = {"candle/idle", 1, true},
         ["candle/blankie"] = {"candle/blankie", 1, true},
     }
 	
     self.talk_sprites = {
-        ["talk"] = 0.2,
-        ["candle/talk"] = 0.2,
     }
 
     self.offsets = {
@@ -40,7 +39,7 @@ end
 
 function actor:getSpritePath()
     local hour = os.date("*t").hour
-    return hour >= 9 and hour <= 21 and self.path or self.path_night
+    return hour <= 20 and hour >= 9 and self.path or self.path_night
 end
  
 local function updateTexture(self, sprite, night)
@@ -65,8 +64,8 @@ local function updateTexture(self, sprite, night)
     local new_frames = Assets.getFrames(new_path)
     if new_frames then
         sprite:setFrames(new_frames, true)
-        if self.animations_t[sprite.path][tex_name] then
-            sprite:setAnimation(self.animations_t[sprite.path][tex_name])
+        if self.animations[sprite.path] then
+            sprite:setAnimation(self.animations[sprite.path])
         end
     else
         sprite:setTexture(Assets.getTexture(new_path), true)
