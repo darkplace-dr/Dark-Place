@@ -33,13 +33,18 @@ return {
         cutscene:wait(2)
 
         local zoom_sfx = cutscene:playSound("forestalt")
-        local function zoom(scale, wait)
+        local function zoom(scale, wait, overwrite_pos)
+            local tx, ty = YOU:getRelativePos(YOU.width/2, YOU.height/2)
             Game.world.camera:setZoom(scale)
+            if overwrite_pos then
+                Game.world.camera:setPosition(overwrite_pos[1], overwrite_pos[2])
+            else
+                Game.world.camera:setPosition(tx, ty)
+            end
             cutscene:wait(wait)
         end
-        local tx, ty = YOU:getRelativePos(YOU.width/2, YOU.height/2)
+        
         cutscene:detachCamera()
-        Game.world.camera:setPosition(tx, ty)
         zoom(2, 1/4)
         zoom(3, 1/4)
         zoom(4, 1/2)
@@ -47,8 +52,7 @@ return {
         local emotion = Sprite("world/cutscenes/react_to_YOU/bigemotion", -9, 4)
         emotion:setScale(0.125, 0.125)
         YOU:addChild(emotion)
-        Game.world.camera.y = Game.world.camera.y - 18
-        zoom(8, zoom_sfx)
+        zoom(8, zoom_sfx, {Game.world.camera.x, Game.world.camera.y - 18})
         emotion:remove()
         cutscene:attachFollowersImmediate()
         cutscene:look(susie, "down")
