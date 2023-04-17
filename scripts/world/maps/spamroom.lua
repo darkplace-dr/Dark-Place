@@ -391,7 +391,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "velvetspam"
+            ["actor"] = "velvetspam",
+            ["cutscene"] = "spamroom.velvetspam"
           }
         }
       }
