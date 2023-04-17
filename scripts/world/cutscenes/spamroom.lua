@@ -73,6 +73,49 @@ return {
         event:setSprite("happy")
         cutscene:hideNametag()
     end,
+    velvetspam = function(cutscene, event)
+        local hour = os.date("*t").hour
+        if hour >= 21 or hour <= 8 then
+            local velvetspam = cutscene:getCharacter("velvetspam")
+            cutscene:setSpeaker(velvetspam)
+            cutscene:showNametag("Velvet!Spamton")
+            cutscene:text("* Noticed anything [[Different from the Leading Brand!]]?")
+            cutscene:text("* Well that difference is that I don't have my [specil] Blankie [TM] with me!")
+            cutscene:hideNametag()
+        else
+            local velvetspam = cutscene:getCharacter("velvetspam")
+            cutscene:setSpeaker(velvetspam)
+            cutscene:showNametag("Velvet!Spamton")
+            velvetspam:setAnimation("talk")
+            cutscene:text("* KRIS!!! So nice 2 see you! I am doing [[Easy Well-Done Beef]]!")
+            velvetspam:setAnimation("idle")
+            cutscene:hideNametag()
+            
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Actually that's not Kris...\n * It's YOU...", "nervous_side")
+                cutscene:hideNametag()
+            end
+
+            local velvetspam = cutscene:getCharacter("velvetspam")
+            cutscene:setSpeaker(velvetspam)
+            cutscene:showNametag("Velvet!Spamton")
+            velvetspam:setAnimation("talk")
+            cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * That's Kris!")
+            velvetspam:setAnimation("idle")
+            cutscene:hideNametag()
+
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Nevermind then...", "annoyed")
+                cutscene:hideNametag()
+            end
+        end
+    end,
 
 	-- ┌───────────────────────┐ --
 	-- │     The Warp Bin      │ --
