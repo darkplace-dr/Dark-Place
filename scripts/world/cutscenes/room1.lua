@@ -413,5 +413,22 @@ return {
         else
             Game.world:mapTransition("room2", "entry")
         end
-    end
+    end,
+	
+	diagonal_mario = function(cutscene, event)
+		local susie = cutscene:getCharacter("susie")
+        cutscene:showNametag("Diagonal Mario of C.A.")
+        cutscene:text("* Cease and desist,[wait:5] you fucking idiot")
+		if cutscene:getCharacter("susie") then
+			cutscene:showNametag("Susie")
+            cutscene:text("* Yeah?[wait:5]\n* Or what?", "annoyed", "susie")
+			cutscene:showNametag("Diagonal Mario of C.A.")
+			cutscene:text("* DMCA")
+			cutscene:showNametag("Susie")
+            cutscene:text("* Well,[wait:5] shi--", "shock", "susie", { auto = true })
+			Game:removePartyMember("susie")
+			susie:remove()
+		end
+        cutscene:hideNametag()
+    end,
 }
