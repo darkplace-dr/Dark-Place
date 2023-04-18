@@ -173,4 +173,9 @@ function lib:completeAchievement(achievement, slient)
     end
 end
 
+-- Does the achievement exist?
+function lib:hasAch(achievement)
+    return Utils.containsValue(self.achievements, achievement)
+end
+
 return lib

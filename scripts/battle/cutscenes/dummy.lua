@@ -16,7 +16,7 @@ return {
             -- Ralsei text, if he's in the party
             cutscene:text("* Aww,[wait:5] Susie!", "blush_pleased", "ralsei")
         end
-        if not Mod:hasAch("dummy") then
+        if not Kristal.libCall("achievements", "hasAch", "dummy") then
             Kristal.callEvent("completeAchievement", "dummy")
         end
     end
