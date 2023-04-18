@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 48,
+  nextobjectid = 49,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -707,6 +707,22 @@ return {
             ["facing"] = "right",
             ["marker"] = "entry_j",
             ["shop"] = "jeku_shop"
+          }
+        },
+        {
+          id = 48,
+          name = "NPC",
+          type = "",
+          shape = "point",
+          x = 80,
+          y = 130,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "diagonal_mario",
+            ["cutscene"] = "room1.diagonal_mario"
           }
         }
       }
