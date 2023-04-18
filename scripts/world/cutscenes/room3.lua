@@ -143,7 +143,7 @@ return {
 
         cutscene:look("down")
 
-        if not Mod:hasAch("doobie") then
+        if not Kristal.libCall("achievements", "hasAch", "doobie") then
             Kristal.callEvent("completeAchievement", "doobie")
         end
     end,
