@@ -136,7 +136,9 @@ end
 function lib:addAchProgress(achievement, number, slient)
     local ach_obj = self:getAchievement(achievement)
 
-    ach_obj.progress = ach_obj.progress + number
+    if not ach_obj.earned then
+        ach_obj.progress = ach_obj.progress + number
+    end
     self:checkAchProgression(achievement, slient)
 end
 
