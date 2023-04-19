@@ -175,9 +175,9 @@ function lib:completeAchievement(achievement, slient)
     end
 end
 
--- Does the achievement exist?
+-- Was the achievement completed?
 function lib:hasAch(achievement)
-    return Utils.containsValue(self.achievements, achievement)
+    return self:getAchievement(achievement).earned
 end
 
 return lib

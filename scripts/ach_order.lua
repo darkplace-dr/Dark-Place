@@ -8,4 +8,6 @@ return {
     "dummy",
     "blankiequest",
     "velvetsqueak",
+    "takodownbad",
+    "jekukilled"
 }
