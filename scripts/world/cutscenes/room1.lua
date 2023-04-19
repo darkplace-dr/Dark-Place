@@ -135,6 +135,19 @@ return {
         end
     end,
 
+    blankie_wall = function(cutscene, event)
+        local hour = os.date("*t").hour
+        if hour >= 21 or hour <= 8 then
+            cutscene:text("* The wall should be cracked but you're seeing a note right now!")
+            cutscene:text("* That shouldn't be here but this is a wip!")
+            cutscene:text("* This text should only appear from 9pm to 9am...\n * - Sans")
+        else
+            cutscene:text("* The wall has a note taped with doodles.")
+            cutscene:text("* But there is no proper cutscene yet as it's still a wip!")
+            cutscene:text("* This text should only appear from 9am to 9pm...\n * - Sans")
+        end
+    end,
+
     guardian = function(cutscene, event)
         cutscene:showNametag("Wall Guardian")
         cutscene:text("* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers.")
@@ -155,153 +168,160 @@ return {
     end,
 
     sans = function(cutscene, event)
-        if cutscene:getCharacter("susie") then
-            if event.interact_count == 1 then
-                cutscene:showNametag("Susie")
-                cutscene:text("* You??", "teeth_b", "susie")
-                if cutscene:getCharacter("YOU") then
-                    cutscene:text("* No,[wait:2] not you, YOU..[wait:5]\n[face:teeth_b]* THAT guy!!", "sus_nervous", "susie")
-                end
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* hey.", "neutral", "sans")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* What are you DOING here??", "teeth", "susie")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* i'm keeping people away from this elevator.", "look_left", "sans")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* WHY??", "teeth", "susie")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* it's not finished yet.", "neutral", "sans")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* ...[wait:3]It looks pretty finished to me.", "neutral", "susie")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* that's just how tilesets are.", "joking", "sans")
-                cutscene:text("[font:sans]* give them a while,[wait:1] figuring out how an elevator works take some time.", "wink", "sans")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* (What is he even talking about??)", "sus_nervous", "susie")
-                cutscene:hideNametag()
-            else
-                cutscene:showNametag("Susie")
-                cutscene:text("* How are you here by the way?", "neutral", "susie")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* i don't know. i'm just here for the work.", "neutral", "sans")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* Do you even know something?", "annoyed", "susie")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* hey, if you have a complaint[wait:1] you can tell my manager.", "joking", "sans")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* And who would that be?", "neutral_side", "susie")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* me.", "neutral", "sans")
-
-                cutscene:showNametag("Susie")
-                cutscene:text("* Aren't you already the cashier at Hometown??", "angry", "susie")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* nah, i'm the janitor.", "wink", "sans")
-                cutscene:hideNametag()
-            end
-        elseif cutscene:getCharacter("noelle") then
-            if event.interact_count == 1 then
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* hey.", "neutral", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* Uhm...[wait:4] Hello?", "smile_closed", "noelle")
-                cutscene:text("* Wait, aren't you the guy keeping the store in Hometown?", "smile", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* nah, i'm just the cashier.", "neutral", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* Oh? But isn't the store named after you?", "question", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* nah, that's the name of the owner.", "look_left", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* Oh! Sorry for the confusion![wait:3] Can I ask for your name then?", "smile_closed", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* wow there girl, you don't just ask a hard worker like me his name. it's weird.", "joking", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* O-Oh... Sorry.", "surprise_frown_b", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* it's okay.[wait:3] i don't get pay enough to get mad at people.", "wink", "sans")
-                cutscene:hideNametag()
-            else
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* what's up?", "neutral", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* Nothing special, mister... Uh..", "smile_closed", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* sans.[wait:2] sans the skeleton.", "wink", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* Oh okay, mister...[wait:4] [face:confused_surprise]Sans..?[wait:4][face:confused_surprise_b] Skeleton??[wait:4][face:question] The Skeleton???", "smile", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* how about you just call me sans?[wait:3] sounds nicer, right?", "look_left",
-                "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* I guess so, yeah..", "smile_side", "noelle")
-                cutscene:text("* Wait... So your name IS Sans!", "surprise_smile_b", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* that's me.", "neutral", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* I thought I shouldn't ask an hard worker his name!", "smile_closed", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* wow, the guy who told you that must be really weird.", "joking", "sans")
-                cutscene:text("[font:sans]* there's nothing wrong with knowing someone's name, you know?", "wink", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* ...", "what", "noelle")
-                cutscene:text("* Then uh.. Aren't you the owner of the shop in Hometown?", "question", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* nah, i'm their janitor.", "neutral", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* But didn't you tell us you were their cashier?", "frown", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* i'm just filling in.[wait:3] employees are hard to find nowadays.", "look_left", "sans")
-
-                cutscene:showNametag("Noelle")
-                cutscene:text("* Did you try to start some employment campaign?", "smile_closed_b", "noelle")
-
-                cutscene:showNametag("Sans")
-                cutscene:text("[font:sans]* can't do that on a janitor's salary unfortunately.", "eyes_closed", "sans")
-                cutscene:hideNametag()
-            end
-        else
-            local kid = #Game.party > 1 and "kids" or "kid"
+        local hour = os.date("*t").hour
+        if hour >= 21 or hour <= 8 then
             cutscene:showNametag("Sans")
-            cutscene:text(string.format("* hey %s.[wait:5] sorry but you can't access this elevator yet.", kid), "neutral", "sans")
-            cutscene:text("* it's kinda..[wait:5] not finished.", "look_left", "sans")
-            cutscene:text("* so come back later,[wait:2] 'k?", "wink", "sans")
+            cutscene:text("[font:sans]* hey.\n * there might be another crack on the wall here.", "neutral", "sans")
             cutscene:hideNametag()
+        else
+            if cutscene:getCharacter("susie") then
+                if event.interact_count == 1 then
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* You??", "teeth_b", "susie")
+                    if cutscene:getCharacter("YOU") then
+                        cutscene:text("* No,[wait:2] not you, YOU..[wait:5]\n[face:teeth_b]* THAT guy!!", "sus_nervous", "susie")
+                    end
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* hey.", "neutral", "sans")
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* What are you DOING here??", "teeth", "susie")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* i'm keeping people away from this elevator.", "look_left", "sans")
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* WHY??", "teeth", "susie")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* it's not finished yet.", "neutral", "sans")
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ...[wait:3]It looks pretty finished to me.", "neutral", "susie")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* that's just how tilesets are.", "joking", "sans")
+                    cutscene:text("[font:sans]* give them a while,[wait:1] figuring out how an elevator works take some time.", "wink", "sans")
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* (What is he even talking about??)", "sus_nervous", "susie")
+                    cutscene:hideNametag()
+                else
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* How are you here by the way?", "neutral", "susie")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* i don't know. i'm just here for the work.", "neutral", "sans")
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Do you even know something?", "annoyed", "susie")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* hey, if you have a complaint[wait:1] you can tell my manager.", "joking", "sans")
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* And who would that be?", "neutral_side", "susie")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* me.", "neutral", "sans")
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Aren't you already the cashier at Hometown??", "angry", "susie")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* nah, i'm the janitor.", "wink", "sans")
+                    cutscene:hideNametag()
+                end
+            elseif cutscene:getCharacter("noelle") then
+                if event.interact_count == 1 then
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* hey.", "neutral", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* Uhm...[wait:4] Hello?", "smile_closed", "noelle")
+                    cutscene:text("* Wait, aren't you the guy keeping the store in Hometown?", "smile", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* nah, i'm just the cashier.", "neutral", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* Oh? But isn't the store named after you?", "question", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* nah, that's the name of the owner.", "look_left", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* Oh! Sorry for the confusion![wait:3] Can I ask for your name then?", "smile_closed", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* wow there girl, you don't just ask a hard worker like me his name. it's weird.", "joking", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* O-Oh... Sorry.", "surprise_frown_b", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* it's okay.[wait:3] i don't get pay enough to get mad at people.", "wink", "sans")
+                    cutscene:hideNametag()
+                else
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* what's up?", "neutral", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* Nothing special, mister... Uh..", "smile_closed", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* sans.[wait:2] sans the skeleton.", "wink", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* Oh okay, mister...[wait:4] [face:confused_surprise]Sans..?[wait:4][face:confused_surprise_b] Skeleton??[wait:4][face:question] The Skeleton???", "smile", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* how about you just call me sans?[wait:3] sounds nicer, right?", "look_left",
+                    "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* I guess so, yeah..", "smile_side", "noelle")
+                    cutscene:text("* Wait... So your name IS Sans!", "surprise_smile_b", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* that's me.", "neutral", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* I thought I shouldn't ask an hard worker his name!", "smile_closed", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* wow, the guy who told you that must be really weird.", "joking", "sans")
+                    cutscene:text("[font:sans]* there's nothing wrong with knowing someone's name, you know?", "wink", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* ...", "what", "noelle")
+                    cutscene:text("* Then uh.. Aren't you the owner of the shop in Hometown?", "question", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* nah, i'm their janitor.", "neutral", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* But didn't you tell us you were their cashier?", "frown", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* i'm just filling in.[wait:3] employees are hard to find nowadays.", "look_left", "sans")
+
+                    cutscene:showNametag("Noelle")
+                    cutscene:text("* Did you try to start some employment campaign?", "smile_closed_b", "noelle")
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* can't do that on a janitor's salary unfortunately.", "eyes_closed", "sans")
+                    cutscene:hideNametag()
+                end
+            else
+                local kid = #Game.party > 1 and "kids" or "kid"
+                cutscene:showNametag("Sans")
+                cutscene:text(string.format("* hey %s.[wait:5] sorry but you can't access this elevator yet.", kid), "neutral", "sans")
+                cutscene:text("* it's kinda..[wait:5] not finished.", "look_left", "sans")
+                cutscene:text("* so come back later,[wait:2] 'k?", "wink", "sans")
+                cutscene:hideNametag()
+            end
         end
     end,
 
@@ -417,5 +437,22 @@ return {
         else
             Game.world:mapTransition("room2", "entry")
         end
-    end
+    end,
+	
+	diagonal_mario = function(cutscene, event)
+		local susie = cutscene:getCharacter("susie")
+        cutscene:showNametag("Diagonal Mario of C.A.")
+        cutscene:text("* Cease and desist,[wait:5] you fucking idiot")
+		if cutscene:getCharacter("susie") then
+			cutscene:showNametag("Susie")
+            cutscene:text("* Yeah?[wait:5]\n* Or what?", "annoyed", "susie")
+			cutscene:showNametag("Diagonal Mario of C.A.")
+			cutscene:text("* DMCA")
+			cutscene:showNametag("Susie")
+            cutscene:text("* Well,[wait:5] shi--", "shock", "susie", { auto = true })
+			Game:removePartyMember("susie")
+			susie:remove()
+		end
+        cutscene:hideNametag()
+    end,
 }
