@@ -574,7 +574,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "shadowsalesman"
+            ["actor"] = "shadowsalesman",
+            ["cutscene"] = "devroom.shadowshop"
           }
         },
         {
@@ -621,7 +622,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "dumbie",
-            ["cutscene"] = "devroom.dumbie"
+            ["cutscene"] = "devroom.dumbie",
+            ["flagcheck"] = "!dumbie_inparty"
           }
         },
         {
