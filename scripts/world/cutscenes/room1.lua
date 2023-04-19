@@ -361,6 +361,10 @@ return {
                     char:resetSprite()
                 end
             end
+
+            if not Kristal.libCall("achievements", "hasAch", "takodownbad") then
+                Kristal.callEvent("completeAchievement", "takodownbad")
+            end
         else
             cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the priestess,[wait:2] Ina!")
