@@ -86,6 +86,23 @@ return {
       properties = {}
     },
     {
+      type = "imagelayer",
+      image = "../../../../assets/sprites/tilesets/blankie_wall_note.png",
+      id = 7,
+      name = "Image Layer 2",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 160,
+      offsety = 40,
+      parallaxx = 1,
+      parallaxy = 1,
+      repeatx = false,
+      repeaty = false,
+      properties = {
+      }
+    },
+    {
       type = "tilelayer",
       x = 0,
       y = 0,
@@ -579,6 +596,21 @@ return {
             ["once"] = true
           }
         },
+        {
+          id = 34,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 160,
+          y = 40,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "room1.blankie_wall",
+          }
+        },          
         {
           id = 35,
           name = "npc",
