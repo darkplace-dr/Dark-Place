@@ -138,9 +138,14 @@ return {
     blankie_wall = function(cutscene, event)
         local hour = os.date("*t").hour
         if hour >= 21 or hour <= 8 then
-            cutscene:text("* The wall should be cracked but you're seeing a note right now!")
-            cutscene:text("* That shouldn't be here but this is a wip!")
-            cutscene:text("* This text should only appear from 9pm to 9am...\n * - Sans")
+            local blankie_wall = cutscene:getCharacter("blankie_wall")
+            blankie_wall:setAnimation("blankie_wall_night")
+            cutscene:text("* The wall is cracked but you can't break it right now!")
+            cutscene:text("* But it just turned from a paper to a crack")
+            cutscene:text("* That shouldn't happen as this is a wip!")
+            cutscene:text("* This text should only appear from 9pm to 9am...")
+            cutscene:text("* It should turn back paper after this dialogue\n * - Sans")
+            blankie_wall:resetSprite()
         else
             cutscene:text("* The wall has a note taped with doodles.")
             cutscene:text("* But there is no proper cutscene yet as it's still a wip!")
