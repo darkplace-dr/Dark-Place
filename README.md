@@ -20,6 +20,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Dobby233Liu - Contributor
 * Willow with a W - Contributor
 * DeltaVelvet - Contributor
+* Pinto Molhado - Contributor
 
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
@@ -27,7 +28,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Sam Deluxe#0057 - X-Slash code
 * Cоrе#2611 - MoreBattle Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
-* Pinto Molhado#5175 - Edited "Gnome Forest" title card from Pizza Tower
 * TheMaxine - Original author for Ribbit
 * RhenaudTheLukark - Original author for Unitale/Create Your Frisk/Create Your Kris
 * STD Repaints - Original author for Deltarune Repainted
@@ -38,3 +38,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * HAL Laboratories - Original author for Kirby
 * Tour de Pizza - Original authors for Pizza Tower
 * Eminus - Original author for Mario's Mystery Meat
+* Lester Vine - Original author of Super Diagonal Mario 2
