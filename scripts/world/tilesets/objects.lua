@@ -1,14 +1,17 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.0",
   name = "objects",
+  class = "",
   tilewidth = 418,
   tileheight = 725,
   spacing = 0,
   margin = 0,
   columns = 0,
   objectalignment = "unspecified",
+  tilerendersize = "tile",
+  fillmode = "stretch",
   tileoffset = {
     x = 0,
     y = 0
@@ -174,19 +177,19 @@ return {
     },
     {
       id = 24,
-      image = "../../../assets/sprites/world/maps/hometown_ribbit/building_library.png",
+      image = "../../../assets/sprites/world/maps/hometown_ribbit/bg_building_library.png",
       width = 232,
       height = 110
     },
     {
       id = 25,
-      image = "../../../assets/sprites/world/maps/hometown_ribbit/lockers_l.png",
+      image = "../../../assets/sprites/world/maps/hometown_ribbit/bg_lockers_l.png",
       width = 120,
       height = 200
     },
     {
       id = 26,
-      image = "../../../assets/sprites/world/maps/hometown_ribbit/shelter.png",
+      image = "../../../assets/sprites/world/maps/hometown_ribbit/spr_shelter.png",
       width = 418,
       height = 240
     }
