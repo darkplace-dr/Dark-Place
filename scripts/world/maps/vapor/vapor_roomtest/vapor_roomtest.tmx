@@ -70,7 +70,8 @@
   </object>
   <object id="22" name="transition" x="1280" y="120" width="40" height="80">
    <properties>
-    <property name="marker" value=""/>
+    <property name="map" value="vapor/pillars2"/>
+    <property name="marker" value="entry"/>
    </properties>
   </object>
   <object id="23" name="transition" x="320" y="-40" width="80" height="40">

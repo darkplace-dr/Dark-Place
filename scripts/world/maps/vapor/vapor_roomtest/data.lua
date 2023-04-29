@@ -411,7 +411,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["marker"] = ""
+            ["map"] = "vapor/pillars2",
+            ["marker"] = "entry"
           }
         },
         {
