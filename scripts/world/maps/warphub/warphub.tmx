@@ -4,7 +4,7 @@
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="border" value="whitespace"/>
+  <property name="border" value="omori/whitespace"/>
   <property name="music" value="gimmieyourwalletmiss"/>
   <property name="name" value="Warp Hub"/>
  </properties>

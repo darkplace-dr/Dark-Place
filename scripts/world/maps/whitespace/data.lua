@@ -11,7 +11,7 @@ return {
   nextlayerid = 9,
   nextobjectid = 29,
   properties = {
-    ["border"] = "omori",
+    ["border"] = "omori/omori",
     ["music"] = "whitespace",
     ["name"] = "WHITE SPACE"
   },
