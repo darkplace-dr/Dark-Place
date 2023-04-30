@@ -4,7 +4,7 @@
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="border" value="omori"/>
+  <property name="border" value="omori/omori"/>
   <property name="music" value="whitespace"/>
   <property name="name" value="WHITE SPACE"/>
  </properties>

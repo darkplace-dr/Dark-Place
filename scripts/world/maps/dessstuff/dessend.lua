@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -12,7 +11,7 @@ return {
   nextlayerid = 7,
   nextobjectid = 65,
   properties = {
-    ["border"] = "whitespace",
+    ["border"] = "omori/whitespace",
     ["music"] = "gimmieyourwalletmiss",
     ["name"] = "Dess - THE ENDING"
   },
@@ -44,7 +43,6 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -88,7 +86,6 @@ return {
       height = 24,
       id = 2,
       name = "decal",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -129,7 +126,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -141,7 +137,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 280,
@@ -154,7 +150,7 @@ return {
         {
           id = 18,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 280,
@@ -167,7 +163,7 @@ return {
         {
           id = 50,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 240,
@@ -180,7 +176,7 @@ return {
         {
           id = 51,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 240,
@@ -193,7 +189,7 @@ return {
         {
           id = 62,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 40,
@@ -206,7 +202,7 @@ return {
         {
           id = 63,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 80,
@@ -219,7 +215,7 @@ return {
         {
           id = 64,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -236,7 +232,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -248,7 +243,7 @@ return {
         {
           id = 53,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 240,
@@ -265,7 +260,7 @@ return {
         {
           id = 54,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 600,
@@ -283,7 +278,7 @@ return {
         {
           id = 55,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 600,
@@ -301,7 +296,7 @@ return {
         {
           id = 56,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 260,
           y = 480,
@@ -319,7 +314,7 @@ return {
         {
           id = 57,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 300,
           y = 480,
@@ -337,7 +332,7 @@ return {
         {
           id = 58,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 720,
@@ -354,7 +349,7 @@ return {
         {
           id = 59,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 70,
@@ -370,7 +365,7 @@ return {
         {
           id = 60,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 280,
@@ -387,7 +382,7 @@ return {
         {
           id = 61,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 960,
@@ -407,7 +402,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -419,7 +413,7 @@ return {
         {
           id = 20,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 300,
           y = 920,
