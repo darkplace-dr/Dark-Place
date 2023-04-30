@@ -20,6 +20,27 @@
             "width": 640,
             "x": -720,
             "y": 80
+        },
+        {
+            "fileName": "maps/vapor/secretarea1/secretarea1.tmx",
+            "height": 1280,
+            "width": 640,
+            "x": 1080,
+            "y": -1520
+        },
+        {
+            "fileName": "maps/vapor/snick/snick.tmx",
+            "height": 480,
+            "width": 800,
+            "x": 1000,
+            "y": -2000
+        },
+        {
+            "fileName": "maps/vapor/pillars2/pillars2.tmx",
+            "height": 1920,
+            "width": 640,
+            "x": 1320,
+            "y": 0
         }
     ],
     "onlyShowAdjacentMaps": false,
