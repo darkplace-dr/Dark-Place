@@ -81,7 +81,7 @@ return {
         if doobie then
             doobie:setAnimation("dance" .. svfx_suffix)
         end
-        dance_anim_rem(svfx and (9.694 * 2) or 31, true)
+        dance_anim_rem(svfx and (9.694 * 2) or 31)
 
         -- show character idle animations
         morshu.dance = false

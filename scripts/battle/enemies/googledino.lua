@@ -45,7 +45,7 @@ function GoogleDino:init()
     self:registerAct("Reboot")
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
-    self:registerAct("X-Reboot", "", {"susie"})
+    self:registerAct("X-Reboot", "", {"all"})
 end
 
 function GoogleDino:onAct(battler, name)
