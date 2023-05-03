@@ -36,14 +36,14 @@ function character:init()
     self:addSpell("shooting_star")
 
     -- Current health (saved to the save file)
-    self.health = 200
+    self.health = 150
 
     -- Base stats (saved to the save file)
     self.stats = {
-        health = 200,
+        health = 150,
         attack = 7,
         defense = 4,
-        magic = 15
+        magic = 13
     }
 
     -- Weapon icon in equip menu
