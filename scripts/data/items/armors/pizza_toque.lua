@@ -34,10 +34,10 @@ function item:init()
 
     -- Equip bonuses (for weapons and armor)
     self.bonuses = {
-        defense = 4,
+        defense = 6,
     }
     -- Bonus name and icon (displayed in equip menu)
-    self.bonus_name = nil
+    self.bonus_name = "Italian"
     self.bonus_icon = nil
 
     -- Equippable characters (default true for armors, false for weapons)
@@ -50,7 +50,7 @@ function item:init()
         susie = "Does this mean I get to make AND eat pizza?",
         ralsei = "Hello there!",
         noelle = "Wh-why do I feel paranoid all of a sudden?",
-		dess = "i cooka da pizza",
+        dess = "i cooka da pizza",
         brandon = "Y'all ready to get funky?"
     }
 end
