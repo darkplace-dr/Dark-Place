@@ -120,6 +120,11 @@ function actor:init()
         ["sit"] = {-3, 0},
 
         ["t_pose"] = {-4, 0},
+
+        ["date"] = {-2, 6},
+        ["date_flowey"] = {-2, 6},
+		
+        ["disappointed"] = {0, -1},
     }
 end
 
