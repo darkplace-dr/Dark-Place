@@ -460,4 +460,100 @@ return {
 		end
         cutscene:hideNametag()
     end,
+
+    sans_under_attack = function(cutscene, event, chara)
+        print(chara)
+        if chara then
+            print(chara.sprite.facing)
+        end
+        if chara.sprite.facing == "up" then
+            local sans = Game.world:getCharacter("sans")
+            if not sans then event:remove() cutscene:endCutscene() return end
+            Game.world.music:fade(0, 1)
+            sans.x = 300
+
+            shadowman1 = Game.world:spawnNPC("shadowman", sans.x - 153, sans.y)
+            shadowman1.flip_x = true
+            shadowman2 = Game.world:spawnNPC("shadowman", sans.x + 100, sans.y)
+            Game.world:addChild(shadowman1)
+            Game.world:addChild(shadowman2)
+
+            cutscene:showNametag("???")
+            cutscene:text("* Listen closely, ya little skelepunk.")
+            cutscene:hideNametag()
+
+            cutscene:wait(cutscene:panTo(sans))
+
+            cutscene:setTextboxTop(false)
+            shadowman1:play(1/4)
+            cutscene:showNametag("Shadowman 1")
+            cutscene:text("* We only gave ya one job: preventing folks from enterin' that elevator.")
+            cutscene:text("* And ya didn't even do it properly??")
+            cutscene:showNametag("Sans")
+            shadowman1:resetSprite()
+            cutscene:text("[font:sans]* i was moved without my consent, you know.", "look_left", "sans")
+            shadowman2:play(1/4)
+            cutscene:showNametag("Shadowman 2")
+            cutscene:text("* Yeah sure. Whatever you say, skeleman.")
+            cutscene:text("* The boss ain't happy with what he heard. So ya gonna come with us right now or else...")
+            shadowman2:resetSprite()
+
+            cutscene:detachFollowers()
+            local moved_player = cutscene:walkTo(chara, 250, 260, 2)
+            move_party = {}
+            local nb_followers = #Game.world.followers
+            for i,follower in ipairs(Game.world.followers) do
+                if i == 1 then
+                    table.insert(move_party, cutscene:walkTo(follower, 350, 260, 2))
+                elseif i == 2 then
+                    if nb_followers == 3 then
+                        table.insert(move_party, cutscene:walkTo(follower, 250, 330, 2))
+                    else
+                        table.insert(move_party, cutscene:walkTo(follower, 300, 330, 2))
+                    end
+                elseif i == 3 then
+                    table.insert(move_party, cutscene:walkTo(follower, 350, 330, 2))
+                end
+            end
+
+            cutscene:showNametag("Susie")
+            cutscene:text("* HEY!", "angry", "susie")
+            cutscene:hideNametag()
+
+            cutscene:wait(function()
+                local moved_followers = true
+
+                for k,func in pairs(move_party) do
+                    if not func() then
+                        moved_followers = false
+                        break
+                    end
+                end
+
+                return moved_player() and moved_followers
+            end)
+
+            shadowman1:play(1/4)
+            cutscene:showNametag("Shadowman 1")
+            cutscene:text("* What do ya want, kids?")
+            shadowman1:resetSprite()
+            shadowman2:play(1/4)
+            cutscene:showNametag("Shadowman 2")
+            cutscene:text("* It's adult talking here, so get lost.")
+            shadowman2:resetSprite()
+            cutscene:showNametag("Susie")
+            cutscene:text("* Threats over an elevator doesn't sounds very \"adult\" to me.", "annoyed", "susie")
+            cutscene:text("* So how about YOU get lost instead?", "bangs_teeth", "susie")
+            shadowman2:play(1/4)
+            cutscene:showNametag("Shadowman 2")
+            cutscene:text("* So ya think you're all tough because you can show your teeths, girl?")
+            shadowman2:resetSprite()
+            shadowman1:play(1/4)
+            cutscene:showNametag("Shadowman 1")
+            cutscene:text("* Fine by us. You two walked right into that one anyway!")
+            shadowman1:resetSprite()
+            cutscene:hideNametag()
+            cutscene:startEncounter("shadowmen", nil, {shadowman1, shadowman2})
+        end
+    end
 }
