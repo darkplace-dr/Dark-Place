@@ -21,6 +21,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Willow with a W - Contributor
 * DeltaVelvet - Contributor
 * Pinto Molhado - Contributor
+* Agent 7 - Contributor
 
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
@@ -39,3 +40,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Tour de Pizza - Original authors for Pizza Tower
 * Eminus - Original author for Mario's Mystery Meat
 * Lester Vine - Original author of Super Diagonal Mario 2
+* Askywalker - Original author of Starwalker party sprites
+* Discarded_Vessel - Original author of Kris LW battle sprites
+* AccurateJaney - Original author of Susie and Noelle LW battle sprites
