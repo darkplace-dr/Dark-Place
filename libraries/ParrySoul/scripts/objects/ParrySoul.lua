@@ -8,10 +8,12 @@ function ParrySoul:init(x, y)
     -- Here's orange, if you want it.
     -- self.color = {1,(148/255),0}
 
-    -- In Deltatraveler, this soul moves at half speed. Remove this line or set speed to 4 if you don't want that.
-    self.speed = 4
+    --[[ None of these are relevant in Dark Place
+    -- In Deltatraveler, this soul moves at half speed (2). Remove this line or set speed to 4 if you don't want that.
+    self.speed = 2
     -- Disables focus. Why would you want to move even slower?
     self.allow_focus = false
+    --]]
 
 
     self.parry_timer = 0
@@ -34,8 +36,8 @@ function ParrySoul:init(x, y)
     self.parry_length = 30      -- Invincibility length after a successful parry.
     self.parry_cap = 60         -- Maximum duration for parry invincibility, in the event that multiple bullets are parried in quick succession.
     self.cooldown = 30          -- Recovery time between one parry and the next, assuming the first one failed.
+    self.special_only = false   -- If set to true, only bullets with the variable "self.special_parry" set to true can be parried.
 
-    leader = Game.battle.party[1]
 
 end
 
@@ -187,7 +189,7 @@ function ParrySoul:isParrying()
 end
 
 function ParrySoul:onCollide(bullet)
-    if self:isParrying() and not self.did_parry then
+    if self:isParrying() and not self.did_parry and ((self.special_only and bullet.special_parry) or (not self.special_only)) then
         self.parried_sfx:stop()
         self.parried_sfx:play()
         self.parry_inv = self.parry_inv + self.parry_length
