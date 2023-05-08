@@ -11,6 +11,8 @@ function Mod:init()
     self.chars['susie'] = {"pose", "away_hand", "turn_around", "angry_down", "diagonal_kick_left_5", "shock_right"}
     self.chars['dess'] = {"reddit_gold"}
     self.chars['kris'] = {"pose", "peace", "t_pose", "sit"}
+    self.chars['berdly'] = {"fall", "nerd", "drama", "shocked", "fell"}
+    self.chars['bor'] = {"pizza", "pizza_b", "kirby"}
 
     -- taunt timer
     self.taunt_timer = 0
