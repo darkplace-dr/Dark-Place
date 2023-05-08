@@ -1,17 +1,14 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.8.6",
   name = "objects",
-  class = "",
   tilewidth = 418,
   tileheight = 725,
   spacing = 0,
   margin = 0,
   columns = 0,
   objectalignment = "unspecified",
-  tilerendersize = "tile",
-  fillmode = "stretch",
   tileoffset = {
     x = 0,
     y = 0
@@ -23,7 +20,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 24,
+  tilecount = 25,
   tiles = {
     {
       id = 0,
@@ -192,6 +189,12 @@ return {
       image = "../../../assets/sprites/world/maps/hometown_ribbit/shelter.png",
       width = 418,
       height = 240
+    },
+    {
+      id = 27,
+      image = "../../../assets/sprites/objects/SoldSign.png",
+      width = 50,
+      height = 22
     }
   }
 }
