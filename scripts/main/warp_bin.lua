@@ -37,7 +37,8 @@ Mod.warp_bin_codes = {
         end
     },
     ["bossrush"] = { result = "thearena" },
-    ["devdiner"] = { result = "devstart" }
+    ["devdiner"] = { result = "devstart" },
+    ["maushole"] = { result = "chevroom" },
 }
 
 -- heres some new totally cool helper functions wowee
