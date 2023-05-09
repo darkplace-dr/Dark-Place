@@ -27,8 +27,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Kristal Team - Creating the Kristal engine
 * Toby Fox - Original author for Deltarune
 * Sam Deluxe#0057 - X-Slash code
-* Cоrе#2611 - MoreBattle Library, Light Transition Library, & more
+* KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
+* FireRainV#1958 - MoreParty Library
+* TrashcatYT#6658 - Blue Soul Library
 * TheMaxine - Original author for Ribbit
 * RhenaudTheLukark - Original author for Unitale/Create Your Frisk/Create Your Kris
 * STD Repaints - Original author for Deltarune Repainted
