@@ -26,9 +26,9 @@
     <property name="dest_1" value="room1"/>
     <property name="dest_2" value="floor2/lounge"/>
     <property name="dest_3" value="whitespace"/>
-    <property name="dir_1" type="int" value="1"/>
-    <property name="dir_2" type="int" value="-1"/>
-    <property name="dir_3" type="int" value="-1"/>
+    <property name="dir_1" type="int" value="-1"/>
+    <property name="dir_2" type="int" value="1"/>
+    <property name="dir_3" type="int" value="1"/>
     <property name="length_1" type="int" value="80"/>
     <property name="length_2" type="int" value="80"/>
     <property name="length_3" type="int" value="80"/>
