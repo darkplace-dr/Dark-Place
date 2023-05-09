@@ -26,6 +26,8 @@ function Elevator:init(data)
     self.doorx = 40
     self.con = 0
 
+    self.catepillar_positions = {}
+
     --[[
         If in elevator cutscene, con is set to 1, and the caterpillar is destroyed. (Plot is less than 165)
     ]]
@@ -267,6 +269,39 @@ function Elevator:update()
         if (self.doorx <= 0) then
             self.doorx = 0
             self.doorcon = 0
+        end
+    end
+
+    if self.charadjustcon == 1 then
+        -- Loop through followers
+        self.catepillar_positions = {}
+        for i, follower in ipairs(Game.world.followers) do
+            table.insert(self.catepillar_positions, follower.y)
+        end
+        self.charadjustcon = 2
+    end
+
+    if self.charadjustcon == 2 then
+        for i, follower in ipairs(Game.world.followers) do
+            -- This is what deltarune does, I'm not sure what to do with it
+            if follower.y >= 360 then -- It's 260 in DELTARUNE...
+                follower.y = follower.y - 10 * DTMULT
+            end
+        end
+    end
+
+    if self.charadjustcon == 3 then
+        local continue = true
+        for i, follower in ipairs(Game.world.followers) do
+            if follower.y < self.catepillar_positions[i] then
+                follower.y = follower.y + 10 * DTMULT
+                continue = false
+            end
+            if follower.y >= self.catepillar_positions[i] then
+            end
+        end
+        if continue then
+            self.charadjustcon = 0
         end
     end
 
