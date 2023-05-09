@@ -1,0 +1,43 @@
+{
+    "id": "shadowmen",
+    "authors": [
+        "KateBulka"
+    ],
+    "version": "v1.0.0",
+    "engineVer": "v0.8.0",
+	
+    "config": {
+		"text": [
+			"* You feel mafia's presence.",
+			"* It's thrillin' time.",
+			"* You have a big urge to dance!"
+		],
+		
+		"dialogue": [
+			"Care to join us?",
+			"It'll knock your\nsocks OFF!",
+			"What's up with that\nZOMBIE walk?",
+			"Aaow!"
+		],
+		
+		"full_mercy": [
+			"That was COOL!",
+			"Maybe we should do some\nmusic clip.",
+			"Hee Hee!"
+		],
+		
+		"low_health_text": [
+			"* Shadowmen doesn't feel\nso good.",
+		],
+		
+		"check": "Has a collection\nof nice socks!",
+		
+		"spare_points": 25,
+		"attack": 10,
+		"health": 320,
+		"gold": 96,
+		
+		"act_name": "PointHearts",
+		"act_text": "* You pointed at Shadowmen!"
+	}
+}
