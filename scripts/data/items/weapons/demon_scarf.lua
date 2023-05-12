@@ -52,14 +52,15 @@ function item:init()
         susie = "...this is too evil, even for me.",
         ralsei = "...o- okay????",
         noelle = "That thing is scary!",
-		dess = "ahh evil scary demon",
+        dess = "ahh evil scary demon",
         brandon = "Somebody get me some holy water."
     }
 end
 
 function item:onEquip(character)
-	character.health = character.health - 100
-	return true
+    character:setHealth(math.max(1, character:getHealth() - 100))
+    Assets.playSound("hurt")
+    return true
 end
 
 return item

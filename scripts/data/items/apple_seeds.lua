@@ -86,8 +86,9 @@ function item:onBattleUse(user, target)
         if poison_left == 0 then
             return false
         end
-        if target.chara.health > 1 then
-            target.chara.health = target.chara.health - 1
+        local char_health = target.chara:getHealth()
+        if char_health > 1 then
+            target.chara:setHealth(char_health - 1)
             poison_left = poison_left - 1
         else
             poison_left = 0
