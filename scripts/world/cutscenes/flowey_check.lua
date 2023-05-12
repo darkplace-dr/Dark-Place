@@ -6,7 +6,7 @@ return function(cutscene, player_name_override)
     local repo = "https://github.com/KristalTeam/Kristal"
     local dl_url = not pre
         and (repo .. "/releases/tag/" .. "v" .. tostring(required_version))
-        or repo .. "/wiki/Playing-Kristal#source-code"
+        or (repo .. "/wiki/Playing-Kristal#source-code")
 
     local player_name = (player_name_override or Game.save_name):upper()
 
