@@ -1,17 +1,15 @@
-local SpaceBG, super = Class(Object)
+local SpaceBG, super = Class(Sprite)
 
 function SpaceBG:init()
-    super.init(self)
+    super.init(self, "objects/spacebg", 0, 0)
+
+    self.wrap_texture_x = true
+    self:setScale(1)
 
     self.parallax_x = 0
     self.parallax_y = 0
 
-    local background = Sprite("objects/spacebg", 0, 0)
-    background.wrap_texture_x = true
-    background:setScale(1)
-    background.physics.speed_x = 0.3
-    self:addChild(background)
-    self.layer = WORLD_LAYERS["bottom"]
+    self.physics.speed_x = 0.3
 end
 
 return SpaceBG

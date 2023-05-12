@@ -111,6 +111,13 @@
             "width": 960,
             "x": 6080,
             "y": 3520
+        },
+        {
+            "fileName": "maps/room_prefountain.tmx",
+            "height": 2000,
+            "width": 2000,
+            "x": -500,
+            "y": -1977
         }
     ],
     "onlyShowAdjacentMaps": false,
