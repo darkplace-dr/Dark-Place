@@ -1,0 +1,13 @@
+{
+    "maps": [
+        {
+            "fileName": "maps/floor2/lounge.tmx",
+            "height": 640,
+            "width": 840,
+            "x": 0,
+            "y": 0
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}
