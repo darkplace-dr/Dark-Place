@@ -16,6 +16,8 @@ function Mod:init()
 
     -- taunt timer
     self.taunt_timer = 0
+
+    self.voice_timer = 0
 end
 
 function Mod:registerShaders()
@@ -35,6 +37,20 @@ function Mod:postInit(new_file)
         if Game:hasPartyMember("YOU") then
             Game.world:startCutscene("room1", "react_to_YOU")
         end
+    end
+
+    Game.isOmori = false
+
+end
+
+function Mod:onTextSound(sound, node)
+    if sound == "omori" then
+        if self.voice_timer == 0 then
+            local snd = Assets.playSound("voice/omori")
+            snd:setPitch(0.9 + Utils.random(0.18))
+            self.voice_timer = 1.1
+        end
+        return true
     end
 end
 
