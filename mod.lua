@@ -16,6 +16,14 @@ function Mod:init()
 
     -- taunt stuff for characters that use "idle" as their default sprite (i.e. NPCs and such)
     self.chars_npcs = {}
+        -- code applies to Velvet!Spam
+        local hour = os.date("*t").hour
+        if hour >= 21 or hour <= 8 then
+            self.chars_npcs['velvetspam'] = {"pissed", "bundled", "pipis"}
+        else
+            self.chars_npcs['velvetspam'] = {"day_blankie", "box"}
+        end
+    self.chars_npcs['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"}
     --self.chars_npcs[''] = {""}
 
     -- taunt timer
