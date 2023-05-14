@@ -95,39 +95,39 @@ return {
   --table 3
   {
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "BUTTERFLY OF JUDGEMENT",
+    file = "morpho_boss",
+    composer = "BrandonK7200",
+    released = "2022",
+    origin = "Deltarune: New Connections"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Elegy for Hope (Cover)",
+    file = "mirati_bk7200cover",
+    composer = "BrandonK7200",
+    released = "2022",
+    origin = "soundcloud.com/brandonk7200"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "YOUR LOVE",
+    file = "mari_neo",
+    composer = "BrandonK7200",
+    released = "2022",
+    origin = "soundcloud.com/brandonk7200"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "THE DARK",
+    file = "csralsei_hyperdeath",
+    composer = "BrandonK7200",
+    released = "2023",
+    origin = "Crystalseeker"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "IMMINENT AXECUTION",
+    file = "cssusie_battle",
+    composer = "BrandonK7200",
+    released = "2023",
+    origin = "Crystalseeker"
     },
     {
     name = "Ruins (Beta)",
