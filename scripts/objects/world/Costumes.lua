@@ -74,7 +74,8 @@ function Costumes:init()
             sprite_base_path = "party/noelle",
             skins = {
                 {"DEFAULT", "dark", {176, 132}},
-                {"LIGHT", "light", {176, 132}}
+                {"LIGHT", "light", {176, 132}},
+                {"ANTONYMPH", "antonymph", {174, 132}}
             }
         },
         {

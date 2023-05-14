@@ -24,16 +24,22 @@ function actor:init(x, y)
 
     self.animations = {
         ["idle"] = {"idle", 1, true},
+        ["day_blankie"] = {"day_blankie", 1, true},
+        ["box"] = {"box", 1, true},
         ["talk"] = {"talk", 0.2, true},
         ["candle_idle"] = {"candle/idle", 1, true},
         ["candle/blankie"] = {"candle/blankie", 1, true},
+        ["candle/bundled"] = {"candle/bundled", 1, true},
+        ["candle/pissed"] = {"candle/pissed", 1, true},
+        ["candle/pipis"] = {"candle/pipis", 1, true},
     }
 	
     self.talk_sprites = {
     }
 
     self.offsets = {
-        ["candle/blankie"] = {0, 0}
+        ["candle/bundled"] = {-3, 0},
+        ["candle/pipis"] = {-4, 0},
 	}
 end
 
