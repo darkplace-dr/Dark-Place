@@ -192,39 +192,39 @@ return {
     origin = "???"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Cold Spaghetti",
+    file = "Cold_Spaghetti",
+    composer = "Mr. Sauceman",
+    released = "2023",
+    origin = "Pizza Tower"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Wednesdays",
+    file = "Wednesdays",
+    composer = "ClascyJitto",
+    released = "2023",
+    origin = "Pizza Tower"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Tropical Crust",
+    file = "Tropical_Crust",
+    composer = "Mr. Sauceman",
+    released = "2023",
+    origin = "Pizza Tower"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Pumpin' Hot Stuff",
+    file = "Pumpin_Hot_Stuff",
+    composer = "Mr. Sauceman",
+    released = "2023",
+    origin = "Pizza Tower"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "The Death That I Deservioli",
+    file = "The_Death_That_I Deservioli",
+    composer = "Mr. Sauceman",
+    released = "2023",
+    origin = "Pizza Tower"
     },
   }
 }
