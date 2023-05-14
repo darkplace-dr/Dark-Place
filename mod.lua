@@ -4,6 +4,9 @@ function Mod:init()
     -- Accur acy
     MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
+    MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
+	
+    MUSIC_PITCHES["ruins_beta"] = 0.8
     
     -- taunt stuff for characters that use "walk" as their default sprite (i.e. party members and Sans)
     self.chars = {}
@@ -13,6 +16,7 @@ function Mod:init()
     self.chars['kris'] = {"pose", "peace", "t_pose", "sit"}
     self.chars['berdly'] = {"fall", "nerd", "drama", "shocked", "fell"}
     self.chars['bor'] = {"pizza", "pizza_b", "kirby"}
+    self.chars['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"}
 
     -- taunt stuff for characters that use "idle" as their default sprite (i.e. NPCs and such)
     self.chars_npcs = {}
@@ -23,7 +27,6 @@ function Mod:init()
         else
             self.chars_npcs['velvetspam'] = {"day_blankie", "box"}
         end
-    self.chars_npcs['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"}
     --self.chars_npcs[''] = {""}
 
     -- taunt timer
