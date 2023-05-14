@@ -28,7 +28,7 @@ function DarkPartyMenu:init()
 	self.selected_party = 1
 	
 	self.list = {
-		{"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "unknown", "unknown"},
+		{"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor"},
 		--{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 		--{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 	}
