@@ -36,11 +36,11 @@ return {
     origin = "Deltarune: The Stars"
     },
     {
-    name = "Inainaina",
+    name = "I hope it will be fine tomorrow",
     file = "inainaina",
-    composer = "Takodachi",
-    released = "???",
-    origin = "Ina"
+    composer = "shimtone (DOVA-SYNDROME)",
+    released = "August 4, 2020",
+    origin = "Ninomae Ina'nis's Intro BGM"
     },
   },
   --extra tables if you to add more songs
