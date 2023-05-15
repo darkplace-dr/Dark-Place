@@ -39,6 +39,7 @@ Mod.warp_bin_codes = {
     ["bossrush"] = { result = "thearena" },
     ["devdiner"] = { result = "devstart" },
     ["maushole"] = { result = "chevroom" },
+    ["wifidown"] = { result = "googlefield" },
 }
 
 -- heres some new totally cool helper functions wowee
