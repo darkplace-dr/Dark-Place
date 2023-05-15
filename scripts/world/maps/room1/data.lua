@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 51,
+  nextobjectid = 49,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -580,6 +580,22 @@ return {
           }
         },
         {
+          id = 34,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 160,
+          y = 80,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "blankie_wall",
+            ["cutscene"] = "room1.blankie_wall",
+          }
+        },          
+        {
           id = 35,
           name = "npc",
           type = "",
@@ -594,6 +610,21 @@ return {
             ["actor"] = "wall",
             ["cutscene"] = "room1.guardian",
             ["flagcheck"] = "wall_hit"
+          }
+        },
+        {
+          id = 36,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 180,
+          y = 80,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "blankie_wall",
           }
         },
         {
@@ -723,23 +754,6 @@ return {
           properties = {
             ["actor"] = "diagonal_mario",
             ["cutscene"] = "room1.diagonal_mario"
-          }
-        },
-        {
-          id = 50,
-          name = "script",
-          type = "",
-          shape = "rectangle",
-          x = 240,
-          y = 520,
-          width = 120,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["cond"] = "Game:getFlag(\"fun\", 0) > 40 and Game:getFlag(\"fun\", 0) < 50",
-            ["cutscene"] = "room1.sans_under_attack",
-            ["once"] = false
           }
         }
       }
