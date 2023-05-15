@@ -16,8 +16,7 @@ return {
     {
       name = "dinofield",
       firstgid = 1,
-      filename = "../../tilesets/dinofield.tsx",
-      exportfilename = "../../tilesets/dinofield.lua"
+      filename = "../../tilesets/dinofield.tsx"
     },
     {
       name = "city_alleyway",
