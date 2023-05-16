@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 49,
+  nextobjectid = 51,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -65,8 +65,8 @@ return {
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 15, 15, 15, 15, 16, 0,
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 0, 0, 0, 0, 0, 0,
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 0, 0, 0, 0, 0, 0,
-        15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 16, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        15, 15, 15, 15, 15, 15, 11, 11, 11, 15, 15, 15, 15, 16, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 10, 11, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
     {
@@ -311,7 +311,7 @@ return {
           shape = "rectangle",
           x = 0,
           y = 920,
-          width = 560,
+          width = 240,
           height = 40,
           rotation = 0,
           visible = true,
@@ -485,6 +485,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 920,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -580,22 +593,6 @@ return {
           }
         },
         {
-          id = 34,
-          name = "interactable",
-          type = "",
-          shape = "rectangle",
-          x = 160,
-          y = 80,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "blankie_wall",
-            ["cutscene"] = "room1.blankie_wall",
-          }
-        },          
-        {
           id = 35,
           name = "npc",
           type = "",
@@ -610,21 +607,6 @@ return {
             ["actor"] = "wall",
             ["cutscene"] = "room1.guardian",
             ["flagcheck"] = "wall_hit"
-          }
-        },
-        {
-          id = 36,
-          name = "npc",
-          type = "",
-          shape = "point",
-          x = 180,
-          y = 80,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "blankie_wall",
           }
         },
         {
@@ -754,6 +736,22 @@ return {
           properties = {
             ["actor"] = "diagonal_mario",
             ["cutscene"] = "room1.diagonal_mario"
+          }
+        },
+        {
+          id = 50,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 960,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "room_lighttransition",
+            ["marker"] = "entry"
           }
         }
       }
