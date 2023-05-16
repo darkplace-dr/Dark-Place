@@ -237,11 +237,11 @@ return {
     origin = "Pizza Tower"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Cursed Cathedral (Cover)",
+    file = "cursedcathedral_cover",
+    composer = "Just another random user.",
+    released = "2023",
+    origin = "Mario's Mystery Meat"
     },
     {
     name = "---",
