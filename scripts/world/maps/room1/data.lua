@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 51,
+  nextobjectid = 52,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -829,6 +829,19 @@ return {
           shape = "point",
           x = 30,
           y = 570,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "entry3",
+          type = "",
+          shape = "point",
+          x = 300,
+          y = 920,
           width = 0,
           height = 0,
           rotation = 0,
