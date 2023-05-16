@@ -138,6 +138,16 @@ end
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/debugsystem")
 
+function Mod:getKris()
+    local YOU = Mod:getPartyMemberIfInParty("YOU")
+    local kris = Mod:getPartyMemberIfInParty("kris")
+    return YOU or kris
+end
+
+function Mod:getKrisActor()
+    return Game.world:getCharacter(Mod:getKris().id)
+end
+
 function Mod:isInRematchMode()
     return Game.world.map.id == "thearena"
 end
