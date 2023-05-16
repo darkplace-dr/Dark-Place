@@ -58,6 +58,10 @@ function Mod:postInit(new_file)
 
 end
 
+function Mod:preUpdate(dt)
+    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
+end
+
 function Mod:onTextSound(sound, node)
     if sound == "omori" then
         if self.voice_timer == 0 then
