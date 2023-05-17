@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 52,
+  nextobjectid = 53,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -752,6 +752,23 @@ return {
           properties = {
             ["map"] = "room_lighttransition",
             ["marker"] = "entry"
+          }
+        },
+        {
+          id = 54,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 520,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cond"] = "Game:getFlag(\"fun\", 0) > 40 and Game:getFlag(\"fun\", 0) < 50",
+            ["cutscene"] = "room1.sans_under_attack",
+            ["once"] = false
           }
         }
       }
