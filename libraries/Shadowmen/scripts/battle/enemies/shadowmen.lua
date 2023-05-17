@@ -18,9 +18,11 @@ local MyEnemy, super = Class(EnemyBattler)
 
 function MyEnemy:onAct(battler, name)
     if name == Kristal.getLibConfig("shadowmen", "act_name") then
-        self:addMercy(50)
-        return Kristal.getLibConfig("shadowmen", "act_text")
+        self:addMercy(Utils.round(50/#Game.battle.party))
+        return string.format(Kristal.getLibConfig("shadowmen", "act_text"), battler.chara:getName())
 	end
+
+	return super:onAct(self, battler, name)
 end
 
 function MyEnemy:getXAction(battler)
@@ -30,7 +32,7 @@ end
 function MyEnemy:init()
     super.init(self)
 	
-    self.name = "Shadowmen"
+    self.name = "Shadowman"
     self:setActor("shadowmen")
 
     -- if Game:getPartyMember("susie"):getFlag("auto_attack") then
@@ -137,11 +139,12 @@ function MyEnemy:onActStart(battler, name)
 	
 	local offsets = {
 		kris = {8, 0},
+		you = {8, 0},
 		ralsei = {6, 0},
 	}
 	
     local function getSpriteAndOffset(id)
-        local selected_sprite = "party/" .. id .. "/dark/thriller"
+        local selected_sprite = "party/" .. id:lower() .. "/dark/thriller"
         local selected_offset = offsets[id] or {0, 0}
         return selected_sprite, selected_offset[1], selected_offset[2]
     end

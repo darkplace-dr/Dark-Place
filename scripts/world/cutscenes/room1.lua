@@ -462,19 +462,24 @@ return {
     end,
 
     sans_under_attack = function(cutscene, event, chara)
-        print(chara)
-        if chara then
-            print(chara.sprite.facing)
-        end
         if chara.sprite.facing == "up" then
             local sans = Game.world:getCharacter("sans")
             if not sans then event:remove() cutscene:endCutscene() return end
-            Game.world.music:fade(0, 1)
+            --TODO: The cutscene if Susie is not in the party
+            if not cutscene:getCharacter("susie") then event:remove() cutscene:endCutscene() return end
+            Game.world.music:fade(0, 1, function() Game.world.music:stop() end)
             sans.x = 300
 
-            shadowman1 = Game.world:spawnNPC("shadowman", sans.x - 153, sans.y)
+            local mario = Game.world:getEvent(48)
+            local save = Game.world:getEvent(27)
+            mario.visible = false
+            save.visible = false
+
+            shadowman1 = Game.world:spawnNPC("shadowmen", sans.x - 153, sans.y)
             shadowman1.flip_x = true
-            shadowman2 = Game.world:spawnNPC("shadowman", sans.x + 100, sans.y)
+            shadowman2 = Game.world:spawnNPC("shadowmen", sans.x + 100, sans.y)
+            shadowman1.sprite:stop(false)
+            shadowman2.sprite:stop(false)
             Game.world:addChild(shadowman1)
             Game.world:addChild(shadowman2)
 
@@ -485,18 +490,19 @@ return {
             cutscene:wait(cutscene:panTo(sans))
 
             cutscene:setTextboxTop(false)
+            shadowman2.sprite:stop(false)
             shadowman1:play(1/4)
             cutscene:showNametag("Shadowman 1")
             cutscene:text("* We only gave ya one job: preventing folks from enterin' that elevator.")
             cutscene:text("* And ya didn't even do it properly??")
             cutscene:showNametag("Sans")
-            shadowman1:resetSprite()
-            cutscene:text("[font:sans]* i was moved without my consent, you know.", "look_left", "sans")
+            shadowman1.sprite:stop(false)
+            cutscene:text("[font:sans]* well it's working now, isn't it?", "look_left", "sans")
             shadowman2:play(1/4)
             cutscene:showNametag("Shadowman 2")
-            cutscene:text("* Yeah sure. Whatever you say, skeleman.")
+            cutscene:text("* Don't play dumb with us, skeleman.")
             cutscene:text("* The boss ain't happy with what he heard. So ya gonna come with us right now or else...")
-            shadowman2:resetSprite()
+            shadowman2.sprite:stop(false)
 
             cutscene:detachFollowers()
             local moved_player = cutscene:walkTo(chara, 250, 260, 2)
@@ -536,24 +542,296 @@ return {
             shadowman1:play(1/4)
             cutscene:showNametag("Shadowman 1")
             cutscene:text("* What do ya want, kids?")
-            shadowman1:resetSprite()
+            shadowman1.sprite:stop(false)
             shadowman2:play(1/4)
             cutscene:showNametag("Shadowman 2")
             cutscene:text("* It's adult talking here, so get lost.")
-            shadowman2:resetSprite()
+            shadowman2.sprite:stop(false)
             cutscene:showNametag("Susie")
             cutscene:text("* Threats over an elevator doesn't sounds very \"adult\" to me.", "annoyed", "susie")
-            cutscene:text("* So how about YOU get lost instead?", "bangs_teeth", "susie")
+            cutscene:text("* So how about YOU get lost instead?", "teeth_smile", "susie")
             shadowman2:play(1/4)
             cutscene:showNametag("Shadowman 2")
-            cutscene:text("* So ya think you're all tough because you can show your teeths, girl?")
-            shadowman2:resetSprite()
+            cutscene:text("* So ya think y'all tough 'cause you can show your teeths, girl?")
+            shadowman2.sprite:stop(false)
             shadowman1:play(1/4)
             cutscene:showNametag("Shadowman 1")
-            cutscene:text("* Fine by us. You two walked right into that one anyway!")
-            shadowman1:resetSprite()
+            cutscene:text("* Fine by us. You walked right into that one anyway!")
+            shadowman1.sprite:stop(false)
             cutscene:hideNametag()
+
+
             cutscene:startEncounter("shadowmen", nil, {shadowman1, shadowman2})
+            shadowman1.visible = true --No idea why it gets hidden
+
+
+            if Game:getFlag("shadowmen_violence", false) then
+                if Game:getFlag("shadowmen_special_end", nil) == "FROZEN" then
+                    local susie = cutscene:getCharacter("susie")
+                    susie:setSprite("shock")
+                    susie:setFacing("down")
+                    susie:shake()
+                    cutscene:wait(1)
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Uhhhh...", "shock_nervous", "susie")
+                    if cutscene:getCharacter("dess") then
+                        cutscene:showNametag("Dess")
+                        cutscene:text("* ", "wtf", "dess")
+                        cutscene:text("* Holy shit", "wtf", "dess")
+                    end
+                    susie:setSprite("walk")
+                    susie:setFacing("up")
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* wow kids. that's some powerful magic you got there.", "look_left", "sans")
+                    cutscene:text("[font:sans]* you should totally NOT use it on random folks, y'know?", "wink", "sans")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* I, uh... I guess so, yeah.", "sus_nervous", "susie")
+                    cutscene:text("* ("..Game.world.player.actor.name:upper()..", WHAT THE HELL WAS THAT???)", "teeth", "susie")
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* i think you guys should go before someone else see this.", "neutral", "sans")
+                    cutscene:text("[font:sans]* wouldn't want to get in trouble, right?", "look_left", "sans")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* You're, uh.. Okay with what just happened?", "sus_nervous", "susie")
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* let's just say that as long as you've learn your lesson and don't do it again..", "eyes_closed", "sans")
+                    cutscene:text("[font:sans]* i'll keep my eyes closed.", "wink", "sans")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Okay... Cool... I guess.", "sus_nervous", "susie")
+                    cutscene:text("* Let's go, then.", "nervous", "susie")
+                    cutscene:hideNametag()
+                elseif Game:getFlag("shadowmen_special_end", nil) == "KILLED" then
+                    cutscene:wait(1)
+
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ...", "sad_frown", "susie")
+                    if cutscene:getCharacter("dess") then
+                        cutscene:showNametag("Dess")
+                        cutscene:text("* ...", "wtf", "dess")
+                    end
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* ...", "look_left", "sans")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ("..Game.world.player.actor.name:upper()..", WHAT THE HELL???)", "teeth", "susie")
+                    cutscene:text("* So, uh...", "sus_nervous", "susie")
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* did your parents never told you that killing was bad?", "wink", "sans")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Well...", "shy_down", "susie")
+                    if cutscene:getCharacter("dess") then
+                        cutscene:showNametag("Dess")
+                        cutscene:text("* We did it for the vine.[react:1]", "wink", "dess", {reactions={
+                            {"(BE SERIOUS!!)", "right", "bottommid", "teeth", "susie"}
+                        }})
+                    end
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* don't sweat too much about it.", "look_left", "sans")
+                    cutscene:text("[font:sans]* as long as you've learn not to do it again, it's fine.", "neutral", "sans")
+                        cutscene:showNametag("Susie")
+                    cutscene:text("* Are you... For real?", "nervous", "susie")
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* as real as can be.", "joking", "sans")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ...", "nervous_side", "susie")
+                    cutscene:text("* Then I guess we'll just go then.", "smirk", "susie")
+                    cutscene:text("* Go and do some good deeds... Yeah...", "nervous", "susie")
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* alright, later kids.", "wink", "sans")
+                    cutscene:hideNametag()
+                else
+                    shadowman1:play(1/4)
+                    shadowman2.sprite:stop(false)
+                    cutscene:showNametag("Shadowman 1")
+                    cutscene:text("* W-[wait:2]Wow wow! Come on, kids! We don't have to get to such extremes, ya know..?")
+                    shadowman2:play(1/4)
+                    shadowman1.sprite:stop(false)
+                    cutscene:showNametag("Shadowman 2")
+                    cutscene:text("* Yeah, let's all have a nice discussion, adults to teens..!")
+                    shadowman2.sprite:stop(false)
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Scram.[wait:10] Now.", "bangs_teeth", "susie")
+                    shadowman1:play(1/4)
+                    shadowman2:play(1/4)
+                    cutscene:showNametag("Shadowmen")
+                    cutscene:text("* Y-[wait:2]Yes m'am!")
+                    cutscene:hideNametag()
+
+                    cutscene:slideTo(shadowman2, 450, shadowman2.y)
+
+                    cutscene:wait(cutscene:slideTo(shadowman1, 110, shadowman1.y))
+
+                    cutscene:slideTo(shadowman2, shadowman2.x, 355)
+                    cutscene:wait(cutscene:slideTo(shadowman1, shadowman1.x, 355))
+                    cutscene:wait(cutscene:slideTo(shadowman2, 305, shadowman2.y))
+                    cutscene:wait(cutscene:slideTo(shadowman2, shadowman2.x, 600))
+                    cutscene:wait(cutscene:slideTo(shadowman1, 255, shadowman1.y))
+                    cutscene:wait(cutscene:slideTo(shadowman1, shadowman1.x, 600))
+
+                    cutscene:wait(1)
+
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* well.. that was something.", "look_left", "sans")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Yeah uh.. Maybe we went a bit overboard.", "neutral", "susie")
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* don't beat yourself over it too much.", "neutral", "sans")
+                    cutscene:text("[font:sans]* it's not like they're dead or something.", "wink", "sans")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ...Sure...", "suspicious", "susie")
+                    cutscene:text("* But anyway, I think we'll just go.", "nervous", "susie")
+                    cutscene:text("* Cool to talk to you and save your ass, I guess??", "nervous_side", "susie")
+                    cutscene:showNametag("Sans")
+                    cutscene:text("[font:sans]* anytime, kid.", "wink", "sans")
+                    cutscene:hideNametag()
+                end
+            else
+                shadowman1:play(1/4)
+                cutscene:showNametag("Shadowman 1")
+                cutscene:text("* Hey kids! You're pretty cool actually!")
+                local nb_to_text = {"", " two", " three", " four"}
+                cutscene:text("* The boss would love to hear from folks like you"..nb_to_text[#Game.party].."!")
+                shadowman2:play(1/4)
+                shadowman1.sprite:stop(false)
+                cutscene:showNametag("Shadowman 2")
+                cutscene:text("* Whaddya say? You could go on the big screen in no time!")
+                shadowman2.sprite:stop(false)
+                cutscene:showNametag("Susie")
+                cutscene:text("* Yeah uh, how about you just get lost like we said before the battle?", "annoyed", "susie")
+                cutscene:text("* And also let that guy alone.", "neutral_side", "susie")
+                if cutscene:getCharacter("dess") then
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* But Susie imagine all the fame and money that could come with it", "genuine_b", "dess")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* That's... Not something that interest me.", "nervous", "susie")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* Less for you more for me I geuss.", "condescending", "dess")
+                    cutscene:text("* Where could I star in?", "genuine", "dess")
+                    shadowman1:play(1/4)
+                    cutscene:showNametag("Shadowman 1")
+                    cutscene:text("* Hmm... That dumb look on ya face..")
+                    cutscene:text("* What's 9+10?")
+                    shadowman1.sprite:stop(false)
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* 21 yuh", "wink", "dess")
+                    cutscene:showNametag("Shadowman 1")
+                    cutscene:text("* ...")
+                    cutscene:showNametag("Shadowman 2")
+                    cutscene:text("* ...")
+                    shadowman2:play(1/4)
+                    shadowman1:play(1/4)
+                    cutscene:showNametag("Shadowmen")
+                    cutscene:text("* Perfect for reality shows.")
+                    shadowman1.sprite:stop(false)
+                end
+                shadowman2:play(1/4)
+                cutscene:showNametag("Shadowman 2")
+                cutscene:text("* Okay, here's what we gonna do.")
+                local leader_surnames = {
+                    YOU = "frog",
+                    kris = "blue person",
+                    susie = "purple dino",
+                    dess = "dumb deer",
+                    brandon = "dude or gal",
+                    dumbie = "dummy",
+                    bor = "ball"
+                }
+                cutscene:text("* We let your skelefriend untouched, but you, the "..(leader_surnames[Game.world.player.actor.id] or "leader")..", take our number!")
+                cutscene:hideNametag()
+                local leader = cutscene:getCharacter(Game.world.player.actor.id)
+                local x, y = shadowman2:getPosition()
+                cutscene:wait(cutscene:slideTo(shadowman2, leader.x + shadowman2.width/2, leader.y - 20))
+                Assets.playSound("item")
+                cutscene:text("* (You've got the shadowmen's number even though you can't make calls in the Dark World.)")
+                cutscene:wait(cutscene:slideTo(shadowman2, x, y))
+                cutscene:showNametag("Shadowman 1")
+                shadowman1:play(1/4)
+                shadowman2.sprite:stop(false)
+                cutscene:text("* If you ever feel like becoming superstars, we'll always be one call ahead!")
+                cutscene:text("* Later! The showbiz doesn't wait!")
+                shadowman1.sprite:stop(false)
+                cutscene:hideNametag()
+
+                cutscene:slideTo(shadowman2, 450, shadowman2.y)
+
+                cutscene:wait(cutscene:slideTo(shadowman1, 110, shadowman1.y))
+
+                Game.world.timer:after(0.5, function()
+                    for _, member in ipairs(Game.party) do
+                        cutscene:look(cutscene:getCharacter(member.id), "down")
+                    end
+                end)
+
+                cutscene:slideTo(shadowman2, shadowman2.x, 355)
+                cutscene:wait(cutscene:slideTo(shadowman1, shadowman1.x, 355))
+                cutscene:wait(cutscene:slideTo(shadowman2, 305, shadowman2.y))
+                cutscene:wait(cutscene:slideTo(shadowman2, shadowman2.x, 600))
+                cutscene:wait(cutscene:slideTo(shadowman1, 255, shadowman1.y))
+                cutscene:wait(cutscene:slideTo(shadowman1, shadowman1.x, 600))
+
+                cutscene:wait(1)
+
+                for _, member in ipairs(Game.party) do
+                    cutscene:look(cutscene:getCharacter(member.id), "up")
+                end
+
+                cutscene:showNametag("Sans")
+                cutscene:text("[font:sans]* well that was something.", "neutral", "sans")
+                cutscene:text("[font:sans]* thanks kids. i own you one.", "wink", "sans")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Yeah uh.. No problem, I guess.", "neutral", "susie")
+                cutscene:showNametag("Sans")
+                cutscene:text("[font:sans]* and i know exactly what you kids want.", "neutral", "sans")
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...?", "nervous_side", "susie")
+                cutscene:showNametag("Sans")
+                cutscene:text("[font:sans]* you're free to use the elevator whenever you like. isn't that cool?", "joking", "sans")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Didn't we already have access to it?", "sus_nervous", "susie")
+                cutscene:showNametag("Sans")
+                cutscene:text("[font:sans]* yeah but now it's official access.", "wink", "sans")
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...Sure...", "suspicious", "susie")
+                cutscene:text("* But anyway, I think we'll just go.", "nervous", "susie")
+                cutscene:text("* Cool to talk to you and save your ass, I guess??", "nervous_side", "susie")
+                cutscene:showNametag("Sans")
+                cutscene:text("[font:sans]* anytime, kid.", "wink", "sans")
+                cutscene:hideNametag()
+            end
+
+            cutscene:getCharacter(Game.world.player.actor.id):setFacing("down")
+            cutscene:wait(cutscene:alignFollowers())
+            cutscene:wait(cutscene:attachFollowers())
+            cutscene:attachCameraImmediate()
+            shadowman1:remove()
+            shadowman2:remove()
+            -- Don't ask me why, I don't know either
+            shadowman1.sprite:remove()
+            shadowman2.sprite:remove()
+
+            cutscene:wait(0.5)
+
+            cutscene:fadeOut(0)
+            Assets.playSound("noise")
+            cutscene:wait(0.5)
+            cutscene:getCharacter("sans"):remove()
+            mario.visible = true
+            save.visible = true
+            Assets.playSound("noise")
+            cutscene:fadeIn(0)
+
+            cutscene:wait(0.5)
+
+            if Game:getFlag("shadowmen_special_end", nil) ~= nil then
+                local sfx = Assets.playSound("ominous")
+                cutscene:wait(function()
+                    return not sfx:isPlaying()
+                end)
+            end
+
+            Game.world.music:play(nil, 1)
+            event:remove()
+            event:setFlag("dont_load", true)
+            Game:setFlag("fun", love.math.random(1, 100))
         end
     end
 }

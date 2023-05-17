@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -755,7 +755,7 @@ return {
           }
         },
         {
-          id = 53,
+          id = 54,
           name = "script",
           type = "",
           shape = "rectangle",
