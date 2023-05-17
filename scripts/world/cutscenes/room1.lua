@@ -735,7 +735,7 @@ return {
                     robo_susie = "dead inside dino",
                     noyno = "pretencious prince",
                     noelle = "nice deer",
-                    berdly = "twitter bird"
+                    berdly = "twitter bird",
                     dess = "dumb deer",
                     brandon = "dude or gal",
                     dumbie = "dummy",
