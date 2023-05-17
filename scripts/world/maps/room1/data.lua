@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 51,
+  nextobjectid = 53,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -65,8 +65,8 @@ return {
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 15, 15, 15, 15, 16, 0,
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 0, 0, 0, 0, 0, 0,
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 0, 0, 0, 0, 0, 0,
-        15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 16, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        15, 15, 15, 15, 15, 15, 11, 11, 11, 15, 15, 15, 15, 16, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 10, 11, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
     {
@@ -311,7 +311,7 @@ return {
           shape = "rectangle",
           x = 0,
           y = 920,
-          width = 560,
+          width = 240,
           height = 40,
           rotation = 0,
           visible = true,
@@ -480,6 +480,19 @@ return {
           shape = "rectangle",
           x = 0,
           y = 580,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 920,
           width = 200,
           height = 40,
           rotation = 0,
@@ -727,6 +740,22 @@ return {
         },
         {
           id = 50,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 960,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "room_lighttransition",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 53,
           name = "script",
           type = "",
           shape = "rectangle",
@@ -817,6 +846,19 @@ return {
           shape = "point",
           x = 30,
           y = 570,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "entry3",
+          type = "",
+          shape = "point",
+          x = 300,
+          y = 920,
           width = 0,
           height = 0,
           rotation = 0,

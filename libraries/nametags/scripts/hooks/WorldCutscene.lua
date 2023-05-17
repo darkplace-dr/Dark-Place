@@ -1,7 +1,7 @@
 local WorldCutscene, super = Class("WorldCutscene", true)
 
 function WorldCutscene:showNametag(text, options)
-    options = options or {}
+    options = options or {top = false}
 
     if self.nametag then self.nametag:remove() end
 

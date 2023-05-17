@@ -58,6 +58,10 @@ function Mod:postInit(new_file)
 
 end
 
+function Mod:preUpdate(dt)
+    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
+end
+
 function Mod:onTextSound(sound, node)
     if sound == "omori" then
         if self.voice_timer == 0 then
@@ -137,6 +141,16 @@ end
 
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/debugsystem")
+
+function Mod:getKris()
+    local YOU = Mod:getPartyMemberIfInParty("YOU")
+    local kris = Mod:getPartyMemberIfInParty("kris")
+    return YOU or kris
+end
+
+function Mod:getKrisActor()
+    return Game.world:getCharacter(Mod:getKris().id)
+end
 
 function Mod:isInRematchMode()
     return Game.world.map.id == "thearena"

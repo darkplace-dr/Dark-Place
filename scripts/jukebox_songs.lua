@@ -226,5 +226,50 @@ return {
     released = "2023",
     origin = "Pizza Tower"
     },
-  }
+  },
+  -- table 6
+  {
+    {
+    name = "A Grain of Bread in a Grain of Sand",
+    file = "oregano_desert_secret",
+    composer = "ClascyJitto",
+    released = "2023",
+    origin = "Pizza Tower"
+    },
+    {
+    name = "Cursed Cathedral (Cover)",
+    file = "cursedcathedral_cover",
+    composer = "Just another random user.",
+    released = "2023",
+    origin = "Mario's Mystery Meat"
+    },
+    {
+    name = "---",
+    file = "your_song_here",
+    composer = "---",
+    released = "---",
+    origin = "---"
+    },
+    {
+    name = "---",
+    file = "your_song_here",
+    composer = "---",
+    released = "---",
+    origin = "---"
+    },
+    {
+    name = "---",
+    file = "your_song_here",
+    composer = "---",
+    released = "---",
+    origin = "---"
+    },
+    {
+    name = "---",
+    file = "your_song_here",
+    composer = "---",
+    released = "---",
+    origin = "---"
+    },
+  },
 }
