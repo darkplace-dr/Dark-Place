@@ -732,10 +732,15 @@ return {
                     YOU = "frog",
                     kris = "blue person",
                     susie = "purple dino",
+                    robo_susie = "dead inside dino",
+                    noyno = "pretencious prince",
+                    noelle = "nice deer",
+                    berdly = "twitter bird"
                     dess = "dumb deer",
                     brandon = "dude or gal",
                     dumbie = "dummy",
-                    bor = "ball"
+                    bor = "ball",
+                    osw = "unoriginal"
                 }
                 cutscene:text("* We let your skelefriend untouched, but you, the "..(leader_surnames[Game.world.player.actor.id] or "leader")..", take our number!")
                 cutscene:hideNametag()
