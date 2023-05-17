@@ -472,8 +472,10 @@ return {
 
             local mario = Game.world:getEvent(48)
             local save = Game.world:getEvent(27)
+            local wall_guardian = Game.world:getEvent(35)
             mario.visible = false
             save.visible = false
+            if wall_guardian then wall_guardian.visible = false end
 
             shadowman1 = Game.world:spawnNPC("shadowmen", sans.x - 153, sans.y)
             shadowman1.flip_x = true
@@ -816,6 +818,7 @@ return {
             cutscene:getCharacter("sans"):remove()
             mario.visible = true
             save.visible = true
+            if wall_guardian then wall_guardian.visible = true end
             Assets.playSound("noise")
             cutscene:fadeIn(0)
 
