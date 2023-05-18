@@ -85,4 +85,8 @@ function item:onWorldUse()
     end)
 end
 
+function item:convertToLight(inventory)
+    return "light/old_cartridge"
+end
+
 return item
