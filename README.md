@@ -22,6 +22,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * DeltaVelvet - Contributor
 * Pinto Molhado - Contributor
 * Agent 7 - Contributor
+* Riverstar (Sumire) - Contributor
 
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
