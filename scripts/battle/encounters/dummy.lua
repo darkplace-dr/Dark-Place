@@ -16,6 +16,9 @@ function Dummy:init()
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+
+    self.enemy_tension = 50
+
 end
 
 function Dummy:onReturnToWorld(events)
