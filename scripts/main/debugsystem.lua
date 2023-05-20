@@ -91,8 +91,12 @@ end
 
 ---@param debug DebugSystem
 function Mod:registerDebugOptions(debug)
-    -- Stole this idea from ULCA Deltarune
-    debug:registerOption("main", "Replenish Party", "Replenishes health.", replenish, "GAME")
+    local in_game = function() return Kristal.getState() == Game end
+    local in_battle = function() return in_game() and Game.state == "BATTLE" end
+    local in_overworld = function() return in_game() and Game.state == "OVERWORLD" end
 
-    debug:registerOption("main", "Create Ach. List Image", "Just for muscle flexing. LMAO", createAchListImage, "GAME")
+    -- Stole this idea from ULCA Deltarune
+    debug:registerOption("main", "Replenish Party", "Replenishes health.", replenish, in_game)
+
+    debug:registerOption("main", "Create Ach. List Image", "Just for muscle flexing. LMAO", createAchListImage, in_game)
 end
