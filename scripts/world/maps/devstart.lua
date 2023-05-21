@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -9,9 +10,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 18,
+  nextobjectid = 19,
   properties = {
-    ["music"] = "greenroom"
+    ["music"] = "greenroom",
+    ["name"] = "Dev Diner - Spawn Point"
   },
   tilesets = {
     {
@@ -40,6 +42,7 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -71,6 +74,7 @@ return {
       height = 12,
       id = 3,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -99,6 +103,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -244,6 +249,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -283,6 +289,21 @@ return {
             ["cutscene"] = "spamroom.warpbin",
             ["solid"] = true
           }
+        },
+        {
+          id = 18,
+          name = "savepoint",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 280,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text2"] = "* The power of fine dining and breathing shines within you."
+          }
         }
       }
     },
@@ -291,6 +312,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

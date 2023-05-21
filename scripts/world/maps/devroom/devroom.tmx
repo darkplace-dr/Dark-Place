@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="66">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="66">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="music" value="greenroom"/>
-  <property name="name" value="Warp Room - Dev Diner"/>
+  <property name="name" value="Dev Diner - Dining Area"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/objects.tsx"/>
  <tileset firstgid="29" source="../../tilesets/devroom.tsx"/>
