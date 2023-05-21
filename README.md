@@ -24,7 +24,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
-* Toby Fox - Original author for Deltarune
+* Toby Fox - Original author for Undertale and Deltarune
 * Sam Deluxe#0057 - X-Slash code
 * KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
