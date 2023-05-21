@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="29" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="52">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="mysterious_castle"/>
+  <property name="name" value="Castle Town?"/>
+ </properties>
+ <imagelayer id="3" name="Image Layer 1">
+  <image source="../../../../../assets/sprites/objects/darktown.png" width="640" height="1160"/>
+ </imagelayer>
+ <objectgroup color="#0000ff" id="2" name="collision">
+  <object id="1" x="0" y="1120" width="278" height="40"/>
+  <object id="2" x="362" y="1120" width="278" height="40"/>
+  <object id="3" x="0" y="1055" width="191" height="106"/>
+  <object id="4" x="448" y="1055" width="191" height="106"/>
+  <object id="5" x="0" y="830" width="190" height="130"/>
+  <object id="6" x="450" y="830" width="190" height="130"/>
+  <object id="7" x="4" y="400" width="120" height="480"/>
+  <object id="8" x="516" y="400" width="120" height="480"/>
+  <object id="9" x="124" y="460">
+   <polygon points="0,0 40,-40 0,-40"/>
+  </object>
+  <object id="10" x="516" y="460">
+   <polygon points="0,0 -40,-40 0,-40"/>
+  </object>
+  <object id="11" x="1" y="200" width="164" height="220"/>
+  <object id="12" x="476" y="200" width="160" height="220"/>
+  <object id="13" x="236" y="164" width="40" height="40"/>
+  <object id="14" x="362" y="164" width="40" height="40"/>
+  <object id="17" x="236" y="196" width="40" height="40"/>
+  <object id="18" x="362" y="194" width="40" height="40"/>
+  <object id="19" x="166" y="286">
+   <polygon points="0,0 40,-40 0,-40"/>
+  </object>
+  <object id="20" x="475" y="286">
+   <polygon points="0,0 -40,-40 0,-40"/>
+  </object>
+  <object id="21" x="182" y="204" width="40" height="40"/>
+  <object id="22" x="216" y="200" width="24" height="40"/>
+  <object id="23" x="396" y="198" width="40" height="40"/>
+  <object id="24" x="414" y="202" width="40" height="40"/>
+  <object id="25" x="424" y="206" width="40" height="40"/>
+  <object id="34" x="124" y="578" width="116" height="40"/>
+  <object id="44" x="438" y="582" width="116" height="40"/>
+  <object id="46" x="398" y="738" width="116" height="40"/>
+  <object id="48" x="158" y="702" width="88" height="40"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="26" name="savepoint" x="320" y="320"/>
+  <object id="29" name="sprite" x="466" y="876" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="30" name="sprite" x="594" y="876" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="31" name="sprite" x="144" y="876" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="32" name="sprite" x="16" y="876" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="33" name="sprite" x="124" y="458" width="158" height="166">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="texture" value="objects/castle_building1"/>
+   </properties>
+  </object>
+  <object id="35" name="transition" x="246" y="192" width="150" height="20">
+   <properties>
+    <property name="map" value="darktown_ribbit/castle_front"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="40" name="transition" x="630" y="954" width="20" height="105">
+   <properties>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="42" name="transition" x="-10" y="958" width="20" height="105">
+   <properties>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="43" name="sprite" x="370" y="460" width="158" height="166">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="texture" value="objects/castle_building2"/>
+   </properties>
+  </object>
+  <object id="45" name="sprite" x="366" y="612" width="158" height="166">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="texture" value="objects/castle_building3"/>
+   </properties>
+  </object>
+  <object id="47" name="sprite" x="158" y="702" width="88" height="76">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="texture" value="objects/castle_computer"/>
+   </properties>
+  </object>
+  <object id="49" name="stomper" x="495" y="805" width="48" height="64"/>
+  <object id="51" name="transition" x="280" y="1150" width="80" height="20">
+   <properties>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="36" name="spawn" x="320" y="392">
+   <point/>
+  </object>
+  <object id="37" name="entry" x="320" y="1120">
+   <point/>
+  </object>
+  <object id="38" name="entry_right" x="578" y="982">
+   <point/>
+  </object>
+  <object id="39" name="entry_left" x="24" y="980">
+   <point/>
+  </object>
+  <object id="50" name="entry_castlefront" x="320" y="240">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
