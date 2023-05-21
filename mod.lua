@@ -156,6 +156,18 @@ function Mod:getKrisActor()
     return Game.world:getCharacter(Mod:getKris().id)
 end
 
+function Mod:onFootstep(char, num)
+    if Game:getFlag("footsteps", false) then
+        if (char == Game.world.player) then
+            if num == 1 then
+                Assets.playSound("step1")
+            elseif num == 2 then
+                Assets.playSound("step2")
+            end
+        end
+    end
+end
+
 function Mod:isInRematchMode()
     return Game.world.map.id == "thearena"
 end
