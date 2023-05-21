@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 44,
@@ -12,7 +13,7 @@ return {
   nextobjectid = 66,
   properties = {
     ["music"] = "greenroom",
-    ["name"] = "Warp Room - Dev Diner"
+    ["name"] = "Dev Diner - Dining Area"
   },
   tilesets = {
     {
@@ -33,6 +34,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -50,6 +52,7 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -78,6 +81,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects_props",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -121,6 +125,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -396,6 +401,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -649,6 +655,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
