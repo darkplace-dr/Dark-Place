@@ -6,6 +6,27 @@
             "width": 840,
             "x": 0,
             "y": 0
+        },
+        {
+            "fileName": "maps/floor2/doors_left/doors_left.tmx",
+            "height": 480,
+            "width": 1920,
+            "x": -1720,
+            "y": -560
+        },
+        {
+            "fileName": "maps/floor2/doors_right/doors_right.tmx",
+            "height": 480,
+            "width": 1920,
+            "x": 640,
+            "y": -560
+        },
+        {
+            "fileName": "maps/floor2/queen.tmx",
+            "height": 480,
+            "width": 1280,
+            "x": 800,
+            "y": -1120
         }
     ],
     "onlyShowAdjacentMaps": false,

@@ -23,7 +23,7 @@ return {
     end,
     mewo = function(cutscene, event)
         Assets.playSound("mewo", 2, 1)
-        cutscene:showNametag("MEWO")
+        cutscene:showNametag("MEWO", {font = "OMORI"})
         cutscene:text("[voice:omori][style:none][font:OMORI]Meow?[wait:10] (Waiting for something to happen?)")
         cutscene:hideNametag()
     end,
