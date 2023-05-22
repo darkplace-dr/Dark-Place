@@ -93,6 +93,7 @@ return {
 		cutscene:wait(0.5)
 
 		Game:setFlag("gotDess", true)
+		table.insert(Game:getFlag("party"), "dess")
 	end,
 
 	dessgetoverhere = function(cutscene, event)
