@@ -33,6 +33,9 @@ function Mod:init()
     self.taunt_timer = 0
 
     self.voice_timer = 0
+
+    -- Set to true when the Punch Card is used
+    self.punch_speedrun = false
 end
 
 function Mod:registerShaders()
@@ -147,12 +150,15 @@ function Mod:getPartyMemberIfInParty(chara)
 end
 
 function Mod:getKris()
-    local YOU = Mod:getPartyMemberIfInParty("YOU")
-    local kris = Mod:getPartyMemberIfInParty("kris")
-    return YOU or kris
+    local YOU = Game:getPartyMember("YOU")
+    local kris = Game:getPartyMember("kris")
+    if Game:hasPartyMember(YOU) then return YOU
+    elseif Game:hasPartyMember(kris) then return kris
+    else return Game:getPartyMember(Game.party[1].id)
+    end
 end
 
-function Mod:getKrisActor()
+function Mod:getKrisCharacter()
     return Game.world:getCharacter(Mod:getKris().id)
 end
 
