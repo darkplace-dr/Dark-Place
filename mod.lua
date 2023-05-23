@@ -33,6 +33,9 @@ function Mod:init()
     self.taunt_timer = 0
 
     self.voice_timer = 0
+
+    -- Set to true when the Punch Card is used
+    self.punch_speedrun = false
 end
 
 function Mod:registerShaders()

@@ -48,6 +48,7 @@ function item:init()
 end
 
 function item:onWorldUse()
+    Mod.punch_speedrun = true
     Game.world:startCutscene(function(cutscene)
 
         local card = Sprite("objects/punchcard_ribbit", 328, 270)
@@ -68,6 +69,8 @@ function item:onWorldUse()
         end
 
         Input.clear("confirm")
+        cutscene:enableMovement()
+        Mod.glitch_timer = Game.world.timer:after((1/60)*4, function() cutscene:disableMovement() end)
         cutscene:wait(1/60) -- Wait for a frame so the confirm input from selecting the item doesn't affect the wait condition below
         cutscene:wait(function()
             return Input.pressed("confirm")
@@ -75,6 +78,7 @@ function item:onWorldUse()
         if card then
             card:remove()
         end
+        Mod.punch_speedrun = false
     end)
     return false
 end
