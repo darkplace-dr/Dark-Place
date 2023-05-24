@@ -38,8 +38,9 @@ function actor:init(x, y)
     }
 
     self.offsets = {
-        ["candle/bundled"] = {-3, 0},
-        ["candle/pipis"] = {-4, 0},
+        ["day_blankie_hug"] = {-3, 0},
+        ["bundled"] = {-1, 0},
+        ["pipis"] = {-1, 0}
 	}
 end
 

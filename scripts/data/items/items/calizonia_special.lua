@@ -1,13 +1,13 @@
 -- Instead of Item, create a HealItem, a convenien  t class for consumable healing items
-local item, super = Class(HealItem, "chevelour_donut")
+local item, super = Class(HealItem, "calizonia special")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "ChevelourDonut"
+    self.name = "CaliSpecil"
     -- Name displayed when used in battle (optional)
-    self.use_name = "CHEVELOUR DONUT"
+    self.use_name = "CALIZONIA SPECIAL"
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
@@ -15,29 +15,30 @@ function item:init()
     self.icon = nil
 
     -- Battle description
-    self.effect = "Healing\nVaries"
+    self.effect = "Heals Party\n 50HP"
     -- Shop description
-    self.shop = "100% Red Velvet\nFlavor!"
+    self.shop = "California\n BABEY!!!"
     -- Menu description
-    self.description = "A donut shaped like Chevelour's face.\nIt's just a bagel with jam inside. Heals +??HP"
+    self.description = "An Italian-style Calzone made a Filipino rat\nliving in California. Heals Party."
 
     -- Amount healed (HealItem variable)
     self.heal_amounts = {
-        ["YOU"] = 80,
-        ["susie"] = 20,
-        ["ralsei"] = 100,
-        ["noelle"] = 250,
-		["dess"] = 60,
-        ["brandon"] = 80
+        ["kris"] = 50,
+        ["susie"] = 50,
+        ["ralsei"] = 50,
+        ["noelle"] = 50,
+        ["YOU"] = 50,
+		["dess"] = 50,
+        ["brandon"] = 50
 	}
 
     -- Default shop price (sell price is halved)
-    self.price = 50
+    self.price = 300
     -- Whether the item can be sold
     self.can_sell = true
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
-    self.target = "ally"
+    self.target = "party"
     -- Where this item can be used (world, battle, all, or none)
     self.usable_in = "all"
     -- Item this item will get turned into when consumed
@@ -56,11 +57,10 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {
-        susie = "It's just a jam sandiwch...",
-        ralsei = "I never knew Chevelour can bake well!",
-        noelle = "The jam's taste reminds me of new year's eve!",
-		dess = "Should've been hollyberry...",
-        brandon = "Donut or not, it's good!"
+        susie = "Cheesy!",
+        ralsei = "Nice to have a new chef!",
+        noelle = "This is actually nice...",
+		dess = "Bro isn't from Florida",
     }
 end
 

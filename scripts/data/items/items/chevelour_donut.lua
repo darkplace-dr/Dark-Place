@@ -27,12 +27,13 @@ function item:init()
         ["susie"] = 20,
         ["ralsei"] = 100,
         ["noelle"] = 250,
+        ["YOU"] = 80,
 		["dess"] = 60,
         ["brandon"] = 80
 	}
 
     -- Default shop price (sell price is halved)
-    self.price = 50
+    self.price = 80
     -- Whether the item can be sold
     self.can_sell = true
 
@@ -60,7 +61,7 @@ function item:init()
         ralsei = "I never knew Chevelour can bake well!",
         noelle = "The jam's taste reminds me of new year's eve...!",
 		dess = "Should've been hollyberry...",
-        brandon = "She's an okay baker."
+        brandon = "Creamy!"
     }
 end
 
