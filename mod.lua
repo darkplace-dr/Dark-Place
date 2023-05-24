@@ -25,7 +25,7 @@ function Mod:init()
         if hour >= 21 or hour <= 8 then
             self.chars_npcs['velvetspam'] = {"pissed", "bundled", "pipis"}
         else
-            self.chars_npcs['velvetspam'] = {"day_blankie", "box"}
+            self.chars_npcs['velvetspam'] = {"day_blankie", "day_blankie_hug", "box"}
         end
     --self.chars_npcs[''] = {""}
 
@@ -33,9 +33,6 @@ function Mod:init()
     self.taunt_timer = 0
 
     self.voice_timer = 0
-
-    -- Set to true when the Punch Card is used
-    self.punch_speedrun = false
 end
 
 function Mod:registerShaders()
@@ -150,15 +147,12 @@ function Mod:getPartyMemberIfInParty(chara)
 end
 
 function Mod:getKris()
-    local YOU = Game:getPartyMember("YOU")
-    local kris = Game:getPartyMember("kris")
-    if Game:hasPartyMember(YOU) then return YOU
-    elseif Game:hasPartyMember(kris) then return kris
-    else return Game:getPartyMember(Game.party[1].id)
-    end
+    local YOU = Mod:getPartyMemberIfInParty("YOU")
+    local kris = Mod:getPartyMemberIfInParty("kris")
+    return YOU or kris
 end
 
-function Mod:getKrisCharacter()
+function Mod:getKrisActor()
     return Game.world:getCharacter(Mod:getKris().id)
 end
 
