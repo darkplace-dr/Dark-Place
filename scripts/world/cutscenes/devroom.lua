@@ -27,16 +27,32 @@ return {
         if opinion == 1 then
             cutscene:showNametag("Brandon")
             cutscene:text("* Nice,[wait:5] thanks!", "happy", "brandon")
-            Game:addPartyMember("brandon")
-            if cutscene:getCharacter("dess") then
-                event:convertToFollower(3)
+            if #Game.party >= 4 then
+                cutscene:text("* Hold on,[wait:5] it looks like you've got a full party.", "neutral", "brandon")
+                cutscene:text("* Well,[wait:5] I'll still be in your party.", "happy", "brandon")
+                cutscene:text("* Just in the \"reserves\",[wait:5] so to speak.", "neutral", "brandon")
+                cutscene:text("* If you want me to help in battles,[wait:5] head to the Party Room.", "happy", "brandon")
+                event:setFacing("right")
+                cutscene:text("* Go straight that way,[wait:5] it should be the first door on your left.", "happy", "brandon")
+                event:setFacing("down")
+                cutscene:text("* Cya!", "happy", "brandon")
+                cutscene:hideNametag()
+                cutscene:walkTo(event, -100, event.y + 50, 3, "left")
+                cutscene:wait(2)
             else
-                event:convertToFollower(2)
+                Game:addPartyMember("brandon")
+                if #Game.party >= 3 then
+                    event:convertToFollower(3)
+                elseif #Game.party == 2 then
+                    event:convertToFollower(2)
+                else
+                    event:convertToFollower(1)
+                end
+                cutscene:hideNametag()
+                cutscene:attachFollowers()
+                cutscene:text("* Brandon joined the party.")
+                cutscene:wait(0.5)
             end
-            cutscene:hideNametag()
-            cutscene:attachFollowers()
-            cutscene:text("* Brandon joined the party.")
-            cutscene:wait(0.5)
             Game:setFlag("brandon_inparty", true)
             table.insert(Game:getFlag("party"), "brandon")
         else
