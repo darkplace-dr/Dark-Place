@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 48,
+  nextobjectid = 53,
   properties = {
     ["music"] = "deltarune/castletown",
     ["name"] = "Floor 2 - Lounge"
@@ -200,9 +200,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 378,
-          y = 160,
+          y = 140,
           width = 84,
-          height = 5,
+          height = 20,
           rotation = 0,
           visible = true,
           properties = {
@@ -238,7 +238,7 @@ return {
         },
         {
           id = 29,
-          name = "",
+          name = "transition",
           type = "",
           shape = "rectangle",
           x = 840,
@@ -247,7 +247,10 @@ return {
           height = 160,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["map"] = "floor2/east_wing",
+            ["marker"] = "entry"
+          }
         },
         {
           id = 32,
@@ -293,6 +296,78 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 49,
+          name = "sprite",
+          type = "",
+          shape = "rectangle",
+          x = 208,
+          y = 160,
+          width = 25,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["scalex"] = 2,
+            ["scaley"] = 2,
+            ["speed"] = 0.25,
+            ["texture"] = "objects/torch/torch"
+          }
+        },
+        {
+          id = 50,
+          name = "sprite",
+          type = "",
+          shape = "rectangle",
+          x = 328,
+          y = 40,
+          width = 25,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["scalex"] = 2,
+            ["scaley"] = 2,
+            ["speed"] = 0.25,
+            ["texture"] = "objects/torch/torch"
+          }
+        },
+        {
+          id = 51,
+          name = "sprite",
+          type = "",
+          shape = "rectangle",
+          x = 488,
+          y = 40,
+          width = 25,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["scalex"] = 2,
+            ["scaley"] = 2,
+            ["speed"] = 0.25,
+            ["texture"] = "objects/torch/torch"
+          }
+        },
+        {
+          id = 52,
+          name = "sprite",
+          type = "",
+          shape = "rectangle",
+          x = 608,
+          y = 160,
+          width = 25,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["scalex"] = 2,
+            ["scaley"] = 2,
+            ["speed"] = 0.25,
+            ["texture"] = "objects/torch/torch"
+          }
         }
       }
     },
@@ -343,6 +418,19 @@ return {
           shape = "point",
           x = 100,
           y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 48,
+          name = "entry_east",
+          type = "",
+          shape = "point",
+          x = 800,
+          y = 400,
           width = 0,
           height = 0,
           rotation = 0,

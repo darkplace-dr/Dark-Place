@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 14,
+  nextobjectid = 15,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/queen_car_radio"
@@ -19,8 +19,7 @@ return {
     {
       name = "queen_room",
       firstgid = 1,
-      filename = "../../tilesets/queen_room.tsx",
-      exportfilename = "../../tilesets/queen_room.lua"
+      filename = "../../tilesets/queen_room.tsx"
     }
   },
   layers = {

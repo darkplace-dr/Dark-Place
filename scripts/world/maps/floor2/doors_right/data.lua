@@ -9,8 +9,8 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 5,
-  nextobjectid = 23,
+  nextlayerid = 6,
+  nextobjectid = 26,
   properties = {
     ["music"] = "deltarune/castletown"
   },
@@ -152,8 +152,8 @@ return {
     {
       type = "objectgroup",
       draworder = "topdown",
-      id = 3,
-      name = "objects",
+      id = 5,
+      name = "objects_doors",
       class = "",
       visible = true,
       opacity = 1,
@@ -164,7 +164,7 @@ return {
       properties = {},
       objects = {
         {
-          id = 13,
+          id = 24,
           name = "backroomsdoor",
           type = "",
           shape = "rectangle",
@@ -176,6 +176,35 @@ return {
           visible = true,
           properties = {}
         },
+        {
+          id = 25,
+          name = "queendoor",
+          type = "",
+          shape = "rectangle",
+          x = 400,
+          y = 84,
+          width = 160,
+          height = 156,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 3,
+      name = "objects",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
         {
           id = 14,
           name = "transition",
@@ -203,20 +232,10 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
-        },
-        {
-          id = 18,
-          name = "queendoor",
-          type = "",
-          shape = "rectangle",
-          x = 400,
-          y = 84,
-          width = 160,
-          height = 156,
-          rotation = 0,
-          visible = true,
-          properties = {}
+          properties = {
+            ["map"] = "floor2/east_wing",
+            ["marker"] = "entry_doorsright"
+          }
         },
         {
           id = 20,
@@ -299,6 +318,19 @@ return {
           shape = "point",
           x = 480,
           y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 23,
+          name = "entry2",
+          type = "",
+          shape = "point",
+          x = 1820,
+          y = 440,
           width = 0,
           height = 0,
           rotation = 0,

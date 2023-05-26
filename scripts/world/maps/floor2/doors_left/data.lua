@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -9,9 +9,11 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 5,
-  nextobjectid = 14,
-  properties = {},
+  nextlayerid = 6,
+  nextobjectid = 24,
+  properties = {
+    ["music"] = "deltarune/castletown"
+  },
   tilesets = {
     {
       name = "castle_1f",
@@ -98,9 +100,9 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 40,
+          x = 1400,
           y = 200,
-          width = 1840,
+          width = 480,
           height = 40,
           rotation = 0,
           visible = true,
@@ -115,6 +117,61 @@ return {
           y = 240,
           width = 40,
           height = 240,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 18,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 40,
+          y = 200,
+          width = 1280,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "objects_doors",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 22,
+          name = "bordoor",
+          type = "",
+          shape = "rectangle",
+          x = 1518,
+          y = 94.0107,
+          width = 164,
+          height = 146,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 23,
+          name = "lancerdoor",
+          type = "",
+          shape = "rectangle",
+          x = 1292,
+          y = 88,
+          width = 134,
+          height = 182,
           rotation = 0,
           visible = true,
           properties = {}
@@ -181,17 +238,36 @@ return {
           properties = {}
         },
         {
-          id = 13,
-          name = "bordoor",
+          id = 16,
+          name = "transition",
           type = "",
           shape = "rectangle",
-          x = 1518,
-          y = 94.0107,
-          width = 164,
-          height = 146,
+          x = 1313,
+          y = 214,
+          width = 93,
+          height = 26.6667,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["map"] = "floor2/lancer",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 17,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 1313,
+          y = 205,
+          width = 93,
+          height = 35,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["once"] = false,
+            ["script"] = "lancer_enter"
+          }
         }
       }
     },
@@ -229,6 +305,19 @@ return {
           shape = "point",
           x = 960,
           y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 21,
+          name = "entry_lancer",
+          type = "",
+          shape = "point",
+          x = 1360,
+          y = 290,
           width = 0,
           height = 0,
           rotation = 0,

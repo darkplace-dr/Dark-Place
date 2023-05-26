@@ -49,7 +49,7 @@ return {
         zoom(3, 1/4)
         zoom(4, 1/2)
         zoom(6, 1/2)
-        local emotion = Sprite("world/cutscenes/react_to_YOU/bigemotion", -9, 4)
+        local emotion = Sprite("world/cutscenes/react_to_YOU/bigemotion", -5, 6.5)
         emotion:setScale(0.125, 0.125)
         YOU:addChild(emotion)
         zoom(8, zoom_sfx, {Game.world.camera.x, Game.world.camera.y - 18})

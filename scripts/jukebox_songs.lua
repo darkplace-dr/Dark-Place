@@ -130,7 +130,7 @@ return {
     origin = "Crystalseeker"
     },
     {
-    name = "Ruins (Beta)",
+    name = "Forgotten Ruins",
     file = "ruins_beta",
     composer = "Just another random user.",
     released = "2023",
@@ -244,11 +244,11 @@ return {
     origin = "Mario's Mystery Meat"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Rude Buster (Repaint Mix)",
+    file = "battle_repainted",
+    composer = "Cvaxx",
+    released = "2019",
+    origin = "Deltarune: Repainted"
     },
     {
     name = "---",
