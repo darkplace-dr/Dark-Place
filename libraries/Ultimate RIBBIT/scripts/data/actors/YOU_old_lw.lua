@@ -1,4 +1,4 @@
-local actor, super = Class(Actor, "YOU_lw")
+local actor, super = Class(Actor, "YOU_old_lw")
 
 function actor:init()
     super.init(self)
@@ -7,17 +7,17 @@ function actor:init()
     self.name = "YOU"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 28
-    self.height = 41
+    self.width = 19
+    self.height = 37
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {7, 30, 14, 12}
+    self.hitbox = {0, 25, 19, 14}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {0, 1, 1}
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "party/you/light"
+    self.path = "party/you/old_light"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
 
