@@ -8,7 +8,20 @@ function preview:init(mod, button, menu)
     self.particles = {}
     self.particle_timer = 0
 	
-    self.texture = love.graphics.newImage("mods/Dark-Place-main/star.png")
+    self.texture = ""
+
+    if love.filesystem.exists("mods/Dark-Place-main/star.png") then
+        self.texture = love.graphics.newImage("mods/Dark-Place-main/star.png")
+    elseif love.filesystem.exists("mods/Dark-Place/star.png") then
+        self.texture = love.graphics.newImage("mods/Dark-Place/star.png")
+    elseif love.filesystem.exists("mods/DarkPlacemain/star.png") then
+        self.texture = love.graphics.newImage("mods/DarkPlacemain/star.png")
+    elseif love.filesystem.exists("mods/DarkPlace/star.png") then
+        self.texture = love.graphics.newImage("mods/Dark-Place/star.png")
+    elseif love.filesystem.exists("mods/Dark Place/star.png") then
+        self.texture = love.graphics.newImage("mods/Dark Place/star.png")
+        
+    end
 
     button:setColor(1, 1, 1)
     button:setFavoritedColor(0.9, 0.8, 1)
