@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="47" height="21" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#000000" nextlayerid="21" nextobjectid="142">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="47" height="21" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#000000" nextlayerid="21" nextobjectid="142">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="border" value="leaves"/>
   <property name="light" type="bool" value="true"/>
-  <property name="music" value="deltarune/mus_school"/>
+  <property name="music" value="orphanage"/>
   <property name="name" value="School"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/schooltiles2.tsx"/>

@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 31,
@@ -14,15 +15,14 @@ return {
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
-    ["music"] = "deltarune/mus_school",
+    ["music"] = "orphanage",
     ["name"] = "School"
   },
   tilesets = {
     {
       name = "schooltiles2",
       firstgid = 1,
-      filename = "../../../../tilesets/schooltiles2.tsx",
-      exportfilename = "../../../../tilesets/schooltiles2.lua"
+      filename = "../../../../tilesets/schooltiles2.tsx"
     }
   },
   layers = {
@@ -34,6 +34,7 @@ return {
       height = 12,
       id = 17,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -65,6 +66,7 @@ return {
       height = 12,
       id = 18,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -93,6 +95,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -199,6 +202,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -240,6 +244,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
