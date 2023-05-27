@@ -36,6 +36,13 @@
             "y": -1680
         },
         {
+            "fileName": "maps/floor2/lancer.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -440,
+            "y": -1040
+        },
+        {
             "fileName": "maps/cloudwebs/cloudwebs_entrance/data.tmx",
             "height": 1440,
             "width": 3240,
