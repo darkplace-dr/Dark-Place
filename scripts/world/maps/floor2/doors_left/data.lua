@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 16,
+  nextobjectid = 23,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown"
@@ -239,14 +239,14 @@ return {
           properties = {}
         },
         {
-          id = 16,
-          name = "transition",
+          id = 13,
+          name = "bordoor",
           type = "",
           shape = "rectangle",
-          x = 1313,
-          y = 214,
-          width = 93,
-          height = 26.6667,
+          x = 1518,
+          y = 94.0107,
+          width = 164,
+          height = 146,
           rotation = 0,
           visible = true,
           properties = {}
@@ -266,6 +266,38 @@ return {
             ["cutscene"] = "floor2.bordoor",
             ["once"] = false,
             ["solid"] = false
+          }
+        },
+        {
+          id = 19,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 1313,
+          y = 214,
+          width = 93,
+          height = 26.6667,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "floor2/lancer",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 20,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 1313,
+          y = 205,
+          width = 93,
+          height = 35,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["once"] = false,
+            ["script"] = "lancer_enter"
           }
         }
       }
@@ -317,6 +349,19 @@ return {
           shape = "point",
           x = 1600,
           y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 22,
+          name = "entry_lancer",
+          type = "",
+          shape = "point",
+          x = 1360,
+          y = 290,
           width = 0,
           height = 0,
           rotation = 0,
