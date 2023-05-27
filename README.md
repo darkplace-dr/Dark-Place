@@ -30,20 +30,16 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Sam Deluxe#0057 - X-Slash code
 * KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
-* atliylol - Original author for MOBDT
-* vitellary - Spamton NEO Actor
 * The Winterer - Original author for Deltarune: Chapter Rewritten
-* Bor#4200 - Cloudwebs Tileset
 * FireRainV#1958 - MoreParty Library
 * TrashcatYT#6658 - Blue Soul Library
 * TheMaxine - Original author for Ribbit
 * RhenaudTheLukark - Original author for Unitale/Create Your Frisk/Create Your Kris
 * STD Repaints - Original author for Deltarune Repainted
 * RynoGG - Original author for Deltatraveler
-* atliylol - Original author for Mobdt
+* atliylol - Original author for MOBDT
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 * OMOCAT, LLC - Original author for OMORI
-* AcousticJamm - Ladder Areas Library
 * Ninomae Ina'nis - Creator and designer of the Takodachis
 * HAL Laboratories - Original author for Kirby
 * Tour de Pizza - Original authors for Pizza Tower
