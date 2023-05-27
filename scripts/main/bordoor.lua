@@ -20,8 +20,8 @@
 -- to add new codes you'd add new entries of "type" BorDoorCodeInfo to the table below.
 -- If you have sumneko's Lua LS you should be able to get nice annonations
 ---@type table<BorDoorCode, BorDoorCodeInfo>
-Mod.warp_bin_codes = {
-    ["ISUCKASS"] = { result = "floor2/roombor" },
+Mod.bor_codes = {
+    ["isuckass"] = { result = "floor2/roombor" },
 }
 
 -- heres some new totally cool helper functions wowee
@@ -29,8 +29,8 @@ Mod.warp_bin_codes = {
 --- get a Bin Code's info
 ---@param code BorDoorCode
 ---@return BorDoorCodeInfo info
-function Mod:getBinCode(code)
-    return Mod.warp_bin_codes[code:lower()]
+function Mod:getBorCode(code)
+    return Mod.bor_codes[code:lower()]
 end
 
 --- adds a code to the warp bin code table
@@ -39,24 +39,24 @@ end
 ---@param marker? string see BorDoorCodeInfo.marker
 ---@param overwrite? boolean whether to overwrite existing entries or not
 ---@return boolean success false if the code already exists and overwrite is false. just in-case someone else steals your code before you get to use it.
-function Mod:addBinCode(code, result, marker, overwrite)
-    if Mod:getBinCode(code) and not overwrite then
+function Mod:addBorCode(code, result, marker, overwrite)
+    if Mod:getBorCode(code) and not overwrite then
         -- whoops, no success
         return false
     end
 
     -- lmao
-    Mod.warp_bin_codes[code:lower()] = { result = result, marker = marker or "spawn" }
+    Mod.bor_codes[code:lower()] = { result = result, marker = marker or "spawn" }
     return true
 end
 
 --- delets a Bin Code
 ---@param code BorDoorCode
 ---@return boolean success false if the code doesnt exist
-function Mod:deleteBinCode(code)
+function Mod:deleteBorCode(code)
     code = code:lower()
 
-    if not Mod:getBinCode(code) then return false end
-    Mod.warp_bin_codes[code] = nil
+    if not Mod:getBorCode(code) then return false end
+    Mod.bor_codes[code] = nil
     return true
 end
