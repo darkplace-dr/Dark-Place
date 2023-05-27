@@ -60,13 +60,7 @@ function Poseur:onAct(battler, name)
             "* Poseur became [color:blue]TIRED[color:reset]."
         }
 
-    end
-
-    return super.onAct(self, battler, name)
-end
-
-function Poseur:onShortAct(battler, name)
-    if name == "Standard" then
+    elseif name == "Standard" then
         self:addMercy(25)
 		if battler.chara.id == "dess" then
             -- D-Action lmao
@@ -74,7 +68,8 @@ function Poseur:onShortAct(battler, name)
         end
 		return "* "..battler.chara:getName().." used their X-Action."
     end
-    return nil
+
+    return super.onAct(self, battler, name)
 end
 
 return Poseur

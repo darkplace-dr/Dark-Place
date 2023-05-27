@@ -63,15 +63,8 @@ function chevelour:init()
             self.attack = self.attack + 1
             Game.battle:startActCutscene("chevelour", "X2_Insult")
             return
-        end
-    
-        -- If the act is none of the above, run the base onAct function
-        -- (this handles the Check act)
-        return super.onAct(self, battler, name)
-    end
-
-    function chevelour:onShortAct(battler, name)
-        if name == "Standard" then --X-Action
+            
+        elseif name == "Standard" then --X-Action
             -- Give the enemy 50% mercy
             self:addMercy(5)
             if battler.chara.id == "ralsei" then
@@ -82,8 +75,11 @@ function chevelour:init()
                 return "* "..battler.chara:getName().." gave a compliment."
             end
         end
-        return nil
-    end
+    
+        -- If the act is none of the above, run the base onAct function
+        -- (this handles the Check act)
+        return super.onAct(self, battler, name)
+end
 
 
 return chevelour

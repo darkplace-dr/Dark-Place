@@ -59,13 +59,7 @@ function Spamgolor:onAct(battler, name)
         self.dialogue_override = "ENJOY YOUR\n[Healing Item]!"
         Game.battle:startActCutscene("spamgolor.heal_deal")
         return
-    end
-
-    return super.onAct(self, battler, name)
-end
-
-function Spamgolor:onShortAct(battler, name)
-    if name == "Standard" then
+    elseif name == "Standard" then
         if battler.chara.id == "susie" then
             Game.battle:startActCutscene("spamgolor.susie_talk")
             return
@@ -79,7 +73,8 @@ function Spamgolor:onShortAct(battler, name)
             "* ... but they didn't know how to."
         }
     end
-    return nil
+
+    return super.onAct(self, battler, name)
 end
 
 function Spamgolor:getNextWaves()

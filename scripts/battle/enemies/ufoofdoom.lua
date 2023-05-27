@@ -51,15 +51,7 @@ function UFOOfDoom:onAct(battler, name)
     if name == "SUPER ACT" then
 		Game.battle:startActCutscene("ufoofdoom", "kill")
         return
-    end
-
-    -- If the act is none of the above, run the base onAct function
-    -- (this handles the Check act)
-    return super.onAct(self, battler, name)
-end
-
-function UFOOfDoom:onShortAct(battler, name)
-    if name == "Standard" then --X-Action
+    elseif name == "Standard" then --X-Action
         if battler.chara.id == "ralsei" then
 			-- Give the enemy 50% mercy
 			self:addMercy(50)
@@ -79,7 +71,10 @@ function UFOOfDoom:onShortAct(battler, name)
         -- Text for any other character (like Noelle)
         return "* "..battler.chara:getName().." did something mysterious."
     end
-    return nil
+
+    -- If the act is none of the above, run the base onAct function
+    -- (this handles the Check act)
+    return super.onAct(self, battler, name)
 end
 
 return UFOOfDoom

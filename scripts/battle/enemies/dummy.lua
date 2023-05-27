@@ -72,15 +72,8 @@ function Dummy:onAct(battler, name)
             enemy:setTired(true)
         end
         return "* You and Ralsei told the dummy\na bedtime story.\n* The enemies became [color:blue]TIRED[color:reset]..."
-    end
 
-    -- If the act is none of the above, run the base onAct function
-    -- (this handles the Check act)
-    return super.onAct(self, battler, name)
-end
-
-function Dummy:onShortAct(battler, name)
-    if name == "Standard" then --X-Action
+    elseif name == "Standard" then --X-Action
         -- Give the enemy 50% mercy
         self:addMercy(50)
         if battler.chara.id == "ralsei" then
@@ -98,7 +91,10 @@ function Dummy:onShortAct(battler, name)
             return "* "..battler.chara:getName().." straightened the\ndummy's hat."
         end
     end
-    return nil
+
+    -- If the act is none of the above, run the base onAct function
+    -- (this handles the Check act)
+    return super.onAct(self, battler, name)
 end
 
 return Dummy

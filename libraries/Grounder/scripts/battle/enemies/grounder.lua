@@ -40,11 +40,7 @@ function Grounder:init()
     self.text_override = nil
 end
 
-function EnemyBattler:isXActionShort(battler)
-    return true
-end
-
-function EnemyBattler:isXActionShort(battler)
+function Grounder:isXActionShort(battler)
     return true
 end
 
