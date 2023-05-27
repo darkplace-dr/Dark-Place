@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 32,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 10,
+  nextobjectid = 13,
   properties = {},
   tilesets = {
     {
@@ -33,6 +34,7 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -64,6 +66,7 @@ return {
       height = 12,
       id = 2,
       name = "decor",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -92,6 +95,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -119,7 +123,7 @@ return {
           type = "",
           shape = "rectangle",
           x = 360,
-          y = 160,
+          y = 120,
           width = 880,
           height = 40,
           rotation = 0,
@@ -132,9 +136,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 1240,
-          y = 200,
+          y = 160,
           width = 40,
-          height = 240,
+          height = 280,
           rotation = 0,
           visible = true,
           properties = {}
@@ -160,7 +164,7 @@ return {
           x = 40,
           y = 160,
           width = 200,
-          height = 80,
+          height = 40,
           rotation = 0,
           visible = true,
           properties = {}
@@ -171,22 +175,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 0,
-          y = 240,
+          y = 200,
           width = 40,
-          height = 200,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 7,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 84,
-          y = 240,
-          width = 116,
-          height = 20,
+          height = 240,
           rotation = 0,
           visible = true,
           properties = {}
@@ -198,6 +189,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -218,6 +210,38 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 11,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 86.2521,
+          y = 202.348,
+          width = 112.436,
+          height = 75.0282,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "spamroom.warpbin",
+            ["solid"] = true
+          }
+        },
+        {
+          id = 12,
+          name = "enemy",
+          type = "",
+          shape = "rectangle",
+          x = 750.558,
+          y = 271.916,
+          width = 49.4424,
+          height = 48.0837,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "chevelour",
+            ["encounter"] = "chevelour"
+          }
         }
       }
     },
@@ -226,6 +250,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
