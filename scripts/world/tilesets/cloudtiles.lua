@@ -8,10 +8,10 @@ return {
   tileheight = 40,
   spacing = 0,
   margin = 0,
-  columns = 12,
+  columns = 21,
   image = "../../../assets/sprites/tilesets/bg_cloudtiles_1.png",
-  imagewidth = 480,
-  imageheight = 560,
+  imagewidth = 840,
+  imageheight = 680,
   objectalignment = "unspecified",
   tilerendersize = "tile",
   fillmode = "stretch",
@@ -26,6 +26,6 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 168,
+  tilecount = 357,
   tiles = {}
 }

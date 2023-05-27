@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="21" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="48">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="21" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="48">
  <editorsettings>
   <export target="lounge.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="castle"/>
   <property name="music" value="deltarune/castletown"/>
   <property name="name" value="Floor 2 - Lounge"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/castle_1f.tsx"/>
  <layer id="2" name="tiles" width="21" height="16">
   <data encoding="csv">
-55,55,55,55,55,55,55,88,89,89,89,89,89,90,55,55,55,55,55,55,55,
-55,55,55,55,55,55,55,3,22,54,54,54,54,18,55,55,55,55,55,55,55,
-88,89,89,89,89,89,90,2,54,54,54,54,6,5,88,89,89,89,89,89,89,
-54,54,54,54,54,34,5,35,20,20,20,20,20,37,3,54,22,54,54,54,54,
+55,55,55,55,55,55,55,88,99,100,101,102,103,90,55,55,55,55,55,55,55,
+55,55,55,55,55,55,55,3,91,92,93,94,95,18,55,55,55,55,55,55,55,
+88,89,89,89,89,89,90,2,107,108,109,110,111,5,88,89,89,89,89,89,89,
+54,54,54,54,54,34,5,35,123,124,125,126,127,37,3,54,22,54,54,54,54,
 12,13,14,15,16,54,5,70,73,86,84,87,73,71,2,54,12,13,14,15,16,
 28,29,30,31,32,22,18,82,66,82,82,82,82,82,3,54,28,29,30,31,32,
 54,45,46,47,38,39,5,82,82,82,82,82,82,82,3,38,39,45,46,47,4,

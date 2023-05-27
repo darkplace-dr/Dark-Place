@@ -10,8 +10,11 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 14,
-  properties = {},
+  nextobjectid = 16,
+  properties = {
+    ["border"] = "castle",
+    ["music"] = "deltarune/castletown"
+  },
   tilesets = {
     {
       name = "castle_1f",
@@ -192,6 +195,23 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 15,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 1518,
+          y = 95,
+          width = 164,
+          height = 146,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "floor2.bordoor",
+            ["once"] = false,
+            ["solid"] = false
+          }
         }
       }
     },
@@ -229,6 +249,19 @@ return {
           shape = "point",
           x = 960,
           y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "exit_bor",
+          type = "",
+          shape = "point",
+          x = 1600,
+          y = 280,
           width = 0,
           height = 0,
           rotation = 0,

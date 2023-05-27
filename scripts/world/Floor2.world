@@ -27,6 +27,20 @@
             "width": 1280,
             "x": 800,
             "y": -1120
+        },
+        {
+            "fileName": "maps/floor2/roombor/roombor.tmx",
+            "height": 1040,
+            "width": 1200,
+            "x": -840,
+            "y": -1680
+        },
+        {
+            "fileName": "maps/cloudwebs/cloudwebs_entrance/data.tmx",
+            "height": 1440,
+            "width": 3240,
+            "x": -840,
+            "y": -4360
         }
     ],
     "onlyShowAdjacentMaps": false,

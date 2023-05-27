@@ -55,8 +55,31 @@ function Mod:postInit(new_file)
     end
 
     Game.isOmori = false
+    Game:setFlag("timesUsedWrongBorDoorCode", 0)
+    Game:setFlag("BorDoorCodeUnlocked", false)
+    Game.susieWarnedPlayerAboutBorDoorCode = false
+
+    Game:setFlag("cloudwebStoryFlag", 0)
 
 end
+
+
+
+
+
+function Mod:onMapMusic(map, music)
+    if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
+        return ""
+    else
+        return music
+    end
+end
+
+
+
+
+
+
 
 function Mod:preUpdate(dt)
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
@@ -140,7 +163,8 @@ function Mod:postUpdate()
 end
 
 modRequire("scripts/main/warp_bin")
-modRequire("scripts/main/debugsystem")
+modRequire("scripts/main/bordoor")
+--modRequire("scripts/main/debugsystem")
 
 function Mod:getPartyMemberIfInParty(chara)
     return Game:hasPartyMember(chara) and Game:getPartyMember(chara) or nil
