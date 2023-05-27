@@ -1,7 +1,7 @@
 local WorldCutscene, super = Class("WorldCutscene", true)
 
 function WorldCutscene:showNametag(text, options)
-    options = options or {top = false}
+    options = options or {}
 
     if self.nametag then self.nametag:remove() end
 
@@ -13,8 +13,7 @@ function WorldCutscene:showNametag(text, options)
         options["top"] = player_y > 260
     end
     if options["top"] or (options["top"] == nil and self.textbox_top) then
-       local bx, by = self.textbox:getBorder()
-       self.nametag.y = by + 2
+       self.nametag.y = 185
     end
     Game.world:addChild(self.nametag)
 end
