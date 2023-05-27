@@ -40,7 +40,7 @@
   <object id="31" x="780" y="160" width="60" height="160"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="7" name="objects">
-  <object id="20" name="transition" x="378" y="160" width="84" height="5">
+  <object id="20" name="transition" x="378" y="140" width="84" height="20">
    <properties>
     <property name="map" value="elevator"/>
     <property name="marker" value="spawn"/>
@@ -48,7 +48,12 @@
   </object>
   <object id="27" x="-40" y="320" width="40" height="160"/>
   <object id="28" x="280" y="640" width="280" height="40"/>
-  <object id="29" x="840" y="320" width="40" height="160"/>
+  <object id="29" name="transition" x="840" y="320" width="40" height="160">
+   <properties>
+    <property name="map" value="floor2/east_wing"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
   <object id="32" name="transition" x="58" y="315" width="84" height="5">
    <properties>
     <property name="map" value="floor2/doors_left"/>
@@ -62,6 +67,38 @@
    </properties>
   </object>
   <object id="46" name="savepoint" x="400" y="380" width="40" height="40"/>
+  <object id="49" name="sprite" x="208" y="160" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="50" name="sprite" x="328" y="40" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="51" name="sprite" x="488" y="40" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="52" name="sprite" x="608" y="160" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="6" name="markers">
   <object id="10" name="entry_elevator" x="418" y="190">
@@ -71,6 +108,9 @@
    <point/>
   </object>
   <object id="47" name="entry_doorsleft" x="100" y="360">
+   <point/>
+  </object>
+  <object id="48" name="entry_east" x="800" y="400">
    <point/>
   </object>
  </objectgroup>

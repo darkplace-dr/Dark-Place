@@ -32,16 +32,23 @@
   <object id="5" x="560" y="200" width="1320" height="40"/>
   <object id="12" x="1880" y="240" width="40" height="240"/>
  </objectgroup>
+ <objectgroup color="#ff0000" id="5" name="objects_doors">
+  <object id="24" name="backroomsdoor" x="204" y="144" width="72" height="94"/>
+  <object id="25" name="queendoor" x="400" y="84" width="160" height="156"/>
+ </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
-  <object id="13" name="backroomsdoor" x="204" y="144" width="72" height="94"/>
   <object id="14" name="transition" x="40" y="480" width="120" height="40">
    <properties>
     <property name="map" value="floor2/lounge"/>
     <property name="marker" value="entry_doorsright"/>
    </properties>
   </object>
-  <object id="15" name="transition" x="1760" y="480" width="120" height="40"/>
-  <object id="18" name="queendoor" x="400" y="84" width="160" height="156"/>
+  <object id="15" name="transition" x="1760" y="480" width="120" height="40">
+   <properties>
+    <property name="map" value="floor2/east_wing"/>
+    <property name="marker" value="entry_doorsright"/>
+   </properties>
+  </object>
   <object id="20" name="transition" x="400" y="230" width="160" height="10">
    <properties>
     <property name="map" value="floor2/queen"/>
@@ -64,6 +71,9 @@
    <point/>
   </object>
   <object id="19" name="exit_queen" x="480" y="280">
+   <point/>
+  </object>
+  <object id="23" name="entry2" x="1820" y="440">
    <point/>
   </object>
  </objectgroup>

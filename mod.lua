@@ -25,7 +25,7 @@ function Mod:init()
         if hour >= 21 or hour <= 8 then
             self.chars_npcs['velvetspam'] = {"pissed", "bundled", "pipis"}
         else
-            self.chars_npcs['velvetspam'] = {"day_blankie", "box"}
+            self.chars_npcs['velvetspam'] = {"day_blankie", "day_blankie_hug", "box"}
         end
     --self.chars_npcs[''] = {""}
 
@@ -178,6 +178,18 @@ end
 
 function Mod:getKrisActor()
     return Game.world:getCharacter(Mod:getKris().id)
+end
+
+function Mod:onFootstep(char, num)
+    if Game:getFlag("footsteps", false) then
+        if (char == Game.world.player) then
+            if num == 1 then
+                Assets.playSound("step1")
+            elseif num == 2 then
+                Assets.playSound("step2")
+            end
+        end
+    end
 end
 
 function Mod:isInRematchMode()

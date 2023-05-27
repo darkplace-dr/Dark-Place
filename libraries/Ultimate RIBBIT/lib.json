@@ -2,12 +2,13 @@
     "id": "ribbit",
 
     "version": "v1.0.1+darkplace",
-    "engineVer": "v0.8.0-dev",
+    "engineVer": "v0.8.1-dev",
 
     "authors": [
 	    "Bor - the me",
 	    "Simbel - YOU Party Member",
-	    "Just Another Random User - Battle BG",
-	    "TheMaxine - RIBBIT"
+	    "Just Another Random User - Vapor Forest Battle BG recreation and sprite rips from the 2.0 update",
+	    "TheMaxine - RIBBIT",
+        "Devilredd - YOU's 2.0 design as well as some updated sprites from the mod."
     ]
 }

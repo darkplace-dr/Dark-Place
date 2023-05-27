@@ -84,10 +84,10 @@ function Costumes:init()
             color = {0, 0.5, 1},
             sprite_base_path = "party/you",
             skins = {
-                {"DEFAULT", "dark", {180, 150}},
-                {"LIGHT", "light", {180, 150}},
-                {"DARK 2.0", "new_dark", {172, 144}},
-                {"LIGHT 2.0", "new_light", {176, 144}}
+                {"DEFAULT", "dark", {172, 144}},
+                {"LIGHT", "light", {176, 144}},
+                {"DARK (OLD)", "old_dark", {180, 150}},
+                {"LIGHT (OLD)", "old_light", {180, 150}}
             }
         },
         {

@@ -401,4 +401,30 @@ return {
             Game.world:mapTransition("room1", "entry2")
         end
     end,
+
+    blackdoor = function(cutscene, event)
+        cutscene:text("* A black door casts a heavy shadow...")
+        if Game.world.map.id == "room3" then
+            cutscene:text("* You feel as if this isn't what's normally here.")
+        end
+        cutscene:text("* Will you enter it?")
+
+        local choice = cutscene:choicer({"Yes", "No"})
+        if choice == 2 then
+            cutscene:text("* You doorn't.")
+            return
+        end
+
+        cutscene:text("* You opened the door...")
+        cutscene:fadeOut(2, {color = {0, 0, 0}, music = true})
+        cutscene:wait(2)
+        Game.fader.fade_color = {0, 0, 0} -- overwrite default for mapTransition
+        if Game.world.map.id == "room3" then
+            cutscene:mapTransition("BlackSpace/blackspace_hub", "entry")
+        elseif Game.world.map.id == "whitespace" then
+            cutscene:mapTransition("room3", "exit_whitespace")
+        end
+        cutscene:look("down")
+        cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}}))
+    end,
 }

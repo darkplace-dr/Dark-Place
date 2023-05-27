@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="66">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="68">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="music" value="greenroom"/>
-  <property name="name" value="Warp Room - Dev Diner"/>
+  <property name="name" value="Dev Diner - Dining Area"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/objects.tsx"/>
  <tileset firstgid="29" source="../../tilesets/devroom.tsx"/>
@@ -102,6 +102,14 @@
    <properties>
     <property name="actor" value="velvet"/>
     <property name="cutscene" value="devroom.velvet"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="67" name="npc" x="810" y="240">
+   <properties>
+    <property name="actor" value="brandon"/>
+    <property name="cond" value="Game:getFlag(&quot;brandon_inparty&quot;) and not Game:hasPartyMember(&quot;brandon&quot;)"/>
+    <property name="cutscene" value="partyroom.brandon"/>
    </properties>
    <point/>
   </object>

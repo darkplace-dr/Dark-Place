@@ -9,8 +9,8 @@ function GoogleDino:init()
     self:setActor("googledino")
 
     -- Enemy health
-    self.max_health = 970
-    self.health = 970
+    self.max_health = 980
+    self.health = 980
     -- Enemy attack (determines bullet damage)
     self.attack = 5
     -- Enemy defense (usually 0)
@@ -35,71 +35,96 @@ function GoogleDino:init()
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
         "* (Your internet has been disconnected.)",
-        "* ",
+        "* The Dino stares at you with a blank expression on its face.",
         "* Smells like network diagnostics.",
     }
     -- Text displayed at the bottom of the screen when the enemy has low health
-    self.low_health_text = "* The dummy looks like it's\nabout to fall over."
+    self.low_health_text = "* The servers are crashing."
 
-    -- Register act called "Smile"
     self:registerAct("Reboot")
-    -- Register party act with Ralsei called "Tell Story"
-    -- (second argument is description, usually empty)
     self:registerAct("X-Reboot", "", "all")
+end
+
+function GoogleDino:onShortAct(battler, name)
+    if name == "Standard" then
+        self:addMercy(5)
+        if battler.chara.id == "susie" then
+            return "* Susie roared at the Dino!"
+        elseif battler.chara.id == "ralsei" then
+            return "* * Ralsei jumped as high as he could!"
+        elseif battler.chara.id == "noelle" then
+            return "* Noelle did something!"
+        elseif battler.chara.id == "dess" then
+            return "* Dess did absolutely nothing."
+        elseif battler.chara.id == "brandon" then
+            return "* Brandon did something!"
+        elseif battler.chara.id == "dumbie" then
+            return "* Dumbie did something!"
+        elseif battler.chara.id == "robo_susie" then
+            return "* Susie did something!"
+        elseif battler.chara.id == "noyno" then
+            return "* Noyno did something!"
+        elseif battler.chara.id == "berdly" then
+            return "* Berdly did something!"
+        elseif battler.chara.id == "bor" then
+            return "* Bor did something!"
+        elseif battler.chara.id == "ostarwalker" then
+            return "* Starwalker did    something!"
+        end
+    end
+    return nil
 end
 
 function GoogleDino:onAct(battler, name)
     if name == "Reboot" then
-        -- Give the enemy 100% mercy
-		Assets.playSound(Utils.pick{
+        Assets.playSound(Utils.pick{
             "dialup_0",
             "dialup_1",
-		    "dialup_2",
-		    "dialup_3",
-		    "dialup_4",
-		    "dialup_5",
+            "dialup_2",
+            "dialup_3",
+            "dialup_4",
+            "dialup_5",
         })
         self:addMercy(10)
         self.difficulty = self.difficulty + 1
         -- Act text (since it's a list, multiple textboxes)
         return {
-            "* You attempt to reboot the internet...\n[wait:5]* Mercy increased by 10%!",
+            "* You attempted to reboot the internet...\n[wait:5]* Difficulty increased!",
         }
 
     elseif name == "X-Reboot" then
-        -- Give the enemy 100% mercy
-		Assets.playSound(Utils.pick{
+        Assets.playSound(Utils.pick{
             "dialup_0",
             "dialup_1",
-		    "dialup_2",
-		    "dialup_3",
-		    "dialup_4",
-		    "dialup_5",
+            "dialup_2",
+            "dialup_3",
+            "dialup_4",
+            "dialup_5",
         })
         self:addMercy(25)
         self.difficulty = self.difficulty + 1
-        return "* You both attempted to reboot the internet...\n[wait:5]* Difficulty increased!"
+        return "* Everyone attempted to reboot the internet...\n[wait:5]* Difficulty increased!"
 
     elseif name == "Standard" then --X-Action
-        -- Give the enemy 50% mercy
+        -- Give the enemy 5% mercy
         if battler.chara.id == "ralsei" then
             -- R-Action text
             self:addMercy(5)
-            return "* Ralsei jumped as high as he could. The dino jumped back in response."
+            return "* Ralsei jumped as high as he could. The Dino jumped back in response."
         elseif battler.chara.id == "susie" then
             --S-Action text
             self:addMercy(5)
             return "* Susie roared at the Dino.\n* It roared back. What an interesting conversation!"
 		elseif battler.chara.id == "dess" then
             -- D-Action text
-            return "* Dess did absolutely nothing. The dino got bored and started feeling [color:blue]TIRED[color:reset]."
+            return "* Dess did absolutely nothing. The Dino got bored and started feeling [color:blue]TIRED[color:reset]."
 		elseif battler.chara.id == "brandon" then
-            -- D-Action text
-            return "* Brandon got up and did the dinosaur. The dino wasn't sure what to make of this."
+            -- B-Action text
+            return "* Brandon got up and did the dinosaur. The Dino wasn't sure what to make of this."
         else
             -- Text for any other character (like Noelle)
             self:addMercy(5)
-            return "* "..battler.chara:getName().." straightened the\ndummy's hat."
+            return "* "..battler.chara:getName().." talked to the Dino."
         end
     end
 

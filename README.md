@@ -26,7 +26,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
-* Toby Fox - Original author for Deltarune
+* Toby Fox - Original author for Undertale and Deltarune
 * Sam Deluxe#0057 - X-Slash code
 * KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
@@ -40,6 +40,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * RhenaudTheLukark - Original author for Unitale/Create Your Frisk/Create Your Kris
 * STD Repaints - Original author for Deltarune Repainted
 * RynoGG - Original author for Deltatraveler
+* atliylol - Original author for Mobdt
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 * OMOCAT, LLC - Original author for OMORI
 * AcousticJamm - Ladder Areas Library
