@@ -75,6 +75,8 @@
 
     // Reaction messages for specific names that players may input in the naming screen.
   "namesMessages": {
+    "YOU": "[style:GONER][spacing:3.2]*croak*",
+    "KRIS": "[style:GONER][spacing:3.2]THE FUTURE IS IN\nYOUR HANDS.",
     "SUSIE": "[style:GONER][spacing:3.2]Uhhh, yeah sure.\nI guess...",
     "DESS": "[style:GONER][spacing:3.2]fat chance, lmao.",
 
