@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 23,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 11,
-  nextobjectid = 86,
+  nextobjectid = 87,
   properties = {
     ["border"] = "glow",
     ["music"] = "gimmieyourwalletmiss",
@@ -57,6 +58,7 @@ return {
       draworder = "topdown",
       id = 9,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -71,6 +73,7 @@ return {
       draworder = "topdown",
       id = 10,
       name = "objects_doors",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -103,6 +106,7 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -146,6 +150,7 @@ return {
       height = 24,
       id = 2,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -158,7 +163,7 @@ return {
         0, 0, 0, 0, 0, 467, 468, 469, 467, 468, 469, 0, 467, 468, 469, 467, 468, 469, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 473, 474, 475, 473, 474, 475, 0, 473, 474, 475, 473, 474, 475, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 479, 480, 481, 479, 480, 481, 484, 479, 480, 481, 479, 480, 481, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 298, 298, 298, 298, 298, 298, 0, 298, 298, 298, 298, 298, 298, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 413, 414, 414, 298, 298, 298, 0, 298, 298, 298, 298, 298, 298, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, 468, 469, 0,
@@ -186,7 +191,8 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      visible = false,
+      class = "",
+      visible = true,
       opacity = 0.5,
       offsetx = 0,
       offsety = 0,
@@ -199,9 +205,9 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 200,
+          x = 320,
           y = 120,
-          width = 240,
+          width = 120,
           height = 40,
           rotation = 0,
           visible = true,
@@ -409,6 +415,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -450,6 +457,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -507,7 +515,9 @@ return {
             ["text2"] = "* \"Go to code 'spamroom'! It's where all the big shots are!\"",
             ["text3"] = "* \"yo whaddup. go to 'desshere'.\"",
             ["text4"] = "* \"Want to fight boss you've prevously fought?[wait:10]\nGo to 'bossrush'!\"",
-            ["text5"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here."
+            ["text5"] = "* \"Want to meet the devs of this game? Check out 'devdiner'!\"",
+            ["text6"] = "* \"Squeak Squeak! All the maus are in 'maushole'!\"",
+            ["text7"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here."
           }
         },
         {
@@ -539,8 +549,10 @@ return {
           visible = true,
           properties = {
             ["solid"] = true,
-            ["text1"] = "* This room appears to be for rent.",
-            ["text2"] = "* But,[wait:10] you don't know how to rent it."
+            ["text1"] = "* * \"SOLD TO:[wait:10] \n[color:#f7c0e2] The Pasta Pack[color:reset]\"",
+            ["text2"] = "* The door is locked.[wait:10] You can see a little corgi through the keyhole.",
+            ["text3"] = "* Yip yip!",
+            ["text4"] = "* Maybe let's wait until the dog can let us in..."
           }
         },
         {
@@ -556,7 +568,7 @@ return {
           visible = true,
           properties = {
             ["solid"] = true,
-            ["text1"] = "* This room appears to be for rent.",
+            ["text1"] = "* SOLD",
             ["text2"] = "* But,[wait:10] you don't know how to rent it."
           }
         },
@@ -633,6 +645,20 @@ return {
           shape = "rectangle",
           x = 795,
           y = 320,
+          width = 50,
+          height = 22,
+          rotation = 0,
+          gid = 412,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 86,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 235.032,
+          y = 79.3394,
           width = 50,
           height = 22,
           rotation = 0,
