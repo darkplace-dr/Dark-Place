@@ -105,14 +105,19 @@ function Mimic:onAct(battler, name)
         self.encounter.energy = 0
         
         return "* Energy was sent to Mimic!"
-    elseif name == "Standard" then --X-Action
-        self.encounter.energy = self.encounter.energy + 5
-		return "* "..battler.chara:getName().." generated a bit of energy!"
     end
 
     -- If the act is none of the above, run the base onAct function
     -- (this handles the Check act)
     return super.onAct(self, battler, name)
+end
+
+function Mimic:onShortAct(battler, name)
+    if name == "Standard" then --X-Action
+        self.encounter.energy = self.encounter.energy + 5
+		return "* "..battler.chara:getName().." generated a bit of energy!"
+    end
+    return nil
 end
 
 function Mimic:onDefeat(damage, battler)
