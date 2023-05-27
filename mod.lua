@@ -63,10 +63,6 @@ function Mod:postInit(new_file)
 
 end
 
-
-
-
-
 function Mod:onMapMusic(map, music)
     if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
         return ""
@@ -74,12 +70,6 @@ function Mod:onMapMusic(map, music)
         return music
     end
 end
-
-
-
-
-
-
 
 function Mod:preUpdate(dt)
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
