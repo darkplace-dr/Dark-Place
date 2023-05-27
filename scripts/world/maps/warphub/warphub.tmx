@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="86">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="87">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -51,7 +51,7 @@
 0,0,0,0,0,467,468,469,467,468,469,0,467,468,469,467,468,469,0,0,0,0,0,
 0,0,0,0,0,473,474,475,473,474,475,0,473,474,475,473,474,475,0,0,0,0,0,
 0,0,0,0,0,479,480,481,479,480,481,484,479,480,481,479,480,481,0,0,0,0,0,
-0,0,0,0,0,298,298,298,298,298,298,0,298,298,298,298,298,298,0,0,0,0,0,
+0,0,0,0,0,413,414,414,298,298,298,0,298,298,298,298,298,298,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,467,468,469,0,
@@ -74,8 +74,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#0000ff" id="3" name="collision" visible="0" opacity="0.5">
-  <object id="57" x="200" y="120" width="240" height="40"/>
+ <objectgroup color="#0000ff" id="3" name="collision" opacity="0.5">
+  <object id="57" x="320" y="120" width="120" height="40"/>
   <object id="58" x="480" y="120" width="240" height="40"/>
   <object id="61" x="40" y="260" width="120" height="100"/>
   <object id="62" x="200" y="20" width="240" height="100"/>
@@ -169,5 +169,6 @@ Go to 'bossrush'!&quot;</property>
   </object>
   <object id="69" gid="398" x="400" y="360" width="120" height="120"/>
   <object id="85" gid="412" x="795" y="320" width="50" height="22"/>
+  <object id="86" gid="412" x="235.032" y="79.3394" width="50" height="22"/>
  </objectgroup>
 </map>
