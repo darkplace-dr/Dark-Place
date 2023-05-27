@@ -124,7 +124,7 @@ function GoogleDino:onAct(battler, name)
         else
             -- Text for any other character (like Noelle)
             self:addMercy(5)
-            return "* "..battler.chara:getName().." talked to the\Dino."
+            return "* "..battler.chara:getName().." talked to the Dino."
         end
     end
 
