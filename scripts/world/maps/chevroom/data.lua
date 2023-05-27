@@ -222,7 +222,10 @@ return {
           height = 75.0282,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["cutscene"] = "spamroom.warpbin",
+            ["solid"] = true
+          }
         },
         {
           id = 12,
