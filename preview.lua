@@ -10,17 +10,16 @@ function preview:init(mod, button, menu)
 	
     self.texture = ""
 
-    if love.filesystem.exists("mods/Dark-Place-main/star.png") then
+    if love.filesystem.getInfo("mods/Dark-Place-main/star.png") then
         self.texture = love.graphics.newImage("mods/Dark-Place-main/star.png")
-    elseif love.filesystem.exists("mods/Dark-Place/star.png") then
+    elseif love.filesystem.getInfo("mods/Dark-Place/star.png") then
         self.texture = love.graphics.newImage("mods/Dark-Place/star.png")
-    elseif love.filesystem.exists("mods/DarkPlacemain/star.png") then
+    elseif love.filesystem.getInfo("mods/DarkPlacemain/star.png") then
         self.texture = love.graphics.newImage("mods/DarkPlacemain/star.png")
-    elseif love.filesystem.exists("mods/DarkPlace/star.png") then
+    elseif love.filesystem.getInfo("mods/DarkPlace/star.png") then
         self.texture = love.graphics.newImage("mods/Dark-Place/star.png")
-    elseif love.filesystem.exists("mods/Dark Place/star.png") then
+    elseif love.filesystem.getInfo("mods/Dark Place/star.png") then
         self.texture = love.graphics.newImage("mods/Dark Place/star.png")
-        
     end
 
     button:setColor(1, 1, 1)
