@@ -154,7 +154,7 @@ end
 
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/bordoor")
---modRequire("scripts/main/debugsystem")
+modRequire("scripts/main/debugsystem")
 
 function Mod:getPartyMemberIfInParty(chara)
     return Game:hasPartyMember(chara) and Game:getPartyMember(chara) or nil
