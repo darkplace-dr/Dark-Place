@@ -150,6 +150,25 @@ function Mod:postUpdate()
         end
     end
     self.taunt_timer = Utils.approach(self.taunt_timer, 0, DT)
+
+    if Game.save_name == "MERG" then
+        for k, v in ipairs(Game.party) do
+           if v.health > 1 then
+              v.health = 1
+           end
+           if v.stats.health ~= 1 then
+              v.stats.health = 1
+           end
+        end
+        if Game.battle and Game.battle.soul and not Game.gameover then
+           for k, v in ipairs(Game.battle.party) do
+              if v.chara:getHealth() < v.chara:getStat("health") then
+                 Game:gameOver(Game.battle.soul:getScreenPos())
+                 break
+                end
+            end
+        end
+    end
 end
 
 modRequire("scripts/main/warp_bin")

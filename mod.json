@@ -75,6 +75,8 @@
 
     // Reaction messages for specific names that players may input in the naming screen.
   "namesMessages": {
+    "YOU": "[style:GONER][spacing:3.2]*croak*",
+    "KRIS": "[style:GONER][spacing:3.2]THE FUTURE IS IN\nYOUR HANDS.",
     "SUSIE": "[style:GONER][spacing:3.2]Uhhh, yeah sure.\nI guess...",
     "DESS": "[style:GONER][spacing:3.2]fat chance, lmao.",
 
@@ -86,7 +88,8 @@
     "SPAMTON": "[style:GONER][spacing:3.2]GET YOUR OWN [Account\nName] YOU [!@?#]!!!",
     "SOAMTON": "[style:GONER][spacing:3.2]YOU KNOW WHAT? I'LL\n[[Accept Terms &\nAgreements]] THIS TIME...",
     "MORSHU": "[style:GONER][spacing:3.2]SORRY. I CAN'T LET YOU USE\nMY NAME! COME BACK WHEN\nYOU'RE A LITTLE...\nMMMMMM...ORIGINAL!",
-	
+
+    "MERG": "[style:GONER][spacing:3.2]You will be challenged.",
     "GHASTTEAR": "[style:GONER][spacing:3.2]HOLY SHIT!!!!!\nGHAST TEAR REAL!!!!!!!!!!",
     "AMOGUS": "[style:GONER][spacing:3.2]WHEN THE LIGHT IS\nRUNNING LOW!!! :flushed:",
     "BLUE": "[style:GONER][spacing:3.2][color:blue]WHAT IS WRONG WITH YOU?\nWHY ARE YOU BLUE?",
