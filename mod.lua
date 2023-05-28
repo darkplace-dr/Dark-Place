@@ -49,9 +49,7 @@ function Mod:postInit(new_file)
         Game:setFlag("fun", love.math.random(1, 100))
         Game:setFlag("party", {"YOU", "susie"})
 
-        if Game:hasPartyMember("YOU") then
-            Game.world:startCutscene("room1", "react_to_YOU")
-        end
+        Game.world:startCutscene("_main", "introcutscene")
     end
 
     Game.isOmori = false
@@ -60,6 +58,10 @@ function Mod:postInit(new_file)
     Game.susieWarnedPlayerAboutBorDoorCode = false
 
     Game:setFlag("cloudwebStoryFlag", 0)
+
+
+
+    Game:setFlag("vesselChosen", 0)
 
 end
 

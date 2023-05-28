@@ -17,7 +17,7 @@
   "chapter": 2,
 
   // The map that you start in when first starting the mod.
-  "map": "room1",
+  "map": "nothing",
 
   // The party. The first character is the player.
   "party": [

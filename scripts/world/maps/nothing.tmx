@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="11">
+ <editorsettings>
+  <export target="nothing.lua" format="lua"/>
+ </editorsettings>
+ <objectgroup id="3" name="collision">
+  <object id="4" x="0" y="0" width="640" height="480"/>
+ </objectgroup>
+ <objectgroup id="2" name="objects"/>
+ <objectgroup id="4" name="markers">
+  <object id="5" name="spawn" x="320" y="240">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
