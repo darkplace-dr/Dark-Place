@@ -116,6 +116,23 @@ return {
         cutscene:hideNametag()
     end,
 
+    pink_ad_stall = function(cutscene, event)
+        cutscene:text("* There's a note in the front of the stall")
+        cutscene:text("\"Tea shop coming soon!\"")
+        cutscene:text("\"Brought to you by...\"")
+        cutscene:text("\"The Sweetest Pink Addison ;^)\"")
+        cutscene:text("\"- Java\"")
+
+        local susie = cutscene:getCharacter("susie")
+        if susie then
+
+            cutscene:setSpeaker(susie)
+            cutscene:showNametag("Susie")
+            cutscene:text("* Yea... sweet... heh...", "small_smile")
+            cutscene:hideNametag()
+        end
+    end,
+
     doobie = function(cutscene, event)
         if not Game:getFlag("room3_doobie") then
             return

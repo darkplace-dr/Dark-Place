@@ -29,6 +29,7 @@ return {
             cutscene:hideNametag()
         end
 
+        cutscene:setSpeaker(default)
         cutscene:showNametag("3D Toriel")
         cutscene:text("* Silence my child")
         cutscene:hideNametag()
