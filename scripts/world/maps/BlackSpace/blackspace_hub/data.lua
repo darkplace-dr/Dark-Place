@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 18,
+  nextobjectid = 21,
   properties = {
     ["music"] = "bs_entrance"
   },
@@ -18,8 +18,7 @@ return {
     {
       name = "blackspace",
       firstgid = 1,
-      filename = "../../../tilesets/blackspace.tsx",
-      exportfilename = "../../../tilesets/blackspace.lua"
+      filename = "../../../tilesets/blackspace.tsx"
     },
     {
       name = "objects",

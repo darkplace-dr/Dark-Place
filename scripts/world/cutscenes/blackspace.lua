@@ -20,5 +20,5 @@ return {
         end
         cutscene:look("down")
         cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}}))
-    end,
+    end
 }
