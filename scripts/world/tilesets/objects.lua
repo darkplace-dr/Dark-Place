@@ -1,14 +1,17 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
   name = "objects",
+  class = "",
   tilewidth = 418,
   tileheight = 725,
   spacing = 0,
   margin = 0,
   columns = 0,
   objectalignment = "unspecified",
+  tilerendersize = "tile",
+  fillmode = "stretch",
   tileoffset = {
     x = 0,
     y = 0
@@ -20,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 25,
+  tilecount = 26,
   tiles = {
     {
       id = 0,
@@ -195,6 +198,12 @@ return {
       image = "../../../assets/sprites/objects/SoldSign.png",
       width = 50,
       height = 22
+    },
+    {
+      id = 28,
+      image = "../../../assets/sprites/objects/pink_stall.png",
+      width = 59,
+      height = 83
     }
   }
 }
