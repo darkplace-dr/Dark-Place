@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="23">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="25">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -35,6 +35,7 @@
  <objectgroup color="#ff0000" id="5" name="objects_doors">
   <object id="24" name="backroomsdoor" x="204" y="144" width="72" height="94"/>
   <object id="25" name="queendoor" x="400" y="84" width="160" height="156"/>
+  <object id="24" name="tickdoor" x="625" y="64" width="170" height="174"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
   <object id="14" name="transition" x="40" y="480" width="120" height="40">

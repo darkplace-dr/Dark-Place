@@ -1,16 +1,15 @@
 return {
-  version = "1.10",
+  version = "1.4",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
-  class = "",
+  tiledversion = "1.4.3",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 48,
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 6,
-  nextobjectid = 26,
+  nextlayerid = 5,
+  nextobjectid = 25,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown"
@@ -32,13 +31,10 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -61,13 +57,10 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
@@ -155,13 +148,10 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects_doors",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
@@ -189,6 +179,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 24,
+          name = "tickdoor",
+          type = "",
+          shape = "rectangle",
+          x = 625,
+          y = 64,
+          width = 178,
+          height = 174,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -197,13 +200,10 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
@@ -277,13 +277,10 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
