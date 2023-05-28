@@ -178,18 +178,21 @@ modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/bordoor")
 modRequire("scripts/main/debugsystem")
 
-function Mod:getPartyMemberIfInParty(chara)
-    return Game:hasPartyMember(chara) and Game:getPartyMember(chara) or nil
-end
-
-function Mod:getKris()
-    local YOU = Mod:getPartyMemberIfInParty("YOU")
-    local kris = Mod:getPartyMemberIfInParty("kris")
-    return YOU or kris
-end
-
-function Mod:getKrisActor()
-    return Game.world:getCharacter(Mod:getKris().id)
+--- Returns a class of the leader of the party, either the Actor, Character or PartyMember ones
+---@param class? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
+---@return leader class A class from the leader. PartyMember by default, Character, ActorSprite or Actor is specified by the argument class
+function Mod:getLeader(class)
+    local leader = Game.party[1]
+    if class then
+        if class:lower() == "character" or class:lower() == "chara" then
+            return Game.world:getCharacter(leader.id)
+        elseif class:lower() == "sprite" or class:lower() == "actorsprite" then
+            return Game.world:getCharacter(leader.id).sprite
+        elseif class:lower() == "actor" then
+            return leader.actor
+        end
+    end
+    return leader
 end
 
 function Mod:onFootstep(char, num)

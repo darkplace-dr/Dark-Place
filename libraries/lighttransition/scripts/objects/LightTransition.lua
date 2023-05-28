@@ -76,7 +76,7 @@ function LightTransition.cutscene(cutscene, self, player)
 	local settings = self.cutsceneSettings
 	
 	local kris_only = self.kris_only
-    local kris = Mod.getKrisActor and Mod:getKrisCharacter() or cutscene:getCharacter("kris")
+    local kris = Mod:getLeader("chara")
     local susie = cutscene:getCharacter("susie")
     local ralsei = cutscene:getCharacter("ralsei")
 	
