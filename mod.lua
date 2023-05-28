@@ -92,7 +92,8 @@ function Mod:postUpdate()
     local player = Game.party[1]
 
     if Input.pressed("v", false) and Game.state == "OVERWORLD" and Game.world.menu == nil and not Game.world:hasCutscene() then
-        if player:checkArmor("pizza_toque") then
+        local player_name = (player_name_override or Game.save_name):upper()
+        if player:checkArmor("pizza_toque") or player_name == "PEPPINO" then
             if self.taunt_timer == 0 then
                 self.taunt_timer = 0.40
 				

@@ -97,6 +97,7 @@
     "PLAGUEIS": "[style:GONER][spacing:3.2]IT'S NOT A STORY THE\nLIGHTNERS WOULD TELL\nYOU...",
     "GARFZONE": "[style:GONER][spacing:3.2]GEE...SOME PEOPLE ENJOY\nA LITTLE MUSIC IN THE\nMORNING...",
     "SWALLOW": "[style:GONER][spacing:3.2]WHAT DO YOU MEAN?\nAFRICAN OR EUROPEAN?",
+    "PEPPINO": "[style:GONER][spacing:3.2]I'M NOT GONNA\nSUGARCOAT IT:\n\nDID YOU KNOW THAT\nYOU CAN BLOCK AND\n\n\nPARRY ANY PROJECTILE\nOR DAMAGE BY PRESSING \n[V] BEFORE GETTING HURT?",
   },
   // Names to disallow player from using in the naming screen.
   "namesDeny": [
