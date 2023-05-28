@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.6" name="objects" tilewidth="418" tileheight="725" tilecount="25" columns="0">
+<tileset version="1.10" tiledversion="1.10.1" name="objects" tilewidth="418" tileheight="725" tilecount="26" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -87,5 +87,8 @@
  </tile>
  <tile id="27">
   <image width="50" height="22" source="../../../assets/sprites/objects/SoldSign.png"/>
+ </tile>
+ <tile id="28">
+  <image width="59" height="83" source="../../../assets/sprites/objects/pink_stall.png"/>
  </tile>
 </tileset>
