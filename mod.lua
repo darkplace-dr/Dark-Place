@@ -12,7 +12,7 @@ function Mod:init()
     self.chars = {}
     self.chars['YOU'] = {"disappointed", "fell", "shoutoutstosimpleflips", "date", "date_flowey_4", "riot"}
     self.chars['susie'] = {"pose", "away_hand", "turn_around", "angry_down", "diagonal_kick_left_5", "shock_right"}
-    self.chars['dess'] = {"reddit_gold"}
+    self.chars['dess'] = {"reddit_gold", "sonic_adventure", "bup", "beatbox", "angreh", "oc", "paneton"}
     self.chars['kris'] = {"pose", "peace", "t_pose", "sit"}
     self.chars['berdly'] = {"fall", "nerd", "drama", "shocked", "fell"}
     self.chars['bor'] = {"pizza", "pizza_b", "kirby"}

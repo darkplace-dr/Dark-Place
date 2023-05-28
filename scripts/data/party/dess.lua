@@ -34,6 +34,11 @@ function character:init()
 	-- man idk
 	--self:addSpell("wideangle")
 	self:addSpell("starshot")
+<<<<<<< Updated upstream
+=======
+	-- Fuck it we ballin'
+	self:addSpell("starstorm")
+>>>>>>> Stashed changes
 
     -- Current health (saved to the save file)
     self.health = 120

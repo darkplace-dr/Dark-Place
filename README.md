@@ -1,6 +1,7 @@
 # Dark Place
 An open source Kristal mod that anyone can contribute to
 
+
 [Discord Server](https://discord.gg/qDPBVsX5VZ)
 
 ## Contributing
@@ -48,3 +49,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Askywalker - Original author of Starwalker party sprites
 * Discarded_Vessel - Original author of Kris LW battle sprites
 * AccurateJaney - Original author of Susie and Noelle LW battle sprites
+* ATLUS - Original authors of SMT and every single SMT spinoff ever.

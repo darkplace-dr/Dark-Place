@@ -96,7 +96,14 @@ function actor:init()
 		
         ["battle/snap"] = {0, 0},
         ["battle/spellsuper"] = {0, 0},
+        
         ["reddit_gold"] = {-20, -20},
+        ["sonic_adventure"] = {-20, -10},
+        ["bup"] = {-20, -10},
+        ["beatbox"] = {-20, -10},
+        ["angreh"] = {-20, -10},
+        ["oc"] = {-20, -10},
+        ["paneton"] = {-20, -10},
     }
 end
 

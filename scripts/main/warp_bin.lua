@@ -40,6 +40,8 @@ Mod.warp_bin_codes = {
     ["devdiner"] = { result = "devstart" },
     ["maushole"] = { result = "chevroom" },
     ["wifidown"] = { result = "googlefield" },
+    ["uwforest"] = { result = "underworld_forest/uwforest_startbin" },
+    ["seaworld"] = { result = "underwater_temple/underwater_startbin" },
 }
 
 -- heres some new totally cool helper functions wowee
@@ -68,7 +70,7 @@ function Mod:addBinCode(code, result, marker, overwrite)
     return true
 end
 
---- delets a Bin Code
+--- deletes a Bin Code
 ---@param code WarpBinCode
 ---@return boolean success false if the code doesnt exist
 function Mod:deleteBinCode(code)

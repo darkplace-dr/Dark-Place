@@ -63,8 +63,152 @@ return {
         end
         cutscene:hideNametag()
     end,
-
-
+	charshop = function(cutscene, event)
+	
+		if Game.inventory:hasItem("mistcard") then
+			cutscene:showNametag("Char")
+			cutscene:text("* Thank you lots.")
+		else
+		
+			if not Game:getFlag("gotCharQuest1") then
+				cutscene:showNametag("Char")
+				cutscene:text("* Heya there.")
+				
+				if cutscene:getCharacter("susie") then
+					cutscene:showNametag("Susie")
+					cutscene:text("* So uhh...", "neutral_side", "susie")
+					cutscene:text("* Who are you?", "neutral", "susie")
+				else
+					cutscene:hideNametag()
+					cutscene:text("* (You ask him who he is.)")
+				end
+				
+				cutscene:showNametag("Char")
+				cutscene:text("* Oh, I'm Char.[wait:10]\n* Got kicked out of the main area so now I'm in the party room.")
+				
+				if cutscene:getCharacter("dess") then
+					cutscene:showNametag("Dess")
+					cutscene:text("* Oh yo me too", "condescending", "dess")
+					cutscene:showNametag("Char")
+					cutscene:text("* ...")
+				end
+				
+				if cutscene:getCharacter("susie") then
+					cutscene:showNametag("Susie")
+					cutscene:text("* So why did you get kicked out?", "neutral", "susie")
+				else
+					cutscene:hideNametag()
+					cutscene:text("* (You asked why he got kicked out.)")
+				end
+				
+				cutscene:showNametag("Char")
+				cutscene:text("* Oh,[wait:5] I set fire to a table by accident.")
+				cutscene:text("* But to be honest...")
+				cutscene:text("* I think the decision to outright ban me was due to my part in helping to create Dess.")
+				
+				if cutscene:getCharacter("dess") then
+					cutscene:showNametag("Dess")
+					cutscene:text("* Thank ya for that", "heckyeah", "dess")
+					cutscene:showNametag("Char")
+					cutscene:text("* Yeah,[wait:5] sure,[wait:5] whatever.")
+				end
+				
+				cutscene:text("* Also by the way I'm not technically supposed to be here either.")
+				cutscene:text("* Please don't tell them I'm here.")
+				
+				if cutscene:getCharacter("susie") then
+					cutscene:showNametag("Susie")
+					cutscene:text("* Uhh,[wait:5] sure alright.", "nervous", "susie")
+					cutscene:showNametag("Char")
+				end
+				
+				
+				cutscene:text("* Anyways...")
+				
+				cutscene:text("* That reminds me.[wait:10]\n* Trouble's afoot.")
+				
+				if cutscene:getCharacter("susie") then
+					cutscene:showNametag("Susie")
+					cutscene:text("* Hm?", "neutral", "susie")
+					cutscene:showNametag("Char")
+				end
+				
+				cutscene:text("* So like... there's this big forest right?")
+				cutscene:text("* An uh,[wait:5] I was kinda just walking around in it when the fog suddenly got real dense.")
+				cutscene:text("* Then the locals started to freak the heck out,[wait:5] so I took off.")
+				cutscene:text("* I had a friend over there,[wait:5] and I don't quite like the thought of them being hurt.")
+				cutscene:text("* You guys are like,[wait:5] heroes right?[wait:10]\n* Can you go take a look at it?")
+				
+				if cutscene:getCharacter("susie") then
+					cutscene:showNametag("Susie")
+					cutscene:text("* I guess we'll see what we can do??", "neutral_side", "susie")
+				else
+					cutscene:hideNametag()
+					cutscene:text("* (You agreed without thinking about it for some reason.)")
+				end
+				
+				cutscene:showNametag("Char")
+				cutscene:text("* Great,[wait:10] you're the best.")
+				
+				cutscene:text("* Oh yeah, and [color:yellow]the code to get there is [color:blue]UWFOREST[color:reset].")
+				
+				cutscene:hideNametag()
+				Game:setFlag("gotCharQuest1", true)
+			else
+				cutscene:showNametag("Char")
+				cutscene:text("* Any updates yet?")
+				
+				if not Game:getFlag("finishedCharQuest1") then
+					
+					if cutscene:getCharacter("susie") then
+						cutscene:showNametag("Susie")
+						cutscene:text("* Nope.", "neutral", "susie")
+					else
+						cutscene:hideNametag()
+						cutscene:text("* (You explain the current status.")
+					end
+					
+					cutscene:showNametag("Char")
+					cutscene:text("* Oh,[wait:10] dang.")
+					
+				else
+					if cutscene:getCharacter("susie") then
+						cutscene:showNametag("Susie")
+						cutscene:text("* Yeah![wait:10] We fought a big ghost thing!", "surprise_smile", "susie")
+					else
+						cutscene:hideNametag()
+						cutscene:text("* (You explain the current status.")
+					end
+					
+					cutscene:showNametag("Char")
+					cutscene:text("* Oh,[wait:5] sick.")
+					cutscene:text("* Oh man,[wait:5] that must've been a lot of trouble though.")
+					cutscene:text("* Lemmie see if I have anything on me...")
+					cutscene:text("* ...[wait:10] oh,[wait:5] I see.")
+					cutscene:text("* Here, take this.")
+					
+					local canTakeCard = Game.inventory:addItem("mistcard")
+					
+					if canTakeCard then
+						cutscene:hideNametag()
+						Assets:playSound("item")
+						cutscene:text("* (You got the MistCard.)")
+						cutscene:showNametag("Char")
+						cutscene:text("* Thank you lots.")
+					else
+						cutscene:text("* ...")
+						cutscene:text("* You don't have any more room for key items??")
+						cutscene:text("* Man,[wait:5] what the hell even is this mod anymore if you accidentally see this text in-game.")
+					end
+				end
+				
+				
+			end
+		
+		end
+			
+		cutscene:hideNametag()
+	end,
 	velvet = function(cutscene, event)
         if event.interact_count == 1 then
             local velvet = cutscene:getCharacter("velvet")
@@ -258,24 +402,6 @@ return {
             local velvet = cutscene:getCharacter("velvet")
             cutscene:showNametag("Velvet")
             cutscene:setSpeaker(velvet)
-            velvet:setAnimation("pissed_talk")
-            cutscene:text("* No...", "pissed_b", "velvet")
-            velvet:resetSprite()
-            cutscene:hideNametag()
-
-
-        elseif event.interact_count == 6 then
-            local susie = cutscene:getCharacter("susie")
-            if susie then
-                cutscene:showNametag("Susie")
-                cutscene:setSpeaker(susie)
-                cutscene:text("* Squeak...", "smile")
-                cutscene:hideNametag()
-            end
-
-            local velvet = cutscene:getCharacter("velvet")
-            cutscene:showNametag("Velvet")
-            cutscene:setSpeaker(velvet)
             velvet:setAnimation("phone_look_up")
             cutscene:text("* No...", "pissed_b", "velvet")
             velvet:resetSprite()
@@ -386,9 +512,7 @@ return {
             end)
         end
     end,
-	
-	
-	dumbie = function(cutscene, event)
+	  dumbie = function(cutscene, event)
         if not Game:getFlag("dumbie_talkedto") then
             local dumbie = cutscene:getCharacter("dumbie")
             cutscene:showNametag("Dummy?")
@@ -428,7 +552,7 @@ return {
 			    cutscene:text("* But, i'm here if you change your mind.", "normal", "dumbie")
 			    cutscene:hideNametag()
             end
-		end
+		    end
     end,
     shadowshop = function(cutscene, event)
         Game:enterShop("shadowsalesman")
