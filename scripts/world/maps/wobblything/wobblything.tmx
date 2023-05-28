@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="19">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../../tilesets/castle_1f.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,51,82,82,53,0,0,0,0,0,
+0,0,0,0,0,0,51,82,82,82,82,53,0,0,0,0,
+82,82,82,82,82,82,82,82,82,82,82,82,0,0,0,0,
+82,82,82,82,82,82,82,82,82,82,82,82,0,0,0,0,
+0,0,0,0,0,0,67,82,82,82,82,69,0,0,0,0,
+0,0,0,0,0,0,0,67,82,82,69,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="2" name="collision">
+  <object id="5" x="440" y="320" width="40" height="40"/>
+  <object id="7" x="240" y="120" width="40" height="40"/>
+  <object id="8" x="280" y="80" width="160" height="40"/>
+  <object id="9" x="440" y="120" width="40" height="40"/>
+  <object id="10" x="480" y="160" width="40" height="160"/>
+  <object id="15" x="240" y="320" width="40" height="40"/>
+  <object id="16" x="280" y="360" width="160" height="40"/>
+  <object id="17" x="0" y="280" width="240" height="40"/>
+  <object id="18" x="0" y="160" width="240" height="40"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="3" name="objects">
+  <object id="11" name="wobblything" x="360" y="250">
+   <properties>
+    <property name="accurate" type="bool" value="false"/>
+    <property name="scanend" type="int" value="0"/>
+    <property name="scanstart" type="int" value="-140"/>
+   </properties>
+  </object>
+  <object id="14" name="script" x="200" y="160" width="40" height="160">
+   <properties>
+    <property name="cutscene" value="wobblything.wobblything"/>
+    <property name="once" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="4" name="markers">
+  <object id="13" name="spawn" x="0" y="240">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
