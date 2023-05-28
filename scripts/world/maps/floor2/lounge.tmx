@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="21" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="48">
+ <editorsettings>
+  <export target="lounge.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="castle"/>
+  <property name="music" value="deltarune/castletown"/>
+  <property name="name" value="Floor 2 - Lounge"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/castle_1f.tsx"/>
+ <layer id="2" name="tiles" width="21" height="16">
+  <data encoding="csv">
+55,55,55,55,55,55,55,88,99,100,101,102,103,90,55,55,55,55,55,55,55,
+55,55,55,55,55,55,55,3,91,92,93,94,95,18,55,55,55,55,55,55,55,
+88,89,89,89,89,89,90,2,107,108,109,110,111,5,88,89,89,89,89,89,89,
+54,54,54,54,54,34,5,35,123,124,125,126,127,37,3,54,22,54,54,54,54,
+12,13,14,15,16,54,5,70,73,86,84,87,73,71,2,54,12,13,14,15,16,
+28,29,30,31,32,22,18,82,66,82,82,82,82,82,3,54,28,29,30,31,32,
+54,45,46,47,38,39,5,82,82,82,82,82,82,82,3,38,39,45,46,47,4,
+20,61,62,63,20,20,21,82,82,82,82,82,82,82,19,20,36,61,62,63,20,
+82,82,82,82,82,50,82,82,82,82,82,66,82,82,82,82,82,82,82,82,82,
+82,82,68,82,82,82,82,82,82,82,82,82,82,82,82,82,82,82,52,82,82,
+82,82,82,82,82,82,82,82,66,82,82,82,82,82,82,50,82,82,82,82,82,
+3221225545,3221225545,3221225545,3221225545,3221225545,3221225545,3221225545,3221225559,82,82,82,82,52,3221225558,3221225545,3221225545,3221225545,3221225545,3221225545,3221225545,3221225545,
+89,89,89,89,89,89,90,1610612809,82,82,82,82,82,2684354633,88,89,89,89,89,89,89,
+54,54,54,54,54,54,5,1610612809,82,82,82,82,82,2684354633,3,54,54,54,54,54,54,
+54,54,22,54,54,54,18,1610612809,82,82,82,82,82,2684354633,3,54,54,22,54,54,54,
+34,54,54,54,54,54,5,1610612809,82,82,82,82,82,2684354633,2,54,54,54,54,54,34
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="4" name="collision">
+  <object id="2" x="140" y="160" width="140" height="160"/>
+  <object id="3" x="280" y="120" width="100" height="40"/>
+  <object id="4" x="560" y="160" width="140" height="160"/>
+  <object id="5" x="0" y="480" width="280" height="160"/>
+  <object id="6" x="560" y="480" width="280" height="160"/>
+  <object id="7" x="460" y="120" width="100" height="40"/>
+  <object id="30" x="0" y="160" width="60" height="160"/>
+  <object id="31" x="780" y="160" width="60" height="160"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="7" name="objects">
+  <object id="20" name="transition" x="378" y="140" width="84" height="20">
+   <properties>
+    <property name="map" value="elevator"/>
+    <property name="marker" value="spawn"/>
+   </properties>
+  </object>
+  <object id="27" x="-40" y="320" width="40" height="160"/>
+  <object id="28" x="280" y="640" width="280" height="40"/>
+  <object id="29" name="transition" x="840" y="320" width="40" height="160">
+   <properties>
+    <property name="map" value="floor2/east_wing"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="32" name="transition" x="58" y="315" width="84" height="5">
+   <properties>
+    <property name="map" value="floor2/doors_left"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="34" name="transition" x="698" y="315" width="84" height="5">
+   <properties>
+    <property name="map" value="floor2/doors_right"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="46" name="savepoint" x="400" y="380" width="40" height="40"/>
+  <object id="49" name="sprite" x="208" y="160" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="50" name="sprite" x="328" y="40" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="51" name="sprite" x="488" y="40" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+  <object id="52" name="sprite" x="608" y="160" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="objects/torch/torch"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="6" name="markers">
+  <object id="10" name="entry_elevator" x="418" y="190">
+   <point/>
+  </object>
+  <object id="45" name="entry_doorsright" x="740" y="360">
+   <point/>
+  </object>
+  <object id="47" name="entry_doorsleft" x="100" y="360">
+   <point/>
+  </object>
+  <object id="48" name="entry_east" x="800" y="400">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

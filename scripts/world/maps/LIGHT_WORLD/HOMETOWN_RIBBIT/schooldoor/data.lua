@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -15,15 +15,14 @@ return {
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
-    ["music"] = "mus_school",
+    ["music"] = "orphanage",
     ["name"] = "School"
   },
   tilesets = {
     {
-      name = "schooltiles",
+      name = "schooltiles2",
       firstgid = 1,
-      filename = "../../../../tilesets/schooltiles.tsx",
-      exportfilename = "../../../../tilesets/schooltiles.lua"
+      filename = "../../../../tilesets/schooltiles2.tsx"
     }
   },
   layers = {
@@ -138,20 +137,7 @@ return {
           shape = "rectangle",
           x = 120,
           y = 200,
-          width = 880,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 94,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1080,
-          y = 200,
-          width = 40,
+          width = 1000,
           height = 40,
           rotation = 0,
           visible = true,

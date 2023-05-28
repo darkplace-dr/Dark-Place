@@ -136,7 +136,9 @@ end
 function lib:addAchProgress(achievement, number, slient)
     local ach_obj = self:getAchievement(achievement)
 
-    ach_obj.progress = ach_obj.progress + number
+    if not ach_obj.earned then
+        ach_obj.progress = ach_obj.progress + number
+    end
     self:checkAchProgression(achievement, slient)
 end
 
@@ -171,6 +173,11 @@ function lib:completeAchievement(achievement, slient)
     if self.global then
         self:writeGlobalAchievements()
     end
+end
+
+-- Was the achievement completed?
+function lib:hasAch(achievement)
+    return self:getAchievement(achievement).earned
 end
 
 return lib

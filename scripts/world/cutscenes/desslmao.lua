@@ -74,15 +74,12 @@ return {
 		leader:explode(0, 0, true)
 		cutscene:slideTo(leader, leader.x - 700, leader.y - 50, 1)
 		cutscene:wait(1.5)
-<<<<<<< Updated upstream
-=======
-		
+
 		if #Game.party >= 4 then
 			Game:setFlag("dessRemovedLeader", Game.party[1])
 			Game:removePartyMember(Game.party[1])
 		end
 		
->>>>>>> Stashed changes
 		Game:addPartyMember("dess", 1)
 		Game.world:spawnPlayer(dess.x, dess.y, "dess")
 		dess:remove()
@@ -91,27 +88,19 @@ return {
 
 		cutscene:showNametag("Dess")
 		cutscene:text("* Ok lets go", "neutral", "dess")
-<<<<<<< Updated upstream
-		if not Mod:hasAch("starstruck") then
-=======
 		if not Kristal.libCall("achievements", "hasAch", "starstruck") then
->>>>>>> Stashed changes
-            Kristal.callEvent("completeAchievement", "starstruck")
-        end
+        Kristal.callEvent("completeAchievement", "starstruck")
+    end
 		cutscene:hideNametag()
 
 		cutscene:attachFollowers(1)
 		cutscene:interpolateFollowers()
 		cutscene:attachCamera(0.5)
 		cutscene:wait(0.5)
-<<<<<<< Updated upstream
 
-=======
-		
-		table.insert(Game:getFlag("party"), "dess")
->>>>>>> Stashed changes
 		Game:setFlag("gotDess", true)
-	end,
+		table.insert(Game:getFlag("party"), "dess")
+  end,
 
 	dessgetoverhere = function(cutscene, event)
 		if Game:getFlag("gotDess") then
@@ -369,9 +358,6 @@ return {
 			Game:setFlag("can_kill", true)
 			cutscene:hideNametag()
 		end
-<<<<<<< Updated upstream
-=======
-		
 		if Game:getFlag("dessRemovedLeader") then
 			Game:removePartyMember("dess")
 			Game:addPartyMember(Game:getFlag("dessRemovedLeader").id, 1)
@@ -379,7 +365,5 @@ return {
 			cutscene:text("* I'll be waiting for you at the diner aight?", "eyebrow", "dess")
 			cutscene:hideNametag()
 		end
-		
->>>>>>> Stashed changes
 	end,
 }

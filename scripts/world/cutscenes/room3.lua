@@ -81,7 +81,7 @@ return {
         if doobie then
             doobie:setAnimation("dance" .. svfx_suffix)
         end
-        dance_anim_rem(svfx and (9.694 * 2) or 31, true)
+        dance_anim_rem(svfx and (9.694 * 2) or 31)
 
         -- show character idle animations
         morshu.dance = false
@@ -116,6 +116,23 @@ return {
         cutscene:hideNametag()
     end,
 
+    pink_ad_stall = function(cutscene, event)
+        cutscene:text("* There's a note in the front of the stall")
+        cutscene:text("\"Tea shop coming soon!\"")
+        cutscene:text("\"Brought to you by...\"")
+        cutscene:text("\"The Sweetest Pink Addison ;^)\"")
+        cutscene:text("\"- Java\"")
+
+        local susie = cutscene:getCharacter("susie")
+        if susie then
+
+            cutscene:setSpeaker(susie)
+            cutscene:showNametag("Susie")
+            cutscene:text("* Yea... sweet... heh...", "small_smile")
+            cutscene:hideNametag()
+        end
+    end,
+
     doobie = function(cutscene, event)
         if not Game:getFlag("room3_doobie") then
             return
@@ -143,7 +160,7 @@ return {
 
         cutscene:look("down")
 
-        if not Mod:hasAch("doobie") then
+        if not Kristal.libCall("achievements", "hasAch", "doobie") then
             Kristal.callEvent("completeAchievement", "doobie")
         end
     end,
@@ -258,13 +275,16 @@ return {
                         end
                     end },
                     { id = "powerring", name = "PowerRing", price = 1000 },
+                    { id = "superscope", name = "SuperScope", price = 650},
                 }
             },
             {
                 name = "armor",
                 name_counted = "armors",
                 first_level_disp = "Armor",
-                items = {}
+                items = {
+                    {id = "leadmaker", name = "Leadmaker", price = 750}
+                }
             }
         }
 
@@ -344,10 +364,10 @@ return {
         end
 
         local item = cate.items[sndlvl_opinion]
-        --cutscene:showShop()
+        cutscene:showShop()
         onItemSelected(item)
         local buy = cutscene:choicer({ "Yes", "No" })
-        --cutscene:hideShop()
+        cutscene:hideShop()
         if buy == 2 then
             onDeclined()
             return
@@ -397,5 +417,31 @@ return {
         else
             Game.world:mapTransition("room1", "entry2")
         end
+    end,
+
+    blackdoor = function(cutscene, event)
+        cutscene:text("* A black door casts a heavy shadow...")
+        if Game.world.map.id == "room3" then
+            cutscene:text("* You feel as if this isn't what's normally here.")
+        end
+        cutscene:text("* Will you enter it?")
+
+        local choice = cutscene:choicer({"Yes", "No"})
+        if choice == 2 then
+            cutscene:text("* You doorn't.")
+            return
+        end
+
+        cutscene:text("* You opened the door...")
+        cutscene:fadeOut(2, {color = {0, 0, 0}, music = true})
+        cutscene:wait(2)
+        Game.fader.fade_color = {0, 0, 0} -- overwrite default for mapTransition
+        if Game.world.map.id == "room3" then
+            cutscene:mapTransition("BlackSpace/blackspace_hub", "entry")
+        elseif Game.world.map.id == "whitespace" then
+            cutscene:mapTransition("room3", "exit_whitespace")
+        end
+        cutscene:look("down")
+        cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}}))
     end,
 }

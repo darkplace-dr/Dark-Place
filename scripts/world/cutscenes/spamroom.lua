@@ -21,11 +21,106 @@ return {
         cutscene:text("* BIG SHOT AUTOS![wait:5] TAKE A RIDE\nAROUND TOWN IN OUR SPECIAL")
         cutscene:text("* (The rest is cut off.)")
     end,
+    cungadero = function(cutscene, event)
+        cutscene:showNametag("Cungadero Spamton")
+        cutscene:text("* Take a ride around town on our special Cungadero!", "", "cungaderospamton")
+        event:setSprite("smile")
+        cutscene:text("* Hey everybody![wait:10]\n* It's me!", "", "cungaderospamton")
+        event:setSprite("wink")
+        cutscene:text("* Everybody's favorite salseman,[wait:5] Spamton G. Spamton!", "", "cungaderospamton")
+        event:setSprite("neutral")
+        if cutscene:getCharacter("susie") then
+            cutscene:showNametag("Susie")
+            cutscene:text("* Uh,[wait:5] why is your car parked on the sidewalk?", "neutral", "susie")
+            cutscene:showNametag("Cungadero Spamton")
+            event:setSprite("wink")
+            cutscene:text("* Why,[wait:5] to show it off,[wait:5] of course!", "", "cungaderospamton")
+            event:setSprite("neutral")
+            cutscene:text("* I would of gotten here sooner if I hadn't got into traffic.", "", "cungaderospamton")
+            event:setSprite("angry")
+            cutscene:text("* WHY WAS I STUCK IN TRAFFIC?![wait:10]\n* DON'T THEY KNOW?[wait:10]\n* DON'T THEY KNOW WHO I AM?!", "", "cungaderospamton")
+            event:setSprite("sideeye")
+            cutscene:text("[noskip][speed:0.3]* ...", "", "cungaderospamton")
+            event:setSprite("wink")
+            cutscene:text("* Spamton G. Spamton,[wait:5] that's who I am!", "", "cungaderospamton")
+            event:setSprite("rage")
+            cutscene:text("* AAAAAAAAAARGH!!!", "", "cungaderospamton")
+            event:setSprite("neutral")
+        end
+        if cutscene:getCharacter("dess") then
+            cutscene:showNametag("Dess")
+            cutscene:text("* yooooo is that the uhhhhh big shot guy????", "neutral", "dess")
+            cutscene:showNametag("Cungadero Spamton")
+            event:setSprite("wink")
+            cutscene:text("* Ah,[wait:5] a loyal fan I see.", "", "cungaderospamton")
+            cutscene:showNametag("Dess")
+            cutscene:text("* who said I actually liked you lmfao", "condescending", "dess")
+            cutscene:showNametag("Cungadero Spamton")
+            event:setSprite("shock")
+            cutscene:text("[noskip][speed:0.3]* ...", "", "cungaderospamton")
+            event:setSprite("neutral")
+        end
+        if cutscene:getCharacter("brandon") then
+            cutscene:showNametag("Brandon")
+            cutscene:text("* Woah,[wait:5] it's sureal seeing you before you lost your marbles.", "neutral", "brandon")
+            cutscene:showNametag("Cungadero Spamton")
+            event:setSprite("shock")
+            cutscene:text("* Uh...[wait:10] what?", "", "cungaderospamton")
+            cutscene:showNametag("Brandon")
+            cutscene:text("* Oh,[wait:5] nothing,[wait:5] nothing!", "blush", "brandon")
+            event:setSprite("neutral")
+        end
+        event:setSprite("happy")
+        cutscene:hideNametag()
+    end,
+    velvetspam = function(cutscene, event)
+        local hour = os.date("*t").hour
+        if hour >= 21 or hour <= 8 then
+            local velvetspam = cutscene:getCharacter("velvetspam")
+            cutscene:setSpeaker(velvetspam)
+            cutscene:showNametag("Velvet!Spamton")
+            cutscene:text("* Noticed anything [[Different from the Leading Brand!]]?")
+            cutscene:text("* Well that difference is that I don't have my [specil] Blankie [TM] with me!")
+            cutscene:hideNametag()
+        else
+            local velvetspam = cutscene:getCharacter("velvetspam")
+            cutscene:setSpeaker(velvetspam)
+            cutscene:showNametag("Velvet!Spamton")
+            velvetspam:setAnimation("talk")
+            cutscene:text("* KRIS!!! So nice 2 see you! I am doing [[Easy Well-Done Beef]]!")
+            velvetspam:setAnimation("idle")
+            cutscene:hideNametag()
+            
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Actually that's not Kris...\n * It's YOU...", "nervous_side")
+                cutscene:hideNametag()
+            end
+
+            local velvetspam = cutscene:getCharacter("velvetspam")
+            cutscene:setSpeaker(velvetspam)
+            cutscene:showNametag("Velvet!Spamton")
+            velvetspam:setAnimation("talk")
+            cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * That's Kris!")
+            velvetspam:setAnimation("idle")
+            cutscene:hideNametag()
+
+            local susie = cutscene:getCharacter("susie")
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:setSpeaker(susie)
+                cutscene:text("* Nevermind then...", "annoyed")
+                cutscene:hideNametag()
+            end
+        end
+    end,
 
 	-- ┌───────────────────────┐ --
 	-- │     The Warp Bin      │ --
 	-- └───────────────────────┘ --
-	warpbin = function(cutscene, event)
+    warpbin = function(cutscene, event)
         cutscene:text("* It's the warp bin.")
         cutscene:text("* Would you like to warp?[wait:10]\n* You only need the code.")
 		

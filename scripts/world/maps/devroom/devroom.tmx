@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="64">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="44" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="68">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="music" value="greenroom"/>
-  <property name="name" value="Warp Room - Dev Diner"/>
+  <property name="name" value="Dev Diner - Dining Area"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/objects.tsx"/>
- <tileset firstgid="25" source="../../tilesets/devroom.tsx"/>
+ <tileset firstgid="29" source="../../tilesets/devroom.tsx"/>
+ <objectgroup id="6" name="objects_bg"/>
  <layer id="1" name="Tile Layer 1" width="44" height="12">
   <data encoding="csv">
-32,32,32,33,32,31,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,33,33,0,0,0,
-32,32,32,33,32,31,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,0,0,32,32,33,33,0,0,0,
-32,32,32,33,32,31,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,0,0,32,32,33,33,0,0,0,
-32,32,32,33,32,28,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,0,0,29,29,30,33,0,0,0,
-32,32,32,33,29,25,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,0,0,26,26,27,30,0,0,0,
-29,29,29,30,25,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,27,0,0,0,
-26,26,26,26,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,33,0,0,0,
-38,38,38,38,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,33,0,0,0,
-0,0,0,0,37,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,39,0,0,0,
-0,0,0,0,0,37,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,39,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+36,36,36,37,36,35,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,37,37,36,36,36,
+36,36,36,37,36,35,36,36,36,36,36,36,36,36,36,36,36,38,39,39,39,39,39,39,39,39,39,39,39,40,36,36,36,36,36,36,36,36,36,37,37,36,36,36,
+36,36,36,37,36,35,36,36,36,36,36,36,36,36,36,36,36,44,45,45,45,45,45,45,45,45,45,45,45,46,36,36,36,36,36,36,36,36,36,37,37,36,36,36,
+36,36,36,37,36,32,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,36,36,33,33,34,37,36,36,36,
+36,36,36,37,33,29,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,36,36,30,30,31,34,36,36,36,
+33,33,33,34,29,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,31,36,36,36,
+30,30,30,30,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,37,36,36,36,
+42,42,42,42,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,37,36,36,36,
+36,36,36,36,41,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,43,36,36,36,
+36,36,36,36,36,41,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,43,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36
 </data>
  </layer>
- <objectgroup id="5" name="objects_bg">
+ <objectgroup id="5" name="objects_props">
   <object id="55" gid="22" x="1400" y="166" width="80" height="120"/>
   <object id="60" gid="23" x="280" y="162" width="290" height="128"/>
  </objectgroup>
@@ -52,7 +53,12 @@
   <object id="62" x="330" y="148" width="190" height="40"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
-  <object id="25" name="transition" x="1400" y="108" width="80" height="40"/>
+  <object id="25" name="transition" x="1400" y="108" width="80" height="40">
+   <properties>
+    <property name="map" value="partyroom"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
   <object id="40" gid="21" x="760" y="280" width="100" height="70"/>
   <object id="41" gid="21" x="1000" y="280" width="100" height="70"/>
   <object id="42" gid="21" x="520" y="280" width="100" height="70"/>
@@ -71,6 +77,7 @@
   <object id="58" name="npc" x="425" y="153">
    <properties>
     <property name="actor" value="shadowsalesman"/>
+    <property name="cutscene" value="devroom.shadowshop"/>
    </properties>
    <point/>
   </object>
@@ -83,15 +90,35 @@
    </properties>
    <point/>
   </object>
+  <object id="64" name="npc" x="1119" y="180">
+   <properties>
+    <property name="actor" value="dumbie"/>
+    <property name="cutscene" value="devroom.dumbie"/>
+    <property name="flagcheck" value="!dumbie_inparty"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="65" name="npc" x="200" y="240">
+   <properties>
+    <property name="actor" value="velvet"/>
+    <property name="cutscene" value="devroom.velvet"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="67" name="npc" x="810" y="240">
+   <properties>
+    <property name="actor" value="brandon"/>
+    <property name="cond" value="Game:getFlag(&quot;brandon_inparty&quot;) and not Game:hasPartyMember(&quot;brandon&quot;)"/>
+    <property name="cutscene" value="partyroom.brandon"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="50" name="entry" x="40" y="280">
    <point/>
   </object>
   <object id="51" name="entry1" x="1440" y="180">
-   <point/>
-  </object>
-  <object id="52" name="spawn" x="40" y="280">
    <point/>
   </object>
  </objectgroup>

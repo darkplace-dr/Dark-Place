@@ -33,34 +33,38 @@ function Lib:init()
 		end
 		
 		love.graphics.setColor(PALETTE["action_health_bg"])
-		love.graphics.rectangle("fill", 118, 22 - self.actbox.data_offset, 38, 9)
+		love.graphics.rectangle("fill", 118, 22 - self.actbox.data_offset, 39, 9)
 
-		local health = (self.actbox.battler.chara.health / self.actbox.battler.chara:getStat("health")) * 38
+		local health = (self.actbox.battler.chara.health / self.actbox.battler.chara:getStat("health")) * 39
 
 		if health > 0 then
 			love.graphics.setColor(self.actbox.battler.chara:getColor())
-			love.graphics.rectangle("fill", 118, 22 - self.actbox.data_offset, health, 9)
+			love.graphics.rectangle("fill", 118, 22 - self.actbox.data_offset, math.ceil(health), 9)
 		end
 
-		if health <= 0 then
-			love.graphics.setColor(PALETTE["action_health_text_down"])
-		elseif (self.actbox.battler.chara.health <= (self.actbox.battler.chara:getStat("health") / 4)) then
-			love.graphics.setColor(PALETTE["action_health_text_low"])
-		else
-			love.graphics.setColor(PALETTE["action_health_text"])
-		end
+    local color = PALETTE["action_health_text"]
+    if health <= 0 then
+        color = PALETTE["action_health_text_down"]
+    elseif (self.actbox.battler.chara:getHealth() <= (self.actbox.battler.chara:getStat("health") / 4)) then
+        color = PALETTE["action_health_text_low"]
+    else
+        color = PALETTE["action_health_text"]
+    end
 
 		local health_offset = 0
 		health_offset = (#tostring(self.actbox.battler.chara.health) - 1) * 8
 
-		love.graphics.setFont(self.font)
 		
 		local x = parent.hp_sprite.x
 		local string_width = self.font:getWidth(tostring(self.actbox.battler.chara:getStat("health")))
 		
-		love.graphics.print(self.actbox.battler.chara.health, 112 - health_offset, 9 - self.actbox.data_offset)
-		love.graphics.print("/", 120, 9 - self.actbox.data_offset)
-		love.graphics.print(self.actbox.battler.chara:getStat("health"), 158 - string_width, 9 - self.actbox.data_offset)
+    love.graphics.setColor(color)
+    love.graphics.setFont(self.font)
+		love.graphics.print(self.actbox.battler.chara.health, 113 - health_offset, 9 - self.actbox.data_offset)
+    love.graphics.setColor(PALETTE["action_health_text"])
+		love.graphics.print("/", 121, 9 - self.actbox.data_offset)
+    love.graphics.setColor(color)
+		love.graphics.print(self.actbox.battler.chara:getStat("health"), 159 - string_width, 9 - self.actbox.data_offset)
       
       love.graphics.translate(-10, 0)
       
@@ -89,7 +93,7 @@ function Lib:init()
 		love.graphics.rectangle("fill", 2, 2, self.realWidth, 35)
 
 		if Game.battle.current_selecting == self.index then
-			local r,g,b,a = self.battler.chara:getColor()
+   local r,g,b,a = self.battler.chara:getColor()
 
 			for i = 0, 11 do
 				local siner = self.selection_siner + (i * (10 * math.pi))
@@ -298,10 +302,11 @@ function Lib:init()
 		
 		for k,v in ipairs(self.attack_boxes) do
 			-- v.head_sprite:remove()
-         v.head_sprite.height = h + 6
+         v.head_sprite.height = h + 4
 			v.bolt.height = h
 			v.fade_rect.height = v.bolt.height
 			v.realHeight = v.bolt.height
+         local b
          local name = Game:getPartyMember(v.battler.chara.id)
          for i, z in ipairs(Game.party) do
            if z == name then
@@ -427,30 +432,35 @@ function Lib:init()
       
       -- Draw health
       love.graphics.setColor(PALETTE["action_health_bg"])
-      love.graphics.rectangle("fill", 118, 24, 40, 9)
+      love.graphics.rectangle("fill", 118, 24, 39, 9)
 
-      local health = (self.chara.health / self.chara:getStat("health")) * 40
+      local health = (self.chara.health / self.chara:getStat("health")) * 39
 
       if health > 0 then
           love.graphics.setColor(self.chara:getColor())
-          love.graphics.rectangle("fill", 118, 24, health, 9)
+          love.graphics.rectangle("fill", 118, 24, math.ceil(health), 9)
       end
 
+      local color = PALETTE["action_health_text"]
       if health <= 0 then
-          love.graphics.setColor(PALETTE["action_health_text_down"])
-      elseif (self.chara.health <= (self.chara:getStat("health") / 4)) then
-          love.graphics.setColor(PALETTE["action_health_text_low"])
+          color = PALETTE["action_health_text_down"]
+      elseif (self.chara:getHealth() <= (self.chara:getStat("health") / 4)) then
+          color = PALETTE["action_health_text_low"]
       else
-          love.graphics.setColor(PALETTE["action_health_text"])
+          color = PALETTE["action_health_text"]
       end
 
       local health_offset = 0
       health_offset = (#tostring(self.chara.health) - 1) * 8
 
+
+      love.graphics.setColor(color)
       love.graphics.setFont(self.font)
-      love.graphics.print(self.chara.health, 114 - health_offset, 11)
-      love.graphics.print("/", 122, 11)
-      love.graphics.print(self.chara:getStat("health"), 160 - string_width, 11)
+      love.graphics.print(self.chara.health, 113 - health_offset, 11)
+      love.graphics.setColor(PALETTE["action_health_text"])
+      love.graphics.print("/", 121, 11)
+      love.graphics.setColor(color)
+      love.graphics.print(self.chara:getStat("health"), 159 - string_width, 11)
 
       -- Draw name text if there's no sprite
       if not self.name_sprite then
@@ -500,31 +510,54 @@ function Lib:init()
           love.graphics.setColor(Game:getSoulColor())
           love.graphics.draw(self.heart_sprite, 450, 230 + (self.main_current_selecting * 40))
       elseif self.state == "BUYMENU" then
+
+          while self.current_selecting - self.item_offset > 5 do
+              self.item_offset = self.item_offset + 1
+          end
+
+          while self.current_selecting - self.item_offset < 1 do
+              self.item_offset = self.item_offset - 1
+          end
+
+          if self.item_offset + 5 > #self.items + 1 then
+              if #self.items + 1 > 5 then
+                  self.item_offset = self.item_offset - 1
+              end
+          end
+
+          if #self.items + 1 == 5 then
+              self.item_offset = 0
+          end
+
           -- Item type (item, key, weapon, armor)
-          for i = 1, math.max(4, #self.items) do
+          for i = 1 + self.item_offset, self.item_offset + math.max(4, math.min(5, #self.items)) do
+              if i == math.max(4, #self.items) + 1 then break end
+              local y = 220 + ((i - self.item_offset) * 40)
               local item = self.items[i]
               if not item then
                   -- If the item is null, add some empty space
                   love.graphics.setColor(COLORS.dkgray)
-                  love.graphics.print("--------", 60, 220 + (i * 40))
+                  love.graphics.print("--------", 60, y)
               elseif item.options["stock"] and (item.options["stock"] <= 0) then
                   -- If we've depleted the stock, show a "sold out" message
                   love.graphics.setColor(COLORS.gray)
-                  love.graphics.print("--SOLD OUT--", 60, 220 + (i * 40))
+                  love.graphics.print("--SOLD OUT--", 60, y)
               else
                   love.graphics.setColor(item.options["color"])
-                  love.graphics.print(item.options["name"], 60, 220 + (i * 40))
+                  love.graphics.print(item.options["name"], 60, y)
                   if not self.hide_price then
                       love.graphics.setColor(COLORS.white)
-                      love.graphics.print(string.format(self.currency_text, item.options["price"] or 0), 60 + 240, 220 + (i * 40))
+                      love.graphics.print(string.format(self.currency_text, item.options["price"] or 0), 60 + 240, y)
                   end
               end
           end
           love.graphics.setColor(COLORS.white)
-          love.graphics.print("Exit", 60, 220 + ((math.max(4, #self.items) + 1) * 40))
+          if self.item_offset == math.max(4, #self.items) - 4 then
+              love.graphics.print("Exit", 60, 220 + (math.max(4, #self.items) + 1 - self.item_offset) * 40)
+          end
           love.graphics.setColor(Game:getSoulColor())
           if not self.buy_confirming then
-              love.graphics.draw(self.heart_sprite, 30, 230 + (self.current_selecting * 40))
+              love.graphics.draw(self.heart_sprite, 30, 230 + ((self.current_selecting - self.item_offset) * 40))
           else
               love.graphics.draw(self.heart_sprite, 30 + 420, 230 + 80 + 10 + (self.current_selecting_choice * 30))
               love.graphics.setColor(COLORS.white)
@@ -556,7 +589,7 @@ function Lib:init()
                   for i = 1, #Game.party do
                       local offset_x = 0
                       local offset_y = 0
-                      -- TODO: more than 3 party member support (Now supports 4 thanks to FireRainV)
+                      -- TODO: more than 3 party member support (Now supports 4)
                       if i == 1 then
                           offset_x = 0
                           offset_y = 0
@@ -613,7 +646,7 @@ function Lib:init()
 
                   if space <= 0 then
                       love.graphics.print("NO SPACE", 521, 430)
-                  else    
+                  else
                       love.graphics.print("Space:" .. space, 521, 430)
                   end
               end
@@ -694,9 +727,9 @@ function Lib:init()
                   for i = 1, max do
                       local percentage = (i - 1) / (max - 1)
                       local height = 129
-    
+
                       local draw_location = percentage * height
-    
+
                       local tocheck = self.item_current_selecting
                       if self.sell_confirming then
                           tocheck = self.current_selecting_choice
@@ -749,12 +782,12 @@ function Lib:init()
          self.state == "TALKMENU" then
           love.graphics.setColor(COLORS.white)
           love.graphics.setFont(self.font)
-          love.graphics.print(string.format(self.currency_text, Game.money), 440, 420)
+          love.graphics.print(string.format(self.currency_text, self:getMoney()), 440, 420)
       end
 
       love.graphics.setColor(0, 0, 0, self.fade_alpha)
       love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
-   end)
+     end)
 	
 	print("Loaded MoreParty")
 end

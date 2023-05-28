@@ -104,6 +104,20 @@
             "width": 1760,
             "x": 5280,
             "y": 4280
+        },
+        {
+            "fileName": "maps/partyroom.tmx",
+            "height": 720,
+            "width": 960,
+            "x": 6080,
+            "y": 3520
+        },
+        {
+            "fileName": "maps/room_prefountain.tmx",
+            "height": 2000,
+            "width": 2000,
+            "x": -500,
+            "y": -1977
         }
     ],
     "onlyShowAdjacentMaps": false,

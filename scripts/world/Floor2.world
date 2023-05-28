@@ -1,0 +1,55 @@
+{
+    "maps": [
+        {
+            "fileName": "maps/floor2/lounge.tmx",
+            "height": 640,
+            "width": 840,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "fileName": "maps/floor2/doors_left/doors_left.tmx",
+            "height": 480,
+            "width": 1920,
+            "x": -1720,
+            "y": -520
+        },
+        {
+            "fileName": "maps/floor2/doors_right/doors_right.tmx",
+            "height": 480,
+            "width": 1920,
+            "x": 640,
+            "y": -520
+        },
+        {
+            "fileName": "maps/floor2/queen.tmx",
+            "height": 480,
+            "width": 1280,
+            "x": 800,
+            "y": -1120
+        },
+        {
+            "fileName": "maps/floor2/roombor/roombor.tmx",
+            "height": 1040,
+            "width": 1200,
+            "x": -840,
+            "y": -1680
+        },
+        {
+            "fileName": "maps/floor2/lancer.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -440,
+            "y": -1040
+        },
+        {
+            "fileName": "maps/cloudwebs/cloudwebs_entrance/data.tmx",
+            "height": 1440,
+            "width": 3240,
+            "x": -840,
+            "y": -4360
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}

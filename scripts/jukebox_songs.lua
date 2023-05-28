@@ -36,11 +36,11 @@ return {
     origin = "Deltarune: The Stars"
     },
     {
-    name = "Inainaina",
+    name = "I hope it will be fine tomorrow",
     file = "inainaina",
-    composer = "Takodachi",
-    released = "???",
-    origin = "Ina"
+    composer = "shimtone (DOVA-SYNDROME)",
+    released = "August 4, 2020",
+    origin = "Ninomae Ina'nis's Intro BGM"
     },
   },
   --extra tables if you to add more songs
@@ -95,42 +95,42 @@ return {
   --table 3
   {
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "BUTTERFLY OF JUDGEMENT",
+    file = "morpho_boss",
+    composer = "BrandonK7200",
+    released = "2022",
+    origin = "Deltarune: New Connections"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Elegy for Hope (Cover)",
+    file = "mirati_bk7200cover",
+    composer = "BrandonK7200",
+    released = "2022",
+    origin = "soundcloud.com/brandonk7200"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "YOUR LOVE",
+    file = "mari_neo",
+    composer = "BrandonK7200",
+    released = "2022",
+    origin = "soundcloud.com/brandonk7200"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
-    },
-    {
-    name = "Warp Zone",
-    file = "warphub",
-    composer = "Charbomber",
+    name = "THE DARK",
+    file = "csralsei_hyperdeath",
+    composer = "BrandonK7200",
     released = "2023",
-    origin = "Dark Place"
+    origin = "Crystalseeker"
     },
     {
-    name = "Ruins (Beta)",
+    name = "IMMINENT AXECUTION",
+    file = "cssusie_battle",
+    composer = "BrandonK7200",
+    released = "2023",
+    origin = "Crystalseeker"
+    },
+    {
+    name = "Forgotten Ruins",
     file = "ruins_beta",
     composer = "Just another random user.",
     released = "2023",
@@ -226,5 +226,50 @@ return {
     released = "2023",
     origin = "Pizza Tower"
     },
-  }
+  },
+  -- table 6
+  {
+    {
+    name = "A Grain of Bread in a Grain of Sand",
+    file = "oregano_desert_secret",
+    composer = "ClascyJitto",
+    released = "2023",
+    origin = "Pizza Tower"
+    },
+    {
+    name = "Cursed Cathedral (Cover)",
+    file = "cursedcathedral_cover",
+    composer = "Just another random user.",
+    released = "2023",
+    origin = "Mario's Mystery Meat"
+    },
+    {
+    name = "Rude Buster (Repaint Mix)",
+    file = "battle_repainted",
+    composer = "Cvaxx",
+    released = "2019",
+    origin = "Deltarune: Repainted"
+    },
+    {
+    name = "Warp Zone",
+    file = "warphub",
+    composer = "Charbomber",
+    released = "2023",
+    origin = "Dark Place"
+    },
+    {
+    name = "---",
+    file = "your_song_here",
+    composer = "---",
+    released = "---",
+    origin = "---"
+    },
+    {
+    name = "---",
+    file = "your_song_here",
+    composer = "---",
+    released = "---",
+    origin = "---"
+    },
+  },
 }

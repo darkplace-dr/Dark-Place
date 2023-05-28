@@ -47,10 +47,10 @@ function character:init()
     }
 
     -- Weapon icon in equip menu
-    self.weapon_icon = "ui/menu/equip/sword"
+    self.weapon_icon = "ui/menu/equip/guitar"
 
     -- Equipment (saved to the save file)
-    self:setWeapon("slime_blade")
+    self:setWeapon("vee")
     --self:setArmor(1, "realshield")
 
     -- Default light world equipment item IDs (saves current equipment)

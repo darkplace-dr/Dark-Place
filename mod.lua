@@ -4,8 +4,6 @@ function Mod:init()
     -- Accur acy
     MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
-<<<<<<< Updated upstream
-=======
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
 	
     MUSIC_PITCHES["ruins_beta"] = 0.8
@@ -27,7 +25,7 @@ function Mod:init()
         if hour >= 21 or hour <= 8 then
             self.chars_npcs['velvetspam'] = {"pissed", "bundled", "pipis"}
         else
-            self.chars_npcs['velvetspam'] = {"day_blankie", "box"}
+            self.chars_npcs['velvetspam'] = {"day_blankie", "day_blankie_hug", "box"}
         end
     --self.chars_npcs[''] = {""}
 
@@ -35,7 +33,6 @@ function Mod:init()
     self.taunt_timer = 0
 
     self.voice_timer = 0
->>>>>>> Stashed changes
 end
 
 function Mod:registerShaders()
@@ -50,20 +47,34 @@ function Mod:postInit(new_file)
     if new_file then
         -- FUN Value
         Game:setFlag("fun", love.math.random(1, 100))
-<<<<<<< Updated upstream
-=======
         Game:setFlag("party", {"YOU", "susie"})
->>>>>>> Stashed changes
 
-        if Game:hasPartyMember("YOU") then
-            Game.world:startCutscene("room1", "react_to_YOU")
-        end
-<<<<<<< Updated upstream
-=======
+        Game.world:startCutscene("_main", "introcutscene")
     end
 
     Game.isOmori = false
+    Game:setFlag("timesUsedWrongBorDoorCode", 0)
+    Game:setFlag("BorDoorCodeUnlocked", false)
+    Game.susieWarnedPlayerAboutBorDoorCode = false
 
+    Game:setFlag("cloudwebStoryFlag", 0)
+
+
+
+    Game:setFlag("vesselChosen", 0)
+
+end
+
+function Mod:onMapMusic(map, music)
+    if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
+        return ""
+    else
+        return music
+    end
+end
+
+function Mod:preUpdate(dt)
+    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
 end
 
 function Mod:onTextSound(sound, node)
@@ -139,22 +150,59 @@ function Mod:postUpdate()
                 end
             end
         end
->>>>>>> Stashed changes
     end
     self.taunt_timer = Utils.approach(self.taunt_timer, 0, DT)
+
+    if Game.save_name == "MERG" then
+        for k, v in ipairs(Game.party) do
+           if v.health > 1 then
+              v.health = 1
+           end
+           if v.stats.health ~= 1 then
+              v.stats.health = 1
+           end
+        end
+        if Game.battle and Game.battle.soul and not Game.gameover then
+           for k, v in ipairs(Game.battle.party) do
+              if v.chara:getHealth() < v.chara:getStat("health") then
+                 Game:gameOver(Game.battle.soul:getScreenPos())
+                 break
+                end
+            end
+        end
+    end
 end
+
 modRequire("scripts/main/warp_bin")
+modRequire("scripts/main/bordoor")
 modRequire("scripts/main/debugsystem")
 
-<<<<<<< Updated upstream
+function Mod:getPartyMemberIfInParty(chara)
+    return Game:hasPartyMember(chara) and Game:getPartyMember(chara) or nil
+end
+
+function Mod:getKris()
+    local YOU = Mod:getPartyMemberIfInParty("YOU")
+    local kris = Mod:getPartyMemberIfInParty("kris")
+    return YOU or kris
+end
+
+function Mod:getKrisActor()
+    return Game.world:getCharacter(Mod:getKris().id)
+end
+
+function Mod:onFootstep(char, num)
+    if Game:getFlag("footsteps", false) then
+        if (char == Game.world.player) then
+            if num == 1 then
+                Assets.playSound("step1")
+            elseif num == 2 then
+                Assets.playSound("step2")
+            end
+        end
+    end
+end
+
 function Mod:isInRematchMode()
     return Game.world.map.id == "thearena"
 end
-=======
-modRequire("scripts/main/warp_bin")
-modRequire("scripts/main/debugsystem")
-
-function Mod:isInRematchMode()
-    return Game.world.map.id == "thearena"
-end
->>>>>>> Stashed changes

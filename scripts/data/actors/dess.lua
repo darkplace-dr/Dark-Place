@@ -90,18 +90,6 @@ function actor:init()
         ["battle/defeat"] = {0, 0},
         ["battle/hurt"] = {-9, 0},
 
-<<<<<<< Updated upstream
-		["battle/transition"] = {-4, 0},
-        ["battle/intro"] = {-4, 0},
-        ["battle/victory"] = {-8, 0},
-		
-		["battle/snap"] = {0, 0},
-		["battle/spellsuper"] = {0, 0},
-    }
-end
-
-return actor
-=======
         ["battle/transition"] = {-4, 0},
         ["battle/intro"] = {-4, 0},
         ["battle/victory"] = {-8, 0},
@@ -109,15 +97,14 @@ return actor
         ["battle/snap"] = {0, 0},
         ["battle/spellsuper"] = {0, 0},
         
-		["reddit_gold"] = {-20, -20},
-		["sonic_adventure"] = {-20, -10},
-		["bup"] = {-20, -10},
-		["beatbox"] = {-20, -10},
-		["angreh"] = {-20, -10},
-		["oc"] = {-20, -10},
-		["paneton"] = {-20, -10},
+        ["reddit_gold"] = {-20, -20},
+        ["sonic_adventure"] = {-20, -10},
+        ["bup"] = {-20, -10},
+        ["beatbox"] = {-20, -10},
+        ["angreh"] = {-20, -10},
+        ["oc"] = {-20, -10},
+        ["paneton"] = {-20, -10},
     }
 end
 
 return actor
->>>>>>> Stashed changes

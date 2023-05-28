@@ -47,6 +47,7 @@ function ShadowShop:init()
     self:registerItem("everybodyweapon", {description = "WEAPON\nA weapon for\neveryone."})
     self:registerItem("favwich")
     self:registerItem("gigasalad")
+
 	
 	-- MistCard Items
 	if Game.inventory:hasItem("mistcard") then

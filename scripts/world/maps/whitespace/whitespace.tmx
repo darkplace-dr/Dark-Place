@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="144" height="108" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="29">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="144" height="108" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="29">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="border" value="omori"/>
+  <property name="border" value="omori/omori"/>
   <property name="music" value="whitespace"/>
   <property name="name" value="WHITE SPACE"/>
  </properties>
@@ -129,7 +129,7 @@
   <object id="18" x="2950" y="2096" width="30" height="34"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
-  <object id="3" name="spawn" x="2880" y="2200">
+  <object id="3" name="spawn" x="2800" y="2000">
    <point/>
   </object>
   <object id="19" name="entry" x="2800" y="2000">
@@ -137,7 +137,7 @@
   </object>
  </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
-  <object id="4" name="whitedoor" x="2800" y="1960">
+  <object id="4" name="whitedoor_b" x="2800" y="1960">
    <point/>
   </object>
   <object id="6" name="npc" x="2800" y="2330">

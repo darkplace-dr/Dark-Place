@@ -37,14 +37,11 @@ Mod.warp_bin_codes = {
         end
     },
     ["bossrush"] = { result = "thearena" },
-<<<<<<< Updated upstream
-    ["devdiner"] = { result = "devstart" }
-=======
     ["devdiner"] = { result = "devstart" },
     ["maushole"] = { result = "chevroom" },
-	["uwforest"] = { result = "underworld_forest/uwforest_startbin" },
-	["seaworld"] = { result = "underwater_temple/underwater_startbin" },
->>>>>>> Stashed changes
+    ["wifidown"] = { result = "googlefield" },
+    ["uwforest"] = { result = "underworld_forest/uwforest_startbin" },
+    ["seaworld"] = { result = "underwater_temple/underwater_startbin" },
 }
 
 -- heres some new totally cool helper functions wowee
@@ -73,11 +70,7 @@ function Mod:addBinCode(code, result, marker, overwrite)
     return true
 end
 
-<<<<<<< Updated upstream
---- delets a Bin Code
-=======
 --- deletes a Bin Code
->>>>>>> Stashed changes
 ---@param code WarpBinCode
 ---@return boolean success false if the code doesnt exist
 function Mod:deleteBinCode(code)
@@ -86,8 +79,4 @@ function Mod:deleteBinCode(code)
     if not Mod:getBinCode(code) then return false end
     Mod.warp_bin_codes[code] = nil
     return true
-<<<<<<< Updated upstream
 end
-=======
-end
->>>>>>> Stashed changes

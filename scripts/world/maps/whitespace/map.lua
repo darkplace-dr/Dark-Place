@@ -2,6 +2,11 @@ local WhiteSpace, super = Class(Map)
 
 function WhiteSpace:onLoad()
     super.load(self)
+    Game.isOmori = true
+end
+
+function WhiteSpace:onEnter()
+    Game.isOmori = true
 end
 
 function WhiteSpace:update()
@@ -40,6 +45,10 @@ function WhiteSpace:update()
         end
     end
     super.update(self)
+end
+
+function WhiteSpace:onExit()
+    Game.isOmori = false
 end
 
 return WhiteSpace

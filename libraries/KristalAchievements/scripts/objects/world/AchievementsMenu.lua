@@ -100,8 +100,8 @@ function AchievementsMenu:draw()
 	if self.page > 1 then
 		love.graphics.draw(self.up_sprite, 470, 0, 0, 1, 1)
 	end
-    local rem = #self.achievements_sorted % self.items_per_page
-	if self.page < (#self.achievements_sorted - rem) then
+    local rem = #self.achievements % self.items_per_page
+	if self.page < (#self.achievements - rem) then
 		love.graphics.draw(self.down_sprite, 470, 262, 0, 1, 1)
 	end
 
@@ -127,8 +127,8 @@ function AchievementsMenu:onKeyPressed(key, repeatable)
         end
     end
     if Input.is("down", key) then
-        local rem = #self.achievements_sorted % self.items_per_page
-        if self.page < (#self.achievements_sorted - rem) then
+        local rem = #self.achievements % self.items_per_page
+        if self.page < (#self.achievements - rem) then
             self.page = self.page + 1
             self.ui_move:stop()
             self.ui_move:play()

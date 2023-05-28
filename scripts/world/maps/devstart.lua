@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -9,10 +10,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 18,
+  nextobjectid = 19,
   properties = {
     ["music"] = "greenroom",
-    ["name"] = "Warp Room - Dev Diner",
+    ["name"] = "Dev Diner - Spawn Point"
   },
   tilesets = {
     {
@@ -23,8 +24,7 @@ return {
     {
       name = "devroom",
       firstgid = 316,
-      filename = "../tilesets/devroom.tsx",
-      exportfilename = "../tilesets/devroom.lua"
+      filename = "../tilesets/devroom.tsx"
     },
     {
       name = "objects",
@@ -42,6 +42,7 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -51,18 +52,18 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        0, 0, 0, 322, 322, 323, 323, 323, 323, 323, 323, 323, 323, 322, 322, 323,
-        0, 0, 0, 322, 322, 323, 323, 323, 323, 323, 323, 323, 323, 322, 322, 323,
-        0, 0, 0, 322, 322, 323, 323, 323, 323, 323, 323, 323, 323, 322, 322, 323,
-        0, 0, 0, 322, 319, 320, 320, 320, 320, 320, 320, 320, 320, 322, 322, 323,
-        0, 0, 0, 319, 316, 317, 317, 317, 317, 317, 317, 317, 318, 319, 322, 323,
-        0, 0, 0, 316, 323, 323, 323, 323, 323, 323, 323, 323, 323, 318, 319, 320,
-        0, 0, 0, 322, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 317, 317,
-        0, 0, 0, 322, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 329, 329,
-        0, 0, 0, 328, 323, 323, 323, 323, 323, 323, 323, 323, 323, 330, 0, 0,
-        0, 0, 0, 0, 328, 329, 329, 329, 329, 329, 329, 329, 330, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        323, 323, 323, 322, 322, 323, 323, 323, 323, 323, 323, 323, 323, 322, 322, 323,
+        323, 323, 323, 322, 322, 325, 327, 323, 323, 323, 325, 327, 323, 322, 322, 323,
+        323, 323, 323, 322, 322, 331, 333, 323, 323, 323, 331, 333, 323, 322, 322, 323,
+        323, 323, 323, 322, 319, 320, 320, 320, 320, 320, 320, 320, 320, 322, 322, 323,
+        323, 323, 323, 319, 316, 317, 317, 317, 317, 317, 317, 317, 318, 319, 322, 323,
+        323, 323, 323, 316, 323, 323, 323, 323, 323, 323, 323, 323, 323, 318, 319, 320,
+        323, 323, 323, 322, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 317, 317,
+        323, 323, 323, 322, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 329, 329,
+        323, 323, 323, 328, 323, 323, 323, 323, 323, 323, 323, 323, 323, 330, 323, 323,
+        323, 323, 323, 323, 328, 329, 329, 329, 329, 329, 329, 329, 330, 323, 323, 323,
+        323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323,
+        323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323, 323
       }
     },
     {
@@ -73,6 +74,7 @@ return {
       height = 12,
       id = 3,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -101,6 +103,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -246,6 +249,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -287,21 +291,20 @@ return {
           }
         },
         {
-          id = 56,
+          id = 18,
           name = "savepoint",
           type = "",
           shape = "rectangle",
-          x = 140,
-          y = 276,
+          x = 200,
+          y = 280,
           width = 40,
           height = 40,
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "* While you may have not ordered anything...",
-            ["text2"] = "* The power of dev contribution fills your stomach!"
+            ["text2"] = "* The power of fine dining and breathing shines within you."
           }
-        },
+        }
       }
     },
     {
@@ -309,6 +312,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
