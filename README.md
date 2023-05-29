@@ -40,6 +40,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * RynoGG - Original author for Deltatraveler
 * atliylol - Original author for MOBDT
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
+* FireStar8903 - Made music for the Pasta Pack Shop
 * OMOCAT, LLC - Original author for OMORI
 * Ninomae Ina'nis - Creator and designer of the Takodachis
 * HAL Laboratories - Original author for Kirby
