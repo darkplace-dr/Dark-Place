@@ -51,3 +51,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Discarded_Vessel - Original author of Kris LW battle sprites
 * AccurateJaney - Original author of Susie and Noelle LW battle sprites
 * ATLUS - Original authors of SMT and every single SMT spinoff ever.
+* Findus - Creator of Croustibat

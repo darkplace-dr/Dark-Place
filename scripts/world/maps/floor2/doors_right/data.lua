@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 25,
+  nextobjectid = 26,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown"
@@ -187,7 +187,20 @@ return {
           shape = "rectangle",
           x = 625,
           y = 64,
-          width = 178,
+          width = 170,
+          height = 174,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 25,
+          name = "patatedoor",
+          type = "",
+          shape = "rectangle",
+          x = 882,
+          y = 64,
+          width = 160,
           height = 174,
           rotation = 0,
           visible = true,

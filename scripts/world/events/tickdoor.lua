@@ -15,7 +15,7 @@ function TickDoor:onInteract(player, dir)
         cutscene:text("* (There is a big note on the door.)")
         cutscene:text("* The Potassium will crush the Croustibat.\n[wait:10]- Tick")
         cutscene:text("* (There is also a smaller note on the door.)")
-        cutscene:text("* Don't worry, I'm coming back!\n[wait:10]- Again, Tick")
+        cutscene:text("* Don't worry, I'm coming back!\n[wait:10]- Again, [wait:5]Tick")
     end)
 end
 
