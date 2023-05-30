@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 26,
+  tilecount = 27,
   tiles = {
     {
       id = 0,
@@ -204,6 +204,12 @@ return {
       image = "../../../assets/sprites/objects/pink_stall.png",
       width = 59,
       height = 83
+    },
+    {
+      id = 29,
+      image = "../../../assets/sprites/objects/firstbridge.png",
+      width = 43,
+      height = 39
     }
   }
 }

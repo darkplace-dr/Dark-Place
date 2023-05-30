@@ -1,0 +1,20 @@
+{
+    "maps": [
+        {
+            "fileName": "maps/darktown_ribbit/cliffs/dark1a/dark1a.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 1280,
+            "y": 0
+        },
+        {
+            "fileName": "maps/darktown_ribbit/cliffs/dark1/dark1.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 640,
+            "y": 0
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}
