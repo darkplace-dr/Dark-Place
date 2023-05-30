@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 44,
+  nextobjectid = 43,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -80,7 +80,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 200,
@@ -93,7 +93,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 240,
@@ -106,7 +106,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 440,
@@ -119,7 +119,7 @@ return {
         {
           id = 11,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 960,
           y = 200,
@@ -132,7 +132,7 @@ return {
         {
           id = 20,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 840,
           y = 0,
@@ -145,7 +145,7 @@ return {
         {
           id = 21,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 960,
           y = 0,
@@ -174,7 +174,7 @@ return {
         {
           id = 4,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1320,
           y = 240,
@@ -190,7 +190,7 @@ return {
         {
           id = 8,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 880,
           y = 40,
@@ -206,7 +206,7 @@ return {
         {
           id = 13,
           name = "whitedoor",
-          class = "",
+          type = "",
           shape = "point",
           x = 1160,
           y = 244,
@@ -214,14 +214,12 @@ return {
           height = 0,
           rotation = 0,
           visible = true,
-          properties = {
-            ["cond"] = "Game:getFlag(\"fun\", 0) >= 5 or Game:getFlag(\"fun\", 0) == 2"
-          }
+          properties = {}
         },
         {
           id = 18,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 620,
           y = 262,
@@ -237,7 +235,7 @@ return {
         {
           id = 19,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1000,
           y = 120,
@@ -252,7 +250,7 @@ return {
         {
           id = 42,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 215.179,
@@ -260,12 +258,15 @@ return {
           height = 45.9297,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["cutscene"] = "room3.pink_ad_stall",
+            ["solid"] = true
+          }
         },
         {
           id = 22,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 340,
           y = 420,
@@ -281,7 +282,7 @@ return {
         {
           id = 23,
           name = "setflag",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 720,
           y = 240,
@@ -297,7 +298,7 @@ return {
         {
           id = 27,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 970,
           y = 180,
@@ -311,7 +312,7 @@ return {
         {
           id = 28,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 840,
           y = 260,
@@ -327,7 +328,7 @@ return {
         {
           id = 29,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 440,
           y = 262,
@@ -343,7 +344,7 @@ return {
         {
           id = 41,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 262,
@@ -353,21 +354,6 @@ return {
           gid = 89,
           visible = true,
           properties = {}
-        },
-        {
-          id = 43,
-          name = "blackdoor",
-          class = "",
-          shape = "point",
-          x = 1160,
-          y = 244,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["cond"] = "Game:getFlag(\"fun\", 0) <= 4 and Game:getFlag(\"fun\", 0) ~= 2"
-          }
         }
       }
     },
@@ -388,7 +374,7 @@ return {
         {
           id = 6,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 1280,
           y = 350,
@@ -401,7 +387,7 @@ return {
         {
           id = 7,
           name = "exit_spamroom",
-          class = "",
+          type = "",
           shape = "point",
           x = 920,
           y = 120,
@@ -414,7 +400,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1280,
           y = 350,
@@ -427,7 +413,7 @@ return {
         {
           id = 14,
           name = "exit_whitespace",
-          class = "",
+          type = "",
           shape = "point",
           x = 1160,
           y = 280,
@@ -456,7 +442,7 @@ return {
         {
           id = 24,
           name = "toggle",
-          class = "",
+          type = "",
           shape = "point",
           x = 400,
           y = 360,
