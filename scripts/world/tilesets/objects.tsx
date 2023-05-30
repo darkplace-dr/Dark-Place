@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="objects" tilewidth="418" tileheight="725" tilecount="27" columns="0">
+<tileset version="1.10" tiledversion="1.10.1" name="objects" tilewidth="418" tileheight="725" tilecount="28" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -93,5 +93,8 @@
  </tile>
  <tile id="29">
   <image width="43" height="39" source="../../../assets/sprites/objects/firstbridge.png"/>
+ </tile>
+ <tile id="31">
+  <image width="62" height="93" source="../../../assets/sprites/objects/pasta_shop_door.png"/>
  </tile>
 </tileset>
