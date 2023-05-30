@@ -41,7 +41,7 @@ function PastaShop:init()
     self:registerItem("calizonia special")
     self:registerItem("chevelour_donut")
     self:registerItem("farfalle_bowtie", {bonuses = {defense = 2}})
-    self:registerItem("corgi_plush")
+    self:registerItem("corgi_plush", {stock = 1, color = {1, 1, 1, 1}})
 
     self:registerTalk("About You")
     self:registerTalk("About Owners")
