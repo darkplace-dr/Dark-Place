@@ -107,7 +107,14 @@ function PastaShop:startTalk(talk)
     elseif talk == "About Dog" then self:startDialogue({"[emote:happy]* Bork"})
     elseif talk == "About Velvet and Chev" then
         self:startDialogue({
-            "[emote:angy]* (Looks like the dog doesn't want to repeat the message...)"
+            "[emote:angy]* (The dog pressed a button on a recorder... annoyed)",
+            "[voice:velvet]* This is a prerecorded message...",
+            "[voice:velvet]* You pressed [color:yellow]C[color:reset] didn't you?",
+            "[voice:chevelour]* A speedrunner here, huh?\n  *Squeak*",
+            "[voice:velvet]* I'm gonna repeat this again. Listen carefully...",
+            "[voice:velvet]* Wanted to expand cooking skills, Calizonia, Donuts, go order some food!",
+            "[voice:chevelour]* I swear, don't even think of skipping this text\n  *Squeak*",
+            "* (The recording stopped)"
         })
     end
 end
