@@ -41,13 +41,7 @@ return {
                 cutscene:wait(2)
             else
                 Game:addPartyMember("brandon")
-                if #Game.party >= 3 then
-                    event:convertToFollower(3)
-                elseif #Game.party == 2 then
-                    event:convertToFollower(2)
-                else
-                    event:convertToFollower(1)
-                end
+                event:convertToFollower(#Game.party)
                 cutscene:hideNametag()
                 cutscene:attachFollowers()
                 cutscene:text("* Brandon joined the party.")
@@ -512,13 +506,13 @@ return {
             end)
         end
     end,
-	  dumbie = function(cutscene, event)
+	dumbie = function(cutscene, event)
         if not Game:getFlag("dumbie_talkedto") then
             local dumbie = cutscene:getCharacter("dumbie")
             cutscene:showNametag("Dummy?")
             cutscene:text("* I'm a Dummy.", "fear", "dumbie")
 			cutscene:showNametag("Susie")
-			cutscene:text("* Uh, no you're not?", "sus_annoyed", "susie")
+			cutscene:text("* Uh, no you're not?", "sus_nervous", "susie")
 			cutscene:showNametag("Dumbie")
 			cutscene:text("* Well, your mom didn't say that!", "angryforward", "dumbie")
 			cutscene:text("* ...", "confused", "dumbie")
@@ -534,16 +528,21 @@ return {
 			if opinion == 1 then
 			    cutscene:showNametag("Dumbie")
 			    cutscene:text("* Heck yeah!", "veryhappy", "dumbie")
-			    Game:addPartyMember("dumbie")
-			    if cutscene:getCharacter("dess") then
-			        event:convertToFollower(3)
-			    else
-			        event:convertToFollower(2)
-			    end
-			    cutscene:hideNametag()
-			    cutscene:attachFollowers()
-			    cutscene:text("* Dumbie joined the party.")
-			    cutscene:wait(0.5)
+                if #Game.party >= 4 then
+                    cutscene:text("* Wait,[wait:5] you've got a full party.", "confused", "dumbie")
+                    cutscene:text("* Well I'll be in the party room if you need me.", "normal", "dumbie")
+                    cutscene:hideNametag()
+                    Assets.playSound("slidewhist")
+                    cutscene:slideTo(event, event.x, -100, 2)
+                    cutscene:wait(1)
+                else
+			        Game:addPartyMember("dumbie")
+                    event:convertToFollower(#Game.party)
+			        cutscene:hideNametag()
+			        cutscene:attachFollowers()
+			        cutscene:text("* Dumbie joined the party.")
+			        cutscene:wait(0.5)
+                end
 			    Game:setFlag("dumbie_inparty", true)
                 table.insert(Game:getFlag("party"), "dumbie")
             else
@@ -552,7 +551,7 @@ return {
 			    cutscene:text("* But, i'm here if you change your mind.", "normal", "dumbie")
 			    cutscene:hideNametag()
             end
-		    end
+		end
     end,
     shadowshop = function(cutscene, event)
         Game:enterShop("shadowsalesman")
