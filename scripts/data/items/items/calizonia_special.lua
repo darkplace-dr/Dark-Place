@@ -17,9 +17,9 @@ function item:init()
     -- Battle description
     self.effect = "Heals Party\n 50HP"
     -- Shop description
-    self.shop = "California\n BABEY!!!"
+    self.shop = "California\nBABEY!!!"
     -- Menu description
-    self.description = "An Italian-style Calzone made a Filipino rat\nliving in California. Heals Party."
+    self.description = "An Italian-style Calzone made by a Filipino rat\nliving in California. Heals Party."
 
     -- Amount healed (HealItem variable)
     self.heal_amounts = {
@@ -27,9 +27,12 @@ function item:init()
         ["susie"] = 50,
         ["ralsei"] = 50,
         ["noelle"] = 50,
+        ["berdly"] = 50,
         ["YOU"] = 50,
 		["dess"] = 50,
-        ["brandon"] = 50
+        ["brandon"] = 50,
+        ["dumbie"] = 50,
+        ["bor"] = 50
 	}
 
     -- Default shop price (sell price is halved)
