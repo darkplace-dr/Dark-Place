@@ -32,6 +32,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
 * The Winterer - Original author for Deltarune: Chapter Rewritten
+* Brylee - Original author for Deltarune: Ozymandias
 * FireRainV#1958 - MoreParty Library
 * TrashcatYT#6658 - Blue Soul Library
 * TheMaxine - Original author for Ribbit
@@ -50,5 +51,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Askywalker - Original author of Starwalker party sprites
 * Discarded_Vessel - Original author of Kris LW battle sprites
 * AccurateJaney - Original author of Susie and Noelle LW battle sprites
-* ATLUS - Original authors of SMT and every single SMT spinoff ever.
+* ATLUS - Original authors of SMT and every single SMT spinoff ever
 * Findus - Creator of Croustibat
+* Scott Cawthon - Creator of the Five Nights at Freddy's franchise
