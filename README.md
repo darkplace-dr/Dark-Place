@@ -28,6 +28,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
 * Toby Fox - Original author for Undertale and Deltarune
+* Lena Raine - Composer for "Hug for Ralsei" and "Lullaby for Lancer"
 * Sam Deluxe#0057 - X-Slash code
 * KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
