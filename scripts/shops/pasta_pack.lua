@@ -37,6 +37,11 @@ function PastaShop:init()
     -- Shown when you enter the talk menu.
     self.talk_text = "[emote:happy]* Yip!"
 
+    self.sell_options_text["items"]   = "[emote:wink] Yip!"
+    self.sell_options_text["weapons"] = "[emote:wink] Yip!"
+    self.sell_options_text["armors"]  = "[emote:wink] Yip!"
+    self.sell_options_text["storage"] = "[emote:wink] Yip!"
+
 
     self:registerItem("calizonia special")
     self:registerItem("chevelour_donut")
