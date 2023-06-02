@@ -258,18 +258,18 @@ return {
     origin = "Dark Place"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Hugs for Ralsei",
+    file = "Hugs_for_Ralsei",
+    composer = "Lena Raine",
+    released = "2018",
+    origin = "Deltarune"
     },
     {
-    name = "---",
-    file = "your_song_here",
-    composer = "---",
-    released = "---",
-    origin = "---"
+    name = "Lullaby for Lancer",
+    file = "Lullaby_for_Lancer",
+    composer = "Lena Raine",
+    released = "2018",
+    origin = "Deltarune"
     },
   },
 }
