@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="50" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="17">
+ <editorsettings>
+  <export target="devhotel1.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="greenroom"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/devroom.tsx"/>
+ <tileset firstgid="19" source="../tilesets/objects.tsx"/>
+ <tileset firstgid="51" source="../tilesets/hoteldoors.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="50" height="12">
+  <data encoding="csv">
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,1,2,8,8,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,8,8,
+8,1,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,3,8,
+8,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,
+8,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,
+8,13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,15,8,
+8,8,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,15,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="1" x="80" y="120" width="80" height="40"/>
+  <object id="2" x="40" y="160" width="40" height="40"/>
+  <object id="3" x="0" y="200" width="40" height="160"/>
+  <object id="4" x="40" y="360" width="40" height="40"/>
+  <object id="5" x="80" y="400" width="1840" height="40"/>
+  <object id="6" x="1920" y="360" width="40" height="40"/>
+  <object id="7" x="1960" y="200" width="40" height="160"/>
+  <object id="8" x="1920" y="160" width="40" height="40"/>
+  <object id="9" x="240" y="120" width="1680" height="40"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects_props">
+  <object id="10" gid="40" x="160" y="160" width="80" height="120"/>
+  <object id="14" gid="51" x="360" y="160" width="64" height="100"/>
+ </objectgroup>
+ <objectgroup id="4" name="objects">
+  <object id="11" name="transition" x="160" y="120" width="80" height="20">
+   <properties>
+    <property name="map" value="devroom"/>
+    <property name="marker" value="entry2"/>
+   </properties>
+  </object>
+  <object id="15" name="interactable" x="360" y="120" width="64" height="40">
+   <properties>
+    <property name="cutscene" value="devhotel.brandon"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="markers">
+  <object id="12" name="north" x="200" y="180">
+   <point/>
+  </object>
+  <object id="16" name="spawn" x="200" y="280">
+   <properties>
+    <property name="music" value="greenroom"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>
