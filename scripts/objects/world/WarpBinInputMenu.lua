@@ -1,4 +1,5 @@
 ---@class WarpBinInputMenu : Object
+---@field finish_cb? fun(action: WarpBinCodeInfo, raw_input: string)
 local WarpBinInputMenu, super = Class(Object)
 
 function WarpBinInputMenu:init()
@@ -27,7 +28,6 @@ function WarpBinInputMenu:init()
     self.input = {""}
     self.code_len = 8
 
-    ---@type function|nil
     self.finish_cb = nil
 
     TextInput.attachInput(self.input, {
@@ -47,7 +47,7 @@ function WarpBinInputMenu:init()
     end
     TextInput.submit_callback = function()
         if self.finish_cb then
-            self.finish_cb(Mod:getBinCode(self.input[1]))
+            self.finish_cb(Mod:getBinCode(self.input[1]), self.input[1])
         end
         Game.world:closeMenu()
     end

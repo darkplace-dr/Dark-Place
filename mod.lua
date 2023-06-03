@@ -55,14 +55,10 @@ function Mod:postInit(new_file)
     Game.isOmori = false
     Game:setFlag("timesUsedWrongBorDoorCode", 0)
     Game:setFlag("BorDoorCodeUnlocked", false)
-    Game.susieWarnedPlayerAboutBorDoorCode = false
 
     Game:setFlag("cloudwebStoryFlag", 0)
 
-
-
     Game:setFlag("vesselChosen", 0)
-
 end
 
 function Mod:onMapMusic(map, music)
@@ -175,12 +171,11 @@ function Mod:postUpdate()
 end
 
 modRequire("scripts/main/warp_bin")
-modRequire("scripts/main/bordoor")
 modRequire("scripts/main/debugsystem")
 
 --- Returns a class of the leader of the party, either the Actor, Character or PartyMember ones
 ---@param class? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
----@return leader class A class from the leader. PartyMember by default, Character, ActorSprite or Actor is specified by the argument class
+---@return PartyMember|Character|ActorSprite|Actor leader_obj A class from the leader.
 function Mod:getLeader(class)
     local leader = Game.party[1]
     if class then
@@ -196,13 +191,11 @@ function Mod:getLeader(class)
 end
 
 function Mod:onFootstep(char, num)
-    if Game:getFlag("footsteps", false) then
-        if (char == Game.world.player) then
-            if num == 1 then
-                Assets.playSound("step1")
-            elseif num == 2 then
-                Assets.playSound("step2")
-            end
+    if Game:getFlag("footsteps", false) and char == Game.world.player then
+        if num == 1 then
+            Assets.playSound("step1")
+        elseif num == 2 then
+            Assets.playSound("step2")
         end
     end
 end
