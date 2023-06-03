@@ -1,5 +1,5 @@
 function Mod:init()
-    Mod:registerShaders()
+    self:registerShaders()
 
     MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
@@ -16,19 +16,19 @@ function Mod:init()
         ['berdly'] = {"fall", "nerd", "drama", "shocked", "fell"},
         ['bor'] = {"pizza", "pizza_b", "kirby"},
         ['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"},
-        ['velvetspam'] = Mod:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
+        ['velvetspam'] = self:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
     }
 
-    self.taunt_cooldown = 0
+    self:initTaunt()
 
     self.voice_timer = 0
 end
 
 function Mod:registerShaders()
-    Mod.shaders = {}
+    self.shaders = {}
     for _,path,shader in Registry.iterScripts("shaders/") do
         assert(shader ~= nil, '"shaders/'..path..'.lua" does not return value')
-        Mod.shaders[path] = shader
+        self.shaders[path] = shader
     end
 end
 
@@ -55,62 +55,14 @@ function Mod:onMapMusic(map, music)
     end
 end
 
-function Mod:preUpdate(dt)
-    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
-end
-
-function Mod:onTextSound(sound, node)
-    if sound == "omori" then
-        if self.voice_timer == 0 then
-            local snd = Assets.playSound("voice/omori")
-            snd:setPitch(0.9 + Utils.random(0.18))
-            self.voice_timer = 1.1
-        end
-        return true
-    end
+function Mod:preUpdate()
+    self:updateVoiceTimer()
 end
 
 function Mod:postUpdate()
-    Mod.taunt_sprites['velvetspam'] = Mod:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
+    self.taunt_sprites['velvetspam'] = self:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
 
-    if
-        Game.state == "OVERWORLD" and Game.world.menu == nil and not Game.world:hasCutscene()
-        and Input.pressed("v", false)
-        and (Game.party[1]:checkArmor("pizza_toque") or Game.save_name:upper() == "PEPPINO" or Mod.let_me_taunt)
-        and self.taunt_cooldown == 0
-    then
-        self.taunt_cooldown = 0.40
-
-        Game.lock_movement = true
-        Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
-
-        for chara_id,sprites in pairs(self.taunt_sprites) do
-            local chara = Game.world:getCharacter(chara_id)
-            if not chara then
-                goto continue
-            end
-
-            chara:setSprite(Utils.pick(sprites))
-
-            -- the shine effect
-            local effect = Sprite("effects/taunteffect", 10, 15)
-            effect:setOrigin(0.5)
-            effect:setScale(0.5)
-            effect.layer = -1
-            effect:play(0.02, false, function()
-                effect:remove()
-                chara:setSprite(chara.actor.default)
-            end)
-            chara:addChild(effect)
-
-            ::continue::
-        end
-
-        Game.world.timer:after(0.2, function()
-            Game.lock_movement = false
-        end)
-    end
-    self.taunt_cooldown = Utils.approach(self.taunt_cooldown, 0, DT)
+    self:updateTaunt()
 
     if Game.save_name == "MERG" then
         for _, member in ipairs(Game.party) do
@@ -133,8 +85,24 @@ function Mod:postUpdate()
     end
 end
 
+function Mod:updateVoiceTimer()
+    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
+end
+
+function Mod:onTextSound(sound, node)
+    if sound == "omori" then
+        if self.voice_timer == 0 then
+            local snd = Assets.playSound("voice/omori")
+            snd:setPitch(0.9 + Utils.random(0.18))
+            self.voice_timer = 1.1
+        end
+        return true
+    end
+end
+
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/debugsystem")
+modRequire("scripts/main/ow_taunt")
 
 function Mod:onFootstep(char, num)
     if Game:getFlag("footsteps", false) and char == Game.world.player then
@@ -177,7 +145,7 @@ function Mod:isOmori()
 end
 
 function Mod:getUISkin()
-    if Mod:isOmori() then
+    if self:isOmori() then
         return "omori"
     end
 end
