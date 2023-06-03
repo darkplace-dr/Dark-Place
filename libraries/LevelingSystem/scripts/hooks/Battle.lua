@@ -13,7 +13,7 @@ end
 function Battle:onStateChange(old,new)
     -- Unfortunately this can't be changed in a simpler way
     if new ~= "VICTORY" then
-        super.onStateChange(self, old, new)
+        return super.onStateChange(self, old, new)
     end
 
     local result = self.encounter:beforeStateChange(old,new)
