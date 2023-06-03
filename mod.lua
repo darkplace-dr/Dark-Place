@@ -1,31 +1,25 @@
 function Mod:init()
     Mod:registerShaders()
 
-    -- Accur acy
     MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     -- taunt stuff for characters that use "walk" as their default sprite (i.e. party members and Sans)
-    self.chars = {}
-    self.chars['YOU'] = {"disappointed", "fell", "shoutoutstosimpleflips", "date", "date_flowey_4", "riot"}
-    self.chars['susie'] = {"pose", "away_hand", "turn_around", "angry_down", "diagonal_kick_left_5", "shock_right"}
-    self.chars['dess'] = {"reddit_gold", "sonic_adventure", "bup", "beatbox", "angreh", "oc", "paneton"}
-    self.chars['kris'] = {"pose", "peace", "t_pose", "sit"}
-    self.chars['berdly'] = {"fall", "nerd", "drama", "shocked", "fell"}
-    self.chars['bor'] = {"pizza", "pizza_b", "kirby"}
-    self.chars['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"}
-
-    local hour = os.date("*t").hour
-    -- taunt stuff for characters that use "idle" as their default sprite (i.e. NPCs and such)
-    self.chars_npcs = {
-        ['velvetspam'] = hour >= 21 or hour <= 8 and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
+    -- and characters that use "idle" as their default sprite (i.e. NPCs and such)
+    self.taunt_sprites = {
+        ['YOU'] = {"disappointed", "fell", "shoutoutstosimpleflips", "date", "date_flowey_4", "riot"},
+        ['susie'] = {"pose", "away_hand", "turn_around", "angry_down", "diagonal_kick_left_5", "shock_right"},
+        ['dess'] = {"reddit_gold", "sonic_adventure", "bup", "beatbox", "angreh", "oc", "paneton"},
+        ['kris'] = {"pose", "peace", "t_pose", "sit"},
+        ['berdly'] = {"fall", "nerd", "drama", "shocked", "fell"},
+        ['bor'] = {"pizza", "pizza_b", "kirby"},
+        ['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"},
+        ['velvetspam'] = Mod:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
     }
 
-    -- taunt timer
-    self.taunt_timer = 0
+    self.taunt_cooldown = 0
 
     self.voice_timer = 0
 end
@@ -44,7 +38,7 @@ function Mod:postInit(new_file)
         Game:setFlag("fun", love.math.random(1, 100))
         Game:setFlag("party", {"YOU", "susie"})
 
-        Game.world:startCutscene("_main", "introcutscene")
+        Game.world:startCutscene("introcutscene")
     end
 
     Game:setFlag("timesUsedWrongBorDoorCode", 0)
@@ -57,7 +51,7 @@ end
 
 function Mod:onMapMusic(map, music)
     if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
-        return ""
+        return nil
     end
 end
 
@@ -77,85 +71,62 @@ function Mod:onTextSound(sound, node)
 end
 
 function Mod:postUpdate()
-    local player = Game.party[1]
+    Mod.taunt_sprites['velvetspam'] = Mod:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
 
-    if Input.pressed("v", false) and Game.state == "OVERWORLD" and Game.world.menu == nil and not Game.world:hasCutscene() then
-        local player_name = (player_name_override or Game.save_name):upper()
-        if player:checkArmor("pizza_toque") or player_name == "PEPPINO" then
-            if self.taunt_timer == 0 then
-                self.taunt_timer = 0.40
-				
-                Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
+    if
+        Game.state == "OVERWORLD" and Game.world.menu == nil and not Game.world:hasCutscene()
+        and Input.pressed("v", false)
+        and (Game.party[1]:checkArmor("pizza_toque") or Game.save_name:upper() == "PEPPINO" or Mod.let_me_taunt)
+        and self.taunt_cooldown == 0
+    then
+        self.taunt_cooldown = 0.40
 
-                for chara_id,sprites in pairs(self.chars) do
-                    local chara = Game.world:getCharacter(chara_id)
-                    if chara then
-                        local effect = Sprite("effects/taunteffect", 10, 15)
+        Game.lock_movement = true
+        Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
 
-                        -- unlock player movement after taunt is finished
-                        local function onUnlock()
-                            effect:remove()
-                            Game.lock_movement = false
-                            chara:setSprite("walk")
-                        end
-
-                        -- the shine effect
-                        effect:play(0.02, false, onUnlock)
-                        effect:setOrigin(0.5)
-                        effect:setScale(0.5)
-                        effect.layer = -1
-                        chara:addChild(effect)
-
-                        if effect then
-                            Game.lock_movement = true
-                            chara:setSprite(Utils.pick(sprites))
-                        end
-                    end
-                end
-                for chara_npc_id,sprites in pairs(self.chars_npcs) do
-                    local chara_npc = Game.world:getCharacter(chara_npc_id)
-                    if chara_npc then
-                        local effect = Sprite("effects/taunteffect", 10, 15)
-
-                        -- unlock player movement after taunt is finished
-                        local function onUnlock()
-                            effect:remove()
-                            Game.lock_movement = false
-                            chara_npc:setSprite("idle")
-                        end
-
-                        -- the shine effect
-                        effect:play(0.02, false, onUnlock)
-                        effect:setOrigin(0.5)
-                        effect:setScale(0.5)
-                        effect.layer = -1
-                        chara_npc:addChild(effect)
-
-                        if effect then
-                            Game.lock_movement = true
-                            chara_npc:setSprite(Utils.pick(sprites))
-                        end
-                    end
-                end
+        for chara_id,sprites in pairs(self.taunt_sprites) do
+            local chara = Game.world:getCharacter(chara_id)
+            if not chara then
+                goto continue
             end
+
+            chara:setSprite(Utils.pick(sprites))
+
+            -- the shine effect
+            local effect = Sprite("effects/taunteffect", 10, 15)
+            effect:setOrigin(0.5)
+            effect:setScale(0.5)
+            effect.layer = -1
+            effect:play(0.02, false, function()
+                effect:remove()
+                chara:setSprite(chara.actor.default)
+            end)
+            chara:addChild(effect)
+
+            ::continue::
         end
+
+        Game.world.timer:after(0.2, function()
+            Game.lock_movement = false
+        end)
     end
-    self.taunt_timer = Utils.approach(self.taunt_timer, 0, DT)
+    self.taunt_cooldown = Utils.approach(self.taunt_cooldown, 0, DT)
 
     if Game.save_name == "MERG" then
-        for k, v in ipairs(Game.party) do
-           if v.health > 1 then
-              v.health = 1
+        for _, member in ipairs(Game.party) do
+           if member.health > 1 then
+              member.health = 1
            end
-           if v.stats.health ~= 1 then
-              v.stats.health = 1
+           if member.stats.health ~= 1 then
+              member.stats.health = 1
            end
         end
+
         if Game.battle and Game.battle.soul and not Game.gameover then
-           for k, v in ipairs(Game.battle.party) do
-              if v.chara:getHealth() < v.chara:getStat("health") then
-                 Game:gameOver(Game.battle.soul:getScreenPos())
-                 break
+           for _, member in ipairs(Game.battle.party) do
+                if member.chara:getHealth() < member.chara:getStat("health") then
+                    Game:gameOver(Game.battle.soul:getScreenPos())
+                    break
                 end
             end
         end
@@ -175,19 +146,6 @@ function Mod:onFootstep(char, num)
     end
 end
 
-function Mod:isInRematchMode()
-    return Game.world.map.id == "thearena"
-end
-
-function Mod:setOmori(omori)
-    omori = omori or false
-    self.omori = omori
-end
-
-function Mod:isOmori()
-    return self.omori
-end
-
 --- Returns a class of the leader of the party, either the Actor, Character or PartyMember ones
 ---@param class? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
 ---@return PartyMember|Character|ActorSprite|Actor leader_obj A class from the leader.
@@ -205,8 +163,26 @@ function Mod:getLeader(class)
     return leader
 end
 
+function Mod:isInRematchMode()
+    return Game.world.map.id == "thearena"
+end
+
+function Mod:setOmori(omori)
+    omori = omori or false
+    self.omori = omori
+end
+
+function Mod:isOmori()
+    return self.omori
+end
+
 function Mod:getUISkin()
     if Mod:isOmori() then
         return "omori"
     end
+end
+
+function Mod:isNight()
+    local hour = os.date("*t").hour
+    return hour >= 20 and hour <= 9
 end

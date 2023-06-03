@@ -77,7 +77,7 @@ function TauntSoul:update()
         self:flash()
         self.parry_sfx:stop()
         self.parry_sfx:play()
-        for chara_id,sprites in pairs(Mod.chars) do
+        for chara_id,sprites in pairs(Mod.taunt_sprites) do
             local chara = Game.battle:getPartyBattler(chara_id)
             if chara then
                 local effect = Sprite("effects/taunteffect", 10, 15)
