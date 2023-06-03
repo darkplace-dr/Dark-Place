@@ -6,6 +6,8 @@ function Mod:init()
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
+    self:initTaunt()
+
     -- taunt stuff for characters that use "walk" as their default sprite (i.e. party members and Sans)
     -- and characters that use "idle" as their default sprite (i.e. NPCs and such)
     self.taunt_sprites = {
@@ -18,8 +20,6 @@ function Mod:init()
         ['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"},
         ['velvetspam'] = self:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
     }
-
-    self:initTaunt()
 
     self.voice_timer = 0
 end
