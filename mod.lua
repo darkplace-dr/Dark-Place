@@ -38,14 +38,14 @@ function Mod:postInit(new_file)
         Game:setFlag("fun", love.math.random(1, 100))
         Game:setFlag("party", {"YOU", "susie"})
 
-        Game.world:startCutscene("introcutscene")
+        Game:setFlag("vesselChosen", 0)
 
         Game:setFlag("timesUsedWrongBorDoorCode", 0)
         Game:setFlag("BorDoorCodeUnlocked", false)
 
         Game:setFlag("cloudwebStoryFlag", 0)
 
-        Game:setFlag("vesselChosen", 0)
+        Game.world:startCutscene("introcutscene")
     end
 end
 
