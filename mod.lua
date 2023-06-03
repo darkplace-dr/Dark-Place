@@ -39,14 +39,14 @@ function Mod:postInit(new_file)
         Game:setFlag("party", {"YOU", "susie"})
 
         Game.world:startCutscene("introcutscene")
+
+        Game:setFlag("timesUsedWrongBorDoorCode", 0)
+        Game:setFlag("BorDoorCodeUnlocked", false)
+
+        Game:setFlag("cloudwebStoryFlag", 0)
+
+        Game:setFlag("vesselChosen", 0)
     end
-
-    Game:setFlag("timesUsedWrongBorDoorCode", 0)
-    Game:setFlag("BorDoorCodeUnlocked", false)
-
-    Game:setFlag("cloudwebStoryFlag", 0)
-
-    Game:setFlag("vesselChosen", 0)
 end
 
 function Mod:onMapMusic(map, music)
