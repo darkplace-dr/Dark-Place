@@ -152,5 +152,5 @@ end
 
 function Mod:isNight()
     local hour = os.date("*t").hour
-    return hour >= 21 and hour <= 8
+    return hour >= 21 and hour < 8
 end
