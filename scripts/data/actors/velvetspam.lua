@@ -45,11 +45,10 @@ function actor:init(x, y)
 end
 
 function actor:getSpritePath()
-    local hour = os.date("*t").hour
-    return hour <= 20 and hour >= 9 and self.path or self.path_night
+    return not Mod:isNight() and self.path or self.path_night
 end
- 
-local function updateTexture(self, sprite, night)
+
+local function updateTexture(self, sprite)
     local path_prev = sprite.path
     sprite.path = self:getSpritePath()
     local tex_name = sprite.texture_path
@@ -79,18 +78,17 @@ local function updateTexture(self, sprite, night)
     end
     sprite:updateTexture()
 end
- 
+
 function actor:onSpriteInit(sprite)
     self.night = false
 end
- 
+
 function actor:onSpriteUpdate(sprite)
-    local hour = os.date("*t").sec
     local night_bak = self.night
-    self.night = hour % 5 == 0 -- anything
- 
+    self.night = Mod:isNight()
+
     if self.night ~= night_bak then
-        updateTexture(self, sprite, self.night)
+        updateTexture(self, sprite)
     end
 end
 

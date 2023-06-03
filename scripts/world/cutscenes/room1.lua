@@ -136,8 +136,7 @@ return {
     end,
 
     blankie_wall = function(cutscene, event)
-        local hour = os.date("*t").hour
-        if hour >= 21 or hour <= 8 then
+        if Mod:isNight() then
             local blankie_wall = cutscene:getCharacter("blankie_wall")
             blankie_wall:setAnimation("blankie_wall_night")
             cutscene:text("* The wall is cracked but you can't break it right now!")
@@ -173,8 +172,7 @@ return {
     end,
 
     sans = function(cutscene, event)
-        local hour = os.date("*t").hour
-        if hour >= 21 or hour <= 8 then
+        if Mod:isNight() then
             cutscene:showNametag("Sans", {font = "sans"})
             cutscene:text("[font:sans]* hey.\n * there might be another crack on the wall here.", "neutral", "sans")
             cutscene:hideNametag()

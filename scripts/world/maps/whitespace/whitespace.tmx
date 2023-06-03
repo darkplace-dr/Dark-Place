@@ -7,6 +7,7 @@
   <property name="border" value="omori/omori"/>
   <property name="music" value="whitespace"/>
   <property name="name" value="WHITE SPACE"/>
+  <property name="omori" value="true"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/whitespace.tsx"/>
  <tileset firstgid="10" source="../../tilesets/objects.tsx"/>
