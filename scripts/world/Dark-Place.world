@@ -57,13 +57,6 @@
             "y": 3040
         },
         {
-            "fileName": "maps/room_prefountain/room_prefountain.tmx",
-            "height": 2000,
-            "width": 2000,
-            "x": -500,
-            "y": -1980
-        },
-        {
             "fileName": "maps/warphub.tmx",
             "height": 960,
             "width": 920,
@@ -113,11 +106,18 @@
             "y": 3520
         },
         {
+            "fileName": "maps/city_entry.tmx",
+            "height": 640,
+            "width": 640,
+            "x": 220,
+            "y": -657
+        },
+        {
             "fileName": "maps/room_prefountain.tmx",
             "height": 2000,
             "width": 2000,
             "x": -500,
-            "y": -1977
+            "y": -2697
         }
     ],
     "onlyShowAdjacentMaps": false,

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="44">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="44">
  <editorsettings>
-  <export target="data.lua" format="lua"/>
+  <export target="room_prefountain.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="border" value="city"/>
@@ -139,8 +139,8 @@
   </object>
   <object id="26" name="transition" x="960" y="1960" width="160" height="40">
    <properties>
-    <property name="map" value="spamroom"/>
-    <property name="marker" value="entry1"/>
+    <property name="map" value="city_entry"/>
+    <property name="marker" value="entry_2"/>
    </properties>
   </object>
   <object id="37" name="shine" x="1140" y="1860" width="20" height="20">

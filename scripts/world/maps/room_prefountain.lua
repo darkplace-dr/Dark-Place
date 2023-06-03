@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 50,
@@ -31,6 +32,7 @@ return {
       height = 50,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -100,6 +102,7 @@ return {
       height = 50,
       id = 9,
       name = "props",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -166,6 +169,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -337,6 +341,7 @@ return {
       draworder = "topdown",
       id = 7,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -372,8 +377,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "spamroom",
-            ["marker"] = "entry1"
+            ["map"] = "city_entry",
+            ["marker"] = "entry_2"
           }
         },
         {
@@ -414,6 +419,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

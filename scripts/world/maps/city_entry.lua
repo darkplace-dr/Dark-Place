@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -127,7 +127,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 180,
           y = 331,
@@ -141,7 +141,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 43,
           y = 432,
@@ -207,7 +207,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 0,
@@ -220,7 +220,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 240,
@@ -233,7 +233,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 360,
@@ -246,7 +246,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 360,
@@ -259,7 +259,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 440,
@@ -272,7 +272,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 440,
@@ -285,7 +285,7 @@ return {
         {
           id = 9,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 393.333,
@@ -298,7 +298,7 @@ return {
         {
           id = 10,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 240,
@@ -311,7 +311,7 @@ return {
         {
           id = 11,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 240,
@@ -324,7 +324,7 @@ return {
         {
           id = 12,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 0,
@@ -337,7 +337,7 @@ return {
         {
           id = 13,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 182.667,
           y = 292,
@@ -350,80 +350,12 @@ return {
         {
           id = 22,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 240,
           width = 40,
           height = 120,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 6,
-      name = "markers",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 14,
-          name = "spawn",
-          class = "",
-          shape = "point",
-          x = 320,
-          y = 360,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 16,
-          name = "entry_2",
-          class = "",
-          shape = "point",
-          x = 318.667,
-          y = 69.3333,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 17,
-          name = "entry_1",
-          class = "",
-          shape = "point",
-          x = 320,
-          y = 600,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 18,
-          name = "entry_3",
-          class = "",
-          shape = "point",
-          x = 558.667,
-          y = 301.333,
-          width = 0,
-          height = 0,
           rotation = 0,
           visible = true,
           properties = {}
@@ -447,10 +379,10 @@ return {
         {
           id = 19,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
-          y = 0,
+          y = -40,
           width = 160,
           height = 40,
           rotation = 0,
@@ -463,10 +395,10 @@ return {
         {
           id = 20,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
-          y = 600,
+          y = 640,
           width = 160,
           height = 40,
           rotation = 0,
@@ -479,7 +411,7 @@ return {
         {
           id = 23,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 240,
@@ -491,6 +423,74 @@ return {
             ["text1"] = "* Cognitive distortion can be seen in the distance.",
             ["text2"] = "* You should return later."
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "markers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 14,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 320,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 16,
+          name = "entry_2",
+          type = "",
+          shape = "point",
+          x = 318.667,
+          y = 69.3333,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 17,
+          name = "entry_1",
+          type = "",
+          shape = "point",
+          x = 320,
+          y = 600,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 18,
+          name = "entry_3",
+          type = "",
+          shape = "point",
+          x = 558.667,
+          y = 301.333,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }
