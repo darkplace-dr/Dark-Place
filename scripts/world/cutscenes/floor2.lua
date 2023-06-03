@@ -132,22 +132,32 @@ return {
             return
         end
 
-        cutscene:text("* The door is locked.")
-        cutscene:text("* It seems to have some kind of cryptic password.")
-        cutscene:text("* Would you like to enter a code? It might be correct.")
+        local timesusedthisshid = Game:getFlag("timesUsedWrongBorDoorCode", 0)
+        if timesusedthisshid < 1 then
+            cutscene:text("* The door is locked.")
+            cutscene:text("* It seems to have some kind of cryptic password.")
+            cutscene:text("* Would you like to enter a code? It might be correct.")
+        else
+            cutscene:text("* The door is locked. Enter a code?")
+        end
 
         if cutscene:choicer({ "Yes", "No" }) == 2 then
             return
         end
 
         if cutscene:getCharacter("bor") then
-            cutscene:text("* Hey, blud.", "happy", "bor")
-            cutscene:text("* You should try entering \"ISUCKASS\".", "look_side", "bor")
-            cutscene:text("* I bet it will surely work\n[wait:0.5s]    and stuff", "troll", "bor")
+            if timesusedthisshid < 1 then
+                cutscene:text("* Hey, blud.", "happy", "bor")
+                cutscene:text("* You should try entering \"ISUCKASS\".", "look_side", "bor")
+                cutscene:text("* I bet it will surely work\n[wait:0.5s]    and stuff", "troll", "bor")
+            else
+                cutscene:text("* Try entering \"ISUCKASS\"", "troll", "bor")
+            end
         end
 
         cutscene:after(function()
             local menu = WarpBinInputMenu()
+            menu.as_warp_bin_ui = false
             menu.finish_cb = function(action, raw_input)
                 Game.world:startCutscene("floor2", "bordoor_part2", event, raw_input:lower() == "isuckass")
             end

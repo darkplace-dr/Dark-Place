@@ -28,6 +28,7 @@ function WarpBinInputMenu:init()
     self.input = {""}
     self.code_len = 8
 
+    self.as_warp_bin_ui = true
     self.finish_cb = nil
 
     TextInput.attachInput(self.input, {
@@ -47,7 +48,7 @@ function WarpBinInputMenu:init()
     end
     TextInput.submit_callback = function()
         if self.finish_cb then
-            self.finish_cb(Mod:getBinCode(self.input[1]), self.input[1])
+            self.finish_cb(self.as_warp_bin_ui and Mod:getBinCode(self.input[1]), self.input[1])
         end
         Game.world:closeMenu()
     end
