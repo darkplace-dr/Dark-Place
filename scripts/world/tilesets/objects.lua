@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   name = "objects",
   class = "",
   tilewidth = 418,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 28,
+  tilecount = 33,
   tiles = {
     {
       id = 0,
@@ -216,6 +216,36 @@ return {
       image = "../../../assets/sprites/objects/pasta_shop_door.png",
       width = 62,
       height = 93
+    },
+    {
+      id = 32,
+      image = "../../../assets/sprites/objects/cybercity/alley_dumpster_empty.png",
+      width = 116,
+      height = 128
+    },
+    {
+      id = 33,
+      image = "../../../assets/sprites/objects/cybercity/dumpster_closed.png",
+      width = 116,
+      height = 118
+    },
+    {
+      id = 34,
+      image = "../../../assets/sprites/objects/cybercity/dumpster_open.png",
+      width = 116,
+      height = 128
+    },
+    {
+      id = 35,
+      image = "../../../assets/sprites/objects/cybercity/dumpster1.png",
+      width = 116,
+      height = 118
+    },
+    {
+      id = 36,
+      image = "../../../assets/sprites/objects/cybercity/dumpster2.png",
+      width = 116,
+      height = 118
     }
   }
 }

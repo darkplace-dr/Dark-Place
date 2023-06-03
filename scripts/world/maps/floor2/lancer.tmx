@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="44">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="44">
  <editorsettings>
   <export target="lancer.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="music" value="deltarune/castletown"/>
  </properties>
- <tileset firstgid="1" source="../../../../../CastleTownPlus/scripts/world/tilesets/cctiles.tsx"/>
+ <tileset firstgid="1" source="../../tilesets/cctiles.tsx"/>
  <tileset firstgid="145" source="../../tilesets/cc_throneroom_tiles.tsx"/>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data encoding="csv">

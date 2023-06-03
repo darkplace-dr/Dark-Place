@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 53,
+  nextobjectid = 55,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -187,19 +187,6 @@ return {
       parallaxy = 1,
       properties = {},
       objects = {
-        {
-          id = 1,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 40,
-          y = 80,
-          width = 520,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
         {
           id = 2,
           name = "",
@@ -498,6 +485,32 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 53,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 40,
+          y = 80,
+          width = 219.996,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 54,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 339.997,
+          y = 80,
+          width = 220.003,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -679,7 +692,7 @@ return {
           type = "",
           shape = "rectangle",
           x = 258,
-          y = 122,
+          y = 110,
           width = 84,
           height = 5,
           rotation = 0,

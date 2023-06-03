@@ -51,7 +51,7 @@ return {
         cutscene:wait(0.1)
         gonerText("NOW.[wait:20]")
         cutscene:wait(0.5)
-        gonerText("WE MAY...[wait:40]\"PROCEED\".[wait:20]\n(GET IT? LOL!!)[wait:20]")
+        gonerText("WE MAY...[wait:40]\"PROCEED\".[wait:20]\n(GET IT? LMAO)[wait:20]")
         cutscene:wait(0.5)
 
         soul:hide()

@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -18,13 +18,13 @@ return {
     {
       name = "cctiles",
       firstgid = 1,
-      filename = "../../../../../CastleTownPlus/scripts/world/tilesets/cctiles.tsx"
+      filename = "../../tilesets/cctiles.tsx",
+      exportfilename = "../../tilesets/cctiles.lua"
     },
     {
       name = "cc_throneroom_tiles",
       firstgid = 145,
-      filename = "../../tilesets/cc_throneroom_tiles.tsx",
-      exportfilename = "../../tilesets/cc_throneroom_tiles.lua"
+      filename = "../../tilesets/cc_throneroom_tiles.tsx"
     }
   },
   layers = {

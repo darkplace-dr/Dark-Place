@@ -55,8 +55,57 @@ function lib:postInit()
             orig(self)
         end
     end)
+    
+    -- My horribly failed attempt at making the animated heads
+    
+    --[[]
 
+    Utils.hook(DarkMenuPartySelect, "init", function(orig, self, x, y)
 
+        self.drawnPartyFrame = 1
+
+        orig(self)
+    end)
+
+    Utils.hook(DarkMenuPartySelect, "draw", function(orig, self)
+        for i,party in ipairs(Game.party) do
+            if self.selected_party ~= i then
+                love.graphics.setColor(1, 1, 1, 0.4)
+            else
+                love.graphics.setColor(1, 1, 1, 1)
+            end
+            local ox, oy = party:getMenuIconOffset()
+            local partytexture = Assets.getFrames(party:getMenuIcon()) or Assets.getTexture(party:getMenuIcon())
+            --[[
+            if type(partytexture) == "string" then
+                Draw.draw(partytexture, (i-1)*50 + (ox*2), oy*2, 0, 2, 2)
+            else
+                self.drawnPartyIcon = 1
+                Game.world.timer:every(0.25, function()
+                    if self.drawnPartyFrame == 1 then
+                        --Draw.draw(partytexture[1], (i-1)*50 + (ox*2), oy*2, 0, 2, 2)
+                        print(partytexture)
+                        print(partytexture[1])
+                        self.drawnPartyFrame = 2
+                    else
+                        --Draw.draw(partytexture[2], (i-1)*50 + (ox*2), oy*2, 0, 2, 2)
+                        self.drawnPartyFrame = 1
+                    end
+                end)
+            end
+            --]
+            Sprite(partytexture, (i-1)*50 + (ox*2), oy*2, 6, 6)
+            --love.graphics.draw
+        end
+        if self.focused then
+            local frames = Assets.getFrames("player/heart_harrows")
+            love.graphics.setColor(Game:getSoulColor())
+            Draw.draw(frames[(math.floor(self.heart_siner/20)-1)%#frames+1], (self.selected_party-1)*50 + 10, -18)
+        end
+        --orig(self)
+    end)
+
+    --]]
 
     Utils.hook(DarkEquipMenu, "drawAbilityPreview", function(orig, self, index, x, y, abilities, compare)
         local party = self.party:getSelected()

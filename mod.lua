@@ -2,11 +2,16 @@ function Mod:init()
     Mod:registerShaders()
 
     -- Accur acy
-    MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
 	
     MUSIC_PITCHES["ruins_beta"] = 0.8
+
+    MUSIC_VOLUMES["cybercity"] = 0.8
+    MUSIC_PITCHES["cybercity"] = 0.97
+
+    MUSIC_VOLUMES["cybercity_alt"] = 0.8
+    MUSIC_PITCHES["cybercity_alt"] = 1.2
     
     -- taunt stuff for characters that use "walk" as their default sprite (i.e. party members and Sans)
     self.chars = {}
@@ -48,6 +53,9 @@ function Mod:postInit(new_file)
         -- FUN Value
         Game:setFlag("fun", love.math.random(1, 100))
         Game:setFlag("party", {"YOU", "susie"})
+        
+        Game:setFlag("weird", false)
+        Game:setFlag("weirdEnemiesKilled", 0)
 
         Game.world:startCutscene("_main", "introcutscene")
     end
@@ -68,6 +76,8 @@ end
 function Mod:onMapMusic(map, music)
     if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
         return ""
+    elseif Game:getFlag("weird") and music == "cybercity" then
+        return "cybercity_alt"
     else
         return music
     end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="objects" tilewidth="418" tileheight="725" tilecount="28" columns="0">
+<tileset version="1.10" tiledversion="1.10.0" name="objects" tilewidth="418" tileheight="725" tilecount="33" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -96,5 +96,20 @@
  </tile>
  <tile id="31">
   <image width="62" height="93" source="../../../assets/sprites/objects/pasta_shop_door.png"/>
+ </tile>
+ <tile id="32">
+  <image width="116" height="128" source="../../../assets/sprites/objects/cybercity/alley_dumpster_empty.png"/>
+ </tile>
+ <tile id="33">
+  <image width="116" height="118" source="../../../assets/sprites/objects/cybercity/dumpster_closed.png"/>
+ </tile>
+ <tile id="34">
+  <image width="116" height="128" source="../../../assets/sprites/objects/cybercity/dumpster_open.png"/>
+ </tile>
+ <tile id="35">
+  <image width="116" height="118" source="../../../assets/sprites/objects/cybercity/dumpster1.png"/>
+ </tile>
+ <tile id="36">
+  <image width="116" height="118" source="../../../assets/sprites/objects/cybercity/dumpster2.png"/>
  </tile>
 </tileset>

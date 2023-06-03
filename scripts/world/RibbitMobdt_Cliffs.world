@@ -13,6 +13,27 @@
             "width": 640,
             "x": 640,
             "y": 0
+        },
+        {
+            "fileName": "maps/darktown_ribbit/cliffs/dark2/dark2.tmx",
+            "height": 520,
+            "width": 3640,
+            "x": 1960,
+            "y": 0
+        },
+        {
+            "fileName": "maps/darktown_ribbit/town/town.tmx",
+            "height": 1160,
+            "width": 640,
+            "x": 10120,
+            "y": 1280
+        },
+        {
+            "fileName": "maps/darktown_ribbit/castle_front.tmx",
+            "height": 1000,
+            "width": 1000,
+            "x": 9920,
+            "y": 240
         }
     ],
     "onlyShowAdjacentMaps": false,

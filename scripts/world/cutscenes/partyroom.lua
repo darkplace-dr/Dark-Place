@@ -111,6 +111,7 @@ return {
                 cutscene:text("* You talking about platonic ones,[wait:5] or romantic ones?", "neutral", "brandon")
                 opinion = cutscene:choicer({"Platonic", "Romantic"})
                 if opinion == 1 then
+
                     cutscene:text("* Alright well first off there's Velvet.", "neutral", "brandon")
                     cutscene:text("* She's pretty cool,[wait:5] and her art is really cute.", "happy", "brandon")
                     cutscene:text("* They're even helping me out with one of my AUs!", "happy_b", "brandon")
@@ -120,6 +121,18 @@ return {
                     cutscene:text("* The swaps are based on the weapons they give.", "neutral", "brandon")
                     cutscene:text("* So for example Ralsei swaps with Spamton.", "happy", "brandon")
                     cutscene:text("* The name of the AU is Crystalseeker!", "happy_b", "brandon")
+
+                    cutscene:text("* Next up is Bor.", "happy", "brandon")
+                    cutscene:text("* He's,[wait:0.1s] um,[wait:0.1s] certainly someone interesting.", "happy_side", "brandon")
+                    cutscene:text("* He runs a shop near the Banana Alley.[wait:0.1s] I help out there sometimes.", "happy_b", "brandon")
+                    cutscene:text("* He's also helping out on Crystalseeker.[wait:0.1s] He made the OST cover, actually.", "happy_b", "brandon")
+                    cutscene:text("* He's pretty cool,[wait:5] and he's actually working on his own fangame.", "happy", "brandon")
+                    cutscene:text("* It's an AU where Susie wakes up as Kris is about to create the chapter 3 f-[wait:1s]", "grin", "brandon")
+                    cutscene:text("* ...Yeah?", "nervous", "susie")
+                    cutscene:text("* Nothing,[wait:5] haha.[wait:0.2s] Almost just broke the whole timeline just now.[wait:0.2s] Oops", "heyyy", "brandon")
+                    cutscene:text("* Anyway, you can probably find him somewhere around here.", "happy", "brandon")
+                    cutscene:text("* He might want to join your party aswell.", "happy", "brandon")
+
                     cutscene:text("* Anyways next up is JARU.", "happy", "brandon")
                     cutscene:text("* Before you ask,[wait:5] he's not THAT Jaru.", "neutral", "brandon")
                     cutscene:text("* He runs this diner.", "happy_side", "brandon")
@@ -130,6 +143,7 @@ return {
                     cutscene:text("* I've got some other friends too,[wait:5] but uh...", "neutral", "brandon")
                     cutscene:text("* They're not here at the moment.", "neutral_side", "brandon")
                     cutscene:text("* I'll tell you about them when they arrive though!", "happy_b", "brandon")
+
                 elseif opinion == 2 then
                     cutscene:text("* Ah,[wait:5] alright then.", "happy", "brandon")
                     cutscene:text("* I'm in a relationship with two people.", "happy_side", "brandon")

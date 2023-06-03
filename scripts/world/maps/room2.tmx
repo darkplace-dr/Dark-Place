@@ -178,22 +178,7 @@
   <object id="8" name="entry" x="40" y="360">
    <point/>
   </object>
-  <object id="17" name="you" x="728" y="924">
-   <point/>
-  </object>
-  <object id="18" name="susie" x="675" y="924">
-   <point/>
-  </object>
-  <object id="19" name="dess" x="681.333" y="902">
-   <point/>
-  </object>
-  <object id="20" name="kris" x="722" y="902">
-   <point/>
-  </object>
-  <object id="21" name="noone" x="721.667" y="945.667">
-   <point/>
-  </object>
-  <object id="23" name="ralsei" x="680.375" y="945.625">
+  <object id="17" name="spawne" x="700" y="920">
    <point/>
   </object>
  </objectgroup>

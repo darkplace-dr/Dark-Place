@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,31 +10,22 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 24,
+  nextobjectid = 26,
   properties = {
     ["border"] = "city",
     ["music"] = "mementos/mementos"
   },
   tilesets = {
     {
-      name = "alley_animated",
-      firstgid = 1,
-      filename = "../tilesets/alley_animated.tsx"
-    },
-    {
       name = "city_alleyway",
-      firstgid = 37,
-      filename = "../tilesets/city_alleyway.tsx"
+      firstgid = 1,
+      filename = "../tilesets/city_alleyway.tsx",
+      exportfilename = "../tilesets/city_alleyway.lua"
     },
     {
       name = "street_edges",
-      firstgid = 352,
+      firstgid = 316,
       filename = "../tilesets/street_edges.tsx"
-    },
-    {
-      name = "alley",
-      firstgid = 562,
-      filename = "../tilesets/alley.tsx"
     }
   },
   layers = {
@@ -56,22 +47,22 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        296, 296, 296, 296, 296, 822, 87, 164, 164, 91, 295, 296, 296, 296, 296, 296,
-        296, 296, 296, 296, 296, 297, 102, 164, 164, 106, 295, 296, 296, 296, 296, 296,
-        851, 311, 311, 311, 311, 851, 87, 164, 164, 91, 311, 311, 311, 311, 311, 311,
-        851, 851, 851, 851, 851, 312, 102, 164, 164, 106, 311, 311, 311, 311, 311, 311,
-        851, 851, 851, 851, 851, 327, 87, 164, 164, 91, 311, 311, 311, 311, 311, 311,
-        866, 866, 866, 866, 866, 866, 102, 164, 164, 106, 340, 341, 341, 341, 341, 341,
-        807, 72, 73, 74, 73, 74, 132, 164, 164, 136, 137, 137, 137, 137, 137, 137,
-        822, 173, 164, 164, 164, 164, 164, 164, 164, 181, 183, 184, 183, 184, 183, 184,
-        822, 158, 164, 164, 164, 164, 164, 193, 195, 196, 198, 199, 198, 199, 198, 199,
-        822, 173, 164, 164, 164, 164, 164, 208, 210, 226, 805, 806, 806, 806, 806, 806,
-        822, 188, 190, 191, 190, 191, 192, 223, 225, 211, 820, 825, 825, 825, 825, 825,
-        806, 806, 806, 806, 806, 807, 207, 238, 195, 211, 820, 825, 825, 825, 825, 825,
-        825, 825, 825, 825, 825, 822, 222, 208, 210, 226, 820, 825, 825, 825, 825, 825,
-        825, 825, 825, 825, 825, 822, 237, 223, 225, 211, 820, 825, 825, 825, 825, 825,
-        825, 825, 825, 825, 825, 822, 222, 238, 240, 226, 820, 825, 825, 825, 825, 825,
-        825, 825, 825, 825, 825, 822, 237, 239, 239, 241, 820, 825, 825, 825, 825, 825
+        260, 260, 260, 260, 260, 261, 51, 128, 128, 55, 259, 260, 260, 260, 260, 260,
+        260, 260, 260, 260, 260, 261, 66, 128, 128, 70, 259, 260, 260, 260, 260, 260,
+        290, 290, 290, 290, 290, 291, 51, 128, 128, 55, 275, 275, 275, 275, 275, 275,
+        275, 275, 275, 275, 275, 276, 66, 128, 128, 70, 275, 275, 275, 275, 275, 275,
+        290, 290, 290, 290, 290, 291, 51, 128, 128, 55, 275, 275, 275, 275, 275, 275,
+        305, 305, 305, 305, 305, 306, 66, 128, 128, 70, 304, 305, 305, 305, 305, 305,
+        246, 36, 37, 38, 37, 38, 96, 128, 128, 100, 101, 101, 101, 101, 101, 101,
+        261, 137, 128, 128, 128, 128, 128, 128, 128, 145, 147, 148, 147, 148, 147, 148,
+        261, 122, 128, 128, 128, 128, 128, 157, 159, 160, 162, 163, 162, 163, 162, 163,
+        261, 137, 128, 128, 128, 128, 128, 172, 174, 190, 244, 245, 245, 245, 245, 245,
+        261, 152, 154, 155, 154, 155, 156, 187, 189, 175, 259, 260, 260, 260, 260, 260,
+        245, 245, 245, 245, 245, 246, 171, 202, 159, 175, 259, 260, 260, 260, 260, 260,
+        260, 260, 260, 260, 260, 261, 186, 172, 174, 190, 259, 260, 260, 260, 260, 260,
+        260, 260, 260, 260, 260, 261, 201, 187, 189, 175, 259, 260, 260, 260, 260, 260,
+        260, 260, 260, 260, 260, 261, 186, 202, 204, 190, 259, 260, 260, 260, 260, 260,
+        260, 260, 260, 260, 260, 261, 201, 203, 203, 205, 259, 260, 260, 260, 260, 260
       }
     },
     {
@@ -127,28 +118,28 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 180,
           y = 331,
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 265,
+          gid = 229,
           visible = true,
           properties = {}
         },
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 43,
           y = 432,
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 265,
+          gid = 229,
           visible = true,
           properties = {}
         }
@@ -178,9 +169,9 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 265, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 265, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 265, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 229, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 229, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 229, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -207,7 +198,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 0,
@@ -220,7 +211,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 240,
@@ -233,7 +224,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 360,
@@ -246,7 +237,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 360,
@@ -259,7 +250,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 440,
@@ -272,7 +263,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 440,
@@ -283,22 +274,9 @@ return {
           properties = {}
         },
         {
-          id = 9,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 40,
-          y = 393.333,
-          width = 36,
-          height = 46.6667,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 10,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 240,
@@ -311,7 +289,7 @@ return {
         {
           id = 11,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 240,
@@ -324,7 +302,7 @@ return {
         {
           id = 12,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 0,
@@ -335,27 +313,40 @@ return {
           properties = {}
         },
         {
-          id = 13,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 182.667,
-          y = 292,
-          width = 33.3333,
-          height = 33.3333,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 22,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 240,
           width = 40,
           height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 24,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 188,
+          y = 309,
+          width = 24,
+          height = 20,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 25,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 51,
+          y = 410,
+          width = 24,
+          height = 20,
           rotation = 0,
           visible = true,
           properties = {}
@@ -379,7 +370,7 @@ return {
         {
           id = 14,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 360,
@@ -392,10 +383,10 @@ return {
         {
           id = 16,
           name = "entry_2",
-          class = "",
+          type = "",
           shape = "point",
-          x = 318.667,
-          y = 69.3333,
+          x = 320,
+          y = 80,
           width = 0,
           height = 0,
           rotation = 0,
@@ -405,7 +396,7 @@ return {
         {
           id = 17,
           name = "entry_1",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 600,
@@ -418,10 +409,10 @@ return {
         {
           id = 18,
           name = "entry_3",
-          class = "",
+          type = "",
           shape = "point",
-          x = 558.667,
-          y = 301.333,
+          x = 550,
+          y = 300,
           width = 0,
           height = 0,
           rotation = 0,
@@ -447,10 +438,10 @@ return {
         {
           id = 19,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
-          y = 0,
+          y = -20,
           width = 160,
           height = 40,
           rotation = 0,
@@ -463,10 +454,10 @@ return {
         {
           id = 20,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
-          y = 600,
+          y = 620,
           width = 160,
           height = 40,
           rotation = 0,
@@ -479,7 +470,7 @@ return {
         {
           id = 23,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 240,

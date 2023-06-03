@@ -32,14 +32,14 @@
             "fileName": "maps/floor2/roombor/roombor.tmx",
             "height": 1040,
             "width": 1200,
-            "x": -840,
-            "y": -1680
+            "x": -440,
+            "y": -1640
         },
         {
             "fileName": "maps/floor2/lancer.tmx",
             "height": 480,
             "width": 640,
-            "x": -440,
+            "x": -680,
             "y": -1040
         },
         {

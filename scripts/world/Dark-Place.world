@@ -17,16 +17,16 @@
         {
             "fileName": "maps/room3/room3.tmx",
             "height": 480,
-            "width": 1120,
-            "x": -180,
+            "width": 1320,
+            "x": -380,
             "y": 544
         },
         {
             "fileName": "maps/spamroom.tmx",
             "height": 480,
-            "width": 2160,
-            "x": -1140,
-            "y": 24
+            "width": 1480,
+            "x": -460,
+            "y": 60
         },
         {
             "fileName": "maps/spamgolor_alley.tmx",
@@ -59,9 +59,9 @@
         {
             "fileName": "maps/room_prefountain/room_prefountain.tmx",
             "height": 2000,
-            "width": 2000,
-            "x": -500,
-            "y": -1980
+            "width": 1040,
+            "x": 20,
+            "y": -2580
         },
         {
             "fileName": "maps/warphub.tmx",
@@ -113,11 +113,39 @@
             "y": 3520
         },
         {
-            "fileName": "maps/room_prefountain.tmx",
-            "height": 2000,
-            "width": 2000,
-            "x": -500,
-            "y": -1977
+            "fileName": "maps/nothing.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 3420,
+            "y": 4983
+        },
+        {
+            "fileName": "maps/familymap.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -1540,
+            "y": -1610
+        },
+        {
+            "fileName": "maps/cybercity/alley2/alley2.tmx",
+            "height": 1600,
+            "width": 4000,
+            "x": -4540,
+            "y": -1060
+        },
+        {
+            "fileName": "maps/cybercity/alley1.tmx",
+            "height": 480,
+            "width": 840,
+            "x": -1820,
+            "y": 580
+        },
+        {
+            "fileName": "maps/city_entry.tmx",
+            "height": 640,
+            "width": 640,
+            "x": 220,
+            "y": -580
         }
     ],
     "onlyShowAdjacentMaps": false,
