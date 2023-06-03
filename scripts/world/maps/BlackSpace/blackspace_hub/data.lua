@@ -12,7 +12,8 @@ return {
   nextlayerid = 6,
   nextobjectid = 21,
   properties = {
-    ["music"] = "bs_entrance"
+    ["music"] = "bs_entrance",
+    ["omori"] = "true"
   },
   tilesets = {
     {

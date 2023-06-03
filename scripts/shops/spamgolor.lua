@@ -67,7 +67,7 @@ function SpamgolorShop:startTalk(talk)
         self:startDialogue({
             "[voice:spamgolor][emote:neutral]* WHY DO YOU BRING UP THAT [[Copyright Infringement]]?!",
             "[voice:spamgolor][emote:glitch]* HE STOLE MY ENTIRE [[Gimmick]] I TELL YOU!",
-            "[voice:spamgolor]* BEFORE HE CAME ALONG,[wait:5] I WAS A [[Number1RatedSalesman2007]]!",
+            "[voice:spamgolor]* BEFORE HE CAME ALONG,[wait:5] I WAS A [[Number1RatedSalesman2011]]!",
             "[voice:spamgolor]* AND NOW?[wait:10] I'M...",
             "[voice:spamgolor][emote:static]* ... A nobody...",
             "[voice:spamgolor][emote:glitch]* HE STOLE MY SPOTLIGHT!",

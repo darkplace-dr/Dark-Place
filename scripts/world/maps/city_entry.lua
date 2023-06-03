@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -274,6 +274,19 @@ return {
           properties = {}
         },
         {
+          id = 9,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 40,
+          y = 393.333,
+          width = 36,
+          height = 46.6667,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
           id = 10,
           name = "",
           type = "",
@@ -308,6 +321,19 @@ return {
           y = 0,
           width = 0,
           height = 240,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 13,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 182.667,
+          y = 292,
+          width = 33.3333,
+          height = 33.3333,
           rotation = 0,
           visible = true,
           properties = {}
@@ -356,6 +382,70 @@ return {
     {
       type = "objectgroup",
       draworder = "topdown",
+      id = 7,
+      name = "Objects",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 19,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = -40,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "room_prefountain",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 20,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 640,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "spamroom",
+            ["marker"] = "entry1"
+          }
+        },
+        {
+          id = 23,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 240,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text1"] = "* Cognitive distortion can be seen in the distance.",
+            ["text2"] = "* You should return later."
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
       id = 6,
       name = "markers",
       class = "",
@@ -385,8 +475,8 @@ return {
           name = "entry_2",
           type = "",
           shape = "point",
-          x = 320,
-          y = 80,
+          x = 318.667,
+          y = 69.3333,
           width = 0,
           height = 0,
           rotation = 0,
@@ -411,77 +501,13 @@ return {
           name = "entry_3",
           type = "",
           shape = "point",
-          x = 550,
-          y = 300,
+          x = 558.667,
+          y = 301.333,
           width = 0,
           height = 0,
           rotation = 0,
           visible = true,
           properties = {}
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 7,
-      name = "Objects",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 19,
-          name = "transition",
-          type = "",
-          shape = "rectangle",
-          x = 240,
-          y = -20,
-          width = 160,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["map"] = "room_prefountain",
-            ["marker"] = "entry"
-          }
-        },
-        {
-          id = 20,
-          name = "transition",
-          type = "",
-          shape = "rectangle",
-          x = 240,
-          y = 620,
-          width = 160,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["map"] = "spamroom",
-            ["marker"] = "entry1"
-          }
-        },
-        {
-          id = 23,
-          name = "interactable",
-          type = "",
-          shape = "rectangle",
-          x = 560,
-          y = 240,
-          width = 40,
-          height = 120,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["text1"] = "* Cognitive distortion can be seen in the distance.",
-            ["text2"] = "* You should return later."
-          }
         }
       }
     }

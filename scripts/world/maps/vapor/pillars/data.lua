@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 28,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 25,
+  nextobjectid = 27,
   properties = {
     ["border"] = "vaporwave",
     ["music"] = "forest"
@@ -28,6 +29,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -42,6 +44,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects_glass",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -73,6 +76,7 @@ return {
       height = 28,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -117,6 +121,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -327,6 +332,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -366,6 +372,22 @@ return {
             ["map"] = "vapor/secretarea1",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 25,
+          name = "npc",
+          type = "",
+          shape = "rectangle",
+          x = 100,
+          y = 630,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "fommt",
+            ["cutscene"] = "vapor.fommt"
+          }
         }
       }
     },
@@ -374,6 +396,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -402,6 +425,19 @@ return {
           shape = "point",
           x = 1080,
           y = 800,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 26,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 160,
+          y = 650,
           width = 0,
           height = 0,
           rotation = 0,

@@ -1,4 +1,33 @@
 return {
+    fommt = function(cutscene, event)
+        if not Game:getFlag("fommt_save") then
+            cutscene:showNametag("Fommt")
+            cutscene:text("* Hee hee hee...[wait:5]\n* Shall I help you SAVE?")
+            cutscene:text("* I have enough power to let you SAVE at least once!")
+            cutscene:hideNametag()
+            cutscene:text("* (Would you like to SAVE?)")
+            if cutscene:choicer({"Save", "Do Not"}) == 1 then
+                Game.world.music:fade(0, 0.5)
+                cutscene:wait(1)
+                Assets.playSound("save")
+
+                cutscene:wait(0.5)
+                Game:saveQuick(Game.world.player:getPosition())
+                cutscene:text("* You saved your game.[wait:2].[wait:2].[wait:5]somehow.")
+
+                Game.world.music:fade(1, 0.5)
+                cutscene:showNametag("Fommt")
+                cutscene:text("* Hee hee hee!")
+                cutscene:hideNametag()
+				
+                Game:setFlag("fommt_save", true)
+            end
+        else
+            cutscene:showNametag("Fommt")
+            cutscene:text("* Hee hee hee!")
+            cutscene:hideNametag()
+        end
+    end,
     bb = function(cutscene, event)
         cutscene:playSound(Utils.pick({
             "bb_hi",
@@ -49,4 +78,43 @@ return {
             cutscene:hideNametag()
         end
     end,
+    rook = function(cutscene, event)
+        --local rook = cutscene:getCharacter("rook")
+
+        cutscene:showNametag("Rook")
+        cutscene:text("* Well,[wait:5] LOOK who it iz...", "lookback", "rook")
+        cutscene:text("* If it izn't the LIGHTNERZ!", "browraise", "rook")
+        cutscene:text("* Been a while,[wait:5] hazn't it, Amigooze?", "smug", "rook")
+
+        cutscene:showNametag("Susie")		
+        cutscene:text("* ...", "suspicious", "susie")
+        cutscene:text("* Uh,[wait:3] I'm sorry, but who the hell are you?", "sus_nervous", "susie")
+
+        cutscene:showNametag("Rook")
+        cutscene:text("* WHO AM I?!", "browraise", "rook")
+        cutscene:text("* C'mon DAWG, don't act like you don't know me!", "smug", "rook")
+        cutscene:text("* We were bout to have a\nFIGHT and everything!![react:1]", "grin", "rook", {
+            reactions = {
+                {"At leazt until SHE showed up...", "mid", "bottom", "frown", "rook"}
+            },
+        })
+		
+        cutscene:text("* Izn't that right, No-Goze and Done-zo?", "smug", "rook")
+
+        local nodeface = NodeFace{
+            dz = dz,
+            ng = ng,
+        }
+
+        cutscene:showNametag("NG & DZ")
+        cutscene:text("[func:nodeface,dz] Mhm[wait:15]\n[func:nodeface,ng] Couldn't have put it better myself, Bossman!!", {
+            --top = true,
+
+            functions = {
+                nodeface = nodeface,
+            }
+        })
+		
+        cutscene:hideNametag()
+	end
 }

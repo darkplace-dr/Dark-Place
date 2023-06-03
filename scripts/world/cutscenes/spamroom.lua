@@ -74,8 +74,7 @@ return {
         cutscene:hideNametag()
     end,
     velvetspam = function(cutscene, event)
-        local hour = os.date("*t").hour
-        if hour >= 21 or hour <= 8 then
+        if Mod:isNight() then
             local velvetspam = cutscene:getCharacter("velvetspam")
             cutscene:setSpeaker(velvetspam)
             cutscene:showNametag("Velvet!Spamton")
