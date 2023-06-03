@@ -83,9 +83,12 @@ function WarpBinInputMenu:draw()
 end
 
 function WarpBinInputMenu:close()
-    TextInput.endInput()
     Game.world.menu = nil
     self:remove()
+end
+
+function WarpBinInputMenu:onRemove()
+    TextInput.endInput()
 end
 
 return WarpBinInputMenu
