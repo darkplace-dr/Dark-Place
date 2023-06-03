@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="54" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="30">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="54" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="30">
+ <editorsettings>
+  <export target="spamroom.lua" format="lua"/>
+ </editorsettings>
  <properties>
   <property name="music" value="spamton_battle_eb"/>
  </properties>
@@ -125,6 +128,7 @@
   <object id="28" name="npc" x="1520" y="390">
    <properties>
     <property name="actor" value="velvetspam"/>
+    <property name="cutscene" value="spamroom.velvetspam"/>
    </properties>
    <point/>
   </object>
