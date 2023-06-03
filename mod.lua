@@ -5,9 +5,9 @@ function Mod:init()
     MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-	
+
     MUSIC_PITCHES["ruins_beta"] = 0.8
-    
+
     -- taunt stuff for characters that use "walk" as their default sprite (i.e. party members and Sans)
     self.chars = {}
     self.chars['YOU'] = {"disappointed", "fell", "shoutoutstosimpleflips", "date", "date_flowey_4", "riot"}
@@ -18,16 +18,11 @@ function Mod:init()
     self.chars['bor'] = {"pizza", "pizza_b", "kirby"}
     self.chars['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"}
 
+    local hour = os.date("*t").hour
     -- taunt stuff for characters that use "idle" as their default sprite (i.e. NPCs and such)
-    self.chars_npcs = {}
-        -- code applies to Velvet!Spam
-        local hour = os.date("*t").hour
-        if hour >= 21 or hour <= 8 then
-            self.chars_npcs['velvetspam'] = {"pissed", "bundled", "pipis"}
-        else
-            self.chars_npcs['velvetspam'] = {"day_blankie", "day_blankie_hug", "box"}
-        end
-    --self.chars_npcs[''] = {""}
+    self.chars_npcs = {
+        ['velvetspam'] = hour >= 21 or hour <= 8 and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
+    }
 
     -- taunt timer
     self.taunt_timer = 0
@@ -52,7 +47,6 @@ function Mod:postInit(new_file)
         Game.world:startCutscene("_main", "introcutscene")
     end
 
-    Game.isOmori = false
     Game:setFlag("timesUsedWrongBorDoorCode", 0)
     Game:setFlag("BorDoorCodeUnlocked", false)
 
@@ -64,8 +58,6 @@ end
 function Mod:onMapMusic(map, music)
     if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
         return ""
-    else
-        return music
     end
 end
 
@@ -173,6 +165,29 @@ end
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/debugsystem")
 
+function Mod:onFootstep(char, num)
+    if Game:getFlag("footsteps", false) and char == Game.world.player then
+        if num == 1 then
+            Assets.playSound("step1")
+        elseif num == 2 then
+            Assets.playSound("step2")
+        end
+    end
+end
+
+function Mod:isInRematchMode()
+    return Game.world.map.id == "thearena"
+end
+
+function Mod:setOmori(omori)
+    omori = omori or false
+    self.omori = omori
+end
+
+function Mod:isOmori()
+    return self.omori
+end
+
 --- Returns a class of the leader of the party, either the Actor, Character or PartyMember ones
 ---@param class? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
 ---@return PartyMember|Character|ActorSprite|Actor leader_obj A class from the leader.
@@ -190,16 +205,8 @@ function Mod:getLeader(class)
     return leader
 end
 
-function Mod:onFootstep(char, num)
-    if Game:getFlag("footsteps", false) and char == Game.world.player then
-        if num == 1 then
-            Assets.playSound("step1")
-        elseif num == 2 then
-            Assets.playSound("step2")
-        end
+function Mod:getUISkin()
+    if Mod:isOmori() then
+        return "omori"
     end
-end
-
-function Mod:isInRematchMode()
-    return Game.world.map.id == "thearena"
 end

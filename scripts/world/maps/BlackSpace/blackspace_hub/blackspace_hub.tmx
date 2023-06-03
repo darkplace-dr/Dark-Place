@@ -5,6 +5,7 @@
  </editorsettings>
  <properties>
   <property name="music" value="bs_entrance"/>
+  <property name="omori" value="true"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/blackspace.tsx"/>
  <tileset firstgid="10" source="../../../tilesets/objects.tsx"/>

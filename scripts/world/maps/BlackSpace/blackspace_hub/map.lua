@@ -1,14 +1,5 @@
 local BlackSpace, super = Class(Map)
 
-function BlackSpace:onLoad()
-    super.load(self)
-    Game.isOmori = true
-end
-
-function BlackSpace:onEnter()
-    Game.isOmori = true
-end
-
 function BlackSpace:update()
     if Game.world.player.x <= 360 then
         Game.world.player.x = Game.world.player.x + 5060
@@ -45,10 +36,6 @@ function BlackSpace:update()
         end
     end
     super.update(self)
-end
-
-function BlackSpace:onExit()
-    Game.isOmori = false
 end
 
 return BlackSpace

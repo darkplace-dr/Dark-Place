@@ -14,7 +14,8 @@ return {
   properties = {
     ["border"] = "omori/omori",
     ["music"] = "whitespace",
-    ["name"] = "WHITE SPACE"
+    ["name"] = "WHITE SPACE",
+    ["omori"] = "true"
   },
   tilesets = {
     {

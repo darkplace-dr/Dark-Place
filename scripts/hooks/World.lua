@@ -56,4 +56,10 @@ function World:loadMap(...)
     self.map:onEnter()
 end
 
+function World:setupMap(...)
+    super.setupMap(self, ...)
+
+    Mod:setOmori(self.map.omori)
+end
+
 return World
