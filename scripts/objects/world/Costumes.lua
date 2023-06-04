@@ -92,7 +92,8 @@ function Costumes:init()
             sprite_base_path = "party/brandon",
             skins = {
                 {"DEFAULT", "dark", {-4, -5}},
-                {"BRENDA", "dark", {-4, -5}}
+                {"BRENDA", "dark", {-4, -5}},
+                {"LIGHT", "light", {-4, -5}},
             }
         }
     }

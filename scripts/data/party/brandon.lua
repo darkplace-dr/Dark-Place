@@ -6,7 +6,7 @@ function character:init()
     self.name = "Brandon"
 
     self:setActor("brandon")
-    self:setLightActor("kris_lw")
+    self:setLightActor("brandon_lw")
 
     self.level = 1
     self.title = "Marksman\nTakes aim with\na rifle."
