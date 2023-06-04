@@ -13,7 +13,7 @@ return function(cutscene, cell_phone_event_override)
     end
     local function garbageNoise(path, time)
         pauseMusic()
-        local wait = cutscene:playSound(path)
+        local wait = cutscene:playSound(path, 0.8)
         if time then
             cutscene:wait(time)
         else
@@ -32,10 +32,10 @@ return function(cutscene, cell_phone_event_override)
     local event_num = cell_phone_event_override ~= nil and cell_phone_event_override or love.math.random(1, 100)
 
     if event_num <= 10 then
-        garbageNoise("mcdonalds")
+        garbageNoise("cell_phone/mcdonalds")
         cutscene:text("* Sounded like an angry customer.")
     elseif event_num >= 87 and event_num <= 93 then
-        garbageNoise("fnafcall")
+        garbageNoise("cell_phone/fnafcall")
         cutscene:text("* It's nothing but useless information.")
     elseif event_num == 39 then
         cutscene:text("* Hello!\n* Could I speak to G...")
@@ -54,7 +54,7 @@ return function(cutscene, cell_phone_event_override)
         cutscene:text("* Must've been a wrong number.")
     elseif event_num == 97 then
         pauseMusic()
-        local spam = cutscene:playSound("spamcall")
+        local spam = cutscene:playSound("cell_phone/spamcall", 0.8)
         cutscene:showNametag("Spamton G. Spamton")
         pacematchingMsg("* FUCK YOU CYBER CITY!", 10)
         pacematchingMsg("* IF YOU'RE [[Exploitable]] ENOUGH TO BUY A CAR THIS WEEKEND...", 5)
@@ -108,11 +108,11 @@ return function(cutscene, cell_phone_event_override)
         I made to test out how Kristal works that was called
         Kris and Susie Gamer Time.
         ]]
-        garbageNoise("bbqbb", 200 / 30)
+        garbageNoise("cell_phone/bbqbb", 200 / 30)
         cutscene:text("* It's nothing but an old meme.")
     elseif event_num == 86 then
         pauseMusic()
-        local carglass = cutscene:playSound("carglass")
+        local carglass = cutscene:playSound("cell_phone/carglass", 0.8)
         cutscene:wait(0.35)
 
         pacematchingMsg("[speed:0.7]* ~Carglass répare,[wait:3] Carglass remplace!~", 15)
@@ -149,7 +149,7 @@ return function(cutscene, cell_phone_event_override)
             The Legendary Soup Store.
         ]]
         pauseMusic()
-        local soup = cutscene:playSound("soup")
+        local soup = cutscene:playSound("cell_phone/soup", 0.8)
         cutscene:showNametag("???", {right = false})
         pacematchingMsg("[wait:3]* Hello?", 5)
         cutscene:showNametag("???", {right = true})
@@ -210,7 +210,7 @@ return function(cutscene, cell_phone_event_override)
     -- if anyone wants to add an additional easter egg, feel free to use the template below!
     --[[
     elseif event_num == 100 then
-        garbageNoise("path/to/audio")
+        garbageNoise("path/to/cell_phone/audio")
         cutscene:text("What the fuck")
     ]]
     else -- fallthrough
