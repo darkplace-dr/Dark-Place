@@ -455,6 +455,7 @@ return {
             cutscene:text("* Well,[wait:5] shi--", "shock", "susie", { auto = true })
 			Game:removePartyMember("susie")
 			susie:remove()
+            Game:setFlag("susie_party", false)
 		end
         cutscene:hideNametag()
     end,

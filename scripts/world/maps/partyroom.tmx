@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="28">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="33">
  <editorsettings>
   <export target="partyroom.lua" format="lua"/>
  </editorsettings>
@@ -67,9 +67,40 @@
    </properties>
    <point/>
   </object>
+  <object id="28" name="npc" x="107" y="400">
+   <properties>
+    <property name="actor" value="susie"/>
+    <property name="cutscene" value="partyroom.susie"/>
+    <property name="sprite" value="wall_right"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="31" name="npc" x="810" y="220">
+   <properties>
+    <property name="actor" value="dess"/>
+    <property name="cutscene" value="partyroom.dess"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="23" name="entry" x="640" y="680">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="controllers">
+  <object id="30" name="toggle" x="160" y="360">
+   <properties>
+    <property name="flag" value="!susie_party"/>
+    <property name="target" type="object" value="28"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="32" name="toggle" x="880" y="160">
+   <properties>
+    <property name="flag" value="!dess_party"/>
+    <property name="target" type="object" value="31"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

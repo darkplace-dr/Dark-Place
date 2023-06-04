@@ -9,8 +9,8 @@ return {
   height = 18,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 5,
-  nextobjectid = 28,
+  nextlayerid = 7,
+  nextobjectid = 33,
   properties = {
     ["music"] = "greenroom"
   },
@@ -405,6 +405,39 @@ return {
             ["actor"] = "char",
             ["cutscene"] = "devroom.charshop"
           }
+        },
+        {
+          id = 28,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 107,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "susie",
+            ["cutscene"] = "partyroom.susie",
+            ["sprite"] = "wall_right"
+          }
+        },
+        {
+          id = 31,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 810,
+          y = 220,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "dess",
+            ["cutscene"] = "partyroom.dess"
+          }
         }
       }
     },
@@ -434,6 +467,54 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "controllers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 30,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 160,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!susie_party",
+            ["target"] = { id = 28 }
+          }
+        },
+        {
+          id = 32,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 880,
+          y = 160,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!dess_party",
+            ["target"] = { id = 31 }
+          }
         }
       }
     }

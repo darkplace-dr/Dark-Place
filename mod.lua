@@ -63,6 +63,11 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("cloudwebStoryFlag", 0)
     end
 
+    if new_file then
+        Game:setFlag("YOU_party", true)
+        Game:setFlag("susie_party", true)
+    end
+
     if new_file
         or not Game:getFlag("party") --[[ will upgrade from a old save ]] then
         -- Unlocked party members for the Party Menu

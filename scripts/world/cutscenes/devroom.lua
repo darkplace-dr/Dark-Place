@@ -42,6 +42,7 @@ return {
             else
                 cutscene:hideNametag()
                 Game:addPartyMember("brandon")
+                Game:setFlag("brandon_party", true)
                 event:convertToFollower(#Game.party)
                 cutscene:attachFollowers()
                 cutscene:text("* Brandon joined the party.")
@@ -536,6 +537,7 @@ return {
                     cutscene:wait(1)
                 else
 			        Game:addPartyMember("dumbie")
+                    Game:setFlag("dumbie_party", true)
                     event:convertToFollower(#Game.party)
 			        cutscene:hideNametag()
 			        cutscene:attachFollowers()

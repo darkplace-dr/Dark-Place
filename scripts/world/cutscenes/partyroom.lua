@@ -168,4 +168,140 @@ return {
         end
         cutscene:hideNametag()
     end,
+
+    susie = function(cutscene, event)
+        cutscene:showNametag("Susie")
+        cutscene:text("* Oh,[wait:5] hey guys.", "smile", "susie")
+        cutscene:text("* You need anything?", "small_smile", "susie")
+        cutscene:hideNametag()
+        local opinion = cutscene:choicer({"Delta\nWarriors", "This Place", "You", "No"})
+        cutscene:showNametag("Susie")
+        if opinion == 1 then
+            cutscene:text("* Ah,[wait:5] yeah I'm a part of the Delta Warriors.", "smile", "susie")
+            cutscene:text("* Which one of em do you wanna know more about?", "small_smile", "susie")
+            cutscene:hideNametag()
+            opinion = cutscene:choicer({"Kris", "Ralsei", "Noelle", "Berdly"})
+            cutscene:showNametag("Susie")
+            if opinion == 1 then
+                cutscene:text("* Kris,[wait:5] huh?", "small_smile", "susie")
+                cutscene:text("* Honestly they're a great friend!", "smile", "susie")
+                cutscene:text("* And a great leader as well.", "small_smile", "susie")
+                cutscene:text("* I sorta regret picking on them before now.", "shy_down", "susie")
+                cutscene:text("* Well,[wait:5] at least I'm tryna make up for that.", "small_smile", "susie")
+            elseif opinion == 2 then
+                cutscene:text("* Ralsei?", "small_smile", "susie")
+                cutscene:text("* Yeah,[wait:5] he's cool.", "smile", "susie")
+                cutscene:text("* Even if he's a total weenie...", "nervous", "susie")
+                cutscene:text("* Speaking of him...", "nervous_side", "susie")
+                cutscene:text("* I haven't seen him in this Dark World at all.", "neutral", "susie")
+                cutscene:text("* I wonder what happend to him.", "neutral_side", "susie")
+                cutscene:text("* Hopefully he's okay...", "shy_down", "susie")
+            elseif opinion == 3 then
+                cutscene:text("* Oh,[wait:5] Noelle?", "surprise", "susie")
+                cutscene:text("* Honestly she's really nice to me.", "sincere", "susie")
+                cutscene:text("* Which is strange considering how much of a jerk I was...", "nervous_side", "susie")
+                cutscene:text("* Wonder what's up with her?", "neutral", "susie")
+            elseif opinion == 4 then
+                cutscene:text("* Ah,[wait:5] Berdly.", "neutral", "susie")
+                cutscene:text("* He's um...", "neutral_side", "susie")
+                cutscene:text("* Okay he's not BAD,[wait:5] he's just...", "nervous", "susie")
+                cutscene:text("* Really annoying.", "nervous_side", "susie")
+                cutscene:text("* But uh,[wait:5] even with THAT...", "shy", "susie")
+                cutscene:text("* I still consider him a friend.", "small_smile", "susie")
+                cutscene:text("* Somewhat.", "shy_b", "susie")
+            end
+        elseif opinion == 2 then
+            cutscene:text("* What do I think of this place?", "neutral", "susie")
+            cutscene:text("* Well for one it's weird as hell.", "neutral_side", "susie")
+            if Game:getFlag("spamgolor_defeated") then
+                cutscene:text("* Weird look-alikes of that Spamton guy...", "nervous", "susie")
+            end
+            if cutscene:getCharacter("dess") then
+                cutscene:text("* The single worst person I have ever met...", "annoyed", "susie")
+            end
+            cutscene:text("* I guess that's what you get for uh...", "nervous_side", "susie")
+            cutscene:text("* Making a thousand Dark Fountains I guess.", "nervous", "susie")
+        elseif opinion == 3 then
+            cutscene:text("* Oh you wanna know more about me?", "shy", "susie")
+            cutscene:text("* Well,[wait:5] I'm Susie!", "smile", "susie")
+            cutscene:text("* But uh,[wait:5] you already knew that.", "nervous_side", "susie")
+            cutscene:text("* Honestly what else is there to say about me?", "nervous", "susie")
+        elseif opinion == 4 then
+            cutscene:text("* Ah,[wait:5] alright then.", "neutral", "susie")
+            cutscene:text("* Well uh,[wait:5] I'm always here if you DO need me.", "small_smile", "susie")
+            cutscene:text("* Man it's boring not being in the party...", "shy_down", "susie")
+        end
+        cutscene:hideNametag()
+    end,
+
+    dess = function(cutscene, event)
+        cutscene:showNametag("Dess")
+        cutscene:text("* Sup losers", "heckyeah", "dess")
+        cutscene:text("* you wondering why I'm alone here?", "kind", "dess")
+        cutscene:text("* It's because everyone here hates me lol", "wink", "dess")
+        cutscene:text("* Honestly I don't see why they do.[wait:10] I'm such a lovely individual.", "condescending", "dess")
+        cutscene:text("* Anyways you're probably expexcting me to say cool things", "neutral", "dess")
+        cutscene:text("* Well I can comment on the current party leader", "kind", "dess")
+        cutscene:text("* Wanna see me do that?", "condescending", "dess")
+        cutscene:hideNametag()
+        local opinion = cutscene:choicer({"yes", "NO NO NO\nNO NO NO\nNO NO NO"})
+        cutscene:showNametag("Dess")
+        if opinion == 1 then
+            cutscene:text("* alr lol", "heckyeah", "dess")
+            if Game.party[1].id == "YOU" then
+                cutscene:text("* man I remember when you were blue", "kind", "dess")
+                cutscene:text("* I'm an OG Dark Place fan", "condescending", "dess")
+                cutscene:text("* Man, where did the years go by?", "kind", "dess")
+            elseif Game.party[1].id == "susie" then
+                cutscene:text("* Well if it isn't Sussy Deltarune", "condescending", "dess")
+                cutscene:text("* I'm still up for that offer to smoke a ciggie outside a 7-11.", "kind", "dess")
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...Fuck off.", "annoyed", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* Woah did you just say the fuck word?!", "wtf_b", "dess")
+                cutscene:text("* Man I'm so cool to have made you do that.", "heckyeah", "dess")
+            elseif Game.party[1].id == "brandon" then
+                cutscene:text("* Oh wow it's Brandish", "condescending", "dess")
+                cutscene:showNametag("Brandon")
+                cutscene:text("* Are you going to do this every time?", "miffed", "brandon")
+                cutscene:showNametag("Dess")
+                cutscene:text("* Nah not every time my dawg", "kind", "dess")
+                cutscene:text("* Just until it's no longer funny for me", "challenging", "dess")
+                cutscene:text("* Which is never lol", "heckyeah", "dess")
+            elseif Game.party[1].id == "dumbie" then
+                cutscene:text("* ...", "neutral_b", "dess")
+                cutscene:text("* Who tf are you lmao", "condescending", "dess")
+            elseif Game.party[1].id == "kris" then
+                cutscene:text("* Holy shit it's Kris Deltarune", "wtf", "dess")
+                cutscene:text("* Man I remember when I beat the shit out of you with my bat when you were in 3rd grade", "kind", "dess")
+                cutscene:text("* Wait wdym it was with a whiffle bat?", "neutral", "dess")
+                cutscene:text("* Nah I'm pretty sure it was a regular bat", "condescending", "dess")
+                cutscene:text("* Man that was some good times", "genuine_b", "dess")
+                cutscene:text("* Asriel didn't talk to me that much anymore after that", "neutral_c", "dess")
+                cutscene:text("* Gee I wonder why", "condescending", "dess")
+            elseif Game.party[1].id == "dess" then
+                cutscene:text("* Holy shit is that another Dess????", "wtf_b", "dess")
+                cutscene:showNametag("Dess", {right = true})
+                cutscene:text("* Ye", "heckyeah", "dess")
+                cutscene:text("* How u doin?", "kind", "dess")
+                cutscene:showNametag("Dess")
+                cutscene:text("* Pretty poggers my dude", "condescending", "dess")
+                cutscene:showNametag("Dess", {right = true})
+                cutscene:text("* Wow same here", "kind", "dess")
+                cutscene:text("[noskip]* We should totally", "wink", "dess", {auto = true})
+                cutscene:showNametag("Dess")
+                cutscene:text("* Hey,[wait:5] we gotta keep things PG-13", "neutral", "dess")
+                cutscene:showNametag("Dess", {right = true})
+                cutscene:text("* Ah my b", "neutral_b", "dess")
+                cutscene:showNametag("Dess")
+            else
+                cutscene:text("* Alan please add dialogue", "neutral", "dess")
+            end
+            cutscene:text("* Alright that was my special thing", "condescending", "dess")
+            cutscene:text("* May I please join the party again now?", "genuine", "dess")
+        else
+            cutscene:text("* Well uhhh fuck you too", "condescending", "dess")
+        end
+        cutscene:hideNametag()
+    end,
 }
