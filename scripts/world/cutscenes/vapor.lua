@@ -82,6 +82,7 @@ return {
     ---@param cutscene WorldCutscene
     rook = function(cutscene, event)
         --local rook = cutscene:getCharacter("rook")
+        local nodeface = NodeFace()
 
         cutscene:showNametag("Rook")
         cutscene:text("* Well,[wait:5] LOOK who it iz...", "lookback", "rook")
@@ -95,16 +96,16 @@ return {
         cutscene:showNametag("Rook")
         cutscene:text("* WHO AM I?!", "browraise", "rook")
         cutscene:text("* C'mon DAWG, don't act like you don't know me!", "smug", "rook")
-        cutscene:text("* We were bout to have a\nFIGHT and everything!![react:1]", "grin", "rook", {
+        cutscene:text("* We were bout to have a FIGHT and everything!![react:1]", "grin", "rook", {
             reactions = {
                 {"At leazt until SHE showed up...", "mid", "bottom", "frown", "rook"}
             },
         })
         cutscene:text("* Izn't that right, No-Goze and Done-zo?", "smug", "rook")
 
-        local nodeface = NodeFace()
         cutscene:showNametag("NG & DZ")
-        cutscene:text("[func:nodeface,dz] Mhm[wait:15]\n[func:nodeface,ng] Couldn't have put it better myself, Bossman!!", {
+        cutscene:text("[func:nodeface,dz,-8] Mhm[wait:15]\n[func:nodeface,ng,-5] Couldn't have put it better myself, Bossman!!",
+        {
             functions = {
                 nodeface = nodeface,
             }
