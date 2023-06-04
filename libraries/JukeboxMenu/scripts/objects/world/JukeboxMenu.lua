@@ -5,8 +5,7 @@ function JukeboxMenu:init()
 
     self.parallax_x = 0
     self.parallax_y = 0
-
-    self.layer = 100
+    self.layer = WORLD_LAYERS["ui"]
 
     self.box = UIBox(60, 40, 520, 350)
     self.box.layer = -1
@@ -14,10 +13,6 @@ function JukeboxMenu:init()
 
     self.font = Assets.getFont("main")
     self.font_2 = Assets.getFont("plain")
-
-    self.jukebox_text = Text("JUKEBOX", 60, 20, 520, 32, {style = "menu", align = "center"})
-    self.jukebox_text.layer = 1
-    self:addChild(self.jukebox_text)
 
     self.heart = Sprite("player/heart_menu")
     self.heart:setOrigin(0.5, 0.5)
@@ -58,21 +53,22 @@ end
 function JukeboxMenu:draw()
     super.draw(self)
 
+	love.graphics.setColor(1, 1, 1)
+    love.graphics.setFont(self.font)
+    love.graphics.printf("JUKEBOX", 60, 20, self.box.width, "center")
+
     love.graphics.setLineWidth(1)
     love.graphics.setColor(0, 0.4, 0)
-
     for i = 1, self.songs_per_page + 1 do
         love.graphics.rectangle("line", 62, 75 + 40 * (i - 1), 230, 1)
     end
 
     love.graphics.setLineWidth(4)
     love.graphics.setColor(1, 1, 1)
-
     love.graphics.rectangle("line", 44, 55, 552, 1)
     love.graphics.rectangle("line", 44, 360, 276, 1)
     love.graphics.rectangle("line", 320, 56, 1, 350)
 
-    love.graphics.setFont(self.font)
     local cur_page = self:getPage(self.page)
     for i = 1, self.songs_per_page do
         local cur_song = cur_page[i] or self.default_song
@@ -125,12 +121,7 @@ function JukeboxMenu:update()
         self.page = self.page + 1
         self.selected_index = self.selected_index_memory[self.page]
     end
-    if self.page > self.max_pages then
-        self.page = 1
-    end
-    if self.page < 1 then
-        self.page = self.max_pages
-    end
+    self.page = Utils.clamp(self.page, 1, self.max_pages)
 
     --move up
     if Input.pressed("up", true) then
@@ -142,7 +133,6 @@ function JukeboxMenu:update()
         Assets.playSound("ui_move")
         self.selected_index = self.selected_index + 1
     end
-
     self.selected_index = Utils.clamp(self.selected_index, 1, self.songs_per_page)
     self.selected_index_memory[self.page] = self.selected_index
 

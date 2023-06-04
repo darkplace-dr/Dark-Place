@@ -5,28 +5,21 @@ function Costumes:init()
 
     self.parallax_x = 0
     self.parallax_y = 0
-	
-	self.layer = 100
-	
-    self.box1 = UIBox(80, 60, 480, 320)
-    self.box1.layer = -1
-    self:addChild(self.box1)
-	
-	self.font = Assets.getFont("menu")
+    self.layer = WORLD_LAYERS["ui"]
 
-	self.costumes_title = "COSTUMES"
-	
-	self.costumes_text = Text(self.costumes_title, 325, 50, 300, 500, {style = "menu", align = "center"})
-    self.costumes_text.layer = 1
-    self:addChild(self.costumes_text)
-	
+    self.box = UIBox(80, 60, 480, 320)
+    self.box.layer = -1
+    self:addChild(self.box)
+
+	self.font = Assets.getFont("main")
+
     self.heart = Sprite("player/heart_menu")
     self.heart:setOrigin(0.5, 0.5)
 	self.heart:setScale(2)
     self.heart:setColor(Game:getSoulColor())
     self.heart.layer = 100
     self:addChild(self.heart)
-	
+
 	self.heart_target_x = 330
 	self.heart_target_y = 112
 	self.heart:setPosition(self.heart_target_x, self.heart_target_y)
@@ -34,9 +27,6 @@ function Costumes:init()
     self.selected_index = 1
     self.skin_index = 1
 
-    --SELECT, PARTYSELECT
-    self.state = "SELECT"
-	
     self.char_box = Sprite("ui/char_gradient", 100, 100)
     self.char_box.color = {1, 1, 1}
     self:addChild(self.char_box)
@@ -114,27 +104,35 @@ end
 function Costumes:draw()
     super.draw(self)
 
-	love.graphics.setLineWidth(2)
 	love.graphics.setColor(1, 1, 1)
+    love.graphics.setFont(self.font)
+    love.graphics.printf("COSTUMES", self.box.x, self.box.y, self.box.width, "center")
 
+	love.graphics.setLineWidth(2)
     love.graphics.rectangle("line", 100, 100, 200, 140)
 
-    for i, char in ipairs(self.costumes) do
-        local icon_x = 170 + (i - 1) * 50
-        love.graphics.draw(char.icon, icon_x, 330, 0, 1, 1)
-    end
-
     local cos = self.costumes[self.selected_index]
-    love.graphics.setColor(1, 1, 1)
     love.graphics.print(cos.name, 100, 235, 0, 0.5, 1)
     for i, v in ipairs(cos.skins) do
         local skin_text_y = 95 + (i - 1) * 30
 		love.graphics.print(v[1], 360, skin_text_y, 0, 1, 1)
     end
     local skin = cos.skins[self.skin_index]
-    local typeid = skin[2]
-    local preview = Assets.getTexture(cos.sprite_base_path.."/"..(typeid ~= "" and typeid.."/" or typeid).."walk/down_1")
-    love.graphics.draw(preview, skin[3][1], skin[3][2], 0, 2, 2)
+    if skin then
+        local typeid = skin[2]
+        local preview = Assets.getTexture(cos.sprite_base_path.."/"..(typeid ~= "" and typeid.."/" or typeid).."walk/down_1")
+        love.graphics.draw(preview, skin[3][1], skin[3][2], 0, 2, 2)
+    end
+
+    for i, char in ipairs(self.costumes) do
+        local icon_x = 170 + (i - 1) * 50
+        love.graphics.setColor(1, 1, 1)
+        if i ~= self.selected_index then
+            love.graphics.setColor(1, 1, 1, 0.5)
+        end
+        love.graphics.draw(char.icon, icon_x, 330, 0, 1, 1)
+    end
+	love.graphics.setColor(1, 1, 1)
 end
 
 function Costumes:close()
@@ -149,22 +147,6 @@ function Costumes:update()
         return
     end
 
-    if Input.pressed("up") then
-        Assets.playSound("ui_move")
-        self.skin_index = self.skin_index - 1
-    end
-    if Input.pressed("down") then
-        Assets.playSound("ui_move")
-        self.skin_index = self.skin_index + 1
-    end
-    if self.skin_index > 4 then
-        self.skin_index = 1
-    end
-    if self.skin_index < 1 then
-	    self.skin_index = 4
-    end
-    self.heart:setPosition(self.heart_target_x, 112 + (self.skin_index - 1) * 30)
-
     if Input.pressed("left") then
         Assets.playSound("ui_move")
 	    self.selected_index = self.selected_index - 1
@@ -175,13 +157,21 @@ function Costumes:update()
 	    self.selected_index = self.selected_index + 1
         self.skin_index = 1
     end
-    if self.selected_index > #self.costumes then
-        self.selected_index = 1
-    end
-	if self.selected_index < 1 then
-        self.selected_index = #self.costumes
-    end
+    self.selected_index = Utils.clamp(self.selected_index, 1, #self.costumes)
     self.char_box.color = self.costumes[self.selected_index].color
+
+    if Input.pressed("up") then
+        Assets.playSound("ui_move")
+        self.skin_index = self.skin_index - 1
+    end
+    if Input.pressed("down") then
+        Assets.playSound("ui_move")
+        self.skin_index = self.skin_index + 1
+    end
+    self.skin_index = Utils.clamp(self.skin_index, 1, #self.costumes[self.selected_index].skins)
+
+    self.heart_target_y = 112 + (self.skin_index - 1) * 30
+    self.heart:setPosition(self.heart_target_x, self.heart_target_y)
 end
 
 return Costumes
