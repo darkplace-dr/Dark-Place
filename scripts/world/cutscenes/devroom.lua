@@ -40,9 +40,9 @@ return {
                 cutscene:walkTo(event, -100, event.y + 50, 3, "left")
                 cutscene:wait(2)
             else
+                cutscene:hideNametag()
                 Game:addPartyMember("brandon")
                 event:convertToFollower(#Game.party)
-                cutscene:hideNametag()
                 cutscene:attachFollowers()
                 cutscene:text("* Brandon joined the party.")
                 cutscene:wait(0.5)
