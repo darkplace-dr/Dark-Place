@@ -43,6 +43,11 @@ function JukeboxMenu:init()
     self.page = 1
     self.max_pages = math.ceil(#self.songs / 6)
     self.songs_per_page = 6
+
+    self.selected_index_memory = {}
+    for i = 1, self.max_pages do
+        self.selected_index_memory[i] = 1
+    end
 end
 
 function JukeboxMenu:getPage(page)
@@ -108,6 +113,25 @@ function JukeboxMenu:update()
         Game.world:closeMenu()
     end
 
+    --page left
+    if Input.pressed("left", true) then
+        Assets.playSound("ui_move")
+        self.page = self.page - 1
+        self.selected_index = self.selected_index_memory[self.page]
+    end
+    --page right
+    if Input.pressed("right", true) then
+        Assets.playSound("ui_move")
+        self.page = self.page + 1
+        self.selected_index = self.selected_index_memory[self.page]
+    end
+    if self.page > self.max_pages then
+        self.page = 1
+    end
+    if self.page < 1 then
+        self.page = self.max_pages
+    end
+
     --move up
     if Input.pressed("up", true) then
         Assets.playSound("ui_move")
@@ -118,31 +142,9 @@ function JukeboxMenu:update()
         Assets.playSound("ui_move")
         self.selected_index = self.selected_index + 1
     end
-    if self.selected_index > self.songs_per_page then
-        self.selected_index = 1
-    end
-    if self.selected_index < 1 then
-        self.selected_index = self.songs_per_page
-    end
 
-    --page left
-    if Input.pressed("left", true) then
-        Assets.playSound("ui_move")
-        self.page = self.page - 1
-        self.selected_index = 1
-    end
-    --page right
-    if Input.pressed("right", true) then
-        Assets.playSound("ui_move")
-        self.page = self.page + 1
-        self.selected_index = 1
-    end
-    if self.page > self.max_pages then
-        self.page = 1
-    end
-    if self.page < 1 then
-        self.page = self.max_pages
-    end
+    self.selected_index = Utils.clamp(self.selected_index, 1, self.songs_per_page)
+    self.selected_index_memory[self.page] = self.selected_index
 
     --soul positions
     self.heart_target_y = 95 + 40 * (self.selected_index - 1)
