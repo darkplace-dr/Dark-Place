@@ -31,6 +31,7 @@ function WarpBinInputMenu:init()
     self.as_warp_bin_ui = true
     self.finish_cb = nil
 
+    Mod.text_input_active = true
     TextInput.attachInput(self.input, {
         multiline = false,
         enter_submits = true,
@@ -54,6 +55,10 @@ function WarpBinInputMenu:init()
     end
 end
 
+function WarpBinInputMenu:update()
+    Mod.text_input_active = true
+end
+
 function WarpBinInputMenu:draw()
     love.graphics.setColor(1, 1, 1)
     love.graphics.setFont(self.font)
@@ -68,7 +73,7 @@ function WarpBinInputMenu:draw()
             love.graphics.printf(char, draw_x, draw_y, self.char_w, "center")
         end
 
-        if i ~= (actual_input_len == self.code_len and actual_input_len or actual_input_len + 1)
+        if i ~= math.min(TextInput.cursor_x + 1, self.code_len)
             or self.caret_flash_timer <= self.caret_flash_time / 2 then
             local line_y = draw_y + self.char_h + 2
             love.graphics.line(draw_x, line_y, draw_x + self.char_w, line_y)
@@ -87,8 +92,13 @@ function WarpBinInputMenu:close()
     self:remove()
 end
 
-function WarpBinInputMenu:onRemove()
+function WarpBinInputMenu:endInput()
     TextInput.endInput()
+    Mod.text_input_active = false
+end
+
+function WarpBinInputMenu:onRemove()
+    self:endInput()
 end
 
 return WarpBinInputMenu
