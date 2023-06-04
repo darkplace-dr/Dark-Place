@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 return {
     fommt = function(cutscene, event)
         if not Game:getFlag("fommt_save") then
@@ -78,6 +79,7 @@ return {
             cutscene:hideNametag()
         end
     end,
+    ---@param cutscene WorldCutscene
     rook = function(cutscene, event)
         --local rook = cutscene:getCharacter("rook")
 
@@ -86,7 +88,7 @@ return {
         cutscene:text("* If it izn't the LIGHTNERZ!", "browraise", "rook")
         cutscene:text("* Been a while,[wait:5] hazn't it, Amigooze?", "smug", "rook")
 
-        cutscene:showNametag("Susie")		
+        cutscene:showNametag("Susie")
         cutscene:text("* ...", "suspicious", "susie")
         cutscene:text("* Uh,[wait:3] I'm sorry, but who the hell are you?", "sus_nervous", "susie")
 
@@ -98,23 +100,16 @@ return {
                 {"At leazt until SHE showed up...", "mid", "bottom", "frown", "rook"}
             },
         })
-		
         cutscene:text("* Izn't that right, No-Goze and Done-zo?", "smug", "rook")
 
-        local nodeface = NodeFace{
-            dz = dz,
-            ng = ng,
-        }
-
+        local nodeface = NodeFace()
         cutscene:showNametag("NG & DZ")
         cutscene:text("[func:nodeface,dz] Mhm[wait:15]\n[func:nodeface,ng] Couldn't have put it better myself, Bossman!!", {
-            --top = true,
-
             functions = {
                 nodeface = nodeface,
             }
         })
-		
+
         cutscene:hideNametag()
 	end
 }

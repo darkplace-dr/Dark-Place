@@ -1,7 +1,7 @@
 local Ach, super = Class(Achievement)
 
 function Ach:init()
-    super:init(self)
+    super.init(self)
     
     self.name = "One With The Maus" -- Display name
 

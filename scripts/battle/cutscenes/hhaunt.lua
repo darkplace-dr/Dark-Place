@@ -13,7 +13,7 @@ return {
 			cutscene:text("* You call that sharp?[wait:10] I think I can introduce you to something sharper.", "teeth_smile", "susie")
 		end
 		
-		dialogue_override = ".........."
+		enemy.dialogue_override = ".........."
 		
 		cutscene:text("* The enemy's ATTACK dropped sharply!\n* The enemy's DEFENSE rose sharply!")
     end,

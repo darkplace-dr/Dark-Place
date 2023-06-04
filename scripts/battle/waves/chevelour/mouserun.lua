@@ -1,7 +1,7 @@
 local run_away, super = Class(Wave)
 
 function run_away:init()
-    super:init(self)
+    super.init(self)
     self.time = -1
     self.path_selections = math.random(5,10)
 end
@@ -72,7 +72,7 @@ end
 function run_away:update()
     -- Code here gets called every frame
 
-    super:update(self)
+    super.update(self)
 end
 
 return run_away

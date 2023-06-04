@@ -42,7 +42,7 @@ function HauntScythe:update()
 		self.physics.friction = 0
 	end
 	
-	if not triggered and self.physics.direction >= self.startdir + math.rad(179) then
+	if not self.triggered and self.physics.direction >= self.startdir + math.rad(179) then
 		self.triggered = true
 		self:slideToSpeed(self.retx, self.rety, self.physics.speed, function() self:remove() end)
 		self.physics.speed = 0

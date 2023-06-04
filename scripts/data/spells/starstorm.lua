@@ -27,12 +27,11 @@ function spell:onCast(user, target)
 
 	Assets.playSound("falling_star")
 
-	user:setAnimation("battle/spellsuper", finishAnim)
+	user:setAnimation("battle/spellsuper")
 
 	Game.battle.timer:every(0.01, function(wait)
-			
 		local random = Utils.random(0, 2, 1)
-			
+
 		local starparticle = nil
 		if random == 0 then
 			starparticle = Sprite("effects/spells/dess/StarstormEffectBig", Utils.random(SCREEN_WIDTH), Utils.random(SCREEN_HEIGHT))
@@ -41,7 +40,7 @@ function spell:onCast(user, target)
 		else
 			starparticle = Sprite("effects/spells/dess/StarstormEffectSmall", Utils.random(SCREEN_WIDTH), Utils.random(SCREEN_HEIGHT))
 		end
-			
+
 		starparticle:setOrigin(0.5, 0.5)
 		starparticle:setScale(2)
 		starparticle.layer = BATTLE_LAYERS["above_battlers"]
@@ -49,30 +48,26 @@ function spell:onCast(user, target)
 		starparticle:play(0.1, false)
 		starparticle:slideToSpeed(starparticle.x+32, starparticle.y, 5)
 		starparticle:fadeOutAndRemove(0.5)
-		
 	end, 250)
 
 	Game.battle.timer:after(3, function(wait)
-		
 		local damage = math.ceil((user.chara:getStat("magic") * 20) + 130 + (Utils.random(10) * 4))
 		local i = 1
-		
+
 		Game.battle.timer:every(0.1, function()
 			Assets.playSound("celestial_hit", 1.0, 1.4)
 			Assets.playSound("damage")
 			target[i]:hurt(damage, user)
 			target[i]:flash()
 			target[i]:shake(6, 0, 0.5)
-			
+
 			i = i + 1
 		end, #target)
-		
-		user:setAnimation("battle/idle", finishAnim)
-		
+
+		user:setAnimation("battle/idle")
+
 		Game.battle:finishActionBy(user)
 	end)
-	
-	
 
     return false
 end
