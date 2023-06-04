@@ -1,7 +1,7 @@
 local Jukebox, super = Class(Event)
 
 function Jukebox:init(data)
-    super:init(self, data.x, data.y, data.width, data.height)
+    super.init(self, data.x, data.y, data.width, data.height)
 
 	self:setScale(0.5)
     self:setOrigin(0.3, 0.5)

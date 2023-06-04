@@ -16,9 +16,7 @@ function Costumes:init()
 
 	self.costumes_title = "COSTUMES"
 	
-	self.costumes_text = Text(self.costumes_title, 325, 50, 300, 500, {style = "menu"})
-	local costumes_text_obj = love.graphics.newText(self.costumes_text:getFont(), self.costumes_title)
-    self.costumes_text.x = 325 - Utils.round(costumes_text_obj:getWidth()/2)
+	self.costumes_text = Text(self.costumes_title, 325, 50, 300, 500, {style = "menu", align = "center"})
     self.costumes_text.layer = 1
     self:addChild(self.costumes_text)
 	
