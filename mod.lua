@@ -60,6 +60,7 @@ end
 
 function Mod:unload()
     if Mod.text_input_active then
+        print("Warp Bin was open, ending text input to be safe")
         TextInput.endInput()
         Mod.text_input_active = false
     end
@@ -170,5 +171,5 @@ end
 
 function Mod:isNight()
     local hour = os.date("*t").hour
-    return hour >= 21 and hour < 8
+    return hour < 8 or hour >= 21
 end
