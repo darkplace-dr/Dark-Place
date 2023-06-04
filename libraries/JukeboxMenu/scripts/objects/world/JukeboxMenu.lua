@@ -15,9 +15,7 @@ function JukeboxMenu:init()
     self.font = Assets.getFont("main")
     self.font_2 = Assets.getFont("plain")
 
-    self.jukebox_title = "JUKEBOX"
-
-    self.jukebox_text = Text(self.jukebox_title, 60, 20, 520, 32, {style = "menu", align = "center"})
+    self.jukebox_text = Text("JUKEBOX", 60, 20, 520, 32, {style = "menu", align = "center"})
     self.jukebox_text.layer = 1
     self:addChild(self.jukebox_text)
 
@@ -25,19 +23,11 @@ function JukeboxMenu:init()
     self.heart:setOrigin(0.5, 0.5)
     self.heart:setScale(2)
     self.heart:setColor(Game:getSoulColor())
-    self.heart.layer = 100
-    self:addChild(self.heart)
-
-	--self.up_sprite = Assets.getTexture("ui/page_arrow_up")
-	--self.down_sprite = Assets.getTexture("ui/page_arrow_down")
-
-    self.selected_index = 1
-    self.page = 1
-    self.songs_per_page = 6
-
+    self.heart.layer = 1
     self.heart_target_x = 74
-    self.heart_target_y = 110
+    self.heart_target_y = 95
     self.heart:setPosition(self.heart_target_x, self.heart_target_y)
+    self:addChild(self.heart)
 
     self.songs = modRequire("scripts.jukebox_songs")
     self.none_text = "---"
@@ -48,6 +38,16 @@ function JukeboxMenu:init()
         released = self.none_text,
         origin = self.none_text
     }
+
+    self.selected_index = 1
+    self.page = 1
+    self.max_pages = math.ceil(#self.songs / 6)
+    self.songs_per_page = 6
+end
+
+function JukeboxMenu:getPage(page)
+    local start_index = 1 + (page-1) * self.songs_per_page
+    return {unpack(self.songs, start_index, math.min(start_index + self.songs_per_page, #self.songs))}
 end
 
 function JukeboxMenu:draw()
@@ -68,12 +68,13 @@ function JukeboxMenu:draw()
     love.graphics.rectangle("line", 320, 56, 1, 350)
 
     love.graphics.setFont(self.font)
-    local cur_page = self.songs[self.page]
+    local cur_page = self:getPage(self.page)
     for i = 1, self.songs_per_page do
         local cur_song = cur_page[i] or self.default_song
         local name = cur_song.name or self.none_text
         local scale_x = math.min(184 / self.font:getWidth(name), 1)
         love.graphics.print(name, 100, 78 + 40 * (i - 1), 0, scale_x, 1)
+        love.graphics.setColor(1, 1, 1)
     end
 
     local cur_song = cur_page[self.selected_index] or self.default_song
@@ -87,7 +88,7 @@ function JukeboxMenu:draw()
 
     love.graphics.setColor(0.4, 0.4, 0.4)
     love.graphics.setFont(self.font_2)
-    love.graphics.print("Page "..self.page.."/"..#self.songs.."", 140, 326)
+    love.graphics.print("Page "..self.page.."/"..self.max_pages.."", 140, 326)
 
     love.graphics.setColor(1, 1, 1)
 end
@@ -95,7 +96,7 @@ end
 function JukeboxMenu:update()
     --play song
     if Input.pressed("confirm", false) then
-        local cur_song = self.songs[self.page][self.selected_index] or self.default_song
+        local cur_song = self:getPage(self.page)[self.selected_index] or self.default_song
         if cur_song.file then
             Game.world.music:play(cur_song.file, 1)
         end
@@ -136,15 +137,23 @@ function JukeboxMenu:update()
         self.page = self.page + 1
         self.selected_index = 1
     end
-    if self.page > #self.songs then
+    if self.page > self.max_pages then
         self.page = 1
     end
     if self.page < 1 then
-        self.page = #self.songs
+        self.page = self.max_pages
     end
 
     --soul positions
-    self.heart:setPosition(self.heart_target_x, 95 + 40 * (self.selected_index - 1))
+    self.heart_target_y = 95 + 40 * (self.selected_index - 1)
+    if (math.abs((self.heart_target_x - self.heart.x)) <= 2) then
+        self.heart.x = self.heart_target_x
+    end
+    if (math.abs((self.heart_target_y - self.heart.y)) <= 2)then
+        self.heart.y = self.heart_target_y
+    end
+    self.heart.x = self.heart.x + ((self.heart_target_x - self.heart.x) / 2) * DTMULT
+    self.heart.y = self.heart.y + ((self.heart_target_y - self.heart.y) / 2) * DTMULT
 end
 
 function JukeboxMenu:close()
