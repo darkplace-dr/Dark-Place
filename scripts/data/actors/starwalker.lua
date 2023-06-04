@@ -20,9 +20,9 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "world/npcs/starwalker2"
+    self.path = "battle/enemies/starwalker2"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-    self.default = ""
+    self.default = "starwalker"
 
     -- Sound to play when this actor speaks (optional)
     self.voice = nil
@@ -38,10 +38,19 @@ function actor:init()
     self.talk_sprites = {}
 
     -- Table of sprite animations
-    self.animations = {}
+    self.animations = {
+        ["wings"] = {"starwalker_wings", 0.25, true},
+        ["hurt"] = {"starwalker_shoot_1", 0.5, true},
+        ["shoot"] = {"starwalker_wings", 0.25, true, next="wings", frames={5,4,3,2}},
+    }
 
     -- Table of sprite offsets (indexed by sprite name)
-    self.offsets = {}
+    self.offsets = {
+        ["starwalker"] = {0, 0},
+        ["starwalker_wings"] = {-5, -4},
+        ["starwalker_shoot_1"] = {0, 0},
+        ["starwalker_shoot_2"] = {-5, 0},
+    }
 end
 
 return actor

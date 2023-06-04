@@ -541,7 +541,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "starwalker",
-            ["cutscene"] = "room1.star"
+            ["cutscene"] = "room1.star",
+            ["flagcheck"] = "!starwalker_inparty"
           }
         },
         {

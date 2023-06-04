@@ -125,7 +125,7 @@ return function(cutscene, event, player, facing)
         cutscene:wait(1)
         cutscene:text("* Uh,[wait:5] what-", "surprise_frown", "susie", {auto=true})
 
-        local encounter = cutscene:startEncounter("starwalker", true, {{"starwalker", event}})
+        local encounter = cutscene:startEncounter("og_starwalker", true, {{"og_starwalker", event}})
 
         local defeated_enemies = encounter:getDefeatedEnemies()
 

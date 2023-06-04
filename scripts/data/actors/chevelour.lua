@@ -20,7 +20,7 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "enemies/chevelour"
+    self.path = "battle/enemies/chevelour"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "stand"
 

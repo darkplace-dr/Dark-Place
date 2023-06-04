@@ -161,14 +161,108 @@ return {
         end
     end,
 
-    star = function(cutscene, event)
-        cutscene:showNametag("Starwalker?")
-        cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...")
-        cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
-        cutscene:hideNametag()
-        if not Kristal.libCall("achievements", "hasAch", "starwalker") then
-            Kristal.callEvent("completeAchievement", "starwalker")
+    star = function(cutscene)
+        local susie = cutscene:getCharacter("susie")
+        local star = cutscene:getCharacter("starwalker")
+        
+		--original starcheck code by AcousticJamm
+        if (not Game.world.starcheck) then
+            Game.world.starcheck = 0
         end
+        if Game.world.starcheck < 9 or Game.world.starcheck > 9 then
+            cutscene:showNametag("Starwalker?")
+            cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...")
+            cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
+            cutscene:hideNametag()
+            Game.world.starcheck = Game.world.starcheck + 1
+            if not Kristal.libCall("achievements", "hasAch", "starwalker") then
+                Kristal.callEvent("completeAchievement", "starwalker")
+            end
+        else
+            Game.world.music:stop()
+            cutscene:text("* [color:yellow]You[color:reset] are [color:yellow]Pissing[color:reset] me off...", nil, event)
+            cutscene:text("* I,[wait:5] uh,[wait:5] what?", "sus_nervous", "susie")
+            cutscene:text("* Well,[wait:5] hey,[wait:5] you know\nwhat?", "annoyed", "susie")
+            cutscene:text("* You piss us off too.", "smirk", "susie")
+            local cutscene_music = Music()
+            cutscene_music:play("deltarune/s_neo")
+            cutscene:detachFollowers()
+            --[[if kris then
+                cutscene:walkTo(kris, kris.x, kris.y - 40, 1, "down", true)
+                cutscene:wait(cutscene:walkTo(susie, kris.x, kris.y, 1, facing))
+            end]]
+            cutscene:text("* If you have a problem\nwith us,[wait:5] then we have\na problem with you.", "smirk", "susie")
+            cutscene:text("* Do you know what we do\nwith problems?", "smirk", "susie")
+            cutscene:text("* We stomp.[wait:10] Them.[wait:10] Into.[wait:10]\nThe.[wait:10] Ground.", "smile", "susie")
+            cutscene_music:stop()
+            Assets.playSound("boost")
+
+            star.sprite:set("wings")
+            susie:setSprite("shock_right")
+
+            local offset = star.sprite:getOffset()
+
+            local flash_x = star.x - (star.actor:getWidth() / 2 - offset[1]) * 2
+            local flash_y = star.y - (star.actor:getHeight() - offset[2]) * 2
+
+            local flash = FlashFade("battle/enemies/starwalker/starwalker_wings", flash_x, flash_y)
+            flash.flash_speed = 0.5
+            flash:setScale(2, 2)
+            flash.layer = star.layer + 1
+            star.parent:addChild(flash)
+
+            cutscene:wait(1)
+            cutscene:text("* Uh,[wait:5] what-", "surprise_frown", "susie", {auto=true})
+
+            local encounter = cutscene:startEncounter("starwalker", true, {{"starwalker", star}})
+
+            local defeated_enemies = encounter:getDefeatedEnemies()
+
+            local done_state = defeated_enemies[1].done_state
+        
+            if done_state == "VIOLENCED" or done_state == "KILLED" or done_state == "FROZEN" then
+                susie:resetSprite()
+                cutscene:wait(1)
+                cutscene:text("* Hey,[wait:5] uh.", "neutral", "susie")
+                cutscene:text("* I know they were in our way,[wait:5] but...", "annoyed_down", "susie")
+                susie:setFacing("up")
+                cutscene:text("* What happened to the ACTing thing?", "neutral", "susie")
+                cutscene:text("* ...", "annoyed_down", "susie")
+                Assets.playSound("ominous")
+                cutscene:wait(1.5)
+                Game:setFlag("weird", true)
+                Game.world.player:setFacing("down")
+            else
+                susie:resetSprite()
+                local good_star = cutscene:spawnNPC("ostarwalker", star.x, star.y)
+                Game.world.music:resume()
+                cutscene:showNametag("Starwalker")
+                cutscene:text("* I changed my    [color:yellow]mind[color:reset]")
+                cutscene:text("* You guys are actually pretty [color:yellow]cool[color:reset].")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Uh...[wait:5]thanks??", "nervous_side", "susie")
+                cutscene:showNametag("Starwalker")
+                good_star:setFacing("left")
+                cutscene:text("* As such, I will also    [color:yellow]join[color:reset]")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Join...[wait:5]what?", "suspicious", "susie")
+                cutscene:showNametag("Starwalker")
+                cutscene:text("* The\n[color:yellow]        party[color:reset]")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Oh.", "surprise", "susie")
+				
+                cutscene:hideNametag()
+                Game:addPartyMember("ostarwalker")
+                good_star:convertToFollower(#Game.party)
+                cutscene:interpolateFollowers()
+                cutscene:attachFollowers()
+                cutscene:text("* [color:yellow]Starwalker[color:reset] joined the party.")
+                cutscene:wait(0.5)
+				
+                Game:setFlag("starwalker_inparty", true)
+                table.insert(Game:getFlag("party"), "ostarwalker")
+            end
+		end
     end,
 
     sans = function(cutscene, event)
