@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -19,7 +19,8 @@ return {
     {
       name = "city_alleyway",
       firstgid = 1,
-      filename = "../tilesets/city_alleyway.tsx"
+      filename = "../tilesets/city_alleyway.tsx",
+      exportfilename = "../tilesets/city_alleyway.lua"
     },
     {
       name = "devroom",
@@ -115,7 +116,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 120,
@@ -128,7 +129,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 200,
@@ -141,7 +142,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 400,
@@ -154,7 +155,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 360,
@@ -167,7 +168,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 320,
@@ -180,7 +181,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 200,
@@ -193,7 +194,7 @@ return {
         {
           id = 9,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 120,
@@ -206,7 +207,7 @@ return {
         {
           id = 11,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 287,
           y = 155,
@@ -219,7 +220,7 @@ return {
         {
           id = 16,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 120,
@@ -232,7 +233,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 360,
@@ -261,7 +262,7 @@ return {
         {
           id = 10,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 640,
           y = 240,
@@ -277,7 +278,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 286,
           y = 111,
@@ -293,7 +294,7 @@ return {
         {
           id = 18,
           name = "savepoint",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 280,
@@ -324,7 +325,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 340,
           y = 235,
@@ -337,7 +338,7 @@ return {
         {
           id = 13,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 600,
           y = 280,

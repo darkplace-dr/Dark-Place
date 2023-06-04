@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -83,7 +83,7 @@ return {
         {
           id = 14,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 350,
           y = 225.5,
@@ -103,7 +103,7 @@ return {
         {
           id = 19,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 565.636,
           y = 232.545,
@@ -121,7 +121,7 @@ return {
         {
           id = 23,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 640,
           y = 360,
@@ -134,7 +134,7 @@ return {
         {
           id = 24,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 480,
@@ -147,7 +147,7 @@ return {
         {
           id = 30,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 124.667,
           y = 485.667,
@@ -166,7 +166,7 @@ return {
         {
           id = 31,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 587,
           y = 258.5,
@@ -201,7 +201,7 @@ return {
         {
           id = 22,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 470,
@@ -217,7 +217,7 @@ return {
         {
           id = 12,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 273,
           y = 234.5,
@@ -241,7 +241,7 @@ return {
         {
           id = 13,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 380.5,
           y = 244,
@@ -269,7 +269,7 @@ return {
         {
           id = 27,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 81.3333,
           y = 480,
@@ -292,7 +292,7 @@ return {
         {
           id = 28,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 584.333,
           y = 252.333,
@@ -330,7 +330,7 @@ return {
         {
           id = 5,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 400,
           y = 440,

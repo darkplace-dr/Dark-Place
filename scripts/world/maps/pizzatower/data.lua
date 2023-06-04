@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -29,6 +30,7 @@ return {
       image = "../../../../assets/sprites/world/maps/pizzatower/main.png",
       id = 6,
       name = "bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -44,6 +46,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -55,7 +58,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = -0.5,
           y = 236,
@@ -73,7 +76,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 123.078,
           y = 307.984,
@@ -92,7 +95,7 @@ return {
         {
           id = 19,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 174.984,
           y = 336.453,
@@ -111,7 +114,7 @@ return {
         {
           id = 20,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 0.125,
           y = 305.25,
@@ -129,7 +132,7 @@ return {
         {
           id = 22,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 260.375,
           y = 296.521,
@@ -142,7 +145,7 @@ return {
         {
           id = 23,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 260.545,
           y = 357.455,
@@ -155,7 +158,7 @@ return {
         {
           id = 24,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 307.978,
           y = 377.267,
@@ -173,7 +176,7 @@ return {
         {
           id = 27,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 738.182,
           y = 369.091,
@@ -193,7 +196,7 @@ return {
         {
           id = 28,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 260,
           y = 376.375,
@@ -212,7 +215,7 @@ return {
         {
           id = 31,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = -36.6667,
           y = 550,
@@ -225,7 +228,7 @@ return {
         {
           id = 32,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 960,
           y = 160,
@@ -238,7 +241,7 @@ return {
         {
           id = 33,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 150.727,
           y = 397.273,
@@ -259,7 +262,7 @@ return {
         {
           id = 37,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 858,
           y = 360,
@@ -272,7 +275,7 @@ return {
         {
           id = 41,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = -40,
           y = 160,
@@ -285,7 +288,7 @@ return {
         {
           id = 46,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 388,
           y = 468.5,
@@ -298,7 +301,7 @@ return {
         {
           id = 47,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 451.091,
           y = 495.091,
@@ -311,7 +314,7 @@ return {
         {
           id = 84,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 266,
@@ -324,7 +327,7 @@ return {
         {
           id = 85,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 467.333,
           y = 231.333,
@@ -337,7 +340,7 @@ return {
         {
           id = 86,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 597.455,
           y = 281.5,
@@ -354,6 +357,7 @@ return {
       draworder = "topdown",
       id = 13,
       name = "objects_npcs2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -365,7 +369,7 @@ return {
         {
           id = 71,
           name = "ralgay",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 457.833,
           y = 404.5,
@@ -383,6 +387,7 @@ return {
       draworder = "topdown",
       id = 12,
       name = "objects_npcs",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -394,7 +399,7 @@ return {
         {
           id = 68,
           name = "susy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 356.939,
           y = 411.333,
@@ -408,7 +413,7 @@ return {
         {
           id = 70,
           name = "chris hansen",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 592.333,
           y = 407.333,
@@ -426,6 +431,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -437,7 +443,7 @@ return {
         {
           id = 9,
           name = "entrance",
-          type = "",
+          class = "",
           shape = "point",
           x = 146,
           y = 355.667,
@@ -450,7 +456,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 146.333,
           y = 355.606,
@@ -467,6 +473,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = false,
       opacity = 1,
       offsetx = 0,
@@ -478,7 +485,7 @@ return {
         {
           id = 34,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 382.167,
           y = 519.333,
@@ -494,7 +501,7 @@ return {
         {
           id = 89,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = -40,
           y = 160,
@@ -510,7 +517,7 @@ return {
         {
           id = 90,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 359,
           y = 261,
@@ -526,7 +533,7 @@ return {
         {
           id = 91,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 467,
           y = 238.5,
@@ -542,7 +549,7 @@ return {
         {
           id = 92,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 596.5,
           y = 276.5,
@@ -562,6 +569,7 @@ return {
       image = "../../../../assets/sprites/world/maps/pizzatower/parallax.png",
       id = 11,
       name = "trees",
+      class = "",
       visible = true,
       opacity = 0,
       offsetx = 0,

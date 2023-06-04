@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -31,7 +31,7 @@ return {
         {
           id = 21,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 240,
@@ -44,7 +44,7 @@ return {
         {
           id = 23,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 201,
           y = 200,
@@ -57,7 +57,7 @@ return {
         {
           id = 24,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 240,
@@ -70,7 +70,7 @@ return {
         {
           id = 25,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 360,
@@ -83,7 +83,7 @@ return {
         {
           id = 26,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 360,
@@ -112,7 +112,7 @@ return {
         {
           id = 6,
           name = "elevatorbuttons",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 200,
@@ -125,7 +125,7 @@ return {
         {
           id = 7,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 480,
@@ -141,7 +141,7 @@ return {
         {
           id = 29,
           name = "elevator",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -186,7 +186,7 @@ return {
         {
           id = 5,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 440,
@@ -199,7 +199,7 @@ return {
         {
           id = 33,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 440,
@@ -212,7 +212,7 @@ return {
         {
           id = 32,
           name = "buttons",
-          type = "",
+          class = "",
           shape = "point",
           x = 380,
           y = 260,

@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 64,
@@ -19,8 +20,7 @@ return {
     {
       name = "beta_overworld",
       firstgid = 1,
-      filename = "../../../tilesets/beta_overworld.tsx",
-      exportfilename = "../../../tilesets/beta_overworld.lua"
+      filename = "../../../tilesets/beta_overworld.tsx"
     }
   },
   layers = {
@@ -32,6 +32,7 @@ return {
       height = 32,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -80,6 +81,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -91,7 +93,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1440,
           y = 400,
@@ -104,7 +106,7 @@ return {
         {
           id = 19,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1600,
           y = 400,
@@ -117,7 +119,7 @@ return {
         {
           id = 20,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1840,
           y = 400,
@@ -130,7 +132,7 @@ return {
         {
           id = 21,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1920,
           y = 560,
@@ -143,7 +145,7 @@ return {
         {
           id = 25,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 400,
@@ -156,7 +158,7 @@ return {
         {
           id = 26,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 320,
           y = 560,
@@ -169,7 +171,7 @@ return {
         {
           id = 27,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 800,
@@ -182,7 +184,7 @@ return {
         {
           id = 30,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1600,
           y = 280,
@@ -199,6 +201,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -213,6 +216,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects_party",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -224,7 +228,7 @@ return {
         {
           id = 8,
           name = "hideparty",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -241,6 +245,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -252,7 +257,7 @@ return {
         {
           id = 24,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 820,
           y = 700,

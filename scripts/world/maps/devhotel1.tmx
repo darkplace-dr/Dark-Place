@@ -8,7 +8,7 @@
  </properties>
  <tileset firstgid="1" source="../tilesets/devroom.tsx"/>
  <tileset firstgid="19" source="../tilesets/objects.tsx"/>
- <tileset firstgid="51" source="../tilesets/hoteldoors.tsx"/>
+ <tileset firstgid="56" source="../tilesets/hoteldoors.tsx"/>
  <layer id="1" name="Tile Layer 1" width="50" height="12">
   <data encoding="csv">
 8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
@@ -38,7 +38,7 @@
  </objectgroup>
  <objectgroup id="3" name="objects_props">
   <object id="10" gid="40" x="160" y="160" width="80" height="120"/>
-  <object id="14" gid="51" x="360" y="160" width="64" height="100"/>
+  <object id="14" gid="56" x="360" y="160" width="64" height="100"/>
  </objectgroup>
  <objectgroup id="4" name="objects">
   <object id="11" name="transition" x="160" y="120" width="80" height="20">

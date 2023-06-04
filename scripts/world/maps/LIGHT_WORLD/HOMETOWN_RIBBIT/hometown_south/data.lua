@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 66,
@@ -36,6 +37,7 @@ return {
       image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_south.png",
       id = 11,
       name = "bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -54,6 +56,7 @@ return {
       height = 12,
       id = 14,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -82,6 +85,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -93,7 +97,7 @@ return {
         {
           id = 98,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 0,
@@ -106,7 +110,7 @@ return {
         {
           id = 99,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1800,
           y = 0,
@@ -119,7 +123,7 @@ return {
         {
           id = 100,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1800,
           y = 422,
@@ -132,7 +136,7 @@ return {
         {
           id = 101,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 422,
@@ -145,7 +149,7 @@ return {
         {
           id = 103,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1589,
           y = 80,
@@ -158,7 +162,7 @@ return {
         {
           id = 106,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 80,
           y = 418,
@@ -180,6 +184,7 @@ return {
       draworder = "topdown",
       id = 7,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -191,7 +196,7 @@ return {
         {
           id = 90,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1589,
           y = -120,
@@ -206,7 +211,7 @@ return {
         {
           id = 93,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1589,
           y = 440,
@@ -222,7 +227,7 @@ return {
         {
           id = 104,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2589,
           y = 240,
@@ -238,7 +243,7 @@ return {
         {
           id = 105,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1920,
           y = 220,
@@ -256,6 +261,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -267,7 +273,7 @@ return {
         {
           id = 94,
           name = "entrysc",
-          type = "",
+          class = "",
           shape = "point",
           x = 2549,
           y = 360,
@@ -280,7 +286,7 @@ return {
         {
           id = 95,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 1700.5,
           y = 413.5,

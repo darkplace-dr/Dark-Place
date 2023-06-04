@@ -28,7 +28,7 @@ return {
     },
     {
       name = "hoteldoors",
-      firstgid = 51,
+      firstgid = 56,
       filename = "../tilesets/hoteldoors.tsx"
     }
   },
@@ -236,7 +236,7 @@ return {
           width = 64,
           height = 100,
           rotation = 0,
-          gid = 51,
+          gid = 56,
           visible = true,
           properties = {}
         }

@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -177,7 +177,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2772,
           y = 1940,
@@ -190,7 +190,7 @@ return {
         {
           id = 9,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2944,
           y = 2250,
@@ -203,7 +203,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2830,
           y = 2109,
@@ -216,7 +216,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2950,
           y = 2096,
@@ -245,7 +245,7 @@ return {
         {
           id = 3,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 2800,
           y = 2000,
@@ -258,7 +258,7 @@ return {
         {
           id = 19,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 2800,
           y = 2000,
@@ -287,7 +287,7 @@ return {
         {
           id = 4,
           name = "whitedoor_b",
-          type = "",
+          class = "",
           shape = "point",
           x = 2800,
           y = 1960,
@@ -300,7 +300,7 @@ return {
         {
           id = 6,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 2800,
           y = 2330,
@@ -316,7 +316,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2944,
           y = 2270,
@@ -330,7 +330,7 @@ return {
         {
           id = 10,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2944,
           y = 2230,
@@ -345,7 +345,7 @@ return {
         {
           id = 11,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2820,
           y = 2130,
@@ -359,7 +359,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2830,
           y = 2089,
@@ -374,7 +374,7 @@ return {
         {
           id = 15,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2950,
           y = 2130,
@@ -388,7 +388,7 @@ return {
         {
           id = 16,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2950,
           y = 2096,
@@ -403,7 +403,7 @@ return {
         {
           id = 27,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2905,
           y = 2010,
@@ -434,7 +434,7 @@ return {
         {
           id = 28,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 2900,
           y = 2010,

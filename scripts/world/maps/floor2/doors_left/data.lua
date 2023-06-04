@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -73,7 +73,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 360,
@@ -86,7 +86,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1880,
           y = 240,
@@ -99,7 +99,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1400,
           y = 200,
@@ -112,7 +112,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 240,
@@ -125,7 +125,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 200,
@@ -154,7 +154,7 @@ return {
         {
           id = 22,
           name = "bordoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1518,
           y = 94.0107,
@@ -167,7 +167,7 @@ return {
         {
           id = 23,
           name = "lancerdoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1292,
           y = 88,
@@ -196,7 +196,7 @@ return {
         {
           id = 5,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1760,
           y = 480,
@@ -212,7 +212,7 @@ return {
         {
           id = 6,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1760,
           y = 160,
@@ -228,7 +228,7 @@ return {
         {
           id = 9,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 480,
@@ -241,7 +241,7 @@ return {
         {
           id = 13,
           name = "bordoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1518,
           y = 94.0107,
@@ -254,7 +254,7 @@ return {
         {
           id = 15,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1518,
           y = 95,
@@ -271,7 +271,7 @@ return {
         {
           id = 19,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1313,
           y = 214,
@@ -287,7 +287,7 @@ return {
         {
           id = 20,
           name = "script",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1313,
           y = 205,
@@ -319,7 +319,7 @@ return {
         {
           id = 7,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 1820,
           y = 440,
@@ -332,7 +332,7 @@ return {
         {
           id = 8,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 960,
           y = 320,
@@ -345,7 +345,7 @@ return {
         {
           id = 14,
           name = "exit_bor",
-          type = "",
+          class = "",
           shape = "point",
           x = 1600,
           y = 280,
@@ -358,7 +358,7 @@ return {
         {
           id = 22,
           name = "entry_lancer",
-          type = "",
+          class = "",
           shape = "point",
           x = 1360,
           y = 290,

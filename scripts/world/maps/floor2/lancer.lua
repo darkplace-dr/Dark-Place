@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -77,7 +77,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 320,
@@ -90,7 +90,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 360,
@@ -103,7 +103,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 320,
@@ -116,7 +116,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 320,
@@ -129,7 +129,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 80,
@@ -142,7 +142,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 80,
@@ -155,7 +155,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 480,
           y = 80,
@@ -168,7 +168,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 120,
@@ -197,7 +197,7 @@ return {
         {
           id = 16,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 210,
           y = 70,
@@ -211,7 +211,7 @@ return {
         {
           id = 30,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 180,
           y = 150,
@@ -225,7 +225,7 @@ return {
         {
           id = 31,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 220,
           y = 150,
@@ -239,7 +239,7 @@ return {
         {
           id = 32,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 260,
           y = 150,
@@ -253,7 +253,7 @@ return {
         {
           id = 33,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 180,
           y = 190,
@@ -267,7 +267,7 @@ return {
         {
           id = 34,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 220,
           y = 190,
@@ -281,7 +281,7 @@ return {
         {
           id = 35,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 260,
           y = 190,
@@ -295,7 +295,7 @@ return {
         {
           id = 36,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 180,
           y = 230,
@@ -309,7 +309,7 @@ return {
         {
           id = 37,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 220,
           y = 230,
@@ -323,7 +323,7 @@ return {
         {
           id = 38,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 260,
           y = 230,
@@ -337,7 +337,7 @@ return {
         {
           id = 39,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 270,
           y = 280,
@@ -351,7 +351,7 @@ return {
         {
           id = 40,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 190,
           y = 290,
@@ -365,7 +365,7 @@ return {
         {
           id = 41,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 410,
           y = 240,
@@ -379,7 +379,7 @@ return {
         {
           id = 42,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 390,
           y = 180,
@@ -393,7 +393,7 @@ return {
         {
           id = 43,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 430,
           y = 180,
@@ -423,7 +423,7 @@ return {
         {
           id = 10,
           name = "script",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 268.072,
           y = 475,
@@ -439,7 +439,7 @@ return {
         {
           id = 11,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 268.072,
           y = 475,
@@ -471,7 +471,7 @@ return {
         {
           id = 12,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 440,

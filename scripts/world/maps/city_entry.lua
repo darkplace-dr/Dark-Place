@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 26,
+  nextobjectid = 24,
   properties = {
     ["border"] = "city",
     ["music"] = "mementos/mementos"
@@ -118,7 +118,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 180,
           y = 331,
@@ -132,7 +132,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 43,
           y = 432,
@@ -198,7 +198,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 0,
@@ -211,7 +211,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 240,
@@ -224,7 +224,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 360,
@@ -237,7 +237,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 360,
@@ -250,7 +250,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 440,
@@ -263,7 +263,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 440,
@@ -274,22 +274,9 @@ return {
           properties = {}
         },
         {
-          id = 9,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 40,
-          y = 393.333,
-          width = 36,
-          height = 46.6667,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 10,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 240,
@@ -302,7 +289,7 @@ return {
         {
           id = 11,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 240,
@@ -315,7 +302,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 0,
@@ -326,22 +313,9 @@ return {
           properties = {}
         },
         {
-          id = 13,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 182.667,
-          y = 292,
-          width = 33.3333,
-          height = 33.3333,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 22,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 240,
@@ -354,7 +328,7 @@ return {
         {
           id = 24,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 188,
           y = 309,
@@ -367,7 +341,7 @@ return {
         {
           id = 25,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 51,
           y = 410,
@@ -396,7 +370,7 @@ return {
         {
           id = 19,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = -40,
@@ -412,7 +386,7 @@ return {
         {
           id = 20,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 640,
@@ -428,7 +402,7 @@ return {
         {
           id = 23,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 240,
@@ -460,7 +434,7 @@ return {
         {
           id = 14,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 360,
@@ -473,10 +447,10 @@ return {
         {
           id = 16,
           name = "entry_2",
-          type = "",
+          class = "",
           shape = "point",
-          x = 318.667,
-          y = 69.3333,
+          x = 320,
+          y = 80,
           width = 0,
           height = 0,
           rotation = 0,
@@ -486,7 +460,7 @@ return {
         {
           id = 17,
           name = "entry_1",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 600,
@@ -499,15 +473,79 @@ return {
         {
           id = 18,
           name = "entry_3",
-          type = "",
+          class = "",
           shape = "point",
-          x = 558.667,
-          y = 301.333,
+          x = 550,
+          y = 300,
           width = 0,
           height = 0,
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 7,
+      name = "Objects",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 19,
+          name = "transition",
+          class = "",
+          shape = "rectangle",
+          x = 240,
+          y = -20,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "room_prefountain",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 20,
+          name = "transition",
+          class = "",
+          shape = "rectangle",
+          x = 240,
+          y = 620,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "spamroom",
+            ["marker"] = "entry1"
+          }
+        },
+        {
+          id = 23,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 560,
+          y = 240,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text1"] = "* Cognitive distortion can be seen in the distance.",
+            ["text2"] = "* You should return later."
+          }
         }
       }
     }
