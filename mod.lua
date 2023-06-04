@@ -39,22 +39,34 @@ function Mod:registerShaders()
 end
 
 function Mod:postInit(new_file)
+    Mod:initializeImportantFlags(new_file)
+
+    if new_file then
+        Game.world:startCutscene("introcutscene")
+    end
+end
+function Mod:initializeImportantFlags(new_file)
     if new_file then
         -- FUN Value
         Game:setFlag("fun", love.math.random(1, 100))
-        Game:setFlag("party", {"YOU", "susie"})
+    end
+
+    if new_file then
+        Game:setFlag("vesselChosen", 0)
 
         Game:setFlag("weird", false)
         Game:setFlag("weirdEnemiesKilled", 0)
-
-        Game:setFlag("vesselChosen", 0)
 
         Game:setFlag("timesUsedWrongBorDoorCode", 0)
         Game:setFlag("BorDoorCodeUnlocked", false)
 
         Game:setFlag("cloudwebStoryFlag", 0)
+    end
 
-        Game.world:startCutscene("introcutscene")
+    if new_file
+        or not Game:getFlag("party") --[[ will upgrade from a old save ]] then
+        -- Unlocked party members for the Party Menu
+        Game:setFlag("party", {"YOU", "susie"})
     end
 end
 
