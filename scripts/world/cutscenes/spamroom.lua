@@ -94,7 +94,7 @@ return {
             if susie then
                 cutscene:showNametag("Susie")
                 cutscene:setSpeaker(susie)
-                cutscene:text("* Actually that's not Kris...\n * It's YOU...", "nervous_side")
+                cutscene:text("* Actually that's not Kris\n * It's YOU...", "nervous_side")
                 cutscene:hideNametag()
             end
 
@@ -102,7 +102,7 @@ return {
             cutscene:setSpeaker(velvetspam)
             cutscene:showNametag("Velvet!Spamton")
             velvetspam:setAnimation("talk")
-            cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * That's Kris!")
+            cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * You're Kris!")
             velvetspam:setAnimation("idle")
             cutscene:hideNametag()
 
