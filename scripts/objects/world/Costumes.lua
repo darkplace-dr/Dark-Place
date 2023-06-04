@@ -106,7 +106,7 @@ function Costumes:draw()
 
 	love.graphics.setColor(1, 1, 1)
     love.graphics.setFont(self.font)
-    love.graphics.printf("COSTUMES", self.box.x, self.box.y, self.box.width, "center")
+    love.graphics.printf("COSTUMES", self.box.x, 50, self.box.width, "center")
 
 	love.graphics.setLineWidth(2)
     love.graphics.rectangle("line", 100, 100, 200, 140)
@@ -119,8 +119,9 @@ function Costumes:draw()
     end
     local skin = cos.skins[self.skin_index]
     if skin then
-        local typeid = skin[2]
-        local preview = Assets.getTexture(cos.sprite_base_path.."/"..(typeid ~= "" and typeid.."/" or typeid).."walk/down_1")
+        local type_name = skin[2]
+        local type_path = type_name ~= "" and type_name.."/" or type_name
+        local preview = Assets.getTexture(cos.sprite_base_path.."/"..type_path.."walk/down_1")
         love.graphics.draw(preview, skin[3][1], skin[3][2], 0, 2, 2)
     end
 
