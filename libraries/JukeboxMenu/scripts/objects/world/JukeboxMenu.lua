@@ -89,7 +89,7 @@ function JukeboxMenu:draw()
     love.graphics.print(cur_song.origin or self.none_text, 380, 386, 0, 0.5, 0.5)
 
     love.graphics.print("[X] Back", 64, 370, 0, 1, 1)
-    love.graphics.print("[C] Info", 210, 370, 0, 1, 1)
+    love.graphics.print("[C] Info", 200, 370, 0, 1, 1)
 
     love.graphics.setColor(0.4, 0.4, 0.4)
     love.graphics.setFont(self.font_2)
