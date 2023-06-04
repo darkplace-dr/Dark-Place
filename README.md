@@ -8,7 +8,7 @@ An open source Kristal mod that anyone can contribute to
 See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforementioned document before contributing** as it contains the very important contribution rouxls (pronounced "rules").
 
 ## Dark Place's Official Wiki
-Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki) and check out cool contents of the mod.
+Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place_Wiki) and check out cool contents of the mod.
 
 ## Credits
 *(for Dark Place itself)*
