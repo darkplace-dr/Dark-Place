@@ -1,0 +1,11 @@
+{
+    "id": "NodeFace",
+
+    "version": "v1.0.0+darkplace",
+    "engineVer": "v0.8.1-dev",
+
+    "authors": [
+        "Core",
+        "Just another random user."
+    ]
+}

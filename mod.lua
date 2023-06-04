@@ -13,7 +13,7 @@ function Mod:init()
     MUSIC_PITCHES["cybercity_alt"] = 1.2
 
     self:initTaunt()
-    
+
     -- taunt stuff for characters that use "walk" as their default sprite (i.e. party members and Sans)
     -- and characters that use "idle" as their default sprite (i.e. NPCs and such)
     self.taunt_sprites = {
@@ -39,32 +39,50 @@ function Mod:registerShaders()
 end
 
 function Mod:postInit(new_file)
+    Mod:initializeImportantFlags(new_file)
+
+    if new_file then
+        Game.world:startCutscene("introcutscene")
+    end
+end
+function Mod:initializeImportantFlags(new_file)
     if new_file then
         -- FUN Value
         Game:setFlag("fun", love.math.random(1, 100))
-        Game:setFlag("party", {"YOU", "susie"})
-        
+    end
+
+    if new_file then
+        Game:setFlag("vesselChosen", 0)
+
         Game:setFlag("weird", false)
         Game:setFlag("weirdEnemiesKilled", 0)
-
-        Game:setFlag("vesselChosen", 0)
 
         Game:setFlag("timesUsedWrongBorDoorCode", 0)
         Game:setFlag("BorDoorCodeUnlocked", false)
 
         Game:setFlag("cloudwebStoryFlag", 0)
+    end
 
-        Game.world:startCutscene("introcutscene")
+    if new_file
+        or not Game:getFlag("party") --[[ will upgrade from a old save ]] then
+        -- Unlocked party members for the Party Menu
+        Game:setFlag("party", {"YOU", "susie"})
+    end
+end
+
+function Mod:unload()
+    if Mod.text_input_active then
+        print("Warp Bin was open, ending text input to be safe")
+        TextInput.endInput()
+        Mod.text_input_active = false
     end
 end
 
 function Mod:onMapMusic(map, music)
     if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
-        return nil
+        return ""
     elseif Game:getFlag("weird") and music == "cybercity" then
         return "cybercity_alt"
-    else
-        return music
     end
 end
 
@@ -165,5 +183,5 @@ end
 
 function Mod:isNight()
     local hour = os.date("*t").hour
-    return hour >= 21 and hour < 8
+    return hour < 8 or hour >= 21
 end

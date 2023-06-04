@@ -1,7 +1,7 @@
 local Charge, super = Class(Wave)
 
 function Charge:init()
-    super:init(self)
+    super.init(self)
 
     self.time = 8
     self:setArenaSize(150)
@@ -47,7 +47,7 @@ function Charge:onStart()
 function Charge:update()
     -- Code here gets called every frame
 
-    super:update(self)
+    super.update(self)
 end
 
 

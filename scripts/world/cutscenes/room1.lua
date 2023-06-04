@@ -475,9 +475,9 @@ return {
             save.visible = false
             if wall_guardian then wall_guardian.visible = false end
 
-            shadowman1 = Game.world:spawnNPC("shadowmen", sans.x - 153, sans.y)
+            local shadowman1 = Game.world:spawnNPC("shadowmen", sans.x - 153, sans.y)
             shadowman1.flip_x = true
-            shadowman2 = Game.world:spawnNPC("shadowmen", sans.x + 100, sans.y)
+            local shadowman2 = Game.world:spawnNPC("shadowmen", sans.x + 100, sans.y)
             shadowman1.sprite:stop(false)
             shadowman2.sprite:stop(false)
             Game.world:addChild(shadowman1)
@@ -506,7 +506,7 @@ return {
 
             cutscene:detachFollowers()
             local moved_player = cutscene:walkTo(chara, 250, 260, 2)
-            move_party = {}
+            local move_party = {}
             local nb_followers = #Game.world.followers
             for i,follower in ipairs(Game.world.followers) do
                 if i == 1 then

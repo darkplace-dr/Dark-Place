@@ -29,7 +29,7 @@ function Mod:updateTaunt()
             effect.layer = -1
             effect:play(0.02, false, function()
                 effect:remove()
-                chara:setSprite(chara.actor.default)
+                chara:resetSprite()
             end)
             chara:addChild(effect)
 
