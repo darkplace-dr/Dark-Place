@@ -12,6 +12,7 @@ function Costumes:init()
     self:addChild(self.box)
 
 	self.font = Assets.getFont("main")
+    self.char_gradient = Assets.getTexture("ui/char_gradient")
 
     self.heart = Sprite("player/heart_menu")
     self.heart:setOrigin(0.5, 0.5)
@@ -27,10 +28,6 @@ function Costumes:init()
     self.selected_index = 1
     self.skin_index = 1
 
-    self.char_box = Sprite("ui/char_gradient", 100, 100)
-    self.char_box.color = {1, 1, 1}
-    self:addChild(self.char_box)
-
     self.costumes = {
         {
             name = "Kris",
@@ -38,10 +35,10 @@ function Costumes:init()
             color = {0, 1, 1},
             sprite_base_path = "party/kris",
             skins = {
-                {"DEFAULT", "dark", {180, 150}},
-                {"LIGHT", "light", {180, 150}},
-                {"MTT", "repainted", {180, 150}},
-                {"VESSEL", "dark", {180, 150}}
+                {"DEFAULT", "dark", {0, 0}},
+                {"LIGHT", "light", {0, 0}},
+                {"MTT", "repainted", {0, 0}},
+                {"VESSEL", "dark", {0, 0}}
             }
         },
         {
@@ -50,9 +47,9 @@ function Costumes:init()
             color = {1, 0.3, 1},
             sprite_base_path = "party/susie",
             skins = {
-                {"DEFAULT", "dark", {174, 138}},
-                {"LIGHT", "light", {174, 134}},
-                {"DIO", "repainted", {174, 138}}
+                {"DEFAULT", "dark", {-6, -12}},
+                {"LIGHT", "light", {-6, -16}},
+                {"DIO", "repainted", {-6, -12}}
             }
         },
         {
@@ -61,9 +58,9 @@ function Costumes:init()
             color = {1, 1, 0},
             sprite_base_path = "party/noelle",
             skins = {
-                {"DEFAULT", "dark", {176, 132}},
-                {"LIGHT", "light", {176, 132}},
-                {"ANTONYMPH", "antonymph", {174, 132}}
+                {"DEFAULT", "dark", {-4, -18}},
+                {"LIGHT", "light", {-4, -18}},
+                {"ANTONYMPH", "antonymph", {-6, -18}}
             }
         },
         {
@@ -72,10 +69,10 @@ function Costumes:init()
             color = {0, 0.5, 1},
             sprite_base_path = "party/you",
             skins = {
-                {"DEFAULT", "dark", {172, 144}},
-                {"LIGHT", "light", {176, 144}},
-                {"DARK (OLD)", "old_dark", {180, 150}},
-                {"LIGHT (OLD)", "old_light", {180, 150}}
+                {"DEFAULT", "dark", {-8, -6}},
+                {"LIGHT", "light", {-4, -6}},
+                {"DARK (OLD)", "old_dark", {0, 0}},
+                {"LIGHT (OLD)", "old_light", {0, 0}}
             }
         },
         {
@@ -84,8 +81,8 @@ function Costumes:init()
             color = {1, 0, 0},
             sprite_base_path = "party/dess",
             skins = {
-                {"DEFAULT", "", {168, 132}},
-                {"FLIMBO", "", {168, 132}}
+                {"DEFAULT", "", {-12, -18}},
+                {"FLIMBO", "", {-12, -18}}
             }
         },
         {
@@ -94,8 +91,8 @@ function Costumes:init()
             color = {0, 0, 1},
             sprite_base_path = "party/brandon",
             skins = {
-                {"DEFAULT", "dark", {176, 145}},
-                {"BRENDA", "dark", {176, 145}}
+                {"DEFAULT", "dark", {-4, -5}},
+                {"BRENDA", "dark", {-4, -5}}
             }
         }
     }
@@ -108,28 +105,35 @@ function Costumes:draw()
     love.graphics.setFont(self.font)
     love.graphics.printf("COSTUMES", self.box.x, 50, self.box.width, "center")
 
+	love.graphics.setColor(self.costumes[self.selected_index].color)
+    love.graphics.draw(self.char_gradient, 100, 100)
+	love.graphics.setColor(1, 1, 1)
 	love.graphics.setLineWidth(2)
     love.graphics.rectangle("line", 100, 100, 200, 140)
 
     local cos = self.costumes[self.selected_index]
-    love.graphics.print(cos.name, 100, 235, 0, 0.5, 1)
+
+    local name_scale_x = math.min(200 / self.font:getWidth(cos.name), 1)
+    love.graphics.print(cos.name, 100, 240, 0, name_scale_x, 1)
+
     for i, v in ipairs(cos.skins) do
         local skin_text_y = 95 + (i - 1) * 30
 		love.graphics.print(v[1], 360, skin_text_y, 0, 1, 1)
     end
+
     local skin = cos.skins[self.skin_index]
     if skin then
         local type_name = skin[2]
         local type_path = type_name ~= "" and type_name.."/" or type_name
         local preview = Assets.getTexture(cos.sprite_base_path.."/"..type_path.."walk/down_1")
-        love.graphics.draw(preview, skin[3][1], skin[3][2], 0, 2, 2)
+        love.graphics.draw(preview, 180 + skin[3][1], 150 + skin[3][2], 0, 2, 2)
     end
 
     for i, char in ipairs(self.costumes) do
         local icon_x = 170 + (i - 1) * 50
         love.graphics.setColor(1, 1, 1)
         if i ~= self.selected_index then
-            love.graphics.setColor(1, 1, 1, 0.5)
+            love.graphics.setColor(1, 1, 1, 0.25)
         end
         love.graphics.draw(char.icon, icon_x, 330, 0, 1, 1)
     end
@@ -159,7 +163,6 @@ function Costumes:update()
         self.skin_index = 1
     end
     self.selected_index = Utils.clamp(self.selected_index, 1, #self.costumes)
-    self.char_box.color = self.costumes[self.selected_index].color
 
     if Input.pressed("up") then
         Assets.playSound("ui_move")
