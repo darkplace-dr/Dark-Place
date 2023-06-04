@@ -32,7 +32,7 @@ function Costumes:init()
         {
             name = "Kris",
             icon = Assets.getTexture("ui/partyselect/kris"),
-            color = {0, 1, 1},
+            gradient_color = {0, 1, 1},
             sprite_base_path = "party/kris",
             skins = {
                 {"DEFAULT", "dark", {0, 0}},
@@ -44,7 +44,7 @@ function Costumes:init()
         {
             name = "Susie",
             icon = Assets.getTexture("ui/partyselect/susie"),
-            color = {1, 0.3, 1},
+            gradient_color = {1, 0.3, 1},
             sprite_base_path = "party/susie",
             skins = {
                 {"DEFAULT", "dark", {-6, -12}},
@@ -55,7 +55,7 @@ function Costumes:init()
         {
             name = "Noelle",
             icon = Assets.getTexture("ui/partyselect/noelle"),
-            color = {1, 1, 0},
+            gradient_color = {1, 1, 0},
             sprite_base_path = "party/noelle",
             skins = {
                 {"DEFAULT", "dark", {-4, -18}},
@@ -66,7 +66,7 @@ function Costumes:init()
         {
             name = "YOU",
             icon = Assets.getTexture("ui/partyselect/you"),
-            color = {0, 0.5, 1},
+            gradient_color = {0, 0.5, 1},
             sprite_base_path = "party/you",
             skins = {
                 {"DEFAULT", "dark", {-8, -6}},
@@ -78,7 +78,7 @@ function Costumes:init()
         {
             name = "Dess",
             icon = Assets.getTexture("ui/partyselect/dess_lol"),
-            color = {1, 0, 0},
+            gradient_color = {1, 0, 0},
             sprite_base_path = "party/dess",
             skins = {
                 {"DEFAULT", "", {-12, -18}},
@@ -88,7 +88,7 @@ function Costumes:init()
         {
             name = "Brandon",
             icon = Assets.getTexture("ui/partyselect/brandon"),
-            color = {0, 0, 1},
+            gradient_color = {0, 0, 1},
             sprite_base_path = "party/brandon",
             skins = {
                 {"DEFAULT", "dark", {-4, -5}},
@@ -105,7 +105,7 @@ function Costumes:draw()
     love.graphics.setFont(self.font)
     love.graphics.printf("COSTUMES", self.box.x, 50, self.box.width, "center")
 
-	love.graphics.setColor(self.costumes[self.selected_index].color)
+	love.graphics.setColor(self.costumes[self.selected_index].gradient_color)
     love.graphics.draw(self.char_gradient, 100, 100)
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.setLineWidth(2)
