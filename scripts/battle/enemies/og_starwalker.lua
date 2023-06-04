@@ -1,6 +1,6 @@
-local Starwalker, super = Class(EnemyBattler)
+local OGStarwalker, super = Class(EnemyBattler)
 
-function Starwalker:init()
+function OGStarwalker:init()
     super.init(self)
 
     self.name = "Starwalker"
@@ -29,7 +29,7 @@ function Starwalker:init()
         --"solidtest"
     }
 
-    self.check = "The   original\n            ."
+    self.check = "The   original\n            ?"
 
     self.text = {
         "* Star walker",
@@ -47,22 +47,22 @@ function Starwalker:init()
     self.text_override = nil
 end
 
-function Starwalker:onSpared()
+function OGStarwalker:onSpared()
     super.onSpared(self)
 
     self.sprite:resetSprite()
     Game.battle.music:stop()
 end
 
-function Starwalker:isXActionShort(battler)
+function OGStarwalker:isXActionShort(battler)
     return true
 end
 
-function Starwalker:onActStart(battler, name)
+function OGStarwalker:onActStart(battler, name)
     super.onActStart(self, battler, name)
 end
 
-function Starwalker:onAct(battler, name)
+function OGStarwalker:onAct(battler, name)
     if name == "DualHeal" then
         Game.battle:powerAct("dual_heal", battler, "ralsei")
     elseif name == "Red Buster" then
@@ -86,7 +86,7 @@ function Starwalker:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
-function Starwalker:onShortAct(battler, name)
+function OGStarwalker:onShortAct(battler, name)
     if name == "Standard" then
         self:addMercy(4)
         if battler.chara.id == "ralsei" then
@@ -104,7 +104,7 @@ function Starwalker:onShortAct(battler, name)
 end
 
 
-function Starwalker:getEnemyDialogue()
+function OGStarwalker:getEnemyDialogue()
     if self.text_override then
         local dialogue = self.text_override
         self.text_override = nil
@@ -126,7 +126,7 @@ function Starwalker:getEnemyDialogue()
     return dialogue[math.random(#dialogue)]
 end
 
-function Starwalker:onDefeat(damage, battler)
+function OGStarwalker:onDefeat(damage, battler)
 
     -- All of this is commented because Love2D is being a bitch and giving me errors that make no sense
     -- Pls fix if you can :heart:
@@ -193,4 +193,4 @@ function Starwalker:onDefeat(damage, battler)
     self:onDefeatFatal(damage, battler)
 end
 
-return Starwalker
+return OGStarwalker

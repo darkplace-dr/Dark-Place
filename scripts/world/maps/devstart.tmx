@@ -69,7 +69,7 @@
   </object>
   <object id="18" name="savepoint" x="200" y="280" width="40" height="40">
    <properties>
-    <property name="text2" value="* The power of fine dining and breathing shines within you."/>
+    <property name="text1" value="* The power of fine dining and breathing shines within you."/>
    </properties>
   </object>
  </objectgroup>

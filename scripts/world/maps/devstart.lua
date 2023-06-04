@@ -303,7 +303,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text2"] = "* The power of fine dining and breathing shines within you."
+            ["text1"] = "* The power of fine dining and breathing shines within you."
           }
         }
       }
