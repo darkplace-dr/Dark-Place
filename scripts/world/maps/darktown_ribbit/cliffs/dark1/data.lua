@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 17,
+  nextobjectid = 18,
   properties = {
     ["music"] = "jazzylandscape"
   },
@@ -288,19 +288,6 @@ return {
           }
         },
         {
-          id = 14,
-          name = "darkpuddle",
-          class = "",
-          shape = "rectangle",
-          x = 200,
-          y = 200,
-          width = 240,
-          height = 120,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 16,
           name = "interactable",
           class = "",
@@ -314,6 +301,19 @@ return {
           properties = {
             ["cutscene"] = "ribbitmobdt.darkposter"
           }
+        },
+        {
+          id = 17,
+          name = "darkpuddle",
+          class = "",
+          shape = "rectangle",
+          x = 0,
+          y = 0,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
