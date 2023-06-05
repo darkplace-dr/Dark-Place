@@ -20,6 +20,7 @@ function Mod:init()
         ['YOU'] = {"disappointed", "fell", "shoutoutstosimpleflips", "date", "date_flowey_4", "riot"},
         ['susie'] = {"pose", "away_hand", "turn_around", "angry_down", "diagonal_kick_left_5", "shock_right"},
         ['dess'] = {"reddit_gold", "sonic_adventure", "bup", "beatbox", "angreh", "oc", "paneton"},
+        ['brandon'] = {"box"},
         ['kris'] = {"pose", "peace", "t_pose", "sit"},
         ['berdly'] = {"fall", "nerd", "drama", "shocked", "fell"},
         ['bor'] = {"pizza", "pizza_b", "kirby"},

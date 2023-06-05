@@ -15,6 +15,7 @@ function Starwalker:init()
     self.attack = 12
     self.defense = 2
     self.money = 420
+    self.experience = Mod:isInRematchMode() and 0 or 0
 
     self.spare_points = 0
 
@@ -189,7 +190,11 @@ function Starwalker:onDefeat(damage, battler)
 
 	end)
     --]]
-    self:onDefeatFatal(damage, battler)
+    if Game:getFlag("can_kill") == true then
+        self:onDefeatFatal(damage, battler)
+    else
+        self:onDefeatRun(damage, battler)
+    end
 end
 
 return Starwalker

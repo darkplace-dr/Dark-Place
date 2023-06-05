@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 33,
+  nextobjectid = 35,
   properties = {
     ["music"] = "greenroom"
   },
@@ -436,7 +436,25 @@ return {
           visible = true,
           properties = {
             ["actor"] = "dess",
+            ["cond"] = "Game:getFlag(\"party\", \"dess\")",
             ["cutscene"] = "partyroom.dess"
+          }
+        },
+        {
+          id = 33,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 800,
+          y = 620,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "starwalker",
+            ["cond"] = "Game:getFlag(\"party\", \"ostarwalker\")",
+            ["cutscene"] = "partyroom.starwalker"
           }
         }
       }
@@ -514,6 +532,22 @@ return {
           properties = {
             ["flag"] = "!dess_party",
             ["target"] = { id = 31 }
+          }
+        },
+        {
+          id = 34,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 880,
+          y = 560,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!ostarwalker_party",
+            ["target"] = { id = 33 }
           }
         }
       }

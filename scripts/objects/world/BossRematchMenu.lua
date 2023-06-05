@@ -26,8 +26,9 @@ function BossRematchMenu:init()
     self.soul = Assets.getTexture("player/heart")
 
     self.encounters = {
-        { name = "Spamgolor", flag = "spamgolor_defeated", encounter = "spamgolor" },
-        { name = "Mimic",     flag = "mimic_defeated",     encounter = "mimicboss" },
+        { name = "Spamgolor",  flag = "spamgolor_defeated",  encounter = "spamgolor" },
+        { name = "Mimic",      flag = "mimic_defeated",      encounter = "mimicboss" },
+        { name = "Starwalker", flag = "starwalker_defeated", encounter = "starwalker" },
     }
 
     self.currently_selected = 1

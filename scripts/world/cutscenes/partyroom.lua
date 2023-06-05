@@ -304,4 +304,11 @@ return {
         end
         cutscene:hideNametag()
     end,
+
+    starwalker = function(cutscene, event)
+        cutscene:showNametag("Starwalker?")
+        cutscene:text("* This [color:yellow]room[color:reset] is [color:yellow]Pissing[color:reset] me\noff...")
+        cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
+        cutscene:hideNametag()
+    end
 }

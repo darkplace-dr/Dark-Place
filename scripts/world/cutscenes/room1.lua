@@ -220,7 +220,7 @@ return {
 
             local done_state = defeated_enemies[1].done_state
         
-            if done_state == "VIOLENCED" or done_state == "KILLED" or done_state == "FROZEN" then
+            if done_state == "KILLED" or done_state == "FROZEN" then
                 susie:resetSprite()
                 cutscene:wait(1)
                 cutscene:text("* Hey,[wait:5] uh.", "neutral", "susie")
@@ -250,12 +250,26 @@ return {
                 cutscene:text("* The\n[color:yellow]        party[color:reset]")
                 cutscene:showNametag("Susie")
                 cutscene:text("* Oh.", "surprise", "susie")
-				
-                cutscene:hideNametag()
-                Game:addPartyMember("ostarwalker")
-                good_star:convertToFollower(#Game.party)
-                cutscene:text("* [color:yellow]Starwalker[color:reset] joined the party.")
-                cutscene:wait(0.5)
+
+                if #Game.party >= 4 then
+                    cutscene:showNametag("Starwalker")
+                    cutscene:text("* Oh")
+                    cutscene:text("* Your [color:yellow]party[color:reset] is        full")
+                    cutscene:text("* I will join             the [color:yellow]Party Room[color:reset]")
+                    cutscene:hideNametag()
+                    local alpha = good_star:addFX(AlphaFX())
+                    Game.world.timer:tween(1, alpha, { alpha = 0 })
+                    Assets.playSound("hypnosis")
+                    cutscene:wait(2)
+                    good_star:remove()
+                else
+                    cutscene:hideNametag()
+                    Game:addPartyMember("ostarwalker")
+                    Game:setFlag("ostarwalker_party", true)
+                    good_star:convertToFollower(#Game.party)
+                    cutscene:text("* [color:yellow]Starwalker[color:reset] joined the party.")
+                    cutscene:wait(0.5)
+                end
 				
                 Game:setFlag("starwalker_inparty", true)
                 table.insert(Game:getFlag("party"), "ostarwalker")
