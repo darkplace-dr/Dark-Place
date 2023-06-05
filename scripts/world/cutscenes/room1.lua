@@ -254,13 +254,14 @@ return {
                 cutscene:hideNametag()
                 Game:addPartyMember("ostarwalker")
                 good_star:convertToFollower(#Game.party)
-                cutscene:attachFollowers()
                 cutscene:text("* [color:yellow]Starwalker[color:reset] joined the party.")
                 cutscene:wait(0.5)
 				
                 Game:setFlag("starwalker_inparty", true)
                 table.insert(Game:getFlag("party"), "ostarwalker")
             end
+            cutscene:interpolateFollowers()
+            cutscene:attachFollowers()
         end
     end,
 
