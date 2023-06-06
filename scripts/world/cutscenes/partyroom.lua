@@ -147,7 +147,7 @@ return {
                 elseif opinion == 2 then
                     cutscene:text("* Ah,[wait:5] alright then.", "happy", "brandon")
                     cutscene:text("* I'm in a relationship with two people.", "happy_side", "brandon")
-                    cutscene:text("* The first is Hazel,[wait:5] my girlfriend.", "happy_blush", "brandon")
+                    cutscene:text("* The first is Willow,[wait:5] my girlfriend.", "happy_blush", "brandon")
                     cutscene:text("* She's really nice and caring.", "happy_side_blush", "brandon")
                     cutscene:text("* And really cute.", "grin_blush", "brandon")
                     cutscene:text("* I really do love and care about her a lot.", "joy_blush", "brandon")

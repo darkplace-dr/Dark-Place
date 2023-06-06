@@ -51,7 +51,7 @@ function item:init()
         ralsei = "Aw, it's cute!",
         noelle = "(I wonder if I should give Susie a gift...)",
 		dess = "I'm allergic to love",
-        brandon = "Thank you Hazel..."
+        brandon = "Thank you Willow..."
     }
 end
 
