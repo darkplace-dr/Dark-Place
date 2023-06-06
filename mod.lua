@@ -167,3 +167,16 @@ function Mod:isNight()
     local hour = os.date("*t").hour
     return hour >= 21 and hour < 8
 end
+
+Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, showStatusMsg)
+    self.health = self.health - amount
+    local showstatus = showStatusMsg or true
+    if showstatus then
+        self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
+    end
+
+    self.hurt_timer = 1
+    self:onHurt(amount, battler)
+
+    self:checkHealth(on_defeat, amount, battler)
+end)

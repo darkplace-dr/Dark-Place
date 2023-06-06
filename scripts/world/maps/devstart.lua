@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -19,16 +19,18 @@ return {
     {
       name = "city_alleyway",
       firstgid = 1,
-      filename = "../tilesets/city_alleyway.tsx"
+      filename = "../tilesets/city_alleyway.tsx",
+      exportfilename = "../tilesets/city_alleyway.lua"
     },
     {
       name = "devroom",
       firstgid = 316,
-      filename = "../tilesets/devroom.tsx"
+      filename = "../tilesets/devroom.tsx",
+      exportfilename = "../tilesets/devroom.lua"
     },
     {
       name = "objects",
-      firstgid = 334,
+      firstgid = 352,
       filename = "../tilesets/objects.tsx",
       exportfilename = "../tilesets/objects.lua"
     }

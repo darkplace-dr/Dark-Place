@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 33,
+  tilecount = 43,
   tiles = {
     {
       id = 0,
@@ -246,6 +246,76 @@ return {
       image = "../../../assets/sprites/objects/cybercity/dumpster2.png",
       width = 116,
       height = 118
+    },
+    {
+      id = 37,
+      image = "../../../assets/sprites/objects/devroom_doorway_double.png",
+      width = 80,
+      height = 60
+    },
+    {
+      id = 40,
+      image = "../../../assets/sprites/objects/devfountain_1.png",
+      width = 81,
+      height = 39,
+      animation = {
+        {
+          tileid = 40,
+          duration = 1000
+        },
+        {
+          tileid = 41,
+          duration = 1000
+        }
+      }
+    },
+    {
+      id = 41,
+      image = "../../../assets/sprites/objects/devfountain_2.png",
+      width = 81,
+      height = 39
+    },
+    {
+      id = 42,
+      image = "../../../assets/sprites/objects/devsign.png",
+      width = 40,
+      height = 40
+    },
+    {
+      id = 43,
+      image = "../../../assets/sprites/objects/sign.png",
+      width = 40,
+      height = 40
+    },
+    {
+      id = 44,
+      image = "../../../assets/sprites/objects/livetree_1.png",
+      width = 110,
+      height = 120
+    },
+    {
+      id = 45,
+      image = "../../../assets/sprites/objects/livetree_2.png",
+      width = 190,
+      height = 120
+    },
+    {
+      id = 46,
+      image = "../../../assets/sprites/objects/livetree_3.png",
+      width = 190,
+      height = 160
+    },
+    {
+      id = 47,
+      image = "../../../assets/sprites/objects/livetree_4.png",
+      width = 110,
+      height = 160
+    },
+    {
+      id = 48,
+      image = "../../../assets/sprites/objects/livetree_5.png",
+      width = 270,
+      height = 160
     }
   }
 }

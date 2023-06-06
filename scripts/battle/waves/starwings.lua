@@ -11,11 +11,11 @@ end
 function Starwings:onStart()
     self.encounter:setMode("shoot")
     self.timer:every(1, function ()
-        self.starwalker.sprite:set("starwalker_shoot_1")
+        if not self.starwalker.sprite:set("starwalker_shoot_1") then end
         Assets.playSound("wing")
 
         self.timer:after(0.5, function ()
-            self.starwalker.sprite:set("starwalker_shoot_2")
+            if not self.starwalker.sprite:set("starwalker_shoot_2") then end
             Assets.playSound("stardrop")
             for i = -1, 1 do
                 local offset = i * 15
@@ -25,14 +25,14 @@ function Starwings:onStart()
             end
         end)
         self.timer:after(1, function ()
-            self.starwalker.sprite:set("wings")
+            if not self.starwalker.sprite:set("wings") then end
         end)
     end)
 end
 
 function Starwings:onEnd()
     self.encounter:setMode("normal")
-    self.starwalker.sprite:set("wings")
+    if not self.starwalker.sprite:set("wings") then end
     super.onEnd()
 end
 

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="20" height="23" tilewidth="40" tileheight="40" infinite="0" nextlayerid="18" nextobjectid="159">
+ <editorsettings>
+  <export target="starwalkeralley.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="starwalkervalley"/>
+  <property name="light" type="bool" value="false"/>
+  <property name="music" value="starwalkervalley"/>
+  <property name="name" value="Test City - Starwalker Valley"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../../ultratestmod/scripts/world/tilesets/battleborder.tsx"/>
+ <tileset firstgid="99" source="../../../../../ultratestmod/scripts/world/tilesets/dw_city_alley.tsx"/>
+ <tileset firstgid="209" source="../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="524" source="../../tilesets/dw_city_alley_2.tsx"/>
+ <tileset firstgid="634" source="../../tilesets/street_edges.tsx"/>
+ <tileset firstgid="844" source="../../tilesets/surface.tsx"/>
+ <tileset firstgid="1469" source="../../tilesets/objects.tsx"/>
+ <layer id="1" name="tiles" width="20" height="23">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,844,845,845,845,845,845,845,845,845,846,0,0,0,0,0,
+0,0,0,0,844,870,870,870,870,870,870,870,870,870,870,846,0,0,0,0,
+0,0,0,844,870,870,870,870,870,870,870,870,870,870,870,870,846,0,0,0,
+0,0,844,870,870,870,870,870,870,870,870,870,870,870,870,870,870,846,0,0,
+0,0,869,870,870,870,870,870,870,870,870,870,870,870,870,870,870,871,0,0,
+0,0,869,870,870,870,870,870,870,870,870,870,870,870,870,870,870,871,0,0,
+0,0,869,870,870,870,870,870,870,870,870,870,870,870,870,870,870,871,0,0,
+0,0,869,870,870,870,870,870,870,870,870,870,870,870,870,870,870,871,0,0,
+0,0,869,870,870,870,870,870,870,870,870,870,870,870,870,870,870,871,0,0,
+0,0,869,870,870,870,870,870,870,870,870,870,870,870,870,870,870,871,0,0,
+0,0,869,870,870,870,870,870,870,870,870,870,870,870,870,870,870,871,0,0,
+0,0,869,870,870,870,870,870,870,870,870,870,870,870,870,870,870,871,0,0,
+0,0,894,895,870,870,870,870,870,870,870,870,870,870,870,870,895,896,0,0,
+0,0,0,0,894,870,870,870,870,870,870,870,870,870,870,896,0,0,0,0,
+0,0,0,0,0,894,870,870,870,870,870,870,870,870,896,0,0,0,0,0,
+0,0,0,0,0,0,869,870,870,870,870,870,870,871,0,0,0,0,0,0,
+0,0,0,0,0,0,894,895,895,870,870,895,895,896,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,869,871,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,869,871,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="4" name="collision" opacity="0.5">
+  <object id="115" x="320" y="840" width="40" height="80"/>
+  <object id="116" x="440" y="840" width="40" height="80"/>
+  <object id="117" x="480" y="840" width="80" height="40"/>
+  <object id="118" x="240" y="840" width="80" height="40"/>
+  <object id="119" x="200" y="760" width="40" height="120"/>
+  <object id="120" x="560" y="760" width="40" height="120"/>
+  <object id="121" x="600" y="720" width="40" height="80"/>
+  <object id="122" x="160" y="720" width="40" height="80"/>
+  <object id="123" x="80" y="680" width="80" height="40"/>
+  <object id="124" x="640" y="680" width="80" height="40"/>
+  <object id="125" x="720" y="280" width="40" height="440"/>
+  <object id="126" x="40" y="280" width="40" height="440"/>
+  <object id="127" x="80" y="240" width="40" height="40"/>
+  <object id="128" x="120" y="200" width="40" height="40"/>
+  <object id="129" x="680" y="240" width="40" height="40"/>
+  <object id="130" x="640" y="200" width="40" height="40"/>
+  <object id="131" x="600" y="160" width="40" height="40"/>
+  <object id="132" x="160" y="160" width="40" height="40"/>
+  <object id="133" x="200" y="120" width="400" height="40"/>
+  <object id="138" x="524" y="370" width="32" height="30"/>
+  <object id="141" x="124" y="330" width="32" height="30"/>
+  <object id="143" x="164" y="610" width="32" height="30"/>
+  <object id="139" x="604" y="370" width="32" height="30"/>
+  <object id="140" x="204" y="330" width="32" height="30"/>
+  <object id="142" x="524" y="690" width="32" height="30"/>
+  <object id="144" x="164" y="250" width="32" height="30"/>
+  <object id="145" x="564" y="210" width="32" height="30"/>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="3" name="markers">
+  <object id="114" name="spawn" x="400" y="880">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="2" name="objects">
+  <object id="146" name="npc" x="180" y="480">
+   <properties>
+    <property name="actor" value="og_smallwalker"/>
+    <property name="cutscene" value="starwalkervalley.smallwalker1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="155" name="npc" x="610" y="290">
+   <properties>
+    <property name="actor" value="og_smallwalker"/>
+    <property name="cutscene" value="starwalkervalley.smallwalker2"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="148" name="npc" x="240" y="480">
+   <properties>
+    <property name="actor" value="og_starwalker"/>
+    <property name="cutscene" value="starwalkervalley.starwalker1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="156" name="npc" x="290" y="370">
+   <properties>
+    <property name="actor" value="og_starwalker"/>
+    <property name="cutscene" value="starwalkervalley.starwalker2"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="157" name="npc" x="400" y="200">
+   <properties>
+    <property name="actor" value="og_bigwalker"/>
+    <property name="cutscene" value="starwalkervalley.bigwalker"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="149" gid="1513" x="124" y="640" width="110" height="120"/>
+  <object id="150" gid="1513" x="484" y="720" width="110" height="120"/>
+  <object id="151" gid="1513" x="124" y="280" width="110" height="120"/>
+  <object id="152" gid="1513" x="524" y="240" width="110" height="120"/>
+  <object id="153" gid="1514" x="84" y="360" width="190" height="120"/>
+  <object id="154" gid="1514" x="484" y="400" width="190" height="120"/>
+  <object id="158" name="transition" x="360" y="900" width="80" height="40">
+   <properties>
+    <property name="map" value="cybercity/alley2"/>
+    <property name="marker" value="entryvalley"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

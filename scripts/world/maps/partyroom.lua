@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -18,11 +18,12 @@ return {
     {
       name = "devroom",
       firstgid = 1,
-      filename = "../tilesets/devroom.tsx"
+      filename = "../tilesets/devroom.tsx",
+      exportfilename = "../tilesets/devroom.lua"
     },
     {
       name = "objects",
-      firstgid = 19,
+      firstgid = 37,
       filename = "../tilesets/objects.tsx",
       exportfilename = "../tilesets/objects.lua"
     }
@@ -288,7 +289,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 39,
+          gid = 57,
           visible = true,
           properties = {}
         },
@@ -302,7 +303,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 39,
+          gid = 57,
           visible = true,
           properties = {}
         },
@@ -316,7 +317,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 39,
+          gid = 57,
           visible = true,
           properties = {}
         },
@@ -330,7 +331,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 39,
+          gid = 57,
           visible = true,
           properties = {}
         },
@@ -344,7 +345,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 39,
+          gid = 57,
           visible = true,
           properties = {}
         },

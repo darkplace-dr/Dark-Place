@@ -14,12 +14,6 @@ function StarWingsB:onStart()
     -- Get the arena object
     local arena = Game.battle.arena
 
-    -- Spawn spikes on top of arena
-    --self:spawnBulletTo(Game.battle.arena, "arenahazard", arena.width/2, 0, math.rad(0))
-
-    -- Spawn spikes on bottom of arena (rotated 180 degrees)
-    --self:spawnBulletTo(Game.battle.arena, "arenahazard", arena.width/2, arena.height, math.rad(180))
-
     -- Store starting arena position
     self.arena_start_x = arena.x
     self.arena_start_y = arena.y
@@ -27,11 +21,11 @@ function StarWingsB:onStart()
 
     self.encounter:setMode("shoot")
     self.timer:every(1, function ()
-        self.starwalker.sprite:set("starwalker_shoot_1")
+        if not self.starwalker.sprite:set("starwalker_shoot_1") then end
         Assets.playSound("wing")
 
         self.timer:after(0.5, function ()
-            self.starwalker.sprite:set("starwalker_shoot_2")
+            if not self.starwalker.sprite:set("starwalker_shoot_2") then end
             Assets.playSound("stardrop")
             for i = -1, 1 do
                 local offset = i * 15
@@ -41,14 +35,14 @@ function StarWingsB:onStart()
             end
         end)
         self.timer:after(1, function ()
-            self.starwalker.sprite:set("wings")
+            if not self.starwalker.sprite:set("wings") then end
         end)
     end)
 end
 
 function StarWingsB:onEnd()
     self.encounter:setMode("normal")
-    self.starwalker.sprite:set("wings")
+    if not self.starwalker.sprite:set("wings") then end
     super.onEnd()
 end
 

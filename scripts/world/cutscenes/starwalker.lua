@@ -10,6 +10,7 @@ return function(cutscene, event, player, facing)
         cutscene:showShop()
         local shopbox = cutscene.shopbox
         Game.world.music:pause()
+        
         cutscene:text("* Lmao you're broke as\n          [func:remove][color:yellow]fuck[noskip][wait:1.2s]", {functions = {
             remove = function()
                 Game.money = Game.money - 1
@@ -33,6 +34,7 @@ return function(cutscene, event, player, facing)
                 end
             end
         }})
+        
         cutscene:hideShop()
         cutscene:wait(0.5)
         if noelle then
@@ -72,32 +74,36 @@ return function(cutscene, event, player, facing)
         event.interacted = true
         cutscene:showShop()
         cutscene:setSpeaker(event)
+        
         cutscene:text("* These [color:yellow]bananas[color:reset] are [color:yellow]Pissing[color:reset] me\noff...")
+        
         while Game.money > 0 do
             Game.money = math.floor(Utils.lerp(Game.money, 0, 0.33))
             cutscene:wait(1/30)
         end
-        cutscene:text("* I'm the original   [color:yellow]Starwalker[color:reset][talk:false][react:1][wait:5][react:2][wait:5][react:3][wait:5][react:sussy]", {reactions={
-            {"BottomLeft", "left", "bottom", "surprise", "susie"},
-            {"RightTop", "right", "top", "blush", "ralsei"},
-            {"MidMid", "mid", "mid", "smile", "noelle"},
-            sussy = {"Right BottomMid", "right", "bottommid", "surprise", "susie"},
-        }})
+        
+        cutscene:text("* I'm a   [color:yellow]Starwalker[color:reset]")
+        
         cutscene:setSpeaker()
         cutscene:hideShop()
         cutscene:wait(0.25)
         Assets.playSound("save")
         cutscene:wait(0.5)
         Game:saveQuick(Game.world.player:getPosition())
-        cutscene:text("* (The original   [color:yellow]Starwalker[color:reset][wait:6]\n   somehow saved your game...)")
+        
+        cutscene:text("* (The   [color:yellow]Starwalker[color:reset][wait:6]\n   somehow saved your game...)")
+        
     else
-        Game.world.music:stop()
+        --Game.world.music:stop()
+        
         cutscene:text("* [color:yellow]You[color:reset] are [color:yellow]Pissing[color:reset] me off...", nil, event)
+        
         cutscene:text("* I,[wait:5] uh,[wait:5] what?", "sus_nervous", "susie")
         cutscene:text("* Well,[wait:5] hey,[wait:5] you know\nwhat?", "annoyed", "susie")
         cutscene:text("* You piss us off too.", "smirk", "susie")
+        Game.world.music:fade(0,1)
         local cutscene_music = Music()
-        cutscene_music:play("s_neo")
+        cutscene_music:play("susie")
         cutscene:detachFollowers()
         if kris then
             cutscene:walkTo(kris, kris.x, kris.y - 40, 1, "down", true)
@@ -125,33 +131,51 @@ return function(cutscene, event, player, facing)
         cutscene:wait(1)
         cutscene:text("* Uh,[wait:5] what-", "surprise_frown", "susie", {auto=true})
 
-        local encounter = cutscene:startEncounter("starwalker", true, {{"starwalker", event}})
+        local encounter = cutscene:startEncounter("og_starwalker", true, {{"og_starwalker", event}})
 
         local defeated_enemies = encounter:getDefeatedEnemies()
 
-        local done_state = defeated_enemies[1].done_state
-        
-        if done_state == "VIOLENCED" or done_state == "KILLED" or done_state == "FROZEN" then
-            cutscene:wait(1)
-            cutscene:text("* Hey,[wait:5] uh.", "neutral", "susie")
-            cutscene:text("* I know they were in our way,[wait:5] but...", "annoyed_down", "susie")
-            susie:setFacing("up")
-            cutscene:text("* What happened to the ACTing thing?", "neutral", "susie")
-            cutscene:text("* ...", "annoyed_down", "susie")
-            Assets.playSound("ominous")
-            cutscene:wait(1.5)
-            Game:setFlag("weird", true)
-            Game:setFlag("killedTRUEOriginalStarwalkerInAlley2", true)
-            Game.world.music:play("cybercity_alt")
-            Game.world.player:setFacing("down")
+        if defeated_enemies then
+            local done_state = defeated_enemies[1].done_state
+
+            if done_state then
+                if done_state == "VIOLENCED" or done_state == "KILLED" or done_state == "FROZEN" then
+                    event.sprite:resetSprite()
+                    event.interacted = false
+                    Game.world.map:getEvent(45):remove()
+                    cutscene:wait(1)
+                    cutscene:text("* Hey,[wait:5] uh.", "neutral", "susie")
+                    cutscene:text("* I know they were in our way,[wait:5] but...", "annoyed_down", "susie")
+                    susie:setFacing("up")
+                    cutscene:text("* What happened to the ACTing thing?", "neutral", "susie")
+                    cutscene:text("* ...", "annoyed_down", "susie")
+                    Assets.playSound("ominous")
+                    cutscene:wait(1.5)
+                    Game:setFlag("weird", true)
+                    Game:setFlag("killedTRUEOriginalStarwalkerInAlley2", true)
+                    Game.world.music:play("cybercity_alt")
+                    Game.world.music.volume = 1
+                    Game.world.player:setFacing("down")
+                else
+                    cutscene:text("* Wow, con grats on [color:yellow]beating[color:reset] my [color:yellow]ass[color:reset]")
+                    cutscene:text("* I will give you the keys of my\n          [color:yellow]house[color:reset]")
+                    if not Kristal.libCall("achievements", "hasAch", "unoriginalstarwalker") then
+                        Kristal.callEvent("completeAchievement", "unoriginalstarwalker")
+                    end
+                    Game:setFlag("unlockedStarwalkerValley", true)
+                    cutscene:text("* (You got the keys to the\n          [color:yellow]starwalker[color:reset]\n                    valley)")
+                end
+            end
         end
 
-        event.sprite:resetSprite()
+        --[color:yellow]Starwalker[color:reset]
+
+        
 
         cutscene:interpolateFollowers()
         cutscene:attachFollowers()
 
-        event.interacted = false
+        
 
 
     end

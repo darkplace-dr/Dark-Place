@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.0" name="objects" tilewidth="418" tileheight="725" tilecount="33" columns="0">
+<tileset version="1.10" tiledversion="1.10.0" name="objects" tilewidth="418" tileheight="725" tilecount="43" columns="0">
  <editorsettings>
   <export target="objects.lua" format="lua"/>
  </editorsettings>
@@ -111,5 +111,39 @@
  </tile>
  <tile id="36">
   <image width="116" height="118" source="../../../assets/sprites/objects/cybercity/dumpster2.png"/>
+ </tile>
+ <tile id="37">
+  <image width="80" height="60" source="../../../assets/sprites/objects/devroom_doorway_double.png"/>
+ </tile>
+ <tile id="40">
+  <image width="81" height="39" source="../../../assets/sprites/objects/devfountain_1.png"/>
+  <animation>
+   <frame tileid="40" duration="1000"/>
+   <frame tileid="41" duration="1000"/>
+  </animation>
+ </tile>
+ <tile id="41">
+  <image width="81" height="39" source="../../../assets/sprites/objects/devfountain_2.png"/>
+ </tile>
+ <tile id="42">
+  <image width="40" height="40" source="../../../assets/sprites/objects/devsign.png"/>
+ </tile>
+ <tile id="43">
+  <image width="40" height="40" source="../../../assets/sprites/objects/sign.png"/>
+ </tile>
+ <tile id="44">
+  <image width="110" height="120" source="../../../assets/sprites/objects/livetree_1.png"/>
+ </tile>
+ <tile id="45">
+  <image width="190" height="120" source="../../../assets/sprites/objects/livetree_2.png"/>
+ </tile>
+ <tile id="46">
+  <image width="190" height="160" source="../../../assets/sprites/objects/livetree_3.png"/>
+ </tile>
+ <tile id="47">
+  <image width="110" height="160" source="../../../assets/sprites/objects/livetree_4.png"/>
+ </tile>
+ <tile id="48">
+  <image width="270" height="160" source="../../../assets/sprites/objects/livetree_5.png"/>
  </tile>
 </tileset>

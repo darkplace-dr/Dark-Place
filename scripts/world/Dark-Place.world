@@ -146,6 +146,27 @@
             "width": 640,
             "x": 220,
             "y": -580
+        },
+        {
+            "fileName": "maps/devhotel1.tmx",
+            "height": 480,
+            "width": 1680,
+            "x": 7380,
+            "y": 5180
+        },
+        {
+            "fileName": "maps/devhotel_lobby.tmx",
+            "height": 1120,
+            "width": 1040,
+            "x": 6300,
+            "y": 4820
+        },
+        {
+            "fileName": "maps/cybercity/starwalkeralley.tmx",
+            "height": 920,
+            "width": 800,
+            "x": -3620,
+            "y": -2020
         }
     ],
     "onlyShowAdjacentMaps": false,

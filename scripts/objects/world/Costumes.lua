@@ -109,6 +109,24 @@ function Costumes:init()
                 {"DEFAULT", "dark", {176, 145}},
                 {"BRENDA", "dark", {176, 145}}
             }
+        },
+        {
+            name = "Bor",
+            icon = Assets.getTexture("ui/partyselect/bor"),
+            color = {113/255, 113/255, 231/255},
+            sprite_base_path = "party/bor",
+            skins = {
+                {"DEFAULT", "dark", {175, 190}}
+            }
+        },
+        {
+            name = "iPhone 7 Plus",
+            icon = Assets.getTexture("ui/partyselect/iphone"),
+            color = {198/255, 136/255, 132/255},
+            sprite_base_path = "party/iphone",
+            skins = {
+                {"DEFAULT", "dark", {168, 120}}
+            }
         }
     }
 end

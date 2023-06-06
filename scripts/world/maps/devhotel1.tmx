@@ -1,66 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="50" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="42" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="33">
  <editorsettings>
   <export target="devhotel1.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="music" value="greenroom"/>
+  <property name="music" value="devhotel"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/devroom.tsx"/>
- <tileset firstgid="19" source="../tilesets/objects.tsx"/>
- <tileset firstgid="51" source="../tilesets/hoteldoors.tsx"/>
- <layer id="1" name="Tile Layer 1" width="50" height="12">
+ <tileset firstgid="37" source="../tilesets/objects.tsx"/>
+ <tileset firstgid="81" source="../tilesets/hoteldoors.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="42" height="12">
   <data encoding="csv">
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,1,2,8,8,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,8,8,
-8,1,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,3,8,
-8,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,
-8,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,
-8,13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,15,8,
-8,8,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,15,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,15,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,15,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
 </data>
  </layer>
- <objectgroup id="2" name="collision">
-  <object id="1" x="80" y="120" width="80" height="40"/>
-  <object id="2" x="40" y="160" width="40" height="40"/>
-  <object id="3" x="0" y="200" width="40" height="160"/>
-  <object id="4" x="40" y="360" width="40" height="40"/>
-  <object id="5" x="80" y="400" width="1840" height="40"/>
-  <object id="6" x="1920" y="360" width="40" height="40"/>
-  <object id="7" x="1960" y="200" width="40" height="160"/>
-  <object id="8" x="1920" y="160" width="40" height="40"/>
-  <object id="9" x="240" y="120" width="1680" height="40"/>
+ <objectgroup color="#0000ff" id="2" name="collision">
+  <object id="19" x="960" y="200" width="40" height="160"/>
+  <object id="23" x="1000" y="320" width="400" height="40"/>
+  <object id="24" x="1360" y="360" width="40" height="40"/>
+  <object id="25" x="0" y="200" width="960" height="80"/>
+  <object id="26" x="0" y="400" width="1400" height="40"/>
  </objectgroup>
  <objectgroup id="3" name="objects_props">
-  <object id="10" gid="40" x="160" y="160" width="80" height="120"/>
-  <object id="14" gid="51" x="360" y="160" width="64" height="100"/>
+  <object id="14" gid="81" x="240" y="280" width="64" height="100"/>
+  <object id="28" gid="79" x="1280" y="400" width="40" height="40"/>
  </objectgroup>
- <objectgroup id="4" name="objects">
-  <object id="11" name="transition" x="160" y="120" width="80" height="20">
-   <properties>
-    <property name="map" value="devroom"/>
-    <property name="marker" value="entry2"/>
-   </properties>
-  </object>
-  <object id="15" name="interactable" x="360" y="120" width="64" height="40">
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="15" name="interactable" x="240" y="240" width="64" height="40">
    <properties>
     <property name="cutscene" value="devhotel.brandon"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="5" name="markers">
-  <object id="12" name="north" x="200" y="180">
-   <point/>
-  </object>
-  <object id="16" name="spawn" x="200" y="280">
+  <object id="30" name="interactable" x="1280" y="360" width="40" height="40">
    <properties>
-    <property name="music" value="greenroom"/>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* (It is too dark to see what it says.)"/>
    </properties>
+  </object>
+  <object id="31" name="transition" x="-20" y="280" width="40" height="120">
+   <properties>
+    <property name="map" value="devhotel_lobby"/>
+    <property name="marker" value="entryleft"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="12" name="entryright" x="50" y="360">
    <point/>
   </object>
  </objectgroup>

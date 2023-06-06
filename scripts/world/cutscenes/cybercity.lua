@@ -62,4 +62,27 @@ return {
 
     end,
 
+    enterstaralley = function(cutscene)
+
+        if not Game:getFlag("openedStarwalkerValley", false) then
+            
+            if Game:getFlag("unlockedStarwalkerValley", false) == false then
+                cutscene:text("* (There's traffic cones blocking the\n          [color:yellow]way[color:reset]")
+            else
+                cutscene:text("* (Do you want to open the\n          [color:yellow]starwalker[color:reset]\n                    valley)")
+                local cc = cutscene:choicer({"Yes", "No"})
+                if cc == 1 then
+                    cutscene:text("* (You opened\n          [color:yellow]it[color:reset]")
+                    Game:setFlag("openedStarwalkerValley", true)
+                    Game.world.map:getEvent("cone1"):explode()
+                    Game.world.map:getEvent("cone2"):explode()
+                    Game.world.map:getEvent(175):remove()
+                else
+                    cutscene:text("* (You didn't open\n          [color:yellow]it[color:reset]")
+                end
+            end
+
+        end
+    end
+
 }
