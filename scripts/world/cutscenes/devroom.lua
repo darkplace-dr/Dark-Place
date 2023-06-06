@@ -40,9 +40,10 @@ return {
                 cutscene:walkTo(event, -100, event.y + 50, 3, "left")
                 cutscene:wait(2)
             else
-                Game:addPartyMember("brandon")
-                event:convertToFollower(#Game.party)
                 cutscene:hideNametag()
+                Game:addPartyMember("brandon")
+                Game:setFlag("brandon_party", true)
+                event:convertToFollower(#Game.party)
                 cutscene:attachFollowers()
                 cutscene:text("* Brandon joined the party.")
                 cutscene:wait(0.5)
@@ -464,9 +465,8 @@ return {
             Game.world.music:pause()
             cutscene:wait(2.5)
             Assets.playSound("velvetsqueak")
-            cutscene:setSpeaker(default)
             cutscene:showNametag("Velvet")
-            cutscene:text("* Squeak!", "smile_b", "velvet")
+            cutscene:text("[voice:nil]* Squeak!", "smile_b", "velvet")
             cutscene:hideNametag()
 
             cutscene:wait(1)
@@ -537,6 +537,7 @@ return {
                     cutscene:wait(1)
                 else
 			        Game:addPartyMember("dumbie")
+                    Game:setFlag("dumbie_party", true)
                     event:convertToFollower(#Game.party)
 			        cutscene:hideNametag()
 			        cutscene:attachFollowers()

@@ -78,14 +78,14 @@ function Spamgolor:onAct(battler, name)
 end
 
 function Spamgolor:getNextWaves()
-    if self.health <= 600 or self.mercy >= 50 then
+    if self.health <= 300 or self.mercy >= 75 then
+        return {"spamgolor/everything"}
+    elseif self.health <= 600 or self.mercy >= 50 then
         return {
             "spamgolor/gemapple_deadlyneedle",
             "spamgolor/gemapple_blackhole",
             "spamgolor/deadlyneedle_blackhole"
         }
-    elseif self.health <= 300 or self.mercy >= 75 then
-        return {"spamgolor/everything"}
     end
     return super.getNextWaves(self)
 end

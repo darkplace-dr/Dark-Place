@@ -4,16 +4,15 @@ return {
         local dino = cutscene:spawnNPC("googledino", 1200, player.y)
         dino:setSprite("static")
         dino.sprite.flip_x = true
-		
 
-        cutscene:panTo(1000, y)
+        cutscene:panTo(1000, nil)
         cutscene:wait(2)
-		
+
         cutscene:detachCamera()
         cutscene:wait(2)
-		
+
         dino.sprite.flip_x = false
-		
+
         cutscene:wait(1)
 
         Assets.playSound("dino_jump")

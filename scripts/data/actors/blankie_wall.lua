@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "blankie_wall")
 
-function actor:init(x, y)
-    super.init(self, x, y)
+function actor:init()
+    super.init(self)
 
     self.name = "blankie_wall"
 

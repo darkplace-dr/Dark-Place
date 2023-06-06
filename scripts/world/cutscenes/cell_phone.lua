@@ -13,7 +13,7 @@ return function(cutscene, cell_phone_event_override)
     end
     local function garbageNoise(path, time)
         pauseMusic()
-        local wait = cutscene:playSound(path)
+        local wait = cutscene:playSound(path, 0.8)
         if time then
             cutscene:wait(time)
         else
@@ -27,16 +27,14 @@ return function(cutscene, cell_phone_event_override)
 
     Assets.playSound("phone", 0.7)
     cutscene:text("* (You tried to call on the Cell\nPhone.)", nil, nil, { advance = false })
-    cutscene:wait(1+1/3)
+    cutscene:wait(1.5)
 
     local event_num = cell_phone_event_override ~= nil and cell_phone_event_override or love.math.random(1, 100)
 
     if event_num <= 10 then
-        garbageNoise("mcdonalds")
+        garbageNoise("cell_phone/mcdonalds")
+
         cutscene:text("* Sounded like an angry customer.")
-    elseif event_num >= 87 and event_num <= 93 then
-        garbageNoise("fnafcall")
-        cutscene:text("* It's nothing but useless information.")
     elseif event_num == 39 then
         cutscene:text("* Hello!\n* Could I speak to G...")
         cutscene:text("* ...[wait:5]\n* Wait a second.")
@@ -50,11 +48,17 @@ return function(cutscene, cell_phone_event_override)
         cutscene:text("* We're very very sorry that\nwe got it wrong!")
         wrongnumber:remove()
         resumeMusic()
+
         cutscene:text("* (Click...)")
         cutscene:text("* Must've been a wrong number.")
+    elseif event_num >= 87 and event_num <= 93 then
+        garbageNoise("cell_phone/fnafcall")
+
+        cutscene:text("* It's nothing but useless information.")
     elseif event_num == 97 then
         pauseMusic()
-        local spam = cutscene:playSound("spamcall")
+        local spam = cutscene:playSound("cell_phone/spamcall", 0.8)
+
         cutscene:showNametag("Spamton G. Spamton")
         pacematchingMsg("* FUCK YOU CYBER CITY!", 10)
         pacematchingMsg("* IF YOU'RE [[Exploitable]] ENOUGH TO BUY A CAR THIS WEEKEND...", 5)
@@ -92,10 +96,13 @@ return function(cutscene, cell_phone_event_override)
         pacematchingMsg("* AND EXCLUSIVE HOME OF THE [[Biggest]] SON OF A BITCH IN THE DARK WORLD!", 40)
         pacematchingMsg("* GUARANTEED!", 30)
         cutscene:hideNametag()
+
         cutscene:wait(spam)
         resumeMusic()
+
         cutscene:text("* ...")
         cutscene:text("* What.")
+
         if cutscene:getCharacter("susie") then
             cutscene:showNametag("Susie")
             cutscene:text("* The hell was THAT?", "nervous", "susie")
@@ -108,13 +115,14 @@ return function(cutscene, cell_phone_event_override)
         I made to test out how Kristal works that was called
         Kris and Susie Gamer Time.
         ]]
-        garbageNoise("bbqbb", 200 / 30)
+        garbageNoise("cell_phone/bbqbb", 200 / 30)
+
         cutscene:text("* It's nothing but an old meme.")
     elseif event_num == 86 then
         pauseMusic()
-        local carglass = cutscene:playSound("carglass")
-        cutscene:wait(0.35)
+        local carglass = cutscene:playSound("cell_phone/carglass", 0.8)
 
+        cutscene:wait(0.06)
         pacematchingMsg("[speed:0.7]* ~Carglass répare,[wait:3] Carglass remplace!~", 15)
         cutscene:showNametag("Olivier de Carglass")
         pacematchingMsg("* Bonjour.[wait:2] Je suis Olivier de Carglass.", 5)
@@ -140,16 +148,19 @@ return function(cutscene, cell_phone_event_override)
         pacematchingMsg("* Ou réservez sur carglass.fr", 10)
         cutscene:hideNametag()
         pacematchingMsg("[speed:0.7]* ~Carglass répare,[wait:3] Carglass remplace!~", 15)
+
         cutscene:wait(carglass)
-        cutscene:text("* It's nothing but a French ad.")
         resumeMusic()
+
+        cutscene:text("* It's nothing but a French ad.")
     elseif event_num == 52 then
         --[[
             Agent 7's easteregg
             The Legendary Soup Store.
         ]]
         pauseMusic()
-        local soup = cutscene:playSound("soup")
+        local soup = cutscene:playSound("cell_phone/soup", 0.8)
+
         cutscene:showNametag("???", {right = false})
         pacematchingMsg("[wait:3]* Hello?", 5)
         cutscene:showNametag("???", {right = true})
@@ -203,18 +214,21 @@ return function(cutscene, cell_phone_event_override)
         cutscene:showNametag("???", {right = true})
         pacematchingMsg("* [color:red]FUCK[wait:2] YOU!!", 20)
         cutscene:hideNametag()
+
         cutscene:wait(soup)
         cutscene:wait(1)
         resumeMusic()
+
         cutscene:text("* It's just an argument about soup.")
     -- if anyone wants to add an additional easter egg, feel free to use the template below!
     --[[
     elseif event_num == 100 then
-        garbageNoise("path/to/audio")
+        garbageNoise("path/to/cell_phone/audio")
         cutscene:text("What the fuck")
     ]]
     else -- fallthrough
         garbageNoise("smile", 200 / 30)
+
         cutscene:text("* It's nothing but garbage noise.")
     end
 end

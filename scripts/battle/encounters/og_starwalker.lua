@@ -1,11 +1,13 @@
-local Starwalker, super = Class(Encounter)
+local OGStarwalker, super = Class(Encounter)
 
-function Starwalker:init()
+function OGStarwalker:init()
     super.init(self)
 
     self.text = "* Star walker has      changed forms"
 
     self.starwalker = self:addEnemy("og_starwalker", 530, 238)
+
+    self.music = "pissedmeoff"
 
     self.background = true
 
@@ -28,7 +30,7 @@ function Starwalker:init()
     --Game.battle:registerXAction("susie", "Supercharge", "Charge\nfaster", 80)
 end
 
-function Starwalker:setMode(mode)
+function OGStarwalker:setMode(mode)
     self.mode = mode
     self.old_x = self.starwalker.x
     self.old_y = self.starwalker.y
@@ -36,7 +38,11 @@ function Starwalker:setMode(mode)
     self.ease_timer = 0
 end
 
-function Starwalker:update()
+function Starwalker:onBattleEnd()
+    Game:setFlag("starwalker_defeated", true)
+end
+
+function OGStarwalker:update()
     super.update(self)
 
     if not self.starwalker.done_state and (Game.battle:getState() ~= "TRANSITION") then
@@ -71,4 +77,4 @@ function Starwalker:update()
     end
 end
 
-return Starwalker
+return OGStarwalker

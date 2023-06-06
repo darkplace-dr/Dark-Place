@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -34,6 +35,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -48,6 +50,7 @@ return {
       image = "../../../../../assets/sprites/objects/vaporbg/mountains.png",
       id = 3,
       name = "mountains",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -66,6 +69,7 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -94,6 +98,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -105,7 +110,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -118,7 +123,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 120,
@@ -131,7 +136,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 160,
@@ -144,7 +149,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 280,
@@ -157,7 +162,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 320,
@@ -170,7 +175,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 360,
@@ -183,7 +188,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 120,
@@ -196,7 +201,7 @@ return {
         {
           id = 15,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 166,
           y = 120,
@@ -209,7 +214,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 438,
           y = 120,
@@ -222,7 +227,7 @@ return {
         {
           id = 23,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 236,
           y = 160,
@@ -239,6 +244,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -250,7 +256,7 @@ return {
         {
           id = 9,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 640,
           y = 200,
@@ -266,7 +272,7 @@ return {
         {
           id = 10,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 134,
           y = 160,
@@ -280,7 +286,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 371,
           y = 160,
@@ -294,7 +300,7 @@ return {
         {
           id = 22,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 231,
           y = 200,
@@ -308,7 +314,7 @@ return {
         {
           id = 24,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 241,
           y = 160,
@@ -327,6 +333,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -338,7 +345,7 @@ return {
         {
           id = 8,
           name = "entry_bb",
-          type = "",
+          class = "",
           shape = "point",
           x = 600,
           y = 240,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="28">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="35">
  <editorsettings>
   <export target="partyroom.lua" format="lua"/>
  </editorsettings>
@@ -7,7 +7,7 @@
   <property name="music" value="greenroom"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/devroom.tsx"/>
- <tileset firstgid="37" source="../tilesets/objects.tsx"/>
+ <tileset firstgid="19" source="../tilesets/objects.tsx"/>
  <layer id="1" name="Tile Layer 1" width="24" height="18">
   <data encoding="csv">
 8,8,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,9,8,8,
@@ -47,11 +47,11 @@
   <object id="21" x="440" y="410" width="100" height="30"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
-  <object id="10" gid="57" x="600" y="400" width="100" height="70"/>
-  <object id="11" gid="57" x="280" y="400" width="100" height="70"/>
-  <object id="12" gid="57" x="440" y="450" width="100" height="70"/>
-  <object id="14" gid="57" x="600" y="500" width="100" height="70"/>
-  <object id="15" gid="57" x="280" y="500" width="100" height="70"/>
+  <object id="10" gid="39" x="600" y="400" width="100" height="70"/>
+  <object id="11" gid="39" x="280" y="400" width="100" height="70"/>
+  <object id="12" gid="39" x="440" y="450" width="100" height="70"/>
+  <object id="14" gid="39" x="600" y="500" width="100" height="70"/>
+  <object id="15" gid="39" x="280" y="500" width="100" height="70"/>
   <object id="22" name="transition" x="600" y="720" width="80" height="40">
    <properties>
     <property name="map" value="devroom"/>
@@ -67,9 +67,56 @@
    </properties>
    <point/>
   </object>
+  <object id="28" name="npc" x="107" y="400">
+   <properties>
+    <property name="actor" value="susie"/>
+    <property name="cutscene" value="partyroom.susie"/>
+    <property name="sprite" value="wall_right"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="31" name="npc" x="810" y="220">
+   <properties>
+    <property name="actor" value="dess"/>
+    <property name="cond" value="Game:getFlag(&quot;party&quot;, &quot;dess&quot;)"/>
+    <property name="cutscene" value="partyroom.dess"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="33" name="npc" x="800" y="620">
+   <properties>
+    <property name="actor" value="starwalker"/>
+    <property name="cond" value="Game:getFlag(&quot;party&quot;, &quot;ostarwalker&quot;)"/>
+    <property name="cutscene" value="partyroom.starwalker"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="23" name="entry" x="640" y="680">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="controllers">
+  <object id="30" name="toggle" x="160" y="360">
+   <properties>
+    <property name="flag" value="!susie_party"/>
+    <property name="target" type="object" value="28"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="32" name="toggle" x="880" y="160">
+   <properties>
+    <property name="flag" value="!dess_party"/>
+    <property name="target" type="object" value="31"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="34" name="toggle" x="880" y="560">
+   <properties>
+    <property name="flag" value="!ostarwalker_party"/>
+    <property name="target" type="object" value="33"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

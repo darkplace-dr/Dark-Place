@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -9,8 +9,8 @@ return {
   height = 18,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 5,
-  nextobjectid = 28,
+  nextlayerid = 7,
+  nextobjectid = 35,
   properties = {
     ["music"] = "greenroom"
   },
@@ -18,12 +18,11 @@ return {
     {
       name = "devroom",
       firstgid = 1,
-      filename = "../tilesets/devroom.tsx",
-      exportfilename = "../tilesets/devroom.lua"
+      filename = "../tilesets/devroom.tsx"
     },
     {
       name = "objects",
-      firstgid = 37,
+      firstgid = 19,
       filename = "../tilesets/objects.tsx",
       exportfilename = "../tilesets/objects.lua"
     }
@@ -84,7 +83,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 600,
@@ -97,7 +96,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 640,
@@ -110,7 +109,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 680,
           y = 640,
@@ -123,7 +122,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 840,
           y = 600,
@@ -136,7 +135,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 880,
           y = 240,
@@ -149,7 +148,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 240,
@@ -162,7 +161,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 0,
@@ -175,7 +174,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 0,
@@ -188,7 +187,7 @@ return {
         {
           id = 9,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 840,
           y = 0,
@@ -201,7 +200,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 360,
@@ -214,7 +213,7 @@ return {
         {
           id = 18,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 360,
@@ -227,7 +226,7 @@ return {
         {
           id = 19,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 460,
@@ -240,7 +239,7 @@ return {
         {
           id = 20,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 460,
@@ -253,7 +252,7 @@ return {
         {
           id = 21,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 410,
@@ -282,77 +281,77 @@ return {
         {
           id = 10,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 400,
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 39,
           visible = true,
           properties = {}
         },
         {
           id = 11,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 400,
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 39,
           visible = true,
           properties = {}
         },
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 450,
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 39,
           visible = true,
           properties = {}
         },
         {
           id = 14,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 500,
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 39,
           visible = true,
           properties = {}
         },
         {
           id = 15,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 500,
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 39,
           visible = true,
           properties = {}
         },
         {
           id = 22,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 720,
@@ -368,7 +367,7 @@ return {
         {
           id = 24,
           name = "wardrobe",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 220,
@@ -381,7 +380,7 @@ return {
         {
           id = 25,
           name = "jukebox",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 720,
           y = 180,
@@ -394,7 +393,7 @@ return {
         {
           id = 26,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 460,
           y = 200,
@@ -405,6 +404,57 @@ return {
           properties = {
             ["actor"] = "char",
             ["cutscene"] = "devroom.charshop"
+          }
+        },
+        {
+          id = 28,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 107,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "susie",
+            ["cutscene"] = "partyroom.susie",
+            ["sprite"] = "wall_right"
+          }
+        },
+        {
+          id = 31,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 810,
+          y = 220,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "dess",
+            ["cond"] = "Game:getFlag(\"party\", \"dess\")",
+            ["cutscene"] = "partyroom.dess"
+          }
+        },
+        {
+          id = 33,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 800,
+          y = 620,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "starwalker",
+            ["cond"] = "Game:getFlag(\"party\", \"ostarwalker\")",
+            ["cutscene"] = "partyroom.starwalker"
           }
         }
       }
@@ -426,7 +476,7 @@ return {
         {
           id = 23,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 640,
           y = 680,
@@ -435,6 +485,70 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "controllers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 30,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 160,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!susie_party",
+            ["target"] = { id = 28 }
+          }
+        },
+        {
+          id = 32,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 880,
+          y = 160,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!dess_party",
+            ["target"] = { id = 31 }
+          }
+        },
+        {
+          id = 34,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 880,
+          y = 560,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!ostarwalker_party",
+            ["target"] = { id = 33 }
+          }
         }
       }
     }

@@ -24,24 +24,23 @@ function spell:init()
 end
 
 function spell:onCast(user, target)
-	
 	Assets.playSound("falling_star", 1.0, 1.3)
 
-	user:setAnimation("battle/spellsuper", finishAnim)
-	
+	user:setAnimation("battle/spellsuper")
+
 	local spellEffect = SaveBaseEffect()
 	Game.battle:addChild(spellEffect)
-	
+
 	Game.battle.timer:after(2, function(wait)
 		for _,battler in ipairs(target) do
 			battler:heal(((user.chara:getStat("magic") * 3) + (user.chara:getStat("attack") * 2)) * 0.85)
 		end
-		
-		user:setAnimation("battle/idle", finishAnim)
-		
+
+		user:setAnimation("battle/idle")
+
 		Game.battle:finishActionBy(user)
 	end)
-	
+
 	return false
 end
 

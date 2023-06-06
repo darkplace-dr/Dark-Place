@@ -26,7 +26,8 @@ return {
     {
       name = "city_alleyway",
       firstgid = 10,
-      filename = "../tilesets/city_alleyway.tsx"
+      filename = "../tilesets/city_alleyway.tsx",
+      exportfilename = "../tilesets/city_alleyway.lua"
     },
     {
       name = "objects",

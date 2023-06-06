@@ -1,12 +1,12 @@
-local Starwalker, super = Class(EnemyBattler)
+local OGStarwalker, super = Class(EnemyBattler)
 
-function Starwalker:init()
+function OGStarwalker:init()
     super.init(self)
 
     self.name = "Starwalker"
     self:setActor("ogstarwalker")
 
-    self.path = "enemies/starwalker"
+    self.path = "enemies/ogstarwalker"
     self.default = ""
     self.sprite:set("wings")
 
@@ -14,26 +14,31 @@ function Starwalker:init()
     self.health = 6000
     self.attack = 12
     self.defense = 2
-    self.money = 69420
+    self.money = 420
+    self.experience = Mod:isInRematchMode() and 0 or 0
 
     self.spare_points = 0
 
     self.exit_on_defeat = false
     self.auto_spare = true
 
+    self.movearound = true
+
     self.waves = {
         "starwings",
-        "starwings_b"
+        "starwings_b",
+        "starwings_normal"
         --"solidtest"
     }
 
-    self.check = "The   original\n            ."
+    self.check = "The   original\n            ..."
 
     self.text = {
         "* Star walker",
         "* Smells like   [color:yellow]pissed off[color:reset]",
         "*               this encounter\n is against star  walker",
         "* this [color:yellow]battle[color:reset] is     [color:yellow]pissing[color:reset] me\noff..."
+        "* You are     [color:yellow]pissing[color:reset] me\noff..."
     }
 
     self.low_health_text = "* Star walker has      hurt"
@@ -45,24 +50,22 @@ function Starwalker:init()
     self.text_override = nil
 end
 
-function Starwalker:onSpared()
+function OGStarwalker:onSpared()
     super.onSpared(self)
 
     self.sprite:resetSprite()
     Game.battle.music:stop()
 end
 
-function Starwalker:isXActionShort(battler)
+function OGStarwalker:isXActionShort(battler)
     return true
 end
 
-function Starwalker:onActStart(battler, name)
+function OGStarwalker:onActStart(battler, name)
     super.onActStart(self, battler, name)
 end
 
-function Starwalker:onAct(battler, name)
-    Game.battle:startCutscene("starwalkerb.die", battler, self)
-
+function OGStarwalker:onAct(battler, name)
     if name == "DualHeal" then
         Game.battle:powerAct("dual_heal", battler, "ralsei")
     elseif name == "Red Buster" then
@@ -86,7 +89,7 @@ function Starwalker:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
-function Starwalker:onShortAct(battler, name)
+function OGStarwalker:onShortAct(battler, name)
     if name == "Standard" then
         self:addMercy(4)
         if battler.chara.id == "ralsei" then
@@ -104,7 +107,7 @@ function Starwalker:onShortAct(battler, name)
 end
 
 
-function Starwalker:getEnemyDialogue()
+function OGStarwalker:getEnemyDialogue()
     if self.text_override then
         local dialogue = self.text_override
         self.text_override = nil
@@ -128,7 +131,7 @@ end
 
 function Starwalker:onDefeat(damage, battler)
     
-    self:onDefeatFatal(damage, battler)
+    Game.battle:startCutscene("starwalkerb.die", battler, self)
+    --self:onDefeatFatal(damage, battler)
+    
 end
-
-return Starwalker

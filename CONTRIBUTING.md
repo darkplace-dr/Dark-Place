@@ -33,4 +33,4 @@ You'll be brought to the page shown above. Write helpful text in the textboxs, t
 Finally, for assistance on various matters in the contribution process, you may join our [Discord server](https://discord.gg/B2scNCB2). Happy contributing!
 
 ## Dark Place's Official Wiki
-Go to Dark Place's official [wiki](https://dark-place.fandom.com/f) and check out some stuff that's been implemented or WILL be implemented.
+Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place_Wiki) and check out some stuff that's been implemented or WILL be implemented.

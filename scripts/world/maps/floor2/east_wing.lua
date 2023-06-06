@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -76,7 +76,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 160,
@@ -89,7 +89,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1620,
           y = 160,
@@ -102,7 +102,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 480,
@@ -115,7 +115,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 920,
           y = 480,
@@ -144,7 +144,7 @@ return {
         {
           id = 5,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 720,
           y = 640,
@@ -159,7 +159,7 @@ return {
         {
           id = 7,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1538,
           y = 315,
@@ -175,7 +175,7 @@ return {
         {
           id = 8,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1680,
           y = 320,
@@ -190,7 +190,7 @@ return {
         {
           id = 9,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = -40,
           y = 320,
@@ -222,7 +222,7 @@ return {
         {
           id = 10,
           name = "entry_doorsright",
-          type = "",
+          class = "",
           shape = "point",
           x = 1580,
           y = 360,
@@ -235,7 +235,7 @@ return {
         {
           id = 11,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 40,
           y = 400,

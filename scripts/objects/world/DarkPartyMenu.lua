@@ -29,7 +29,7 @@ function DarkPartyMenu:init()
 	
 	self.list = {
 		{"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor"},
-		--{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
+		{"robo_susie", "noyno", "charkis", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 		--{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 	}
 	
@@ -92,9 +92,13 @@ function DarkPartyMenu:onKeyPressed(key)
 		if Input.pressed("confirm") then
 			if self.list[self.selected_y][self.selected_x] ~= "unknown" then
 				for index,party in pairs(Game.party) do
+					if index == self.selected_party then
+						Game:setFlag(party.id.."_party", false)
+					end
 					if party.id == self.list[self.selected_y][self.selected_x] then return end
 				end
 				Game.party[self.selected_party] = Game:getPartyMember(self.list[self.selected_y][self.selected_x])
+				Game:setFlag(self.list[self.selected_y][self.selected_x].."_party", true)
 				--[[for k,v in pairs(Game.world.healthbar.action_boxes) do
 					v:remove()
 				end]]
@@ -134,7 +138,7 @@ function DarkPartyMenu:onKeyPressed(key)
 			end
 		end
 		if Input.pressed("down") then
-			if self.selected_y < 1 then
+			if self.selected_y < 2 then
                 self.ui_move:stop()
                 self.ui_move:play()
 				self.selected_y = self.selected_y + 1

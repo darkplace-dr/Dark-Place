@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -22,7 +22,8 @@ return {
     {
       name = "city_alleyway",
       firstgid = 61,
-      filename = "../../tilesets/city_alleyway.tsx"
+      filename = "../../tilesets/city_alleyway.tsx",
+      exportfilename = "../../tilesets/city_alleyway.lua"
     }
   },
   layers = {
@@ -107,7 +108,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 160,
@@ -120,7 +121,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 120,
@@ -133,7 +134,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1240,
           y = 160,
@@ -146,7 +147,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 440,
@@ -159,7 +160,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 160,
@@ -172,7 +173,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 200,
@@ -201,7 +202,7 @@ return {
         {
           id = 8,
           name = "squeak",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 320,
@@ -214,7 +215,7 @@ return {
         {
           id = 11,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 86.2521,
           y = 202.348,
@@ -222,15 +223,12 @@ return {
           height = 75.0282,
           rotation = 0,
           visible = true,
-          properties = {
-            ["cutscene"] = "spamroom.warpbin",
-            ["solid"] = true
-          }
+          properties = {}
         },
         {
           id = 12,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 750.558,
           y = 271.916,
@@ -238,10 +236,7 @@ return {
           height = 48.0837,
           rotation = 0,
           visible = true,
-          properties = {
-            ["actor"] = "chevelour",
-            ["encounter"] = "chevelour"
-          }
+          properties = {}
         }
       }
     },
@@ -262,7 +257,7 @@ return {
         {
           id = 9,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 140,
           y = 320,

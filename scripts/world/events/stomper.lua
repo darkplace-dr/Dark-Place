@@ -6,28 +6,33 @@ function Stomper:init(x, y, data)
     self.sprite = Sprite("world/events/stomper/thwomp")
     self.sprite:setScale(2)
     self:addChild(self.sprite)
-	
-    self.physics.speed_y = speed_y
-	
+
     self.form = 1
     self.subform = 0
     self.init_x = self.x
     self.init_y = self.y
-	
+
     self.candamage = 1
 
     self.snded = 0
 
+    self.initialized = false
 end
 
 function Stomper:update()
     super.update(self)
-	
-    self.player_k = Sprite(Game.world.player.actor:getSpritePath().."/battle/defeat")
+
+    if not self.initialized then
+        if Game.world.player then
+            self.layer = Game.world.player.layer + 0.1
+            self.initialized = true
+        else
+            return
+        end
+    end
 
     if self.form == 1 then
         self.sprite:setFrame(1)
-        self.layer = Game.world.player.layer + 0.1
 	end
     if self.form == 2 then
         self.sprite:setFrame(2)
@@ -68,17 +73,20 @@ function Stomper:update()
         end
     end
 
-    if self.subform == 1 then
-        Game.world.player.visible = false
-        self.player_k.visible = true
-        self.player_k.x = Utils.lerp(self.player_k.x, (self.x - 80), 0.1)
-        self.player_k.y = Game.world.player.y
-        Game.world.player.x = self.player_k.x
+    if self.subform >= 1 then
+        if self.subform == 1 then
+            Game.lock_movement = true
+            Game.world.player:setSprite("battle/defeat")
+            self.layer = Game.world.player.layer - 0.1
+            self.subform = 1.5
+        end
+        Game.world.player.x = Utils.lerp(Game.world.player.x, self.x - 80, 0.1)
         if (Game.world.player.x <= (self.x - 73)) then
-            Game.world.player.visible = true
-            self.player_k.visible = false
+            Game.world.player:resetSprite()
+            self.layer = Game.world.player.layer + 0.1
             self.subform = 0
             self.candamage = 1
+            Game.lock_movement = false
         end
     end
 
@@ -95,7 +103,7 @@ function Stomper:update()
         self.y = self.init_y
         self.physics.speed_y = 0
     end
-	
+
     if self.form == 4 and self:collidesWith(Game.world.player) and self.candamage == 1 then
         self.candamage = 0
         local a = AfterImage(self, 0.5)
@@ -103,8 +111,6 @@ function Stomper:update()
         Assets.playSound("hurt", 3)
         Game.world.camera:shake(8)
         self.subform = 1
-        self.player_k.x = Game.world.player.x
-        self.layer = Game.world.player.layer - 0.1
     end
 end
 

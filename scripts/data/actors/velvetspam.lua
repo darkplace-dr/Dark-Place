@@ -1,7 +1,8 @@
+---@class velvetspam : Actor
 local actor, super = Class(Actor, "velvetspam")
 
-function actor:init(x, y)
-    super.init(self, x, y)
+function actor:init()
+    super.init(self)
 
     self.name = "Velvet!Spamton"
 

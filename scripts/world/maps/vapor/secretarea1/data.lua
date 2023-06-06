@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -35,6 +36,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -52,6 +54,7 @@ return {
       height = 32,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -100,6 +103,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects_glass",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -111,7 +115,7 @@ return {
         {
           id = 1,
           name = "magicglass",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 1080,
@@ -124,7 +128,7 @@ return {
         {
           id = 2,
           name = "magicglass",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 600,
@@ -141,6 +145,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -152,7 +157,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 600,
@@ -165,7 +170,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 600,
@@ -178,7 +183,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 1160,
@@ -191,7 +196,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 200,
@@ -204,7 +209,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 160,
@@ -217,7 +222,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 200,
@@ -230,7 +235,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 200,
@@ -243,7 +248,7 @@ return {
         {
           id = 16,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 192,
           y = 570,
@@ -256,7 +261,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 408,
           y = 570,
@@ -269,7 +274,7 @@ return {
         {
           id = 23,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 74,
           y = 220,
@@ -282,7 +287,7 @@ return {
         {
           id = 24,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 526,
           y = 220,
@@ -295,7 +300,7 @@ return {
         {
           id = 30,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 200,
@@ -308,7 +313,7 @@ return {
         {
           id = 31,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 200,
@@ -325,6 +330,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -336,7 +342,7 @@ return {
         {
           id = 9,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = -40,
           y = 1080,
@@ -352,7 +358,7 @@ return {
         {
           id = 10,
           name = "savepoint",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 400,
@@ -367,7 +373,7 @@ return {
         {
           id = 11,
           name = "snick_shack",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 320,
           y = 320,
@@ -380,7 +386,7 @@ return {
         {
           id = 13,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 496,
           y = 240,
@@ -394,7 +400,7 @@ return {
         {
           id = 15,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 10,
           y = 240,
@@ -408,7 +414,7 @@ return {
         {
           id = 21,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 182,
           y = 595,
@@ -422,7 +428,7 @@ return {
         {
           id = 22,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 402,
           y = 595,
@@ -436,7 +442,7 @@ return {
         {
           id = 25,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 148,
           y = 992,
@@ -450,7 +456,7 @@ return {
         {
           id = 26,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 148,
           y = 792,
@@ -464,7 +470,7 @@ return {
         {
           id = 28,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 358,
           y = 792,
@@ -478,7 +484,7 @@ return {
         {
           id = 29,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 363.667,
           y = 998.667,
@@ -492,7 +498,7 @@ return {
         {
           id = 33,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 280,
@@ -512,6 +518,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -523,7 +530,7 @@ return {
         {
           id = 18,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 40,
           y = 1120,
@@ -536,7 +543,7 @@ return {
         {
           id = 32,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 200,
           y = 430,
@@ -549,7 +556,7 @@ return {
         {
           id = 34,
           name = "entry2",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 360,

@@ -59,7 +59,7 @@ return {
         cutscene:wait(1.5)
         
         --local background = GonerBackground(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "AUDIO_DONKEY")
-        local background = GonerBackground(0, 0, "AUDIO_DONKEY") -- Yes this is drawn like this on purpose. idk i like it 
+        local background = GonerBackground(0, 0, "AUDIO_DONKEY_b") -- Yes this is drawn like this on purpose. idk i like it 
         background.layer = WORLD_LAYERS["top"]
         Game.world:addChild(background)
 

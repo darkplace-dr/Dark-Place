@@ -1,35 +1,34 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
-  width = 42,
+  width = 50,
   height = 12,
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 33,
+  nextobjectid = 17,
   properties = {
-    ["music"] = "devhotel"
+    ["music"] = "greenroom"
   },
   tilesets = {
     {
       name = "devroom",
       firstgid = 1,
-      filename = "../tilesets/devroom.tsx",
-      exportfilename = "../tilesets/devroom.lua"
+      filename = "../tilesets/devroom.tsx"
     },
     {
       name = "objects",
-      firstgid = 37,
+      firstgid = 19,
       filename = "../tilesets/objects.tsx",
       exportfilename = "../tilesets/objects.lua"
     },
     {
       name = "hoteldoors",
-      firstgid = 81,
+      firstgid = 56,
       filename = "../tilesets/hoteldoors.tsx"
     }
   },
@@ -38,7 +37,7 @@ return {
       type = "tilelayer",
       x = 0,
       y = 0,
-      width = 42,
+      width = 50,
       height = 12,
       id = 1,
       name = "Tile Layer 1",
@@ -52,18 +51,18 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8
+        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+        8, 8, 1, 2, 8, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 8, 8,
+        8, 1, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 3, 8,
+        8, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8,
+        8, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8,
+        8, 13, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 15, 8,
+        8, 8, 13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 8, 8,
+        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+        8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8
       }
     },
     {
@@ -81,11 +80,37 @@ return {
       properties = {},
       objects = {
         {
-          id = 19,
+          id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
-          x = 960,
+          x = 80,
+          y = 120,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 2,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 40,
+          y = 160,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 3,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 0,
           y = 200,
           width = 40,
           height = 160,
@@ -94,24 +119,11 @@ return {
           properties = {}
         },
         {
-          id = 23,
+          id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
-          x = 1000,
-          y = 320,
-          width = 400,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 24,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1360,
+          x = 40,
           y = 360,
           width = 40,
           height = 40,
@@ -120,26 +132,65 @@ return {
           properties = {}
         },
         {
-          id = 25,
+          id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
-          x = 0,
-          y = 200,
-          width = 960,
-          height = 80,
+          x = 80,
+          y = 400,
+          width = 1840,
+          height = 40,
           rotation = 0,
           visible = true,
           properties = {}
         },
         {
-          id = 26,
+          id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
-          x = 0,
-          y = 400,
-          width = 1400,
+          x = 1920,
+          y = 360,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 1960,
+          y = 200,
+          width = 40,
+          height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 8,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 1920,
+          y = 160,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 240,
+          y = 120,
+          width = 1680,
           height = 40,
           rotation = 0,
           visible = true,
@@ -162,30 +213,30 @@ return {
       properties = {},
       objects = {
         {
-          id = 14,
+          id = 10,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
-          x = 240,
-          y = 280,
-          width = 64,
-          height = 100,
+          x = 160,
+          y = 160,
+          width = 80,
+          height = 120,
           rotation = 0,
-          gid = 81,
+          gid = 40,
           visible = true,
           properties = {}
         },
         {
-          id = 28,
+          id = 14,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
-          x = 1280,
-          y = 400,
-          width = 40,
-          height = 40,
+          x = 360,
+          y = 160,
+          width = 64,
+          height = 100,
           rotation = 0,
-          gid = 79,
+          gid = 56,
           visible = true,
           properties = {}
         }
@@ -206,50 +257,34 @@ return {
       properties = {},
       objects = {
         {
+          id = 11,
+          name = "transition",
+          class = "",
+          shape = "rectangle",
+          x = 160,
+          y = 120,
+          width = 80,
+          height = 20,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "devroom",
+            ["marker"] = "entry2"
+          }
+        },
+        {
           id = 15,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
-          x = 240,
-          y = 240,
+          x = 360,
+          y = 120,
           width = 64,
           height = 40,
           rotation = 0,
           visible = true,
           properties = {
             ["cutscene"] = "devhotel.brandon"
-          }
-        },
-        {
-          id = 30,
-          name = "interactable",
-          type = "",
-          shape = "rectangle",
-          x = 1280,
-          y = 360,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["solid"] = true,
-            ["text1"] = "* (It is too dark to see what it says.)"
-          }
-        },
-        {
-          id = 31,
-          name = "transition",
-          type = "",
-          shape = "rectangle",
-          x = -20,
-          y = 280,
-          width = 40,
-          height = 120,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["map"] = "devhotel_lobby",
-            ["marker"] = "entryleft"
           }
         }
       }
@@ -270,16 +305,31 @@ return {
       objects = {
         {
           id = 12,
-          name = "entryright",
-          type = "",
+          name = "north",
+          class = "",
           shape = "point",
-          x = 50,
-          y = 360,
+          x = 200,
+          y = 180,
           width = 0,
           height = 0,
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 16,
+          name = "spawn",
+          class = "",
+          shape = "point",
+          x = 200,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["music"] = "greenroom"
+          }
         }
       }
     }
