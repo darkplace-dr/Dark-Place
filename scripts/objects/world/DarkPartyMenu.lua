@@ -138,7 +138,7 @@ function DarkPartyMenu:onKeyPressed(key)
 			end
 		end
 		if Input.pressed("down") then
-			if self.selected_y < 1 then
+			if self.selected_y < 2 then
                 self.ui_move:stop()
                 self.ui_move:play()
 				self.selected_y = self.selected_y + 1
