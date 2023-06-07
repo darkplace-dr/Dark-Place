@@ -5,9 +5,9 @@ function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Apple"
+    self.name = "HalfApple"
     -- Name displayed when used in battle (optional)
-    self.use_name = "APPLE"
+    self.use_name = "HALF APPLE"
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
