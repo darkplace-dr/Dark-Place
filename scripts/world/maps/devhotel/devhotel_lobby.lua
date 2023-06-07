@@ -18,25 +18,26 @@ return {
     {
       name = "devroom",
       firstgid = 1,
-      filename = "../tilesets/devroom.tsx",
-      exportfilename = "../tilesets/devroom.lua"
+      filename = "../../tilesets/devroom.tsx",
+      exportfilename = "../../tilesets/devroom.lua"
     },
     {
       name = "objects",
       firstgid = 37,
-      filename = "../tilesets/objects.tsx",
-      exportfilename = "../tilesets/objects.lua"
+      filename = "../../tilesets/objects.tsx",
+      exportfilename = "../../tilesets/objects.lua"
     },
     {
       name = "hoteldoors",
-      firstgid = 81,
-      filename = "../tilesets/hoteldoors.tsx"
+      firstgid = 86,
+      filename = "../../tilesets/hoteldoors.tsx",
+      exportfilename = "../../tilesets/hoteldoors.lua"
     },
     {
       name = "city_alleyway",
-      firstgid = 82,
-      filename = "../tilesets/city_alleyway.tsx",
-      exportfilename = "../tilesets/city_alleyway.lua"
+      firstgid = 88,
+      filename = "../../tilesets/city_alleyway.tsx",
+      exportfilename = "../../tilesets/city_alleyway.lua"
     }
   },
   layers = {
@@ -489,7 +490,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "devhotel1",
+            ["map"] = "devhotel/devhotel1",
             ["marker"] = "entryright"
           }
         },
@@ -519,7 +520,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -533,7 +534,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -547,7 +548,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -561,7 +562,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -575,7 +576,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -589,7 +590,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -603,7 +604,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -617,7 +618,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -631,7 +632,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -645,7 +646,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         },
@@ -659,7 +660,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 310,
+          gid = 316,
           visible = true,
           properties = {}
         }

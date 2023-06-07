@@ -51,7 +51,7 @@ function StarWingsB:update()
     self.siner = self.siner + DT
 
     -- Calculate the arena Y offset
-    local offset = math.sin(self.siner * 1.5) * 60
+    local offset = math.sin(self.siner * 1.5) * 30
 
     -- Move the arena
     Game.battle.arena:setPosition(self.arena_start_x, self.arena_start_y + offset)

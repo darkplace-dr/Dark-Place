@@ -4,7 +4,7 @@ function OGStarwalker:init()
     super.init(self)
 
     self.name = "Starwalker"
-    self:setActor("ogstarwalker")
+    self:setActor("og_starwalker")
 
     self.path = "enemies/ogstarwalker"
     self.default = ""
@@ -16,6 +16,8 @@ function OGStarwalker:init()
     self.defense = 2
     self.money = 420
     self.experience = Mod:isInRematchMode() and 0 or 0
+
+    self.usedWalkerTimes = 0
 
     self.spare_points = 0
 
@@ -37,13 +39,13 @@ function OGStarwalker:init()
         "* Star walker",
         "* Smells like   [color:yellow]pissed off[color:reset]",
         "*               this encounter\n is against star  walker",
-        "* this [color:yellow]battle[color:reset] is     [color:yellow]pissing[color:reset] me\noff..."
+        "* this [color:yellow]battle[color:reset] is     [color:yellow]pissing[color:reset] me\noff...",
         "* You are     [color:yellow]pissing[color:reset] me\noff..."
     }
 
     self.low_health_text = "* Star walker has      hurt"
 
-    self:registerAct("Star walker", "")
+    self:registerAct("Walker", "")
     self:registerAct("Red Buster", "Red\nDamage", "susie", 60)
     self:registerAct("DualHeal", "Heals\neveryone", "ralsei", 50)
 
@@ -70,8 +72,16 @@ function OGStarwalker:onAct(battler, name)
         Game.battle:powerAct("dual_heal", battler, "ralsei")
     elseif name == "Red Buster" then
         Game.battle:powerAct("red_buster", battler, "susie", self)
-    elseif name == "Star walker" then
-        self:addMercy(8)
+    elseif name == "Walker" then
+        if self.usedWalkerTimes == 0 then
+            self:addMercy(8)
+            self.usedWalkerTimes = 1
+        elseif self.usedWalkerTimes == 1 then
+            self:addMercy(16)
+            self.usedWalkerTimes = 2
+        else
+            self:addMercy(32)
+        end
         return "* The Original Starwalker  absorbs the\nACT"
     elseif name == "Standard" then
         self:addMercy(4)
@@ -129,9 +139,13 @@ function OGStarwalker:getEnemyDialogue()
     return dialogue[math.random(#dialogue)]
 end
 
-function Starwalker:onDefeat(damage, battler)
+function OGStarwalker:onDefeat(damage, battler)
     
-    Game.battle:startCutscene("starwalkerb.die", battler, self)
+    if not Game.battle.cutscene then
+        Game.battle:startCutscene("starwalkerb.die", battler, self)
+    end
     --self:onDefeatFatal(damage, battler)
     
 end
+
+return OGStarwalker

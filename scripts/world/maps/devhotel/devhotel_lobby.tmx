@@ -6,10 +6,10 @@
  <properties>
   <property name="music" value="devhotel"/>
  </properties>
- <tileset firstgid="1" source="../tilesets/devroom.tsx"/>
- <tileset firstgid="37" source="../tilesets/objects.tsx"/>
- <tileset firstgid="81" source="../tilesets/hoteldoors.tsx"/>
- <tileset firstgid="82" source="../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="1" source="../../tilesets/devroom.tsx"/>
+ <tileset firstgid="37" source="../../tilesets/objects.tsx"/>
+ <tileset firstgid="86" source="../../tilesets/hoteldoors.tsx"/>
+ <tileset firstgid="88" source="../../tilesets/city_alleyway.tsx"/>
  <layer id="1" name="Tile Layer 1" width="26" height="28">
   <data encoding="csv">
 8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
@@ -75,7 +75,7 @@
   <object id="22" gid="77" x="320" y="760" width="162" height="78"/>
   <object id="44" name="transition" x="1020" y="640" width="40" height="120">
    <properties>
-    <property name="map" value="devhotel1"/>
+    <property name="map" value="devhotel/devhotel1"/>
     <property name="marker" value="entryright"/>
    </properties>
   </object>
@@ -85,17 +85,17 @@
     <property name="marker" value="entry2"/>
    </properties>
   </object>
-  <object id="51" gid="310" x="360" y="1000" width="40" height="40"/>
-  <object id="52" gid="310" x="400" y="1000" width="40" height="40"/>
-  <object id="53" gid="310" x="0" y="680" width="40" height="40"/>
-  <object id="54" gid="310" x="0" y="720" width="40" height="40"/>
-  <object id="55" gid="310" x="0" y="760" width="40" height="40"/>
-  <object id="66" gid="310" x="480" y="440" width="40" height="40"/>
-  <object id="67" gid="310" x="520" y="440" width="40" height="40"/>
-  <object id="68" gid="310" x="560" y="440" width="40" height="40"/>
-  <object id="69" gid="310" x="600" y="440" width="40" height="40"/>
-  <object id="70" gid="310" x="720" y="440" width="40" height="40"/>
-  <object id="71" gid="310" x="760" y="440" width="40" height="40"/>
+  <object id="51" gid="316" x="360" y="1000" width="40" height="40"/>
+  <object id="52" gid="316" x="400" y="1000" width="40" height="40"/>
+  <object id="53" gid="316" x="0" y="680" width="40" height="40"/>
+  <object id="54" gid="316" x="0" y="720" width="40" height="40"/>
+  <object id="55" gid="316" x="0" y="760" width="40" height="40"/>
+  <object id="66" gid="316" x="480" y="440" width="40" height="40"/>
+  <object id="67" gid="316" x="520" y="440" width="40" height="40"/>
+  <object id="68" gid="316" x="560" y="440" width="40" height="40"/>
+  <object id="69" gid="316" x="600" y="440" width="40" height="40"/>
+  <object id="70" gid="316" x="720" y="440" width="40" height="40"/>
+  <object id="71" gid="316" x="760" y="440" width="40" height="40"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="45" name="entryleft" x="980" y="720">

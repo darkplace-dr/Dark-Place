@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.0",
   name = "hoteldoors",
   class = "",
   tilewidth = 32,
@@ -23,11 +23,17 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 1,
+  tilecount = 2,
   tiles = {
     {
       id = 0,
-      image = "../../../assets/sprites/objects/hoteldoors/brandonroomdoor.png",
+      image = "../../../assets/sprites/objects/hoteldoors/000.png",
+      width = 32,
+      height = 50
+    },
+    {
+      id = 1,
+      image = "../../../assets/sprites/objects/hoteldoors/001.png",
       width = 32,
       height = 50
     }

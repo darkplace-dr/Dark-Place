@@ -167,6 +167,20 @@
             "width": 800,
             "x": -3620,
             "y": -2020
+        },
+        {
+            "fileName": "maps/devhotel/devhotel_lobby.tmx",
+            "height": 1120,
+            "width": 1040,
+            "x": 6340,
+            "y": 4820
+        },
+        {
+            "fileName": "maps/devhotel/devhotel1.tmx",
+            "height": 480,
+            "width": 2000,
+            "x": 7420,
+            "y": 5180
         }
     ],
     "onlyShowAdjacentMaps": false,

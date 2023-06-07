@@ -38,7 +38,7 @@ function OGStarwalker:setMode(mode)
     self.ease_timer = 0
 end
 
-function Starwalker:onBattleEnd()
+function OGStarwalker:onBattleEnd()
     Game:setFlag("starwalker_defeated", true)
 end
 

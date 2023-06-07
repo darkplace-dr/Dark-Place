@@ -1,4 +1,12 @@
 return {
+
+    template = function(cutscene, event)
+        cutscene:text("* It's a door.")
+        cutscene:text("* The sign reads \"THIS ROOM BELONGS TO: NO ONE\"")
+        cutscene:text("* It appears to be locked.")
+    end,
+
+
     brandon = function(cutscene, event)
         cutscene:text("* It's a door.")
         cutscene:text("* The sign reads \"THIS ROOM BELONGS TO: BRANDONK7200\"")

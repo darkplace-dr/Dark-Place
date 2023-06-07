@@ -25,14 +25,16 @@ return {
 
     bigwalker = function(cutscene)
         cutscene:text("* These [color:red]Walkers[color:reset] are [color:red]Enraging[color:reset] me...")
-        cutscene:text("* I'm the   [color:yellow]Big Walker[color:reset]")
+        cutscene:text("* I'm the   [color:red]Big Walker[color:reset]")
 
+        --[[
         if Game:hasPartyMember("starwalker") then
             cutscene:showNametag("Starwalker?")
             cutscene:text("* Hi   [color:yellow]Father[color:reset]")
             cutscene:hideNametag()
             cutscene:text("* Hi   [color:yellow]Son[color:reset]")
         end
+        ]]
     end,
 
 }

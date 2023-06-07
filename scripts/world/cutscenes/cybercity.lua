@@ -76,7 +76,7 @@ return {
                     Game:setFlag("openedStarwalkerValley", true)
                     Game.world.map:getEvent("cone1"):explode()
                     Game.world.map:getEvent("cone2"):explode()
-                    Game.world.map:getEvent(175):remove()
+                    Game.world.map:getEvent(214):remove()
                 else
                     cutscene:text("* (You didn't open\n          [color:yellow]it[color:reset]")
                 end
