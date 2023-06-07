@@ -60,6 +60,8 @@ function Mod:initializeImportantFlags(new_file)
 
         Game:setFlag("timesUsedWrongBorDoorCode", 0)
         Game:setFlag("BorDoorCodeUnlocked", false)
+        Game:setFlag("AddiSwitchOn", false)
+
 
         Game:setFlag("cloudwebStoryFlag", 0)
     end
@@ -190,4 +192,9 @@ end
 function Mod:isNight()
     local hour = os.date("*t").hour
     return hour < 8 or hour >= 21
+end
+
+function Mod:SwitchOn()
+    Game:getFlag("AddiSwitchOn", true)
+        return Game:getFlag("AddiSwitchOn")
 end
