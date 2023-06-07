@@ -32,7 +32,7 @@ function DarkConfigMenu:update()
             elseif self.currently_selected == 5 then
                 Kristal.Config["autoRun"] = not Kristal.Config["autoRun"]
             elseif self.currently_selected == 6 then
-                Game:returnToMenu()
+                Kristal.Config["AddiSwitch"] = not Kristal.Config["AddiSwitch"]
             elseif self.currently_selected == 7 then
                 Game.world:openMenu(AchievementsMenu())
             elseif self.currently_selected == 8 then
@@ -119,7 +119,7 @@ function DarkConfigMenu:draw()
         love.graphics.print("Simplify VFX",    88, 38 + (2 * 32))
         love.graphics.print("Fullscreen",      88, 38 + (3 * 32))
         love.graphics.print("Auto-Run",        88, 38 + (4 * 32))
-        love.graphics.print("Return to Title", 88, 38 + (5 * 32))
+        love.graphics.print("AddiSwitch",      88, 38 + (5 * 32))
         love.graphics.print("Achievements",    88, 38 + (6 * 32))
         love.graphics.print("Back",            88, 38 + (7 * 32))
 
@@ -131,6 +131,7 @@ function DarkConfigMenu:draw()
         love.graphics.print(Kristal.Config["simplifyVFX"] and "ON" or "OFF", 348, 38 + (2 * 32))
         love.graphics.print(Kristal.Config["fullscreen"]  and "ON" or "OFF", 348, 38 + (3 * 32))
         love.graphics.print(Kristal.Config["autoRun"]     and "ON" or "OFF", 348, 38 + (4 * 32))
+        love.graphics.print(Kristal.Config["AddiSwitch"]     and "ON" or "OFF", 348, 38 + (5 * 32))
 
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))

@@ -46,4 +46,9 @@ function actor:init()
     self.offsets = {}
 end
 
+function actor:onSpriteInit(sprite)
+    sprite.draw_children_below = 0
+    sprite.flip_x = true
+end
+
 return actor

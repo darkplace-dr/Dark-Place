@@ -85,4 +85,11 @@ return {
         end
     end
 
+    pink_ad = function(cutscene)
+        local addisonpink = cutscene:getCharacter("addisonpink")
+        addisonpink:setAnimation("idle")
+        cutscene:text("* I'm still a WIP! Don't mind me here!")
+        addisonpink:resetSprite()
+    end
+    
 }

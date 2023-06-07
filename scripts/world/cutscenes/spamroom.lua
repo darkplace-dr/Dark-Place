@@ -21,6 +21,12 @@ return {
         cutscene:text("* BIG SHOT AUTOS![wait:5] TAKE A RIDE\nAROUND TOWN IN OUR SPECIAL")
         cutscene:text("* (The rest is cut off.)")
     end,
+    mari = function(cutscene, event)
+        cutscene:showNametag("Mariton")
+        cutscene:text("* HEY [wait:5][wave]EVERY~", "", "marispam")
+        cutscene:text("* WAITING FOR [wave]SOMETHING[wave:0] TO HAPPEN?", "", "marispam")
+        cutscene:hideNametag()
+    end,
     cungadero = function(cutscene, event)
         cutscene:showNametag("Cungadero Spamton")
         cutscene:text("* Take a ride around town on our special Cungadero!", "", "cungaderospamton")

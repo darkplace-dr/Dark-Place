@@ -60,6 +60,8 @@ function Mod:initializeImportantFlags(new_file)
 
         Game:setFlag("timesUsedWrongBorDoorCode", 0)
         Game:setFlag("BorDoorCodeUnlocked", false)
+        Game:setFlag("AddiSwitchOn", false)
+
 
         Game:setFlag("cloudwebStoryFlag", 0)
     end
@@ -204,3 +206,8 @@ Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat
 
     self:checkHealth(on_defeat, amount, battler)
 end)
+
+function Mod:SwitchOn()
+    Game:getFlag("AddiSwitchOn", true)
+        return Game:getFlag("AddiSwitchOn")
+end

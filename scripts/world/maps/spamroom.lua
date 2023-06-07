@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 34,
+  nextobjectid = 35,
   properties = {
     ["music"] = "spamton_battle_eb"
   },
@@ -168,7 +168,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1040,
           y = 400,
@@ -181,7 +181,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1360,
           y = 0,
@@ -194,7 +194,7 @@ return {
         {
           id = 19,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1080,
           y = 0,
@@ -207,7 +207,7 @@ return {
         {
           id = 24,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 0,
@@ -220,7 +220,7 @@ return {
         {
           id = 25,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 400,
@@ -233,7 +233,7 @@ return {
         {
           id = 32,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -246,7 +246,7 @@ return {
         {
           id = 33,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 320,
@@ -275,7 +275,7 @@ return {
         {
           id = 7,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 960,
           y = 480,
@@ -291,7 +291,7 @@ return {
         {
           id = 10,
           name = "npc",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1320,
           y = 240,
@@ -307,7 +307,7 @@ return {
         {
           id = 11,
           name = "npc",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 680,
           y = 200,
@@ -323,7 +323,7 @@ return {
         {
           id = 12,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 780,
           y = 94,
@@ -338,7 +338,7 @@ return {
         {
           id = 13,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1150,
           y = 140,
@@ -354,7 +354,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1110,
           y = 160,
@@ -371,10 +371,10 @@ return {
         {
           id = 16,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
-          x = 1160,
-          y = 395,
+          x = 1080,
+          y = 390,
           width = 0,
           height = 0,
           rotation = 0,
@@ -387,7 +387,7 @@ return {
         {
           id = 20,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 920,
           y = -20,
@@ -403,7 +403,7 @@ return {
         {
           id = 22,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 200,
@@ -418,7 +418,7 @@ return {
         {
           id = 27,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 520,
           y = 240,
@@ -434,7 +434,7 @@ return {
         {
           id = 28,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 840,
           y = 390,
@@ -450,7 +450,7 @@ return {
         {
           id = 30,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = -40,
           y = 240,
@@ -461,6 +461,22 @@ return {
           properties = {
             ["map"] = "cybercity/alley2",
             ["marker"] = "entry_right"
+          }
+        },
+        {
+          id = 34,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 1320,
+          y = 390,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "marispam",
+            ["cutscene"] = "spamroom.mari"
           }
         }
       }
@@ -482,7 +498,7 @@ return {
         {
           id = 9,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 1000,
           y = 440,
@@ -495,7 +511,7 @@ return {
         {
           id = 15,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 1200,
           y = 270,
@@ -508,7 +524,7 @@ return {
         {
           id = 23,
           name = "entry1",
-          type = "",
+          class = "",
           shape = "point",
           x = 1000,
           y = 105,
@@ -521,7 +537,7 @@ return {
         {
           id = 31,
           name = "entry_left",
-          type = "",
+          class = "",
           shape = "point",
           x = 40,
           y = 280,

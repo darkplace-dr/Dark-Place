@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -9,8 +9,8 @@ return {
   height = 40,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 14,
-  nextobjectid = 218,
+  nextlayerid = 12,
+  nextobjectid = 173,
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -890,6 +890,19 @@ return {
           y = 840,
           width = 200,
           height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 152,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1640,
+          y = 280,
+          width = 40,
+          height = 600,
           rotation = 0,
           visible = true,
           properties = {}
@@ -1947,6 +1960,22 @@ return {
           gid = 942,
           visible = true,
           properties = {}
+        },
+        {
+          id = 172,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 1820.74,
+          y = 427.086,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "addisonpink",
+            ["cutscene"] = "cybercity.pink_ad"
+          }
         },
         {
           id = 212,
