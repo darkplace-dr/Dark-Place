@@ -40,9 +40,6 @@ function JukeboxMenu:init()
     self.songs_per_page = 6
 
     self.selected_index_memory = {}
-    for i = 1, self.max_pages do
-        self.selected_index_memory[i] = 1
-    end
 end
 
 function JukeboxMenu:getPage(page)
@@ -109,19 +106,21 @@ function JukeboxMenu:update()
         Game.world:closeMenu()
     end
 
+    local page_bak = self.page
     --page left
     if Input.pressed("left", true) then
         Assets.playSound("ui_move")
         self.page = self.page - 1
-        self.selected_index = self.selected_index_memory[self.page]
     end
     --page right
     if Input.pressed("right", true) then
         Assets.playSound("ui_move")
         self.page = self.page + 1
-        self.selected_index = self.selected_index_memory[self.page]
     end
-    self.page = Utils.clamp(self.page, 1, self.max_pages)
+    self.page = Utils.clampWrap(self.page, 1, self.max_pages)
+    if self.page ~= page_bak then
+        self.selected_index = self.selected_index_memory[self.page] or 1
+    end
 
     --move up
     if Input.pressed("up", true) then
@@ -133,19 +132,19 @@ function JukeboxMenu:update()
         Assets.playSound("ui_move")
         self.selected_index = self.selected_index + 1
     end
-    self.selected_index = Utils.clamp(self.selected_index, 1, self.songs_per_page)
+    self.selected_index = Utils.clampWrap(self.selected_index, 1, self.songs_per_page)
     self.selected_index_memory[self.page] = self.selected_index
 
     --soul positions
     self.heart_target_y = 95 + 40 * (self.selected_index - 1)
-    if (math.abs((self.heart_target_x - self.heart.x)) <= 2) then
+    if math.abs(self.heart_target_x - self.heart.x) <= 2 then
         self.heart.x = self.heart_target_x
     end
-    if (math.abs((self.heart_target_y - self.heart.y)) <= 2)then
+    if math.abs(self.heart_target_y - self.heart.y) <= 2 then
         self.heart.y = self.heart_target_y
     end
-    self.heart.x = self.heart.x + ((self.heart_target_x - self.heart.x) / 2) * DTMULT
-    self.heart.y = self.heart.y + ((self.heart_target_y - self.heart.y) / 2) * DTMULT
+    self.heart.x = self.heart.x + (self.heart_target_x - self.heart.x) / 2 * DTMULT
+    self.heart.y = self.heart.y + (self.heart_target_y - self.heart.y) / 2 * DTMULT
 end
 
 function JukeboxMenu:close()
