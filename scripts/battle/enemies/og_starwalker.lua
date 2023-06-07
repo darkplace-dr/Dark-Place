@@ -28,7 +28,7 @@ function OGStarwalker:init()
 
     self.waves = {
         "starwings",
-        "starwings_b",
+        --"starwings_b",
         "starwings_normal"
         --"solidtest"
     }
@@ -57,6 +57,10 @@ function OGStarwalker:onSpared()
 
     self.sprite:resetSprite()
     Game.battle.music:stop()
+
+    if not Game.battle.cutscene then
+        Game.battle:startCutscene("starwalkerb.spare", battler, self)
+    end
 end
 
 function OGStarwalker:isXActionShort(battler)
@@ -68,6 +72,7 @@ function OGStarwalker:onActStart(battler, name)
 end
 
 function OGStarwalker:onAct(battler, name)
+    self:spare()
     if name == "DualHeal" then
         Game.battle:powerAct("dual_heal", battler, "ralsei")
     elseif name == "Red Buster" then

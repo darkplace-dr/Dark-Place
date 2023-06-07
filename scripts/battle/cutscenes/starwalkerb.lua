@@ -36,6 +36,26 @@ return {
 
 		enemy.done_state = "KILLED"
 
+	end,
+
+
+	spare = function(cutscene, battler, enemy)
+
+		cutscene:wait(1.5)
+
+		cutscene:fadeOut(1)
+
+		cutscene:wait(1)
+
+		Game.battle:setState("TRANSITIONOUT")
+		Game.battle.encounter:onBattleEnd()
+
+		cutscene:wait(0.5)
+
+		cutscene:fadeIn(0.5)
+
+		enemy.done_state = "SPARED"
+
 	end
 
 }

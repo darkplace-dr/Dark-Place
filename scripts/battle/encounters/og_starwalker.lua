@@ -72,8 +72,10 @@ function OGStarwalker:update()
         end
     end
 
-    for _,enemy in pairs(Game.battle.enemy_world_characters) do
-        enemy:remove()
+    if self.starwalker.done_state and self.starwalker.done_state == "KILLED" then
+        for _,enemy in pairs(Game.battle.enemy_world_characters) do
+            enemy:remove()
+        end
     end
 end
 

@@ -181,6 +181,13 @@
             "width": 2000,
             "x": 7420,
             "y": 5180
+        },
+        {
+            "fileName": "maps/cybercity/starwalkeralley2.tmx",
+            "height": 1000,
+            "width": 1040,
+            "x": -3740,
+            "y": -3060
         }
     ],
     "onlyShowAdjacentMaps": false,

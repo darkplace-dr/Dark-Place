@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="100" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="218">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="100" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="250">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -196,14 +196,20 @@
 </data>
  </layer>
  <objectgroup id="13" name="objects_glass">
-  <object id="181" name="magicglass" x="1280" y="320" width="80" height="160"/>
-  <object id="183" name="magicglass" x="1120" y="480" width="240" height="80"/>
-  <object id="185" name="magicglass" x="1120" y="560" width="80" height="240"/>
-  <object id="186" name="magicglass" x="1200" y="720" width="160" height="80"/>
   <object id="188" name="magicglass" x="1280" y="640" width="80" height="80"/>
   <object id="189" name="magicglass" x="1360" y="640" width="160" height="80"/>
   <object id="190" name="magicglass" x="1440" y="440" width="80" height="200"/>
   <object id="191" name="magicglass" x="1520" y="440" width="160" height="80"/>
+  <object id="218" name="magicglass" x="800" y="720" width="560" height="80"/>
+  <object id="219" name="magicglass" x="800" y="600" width="80" height="120"/>
+  <object id="220" name="magicglass" x="880" y="600" width="160" height="80"/>
+  <object id="221" name="magicglass" x="960" y="280" width="80" height="320"/>
+  <object id="223" name="magicglass" x="680" y="280" width="280" height="80"/>
+  <object id="224" name="magicglass" x="680" y="80" width="80" height="200"/>
+  <object id="227" name="magicglass" x="760" y="80" width="400" height="80"/>
+  <object id="230" name="magicglass" x="1080" y="160" width="80" height="440"/>
+  <object id="231" name="magicglass" x="1160" y="520" width="200" height="80"/>
+  <object id="232" name="magicglass" x="1280" y="320" width="80" height="200"/>
  </objectgroup>
  <objectgroup color="#00ffff" id="7" name="enemycollision"/>
  <objectgroup color="#0000ff" id="2" name="collision" opacity="0.5">
@@ -267,17 +273,19 @@
   <object id="195" x="1520" y="560" width="40" height="160"/>
   <object id="198" x="1360" y="720" width="40" height="80"/>
   <object id="199" x="1400" y="720" width="160" height="40"/>
-  <object id="200" x="1120" y="800" width="280" height="40"/>
-  <object id="201" x="1080" y="480" width="40" height="360"/>
-  <object id="202" x="1080" y="440" width="200" height="40"/>
-  <object id="203" x="1240" y="360" width="40" height="80"/>
-  <object id="204" x="1360" y="360" width="40" height="200"/>
-  <object id="205" x="1200" y="560" width="200" height="40"/>
-  <object id="206" x="1200" y="600" width="40" height="120"/>
-  <object id="207" x="1240" y="600" width="40" height="120"/>
-  <object id="208" x="1280" y="600" width="160" height="40"/>
-  <object id="209" x="1400" y="400" width="40" height="200"/>
-  <object id="210" x="1440" y="400" width="200" height="40"/>
+  <object id="234" x="1360" y="360" width="80" height="280"/>
+  <object id="236" x="1440" y="360" width="200" height="80"/>
+  <object id="237" x="1040" y="600" width="320" height="40"/>
+  <object id="240" x="1040" y="160" width="40" height="440"/>
+  <object id="241" x="760" y="160" width="280" height="120"/>
+  <object id="242" x="640" y="360" width="320" height="240"/>
+  <object id="243" x="640" y="40" width="40" height="320"/>
+  <object id="244" x="680" y="40" width="480" height="40"/>
+  <object id="245" x="760" y="600" width="40" height="200"/>
+  <object id="246" x="760" y="800" width="640" height="40"/>
+  <object id="247" x="880" y="680" width="400" height="40"/>
+  <object id="248" x="1040" y="640" width="240" height="40"/>
+  <object id="249" x="1160" y="360" width="120" height="160"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="24" name="entrydown" x="3400" y="40">
@@ -334,7 +342,7 @@
   <object id="45" name="npc" x="3780" y="860">
    <properties>
     <property name="actor" value="og_starwalker"/>
-    <property name="cutscene" value="starwalker"/>
+    <property name="cutscene" value="cybercity.starwalker"/>
     <property name="flagcheck" value="!killedTRUEOriginalStarwalkerInAlley2"/>
    </properties>
    <point/>
@@ -391,11 +399,20 @@
    </properties>
   </object>
   <object id="171" name="spammydumpster" gid="942" x="1562" y="1368" width="116" height="118"/>
-  <object id="212" name="cone1" gid="327" x="1280" y="80" width="40" height="40"/>
-  <object id="213" name="cone2" gid="327" x="1320" y="80" width="40" height="40"/>
+  <object id="212" name="cone1" gid="327" x="1280" y="80" width="40" height="40">
+   <properties>
+    <property name="flagcheck" value="!openedStarwalkerValley"/>
+   </properties>
+  </object>
+  <object id="213" name="cone2" gid="327" x="1320" y="80" width="40" height="40">
+   <properties>
+    <property name="flagcheck" value="!openedStarwalkerValley"/>
+   </properties>
+  </object>
   <object id="214" name="interactable" x="1280" y="40" width="80" height="40">
    <properties>
     <property name="cutscene" value="cybercity.enterstaralley"/>
+    <property name="flagcheck" value="!openedStarwalkerValley"/>
     <property name="once" type="bool" value="false"/>
     <property name="solid" type="bool" value="true"/>
    </properties>

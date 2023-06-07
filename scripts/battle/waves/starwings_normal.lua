@@ -12,14 +12,14 @@ function Starwings:onStart()
         self.starwalker.sprite:set("starwalker_shoot_1")
         Assets.playSound("wing")
 
-        self.timer:after(1.5, function ()
+        self.timer:after(0.5, function ()
             self.starwalker.sprite:set("starwalker_shoot_2")
             Assets.playSound("stardrop")
             for i = -1, 1 do
                 local offset = i * 15
                 local star = self:spawnBullet("battle/bullets/star", self.starwalker.x - 20, self.starwalker.y - 40)
                 star.physics.direction = math.atan2(Game.battle.soul.y - star.y, Game.battle.soul.x - star.x) + math.rad(offset)
-                star.physics.speed = 4
+                star.physics.speed = 5
                 star.rotation = math.rad(0) + 15
                 star.graphics.spin = 0.15
             end

@@ -24,7 +24,7 @@ function StarWingsB:onStart()
         if not self.starwalker.sprite:set("starwalker_shoot_1") then end
         Assets.playSound("wing")
 
-        self.timer:after(0.5, function ()
+        self.timer:after(1, function ()
             if not self.starwalker.sprite:set("starwalker_shoot_2") then end
             Assets.playSound("stardrop")
             for i = -1, 1 do
@@ -51,7 +51,7 @@ function StarWingsB:update()
     self.siner = self.siner + DT
 
     -- Calculate the arena Y offset
-    local offset = math.sin(self.siner * 1.5) * 30
+    local offset = math.sin(self.siner * 1.5) * 60
 
     -- Move the arena
     Game.battle.arena:setPosition(self.arena_start_x, self.arena_start_y + offset)

@@ -20,6 +20,14 @@ return {
         cutscene:text("* I'm a   [color:yellow]Sadwalker[color:reset]")
     end,
 
+    starwalker3 = function(cutscene)
+        cutscene:text("* I'm [color:yellow]Blocking[color:reset] your [color:yellow]Way[color:reset]...")
+        cutscene:text("* I'm a   [color:yellow]Badwalker[color:reset]")
+    end,
+
+    babywalker = function(cutscene)
+        cutscene:text("* No way,          baby Starwalker")
+    end,
 
 
 
