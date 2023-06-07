@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="100" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="12" nextobjectid="173">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="100" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="218">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -405,12 +405,6 @@
     <property name="map" value="cybercity/starwalkeralley"/>
     <property name="marker" value="spawn"/>
    </properties>
-  <object id="172" name="npc" x="1820.74" y="427.086">
-   <properties>
-    <property name="actor" value="addisonpink"/>
-    <property name="cutscene" value="cybercity.pink_ad"/>
-   </properties>
-   <point/>
   </object>
  </objectgroup>
  <objectgroup color="#ff7fff" id="5" name="battleareas"/>
