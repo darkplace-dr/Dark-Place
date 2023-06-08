@@ -6,21 +6,12 @@ function actor:init()
     -- Display name (optional)
     self.name = "Frisk"
 
-    --[[
     -- Width and height for this actor, used to determine its center
     self.width = 21
     self.height = 41
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {0, 25, 21, 15}
-    ]]
-
-    -- Width and height for this actor, used to determine its center
-    self.width = 32
-    self.height = 47
-
-    -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {0, 26, 32, 23}
+    self.hitbox = {0, 25, 19, 14}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {0, 1, 1}
@@ -81,22 +72,21 @@ function actor:init()
         ["slide"] = {0, 0},
 
         -- Battle offsets
-        ["battle/idle"] = {-5, -1},
+        ["battle/idle"] = {-3, 0},
 
-        ["battle/attack"] = {-16, 3},
-        ["battle/attackready"] = {-16, 3},
-        ["battle/act"] = {-7, 10},
-        ["battle/actready"] = {-7, 10},
-        ["battle/actend"] = {-7, 10},
-        ["battle/item"] = {-12, -5},
-        ["battle/itemready"] = {-12, -5},
-        ["battle/defend"] = {-5, 7},
+        ["battle/attack"] = {-13, 4},
+        ["battle/attackready"] = {-13, 4},
+        ["battle/act"] = {-3, 10},
+        ["battle/actend"] = {-3, 10},
+        ["battle/actready"] = {-3, 10},
+        ["battle/item"] = {-10, -4},
+        ["battle/itemready"] = {-10, -4},
+        ["battle/defend"] = {-3, 8},
 
-        ["battle/defeat"] = {-8, 20},
-        ["battle/hurt"] = {-5, 11},
+        ["battle/defeat"] = {-6, 10},
+        ["battle/hurt"] = {-5, 7},
 
-        ["battle/intro"] = {-8, -9},
-        ["battle/victory"] = {-3, 0}
+        ["battle/victory"] = {-10, 4}
     }
 end
 
