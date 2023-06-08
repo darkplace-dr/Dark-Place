@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 14,
-  nextobjectid = 250,
+  nextobjectid = 252,
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -71,8 +71,7 @@ return {
     {
       name = "dw_city_alley",
       firstgid = 1018,
-      filename = "../../../../../../ultratestmod/scripts/world/tilesets/dw_city_alley.tsx",
-      exportfilename = "../../../tilesets/dw_city_alley.lua"
+      filename = "../../../../../../ultratestmod/scripts/world/tilesets/dw_city_alley.tsx"
     }
   },
   layers = {
@@ -2116,6 +2115,22 @@ return {
           properties = {
             ["map"] = "cybercity/starwalkeralley",
             ["marker"] = "spawn"
+          }
+        },
+        {
+          id = 250,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 1819.56,
+          y = 470.614,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "addisonpink",
+            ["cutscene"] = "cybercity.pink_ad"
           }
         }
       }
