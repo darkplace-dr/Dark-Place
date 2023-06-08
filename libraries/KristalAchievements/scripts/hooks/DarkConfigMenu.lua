@@ -32,9 +32,10 @@ function DarkConfigMenu:update()
             elseif self.currently_selected == 5 then
                 Kristal.Config["autoRun"] = not Kristal.Config["autoRun"]
             elseif self.currently_selected == 6 then
-                Kristal.Config["AddiSwitch"] = not Kristal.Config["AddiSwitch"]
+                Game:returnToMenu()
             elseif self.currently_selected == 7 then
-                Game.world:openMenu(AchievementsMenu())
+                self.state = "EXTRAS"
+                self.currently_selected = 1
             elseif self.currently_selected == 8 then
                 Game.world.menu:closeBox()
             end
@@ -61,6 +62,43 @@ function DarkConfigMenu:update()
         end
 
         self.currently_selected = Utils.clamp(self.currently_selected, 1, 8)
+    elseif self.state == "EXTRAS" then
+        if Input.pressed("confirm") then
+            self.ui_select:stop()
+            self.ui_select:play()
+
+            if self.currently_selected == 1 then
+                Game.world:openMenu(AchievementsMenu())
+            elseif self.currently_selected == 2 then
+                Kristal.Config["AddiSwitch"] = not Kristal.Config["AddiSwitch"]
+            elseif self.currently_selected == 3 then
+                self.state = "MAIN"
+                self.currently_selected = 1
+            end
+
+            return
+        end
+
+        if Input.pressed("cancel") then
+            self.ui_cancel_small:stop()
+            self.ui_cancel_small:play()
+            self.state = "MAIN"
+            self.currently_selected = 1
+            return
+        end
+
+        if Input.pressed("up") then
+            self.currently_selected = self.currently_selected - 1
+            self.ui_move:stop()
+            self.ui_move:play()
+        end
+        if Input.pressed("down") then
+            self.currently_selected = self.currently_selected + 1
+            self.ui_move:stop()
+            self.ui_move:play()
+        end
+
+        self.currently_selected = Utils.clamp(self.currently_selected, 1, 3)
     elseif self.state == "VOLUME" then
         if Input.pressed("cancel") or Input.pressed("confirm") then
             Kristal.setVolume(Utils.round(Kristal.getVolume() * 100) / 100)
@@ -107,7 +145,18 @@ function DarkConfigMenu:draw()
     love.graphics.setFont(self.font)
     love.graphics.setColor(PALETTE["world_text"])
 
-    if self.state ~= "CONTROLS" then
+    if self.state == "EXTRAS" then
+        love.graphics.print("EXTRAS", 188, -12)
+
+        love.graphics.print("Achievements",    88, 38 + (0 * 32))
+        love.graphics.print("AddiSwitch",      88, 38 + (1 * 32))
+        love.graphics.print("Back",            88, 38 + (2 * 32))
+			
+        love.graphics.print(Kristal.Config["AddiSwitch"]  and "ON" or "OFF", 348, 38 + (1 * 32))
+
+        love.graphics.setColor(Game:getSoulColor())
+        love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))
+    elseif self.state ~= "CONTROLS" then
         love.graphics.print("CONFIG", 188, -12)
 
         if self.state == "VOLUME" then
@@ -119,8 +168,8 @@ function DarkConfigMenu:draw()
         love.graphics.print("Simplify VFX",    88, 38 + (2 * 32))
         love.graphics.print("Fullscreen",      88, 38 + (3 * 32))
         love.graphics.print("Auto-Run",        88, 38 + (4 * 32))
-        love.graphics.print("AddiSwitch",      88, 38 + (5 * 32))
-        love.graphics.print("Achievements",    88, 38 + (6 * 32))
+        love.graphics.print("Return to Title", 88, 38 + (5 * 32))
+        love.graphics.print("Extras",          88, 38 + (6 * 32))
         love.graphics.print("Back",            88, 38 + (7 * 32))
 
         if self.state == "VOLUME" then
@@ -131,12 +180,10 @@ function DarkConfigMenu:draw()
         love.graphics.print(Kristal.Config["simplifyVFX"] and "ON" or "OFF", 348, 38 + (2 * 32))
         love.graphics.print(Kristal.Config["fullscreen"]  and "ON" or "OFF", 348, 38 + (3 * 32))
         love.graphics.print(Kristal.Config["autoRun"]     and "ON" or "OFF", 348, 38 + (4 * 32))
-        love.graphics.print(Kristal.Config["AddiSwitch"]     and "ON" or "OFF", 348, 38 + (5 * 32))
 
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))
     else
-
         -- NOTE: This is forced to true if using a PlayStation in DELTARUNE... Kristal doesn't have a PlayStation port though.
         local dualshock = Input.getControllerType() == "ps4"
 
