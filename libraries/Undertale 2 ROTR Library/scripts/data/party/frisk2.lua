@@ -51,7 +51,7 @@ function character:init()
     self.weapon_icon = "ui/menu/equip/sword"
 
     -- Equipment (saved to the save file)
-
+    self:setWeapon("friskhand")
     self:setArmor(1, "leaf")
 
     -- Default light world equipment item IDs (saves current equipment)
