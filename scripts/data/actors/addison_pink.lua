@@ -1,4 +1,3 @@
----@class velvetspam : Actor
 local actor, super = Class(Actor, "addisonpink")
 
 function actor:init()
@@ -20,8 +19,11 @@ function actor:init()
     self.default = "stand"
 
     self.voice = nil
+    self.voice_switch = "voice/java"
+
     self.portrait_path = nil
-    self.portrait_offset = {0, 0}
+    self.portrait_path_switch = "face/java"
+    self.portrait_offset = {-22, -6}
 
     self.animations = {
         ["idle"] = {"idle", 0.2, true},
@@ -36,6 +38,14 @@ end
 
 function actor:getSpritePath()
     return not Mod:SwitchOn() and self.path or self.path_switch
+end
+
+function actor:getPortraitPath()
+    return not Mod:SwitchOn() and self.portrait_path or self.portrait_path_switch
+end
+
+function actor:getVoicePath()
+    return not Mod:SwitchOn() and self.voice or self.voice_switch
 end
 
     local function updateTexture(self, sprite)
@@ -77,7 +87,7 @@ function actor:onSpriteUpdate(sprite)
     local switch_bak = self.switch
     self.switch = Mod:SwitchOn()
 
-    if self.cwitch ~= switch_bak then
+    if self.switch ~= switch_bak then
         updateTexture(self, sprite)
     end
 end
