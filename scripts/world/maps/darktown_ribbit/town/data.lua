@@ -13,7 +13,8 @@ return {
   nextobjectid = 52,
   properties = {
     ["music"] = "mysterious_castle",
-    ["name"] = "Castle Town?"
+    ["name"] = "Castle Town?",
+    ["use_footstep_sounds"] = "true"
   },
   tilesets = {},
   layers = {

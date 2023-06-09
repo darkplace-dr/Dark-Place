@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="objects" tilewidth="147" tileheight="235" tilecount="4" columns="0">
+<tileset version="1.10" tiledversion="1.10.1" name="lario-objects" tilewidth="147" tileheight="235" tilecount="4" columns="0">
  <editorsettings>
-  <export target="objects.lua" format="lua"/>
+  <export target="lario-objects.lua" format="lua"/>
  </editorsettings>
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="14">

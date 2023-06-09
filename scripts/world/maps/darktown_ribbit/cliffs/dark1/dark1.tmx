@@ -5,6 +5,7 @@
  </editorsettings>
  <properties>
   <property name="music" value="jazzylandscape"/>
+  <property name="use_footstep_sounds" value="true"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/darktiles_ribbitmobdt.tsx"/>
  <objectgroup color="#ff0000" id="3" name="objects_bg">

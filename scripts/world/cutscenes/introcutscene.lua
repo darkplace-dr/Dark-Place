@@ -192,6 +192,7 @@ return function(cutscene)
 
         cutscene:wait(1)
 
+        -- FIXME: make this a part of onEnter of room1
         cutscene:after(function()
             if Game:hasPartyMember("YOU") then
                 Game.world:startCutscene("room1", "react_to_YOU")

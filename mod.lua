@@ -1,16 +1,17 @@
 function Mod:init()
     self:registerShaders()
 
-    -- Accur acy
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
-    MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-    MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["cybercity"] = 0.8
     MUSIC_PITCHES["cybercity"] = 0.97
 
     MUSIC_VOLUMES["cybercity_alt"] = 0.8
     MUSIC_PITCHES["cybercity_alt"] = 1.2
+
+    MUSIC_PITCHES["ruins_beta"] = 0.8
+
+    MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
 
     self:initTaunt()
 
@@ -29,6 +30,20 @@ function Mod:init()
     }
 
     self.voice_timer = 0
+
+    Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, show_status_msg)
+        show_status_msg = show_status_msg or true
+
+        self.health = self.health - amount
+        if show_status_msg then
+            self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
+        end
+
+        self.hurt_timer = 1
+        self:onHurt(amount, battler)
+
+        self:checkHealth(on_defeat, amount, battler)
+    end)
 end
 
 function Mod:registerShaders()
@@ -62,11 +77,13 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("BorDoorCodeUnlocked", false)
         Game:setFlag("AddiSwitchOn", false)
 
-
         Game:setFlag("cloudwebStoryFlag", 0)
     end
 
     if new_file then
+        -- FIXME: instead of using these flags in maps we should probably use
+        -- the `cond` property instead
+        -- ["cond"] = "Game:hasPartyMember(\"susie\")"
         Game:setFlag("YOU_party", true)
         Game:setFlag("susie_party", true)
     end
@@ -80,7 +97,7 @@ end
 
 function Mod:unload()
     if Mod.text_input_active then
-        print("Warp Bin was open, ending text input to be safe")
+        Mod:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
         Mod.text_input_active = false
     end
@@ -144,7 +161,7 @@ modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/ow_taunt")
 
 function Mod:onFootstep(char, num)
-    if Game:getFlag("footsteps", false) and char == Game.world.player then
+    if Game.world.map.use_footstep_sounds and char == Game.world.player then
         if num == 1 then
             Assets.playSound("step1")
         elseif num == 2 then
@@ -154,16 +171,16 @@ function Mod:onFootstep(char, num)
 end
 
 --- Returns a class of the leader of the party, either the Actor, Character or PartyMember ones
----@param class? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
+---@param obj_kind? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
 ---@return PartyMember|Character|ActorSprite|Actor leader_obj A class from the leader.
-function Mod:getLeader(class)
+function Mod:getLeader(obj_kind)
     local leader = Game.party[1]
-    if class then
-        if class:lower() == "character" or class:lower() == "chara" then
+    if obj_kind then
+        if obj_kind:lower() == "character" or obj_kind:lower() == "chara" then
             return Game.world:getCharacter(leader.id)
-        elseif class:lower() == "sprite" or class:lower() == "actorsprite" then
+        elseif obj_kind:lower() == "sprite" or obj_kind:lower() == "actorsprite" then
             return Game.world:getCharacter(leader.id).sprite
-        elseif class:lower() == "actor" then
+        elseif obj_kind:lower() == "actor" then
             return leader.actor
         end
     end
@@ -194,20 +211,64 @@ function Mod:isNight()
     return hour < 8 or hour >= 21
 end
 
-Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, showStatusMsg)
-    self.health = self.health - amount
-    local showstatus = showStatusMsg or true
-    if showstatus then
-        self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
+function Mod:addiSwitch()
+    return Game:getFlag("AddiSwitchOn", false)
+end
+
+---@alias PrintHelperMsgLevels
+---| "log"
+---| "warn"
+---| "error"
+
+---@param msg string
+---@param msg_level? PrintHelperMsgLevels
+function Mod:print(msg, msg_level)
+    msg = tostring(msg)
+    msg_level = msg_level or "log"
+
+    local prefixs = {
+        warn = "[WARNING] ",
+        error = "[ERROR] "
+    }
+    local prefixs_rich = {
+        warn = "[color:yellow][WARNING] ",
+        error = "[color:red][ERROR] "
+    }
+
+    local prefixed_msg = (prefixs[msg_level] or "")..msg
+    print(prefixed_msg)
+
+    if Kristal.Console then
+        local prefixed_msg_rich = (prefixs_rich[msg_level] or "")..msg
+        Kristal.Console:push(prefixed_msg_rich)
+    end
+end
+
+---@param msg string
+---@param msg_level? PrintHelperMsgLevels
+---@param stack_level? integer|function
+function Mod:trace(msg, msg_level, stack_level)
+    msg_level = msg_level or "log"
+    stack_level = stack_level or 2 -- the caller
+    msg = tostring(msg)
+
+    local stack_info = debug.getinfo(stack_level, "Snl")
+    local func_name = stack_info.name
+    local line = stack_info.currentline
+    local src = stack_info.short_src
+    if Utils.startsWith(stack_info.source, "@") then
+        local ok, src_n = Utils.startsWith(src, Mod.info.path.."/")
+        if ok then
+            src = src_n
+        else
+            src = "[kristal]/" .. src
+        end
     end
 
-    self.hurt_timer = 1
-    self:onHurt(amount, battler)
+    local msg_prefix = stack_info.what ~= "main"
+        and string.format("%s:%d (%s): ", src, line, func_name)
+        or string.format("%s:%d: ", src, line)
+    msg = msg_prefix .. msg
 
-    self:checkHealth(on_defeat, amount, battler)
-end)
-
-function Mod:SwitchOn()
-    Game:getFlag("AddiSwitchOn", true)
-        return Game:getFlag("AddiSwitchOn")
+    Mod:print(msg, msg_level)
 end

@@ -3,6 +3,9 @@
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="use_footstep_sounds" value="true"/>
+ </properties>
  <tileset firstgid="1" source="../../tilesets/castle_1f.tsx"/>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data encoding="csv">

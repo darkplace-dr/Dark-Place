@@ -3,7 +3,7 @@ local actor, super = Class(Actor, "addisonpink")
 function actor:init()
     super.init(self)
 
-    self.name = "Pink_Ad"
+    self.name = "Pink Addison/Java"
 
     self.width = 39
     self.height = 53
@@ -37,18 +37,18 @@ function actor:init()
 end
 
 function actor:getSpritePath()
-    return not Mod:SwitchOn() and self.path or self.path_switch
+    return not Mod:addiSwitch() and self.path or self.path_switch
 end
 
 function actor:getPortraitPath()
-    return not Mod:SwitchOn() and self.portrait_path or self.portrait_path_switch
+    return not Mod:addiSwitch() and self.portrait_path or self.portrait_path_switch
 end
 
 function actor:getVoicePath()
-    return not Mod:SwitchOn() and self.voice or self.voice_switch
+    return not Mod:addiSwitch() and self.voice or self.voice_switch
 end
 
-    local function updateTexture(self, sprite)
+local function updateTexture(self, sprite)
     local path_prev = sprite.path
     sprite.path = self:getSpritePath()
     local tex_name = sprite.texture_path
@@ -85,7 +85,7 @@ end
 
 function actor:onSpriteUpdate(sprite)
     local switch_bak = self.switch
-    self.switch = Mod:SwitchOn()
+    self.switch = Mod:addiSwitch()
 
     if self.switch ~= switch_bak then
         updateTexture(self, sprite)

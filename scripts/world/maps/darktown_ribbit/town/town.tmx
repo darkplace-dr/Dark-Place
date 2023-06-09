@@ -6,6 +6,7 @@
  <properties>
   <property name="music" value="mysterious_castle"/>
   <property name="name" value="Castle Town?"/>
+  <property name="use_footstep_sounds" value="true"/>
  </properties>
  <imagelayer id="3" name="Image Layer 1">
   <image source="../../../../../assets/sprites/objects/darktown.png" width="640" height="1160"/>

@@ -118,7 +118,8 @@
       "growStronger": false
     },
     "achievements": {
-      "cooperative_ordering": true
+      "cooperative_ordering": true,
+      "config_button": false
     }
   }
 }
