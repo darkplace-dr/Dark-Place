@@ -16,6 +16,7 @@ function UfoEncounter:init()
 
     -- Add the dummy enemy to the encounter
     self.mimic = self:addEnemy("mimic")
+    self.death_cine_played = false
 end
 
 function UfoEncounter:onBattleStart()
@@ -27,7 +28,9 @@ function UfoEncounter:onBattleStart()
 end
 
 function UfoEncounter:onActionsEnd()
-    if self.mimic.done_state == "VIOLENCE" or self.mimic.done_state == "KILLED" then
+    if (self.mimic.done_state == "VIOLENCE" or self.mimic.done_state == "KILLED")
+        and not self.death_cine_played then
+        self.death_cine_played = true
         Game.battle:startCutscene("mimic.dies", nil, self.mimic)
         return true
     end
