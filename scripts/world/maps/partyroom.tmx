@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="35">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="40">
  <editorsettings>
   <export target="partyroom.lua" format="lua"/>
  </editorsettings>
@@ -7,7 +7,7 @@
   <property name="music" value="greenroom"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/devroom.tsx"/>
- <tileset firstgid="19" source="../tilesets/objects.tsx"/>
+ <tileset firstgid="37" source="../tilesets/devroom-objects.tsx"/>
  <layer id="1" name="Tile Layer 1" width="24" height="18">
   <data encoding="csv">
 8,8,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,9,8,8,
@@ -47,11 +47,6 @@
   <object id="21" x="440" y="410" width="100" height="30"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
-  <object id="10" gid="39" x="600" y="400" width="100" height="70"/>
-  <object id="11" gid="39" x="280" y="400" width="100" height="70"/>
-  <object id="12" gid="39" x="440" y="450" width="100" height="70"/>
-  <object id="14" gid="39" x="600" y="500" width="100" height="70"/>
-  <object id="15" gid="39" x="280" y="500" width="100" height="70"/>
   <object id="22" name="transition" x="600" y="720" width="80" height="40">
    <properties>
     <property name="map" value="devroom"/>
@@ -91,6 +86,11 @@
    </properties>
    <point/>
   </object>
+  <object id="35" gid="57" x="280" y="500" width="100" height="70"/>
+  <object id="36" gid="57" x="280" y="400" width="100" height="70"/>
+  <object id="37" gid="57" x="440" y="460" width="100" height="70"/>
+  <object id="38" gid="57" x="600" y="500" width="100" height="70"/>
+  <object id="39" gid="57" x="600" y="400" width="100" height="70"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="23" name="entry" x="640" y="680">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="62" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="78">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="62" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="79">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -10,7 +10,7 @@
   <property name="name" value="Bunker"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/castle.tsx"/>
- <tileset firstgid="61" source="../../../../tilesets/objects.tsx"/>
+ <tileset firstgid="61" source="../../../../tilesets/other-objects.tsx"/>
  <layer id="14" name="tiles" width="16" height="62">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -141,7 +141,7 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="77" gid="87" x="108" y="2332" width="418" height="240"/>
+  <object id="78" gid="87" x="109" y="2332" width="418" height="240"/>
  </objectgroup>
  <objectgroup color="#ff2525" id="2" name="markers">
   <object id="28" name="entry" x="320" y="2400">

@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 29,
+  nextobjectid = 34,
   properties = {
     ["border"] = "omori/omori",
     ["music"] = "whitespace",
@@ -27,8 +27,8 @@ return {
     {
       name = "objects",
       firstgid = 10,
-      filename = "../../tilesets/objects.tsx",
-      exportfilename = "../../tilesets/objects.lua"
+      filename = "../../tilesets/omori-objects.tsx",
+      exportfilename = "../../tilesets/omori-objects.lua"
     }
   },
   layers = {
@@ -177,7 +177,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2772,
           y = 1940,
@@ -190,7 +190,7 @@ return {
         {
           id = 9,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2944,
           y = 2250,
@@ -203,7 +203,7 @@ return {
         {
           id = 12,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2830,
           y = 2109,
@@ -216,7 +216,7 @@ return {
         {
           id = 18,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2950,
           y = 2096,
@@ -245,7 +245,7 @@ return {
         {
           id = 3,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 2800,
           y = 2000,
@@ -258,7 +258,7 @@ return {
         {
           id = 19,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 2800,
           y = 2000,
@@ -287,7 +287,7 @@ return {
         {
           id = 4,
           name = "whitedoor_b",
-          class = "",
+          type = "",
           shape = "point",
           x = 2800,
           y = 1960,
@@ -300,7 +300,7 @@ return {
         {
           id = 6,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 2800,
           y = 2330,
@@ -314,23 +314,9 @@ return {
           }
         },
         {
-          id = 8,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2944,
-          y = 2270,
-          width = 42,
-          height = 40,
-          rotation = 0,
-          gid = 10,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 10,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2944,
           y = 2230,
@@ -343,23 +329,9 @@ return {
           }
         },
         {
-          id = 11,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2820,
-          y = 2130,
-          width = 62,
-          height = 42,
-          rotation = 0,
-          gid = 11,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 14,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2830,
           y = 2089,
@@ -372,23 +344,9 @@ return {
           }
         },
         {
-          id = 15,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2950,
-          y = 2130,
-          width = 28,
-          height = 34,
-          rotation = 0,
-          gid = 14,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 16,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2950,
           y = 2096,
@@ -403,7 +361,7 @@ return {
         {
           id = 27,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2905,
           y = 2010,
@@ -414,6 +372,48 @@ return {
           properties = {
             ["cutscene"] = "whitespace.lightbulb"
           }
+        },
+        {
+          id = 29,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2820.33,
+          y = 2130,
+          width = 60,
+          height = 42,
+          rotation = 0,
+          gid = 11,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 32,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2950,
+          y = 2130,
+          width = 28,
+          height = 34,
+          rotation = 0,
+          gid = 14,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 33,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2944,
+          y = 2270,
+          width = 42,
+          height = 40,
+          rotation = 0,
+          gid = 10,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -432,9 +432,9 @@ return {
       properties = {},
       objects = {
         {
-          id = 28,
+          id = 30,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2900,
           y = 2010,

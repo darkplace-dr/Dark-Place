@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 21,
+  nextobjectid = 24,
   properties = {
     ["music"] = "bs_entrance",
     ["omori"] = "true"
@@ -24,8 +24,8 @@ return {
     {
       name = "objects",
       firstgid = 10,
-      filename = "../../../tilesets/objects.tsx",
-      exportfilename = "../../../tilesets/objects.lua"
+      filename = "../../../tilesets/omori-objects.tsx",
+      exportfilename = "../../../tilesets/omori-objects.lua"
     }
   },
   layers = {
@@ -174,7 +174,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2772,
           y = 1940,
@@ -187,7 +187,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2944,
           y = 2250,
@@ -200,7 +200,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2830,
           y = 2109,
@@ -213,7 +213,7 @@ return {
         {
           id = 9,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2950,
           y = 2096,
@@ -242,7 +242,7 @@ return {
         {
           id = 1,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 2880,
           y = 2160,
@@ -271,7 +271,7 @@ return {
         {
           id = 3,
           name = "blackdoor_b",
-          class = "",
+          type = "",
           shape = "point",
           x = 2800,
           y = 1960,
@@ -282,51 +282,9 @@ return {
           properties = {}
         },
         {
-          id = 4,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2944,
-          y = 2270,
-          width = 42,
-          height = 40,
-          rotation = 0,
-          gid = 10,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 5,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2820,
-          y = 2130,
-          width = 62,
-          height = 42,
-          rotation = 0,
-          gid = 11,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 6,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2950,
-          y = 2130,
-          width = 28,
-          height = 34,
-          rotation = 0,
-          gid = 14,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 15,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2944,
           y = 2230,
@@ -341,7 +299,7 @@ return {
         {
           id = 16,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2830,
           y = 2089,
@@ -356,7 +314,7 @@ return {
         {
           id = 17,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2950,
           y = 2096,
@@ -367,6 +325,48 @@ return {
           properties = {
             ["cutscene"] = "whitespace.sketchbook"
           }
+        },
+        {
+          id = 21,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2944,
+          y = 2270,
+          width = 42,
+          height = 40,
+          rotation = 0,
+          gid = 10,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 22,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2950,
+          y = 2130,
+          width = 28,
+          height = 34,
+          rotation = 0,
+          gid = 14,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 23,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2820,
+          y = 2130,
+          width = 62,
+          height = 42,
+          rotation = 0,
+          gid = 11,
+          visible = true,
+          properties = {}
         }
       }
     }

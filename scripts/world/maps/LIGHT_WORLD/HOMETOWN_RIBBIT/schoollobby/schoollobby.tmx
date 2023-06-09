@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="47" height="21" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#000000" nextlayerid="21" nextobjectid="142">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="47" height="21" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#000000" nextlayerid="21" nextobjectid="143">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -10,7 +10,7 @@
   <property name="name" value="School"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/schooltiles2.tsx"/>
- <tileset firstgid="109" source="../../../../tilesets/objects.tsx"/>
+ <tileset firstgid="109" source="../../../../tilesets/other-objects.tsx"/>
  <layer id="17" name="Tile Layer 1" width="47" height="21">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,46,48,1,1,1,46,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -61,9 +61,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="20" name="objects_bg">
-  <object id="141" gid="134" x="80" y="520" width="120" height="200"/>
- </objectgroup>
+ <objectgroup id="20" name="objects_bg"/>
  <objectgroup color="#0000ff" id="4" name="collision" opacity="0.5">
   <object id="118" x="40" y="640" width="840" height="200"/>
   <object id="119" x="40" y="520" width="760" height="120"/>
@@ -130,5 +128,6 @@
     <property name="marker" value="entryup"/>
    </properties>
   </object>
+  <object id="142" gid="134" x="80" y="520" width="120" height="200"/>
  </objectgroup>
 </map>

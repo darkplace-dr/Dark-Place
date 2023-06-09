@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="16" nextobjectid="113">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="16" nextobjectid="113">
  <editorsettings>
   <export target="alley1.lua" format="lua"/>
  </editorsettings>
@@ -9,29 +9,28 @@
   <property name="music" value="cybercity"/>
   <property name="name" value="Test City - Sugarplum Alley"/>
  </properties>
- <tileset firstgid="1" source="../../../../../ultratestmod/scripts/world/tilesets/battleborder.tsx"/>
- <tileset firstgid="54" source="../../../../../ultratestmod/scripts/world/tilesets/dw_city_alley.tsx"/>
- <tileset firstgid="95" source="../../tilesets/city_alleyway.tsx"/>
- <tileset firstgid="410" source="../../tilesets/dw_city_alley_2.tsx"/>
- <tileset firstgid="520" source="../../tilesets/street_edges.tsx"/>
+ <tileset firstgid="1" source="../../tilesets/battleborder.tsx"/>
+ <tileset firstgid="99" source="../../tilesets/dw_city_alley.tsx"/>
+ <tileset firstgid="209" source="../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="524" source="../../tilesets/dw_city_alley_2.tsx"/>
+ <tileset firstgid="634" source="../../tilesets/street_edges.tsx"/>
  <layer id="1" name="tiles" width="21" height="12">
   <data encoding="csv">
-572,647,648,649,650,572,572,569,570,571,572,338,339,339,339,340,517,517,353,354,354,
-338,339,339,339,339,339,339,340,338,339,340,353,354,354,354,355,517,517,353,354,354,
-353,354,354,354,354,354,354,355,368,369,370,353,354,354,354,355,517,517,353,354,354,
-368,369,369,369,369,369,369,370,383,384,385,368,369,369,369,370,517,517,353,354,354,
-383,384,384,384,384,384,384,385,398,399,400,383,384,384,384,385,517,517,353,354,354,
-398,399,399,399,399,399,399,400,517,517,517,398,399,399,399,400,517,517,353,354,354,
-517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,353,354,354,
-517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,353,354,354,
-517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,517,353,354,354,
-339,339,339,339,339,339,339,339,339,339,339,339,339,339,339,339,339,339,353,354,354,
-354,354,354,354,354,354,354,354,354,354,354,354,354,354,354,354,354,354,353,354,354,
-354,354,354,354,354,354,354,354,354,354,354,354,354,354,354,354,354,354,353,354,354
+686,761,762,763,764,686,686,683,684,685,686,452,453,453,453,454,631,631,467,468,468,
+452,453,453,453,453,453,453,454,452,453,454,467,468,468,468,469,631,631,467,468,468,
+467,468,468,468,468,468,468,469,482,483,484,467,468,468,468,469,631,631,467,468,468,
+482,483,483,483,483,483,483,484,497,498,499,482,483,483,483,484,631,631,467,468,468,
+497,498,498,498,498,498,498,499,512,513,514,497,498,498,498,499,631,631,467,468,468,
+512,513,513,513,513,513,513,514,631,631,631,512,513,513,513,514,631,631,467,468,468,
+631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,467,468,468,
+631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,467,468,468,
+631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,631,467,468,468,
+453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,467,468,468,
+468,468,468,468,468,468,468,468,468,468,468,468,468,468,468,468,468,468,467,468,468,
+468,468,468,468,468,468,468,468,468,468,468,468,468,468,468,468,468,468,467,468,468
 </data>
  </layer>
  <objectgroup color="#0000ff" id="4" name="collision" opacity="0.5">
-  <object id="104" x="-40" y="240" width="40" height="120"/>
   <object id="107" x="0" y="40" width="320" height="200"/>
   <object id="108" x="320" y="40" width="120" height="160"/>
   <object id="110" x="440" y="0" width="200" height="240"/>
@@ -58,7 +57,7 @@
     <property name="item" value="cd_bagel"/>
    </properties>
   </object>
-  <object id="98" name="transition" x="-80" y="240" width="40" height="120">
+  <object id="98" name="transition" x="-40" y="240" width="40" height="120">
    <properties>
     <property name="facing" value="left"/>
     <property name="map" value="castletocity"/>

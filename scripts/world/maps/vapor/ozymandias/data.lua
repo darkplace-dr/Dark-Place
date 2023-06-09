@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 24,
+  nextobjectid = 31,
   properties = {
     ["border"] = "vaporwave",
     ["music"] = "forest"
@@ -25,8 +25,8 @@ return {
     {
       name = "objects",
       firstgid = 22,
-      filename = "../../../tilesets/objects.tsx",
-      exportfilename = "../../../tilesets/objects.lua"
+      filename = "../../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../../tilesets/devroom-objects.lua"
     }
   },
   layers = {
@@ -94,7 +94,7 @@ return {
         {
           id = 15,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 400,
@@ -107,7 +107,7 @@ return {
         {
           id = 16,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 280,
@@ -120,7 +120,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 280,
@@ -133,7 +133,7 @@ return {
         {
           id = 18,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 120,
@@ -146,7 +146,7 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -159,7 +159,7 @@ return {
         {
           id = 20,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 120,
@@ -186,93 +186,9 @@ return {
       properties = {},
       objects = {
         {
-          id = 1,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 88,
-          y = 188,
-          width = 58,
-          height = 180,
-          rotation = 0,
-          gid = 40,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 2,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 491,
-          y = 188,
-          width = 58,
-          height = 180,
-          rotation = 0,
-          gid = 40,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 5,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 88,
-          y = 396,
-          width = 58,
-          height = 180,
-          rotation = 0,
-          gid = 40,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 6,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 291,
-          y = 188,
-          width = 58,
-          height = 180,
-          rotation = 0,
-          gid = 40,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 9,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 491,
-          y = 396,
-          width = 58,
-          height = 180,
-          rotation = 0,
-          gid = 40,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 10,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 291,
-          y = 396,
-          width = 58,
-          height = 180,
-          rotation = 0,
-          gid = 40,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 11,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 200,
@@ -288,7 +204,7 @@ return {
         {
           id = 12,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 200,
@@ -304,7 +220,7 @@ return {
         {
           id = 21,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 180,
           y = 190,
@@ -316,6 +232,90 @@ return {
             ["actor"] = "rook",
             ["cutscene"] = "vapor.rook"
           }
+        },
+        {
+          id = 25,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 88,
+          y = 396,
+          width = 58,
+          height = 180,
+          rotation = 0,
+          gid = 40,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 26,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 291,
+          y = 396,
+          width = 58,
+          height = 180,
+          rotation = 0,
+          gid = 40,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 27,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 491,
+          y = 396,
+          width = 58,
+          height = 180,
+          rotation = 0,
+          gid = 40,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 28,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 491,
+          y = 188,
+          width = 58,
+          height = 180,
+          rotation = 0,
+          gid = 40,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 29,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 291,
+          y = 188,
+          width = 58,
+          height = 180,
+          rotation = 0,
+          gid = 40,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 30,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 88,
+          y = 188,
+          width = 58,
+          height = 180,
+          rotation = 0,
+          gid = 40,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -336,7 +336,7 @@ return {
         {
           id = 3,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 600,
           y = 240,
@@ -349,7 +349,7 @@ return {
         {
           id = 4,
           name = "entry2",
-          class = "",
+          type = "",
           shape = "point",
           x = 40,
           y = 240,

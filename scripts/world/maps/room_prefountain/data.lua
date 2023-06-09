@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -27,12 +27,6 @@ return {
       name = "alley_buildings_glitch",
       firstgid = 316,
       filename = "../../tilesets/alley_buildings_glitch.tsx"
-    },
-    {
-      name = "objects",
-      firstgid = 388,
-      filename = "../../tilesets/objects.tsx",
-      exportfilename = "../../tilesets/objects.lua"
     }
   },
   layers = {
@@ -193,7 +187,7 @@ return {
         {
           id = 32,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 1880,
@@ -206,7 +200,7 @@ return {
         {
           id = 33,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 1880,
@@ -219,7 +213,7 @@ return {
         {
           id = 34,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 480,
@@ -232,7 +226,7 @@ return {
         {
           id = 35,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 480,
@@ -245,7 +239,7 @@ return {
         {
           id = 41,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 360,
@@ -258,7 +252,7 @@ return {
         {
           id = 42,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 360,
@@ -271,7 +265,7 @@ return {
         {
           id = 43,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 360,
@@ -284,7 +278,7 @@ return {
         {
           id = 46,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 408,
           y = 1338,
@@ -297,7 +291,7 @@ return {
         {
           id = 47,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 608,
           y = 1258,
@@ -310,7 +304,7 @@ return {
         {
           id = 48,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 568,
           y = 1538,
@@ -323,7 +317,7 @@ return {
         {
           id = 49,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 448,
           y = 1738,
@@ -336,7 +330,7 @@ return {
         {
           id = 50,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 408,
           y = 1858,
@@ -365,7 +359,7 @@ return {
         {
           id = 25,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 1840,
@@ -380,7 +374,7 @@ return {
         {
           id = 26,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 1980,
@@ -396,7 +390,7 @@ return {
         {
           id = 37,
           name = "shine",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 620,
           y = 1860,
@@ -411,7 +405,7 @@ return {
         {
           id = 39,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 440,
@@ -423,20 +417,6 @@ return {
             ["map"] = "fountain1",
             ["marker"] = "spawn"
           }
-        },
-        {
-          id = 51,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = -2998,
-          y = 2880,
-          width = 116,
-          height = 118,
-          rotation = 0,
-          gid = 421,
-          visible = true,
-          properties = {}
         }
       }
     },
@@ -457,7 +437,7 @@ return {
         {
           id = 28,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 520,
           y = 1933,
@@ -470,7 +450,7 @@ return {
         {
           id = 40,
           name = "entry_fountain",
-          class = "",
+          type = "",
           shape = "point",
           x = 520,
           y = 530,

@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 15,
-  nextobjectid = 107,
+  nextobjectid = 108,
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
@@ -27,8 +27,8 @@ return {
     {
       name = "objects",
       firstgid = 61,
-      filename = "../../../../tilesets/objects.tsx",
-      exportfilename = "../../../../tilesets/objects.lua"
+      filename = "../../../../tilesets/other-objects.tsx",
+      exportfilename = "../../../../tilesets/other-objects.lua"
     }
   },
   layers = {
@@ -97,7 +97,7 @@ return {
         {
           id = 98,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 0,
@@ -110,7 +110,7 @@ return {
         {
           id = 99,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1800,
           y = 0,
@@ -123,7 +123,7 @@ return {
         {
           id = 100,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1800,
           y = 422,
@@ -136,7 +136,7 @@ return {
         {
           id = 101,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 422,
@@ -149,7 +149,7 @@ return {
         {
           id = 103,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1589,
           y = 80,
@@ -162,7 +162,7 @@ return {
         {
           id = 106,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 80,
           y = 418,
@@ -196,7 +196,7 @@ return {
         {
           id = 90,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1589,
           y = -120,
@@ -211,7 +211,7 @@ return {
         {
           id = 93,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1589,
           y = 440,
@@ -227,7 +227,7 @@ return {
         {
           id = 104,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2589,
           y = 240,
@@ -241,9 +241,9 @@ return {
           }
         },
         {
-          id = 105,
+          id = 107,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1920,
           y = 220,
@@ -273,7 +273,7 @@ return {
         {
           id = 94,
           name = "entrysc",
-          class = "",
+          type = "",
           shape = "point",
           x = 2549,
           y = 360,
@@ -286,7 +286,7 @@ return {
         {
           id = 95,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 1700.5,
           y = 413.5,
