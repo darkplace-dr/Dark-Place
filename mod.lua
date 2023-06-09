@@ -264,7 +264,7 @@ function Mod:trace(msg, msg_level, stack_level)
         end
     end
 
-    local msg_prefix = func_name
+    local msg_prefix = stack_info.what ~= "main"
         and string.format("%s:%d (%s): ", src, line, func_name)
         or string.format("%s:%d: ", src, line)
     msg = msg_prefix .. msg
