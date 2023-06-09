@@ -12,7 +12,8 @@ return {
   nextlayerid = 11,
   nextobjectid = 58,
   properties = {
-    ["music"] = "jazzylandscape"
+    ["music"] = "jazzylandscape",
+    ["use_footstep_sounds"] = "true"
   },
   tilesets = {
     {

@@ -11,7 +11,9 @@ return {
   tileheight = 40,
   nextlayerid = 5,
   nextobjectid = 19,
-  properties = {},
+  properties = {
+    ["use_footstep_sounds"] = "true"
+  },
   tilesets = {
     {
       name = "castle_1f",

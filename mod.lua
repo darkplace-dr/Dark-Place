@@ -147,7 +147,7 @@ modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/ow_taunt")
 
 function Mod:onFootstep(char, num)
-    if Game:getFlag("footsteps", false) and char == Game.world.player then
+    if Game.world.map.use_footstep_sounds and char == Game.world.player then
         if num == 1 then
             Assets.playSound("step1")
         elseif num == 2 then
@@ -157,16 +157,16 @@ function Mod:onFootstep(char, num)
 end
 
 --- Returns a class of the leader of the party, either the Actor, Character or PartyMember ones
----@param class? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
+---@param obj_kind? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
 ---@return PartyMember|Character|ActorSprite|Actor leader_obj A class from the leader.
-function Mod:getLeader(class)
+function Mod:getLeader(obj_kind)
     local leader = Game.party[1]
-    if class then
-        if class:lower() == "character" or class:lower() == "chara" then
+    if obj_kind then
+        if obj_kind:lower() == "character" or obj_kind:lower() == "chara" then
             return Game.world:getCharacter(leader.id)
-        elseif class:lower() == "sprite" or class:lower() == "actorsprite" then
+        elseif obj_kind:lower() == "sprite" or obj_kind:lower() == "actorsprite" then
             return Game.world:getCharacter(leader.id).sprite
-        elseif class:lower() == "actor" then
+        elseif obj_kind:lower() == "actor" then
             return leader.actor
         end
     end

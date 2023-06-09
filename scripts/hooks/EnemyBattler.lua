@@ -8,7 +8,7 @@ function EnemyBattler:init(...)
 end
 
 function EnemyBattler:onDefeat(...)
-    if self.killable == true and Game:getFlag("can_kill") == true then
+    if self.killable and Game:getFlag("can_kill") then
         self:onDefeatFatal(...)
     else
         if self.exit_on_defeat then
