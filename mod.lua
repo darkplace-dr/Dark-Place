@@ -218,7 +218,6 @@ end
 ---| "log"
 ---| "warn"
 ---| "error"
----| "print" will use standard print(), thus not printing to the in-game console
 
 ---@param msg string
 ---@param msg_level? PrintHelperMsgLevels
@@ -226,23 +225,21 @@ function Mod:print(msg, msg_level)
     msg = tostring(msg)
     msg_level = msg_level or "log"
 
-    if msg_level == "print" then
-        print(msg)
-    elseif Kristal.Console then
-        if msg_level == "log" then
-            Kristal.Console:log(msg)
-        elseif msg_level == "warn" then
-            Kristal.Console:warn(msg)
-        elseif msg_level == "error" then
-            Kristal.Console:error(msg)
-        end
-    else
-        local prefixs = {
-            log = "",
-            warn = "[WARNING] ",
-            error = "[ERROR] "
-        }
-        print(prefixs[msg_level]..msg)
+    local prefixs = {
+        warn = "[WARNING] ",
+        error = "[ERROR] "
+    }
+    local prefixs_rich = {
+        warn = "[color:yellow][WARNING] ",
+        error = "[color:red][ERROR] "
+    }
+
+    local prefixed_msg = (prefixs[msg_level] or "")..msg
+    print(prefixed_msg)
+
+    if Kristal.Console then
+        local prefixed_msg_rich = (prefixs_rich[msg_level] or "")..msg
+        Kristal.Console:push(prefixed_msg_rich)
     end
 end
 
