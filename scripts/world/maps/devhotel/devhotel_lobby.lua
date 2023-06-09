@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 76,
+  nextobjectid = 82,
   properties = {
     ["music"] = "devhotel"
   },
@@ -22,22 +22,22 @@ return {
       exportfilename = "../../tilesets/devroom.lua"
     },
     {
-      name = "objects",
-      firstgid = 37,
-      filename = "../../tilesets/objects.tsx",
-      exportfilename = "../../tilesets/objects.lua"
-    },
-    {
       name = "hoteldoors",
-      firstgid = 86,
+      firstgid = 37,
       filename = "../../tilesets/hoteldoors.tsx",
       exportfilename = "../../tilesets/hoteldoors.lua"
     },
     {
       name = "city_alleyway",
-      firstgid = 88,
+      firstgid = 39,
       filename = "../../tilesets/city_alleyway.tsx",
       exportfilename = "../../tilesets/city_alleyway.lua"
+    },
+    {
+      name = "objects",
+      firstgid = 354,
+      filename = "../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../tilesets/devroom-objects.lua"
     }
   },
   layers = {
@@ -393,35 +393,7 @@ return {
       properties = {},
       objects = {
         {
-          id = 17,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 320,
-          y = 160,
-          width = 160,
-          height = 120,
-          rotation = 0,
-          gid = 74,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 19,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 480,
-          y = 440,
-          width = 160,
-          height = 120,
-          rotation = 0,
-          gid = 74,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 18,
+          id = 79,
           name = "",
           type = "",
           shape = "rectangle",
@@ -430,12 +402,12 @@ return {
           width = 200,
           height = 60,
           rotation = 0,
-          gid = 60,
+          gid = 377,
           visible = true,
           properties = {}
         },
         {
-          id = 21,
+          id = 80,
           name = "",
           type = "",
           shape = "rectangle",
@@ -444,7 +416,21 @@ return {
           width = 80,
           height = 120,
           rotation = 0,
-          gid = 58,
+          gid = 375,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 81,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 480,
+          y = 440,
+          width = 160,
+          height = 120,
+          rotation = 0,
+          gid = 391,
           visible = true,
           properties = {}
         }
@@ -464,20 +450,6 @@ return {
       parallaxy = 1,
       properties = {},
       objects = {
-        {
-          id = 22,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 320,
-          y = 760,
-          width = 162,
-          height = 78,
-          rotation = 0,
-          gid = 77,
-          visible = true,
-          properties = {}
-        },
         {
           id = 44,
           name = "transition",
@@ -520,7 +492,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -534,7 +506,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -548,7 +520,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -562,7 +534,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -576,7 +548,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -590,7 +562,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -604,7 +576,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -618,7 +590,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -632,7 +604,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -646,7 +618,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
           visible = true,
           properties = {}
         },
@@ -660,7 +632,52 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 316,
+          gid = 267,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 76,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 80,
+          y = 600,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solid"] = true,
+            ["text1"] = "* The breakfast buffet \nis the way! -Sci",
+            ["text2"] = "* Of course, \nonly open at the start of the day... \n-Sci"
+          }
+        },
+        {
+          id = 77,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 80,
+          y = 640,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 396,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 78,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 760,
+          width = 162,
+          height = 78,
+          rotation = 0,
+          gid = 394,
           visible = true,
           properties = {}
         }
