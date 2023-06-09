@@ -213,3 +213,59 @@ end)
 function Mod:useVelvetAddisonSkins()
     return Game:getFlag("AddiSwitchOn")
 end
+
+---@alias PrintHelperMsgLevels "log"|"warn"|"error"|"print"
+
+---@param msg_level PrintHelperMsgLevels uses standard print() in case of "print", thus not printing to the in-game console
+---@param msg string
+function Mod:print(msg_level, msg)
+    msg = tostring(msg)
+
+    if msg_level == "print" then
+        print(msg)
+    elseif Kristal.Console then
+        if msg_level == "log" then
+            Kristal.Console:log(msg)
+        elseif msg_level == "warn" then
+            Kristal.Console:warn(msg)
+        elseif msg_level == "error" then
+            Kristal.Console:error(msg)
+        end
+    else
+        local prefixs = {
+            log = "",
+            warn = "[WARNING] ",
+            error = "[ERROR] "
+        }
+        print(prefixs[msg_level]..msg)
+    end
+end
+
+---@param msg string
+---@param msg_level? PrintHelperMsgLevels
+---@param stack_level? integer|function
+function Mod:trace(msg, msg_level, stack_level)
+    msg_level = msg_level or "log"
+    stack_level = stack_level or 2 -- the caller
+    msg = tostring(msg)
+
+    local stack_info = debug.getinfo(stack_level, "Snl")
+    local func_name = stack_info.name
+    local line = stack_info.currentline
+    local src = stack_info.short_src
+    if Utils.startsWith(stack_info.source, "@") then
+        local ok, src_n = Utils.startsWith(src, Mod.info.path.."/")
+        if ok then
+            src = src_n
+        else
+            src = "[kristal]/" .. src
+        end
+    end
+
+    local msg_prefix = func_name
+        and string.format("%s:%d (%s): ", src, line, func_name)
+        or string.format("%s:%d: ", src, line)
+    msg = msg_prefix .. msg
+
+    Mod:print(msg_level, msg)
+end

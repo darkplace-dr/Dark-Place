@@ -29,6 +29,8 @@ function World:loadMap(...)
     end
 
     if self.map then
+        local stack_info = debug.getinfo(self.map.onExit, "Sl")
+        Mod:trace("invoking onexit rout from " .. stack_info.short_src)
         self.map:onExit()
     end
 

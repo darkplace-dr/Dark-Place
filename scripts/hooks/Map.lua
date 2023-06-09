@@ -1,6 +1,6 @@
 ---@class Map_override : Map
 ---@overload fun(...) : Map
-local Map, super = Class(Map)
+local Map, super = Class("Map", true)
 
 function Map:init(world, data)
     super.init(self, world, data)
