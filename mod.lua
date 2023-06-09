@@ -1,16 +1,17 @@
 function Mod:init()
     self:registerShaders()
 
-    -- Accur acy
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
-    MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-    MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["cybercity"] = 0.8
     MUSIC_PITCHES["cybercity"] = 0.97
 
     MUSIC_VOLUMES["cybercity_alt"] = 0.8
     MUSIC_PITCHES["cybercity_alt"] = 1.2
+
+    MUSIC_PITCHES["ruins_beta"] = 0.8
+
+    MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
 
     self:initTaunt()
 
@@ -62,11 +63,13 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("BorDoorCodeUnlocked", false)
         Game:setFlag("AddiSwitchOn", false)
 
-
         Game:setFlag("cloudwebStoryFlag", 0)
     end
 
     if new_file then
+        -- FIXME: instead of using these flags in maps we should probably use
+        -- the `cond` property instead
+        -- ["cond"] = "Game:hasPartyMember(\"susie\")"
         Game:setFlag("YOU_party", true)
         Game:setFlag("susie_party", true)
     end
@@ -207,7 +210,6 @@ Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat
     self:checkHealth(on_defeat, amount, battler)
 end)
 
-function Mod:SwitchOn()
-    Game:getFlag("AddiSwitchOn", true)
-        return Game:getFlag("AddiSwitchOn")
+function Mod:useVelvetAddisonSkins()
+    return Game:getFlag("AddiSwitchOn")
 end

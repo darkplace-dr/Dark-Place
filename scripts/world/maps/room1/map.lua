@@ -6,6 +6,7 @@ function Room1:onEnter()
 end
 
 function Room1:onExit()
+    super.onExit(self)
 	self.ina:remove()
 end
 

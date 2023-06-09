@@ -275,7 +275,7 @@ return {
     end,
 
     pink_ad = function(cutscene)
-    if Mod:SwitchOn() then
+    if Mod:useVelvetAddisonSkins() then
         local addisonpink = cutscene:getCharacter("addisonpink")
         addisonpink:setAnimation("idle")
         cutscene:text("[voice:java]* I'm still a WIP! Don't mind me here!", "wink", "addisonpink")
