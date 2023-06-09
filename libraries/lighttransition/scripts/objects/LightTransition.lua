@@ -132,7 +132,9 @@ function LightTransition.cutscene(cutscene, self, player)
 	fakeKris:remove()
 	if fakeSusie then fakeSusie:remove() end
     kris.visible = true
-    susie.visible = true
+	if susie then
+    	susie.visible = true
+	end
 	cutscene:fadeOut(0)
 	cutscene:fadeIn(settings.fadeIn_speed, {color = {1, 1, 1}})
 	cutscene:interpolateFollowers()
