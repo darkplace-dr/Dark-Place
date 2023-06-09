@@ -161,17 +161,17 @@ return {
         end
     end,
 
-    star = function(cutscene)
+    star = function(cutscene, event)
         local susie = cutscene:getCharacter("susie")
         local star = cutscene:getCharacter("starwalker")
-        
+
 		--original starcheck code by AcousticJamm
-        if (not Game.world.starcheck) then
+        if not Game.world.starcheck then
             Game.world.starcheck = 0
         end
         if Game.world.starcheck < 9 or Game.world.starcheck > 9 then
             cutscene:showNametag("Starwalker?")
-            cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...")
+            cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...", nil, event)
             cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
             cutscene:hideNametag()
             Game.world.starcheck = Game.world.starcheck + 1
