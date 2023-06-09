@@ -83,6 +83,7 @@ return {
 		
 		Game:addPartyMember("dess", 1)
 		Game:setFlag("dess_party", true)
+		Game:setFlag("dess_obtained", true)
 		Game.world:spawnPlayer(dess.x, dess.y, "dess")
 		dess:remove()
 		Game.world:removeFollower(leader)

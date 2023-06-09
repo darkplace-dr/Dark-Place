@@ -174,7 +174,9 @@ return {
             cutscene:text("* This [color:yellow]sprite[color:reset] was [color:yellow]Pissing[color:reset] me\noff...", nil, event)
             cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
             cutscene:hideNametag()
-            Game.world.starcheck = Game.world.starcheck + 1
+            if susie then
+                Game.world.starcheck = Game.world.starcheck + 1
+            end
             if not Kristal.libCall("achievements", "hasAch", "starwalker") then
                 Kristal.callEvent("completeAchievement", "starwalker")
             end
@@ -228,9 +230,12 @@ return {
                 susie:setFacing("up")
                 cutscene:text("* What happened to the ACTing thing?", "neutral", "susie")
                 cutscene:text("* ...", "annoyed_down", "susie")
+                if cutscene:getCharacter("dess") then
+                    cutscene:text("* Well there goes a potential party member", "condescending", "dess")
+                end
                 Assets.playSound("ominous")
                 cutscene:wait(1.5)
-                Game:setFlag("weird", true)
+                Game:setFlag("ostarwalker_killed", true)
                 Game.world.player:setFacing("down")
             else
                 susie:resetSprite()
@@ -271,7 +276,7 @@ return {
                     cutscene:wait(0.5)
                 end
 				
-                Game:setFlag("starwalker_inparty", true)
+                Game:setFlag("ostarwalker_inparty", true)
                 table.insert(Game:getFlag("party"), "ostarwalker")
             end
             cutscene:interpolateFollowers()

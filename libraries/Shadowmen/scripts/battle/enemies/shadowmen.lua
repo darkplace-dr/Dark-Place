@@ -64,6 +64,7 @@ function MyEnemy:init()
 	self.health = Kristal.getLibConfig("shadowmen", "health") or Kristal.getLibConfig("shadowmen", "hp")
 	self.max_health = self.health
 	self.gold = Kristal.getLibConfig("shadowmen", "gold") or Kristal.getLibConfig("shadowmen", "money")
+	self.experience = 15
 	
     self.text = Kristal.getLibConfig("shadowmen", "text")
 	self.low_health_text = Kristal.getLibConfig("shadowmen", "low_health_text")

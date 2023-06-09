@@ -14,6 +14,7 @@ function Grounder:init()
     self.attack = 6
     self.defense = 0
     self.gold = 30
+    self.experience = 6
 
     self.spare_points = 20
 

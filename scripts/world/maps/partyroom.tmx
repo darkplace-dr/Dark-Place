@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="40">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="40">
  <editorsettings>
   <export target="partyroom.lua" format="lua"/>
  </editorsettings>
@@ -73,16 +73,16 @@
   <object id="31" name="npc" x="810" y="220">
    <properties>
     <property name="actor" value="dess"/>
-    <property name="cond" value="Game:getFlag(&quot;party&quot;, &quot;dess&quot;)"/>
     <property name="cutscene" value="partyroom.dess"/>
+    <property name="flagcheck" value="dess_obtained"/>
    </properties>
    <point/>
   </object>
   <object id="33" name="npc" x="800" y="620">
    <properties>
     <property name="actor" value="starwalker"/>
-    <property name="cond" value="Game:getFlag(&quot;party&quot;, &quot;ostarwalker&quot;)"/>
     <property name="cutscene" value="partyroom.starwalker"/>
+    <property name="flagcheck" value="ostarwalker_inparty"/>
    </properties>
    <point/>
   </object>

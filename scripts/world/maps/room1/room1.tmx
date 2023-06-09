@@ -127,8 +127,8 @@
   <object id="19" name="npc" x="480" y="840" width="40" height="40">
    <properties>
     <property name="actor" value="starwalker"/>
+    <property name="cond" value="not Game:getFlag(&quot;ostarwalker_inparty&quot;, 0) or not Game:getFlag(&quot;ostarwalker_killed&quot;, 0)"/>
     <property name="cutscene" value="room1.star"/>
-    <property name="flagcheck" value="!starwalker_inparty"/>
    </properties>
   </object>
   <object id="27" name="savepoint" x="80" y="210" width="40" height="40">
