@@ -269,5 +269,5 @@ function Mod:trace(msg, msg_level, stack_level)
         or string.format("%s:%d: ", src, line)
     msg = msg_prefix .. msg
 
-    Mod:print(msg_level, msg)
+    Mod:print(msg, msg_level)
 end
