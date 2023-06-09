@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="objects" tilewidth="120" tileheight="128" tilecount="8" columns="0">
+<tileset version="1.10" tiledversion="1.10.1" name="dumpter-objects" tilewidth="120" tileheight="128" tilecount="8" columns="0">
  <editorsettings>
   <export target="dumpter-objects.lua" format="lua"/>
  </editorsettings>

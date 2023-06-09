@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="objects" tilewidth="145" tileheight="120" tilecount="17" columns="0">
+<tileset version="1.10" tiledversion="1.10.1" name="devroom-objects" tilewidth="145" tileheight="120" tilecount="17" columns="0">
  <editorsettings>
   <export target="devroom-objects.lua" format="lua"/>
  </editorsettings>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="objects" tilewidth="31" tileheight="725" tilecount="7" columns="0">
+<tileset version="1.10" tiledversion="1.10.1" name="omori-objects" tilewidth="31" tileheight="725" tilecount="7" columns="0">
  <editorsettings>
   <export target="omori-objects.lua" format="lua"/>
  </editorsettings>
