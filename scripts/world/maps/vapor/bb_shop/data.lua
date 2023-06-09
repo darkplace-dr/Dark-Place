@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 25,
+  nextobjectid = 28,
   properties = {
     ["border"] = "vaporwave",
     ["music"] = "forest"
@@ -25,8 +25,14 @@ return {
     {
       name = "objects",
       firstgid = 22,
-      filename = "../../../tilesets/objects.tsx",
-      exportfilename = "../../../tilesets/objects.lua"
+      filename = "../../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../../tilesets/devroom-objects.lua"
+    },
+    {
+      name = "objects",
+      firstgid = 71,
+      filename = "../../../tilesets/other-objects.tsx",
+      exportfilename = "../../../tilesets/other-objects.lua"
     }
   },
   layers = {
@@ -110,7 +116,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -123,7 +129,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 120,
@@ -136,7 +142,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 160,
@@ -149,7 +155,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 280,
@@ -162,7 +168,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 320,
@@ -175,7 +181,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 360,
@@ -188,7 +194,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 120,
@@ -201,7 +207,7 @@ return {
         {
           id = 15,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 166,
           y = 120,
@@ -214,7 +220,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 438,
           y = 120,
@@ -227,7 +233,7 @@ return {
         {
           id = 23,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 236,
           y = 160,
@@ -256,7 +262,7 @@ return {
         {
           id = 9,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 200,
@@ -270,51 +276,9 @@ return {
           }
         },
         {
-          id = 10,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 134,
-          y = 160,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 33,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 12,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 371,
-          y = 160,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 2147483681,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 22,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 231,
-          y = 200,
-          width = 180,
-          height = 66,
-          rotation = 0,
-          gid = 34,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 24,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 241,
           y = 160,
@@ -325,6 +289,48 @@ return {
           properties = {
             ["cutscene"] = "vapor.bb"
           }
+        },
+        {
+          id = 25,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 135,
+          y = 160,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 33,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 26,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 371.5,
+          y = 160,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 2147483681,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 27,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 230,
+          y = 200,
+          width = 180,
+          height = 66,
+          rotation = 0,
+          gid = 83,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -345,7 +351,7 @@ return {
         {
           id = 8,
           name = "entry_bb",
-          class = "",
+          type = "",
           shape = "point",
           x = 600,
           y = 240,

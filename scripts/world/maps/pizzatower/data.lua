@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 15,
-  nextobjectid = 93,
+  nextobjectid = 97,
   properties = {
     ["border"] = "simple",
     ["music"] = "mmm_yess_put_the_tree_on_my_pizza",
@@ -20,8 +20,8 @@ return {
     {
       name = "objects",
       firstgid = 1,
-      filename = "../../tilesets/objects.tsx",
-      exportfilename = "../../tilesets/objects.lua"
+      filename = "../../tilesets/lario-objects.tsx",
+      exportfilename = "../../tilesets/lario-objects.lua"
     }
   },
   layers = {
@@ -58,7 +58,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = -0.5,
           y = 236,
@@ -76,7 +76,7 @@ return {
         {
           id = 18,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 123.078,
           y = 307.984,
@@ -95,7 +95,7 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 174.984,
           y = 336.453,
@@ -114,7 +114,7 @@ return {
         {
           id = 20,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 0.125,
           y = 305.25,
@@ -132,7 +132,7 @@ return {
         {
           id = 22,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 260.375,
           y = 296.521,
@@ -145,7 +145,7 @@ return {
         {
           id = 23,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 260.545,
           y = 357.455,
@@ -158,7 +158,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 307.978,
           y = 377.267,
@@ -176,7 +176,7 @@ return {
         {
           id = 27,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 738.182,
           y = 369.091,
@@ -196,7 +196,7 @@ return {
         {
           id = 28,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 260,
           y = 376.375,
@@ -215,7 +215,7 @@ return {
         {
           id = 31,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -36.6667,
           y = 550,
@@ -228,7 +228,7 @@ return {
         {
           id = 32,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 960,
           y = 160,
@@ -241,7 +241,7 @@ return {
         {
           id = 33,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 150.727,
           y = 397.273,
@@ -262,7 +262,7 @@ return {
         {
           id = 37,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 858,
           y = 360,
@@ -275,7 +275,7 @@ return {
         {
           id = 41,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 160,
@@ -286,35 +286,9 @@ return {
           properties = {}
         },
         {
-          id = 46,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 388,
-          y = 468.5,
-          width = 66.5,
-          height = 44.5,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 47,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 451.091,
-          y = 495.091,
-          width = 56.5455,
-          height = 12,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 84,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 266,
@@ -327,7 +301,7 @@ return {
         {
           id = 85,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 467.333,
           y = 231.333,
@@ -340,13 +314,27 @@ return {
         {
           id = 86,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 597.455,
           y = 281.5,
           width = 111.045,
           height = 120.864,
           rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 93,
+          name = "mushrum",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 540,
+          width = 125,
+          height = 99,
+          rotation = 0,
+          gid = 16,
           visible = true,
           properties = {}
         }
@@ -367,11 +355,11 @@ return {
       properties = {},
       objects = {
         {
-          id = 71,
+          id = 96,
           name = "ralgay",
-          class = "",
+          type = "",
           shape = "rectangle",
-          x = 457.833,
+          x = 457.83,
           y = 404.5,
           width = 147,
           height = 235,
@@ -397,12 +385,12 @@ return {
       properties = {},
       objects = {
         {
-          id = 68,
+          id = 94,
           name = "susy",
-          class = "",
+          type = "",
           shape = "rectangle",
-          x = 356.939,
-          y = 411.333,
+          x = 356.94,
+          y = 411.33,
           width = 118,
           height = 138,
           rotation = 0,
@@ -411,12 +399,12 @@ return {
           properties = {}
         },
         {
-          id = 70,
+          id = 95,
           name = "chris hansen",
-          class = "",
+          type = "",
           shape = "rectangle",
-          x = 592.333,
-          y = 407.333,
+          x = 592.33,
+          y = 407.33,
           width = 120,
           height = 103,
           rotation = 0,
@@ -443,7 +431,7 @@ return {
         {
           id = 9,
           name = "entrance",
-          class = "",
+          type = "",
           shape = "point",
           x = 146,
           y = 355.667,
@@ -456,7 +444,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 146.333,
           y = 355.606,
@@ -483,25 +471,9 @@ return {
       properties = {},
       objects = {
         {
-          id = 34,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 382.167,
-          y = 519.333,
-          width = 125,
-          height = 99,
-          rotation = 0,
-          gid = 16,
-          visible = true,
-          properties = {
-            ["solid"] = true
-          }
-        },
-        {
           id = 89,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 160,
@@ -517,7 +489,7 @@ return {
         {
           id = 90,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 359,
           y = 261,
@@ -533,7 +505,7 @@ return {
         {
           id = 91,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 467,
           y = 238.5,
@@ -549,7 +521,7 @@ return {
         {
           id = 92,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 596.5,
           y = 276.5,

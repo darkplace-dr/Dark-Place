@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 35,
+  nextobjectid = 43,
   properties = {
     ["border"] = "vaporwave",
     ["music"] = "forest",
@@ -26,8 +26,8 @@ return {
     {
       name = "objects",
       firstgid = 22,
-      filename = "../../../tilesets/objects.tsx",
-      exportfilename = "../../../tilesets/objects.lua"
+      filename = "../../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../../tilesets/devroom-objects.lua"
     }
   },
   layers = {
@@ -115,7 +115,7 @@ return {
         {
           id = 1,
           name = "magicglass",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 1080,
@@ -128,7 +128,7 @@ return {
         {
           id = 2,
           name = "magicglass",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 600,
@@ -157,7 +157,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 600,
@@ -170,7 +170,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 600,
@@ -183,7 +183,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 1160,
@@ -196,7 +196,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 200,
@@ -209,7 +209,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 160,
@@ -222,7 +222,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 200,
@@ -235,7 +235,7 @@ return {
         {
           id = 12,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 200,
@@ -248,7 +248,7 @@ return {
         {
           id = 16,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 192,
           y = 570,
@@ -261,7 +261,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 408,
           y = 570,
@@ -274,7 +274,7 @@ return {
         {
           id = 23,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 74,
           y = 220,
@@ -287,7 +287,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 526,
           y = 220,
@@ -300,7 +300,7 @@ return {
         {
           id = 30,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 200,
@@ -313,7 +313,7 @@ return {
         {
           id = 31,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 200,
@@ -342,7 +342,7 @@ return {
         {
           id = 9,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 1080,
@@ -358,7 +358,7 @@ return {
         {
           id = 10,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 400,
@@ -373,7 +373,7 @@ return {
         {
           id = 11,
           name = "snick_shack",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 320,
@@ -384,121 +384,9 @@ return {
           properties = {}
         },
         {
-          id = 13,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 496,
-          y = 240,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 33,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 15,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 10,
-          y = 240,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 2147483681,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 21,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 182,
-          y = 595,
-          width = 58,
-          height = 180,
-          rotation = 0,
-          gid = 40,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 22,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 402,
-          y = 595,
-          width = 58,
-          height = 180,
-          rotation = 0,
-          gid = 40,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 25,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 148,
-          y = 992,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 33,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 26,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 148,
-          y = 792,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 33,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 28,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 358,
-          y = 792,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 2147483681,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 29,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 363.667,
-          y = 998.667,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 2147483681,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 33,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 280,
@@ -510,6 +398,118 @@ return {
             ["map"] = "vapor/snick",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 35,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 496,
+          y = 240,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 33,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 36,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 10,
+          y = 240,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 2147483681,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 37,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 148,
+          y = 800,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 33,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 38,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 358,
+          y = 800,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 2147483681,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 39,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 148,
+          y = 1000,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 33,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 40,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 358,
+          y = 1000,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 2147483681,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 41,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 183,
+          y = 595,
+          width = 58,
+          height = 180,
+          rotation = 0,
+          gid = 40,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 42,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 400,
+          y = 595,
+          width = 58,
+          height = 180,
+          rotation = 0,
+          gid = 40,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -530,7 +530,7 @@ return {
         {
           id = 18,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 40,
           y = 1120,
@@ -543,7 +543,7 @@ return {
         {
           id = 32,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 200,
           y = 430,
@@ -556,7 +556,7 @@ return {
         {
           id = 34,
           name = "entry2",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 360,

@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 50,
+  nextobjectid = 52,
   properties = {
     ["music"] = "greenroom"
   },
@@ -36,8 +36,8 @@ return {
     {
       name = "dw_city_alley",
       firstgid = 88,
-      filename = "../../../../../ultratestmod/scripts/world/tilesets/dw_city_alley.tsx",
-      exportfilename = "../../tilesets/dw_city_alley.lua"
+      filename = "../../tilesets/dw_city_alley.tsx",
+      exportfilename = "../../tilesets/dw_city_alley.tsx"
     }
   },
   layers = {
@@ -422,6 +422,19 @@ return {
         {
           id = 47,
           name = "entryright",
+          type = "",
+          shape = "point",
+          x = 60,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "spawn",
           type = "",
           shape = "point",
           x = 60,
