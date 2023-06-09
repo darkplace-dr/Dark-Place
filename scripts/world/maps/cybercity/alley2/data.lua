@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -11,7 +11,6 @@ return {
   tileheight = 40,
   nextlayerid = 14,
   nextobjectid = 252,
-
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -66,8 +65,7 @@ return {
     {
       name = "dw_city_alley",
       firstgid = 969,
-      filename = "../../../tilesets/dw_city_alley.tsx",
-      exportfilename = "../../../tilesets/dw_city_alley.tsx"
+      filename = "../../../tilesets/dw_city_alley.tsx"
     },
     {
       name = "objects",
@@ -2107,17 +2105,19 @@ return {
         },
         {
           id = 250,
-          name = "",
+          name = "npc",
           type = "",
-          shape = "rectangle",
-          x = 1560,
-          y = 1360,
-          width = 116,
-          height = 118,
+          shape = "point",
+          x = 1819.56,
+          y = 470.614,
+          width = 0,
+          height = 0,
           rotation = 0,
-          gid = 1112,
           visible = true,
-          properties = {}
+          properties = {
+            ["actor"] = "addisonpink",
+            ["cutscene"] = "cybercity.pink_ad"
+          }
         }
       }
     },

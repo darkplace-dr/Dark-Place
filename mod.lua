@@ -30,6 +30,20 @@ function Mod:init()
     }
 
     self.voice_timer = 0
+
+    Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, show_status_msg)
+        show_status_msg = show_status_msg or true
+
+        self.health = self.health - amount
+        if show_status_msg then
+            self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
+        end
+
+        self.hurt_timer = 1
+        self:onHurt(amount, battler)
+
+        self:checkHealth(on_defeat, amount, battler)
+    end)
 end
 
 function Mod:registerShaders()
@@ -197,21 +211,8 @@ function Mod:isNight()
     return hour < 8 or hour >= 21
 end
 
-Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, showStatusMsg)
-    self.health = self.health - amount
-    local showstatus = showStatusMsg or true
-    if showstatus then
-        self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
-    end
-
-    self.hurt_timer = 1
-    self:onHurt(amount, battler)
-
-    self:checkHealth(on_defeat, amount, battler)
-end)
-
-function Mod:useVelvetAddisonSkins()
-    return Game:getFlag("AddiSwitchOn")
+function Mod:addiSwitch()
+    return Game:getFlag("AddiSwitchOn", false)
 end
 
 ---@alias PrintHelperMsgLevels
