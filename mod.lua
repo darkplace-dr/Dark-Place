@@ -83,7 +83,7 @@ end
 
 function Mod:unload()
     if Mod.text_input_active then
-        print("Warp Bin was open, ending text input to be safe")
+        Mod:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
         Mod.text_input_active = false
     end
@@ -214,12 +214,17 @@ function Mod:useVelvetAddisonSkins()
     return Game:getFlag("AddiSwitchOn")
 end
 
----@alias PrintHelperMsgLevels "log"|"warn"|"error"|"print"
+---@alias PrintHelperMsgLevels
+---| "log"
+---| "warn"
+---| "error"
+---| "print" will use standard print(), thus not printing to the in-game console
 
----@param msg_level PrintHelperMsgLevels uses standard print() in case of "print", thus not printing to the in-game console
 ---@param msg string
-function Mod:print(msg_level, msg)
+---@param msg_level? PrintHelperMsgLevels
+function Mod:print(msg, msg_level)
     msg = tostring(msg)
+    msg_level = msg_level or "log"
 
     if msg_level == "print" then
         print(msg)
