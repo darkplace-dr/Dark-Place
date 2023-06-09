@@ -10,7 +10,8 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 14,
-  nextobjectid = 251,
+  nextobjectid = 252,
+
   properties = {
     ["border"] = "city",
     ["light"] = false,

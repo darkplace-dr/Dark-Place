@@ -2,7 +2,7 @@ local Lib = {}
 
 --[[  TODO:
 
-    -- utdeltatrav bhud compat naturally
+    -- utdeltatrav bhud compat, naturally
 
 ]]
 
@@ -121,13 +121,7 @@ function Lib:init()
 
     end)
 
-    Utils.hook(Item, "onAttack", function(orig, self, battler, score, bolts, close)
-    
-        return self:evaluateScore(battler, score)
-    
-    end)
-
-    Utils.hook(Item, "onDamage", function(orig, self, action, battler, enemy, score, bolts, close)
+    Utils.hook(Item, "onAttack", function(orig, self, action, battler, enemy, score, bolts, close)
 
         local src = Assets.stopAndPlaySound(battler.chara:getAttackSound() or "laz_c")
         src:setPitch(battler.chara:getAttackPitch() or 1)
@@ -262,7 +256,7 @@ function Lib:init()
 
         if #bolts == 0 then
             attackbox.attacked = true
-            return self:onAttack(battler, score, bolts, close)
+            return self:evaluateScore(battler, score, bolts, close)
         end
     
     end)
@@ -670,6 +664,27 @@ function Lib:init()
     
         self.current_processing_action = action
 
+        if enemy and enemy.done_state then
+            enemy = self:retargetEnemy()
+            action.target = enemy
+            if not enemy then
+                return true
+            end
+        end
+    
+        -- Call mod callbacks for onBattleAction to either add new behaviour for an action or override existing behaviour
+        -- Note: non-immediate actions require explicit "return false"!
+        local callback_result = Kristal.modCall("onBattleAction", action, action.action, battler, enemy)
+        if callback_result ~= nil then
+            return callback_result
+        end
+        for lib_id,_ in pairs(Mod.libs) do
+            callback_result = Kristal.libCall(lib_id, "onBattleAction", action, action.action, battler, enemy)
+            if callback_result ~= nil then
+                return callback_result
+            end
+        end
+
         local attackbox
         for _,box in ipairs(Game.battle.battle_ui.attack_boxes) do
             if box.battler == battler then
@@ -681,11 +696,11 @@ function Lib:init()
         if action.action == "ATTACK" or action.action == "AUTOATTACK" then
             if attackbox.attacked then
 
-                battler_weapon:onDamage(action, battler, enemy, attackbox.score, attackbox.bolts, attackbox.close)
+                battler_weapon:onAttack(action, battler, enemy, attackbox.score, attackbox.bolts, attackbox.close)
 
             end
         elseif action.action == "SKIP" then
-            return true -- has to be here to prevent multi-acts from softlocking, somehow they get caught on SKIP
+            return true -- multi act fix
         else
             orig(self, action)
         end
