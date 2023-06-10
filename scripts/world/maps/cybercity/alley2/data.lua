@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -68,7 +68,7 @@ return {
       filename = "../../../tilesets/dw_city_alley.tsx"
     },
     {
-      name = "objects",
+      name = "dumpter-objects",
       firstgid = 1079,
       filename = "../../../tilesets/dumpter-objects.tsx",
       exportfilename = "../../../tilesets/dumpter-objects.lua"
@@ -2101,22 +2101,6 @@ return {
           properties = {
             ["map"] = "cybercity/starwalkeralley",
             ["marker"] = "spawn"
-          }
-        },
-        {
-          id = 250,
-          name = "npc",
-          type = "",
-          shape = "point",
-          x = 1819.56,
-          y = 470.614,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "addisonpink",
-            ["cutscene"] = "cybercity.pink_ad"
           }
         }
       }

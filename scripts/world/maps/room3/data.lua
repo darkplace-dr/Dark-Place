@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 50,
+  nextobjectid = 53,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -24,7 +24,7 @@ return {
       exportfilename = "../../tilesets/castle.lua"
     },
     {
-      name = "objects",
+      name = "devroom-objects",
       firstgid = 61,
       filename = "../../tilesets/devroom-objects.tsx",
       exportfilename = "../../tilesets/devroom-objects.lua"
@@ -250,19 +250,6 @@ return {
           }
         },
         {
-          id = 42,
-          name = "interactable",
-          type = "",
-          shape = "rectangle",
-          x = 200,
-          y = 215.179,
-          width = 113.333,
-          height = 45.9297,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 22,
           name = "npc",
           type = "",
@@ -356,18 +343,20 @@ return {
           properties = {}
         },
         {
-          id = 49,
-          name = "",
+          id = 51,
+          name = "npc",
           type = "",
-          shape = "rectangle",
-          x = 200,
+          shape = "point",
+          x = 262.236,
           y = 262,
-          width = 113.73,
-          height = 160,
+          width = 0,
+          height = 0,
           rotation = 0,
-          gid = 89,
           visible = true,
-          properties = {}
+          properties = {
+            ["actor"] = "addisonshop",
+            ["cutscene"] = "room3.addisonshop"
+          }
         }
       }
     },
