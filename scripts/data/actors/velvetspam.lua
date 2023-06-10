@@ -43,10 +43,17 @@ function actor:init()
         ["bundled"] = {-1, 0},
         ["pipis"] = {-1, 0}
 	}
+
+    self.taunt_sprites = {"day_blankie", "day_blankie_hug", "box"}
+    self.taunt_sprites_night = {"pissed", "bundled", "pipis"}
 end
 
 function actor:getSpritePath()
-    return not Mod:isNight() and self.path or self.path_night
+    return not self.night and self.path or self.path_night
+end
+
+function actor:getTauntSprites()
+    return not self.night and self.taunt_sprites or self.taunt_sprites_night
 end
 
 local function updateTexture(self, sprite)

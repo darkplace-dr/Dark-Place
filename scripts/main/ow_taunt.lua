@@ -9,18 +9,15 @@ function Mod:updateTaunt()
         and (Game.party[1]:checkArmor("pizza_toque") or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
         and self.taunt_cooldown == 0
     then
-        self.taunt_cooldown = 0.40
+        self.taunt_cooldown = 0.4
 
         Game.lock_movement = true
         Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
 
-        for chara_id,sprites in pairs(self.taunt_sprites) do
-            local chara = Game.world:getCharacter(chara_id)
-            if not chara then
-                goto continue
-            end
-
-            chara:setSprite(Utils.pick(sprites))
+        for _,chara in ipairs(Game.stage:getObjects(Character)) do
+            if not chara.actor then goto continue end
+            local sprites = chara.actor:getTauntSprites()
+            if not sprites or #sprites <= 0 then goto continue end
 
             -- the shine effect
             local effect = Sprite("effects/taunteffect", 10, 15)
@@ -32,6 +29,7 @@ function Mod:updateTaunt()
                 chara:resetSprite()
             end)
             chara:addChild(effect)
+            chara:set(Utils.pick(sprites))
 
             ::continue::
         end

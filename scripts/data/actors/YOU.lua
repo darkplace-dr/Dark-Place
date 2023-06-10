@@ -3,6 +3,8 @@ local actor, super = Class("YOU", true)
 function actor:init()
     super.init(self)
 
+    self.taunt_sprites = {"disappointed", "fell", "shoutoutstosimpleflips", "date", "date_flowey_4", "riot"}
+
     self.cursed_song = Music("cursed")
     self.cursed_song:stop()
 end

@@ -45,6 +45,8 @@ function actor:init()
         ["shrug"] = {-3, 0},
         ["bike"] = {0, -4},
     }
+
+    self.taunt_sprites = {"shrug", "sleeping", "eyes", "bike", "wink"}
 end
 
 return actor

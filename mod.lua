@@ -15,20 +15,6 @@ function Mod:init()
 
     self:initTaunt()
 
-    -- taunt stuff for characters that use "walk" as their default sprite (i.e. party members and Sans)
-    -- and characters that use "idle" as their default sprite (i.e. NPCs and such)
-    self.taunt_sprites = {
-        ['YOU'] = {"disappointed", "fell", "shoutoutstosimpleflips", "date", "date_flowey_4", "riot"},
-        ['susie'] = {"pose", "away_hand", "turn_around", "angry_down", "diagonal_kick_left_5", "shock_right"},
-        ['dess'] = {"reddit_gold", "sonic_adventure", "bup", "beatbox", "angreh", "oc", "paneton"},
-        ['brandon'] = {"box"},
-        ['kris'] = {"pose", "peace", "t_pose", "sit"},
-        ['berdly'] = {"fall", "nerd", "drama", "shocked", "fell"},
-        ['bor'] = {"pizza", "pizza_b", "kirby"},
-        ['sans'] = {"shrug", "sleeping", "eyes", "bike", "wink"},
-        ['velvetspam'] = self:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
-    }
-
     self.voice_timer = 0
 
     Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, show_status_msg)
@@ -116,8 +102,6 @@ function Mod:preUpdate()
 end
 
 function Mod:postUpdate()
-    self.taunt_sprites['velvetspam'] = self:isNight() and {"pissed", "bundled", "pipis"} or {"day_blankie", "day_blankie_hug", "box"}
-
     self:updateTaunt()
 
     if Game.save_name == "MERG" then
