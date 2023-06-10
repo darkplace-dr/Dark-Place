@@ -4,7 +4,7 @@ return {
 
 		Game.battle.music:stop()
 		cutscene:wait(2)
-		local player = cutscene:getCharacter(Game.world.player.actor.id)
+		local player = Mod:getLeader("chara")
 		cutscene:setAnimation(player, "battle/attack_ready" or "battle/right")
 		cutscene:wait(0.2)
 		if cutscene:getCharacter("susie") then
@@ -16,8 +16,8 @@ return {
 		Assets.playSound("slash")
 		cutscene:setAnimation(player, "battle/attack" or "battle/right")
 		cutscene:wait(0.15)
-		enemy:statusMessage("damage", 9999, color or (battler and {battler.chara:getDamageColor()}))
-		enemy:hurt(999999999, battler, enemy.onDefeatFatal, color or (battler and {battler.chara:getDamageColor()}), false)
+		enemy:statusMessage("damage", 9999, battler and {battler.chara:getDamageColor()})
+		enemy:hurt(999999999, battler, enemy.onDefeatFatal, battler and {battler.chara:getDamageColor()}, false)
 		cutscene:wait(1)
 		player:setSprite("right_1")
 

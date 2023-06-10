@@ -170,21 +170,21 @@ function Mod:onFootstep(char, num)
     end
 end
 
---- Returns a class of the leader of the party, either the Actor, Character or PartyMember ones
----@param obj_kind? string Either "character", "chara", "sprite", "actorsprite" or "actor". Will changes what class the function returns
----@return PartyMember|Character|ActorSprite|Actor leader_obj A class from the leader.
-function Mod:getLeader(obj_kind)
+--- Returns the current party leader's PartyMember, Actor, ActorSprite or Character object
+---@param kind? "partymember"|"party"|"character"|"chara"|"actor"|"sprite"|"actorsprite" The kind of object that will be gathered, "partymember" by default
+---@return PartyMember|Actor|ActorSprite|Character obj A object related to the leader.
+function Mod:getLeader(kind)
+    kind = (kind or "partymember"):lower()
+
     local leader = Game.party[1]
-    if obj_kind then
-        if obj_kind:lower() == "character" or obj_kind:lower() == "chara" then
-            return Game.world:getCharacter(leader.id)
-        elseif obj_kind:lower() == "sprite" or obj_kind:lower() == "actorsprite" then
-            return Game.world:getCharacter(leader.id).sprite
-        elseif obj_kind:lower() == "actor" then
-            return leader.actor
-        end
+    if kind == "character" or kind == "chara" then
+        return Game.world:getCharacter(leader.id)
+    elseif kind == "actor" then
+        return leader.actor
+    elseif kind == "sprite" or kind == "actorsprite" then
+        return self:getLeader("character").sprite
     end
-    return leader
+    return leader --[[ if kind == "partymember" or kind == "party" ]]
 end
 
 function Mod:isInRematchMode()
