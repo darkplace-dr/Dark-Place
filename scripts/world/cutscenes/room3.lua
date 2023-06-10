@@ -150,7 +150,6 @@ return {
                             return
                         else
                             Game.money = Game.money - 100
-                            Game.inventory:addItem("kris_tea")
                             cutscene:playSound("locker")
                             cutscene:showNametag("Java")
                             cutscene:text("[voice:java]* Okay! Here's your tea!", "wink", "addisonshop")
@@ -183,7 +182,6 @@ return {
                             cutscene:hideShop()
                             return
                         else
-                            Game.inventory:addItem("susie_tea")
                             Game.money = Game.money - 100
                             cutscene:playSound("locker")
                             cutscene:showNametag("Java")
@@ -217,7 +215,6 @@ return {
                             cutscene:hideShop()
                             return
                         else
-                            Game.inventory:addItem("noelle_tea")
                             Game.money = Game.money - 100
                             cutscene:playSound("locker")
                             cutscene:showNametag("Java")
@@ -274,7 +271,6 @@ return {
                             return
                         else
                             Game.money = Game.money - 100
-                            Game.inventory:addItem("kris_tea")
                             cutscene:playSound("locker")
                             cutscene:showNametag("Pink Addison")
                             cutscene:text("* Okay! Here's your tea!")
@@ -309,7 +305,6 @@ return {
                             return
                         else
                             Game.money = Game.money - 100
-                            Game.inventory:addItem("susie_tea")
                             cutscene:playSound("locker")
                             cutscene:showNametag("Pink Addison")
                             cutscene:text("* Okay! Here's your tea!")
@@ -344,7 +339,6 @@ return {
                             return
                         else
                             Game.money = Game.money - 100
-                            Game.inventory:addItem("noelle_tea")
                             cutscene:playSound("locker")
                             cutscene:showNametag("Pink Addison")
                             cutscene:text("* Okay! Here's your tea!")
