@@ -1,0 +1,108 @@
+---@alias PrintHelperMsgLevels
+---| "log"
+---| "warn"
+---| "error"
+
+---@param msg string
+---@param msg_level? PrintHelperMsgLevels
+function Mod:print(msg, msg_level)
+    msg = tostring(msg)
+    msg_level = msg_level or "log"
+
+    local prefixs = {
+        warn = "[WARNING] ",
+        error = "[ERROR] "
+    }
+    local prefixs_rich = {
+        warn = "[color:yellow][WARNING] ",
+        error = "[color:red][ERROR] "
+    }
+
+    local prefixed_msg = (prefixs[msg_level] or "")..msg
+    print(prefixed_msg)
+
+    if Kristal.Console then
+        local prefixed_msg_rich = (prefixs_rich[msg_level] or "")..msg
+        Kristal.Console:push(prefixed_msg_rich)
+    end
+end
+
+---@param msg string
+---@param msg_level? PrintHelperMsgLevels
+---@param stack_level? integer|function
+function Mod:trace(msg, msg_level, stack_level)
+    msg_level = msg_level or "log"
+    stack_level = stack_level or 2 -- the caller
+    msg = tostring(msg)
+
+    local stack_info = debug.getinfo(stack_level, "Snl")
+    local func_name = stack_info.name
+    local line = stack_info.currentline
+    local src = stack_info.short_src
+    if Utils.startsWith(stack_info.source, "@") then
+        local ok, src_n = Utils.startsWith(src, Mod.info.path.."/")
+        if ok then
+            src = src_n
+        else
+            src = "[kristal]/" .. src
+        end
+    end
+
+    local msg_prefix = stack_info.what ~= "main"
+        and string.format("%s:%d (%s): ", src, line, func_name)
+        or string.format("%s:%d: ", src, line)
+    msg = msg_prefix .. msg
+
+    Mod:print(msg, msg_level)
+end
+
+--- Returns the current party leader's PartyMember, Actor, ActorSprite or Character object
+---@param kind? "partymember"|"party"|"character"|"chara"|"actor"|"sprite"|"actorsprite" The kind of object that will be gathered, "partymember" by default
+---@return PartyMember|Actor|ActorSprite|Character obj A object related to the leader.
+function Mod:getLeader(kind)
+    kind = (kind or "partymember"):lower()
+
+    local leader = Game.party[1]
+    if kind == "character" or kind == "chara" then
+        return Game.world:getCharacter(leader.id)
+    elseif kind == "actor" then
+        return leader.actor
+    elseif kind == "sprite" or kind == "actorsprite" then
+        return self:getLeader("character").sprite
+    end
+    return leader --[[ if kind == "partymember" or kind == "party" ]]
+end
+
+-- This is bad
+function Mod:attemptToApplySpritePathChanges(actor, sprite)
+    local path_prev = sprite.path
+    sprite.path = actor:getSpritePath()
+
+    local tex_name = sprite.texture_path
+    tex_name = Utils.sub(tex_name, utf8.len(path_prev) + 1)
+    if utf8.len(tex_name) > 0 and Utils.sub(tex_name, 1, 1) == "/" then
+        tex_name = Utils.sub(tex_name, 2)
+    end
+    for i = 3,1,-1 do
+        local num = tonumber(tex_name:sub(-i))
+        if num then
+            tex_name = tex_name:sub(1, -i - 1)
+            if tex_name:sub(-1, -1) == "_" then
+                tex_name = tex_name:sub(1, -2)
+            end
+            break
+        end
+    end
+
+    local new_path = sprite:getPath(tex_name)
+    local new_frames = Assets.getFrames(new_path)
+    if new_frames then
+        sprite:setFrames(new_frames, true)
+        if self.animations[sprite.path] then
+            sprite:setAnimation(self.animations[sprite.path])
+        end
+    else
+        sprite:setTexture(Assets.getTexture(new_path), true)
+    end
+    sprite:updateTexture()
+end

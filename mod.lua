@@ -1,3 +1,8 @@
+modRequire("scripts/main/debugsystem")
+modRequire("scripts/main/utils")
+modRequire("scripts/main/warp_bin")
+modRequire("scripts/main/ow_taunt")
+
 function Mod:init()
     self:registerShaders()
 
@@ -48,8 +53,9 @@ function Mod:postInit(new_file)
         Game.world:startCutscene("introcutscene")
     end
 end
+
 function Mod:initializeImportantFlags(new_file)
-    local upgraded_save = false
+    local likely_old_save = false
 
     if new_file then
         -- FUN Value
@@ -77,21 +83,20 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("susie_party", true)
     end
 
-    if new_file
-        or not Game:getFlag("party") --[[ will upgrade from a old save ]] then
-        upgraded_save = true
+    if new_file or not Game:getFlag("party") then
+        likely_old_save = true
 
         -- Unlocked party members for the Party Menu
         Game:setFlag("party", {"YOU", "susie"})
     end
 
     if not new_file and not Game:getFlag("#room1:played_intro", false) then
-        upgraded_save = true
+        likely_old_save = true
 
         Game:setFlag("#room1:played_intro", true)
     end
 
-    if not new_file and upgraded_save then
+    if not new_file and likely_old_save then
         Mod:print("Save seems to be from an old version")
     end
 end
@@ -104,16 +109,8 @@ function Mod:unload()
     end
 end
 
-function Mod:onMapMusic(map, music)
-    if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
-        return ""
-    elseif Game:getFlag("weird") and music == "cybercity" then
-        return "cybercity_alt"
-    end
-end
-
 function Mod:preUpdate()
-    self:updateVoiceTimer()
+    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
 end
 
 function Mod:postUpdate()
@@ -132,10 +129,6 @@ function Mod:postUpdate()
             end
         end
     end
-end
-
-function Mod:updateVoiceTimer()
-    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
 end
 
 function Mod:onTextSound(sound, node)
@@ -158,26 +151,21 @@ function Mod:onFootstep(char, num)
     end
 end
 
-modRequire("scripts/main/warp_bin")
-modRequire("scripts/main/debugsystem")
-modRequire("scripts/main/ow_taunt")
-
---- Returns the current party leader's PartyMember, Actor, ActorSprite or Character object
----@param kind? "partymember"|"party"|"character"|"chara"|"actor"|"sprite"|"actorsprite" The kind of object that will be gathered, "partymember" by default
----@return PartyMember|Actor|ActorSprite|Character obj A object related to the leader.
-function Mod:getLeader(kind)
-    kind = (kind or "partymember"):lower()
-
-    local leader = Game.party[1]
-    if kind == "character" or kind == "chara" then
-        return Game.world:getCharacter(leader.id)
-    elseif kind == "actor" then
-        return leader.actor
-    elseif kind == "sprite" or kind == "actorsprite" then
-        return self:getLeader("character").sprite
+function Mod:getUISkin()
+    if self:isOmori() then
+        return "omori"
     end
-    return leader --[[ if kind == "partymember" or kind == "party" ]]
 end
+
+function Mod:onMapMusic(map, music)
+    if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
+        return ""
+    elseif Game:getFlag("weird") and music == "cybercity" then
+        return "cybercity_alt"
+    end
+end
+
+---
 
 function Mod:isInRematchMode()
     return Game.world.map.id == "thearena"
@@ -192,12 +180,6 @@ function Mod:isOmori()
     return self.omori
 end
 
-function Mod:getUISkin()
-    if self:isOmori() then
-        return "omori"
-    end
-end
-
 function Mod:isNight()
     local hour = os.date("*t").hour
     return hour < 8 or hour >= 21
@@ -205,96 +187,4 @@ end
 
 function Mod:addiSwitch()
     return Game:getFlag("AddiSwitchOn", false)
-end
-
----@alias PrintHelperMsgLevels
----| "log"
----| "warn"
----| "error"
-
----@param msg string
----@param msg_level? PrintHelperMsgLevels
-function Mod:print(msg, msg_level)
-    msg = tostring(msg)
-    msg_level = msg_level or "log"
-
-    local prefixs = {
-        warn = "[WARNING] ",
-        error = "[ERROR] "
-    }
-    local prefixs_rich = {
-        warn = "[color:yellow][WARNING] ",
-        error = "[color:red][ERROR] "
-    }
-
-    local prefixed_msg = (prefixs[msg_level] or "")..msg
-    print(prefixed_msg)
-
-    if Kristal.Console then
-        local prefixed_msg_rich = (prefixs_rich[msg_level] or "")..msg
-        Kristal.Console:push(prefixed_msg_rich)
-    end
-end
-
----@param msg string
----@param msg_level? PrintHelperMsgLevels
----@param stack_level? integer|function
-function Mod:trace(msg, msg_level, stack_level)
-    msg_level = msg_level or "log"
-    stack_level = stack_level or 2 -- the caller
-    msg = tostring(msg)
-
-    local stack_info = debug.getinfo(stack_level, "Snl")
-    local func_name = stack_info.name
-    local line = stack_info.currentline
-    local src = stack_info.short_src
-    if Utils.startsWith(stack_info.source, "@") then
-        local ok, src_n = Utils.startsWith(src, Mod.info.path.."/")
-        if ok then
-            src = src_n
-        else
-            src = "[kristal]/" .. src
-        end
-    end
-
-    local msg_prefix = stack_info.what ~= "main"
-        and string.format("%s:%d (%s): ", src, line, func_name)
-        or string.format("%s:%d: ", src, line)
-    msg = msg_prefix .. msg
-
-    Mod:print(msg, msg_level)
-end
-
--- This is bad
-function Mod:attemptToApplySpritePathChanges(actor, sprite)
-    local path_prev = sprite.path
-    sprite.path = actor:getSpritePath()
-
-    local tex_name = sprite.texture_path
-    tex_name = Utils.sub(tex_name, utf8.len(path_prev) + 1)
-    if utf8.len(tex_name) > 0 and Utils.sub(tex_name, 1, 1) == "/" then
-        tex_name = Utils.sub(tex_name, 2)
-    end
-    for i = 3,1,-1 do
-        local num = tonumber(tex_name:sub(-i))
-        if num then
-            tex_name = tex_name:sub(1, -i - 1)
-            if tex_name:sub(-1, -1) == "_" then
-                tex_name = tex_name:sub(1, -2)
-            end
-            break
-        end
-    end
-
-    local new_path = sprite:getPath(tex_name)
-    local new_frames = Assets.getFrames(new_path)
-    if new_frames then
-        sprite:setFrames(new_frames, true)
-        if self.animations[sprite.path] then
-            sprite:setAnimation(self.animations[sprite.path])
-        end
-    else
-        sprite:setTexture(Assets.getTexture(new_path), true)
-    end
-    sprite:updateTexture()
 end

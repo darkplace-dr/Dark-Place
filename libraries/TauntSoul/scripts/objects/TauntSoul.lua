@@ -48,6 +48,7 @@ end
 
 function TauntSoul:update()
     super:update(self)
+
     if self.transitioning then
         if self.parried_loop_sfx then
             self.parried_loop_sfx:stop()
@@ -74,35 +75,37 @@ function TauntSoul:update()
     --]]
 
     if Input.pressed("v", false) and self:canParry() then
+        Game.lock_movement = true
+
         self:flash()
         self.parry_sfx:stop()
         self.parry_sfx:play()
-        for chara_id,sprites in pairs(Mod.taunt_sprites) do
-            local chara = Game.battle:getPartyBattler(chara_id)
-            if chara then
-                local effect = Sprite("effects/taunteffect", 10, 15)
 
-                -- unlock player movement after taunt is finished
-                local function onUnlock()
-                    effect:remove()
-                    Game.lock_movement = false
-                    chara:toggleOverlay(false)
-                end
+        for _,chara in pairs(Game.battle.stage:getObjects(PartyBattler)) do
+            if not chara.actor then goto continue end
 
-                -- the shine effect
-                effect:play(0.02, false, onUnlock)
-                effect:setOrigin(0.5)
-                effect:setScale(0.5)
-                effect.layer = -1
-                chara:addChild(effect)
+            -- workaround due of actors being loaded first by registry
+            local sprites = chara.actor.getTauntSprites and chara.actor:getTauntSprites() or chara.actor.taunt_sprites
+            if not sprites or #sprites <= 0 then goto continue end
 
-                if effect then
-                    Game.lock_movement = true
-                    chara.overlay_sprite:setSprite(Utils.pick(sprites))
-                    chara:toggleOverlay(true)
-                end
-            end
+            chara:toggleOverlay(true)
+            chara.overlay_sprite:setSprite(Utils.pick(sprites))
+
+            -- the shine effect
+            local effect = Sprite("effects/taunteffect", 10, 15)
+            effect:setOrigin(0.5)
+            effect:setScale(0.5)
+            effect.layer = -1
+            effect:play(0.02, false, function()
+                effect:remove()
+                Game.lock_movement = false
+                chara:toggleOverlay(false)
+            end)
+            chara:addChild(effect)
+
+            ::continue::
         end
+
         self.parry_timer = self.parry_window
         self.cooldown_timer = self.cooldown
         self.did_parry = false
