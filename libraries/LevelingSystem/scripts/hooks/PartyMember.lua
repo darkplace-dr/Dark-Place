@@ -49,17 +49,11 @@ function PartyMember:addExp(amount)
     local leveled_up = false
     while self.exp >= self:getNextLvRequiredEXP() and self.love < #self.exp_needed do
         leveled_up = true
-        self:levelUpLVLib()
-    end
-
-    return leveled_up
-end
-
-function PartyMember:levelUpLVLib()
-    if self.love < #self.exp_needed then
         self.love = self.love + 1
         self:onLevelUpLVLib(self.love)
     end
+
+    return leveled_up
 end
 
 function PartyMember:onLevelUpLVLib(level)
