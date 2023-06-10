@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="18">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="jazzylandscape"/>
+  <property name="use_footstep_sounds" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/darktiles_ribbitmobdt.tsx"/>
+ <objectgroup color="#ff0000" id="3" name="objects_bg">
+  <object id="2" name="sprite" x="156" y="0" width="325" height="160">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="texture" value="world/maps/cliffs/bigposter1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="1" name="tiles" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,2,3,3,3,119,8,8,9,0,0,0,0,
+0,0,0,0,14,15,15,15,15,15,11,20,8,8,8,8,
+0,0,0,0,14,15,15,15,15,11,20,20,20,20,20,20,
+0,0,0,0,26,15,15,15,15,15,11,33,44,44,44,44,
+0,0,0,0,38,26,27,27,27,11,21,45,56,56,22,56,
+0,0,0,0,50,38,39,39,39,83,45,34,56,56,56,56,
+0,0,0,0,50,50,51,5,47,56,57,57,56,56,56,56,
+0,0,0,0,50,50,51,51,51,47,57,57,56,56,56,56
+</data>
+ </layer>
+ <layer id="2" name="decal" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,65,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+181,181,181,181,0,0,0,0,0,0,0,0,181,181,181,181,
+169,169,169,169,181,0,0,0,0,0,0,181,169,169,169,169,
+169,169,169,169,169,181,181,181,181,181,181,169,169,169,169,169
+</data>
+ </layer>
+ <objectgroup id="7" name="objects_decal">
+  <object id="15" gid="70" x="400" y="290" width="40" height="40"/>
+ </objectgroup>
+ <objectgroup color="#0000ff" id="4" name="collision">
+  <object id="3" x="160" y="120" width="320" height="40"/>
+  <object id="4" x="160" y="320" width="40" height="40"/>
+  <object id="5" x="120" y="120" width="40" height="200"/>
+  <object id="6" x="440" y="320" width="40" height="40"/>
+  <object id="7" x="200" y="360" width="240" height="40"/>
+  <object id="8" x="480" y="280" width="160" height="40"/>
+  <object id="9" x="480" y="160" width="160" height="40"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="5" name="objects">
+  <object id="11" name="transition" x="630" y="200" width="30" height="80">
+   <properties>
+    <property name="map" value="darktown_ribbit/cliffs/dark1a"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="16" name="interactable" x="160" y="120" width="320" height="40">
+   <properties>
+    <property name="cutscene" value="ribbitmobdt.darkposter"/>
+   </properties>
+  </object>
+  <object id="17" name="darkpuddle" x="0" y="0"/>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="6" name="markers">
+  <object id="12" name="entry" x="600" y="240">
+   <point/>
+  </object>
+  <object id="13" name="spawn" x="320" y="280">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

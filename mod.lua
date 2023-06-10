@@ -17,6 +17,7 @@ function Mod:init()
 
     self.voice_timer = 0
 
+    ---@diagnostic disable-next-line: redefined-local
     Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, show_status_msg)
         show_status_msg = show_status_msg or true
 
@@ -48,6 +49,8 @@ function Mod:postInit(new_file)
     end
 end
 function Mod:initializeImportantFlags(new_file)
+    local upgraded_save = false
+
     if new_file then
         -- FUN Value
         Game:setFlag("fun", love.math.random(1, 100))
@@ -76,8 +79,20 @@ function Mod:initializeImportantFlags(new_file)
 
     if new_file
         or not Game:getFlag("party") --[[ will upgrade from a old save ]] then
+        upgraded_save = true
+
         -- Unlocked party members for the Party Menu
         Game:setFlag("party", {"YOU", "susie"})
+    end
+
+    if not new_file and not Game:getFlag("#room1:played_intro", false) then
+        upgraded_save = true
+
+        Game:setFlag("#room1:played_intro", true)
+    end
+
+    if not new_file and upgraded_save then
+        Mod:print("Save seems to be from an old version")
     end
 end
 
@@ -126,17 +141,12 @@ end
 function Mod:onTextSound(sound, node)
     if sound == "omori" then
         if self.voice_timer == 0 then
-            local snd = Assets.playSound("voice/omori")
-            snd:setPitch(0.9 + Utils.random(0.18))
+            local snd = Assets.playSound("voice/omori", nil, 0.9 + Utils.random(0.18))
             self.voice_timer = 1.1
         end
         return true
     end
 end
-
-modRequire("scripts/main/warp_bin")
-modRequire("scripts/main/debugsystem")
-modRequire("scripts/main/ow_taunt")
 
 function Mod:onFootstep(char, num)
     if Game.world.map.use_footstep_sounds and char == Game.world.player then
@@ -147,6 +157,10 @@ function Mod:onFootstep(char, num)
         end
     end
 end
+
+modRequire("scripts/main/warp_bin")
+modRequire("scripts/main/debugsystem")
+modRequire("scripts/main/ow_taunt")
 
 --- Returns the current party leader's PartyMember, Actor, ActorSprite or Character object
 ---@param kind? "partymember"|"party"|"character"|"chara"|"actor"|"sprite"|"actorsprite" The kind of object that will be gathered, "partymember" by default
