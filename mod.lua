@@ -122,20 +122,14 @@ function Mod:postUpdate()
 
     if Game.save_name == "MERG" then
         for _, member in ipairs(Game.party) do
-           if member.health > 1 then
-              member.health = 1
-           end
-           if member.stats.health ~= 1 then
-              member.stats.health = 1
-           end
+            member:getBaseStats().health = 1
+            member:getMaxStats().health = 1
+            member:setHealth(math.min(member:getHealth(), 1))
         end
 
-        if Game.battle and Game.battle.soul and not Game.gameover then
-           for _, member in ipairs(Game.battle.party) do
-                if member.chara:getHealth() < member.chara:getStat("health") then
-                    Game:gameOver(Game.battle.soul:getScreenPos())
-                    break
-                end
+        if Game.battle then
+            for _, member in ipairs(Game.battle.party) do
+                member:checkHealth()
             end
         end
     end
