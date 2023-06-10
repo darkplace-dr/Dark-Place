@@ -361,19 +361,6 @@ return {
       properties = {},
       objects = {
         {
-          id = 99,
-          name = "entrydown",
-          type = "",
-          shape = "point",
-          x = 240,
-          y = 480,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 119,
           name = "entrydown",
           type = "",
