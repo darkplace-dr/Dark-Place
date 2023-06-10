@@ -175,9 +175,13 @@ function lib:completeAchievement(achievement, slient)
     end
 end
 
--- Was the achievement completed?
-function lib:hasAch(achievement)
+-- Returns whether a achievement was completed or not.
+function lib:earnedAch(achievement)
     return self:getAchievement(achievement).earned
+end
+
+function lib:hasAch(achievement)
+    return self:earnedAch(achievement)
 end
 
 return lib
