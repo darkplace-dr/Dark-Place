@@ -2,6 +2,7 @@ local StarsBG, super = Class(Object)
 
 function StarsBG:init(color, back_color, fill)
     super.init(self)
+
     self.color = color
     self.back_color = back_color or color
     self.fill = fill or {0, 0, 0}

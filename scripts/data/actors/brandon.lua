@@ -96,6 +96,8 @@ function actor:init()
         ["walk/left"] = "walk/left",
         ["walk/right"] = "walk/right",
     }
+
+    self.taunt_sprites = {"box"}
 end
 
 return actor
