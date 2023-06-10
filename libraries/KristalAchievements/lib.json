@@ -10,6 +10,7 @@
     ],
     "config": {
         // If the achievements button will appear in the config menu
+        // If false, the DarkConfigMenu hook will not be applied
         "config_button": true,
         // If the achievements are global (true) or local (false)
         // Local ach data is only saved when save progress is invoked
