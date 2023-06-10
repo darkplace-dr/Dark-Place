@@ -7,7 +7,7 @@ return function(chara_lookup_table)
     ---@param self DialogueText
     ---@param face string a face found under face/embedded
     ---@param x_off number
-    local function createFace(self, face, x_off)
+    local function createFace(self, face, x_off, fixed_width)
         x_off = x_off or 0
 
         current_face = face
@@ -27,7 +27,7 @@ return function(chara_lookup_table)
             while true do
                 sprite_here:setFrame(sprite_here.frame == 1 and 2 or 1)
 
-                if sprite_here.frame == 1 and not (current_face == face and sprite_here:isTyping()) then
+                if sprite_here.frame == 1 and not (current_face == face and self:isTyping()) then
                     if chara then
                         chara:setAnimation("idle")
                     end
@@ -39,7 +39,12 @@ return function(chara_lookup_table)
         self:addChild(sprite)
         table.insert(self.sprites, sprite)
 
-        self.state.current_x = sprite.x + (sprite.width * sprite.scale_x) + self.state.spacing
+        self.state.current_x = (fixed_width and (self.state.current_x + fixed_width) or (sprite.x + sprite.width * sprite.scale_x)) + self.state.spacing
+
+        --[[self.state.indent_mode = true
+        local font_scale = Assets.getFontScale(self.state.font, self.state.font_size)
+        local space_w = self:getFont():getWidth(" ") * font_scale
+        self.state.indent_length = self.state.current_x + space_w]]
     end
 
     ---@type { functions: table<string, fun(self: DialogueText, ...)> }
