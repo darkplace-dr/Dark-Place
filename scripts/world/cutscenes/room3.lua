@@ -116,22 +116,255 @@ return {
         cutscene:hideNametag()
     end,
 
-    pink_ad_stall = function(cutscene, event)
-        cutscene:text("* There's a note in the front of the stall")
-        cutscene:text("\"Tea shop coming soon!\"")
-        cutscene:text("\"Brought to you by...\"")
-        cutscene:text("\"The Sweetest Pink Addison ;^)\"")
-        cutscene:text("\"- Java\"")
-
-        local susie = cutscene:getCharacter("susie")
-        if susie then
-
-            cutscene:setSpeaker(susie)
-            cutscene:showNametag("Susie")
-            cutscene:text("* Yea... sweet... heh...", "small_smile")
+    addisonshop = function(cutscene, event)
+        if Mod:addiSwitch() then
+            local addisonshop = cutscene:getCharacter("addisonshop")
+            cutscene:showNametag("Java")
+            cutscene:text("[voice:java]* Hi there! Welcome!", "default", "addisonshop")
+            cutscene:text("[voice:java]* Would you care for some tea?", "wink_b", "addisonshop")
             cutscene:hideNametag()
+            local opinion = cutscene:choicer({"Yes", "No"})
+            if opinion == 1 then
+                cutscene:showShop()
+                cutscene:showNametag("Java")
+                cutscene:text("[voice:java]* Alright what can I get you?", "wink", "addisonshop")
+                cutscene:hideNametag()
+                opinion = cutscene:choicer({"Kris Tea", "Susie Tea", "Noelle Tea"})
+                if opinion == 1 then
+                    cutscene:showNametag("Java")
+                    cutscene:text("[voice:java]Okay! That would cost ya 100D$...", "default", "addisonshop")
+                    cutscene:hideNametag()
+                    local opinion = cutscene:choicer({"Yes", "No"})
+                    if opinion == 1 then
+                        if Game.money < 100 then
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Sorry, we don't serve barterers", "pissed", "addisonshop")
+                            cutscene:text("[voice:java]* Please come back when you can afford this...", "pissed_b", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        elseif not Game.inventory:addItem("kris_tea") then
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Oh dear, looks like you don't have space in your pockets...", "upset", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                            return
+                        else
+                            Game.money = Game.money - 100
+                            cutscene:playSound("locker")
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Okay! Here's your tea!", "wink", "addisonshop")
+                            cutscene:text("[voice:java]* Thank you and come again", "blush", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        end
+                    elseif opinion == 2 then
+                        cutscene:showNametag("Java")
+                        cutscene:text("[voice:java]* That's alright! Come back anytime!", "default", "addisonshop")
+                        cutscene:text("[voice:java]* I'll be here whenever you need a drink!", "wink_b", "addisonshop")
+                        cutscene:hideNametag()
+                    end
+                elseif opinion == 2 then
+                    cutscene:showNametag("Java")
+                    cutscene:text("[voice:java]Okay! That would cost ya 100D$...", "default", "addisonshop")
+                    cutscene:hideNametag()
+                    local opinion = cutscene:choicer({"Yes", "No"})
+                    if opinion == 1 then
+                        if Game.money < 100 then
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Sorry, we don't serve barterers", "pissed", "addisonshop")
+                            cutscene:text("[voice:java]* Please come back when you can afford this...", "pissed_b", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        elseif not Game.inventory:addItem("susie_tea") then
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Oh dear, looks like you don't have space in your pockets...", "upset", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                            return
+                        else
+                            Game.money = Game.money - 100
+                            cutscene:playSound("locker")
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Okay! Here's your tea!", "wink", "addisonshop")
+                            cutscene:text("[voice:java]* Thank you and come again", "blush", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        end
+                    elseif opinion == 2 then
+                        cutscene:showNametag("Java")
+                        cutscene:text("[voice:java]* That's alright! Come back anytime!", "default", "addisonshop")
+                        cutscene:text("[voice:java]* I'll be here whenever you need a drink!", "wink_b", "addisonshop")
+                        cutscene:hideNametag()
+                    end
+                elseif opinion == 3 then
+                    cutscene:showNametag("Java")
+                    cutscene:text("[voice:java]Okay! That would cost ya 100D$...", "default", "addisonshop")
+                    cutscene:hideNametag()
+                    local opinion = cutscene:choicer({"Yes", "No"})
+                    if opinion == 1 then
+                        if Game.money < 100 then
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Sorry, we don't serve barterers", "pissed", "addisonshop")
+                            cutscene:text("[voice:java]* Please come back when you can afford this...", "pissed_b", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        elseif not Game.inventory:addItem("noelle_tea") then
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Oh dear, looks like you don't have space in your pockets...", "upset", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                            return
+                        else
+                            Game.money = Game.money - 100
+                            cutscene:playSound("locker")
+                            cutscene:showNametag("Java")
+                            cutscene:text("[voice:java]* Okay! Here's your tea!", "wink", "addisonshop")
+                            cutscene:text("[voice:java]* Thank you and come again", "blush", "addisonshop")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        end
+                    elseif opinion == 2 then
+                        cutscene:showNametag("Java")
+                        cutscene:text("[voice:java]* That's alright! Come back anytime!", "default", "addisonshop")
+                        cutscene:text("[voice:java]* I'll be here whenever you need a drink!", "wink_b", "addisonshop")
+                        cutscene:hideNametag()
+                        cutscene:hideShop()
+                    end
+                end
+            else
+                cutscene:showNametag("Java")
+                cutscene:text("[voice:java]* That's alright! Come back anytime!", "default", "addisonshop")
+                cutscene:text("[voice:java]* I'll be here whenever you need a drink!", "wink_b", "addisonshop")
+                cutscene:hideNametag()
+                cutscene:hideShop()
+            end
+        cutscene:hideShop()
+        else
+            cutscene:showNametag("Pink Addison")
+            cutscene:text("* Hi there! Welcome!")
+            cutscene:text("* Would you care for some tea?")
+            cutscene:hideNametag()
+            local opinion = cutscene:choicer({"Yes", "No"})
+            if opinion == 1 then
+                cutscene:showShop()
+                cutscene:showNametag("Pink Addison")
+                cutscene:text("* Alright what can I get you?")
+                cutscene:hideNametag()
+                opinion = cutscene:choicer({"Kris Tea", "Susie Tea", "Noelle Tea"})
+                if opinion == 1 then
+                    cutscene:showNametag("Pink Addison")
+                    cutscene:text("Okay! That would cost ya 100D$...")
+                    cutscene:hideNametag()
+                    local opinion = cutscene:choicer({"Yes", "No"})
+                    if opinion == 1 then
+                        if Game.money < 100 then
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Sorry, we don't serve barterers")
+                            cutscene:text("* Please come back when you can afford this...")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        elseif not Game.inventory:addItem("kris_tea") then
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Oh dear, looks like you don't have space in your pockets...")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                            return
+                        else
+                            Game.money = Game.money - 100
+                            cutscene:playSound("locker")
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Okay! Here's your tea!")
+                            cutscene:text("* Thank you and come again")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        end
+                    elseif opinion == 2 then
+                        cutscene:showNametag("Pink Addison")
+                        cutscene:text("* That's alright! Come back anytime!")
+                        cutscene:text("* I'll be here whenever you need a drink!")
+                        cutscene:hideNametag()  
+                        cutscene:hideShop()  
+                    end
+                elseif opinion == 2 then
+                    cutscene:showNametag("Pink Addison")
+                    cutscene:text("Okay! That would cost ya 100D$...")
+                    cutscene:hideNametag()
+                    local opinion = cutscene:choicer({"Yes", "No"})
+                    if opinion == 1 then
+                        if Game.money < 100 then
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Sorry, we don't serve barterers")
+                            cutscene:text("* Please come back when you can afford this...")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        elseif not Game.inventory:addItem("susie_tea") then
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Oh dear, looks like you don't have space in your pockets...")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                            return
+                        else
+                            Game.money = Game.money - 100
+                            cutscene:playSound("locker")
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Okay! Here's your tea!")
+                            cutscene:text("* Thank you and come again")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        end
+                    elseif opinion == 2 then
+                        cutscene:showNametag("Pink Addison")
+                        cutscene:text("* That's alright! Come back anytime!")
+                        cutscene:text("* I'll be here whenever you need a drink!")
+                        cutscene:hideNametag()
+                        cutscene:hideShop()
+                    end
+                elseif opinion == 3 then
+                    cutscene:showNametag("Pink Addison")
+                    cutscene:text("Okay! That would cost ya 100D$...")
+                    cutscene:hideNametag()
+                    local opinion = cutscene:choicer({"Yes", "No"})
+                    if opinion == 1 then
+                        if Game.money < 100 then
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Sorry, we don't serve barterers")
+                            cutscene:text("* Please come back when you can afford this...")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        elseif not Game.inventory:addItem("noelle_tea") then
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Oh dear, looks like you don't have space in your pockets...")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                            return
+                        else
+                            Game.money = Game.money - 100
+                            cutscene:playSound("locker")
+                            cutscene:showNametag("Pink Addison")
+                            cutscene:text("* Okay! Here's your tea!")
+                            cutscene:text("* Thank you and come again")
+                            cutscene:hideNametag()
+                            cutscene:hideShop()
+                        end
+                    elseif opinion == 2 then
+                        cutscene:showNametag("Pink Addison")
+                        cutscene:text("* That's alright! Come back anytime!")
+                        cutscene:text("* I'll be here whenever you need a drink!")
+                        cutscene:hideNametag()
+                        cutscene:hideShop()
+                    end
+                end
+            else
+                cutscene:showNametag("Pink Addison")
+                cutscene:text("* That's alright! Come back anytime!")
+                cutscene:text("* I'll be here whenever you need a drink!")
+                cutscene:hideNametag()
+                cutscene:hideShop()
+            end
+        cutscene:hideShop()
         end
     end,
+
 
     doobie = function(cutscene, event)
         if not Game:getFlag("room3_doobie") then

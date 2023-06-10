@@ -422,13 +422,6 @@
     <property name="marker" value="spawn"/>
    </properties>
   </object>
-  <object id="250" name="npc" x="1819.56" y="470.614">
-   <properties>
-    <property name="actor" value="addisonpink"/>
-    <property name="cutscene" value="cybercity.pink_ad"/>
-   </properties>
-   <point/>
-  </object>
  </objectgroup>
  <objectgroup color="#ff7fff" id="5" name="battleareas"/>
 </map>
