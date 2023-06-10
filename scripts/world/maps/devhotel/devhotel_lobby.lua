@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,8 +10,9 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 82,
+  nextobjectid = 86,
   properties = {
+    ["border"] = "devworld",
     ["music"] = "devhotel"
   },
   tilesets = {
@@ -34,7 +35,7 @@ return {
       exportfilename = "../../tilesets/city_alleyway.lua"
     },
     {
-      name = "objects",
+      name = "devroom-objects",
       firstgid = 354,
       filename = "../../tilesets/devroom-objects.tsx",
       exportfilename = "../../tilesets/devroom-objects.lua"
@@ -312,19 +313,6 @@ return {
           properties = {}
         },
         {
-          id = 57,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 360,
-          y = 960,
-          width = 80,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 58,
           name = "",
           type = "",
@@ -481,34 +469,6 @@ return {
             ["map"] = "devroom",
             ["marker"] = "entry2"
           }
-        },
-        {
-          id = 51,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 360,
-          y = 1000,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          gid = 267,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 52,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 400,
-          y = 1000,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          gid = 267,
-          visible = true,
-          properties = {}
         },
         {
           id = 53,
@@ -680,6 +640,37 @@ return {
           gid = 394,
           visible = true,
           properties = {}
+        },
+        {
+          id = 83,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 1100,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "devhotel/devhotel_entrance",
+            ["marker"] = "entrydown"
+          }
+        },
+        {
+          id = 85,
+          name = "spawnpoint",
+          type = "",
+          shape = "rectangle",
+          x = 400,
+          y = 800,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text1"] = "* The relaxing atmosphere of this hotel... it fills you with determination."
+          }
         }
       }
     },
@@ -717,6 +708,19 @@ return {
           shape = "point",
           x = 400,
           y = 220,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 82,
+          name = "entryup",
+          type = "",
+          shape = "point",
+          x = 400,
+          y = 1080,
           width = 0,
           height = 0,
           rotation = 0,

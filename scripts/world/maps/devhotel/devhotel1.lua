@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -12,6 +12,7 @@ return {
   nextlayerid = 6,
   nextobjectid = 52,
   properties = {
+    ["border"] = "devworld",
     ["music"] = "greenroom"
   },
   tilesets = {
@@ -36,8 +37,7 @@ return {
     {
       name = "dw_city_alley",
       firstgid = 88,
-      filename = "../../tilesets/dw_city_alley.tsx",
-      exportfilename = "../../tilesets/dw_city_alley.tsx"
+      filename = "../../tilesets/dw_city_alley.tsx"
     }
   },
   layers = {

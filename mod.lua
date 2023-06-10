@@ -215,6 +215,10 @@ function Mod:addiSwitch()
     return Game:getFlag("AddiSwitchOn", false)
 end
 
+function Mod:borderTypeGet()
+    return Kristal.Config["borders"]
+end
+
 ---@alias PrintHelperMsgLevels
 ---| "log"
 ---| "warn"

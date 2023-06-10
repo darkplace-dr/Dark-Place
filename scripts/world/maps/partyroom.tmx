@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="40">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="40">
  <editorsettings>
   <export target="partyroom.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="devworld"/>
   <property name="music" value="greenroom"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/devroom.tsx"/>

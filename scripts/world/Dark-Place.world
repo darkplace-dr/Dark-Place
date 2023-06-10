@@ -188,6 +188,20 @@
             "width": 1040,
             "x": -3740,
             "y": -3060
+        },
+        {
+            "fileName": "maps/devhotel/devhotel_entrance.tmx",
+            "height": 800,
+            "width": 960,
+            "x": 6260,
+            "y": 5980
+        },
+        {
+            "fileName": "maps/devhotel/devhotel_hotland1.tmx",
+            "height": 520,
+            "width": 1040,
+            "x": 6260,
+            "y": 6820
         }
     ],
     "onlyShowAdjacentMaps": false,

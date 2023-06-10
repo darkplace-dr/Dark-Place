@@ -62,6 +62,14 @@ function DarkConfigMenu:update()
             elseif self.currently_selected == 2 then
                 Game:setFlag("AddiSwitchOn", not Game:getFlag("AddiSwitchOn", false))
             elseif self.currently_selected == 3 then
+                if Kristal.Config["borders"] == "dynamic" then
+                    Kristal.Config["borders"] = "off"
+                    Kristal.resetWindow()
+                else
+                    Kristal.Config["borders"] = "dynamic"
+                    Kristal.resetWindow()
+                end
+            elseif self.currently_selected == 4 then
                 self.state = "MAIN"
                 self.currently_selected = 1
             end
@@ -136,9 +144,11 @@ function DarkConfigMenu:draw()
 
         love.graphics.print("Achievements",    88, 38 + (0 * 32))
         love.graphics.print("AddiSwitch",      88, 38 + (1 * 32))
-        love.graphics.print("Back",            88, 38 + (2 * 32))
+        love.graphics.print("Border",          88, 38 + (2 * 32))
+        love.graphics.print("Back",            88, 38 + (3 * 32))
 
         love.graphics.print(Mod:addiSwitch() and "ON" or "OFF", 348, 38 + (1 * 32))
+        love.graphics.print(Mod:borderTypeGet() and "OFF" or "DYNAMIC", 348, 38 + (2 * 32))
 
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))
