@@ -148,7 +148,7 @@ function DarkConfigMenu:draw()
         love.graphics.print("Back",            88, 38 + (3 * 32))
 
         love.graphics.print(Mod:addiSwitch() and "ON" or "OFF", 348, 38 + (1 * 32))
-        love.graphics.print(Mod:borderTypeGet() and "OFF" or "DYNAMIC", 348, 38 + (2 * 32))
+        love.graphics.print(Mod:borderTypeGet():upper(), 348, 38 + (2 * 32))
 
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))
