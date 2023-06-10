@@ -6,10 +6,6 @@ function DarkPowerMenu:init()
     super.init(self)
 
     self.leveling_use_global_values = Kristal.getLibConfig("leveling", "global_love")
-    self.love_global = Game:getFlag("library_love")
-    self.experience_global = Game:getFlag("library_experience")
-    self.nextlv_global = Game:getFlag("library_nextlv")
-    self.kills = Game:getFlag("library_kills")
 end
 
 function DarkPowerMenu:draw()
@@ -35,13 +31,13 @@ end
 
 function DarkPowerMenu:getExp()
     return self.leveling_use_global_values
-        and self.experience_global
+        and Game:getFlag("library_experience")
         or self.party:getSelected():getExp()
 end
 
 function DarkPowerMenu:getNextLv()
     return self.leveling_use_global_values
-        and self.nextlv_global
+        and Game:getFlag("library_nextlv")
         or self.party:getSelected():getNextLv()
 end
 
@@ -49,16 +45,14 @@ function DarkPowerMenu:drawExp()
     love.graphics.setColor(1, 1, 1)
     if self.leveling_use_global_values then
         love.graphics.print("LOVE:", 225, 240)
-        love.graphics.print(self.love_global, 290, 240)
+        love.graphics.print(Game:getFlag("library_love"), 290, 240)
     end
-    local exp = self:getExp()
-    local next = self:getNextLv()
     love.graphics.print("EXP:", 225, 265)
-    love.graphics.print(exp, 275, 265)
+    love.graphics.print(self:getExp(), 275, 265)
     love.graphics.print("Next:", 350, 265)
-    love.graphics.print(next, 415, 265)
+    love.graphics.print(self:getNextLv(), 415, 265)
     love.graphics.print("Kills:", 350, 240)
-    love.graphics.print(self.kills, 429, 240)
+    love.graphics.print(Game:getFlag("library_kills"), 429, 240)
 end
 
 return DarkPowerMenu

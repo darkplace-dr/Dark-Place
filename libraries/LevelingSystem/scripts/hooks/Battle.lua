@@ -91,7 +91,7 @@ function Battle:onStateChange(old,new)
                         local love = Game:getFlag("library_love")
                         Game:setFlag("library_reqexp", req_table[love + 1] or 0)
                         for _,battler in ipairs(self.party) do
-                            battler:levelUp()
+                            battler.chara:levelUpLVLib()
                         end
                     end
                     Game:setFlag("library_nextlv", Utils.clamp(Game:getFlag("library_reqexp") - Game:getFlag("library_experience"), 0, 99999))
@@ -103,11 +103,11 @@ function Battle:onStateChange(old,new)
                 else
                     local function levelUpAlly(battler, xp)
                         battler.chara:addExp(xp)
-                        while battler.chara.exp >= battler.chara.req_exp do
+                        while battler.chara.exp >= battler.chara:getNextLvRequiredEXP()
+                            and battler.chara.love < #battler.chara.exp_needed do
                             leveled_up = true
-                            battler.chara:levelUp()
+                            battler.chara:levelUpLVLib()
                         end
-                        battler.chara.next_lv = Utils.clamp(battler.chara.req_exp - battler.chara.exp, 0, 99999)
                     end
 
                     for _,battler in ipairs(self.party) do
