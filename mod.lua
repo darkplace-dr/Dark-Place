@@ -1,10 +1,14 @@
 modRequire("scripts/main/debugsystem")
-modRequire("scripts/main/utils")
+modRequire("scripts/main/utils_general")
+modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
 
 function Mod:init()
     self:registerShaders()
+
+    self:initTaunt()
+    self.voice_timer = 0
 
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
 
@@ -17,10 +21,6 @@ function Mod:init()
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-
-    self:initTaunt()
-
-    self.voice_timer = 0
 
     ---@diagnostic disable-next-line: redefined-local
     Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, show_status_msg)
@@ -36,14 +36,6 @@ function Mod:init()
 
         self:checkHealth(on_defeat, amount, battler)
     end)
-end
-
-function Mod:registerShaders()
-    self.shaders = {}
-    for _,path,shader in Registry.iterScripts("shaders/") do
-        assert(shader ~= nil, '"shaders/'..path..'.lua" does not return value')
-        self.shaders[path] = shader
-    end
 end
 
 function Mod:postInit(new_file)
@@ -163,28 +155,4 @@ function Mod:onMapMusic(map, music)
     elseif Game:getFlag("weird") and music == "cybercity" then
         return "cybercity_alt"
     end
-end
-
----
-
-function Mod:isInRematchMode()
-    return Game.world.map.id == "thearena"
-end
-
-function Mod:setOmori(omori)
-    omori = omori or false
-    self.omori = omori
-end
-
-function Mod:isOmori()
-    return self.omori
-end
-
-function Mod:isNight()
-    local hour = os.date("*t").hour
-    return hour < 8 or hour >= 21
-end
-
-function Mod:addiSwitch()
-    return Game:getFlag("AddiSwitchOn", false)
 end

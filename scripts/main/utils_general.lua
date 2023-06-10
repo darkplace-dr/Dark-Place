@@ -1,3 +1,11 @@
+function Mod:registerShaders()
+    self.shaders = {}
+    for _,path,shader in Registry.iterScripts("shaders/") do
+        assert(shader ~= nil, '"shaders/'..path..'.lua" does not return value')
+        self.shaders[path] = shader
+    end
+end
+
 ---@alias PrintHelperMsgLevels
 ---| "log"
 ---| "warn"
