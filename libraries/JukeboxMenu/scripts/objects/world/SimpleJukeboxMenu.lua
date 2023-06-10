@@ -1,3 +1,5 @@
+-- FIXME: jukebox_songs format has changed
+
 local JukeboxMenu, super = Class(Object)
 
 function JukeboxMenu:init(jukebox)
