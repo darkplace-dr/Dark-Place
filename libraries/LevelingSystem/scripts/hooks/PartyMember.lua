@@ -48,13 +48,11 @@ function PartyMember:addExp(amount)
 end
 
 function PartyMember:levelUpLVLib()
-    if not Kristal.getLibConfig("leveling", "global_love") then
-        if self.love < #self.exp_needed then
-            self.love = self.love + 1
-            self:onLevelUpLVLib(self.love)
-        end
-    else
-        self:onLevelUpLVLib(Game:getFlag("library_love"))
+    assert(not Kristal.getLibConfig("leveling", "global_love"))
+
+    if self.love < #self.exp_needed then
+        self.love = self.love + 1
+        self:onLevelUpLVLib(self.love)
     end
 end
 

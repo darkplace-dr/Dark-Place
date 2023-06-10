@@ -37,7 +37,7 @@ end
 
 function DarkPowerMenu:getNextLv()
     return self.leveling_use_global_values
-        and Game:getFlag("library_nextlv")
+        and Kristal.callEvent("getGlobalNextLv")
         or self.party:getSelected():getNextLv()
 end
 

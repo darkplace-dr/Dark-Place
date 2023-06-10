@@ -8,8 +8,6 @@ function Lib:postInit(new_file)
     if new_file then
         Game:setFlag("library_love", 1)
         Game:setFlag("library_experience", 0)
-        Game:setFlag("library_nextlv", 10)
-        Game:setFlag("library_reqexp", 10)
         Game:setFlag("library_kills", 0)
         Game:setFlag("library_maxlove", 20)
     end
@@ -38,6 +36,18 @@ function Lib:getGlobalLevelupRequirementsTable()
       [19] = 50000,
       [20] = 99999
   }
+end
+
+function Lib:addGlobalEXP(exp)
+    Game:setFlag("library_experience", Utils.clamp(Game:getFlag("library_experience", 0) + exp, 0, 99999))
+end
+
+function Lib:getGlobalNextLvRequiredEXP()
+    return Kristal.callEvent("getGlobalLevelupRequirementsTable")[Game:getFlag("library_love") + 1] or 0
+end
+
+function Lib:getGlobalNextLv()
+    return Utils.clamp(Kristal.callEvent("getGlobalNextLvRequiredEXP") - Game:getFlag("library_experience"), 0, 99999)
 end
 
 return Lib
