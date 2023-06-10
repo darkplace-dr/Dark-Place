@@ -47,7 +47,7 @@ function PartyMember:addExp(amount)
     self.exp = Utils.clamp(self.exp + amount, 0, self.max_exp)
 
     local leveled_up = false
-    while self.exp >= self:getNextLvRequiredEXP() and self.love < self.exp_needed do
+    while self.exp >= self:getNextLvRequiredEXP() and self.love < #self.exp_needed do
         leveled_up = true
         self:levelUpLVLib()
     end
