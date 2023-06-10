@@ -40,6 +40,20 @@ end
 
 function Lib:addGlobalEXP(exp)
     Game:setFlag("library_experience", Utils.clamp(Game:getFlag("library_experience", 0) + exp, 0, 99999))
+
+    local leveled_up = false
+    while
+        Game:getFlag("library_experience") >= Kristal.callEvent("getGlobalNextLvRequiredEXP")
+        and Game:getFlag("library_love", 1) < Game:getFlag("library_maxlove")
+    do
+        leveled_up = true
+        Game:addFlag("library_love", 1)
+        for _,party in ipairs(Game.party) do
+            party:onLevelUpLVLib(Game:getFlag("library_love"))
+        end
+    end
+
+    return leveled_up
 end
 
 function Lib:getGlobalNextLvRequiredEXP()

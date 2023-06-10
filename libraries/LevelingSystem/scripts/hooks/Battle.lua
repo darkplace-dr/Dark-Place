@@ -77,18 +77,7 @@ function Battle:onStateChange(old,new)
                 local leveled_up
 
                 if Kristal.getLibConfig("leveling", "global_love") then
-                    Kristal.callEvent("addGlobalEXP", self.xp)
-
-                    while
-                        Game:getFlag("library_experience") >= Kristal.callEvent("getGlobalNextLvRequiredEXP")
-                        and Game:getFlag("library_love", 1) < Game:getFlag("library_maxlove")
-                    do
-                        leveled_up = true
-                        Game:addFlag("library_love", 1)
-                        for _,battler in ipairs(self.party) do
-                            battler.chara:onLevelUpLVLib(Game:getFlag("library_love"))
-                        end
-                    end
+                    leveled_up = Kristal.callEvent("addGlobalEXP", self.xp)
 
                     win_text = "* You won!\n* Got " .. self.xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
                     if leveled_up then
@@ -97,13 +86,8 @@ function Battle:onStateChange(old,new)
                     end
                 else
                     local function levelUpAlly(battler, xp)
-                        battler.chara:addExp(xp)
-                        while
-                            battler.chara.exp >= battler.chara:getNextLvRequiredEXP()
-                            and battler.chara.love < #battler.chara.exp_needed
-                        do
+                        if battler.chara:addExp(xp) then
                             leveled_up = true
-                            battler.chara:levelUpLVLib()
                         end
                     end
 

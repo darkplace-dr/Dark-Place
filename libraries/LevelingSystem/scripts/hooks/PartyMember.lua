@@ -45,11 +45,17 @@ end
 
 function PartyMember:addExp(amount)
     self.exp = Utils.clamp(self.exp + amount, 0, self.max_exp)
+
+    local leveled_up = false
+    while self.exp >= self:getNextLvRequiredEXP() and self.love < self.exp_needed do
+        leveled_up = true
+        self:levelUpLVLib()
+    end
+
+    return leveled_up
 end
 
 function PartyMember:levelUpLVLib()
-    assert(not Kristal.getLibConfig("leveling", "global_love"))
-
     if self.love < #self.exp_needed then
         self.love = self.love + 1
         self:onLevelUpLVLib(self.love)
