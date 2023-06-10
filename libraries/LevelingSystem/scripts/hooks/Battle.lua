@@ -77,42 +77,24 @@ function Battle:onStateChange(old,new)
                 local leveled_up
 
                 if Kristal.getLibConfig("leveling", "global_love") then
-                    Game:addFlag("library_experience", self.xp)
-                    if Game:getFlag("library_experience", 0) > 99999 then
-                        Game:setFlag("library_experience", 99999)
-                    end
-                    local req_table = Kristal.callEvent("getGlobalLevelupRequirementsTable")
-                    while
-                        Game:getFlag("library_experience") >= Game:getFlag("library_reqexp")
-                        and Game:getFlag("library_love", 1) < Game:getFlag("library_maxlove")
-                    do
-                        leveled_up = true
-                        Game:addFlag("library_love", 1)
-                        local love = Game:getFlag("library_love")
-                        Game:setFlag("library_reqexp", req_table[love + 1] or 0)
-                        for _,battler in ipairs(self.party) do
-                            battler:levelUp()
-                        end
-                    end
-                    Game:setFlag("library_nextlv", Utils.clamp(Game:getFlag("library_reqexp") - Game:getFlag("library_experience"), 0, 99999))
+                    leveled_up = Kristal.callEvent("addGlobalEXP", self.xp)
 
+                    win_text = "* You won!\n* Got " .. self.xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
                     if leveled_up then
                         Assets.playSound("levelup")
-                        win_text = "* You won!\n* Got " .. self.xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort")..".\n* Your LOVE increased."
+                        win_text = win_text.."\n* Your LOVE increased."
                     end
                 else
                     local function levelUpAlly(battler, xp)
-                        battler.chara:addExp(xp)
-                        while battler.chara.exp >= battler.chara.req_exp do
+                        if battler.chara:addExp(xp) then
                             leveled_up = true
-                            battler.chara:levelUp()
                         end
-                        battler.chara.next_lv = Utils.clamp(battler.chara.req_exp - battler.chara.exp, 0, 99999)
                     end
 
                     for _,battler in ipairs(self.party) do
                         levelUpAlly(battler, self.xp)
-                        local grant_fxp = not Kristal.getLibConfig("leveling", "local_freezing")
+
+                        local grant_fxp = false
                         if Kristal.getLibConfig("leveling", "local_freezing") then
                             for _,spell in ipairs(battler.chara.spells) do
                                 if spell:hasTag("ice") then
@@ -126,11 +108,10 @@ function Battle:onStateChange(old,new)
                         end
                     end
 
+                    win_text = "* You won!\n* Got " .. self.xp + self.freeze_xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
                     if leveled_up then
                         Assets.playSound("levelup")
-                        win_text = "* You won!\n* Got " .. self.xp + self.freeze_xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort")..".\n* Your LOVE increased."
-                    else
-                        win_text = "* You won!\n* Got " .. self.xp + self.freeze_xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
+                        win_text = win_text.."\n* Your LOVE increased."
                     end
                 end
             elseif Game:getConfig("growStronger") then

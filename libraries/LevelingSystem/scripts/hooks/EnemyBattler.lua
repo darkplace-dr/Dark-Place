@@ -10,6 +10,7 @@ function EnemyBattler:defeat(reason, violent)
     end
 
     Game.battle.money = Game.battle.money + self.money
+
     if self.done_state == "KILLED" or self.done_state == "FROZEN" then
         Game.battle.killed = true
         Game:addFlag("library_kills", 1)

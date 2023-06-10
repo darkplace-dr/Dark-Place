@@ -157,58 +157,49 @@ return function(cutscene)
     Game.world.timer:tween(1, chara_y, { 340 })
 
     local chara_name
-        local namer = GonerKeyboard(-1, "default", function(name)
-            chara_name = name
-        end, function(key, x, y, namer)
-            if namer.text == "GASTE" and key == "R" then
-                Assets.playSound("vineboom", 5)
-                gonerText("[speed:99][color:red]BITCH!!.")
-                cutscene:wait(0.02)
-                Game.stage.timescale = 0
-                Game.stage.active = false
-                Kristal.Stage.timer:after(0.1, function()
-                    Kristal.returnToMenu()
-                end)
-            end
-        end)
-        Game.stage:addChild(namer)
-
-        cutscene:wait(function() return chara_name ~= nil end)
-
-        gonerTextFade()
-
-        Game.world.timer:tween(1, chara_y, { 240 })
-
-        if chara_name ~= "YOU" then
-            gonerText("WRONG.[wait:40]\nYOU ARE SO[wait:40] STUPID.[wait:20]")
-            gonerText(chara_name .. "?[wait:20]")
-            gonerText("UNFORTUNATELY, YOU\nHAVE NOT PASSED\nTHE IQ TEST.[wait:20]")
-            gonerText("BUT, I GUESS\nWE CAN... MAKE\nSOME EXCEPTIONS.[wait:20]")
-        else
-            gonerText("CORRECT-A-MUNDO![wait:20]\nITS NAME IS YOU.[wait:20]")
-            gonerText("ALRIGHT KIDDO,\nSENDING YA OFF\nNOW![wait:20] BYE-BYE![wait:20]")
-            
+    local namer = GonerKeyboard(-1, "default", function(name)
+        chara_name = name
+    end, function(key, x, y, namer)
+        if namer.text == "GASTE" and key == "R" then
+            Assets.playSound("vineboom", 5)
+            gonerText("[speed:99][color:red]BITCH!!.")
+            cutscene:wait(0.02)
+            Game.stage.timescale = 0
+            Game.stage.active = false
+            Kristal.Stage.timer:after(0.1, function()
+                Kristal.returnToMenu()
+            end)
         end
+    end)
+    Game.stage:addChild(namer)
 
-        cutscene:wait(1)
+    cutscene:wait(function() return chara_name ~= nil end)
 
-        -- FIXME: make this a part of onEnter of room1
-        cutscene:after(function()
-            if Game:hasPartyMember("YOU") then
-                Game.world:startCutscene("room1", "react_to_YOU")
-            end
-        end)
+    gonerTextFade()
 
-        background.music:stop()
-        Assets.playSound("locker")
-        background:remove()
-        you_sprite.alpha = 0
-        Game:setFlag("vesselChosen", 1)
+    Game.world.timer:tween(1, chara_y, { 240 })
 
-        cutscene:wait(1)
+    if chara_name ~= "YOU" then
+        gonerText("WRONG.[wait:40]\nYOU ARE SO[wait:40] STUPID.[wait:20]")
+        gonerText(chara_name .. "?[wait:20]")
+        gonerText("UNFORTUNATELY, YOU\nHAVE NOT PASSED\nTHE IQ TEST.[wait:20]")
+        gonerText("BUT, I GUESS\nWE CAN... MAKE\nSOME EXCEPTIONS.[wait:20]")
+    else
+        gonerText("CORRECT-A-MUNDO![wait:20]\nITS NAME IS YOU.[wait:20]")
+        gonerText("ALRIGHT KIDDO,\nSENDING YA OFF\nNOW![wait:20] BYE-BYE![wait:20]")
+    end
 
-        Game.world:loadMap("room1", "spawn", "down")
+    cutscene:wait(1)
 
-        cutscene:fadeIn(0.5)
+    background.music:stop()
+    Assets.playSound("locker")
+    background:remove()
+    you_sprite.alpha = 0
+    Game:setFlag("vesselChosen", 1)
 
+    cutscene:wait(1)
+
+    Game.world:loadMap("room1", "spawn", "down")
+
+    cutscene:fadeIn(0.5)
 end

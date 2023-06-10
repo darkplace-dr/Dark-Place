@@ -44,6 +44,8 @@ function actor:init()
 
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {}
+
+    self.taunt_sprites = {"box"}
 end
 
 return actor

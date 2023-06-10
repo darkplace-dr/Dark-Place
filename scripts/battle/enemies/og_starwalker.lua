@@ -1,3 +1,5 @@
+---@class OGStarwalker : EnemyBattler
+---@field sprite ActorSprite
 local OGStarwalker, super = Class(EnemyBattler)
 
 function OGStarwalker:init()
@@ -59,7 +61,7 @@ function OGStarwalker:onSpared()
     Game.battle.music:stop()
 
     if not Game.battle.cutscene then
-        Game.battle:startCutscene("starwalkerb.spare", battler, self)
+        Game.battle:startCutscene("starwalkerb.spare", nil, self)
     end
 end
 

@@ -7,9 +7,10 @@ function PartyMember:init()
 
     self.love = 1
     self.exp = 0
-    self.req_exp = 10
-    self.next_lv = 10
+
+    self.max_exp = 99999
     -- EXP requirements
+    -- We also treat the last entry the max LV
     self.exp_needed = {
         [ 1] = 0,
         [ 2] = 10,
@@ -36,23 +37,23 @@ end
 
 -- Getters
 
-function PartyMember:getLevel() return Kristal.getLibConfig("leveling", "global_love") and self.level or self.love end
+function PartyMember:getLevel()
+    return Kristal.getLibConfig("leveling", "global_love") and self.level or self.love
+end
 
 -- Functions / Getters & Setters
 
 function PartyMember:addExp(amount)
-    self.exp = self.exp + amount
-    Utils.clamp(self.exp, 0, 99999)
-end
+    self.exp = Utils.clamp(self.exp + amount, 0, self.max_exp)
 
-function PartyMember:levelUp()
-    if not Kristal.getLibConfig("leveling", "global_love") then
+    local leveled_up = false
+    while self.exp >= self:getNextLvRequiredEXP() and self.love < #self.exp_needed do
+        leveled_up = true
         self.love = self.love + 1
-        self.req_exp = self.exp_needed[self.love + 1] or 0
         self:onLevelUpLVLib(self.love)
-    else
-        self:onLevelUpLVLib(Game:getFlag("library_love"))
     end
+
+    return leveled_up
 end
 
 function PartyMember:onLevelUpLVLib(level)
@@ -65,8 +66,12 @@ function PartyMember:getExp()
     return self.exp
 end
 
+function PartyMember:getNextLvRequiredEXP()
+    return self.exp_needed[self.love + 1] or 0
+end
+
 function PartyMember:getNextLv()
-    return self.next_lv
+    return Utils.clamp(self:getNextLvRequiredEXP() - self.exp, 0, self.max_exp)
 end
 
 function PartyMember:save()
@@ -84,9 +89,7 @@ function PartyMember:save()
         equipped = self:saveEquipment(),
         flags = self.flags,
         exp = self.exp,
-        love = self.love,
-        req_exp = self.req_exp,
-        next_lv = self.next_lv
+        love = self.love
     }
     self:onSave(data)
     return data
@@ -110,8 +113,6 @@ function PartyMember:load(data)
     self.lw_health = data.lw_health or self:getStat("health", 0, true)
     self.exp = data.exp or self.exp
     self.love = data.love or self.love
-    self.req_exp = data.req_exp or self.req_exp
-    self.next_lv = data.next_lv or self.next_lv
 
     self:onLoad(data)
 end
