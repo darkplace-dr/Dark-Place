@@ -9,10 +9,10 @@
         },
         {
             "fileName": "maps/vapor/pillars/pillars.tmx",
-            "height": 1120,
+            "height": 1360,
             "width": 1120,
             "x": -80,
-            "y": -1200
+            "y": -1440
         },
         {
             "fileName": "maps/vapor/bb_shop/bb_shop.tmx",
@@ -39,8 +39,15 @@
             "fileName": "maps/vapor/pillars2/pillars2.tmx",
             "height": 1920,
             "width": 640,
-            "x": 1320,
+            "x": 1360,
             "y": 0
+        },
+        {
+            "fileName": "maps/vapor/intro/start.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -4960,
+            "y": -5240
         }
     ],
     "onlyShowAdjacentMaps": false,

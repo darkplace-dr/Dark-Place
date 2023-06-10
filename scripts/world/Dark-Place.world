@@ -188,6 +188,20 @@
             "width": 1040,
             "x": -3740,
             "y": -3060
+        },
+        {
+            "fileName": "maps/googlefield/googlefield.tmx",
+            "height": 480,
+            "width": 1920,
+            "x": 3420,
+            "y": 6460
+        },
+        {
+            "fileName": "maps/chevroom/chevroom.tmx",
+            "height": 480,
+            "width": 1280,
+            "x": 3420,
+            "y": 5900
         }
     ],
     "onlyShowAdjacentMaps": false,
