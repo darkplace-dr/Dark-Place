@@ -25,6 +25,8 @@ return function(cutscene)
         end
     end
 
+    local drone = Music("AUDIO_DRONE")
+
     --cutscene:fadeOut(0.5, {music = true})
     cutscene:fadeOut(0, {music = true})
     cutscene:wait(2)
@@ -52,12 +54,12 @@ return function(cutscene)
     gonerText("WE MAY...[wait:40]\"PROCEED\".[wait:20]\n(GET IT? LOL!!)[wait:20]")
     cutscene:wait(0.5)
 
+    drone:remove()
     soul:hide()
 
     cutscene:wait(1.5)
     
-    --local background = GonerBackground(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "AUDIO_DONKEY")
-    local background = GonerBackground(0, 0, "AUDIO_DONKEY_b") -- Yes this is drawn like this on purpose. idk i like it 
+    local background = GonerBackground(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "AUDIO_DONKEY_b") -- Yes this is drawn like this on purpose. idk i like it 
     background.layer = WORLD_LAYERS["top"]
     Game.world:addChild(background)
 
