@@ -27,7 +27,7 @@ return {
             end
         end
 
-        local drone = Music("AUDIO_DRONE")
+        Game.world.music:play("AUDIO_DRONE")
 
         --cutscene:fadeOut(0.5, {music = true})
         cutscene:fadeOut(0, { music = true })
@@ -56,7 +56,7 @@ return {
         gonerText("WE MAY...[wait:40]\"PROCEED\".[wait:20]\n(GET IT? LOL!!)[wait:20]")
         cutscene:wait(0.5)
 
-        drone:remove()
+        Game.world.music:stop()
         soul:hide()
 
         cutscene:wait(1.5)
