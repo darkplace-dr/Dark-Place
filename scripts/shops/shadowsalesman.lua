@@ -46,7 +46,7 @@ function ShadowShop:init()
     self:registerItem("pizza_toque", {stock = 1, color = {1, 1, 1, 1}})
     self:registerItem("everybodyweapon", {description = "WEAPON\nA weapon for\neveryone."})
     self:registerItem("favwich")
-    self:registerItem("gigasalad")
+    self:registerItem("synthsoda")
 
 	
 	-- MistCard Items
@@ -76,7 +76,7 @@ function ShadowShop:init()
     self.shopkeeper.slide = true
 
     self.background = "ui/shop/devdiner_bg"
-    self.shop_music = "none"
+    self.shop_music = nil
 end
 
 function ShadowShop:startTalk(talk)
@@ -125,11 +125,14 @@ function ShadowShop:startTalk(talk)
         self:startDialogue({
             "[voice:shadowsalesman]* Yeah,[wait:5] I've seen PLENTY of universes, kid.",
             "[voice:shadowsalesman]* In fact,[wait:5] We [color:yellow]DEVS[color:reset] know a lot more about the multiverse than your tiny lil' pea-brain can handle.",
-            "[voice:shadowsalesman][emote:eyebrow_raise]* Example?\n[wait:10][emote:annoyed]* I'll give ya [color:yellow]FIVE[color:reset] examples, Einstein.",
+            "[voice:shadowsalesman][emote:eyebrow_raise]* Example?\n[wait:10][emote:annoyed]* I'll give ya [color:yellow]THREE[color:reset] examples, Einstein.",
             "[voice:shadowsalesman][emote:idle]* First, there's a universe where every character's role is swapped.[wait:5]\n* Like the clown and the salesman takin' each other's place, to name a couple.",
             "[voice:shadowsalesman][emote:eyebrow_raise]* Next,[wait:5] there's a universe where a pizzeria owner has to prevent a giant floatin' pizza from destroying his restaurant...",
             "[voice:shadowsalesman][emote:annoyed]* ...by destroying a 5-story tower that the pizza built.",
-            "[voice:shadowsalesman][emote:eyebrow_raise]* And if ya think THAT'S weird, wait till ya what these next three have in store!",
+            "[voice:shadowsalesman][emote:eyebrow_raise]* And if ya think THAT'S weird,[wait:5] there's this one universe that I frequently visit that-",
+            "[voice:shadowsalesman][emote:idle]* ...",
+            "[voice:shadowsalesman]* Actually,[wait:5] y'know what?[wait:10]\n[emote:annoyed]* You don't need to know about that place.",
+            "[voice:shadowsalesman][emote:idle]* Besides,[wait:10] the only people that can only know about that dimension are me,[wait:5] myself[wait:5], and I."
         })
     end
 end
