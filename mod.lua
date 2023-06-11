@@ -42,7 +42,7 @@ function Mod:postInit(new_file)
     Mod:initializeImportantFlags(new_file)
 
     if new_file then
-        Game.world:startCutscene("introcutscene")
+        Game.world:startCutscene("_main.introcutscene")
     end
 end
 
