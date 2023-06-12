@@ -196,10 +196,9 @@ return {
         Game:setFlag("vesselChosen", 1)
 
         cutscene:wait(1)
-
-        Game.world:loadMap("room1", "spawn", "down")
-
-        cutscene:fadeIn(0.5)
+        cutscene:after(function
+            Game.world:loadMap("room1", "spawn", "down")
+        end)
     end,
 
 }
