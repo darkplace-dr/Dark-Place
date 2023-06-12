@@ -198,6 +198,7 @@ return {
         cutscene:wait(1)
         cutscene:after(function()
             Game.world:loadMap("room1", "spawn", "down")
+            cutscene:fadeIn(0.5)
         end)
     end,
 
