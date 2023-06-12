@@ -27,10 +27,9 @@ return {
             end
         end
 
-        local drone = Music("AUDIO_DRONE")
+        Game.world.music:play("AUDIO_DRONE", 0.8, 0.8)
 
-        --cutscene:fadeOut(0.5, {music = true})
-        cutscene:fadeOut(0, { music = true })
+        cutscene:fadeOut(0)
         cutscene:wait(2)
         gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
         cutscene:wait(0.5)
@@ -56,7 +55,7 @@ return {
         gonerText("WE MAY...[wait:40]\"PROCEED\".[wait:20]\n(GET IT? LOL!!)[wait:20]")
         cutscene:wait(0.5)
 
-        drone:remove()
+        Game.world.music:stop()
         soul:hide()
 
         cutscene:wait(1.5)
@@ -196,10 +195,10 @@ return {
         Game:setFlag("vesselChosen", 1)
 
         cutscene:wait(1)
-
-        Game.world:loadMap("room1", "spawn", "down")
-
-        cutscene:fadeIn(0.5)
+        cutscene:after(function()
+            Game.world:loadMap("room1", "spawn", "down")
+            cutscene:fadeIn(0.5)
+        end)
     end,
 
 }
