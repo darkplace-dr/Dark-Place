@@ -136,19 +136,110 @@ return {
     end,
 
     blankie_wall = function(cutscene, event)
-        if Mod:isNight() then
-            local blankie_wall = cutscene:getCharacter("blankie_wall")
-            blankie_wall:setAnimation("blankie_wall_night")
-            cutscene:text("* The wall is cracked but you can't break it right now!")
-            cutscene:text("* But it just turned from a paper to a crack")
-            cutscene:text("* That shouldn't happen as this is a wip!")
-            cutscene:text("* This text should only appear from 9pm to 9am...")
-            cutscene:text("* It should turn back paper after this dialogue\n * - Sans")
-            blankie_wall:resetSprite()
+        if not Game:getFlag("blankie_acquired") then
+            if Mod:isNight() then
+                if event.interact_count == 1 then
+                    cutscene:text("* The wall seems cracked.")
+                    local susie = cutscene:getCharacter("susie")
+                    if susie then
+                        cutscene:detachCamera()
+                        cutscene:detachFollowers()
+
+                        cutscene:setSpeaker(susie)
+                        cutscene:showNametag("Susie")
+                        cutscene:text("* Ya know, another wall won't hurt...", "smile")
+                        cutscene:hideNametag()
+
+                        local x = event.x + event.width / 2
+                        local y = event.y + event.height / 2
+
+                        cutscene:walkTo(susie, x, y + 40, 0.75, "up")
+                        cutscene:walkTo(Game.world.player, x, y + 100, 0.75, "up")
+                        if cutscene:getCharacter("ralsei") then
+                            cutscene:walkTo("ralsei", x + 60, y + 100, 0.75, "up")
+                        end
+                        if cutscene:getCharacter("noelle") then
+                            cutscene:walkTo("noelle", x - 60, y + 100, 0.75, "up")
+                        end
+                        if cutscene:getCharacter("brandon") then
+                            cutscene:walkTo("brandon", x - 60, y + 100, 0.75, "up")
+                        end
+                        if cutscene:getCharacter("dess") then
+                            cutscene:walkTo("dess", x - 60, y + 100, 0.75, "up")
+                        end
+                        if cutscene:getCharacter("berdly") then
+                            cutscene:walkTo("berdly", x - 60, y + 100, 0.75, "up")
+                        end
+                        if cutscene:getCharacter("dumbie") then
+                            cutscene:walkTo("berdly", x - 60, y + 100, 0.75, "up")
+                        end
+                        if cutscene:getCharacter("bor") then
+                            cutscene:walkTo("bor", x - 60, y + 100, 0.75, "up")
+                        end
+                        cutscene:wait(1.5)
+
+                        cutscene:wait(cutscene:walkTo(susie, x, y + 60, 0.5, "up", true))
+                        cutscene:wait(cutscene:walkTo(susie, x, y + 20, 0.2))
+
+                        Assets.playSound("impact")
+                        susie:shake(4)
+                        susie:setSprite("shock_up")
+                        cutscene:wait(.5)
+                        susie:setSprite("away")
+
+                        cutscene:text("[voice:default]* The wall cracked open a bit...")
+                        cutscene:showNametag("Susie")
+                        cutscene:text("[voice:susie]* Hell yeah!", "sincere_smile")
+                        cutscene:hideNametag()
+
+                        cutscene:slideTo(susie, x, y + 40, 0.1)
+                        cutscene:wait(.5)
+
+                        susie:setSprite("away_turn")
+                        susie:shake(4)
+                        Assets.playSound("noise")
+
+                        cutscene:wait(.5)
+                        cutscene:showNametag("Susie")
+                        cutscene:text("[voice:susie]* Wait... What's this?", "surprise")
+                        cutscene:text("[voice:susie]* It's some kind of blue cloth...", "surprise_frown")
+                        cutscene:hideNametag()
+
+                        cutscene:text("[voice:default]* It's a blanket!")
+
+                        cutscene:showNametag("Susie")
+                        cutscene:text("[voice:susie]* I think we should give this back to someone", "sincere_smile")
+                        cutscene:hideNametag()
+
+                        Assets.playSound("item")
+                        cutscene:text("[voice:default]* You stashed the blanket in your pocket")
+
+                        Game.inventory:addItem("blankie")
+
+                        susie:resetSprite()
+
+                        cutscene:attachCamera()
+
+                        cutscene:alignFollowers()
+                        cutscene:attachFollowers()
+                        return
+                    end
+                else
+                    cutscene:text("* The wall has a small indented")
+                end
+            else
+                cutscene:text("* The wall seems cracked.")
+                local susie = cutscene:getCharacter("susie")
+                if susie then
+                    cutscene:setSpeaker(susie)
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Yea... I'm not breaking another wall...", "neutral")
+                    cutscene:hideNametag()
+                end
+            end
         else
-            cutscene:text("* The wall has a note taped with doodles.")
-            cutscene:text("* But there is no proper cutscene yet as it's still a wip!")
-            cutscene:text("* This text should only appear from 9am to 9pm...\n * - Sans")
+            cutscene:text("* The wall has a note taped with a note...")
+            cutscene:text("* (Currently under reconstruction\n* - Sans)")
         end
     end,
 
@@ -285,7 +376,7 @@ return {
     end,
 
     sans = function(cutscene, event)
-        if Mod:isNight() then
+        if Mod:isNight() and not Game:getFlag("blankie_acquired") then
             cutscene:showNametag("Sans", {font = "sans"})
             cutscene:text("[font:sans]* hey.\n * there might be another crack on the wall here.", "neutral", "sans")
             cutscene:hideNametag()
