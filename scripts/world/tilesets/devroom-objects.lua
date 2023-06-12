@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   name = "devroom-objects",
   class = "",
   tilewidth = 145,
@@ -139,9 +139,9 @@ return {
     },
     {
       id = 44,
-      image = "../../../assets/sprites/objects/hotelroomtable.png",
+      image = "../../../assets/sprites/objects/blankie_wall_note.png",
       width = 34,
-      height = 50
+      height = 34
     }
   }
 }

@@ -81,12 +81,22 @@ return {
     end,
     velvetspam = function(cutscene, event)
         if Mod:isNight() then
-            local velvetspam = cutscene:getCharacter("velvetspam")
-            cutscene:setSpeaker(velvetspam)
-            cutscene:showNametag("Velvet!Spamton")
-            cutscene:text("* Noticed anything [[Different from the Leading Brand!]]?")
-            cutscene:text("* Well that difference is that I don't have my [specil] Blankie [TM] with me!")
-            cutscene:hideNametag()
+            if Game:getFlag("blankie_acquired") then
+                local velvetspam = cutscene:getCharacter("velvetspam")
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                cutscene:text("* You know the best part of [Restless Sleepless Nights]?")
+                cutscene:text("* Is having my [specil] Blankie [TM] on top!")
+                cutscene:text("* Nothing! And I mean NOTHING! Can [[BATTERIES NEED REPLACEMENT]]!")
+                cutscene:hideNametag()
+            else
+                local velvetspam = cutscene:getCharacter("velvetspam")
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                cutscene:text("* Noticed anything [[Different from the Leading Brand!]]?")
+                cutscene:text("* Well that difference is that I don't have my [specil] Blankie [TM] with me!")
+                cutscene:hideNametag()
+            end
         else
             local velvetspam = cutscene:getCharacter("velvetspam")
             cutscene:setSpeaker(velvetspam)
