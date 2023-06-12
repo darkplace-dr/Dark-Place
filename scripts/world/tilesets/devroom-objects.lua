@@ -1,8 +1,8 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  name = "objects",
+  tiledversion = "1.10.0",
+  name = "devroom-objects",
   class = "",
   tilewidth = 145,
   tileheight = 120,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 17,
+  tilecount = 18,
   tiles = {
     {
       id = 10,
@@ -136,6 +136,12 @@ return {
       image = "../../../assets/sprites/objects/sign.png",
       width = 40,
       height = 40
+    },
+    {
+      id = 44,
+      image = "../../../assets/sprites/objects/hotelroomtable.png",
+      width = 34,
+      height = 50
     }
   }
 }
