@@ -27,10 +27,9 @@ return {
             end
         end
 
-        Game.world.music:play("AUDIO_DRONE")
+        Game.world.music:play("AUDIO_DRONE", 0.8, 0.8)
 
-        --cutscene:fadeOut(0.5, {music = true})
-        cutscene:fadeOut(0, { music = true })
+        cutscene:fadeOut(0)
         cutscene:wait(2)
         gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
         cutscene:wait(0.5)
