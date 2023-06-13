@@ -68,14 +68,14 @@ function actor:onSpriteUpdate(sprite)
     local night_bak = self.night
     local blankie_bak = self.night
     self.night = Mod:isNight()
-    self.night_blankie = Game:getFlag("blankie_acquired")
+    self.night_blankie = Game:getFlag("blankie_returned")
 
 
     if self.night ~= night_bak then
         Mod:attemptToApplySpritePathChanges(self, sprite)
     end
 
-    if self.night_blankie~= blankie_bak and Game:getFlag("blankie_acquired") == true then
+    if self.night_blankie~= blankie_bak and Game:getFlag("blankie_returned") == true then
         Mod:attemptToApplySpritePathChanges(self, sprite)
     end
 
