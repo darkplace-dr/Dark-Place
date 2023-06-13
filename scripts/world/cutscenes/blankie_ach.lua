@@ -15,6 +15,6 @@ return {
 
         cutscene:hideNametag() 
         Kristal.callEvent("completeAchievement", "blankiequest")
-        Game:setFlag("blankie_acquired", true)
+        Game:setFlag("blankie_returned", true)
         end
 }
