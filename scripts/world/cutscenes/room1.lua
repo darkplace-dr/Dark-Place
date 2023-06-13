@@ -208,7 +208,7 @@ return {
                         cutscene:text("[voice:default]* It's a blanket!")
 
                         cutscene:showNametag("Susie")
-                        cutscene:text("[voice:susie]* I think we should give this back to someone", "sincere_smile")
+                        cutscene:text("[voice:susie]* I think we should give this back to someone!", "sincere_smile")
                         cutscene:hideNametag()
 
                         Assets.playSound("item")
@@ -222,6 +222,8 @@ return {
 
                         cutscene:alignFollowers()
                         cutscene:attachFollowers()
+
+                        Game:setFlag("blankie_acquired", true)
                         return
                     end
                 else

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="19" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="24" nextobjectid="36">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="deltarune/dogcheck"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../tilesets/devroom.tsx"/>
+ <tileset firstgid="73" source="../../../../tilesets/devhotelfurniture.tsx"/>
+ <tileset firstgid="161" source="../../../../tilesets/devroom-objects.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="19" height="16">
+  <data encoding="csv">
+0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,9,0,0,
+0,0,7,8,8,8,8,8,8,8,8,10,11,11,11,12,9,0,0,
+0,0,7,8,8,8,8,8,8,8,8,16,17,17,17,18,9,0,0,
+0,0,7,8,8,8,8,8,8,8,8,8,8,8,8,8,9,0,0,
+29,29,4,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,
+0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,3,0,0,
+0,0,7,26,26,26,26,26,26,26,26,26,26,26,26,26,9,0,0,
+0,0,7,26,26,26,26,26,26,26,26,26,26,26,26,8,9,0,0,
+0,0,7,26,26,26,26,26,26,26,26,26,26,26,26,8,9,0,0,
+0,0,7,26,26,26,26,26,26,26,26,26,26,26,26,8,9,0,0,
+0,0,7,26,26,8,26,26,26,26,26,26,26,26,26,8,9,0,0,
+0,0,7,8,8,8,8,26,26,26,26,26,26,26,26,8,9,0,0,
+0,0,7,8,8,8,8,8,26,26,26,26,26,26,26,8,9,0,0,
+0,0,13,14,8,8,14,14,14,14,14,14,14,14,14,14,15,0,0,
+0,0,2,3,8,8,1,2,2,2,2,2,2,2,2,2,2,0,0,
+0,0,24,9,8,8,7,24,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="21" name="Tile Layer 2" width="19" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,78,79,0,0,0,0,0,0,0,0,0,
+0,0,0,73,75,76,77,0,100,101,0,0,0,0,0,0,0,0,0,
+0,0,0,95,97,98,99,0,122,123,0,0,0,0,0,0,0,0,0,
+0,0,0,117,118,118,121,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,117,118,118,121,0,29,32,32,32,32,32,32,29,30,0,0,
+0,0,0,139,140,140,143,0,27,19,20,20,20,20,21,25,30,0,0,
+0,0,0,0,0,0,0,0,27,25,51,51,51,51,27,25,30,0,0,
+0,0,0,0,0,0,0,0,27,25,51,51,51,51,27,25,30,0,0,
+0,0,0,0,0,0,0,0,27,31,32,32,32,32,33,25,36,0,0,
+0,0,0,0,0,0,0,0,29,20,20,20,20,20,20,29,30,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35,36,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,41,42,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="22" name="Tile Layer 3" width="19" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,75,76,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,97,97,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="23" name="Tile Layer 4" width="19" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,80,81,82,83,125,80,83,125,126,0,0,0,0,0,0,0,
+0,0,0,102,103,104,105,125,102,105,147,148,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,10,12,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,16,18,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0011ff" id="16" name="collision" tintcolor="#0020ff">
+  <object id="6" x="320" y="560" width="360" height="40"/>
+  <object id="7" x="40" y="0" width="40" height="640"/>
+  <object id="8" x="680" y="0" width="40" height="640"/>
+  <object id="10" x="80" y="0" width="600" height="200"/>
+  <object id="26" x="320" y="138.872" width="80" height="101.128"/>
+  <object id="34" x="240" y="560" width="80" height="80"/>
+  <object id="35" x="80" y="560" width="80" height="80"/>
+ </objectgroup>
+ <objectgroup id="6" name="objects">
+  <object id="5" gid="184" x="424.166" y="240" width="241.5" height="72.4501"/>
+ </objectgroup>
+ <objectgroup id="17" name="objects">
+  <object id="17" gid="206" x="431.961" y="182.216" width="226.29" height="57.0646"/>
+  <object id="25" gid="184" x="117.058" y="400" width="165.884" height="49.7652"/>
+ </objectgroup>
+ <objectgroup color="#e332ff" id="19" name="objects">
+  <object id="19" name="interactable" x="424.166" y="160" width="240" height="80">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* There are tiny plushie Addisons all lined up!"/>
+    <property name="text2" value="* Already to advertise in their small sizes!"/>
+   </properties>
+  </object>
+  <object id="23" name="transition" x="120" y="625" width="160" height="24.8685">
+   <properties>
+    <property name="map" value="devhotel/devhotel1"/>
+    <property name="marker" value="door_002"/>
+   </properties>
+  </object>
+  <object id="30" name="script" x="120" y="494.004" width="160" height="37.5286">
+   <properties>
+    <property name="cutscene" value="devhotel_room_002.entry"/>
+   </properties>
+  </object>
+  <object id="27" name="interactable" x="520" y="360" width="80" height="80">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* It's a dog bed!"/>
+    <property name="text2" value="* Made for a little corgi"/>
+   </properties>
+  </object>
+  <object id="28" name="interactable" x="120" y="160" width="160" height="240">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* It's a bed!"/>
+    <property name="text2" value="* It looks too big for a mouse..."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="20" name="markers">
+  <object id="24" name="spawn" x="200" y="528.28">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

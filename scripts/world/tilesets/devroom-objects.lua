@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 18,
+  tilecount = 19,
   tiles = {
     {
       id = 10,
@@ -142,6 +142,12 @@ return {
       image = "../../../assets/sprites/objects/blankie_wall_note.png",
       width = 34,
       height = 34
+    },
+    {
+      id = 45,
+      image = "../../../assets/sprites/objects/Addison_plushies.png",
+      width = 115,
+      height = 29
     }
   }
 }

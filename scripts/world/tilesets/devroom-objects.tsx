@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="devroom-objects" tilewidth="145" tileheight="120" tilecount="18" columns="0">
+<tileset version="1.10" tiledversion="1.10.1" name="devroom-objects" tilewidth="145" tileheight="120" tilecount="19" columns="0">
  <editorsettings>
   <export target="devroom-objects.lua" format="lua"/>
  </editorsettings>
@@ -61,5 +61,8 @@
  </tile>
  <tile id="44">
   <image width="34" height="34" source="../../../assets/sprites/objects/blankie_wall_note.png"/>
+ </tile>
+ <tile id="45">
+  <image width="115" height="29" source="../../../assets/sprites/objects/Addison_plushies.png"/>
  </tile>
 </tileset>

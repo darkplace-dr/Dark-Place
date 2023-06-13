@@ -81,7 +81,7 @@ return {
     end,
     velvetspam = function(cutscene, event)
         if Mod:isNight() then
-            if Game:getFlag("blankie_acquired") then
+            if Game:getFlag("blankie_returned") then
                 local velvetspam = cutscene:getCharacter("velvetspam")
                 cutscene:setSpeaker(velvetspam)
                 cutscene:showNametag("Velvet!Spamton")

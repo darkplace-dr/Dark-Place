@@ -23,19 +23,19 @@ return {
     },
     {
       name = "hoteldoors",
-      firstgid = 37,
+      firstgid = 73,
       filename = "../../tilesets/hoteldoors.tsx",
       exportfilename = "../../tilesets/hoteldoors.lua"
     },
     {
       name = "city_alleyway",
-      firstgid = 39,
+      firstgid = 76,
       filename = "../../tilesets/city_alleyway.tsx",
       exportfilename = "../../tilesets/city_alleyway.lua"
     },
     {
-      name = "objects",
-      firstgid = 354,
+      name = "devroom-objects",
+      firstgid = 391,
       filename = "../../tilesets/devroom-objects.tsx",
       exportfilename = "../../tilesets/devroom-objects.lua"
     }
@@ -402,7 +402,7 @@ return {
           width = 200,
           height = 60,
           rotation = 0,
-          gid = 377,
+          gid = 414,
           visible = true,
           properties = {}
         },
@@ -416,7 +416,7 @@ return {
           width = 80,
           height = 120,
           rotation = 0,
-          gid = 375,
+          gid = 412,
           visible = true,
           properties = {}
         },
@@ -430,7 +430,7 @@ return {
           width = 160,
           height = 120,
           rotation = 0,
-          gid = 391,
+          gid = 428,
           visible = true,
           properties = {}
         }
@@ -492,7 +492,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -506,7 +506,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -520,7 +520,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -534,7 +534,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -548,7 +548,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -562,7 +562,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -576,7 +576,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -590,7 +590,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -604,7 +604,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -618,7 +618,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -632,7 +632,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 267,
+          gid = 304,
           visible = true,
           properties = {}
         },
@@ -663,7 +663,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 396,
+          gid = 433,
           visible = true,
           properties = {}
         },
@@ -677,7 +677,7 @@ return {
           width = 162,
           height = 78,
           rotation = 0,
-          gid = 394,
+          gid = 431,
           visible = true,
           properties = {}
         }
@@ -712,7 +712,7 @@ return {
         },
         {
           id = 48,
-          name = "entrydown",
+          name = "spawn",
           type = "",
           shape = "point",
           x = 400,
