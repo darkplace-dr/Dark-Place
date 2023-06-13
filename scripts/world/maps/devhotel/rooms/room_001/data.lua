@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -35,12 +35,12 @@ return {
     },
     {
       name = "dw_city_alley",
-      firstgid = 120,
+      firstgid = 121,
       filename = "../../../../tilesets/dw_city_alley.tsx"
     },
     {
       name = "devhotelfurniture",
-      firstgid = 230,
+      firstgid = 231,
       filename = "../../../../tilesets/devhotelfurniture.tsx",
       exportfilename = "../../../../tilesets/devhotelfurniture.lua"
     }
@@ -128,12 +128,12 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        0, 237, 238, 239, 240, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 259, 260, 261, 262, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 230, 232, 233, 234, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 252, 254, 255, 256, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 274, 276, 277, 278, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 296, 298, 299, 300, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 238, 239, 240, 241, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 260, 261, 262, 263, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 231, 233, 234, 235, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 253, 255, 256, 257, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 275, 277, 278, 279, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 297, 299, 300, 301, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -302,7 +302,7 @@ return {
           height = 100,
           rotation = 0,
           gid = 117,
-          visible = true,
+          visible = false,
           properties = {}
         }
       }

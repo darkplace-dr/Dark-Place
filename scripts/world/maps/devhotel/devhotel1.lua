@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 53,
+  nextobjectid = 54,
   properties = {
     ["music"] = "greenroom"
   },
@@ -23,20 +23,14 @@ return {
     },
     {
       name = "hoteldoors",
-      firstgid = 37,
+      firstgid = 73,
       filename = "../../tilesets/hoteldoors.tsx",
       exportfilename = "../../tilesets/hoteldoors.lua"
     },
     {
       name = "dw_city_alley",
-      firstgid = 39,
+      firstgid = 76,
       filename = "../../tilesets/dw_city_alley.tsx"
-    },
-    {
-      name = "devroom-objects",
-      firstgid = 149,
-      filename = "../../tilesets/devroom-objects.tsx",
-      exportfilename = "../../tilesets/devroom-objects.lua"
     }
   },
   layers = {
@@ -89,7 +83,7 @@ return {
         {
           id = 21,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 240,
@@ -102,7 +96,7 @@ return {
         {
           id = 22,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 240,
@@ -115,7 +109,7 @@ return {
         {
           id = 23,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 240,
@@ -128,7 +122,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 240,
@@ -141,7 +135,7 @@ return {
         {
           id = 29,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 240,
@@ -154,7 +148,7 @@ return {
         {
           id = 34,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 800,
           y = 240,
@@ -167,7 +161,7 @@ return {
         {
           id = 35,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 840,
           y = 320,
@@ -180,7 +174,7 @@ return {
         {
           id = 36,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1200,
           y = 360,
@@ -193,7 +187,7 @@ return {
         {
           id = 37,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 400,
@@ -222,56 +216,56 @@ return {
         {
           id = 14,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 208,
           y = 280,
           width = 64,
           height = 100,
           rotation = 0,
-          gid = 38,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 25,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 328,
-          y = 280,
-          width = 64,
-          height = 100,
-          rotation = 0,
-          gid = 37,
+          gid = 74,
           visible = true,
           properties = {}
         },
         {
           id = 26,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 448,
           y = 280,
           width = 64,
           height = 100,
           rotation = 0,
-          gid = 37,
+          gid = 73,
           visible = true,
           properties = {}
         },
         {
           id = 28,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 568,
           y = 280,
           width = 64,
           height = 100,
           rotation = 0,
-          gid = 37,
+          gid = 73,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 52,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 328,
+          y = 280,
+          width = 64,
+          height = 100,
+          rotation = 0,
+          gid = 75,
           visible = true,
           properties = {}
         }
@@ -294,7 +288,7 @@ return {
         {
           id = 40,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1120,
           y = 360,
@@ -310,8 +304,8 @@ return {
         },
         {
           id = 41,
-          name = "",
-          class = "",
+          name = "interactable",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 240,
@@ -326,8 +320,8 @@ return {
         },
         {
           id = 42,
-          name = "",
-          class = "",
+          name = "interactable",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 240,
@@ -336,14 +330,14 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "devhotel.template",
+            ["cutscene"] = "devhotel.velvet",
             ["solid"] = true
           }
         },
         {
           id = 43,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 240,
@@ -359,7 +353,7 @@ return {
         {
           id = 44,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 240,
@@ -375,7 +369,7 @@ return {
         {
           id = 45,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -20,
           y = 280,
@@ -387,20 +381,6 @@ return {
             ["map"] = "devhotel/devhotel_lobby",
             ["marker"] = "entryleft"
           }
-        },
-        {
-          id = 52,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 1120,
-          y = 400,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          gid = 191,
-          visible = true,
-          properties = {}
         }
       }
     },
@@ -421,7 +401,7 @@ return {
         {
           id = 47,
           name = "entryright",
-          class = "",
+          type = "",
           shape = "point",
           x = 60,
           y = 360,
@@ -434,10 +414,23 @@ return {
         {
           id = 51,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 60,
           y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 53,
+          name = "door_002",
+          type = "",
+          shape = "point",
+          x = 360,
+          y = 306,
           width = 0,
           height = 0,
           rotation = 0,

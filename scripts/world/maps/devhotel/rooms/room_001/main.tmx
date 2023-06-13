@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="62">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="62">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -8,9 +8,9 @@
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/devroom.tsx"/>
  <tileset firstgid="73" source="../../../../tilesets/devroom-objects.tsx"/>
- <tileset firstgid="118" source="../../../../tilesets/hoteldoors.tsx"/>
- <tileset firstgid="120" source="../../../../tilesets/dw_city_alley.tsx"/>
- <tileset firstgid="230" source="../../../../tilesets/devhotelfurniture.tsx"/>
+ <tileset firstgid="119" source="../../../../tilesets/hoteldoors.tsx"/>
+ <tileset firstgid="122" source="../../../../tilesets/dw_city_alley.tsx"/>
+ <tileset firstgid="232" source="../../../../tilesets/devhotelfurniture.tsx"/>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data encoding="csv">
 1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,
@@ -45,12 +45,12 @@
  </layer>
  <layer id="6" name="props" width="16" height="12">
   <data encoding="csv">
-0,237,238,239,240,0,0,0,0,0,0,0,0,0,0,0,
-0,259,260,261,262,0,0,0,0,0,0,0,0,0,0,0,
-0,230,232,233,234,0,0,0,0,0,0,0,0,0,0,0,
-0,252,254,255,256,0,0,0,0,0,0,0,0,0,0,0,
-0,274,276,277,278,0,0,0,0,0,0,0,0,0,0,0,
-0,296,298,299,300,0,0,0,0,0,0,0,0,0,0,0,
+0,239,240,241,242,0,0,0,0,0,0,0,0,0,0,0,
+0,261,262,263,264,0,0,0,0,0,0,0,0,0,0,0,
+0,232,234,235,236,0,0,0,0,0,0,0,0,0,0,0,
+0,254,256,257,258,0,0,0,0,0,0,0,0,0,0,0,
+0,276,278,279,280,0,0,0,0,0,0,0,0,0,0,0,
+0,298,300,301,302,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -71,7 +71,7 @@
  </objectgroup>
  <objectgroup id="3" name="objects_props"/>
  <objectgroup color="#ff00ff" id="4" name="objects">
-  <object id="51" gid="117" x="220" y="180" width="68" height="100"/>
+  <object id="51" gid="117" x="220" y="180" width="68" height="100" visible="0"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers"/>
 </map>
