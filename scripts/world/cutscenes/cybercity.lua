@@ -181,16 +181,16 @@ return {
             cutscene:text("* (The   [color:yellow]Starwalker[color:reset][wait:6]\n   somehow saved your game...)")
             
         else
-            --Game.world.music:stop()
+            Game.world.music:pause()
             
             cutscene:text("* [color:yellow]You[color:reset] are [color:yellow]Pissing[color:reset] me off...", nil, event)
             
             cutscene:text("* I,[wait:5] uh,[wait:5] what?", "sus_nervous", "susie")
             cutscene:text("* Well,[wait:5] hey,[wait:5] you know\nwhat?", "annoyed", "susie")
             cutscene:text("* You piss us off too.", "smirk", "susie")
-            Game.world.music:fade(0,1)
+            --Game.world.music:fade(1,0)
             local cutscene_music = Music()
-            cutscene_music:play("susie")
+            cutscene_music:play("s_neo")
             cutscene:detachFollowers()
             if kris then
                 cutscene:walkTo(kris, kris.x, kris.y - 40, 1, "down", true)
@@ -241,7 +241,7 @@ return {
                         Game:setFlag("weird", true)
                         Game:setFlag("killedTRUEOriginalStarwalkerInAlley2", true)
                         Game.world.music:play("cybercity_alt")
-                        Game.world.music.volume = 1
+                        --Game.world.music.volume = 1
                         Game.world.player:setFacing("down")
                     else
                         event.sprite:resetSprite()
@@ -253,8 +253,8 @@ return {
                         end
                         Game:setFlag("unlockedStarwalkerValley", true)
                         cutscene:text("* (You got the keys to the\n          [color:yellow]starwalker[color:reset]\n                    valley)")
-                        Game.world.music:play("cybercity")
-                        Game.world.music.volume = 1
+                        Game.world.music:resume("cybercity")
+                        --Game.world.music.volume = 1
                         Game.world.player:setFacing("down")
                     end
                 end

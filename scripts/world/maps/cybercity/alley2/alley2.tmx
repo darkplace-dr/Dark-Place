@@ -6,7 +6,7 @@
  <properties>
   <property name="border" value="city"/>
   <property name="light" type="bool" value="false"/>
-  <property name="music" value="cybercity"/>
+  <property name="music" value="deltarune/cybercity"/>
   <property name="name" value="Test City - Banana Room"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/battleborder.tsx"/>

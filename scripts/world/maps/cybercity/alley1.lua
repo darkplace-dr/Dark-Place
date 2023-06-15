@@ -14,7 +14,7 @@ return {
   properties = {
     ["border"] = "city",
     ["light"] = false,
-    ["music"] = "cybercity",
+    ["music"] = "deltarune/cybercity",
     ["name"] = "Test City - Sugarplum Alley"
   },
   tilesets = {

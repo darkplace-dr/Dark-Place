@@ -152,7 +152,7 @@ end
 function Mod:onMapMusic(map, music)
     if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
         return ""
-    elseif Game:getFlag("weird") and music == "cybercity" then
-        return "cybercity_alt"
+    elseif Game:getFlag("weird") and music == "deltarune/cybercity" then
+        return "deltarune/cybercity_alt"
     end
 end
