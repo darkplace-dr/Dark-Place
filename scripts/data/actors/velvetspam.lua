@@ -17,9 +17,7 @@ function actor:init()
 
     self.path = "world/npcs/velvetspam"
     self.path_night = "world/npcs/velvetspam/candle"
-    self.path_night_blankie = "world/npcs/velvetspam/blankie"
     self.default = "idle"
-    self.default_blankie = "blankie"
 
 
     self.voice = "spamton"
@@ -52,7 +50,7 @@ function actor:init()
 end
 
 function actor:getSpritePath()
-    return not self.night and self.path or self.path_night or self.path_night_blankie
+    return not self.night and self.path or self.path_night
 end
 
 function actor:getTauntSprites()
@@ -61,22 +59,22 @@ end
 
 function actor:onSpriteInit(sprite)
     self.night = false
-    self.night_blankie = false
 end
 
 function actor:onSpriteUpdate(sprite)
     local night_bak = self.night
-    local blankie_bak = self.night
     self.night = Mod:isNight()
-    self.night_blankie = Game:getFlag("blankie_returned")
 
 
     if self.night ~= night_bak then
         Mod:attemptToApplySpritePathChanges(self, sprite)
     end
 
-    if self.night_blankie~= blankie_bak and Game:getFlag("blankie_returned") == true then
-        Mod:attemptToApplySpritePathChanges(self, sprite)
+    local velvetspam = Game.world:getCharacter("velvetspam")
+    if Mod:isNight() and Game:getFlag("blankie_returned") then
+        velvetspam:setSprite("blankie")
+    else
+        velvetspam:setSprite("idle")
     end
 
 end
