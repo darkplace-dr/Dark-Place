@@ -25,6 +25,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Pinto Molhado - Contributor
 * Agent 7 - Contributor
 * Riverstar (Sumire) - Contributor
+* SciSpaceProductions - Contributor
 
 *(for used assets)*
 * Kristal Team - Creating the Kristal engine
@@ -44,6 +45,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * RynoGG - Original author for Deltatraveler
 * atliylol - Original author for MOBDT
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
+* MrkySpices - Deltarune-styled Backrooms tileset
 * FireStar8903 - Made music for the Pasta Pack Shop
 * OMOCAT, LLC - Original author for OMORI
 * Ninomae Ina'nis - Creator and designer of the Takodachis

@@ -1,10 +1,22 @@
 return {
+    backrooms_entry = function(cutscene)
+        local br_door = cutscene:getEvent("backroomsdoor")
+
+        Assets.playSound("dooropen")
+        br_door:setSprite("world/events/backroomsdoor/open")
+		
+        cutscene:wait(0.75)
+        cutscene:mapTransition("backrooms/entrance", "entry")
+
+        cutscene:wait(0.25)
+        Assets.playSound("doorclose")
+    end,
     queen_sip = function(cutscene, event)
         Assets.playSound("queen/queensip_1")
         cutscene:text("[noskip]*[wait:3s]", "sip", "queen", {auto = true})
-        if Game:hasPartyMember("YOU") then
-            cutscene:text("* Susie Blue Frog That Isn't Kris How Do You Like My New:", "smile", "queen")
-        elseif Game:hasPartyMember("kris") then
+        if Game:hasPartyMember("YOU") and Game:hasPartyMember("susie") then
+            cutscene:text("* Susie Two Legged Amphibian How Do You Like My New:", "smile", "queen")
+        elseif Game:hasPartyMember("kris") and Game:hasPartyMember("susie") then
             cutscene:text("* Kris Susie How Do You Like My New:", "smile", "queen")
 		else
             cutscene:text("* Greetings Everyone How Do You Like My New:", "smile", "queen")
@@ -24,7 +36,7 @@ return {
     end,
 
     borencountervortex = function(cutscene)
-        local leader = Mod:getLeader("actor")
+        local leader = Mod:getLeader()
         local kris = cutscene:getCharacter("kris")
         local susie = cutscene:getCharacter("susie")
         local bor = cutscene:getCharacter("bor")
@@ -49,7 +61,7 @@ return {
             if Game:hasPartyMember("YOU") then
                 cutscene:text("* Look,[wait:0.1s] Kr-[wait:0.1s]YOU![wait:0.3s]\n* It's a time vortex!", "angry_b", "susie")
 
-                cutscene:choicer({"What the shit\nis that", "oh"})
+                cutscene:choicer({"What the hell\nis that", "oh"})
                 cutscene:text("* Oh,[wait:0.1s] right.[wait:0.3s] You don't know what that is.", "annoyed_down", "susie")
             else
                 cutscene:text("* Look![wait:0.3s]\n* It's a time vortex!", "angry_b", "susie")
@@ -60,12 +72,12 @@ return {
 
                 cutscene:text("* missing light reference", "pog", "bor")
 
-                cutscene:text("* What", "neutral", "susie")
+                cutscene:text("* What?", "neutral", "susie")
 
                 cutscene:text("* deltarun missing light reference", "pog", "bor")
 
                 susie:setSprite("angry_down")
-                cutscene:text("* Dude,[wait:0.1s] what the FUCK is a \"missing light\"?!", "teeth", "susie")
+                cutscene:text("* Dude,[wait:0.1s] what the actual HELL is a \"missing light\"?!", "teeth", "susie")
                 susie:resetSprite()
 
                 cutscene:text("* My world", "smug", "bor")
@@ -76,7 +88,7 @@ return {
                 cutscene:text("* Just caus i MADE a place doesnt mean i LIVE in it.", "question", "bor")
 
                 susie:setSprite("angry_down")
-                cutscene:text("* Oh my god", "teeth_b", "susie")
+                cutscene:text("* Oh my god...", "teeth_b", "susie")
                 susie:resetSprite()
 
                 cutscene:text("* k so basically vortexes are things", "happy", "bor")
@@ -91,15 +103,15 @@ return {
                 cutscene:text("* alr bluddies keep me outta this", "troll", "bor")
 
                 susie:setSprite("angry_down")
-                cutscene:text("* YES YOU STAY HERE YOU FORSAKEN PIECE OF SHIT", "teeth", "susie")
+                cutscene:text("* YES YOU STAY HERE YOU FORSAKEN BLOB OF SILLY PUTTY!", "teeth", "susie")
 
                 cutscene:text("* jeez lady, \"chill\" out.", "smug", "bor")
 
-                cutscene:text("* I AM DONE TALKING TO YOU", "teeth", "susie")
+                cutscene:text("* I AM DONE TALKING TO YOU!!", "teeth", "susie")
                 susie:resetSprite()
             else
                 cutscene:text("* Okay,[wait:0.1s] so.[wait:0.3s] Basically, a time vortex is,[wait:0.1s] uh...", "neutral_side", "susie")
-                cutscene:text("* Like some kind of opening in the fabric of time and space,[wait:0.1s] or something.[wait:0.3s] Quoting Ralsei here.", "nervous_side", "susie")
+                cutscene:text("* Some kind of opening in the fabric of time and space,[wait:0.1s] or something.", "nervous_side", "susie")
                 cutscene:text("* But basically we have to go down there NOW!", "angry", "susie")
             end
         end
@@ -195,12 +207,12 @@ return {
                 elseif cutscene:getCharacter("kris") then
                     cutscene:text("* Hey, Kris.", "sus_nervous", "susie")
                 end
-                cutscene:text("* It seems like we,[wait:0.1s] um,[wait:0.1s] fucked up.", "sus_nervous", "susie")
+                cutscene:text("* It seems like we,[wait:0.1s] um,[wait:0.1s] screwed up.", "sus_nervous", "susie")
                 cutscene:text("* I think we should...[wait:0.1s] go find somebody who can help us??", "sus_nervous", "susie")
             else
                 cutscene:text("* (Damn, it looks like I fucked up.)")
                 cutscene:text("* (I should go find someone who can help.)")
-                cutscene:text("* (Perhaps a blue blob with orange arms and kirby's feet?)")
+                cutscene:text("* (Perhaps a blue blob with orange arms and Kirby's feet?)")
             end
 
             return

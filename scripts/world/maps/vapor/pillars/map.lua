@@ -3,6 +3,8 @@ local Pillars, super = Class(Map)
 function Pillars:onEnter()
     super.onEnter(self)
     Game.world:spawnObject(VaporBG(0, 0), "objects_bg")
+
+    Game.world:spawnObject(VHSFilter(), 99999)
 	
     local mountains = Sprite("objects/vaporbg/mountains", 0, 105)
     mountains:setScale(1)

@@ -11,10 +11,7 @@ function BackroomsDoor:init(data)
 end
 
 function BackroomsDoor:onInteract(player, dir)
-    Game.world:startCutscene(function(cutscene)
-        cutscene:text("* (The door is locked.)")
-        cutscene:text("* (From behind it, you can hear the faint sound fluorescent lights.)")
-    end)
+    Game.world:startCutscene("floor2.backrooms_entry")
 end
 
 return BackroomsDoor

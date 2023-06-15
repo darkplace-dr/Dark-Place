@@ -3,6 +3,8 @@ local VaporRoomTest, super = Class(Map)
 function VaporRoomTest:onEnter()
     super.onEnter(self)
     Game.world:spawnObject(VaporBG(), "objects_bg")
+
+    Game.world:spawnObject(VHSFilter(), 99999)
 	
     local mountains = Sprite("objects/vaporbg/mountains", 0, 105)
     mountains:setScale(1)
