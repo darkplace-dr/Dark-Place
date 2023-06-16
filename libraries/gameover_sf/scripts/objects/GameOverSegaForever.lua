@@ -72,6 +72,8 @@ function GameOverSF:draw()
     end
 
     if self.state_manager.state == "CONFIRMED" then
+        -- it would be funny if theres actually ads
+        -- idk how to implement it though, using videos doesnt feel right
         love.graphics.setFont(self.font_body)
         love.graphics.printf("I lied there's no ad LOL", 0, 55, self.width, "center")
     end
@@ -110,14 +112,14 @@ end
 function GameOverSF:onConfirm()
     self.music:stop()
     self.timer:script(function(wait)
-        wait(1/3)
+        wait(1/2.5)
 
         local confirm_explosion = Explosion(self.width/2, self.height/2)
         confirm_explosion:setOrigin(0.5, 0.5)
         confirm_explosion:setScale(3)
         confirm_explosion:setLayer(1)
         self:addChild(confirm_explosion)
-        wait(0.95)
+        wait(0.9)
 
         Assets.stopSound("badexplosion")
         self:cleanup()
