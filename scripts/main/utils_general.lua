@@ -88,10 +88,24 @@ function Mod:softResetActorSprite(sprite)
     -- Due to engine limitations, this implementation
     -- will ONLY work with ActorSprites
 
+    local anim = sprite.anim
+    local anim_name
+    local animations = sprite.actor.getAnimations and sprite.actor:getAnimations() or sprite.actor.animations
+    for name, data in pairs(animations) do
+        if data == anim then
+            anim_name = name
+            break
+        end
+    end
+
     sprite.path = sprite.actor:getSpritePath()
 
-    local anim = sprite.anim
-    if anim then
+    if anim_name then
+        sprite:setAnimation(anim_name)
+        if not sprite.anim then -- failsafe
+            sprite:resetSprite()
+        end
+    elseif anim then
         sprite:setAnimation(anim)
     else
         sprite:setSprite(sprite.sprite, true)

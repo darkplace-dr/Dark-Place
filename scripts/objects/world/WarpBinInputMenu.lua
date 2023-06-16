@@ -28,7 +28,6 @@ function WarpBinInputMenu:init()
     self.as_warp_bin_ui = true
     self.finish_cb = nil
 
-    Mod.text_input_active = true
     TextInput.attachInput(self.input, {
         multiline = false,
         enter_submits = true,
@@ -46,10 +45,6 @@ function WarpBinInputMenu:init()
         end
         Game.world:closeMenu()
     end
-end
-
-function WarpBinInputMenu:update()
-    Mod.text_input_active = true
 end
 
 function WarpBinInputMenu:draw()
@@ -84,7 +79,6 @@ end
 
 function WarpBinInputMenu:endInput()
     TextInput.endInput()
-    Mod.text_input_active = false
 end
 
 function WarpBinInputMenu:onRemove()

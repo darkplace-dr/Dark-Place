@@ -29,11 +29,14 @@ function actor:init()
         ["day_blankie"] = {"day_blankie", 1, true},
         ["box"] = {"box", 1, true},
         ["talk"] = {"talk", 0.2, true},
-        ["candle_idle"] = {"candle/idle", 1, true},
-        ["candle/blankie"] = {"candle/blankie", 1, true},
-        ["candle/bundled"] = {"candle/bundled", 1, true},
-        ["candle/pissed"] = {"candle/pissed", 1, true},
-        ["candle/pipis"] = {"candle/pipis", 1, true},
+    }
+    self.animations_night = {
+        ["idle"] = {"idle", 1, true},
+        ["talk"] = {"talk", 0.2, true},
+        ["blankie"] = {"blankie", 1, true},
+        ["bundled"] = {"bundled", 1, true},
+        ["pissed"] = {"pissed", 1, true},
+        ["pipis"] = {"pipis", 1, true},
     }
 
     self.talk_sprites = {}
@@ -76,6 +79,13 @@ end
 
 function actor:getDefault()
     return not self.night and self.default or self.default_night
+end
+
+function actor:getAnimations()
+    return not self.night and self.animations or self.animations_night
+end
+function actor:getAnimation(anim)
+    return self:getAnimations()[anim]
 end
 
 function actor:getTauntSprites()

@@ -94,10 +94,9 @@ function Mod:initializeImportantFlags(new_file)
 end
 
 function Mod:unload()
-    if Mod.text_input_active then
+    if TextInput.active and not Kristal.Console.is_open then
         Mod:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
-        Mod.text_input_active = false
     end
 end
 
