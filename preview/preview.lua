@@ -2,16 +2,14 @@ local preview = {}
 
 preview.hide_background = true
 
-function preview:init(mod, button, menu)
-    self.particles = {}
-    self.particle_timer = 0
-
-    self.texture = love.graphics.newImage(mod.path.."/star.png")
-
+function preview:init(mod, button, _)
     button:setColor(1, 1, 1)
     button:setFavoritedColor(0.9, 0.8, 1)
 
-    self.menu = menu
+    self.particles = {}
+    self.particle_timer = 0
+
+    self.part_texture = love.graphics.newImage(mod.path.."/preview/star.png")
 end
 
 function preview:update()
@@ -43,7 +41,7 @@ function preview:draw()
             local alpha = (particle.radius / particle.max_radius) * self.fade
 
             love.graphics.setColor(1, 1, 1, alpha)
-            love.graphics.draw(self.texture, particle.x, particle.y, particle.radius)
+            love.graphics.draw(self.part_texture, particle.x, particle.y, particle.radius)
         end
 
         love.graphics.setBlendMode("alpha")
