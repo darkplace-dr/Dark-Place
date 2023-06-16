@@ -1,12 +1,12 @@
 # Dark Place
 
-<div style="text-align: center">
+<p align="center" width="100%">
 
-<img src="logo.png" alt="Dark Place - An open-source KRISTAL mod (logo)" align="center" width="50%">
+<img src="logo.png" alt="Dark Place - An open-source KRISTAL mod (logo)" width="50%"/>
 
 *Logo by Just Another Random User (@JustAnotherRandomGithubUser)*
 
-</div>
+</p>
 
 An open source Kristal mod that anyone can contribute to.
 
