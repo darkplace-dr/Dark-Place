@@ -21,21 +21,6 @@ function Mod:init()
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-
-    ---@diagnostic disable-next-line: redefined-local
-    Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, show_status_msg)
-        show_status_msg = show_status_msg or true
-
-        self.health = self.health - amount
-        if show_status_msg then
-            self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
-        end
-
-        self.hurt_timer = 1
-        self:onHurt(amount, battler)
-
-        self:checkHealth(on_defeat, amount, battler)
-    end)
 end
 
 function Mod:postInit(new_file)
@@ -51,7 +36,7 @@ function Mod:initializeImportantFlags(new_file)
 
     if new_file then
         -- FUN Value
-        Game:setFlag("fun", love.math.random(1, 100))
+        self:rollFun()
     end
 
     if new_file then

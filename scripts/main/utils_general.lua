@@ -90,7 +90,9 @@ function Mod:softResetActorSprite(sprite)
 
     local anim = sprite.anim
     local anim_name
-    local animations = sprite.actor.getAnimations and sprite.actor:getAnimations() or sprite.actor.animations
+    local animations = sprite.actor.getAnimations
+        and sprite.actor:getAnimations()
+        or sprite.actor.animations
     for name, data in pairs(animations) do
         if data == anim then
             anim_name = name
