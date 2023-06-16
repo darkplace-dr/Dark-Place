@@ -56,7 +56,7 @@ function actor:preSpriteUpdate(sprite)
     local night_bak = self.night
     self.night = Mod:isNight()
     if self.night ~= night_bak then
-        Mod:softResetSprite(self, sprite)
+        Mod:softResetActorSprite(sprite)
     end
 
     local retd_bak = self.blankie_returned

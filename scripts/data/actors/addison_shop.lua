@@ -56,7 +56,7 @@ function actor:onSpriteUpdate(sprite)
     self.switch = Mod:addiSwitch()
 
     if self.switch ~= switch_bak then
-        Mod:softResetSprite(self, sprite)
+        Mod:softResetActorSprite(sprite)
     end
 end
 

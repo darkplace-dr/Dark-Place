@@ -81,20 +81,22 @@ function Mod:getLeader(kind)
     return leader --[[ if kind == "partymember" or kind == "party" ]]
 end
 
--- ???
----@param actor Actor
+-- Tries to reload the texture of an ActorSprite.
+-- Mainly for refreshing sprites after its actor's sprite path has changed.
 ---@param sprite ActorSprite
-function Mod:softResetSprite(actor, sprite)
-    sprite.path = actor:getSpritePath()
+function Mod:softResetActorSprite(sprite)
+    -- Due to engine limitations, this implementation
+    -- will ONLY work with ActorSprites
+
+    sprite.path = sprite.actor:getSpritePath()
 
     local anim = sprite.anim
     if anim then
         sprite:setAnimation(anim)
     else
         sprite:setSprite(sprite.sprite, true)
-        if not sprite.texture then
+        if not sprite.texture then -- failsafe
             sprite:resetSprite()
         end
     end
-    sprite:updateTexture()
 end
