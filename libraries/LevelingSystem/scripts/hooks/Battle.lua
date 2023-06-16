@@ -6,6 +6,8 @@ function Battle:init()
     super.init(self)
 
     self.freeze_xp = 0
+
+    self.killed = false
 end
 
 function Battle:onStateChange(old,new)
