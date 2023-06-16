@@ -11,15 +11,16 @@ function Nametag:init(text, options)
     
     self.name = text or ""
     self.color = self.options["color"] or {1, 1, 1, 1}
-    self.font = Assets.getFont(self.options["font"] or "main")
+    self.font = Assets.getFont(
+        self.options["font"]
+        or Kristal.callEvent("getDefaultDialogNonMonospacedFont")
+        or Kristal.callEvent("getDefaultDialogTextFont")
+        or "main"
+    )
     
-    if self.options["style"] then
-        self.style = self.options["style"]
-    elseif Game:isLight() then
-        self.style = "none"
-    else
-        self.style = "dark"
-    end
+    self.style = self.options["style"]
+        or Kristal.callEvent("getDefaultDialogTextStyle")
+        or (Game:isLight() and "none" or "dark")
     
     self.box_width = self.options["width"] or self.font:getWidth(text)
     self.box.width = self.box_width + 4
@@ -45,11 +46,8 @@ function Nametag:draw()
     love.graphics.setFont(self.font)
 
     -- love.graphics.print(self.name, 2, -14)
-    
-    if self.style == nil or self.style == "none" then
-        love.graphics.setColor(self.color)
-        love.graphics.print(self.name, 2, -14)
-    elseif self.style == "menu" then
+
+    if self.style == "menu" then
         love.graphics.setColor(0, 0, 0)
         love.graphics.print(self.name, 4, -12)
         love.graphics.setColor(self.color)
@@ -161,7 +159,8 @@ function Nametag:draw()
             end
         end
     else
-        error("Nametag object does not support style \"" .. self.style .. "\".")
+        love.graphics.setColor(self.color)
+        love.graphics.print(self.name, 2, -14)
     end
 end
 

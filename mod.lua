@@ -112,6 +112,11 @@ function Mod:postUpdate()
 end
 
 function Mod:onTextSound(sound, node)
+    if sound == "default" and Mod:isOmori() then
+        -- commit a crime
+        sound = "omori"
+    end
+
     if sound == "omori" then
         if self.voice_timer == 0 then
             local snd = Assets.playSound("voice/omori", nil, 0.9 + Utils.random(0.18))
@@ -134,6 +139,18 @@ end
 function Mod:getUISkin()
     if self:isOmori() then
         return "omori"
+    end
+end
+
+function Mod:getDefaultDialogTextStyle()
+    if self:isOmori() then
+        return "none"
+    end
+end
+
+function Mod:getDefaultDialogTextFont()
+    if self:isOmori() then
+        return "OMORI"
     end
 end
 

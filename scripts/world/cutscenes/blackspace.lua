@@ -1,15 +1,15 @@
 return {
     blackdoor = function(cutscene, event)
-        cutscene:text("[voice:omori][style:none][font:OMORI]A black door casts a heavy shadow...")
-        cutscene:text("[voice:omori][style:none][font:OMORI]Will you enter it?")
+        cutscene:text("A black door casts a heavy shadow...")
+        cutscene:text("Will you enter it?")
 
         local choice = cutscene:choicer({"Yes", "No"})
         if choice == 2 then
-            cutscene:text("[voice:omori][style:none][font:OMORI]You doorn't.")
+            cutscene:text("You doorn't.")
             return
         end
 
-        cutscene:text("[voice:omori][style:none][font:OMORI]You opened the door...")
+        cutscene:text("You opened the door...")
         cutscene:fadeOut(2, {color = {0, 0, 0}, music = true})
         cutscene:wait(2)
         Game.fader.fade_color = {0, 0, 0} -- overwrite default for mapTransition
