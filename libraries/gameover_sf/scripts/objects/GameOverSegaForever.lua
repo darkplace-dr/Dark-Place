@@ -19,7 +19,7 @@ function GameOverSF:init()
 
     self.screenshot = nil
 
-    self.font = Assets.getFont("main", 40)
+    self.font = Assets.getFont("main", 32)
     self.font_body = Assets.getFont("plain", 32)
 
     self.state_manager = StateManager("SHOWING_UP", self, true)
