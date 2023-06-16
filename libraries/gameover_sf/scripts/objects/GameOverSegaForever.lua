@@ -6,6 +6,7 @@ function GameOverSF:init()
 
     self:setOrigin(0.5, 0.5)
     self:setScale(0, 0)
+    self.draw_children_below = 0
 
     self.box = UIBox(0, 0, self.width, self.height)
     self.box.layer = -1
@@ -60,8 +61,6 @@ function GameOverSF:update()
 end
 
 function GameOverSF:draw()
-    self:drawChildren()
-
     love.graphics.setColor(COLORS["white"])
 
     if self.state_manager.state == "SHOWING_UP" or self.state_manager.state == "IDLE" then
@@ -76,6 +75,8 @@ function GameOverSF:draw()
         love.graphics.setFont(self.font_body)
         love.graphics.printf("I lied there's no ad LOL", 0, 55, self.width, "center")
     end
+
+    self:drawChildren()
 end
 
 function GameOverSF:onKeyPressed(key, is_repeated) end
