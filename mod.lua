@@ -101,6 +101,10 @@ function Mod:unload()
     end
 end
 
+function Mod:save(data)
+    data.map = data.map == "​" and Mod.world_dest_map_bak or data.map
+end
+
 function Mod:preUpdate()
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
 end

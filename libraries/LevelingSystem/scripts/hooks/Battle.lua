@@ -25,10 +25,7 @@ function Battle:onStateChange(old,new)
         self.current_selecting = 0
 
         if self.tension_bar then
-            self.tension_bar.animating_in = false
-            self.tension_bar.shown = false
-            self.tension_bar.physics.speed_x = -10
-            self.tension_bar.physics.friction = -0.4
+            self.tension_bar:hide()
         end
 
         for _,battler in ipairs(self.party) do
@@ -57,6 +54,8 @@ function Battle:onStateChange(old,new)
 
         self.money = math.floor(self.money)
 
+        self.money = self.encounter:getVictoryMoney(self.money) or self.money
+        self.xp = self.encounter:getVictoryXP(self.xp) or self.xp
         -- if (in_dojo) then
         --     self.money = 0
         -- end
@@ -75,27 +74,23 @@ function Battle:onStateChange(old,new)
         if self.used_violence then
             if self.killed then
                 local leveled_up
+                local xp_gain = self.xp
 
-                if Kristal.getLibConfig("leveling", "global_love") then
-                    leveled_up = Kristal.callEvent("addGlobalEXP", self.xp)
+                if not Kristal.getLibConfig("leveling", "global_love") then
+                    xp_gain = self.xp + self.freeze_xp
 
-                    win_text = "* You won!\n* Got " .. self.xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
-                    if leveled_up then
-                        Assets.playSound("levelup")
-                        win_text = win_text.."\n* Your LOVE increased."
-                    end
-                else
-                    local function levelUpAlly(battler, xp)
+                    local function addExpTo(battler, xp)
                         if battler.chara:addExp(xp) then
                             leveled_up = true
                         end
                     end
 
                     for _,battler in ipairs(self.party) do
-                        levelUpAlly(battler, self.xp)
+                        addExpTo(battler, self.xp)
 
-                        local grant_fxp = false
-                        if Kristal.getLibConfig("leveling", "local_freezing") then
+                        local local_freezing = Kristal.getLibConfig("leveling", "local_freezing")
+                        local grant_fxp = not local_freezing
+                        if local_freezing then
                             for _,spell in ipairs(battler.chara.spells) do
                                 if spell:hasTag("ice") then
                                     grant_fxp = true
@@ -104,15 +99,17 @@ function Battle:onStateChange(old,new)
                             end
                         end
                         if grant_fxp then
-                            levelUpAlly(battler, self.freeze_xp)
+                            addExpTo(battler, self.freeze_xp)
                         end
                     end
+                else
+                    leveled_up = Kristal.callEvent("addGlobalEXP", self.xp)
+                end
 
-                    win_text = "* You won!\n* Got " .. self.xp + self.freeze_xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
-                    if leveled_up then
-                        Assets.playSound("levelup")
-                        win_text = win_text.."\n* Your LOVE increased."
-                    end
+                win_text = "* You won!\n* Got " .. xp_gain .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
+                if leveled_up then
+                    Assets.playSound("levelup")
+                    win_text = win_text.."\n* Your LOVE increased."
                 end
             elseif Game:getConfig("growStronger") then
                 local stronger = "You"
@@ -132,6 +129,8 @@ function Battle:onStateChange(old,new)
                 --scr_levelup()
             end
         end
+
+        win_text = self.encounter:getVictoryText(win_text, self.money, self.xp) or win_text
 
         if self.encounter.no_end_message then
             self:setState("TRANSITIONOUT")

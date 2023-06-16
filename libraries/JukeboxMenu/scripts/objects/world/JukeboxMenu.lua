@@ -1,13 +1,14 @@
 local JukeboxMenu, super = Class(Object)
 
 function JukeboxMenu:init()
-    super.init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+    super.init(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 540, 360)
 
     self.parallax_x = 0
     self.parallax_y = 0
     self.layer = WORLD_LAYERS["ui"]
+    self:setOrigin(0.5, 0.5)
 
-    self.box = UIBox(60, 40, 520, 350)
+    self.box = UIBox(0, 0, self.width, self.height)
     self.box.layer = -1
     self:addChild(self.box)
 
@@ -19,8 +20,8 @@ function JukeboxMenu:init()
     self.heart:setScale(2)
     self.heart:setColor(Game:getSoulColor())
     self.heart.layer = 1
-    self.heart_target_x = 74
-    self.heart_target_y = 95
+    self.heart_target_x = 16
+    self.heart_target_y = 60
     self.heart:setPosition(self.heart_target_x, self.heart_target_y)
     self:addChild(self.heart)
 
@@ -51,42 +52,49 @@ function JukeboxMenu:draw()
     super.draw(self)
 
 	love.graphics.setColor(1, 1, 1)
+    love.graphics.setLineWidth(4)
+
     love.graphics.setFont(self.font)
-    love.graphics.printf("JUKEBOX", 60, 20, self.box.width, "center")
+    love.graphics.printf("JUKEBOX", 0, -20, self.width, "center")
+    love.graphics.rectangle("line", -16, 20, self.width+32, 1)
 
     love.graphics.setLineWidth(1)
     love.graphics.setColor(0, 0.4, 0)
     for i = 1, self.songs_per_page + 1 do
-        love.graphics.rectangle("line", 62, 75 + 40 * (i - 1), 230, 1)
+        love.graphics.rectangle("line", 2, 40 + 40 * (i - 1), 240, 1)
     end
-
     love.graphics.setLineWidth(4)
     love.graphics.setColor(1, 1, 1)
-    love.graphics.rectangle("line", 44, 55, 552, 1)
-    love.graphics.rectangle("line", 44, 360, 276, 1)
-    love.graphics.rectangle("line", 320, 56, 1, 350)
 
     local cur_page = self:getPage(self.page)
     for i = 1, self.songs_per_page do
         local cur_song = cur_page[i] or self.default_song
         local name = cur_song.name or self.none_text
         local scale_x = math.min(184 / self.font:getWidth(name), 1)
-        love.graphics.print(name, 100, 78 + 40 * (i - 1), 0, scale_x, 1)
-        love.graphics.setColor(1, 1, 1)
+        love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
     end
-
-    local cur_song = cur_page[self.selected_index] or self.default_song
-    love.graphics.print("Composer:\nReleased:\nOrigin:", 330, 354, 0, 0.5, 0.5)
-    love.graphics.print(cur_song.composer or self.none_text, 394, 354, 0, 0.5, 0.5)
-    love.graphics.print(cur_song.released or self.none_text, 394, 370, 0, 0.5, 0.5)
-    love.graphics.print(cur_song.origin or self.none_text, 380, 386, 0, 0.5, 0.5)
-
-    love.graphics.print("[X] Back", 64, 370, 0, 1, 1)
-    love.graphics.print("[C] Info", 200, 370, 0, 1, 1)
 
     love.graphics.setColor(0.4, 0.4, 0.4)
     love.graphics.setFont(self.font_2)
-    love.graphics.print("Page "..self.page.."/"..self.max_pages.."", 140, 326)
+    love.graphics.printf("Page "..self.page.."/"..self.max_pages.."", -16, 295, 276, "center")
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.setFont(self.font)
+
+    love.graphics.rectangle("line", -16, 330, 276, 1)
+
+    love.graphics.print("[X] Back", 0, 340)
+    love.graphics.printf("[C] Info", 0, 340, 250, "right")
+
+    love.graphics.rectangle("line", 260, 20, 1, 356)
+
+    local cur_song = cur_page[self.selected_index] or self.default_song
+    local info = string.format(
+        "Composer: %s\nReleased: %s\nOrigin: %s",
+        cur_song.composer or self.none_text,
+        cur_song.released or self.none_text,
+        cur_song.origin or self.none_text
+    )
+    love.graphics.printf(info, 270, 324, 520, "left", 0, 0.5, 0.5)
 
     love.graphics.setColor(1, 1, 1)
 end
@@ -136,7 +144,7 @@ function JukeboxMenu:update()
     self.selected_index_memory[self.page] = self.selected_index
 
     --soul positions
-    self.heart_target_y = 95 + 40 * (self.selected_index - 1)
+    self.heart_target_y = 60 + 40 * (self.selected_index - 1)
     if math.abs(self.heart_target_x - self.heart.x) <= 2 then
         self.heart.x = self.heart_target_x
     end
