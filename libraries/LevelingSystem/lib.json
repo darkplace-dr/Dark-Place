@@ -10,6 +10,8 @@
     "global_love": false,
     //Whether freezing an enemy gives EXP to the entire party (false), or only to the person who used it (true) | (Requires 'global_love' to be set to "false")
     "local_freezing": true,
+    // Global EXP requirements (applies when global_love is enabled)
+    // The size of this table is the max LV
     "global_xp_requirements": [
       0,
       10,

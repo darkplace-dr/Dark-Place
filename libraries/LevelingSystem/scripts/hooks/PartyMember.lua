@@ -7,10 +7,10 @@ function PartyMember:init()
 
     self.love = 1
     self.exp = 0
-
     self.max_exp = 99999
-    -- EXP requirements
-    -- We also treat the last entry the max LV
+
+    -- Party member specific EXP requirements
+    -- The size of this table is the max LV
     self.exp_needed = {
         [ 1] = 0,
         [ 2] = 10,
