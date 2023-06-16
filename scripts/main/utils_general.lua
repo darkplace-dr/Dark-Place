@@ -11,7 +11,7 @@ end
 ---| "warn"
 ---| "error"
 
----@param msg string
+---@param msg any
 ---@param msg_level? PrintHelperMsgLevels
 function Mod:print(msg, msg_level)
     msg = tostring(msg)
@@ -35,7 +35,7 @@ function Mod:print(msg, msg_level)
     end
 end
 
----@param msg string
+---@param msg any
 ---@param msg_level? PrintHelperMsgLevels
 ---@param stack_level? integer|function
 function Mod:trace(msg, msg_level, stack_level)
@@ -56,7 +56,7 @@ function Mod:trace(msg, msg_level, stack_level)
         end
     end
 
-    local msg_prefix = stack_info.what ~= "main"
+    local msg_prefix = (stack_info.what ~= "main" and func_name)
         and string.format("%s:%d (%s): ", src, line, func_name)
         or string.format("%s:%d: ", src, line)
     msg = msg_prefix .. msg
@@ -81,36 +81,20 @@ function Mod:getLeader(kind)
     return leader --[[ if kind == "partymember" or kind == "party" ]]
 end
 
--- This is bad
-function Mod:attemptToApplySpritePathChanges(actor, sprite)
-    local path_prev = sprite.path
+-- ???
+---@param actor Actor
+---@param sprite ActorSprite
+function Mod:softResetSprite(actor, sprite)
     sprite.path = actor:getSpritePath()
 
-    local tex_name = sprite.texture_path
-    tex_name = Utils.sub(tex_name, utf8.len(path_prev) + 1)
-    if utf8.len(tex_name) > 0 and Utils.sub(tex_name, 1, 1) == "/" then
-        tex_name = Utils.sub(tex_name, 2)
-    end
-    for i = 3,1,-1 do
-        local num = tonumber(tex_name:sub(-i))
-        if num then
-            tex_name = tex_name:sub(1, -i - 1)
-            if tex_name:sub(-1, -1) == "_" then
-                tex_name = tex_name:sub(1, -2)
-            end
-            break
-        end
-    end
-
-    local new_path = sprite:getPath(tex_name)
-    local new_frames = Assets.getFrames(new_path)
-    if new_frames then
-        sprite:setFrames(new_frames, true)
-        if self.animations[sprite.path] then
-            sprite:setAnimation(self.animations[sprite.path])
-        end
+    local anim = sprite.anim
+    if anim then
+        sprite:setAnimation(anim)
     else
-        sprite:setTexture(Assets.getTexture(new_path), true)
+        sprite:setSprite(sprite.sprite, true)
+        if not sprite.texture then
+            sprite:resetSprite()
+        end
     end
     sprite:updateTexture()
 end
