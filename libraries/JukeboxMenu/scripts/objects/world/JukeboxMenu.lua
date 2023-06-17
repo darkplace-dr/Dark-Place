@@ -12,6 +12,7 @@ function JukeboxMenu:init()
     self.box.layer = -1
     self:addChild(self.box)
 
+    ---@type love.Font
     self.font = Assets.getFont("main")
     self.font_2 = Assets.getFont("plain")
 
@@ -55,7 +56,7 @@ function JukeboxMenu:draw()
     love.graphics.setLineWidth(4)
 
     love.graphics.setFont(self.font)
-    love.graphics.printf("JUKEBOX", 0, -20, self.width, "center")
+    love.graphics.printf("JUKEBOX", 0, -18, self.width, "center")
     love.graphics.rectangle("line", -16, 20, self.width+32, 1)
 
     love.graphics.setLineWidth(1)
@@ -88,13 +89,16 @@ function JukeboxMenu:draw()
     love.graphics.rectangle("line", 260, 20, 1, 356)
 
     local cur_song = cur_page[self.selected_index] or self.default_song
+    local info_w = 520
     local info = string.format(
         "Composer: %s\nReleased: %s\nOrigin: %s",
         cur_song.composer or self.none_text,
         cur_song.released or self.none_text,
         cur_song.origin or self.none_text
     )
-    love.graphics.printf(info, 270, 324, 520, "left", 0, 0.5, 0.5)
+    local _, info_lines = self.font:getWrap(info, info_w)
+    local info_yoff = self.font:getHeight() * #info_lines * 0.5
+    love.graphics.printf(info, 270, 372 - info_yoff, info_w, "left", 0, 0.5, 0.5)
 
     love.graphics.setColor(1, 1, 1)
 end
