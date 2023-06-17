@@ -1,6 +1,6 @@
-local mb, super = Class(Map)
+local mb_map, super = Class(Map)
 
-function mb:load()
+function mb_map:load()
 	self.return_map = Mod.lastMap
 	if not Game:getFlag("partySet", nil) then
 	    self.old_party = {}
@@ -17,15 +17,15 @@ function mb:load()
 	super.load(self)
 end
 
-function mb:update()
+function mb_map:update()
 	super.update(self)
 	if self.back then
 		local player = Game.world.player
-		local mb = Game.world:getEvent(10)
-		mb.x = Utils.approach(mb.x, player.x-mb.width/2, self.stepback*DTMULT)
-		mb.y = Utils.approach(mb.y, player.y-mb.height*2, self.stepback*DTMULT)
+		local mb_ev = Game.world:getEvent(10)
+		mb_ev.x = Utils.approach(mb_ev.x, player.x-mb_ev.width/2, self.stepback*DTMULT)
+		mb_ev.y = Utils.approach(mb_ev.y, player.y-mb_ev.height*2, self.stepback*DTMULT)
 		self.stepback = Utils.clamp(self.stepback + 0.1*DTMULT, 0.01, 12)
-		if player:collidesWith(mb) then
+		if player:collidesWith(mb_ev) then
 			Game:setPartyMembers(Utils.unpack(self.old_party))
 			player:remove()
 			self.back = false
@@ -53,7 +53,7 @@ function mb:update()
 	end
 end
 
-function mb:onExit()
+function mb_map:onExit()
 	if Game:getFlag("partySet", nil) then
 		Game:setPartyMembers(Utils.dump(self.old_party))
 		Game:setFlag("partySet", nil)
@@ -61,4 +61,4 @@ function mb:onExit()
 	Game.world.camera.keep_in_bounds = true
 end
 
-return mb
+return mb_map
