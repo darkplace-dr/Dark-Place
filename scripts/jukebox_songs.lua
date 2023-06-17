@@ -62,7 +62,7 @@ return
     composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
     released = "2016",
     -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p
-    origin = "Originally released on SoundCloud" -- "Soundcloud Edits Part II"
+    origin = "SoundCloud (original upload was removed)" -- "Soundcloud Edits Part II"
   },
   {
     name = "Snick",
@@ -168,6 +168,7 @@ return
     composer = "bo en",
     released = "Sept 6, 2013",
     -- originally released as a part of pale machine [MARU-123], modified for omori
+    -- tbh "origin" is a bit misleading
     origin = "Omori"
   },
   {
