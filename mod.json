@@ -119,7 +119,21 @@
     },
     "achievements": {
       "cooperative_ordering": true,
-      "config_button": false
+      "config_button": false,
+      "print_console_intro": false
+    },
+    // Stop doing this
+    "leveling": {
+      "print_console_intro": false
+    },
+    "bluesoul": {
+      "print_console_intro": false
+    },
+    "ExpandedAttackLib": {
+      "print_console_intro": false
+    },
+    "moreparty": {
+      "print_console_intro": false
     }
   }
 }

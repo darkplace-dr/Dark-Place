@@ -18,7 +18,7 @@ function actor:init()
     self.path = "world/npcs/velvetspam"
     self.path_night = "world/npcs/velvetspam/candle"
     self.default = "idle"
-
+    self.default_night = "idle"
 
     self.voice = "spamton"
     self.portrait_path = nil
@@ -29,15 +29,17 @@ function actor:init()
         ["day_blankie"] = {"day_blankie", 1, true},
         ["box"] = {"box", 1, true},
         ["talk"] = {"talk", 0.2, true},
-        ["candle_idle"] = {"candle/idle", 1, true},
-        ["candle/blankie"] = {"candle/blankie", 1, true},
-        ["candle/bundled"] = {"candle/bundled", 1, true},
-        ["candle/pissed"] = {"candle/pissed", 1, true},
-        ["candle/pipis"] = {"candle/pipis", 1, true},
     }
-	
-    self.talk_sprites = {
+    self.animations_night = {
+        ["idle"] = {"idle", 1, true},
+        ["talk"] = {"talk", 0.2, true},
+        ["blankie"] = {"blankie", 1, true},
+        ["bundled"] = {"bundled", 1, true},
+        ["pissed"] = {"pissed", 1, true},
+        ["pipis"] = {"pipis", 1, true},
     }
+
+    self.talk_sprites = {}
 
     self.offsets = {
         ["day_blankie_hug"] = {-3, 0},
@@ -47,36 +49,47 @@ function actor:init()
 
     self.taunt_sprites = {"day_blankie", "day_blankie_hug", "box"}
     self.taunt_sprites_night = {"pissed", "bundled", "pipis"}
+
+    self.night = Mod:isNight()
+    self.blankie_returned = Game:getFlag("blankie_returned")
+    self.default_night = self.blankie_returned and "blankie" or "idle"
+end
+
+function actor:preSpriteUpdate(sprite)
+    local night_bak = self.night
+    self.night = Mod:isNight()
+    if self.night ~= night_bak then
+        Mod:softResetActorSprite(sprite)
+    end
+
+    local retd_bak = self.blankie_returned
+    self.blankie_returned = retd_bak
+    if self.blankie_returned ~= retd_bak then
+        local reset_sprite = self.night and sprite.sprite == self:getDefault()
+        self.default_night = self.blankie_returned and "blankie" or "idle"
+        if reset_sprite then
+            sprite:resetSprite()
+        end
+    end
 end
 
 function actor:getSpritePath()
     return not self.night and self.path or self.path_night
 end
 
+function actor:getDefault()
+    return not self.night and self.default or self.default_night
+end
+
+function actor:getAnimations()
+    return not self.night and self.animations or self.animations_night
+end
+function actor:getAnimation(anim)
+    return self:getAnimations()[anim]
+end
+
 function actor:getTauntSprites()
     return not self.night and self.taunt_sprites or self.taunt_sprites_night
-end
-
-function actor:onSpriteInit(sprite)
-    self.night = false
-end
-
-function actor:onSpriteUpdate(sprite)
-    local night_bak = self.night
-    self.night = Mod:isNight()
-
-
-    if self.night ~= night_bak then
-        Mod:attemptToApplySpritePathChanges(self, sprite)
-    end
-
-    local velvetspam = Game.world:getCharacter("velvetspam")
-    if Mod:isNight() and Game:getFlag("blankie_returned") then
-        velvetspam:setSprite("blankie")
-    else
-        velvetspam:setSprite("idle")
-    end
-
 end
 
 return actor

@@ -4,5 +4,8 @@
     "engineVersion": "0.8.1-dev",
     "authors": [
         "Sam Deluxe"
-    ]
+    ],
+    "config": {
+        "print_console_intro": true
+    }
 }

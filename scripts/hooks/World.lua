@@ -28,6 +28,17 @@ function World:loadMap(...)
     	marker = "spawn"
     end
 
+    if not Game:getFlag("s", false)
+        and Utils.random(1, 1000) < 10
+        and (not Game.world.cutscene and not Game.battle)
+    then
+        Mod.world_dest_map_bak = map
+        map = "​"
+        marker = "spawn"
+        x, y = nil, nil
+        facing = nil
+    end
+
     if self.map then
         self.map:onExit()
     end
@@ -60,14 +71,6 @@ function World:setupMap(...)
     super.setupMap(self, ...)
 
     Mod:setOmori(self.map.omori)
-end
-
-function World:loadMap(...)
-    if not Game:getFlag("s", false) and Utils.random(1, 1000) < 10 and (not Game.world.cutscene and not Game.battle) then
-        super.loadMap(self, "​")
-    else
-        super.loadMap(self, ...)
-    end
 end
 
 return World

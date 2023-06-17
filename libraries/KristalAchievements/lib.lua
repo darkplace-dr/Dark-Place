@@ -30,7 +30,9 @@ function lib:init()
         end
     end
 
-    print("Achievement library loaded - courtesy of SciSpace, BrandonK7200, AcousticJamm, and Dobby233Liu")
+    if Kristal.getLibConfig("achievements", "print_console_intro") then
+        print("Achievement library loaded - courtesy of SciSpace, BrandonK7200, AcousticJamm, and Dobby233Liu")
+    end
 end
 
 --- Called after the game's initalization. Creates or loads the achievements savefile.

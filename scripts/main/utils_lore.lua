@@ -19,3 +19,7 @@ end
 function Mod:addiSwitch()
     return Game:getFlag("AddiSwitchOn", false)
 end
+
+function Mod:rollFun()
+    Game:setFlag("fun", love.math.random(1, 100))
+end

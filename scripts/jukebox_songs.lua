@@ -18,21 +18,21 @@ return
     name = "Gimmie Your Wallet, Miss",
     file = "gimmieyourwalletmiss",
     composer = "Charbomber",
-    released = "???",
+    released = "TBA",
     origin = "Deltarune: The Stars"
   },
   {
     name = "Batter Up!",
     file = "batterup",
     composer = "Charbomber",
-    released = "???",
+    released = "TBA",
     origin = "Deltarune: The Stars"
   },
   {
     name = "Three Strikes, You're Out!",
     file = "threestrikesyoureout",
     composer = "Charbomber",
-    released = "---",
+    released = "TBA",
     origin = "Deltarune: The Stars"
   },
   {
@@ -59,9 +59,10 @@ return
   {
     name = "サウンドと恋に C I T Y P O P",
     file = "forest",
-    composer = "悲しい ANDROID - APARTMENT¶",
+    composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
     released = "2016",
-    origin = "???"
+    -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p
+    origin = "SoundCloud (original upload was removed)" -- "Soundcloud Edits Part II"
   },
   {
     name = "Snick",
@@ -165,15 +166,19 @@ return
     name = "My Time",
     file = "My_Time.rpgmvo",
     composer = "bo en",
-    released = "Sept 6, 2013",
-    origin = "pale machine [MARU-123]"
+    released = "Sept 6, 2013 / Dec 25, 2020",
+    -- originally released as a part of pale machine [MARU-123], modified for omori
+    -- tbh "origin" is a bit misleading
+    origin = "pale machine (this is the Omori version)"
   },
   {
     name = "Eek!",
     file = "eek",
-    composer = "Surasshu",
-    released = "???",
-    origin = "???"
+    composer = "surasshu",
+    -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
+    released = "April 10th, 2009",
+    -- CC BY-NC-SA 2.5
+    origin = "8bitcollective.com/members/surasshu (deadlink)"
   },
   {
     name = "Cold Spaghetti",
@@ -243,13 +248,14 @@ return
     file = "Hugs_for_Ralsei",
     composer = "Lena Raine",
     released = "2018",
-    origin = "Deltarune"
+    -- https://www.youtube.com/playlist?list=OLAK5uy_mYgyn1zifjvF1d1oXIeri1Q4I6ACfdfPw
+    origin = "Lullaby for Lancer"
   },
   {
     name = "Lullaby for Lancer",
     file = "Lullaby_for_Lancer",
     composer = "Lena Raine",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Lullaby for Lancer"
   },
 }

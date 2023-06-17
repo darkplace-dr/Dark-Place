@@ -1,7 +1,9 @@
 local Lib = {}
 
 function Lib:init()
-    print("Leveling System library loaded - It's time to get LOVE!")
+    if Kristal.getLibConfig("leveling", "print_console_intro") then
+        print("Leveling System library loaded - It's time to get LOVE!")
+    end
 end
 
 function Lib:postInit(new_file)
@@ -9,42 +11,17 @@ function Lib:postInit(new_file)
         Game:setFlag("library_love", 1)
         Game:setFlag("library_experience", 0)
         Game:setFlag("library_kills", 0)
-        Game:setFlag("library_maxlove", 20)
     end
-end
-
-function Lib:getGlobalLevelupRequirementsTable()
-    return {
-      [ 1] = 0,
-      [ 2] = 10,
-      [ 3] = 30,
-      [ 4] = 70,
-      [ 5] = 120,
-      [ 6] = 200,
-      [ 7] = 300,
-      [ 8] = 500,
-      [ 9] = 800,
-      [10] = 1200,
-      [11] = 1700,
-      [12] = 2500,
-      [13] = 3500,
-      [14] = 5000,
-      [15] = 7000,
-      [16] = 10000,
-      [17] = 15000,
-      [18] = 25000,
-      [19] = 50000,
-      [20] = 99999
-  }
 end
 
 function Lib:addGlobalEXP(exp)
     Game:setFlag("library_experience", Utils.clamp(Game:getFlag("library_experience", 0) + exp, 0, 99999))
 
+    local max_love = #Kristal.getLibConfig("leveling", "global_xp_requirements")
     local leveled_up = false
     while
         Game:getFlag("library_experience") >= Kristal.callEvent("getGlobalNextLvRequiredEXP")
-        and Game:getFlag("library_love", 1) < Game:getFlag("library_maxlove")
+        and Game:getFlag("library_love", 1) < max_love
     do
         leveled_up = true
         Game:addFlag("library_love", 1)
@@ -57,7 +34,7 @@ function Lib:addGlobalEXP(exp)
 end
 
 function Lib:getGlobalNextLvRequiredEXP()
-    return Kristal.callEvent("getGlobalLevelupRequirementsTable")[Game:getFlag("library_love") + 1] or 0
+    return Kristal.getLibConfig("leveling", "global_xp_requirements")[Game:getFlag("library_love") + 1] or 0
 end
 
 function Lib:getGlobalNextLv()

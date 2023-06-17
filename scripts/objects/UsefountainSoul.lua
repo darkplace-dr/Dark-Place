@@ -1,6 +1,7 @@
+---@class UsefountainSoul : Object
 local USFSoul, super = Class(Object)
 
---- Soul sprite used in the fountain sealing cutscene
+-- Soul sprite used in the fountain sealing cutscene
 function USFSoul:init(x, y)
     self.texture = Assets.getTexture("player/heart")
     super.init(self, x, y, self.texture:getWidth(), self.texture:getHeight())
@@ -32,7 +33,7 @@ function USFSoul:draw()
     super.draw(self)
 end
 
---- Replays the afterimage effect
+-- Replays the afterimage effect
 function USFSoul:shine()
     self.siner = 3
 end

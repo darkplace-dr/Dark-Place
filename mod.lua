@@ -21,21 +21,6 @@ function Mod:init()
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-
-    ---@diagnostic disable-next-line: redefined-local
-    Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color, show_status_msg)
-        show_status_msg = show_status_msg or true
-
-        self.health = self.health - amount
-        if show_status_msg then
-            self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
-        end
-
-        self.hurt_timer = 1
-        self:onHurt(amount, battler)
-
-        self:checkHealth(on_defeat, amount, battler)
-    end)
 end
 
 function Mod:postInit(new_file)
@@ -51,7 +36,7 @@ function Mod:initializeImportantFlags(new_file)
 
     if new_file then
         -- FUN Value
-        Game:setFlag("fun", love.math.random(1, 100))
+        self:rollFun()
     end
 
     if new_file then
@@ -94,11 +79,14 @@ function Mod:initializeImportantFlags(new_file)
 end
 
 function Mod:unload()
-    if Mod.text_input_active then
+    if TextInput.active and not Kristal.Console.is_open then
         Mod:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
-        Mod.text_input_active = false
     end
+end
+
+function Mod:save(data)
+    data.map = data.map == "​" and Mod.world_dest_map_bak or data.map
 end
 
 function Mod:preUpdate()
@@ -124,6 +112,11 @@ function Mod:postUpdate()
 end
 
 function Mod:onTextSound(sound, node)
+    if sound == "default" and Mod:isOmori() then
+        -- commit a crime
+        sound = "omori"
+    end
+
     if sound == "omori" then
         if self.voice_timer == 0 then
             local snd = Assets.playSound("voice/omori", nil, 0.9 + Utils.random(0.18))
@@ -146,6 +139,18 @@ end
 function Mod:getUISkin()
     if self:isOmori() then
         return "omori"
+    end
+end
+
+function Mod:getDefaultDialogTextStyle()
+    if self:isOmori() then
+        return "none"
+    end
+end
+
+function Mod:getDefaultDialogTextFont()
+    if self:isOmori() then
+        return "OMORI"
     end
 end
 

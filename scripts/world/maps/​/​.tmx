@@ -34,7 +34,7 @@
   </object>
   <object id="10" name="sprite" x="2065" y="190">
    <properties>
-    <property name="texture" value="mb"/>
+    <property name="texture" value="world/mb"/>
    </properties>
    <point/>
   </object>

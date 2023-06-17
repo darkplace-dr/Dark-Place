@@ -1,6 +1,12 @@
 # Dark Place
-An open source Kristal mod that anyone can contribute to
 
+<p align="center" width="100%">
+<img src="logo.png" alt="Dark Place - An open-source KRISTAL mod (logo)" width="50%" />
+</p>
+
+*Logo by Just Another Random User (@JustAnotherRandomGithubUser)*
+
+An open source Kristal mod that anyone can contribute to.
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforementioned document before contributing** as it contains the very important contribution rouxls (pronounced "rules").
