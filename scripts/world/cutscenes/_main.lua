@@ -1,4 +1,5 @@
 return {
+    ---@param cutscene WorldCutscene
     introcutscene = function(cutscene)
         local text
 
@@ -15,7 +16,7 @@ return {
         local function gonerText(str, advance)
             text = DialogueText("[speed:0.5][spacing:6][style:GONER][voice:none]" .. str, 160, 100, 640, 480,
                 { auto_size = true })
-            text.layer = WORLD_LAYERS["top"] + 100
+            text.layer = WORLD_LAYERS["textbox"]
             text.skip_speed = true
             text.parallax_x = 0
             text.parallax_y = 0
@@ -27,9 +28,17 @@ return {
             end
         end
 
-        Game.world.music:play("AUDIO_DRONE", 0.8, 0.8)
+        ---@type Music
+        -- satisfy LLS
+        local world_music = Game.world.music
+        world_music:play("AUDIO_DRONE", 0.8)
 
-        cutscene:fadeOut(0)
+        local cover = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+        cover:setColor(COLORS["black"])
+        cover:setParallax(0, 0)
+        cover:setLayer(WORLD_LAYERS["below_ui"])
+        Game.world:addChild(cover)
+
         cutscene:wait(2)
         gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
         cutscene:wait(0.5)
@@ -38,7 +47,7 @@ return {
         cutscene:wait(0.5)
 
         local soul = SoulAppearance(SCREEN_WIDTH / 2 - 25, SCREEN_HEIGHT / 2 + 20)
-        soul.layer = WORLD_LAYERS["top"] + 100
+        soul.layer = WORLD_LAYERS["below_textbox"]
         --soul.alpha = 50
         --soul.graphics.fade = 0.01
         --soul.graphics.fade_to = 1
@@ -46,47 +55,43 @@ return {
         cutscene:during(function()
             soul.y = SCREEN_HEIGHT / 2 + 20 + math.sin(Kristal.getTime() * 2) * 6
         end)
-        cutscene:wait(1.5)
+        cutscene:wait(1.75)
 
         gonerText("AIGHT, BET.[wait:20]")
         cutscene:wait(0.1)
         gonerText("NOW.[wait:20]")
         cutscene:wait(0.5)
-        gonerText("WE MAY...[wait:40]\"PROCEED\".[wait:20]\n(GET IT? LOL!!)[wait:20]")
+        gonerText("WE MAY..[wait:40].\"PROCEED\".[wait:20]\n(GET IT? LOL!!)[wait:20]")
         cutscene:wait(0.5)
 
-        Game.world.music:stop()
+        world_music:stop()
         soul:hide()
 
-        cutscene:wait(1.5)
+        cutscene:wait(1.75)
 
-        local background = GonerBackground(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, "AUDIO_DONKEY_b") -- Yes this is drawn like this on purpose. idk i like it
-        background.layer = WORLD_LAYERS["top"]
+        local background = GonerBackground(nil, nil, "AUDIO_DONKEY_b", false)
+        background.layer = WORLD_LAYERS["ui"]
         Game.world:addChild(background)
 
         gonerText("YOU MUST CHOOSE[wait:40]\nA VESSEL.[wait:20]")
 
         cutscene:wait(1)
 
-        local frisk_sprite = Sprite("frisk")
-        frisk_sprite.x = 320
-        frisk_sprite.y = 240
+        local frisk_sprite = Sprite("frisk", 320, 240, nil, nil, "world/cutscenes/intro")
         frisk_sprite.parallax_x = 0
         frisk_sprite.parallax_y = 0
         frisk_sprite:setOrigin(0.5, 0.5)
         frisk_sprite:setScale(2.5)
-        frisk_sprite.layer = WORLD_LAYERS["top"] + 100
+        frisk_sprite.layer = WORLD_LAYERS["below_textbox"]
         frisk_sprite.alpha = 0
         Game.world:addChild(frisk_sprite)
 
-        local you_sprite = Sprite("you")
-        you_sprite.x = 320
-        you_sprite.y = 240
+        local you_sprite = Sprite("you", 320, 240, nil, nil, "world/cutscenes/intro")
         you_sprite.parallax_x = 0
         you_sprite.parallax_y = 0
         you_sprite:setOrigin(0.5, 0.5)
         you_sprite:setScale(2.5)
-        you_sprite.layer = WORLD_LAYERS["top"] + 100
+        you_sprite.layer = WORLD_LAYERS["below_textbox"]
         you_sprite.alpha = 0
         you_sprite.graphics.fade = 0.01
         you_sprite.graphics.fade_to = 1
@@ -95,7 +100,9 @@ return {
         local chara_y = { 240 }
 
         cutscene:during(function()
-            you_sprite.y = chara_y[1] + math.sin(Kristal.getTime() * 2) * 6
+            if you_sprite then
+                you_sprite.y = chara_y[1] + math.sin(Kristal.getTime() * 2) * 6
+            end
             --frisk_sprite.y = chara_y[1] + math.sin(Kristal.getTime() * 2) * 6
         end)
 
@@ -131,24 +138,22 @@ return {
             gonerText("REALLY?[wait:40]\nBITCH, YOU FR?[wait:20]")
             gonerText("WELL FUCK YOU I\nCHOSE IT ANYWAY[wait:20]")
             --[[
-        gonerText("ALRIGHT, I GOT\nANOTHER ONE.[wait:20]")
+            gonerText("ALRIGHT, I GOT\nANOTHER ONE.[wait:20]")
 
-        Game.stage.timer:tween(1, you_sprite, {alpha = 0})
-        Game.stage.timer:tween(1, frisk_sprite, {alpha = 1})
-        ]]
+            Game.stage.timer:tween(1, you_sprite, {alpha = 0})
+            Game.stage.timer:tween(1, frisk_sprite, {alpha = 1})
 
-            --gonerText("AIGHT. YOU LIKE\nTHIS BODY?.[wait:20]", false)
+            gonerText("AIGHT. YOU LIKE\nTHIS BODY?.[wait:20]", false)
 
-            --gonerText("OK I DON'T\nCARE WE'RE GOING\nWITH IT..[wait:20]", false)
+            gonerText("OK I DON'T\nCARE WE'RE GOING\nWITH IT..[wait:20]", false)
 
-            --[[
-        cutscene:wait(50)
+            cutscene:wait(50)
 
-        Assets.playSound("locker")
-        background:remove()
-        you_sprite.alpha = 0
-        Game:setFlag("vesselChosen", 1)
-        ]]
+            Assets.playSound("locker")
+            background:remove()
+            you_sprite.alpha = 0
+            Game:setFlag("vesselChosen", 1)
+            ]]
         end
 
         Game.world.timer:tween(1, chara_y, { 340 })
@@ -186,19 +191,17 @@ return {
             gonerText("ALRIGHT KIDDO,\nSENDING YA OFF\nNOW![wait:20] BYE-BYE![wait:20]")
         end
 
-        cutscene:wait(1)
-
-        background.music:stop()
-        Assets.playSound("locker")
-        background:remove()
-        you_sprite.alpha = 0
         Game:setFlag("vesselChosen", 1)
-
         cutscene:wait(1)
+
+        background:remove()
+        you_sprite:remove()
+
+        Assets.playSound("locker")
+        cutscene:wait(1.5)
+
         cutscene:after(function()
-            Game.world:loadMap("room1", "spawn", "down")
-            cutscene:fadeIn(0.5)
+            Game.world:mapTransition("room1", nil, "down")
         end)
     end,
-
 }
