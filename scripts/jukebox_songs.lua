@@ -166,10 +166,10 @@ return
     name = "My Time",
     file = "My_Time.rpgmvo",
     composer = "bo en",
-    released = "Sept 6, 2013",
+    released = "Sept 6, 2013 / Dec 25, 2020",
     -- originally released as a part of pale machine [MARU-123], modified for omori
     -- tbh "origin" is a bit misleading
-    origin = "Omori"
+    origin = "pale machine (this is the Omori version)"
   },
   {
     name = "Eek!",
@@ -247,13 +247,14 @@ return
     file = "Hugs_for_Ralsei",
     composer = "Lena Raine",
     released = "2018",
-    origin = "Deltarune"
+    -- https://www.youtube.com/playlist?list=OLAK5uy_mYgyn1zifjvF1d1oXIeri1Q4I6ACfdfPw
+    origin = "Lullaby for Lancer"
   },
   {
     name = "Lullaby for Lancer",
     file = "Lullaby_for_Lancer",
     composer = "Lena Raine",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Lullaby for Lancer"
   },
 }
