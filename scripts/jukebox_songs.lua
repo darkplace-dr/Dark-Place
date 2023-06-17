@@ -177,7 +177,8 @@ return
     composer = "surasshu",
     -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
     released = "April 10th, 2009",
-    origin = "8bitcollective"
+    -- CC BY-NC-SA 2.5
+    origin = "8bitcollective.com/members/surasshu (deadlink)"
   },
   {
     name = "Cold Spaghetti",
