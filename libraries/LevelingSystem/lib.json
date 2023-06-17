@@ -33,6 +33,7 @@
       25000,
       50000,
       99999
-    ]
+    ],
+    "print_console_intro": true
   }
 }
