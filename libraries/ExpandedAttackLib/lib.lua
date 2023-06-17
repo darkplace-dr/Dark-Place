@@ -12,10 +12,14 @@ function Lib:init()
     -----  BITCH
     ----------------------------------------------------------------------------------
 
-    print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
+    if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") then
+        print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
+    end
 
     if Mod.libs["moreparty"] then
-        print(self.info.id .. ": MoreParty detected!")
+        if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") then
+            print(self.info.id .. ": MoreParty detected!")
+        end
         Lib.MOREPARTY = true
     end
 
@@ -857,7 +861,9 @@ function Lib:init()
     -----  I DID IT
     ----------------------------------------------------------------------------------
 
-    print(self.info.id .. ": Ready!")
+    if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") then
+        print(self.info.id .. ": Ready!")
+    end
 
 end
 
