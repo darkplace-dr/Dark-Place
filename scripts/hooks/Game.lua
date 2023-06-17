@@ -1,7 +1,9 @@
 Utils.hook(Game, "gameOver", function(orig, self, ...)
-    if Mod:getFunAndRoll() ~= 18 --[[0xE+0xA]] then
+    if Game:getFlag("fun", 0) ~= 18 --[[0xE+0xA]] then
         orig(self, ...)
         return
+    else
+        Mod:rollFun()
     end
 
     Kristal.hideBorder(0)
