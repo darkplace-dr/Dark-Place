@@ -56,7 +56,7 @@ function JukeboxMenu:draw()
     love.graphics.setLineWidth(4)
 
     love.graphics.setFont(self.font)
-    love.graphics.printf("JUKEBOX", 0, -18, self.width, "center")
+    love.graphics.printf("JUKEBOX", 0, -17, self.width, "center")
     love.graphics.rectangle("line", -16, 20, self.width+32, 1)
 
     love.graphics.setLineWidth(1)
