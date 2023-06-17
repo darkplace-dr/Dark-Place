@@ -1,5 +1,4 @@
 ---@class DialogueText_override : DialogueText
----@overload fun(...) : DialogueText
 local DialogueText, super = Class("DialogueText", true)
 
 function DialogueText:init(text, x, y, w, h, options)
