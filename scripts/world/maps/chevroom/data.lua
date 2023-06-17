@@ -236,7 +236,11 @@ return {
           height = 48.0837,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["actor"] = "chevelour",
+            ["chase"] = false,
+            ["encounter"] = "chevelour"
+          }
         }
       }
     },

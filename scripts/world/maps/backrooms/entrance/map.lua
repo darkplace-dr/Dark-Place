@@ -1,8 +1,11 @@
 local Entrance, super = Class(Map)
 
 function Entrance:onEnter()
-    super.onEnter(self)
-    Game.world:spawnObject(VHSFilter(), 99999)
+    Game.stage:addFX(VHSFilter(), "vhs")
+end
+
+function Entrance:onExit()
+    Game.stage:removeFX("vhs")
 end
 
 return Entrance

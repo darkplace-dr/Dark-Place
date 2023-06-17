@@ -49,6 +49,12 @@
   <object id="8" name="squeak" x="280" y="320" width="40" height="40"/>
   <object id="11" name="interactable" x="86.2521" y="202.348" width="112.436" height="75.0282"/>
   <object id="12" name="enemy" x="750.558" y="271.916" width="49.4424" height="48.0837"/>
+   <properties>
+    <property name="actor" value="chevelour"/>
+    <property name="chase" type="bool" value="false"/>
+    <property name="encounter" value="chevelour"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="9" name="spawn" x="140" y="320">
