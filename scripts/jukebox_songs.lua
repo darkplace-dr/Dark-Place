@@ -18,21 +18,21 @@ return
     name = "Gimmie Your Wallet, Miss",
     file = "gimmieyourwalletmiss",
     composer = "Charbomber",
-    released = "???",
+    released = "TBA",
     origin = "Deltarune: The Stars"
   },
   {
     name = "Batter Up!",
     file = "batterup",
     composer = "Charbomber",
-    released = "???",
+    released = "TBA",
     origin = "Deltarune: The Stars"
   },
   {
     name = "Three Strikes, You're Out!",
     file = "threestrikesyoureout",
     composer = "Charbomber",
-    released = "---",
+    released = "TBA",
     origin = "Deltarune: The Stars"
   },
   {
@@ -59,9 +59,10 @@ return
   {
     name = "サウンドと恋に C I T Y P O P",
     file = "forest",
-    composer = "悲しい ANDROID - APARTMENT¶",
+    composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
     released = "2016",
-    origin = "???"
+    -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p
+    origin = "Originally released on SoundCloud" -- "Soundcloud Edits Part II"
   },
   {
     name = "Snick",
@@ -166,14 +167,16 @@ return
     file = "My_Time.rpgmvo",
     composer = "bo en",
     released = "Sept 6, 2013",
-    origin = "pale machine [MARU-123]"
+    -- originally released as a part of pale machine [MARU-123], modified for omori
+    origin = "Omori"
   },
   {
     name = "Eek!",
     file = "eek",
-    composer = "Surasshu",
-    released = "???",
-    origin = "???"
+    composer = "surasshu",
+    -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
+    released = "April 10th, 2009",
+    origin = "8bitcollective"
   },
   {
     name = "Cold Spaghetti",
