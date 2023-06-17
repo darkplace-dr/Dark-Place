@@ -87,11 +87,9 @@ function GoogleDino:onAct(battler, name)
         })
         self:addMercy(10)
         self.difficulty = self.difficulty + 1
-        -- Act text (since it's a list, multiple textboxes)
         return {
             "* You attempted to reboot the internet...\n[wait:5]* Difficulty increased!",
         }
-
     elseif name == "X-Reboot" then
         Assets.playSound(Utils.pick{
             "dialup_0",
