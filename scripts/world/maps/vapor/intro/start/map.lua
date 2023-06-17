@@ -1,7 +1,7 @@
 local Start, super = Class(Map)
 
 function Start:onEnter()
-Ozymandias
+    Game.stage:addFX(VHSFilter(), "vhs")
 end
 
 function Start:onExit()

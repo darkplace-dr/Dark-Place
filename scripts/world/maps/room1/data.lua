@@ -547,7 +547,7 @@ return {
           visible = true,
           properties = {
             ["actor"] = "starwalker",
-            ["cond"] = "not Game:getFlag(\"ostarwalker_inparty\", false) or not Game:getFlag(\"ostarwalker_killed\", false)",
+            ["cond"] = "not Game:getFlag(\"ostarwalker_inparty\", false) and not Game:getFlag(\"ostarwalker_killed\", false)",
             ["cutscene"] = "room1.star"
           }
         },
