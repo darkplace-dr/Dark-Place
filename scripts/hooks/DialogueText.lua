@@ -15,7 +15,6 @@ function DialogueText:init(text, x, y, w, h, options)
     options["font"] = options["font"]
         or Kristal.callEvent("getDefaultDialogTextFont")
         or "main_mono"
-    Mod:trace(options["font"])
 
     super.init(self, text, x, y, w, h, options)
 end
