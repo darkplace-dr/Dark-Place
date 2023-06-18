@@ -72,50 +72,49 @@ return function(cutscene, player_name_override)
     cutscene:hideNametag()
 
     flowey:setSprite("nice")
-    cutscene:wait(2)
 
     if player_name == "BLUE" or player_name == "PLAGUEIS" then
+        cutscene:wait(2)
+
         cutscene:showNametag("Flowey")
         showText("* Wait a second...", "plain")
         showText("* Your name is...")
         showText("* "..player_name.."?", "nice")
         cutscene:hideNametag()
-        cutscene:wait(3)
-    end
 
-    if player_name == "BLUE" then
-        cutscene:showNametag("Flowey")
-        showText("* Y'know,[wait:5] I've been wondering...", "nicesideum")
-        showText("* Why exactly ARE you blue?", "plain")
-        showText("* Is it because you're sad?[wait:5]\n* Or pure?", "side")
-        showText("* ...or is it because you've been working in a meth lab of some kind?", "sassy")
-        showText("* Not saying that I would know, of course!", "nicesideum")
-        showText("* After all...", "niceside")
-        showText("* I'm not some balding, middle-aged human who has his own drug business.", "nice")
-        cutscene:hideNametag()
-    elseif player_name == "PLAGUEIS" then
-        cutscene:showNametag("Flowey")
-        showText("* Y'know,[wait:5] I've actually heard a legend of someone who went by that name once...", "nicesideum")
-        showText("* It was said that he had the power to save the ones he loved from death.", "plain")
-        showText("* His life however,[wait:5] was cut short.", "side")
-        showText("* When he taught his apprentice everything he knew...", "niceside")
-        showText("* His apprentice KILLED him in his sleep!", "nice")
-        showText("* Hee hee hee...[wait:5]\n* It's kind of ironic really.", "niceside")
-        showText("* He had the power to save others...", "nicesideum")
-        showText("[voice:flowey2][speed:0.6]* But he couldn't even use them to save his own SOUL.", "evil")
-        cutscene:hideNametag()
+        if player_name == "BLUE" then
+            cutscene:showNametag("Flowey")
+            showText("* Y'know,[wait:5] I've been wondering...", "nicesideum")
+            showText("* Why exactly ARE you blue?", "plain")
+            showText("* Is it because you're sad?[wait:5]\n* Or pure?", "side")
+            showText("* ...or is it because you've been working in a meth lab of some kind?", "sassy")
+            showText("* Not saying that I would know, of course!", "nicesideum")
+            showText("* After all...", "niceside")
+            showText("* I'm not some balding, middle-aged human who has his own drug business.", "nice")
+            cutscene:hideNametag()
+        elseif player_name == "PLAGUEIS" then
+            cutscene:showNametag("Flowey")
+            showText("* Y'know,[wait:5] I've actually heard a legend of someone who went by that name once...", "nicesideum")
+            showText("* It was said that he had the power to save the ones he loved from death.", "plain")
+            showText("* His life however,[wait:5] was cut short.", "side")
+            showText("* When he taught his apprentice everything he knew...", "niceside")
+            showText("* His apprentice KILLED him in his sleep!", "nice")
+            showText("* Hee hee hee...[wait:5]\n* It's kind of ironic really.", "niceside")
+            showText("* He had the power to save others...", "nicesideum")
+            showText("[voice:flowey2][speed:0.6]* But he couldn't even use them to save his own SOUL.", "evil")
+            cutscene:hideNametag()
 
-        flowey:setAnimation("laugh")
-        Assets.playSound("floweylaugh")
-        cutscene:wait(4)
+            flowey:setAnimation("laugh")
+            Assets.playSound("floweylaugh")
+            cutscene:wait(4)
 
-        cutscene:showNametag("Flowey")
-        showText("[voice:flowey2]* Hahaha!!\n[wait:5]* What an absolute IDIOT!", "grin")
-        cutscene:hideNametag()
+            cutscene:showNametag("Flowey")
+            showText("[voice:flowey2]* Hahaha!!\n[wait:5]* What an absolute IDIOT!", "grin")
+            cutscene:hideNametag()
+        end
     end
 
     flowey:setAnimation("rise_reverse")
-
     cutscene:wait(3)
 
     cutscene:after(function()
