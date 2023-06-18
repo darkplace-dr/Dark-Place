@@ -33,6 +33,9 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Pinto Molhado - Contributor
 * Agent 7 - Contributor
 * Riverstar (Sumire) - Contributor
+* AlexGamingSW - Contributor
+* Tick - Contributor
+* PatateAuBeurr - Contributor
 * SciSpaceProductions - Contributor
 
 <a href="https://github.com/BrandonK7200/Dark-Place/graphs/contributors">
