@@ -117,102 +117,96 @@ return {
     end,
 
     addisonshop = function(cutscene, event)
-        local addiName = Mod:addiSwitch() and "Java" or "Pink Addison"
-        local addisonshop = cutscene:getCharacter("addisonshop")
-        local buyTea = function(number)
-            local tea = number == 1 and "kris_tea" or number == 2 and "susie_tea" or number == 3 and "noelle_tea"
-            cutscene:showNametag(addiName)
-            if Mod:addiSwitch() then
-                cutscene:text("[voice:java]Okay! That would cost ya 100D$...", "default", "addisonshop")
-            else
-                cutscene:text("Okay! That would cost ya 100D$...")
-            end
+        local skp = cutscene:getCharacter("addisonshop")
+        local skp_name = Mod:addiSwitch() and "Java" or "Pink Addison"
+
+        local teas = {
+            "kris_tea",
+            "susie_tea",
+            "noelle_tea"
+        }
+
+        cutscene:showNametag(skp_name)
+        cutscene:text("* Hi there! Welcome!", "default", skp)
+        cutscene:text("* Would you care for some tea?", "wink_b", skp)
+        cutscene:hideNametag()
+
+        if cutscene:choicer({"Yes", "No"}) == 2 then
+            cutscene:showNametag(skp_name)
+            cutscene:text("* That's alright! Come back anytime!", "default", skp)
+            cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
             cutscene:hideNametag()
-            local opinion = cutscene:choicer({"Yes", "No"})
-            if opinion == 1 then
+            return
+        end
+
+        cutscene:showShop()
+        cutscene:showNametag(skp_name)
+        cutscene:text("* Alright what can I get you?", "wink", skp)
+        cutscene:hideNametag()
+
+        local pos = 0
+        while pos < #teas do
+            local selection_table_raw = {unpack(teas, pos + 1, pos + 3)}
+            pos = pos + #selection_table_raw
+            local ended = pos >= #teas
+
+            local selection_table = {}
+            for _,item_id in ipairs(selection_table_raw) do
+                ---@type Item
+                local item = Registry.createItem(item_id)
+                table.insert(selection_table, item:getName())
+            end
+            table.insert(selection_table, not ended and "Next Page" or "None")
+
+            local choice = cutscene:choicer(selection_table)
+            if choice < #selection_table then
+                local tea = selection_table_raw[choice]
+                assert(tea)
+
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Okay! That would cost ya 100D$...", "default", skp)
+                cutscene:hideNametag()
+
+                if cutscene:choicer({"Yes", "No"}) == 2 then
+                    cutscene:hideShop()
+                    cutscene:showNametag(skp_name)
+                    cutscene:text("* That's alright! Come back anytime!", "default", skp)
+                    cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+                    cutscene:hideNametag()
+                    break
+                end
+
+                cutscene:hideShop()
                 if Game.money < 100 then
-                    cutscene:showNametag(addiName)
-                    if Mod:addiSwitch() then
-                        cutscene:text("[voice:java]* Sorry, we don't serve barterers", "pissed", "addisonshop")
-                        cutscene:text("[voice:java]* Please come back when you can afford this...", "pissed_b", "addisonshop")
-                    else
-                        cutscene:text("* Sorry, we don't serve barterers")
-                        cutscene:text("* Please come back when you can afford this...")
-                    end
+                    cutscene:showNametag(skp_name)
+                    cutscene:text("* Sorry, we don't serve barterers", "pissed", skp)
+                    cutscene:text("* Please come back when you can afford this...", "pissed_b", skp)
                     cutscene:hideNametag()
-                    cutscene:hideShop()
                 elseif not Game.inventory:addItem(tea) then
-                    cutscene:showNametag(addiName)
-                    if Mod:addiSwitch() then
-                        cutscene:text("[voice:java]* Oh dear, looks like you don't have space in your pockets...", "upset", "addisonshop")
-                    else
-                        cutscene:text("* Oh dear, looks like you don't have space in your pockets...")
-                    end
+                    cutscene:showNametag(skp_name)
+                    cutscene:text("* Oh dear, looks like you don't have space in your pockets...", "upset", skp)
                     cutscene:hideNametag()
-                    cutscene:hideShop()
-                    return
                 else
                     Game.money = Game.money - 100
                     cutscene:playSound("locker")
-                    cutscene:showNametag(addiName)
-                    if Mod:addiSwitch() then
-                        cutscene:text("[voice:java]* Okay! Here's your tea!", "wink", "addisonshop")
-                        cutscene:text("[voice:java]* Thank you and come again", "blush", "addisonshop")
-                    else
-                        cutscene:text("* Okay! Here's your tea!")
-                        cutscene:text("* Thank you and come again")
-                    end
-                    cutscene:hideNametag()
-                    cutscene:hideShop()
-                end
-            elseif opinion == 2 then
-                cutscene:showNametag(addiName)
-                if Mod:addiSwitch() then
-                    cutscene:text("[voice:java]* That's alright! Come back anytime!", "default", "addisonshop")
-                    cutscene:text("[voice:java]* I'll be here whenever you need a drink!", "wink_b", "addisonshop")
-                else
-                    cutscene:text("* That's alright! Come back anytime!")
-                    cutscene:text("* I'll be here whenever you need a drink!")
-                end
-                cutscene:hideNametag()
-            end
-        end
-        cutscene:showNametag(addiName)
-        if Mod:addiSwitch() then
-            cutscene:text("[voice:java]* Hi there! Welcome!", "default", "addisonshop")
-            cutscene:text("[voice:java]* Would you care for some tea?", "wink_b", "addisonshop")
-        else
-            cutscene:text("* Hi there! Welcome!")
-            cutscene:text("* Would you care for some tea?")
-        end
-        cutscene:hideNametag()
-        local opinion = cutscene:choicer({"Yes", "No"})
-        if opinion == 1 then
-            cutscene:showShop()
-            cutscene:showNametag(addiName)
-            if Mod:addiSwitch() then
-                cutscene:text("[voice:java]* Alright what can I get you?", "wink", "addisonshop")
-            else
-                cutscene:text("* Alright what can I get you?")
-            end
-            cutscene:hideNametag()
-            opinion = cutscene:choicer({"Kris Tea", "Susie Tea", "Noelle Tea"})
-            buyTea(opinion)
-        else
-            cutscene:showNametag(addiName)
-            if Mod:addiSwitch() then
-                cutscene:text("[voice:java]* That's alright! Come back anytime!", "default", "addisonshop")
-                cutscene:text("[voice:java]* I'll be here whenever you need a drink!", "wink_b", "addisonshop")
-            else
-                cutscene:text("* That's alright! Come back anytime!")
-                cutscene:text("* I'll be here whenever you need a drink!")
-            end
-            cutscene:hideNametag()
-            cutscene:hideShop()
-        end
-        cutscene:hideShop()
-    end,
 
+                    cutscene:showNametag(skp_name)
+                    cutscene:text("* Okay! Here's your tea!", "wink", skp)
+                    cutscene:text("* Thank you and come again", "blush", skp)
+                    cutscene:hideNametag()
+                end
+
+                break
+            elseif ended then
+                cutscene:hideShop()
+                cutscene:showNametag(skp_name)
+                cutscene:text("* That's alright! Come back anytime!", "default", skp)
+                cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+                cutscene:hideNametag()
+                break
+            end
+        end
+    end,
 
     doobie = function(cutscene, event)
         if not Game:getFlag("room3_doobie") then
@@ -458,14 +452,11 @@ return {
             onMoneyNotEnough()
             return
         end
-
-        local itemcheck = Game.inventory:addItem(item.id)
-        if not itemcheck then
+        if not Game.inventory:addItem(item.id) then
             onInventoryFull()
             return
         end
         Game.money = Game.money - item.price
-
         onPurchaseComplete(item.post_purchase)
     end,
 

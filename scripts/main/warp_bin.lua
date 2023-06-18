@@ -1,14 +1,14 @@
 -- Warp Bin
 -- god I am so sorry for how shitty this code is
 
---- The thing you put in the Warp Bin to warp to places like yeah \
---- must be 8-characters and be in lower case
+--- The thing you put in the Warp Bin to warp to places \
+--- must be 8 characters long and be in lower case
 ---@alias WarpBinCode string
 
 --- defines the behavior of a Warp Bin code
 ---@class WarpBinCodeInfo
---- what to do after the code is entered. \
---- if a string, treated as a map's id and the player is teleported there; \
+--- what to do after the code is entered \
+--- if a string, treated as a map's id and the player is teleported there \
 --- if the last argument is a function, the function is run
 ---@field result string|fun(cutscene: WorldCutscene)
 ---@field marker string|nil in case result is a string, the name of the marker you want to teleport the player to

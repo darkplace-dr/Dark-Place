@@ -1,17 +1,28 @@
 function Mod:initTaunt()
     self.taunt_cooldown = 0
+    self.taunt_lock_movement = false
+
+    Utils.hook(Player, "isMovementEnabled",
+        ---@return boolean
+        ---@diagnostic disable-next-line: redefined-local
+        function(orig, self)
+            ---@diagnostic disable-next-line: redundant-return-value
+            return orig(self)
+                and not Mod.taunt_lock_movement
+        end
+    )
 end
 
 function Mod:updateTaunt()
     if
-        Game.state == "OVERWORLD" and Game.world.menu == nil and not Game.world:hasCutscene()
+        (Game.party[1]:checkArmor("pizza_toque") or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
         and Input.pressed("v", false)
-        and (Game.party[1]:checkArmor("pizza_toque") or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
         and self.taunt_cooldown == 0
+        and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene() and not Game.lock_movement)
     then
         self.taunt_cooldown = 0.4
+        self.taunt_lock_movement = true
 
-        Game.lock_movement = true
         Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
 
         --[[local party_member_charas = {}
@@ -46,8 +57,9 @@ function Mod:updateTaunt()
         end
 
         Game.world.timer:after(0.2, function()
-            Game.lock_movement = false
+            self.taunt_lock_movement = false
         end)
     end
+
     self.taunt_cooldown = Utils.approach(self.taunt_cooldown, 0, DT)
 end

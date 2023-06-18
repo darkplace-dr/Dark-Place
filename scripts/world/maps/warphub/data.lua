@@ -528,10 +528,10 @@ return {
             ["text1"] = "* There appears to be some advertisements for codes here.",
             ["text2"] = "* (Go to the code \"[color:yellow]SPAM[color:pink]ROOM[color:reset]\"! It's where all the [BIG SHOT]s are!)",
             ["text3"] = "* (yo whaddup. go to \"[color:red]DESSHERE[color:reset]\".)",
-            ["text4"] = "* (Want to fight bosses you've prevously fought?[wait:10]\nGo to \"[color:yellow]BOSSRUSH[color:reset]\"!)",
+            ["text4"] = "* (Want to fight bosses you've previously fought?[wait:10]\nGo to \"[color:yellow]BOSSRUSH[color:reset]\"!)",
             ["text5"] = "* (Want to meet the devs of this game? Check out \"[color:blue]DEVDINER[color:reset]\"!)",
             ["text6"] = "* (Do you have horrible internet? Visit \"[color:black]WIFIDOWN[color:reset]\" now to resolve all of your network troubles!)",
-            ["text7"] = "* (Squeak Squeak! All the Maus are in \"[color:maroon]MAUSHOLE[color:reset]\"!),",
+            ["text7"] = "* (Squeak Squeak! All the Maus are in \"[color:maroon]MAUSHOLE[color:reset]\"!)",
             ["text8"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here."
           }
         },

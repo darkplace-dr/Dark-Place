@@ -11,7 +11,7 @@ function BackroomsDoor:init(data)
 end
 
 function BackroomsDoor:onInteract(player, dir)
-    Game.world:startCutscene("floor2.backrooms_entry")
+    Game.world:startCutscene("floor2.backrooms_entry", self)
 end
 
 return BackroomsDoor

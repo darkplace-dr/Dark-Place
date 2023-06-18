@@ -52,6 +52,7 @@ function Mod:trace(msg, msg_level, stack_level)
         if ok then
             src = src_n
         else
+            -- FIXME: unreliable
             src = "[kristal]/" .. src
         end
     end
@@ -63,6 +64,30 @@ function Mod:trace(msg, msg_level, stack_level)
 
     Mod:print(msg, msg_level)
 end
+
+if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" and not package.loaded["lldebugger"] then
+    require("lldebugger")
+end
+
+function Mod:startDebugger()
+    if package.loaded["lldebugger"] then
+        lldebugger.start()
+    end
+end
+
+function Mod:breakpoint()
+    if package.loaded["lldebugger"] then
+        lldebugger.requestBreak()
+    end
+end
+
+function Mod:stopDebugger()
+    if package.loaded["lldebugger"] then
+        lldebugger.finish()
+    end
+end
+
+Mod:startDebugger()
 
 --- Returns the current party leader's PartyMember, Actor, ActorSprite or Character object
 ---@param kind? "partymember"|"party"|"character"|"chara"|"actor"|"sprite"|"actorsprite" The kind of object that will be gathered, "partymember" by default

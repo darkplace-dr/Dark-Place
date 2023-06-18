@@ -11,7 +11,11 @@ end
 
 
 function item:onWorldUse()
-    Game.world:startCutscene("blankie_ach.blankie")
+    if Game.world.map.id == "spamroom" then
+        Game.world:startCutscene("blankie_ach.blankie")
+    else
+        Assets.playSound("ui_cant_select")
+    end
 end
 
 return item

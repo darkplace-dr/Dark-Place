@@ -44,7 +44,6 @@ function VHSFilter:draw(texture, object)
     staticnoise.image_alpha = 0.015
     staticnoise.image_speed = 0.6]]
 
-    -- this probably looks good enough
     love.graphics.setBlendMode("add")
     love.graphics.setColor(1, 1, 1, 0.125)
     love.graphics.draw(self.filter[self.filter_frame], 0, 0, nil, w / 600, h / 450)
@@ -52,10 +51,6 @@ function VHSFilter:draw(texture, object)
     love.graphics.setBlendMode(blend_mode, alpha_mode)
 
     love.graphics.draw(self.vhslines, self.vhslines_x, math.max(0, h - 17))
-
-    love.graphics.setColor(0, 0, 0, 0.035)
-    love.graphics.rectangle("fill", 0, 0, w, h)
-    love.graphics.setColor(COLORS.white)
 
     Draw.setCanvas(canvas)
 
@@ -69,6 +64,10 @@ function VHSFilter:draw(texture, object)
     love.graphics.draw(texture, ox - 1, oy, nil, 1, 1, ox, oy)
     love.graphics.setColor(COLORS.white)
     love.graphics.setBlendMode(blend_mode, alpha_mode)
+
+    love.graphics.setColor(0, 0, 0, 0.035)
+    love.graphics.rectangle("fill", ox, oy, w, h)
+    love.graphics.setColor(COLORS.white)
 end
 
 --[[function VHSFilter:getObjectBounds(shader)
