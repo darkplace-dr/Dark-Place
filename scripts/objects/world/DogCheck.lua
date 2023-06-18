@@ -45,13 +45,13 @@ function DogCheck:start()
         Game.world.music:play(path, 0.8, self.song_pitch)
     end
 
+    local variant_choices = {"dance", "sleep", "maracas"}
     if self.month >= 6 and self.month <= 8 then
-        self.variant = Utils.pick({"summer"})
+        table.insert(variant_choices, "summer")
     elseif self.month == 12 then
-        self.variant = Utils.pick({"xmas"})
-    else
-        self.variant = Utils.pick({"dance", "sleep", "maracas"})
+        table.insert(variant_choices, "xmas")
     end
+    self.variant = Utils.pick(variant_choices)
 
     if self.variant == "dance" then
         createDog("objects/dogcheck/dog_dance", 0.2)
