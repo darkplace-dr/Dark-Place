@@ -23,6 +23,8 @@ function Mod:init()
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
 
+    MUSIC_VOLUMES["vs_susie_and_noyno"] = 0.45
+
     self.voice_timer = 0
 
     self:registerShaders()
