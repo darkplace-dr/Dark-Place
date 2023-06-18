@@ -1,6 +1,6 @@
-local RibbitBG, super = Class(Object)
+local ForestBG, super = Class(Object)
 
-function RibbitBG:init(color)
+function ForestBG:init(color)
     super.init(self)
 
 	self.colors = {
@@ -9,7 +9,7 @@ function RibbitBG:init(color)
 
 	self.color = self.colors[color or "purple"]
 
-	local vaporback = Sprite("objects/ribbitbg/vaporback", 0, 0)
+	local vaporback = Sprite("objects/forestbg/vaporback", 0, 0)
     vaporback:setColor(self.color)
 	vaporback:play(0.02, true)
 	vaporback:setScale(1)
@@ -18,4 +18,4 @@ function RibbitBG:init(color)
 	self.layer = BATTLE_LAYERS["bottom"]
 end
 
-return RibbitBG
+return ForestBG

@@ -25,7 +25,7 @@ return {
         if susie then
             cutscene:showNametag("Susie")
             cutscene:setSpeaker(susie)
-            cutscene:text("Hey, isn't that Kris' mom?", "suspicious")
+            cutscene:text("* Hey, isn't that Kris's mom?", "suspicious")
             cutscene:hideNametag()
         end
 
@@ -59,7 +59,7 @@ return {
         if encounter:getDefeatedEnemies()[1].done_state == "KILLED" then
             event:remove()
             Game:setFlag("poseur_killed", true)
-            
+
             Game.world.music:fade(0, 0.5)
             cutscene:wait(2)
 
