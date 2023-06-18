@@ -4,10 +4,10 @@ end
 
 function Mod:updateTaunt()
     if
-        Game.state == "OVERWORLD" and Game.world.menu == nil and not Game.world:hasCutscene()
+        (Game.party[1]:checkArmor("pizza_toque") or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
         and Input.pressed("v", false)
-        and (Game.party[1]:checkArmor("pizza_toque") or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
         and self.taunt_cooldown == 0
+        and (Game.state == "OVERWORLD" and not Game.lock_movement and self.world.state ~= "MENU" and not Game.world:hasCutscene())
     then
         self.taunt_cooldown = 0.4
 
