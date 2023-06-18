@@ -1,14 +1,12 @@
 return {
-    backrooms_entry = function(cutscene)
-        local br_door = cutscene:getEvent("backroomsdoor")
-
+    ---@param cutscene WorldCutscene
+    backrooms_entry = function(cutscene, event)
+        Game.world.music:fade(0, 0.25)
         Assets.playSound("dooropen")
-        br_door:setSprite("world/events/backroomsdoor/open")
-		
-        cutscene:wait(0.75)
-        cutscene:mapTransition("backrooms/entrance", "entry")
+        event:setSprite("world/events/backroomsdoor/open")
+        cutscene:wait(0.5)
 
-        cutscene:wait(0.25)
+        cutscene:wait(cutscene:mapTransition("backrooms/entrance", "entry"))
         Assets.playSound("doorclose")
     end,
     queen_sip = function(cutscene, event)
