@@ -1,4 +1,4 @@
-local Head, super = Class("SpamtonPart")
+local Head, super = Class("SpamtonPart", "SpamtonHead")
 
 function Head:init(x, y)
     super:init(self, "npcs/spamton/head", x, y, 17, 26, math.rad(10))
