@@ -75,7 +75,7 @@ function Lib:init()
 
 		love.graphics.translate(-10, 0)
 
-		self.super.draw(self)
+		Object.draw(self)
 	end)
 
 	Utils.hook(ActionBox, "drawActionBox", function(orig, self)
@@ -259,7 +259,7 @@ function Lib:init()
 				self.flash = Utils.approach(self.flash, 0, DTMULT / 5)
 			end
 
-			self.super.update(self)
+			Object.update(self)
 		end)
 
 		Utils.hook(AttackBox, 'draw', function(orig, self, ...)
@@ -287,7 +287,7 @@ function Lib:init()
 
 			love.graphics.setLineWidth(1)
 
-			self.super.draw(self)
+			Object.draw(self)
 		end)
 
 		Utils.hook(BattleUI, "beginAttack", function(orig, self, ...)
@@ -510,7 +510,7 @@ function Lib:init()
 
 		love.graphics.translate(-10, 0)
 
-		self.super.draw(self)
+		Object.draw(self)
 	end)
 
 	if Kristal.getLibConfig("moreparty", "print_console_intro") then

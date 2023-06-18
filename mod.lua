@@ -4,12 +4,13 @@ modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
 
+function Mod:preInit()
+    if Kristal.Version < SemVer(self.info.engineVer) then
+        self.legacy_kristal = true
+    end
+end
+
 function Mod:init()
-    self:registerShaders()
-
-    self:initTaunt()
-    self.voice_timer = 0
-
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
 
     MUSIC_VOLUMES["cybercity"] = 0.8
@@ -21,9 +22,21 @@ function Mod:init()
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
+
+    self.voice_timer = 0
+
+    self:registerShaders()
+
+    self:initTaunt()
 end
 
 function Mod:postInit(new_file)
+    if self.legacy_kristal then
+        Game.world.music:stop()
+        Game.world:startCutscene("flowey_check")
+        return
+    end
+
     Mod:initializeImportantFlags(new_file)
 
     if new_file then
@@ -35,7 +48,6 @@ function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
 
     if new_file then
-        -- FUN Value
         self:rollFun()
     end
 
@@ -159,5 +171,11 @@ function Mod:onMapMusic(map, music)
         return ""
     elseif Game:getFlag("weird") and music == "deltarune/cybercity" then
         return "deltarune/cybercity_alt"
+    end
+end
+
+function Mod:loadObject(world, name, properties)
+    if name:lower() == "vapor_bg" then
+        return VaporBG(properties["mountains"])
     end
 end
