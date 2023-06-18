@@ -3,6 +3,8 @@ local VHSFilter, super = Class(FXBase)
 function VHSFilter:init(priority)
     super.init(self, priority)
 
+    --self.transformed = true
+
     self.time = 0
 
     self.filter = Assets.getFrames("objects/overlays/vhsfilter")
@@ -32,11 +34,17 @@ function VHSFilter:draw(texture, object)
     local ox, oy, _, _ = self:getObjectBounds()
     local w, h = texture:getWidth(), texture:getHeight()
     local canvas = love.graphics.getCanvas()
+    local blend_mode, alpha_mode = love.graphics.getBlendMode()
 
     Draw.setCanvas(texture)
 
+    --[[staticnoise = scr_dark_marker(0, 0, spr_staticnoise)
+    staticnoise.image_xscale = 8
+    staticnoise.image_yscale = 8
+    staticnoise.image_alpha = 0.015
+    staticnoise.image_speed = 0.6]]
+
     -- this probably looks good enough
-    local blend_mode, alpha_mode = love.graphics.getBlendMode()
     love.graphics.setBlendMode("add")
     love.graphics.setColor(1, 1, 1, 0.125)
     love.graphics.draw(self.filter[self.filter_frame], 0, 0, nil, w / 600, h / 450)
@@ -44,12 +52,6 @@ function VHSFilter:draw(texture, object)
     love.graphics.setBlendMode(blend_mode, alpha_mode)
 
     love.graphics.draw(self.vhslines, self.vhslines_x, math.max(0, h - 17))
-
-    --[[staticnoise = scr_dark_marker(0, 0, spr_staticnoise)
-    staticnoise.image_xscale = 8
-    staticnoise.image_yscale = 8
-    staticnoise.image_alpha = 0.015
-    staticnoise.image_speed = 0.6]]
 
     love.graphics.setColor(0, 0, 0, 0.035)
     love.graphics.rectangle("fill", 0, 0, w, h)
@@ -68,5 +70,16 @@ function VHSFilter:draw(texture, object)
     love.graphics.setColor(COLORS.white)
     love.graphics.setBlendMode(blend_mode, alpha_mode)
 end
+
+--[[function VHSFilter:getObjectBounds(shader)
+    if self.parent ~= Game.stage then
+        return super.getObjectBounds(self, shader)
+    end
+    local w_bak, h_bak = self.parent.width, self.parent.height
+    self.parent.width, self.parent.height = SCREEN_WIDTH, SCREEN_HEIGHT
+    local ret = {super.getObjectBounds(self, shader)}
+    self.parent.width, self.parent.height = w_bak, h_bak
+    return unpack(ret)
+end]]
 
 return VHSFilter
