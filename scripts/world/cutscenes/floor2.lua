@@ -35,96 +35,6 @@ return {
         cutscene:text("* More For Me I Suppose", "smile_side_l", "queen")
     end,
 
-    borencountervortex = function(cutscene)
-        local leader = Mod:getLeader()
-        local kris = cutscene:getCharacter("kris")
-        local susie = cutscene:getCharacter("susie")
-        local bor = cutscene:getCharacter("bor")
-        if not susie then
-            return
-        end
-
-        Game:setFlag("cloudwebStoryFlag", 1)
-
-        Game.world.music:fade(0, 1)
-        cutscene:detachFollowers()
-        cutscene:slideTo(leader, 540 - 30, 380, 0.3)
-        cutscene:slideTo(susie, 540 + 30, 380, 0.3)
-        cutscene:panTo(540, 380, 0.25)
-        cutscene:wait(1)
-
-        cutscene:text("* What the?!", "angry_b", "susie")
-        if kris then
-            cutscene:text("* Look,[wait:0.1s] Kris![wait:0.3s]\n* It's another time vortex!", "angry_b", "susie")
-            cutscene:text("* We have to go down there NOW!", "angry", "susie")
-        else
-            if Game:hasPartyMember("YOU") then
-                cutscene:text("* Look,[wait:0.1s] Kr-[wait:0.1s]YOU![wait:0.3s]\n* It's a time vortex!", "angry_b", "susie")
-
-                cutscene:choicer({"What the hell\nis that", "oh"})
-                cutscene:text("* Oh,[wait:0.1s] right.[wait:0.3s] You don't know what that is.", "annoyed_down", "susie")
-            else
-                cutscene:text("* Look![wait:0.3s]\n* It's a time vortex!", "angry_b", "susie")
-            end
-
-            if bor then
-                cutscene:text("* Okay,[wait:0.1s] so.[wait:0.3s] Basically, a time vortex is-[next]", "annoyed_down", "susie")
-
-                cutscene:text("* missing light reference", "pog", "bor")
-
-                cutscene:text("* What?", "neutral", "susie")
-
-                cutscene:text("* deltarun missing light reference", "pog", "bor")
-
-                susie:setSprite("angry_down")
-                cutscene:text("* Dude,[wait:0.1s] what the actual HELL is a \"missing light\"?!", "teeth", "susie")
-                susie:resetSprite()
-
-                cutscene:text("* My world", "smug", "bor")
-
-                cutscene:text("* Oh,[wait:0.1s] so that's where you weirdos come from.", "annoyed", "susie")
-
-                cutscene:text("* No you fucking buffoon", "question", "bor")
-                cutscene:text("* Just caus i MADE a place doesnt mean i LIVE in it.", "question", "bor")
-
-                susie:setSprite("angry_down")
-                cutscene:text("* Oh my god...", "teeth_b", "susie")
-                susie:resetSprite()
-
-                cutscene:text("* k so basically vortexes are things", "happy", "bor")
-                cutscene:text("* things that our good friends,", "happy", "bor")
-                cutscene:text("* Krispy, Barney and Frisbee Undertail,", "happy", "bor")
-                cutscene:text("* have to go through,", "happy", "bor")
-                cutscene:text("* so that they can save the entire plane of existence from a silly billy Krispy commited when going edgy-mode[next]", "happy", "bor")
-
-                cutscene:text("* Okay that's enough.", "teeth_b", "susie")
-                cutscene:text("* But basically,[wait:0.1s] we have to go down there NOW!", "angry", "susie")
-
-                cutscene:text("* alr bluddies keep me outta this", "troll", "bor")
-
-                susie:setSprite("angry_down")
-                cutscene:text("* YES YOU STAY HERE YOU FORSAKEN BLOB OF SILLY PUTTY!", "teeth", "susie")
-
-                cutscene:text("* jeez lady, \"chill\" out.", "smug", "bor")
-
-                cutscene:text("* I AM DONE TALKING TO YOU!!", "teeth", "susie")
-                susie:resetSprite()
-            else
-                cutscene:text("* Okay,[wait:0.1s] so.[wait:0.3s] Basically, a time vortex is,[wait:0.1s] uh...", "neutral_side", "susie")
-                cutscene:text("* Some kind of opening in the fabric of time and space,[wait:0.1s] or something.", "nervous_side", "susie")
-                cutscene:text("* But basically we have to go down there NOW!", "angry", "susie")
-            end
-        end
-
-        for _,member in pairs(Game.party) do
-            if member.id ~= "YOU" and member.id ~= "susie" then
-                Game:removePartyMember(member.id)
-            end
-        end
-
-        cutscene:gotoCutscene("TimeVortexCutscene", "roombor")
-    end,
-
     bordoor = function(cutscene, event)
         if Game:getFlag("BorDoorCodeUnlocked", false) then
             --take to room instantly
@@ -221,15 +131,96 @@ return {
         Game:setFlag("BorDoorCodeUnlocked", true)
         cutscene:text("* Door unlocked.")
 
-        cutscene:wait(0.2)
-
-        Game.world.fader:fadeOut(nil, {
-            speed = 1,
-        })
-        cutscene:wait(1)
-        cutscene:loadMap("floor2/roombor", "entryup", "up")
-        Game.world.fader:fadeIn(nil, {
-            speed = 0.25,
-        })
+        cutscene:mapTransition("floor2/roombor", "entryup", "up")
     end,
+
+    borencountervortex = function(cutscene)
+        local leader = Mod:getLeader("chara")
+        local kris = cutscene:getCharacter("kris")
+        local susie = cutscene:getCharacter("susie")
+        local bor = cutscene:getCharacter("bor")
+        if not susie then
+            return
+        end
+
+        Game:setFlag("cloudwebStoryFlag", 1)
+
+        Game.world.music:fade(0, 1)
+        cutscene:detachFollowers()
+        cutscene:slideTo(leader, 540 - 30, 380, 0.3)
+        cutscene:slideTo(susie, 540 + 30, 380, 0.3)
+        cutscene:panTo(540, 380, 0.25)
+        cutscene:wait(1)
+
+        cutscene:text("* What the?!", "angry_b", "susie")
+        if kris then
+            cutscene:text("* Look,[wait:0.1s] Kris![wait:0.3s]\n* It's another time vortex!", "angry_b", "susie")
+            cutscene:text("* We have to go down there NOW!", "angry", "susie")
+        else
+            if Game:hasPartyMember("YOU") then
+                cutscene:text("* Look,[wait:0.1s] Kr-[wait:0.1s]YOU![wait:0.3s]\n* It's a time vortex!", "angry_b", "susie")
+
+                cutscene:choicer({"What the hell\nis that", "oh"})
+                cutscene:text("* Oh,[wait:0.1s] right.[wait:0.3s] You don't know what that is.", "annoyed_down", "susie")
+            else
+                cutscene:text("* Look![wait:0.3s]\n* It's a time vortex!", "angry_b", "susie")
+            end
+
+            if bor then
+                cutscene:text("* Okay,[wait:0.1s] so.[wait:0.3s] Basically, a time vortex is-[next]", "annoyed_down", "susie")
+
+                cutscene:text("* missing light reference", "pog", "bor")
+
+                cutscene:text("* What?", "neutral", "susie")
+
+                cutscene:text("* deltarun missing light reference", "pog", "bor")
+
+                susie:setSprite("angry_down")
+                cutscene:text("* Dude,[wait:0.1s] what the actual HELL is a \"missing light\"?!", "teeth", "susie")
+                susie:resetSprite()
+
+                cutscene:text("* My world", "smug", "bor")
+
+                cutscene:text("* Oh,[wait:0.1s] so that's where you weirdos come from.", "annoyed", "susie")
+
+                cutscene:text("* No you fucking buffoon", "question", "bor")
+                cutscene:text("* Just caus i MADE a place doesnt mean i LIVE in it.", "question", "bor")
+
+                susie:setSprite("angry_down")
+                cutscene:text("* Oh my god...", "teeth_b", "susie")
+                susie:resetSprite()
+
+                cutscene:text("* k so basically vortexes are things", "happy", "bor")
+                cutscene:text("* things that our good friends,", "happy", "bor")
+                cutscene:text("* Krispy, Barney and Frisbee Undertail,", "happy", "bor")
+                cutscene:text("* have to go through,", "happy", "bor")
+                cutscene:text("* so that they can save the entire plane of existence from a silly billy Krispy commited when going edgy-mode[next]", "happy", "bor")
+
+                cutscene:text("* Okay that's enough.", "teeth_b", "susie")
+                cutscene:text("* But basically,[wait:0.1s] we have to go down there NOW!", "angry", "susie")
+
+                cutscene:text("* alr bluddies keep me outta this", "troll", "bor")
+
+                susie:setSprite("angry_down")
+                cutscene:text("* YES YOU STAY HERE YOU FORSAKEN BLOB OF SILLY PUTTY!", "teeth", "susie")
+
+                cutscene:text("* jeez lady, \"chill\" out.", "smug", "bor")
+
+                cutscene:text("* I AM DONE TALKING TO YOU!!", "teeth", "susie")
+                susie:resetSprite()
+            else
+                cutscene:text("* Okay,[wait:0.1s] so.[wait:0.3s] Basically, a time vortex is,[wait:0.1s] uh...", "neutral_side", "susie")
+                cutscene:text("* Some kind of opening in the fabric of time and space,[wait:0.1s] or something.", "nervous_side", "susie")
+                cutscene:text("* But basically we have to go down there NOW!", "angry", "susie")
+            end
+        end
+
+        for _,member in pairs(Game.party) do
+            if member.id ~= "YOU" and member.id ~= "susie" then
+                Game:removePartyMember(member.id)
+            end
+        end
+
+        cutscene:gotoCutscene("TimeVortexCutscene", "roombor")
+    end
 }
