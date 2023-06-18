@@ -35,7 +35,6 @@ function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
 
     if new_file then
-        -- FUN Value
         self:rollFun()
     end
 
@@ -159,5 +158,11 @@ function Mod:onMapMusic(map, music)
         return ""
     elseif Game:getFlag("weird") and music == "deltarune/cybercity" then
         return "deltarune/cybercity_alt"
+    end
+end
+
+function Mod:loadObject(world, name, properties)
+    if name:lower() == "vapor_bg" then
+        return VaporBG(properties["mountains"])
     end
 end
