@@ -3,11 +3,8 @@ local Dogcheck, super = Class(Map)
 function Dogcheck:onEnter()
     super.onEnter(self)
 
-    Game.world:addChild(DogCheck())
-    Game.world:startCutscene(function(cutscene)
-        -- Trap the player
-        cutscene:wait(function() return false end)
-    end)
+    Game.world:spawnObject(DogCheck(), "objects")
+    Game.lock_movement = true
 end
 
 return Dogcheck
