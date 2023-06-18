@@ -16,6 +16,9 @@ function DogCheck:init()
     self:addChild(self.timer)
     -- Undertale does this
     self.start_wait_handle = self.timer:after(5/30, function() self:start() end)
+
+	self.month = tonumber(os.date("%m"))
+    self.day = tonumber(os.date("%d"))
 end
 
 function DogCheck:start()
@@ -42,7 +45,14 @@ function DogCheck:start()
         Game.world.music:play(path, 0.8, self.song_pitch)
     end
 
-	self.variant = Utils.pick({"dance", "sleep", "maracas"})
+    if self.month >= 6 and self.month <= 8 then
+        self.variant = Utils.pick({"summer"})
+    elseif self.month == 12 then
+        self.variant = Utils.pick({"xmas"})
+    else
+        self.variant = Utils.pick({"dance", "sleep", "maracas"})
+    end
+
     if self.variant == "dance" then
         createDog("objects/dogcheck/dog_dance", 0.2)
         playSong("dance_of_dog", 0.95, 1.05)
@@ -54,6 +64,12 @@ function DogCheck:start()
     elseif self.variant == "maracas" then
         createDog("objects/dogcheck/dog_maracas", 0.1, 20, -20)
         playSong("baci_perugina2")
+    elseif self.variant == "summer" then
+        createDog("objects/dogcheck/dog_summer", 0.8)
+        playSong("options_summer")
+    elseif self.variant == "xmas" then
+        createDog("objects/dogcheck/dog_winter", 0.8, 0, -10)
+        playSong("options_winter")
     end
 end
 
