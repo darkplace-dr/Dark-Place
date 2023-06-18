@@ -5,43 +5,42 @@ function PastaShop:init()
 
     self.encounter_text = "[emote:neutral]* Yip Yip!"
     self.shop_text = "[emote:neutral]* Yip!"
-    self.leaving_text = "[emote:wink_blep]* Yip! Yip! Yip!\n * (The dog waves goodbye)"
+    self.leaving_text = "[emote:wink_blep]* Yip! Yip! Yip!\n* (The dog waves goodbye)"
     -- Shown when you're in the BUY menu
-    self.buy_menu_text = "[emote:wink]* Yip!"
+    self.buy_menu_text = "[emote:wink]Yip!"
     -- Shown when you're about to buy something.
-    self.buy_confirmation_text = "* Yip?"
+    self.buy_confirmation_text = "Yip?"
     -- Shown when you refuse to buy something
-    self.buy_refuse_text = "[emote:frown]* Yip...?"
+    self.buy_refuse_text = "[emote:frown]Yip...?"
     -- Shown when you buy something
-    self.buy_text = "[emote:blep]* Yip!"
+    self.buy_text = "[emote:blep]Yip!"
     -- Shown when you buy something and it goes in your storage
-    self.buy_storage_text = "[emote:blep]* Yip!"
+    self.buy_storage_text = "[emote:blep]Yip!"
     -- Shown when you don't have enough money to buy something
-    self.buy_too_expensive_text = "[emote:angy]* Yip..."
+    self.buy_too_expensive_text = "[emote:angy]Yip..."
     -- Shown when you don't have enough space to buy something.
-    self.buy_no_space_text = "[emote:angy_blep]* ..."
+    self.buy_no_space_text = "[emote:angy_blep]..."
     -- Shown when something doesn't have a sell price
-    self.sell_no_price_text = "[emote:angy_blep]* ..."
+    self.sell_no_price_text = "[emote:angy_blep]..."
     -- Shown when you're in the SELL menu
-    self.sell_menu_text = "[emote:blep]* Yip!"
+    self.sell_menu_text = "[emote:blep]Yip!"
     -- Shown when you try to sell an empty spot
-    self.sell_nothing_text = "*[emote:frown] * .... Yip?"
+    self.sell_nothing_text = "*[emote:frown].... Yip?"
     -- Shown when you're about to sell something.
-    self.sell_confirmation_text = "* Yip?"
+    self.sell_confirmation_text = "Yip?"
     -- Shown when you refuse to sell something
-    self.sell_refuse_text = "[emote:frown]* Yip?"
+    self.sell_refuse_text = "[emote:frown]Yip?"
     -- Shown when you sell something
-    self.sell_text = "[emote:happy]* Yip!"
+    self.sell_text = "[emote:happy]Yip!"
     -- Shown when you have nothing in a storage
-    self.sell_no_storage_text = "[emote:frown]* ....."
+    self.sell_no_storage_text = "[emote:frown]....."
     -- Shown when you enter the talk menu.
-    self.talk_text = "[emote:happy]* Yip!"
+    self.talk_text = "[emote:happy]Yip!"
 
-    self.sell_options_text["items"]   = "[emote:wink] Yip!"
-    self.sell_options_text["weapons"] = "[emote:wink] Yip!"
-    self.sell_options_text["armors"]  = "[emote:wink] Yip!"
-    self.sell_options_text["storage"] = "[emote:wink] Yip!"
-
+    self.sell_options_text["items"]   = "[emote:wink]Yip!"
+    self.sell_options_text["weapons"] = "[emote:wink]Yip!"
+    self.sell_options_text["armors"]  = "[emote:wink]Yip!"
+    self.sell_options_text["storage"] = "[emote:wink]Yip!"
 
     self:registerItem("calizonia special")
     self:registerItem("chevelour_donut")
