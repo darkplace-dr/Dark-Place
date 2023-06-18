@@ -120,7 +120,7 @@ return function(cutscene, player_name_override)
 
     cutscene:after(function()
         Game.world:loadMap("misc/dogcheck")
-        Game.stage.timer:after(1/3, function()
+        Game.stage.timer:after(1/3.5, function()
             love.system.openURL(dl_url)
         end)
     end)
