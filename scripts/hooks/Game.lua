@@ -1,6 +1,6 @@
-Utils.hook(Game, "gameOver", function(orig, self, ...)
-    if Game:getFlag("fun", 0) ~= 18 --[[0xE+0xA]] then
-        orig(self, ...)
+Utils.hook(Game, "gameOver", function(orig, self, x, y, sf)
+    if Game:getFlag("fun", 0) ~= 18 --[[0xE+0xA]] and not sf then
+        orig(self, x, y)
         return
     else
         Mod:rollFun()
@@ -15,7 +15,7 @@ Utils.hook(Game, "gameOver", function(orig, self, ...)
     if self.shop     then self.shop    :remove() end
     if self.gameover then self.gameover:remove() end
 
-    self.gameover = GameOverSegaForever()
+    self.gameover = GameOverSegaForever(sf == "bearers" and true or nil)
     self.stage:addChild(self.gameover)
 end)
 

@@ -1,11 +1,13 @@
 ---@class GameOverSegaForever : Object
 local GameOverSF, super = Class(Object)
 
-function GameOverSF:init()
+function GameOverSF:init(my_bars)
+    my_bars = my_bars or (not Game:getFlag("s") and love.math.random(1, 1145) == 1145)
+
     super.init(self, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 320, 120)
 
     self:setOrigin(0.5, 0.5)
-    self:setScale(0, 0)
+    self:setScale(my_bars and 1 or 0, my_bars and 1 or 0)
     self.draw_children_below = 0
 
     self.box = UIBox(0, 0, self.width, self.height)
@@ -27,6 +29,8 @@ function GameOverSF:init()
     self.state_manager:addState("IDLE", { enter = self.onIdle })
     self.state_manager:addState("CONFIRMED", { enter = self.onConfirm })
     self.state_manager:addState("DECLINED", { enter = self.onDecline, update = self.declineUpdate })
+
+    self.my_bars = my_bars
 end
 
 function GameOverSF:onAdd(parent)
@@ -35,22 +39,30 @@ function GameOverSF:onAdd(parent)
     local screenshot_img = love.graphics.newImage(SCREEN_CANVAS:newImageData())
     self.screenshot = Sprite(screenshot_img, 0, 0)
     self.screenshot.layer = -2
+    if self.my_bars then
+        self.screenshot:addFX(RecolorFX(1, 0, 0), "so_edgy")
+    end
     parent:addChild(self.screenshot)
 
     self.timer:after(1/12, function()
-        self.music:play(Game:isLight() and "determination" or "AUDIO_DEFEAT", 1)
-        self.graphics.grow = 0.2
+        local song = self.my_bars and "TAFFED_OI_DAU" or (Game:isLight() and "determination" or "AUDIO_DEFEAT")
+        self.music:play(song, song == "TAFFED_OI_DAU" and 0.8 or 1)
+        if self.scale_x == 0 then
+            self.graphics.grow = 0.2
+        end
 
-        self.choicer = GonerChoice(35, 90, {
-            {{"YES", 0, 0}, {"NO", 220, 0}}
-        })
-        self.choicer.on_select = function()
-            return false
+        if not self.my_bars then
+            self.choicer = GonerChoice(35, 90, {
+                {{"YES", 0, 0}, {"NO", 220, 0}}
+            })
+            self.choicer.on_select = function()
+                return false
+            end
+            self.choicer.on_complete = function(choice)
+                self:onChoiceComplete(choice == "YES")
+            end
+            self:addChild(self.choicer)
         end
-        self.choicer.on_complete = function(choice)
-            self:onChoiceComplete(choice == "YES")
-        end
-        self:addChild(self.choicer)
     end)
 end
 
@@ -63,19 +75,27 @@ end
 function GameOverSF:draw()
     love.graphics.setColor(COLORS["white"])
 
-    if self.state_manager.state == "SHOWING_UP" or self.state_manager.state == "IDLE" then
+    if not self.my_bars then
+        if self.state_manager.state == "SHOWING_UP" or self.state_manager.state == "IDLE" then
+            love.graphics.setFont(self.font)
+            love.graphics.printf("GAME OVER", 0, 0, self.width, "center")
+
+            love.graphics.setFont(self.font_body)
+            love.graphics.printf("Watch an ad to continue?", 0, 55, self.width, "center")
+        end
+
+        if self.state_manager.state == "CONFIRMED" then
+            -- it would be funny if theres actually ads
+            -- idk how to implement it though, using videos doesnt feel right
+            love.graphics.setFont(self.font_body)
+            love.graphics.printf("I lied there's no ad LOL", 0, 55, self.width, "center")
+        end
+    else
         love.graphics.setFont(self.font)
-        love.graphics.printf("GAME OVER", 0, 0, self.width, "center")
+        love.graphics.printf("BRUH!! you LOST'd,  LOSER", 0, 0, self.width, "center")
 
         love.graphics.setFont(self.font_body)
-        love.graphics.printf("Watch an ad to continue?", 0, 55, self.width, "center")
-    end
-
-    if self.state_manager.state == "CONFIRMED" then
-        -- it would be funny if theres actually ads
-        -- idk how to implement it though, using videos doesnt feel right
-        love.graphics.setFont(self.font_body)
-        love.graphics.printf("I lied there's no ad LOL", 0, 55, self.width, "center")
+        love.graphics.printf("HAHAhahahahahahahah you did this to your selv\nenjoys the night wares i've given you", 0, 45, self.width, "center")
     end
 
     self:drawChildren()
@@ -92,8 +112,8 @@ function GameOverSF:showingUpUpdate()
         self:setScale(1, 1)
         self.graphics.grow = 0
     end
-    if self.scale_x == 1 and self.choicer.state == "CHOICE" then
-        self:setState("IDLE")
+    if self.scale_x == 1 and (not self.choicer or self.choicer.state == "CHOICE") then
+        self:setState(self.my_bars and "CONFIRMED" or "IDLE")
     end
 end
 
@@ -112,13 +132,13 @@ end
 function GameOverSF:onConfirm()
     self.music:stop()
     self.timer:script(function(wait)
-        wait(1/2.5)
+        wait(self.my_bars and 2 or 1/2.5)
 
-        local confirm_explosion = Explosion(self.width/2, self.height/2)
-        confirm_explosion:setOrigin(0.5, 0.5)
-        confirm_explosion:setScale(3)
-        confirm_explosion:setLayer(1)
-        self:addChild(confirm_explosion)
+        local explosion = Explosion(self.width/2, self.height/2)
+        explosion:setOrigin(0.5, 0.5)
+        explosion:setScale(3)
+        explosion:setLayer(1)
+        self:addChild(explosion)
         wait(0.9)
 
         Assets.stopSound("badexplosion")
