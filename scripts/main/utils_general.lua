@@ -6,6 +6,10 @@ function Mod:registerShaders()
     end
 end
 
+if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" then
+    require("lldebugger").start()
+end
+
 ---@alias PrintHelperMsgLevels
 ---| "log"
 ---| "warn"
@@ -52,6 +56,7 @@ function Mod:trace(msg, msg_level, stack_level)
         if ok then
             src = src_n
         else
+            -- FIXME: unreliable
             src = "[kristal]/" .. src
         end
     end
@@ -62,6 +67,18 @@ function Mod:trace(msg, msg_level, stack_level)
     msg = msg_prefix .. msg
 
     Mod:print(msg, msg_level)
+end
+
+function Mod:breakpoint()
+    if package.loaded["lldebugger"] then
+        lldebugger.requestBreak()
+    end
+end
+
+function Mod:stopDebugger()
+    if package.loaded["lldebugger"] then
+        lldebugger.stop()
+    end
 end
 
 --- Returns the current party leader's PartyMember, Actor, ActorSprite or Character object

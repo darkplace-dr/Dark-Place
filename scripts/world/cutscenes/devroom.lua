@@ -554,7 +554,8 @@ return {
             end
 		end
     end,
+    ---@param cutscene WorldCutscene
     shadowshop = function(cutscene, event)
-        Game:enterShop("shadowsalesman")
+        Game.world:shopTransition("shadowsalesman")
     end,
 }

@@ -11,6 +11,8 @@ function actor:init()
     self.path = "shopkeepers/shadow_salesman"
     self.default = "idle"
 
+    self.voice = "shadowsalesman"
+
     self.animations = {
         ["idle"] = {"idle", function(sprite, wait)
             while true do

@@ -95,6 +95,8 @@ function Mod:unload()
         Mod:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
     end
+
+    Mod:stopDebugger()
 end
 
 function Mod:save(data)

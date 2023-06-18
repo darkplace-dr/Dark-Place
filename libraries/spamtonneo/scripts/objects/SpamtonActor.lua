@@ -39,7 +39,7 @@ function Spamton:init(actor)
     self.wing_r.layer = 5
     self:addChild(self.wing_r)
 
-    self.head = SpamtonHead(12, 1)
+    self.head = SpamtonPartHead(12, 1)
     self.head.id = "head"
     self.head.layer = 1
     self:addChild(self.head)

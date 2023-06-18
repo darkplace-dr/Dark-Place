@@ -122,11 +122,11 @@
     <property name="text1" value="* There appears to be some advertisements for codes here."/>
     <property name="text2" value="* (Go to the code &quot;[color:yellow]SPAM[color:pink]ROOM[color:reset]&quot;! It's where all the [BIG SHOT]s are!)"/>
     <property name="text3" value="* (yo whaddup. go to &quot;[color:red]DESSHERE[color:reset]&quot;.)"/>
-    <property name="text4">* (Want to fight bosses you've prevously fought?[wait:10]
+    <property name="text4">* (Want to fight bosses you've previously fought?[wait:10]
 Go to &quot;[color:yellow]BOSSRUSH[color:reset]&quot;!)</property>
     <property name="text5" value="* (Want to meet the devs of this game? Check out &quot;[color:blue]DEVDINER[color:reset]&quot;!)"/>
     <property name="text6" value="* (Do you have horrible internet? Visit &quot;[color:black]WIFIDOWN[color:reset]&quot; now to resolve all of your network troubles!)"/>
-    <property name="text7" value="* (Squeak Squeak! All the Maus are in &quot;[color:maroon]MAUSHOLE[color:reset]&quot;!),"/>
+    <property name="text7" value="* (Squeak Squeak! All the Maus are in &quot;[color:maroon]MAUSHOLE[color:reset]&quot;!)"/>
     <property name="text8" value="* It looks like until someone posts another ad,[wait:10] that's all there is here."/>
    </properties>
   </object>
