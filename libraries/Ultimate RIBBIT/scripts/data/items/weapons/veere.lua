@@ -1,10 +1,10 @@
-local item, super = Class(Item, "vee")
+local item, super = Class(Item, "veere")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Vee"
+    self.name = "VeeRe"
 
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
@@ -16,12 +16,12 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "A six-string acoustic, faithful soother of\nsouls. Found lying on the ground."
+    self.description = "This upgraded guitar slows the enemy's time on\nimpact, so that they savor each moment of pain."
 
     -- Default shop price (sell price is halved)
-    self.price = 69
+    self.price = 200
     -- Whether the item can be sold
-    self.can_sell = false
+    self.can_sell = true
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "none"
@@ -34,11 +34,11 @@ function item:init()
 
     -- Equip bonuses (for weapons and armor)
     self.bonuses = {
-        attack = 0,
+        attack = 2,
     }
     -- Bonus name and icon (displayed in equip menu)
-    self.bonus_name = nil
-    self.bonus_icon = nil
+    self.bonus_name = "ItsJustFlavaTxt"
+    self.bonus_icon = "ui/menu/icon/up"
 
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
@@ -48,12 +48,12 @@ function item:init()
 
     -- Character reactions
     self.reactions = {
-        robo_susie = "*lick* Interesting taste.",
-        noyno = "Oh, sick, play Wonderwall",
-        susie = "(Hey, I'm no musician!)",
-        noelle = "(I, um... Am I supposed to hit people with this?)",
-        dess = "Who the FUCK do you think i am, jimmy music????'?",
-        ralsei = "(W-Wow! Can you play any songs?)",
+        robo_susie = "Keep it. It looks good on you.",
+        noyno = "Is this thing even real?",
+        susie = "(You're not getting me to touch that.)",
+        noelle = "(What's... this for?)",
+        dess = "Wwowow hahah real as fuck righyt guys? NO",
+        ralsei = "(W-Wow! Can you play any... songs?? Or literally anything?)",
     }
 end
 
