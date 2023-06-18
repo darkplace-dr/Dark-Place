@@ -63,7 +63,7 @@ function actor:preSpriteUpdate(sprite)
     end
 
     local retd_bak = self.blankie_returned
-    self.blankie_returned = retd_bak
+    self.blankie_returned = Game:getFlag("blankie_returned")
     if self.blankie_returned ~= retd_bak then
         local reset_sprite = self.night and sprite.sprite == self:getDefault()
         self.default_night = self.blankie_returned and "blankie" or "idle"
