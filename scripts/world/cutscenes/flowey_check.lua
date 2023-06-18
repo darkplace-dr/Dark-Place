@@ -38,10 +38,6 @@ return function(cutscene, player_name_override)
         cutscene:text(text)
     end
 
-    -- FIXME
-    flowey:setAnimation("laugh")
-    Assets.playSound("floweylaugh")
-    cutscene:wait(4)
     cutscene:showNametag("Flowey")
     showText("* Uh...[wait:5] Howdy.")
     cutscene:hideNametag()

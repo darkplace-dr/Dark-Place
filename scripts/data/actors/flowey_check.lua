@@ -28,7 +28,7 @@ function actor:init()
 
     -- Table of sprite animations
     self.animations = {
-        ["laugh"] = {"laugh", 0.05},
+        ["laugh"] = {"laugh", 0.05, true},
         ["rise"] = {"rise", 0.05, next="nice"},
         ["rise_plain"] = {"rise_plain", 0.05, next="plain"},
         ["rise_reverse"] = {"rise_reverse", 0.05, false}
