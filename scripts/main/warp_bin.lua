@@ -16,7 +16,7 @@
 -- I'm going to cause pain and suffering with one weird trick:
 -- here's the table containing any and all warp codes for the 
 -- warp bin.
--- have fun :]   -Char                 (well its NOT that bad) \
+-- have fun :]   -Char                 (well its NOT that bad)
 -- to add new codes you'd add new entries of "type" WarpBinCodeInfo to the table below.
 -- If you have sumneko's Lua LS you should be able to get nice annonations
 ---@type table<WarpBinCode, WarpBinCodeInfo>
