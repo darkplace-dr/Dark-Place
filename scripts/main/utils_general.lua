@@ -71,7 +71,7 @@ end
 
 function Mod:startDebugger()
     if package.loaded["lldebugger"] then
-        lldebugger.start(false)
+        lldebugger.start()
     end
 end
 
