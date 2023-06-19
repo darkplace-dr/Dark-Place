@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="omori-objects" tilewidth="31" tileheight="725" tilecount="7" columns="0">
+<tileset version="1.9" tiledversion="1.9.0" name="omori-objects" tilewidth="31" tileheight="725" tilecount="9" columns="0">
  <editorsettings>
   <export target="omori-objects.lua" format="lua"/>
  </editorsettings>
@@ -33,5 +33,11 @@
  </tile>
  <tile id="6">
   <image width="15" height="725" source="../../../assets/sprites/objects/lightbulb2.png"/>
+ </tile>
+ <tile id="7">
+  <image width="15" height="19" source="../../../assets/sprites/objects/bs_sketchbook.png"/>
+ </tile>
+ <tile id="8">
+  <image width="22" height="21" source="../../../assets/sprites/objects/bs_tissuebox.png"/>
  </tile>
 </tileset>
