@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 16,
-  nextobjectid = 113,
+  nextobjectid = 115,
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -26,8 +26,7 @@ return {
     {
       name = "dw_city_alley",
       firstgid = 99,
-      filename = "../../tilesets/dw_city_alley.tsx",
-      exportfilename = "../../tilesets/dw_city_alley.tsx"
+      filename = "../../tilesets/dw_city_alley.tsx"
     },
     {
       name = "city_alleyway",
@@ -265,8 +264,8 @@ return {
           name = "transition",
           type = "",
           shape = "rectangle",
-          x = -40,
-          y = 240,
+          x = -80,
+          y = 80,
           width = 40,
           height = 120,
           rotation = 0,
@@ -275,6 +274,25 @@ return {
             ["facing"] = "left",
             ["map"] = "castletocity",
             ["marker"] = "city"
+          }
+        },
+        {
+          id = 114,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = -40,
+          y = 240,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solid"] = true,
+            ["text1"] = "* (It looks like you can't go over here yet.)",
+            ["text2"] = "* (So whoever is reading this, don't put the transition back...)",
+            ["text3"] = "* (I mean if it's literally offscreen it's got to have a reason, am I right??)",
+            ["text4"] = "* (Signed, undertaled#0.)"
           }
         },
         {
