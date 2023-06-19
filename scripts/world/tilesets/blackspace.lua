@@ -8,10 +8,10 @@ return {
   tileheight = 40,
   spacing = 0,
   margin = 0,
-  columns = 3,
+  columns = 6,
   image = "../../../assets/sprites/tilesets/blackspace.png",
-  imagewidth = 120,
-  imageheight = 120,
+  imagewidth = 240,
+  imageheight = 200,
   objectalignment = "unspecified",
   tilerendersize = "tile",
   fillmode = "stretch",
@@ -26,6 +26,6 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 9,
+  tilecount = 30,
   tiles = {}
 }

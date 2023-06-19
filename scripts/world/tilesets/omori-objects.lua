@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   name = "objects",
   class = "",
   tilewidth = 31,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 7,
+  tilecount = 9,
   tiles = {
     {
       id = 0,
@@ -90,6 +90,18 @@ return {
       image = "../../../assets/sprites/objects/lightbulb2.png",
       width = 15,
       height = 725
+    },
+    {
+      id = 7,
+      image = "../../../assets/sprites/objects/bs_sketchbook.png",
+      width = 15,
+      height = 19
+    },
+    {
+      id = 8,
+      image = "../../../assets/sprites/objects/bs_tissuebox.png",
+      width = 22,
+      height = 21
     }
   }
 }

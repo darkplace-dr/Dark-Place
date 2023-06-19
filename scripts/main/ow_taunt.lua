@@ -41,16 +41,18 @@ function Mod:updateTaunt()
             local sprites = chara.actor.getTauntSprites and chara.actor:getTauntSprites() or chara.actor.taunt_sprites
             if not sprites or #sprites <= 0 then goto continue end
 
+            local charax1, charay1 = chara:getRelativePos(chara.width/2, chara.height/2)
+
             -- the shine effect
-            local effect = Sprite("effects/taunteffect", 10, 15)
-            effect:setOrigin(0.5)
-            effect:setScale(0.5)
-            effect.layer = -1
+            local effect = Sprite("effects/taunteffect", charax1, charay1)
+            effect:setOrigin(0.5, 0.5)
+            effect:setScale(1)
+            effect.layer = chara.layer - 0.1
             effect:play(0.02, false, function()
                 effect:remove()
                 chara:resetSprite()
             end)
-            chara:addChild(effect)
+            Game.world:addChild(effect)
             chara.sprite:set(Utils.pick(sprites))
 
             ::continue::
