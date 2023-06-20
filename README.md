@@ -60,7 +60,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * RhenaudTheLukark - Original author for Unitale/Create Your Frisk/Create Your Kris
 * STD Repaints - Original author for Deltarune Repainted
 * RynoGG - Original author for Deltatraveler
-* atliylol - Original author for MOBDT
+* Team Inundation - Original authors for MOBDT
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 * MrkySpices - Deltarune-styled Backrooms tileset
 * FireStar8903 - Made music for the Pasta Pack Shop
