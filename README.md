@@ -52,7 +52,6 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Sam Deluxe#0057 - X-Slash code
 * KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
-* The Winterer - Original author for Deltarune: Chapter Rewritten
 * Brylee - Original author for Deltarune: Ozymandias, dialogue portraits for Rook
 * Mr. Luwigi - Rook, DZ & NG sprites
 * FireRainV#1958 - MoreParty Library
