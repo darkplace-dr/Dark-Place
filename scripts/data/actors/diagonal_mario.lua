@@ -7,11 +7,11 @@ function actor:init()
     self.name = "Diagonal Mario"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 15
-    self.height = 30
+    self.width = 21
+    self.height = 21
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {0, 0, 15, 30}
+    self.hitbox = {0, 0, 21, 21}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {1, 1, 0}
