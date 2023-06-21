@@ -32,6 +32,7 @@ function WarpBinInputMenu:init()
         enter_submits = true,
         text_restriction = function(c)
             if utf8.len(self.input[1]) == self.code_len then return end
+            if c == " " then return end
             return c:upper()
         end
     })
