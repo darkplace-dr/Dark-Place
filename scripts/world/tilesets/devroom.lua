@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   name = "devroom",
   class = "",
   tilewidth = 40,
@@ -11,7 +11,7 @@ return {
   columns = 6,
   image = "../../../assets/sprites/tilesets/devroom.png",
   imagewidth = 278,
-  imageheight = 240,
+  imageheight = 480,
   objectalignment = "unspecified",
   tilerendersize = "tile",
   fillmode = "stretch",
@@ -26,6 +26,6 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 36,
+  tilecount = 72,
   tiles = {}
 }
