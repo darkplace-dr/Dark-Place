@@ -1,17 +1,17 @@
-local spell, super = Class(Spell, "flame_buster")
+local spell, super = Class(Spell, "red_buster")
 
 function spell:init()
     super.init(self)
 
     -- Display name
-    self.name = "Flame Buster"
+    self.name = "Red Buster"
     -- Name displayed when cast (optional)
     self.cast_name = nil
 
     -- Battle description
-    self.effect = "Fire\nDamage"
+    self.effect = "Red\nDamage"
     -- Menu description
-    self.description = "Deals draconic Fire-elemental damage to\none foe. Depends on Attack & Magic."
+    self.description = "Deals large Red-elemental damage to\none foe. Depends on Attack & Magic."
 
     -- TP cost
     self.cost = 60
@@ -20,19 +20,11 @@ function spell:init()
     self.target = "enemy"
 
     -- Tags that apply to this spell
-    self.tags = {"fire", "damage"}
+    self.tags = {"rude", "damage"}
 end
 
 function spell:getCastMessage(user, target)
     return "* "..user.chara:getName().." used "..self:getCastName().."!"
-end
-
-function spell:getTPCost(chara)
-    local cost = super.getTPCost(self, chara)
-    if chara and chara:checkWeapon("devilsknife") then
-        cost = cost - 10
-    end
-    return cost
 end
 
 function spell:onCast(user, target)
@@ -52,7 +44,7 @@ function spell:onCast(user, target)
         Assets.playSound("rudebuster_swing")
         local x, y = user:getRelativePos(user.width, user.height/2 - 10, Game.battle)
         local tx, ty = target:getRelativePos(target.width/2, target.height/2, Game.battle)
-        local blast = RudeBusterBeam(false, x, y, tx, ty, function(pressed)
+        local blast = RudeBusterBeam(true, x, y, tx, ty, function(pressed)
             local damage = math.ceil((user.chara:getStat("magic") * 6) + (user.chara:getStat("attack") * 13) - (target.defense * 6)) + 90
             if pressed then
                 damage = damage + 30

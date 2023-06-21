@@ -1,26 +1,26 @@
-local spell, super = Class(Spell, "flame_buster")
+local spell, super = Class(Spell, "rude_buster")
 
 function spell:init()
     super.init(self)
 
     -- Display name
-    self.name = "Flame Buster"
+    self.name = "Rude Buster"
     -- Name displayed when cast (optional)
     self.cast_name = nil
 
     -- Battle description
-    self.effect = "Fire\nDamage"
+    self.effect = "Rude\nDamage"
     -- Menu description
-    self.description = "Deals draconic Fire-elemental damage to\none foe. Depends on Attack & Magic."
+    self.description = "Deals moderate Rude-elemental damage to\none foe. Depends on Attack & Magic."
 
     -- TP cost
-    self.cost = 60
+    self.cost = 50
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "enemy"
 
     -- Tags that apply to this spell
-    self.tags = {"fire", "damage"}
+    self.tags = {"rude", "damage"}
 end
 
 function spell:getCastMessage(user, target)
@@ -53,7 +53,7 @@ function spell:onCast(user, target)
         local x, y = user:getRelativePos(user.width, user.height/2 - 10, Game.battle)
         local tx, ty = target:getRelativePos(target.width/2, target.height/2, Game.battle)
         local blast = RudeBusterBeam(false, x, y, tx, ty, function(pressed)
-            local damage = math.ceil((user.chara:getStat("magic") * 6) + (user.chara:getStat("attack") * 13) - (target.defense * 6)) + 90
+            local damage = math.ceil((user.chara:getStat("magic") * 5) + (user.chara:getStat("attack") * 11) - (target.defense * 3))
             if pressed then
                 damage = damage + 30
                 Assets.playSound("scytheburst")
@@ -63,8 +63,7 @@ function spell:onCast(user, target)
                     damage = damage * 2
                 end
             end
-            local flash = target:flash()
-            flash.color_mask:setColor(1, 0, 0)
+            target:flash()
             target:hurt(damage, user)
             buster_finished = true
             if anim_finished then
