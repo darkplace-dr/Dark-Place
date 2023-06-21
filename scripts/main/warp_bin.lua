@@ -2,7 +2,7 @@
 -- god I am so sorry for how shitty this code is
 
 --- The thing you put in the Warp Bin to warp to places \
---- must be 8 characters long and be in lower case
+--- must be 8 characters long and be in upper case
 ---@alias WarpBinCode string
 
 --- defines the behavior of a Warp Bin code
@@ -22,9 +22,9 @@
 ---@type table<WarpBinCode, WarpBinCodeInfo>
 Mod.warp_bin_codes = {
     ["00000000"] = { result = "warphub" },
-    ["spamroom"] = { result = "spamroom" },
-    ["desshere"] = { result = "dessstuff/dessstart" },
-    ["wtf1998s"] = {
+    ["SPAMROOM"] = { result = "spamroom" },
+    ["DESSHERE"] = { result = "dessstuff/dessstart" },
+    ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
             Mod:addBinCode("sppispod", function(cutscene2)
@@ -36,12 +36,12 @@ Mod.warp_bin_codes = {
             end)
         end
     },
-    ["bossrush"] = { result = "thearena" },
-    ["devdiner"] = { result = "devstart" },
-    ["maushole"] = { result = "chevroom" },
-    ["wifidown"] = { result = "googlefield" },
-    ["uwforest"] = { result = "underworld_forest/uwforest_startbin" },
-    ["seaworld"] = { result = "underwater_temple/underwater_startbin" },
+    ["BOSSRUSH"] = { result = "thearena" },
+    ["DEVDINER"] = { result = "devstart" },
+    ["MAUSHOLE"] = { result = "chevroom" },
+    ["WIFIDOWN"] = { result = "googlefield" },
+    ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
+    ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
 }
 
 -- heres some new totally cool helper functions wowee
@@ -50,7 +50,9 @@ Mod.warp_bin_codes = {
 ---@param code WarpBinCode
 ---@return WarpBinCodeInfo info
 function Mod:getBinCode(code)
-    return Mod.warp_bin_codes[code:lower()]
+    code = code:upper()
+
+    return Mod.warp_bin_codes[code]
 end
 
 --- adds a code to the warp bin code table
@@ -60,13 +62,15 @@ end
 ---@param overwrite? boolean whether to overwrite existing entries or not
 ---@return boolean success false if the code already exists and overwrite is false. just in-case someone else steals your code before you get to use it.
 function Mod:addBinCode(code, result, marker, overwrite)
+    code = code:upper()
+
     if Mod:getBinCode(code) and not overwrite then
         -- whoops, no success
         return false
     end
 
     -- lmao
-    Mod.warp_bin_codes[code:lower()] = { result = result, marker = marker or "spawn" }
+    Mod.warp_bin_codes[code] = { result = result, marker = marker or "spawn" }
     return true
 end
 
@@ -74,7 +78,7 @@ end
 ---@param code WarpBinCode
 ---@return boolean success false if the code doesnt exist
 function Mod:deleteBinCode(code)
-    code = code:lower()
+    code = code:upper()
 
     if not Mod:getBinCode(code) then return false end
     Mod.warp_bin_codes[code] = nil
