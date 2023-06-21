@@ -16,12 +16,15 @@ function SoulAppearance:init(x, y)
     self.m = (self.height / 2)
     self.momentum = 0.5
 
-    Assets.playSound("AUDIO_APPEARANCE")
+    -- yes.
+    self.appearance_sound = Assets.newSound("ui_spooky_action")
+
+    Assets.playSound(self.appearance_sound)
     self:setColor(1, 0, 0, 1)
 end
 
 function SoulAppearance:hide()
-    Assets.playSound("AUDIO_APPEARANCE")
+    Assets.playSound(self.appearance_sound)
     self.t = self.t - 2
     self.momentum = -0.5
     if self.t <= -10 then
