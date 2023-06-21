@@ -2,6 +2,12 @@
 ---@overload fun(...) : _DarkConfigMenu
 local DarkConfigMenu, super = Class("DarkConfigMenu", true)
 
+function DarkConfigMenu:init()
+    super.init(self)
+
+    self.extras_substate = ""
+end
+
 function DarkConfigMenu:update()
     if self.state == "MAIN" then
         if Input.pressed("confirm") then
@@ -25,6 +31,7 @@ function DarkConfigMenu:update()
                 Game:returnToMenu()
             elseif self.currently_selected == 7 then
                 self.state = "EXTRAS"
+                self.extras_substate = ""
                 self.currently_selected = 1
             elseif self.currently_selected == 8 then
                 Game.world.menu:closeBox()
@@ -53,42 +60,85 @@ function DarkConfigMenu:update()
 
         self.currently_selected = Utils.clamp(self.currently_selected, 1, 8)
     elseif self.state == "EXTRAS" then
-        if Input.pressed("confirm") then
-            self.ui_select:stop()
-            self.ui_select:play()
+        if self.extras_substate == "BORDER" then
+            -- FIXME: if we write to Kristal.Config, we completely change the global setting,
+            -- so if we add our own borders to BORDER_TYPES and a user selects one,
+            -- it will cause the engine to load nonexistent borders outside of the mod,
+            -- fail and fallback to a potentially unwanted setting (off i think)
+            -- DON'T EDIT scripts/globals/BORDER_TYPES.lua to add new entries
+            -- until we figure out how to deal with this
 
-            if self.currently_selected == 1 then
-                Game.world:openMenu(AchievementsMenu())
-            elseif self.currently_selected == 2 then
-                Game:setFlag("AddiSwitchOn", not Game:getFlag("AddiSwitchOn", false))
-            elseif self.currently_selected == 3 then
-                self.state = "MAIN"
-                self.currently_selected = 1
+            if Input.pressed("cancel") or Input.pressed("confirm") then
+                self.extras_substate = ""
+                self.ui_select:stop()
+                self.ui_select:play()
+            end
+            local border_index = -1
+            for current_index, border in ipairs(BORDER_TYPES) do
+                if border[1] == Kristal.Config["borders"] then
+                    border_index = current_index
+                end
+            end
+            if border_index == -1 then
+                border_index = 1
+            end
+            local old_index = border_index
+            if Input.pressed("left") then
+                border_index = math.max(border_index - 1, 1)
+            end
+            if Input.pressed("right") then
+                border_index = math.min(border_index + 1, #BORDER_TYPES)
+            end
+            if old_index ~= border_index then
+                self.ui_move:stop()
+                self.ui_move:play()
+                Kristal.Config["borders"] = BORDER_TYPES[border_index][1]
+                if BORDER_TYPES[border_index][1] == "off" then
+                    Mod:resetWindow()
+                elseif BORDER_TYPES[old_index][1] == "off" then
+                    Mod:resetWindow()
+                end
+            end
+        else
+            if Input.pressed("confirm") then
+                self.ui_select:stop()
+                self.ui_select:play()
+
+                if self.currently_selected == 1 then
+                    Game.world:openMenu(AchievementsMenu())
+                elseif self.currently_selected == 2 then
+                    Game:setFlag("AddiSwitchOn", not Game:getFlag("AddiSwitchOn", false))
+                elseif self.currently_selected == 3 then
+                    self.extras_substate = "BORDER"
+                elseif self.currently_selected == 4 then
+                    self.state = "MAIN"
+                    self.currently_selected = 1
+                end
+
+                return
             end
 
-            return
-        end
+            if Input.pressed("cancel") then
+                self.ui_cancel_small:stop()
+                self.ui_cancel_small:play()
+                self.state = "MAIN"
+                self.currently_selected = 1
+                return
+            end
 
-        if Input.pressed("cancel") then
-            self.ui_cancel_small:stop()
-            self.ui_cancel_small:play()
-            self.state = "MAIN"
-            self.currently_selected = 1
-            return
-        end
+            if Input.pressed("up") then
+                self.currently_selected = self.currently_selected - 1
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
+            if Input.pressed("down") then
+                self.currently_selected = self.currently_selected + 1
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
 
-        if Input.pressed("up") then
-            self.currently_selected = self.currently_selected - 1
-            self.ui_move:stop()
-            self.ui_move:play()
+            self.currently_selected = Utils.clamp(self.currently_selected, 1, 4)
         end
-        if Input.pressed("down") then
-            self.currently_selected = self.currently_selected + 1
-            self.ui_move:stop()
-            self.ui_move:play()
-        end
-
-        self.currently_selected = Utils.clamp(self.currently_selected, 1, 3)
     elseif self.state == "VOLUME" then
         if Input.pressed("cancel") or Input.pressed("confirm") then
             Kristal.setVolume(Utils.round(Kristal.getVolume() * 100) / 100)
@@ -136,9 +186,11 @@ function DarkConfigMenu:draw()
 
         love.graphics.print("Achievements",    88, 38 + (0 * 32))
         love.graphics.print("AddiSwitch",      88, 38 + (1 * 32))
-        love.graphics.print("Back",            88, 38 + (2 * 32))
+        love.graphics.print("Border",          88, 38 + (2 * 32))
+        love.graphics.print("Back",            88, 38 + (3 * 32))
 
         love.graphics.print(Mod:addiSwitch() and "ON" or "OFF", 348, 38 + (1 * 32))
+        love.graphics.print(Kristal.getBorderName(),            348, 38 + (2 * 32))
 
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))
