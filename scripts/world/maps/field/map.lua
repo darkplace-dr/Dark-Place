@@ -29,9 +29,9 @@ function field:onEnter()
 		--"", -- I think we need this now more than ever, so here it is.
 	}
 
-	self.text_gen = Game.world.timer:every(2, function()
+	self.text_gen = Game.world.timer:every(2.5, function()
 		local text = Text(Utils.pick(self.hopes_and_dreams),
-			20, SCREEN_HEIGHT/2 - 40,
+			20, SCREEN_HEIGHT/2,
 			SCREEN_WIDTH - 40, SCREEN_HEIGHT,
 			{
 				align = "center"
@@ -39,8 +39,12 @@ function field:onEnter()
 		)
 		text:setParallax(0, 0)
 		text.physics.speed_y = -1
-		text.physics.friction = 0.005
-		text:fadeOutAndRemove(3)
+		text.physics.friction = 0.0005
+		text:addFX(OutlineFX(COLORS.black, {
+			thickness = 2,
+			amount = 4
+		}))
+		text:fadeOutAndRemove(5)
 		Game.world:spawnObject(text, "top") -- FIXME: below_ui ?
 	end)
 
