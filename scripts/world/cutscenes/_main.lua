@@ -33,11 +33,11 @@ return {
         local world_music = Game.world.music
         world_music:play("AUDIO_DRONE", 0.8)
 
-        local cover = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+        --[[local cover = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
         cover:setColor(COLORS["black"])
         cover:setParallax(0, 0)
         cover:setLayer(WORLD_LAYERS["below_ui"])
-        Game.world:addChild(cover)
+        Game.world:addChild(cover)]]
 
         cutscene:wait(2)
         gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
@@ -47,6 +47,7 @@ return {
         cutscene:wait(0.5)
 
         local soul = SoulAppearance(SCREEN_WIDTH / 2 - 25, SCREEN_HEIGHT / 2 + 20)
+        soul:setParallax(0, 0)
         soul.layer = WORLD_LAYERS["below_textbox"]
         --soul.alpha = 50
         --soul.graphics.fade = 0.01
