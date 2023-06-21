@@ -473,11 +473,10 @@ return {
         cutscene:text("* You opened the door...")
         cutscene:fadeOut(2, {color = {1, 1, 1}, music = true, blend = "add"})
         cutscene:wait(2)
-        Game.fader.fade_color = {1, 1, 1} -- overwrite default for mapTransition
         if Game.world.map.id == "room3" then
-            cutscene:mapTransition("whitespace", "entry")
+            cutscene:loadMap("whitespace", "entry")
         elseif Game.world.map.id == "whitespace" then
-            cutscene:mapTransition("room3", "exit_whitespace")
+            cutscene:loadMap("room3", "exit_whitespace")
         end
         cutscene:look("down")
         cutscene:wait(cutscene:fadeIn(2, {color = {1, 1, 1}}))
@@ -507,11 +506,10 @@ return {
         cutscene:text("* You opened the door...")
         cutscene:fadeOut(2, {color = {0, 0, 0}, music = true})
         cutscene:wait(2)
-        Game.fader.fade_color = {0, 0, 0} -- overwrite default for mapTransition
         if Game.world.map.id == "room3" then
-            cutscene:mapTransition("BlackSpace/blackspace_hub", "entry")
+            cutscene:loadMap("BlackSpace/blackspace_hub", "entry")
         elseif Game.world.map.id == "whitespace" then
-            cutscene:mapTransition("room3", "exit_whitespace")
+            cutscene:loadMap("room3", "exit_whitespace")
         end
         cutscene:look("down")
         cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}}))
