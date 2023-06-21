@@ -36,16 +36,12 @@ end
 
 function lib:getActionButtons(battler, buttons)
     if self.useUT2Buttons and battler.chara.id == "frisk2" then
-        Utils.removeFromTable(buttons, "fight")
-        Utils.removeFromTable(buttons, "magic")
-        Utils.removeFromTable(buttons, "spare")
-        Utils.removeFromTable(buttons, "defend")
-        Utils.removeFromTable(buttons, "item")
-        table.insert(buttons, FightButtonUT2())
-        table.insert(buttons, TalkButtonUT2())
-        table.insert(buttons, ActButtonUT2())
-        table.insert(buttons, "item")
-        return buttons
+        return {
+            FightButtonUT2(),
+            TalkButtonUT2(),
+            ActButtonUT2(),
+            "item"
+        }
     end
 end
 
