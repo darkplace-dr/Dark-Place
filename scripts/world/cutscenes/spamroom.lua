@@ -138,24 +138,22 @@ return {
     warpbin = function(cutscene, event)
         cutscene:text("* It's the warp bin.")
         cutscene:text("* Would you like to warp?[wait:10]\n* You only need the code.")
-		
+
 		if cutscene:choicer({"Sure", "Nope"}) == 2 then
 			return
 		end
 
-		cutscene:after(function()
-			local menu = WarpBinInputMenu()
-			-- I'm sorry
-			menu.finish_cb = function(action)
-				Game.world:startCutscene("spamroom", "warpbin_proc", action)
-			end
-			Game.world:openMenu(menu)
-		end)
-	end,
+        local wbi_ok = false
+        ---@type WarpBinCodeInfo
+        local action = nil
+        local wbi = WarpBinInputMenu()
+        wbi.finish_cb = function(_action)
+            wbi_ok = true
+            action = _action
+        end
+        Game.world:spawnObject(wbi, "ui")
+        cutscene:wait(function() return wbi_ok end)
 
-	---@param cutscene WorldCutscene
-	---@param action WarpBinCodeInfo
-	warpbin_proc = function(cutscene, action)
 		if not action then
 			cutscene:text("* That doesn't seem to work.")
 			return

@@ -259,32 +259,18 @@ return {
                     end
                 end
             end
-    
+
             --[color:yellow]Starwalker[color:reset]
-    
-            
-    
+
             cutscene:interpolateFollowers()
             cutscene:attachFollowers()
-    
-            
-    
-    
         end
-    
     end,
 
     pink_ad = function(cutscene)
-    if Mod:addiSwitch() then
         local addisonpink = cutscene:getCharacter("addisonpink")
         addisonpink:setAnimation("idle")
-        cutscene:text("[voice:java]* I'm still a WIP! Don't mind me here!", "wink", "addisonpink")
+        cutscene:text("* I'm still a WIP! Don't mind me here!", "wink", "addisonpink")
         addisonpink:resetSprite()
-    else
-        local addisonpink = cutscene:getCharacter("addisonpink")
-        addisonpink:setAnimation("idle")
-        cutscene:text("* I'm still a WIP! Don't mind me here!")
-        addisonpink:resetSprite()
-    end
-end,
+    end,
 }
