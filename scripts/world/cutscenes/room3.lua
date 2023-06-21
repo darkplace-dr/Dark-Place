@@ -4,7 +4,6 @@ return {
         local doobie = cutscene:getCharacter("doobie")
 
         local cust_wait_timer = 0
-
         local function waitForTimeOrUserCancellation(time)
             cust_wait_timer = time
             return function()
@@ -16,6 +15,7 @@ return {
                 return cust_wait_timer == 0
             end
         end
+
         local function showMorshuAnim(sprite, speed)
             local m_anim = Sprite("world/cutscenes/room3_morshu/" .. sprite)
             m_anim:play(speed, true)
@@ -31,10 +31,19 @@ return {
                 m_anim:remove()
             end
         end
+        local music_inst = Music()
+        cutscene:after(function()
+            music_inst:remove()
+        end)
         local function showMorshuAnimWithVoc(sprite, speed, clip, time, disallow_cancel)
             local anim, rem = showMorshuAnim(sprite, speed)
             Game.world.music:pause()
-            Assets.playSound(clip)
+            if clip == "menace" then -- epic hax
+                music_inst:play(clip, 1)
+                music_inst.source:setLooping(false)
+            else
+                Assets.playSound(clip)
+            end
             rem(time, disallow_cancel)
             Assets.stopSound(clip)
             Game.world.music:resume()
@@ -43,7 +52,7 @@ return {
 
         Input.clear("cancel")
 
-        showMorshuAnimWithVoc("rubies", 0.095, "vo_mline", 8.8)
+        showMorshuAnimWithVoc("rubies", 0.095, "voiceover/morshu_rubies", 8.8)
 
         cutscene:text("* (Buy Lamp Oil for 40 dolla-[wait:5] er-[wait:5] rupee-[wait:5] er-[wait:5] rubies?)")
         cutscene:showShop()
@@ -56,7 +65,7 @@ return {
         end
 
         if Game.money < 40 then
-            showMorshuAnimWithVoc("richer", 0.095, "vo_mline2", 7)
+            showMorshuAnimWithVoc("richer", 0.095, "voiceover/morshu_richer", 7)
             return
         end
 
@@ -286,7 +295,7 @@ return {
 
         if event.interact_count == 1 then
             cutscene:showNametag("Trash Rudinn")
-            Assets.playSound("garbage")
+            Assets.playSound("voiceover/garbage")
             cutscene:text("[noskip][voice:nil]* Hellooo...[wait:1.5]", nil, garbage, { auto = true })
             cutscene:hideNametag()
             genBigText("I'm", 240, 40)
@@ -298,7 +307,7 @@ return {
             fadeOutBigText()
         else
             cutscene:showNametag("Trash Rudinn")
-            Assets.playSound("stillgarbage")
+            Assets.playSound("voiceover/stillgarbage")
             cutscene:text("[noskip][voice:nil]* Oh hi,[wait:1] thanks for checking in.[wait:2]\n* I'm...", nil, garbage, { auto = true })
             cutscene:hideNametag()
             genBigText("still", 210, 40)
