@@ -42,6 +42,7 @@ Mod.warp_bin_codes = {
     ["wifidown"] = { result = "googlefield" },
     ["uwforest"] = { result = "underworld_forest/uwforest_startbin" },
     ["seaworld"] = { result = "underwater_temple/underwater_startbin" },
+	["_chckpnt"] = { result = "field" },
 }
 
 -- heres some new totally cool helper functions wowee
