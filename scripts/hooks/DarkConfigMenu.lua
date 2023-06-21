@@ -61,7 +61,7 @@ function DarkConfigMenu:update()
         self.currently_selected = Utils.clamp(self.currently_selected, 1, 8)
     elseif self.state == "EXTRAS" then
         if self.extras_substate == "BORDER" then
-            -- FIXME: if we write to Kristal.Config, we override the global setting,
+            -- FIXME: if we write to Kristal.Config, we completely change the global setting,
             -- causing the engine to load nonexistent borders outside of the mod,
             -- fail and fallback to a potentially unwanted setting (off i think)
             -- DON'T EDIT scripts/globals/BORDER_TYPES.lua to add new entries
