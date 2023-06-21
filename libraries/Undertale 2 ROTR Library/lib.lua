@@ -23,37 +23,30 @@ end
 
 function lib:onBattleMenuSelect(state, item, can_select)
     if state == "TALK_UT2" and can_select then
-
-
         if can_select then
-
             self.ui_select:stop()
             self.ui_select:play()
 
             --here add stuff
-            
+
             --Game.battle:setState("ENEMYSELECT", "SPELL")
-
         end
-
     end
 end
 
 function lib:getActionButtons(battler, buttons)
-    if self.useUT2Buttons then
-        if battler.chara.id == "frisk2" then
-            Utils.removeFromTable(buttons, "fight")
-            Utils.removeFromTable(buttons, "magic")
-            Utils.removeFromTable(buttons, "spare")
-            Utils.removeFromTable(buttons, "defend")
-            Utils.removeFromTable(buttons, "item")
-            table.insert(buttons, FightButtonUT2())
-            table.insert(buttons, TalkButtonUT2())
-            table.insert(buttons, ActButtonUT2())
-            table.insert(buttons, "item")
-        end
+    if self.useUT2Buttons and battler.chara.id == "frisk2" then
+        Utils.removeFromTable(buttons, "fight")
+        Utils.removeFromTable(buttons, "magic")
+        Utils.removeFromTable(buttons, "spare")
+        Utils.removeFromTable(buttons, "defend")
+        Utils.removeFromTable(buttons, "item")
+        table.insert(buttons, FightButtonUT2())
+        table.insert(buttons, TalkButtonUT2())
+        table.insert(buttons, ActButtonUT2())
+        table.insert(buttons, "item")
+        return buttons
     end
-    return buttons
 end
 
 return lib
