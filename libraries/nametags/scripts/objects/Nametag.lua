@@ -7,6 +7,7 @@ function Nametag:init(text, options)
     
     self.box = UIBox(0, 0, 92, 6)
     self.box.layer = -1
+    self.box.debug_select = false
     self:addChild(self.box)
     
     self.name = text or ""

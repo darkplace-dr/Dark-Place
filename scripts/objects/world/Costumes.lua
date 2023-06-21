@@ -9,6 +9,7 @@ function Costumes:init()
 
     self.box = UIBox(80, 60, 480, 320)
     self.box.layer = -1
+    self.box.debug_select = false
     self:addChild(self.box)
 
 	self.font = Assets.getFont("main")
