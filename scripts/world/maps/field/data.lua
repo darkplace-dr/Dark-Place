@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -11,7 +11,9 @@ return {
   tileheight = 40,
   nextlayerid = 6,
   nextobjectid = 18,
-  properties = {},
+  properties = {
+    ["music"] = "checkpoint"
+  },
   tilesets = {
     {
       name = "castle",
@@ -22,7 +24,8 @@ return {
     {
       name = "city_alleyway",
       firstgid = 61,
-      filename = "../../tilesets/city_alleyway.tsx"
+      filename = "../../tilesets/city_alleyway.tsx",
+      exportfilename = "../../tilesets/city_alleyway.lua"
     }
   },
   layers = {
