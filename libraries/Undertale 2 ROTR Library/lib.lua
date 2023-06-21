@@ -39,7 +39,7 @@ function lib:onBattleMenuSelect(state, item, can_select)
     end
 end
 
-function Mod:getActionButtons(battler, buttons)
+function lib:getActionButtons(battler, buttons)
     if self.useUT2Buttons then
         if battler.chara.id == "frisk2" then
             Utils.removeFromTable(buttons, "fight")

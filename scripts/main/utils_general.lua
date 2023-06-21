@@ -62,7 +62,7 @@ function Mod:trace(msg, msg_level, stack_level)
         or string.format("%s:%d: ", src, line)
     msg = msg_prefix .. msg
 
-    Mod:print(msg, msg_level)
+    self:print(msg, msg_level)
 end
 
 if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" and not package.loaded["lldebugger"] then

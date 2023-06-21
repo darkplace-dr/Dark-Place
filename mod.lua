@@ -39,7 +39,7 @@ function Mod:postInit(new_file)
         return
     end
 
-    Mod:initializeImportantFlags(new_file)
+    self:initializeImportantFlags(new_file)
 
     if new_file then
         Game.world:startCutscene("_main.introcutscene")
@@ -88,17 +88,17 @@ function Mod:initializeImportantFlags(new_file)
     end
 
     if not new_file and likely_old_save then
-        Mod:print("Save seems to be from an old version")
+        self:print("Save seems to be from an old version")
     end
 end
 
 function Mod:unload()
     if TextInput.active and not Kristal.Console.is_open then
-        Mod:print("Warp Bin was open, ending text input to be safe", "warn")
+        self:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
     end
 
-    Mod:stopDebugger()
+    self:stopDebugger()
 end
 
 function Mod:save(data)
@@ -128,7 +128,7 @@ function Mod:postUpdate()
 end
 
 function Mod:onTextSound(sound, node)
-    if sound == "default" and Mod:isOmori() then
+    if sound == "default" and self:isOmori() then
         -- commit a crime
         sound = "omori"
     end

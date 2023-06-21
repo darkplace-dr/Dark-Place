@@ -27,7 +27,7 @@ Mod.warp_bin_codes = {
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
-            Mod:addBinCode("sppispod", function(cutscene2)
+            self:addBinCode("sppispod", function(cutscene2)
                 cutscene2:text({
                     "* Since you found another one...",
                     "* Here's a fun fact:",
@@ -65,7 +65,7 @@ end
 function Mod:addBinCode(code, result, marker, overwrite)
     code = code:upper()
 
-    if Mod:getBinCode(code) and not overwrite then
+    if self:getBinCode(code) and not overwrite then
         -- whoops, no success
         return false
     end
@@ -81,7 +81,7 @@ end
 function Mod:deleteBinCode(code)
     code = code:upper()
 
-    if not Mod:getBinCode(code) then return false end
+    if not self:getBinCode(code) then return false end
     Mod.warp_bin_codes[code] = nil
     return true
 end
