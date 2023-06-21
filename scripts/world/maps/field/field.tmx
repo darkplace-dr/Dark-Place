@@ -65,6 +65,7 @@
     <property name="text1">* Welcome to the Field.[wait:10]
 * I'm sorry,[wait:5] I couldn't think of a better name.</property>
     <property name="text2" value="* What you are witnessing right now..."/>
+    <!-- [citiation needed] -->
     <property name="text3" value="* Is the combined hopes and dreams of everyone who has contributed to this mod."/>
     <property name="text4" value="* &quot;There is always hope.&quot;"/>
    </properties>
