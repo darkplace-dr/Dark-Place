@@ -19,7 +19,7 @@ function actor:init()
     self.voice = "flowey1"
 
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = ""
+    self.portrait_path = nil
     -- Offset position for this actor's portrait (optional)
     self.portrait_offset = {0, 0}
 
