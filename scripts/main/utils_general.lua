@@ -141,3 +141,15 @@ function Mod:softResetActorSprite(sprite)
         end
     end
 end
+
+-- Resets the window, taking account of TileLayers - hack
+function Mod:resetWindow()
+    Kristal.resetWindow()
+
+    if Game.world then
+        for _,tilelayer in ipairs(Game.world.stage:getObjects(TileLayer)) do
+            -- Force tilelayers to redraw, since resetWindow destroys their canvases
+            tilelayer.drawn = false
+        end
+    end
+end
