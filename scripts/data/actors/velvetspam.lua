@@ -44,11 +44,12 @@ function actor:init()
     self.offsets = {
         ["day_blankie_hug"] = {-3, 0},
         ["bundled"] = {-1, 0},
-        ["pipis"] = {-1, 0}
+        ["pipis"] = {-1, 0},
+        ["italian"] = {-1, 0}
 	}
 
-    self.taunt_sprites = {"day_blankie", "day_blankie_hug", "box"}
-    self.taunt_sprites_night = {"pissed", "bundled", "pipis"}
+    self.taunt_sprites = {"day_blankie", "day_blankie_hug", "box", "day_pipis"}
+    self.taunt_sprites_night = {"pissed", "bundled", "pipis", "italian"}
 
     self.night = Mod:isNight()
     self.blankie_returned = Game:getFlag("blankie_returned")
