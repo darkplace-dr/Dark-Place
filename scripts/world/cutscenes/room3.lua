@@ -39,8 +39,7 @@ return {
             local anim, rem = showMorshuAnim(sprite, speed)
             Game.world.music:pause()
             if clip == "menace" then -- epic hax
-                music_inst:play(clip, 1)
-                music_inst.source:setLooping(false)
+                music_inst:play(clip, 1, 1, false)
             else
                 Assets.playSound(clip)
             end

@@ -223,6 +223,13 @@ return
     origin = "Pizza Tower"
   },
   {
+    name = "Lunatic Dreamer",
+    file = "th165_06",
+    composer = "ZUN",
+    released = "2018",
+    origin = "Touhou 16.5: Violet Detector"
+  },
+  {
     name = "Cursed Cathedral (Cover)",
     file = "cursedcathedral_cover",
     composer = "Just another random user.",

@@ -28,17 +28,13 @@ function GonerBackground:init(x, y, song, song_pitch_gradually_increases)
     end)
     self:addChild(self.timer)
 
-    self.musicreal = true
-    self.music = Music()
-    self.music:play(song)
-    self.music:setPitch(0.02)
     self.music_pitch = 0.02
     self.music_target_pitch = song == "AUDIO_ANOTHERHIM" and 0.8 or 1
     if not song_pitch_gradually_increases then
         self.music_pitch = 1
         self.music_target_pitch = 1
-        self.music:setPitch(1)
     end
+    self.music = Music(song, 1, self.music_pitch)
 end
 
 function GonerBackground:onRemove(...)
