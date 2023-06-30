@@ -131,25 +131,18 @@ function Music:playFile(paths, volume, pitch, loop, name)
                 source_1st:play()
             end
         end
-
-        if volume then
-            self:setVolume(volume)
-        end
-        if pitch then
-            self:setPitch(pitch)
-        end
     else
-        if volume then
-            self:setVolume(volume)
-        end
-        if pitch then
-            self:setPitch(pitch)
-        end
-
         local pb_source = self.source_intro or self.source
         if pb_source then
             pb_source:play()
         end
+    end
+
+    if volume then
+        self:setVolume(volume)
+    end
+    if pitch then
+        self:setPitch(pitch)
     end
 end
 
