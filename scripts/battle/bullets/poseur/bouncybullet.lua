@@ -1,28 +1,29 @@
 local BouncyBullet, super = Class(Bullet)
 
-function BouncyBullet:init(x, y, dir, speed)
+function BouncyBullet:init(x, y)
     -- Last argument = sprite path
     super.init(self, x, y, "battle/bullets/poseurbullet")
     self:setScale(1, 1)
 
-    -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
-    self.physics.direction = dir
-    -- Speed the bullet moves (pixels per frame at 30FPS)
-    self.physics.speed = speed
     self.destroy_on_hit = false
 
-    self.velx = 1 - 2*math.random()
-    self.vely = 0
+    -- very unfortature
+    self.velocity_x = 1 - 2*Utils.random()
+    self.velocity_y = 0
 end
 
 function BouncyBullet:update()
-    -- For more complicated bullet behaviours, code here gets called every update
-    local x, y = self:getRelativePos(self.width / 2, self.height / 2)
-    if x > Game.battle.arena.left and x < Game.battle.arena.right and y > Game.battle.arena.bottom - 8 then
-        self.vely = -4
+    local dtmult60 = DT * 60
+
+    local new_x = self.x + self.velocity_x * dtmult60
+    local new_y = self.y + self.velocity_y * dtmult60
+    if (self.x > Game.battle.arena.left and self.x < Game.battle.arena.right)
+        and (self.y < Game.battle.arena.top + 8) then
+        new_y = Game.battle.arena.top + 8
+        self.velocity_y = 4
     end
-    self.vely = self.vely + (0.04 * DTMULT)
-    self:move(self.velx, self.vely)
+    self.velocity_y = self.velocity_y - (0.04 * dtmult60)
+    self:setPosition(new_x, new_y)
 
     super.update(self)
 end

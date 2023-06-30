@@ -189,8 +189,7 @@ return {
             cutscene:text("* Well,[wait:5] hey,[wait:5] you know\nwhat?", "annoyed", "susie")
             cutscene:text("* You piss us off too.", "smirk", "susie")
             --Game.world.music:fade(1,0)
-            local cutscene_music = Music()
-            cutscene_music:play("s_neo")
+            local cutscene_music = Music("s_neo")
             cutscene:detachFollowers()
             if kris then
                 cutscene:walkTo(kris, kris.x, kris.y - 40, 1, "down", true)

@@ -275,8 +275,7 @@ return {
             cutscene:text("* I,[wait:5] uh,[wait:5] what?", "sus_nervous", "susie")
             cutscene:text("* Well,[wait:5] hey,[wait:5] you know\nwhat?", "annoyed", "susie")
             cutscene:text("* You piss us off too.", "smirk", "susie")
-            local cutscene_music = Music()
-            cutscene_music:play("deltarune/s_neo")
+            local cutscene_music = Music("deltarune/s_neo")
             cutscene:detachFollowers()
             --[[if kris then
                 cutscene:walkTo(kris, kris.x, kris.y - 40, 1, "down", true)

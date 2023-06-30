@@ -16,15 +16,14 @@ return function(cutscene, cell_phone_event_override)
     cutscene:after(function()
         music_inst:remove()
     end)
-    local function playCellPhoneAudio(path, ...)
+    local function playCellPhoneAudio(path, volume, pitch)
         local epic_hax = "cell_phone/"
         if string.sub(path, 1, string.len(epic_hax)) == epic_hax then
             -- requiring a sound in assets/music
-            music_inst:play(path, ...)
-            music_inst.source:setLooping(false)
+            music_inst:play(path, volume, pitch, false)
             return function() return not music_inst:isPlaying() end
         else
-            return cutscene:playSound(path, ...)
+            return cutscene--[[@as WorldCutscene]]:playSound(path, volume, pitch)
         end
     end
     local function garbageNoise(path, time)
