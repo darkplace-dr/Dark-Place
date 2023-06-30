@@ -111,38 +111,38 @@ function Music:playFile(paths, volume, pitch, loop, name)
             self:stop(true)
 
             self.current = name
-            pitch = pitch or 1
 
             local source_1st = love.audio.newSource(first_seg, "stream")
-            source_1st:setVolume(self:getVolume())
-            source_1st:setPitch(self:getPitch())
-            source_1st:setLooping(false)
             if loop_seg then
+                source_1st:setLooping(false)
                 self.source_intro = source_1st
-                source_1st:play()
+
                 local source = love.audio.newSource(loop_seg, "stream")
-                source:setVolume(self:getVolume())
-                source:setPitch(self:getPitch())
                 source:setLooping(loop)
                 self.source = source
             else
                 source_1st:setLooping(loop)
                 self.source = source_1st
-                source_1st:play()
             end
+
+            if volume then
+                self:setVolume(volume)
+            end
+            self:setPitch(pitch or 1)
+            self:getActiveSource():play()
         end
     else
+        if volume then
+            self:setVolume(volume)
+        end
+        if pitch then
+            self:setPitch(pitch)
+        end
+
         local pb_source = self.source_intro or self.source
         if pb_source then
             pb_source:play()
         end
-    end
-
-    if volume then
-        self:setVolume(volume)
-    end
-    if pitch then
-        self:setPitch(pitch)
     end
 end
 
