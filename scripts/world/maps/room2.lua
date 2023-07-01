@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 74,
+  nextobjectid = 75,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -20,8 +20,31 @@ return {
     {
       name = "castle",
       firstgid = 1,
-      filename = "../tilesets/castle.tsx",
-      exportfilename = "../tilesets/castle.lua"
+      class = "",
+      tilewidth = 40,
+      tileheight = 40,
+      spacing = 4,
+      margin = 2,
+      columns = 6,
+      image = "../../../assets/sprites/tilesets/castle.png",
+      imagewidth = 264,
+      imageheight = 444,
+      objectalignment = "unspecified",
+      tilerendersize = "tile",
+      fillmode = "stretch",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 40,
+        height = 40
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 60,
+      tiles = {}
     }
   },
   layers = {
@@ -226,7 +249,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 120,
@@ -239,7 +262,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 400,
@@ -252,7 +275,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 120,
@@ -265,7 +288,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 80,
@@ -278,7 +301,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 280,
@@ -291,7 +314,7 @@ return {
         {
           id = 51,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 720,
@@ -304,7 +327,7 @@ return {
         {
           id = 52,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 920,
           y = 760,
@@ -317,7 +340,7 @@ return {
         {
           id = 53,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 960,
           y = 800,
@@ -330,7 +353,7 @@ return {
         {
           id = 54,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 760,
@@ -343,7 +366,7 @@ return {
         {
           id = 55,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 800,
@@ -356,7 +379,7 @@ return {
         {
           id = 56,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 520,
           y = 760,
@@ -375,7 +398,7 @@ return {
         {
           id = 58,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 880,
           y = 760,
@@ -393,7 +416,7 @@ return {
         {
           id = 60,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 920,
           y = 1040,
@@ -411,7 +434,7 @@ return {
         {
           id = 61,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 880,
           y = 1080,
@@ -429,7 +452,7 @@ return {
         {
           id = 62,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 560,
           y = 1120,
@@ -447,7 +470,7 @@ return {
         {
           id = 63,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 520,
           y = 1080,
@@ -465,7 +488,7 @@ return {
         {
           id = 64,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 480,
           y = 1040,
@@ -483,7 +506,7 @@ return {
         {
           id = 66,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 1120,
@@ -496,7 +519,7 @@ return {
         {
           id = 67,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 920,
           y = 1040,
@@ -509,7 +532,7 @@ return {
         {
           id = 68,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1720,
           y = 800,
@@ -522,7 +545,7 @@ return {
         {
           id = 69,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1675.73,
           y = 800,
@@ -535,7 +558,7 @@ return {
         {
           id = 70,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1000,
           y = 800,
@@ -548,7 +571,7 @@ return {
         {
           id = 71,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1594.55,
           y = 800,
@@ -577,7 +600,7 @@ return {
         {
           id = 5,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 280,
@@ -590,7 +613,7 @@ return {
         {
           id = 8,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 40,
           y = 360,
@@ -603,7 +626,7 @@ return {
         {
           id = 17,
           name = "spawne",
-          class = "",
+          type = "",
           shape = "point",
           x = 700,
           y = 920,
@@ -632,7 +655,7 @@ return {
         {
           id = 6,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 495,
           y = 221,
@@ -648,7 +671,7 @@ return {
         {
           id = 9,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 320,
@@ -664,7 +687,7 @@ return {
         {
           id = 13,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 120,
@@ -680,7 +703,7 @@ return {
         {
           id = 14,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 726,
           y = 381.333,
@@ -698,7 +721,7 @@ return {
         {
           id = 15,
           name = "script_temp",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 840,
           y = 0,
@@ -713,7 +736,7 @@ return {
         {
           id = 72,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 120,
@@ -724,6 +747,22 @@ return {
           properties = {
             ["actor"] = "3dtoriel",
             ["cutscene"] = "room2.toriel3d"
+          }
+        },
+        {
+          id = 74,
+          name = "npc",
+          type = "",
+          shape = "rectangle",
+          x = 700,
+          y = 120,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "grimkris",
+            ["cutscene"] = "room2.grimkris"
           }
         }
       }
