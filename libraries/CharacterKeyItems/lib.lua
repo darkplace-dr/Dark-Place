@@ -1,7 +1,9 @@
 local Lib = {}
 
 function Lib:init()
-    print("Loaded CharacterKeyItems library")
+    if Kristal.getLibConfig("CharacterKeyItems", "print_console_intro") then
+        print("Loaded CharacterKeyItems library")
+    end
 end
 
 return Lib

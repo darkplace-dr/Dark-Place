@@ -89,19 +89,27 @@ end
 
 Mod:startDebugger()
 
---- Returns the current party leader's PartyMember, Actor, ActorSprite or Character object
----@param kind? "partymember"|"party"|"character"|"chara"|"actor"|"sprite"|"actorsprite" The kind of object that will be gathered, "partymember" by default
----@return PartyMember|Actor|ActorSprite|Character obj A object related to the leader.
+--- Returns the current party leader's PartyMember, Actor, ActorSprite, Character or PartyBattler object
+---@param kind? "partymember"|"party"|"character"|"chara"|"actor"|"sprite"|"actorsprite"|"battler"|"partybattler" The kind of object that will be gathered, "partymember" by default
+---@return PartyMember|Actor|ActorSprite|Character|PartyBattler|nil obj A object related to the leader.
 function Mod:getLeader(kind)
     kind = (kind or "partymember"):lower()
 
     local leader = Game.party[1]
+    if not leader then return nil end
+
     if kind == "character" or kind == "chara" then
+        if not Game.world then return nil end
         return Game.world:getCharacter(leader.id)
     elseif kind == "actor" then
         return leader.actor
     elseif kind == "sprite" or kind == "actorsprite" then
-        return self:getLeader("character").sprite
+        local chara = self:getLeader("character")
+        if not chara then return nil end
+        return chara.sprite
+    elseif kind == "battler" or kind == "partybattler" then
+        if not Game.battle then return nil end
+        return Game.battle:getPartyBattler(leader.id)
     end
     return leader --[[ if kind == "partymember" or kind == "party" ]]
 end

@@ -8,8 +8,6 @@ function OGStarwalker:init()
     self.name = "Starwalker"
     self:setActor("og_starwalker")
 
-    self.path = "enemies/ogstarwalker"
-    self.default = ""
     self.sprite:set("wings")
 
     self.max_health = 6000
@@ -147,12 +145,10 @@ function OGStarwalker:getEnemyDialogue()
 end
 
 function OGStarwalker:onDefeat(damage, battler)
-    
-    if not Game.battle.cutscene then
-        Game.battle:startCutscene("starwalkerb.die", battler, self)
+    if self.encounter.id ~= "starwalker" and self.encounter.id ~= "og_starwalker" then
+        return super.onDefeatFatal(self, damage, battler)
     end
-    --self:onDefeatFatal(damage, battler)
-    
+    self:defeat("KILLED", true)
 end
 
 return OGStarwalker
