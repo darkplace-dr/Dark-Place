@@ -99,5 +99,38 @@ return {
                 cutscene:hideNametag()
             end
         end
+    end,
+
+    grimkris = function(cutscene, event)
+        cutscene:showNametag("Kris")
+        cutscene:text("* Man, i don't know why people don't like Grimace Shake!", nil, "grimkris")
+        cutscene:text("* It's so go-", nil, "grimkris", {auto = true})
+        cutscene:hideNametag()
+        Game.world.music:fade(0, 0.5)
+        cutscene:playSound("shake")
+        cutscene:shakeCharacter("grimkris", 3, 0)
+        cutscene:setSprite("grimkris", "grimacing", 0)
+        cutscene:wait(4)
+        cutscene:playSound("shake")
+        cutscene:shakeCharacter("grimkris", 3, 0)
+        cutscene:setSprite("grimkris", "grimace", 0)
+        cutscene:wait(4)
+        cutscene:playSound("shake")
+        cutscene:shakeCharacter("grimkris", 4, 0)
+        cutscene:setSprite("grimkris", "grimaced", 0)
+        cutscene:wait(4)
+        local explosion = event:explode()
+        cutscene:wait(function() return explosion:isRemoved() end)
+
+        local susie = cutscene:getCharacter("susie")
+        if susie then
+            cutscene:wait(3 - 8.5/30)
+            
+            cutscene:setSpeaker(susie)
+            cutscene:showNametag("Susie")
+            cutscene:text("* What?", "shock")
+            cutscene:hideNametag()
+        end
     end
+
 }

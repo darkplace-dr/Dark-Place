@@ -12,6 +12,7 @@ function GameOverSF:init(my_bars)
 
     self.box = UIBox(0, 0, self.width, self.height)
     self.box.layer = -1
+    self.box.debug_select = false
     self:addChild(self.box)
     self.decline_dialogue = nil
 

@@ -2,7 +2,7 @@ return {
   version = "1.10",
   luaversion = "5.1",
   tiledversion = "1.10.1",
-  name = "devroom-objects",
+  name = "objects",
   class = "",
   tilewidth = 145,
   tileheight = 120,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 19,
+  tilecount = 45,
   tiles = {
     {
       id = 10,

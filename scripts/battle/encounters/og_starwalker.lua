@@ -79,4 +79,13 @@ function OGStarwalker:update()
     end
 end
 
+function OGStarwalker:onActionsEnd()
+    if (self.starwalker.done_state == "VIOLENCE" or self.starwalker.done_state == "KILLED")
+        and not self.death_cine_played then
+        self.death_cine_played = true
+        Game.battle:startCutscene("starwalkerb.die", nil, self.starwalker)
+        return true
+    end
+end
+
 return OGStarwalker

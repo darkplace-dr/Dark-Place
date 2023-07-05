@@ -1,19 +1,18 @@
 local Bouncy, super = Class(Wave)
 
-function Bouncy:onStart()
-    self.timer:every(1/2, function()
-        local posx = Utils.random(Game.battle.arena.left, Game.battle.arena.right)
-        local posy = Game.battle.arena.top
+function Bouncy:init()
+    super.init(self)
 
-        -- Spawn smallbullet going left with speed 8 (see scripts/battle/bullets/smallbullet.lua)
-        self:spawnBullet("poseur/bouncybullet", posx, posy)
-    end)
+    self.time = 4.0
 end
 
-function Bouncy:update()
-    -- Code here gets called every frame
-
-    super.update(self)
+function Bouncy:onStart()
+    self.timer:every(30/60, function()
+        self:spawnBullet("poseur/bouncybullet",
+            Game.battle.arena.x + love.math.random(-30, 30),
+            Game.battle.arena.bottom
+        )
+    end)
 end
 
 return Bouncy

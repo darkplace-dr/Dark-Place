@@ -19,6 +19,7 @@ function Starwalker:init()
 
     self.spare_points = 0
 
+    self.killable = true
     self.exit_on_defeat = false
     self.auto_spare = true
 
@@ -127,74 +128,8 @@ function Starwalker:getEnemyDialogue()
 end
 
 function Starwalker:onDefeat(damage, battler)
-
-    -- All of this is commented because Love2D is being a bitch and giving me errors that make no sense
-    -- Pls fix if you can :heart:
-
-    --self.movearound = false
-    --Game.battle:startCutscene("starwalker.die", battler, Starwalker)
-    --[[]
-    Game.battle.startCutscene(function(cutscene, battler, enemy)
-
-		Game.battle.music:stop()
-		cutscene:wait(2)
-		if cutscene:getCharacter("susie") then
-			cutscene:getCharacter("susie"):setSprite("shock_right")
-		end
-		Assets.playSound("sussurprise")
-		--cutscene:setAnimation(Game.world.player, "battle/attack_ready" or "battle/right")
-		cutscene:slideTo(Game.world.player, enemy.x - 20, enemy.y, 0.2)
-		cutscene:wait(0.2)
-		Assets.playSound("slash")
-		--cutscene:setAnimation(Game.world.player, "battle/attack" or "battle/right")
-		enemy:statusMessage("damage", 999, color or (battler and {battler.chara:getDamageColor()}))
-		enemy:hurt(999999999, battler, enemy.onDefeatFatal)
-		cutscene:wait(0.5)
-		Game.world.player:setSprite("right_1")
-
-		cutscene:fadeOut(1)
-
-		cutscene:wait(1)
-
-		Game.battle:setState("TRANSITIONOUT")
-		Game.battle.encounter:onBattleEnd()
-
-		cutscene:wait(0.5)
-
-		cutscene:fadeIn(0.5)
-
-		enemy.done_state = "KILLED"
-
-        local done_state = enemy.done_state
-        
-        if done_state == "VIOLENCED" or done_state == "KILLED" or done_state == "FROZEN" then
-            cutscene:wait(1)
-            cutscene:text("* Hey,[wait:5] uh.", "neutral", "susie")
-            cutscene:text("* I know they were in our way,[wait:5] but...", "annoyed_down", "susie")
-            susie:setFacing("up")
-            cutscene:text("* What happened to the ACTing thing?", "neutral", "susie")
-            cutscene:text("* ...", "annoyed_down", "susie")
-            Assets.playSound("ominous")
-            cutscene:wait(1.5)
-            Game:setFlag("weird", true)
-            Game.world.music:play("cybercity_alt")
-            Game.world.player:setFacing("down")
-        end
-
-        event.sprite:resetSprite()
-
-        cutscene:interpolateFollowers()
-        cutscene:attachFollowers()
-
-        event.interacted = false
-
-	end)
-    --]]
-    if Game:getFlag("can_kill") == true then
-        self:onDefeatFatal(damage, battler)
-    else
-        self:onDefeatRun(damage, battler)
-    end
+    self.exit_on_defeat = true
+    super.onDefeat(self, damage, battler)
 end
 
 return Starwalker

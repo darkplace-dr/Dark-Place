@@ -47,6 +47,7 @@ return {
         cutscene:wait(0.5)
 
         local soul = SoulAppearance(SCREEN_WIDTH / 2 - 25, SCREEN_HEIGHT / 2 + 20)
+        soul:setParallax(0, 0)
         soul.layer = WORLD_LAYERS["below_textbox"]
         --soul.alpha = 50
         --soul.graphics.fade = 0.01

@@ -75,18 +75,16 @@ return {
             end
         end
 
-        cutscene:after(function()
-            local menu = WarpBinInputMenu()
-            menu.as_warp_bin_ui = false
-            menu.finish_cb = function(action, raw_input)
-                Game.world:startCutscene("floor2", "bordoor_part2", event, raw_input:lower() == "isuckass")
-            end
-            Game.world:openMenu(menu)
-        end)
-	end,
-
-	bordoor_part2 = function(cutscene, event, entered_correct_code)
-        local timesusedthisshid = Game:getFlag("timesUsedWrongBorDoorCode", 0)
+        local wbi_ok = false
+        local entered_correct_code = false
+        local wbi = WarpBinInputMenu()
+        wbi.as_warp_bin_ui = false
+        wbi.finish_cb = function(action, raw_input)
+            wbi_ok = true
+            entered_correct_code = raw_input:lower() == "isuckass"
+        end
+        Game.world:spawnObject(wbi, "ui")
+        cutscene:wait(function() return wbi_ok end)
 
         if not entered_correct_code then
             if timesusedthisshid == 5 then

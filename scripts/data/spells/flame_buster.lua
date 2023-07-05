@@ -58,6 +58,11 @@ function spell:onCast(user, target)
                 damage = damage + 30
                 Assets.playSound("scytheburst")
             end
+            if user.chara:checkWeapon("virobuster") then
+                if target.health <= target.max_health/2 then
+                    damage = damage * 2
+                end
+            end
             local flash = target:flash()
             flash.color_mask:setColor(1, 0, 0)
             target:hurt(damage, user)

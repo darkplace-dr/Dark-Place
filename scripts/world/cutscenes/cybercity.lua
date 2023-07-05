@@ -189,8 +189,7 @@ return {
             cutscene:text("* Well,[wait:5] hey,[wait:5] you know\nwhat?", "annoyed", "susie")
             cutscene:text("* You piss us off too.", "smirk", "susie")
             --Game.world.music:fade(1,0)
-            local cutscene_music = Music()
-            cutscene_music:play("s_neo")
+            local cutscene_music = Music("s_neo")
             cutscene:detachFollowers()
             if kris then
                 cutscene:walkTo(kris, kris.x, kris.y - 40, 1, "down", true)
@@ -259,32 +258,18 @@ return {
                     end
                 end
             end
-    
+
             --[color:yellow]Starwalker[color:reset]
-    
-            
-    
+
             cutscene:interpolateFollowers()
             cutscene:attachFollowers()
-    
-            
-    
-    
         end
-    
     end,
 
     pink_ad = function(cutscene)
-    if Mod:addiSwitch() then
         local addisonpink = cutscene:getCharacter("addisonpink")
         addisonpink:setAnimation("idle")
-        cutscene:text("[voice:java]* I'm still a WIP! Don't mind me here!", "wink", "addisonpink")
+        cutscene:text("* I'm still a WIP! Don't mind me here!", "wink", "addisonpink")
         addisonpink:resetSprite()
-    else
-        local addisonpink = cutscene:getCharacter("addisonpink")
-        addisonpink:setAnimation("idle")
-        cutscene:text("* I'm still a WIP! Don't mind me here!")
-        addisonpink:resetSprite()
-    end
-end,
+    end,
 }

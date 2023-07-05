@@ -11,14 +11,31 @@ return function(cutscene, cell_phone_event_override)
             Game.world.music:resume()
         end
     end
+
+    local music_inst = Music()
+    cutscene:after(function()
+        music_inst:remove()
+    end)
+    local function playCellPhoneAudio(path, volume, pitch)
+        local epic_hax = "cell_phone/"
+        if string.sub(path, 1, string.len(epic_hax)) == epic_hax then
+            -- requiring a sound in assets/music
+            music_inst:play(path, volume, pitch, false)
+            return function() return not music_inst:isPlaying() end
+        else
+            return cutscene--[[@as WorldCutscene]]:playSound(path, volume, pitch)
+        end
+    end
     local function garbageNoise(path, time)
         pauseMusic()
-        local wait = cutscene:playSound(path, 0.8)
+
+        local wait = playCellPhoneAudio(path, 0.8)
         if time then
             cutscene:wait(time)
         else
             cutscene:wait(wait)
         end
+
         resumeMusic()
     end
     local function pacematchingMsg(text, wait, portrait, actor)
@@ -40,13 +57,12 @@ return function(cutscene, cell_phone_event_override)
         cutscene:text("* ...[wait:5]\n* Wait a second.")
         cutscene:text("* Is this the wrong number?")
         pauseMusic()
-        local wrongnumber = Music("wrongnumbersong", 0.8)
-        wrongnumber:play()
+        music_inst:play("wrongnumbersong", 0.8)
         cutscene:text("* Oh it's the wrong number![wait:2]\n* The wrong number song!")
         cutscene:text("* We're very very sorry that\nwe got it wrong!")
         cutscene:text("* Oh it's the wrong number![wait:2]\n* The wrong number song!")
         cutscene:text("* We're very very sorry that\nwe got it wrong!")
-        wrongnumber:remove()
+        music_inst:stop()
         resumeMusic()
 
         cutscene:text("* (Click...)")
@@ -57,7 +73,7 @@ return function(cutscene, cell_phone_event_override)
         cutscene:text("* It's nothing but useless information.")
     elseif event_num == 97 then
         pauseMusic()
-        local spam = cutscene:playSound("cell_phone/spamcall", 0.8)
+        local spam = playCellPhoneAudio("cell_phone/spamcall", 0.8)
 
         cutscene:showNametag("Spamton G. Spamton")
         pacematchingMsg("* FUCK YOU CYBER CITY!", 10)
@@ -120,7 +136,7 @@ return function(cutscene, cell_phone_event_override)
         cutscene:text("* It's nothing but an old meme.")
     elseif event_num == 86 then
         pauseMusic()
-        local carglass = cutscene:playSound("cell_phone/carglass", 0.8)
+        local carglass = playCellPhoneAudio("cell_phone/carglass", 0.8)
 
         cutscene:wait(0.06)
         pacematchingMsg("[speed:0.7]* ~Carglass répare,[wait:3] Carglass remplace!~", 15)
@@ -159,7 +175,7 @@ return function(cutscene, cell_phone_event_override)
             The Legendary Soup Store.
         ]]
         pauseMusic()
-        local soup = cutscene:playSound("cell_phone/soup", 0.8)
+        local soup = playCellPhoneAudio("cell_phone/soup", 0.8)
 
         cutscene:showNametag("???", {right = false})
         pacematchingMsg("[wait:3]* Hello?", 5)

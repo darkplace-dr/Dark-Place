@@ -3,12 +3,10 @@
 local WarpBinInputMenu, super = Class(Object)
 
 function WarpBinInputMenu:init()
-    local w = 288
-    local h = 40
-    super.init(self, SCREEN_WIDTH / 2 - w / 2, SCREEN_HEIGHT / 2 - h / 2, w, h)
+    super.init(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 288, 40)
 
-    self.parallax_x = 0
-    self.parallax_y = 0
+    self:setParallax(0, 0)
+    self:setOrigin(0.5, 0.5)
 
     self.draw_children_below = 0
     self.box = UIBox(0, 0, self.width, self.height)
@@ -16,12 +14,13 @@ function WarpBinInputMenu:init()
     self.box.debug_select = false
     self:addChild(self.box)
 
+    ---@type love.Font
     self.font = Assets.getFont("main_mono", 32)
     self.char_w = 32
     self.char_h = self.char_w
     self.char_spacing = 5
 
-    -- a table of lines (except our input is not multiline)
+    -- yes, a table of lines
     self.input = {""}
     self.code_len = 8
 
@@ -33,6 +32,7 @@ function WarpBinInputMenu:init()
         enter_submits = true,
         text_restriction = function(c)
             if utf8.len(self.input[1]) == self.code_len then return end
+            if c == " " then return end
             return c:upper()
         end
     })
@@ -43,7 +43,7 @@ function WarpBinInputMenu:init()
         if self.finish_cb then
             self.finish_cb((self.as_warp_bin_ui or nil) and Mod:getBinCode(self.input[1]), self.input[1])
         end
-        Game.world:closeMenu()
+        self:remove()
     end
 end
 
@@ -70,11 +70,6 @@ function WarpBinInputMenu:draw()
     end
 
     super.draw(self)
-end
-
-function WarpBinInputMenu:close()
-    Game.world.menu = nil
-    self:remove()
 end
 
 function WarpBinInputMenu:endInput()

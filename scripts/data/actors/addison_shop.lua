@@ -18,10 +18,10 @@ function actor:init()
     self.path_switch = "world/npcs/addisons/velvet_style"
     self.default = "pink_stall"
 
-    self.voice = "default"
-    self.voice_switch = "voice/java"
+    self.voice = nil
+    self.voice_switch = "java"
 
-    self.portrait_path = ""
+    self.portrait_path = nil
     self.portrait_path_switch = "face/java"
     self.portrait_offset = {-22, -6}
 
@@ -35,15 +35,18 @@ function actor:init()
 end
 
 function actor:getSpritePath()
-    return not Mod:addiSwitch() and self.path or self.path_switch
+    if not self.switch then return self.path
+    else return self.path_switch end
 end
 
 function actor:getPortraitPath()
-    return not Mod:addiSwitch() and self.portrait_path or self.portrait_path_switch
+    if not self.switch then return self.portrait_path
+    else return self.portrait_path_switch end
 end
 
-function actor:getVoicePath()
-    return not Mod:addiSwitch() and self.voice or self.voice_switch
+function actor:getVoice()
+    if not self.switch then return self.voice
+    else return self.voice_switch end
 end
 
 function actor:onSpriteUpdate(sprite)
