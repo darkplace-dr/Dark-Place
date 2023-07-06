@@ -1,0 +1,2 @@
+- make it so some code can hold their own loggers with tags and stuff
+- easier multiple components
