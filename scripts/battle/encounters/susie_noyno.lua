@@ -29,16 +29,16 @@ end
 
 function SusieNoyno:onStateChange(old, new)
     if new == "INTRO" then
-        sus:setAnimation("battle/intro")
-        sus.sprite.flip_x = true
-        noy:setAnimation("battle/intro")
-        noy.sprite.flip_x = true
+        self.sus:setAnimation("battle/intro")
+        self.sus.sprite.flip_x = true
+        self.noy:setAnimation("battle/intro")
+        self.noy.sprite.flip_x = true
     elseif new == "ACTIONSELECT" then
-        sus:setAnimation("battle/idle")
-        noy:setAnimation("battle/idle")
+        self.sus:setAnimation("battle/idle")
+        self.noy:setAnimation("battle/idle")
     elseif new == "VICTORY" then
-        sus:setAnimation("battle/victory")
-        noy:setAnimation("battle/victory")
+        self.sus:setAnimation("battle/victory")
+        self.noy:setAnimation("battle/victory")
     end
 end
 
