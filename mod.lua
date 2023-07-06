@@ -78,7 +78,7 @@ function Mod:initializeImportantFlags(new_file)
         likely_old_save = true
 
         -- Unlocked party members for the Party Menu
-        Game:setFlag("party", {"YOU", "susie"})
+        Game:setFlag("party", { "YOU", "susie" })
     end
 
     if not new_file and not Game:getFlag("#room1:played_intro", false) then
