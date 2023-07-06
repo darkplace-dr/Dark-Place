@@ -328,6 +328,13 @@
             "width": 640,
             "x": 9180,
             "y": 9224
+        },
+        {
+            "fileName": "maps/brambleblast/entrance/data.tmx",
+            "height": 1440,
+            "width": 3240,
+            "x": -2900,
+            "y": 13064
         }
     ],
     "onlyShowAdjacentMaps": false,
