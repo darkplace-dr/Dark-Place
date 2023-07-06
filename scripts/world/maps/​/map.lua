@@ -1,7 +1,7 @@
 local mb_map, super = Class(Map)
 
 function mb_map:load()
-	self.return_map = Mod.lastMap
+	self.return_map = Mod.world_dest_map_bak or Mod.lastMap
 	if not Game:getFlag("partySet", nil) then
 	    self.old_party = {}
 	    for i,v in ipairs(Game.party) do

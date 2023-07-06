@@ -100,7 +100,9 @@ function Mod:unload()
 end
 
 function Mod:save(data)
-    data.map = data.map == "​" and Mod.world_dest_map_bak or data.map
+    if data.map == "​" then
+        data.map = Mod.world_dest_map_bak or Mod.lastMap
+    end
 end
 
 function Mod:preUpdate()
