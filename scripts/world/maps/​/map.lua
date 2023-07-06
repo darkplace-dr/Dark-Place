@@ -31,6 +31,9 @@ function mb_map:update()
 			player:remove()
 			self.back = false
 			Game.world:closeMenu()
+			for key,_ in pairs(Assets.sound_instances) do
+				Assets.stopSound(key, true)
+			end
 			Game.lock_movement = true
 			local c = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 			c:setLayer(WORLD_LAYERS["above_bullets"])
@@ -53,6 +56,7 @@ function mb_map:update()
 						t:remove()
 						Game.world.fader.alpha = 0
 						Game.world.camera.keep_in_bounds = true
+						Game.lock_movement = false
 						Game.world:loadMap(self.return_map, Mod.world_dest_mk_bak, Mod.world_dest_fc_bak)
 					end)
 				end)
