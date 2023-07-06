@@ -12,7 +12,7 @@ function SnapString:init(x, y, top_x)
     self.y4 = -400
 
     self.timer = 0
-    self.shake = 5
+    self.shake_amt = 5
     self.visible_shake = 0
     self.shake_timer = 0
     self.bottom_visible = true
@@ -36,12 +36,12 @@ function SnapString:update()
             end
         end
     end
-    if self.shake > 0 then
+    if self.shake_amt > 0 then
         self.shake_timer = self.shake_timer + DTMULT
         if self.shake_timer > 2 then
             self.shake_timer = self.shake_timer - 2
-            self.shake = self.shake - 1
-            self.visible_shake = Utils.random(-self.shake, self.shake)
+            self.shake_amt = self.shake_amt - 1
+            self.visible_shake = Utils.random(-self.shake_amt, self.shake_amt)
         end
     else
         self.visible_shake = 0

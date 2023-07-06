@@ -9,7 +9,7 @@ return {
   spacing = 0,
   margin = 0,
   columns = 6,
-  image = "../../../../Dark-Place-main/assets/sprites/tilesets/whitespace.png",
+  image = "../../../assets/sprites/tilesets/whitespace.png",
   imagewidth = 240,
   imageheight = 240,
   objectalignment = "unspecified",

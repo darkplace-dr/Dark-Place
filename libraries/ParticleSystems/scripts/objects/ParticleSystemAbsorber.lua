@@ -1,23 +1,17 @@
--- ParticleEmitter object, used to spawn particles from a specific point
--- particles will move outwards from this point, and can be given many options on how they do so
-local Emitter, super = Class("ParticleSystem")
+-- ParticleAbsorber object, used to spawn particles a distance from a point and move them towards the point
+-- less customizable than the ParticleEmitter object, but does things that the ParticleEmitter cannot
+local Absorber, super = Class("ParticleSystem", "ParticleAbsorber")
 
 -- arguments can be:
     -- data
     -- x, y, data
-    -- x, y, width, height, data
 -- if x and y are not specified, they will be set to 0, 0
--- if width and height are specified, particle positions will be randomly dispersed within the bounds specified
-function Emitter:init(x, y, w, h, o)
-    if type(w) == "table" then
-        super.init(self, x, y, 0, 0, o)
-        o = w
-    elseif type(x) == "table" then
+function Absorber:init(x, y, o)
+    if type(x) == "table" then
         o = x
-        super.init(self, 0, 0, 0, 0, o)
-    else
-        super.init(self, x, y, w, h, o)
+        x, y = 0, 0
     end
+    super.init(self, x, y, 0, 0, o)
 
     -- self.data is a table of default values for particles
     -- all fields defined in the data table will override the default values
@@ -68,7 +62,7 @@ function Emitter:init(x, y, w, h, o)
             -- eg: "alpha = {0.4, 0.6}" and "alpha_round = 0.1" will round a random value between 0.4 and 0.6 to the nearest 0.1
     self.data = {
         -- layer of particles emitted
-        -- can be either a number or a string referring to a layer in the LAYERS table, or a table or function as specified above
+        -- can be either a number or a string referring to a layer in the BATTLE_LAYERS table, or a table or function as specified above
         -- will also set the layer of the emitter itself if it is a number or string
         layer = "below_bullets",
         -- whether it spawns particles automatically
@@ -80,6 +74,11 @@ function Emitter:init(x, y, w, h, o)
         every = -1,
         -- how long the emitter will exist (<0 means forever)
         time = -1,
+
+        -- angle the particle should spawn from relative to origin (random by default)
+        angle = {0, math.pi*2},
+        -- distance the particle should spawn from origin
+        dist = 0,
 
         -- texture used for the particle
         texture = "circle",
@@ -103,7 +102,7 @@ function Emitter:init(x, y, w, h, o)
         scale = 1,
         scale_x = 1,
         scale_y = 1,
-        -- size of the particle in pixels, overrides scale if defined
+        -- size of the particle
         size = nil,
         width = nil,
         height = nil,
@@ -137,23 +136,13 @@ function Emitter:init(x, y, w, h, o)
         -- time to wait until removing the particle
         remove_after = -1,
 
-        -- physics of the particle
-        -- all physics fields can be defined directly, or they can define the table itself
-        -- eg: "physics = {speed = 1}" or "speed = 1" work equally
-        physics = {
-            speed_x = 0,
-            speed_y = 0,
-            speed = 0,
-            friction = 0,
-            gravity = 0,
-            gravity_direction = math.pi/2,
-        },
-        -- direction the particle will move if given speed (random by default)
-        -- synonymous with "direction"
-        angle = {0, math.pi*2},
-        
-        -- how far from the spawn position the particle should start
-        dist = 0,
+        -- time it takes for the particle to move from its starting position to origin
+        move_time = 1,
+        -- ease type used when moving the particle from its starting position to origin
+        -- https://hump.readthedocs.io/en/latest/timer.html#tweening-methods
+        ease = "linear",
+        -- whether the particle should be automatically removed when it reaches the origin
+        remove_on_end = true,
 
         -- functions to call for the particle
         -- called after all fields are defined for the particle
@@ -163,11 +152,11 @@ function Emitter:init(x, y, w, h, o)
         -- called every frame, before the particle is drawn
         pre_draw = nil, --  ...(particle)
         -- called every frame, overriding the particle's draw function
-        draw = nil, --      ...(particle, draw), passing in the original draw function. "draw" does not take any arguments
+        draw = nil, --      ...(particle, draw), passing in the original draw function
         -- called every frame, after the particle is drawn
         post_draw = nil, -- ...(particle)
         -- called when the particle is removed, overriding the particle's remove function
-        remove = nil, --    ...(particle, remove), passing in a function to properly remove the particle. "remove" does not take any arguments
+        remove = nil, --    ...(particle, remove), passing in a function to properly remove the particle
         
         -- whether particles should be parented to the emitter
         parent = false,
@@ -210,9 +199,7 @@ function Emitter:init(x, y, w, h, o)
             k = convert[k]
         end
         local valid_suff = Utils.containsValue(suffixes, suff)
-        if self.data.physics[valid_suff and subj or k] then
-            self.data.physics[k] = v
-        elseif k == "round" then
+        if k == "round" then
             for k2,v2 in pairs(v) do
                 self.data[k][k2] = v2
             end
@@ -222,17 +209,14 @@ function Emitter:init(x, y, w, h, o)
     end
 end
 
-function Emitter:emit()
+function Absorber:emit()
     local particles = {}
     for _=1,self:getValue("amount") do
-        local x, y = self.parent:getRelativePos(self.x, self.y, self:getParent())
-        if self.data.parent then x = 0; y = 0 end
-        if self.width > 0 then
-            x = x + love.math.random(0,self.width)
-        end
-        if self.height > 0 then
-            y = y + love.math.random(0,self.height)
-        end
+        local ox, oy = self.parent:getRelativePos(self.x, self.y, self:getParent())
+        if self.data.parent then ox = 0; oy = 0 end
+        local angle, dist = self:getValue("angle"), self:getValue("dist")
+        local x = ox + math.cos(angle)*dist
+        local y = oy + math.sin(angle)*dist
         local p = Particle(self.data.path.."/"..self:getValue("texture"), x, y)
         p.rotation = self:getValue(p, "rotation")
         p.graphics.spin = self:getValue(p, "spin")
@@ -335,33 +319,24 @@ function Emitter:emit()
                 p:remove()
             end)
         end
-        local angle = self:getValue(p, "angle")
-        local ph = {}
-        p.physics = ph
-        ph.speed_x = self:getValue(p, "speed_x", self.data.physics)
-        ph.speed_y = self:getValue(p, "speed_y", self.data.physics)
-        ph.speed = self:getValue(p, "speed", self.data.physics)
-        ph.friction = self:getValue(p, "friction", self.data.physics)
-        ph.gravity = self:getValue(p, "gravity", self.data.physics)
-        ph.gravity_direction = self:getValue(p, "gravity_direction", self.data.physics)
-        ph.direction = angle
-        local dist = self:getValue(p, "dist")
-        if dist ~= 0 then
-            p:setPosition(x + dist*math.cos(angle), y + dist*math.sin(angle))
-        end
+        p.move_time = self:getValue(p, "move_time")
+        p.ease = self:getValue(p, "ease")
+        p.tween_id = self:getParent().timer:tween(p.move_time, p, {x=ox, y=oy}, p.ease, function()
+            if self:getValue(p, "remove_on_end") then
+                p:remove()
+            end
+        end)
         p.update_func = self.data.update
         p.pre_draw_func = self.data.pre_draw
         p.draw_func = self.data.draw
         p.post_draw_func = self.data.post_draw
         p.remove_func = self.data.remove
         p.layer = self:getLayerValue(self.data.layer)
-        if type(p.layer) == "string" then
-            p.layer = self:getLayerValue(p.layer)
-        end
         if self.data.init then
             self.data.init(p)
         end
         if self.data.parent then
+            p.layer = 0
             self:addChild(p)
         elseif self.data.mask then
             if isClass(self.data.mask) then
@@ -382,4 +357,4 @@ function Emitter:emit()
     return particles
 end
 
-return Emitter
+return Absorber
