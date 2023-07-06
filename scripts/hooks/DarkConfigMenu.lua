@@ -1,5 +1,4 @@
----@class _DarkConfigMenu : DarkConfigMenu
----@overload fun(...) : _DarkConfigMenu
+---@class DarkConfigMenu
 local DarkConfigMenu, super = Class("DarkConfigMenu", true)
 
 function DarkConfigMenu:init()

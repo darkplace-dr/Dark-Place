@@ -1,4 +1,8 @@
-local Achievement, super = Class(Object)
+---@class Achievement : Class
+---@field earned boolean
+---@field completion boolean|number
+---@field progress boolean|number
+local Achievement, super = Class()
 
 function Achievement:init()
     super.init(self)

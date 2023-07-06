@@ -1,4 +1,4 @@
----@class Actor_override : Actor
+---@class Actor
 ---@field taunt_sprites string[] A list of sprites to show when this actor taunts
 local Actor, super = Class("Actor", true)
 

@@ -1,5 +1,4 @@
----@class _LightEquipItem : LightEquipItem
----@overload fun(...) : LightEquipItem
+---@class LightEquipItem
 local LightEquipItem, super = Class("LightEquipItem", true)
 
 function LightEquipItem:showEquipText(cutscene, chara)

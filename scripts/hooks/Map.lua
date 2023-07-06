@@ -1,5 +1,4 @@
----@class Map_override : Map
----@overload fun(...) : Map
+---@class Map
 local Map, super = Class("Map", true)
 
 function Map:init(world, data)

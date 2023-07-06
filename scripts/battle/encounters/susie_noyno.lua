@@ -9,8 +9,8 @@ function SusieNoyno:init()
 
     self.background = false
 
-    self:addEnemy("robo_susie", 530, 154)
-    self:addEnemy("noyno", 540, 270)
+    self.sus = self:addEnemy("robo_susie", 530, 154)
+    self.noy = self:addEnemy("noyno", 540, 270)
 end
 
 function SusieNoyno:onReturnToWorld(events)
@@ -24,6 +24,21 @@ function SusieNoyno:onReturnToWorld(events)
                 event:setFlag("dont_load", true)
             end
         end
+    end
+end
+
+function SusieNoyno:onStateChange(old, new)
+    if new == "INTRO" then
+        sus:setAnimation("battle/intro")
+        sus.sprite.flip_x = true
+        noy:setAnimation("battle/intro")
+        noy.sprite.flip_x = true
+    elseif new == "ACTIONSELECT" then
+        sus:setAnimation("battle/idle")
+        noy:setAnimation("battle/idle")
+    elseif new == "VICTORY" then
+        sus:setAnimation("battle/victory")
+        noy:setAnimation("battle/victory")
     end
 end
 
