@@ -26,10 +26,17 @@ function mb_map:update()
 		mb_ev.y = Utils.approach(mb_ev.y, player.y-mb_ev.height*2, self.stepback*DTMULT)
 		self.stepback = Utils.clamp(self.stepback + 0.1*DTMULT, 0.01, 12)
 		if player:collidesWith(mb_ev) then
+			Game:setFlag("s", true)
 			Game:setPartyMembers(Utils.unpack(self.old_party))
 			player:remove()
 			self.back = false
-			Game.world.fader.alpha = 1
+			Game.world:closeMenu()
+			Game.lock_movement = true
+			local c = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+			c:setLayer(WORLD_LAYERS["above_bullets"])
+			c:setParallax(0, 0)
+			c:setColor(0, 0, 0)
+			Game.world:addChild(c)
 			Game.world.timer:after(10+1/120, function()
 				Game.world.music:play("TAEFED_OIDUA", 0)
 				Game:setFlag("partySet", nil)
@@ -38,14 +45,15 @@ function mb_map:update()
 				end
 				Game.world.timer:tween(10, Game.world.music, {volume=1}, "in-cubic", function()
 					local t = Text("You lost, Kris.", 200, 200, 300, 200)
-					Game.stage:addChild(t)
-					Game:setFlag("s", true)
+					t:setLayer(WORLD_LAYERS["textbox"])
+					t:setParallax(0, 0)
+					Game.world:addChild(t)
 
 					Game.world.timer:after((1/60)*DTMULT, function()
 						t:remove()
 						Game.world.fader.alpha = 0
 						Game.world.camera.keep_in_bounds = true
-						Game.world:loadMap(self.return_map)
+						Game.world:loadMap(self.return_map, Mod.world_dest_mk_bak, Mod.world_dest_fc_bak)
 					end)
 				end)
 			end)
