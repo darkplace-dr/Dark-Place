@@ -22,7 +22,7 @@ function MyEnemy:onAct(battler, name)
         return string.format(Kristal.getLibConfig("shadowmen", "act_text"), battler.chara:getName())
 	end
 
-	return super:onAct(self, battler, name)
+	return super.onAct(self, battler, name)
 end
 
 function MyEnemy:getXAction(battler)
@@ -92,8 +92,9 @@ local function shootHearts(self, battler, timer, mark)
 	
 	local during = tween.during
 	local enemies = Game.battle.enemies
-		
-	tween.during = function()
+
+	-- What the FUCK
+	tween.during = function(...)
 		for k,enemy in ipairs(enemies) do
 			local hitbox = Hitbox(heart, 0, 0, 10, 10)
 			local enemyHitbox = Hitbox(enemy, unpack(enemy.actor.hitbox))
@@ -125,7 +126,7 @@ local function shootHearts(self, battler, timer, mark)
 			end
 		end
 		
-		during(tween)
+		during(...)
 	end
 	
 	Game.battle:addChild(heart)

@@ -1,7 +1,7 @@
 local SnapString, super = Class(Object)
 
 function SnapString:init(x, y, top_x)
-    super:init(self, x, y, 1, 400)
+    super.init(self, x, y, 1, 400)
     self.layer = -18
     self.color = COLORS.orange
 
@@ -20,7 +20,7 @@ function SnapString:init(x, y, top_x)
 end
 
 function SnapString:update()
-    super:update(self)
+    super.update(self)
     self.timer = self.timer + DTMULT
     if not self.split and self.timer >= 11 then
         self.split = true
@@ -52,7 +52,7 @@ function SnapString:update()
 end
 
 function SnapString:draw()
-    super:draw(self)
+    super.draw(self)
     love.graphics.setColor(self:getDrawColor())
     love.graphics.setLineWidth(self.width)
     if self.bottom_visible then

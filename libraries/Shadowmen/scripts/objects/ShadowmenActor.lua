@@ -1,7 +1,7 @@
 local MyObject, super = Class(ActorSprite)
 
 function MyObject:init(actor)
-    super:init(self, actor)
+    super.init(self, actor)
 	
 	local gun = Sprite("npcs/shadowmen/gun", -22, 24)
 	gun.visible = false
@@ -46,7 +46,7 @@ function MyObject:init(actor)
 end
 
 function MyObject:update()
-	super:update(self)
+	super.update(self)
 	
 	-- self.socks.anim_routine = self.anim_routine
 end

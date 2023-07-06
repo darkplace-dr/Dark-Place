@@ -2,7 +2,7 @@ local id = "shadowmen/bullet"
 local MyBullet, super = Class(Bullet, id)
 
 function MyBullet:init(x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self:setSprite("bullets/" .. id, 4 / 60, true)
     self:setHitbox(0, 0, 15, 7)
@@ -12,7 +12,7 @@ function MyBullet:init(x, y)
 end
 
 function MyBullet:update()
-	super:update(self)
+	super.update(self)
 	
 	if self._destroy then return end
 	

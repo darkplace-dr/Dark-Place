@@ -1,3 +1,4 @@
+---@diagnostic disable: redundant-return-value
 local Lib = {}
 
 --[[  TODO:

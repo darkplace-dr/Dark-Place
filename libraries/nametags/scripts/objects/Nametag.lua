@@ -144,7 +144,7 @@ function Nametag:draw()
             if char then
                 -- draw the character here, at (x + x_offset, y)
                 love.graphics.setColor(self.color[1], self.color[2], self.color[3], self.color[4]*specfade)
-                love.graphics.print(char, x + x_offset, y, 0, scale, scale)
+                love.graphics.print(char, x + x_offset, y)
                 love.graphics.setColor(self.color[1], self.color[2], self.color[3], self.color[4]*((0.3 + (math.sin((self.timer / 14)) * 0.1)) * specfade))
                 love.graphics.print(char, x + 2 + x_offset, y)
                 love.graphics.print(char, x - 2 + x_offset, y)

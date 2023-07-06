@@ -10,13 +10,13 @@ local Emitter, super = Class("ParticleSystem")
 -- if width and height are specified, particle positions will be randomly dispersed within the bounds specified
 function Emitter:init(x, y, w, h, o)
     if type(w) == "table" then
-        super:init(self, x, y, 0, 0, o)
+        super.init(self, x, y, 0, 0, o)
         o = w
     elseif type(x) == "table" then
         o = x
-        super:init(self, 0, 0, 0, 0, o)
+        super.init(self, 0, 0, 0, 0, o)
     else
-        super:init(self, x, y, w, h, o)
+        super.init(self, x, y, w, h, o)
     end
 
     -- self.data is a table of default values for particles

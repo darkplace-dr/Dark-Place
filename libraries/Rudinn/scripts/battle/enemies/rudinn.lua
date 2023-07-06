@@ -1,7 +1,7 @@
 local Rudinn, super = Class(EnemyBattler)
 
 function Rudinn:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Rudinn"
     self:setActor("rudinn")
@@ -104,7 +104,7 @@ function Rudinn:onAct(battler, name)
             return
         end
     end
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Rudinn:getEnemyDialogue()

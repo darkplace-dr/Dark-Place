@@ -1,7 +1,7 @@
 local System, super = Class(Object)
 
 function System:init(x, y, w, h, o)
-    super:init(self, x, y, w, h)
+    super.init(self, x, y, w, h)
     self.layer = (type(o.layer) == "number" and o.layer) or self:getLayerValue(o.layer)
     self.timer = Timer()
     self:addChild(self.timer)
@@ -9,7 +9,7 @@ function System:init(x, y, w, h, o)
 end
 
 function System:onAdd(parent)
-    super:onAdd(self, parent)
+    super.onAdd(self, parent)
     if self:getValue("every") > 0 then
         local total_time = 0
         self.timer:script(function(wait)

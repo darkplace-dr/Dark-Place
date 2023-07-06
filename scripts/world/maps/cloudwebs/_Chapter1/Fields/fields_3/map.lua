@@ -1,7 +1,7 @@
 local room, super = Class(Map)
 
 function room:load()
-  super:load(self)
+  super.load(self)
   --print("room " .. self.name .. " loaded!")
   if not Game:getFlag("chapter1_seenfieldsmusiclogo", false) then
     Game.world:spawnObject(musiclogo("field2", 180 -3, 120, 160 -3, 120, 140 -3, 120), 9999)

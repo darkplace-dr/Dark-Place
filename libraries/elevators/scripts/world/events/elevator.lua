@@ -1,7 +1,7 @@
 local Elevator, super = Class(Event)
 
 function Elevator:init(data)
-    super:init(self, 0, 0)
+    super.init(self, 0, 0)
 
     self.timer = 0
 
@@ -937,7 +937,7 @@ function Elevator:update()
         end
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 function Elevator:draw()
@@ -977,7 +977,7 @@ function Elevator:draw()
 
     love.graphics.setColor(COLORS.white)
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return Elevator

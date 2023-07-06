@@ -3,7 +3,7 @@
 local JukeboxMenu, super = Class(Object)
 
 function JukeboxMenu:init(jukebox)
-    super:init(self, 0, 40, SCREEN_WIDTH, SCREEN_HEIGHT)
+    super.init(self, 0, 40, SCREEN_WIDTH, SCREEN_HEIGHT)
 
     self.parallax_x = 0
     self.parallax_y = 0
@@ -51,7 +51,7 @@ function JukeboxMenu:init(jukebox)
 end
 
 function JukeboxMenu:draw()
-    super:draw(self)	
+    super.draw(self)	
 	love.graphics.setLineWidth(1)
 	love.graphics.setColor(0, 0.4, 0)
 	love.graphics.rectangle("line", 212, 70, 230, 1)
@@ -62,9 +62,9 @@ function JukeboxMenu:draw()
 	love.graphics.rectangle("line", 212, 270, 230, 1)
 	love.graphics.rectangle("line", 212, 310, 230, 1)
 	love.graphics.setColor(1, 1, 1)
-	left_arrow = Assets.getTexture("ui/flat_arrow_left")
+	local left_arrow = Assets.getTexture("ui/flat_arrow_left")
     love.graphics.draw(left_arrow, 230, 340, 0, 2, 2)
-	right_arrow = Assets.getTexture("ui/flat_arrow_right")
+	local right_arrow = Assets.getTexture("ui/flat_arrow_right")
     love.graphics.draw(right_arrow, 410, 340, 0, 2, 2)
     --song 1 info
     love.graphics.print(self.songs[self.page][1].name, 250, 73, 0, 0.5, 1)

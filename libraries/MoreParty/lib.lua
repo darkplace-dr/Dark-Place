@@ -1,4 +1,4 @@
----@diagnostic disable: redefined-local
+---@diagnostic disable: redefined-local, redundant-return-value
 
 local Lib = {}
 

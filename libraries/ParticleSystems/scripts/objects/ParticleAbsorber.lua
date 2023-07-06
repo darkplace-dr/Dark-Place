@@ -11,7 +11,7 @@ function Absorber:init(x, y, o)
         o = x
         x, y = 0, 0
     end
-    super:init(self, x, y, 0, 0, o)
+    super.init(self, x, y, 0, 0, o)
 
     -- self.data is a table of default values for particles
     -- all fields defined in the data table will override the default values
