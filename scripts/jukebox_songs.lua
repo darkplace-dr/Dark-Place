@@ -1,5 +1,4 @@
-return
-{
+return {
   {
     name = "Green Room",
     file = "greenroom",

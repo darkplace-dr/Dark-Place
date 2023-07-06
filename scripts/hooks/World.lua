@@ -33,6 +33,8 @@ function World:loadMap(...)
         and (not Game.world.cutscene and not Game.battle)
     then
         Mod.world_dest_map_bak = map
+        Mod.world_dest_mk_bak = marker
+        Mod.world_dest_fc_bak = facing
         map = "​"
         marker = "spawn"
         x, y = nil, nil

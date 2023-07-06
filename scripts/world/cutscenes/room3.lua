@@ -38,11 +38,7 @@ return {
         local function showMorshuAnimWithVoc(sprite, speed, clip, time, disallow_cancel)
             local anim, rem = showMorshuAnim(sprite, speed)
             Game.world.music:pause()
-            if clip == "menace" then -- epic hax
-                music_inst:play(clip, 1, 1, false)
-            else
-                Assets.playSound(clip)
-            end
+            music_inst:play(clip, 1, 1, false)
             rem(time, disallow_cancel)
             Assets.stopSound(clip)
             Game.world.music:resume()
@@ -291,10 +287,12 @@ return {
         local garbage = cutscene:getCharacter("diamond_trash")
 
         Game.world.music:pause()
+        local music_inst = Music()
+        cutscene:after(function() music_inst:remove() end)
 
         if event.interact_count == 1 then
             cutscene:showNametag("Trash Rudinn")
-            Assets.playSound("voiceover/garbage")
+            music_inst:play("voiceover/garbage", 1, 1, false)
             cutscene:text("[noskip][voice:nil]* Hellooo...[wait:1.5]", nil, garbage, { auto = true })
             cutscene:hideNametag()
             genBigText("I'm", 240, 40)
@@ -306,7 +304,7 @@ return {
             fadeOutBigText()
         else
             cutscene:showNametag("Trash Rudinn")
-            Assets.playSound("voiceover/stillgarbage")
+            music_inst:play("voiceover/stillgarbage", 1, 1, false)
             cutscene:text("[noskip][voice:nil]* Oh hi,[wait:1] thanks for checking in.[wait:2]\n* I'm...", nil, garbage, { auto = true })
             cutscene:hideNametag()
             genBigText("still", 210, 40)

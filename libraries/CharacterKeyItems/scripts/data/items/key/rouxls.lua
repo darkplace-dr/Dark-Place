@@ -45,6 +45,8 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {}
+
+    self.im_texture = Assets.getTexture("npcs/rouxls")
 end
 
 function item:onMenuOpen(menu)
@@ -53,8 +55,7 @@ end
 
 function item:onMenuDraw(menu)
     if menu.box.state == "SELECT" then
-        rouxls = Assets.getTexture("npcs/rouxls")
-        love.graphics.draw(rouxls, 375, 115, 0, 2, 2)
+        love.graphics.draw(self.im_texture, 375, 115, 0, 2, 2)
     end
 end
 

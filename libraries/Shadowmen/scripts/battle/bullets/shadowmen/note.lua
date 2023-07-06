@@ -2,7 +2,7 @@ local id = "shadowmen/note"
 local MyBullet, super = Class(Bullet, id)
 
 function MyBullet:init(x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self:setSprite("bullets/" .. id, 4 / 60, true)
 	self:setScale(2.5)
@@ -14,7 +14,7 @@ end
 local count = 0.04
 
 function MyBullet:update()
-	super:update(self)
+	super.update(self)
 	
 	local curve = self.curve
 	

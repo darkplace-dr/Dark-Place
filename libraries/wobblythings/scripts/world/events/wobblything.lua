@@ -1,7 +1,7 @@
 local WobblyThing, super = Class(Event, "wobblything")
 
 function WobblyThing:init(data)
-    super:init(self, data.x, data.y, data.width, data.height)
+    super.init(self, data.x, data.y, data.width, data.height)
 
     self:setHitbox(20, 48, 28, 24)
 
@@ -46,7 +46,7 @@ function WobblyThing:onInteract()
 end
 
 function WobblyThing:getDebugInfo()
-    local info = super:getDebugInfo(self)
+    local info = super.getDebugInfo(self)
     table.insert(info, "Wobbling: " .. (self.wobbled and "True" or "False"))
     table.insert(info, "Accurate scan range: " .. (self.accurate and "True" or "False"))
     table.insert(info, "Scan Start: " .. self.scan_start)
@@ -90,7 +90,7 @@ function WobblyThing:update()
         end
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 function WobblyThing:draw()
@@ -101,7 +101,7 @@ function WobblyThing:draw()
         love.graphics.line(self.scan_start, -self.y, self.scan_start, 480)
         love.graphics.line(self.scan_end,   -self.y, self.scan_end,   480)
     end
-    super:draw(self)
+    super.draw(self)
 end
 
 return WobblyThing

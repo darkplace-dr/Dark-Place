@@ -1,7 +1,7 @@
 local Spamton, super = Class(Actor, "spamtonneo")
 
 function Spamton:init()
-    super:init(self)
+    super.init(self)
     self.width, self.height = 50, 84
     self.hitbox = {12,41, 30,40}
     self.path = "npcs/spamton"

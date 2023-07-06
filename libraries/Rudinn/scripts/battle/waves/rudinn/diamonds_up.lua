@@ -1,7 +1,7 @@
 local DiamondsUp, super = Class(Wave)
 
 function DiamondsUp:init()
-	super:init(self)
+	super.init(self)
 	
 	self.time = 7
 end

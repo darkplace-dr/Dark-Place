@@ -45,6 +45,8 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {}
+
+    self.im_texture = Assets.getTexture("kristal/starwalker")
 end
 
 function item:onMenuOpen(menu)
@@ -54,8 +56,7 @@ end
 function item:onMenuDraw(menu)
     local x, y = menu.box:screenToLocalPos(0, 0)
     if menu.box.state == "SELECT" then
-        theoriginal = Assets.getTexture("kristal/starwalker", x, y)
-        love.graphics.draw(theoriginal, x, y, 0, 1, 1)
+        love.graphics.draw(self.im_texture, x, y, 0, 1, 1)
     end
 end
 

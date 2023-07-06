@@ -1,7 +1,7 @@
 local Light, super = Class(Event)
 
 function Light:init(data)
-    super:init(self, data)
+    super.init(self, data)
 
     self.radius = data.properties["radius"] or 80
     self.color = Utils.parseColorProperty(data.properties["color"] or "#ffffffff")

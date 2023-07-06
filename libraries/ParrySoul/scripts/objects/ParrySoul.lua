@@ -1,7 +1,7 @@
 local ParrySoul, super = Class(Soul)
 
 function ParrySoul:init(x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
     
     -- Default color is cyan {0,1,1}, but feel free to make it whatever you want.
     self.color = {0,1,1}
@@ -20,25 +20,25 @@ function ParrySoul:init(x, y)
     self.parry_window = 7       -- How large of a window you have to parry a bullet.
     self.cooldown = 10          -- Recovery time between one parry and the next.
 
-    targetrot = math.rad(180)
-    leftright = 0
+    self.targetrot = math.rad(180)
+    self.leftright = 0
 
 end
 
 function ParrySoul:update()
-    super:update(self)
+    super.update(self)
 
     if Input.pressed("confirm", false) and self:canParry() then
         self.did_parry = false
         self.parry_timer = self.parry_window
-        if leftright == 0 then
+        if self.leftright == 0 then
             --left
-            targetrot = math.rad(180)
-            leftright = 1
+            self.targetrot = math.rad(180)
+            self.leftright = 1
         else
             --right
-            targetrot = math.rad(-180)
-            leftright = 0
+            self.targetrot = math.rad(-180)
+            self.leftright = 0
         end
 
         self.sprite.scale_x = 1.4
@@ -47,9 +47,9 @@ function ParrySoul:update()
         self.cooldown_timer = self.cooldown
     end
 
-    if targetrot and self.rotation ~= targetrot then
-        if targetrot == math.rad(180) then self.rotation = Utils.approach(self.rotation, math.rad(180), DTMULT/2) end
-        if targetrot == math.rad(-180) then self.rotation = Utils.approach(self.rotation, math.rad(-180), DTMULT/2) end
+    if self.targetrot and self.rotation ~= self.targetrot then
+        if self.targetrot == math.rad(180) then self.rotation = Utils.approach(self.rotation, math.rad(180), DTMULT/2) end
+        if self.targetrot == math.rad(-180) then self.rotation = Utils.approach(self.rotation, math.rad(-180), DTMULT/2) end
     end
 
     if self.parry_timer > 0 then self.parry_timer = Utils.approach(self.parry_timer, 0, DTMULT) end
@@ -58,11 +58,6 @@ function ParrySoul:update()
     if self.sprite.scale_x > 1 then self.sprite.scale_x = Utils.approach(self.sprite.scale_x, 1, DT*2) end
     if self.sprite.scale_y > 1 then self.sprite.scale_y = Utils.approach(self.sprite.scale_y, 1, DT*2) end
 
-end
-
-function ParrySoul:getDebugInfo()
-    local info = super:getDebugInfo(self)
-    return info
 end
 
 -- Why is this not a default function?
@@ -105,7 +100,7 @@ function ParrySoul:onCollide(bullet)
         if self.inv_timer < 0.3 then self.inv_timer = 0.3 end
     end
 
-    super:onCollide(self, bullet)
+    super.onCollide(self, bullet)
 end
 
 return ParrySoul

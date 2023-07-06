@@ -1,7 +1,7 @@
 local Darkness, super = Class(Object)
 
 function Darkness:init(alpha)
-    super:init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+    super.init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
     -- above everything, including ui, by default
     -- if you want it to be below ui, set its layer
     self.layer = 1000

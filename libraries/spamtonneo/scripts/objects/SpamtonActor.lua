@@ -1,7 +1,7 @@
 local Spamton, super = Class(ActorSprite)
 
 function Spamton:init(actor)
-    super:init(self, actor)
+    super.init(self, actor)
 
     self.body = SpamtonPart("npcs/spamton/body", 11, 25, 0, 0.33)
     self.body.id = "body"

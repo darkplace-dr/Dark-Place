@@ -78,7 +78,7 @@ function Mod:initializeImportantFlags(new_file)
         likely_old_save = true
 
         -- Unlocked party members for the Party Menu
-        Game:setFlag("party", {"YOU", "susie"})
+        Game:setFlag("party", { "YOU", "susie" })
     end
 
     if not new_file and not Game:getFlag("#room1:played_intro", false) then
@@ -88,21 +88,21 @@ function Mod:initializeImportantFlags(new_file)
     end
 
     if not new_file and likely_old_save then
-        self:print("Save seems to be from an old version")
+        Log:print("Save seems to be from an old version")
     end
 end
 
 function Mod:unload()
     if TextInput.active and not Kristal.Console.is_open then
-        self:print("Warp Bin was open, ending text input to be safe", "warn")
+        Log:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
     end
-
-    self:stopDebugger()
 end
 
 function Mod:save(data)
-    data.map = data.map == "​" and Mod.world_dest_map_bak or data.map
+    if data.map == "​" then
+        data.map = Mod.world_dest_map_bak or Mod.lastMap
+    end
 end
 
 function Mod:preUpdate()

@@ -1,7 +1,7 @@
 local TauntSoul, super = Class(Soul)
 
 function TauntSoul:init(x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
     
     -- Default color is cyan {0,1,1}, but feel free to make it whatever you want.
     --self.color = {0,1,1}
@@ -47,7 +47,7 @@ function TauntSoul:init(x, y)
 end
 
 function TauntSoul:update()
-    super:update(self)
+    super.update(self)
 
     if self.transitioning then
         if self.parried_loop_sfx then
@@ -168,7 +168,7 @@ function TauntSoul:draw()
         self.color = Utils.clampMap(self.cooldown_timer, 0, self.cooldown / 2, {r,g,b},{(r * 0.5),(g * 0.5),(b * 0.5)})
     end
 
-    super:draw(self)
+    super.draw(self)
     self.color = {r,g,b}
 
 end
@@ -205,7 +205,7 @@ function TauntSoul:onCollide(bullet)
             bullet.damage = nil
         end
     end
-        super:onCollide(self, bullet)
+        super.onCollide(self, bullet)
 end
 
 

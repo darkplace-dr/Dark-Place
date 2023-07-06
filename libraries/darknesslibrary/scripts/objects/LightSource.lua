@@ -1,7 +1,7 @@
 local Light, super = Class(Object)
 
 function Light:init(x, y, radius, color)
-    super:init(self, x, y)
+    super.init(self, x, y)
     self.radius = radius
     self.color = color or {1,1,1}
     self.alpha = 1

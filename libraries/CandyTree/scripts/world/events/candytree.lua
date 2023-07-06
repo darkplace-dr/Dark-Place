@@ -1,7 +1,7 @@
 local CandyTree, super = Class(Event)
 
 function CandyTree:init(x, y, properties)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     properties = properties or {}
 

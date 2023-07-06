@@ -1,7 +1,7 @@
 local Part, super = Class(Object)
 
 function Part:init(path, x, y, ox, oy, rot)
-    super:init(self, x, y)
+    super.init(self, x, y)
     self.inherit_color = true
     self.sprite = Sprite(path)
     self.sprite.inherit_color = true
@@ -24,7 +24,7 @@ function Part:init(path, x, y, ox, oy, rot)
 end
 
 function Part:update()
-    super:update(self)
+    super.update(self)
     if self.shake > 0 then
         self.sprite:setPosition(love.math.random(-self.shake,self.shake), love.math.random(-self.shake,self.shake))
     else

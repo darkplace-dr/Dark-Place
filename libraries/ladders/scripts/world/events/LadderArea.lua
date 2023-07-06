@@ -1,7 +1,7 @@
 local LadderArea, super = Class(Event, "ladderarea")
 
 function LadderArea:init(data)
-    super:init(self, data.x, data.y, data.width, data.height)
+    super.init(self, data.x, data.y, data.width, data.height)
 	self.inside = {}
 	
 	self:setHitbox(0, 0, data.width, data.height)
@@ -30,7 +30,7 @@ function LadderArea:onExit(chara)
 end
 
 function LadderArea:update()
-	super:update(self)
+	super.update(self)
 	for chara, is_inside in pairs(self.inside) do
 		if is_inside then
 			

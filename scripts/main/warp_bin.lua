@@ -27,7 +27,7 @@ Mod.warp_bin_codes = {
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
-            self:addBinCode("sppispod", function(cutscene2)
+            Mod:addBinCode("SPPISPOD", function(cutscene2)
                 cutscene2:text({
                     "* Since you found another one...",
                     "* Here's a fun fact:",
