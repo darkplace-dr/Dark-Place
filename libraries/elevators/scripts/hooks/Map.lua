@@ -1,4 +1,4 @@
----@class Map_override : Map
+---@class Map
 local Map, super = Class("Map", true)
 
 function Map:onExit()

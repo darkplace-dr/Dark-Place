@@ -1,5 +1,4 @@
----@class DarkMenuPartySelect_override : DarkMenuPartySelect
----@overload fun(...) : DarkMenuPartySelect_override
+---@class DarkMenuPartySelect
 local DarkMenuPartySelect, super = Class(DarkMenuPartySelect)
 
 function DarkMenuPartySelect:draw()

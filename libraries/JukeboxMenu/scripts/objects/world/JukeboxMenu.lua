@@ -1,3 +1,5 @@
+---@class JukeboxMenu : Object
+---@overload fun(...) : JukeboxMenu
 local JukeboxMenu, super = Class(Object)
 
 function JukeboxMenu:init()

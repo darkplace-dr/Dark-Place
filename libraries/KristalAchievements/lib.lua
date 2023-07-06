@@ -1,10 +1,5 @@
 local lib = {}
 
----@class Achievement_def
----@field earned boolean
----@field completion boolean|number
----@field progress boolean|number
-
 --- Called when the game is loaded. Registers achievement scripts.
 function lib:onRegistered()
     self.achievements_data = {}
@@ -122,7 +117,7 @@ function lib:writeGlobalAchievements()
 end
 
 --- Gets a specific achievement from memory.
----@return Achievement_def ach
+---@return Achievement ach
 function lib:getAchievement(achievement)
     for name, ach in pairs(self.achievements) do
         if name == achievement then

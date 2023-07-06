@@ -1,5 +1,4 @@
----@class _EnemyBattler : EnemyBattler
----@overload fun(...) : EnemyBattler
+---@class EnemyBattler
 local EnemyBattler, super = Class("EnemyBattler", true)
 
 function EnemyBattler:defeat(reason, violent)

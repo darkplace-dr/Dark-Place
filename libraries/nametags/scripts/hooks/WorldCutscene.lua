@@ -1,3 +1,4 @@
+---@class WorldCutscene
 local WorldCutscene, super = Class("WorldCutscene", true)
 
 function WorldCutscene:showNametag(text, options)

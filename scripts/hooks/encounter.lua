@@ -1,5 +1,5 @@
----@class Encounter_o : Encounter
----@overload fun(...) : Encounter_o
+---@class Encounter
+---@overload fun(...) : Encounter
 local Encounter = Class("Encounter", true)
 
 function Encounter:createSoul(x, y, color)
