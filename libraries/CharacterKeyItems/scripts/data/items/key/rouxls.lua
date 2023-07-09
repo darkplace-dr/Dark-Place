@@ -54,8 +54,9 @@ function item:onMenuOpen(menu)
 end
 
 function item:onMenuDraw(menu)
+    local x, y = menu.box:screenToLocalPos(0, 0)
     if menu.box.state == "SELECT" then
-        love.graphics.draw(self.im_texture, 375, 115, 0, 2, 2)
+        love.graphics.draw(self.im_texture, x + 470, y + 230, 0, 2, 2)
     end
 end
 

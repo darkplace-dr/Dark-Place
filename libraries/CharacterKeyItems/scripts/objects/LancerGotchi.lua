@@ -1,20 +1,20 @@
 local LancerGotchi, super = Class(Object)
 
-function LancerGotchi:init(menu)
-    super.init(self, 0, 0, 72, 70)
+function LancerGotchi:init(x, y)
+    super.init(self, x, y)
     self.parallax_x = 0
     self.parallax_y = 0
 	
-	self.lancer = ActorSprite("lancer")
+    self.lancer = ActorSprite("lancergotchi")
     self.lancer:setScale(2)
     self:addChild(self.lancer)
 
     self.movecon = 4
     self.con = 0
 
-    self.minx = 100
-    self.maxx = 400
-    self.maxy = 140
+    self.minx = 100 + x 
+    self.maxx = 400 + x 
+    self.maxy = 280 + y
 
     self.x = (self.minx + 150)
     self.y = self.maxy
@@ -25,15 +25,16 @@ function LancerGotchi:init(menu)
     self.timer = Timer()
     self:addChild(self.timer)
 	
-    self.timer:after(6, function()
+    self.timer:every(3, function()
         self.remmovecon = self.movecon
-        self.movecon = math.floor(love.math.random(5))
+        self.movecon = math.floor(Utils.random(5))
         if self.movecon == self.remmovecon then
-            self.movecon = math.floor(love.math.random(5))
+            self.movecon = math.floor(Utils.random(5))
         end
         self.con = 0
         if self.sleeptimer >= 900 then
             self.movecon = 10
+            self.lancer:setAnimation("sleep")
         end
     end)
 end
@@ -50,53 +51,42 @@ function LancerGotchi:update()
                     speed_x = -4,
                 })
                 self.lancer:setSprite("walk/left")
-            end
+			end
             if self.movecon == 1 then
                 self:setPhysics({
                     speed_x = 4,
                 })
                 self.lancer:setSprite("walk/right")
-            end
-
+			end
             self.con = 1
             self.contimer = 0
             self.contimermax = 30
-            self.flipchance = Utils.pick{0, 1, 2}
-
+            self.flipchance = Utils.random(2)
             if self.flipchance == 2 then
-                self.lancer:setSprite(Utils.pick{"walk/down", "up_flip"})
-            end
+                self.lancer:setAnimation(Utils.pick{"walk/down", "up_flip"})
+			end
 		end
         if self.con == 1 then
             self.stop = 0
             self.contimer = self.contimer + DTMULT
-
             if self.x < self.minx then
                 self.stop = 1
-            end
-            if self.x > self.maxx then
+                self.lancer:setSprite("walk/down")
+            elseif self.x > self.maxx then
                 self.stop = 1
-            end
-            if self.contimer > self.contimermax then
+                self.lancer:setSprite("walk/down")
+            elseif self.contimer > self.contimermax then
                 self.stop = 1
+                self.lancer:setSprite("walk/down")
             end
             if self.stop == 1 then
-                self.physics.speed_x = self.physics.speed_x + DTMULT
-                self.lancer:setSprite(Utils.pick{"walk/down", "walk/down", "up_flip"})
-                self.timer:after(3, function()
-                    self.remmovecon = self.movecon
-                    self.movecon = math.floor(love.math.random(5))
-                    if self.movecon == self.remmovecon then
-                        self.movecon = math.floor(love.math.random(5))
-                    end
-                    self.con = 0
-                    if self.sleeptimer >= 900 then
-                        self.movecon = 10
-                    end
-                end)
+                self:setPhysics({
+                    speed_x = 0,
+                })
+                self.lancer:setAnimation(Utils.pick{"walk/down", "walk/down", "up_flip"})
                 self.con = 2
-            end
-        end
+			end
+		end
 	end
     if self.movecon == 2 or self.movecon == 3 then
         if self.con == 0 then
@@ -120,12 +110,11 @@ function LancerGotchi:update()
                     speed_y = 0,
                     gravity = 0,
                 })
-            end
-            if self.x <= self.minx then
+                self.y = self.maxy
+            elseif self.x <= self.minx then
                 self.y = self.y + 4 * DTMULT
                 self.physics.speed_x = self.physics.speed_x + DTMULT
-            end
-            if self.x >= self.maxx then
+            elseif self.x >= self.maxx then
                 self.y = self.y - 4 * DTMULT
                 self.physics.speed_x = self.physics.speed_x - DTMULT
             end
@@ -151,17 +140,7 @@ function LancerGotchi:update()
                     gravity = 0,
                 })
                 self.con = 2
-                self.timer:after(3, function()
-                    self.remmovecon = self.movecon
-                    self.movecon = math.floor(love.math.random(5))
-                    if self.movecon == self.remmovecon then
-                        self.movecon = math.floor(love.math.random(5))
-                    end
-                    self.con = 0
-                    if self.sleeptimer >= 900 then
-                        self.movecon = 10
-                    end
-                end)
+                self.y = self.maxy
             end
         end
     end
@@ -170,28 +149,22 @@ function LancerGotchi:update()
             self.lancer:setAnimation("wave")
             self.wavetimer = 0
             self.con = 1
+            self:setPhysics({
+                speed = 0,
+                speed_x = 0,
+                gravity = 0,
+            })
         end
         if self.con == 1 then
             self.wavetimer = self.wavetimer + DTMULT
             if self.wavetimer >= 40 then
-                self.timer:after(0.2, function()
-                    self.remmovecon = self.movecon
-                    self.movecon = math.floor(love.math.random(5))
-                    if self.movecon == self.remmovecon then
-                        self.movecon = math.floor(love.math.random(5))
-                    end
-                    self.con = 0
-                    if self.sleeptimer >= 900 then
-                        self.movecon = 10
-                    end
-                end)
                 self.con = 2
             end
         end
     end
     if self.movecon == 10 then
-        self.lancer:setAnimation("sleep", 0.1, true)
         self:setPhysics({
+            speed = 0,
             speed_x = 0,
             gravity = 0,
         })
