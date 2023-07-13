@@ -3,6 +3,7 @@ modRequire("scripts/main/utils_general")
 modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
+modRequire("scripts/main/live_bulborb_reaction")
 
 function Mod:preInit()
     if Kristal.Version < SemVer(self.info.engineVer) then
@@ -44,6 +45,8 @@ function Mod:postInit(new_file)
     if new_file then
         Game.world:startCutscene("_main.introcutscene")
     end
+    
+    self:initBulborb()
 end
 
 function Mod:initializeImportantFlags(new_file)
@@ -90,6 +93,11 @@ function Mod:initializeImportantFlags(new_file)
     if not new_file and likely_old_save then
         Log:print("Save seems to be from an old version")
     end
+
+    if new_file then
+        Game:setFlag("bulborb_scale", 0.3)
+        Game:setFlag("bulborb_position", 2)
+    end
 end
 
 function Mod:unload()
@@ -111,6 +119,7 @@ end
 
 function Mod:postUpdate()
     self:updateTaunt()
+    self:updateBulborb()
 
     if Game.save_name == "MERG" then
         for _, member in ipairs(Game.party) do

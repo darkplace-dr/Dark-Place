@@ -5,6 +5,8 @@ function DarkConfigMenu:init()
     super.init(self)
 
     self.extras_substate = ""
+    self.bulborb_positions = {"TopLeft", "TopRight", "BottomLeft", "BottomRight"}
+    self.b_pos = Game:getFlag("bulborb_position")
 end
 
 function DarkConfigMenu:update()
@@ -98,6 +100,67 @@ function DarkConfigMenu:update()
                     Mod:resetWindow()
                 end
             end
+        elseif self.extras_substate == "BULBORBSCALE" then
+            if Input.pressed("cancel") or Input.pressed("confirm") then
+                self.extras_substate = ""
+                self.ui_select:stop()
+                self.ui_select:play()
+            end
+            if Input.pressed("left") then
+                local scale = Mod.reaction:getScale()
+                Mod.reaction:setScale(math.max(scale - 0.1, 0.1))
+                Game:setFlag("bulborb_scale", Mod.reaction:getScale())
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
+            if Input.pressed("right") then
+                local scale = Mod.reaction:getScale()
+                Mod.reaction:setScale(scale + 0.1)
+                Game:setFlag("bulborb_scale", Mod.reaction:getScale())
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
+        elseif self.extras_substate == "BULBORBLOCATION" then
+            if Input.pressed("cancel") or Input.pressed("confirm") then
+                self.extras_substate = ""
+                self.ui_select:stop()
+                self.ui_select:play()
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
+            local function updatePosition(new_position)
+                if new_position == 1 then
+                    Mod.reaction:setOrigin(0, 0)
+                    Mod.reaction.x = 0
+                    Mod.reaction.y = 0
+                elseif new_position == 2 then
+                    Mod.reaction:setOrigin(1, 0)
+                    Mod.reaction.x = SCREEN_WIDTH
+                    Mod.reaction.y = 0
+                elseif new_position == 3 then
+                    Mod.reaction:setOrigin(0, 1)
+                    Mod.reaction.x = 0
+                    Mod.reaction.y = SCREEN_HEIGHT
+                elseif new_position == 4 then
+                    Mod.reaction:setOrigin(1, 1)
+                    Mod.reaction.x = SCREEN_WIDTH
+                    Mod.reaction.y = SCREEN_HEIGHT
+                end
+            end
+            if Input.pressed("left") then
+                self.b_pos = math.max(self.b_pos - 1, 1)
+                updatePosition(self.b_pos)
+                Game:setFlag("bulborb_position", self.b_pos)
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
+            if Input.pressed("right") then
+                self.b_pos = math.min(self.b_pos + 1, 4)
+                updatePosition(self.b_pos)
+                Game:setFlag("bulborb_position", self.b_pos)
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
         else
             if Input.pressed("confirm") then
                 self.ui_select:stop()
@@ -110,6 +173,10 @@ function DarkConfigMenu:update()
                 elseif self.currently_selected == 3 then
                     self.extras_substate = "BORDER"
                 elseif self.currently_selected == 4 then
+                    self.extras_substate = "BULBORBSCALE"
+                elseif self.currently_selected == 5 then
+                    self.extras_substate = "BULBORBLOCATION"
+                elseif self.currently_selected == 6 then
                     self.state = "MAIN"
                     self.currently_selected = 1
                 end
@@ -136,7 +203,7 @@ function DarkConfigMenu:update()
                 self.ui_move:play()
             end
 
-            self.currently_selected = Utils.clamp(self.currently_selected, 1, 4)
+            self.currently_selected = Utils.clamp(self.currently_selected, 1, 5)
         end
     elseif self.state == "VOLUME" then
         if Input.pressed("cancel") or Input.pressed("confirm") then
@@ -183,13 +250,17 @@ function DarkConfigMenu:draw()
     if self.state == "EXTRAS" then
         love.graphics.print("EXTRAS", 188, -12)
 
-        love.graphics.print("Achievements",    88, 38 + (0 * 32))
-        love.graphics.print("AddiSwitch",      88, 38 + (1 * 32))
-        love.graphics.print("Border",          88, 38 + (2 * 32))
-        love.graphics.print("Back",            88, 38 + (3 * 32))
+        love.graphics.print("Achievements",     88, 38 + (0 * 32))
+        love.graphics.print("AddiSwitch",       88, 38 + (1 * 32))
+        love.graphics.print("Border",           88, 38 + (2 * 32))
+        love.graphics.print("Bulborb Scale",    88, 38 + (3 * 32))
+        love.graphics.print("Bulborb Location", 88, 38 + (4 * 32))
+        love.graphics.print("Back",             88, 38 + (5 * 32))
 
         love.graphics.print(Mod:addiSwitch() and "ON" or "OFF", 348, 38 + (1 * 32))
         love.graphics.print(Kristal.getBorderName(),            348, 38 + (2 * 32))
+        love.graphics.print(Mod.reaction:getScale(),            348, 38 + (3 * 32))
+        love.graphics.print(self.bulborb_positions[self.b_pos], 348, 38 + (4 * 32), 0, 0.9, 1)
 
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))
