@@ -20,12 +20,16 @@ function Mod:initBulborb()
         self.reaction:setOrigin(1, 1)
         self.reaction.x = SCREEN_WIDTH
         self.reaction.y = SCREEN_HEIGHT
+    elseif Game:getFlag("bulborb_position") == 5 then
+        self.reaction:setOrigin(0.5, 0.5)
+        self.reaction.x = SCREEN_WIDTH/2
+        self.reaction.y = SCREEN_HEIGHT/2
     end
     self.reaction.layer = 1000
 end
 
 function Mod:updateBulborb()
-    if Input.pressed("b") and self.enabled == 0 and self.appearing == false then
+    if Input.pressed("b") and self.enabled == 0 and self.appearing == false and Game.world.map.id ~= "field" then
         Assets.stopSound("vineboom_reversed")
         Assets.stopAndPlaySound("vineboom")
         Game.stage:addChild(self.reaction)
@@ -37,6 +41,7 @@ function Mod:updateBulborb()
             self.appearing = false
         end)
         if Game.state == "BATTLE" then
+            Game.battle:shakeCamera()
             Game.battle.timer:after(0.5, function()
                 self.enabled = 1
                 self.appearing = false
@@ -52,5 +57,9 @@ function Mod:updateBulborb()
         self.enabled = 0
         self.vanishing = false
         self.reaction.alpha = 1
+    end
+    if Game.world.map.id == "field" then --Just wanna make sure the internet checkpoint thing that Char added doesn't get its mood ruined by a Live Bulborb Reaction
+        self.enabled = 0
+        self.reaction:remove()
     end
 end

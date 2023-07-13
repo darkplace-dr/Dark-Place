@@ -5,7 +5,7 @@ function DarkConfigMenu:init()
     super.init(self)
 
     self.extras_substate = ""
-    self.bulborb_positions = {"TopLeft", "TopRight", "BottomLeft", "BottomRight"}
+    self.bulborb_positions = {"TopLeft", "TopRight", "BottomLeft", "BottomRight", "Center"}
     self.b_pos = Game:getFlag("bulborb_position")
 end
 
@@ -145,6 +145,10 @@ function DarkConfigMenu:update()
                     Mod.reaction:setOrigin(1, 1)
                     Mod.reaction.x = SCREEN_WIDTH
                     Mod.reaction.y = SCREEN_HEIGHT
+                elseif new_position == 5 then
+                    Mod.reaction:setOrigin(0.5, 0.5)
+                    Mod.reaction.x = SCREEN_WIDTH/2
+                    Mod.reaction.y = SCREEN_HEIGHT/2
                 end
             end
             if Input.pressed("left") then
@@ -155,7 +159,7 @@ function DarkConfigMenu:update()
                 self.ui_move:play()
             end
             if Input.pressed("right") then
-                self.b_pos = math.min(self.b_pos + 1, 4)
+                self.b_pos = math.min(self.b_pos + 1, 5)
                 updatePosition(self.b_pos)
                 Game:setFlag("bulborb_position", self.b_pos)
                 self.ui_move:stop()
