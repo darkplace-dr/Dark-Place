@@ -46,8 +46,12 @@ function Mod:updateBulborb()
     if can_show and not TextInput.active and Input.pressed("b") then
         if self.bulborb_state == "" then
             self.bulborb_state = "APPEARING"
+
             self:resetBulborb()
             Game.stage:addChild(self.bulborb_reaction)
+
+            Assets.stopSound("vineboom_reversed")
+            Assets.stopAndPlaySound("vineboom")
             -- Note: doesn't function if camera is not detached
             if Game.state == "OVERWORLD" then
                 Game.world:shakeCamera(4)
@@ -55,14 +59,15 @@ function Mod:updateBulborb()
                 Game.battle:shakeCamera(4)
             end
             self.bulborb_reaction:flash()
-            Assets.stopSound("vineboom_reversed")
-            Assets.stopAndPlaySound("vineboom")
+
             Game.world.timer:after(0.5, function()
                 self.bulborb_state = "IDLE"
             end)
         elseif self.bulborb_state == "IDLE" then
             self.bulborb_state = "VANISHING"
+
             self.bulborb_reaction:fadeOutAndRemove(0.5)
+
             Assets.stopSound("vineboom")
             Assets.stopAndPlaySound("vineboom_reversed")
         end
