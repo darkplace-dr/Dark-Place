@@ -52,7 +52,7 @@ function mb_map:update()
 					t:setParallax(0, 0)
 					Game.world:addChild(t)
 
-					Game.world.timer:after((1/60)*DTMULT, function()
+					Game.world.timer:after(1/60, function()
 						t:remove()
 						Game.world.fader.alpha = 0
 						Game.world.camera.keep_in_bounds = true
