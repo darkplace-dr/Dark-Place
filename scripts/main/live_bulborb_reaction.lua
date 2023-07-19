@@ -1,65 +1,74 @@
 function Mod:initBulborb()
-    self.enabled = 0
-    self.vanishing = false
-    self.appearing = false
-    self.reaction = LiveBulborbReaction()
-    self.reaction:setScale(Game:getFlag("bulborb_scale"))
-    if Game:getFlag("bulborb_position") == 1 then
-        self.reaction:setOrigin(0, 0)
-        self.reaction.x = 0
-        self.reaction.y = 0
-    elseif Game:getFlag("bulborb_position") == 2 then
-        self.reaction:setOrigin(1, 0)
-        self.reaction.x = SCREEN_WIDTH
-        self.reaction.y = 0
-    elseif Game:getFlag("bulborb_position") == 3 then
-        self.reaction:setOrigin(0, 1)
-        self.reaction.x = 0
-        self.reaction.y = SCREEN_HEIGHT
-    elseif Game:getFlag("bulborb_position") == 4 then
-        self.reaction:setOrigin(1, 1)
-        self.reaction.x = SCREEN_WIDTH
-        self.reaction.y = SCREEN_HEIGHT
-    elseif Game:getFlag("bulborb_position") == 5 then
-        self.reaction:setOrigin(0.5, 0.5)
-        self.reaction.x = SCREEN_WIDTH/2
-        self.reaction.y = SCREEN_HEIGHT/2
+    self.bulborb_reaction = LiveBulborbReaction()
+    self:resetBulborb()
+    -- "", APPEARING, IDLE, VANISHING
+    self.bulborb_state = ""
+end
+
+function Mod:resetBulborb()
+    self.bulborb_reaction:setScale(Game:getFlag("bulborb_scale", 0.3))
+    self.bulborb_reaction.alpha = 1
+    self:repositionBulborb()
+end
+function Mod:repositionBulborb()
+    local pos = Game:getFlag("bulborb_position", 2)
+    if pos == 1 then
+        self.bulborb_reaction:setOrigin(0, 0)
+        self.bulborb_reaction.x = 0
+        self.bulborb_reaction.y = 0
+    elseif pos == 2 then
+        self.bulborb_reaction:setOrigin(1, 0)
+        self.bulborb_reaction.x = SCREEN_WIDTH
+        self.bulborb_reaction.y = 0
+    elseif pos == 3 then
+        self.bulborb_reaction:setOrigin(0, 1)
+        self.bulborb_reaction.x = 0
+        self.bulborb_reaction.y = SCREEN_HEIGHT
+    elseif pos == 4 then
+        self.bulborb_reaction:setOrigin(1, 1)
+        self.bulborb_reaction.x = SCREEN_WIDTH
+        self.bulborb_reaction.y = SCREEN_HEIGHT
+    elseif pos == 5 then
+        self.bulborb_reaction:setOrigin(0.5, 0.5)
+        self.bulborb_reaction.x = SCREEN_WIDTH/2
+        self.bulborb_reaction.y = SCREEN_HEIGHT/2
     end
-    self.reaction.layer = 1000
 end
 
 function Mod:updateBulborb()
-    if Input.pressed("b") and self.enabled == 0 and self.appearing == false and Game.world.map.id ~= "field" then
-        Assets.stopSound("vineboom_reversed")
-        Assets.stopAndPlaySound("vineboom")
-        Game.stage:addChild(self.reaction)
-        self.reaction:flash()
-        Game.world:shakeCamera()
-        self.appearing = true
-        Game.world.timer:after(0.5, function()
-            self.enabled = 1
-            self.appearing = false
-        end)
-        if Game.state == "BATTLE" then
-            Game.battle:shakeCamera()
-            Game.battle.timer:after(0.5, function()
-                self.enabled = 1
-                self.appearing = false
+    -- Just wanna make sure the internet checkpoint thing that Char added
+    -- doesn't get its mood ruined by a Live Bulborb Reaction
+    local can_show = Game.world.map.id ~= "field"
+    if not can_show then
+        self.bulborb_reaction:remove()
+    end
+
+    if can_show and not TextInput.active and Input.pressed("b") then
+        if self.bulborb_state == "" then
+            self.bulborb_state = "APPEARING"
+            self:resetBulborb()
+            Game.stage:addChild(self.bulborb_reaction)
+            -- Note: doesn't function if camera is not detached
+            if Game.state == "OVERWORLD" then
+                Game.world:shakeCamera(4)
+            elseif Game.state == "BATTLE" then
+                Game.battle:shakeCamera(4)
+            end
+            self.bulborb_reaction:flash()
+            Assets.stopSound("vineboom_reversed")
+            Assets.stopAndPlaySound("vineboom")
+            Game.world.timer:after(0.5, function()
+                self.bulborb_state = "IDLE"
             end)
+        elseif self.bulborb_state == "IDLE" then
+            self.bulborb_state = "VANISHING"
+            self.bulborb_reaction:fadeOutAndRemove(0.5)
+            Assets.stopSound("vineboom")
+            Assets.stopAndPlaySound("vineboom_reversed")
         end
-    elseif Input.pressed("b") and self.enabled == 1 and self.vanishing == false then
-        Assets.stopSound("vineboom")
-        Assets.stopAndPlaySound("vineboom_reversed")
-        self.vanishing = true
-        self.reaction:fadeOutAndRemove(0.5)
     end
-    if self.reaction.alpha == 0 then
-        self.enabled = 0
-        self.vanishing = false
-        self.reaction.alpha = 1
-    end
-    if Game.world.map.id == "field" then --Just wanna make sure the internet checkpoint thing that Char added doesn't get its mood ruined by a Live Bulborb Reaction
-        self.enabled = 0
-        self.reaction:remove()
+
+    if self.bulborb_reaction:isRemoved() then
+        self.bulborb_state = ""
     end
 end

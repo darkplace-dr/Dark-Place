@@ -6,7 +6,6 @@ function DarkConfigMenu:init()
 
     self.extras_substate = ""
     self.bulborb_positions = {"TopLeft", "TopRight", "BottomLeft", "BottomRight", "Center"}
-    self.b_pos = Game:getFlag("bulborb_position")
 end
 
 function DarkConfigMenu:update()
@@ -106,17 +105,18 @@ function DarkConfigMenu:update()
                 self.ui_select:stop()
                 self.ui_select:play()
             end
+            local scale = Mod.bulborb_reaction:getScale()
             if Input.pressed("left") then
-                local scale = Mod.reaction:getScale()
-                Mod.reaction:setScale(math.max(scale - 0.1, 0.1))
-                Game:setFlag("bulborb_scale", Mod.reaction:getScale())
+                scale = math.max(scale - 0.1, 0.1)
+                Mod.bulborb_reaction:setScale(scale)
+                Game:setFlag("bulborb_scale", scale)
                 self.ui_move:stop()
                 self.ui_move:play()
             end
             if Input.pressed("right") then
-                local scale = Mod.reaction:getScale()
-                Mod.reaction:setScale(scale + 0.1)
-                Game:setFlag("bulborb_scale", Mod.reaction:getScale())
+                scale = scale + 0.1
+                Mod.bulborb_reaction:setScale(scale)
+                Game:setFlag("bulborb_scale", scale)
                 self.ui_move:stop()
                 self.ui_move:play()
             end
@@ -128,40 +128,18 @@ function DarkConfigMenu:update()
                 self.ui_move:stop()
                 self.ui_move:play()
             end
-            local function updatePosition(new_position)
-                if new_position == 1 then
-                    Mod.reaction:setOrigin(0, 0)
-                    Mod.reaction.x = 0
-                    Mod.reaction.y = 0
-                elseif new_position == 2 then
-                    Mod.reaction:setOrigin(1, 0)
-                    Mod.reaction.x = SCREEN_WIDTH
-                    Mod.reaction.y = 0
-                elseif new_position == 3 then
-                    Mod.reaction:setOrigin(0, 1)
-                    Mod.reaction.x = 0
-                    Mod.reaction.y = SCREEN_HEIGHT
-                elseif new_position == 4 then
-                    Mod.reaction:setOrigin(1, 1)
-                    Mod.reaction.x = SCREEN_WIDTH
-                    Mod.reaction.y = SCREEN_HEIGHT
-                elseif new_position == 5 then
-                    Mod.reaction:setOrigin(0.5, 0.5)
-                    Mod.reaction.x = SCREEN_WIDTH/2
-                    Mod.reaction.y = SCREEN_HEIGHT/2
-                end
-            end
+            local b_pos = Game:getFlag("bulborb_position", 2)
             if Input.pressed("left") then
-                self.b_pos = math.max(self.b_pos - 1, 1)
-                updatePosition(self.b_pos)
-                Game:setFlag("bulborb_position", self.b_pos)
+                b_pos = math.max(b_pos - 1, 1)
+                Game:setFlag("bulborb_position", b_pos)
+                Mod:repositionBulborb()
                 self.ui_move:stop()
                 self.ui_move:play()
             end
             if Input.pressed("right") then
-                self.b_pos = math.min(self.b_pos + 1, 5)
-                updatePosition(self.b_pos)
-                Game:setFlag("bulborb_position", self.b_pos)
+                b_pos = math.min(b_pos + 1, 5)
+                Game:setFlag("bulborb_position", b_pos)
+                Mod:repositionBulborb()
                 self.ui_move:stop()
                 self.ui_move:play()
             end
@@ -263,8 +241,8 @@ function DarkConfigMenu:draw()
 
         love.graphics.print(Mod:addiSwitch() and "ON" or "OFF", 348, 38 + (1 * 32))
         love.graphics.print(Kristal.getBorderName(),            348, 38 + (2 * 32))
-        love.graphics.print(Mod.reaction:getScale(),            348, 38 + (3 * 32))
-        love.graphics.print(self.bulborb_positions[self.b_pos], 348, 38 + (4 * 32), 0, 0.9, 1)
+        love.graphics.print(Mod.bulborb_reaction:getScale(),            348, 38 + (3 * 32))
+        love.graphics.print(self.bulborb_positions[Game:getFlag("bulborb_position", 2)], 348, 38 + (4 * 32), 0, 0.9, 1)
 
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))
