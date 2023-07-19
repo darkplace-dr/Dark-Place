@@ -5,7 +5,7 @@ local lib = {}
 ---@field completion boolean|number
 ---@field progress boolean|number
 
---- Called when the game is loaded. Registers achievement scripts.
+-- Called when the game is loaded. Registers achievement scripts.
 function lib:onRegistered()
     self.achievements_data = {}
     for _, path, achievement_scr in Registry.iterScripts("ach/") do
@@ -20,7 +20,7 @@ function lib:onRegistered()
     self.global = Kristal.getLibConfig("achievements", "global_save")
 end
 
---- Called when the game is started. Loads achievement objects (and order), then prints an intro.
+-- Called when the game is started. Loads achievement objects (and order), then prints an intro.
 function lib:init()
     self.achievements = {}
     for path, achievement_scr in pairs(self.achievements_data) do
@@ -40,7 +40,7 @@ function lib:init()
     end
 end
 
---- Called after the game's initalization. Creates or loads the achievements savefile.
+-- Called after the game's initalization. Creates or loads the achievements savefile.
 function lib:postInit()
     if self.global then
         if not love.filesystem.getInfo(self:getGlobalAchFile()) then
@@ -52,7 +52,7 @@ function lib:postInit()
     end
 end
 
---- Called during loading. Loads the achievement savedata.
+-- Called during loading. Loads the achievement savedata.
 function lib:load(data)
     if self.global then
         return
@@ -65,7 +65,7 @@ function lib:load(data)
     end
 end
 
---- Called during saving. Writes the achievement savedata.
+-- Called during saving. Writes the achievement savedata.
 function lib:save(data)
     if self.global then
         self:writeGlobalAchievements()
@@ -74,25 +74,25 @@ function lib:save(data)
     end
 end
 
---- Gets the achievement table from memory.
+-- Gets the achievement table from memory.
 ---@return table achievements
 function lib:getAchievements()
     return self.achievements
 end
 
---- Gets the path of the achievement savefile in the filesystem.
+-- Gets the path of the achievement savefile in the filesystem.
 ---@return string path
 function lib:getGlobalAchFile()
     return "saves/" .. Mod.info.id .. "/achievements.json"
 end
 
---- Loads data from the achievement savefile in the filesystem.
+-- Loads data from the achievement savefile in the filesystem.
 function lib:loadGlobalAchievements()
     local data = JSON.decode(love.filesystem.read(self:getGlobalAchFile()))
     self:loadAchievements(data.achievements)
 end
 
---- Loads data from a hashtable of achievements.
+-- Loads data from a hashtable of achievements.
 function lib:loadAchievements(data)
     for name, info in pairs(data) do
         local ach = self.achievements[name]
@@ -104,7 +104,7 @@ function lib:loadAchievements(data)
     end
 end
 
---- Generates save data from the achievements.
+-- Generates save data from the achievements.
 ---@return table data
 function lib:generateAchSaveData()
     local data = {}
@@ -114,16 +114,21 @@ function lib:generateAchSaveData()
     return data
 end
 
---- Writes data to the achievement savefile in the filesystem.
+-- Writes data to the achievement savefile in the filesystem.
 function lib:writeGlobalAchievements()
     local data = { achievements = self:generateAchSaveData() }
 
     love.filesystem.write(self:getGlobalAchFile(), JSON.encode(data))
 end
 
---- Gets a specific achievement from memory.
----@return Achievement_def ach
+-- Gets a specific achievement from memory.
+---@param achievement string
+---@return Achievement ach
 function lib:getAchievement(achievement)
+    if type(achievement) ~= "string" then
+        error(string.format("Expected param 1 to be a string, got a %s", type(achievement)))
+    end
+
     for name, ach in pairs(self.achievements) do
         if name == achievement then
             return ach
@@ -133,15 +138,23 @@ function lib:getAchievement(achievement)
     error("Achievement "..achievement.." does not exist")
 end
 
---- Gets the progression of a specific achievement.
----@return boolean|number progress
-function lib:getAchProgress(achievement)
-    return self:getAchievement(achievement).progress
+---@param id_or_ach Achievement|string
+local function getAchievement(id_or_ach)
+    if type(id_or_ach) == "table" then
+        return id_or_ach
+    end
+    return lib:getAchievement(id_or_ach)
 end
 
---- Adds progression to a specific achievement.
+-- Gets the progression of a specific achievement.
+---@return boolean|number progress
+function lib:getAchProgress(achievement)
+    return getAchievement(achievement).progress
+end
+
+-- Adds progression to a specific achievement.
 function lib:addAchProgress(achievement, number, slient)
-    local ach_obj = self:getAchievement(achievement)
+    local ach_obj = getAchievement(achievement)
 
     if not ach_obj.earned then
         ach_obj.progress = ach_obj.progress + number
@@ -149,9 +162,9 @@ function lib:addAchProgress(achievement, number, slient)
     self:checkAchProgression(achievement, slient)
 end
 
---- Decides if a specific achievement is complete or not.
+-- Decides if a specific achievement is complete or not.
 function lib:checkAchProgression(achievement, slient)
-    local ach_obj = self:getAchievement(achievement)
+    local ach_obj = getAchievement(achievement)
 
     local completion = ach_obj.completion
     local progress = ach_obj.progress
@@ -164,9 +177,9 @@ function lib:checkAchProgression(achievement, slient)
     end
 end
 
---- Marks an achievement as complete.
+-- Marks an achievement as complete.
 function lib:completeAchievement(achievement, slient)
-    local ach_obj = self:getAchievement(achievement)
+    local ach_obj = getAchievement(achievement)
 
     if not ach_obj.earned then
         ach_obj.earned = true
@@ -184,7 +197,8 @@ end
 
 -- Returns whether a achievement was completed or not.
 function lib:earnedAch(achievement)
-    return self:getAchievement(achievement).earned
+    self:checkAchProgression(achievement, true)
+    return getAchievement(achievement).earned
 end
 
 function lib:hasAch(achievement)
