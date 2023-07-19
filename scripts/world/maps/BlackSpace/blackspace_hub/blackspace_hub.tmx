@@ -4,6 +4,7 @@
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="omori/blackspace"/>
   <property name="music" value="bs_entrance"/>
   <property name="name" value="BLACK SPACE - HUB"/>
   <property name="omori" value="true"/>

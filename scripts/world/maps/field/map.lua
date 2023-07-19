@@ -66,8 +66,8 @@ end
 function field:onExit()
     super.onExit(self)
 
-	self.text_gen:cancel()
-	self.star_gen:cancel()
+	Game.world.timer:cancel(self.text_gen)
+	Game.world.timer:cancel(self.star_gen)
 end
 
 return field

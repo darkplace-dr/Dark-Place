@@ -58,19 +58,59 @@ return {
         end)
         cutscene:wait(1.75)
 
-        gonerText("AIGHT, BET.[wait:20]")
-        cutscene:wait(0.1)
+        gonerText("EXCELLENT.[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("TRULY[wait:20]\nEXCELLENT.[wait:20]")
+        cutscene:wait(0.5)
         gonerText("NOW.[wait:20]")
         cutscene:wait(0.5)
-        gonerText("WE MAY..[wait:40].\"PROCEED\".[wait:20]\n(GET IT? LOL!!)[wait:20]")
-        cutscene:wait(0.5)
+        gonerText("WE MAY-")
+		
+        world_music:stop()
+        Assets.playSound("phone")
+        cutscene:wait(1)
 
+        gonerText("...HM?[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("APOLOGIES.[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("I NEED TO TAKE[wait:20]\nTHIS CALL.[wait:20]")
+        cutscene:wait(0.5)
+		Assets.playSound("item")
+        cutscene:wait(1.25)
+        gonerText("HELLO?[wait:20]")
+		
+        local wahwah = Music("voiceover/wahwah", 0.8)
+        wahwah:play()
+        cutscene:wait(1.25)
+		
+        gonerText("YES...[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("MM-HM...[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("EXCELLENT.[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("I SHALL BE THERE[wait:20]\nSHORTLY.[wait:20]")
+        cutscene:wait(0.5)
+		wahwah:stop()
+		Assets.playSound("item")
+        cutscene:wait(1)
+
+        gonerText("SINCEREST[wait:20]\nAPOLOGIES...[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("IT APPEARS THAT I[wait:20]\nAM NEEDED ELSEWHERE.[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("IN THE MEANTIME,[wait:20]\nHOWEVER...[wait:20]")
+        cutscene:wait(0.5)
+        gonerText("HERE'S THE REST[wait:20]\nOF THE OLD-ASS\nCUTSCENE...[wait:20]")
+        cutscene:wait(1.25)
+		
         world_music:stop()
         soul:hide()
-
+		
         cutscene:wait(1.75)
 
-        local background = GonerBackground(nil, nil, "AUDIO_DONKEY_b", false)
+        local background = GonerBackground(nil, nil, "AUDIO_DONKEY_b", true)
         background.layer = WORLD_LAYERS["ui"]
         Game.world:addChild(background)
 

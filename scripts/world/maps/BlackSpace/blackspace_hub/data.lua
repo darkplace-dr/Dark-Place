@@ -12,6 +12,7 @@ return {
   nextlayerid = 7,
   nextobjectid = 27,
   properties = {
+    ["border"] = "omori/blackspace",
     ["music"] = "bs_entrance",
     ["name"] = "BLACK SPACE - HUB",
     ["omori"] = "true"

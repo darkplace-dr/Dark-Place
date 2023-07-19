@@ -1,5 +1,4 @@
----@class _Battle : Battle
----@overload fun(...) : Battle
+---@class Battle
 local Battle, super = Class("Battle", true)
 
 function Battle:init()
@@ -11,33 +10,6 @@ function Battle:init()
 end
 
 function Battle:onStateChange(old,new)
-    if new == "INTRO" then
-        for _,enemy in ipairs(self.enemies) do
-            if enemy.id=="robo_susie" then
-                enemy:setAnimation("battle/intro")
-                enemy.sprite.flip_x = true
-            elseif enemy.id=="noyno" then
-                enemy:setAnimation("battle/intro")
-                enemy.sprite.flip_x = true
-            end
-        end
-    elseif new == "ACTIONSELECT" then
-        for _,enemy in ipairs(self.enemies) do
-            if enemy.id=="robo_susie" then
-                enemy:setAnimation("battle/idle")
-            elseif enemy.id=="noyno" then
-                enemy:setAnimation("battle/idle")
-            end
-        end
-    elseif new == "VICTORY" then
-        for _,enemy in ipairs(self.enemies) do
-            if enemy.id=="robo_susie" then
-                enemy:setAnimation("battle/victory")
-            elseif enemy.id=="noyno" then
-                enemy:setAnimation("battle/victory")
-            end
-        end
-    end
     -- Unfortunately this can't be changed in a simpler way
     if new ~= "VICTORY" then
         return super.onStateChange(self, old, new)

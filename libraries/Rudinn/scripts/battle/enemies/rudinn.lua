@@ -40,7 +40,7 @@ function Rudinn:init()
     self.text_override = nil
 end
 
-function EnemyBattler:isXActionShort(battler)
+function Rudinn:isXActionShort(battler)
     return true
 end
 

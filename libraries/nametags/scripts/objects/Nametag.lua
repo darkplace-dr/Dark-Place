@@ -1,3 +1,5 @@
+---@class Nametag : Object
+---@overload fun(...) : Nametag
 local Nametag, super = Class(Object)
 
 function Nametag:init(text, options)

@@ -52,14 +52,20 @@ function item:onWorldUse()
     Assets.playSound("splat")
 end
 
-function item:onMenuOpen(menu)
-    menu.box:setLayer(20)
-    menu.box:addChild(LancerGotchi(0, 0))
-end
+function item:onMenuUpdate(menu)
+    if menu then
+        local x, y = menu.box:screenToLocalPos(0, 0)
 
-function item:onMenuClose(menu)
-    if menu.box.state == "SELECT" then
-        menu:remove(LancerGotchi())
+        if menu.box.state == "SELECT" and menu.box.lancer == nil then
+            menu.box.lancer = menu.box:addChild(LancerGotchi(x, y))
+        end
+	
+        if menu.box.state ~= "SELECT" and menu.box.lancer ~= nil then
+            menu.box.lancer:remove()
+            menu.box.lancer = nil
+        end
+	
+        menu.box:setLayer(20)
     end
 end
 

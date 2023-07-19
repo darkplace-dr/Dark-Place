@@ -1,3 +1,4 @@
+---@class World
 local World, super = Class("World", true)
 
 function World:loadMap(...)

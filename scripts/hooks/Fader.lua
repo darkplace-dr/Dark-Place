@@ -1,3 +1,4 @@
+---@class Fader
 local Fader, super = Class("Fader", true)
 
 function Fader:init(...)
