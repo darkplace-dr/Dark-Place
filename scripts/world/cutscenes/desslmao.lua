@@ -91,10 +91,9 @@ return {
 
 		cutscene:showNametag("Dess")
 		cutscene:text("* Ok lets go", "neutral", "dess")
-		if not Kristal.libCall("achievements", "hasAch", "starstruck") then
-        Kristal.callEvent("completeAchievement", "starstruck")
-    end
 		cutscene:hideNametag()
+
+        Kristal.callEvent("completeAchievement", "starstruck")
 
 		cutscene:attachFollowers(1)
 		cutscene:interpolateFollowers()

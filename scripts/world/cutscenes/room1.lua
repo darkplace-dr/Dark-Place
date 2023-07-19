@@ -245,9 +245,7 @@ return {
         cutscene:showNametag("Wall Guardian")
         cutscene:text("* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers.")
         cutscene:hideNametag()
-        if not Kristal.libCall("achievements", "hasAch", "wallguardian") then
-            Kristal.callEvent("completeAchievement", "wallguardian")
-        end
+        Kristal.callEvent("completeAchievement", "wallguardian")
     end,
 
     star = function(cutscene, event)
@@ -266,9 +264,7 @@ return {
             if susie then
                 Game.world.starcheck = Game.world.starcheck + 1
             end
-            if not Kristal.libCall("achievements", "hasAch", "starwalker") then
-                Kristal.callEvent("completeAchievement", "starwalker")
-            end
+            Kristal.callEvent("completeAchievement", "starwalker")
         else
             Game.world.music:stop()
             cutscene:text("* [color:yellow]You[color:reset] are [color:yellow]Pissing[color:reset] me off...", nil, event)
@@ -586,9 +582,7 @@ return {
                 end
             end
 
-            if not Kristal.libCall("achievements", "hasAch", "takodownbad") then
-                Kristal.callEvent("completeAchievement", "takodownbad")
-            end
+            Kristal.callEvent("completeAchievement", "takodownbad")
         else
             cutscene:showNametag("Takodachi")
             cutscene:text("* Pray to the priestess,[wait:2] Ina!")

@@ -54,7 +54,7 @@ return {
                 cutscene:text("* Whatever.", "dissapointed", "brandon")
                 Game.world.music:fade(1, 0.5)
             elseif id == "brandon" then
-                if not Kristal.libCall("achievements", "hasAch", "dirtyhacker") then
+                if not Kristal.callEvent("earnedAch", "dirtyhacker") then
                     cutscene:text("[speed:0.3]* ...", "dissapointed", "brandon")
                     cutscene:text("* Oh you think you're REAL funny,[wait:5] now don't you?", "smug", "brandon")
                     cutscene:text("* Yeah,[wait:5] I know you used the console,[wait:5] "..Game.save_name..".", "frown", "brandon")
