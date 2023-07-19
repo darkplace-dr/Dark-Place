@@ -7,10 +7,11 @@ function Bouncy:init()
 end
 
 function Bouncy:onStart()
-    self.timer:every(30/60, function()
+    -- wt += 1 then (if wt%30 == 0) ...
+    self.timer:every((30-1)/60, function()
         self:spawnBullet("poseur/bouncybullet",
             Game.battle.arena.x + love.math.random(-30, 30),
-            Game.battle.arena.bottom
+            Game.battle.arena.top
         )
     end)
 end
