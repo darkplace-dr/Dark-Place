@@ -1,4 +1,3 @@
----@class Achievement : Object
 local Achievement, super = Class(Object)
 
 function Achievement:init()
