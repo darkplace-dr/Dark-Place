@@ -192,6 +192,7 @@ end
 
 -- Returns whether a achievement was completed or not.
 function lib:earnedAch(achievement)
+    self:checkAchProgression(achievement, true)
     return getAchievement(achievement).earned
 end
 
