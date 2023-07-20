@@ -24,6 +24,13 @@ Mod.warp_bin_codes = {
     ["00000000"] = { result = "warphub" },
     ["SPAMROOM"] = { result = "spamroom" },
     ["DESSHERE"] = { result = "dessstuff/dessstart" },
+    ["BOSSRUSH"] = { result = "thearena" },
+    ["DEVDINER"] = { result = "devstart" },
+    ["MAUSHOLE"] = { result = "chevroom" },
+    ["WIFIDOWN"] = { result = "googlefield" },
+    ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
+    ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
+	["_CHCKPNT"] = { result = "field" },
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
@@ -36,13 +43,16 @@ Mod.warp_bin_codes = {
             end)
         end
     },
-    ["BOSSRUSH"] = { result = "thearena" },
-    ["DEVDINER"] = { result = "devstart" },
-    ["MAUSHOLE"] = { result = "chevroom" },
-    ["WIFIDOWN"] = { result = "googlefield" },
-    ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
-    ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
-	["_CHCKPNT"] = { result = "field" },
+    ["SCRTACHV"] = {
+        result = function(cutscene)
+            if not Kristal.callEvent("earnedAch", "codebreaker") then
+                Kristal.callEvent("completeAchievement", "codebreaker")
+                cutscene:text("* Congratulations![wait:10] We're all so proud of you![wait:10] What a crazy achievement!")
+            else
+                cutscene:text("* Okay,[wait:5] are you fucking done?")
+            end
+        end
+    },
 }
 
 -- heres some new totally cool helper functions wowee
