@@ -239,9 +239,7 @@ return {
 
         cutscene:look("down")
 
-        if not Kristal.libCall("achievements", "hasAch", "doobie") then
-            Kristal.callEvent("completeAchievement", "doobie")
-        end
+        Kristal.callEvent("completeAchievement", "doobie")
     end,
 
     garbage = function(cutscene, event)

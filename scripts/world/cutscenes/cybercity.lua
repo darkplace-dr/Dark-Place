@@ -247,10 +247,10 @@ return {
                         event.interacted = false
                         cutscene:text("* Wow, con grats on [color:yellow]beating[color:reset] my [color:yellow]ass[color:reset]")
                         cutscene:text("* I will give you the keys of my\n          [color:yellow]house[color:reset]")
-                        if not Kristal.libCall("achievements", "hasAch", "unoriginalstarwalker") then
-                            Kristal.callEvent("completeAchievement", "unoriginalstarwalker")
-                        end
+
+                        Kristal.callEvent("completeAchievement", "unoriginalstarwalker")
                         Game:setFlag("unlockedStarwalkerValley", true)
+
                         cutscene:text("* (You got the keys to the\n          [color:yellow]starwalker[color:reset]\n                    valley)")
                         Game.world.music:resume("cybercity")
                         --Game.world.music.volume = 1

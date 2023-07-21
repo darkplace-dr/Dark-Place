@@ -215,9 +215,7 @@ function JekuShop:onStateChange(old, new)
             Game.state = "GAMEOVER"
             Kristal.hideBorder(0)
             self:setFlag("threaten_jeku", 10)
-            if not Kristal.libCall("achievements", "hasAch", "jekukilled") then
-                Kristal.callEvent("completeAchievement", "jekukilled")
-            end
+            Kristal.callEvent("completeAchievement", "jekukilled")
             Game.stage:addChild(GameOver(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "EH HE EH HE!![wait:5]\nHAPPY NOW??"))
             return
         end

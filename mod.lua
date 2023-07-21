@@ -90,13 +90,17 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("#room1:played_intro", true)
     end
 
-    if not new_file and likely_old_save then
-        Log:print("Save seems to be from an old version")
-    end
+    if new_file or Game:getFlag("bulborb_position") == nil then
+        likely_old_save = true
 
-    if new_file then
         Game:setFlag("bulborb_scale", 0.3)
         Game:setFlag("bulborb_position", 2)
+    end
+
+    ----------
+
+    if not new_file and likely_old_save then
+        Log:print("Save seems to be from an old version")
     end
 end
 

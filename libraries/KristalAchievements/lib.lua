@@ -124,13 +124,7 @@ function lib:getAchievement(achievement)
         error(string.format("Expected param 1 to be a string, got a %s", type(achievement)))
     end
 
-    for name, ach in pairs(self.achievements) do
-        if name == achievement then
-            return ach
-        end
-    end
-
-    error("Achievement "..achievement.." does not exist")
+    return self.achievements[achievement]
 end
 
 ---@param id_or_ach Achievement|string
@@ -141,55 +135,6 @@ local function getAchievement(id_or_ach)
     return lib:getAchievement(id_or_ach)
 end
 
--- Gets the progression of a specific achievement.
----@return boolean|number progress
-function lib:getAchProgress(achievement)
-    return getAchievement(achievement).progress
-end
-
--- Adds progression to a specific achievement.
-function lib:addAchProgress(achievement, number, slient)
-    local ach_obj = getAchievement(achievement)
-
-    if not ach_obj.earned then
-        ach_obj.progress = ach_obj.progress + number
-    end
-    self:checkAchProgression(achievement, slient)
-end
-
--- Decides if a specific achievement is complete or not.
-function lib:checkAchProgression(achievement, slient)
-    local ach_obj = getAchievement(achievement)
-
-    local completion = ach_obj.completion
-    local progress = ach_obj.progress
-    if type(completion) == "number" then
-        if progress >= completion then
-            self:completeAchievement(achievement, slient)
-        end
-    elseif progress then
-        self:completeAchievement(achievement, slient)
-    end
-end
-
--- Marks an achievement as complete.
-function lib:completeAchievement(achievement, slient)
-    local ach_obj = getAchievement(achievement)
-
-    if not ach_obj.earned then
-        ach_obj.earned = true
-        ach_obj.progress = type(ach_obj.completion) == "number" and ach_obj.completion or true
-
-        if not slient then
-            Game.stage:addChild(AchievementPopUp(achievement))
-        end
-    end
-
-    if self.global then
-        self:writeGlobalAchievements()
-    end
-end
-
 -- Returns whether a achievement was completed or not.
 function lib:earnedAch(achievement)
     self:checkAchProgression(achievement, true)
@@ -198,6 +143,60 @@ end
 
 function lib:hasAch(achievement)
     return self:earnedAch(achievement)
+end
+
+-- Gets the progression of a specific achievement.
+---@return boolean|number progress
+function lib:getAchProgress(achievement)
+    return getAchievement(achievement).progress
+end
+
+-- Adds progression to a specific achievement.
+function lib:addAchProgress(achievement, number, silent)
+    local ach_obj = getAchievement(achievement)
+
+    if type(ach_obj.completion) ~= "number" then
+        error("Achievement " + achievement + " doesn't use progress")
+    end
+
+    ach_obj.progress = math.min(ach_obj.progress + number, ach_obj.completion)
+
+    self:checkAchProgression(achievement, silent)
+end
+
+-- Decides if a specific achievement is complete or not.
+function lib:checkAchProgression(achievement, silent)
+    local ach_obj = getAchievement(achievement)
+
+    local completion = ach_obj.completion
+    local progress = ach_obj.progress
+    if type(completion) == "number" then
+        if progress >= completion then
+            self:completeAchievement(achievement, silent)
+        end
+    elseif progress then
+        self:completeAchievement(achievement, silent)
+    end
+end
+
+-- Marks an achievement as complete.
+function lib:completeAchievement(achievement, silent)
+    local ach_obj = getAchievement(achievement)
+
+    if ach_obj.earned then
+        return
+    end
+
+    ach_obj.earned = true
+    ach_obj.progress = type(ach_obj.completion) == "number" and ach_obj.completion or true
+
+    if not silent then
+        Game.stage:addChild(AchievementPopUp(achievement))
+    end
+
+    if self.global then
+        self:writeGlobalAchievements()
+    end
 end
 
 return lib
