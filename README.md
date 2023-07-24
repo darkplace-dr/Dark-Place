@@ -39,6 +39,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Tick - Contributor
 * PatateAuBeurr - Contributor
 * SciSpaceProductions - Contributor
+* Nyako - Contributor
 
 <a href="https://github.com/BrandonK7200/Dark-Place/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=BrandonK7200/Dark-Place" />
