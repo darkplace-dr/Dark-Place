@@ -239,7 +239,7 @@ return function(cutscene, cell_phone_event_override)
     -- if anyone wants to add an additional easter egg, feel free to use the template below!
     --[[
     elseif event_num == 100 then
-        garbageNoise("path/to/voiceover/cell_phone/audio")
+        garbageNoise("voiceover/cell_phone/path/to/audio")
         cutscene:text("What the fuck")
     ]]
     else -- fallthrough
