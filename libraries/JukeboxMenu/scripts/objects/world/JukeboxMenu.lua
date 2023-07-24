@@ -74,7 +74,7 @@ function JukeboxMenu:draw()
     for i = 1, self.songs_per_page do
         local cur_song = cur_page[i] or self.default_song
         local name = cur_song.name or self.none_text
-        local scale_x = math.min(184 / self.font:getWidth(name), 1)
+        local scale_x = math.min(196 / self.font:getWidth(name), 1)
         love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
     end
 
