@@ -17,7 +17,7 @@ return function(cutscene, cell_phone_event_override)
         music_inst:remove()
     end)
     local function playCellPhoneAudio(path, volume, pitch)
-        local epic_hax = "cell_phone/"
+        local epic_hax = "voiceover/cell_phone/"
         if string.sub(path, 1, string.len(epic_hax)) == epic_hax then
             -- requiring a sound in assets/music
             music_inst:play(path, volume, pitch, false)
@@ -49,7 +49,7 @@ return function(cutscene, cell_phone_event_override)
     local event_num = cell_phone_event_override ~= nil and cell_phone_event_override or love.math.random(1, 100)
 
     if event_num <= 10 then
-        garbageNoise("cell_phone/mcdonalds")
+        garbageNoise("voiceover/cell_phone/mcdonalds")
 
         cutscene:text("* Sounded like an angry customer.")
     elseif event_num == 39 then
@@ -68,12 +68,12 @@ return function(cutscene, cell_phone_event_override)
         cutscene:text("* (Click...)")
         cutscene:text("* Must've been a wrong number.")
     elseif event_num >= 87 and event_num <= 93 then
-        garbageNoise("cell_phone/fnafcall")
+        garbageNoise("voiceover/cell_phone/fnafcall")
 
         cutscene:text("* It's nothing but useless information.")
     elseif event_num == 97 then
         pauseMusic()
-        local spam = playCellPhoneAudio("cell_phone/spamcall", 0.8)
+        local spam = playCellPhoneAudio("voiceover/cell_phone/spamcall", 0.8)
 
         cutscene:showNametag("Spamton G. Spamton")
         pacematchingMsg("* FUCK YOU CYBER CITY!", 10)
@@ -131,12 +131,12 @@ return function(cutscene, cell_phone_event_override)
         I made to test out how Kristal works that was called
         Kris and Susie Gamer Time.
         ]]
-        garbageNoise("cell_phone/bbqbb", 200 / 30)
+        garbageNoise("voiceover/cell_phone/bbqbb", 200 / 30)
 
         cutscene:text("* It's nothing but an old meme.")
     elseif event_num == 86 then
         pauseMusic()
-        local carglass = playCellPhoneAudio("cell_phone/carglass", 0.8)
+        local carglass = playCellPhoneAudio("voiceover/cell_phone/carglass", 0.8)
 
         cutscene:wait(0.06)
         pacematchingMsg("[speed:0.7]* ~Carglass répare,[wait:3] Carglass remplace!~", 15)
@@ -175,7 +175,7 @@ return function(cutscene, cell_phone_event_override)
             The Legendary Soup Store.
         ]]
         pauseMusic()
-        local soup = playCellPhoneAudio("cell_phone/soup", 0.8)
+        local soup = playCellPhoneAudio("voiceover/cell_phone/soup", 0.8)
 
         cutscene:showNametag("???", {right = false})
         pacematchingMsg("[wait:3]* Hello?", 5)
@@ -239,7 +239,7 @@ return function(cutscene, cell_phone_event_override)
     -- if anyone wants to add an additional easter egg, feel free to use the template below!
     --[[
     elseif event_num == 100 then
-        garbageNoise("path/to/cell_phone/audio")
+        garbageNoise("path/to/voiceover/cell_phone/audio")
         cutscene:text("What the fuck")
     ]]
     else -- fallthrough
