@@ -60,15 +60,15 @@ function preview:draw()
         love.graphics.setColor(1, 1, 1)
 
         if self:canShowSwellow() and self.swellow then
-            local alpha_real = (self.swellow_timer - 2) * 0.15
-            if alpha_real >= 0 then
-                love.graphics.setColor(1, 1, 1, math.min(alpha_real, 0.8))
-                love.graphics.draw(self.swellow,
-                    SCREEN_WIDTH/2, SCREEN_HEIGHT/2-30, 0,
-                    2 + math.max(0, (self.swellow_timer - 3) * 0.01), 2,
-                    self.swellow:getWidth()/2, self.swellow:getHeight()/2
-                )
-            end
+            local alpha = (self.swellow_timer - 1.8) * 0.2
+            ---@type FileNamer
+            local naming_screen = self.menu.naming_screen
+            love.graphics.setColor(1, 1, 1, math.min(alpha, 0.8))
+            love.graphics.draw(self.swellow,
+                SCREEN_WIDTH/2, SCREEN_HEIGHT/2-30, 0,
+                2 + math.max(0, (self.swellow_timer - 3) * 0.01 + naming_screen.whiten * 1), 2,
+                self.swellow:getWidth()/2, self.swellow:getHeight()/2
+            )
         end
     end
 end
@@ -78,7 +78,7 @@ function preview:canShowSwellow()
     local naming_screen = self.menu.naming_screen
     return naming_screen
         and string.upper(naming_screen.name) == "SWELLOW"
-        and naming_screen.state == "CONFIRM"
+        and (naming_screen.state == "CONFIRM" or naming_screen.state == "FADEOUT")
 end
 
 return preview
