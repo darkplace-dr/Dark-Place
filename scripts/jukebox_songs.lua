@@ -229,7 +229,7 @@ return {
     origin = "Donkey Kong Country 2"
   },
   {
-    name = "Industrial Fields (Jelly Fields 2) & Oil Rig",
+    name = "Industrial Fields & Oil Rig",
     file = "sbspss_ch5_1",
     composer = "Matt Simmonds",
     released = "2001",
