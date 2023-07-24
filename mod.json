@@ -99,6 +99,8 @@
     "GARFZONE": "[style:GONER][spacing:3.2]GEE...SOME PEOPLE ENJOY\nA LITTLE MUSIC IN THE\nMORNING...",
     "SWALLOW": "[style:GONER][spacing:3.2]WHAT DO YOU MEAN?\nAFRICAN OR EUROPEAN?",
     "PEPPINO": "[style:GONER][spacing:3.2]I'M NOT GONNA\nSUGARCOAT IT:\n\nDID YOU KNOW THAT\nYOU CAN BLOCK AND\n\n\nPARRY ANY PROJECTILE\nOR DAMAGE BY PRESSING \n[V] BEFORE GETTING HURT?",
+    // Extra visual bit is handled by preview.lua
+    "SWELLOW": "[style:GONER][spacing:3.2]AWW THE SCRUNKLY.\nTHE GOOBER. THE\nLITTLE FELLA.",
   },
   // Names to disallow player from using in the naming screen.
   "namesDeny": [

@@ -1,0 +1,2 @@
+For consistency, the stuff here will be moved to ../world
+in the distant future

@@ -222,11 +222,18 @@ return {
     origin = "Pizza Tower"
   },
   {
-    name = "Lunatic Dreamer",
-    file = "th165_06",
-    composer = "ZUN",
-    released = "2018",
-    origin = "Touhou 16.5: Violet Detector"
+    name = "Stickerbrush Symphony",
+    file = "stickerbrushsymphony",
+    composer = "Dave Wise",
+    released = "1995",
+    origin = "Donkey Kong Country 2"
+  },
+  {
+    name = "Industrial Fields & Oil Rig",
+    file = "sbspss_ch5_1",
+    composer = "Matt Simmonds",
+    released = "2001",
+    origin = "SpongeBob SquarePants: SuperSponge (PS1)"
   },
   {
     name = "Cursed Cathedral (Cover)",
