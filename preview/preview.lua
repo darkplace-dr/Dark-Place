@@ -15,6 +15,8 @@ function preview:init(mod, button, menu)
 
     self.swellow = nil
     self.swellow_timer = 0
+	
+	self.paul = false
 end
 
 function preview:update()
@@ -47,6 +49,15 @@ function preview:update()
     else
         self.swellow_timer = 0
     end
+	
+	if self:canPaul() and not self.paul then
+		local paul = love.sound.newSoundData(self.base_path.."/paul.wav")
+		local paul_is_the_favorite_of_all = love.audio.newSource(paul)
+		paul_is_the_favorite_of_all:setVolume(1)
+		paul_is_the_favorite_of_all:setPitch(1)
+		paul_is_the_favorite_of_all:play()
+		self.paul = true
+	end
 end
 
 function preview:draw()
@@ -78,6 +89,14 @@ function preview:canShowSwellow()
     local naming_screen = self.menu.naming_screen
     return naming_screen
         and string.upper(naming_screen.name) == "SWELLOW"
+        and (naming_screen.state == "CONFIRM" or naming_screen.state == "FADEOUT")
+end
+
+function preview:canPaul()
+    ---@type FileNamer
+    local naming_screen = self.menu.naming_screen
+    return naming_screen
+        and string.upper(naming_screen.name) == "PAUL"
         and (naming_screen.state == "CONFIRM" or naming_screen.state == "FADEOUT")
 end
 
