@@ -32,7 +32,7 @@ function Mod:updateTaunt()
         end]]
 
         for _,chara in ipairs(Game.stage:getObjects(Character)) do
-            if not chara.actor then goto continue end
+            if not chara.actor or not chara.visible then goto continue end
             --[[if party_member_charas[chara.actor.id] and party_member_charas[chara.actor.id] ~= chara then
                 goto continue
             end]]
@@ -41,10 +41,8 @@ function Mod:updateTaunt()
             local sprites = chara.actor.getTauntSprites and chara.actor:getTauntSprites() or chara.actor.taunt_sprites
             if not sprites or #sprites <= 0 then goto continue end
 
-            local charax1, charay1 = chara:getRelativePos(chara.width/2, chara.height/2)
-
             -- the shine effect
-            local effect = Sprite("effects/taunt", charax1, charay1)
+            local effect = Sprite("effects/taunt", chara:getRelativePos(chara.width/2, chara.height/2))
             effect:setOrigin(0.5, 0.5)
             effect:setScale(1)
             effect.layer = chara.layer - 0.1
