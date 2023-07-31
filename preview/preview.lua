@@ -1,11 +1,10 @@
 local preview = {}
 
-preview.hide_background = true
-
 function preview:init(mod, button, menu)
     button:setColor(1, 1, 1)
     button:setFavoritedColor(0.9, 0.8, 1)
 
+    self.mod_id = mod.id
     self.menu = menu
     self.base_path = mod.path.."/preview"
 
@@ -46,28 +45,30 @@ function preview:update()
         })
     end
 
-    if self:shouldShowSwellow() then
-        if not self.swellow then
-            self.swellow = love.graphics.newImage(self.base_path.."/swellow.png")
-        end
-        self.swellow_timer = self.swellow_timer + DT
-    else
-        self.swellow_timer = 0
-    end
-
-	if self:shouldPaul() then
-        if not self.paul_played then
-            if not self.paul_stream then
-                self.paul_stream = love.audio.newSource(self.base_path.."/paul.ogg", "stream")
+    if self:areWeSelected() then
+        if self:shouldShowSwellow() then
+            if not self.swellow then
+                self.swellow = love.graphics.newImage(self.base_path.."/swellow.png")
             end
-            self.paul_stream:play()
-            self.paul_played = true
+            self.swellow_timer = self.swellow_timer + DT
+        else
+            self.swellow_timer = 0
         end
-    else
-        if self.paul_played then
-            self.paul_stream:stop()
+
+        if self:shouldPaul() then
+            if not self.paul_played then
+                if not self.paul_stream then
+                    self.paul_stream = love.audio.newSource(self.base_path.."/paul.ogg", "stream")
+                end
+                self.paul_stream:play()
+                self.paul_played = true
+            end
+        else
+            if self.paul_played then
+                self.paul_stream:stop()
+            end
+            self.paul_played = false
         end
-        self.paul_played = false
     end
 end
 
@@ -94,6 +95,10 @@ function preview:draw()
             self.swellow:getWidth()/2, self.swellow:getHeight()/2
         )
     end
+end
+
+function preview:areWeSelected()
+    return self.menu.selected_mod == self.mod_id
 end
 
 function preview:shouldShowSwellow()
