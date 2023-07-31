@@ -5,7 +5,7 @@
  </editorsettings>
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="12">
-  <image width="90" height="33" source="../../../assets/sprites/objects/bb_stand.png"/>
+  <image width="90" height="33" source="../../../assets/sprites/world/maps/vapor/bb_stand.png"/>
  </tile>
  <tile id="24">
   <image width="232" height="110" source="../../../assets/sprites/world/maps/hometown_ribbit/building_library.png"/>
@@ -17,24 +17,24 @@
   <image width="418" height="240" source="../../../assets/sprites/world/maps/hometown_ribbit/shelter.png"/>
  </tile>
  <tile id="29">
-  <image width="43" height="39" source="../../../assets/sprites/objects/firstbridge.png"/>
+  <image width="43" height="39" source="../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/firstbridge.png"/>
  </tile>
  <tile id="43">
-  <image width="40" height="40" source="../../../assets/sprites/objects/sign.png"/>
+  <image width="40" height="40" source="../../../assets/sprites/world/events/sign.png"/>
  </tile>
  <tile id="44">
-  <image width="110" height="120" source="../../../assets/sprites/objects/livetree_1.png"/>
+  <image width="110" height="120" source="../../../assets/sprites/world/maps/starwalkervalley/livetree_1.png"/>
  </tile>
  <tile id="45">
-  <image width="190" height="120" source="../../../assets/sprites/objects/livetree_2.png"/>
+  <image width="190" height="120" source="../../../assets/sprites/world/maps/starwalkervalley/livetree_2.png"/>
  </tile>
  <tile id="46">
-  <image width="190" height="160" source="../../../assets/sprites/objects/livetree_3.png"/>
+  <image width="190" height="160" source="../../../assets/sprites/world/maps/starwalkervalley/livetree_3.png"/>
  </tile>
  <tile id="47">
-  <image width="110" height="160" source="../../../assets/sprites/objects/livetree_4.png"/>
+  <image width="110" height="160" source="../../../assets/sprites/world/maps/starwalkervalley/livetree_4.png"/>
  </tile>
  <tile id="48">
-  <image width="270" height="160" source="../../../assets/sprites/objects/livetree_5.png"/>
+  <image width="270" height="160" source="../../../assets/sprites/world/maps/starwalkervalley/livetree_5.png"/>
  </tile>
 </tileset>

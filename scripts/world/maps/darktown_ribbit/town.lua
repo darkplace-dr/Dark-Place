@@ -20,7 +20,7 @@ return {
   layers = {
     {
       type = "imagelayer",
-      image = "../../../../../assets/sprites/objects/darktown.png",
+      image = "../../../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/town.png",
       id = 3,
       name = "Image Layer 1",
       class = "",
@@ -463,7 +463,7 @@ return {
             ["scalex"] = 2,
             ["scaley"] = 2,
             ["speed"] = 0.25,
-            ["texture"] = "objects/torch/torch"
+            ["texture"] = "world/maps/ch1dark/torch"
           }
         },
         {
@@ -481,7 +481,7 @@ return {
             ["scalex"] = 2,
             ["scaley"] = 2,
             ["speed"] = 0.25,
-            ["texture"] = "objects/torch/torch"
+            ["texture"] = "world/maps/ch1dark/torch"
           }
         },
         {
@@ -499,7 +499,7 @@ return {
             ["scalex"] = 2,
             ["scaley"] = 2,
             ["speed"] = 0.25,
-            ["texture"] = "objects/torch/torch"
+            ["texture"] = "world/maps/ch1dark/torch"
           }
         },
         {
@@ -517,7 +517,7 @@ return {
             ["scalex"] = 2,
             ["scaley"] = 2,
             ["speed"] = 0.25,
-            ["texture"] = "objects/torch/torch"
+            ["texture"] = "world/maps/ch1dark/torch"
           }
         },
         {
@@ -534,7 +534,7 @@ return {
           properties = {
             ["scalex"] = 2,
             ["scaley"] = 2,
-            ["texture"] = "objects/castle_building1"
+            ["texture"] = "world/maps/ch1dark/ribbitmodbt/town_building1"
           }
         },
         {
@@ -597,7 +597,7 @@ return {
           properties = {
             ["scalex"] = 2,
             ["scaley"] = 2,
-            ["texture"] = "objects/castle_building2"
+            ["texture"] = "world/maps/ch1dark/ribbitmodbt/town_building2"
           }
         },
         {
@@ -614,7 +614,7 @@ return {
           properties = {
             ["scalex"] = 2,
             ["scaley"] = 2,
-            ["texture"] = "objects/castle_building3"
+            ["texture"] = "world/maps/ch1dark/ribbitmodbt/town_building3"
           }
         },
         {
@@ -631,7 +631,7 @@ return {
           properties = {
             ["scalex"] = 2,
             ["scaley"] = 2,
-            ["texture"] = "objects/castle_computer"
+            ["texture"] = "world/maps/ch1dark/ribbitmodbt/computer"
           }
         },
         {

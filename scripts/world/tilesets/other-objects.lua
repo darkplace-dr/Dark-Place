@@ -27,7 +27,7 @@ return {
   tiles = {
     {
       id = 12,
-      image = "../../../assets/sprites/objects/bb_stand.png",
+      image = "../../../assets/sprites/world/maps/vapor/bb_stand.png",
       width = 90,
       height = 33
     },
@@ -51,43 +51,43 @@ return {
     },
     {
       id = 29,
-      image = "../../../assets/sprites/objects/firstbridge.png",
+      image = "../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/firstbridge.png",
       width = 43,
       height = 39
     },
     {
       id = 43,
-      image = "../../../assets/sprites/objects/sign.png",
+      image = "../../../assets/sprites/world/events/sign.png",
       width = 40,
       height = 40
     },
     {
       id = 44,
-      image = "../../../assets/sprites/objects/livetree_1.png",
+      image = "../../../assets/sprites/world/maps/starwalkervalley/livetree_1.png",
       width = 110,
       height = 120
     },
     {
       id = 45,
-      image = "../../../assets/sprites/objects/livetree_2.png",
+      image = "../../../assets/sprites/world/maps/starwalkervalley/livetree_2.png",
       width = 190,
       height = 120
     },
     {
       id = 46,
-      image = "../../../assets/sprites/objects/livetree_3.png",
+      image = "../../../assets/sprites/world/maps/starwalkervalley/livetree_3.png",
       width = 190,
       height = 160
     },
     {
       id = 47,
-      image = "../../../assets/sprites/objects/livetree_4.png",
+      image = "../../../assets/sprites/world/maps/starwalkervalley/livetree_4.png",
       width = 110,
       height = 160
     },
     {
       id = 48,
-      image = "../../../assets/sprites/objects/livetree_5.png",
+      image = "../../../assets/sprites/world/maps/starwalkervalley/livetree_5.png",
       width = 270,
       height = 160
     }

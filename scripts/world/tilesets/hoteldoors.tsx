@@ -5,12 +5,12 @@
  </editorsettings>
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
-  <image width="32" height="50" source="../../../assets/sprites/objects/hoteldoors/000.png"/>
+  <image width="32" height="50" source="../../../assets/sprites/world/events/devroom/hoteldoors/000.png"/>
  </tile>
  <tile id="1">
-  <image width="32" height="50" source="../../../assets/sprites/objects/hoteldoors/001.png"/>
+  <image width="32" height="50" source="../../../assets/sprites/world/events/devroom/hoteldoors/001.png"/>
  </tile>
  <tile id="2">
-  <image width="32" height="50" source="../../../assets/sprites/objects/hoteldoors/002.png"/>
+  <image width="32" height="50" source="../../../assets/sprites/world/events/devroom/hoteldoors/002.png"/>
  </tile>
 </tileset>

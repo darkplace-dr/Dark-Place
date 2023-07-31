@@ -33,25 +33,25 @@ return {
     },
     {
       id = 11,
-      image = "../../../assets/sprites/objects/vapor_palmtree_cyan.png",
+      image = "../../../assets/sprites/world/maps/vapor/palmtree_cyan.png",
       width = 67,
       height = 64
     },
     {
       id = 13,
-      image = "../../../assets/sprites/objects/billboard.png",
+      image = "../../../assets/sprites/world/events/billboard.png",
       width = 120,
       height = 120
     },
     {
       id = 18,
-      image = "../../../assets/sprites/objects/pillar.png",
+      image = "../../../assets/sprites/world/maps/vapor/pillar.png",
       width = 29,
       height = 90
     },
     {
       id = 19,
-      image = "../../../assets/sprites/objects/spamgolor_door.png",
+      image = "../../../assets/sprites/world/events/devroom/warphub/spamgolor_door.png",
       width = 51,
       height = 40
     },
@@ -81,19 +81,19 @@ return {
     },
     {
       id = 27,
-      image = "../../../assets/sprites/objects/SoldSign.png",
+      image = "../../../assets/sprites/world/maps/devroom/warphub/sold_sign.png",
       width = 50,
       height = 22
     },
     {
       id = 28,
-      image = "../../../assets/sprites/objects/pink_stall.png",
+      image = "../../../assets/sprites/world/events/example_area/pink_shop.png",
       width = 59,
       height = 83
     },
     {
       id = 31,
-      image = "../../../assets/sprites/world/events/devroom/warpzone/pasta_shop_door.png",
+      image = "../../../assets/sprites/world/events/devroom/warphub/pasta_shop_door.png",
       width = 62,
       height = 93
     },
@@ -133,7 +133,7 @@ return {
     },
     {
       id = 43,
-      image = "../../../assets/sprites/objects/sign.png",
+      image = "../../../assets/sprites/world/events/sign.png",
       width = 40,
       height = 40
     },
@@ -145,7 +145,7 @@ return {
     },
     {
       id = 45,
-      image = "../../../assets/sprites/objects/Addison_plushies.png",
+      image = "../../../assets/sprites/world/maps/devroom/hotel/addison_plushies.png",
       width = 115,
       height = 29
     }

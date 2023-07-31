@@ -8,16 +8,16 @@
   <image width="66" height="40" source="../../../assets/sprites/world/maps/example_area/spamton_graffiti.png"/>
  </tile>
  <tile id="11">
-  <image width="67" height="64" source="../../../assets/sprites/objects/vapor_palmtree_cyan.png"/>
+  <image width="67" height="64" source="../../../assets/sprites/world/maps/vapor/palmtree_cyan.png"/>
  </tile>
  <tile id="13">
-  <image width="120" height="120" source="../../../assets/sprites/objects/billboard.png"/>
+  <image width="120" height="120" source="../../../assets/sprites/world/events/billboard.png"/>
  </tile>
  <tile id="18">
-  <image width="29" height="90" source="../../../assets/sprites/objects/pillar.png"/>
+  <image width="29" height="90" source="../../../assets/sprites/world/maps/vapor/pillar.png"/>
  </tile>
  <tile id="19">
-  <image width="51" height="40" source="../../../assets/sprites/objects/spamgolor_door.png"/>
+  <image width="51" height="40" source="../../../assets/sprites/world/events/devroom/warphub/spamgolor_door.png"/>
  </tile>
  <tile id="20">
   <image width="50" height="35" source="../../../assets/sprites/world/events/devroom/diner_table.png"/>
@@ -32,13 +32,13 @@
   <image width="100" height="30" source="../../../assets/sprites/world/events/devroom/counter.png"/>
  </tile>
  <tile id="27">
-  <image width="50" height="22" source="../../../assets/sprites/objects/SoldSign.png"/>
+  <image width="50" height="22" source="../../../assets/sprites/world/maps/devroom/warphub/sold_sign.png"/>
  </tile>
  <tile id="28">
-  <image width="59" height="83" source="../../../assets/sprites/objects/pink_stall.png"/>
+  <image width="59" height="83" source="../../../assets/sprites/world/events/example_area/pink_shop.png"/>
  </tile>
  <tile id="31">
-  <image width="62" height="93" source="../../../assets/sprites/world/events/devroom/warpzone/pasta_shop_door.png"/>
+  <image width="62" height="93" source="../../../assets/sprites/world/events/devroom/warphub/pasta_shop_door.png"/>
  </tile>
  <tile id="37">
   <image width="80" height="60" source="../../../assets/sprites/world/events/devroom/doorway_double.png"/>
@@ -57,12 +57,12 @@
   <image width="40" height="40" source="../../../assets/sprites/world/events/devroom/devsign.png"/>
  </tile>
  <tile id="43">
-  <image width="40" height="40" source="../../../assets/sprites/objects/sign.png"/>
+  <image width="40" height="40" source="../../../assets/sprites/world/events/sign.png"/>
  </tile>
  <tile id="44">
   <image width="34" height="34" source="../../../assets/sprites/world/events/example_area/blankie_wall_note.png"/>
  </tile>
  <tile id="45">
-  <image width="115" height="29" source="../../../assets/sprites/objects/Addison_plushies.png"/>
+  <image width="115" height="29" source="../../../assets/sprites/world/maps/devroom/hotel/addison_plushies.png"/>
  </tile>
 </tileset>

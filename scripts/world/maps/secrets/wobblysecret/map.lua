@@ -3,7 +3,7 @@ local WobblySecret, super = Class(Map)
 function WobblySecret:onEnter()
     super.onEnter(self)
 
-    local bg = Sprite("objects/pt_secretbg")
+    local bg = Sprite("world/maps/pizzatower/secrets/bg")
     bg:setWrap(true)
     bg.physics.speed_x = 1
     bg.physics.speed_y = 1

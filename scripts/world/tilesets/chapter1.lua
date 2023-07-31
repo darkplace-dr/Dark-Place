@@ -27,13 +27,13 @@ return {
   tiles = {
     {
       id = 0,
-      image = "../../../assets/sprites/objects/darkdoor_closed.png",
+      image = "../../../assets/sprites/world/maps/ch1dark/darkdoor_closed.png",
       width = 360,
       height = 310
     },
     {
       id = 1,
-      image = "../../../assets/sprites/objects/darkdoor_open.png",
+      image = "../../../assets/sprites/world/maps/ch1dark/darkdoor_open.png",
       width = 360,
       height = 310
     },
