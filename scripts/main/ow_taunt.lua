@@ -25,33 +25,26 @@ function Mod:updateTaunt()
 
         Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
 
-        --[[local party_member_charas = {}
-        party_member_charas[Game.world.player.actor.id] = Game.world.player
-        for _, follower in ipairs(Game.world.followers) do
-            party_member_charas[follower.actor.id] = follower
-        end]]
-
         for _,chara in ipairs(Game.stage:getObjects(Character)) do
             if not chara.actor or not chara.visible then goto continue end
-            --[[if party_member_charas[chara.actor.id] and party_member_charas[chara.actor.id] ~= chara then
-                goto continue
-            end]]
 
             -- workaround due of actors being loaded first by registry
-            local sprites = chara.actor.getTauntSprites and chara.actor:getTauntSprites() or chara.actor.taunt_sprites
+            local sprites = chara.actor.getTauntSprites
+                and chara.actor:getTauntSprites()
+                or chara.actor.taunt_sprites
             if not sprites or #sprites <= 0 then goto continue end
 
-            -- the shine effect
-            local effect = Sprite("effects/taunt", chara:getRelativePos(chara.width/2, chara.height/2))
-            effect:setOrigin(0.5, 0.5)
-            effect:setScale(1)
-            effect.layer = chara.layer - 0.1
-            effect:play(0.02, false, function()
-                effect:remove()
+            local shine = Sprite("effects/taunt", chara:getRelativePos(chara.width/2, chara.height/2))
+            shine:setOrigin(0.5, 0.5)
+            shine:setScale(1)
+            shine.layer = chara.layer - 0.1
+            Game.world:addChild(shine)
+
+            chara.sprite:set(Utils.pick(sprites))
+            shine:play(0.02, false, function()
+                shine:remove()
                 chara:resetSprite()
             end)
-            Game.world:addChild(effect)
-            chara.sprite:set(Utils.pick(sprites))
 
             ::continue::
         end
