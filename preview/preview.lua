@@ -96,7 +96,7 @@ function preview:draw()
 end
 
 function preview:areWeSelected()
-    return self.menu.selected_mod.id == self.mod_id
+    return self.menu.selected_mod and self.menu.selected_mod.id == self.mod_id
 end
 
 function preview:shouldShowSwellow()
