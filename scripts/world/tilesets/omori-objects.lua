@@ -27,13 +27,13 @@ return {
   tiles = {
     {
       id = 0,
-      image = "../../../assets/sprites/objects/tissuebox.png",
+      image = "../../../assets/sprites/world/maps/whitespace/tissuebox.png",
       width = 21,
       height = 20
     },
     {
       id = 1,
-      image = "../../../assets/sprites/objects/laptop1.png",
+      image = "../../../assets/sprites/world/maps/whitespace/laptop1.png",
       width = 31,
       height = 21,
       animation = {
@@ -53,25 +53,25 @@ return {
     },
     {
       id = 2,
-      image = "../../../assets/sprites/objects/laptop2.png",
+      image = "../../../assets/sprites/world/maps/whitespace/laptop2.png",
       width = 31,
       height = 21
     },
     {
       id = 3,
-      image = "../../../assets/sprites/objects/laptop3.png",
+      image = "../../../assets/sprites/world/maps/whitespace/laptop3.png",
       width = 31,
       height = 21
     },
     {
       id = 4,
-      image = "../../../assets/sprites/objects/sketchbook.png",
+      image = "../../../assets/sprites/world/maps/whitespace/sketchbook.png",
       width = 14,
       height = 17
     },
     {
       id = 5,
-      image = "../../../assets/sprites/objects/lightbulb1.png",
+      image = "../../../assets/sprites/world/maps/whitespace/lightbulb1.png",
       width = 15,
       height = 725,
       animation = {
@@ -87,19 +87,19 @@ return {
     },
     {
       id = 6,
-      image = "../../../assets/sprites/objects/lightbulb2.png",
+      image = "../../../assets/sprites/world/maps/whitespace/lightbulb2.png",
       width = 15,
       height = 725
     },
     {
       id = 7,
-      image = "../../../assets/sprites/objects/bs_sketchbook.png",
+      image = "../../../assets/sprites/world/maps/whitespace/blackspace/sketchbook.png",
       width = 15,
       height = 19
     },
     {
       id = 8,
-      image = "../../../assets/sprites/objects/bs_tissuebox.png",
+      image = "../../../assets/sprites/world/maps/whitespace/blackspace/tissuebox.png",
       width = 22,
       height = 21
     }

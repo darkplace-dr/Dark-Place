@@ -44,8 +44,8 @@ return {
             cutscene:wait(0.2)
             cutscene:fadeOut(0.5)
             cutscene:wait(0.5)
-			
-            local stare = Sprite("objects/lightbulb_stare")
+
+            local stare = Sprite("world/maps/whitespace/lightbulb_stare")
             stare:play(0.33, true)
 			stare.layer = 500
             stare.parallax_x = 0
