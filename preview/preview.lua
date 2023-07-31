@@ -15,8 +15,9 @@ function preview:init(mod, button, menu)
 
     self.swellow = nil
     self.swellow_timer = 0
-	
+
 	self.paul = false
+    self.paul_stream = nil
 end
 
 function preview:update()
@@ -41,7 +42,7 @@ function preview:update()
         table.insert(self.particles, {radius = radius, x = Utils.random() * SCREEN_WIDTH, y = SCREEN_HEIGHT + radius, max_radius = radius, speed = Utils.random() * 0.5 + 0.5})
     end
 
-    if self:canShowSwellow() then
+    if self:shouldShowSwellow() then
         if not self.swellow then
             self.swellow = love.graphics.newImage(self.base_path.."/swellow.png")
         end
@@ -49,15 +50,21 @@ function preview:update()
     else
         self.swellow_timer = 0
     end
-	
-	if self:canPaul() and not self.paul then
-		local paul = love.sound.newSoundData(self.base_path.."/paul.wav")
-		local paul_is_the_favorite_of_all = love.audio.newSource(paul)
-		paul_is_the_favorite_of_all:setVolume(1)
-		paul_is_the_favorite_of_all:setPitch(1)
-		paul_is_the_favorite_of_all:play()
-		self.paul = true
-	end
+
+	if self:shouldPaul() then
+        if not self.paul then
+            if not self.paul_stream then
+                self.paul_stream = love.audio.newSource(self.base_path.."/paul.ogg", "stream")
+            end
+            self.paul_stream:play()
+            self.paul = true
+        end
+    else
+        if self.paul then
+            self.paul_stream:stop()
+        end
+        self.paul = false
+    end
 end
 
 function preview:draw()
@@ -70,21 +77,21 @@ function preview:draw()
         end
         love.graphics.setColor(1, 1, 1)
 
-        if self:canShowSwellow() and self.swellow then
+        if self:shouldShowSwellow() and self.swellow then
             local alpha = (self.swellow_timer - 1.8) * 0.2
             ---@type FileNamer
             local naming_screen = self.menu.naming_screen
             love.graphics.setColor(1, 1, 1, math.min(alpha, 0.8))
             love.graphics.draw(self.swellow,
                 SCREEN_WIDTH/2, SCREEN_HEIGHT/2-30, 0,
-                2 + math.max(0, (self.swellow_timer - 3) * 0.01 + naming_screen.whiten * 1), 2,
+                2 + math.max(0, (self.swellow_timer - 3) * 0.02 + naming_screen.whiten), 2,
                 self.swellow:getWidth()/2, self.swellow:getHeight()/2
             )
         end
     end
 end
 
-function preview:canShowSwellow()
+function preview:shouldShowSwellow()
     ---@type FileNamer
     local naming_screen = self.menu.naming_screen
     return naming_screen
@@ -92,12 +99,12 @@ function preview:canShowSwellow()
         and (naming_screen.state == "CONFIRM" or naming_screen.state == "FADEOUT")
 end
 
-function preview:canPaul()
+function preview:shouldPaul()
     ---@type FileNamer
     local naming_screen = self.menu.naming_screen
     return naming_screen
         and string.upper(naming_screen.name) == "PAUL"
-        and (naming_screen.state == "CONFIRM" or naming_screen.state == "FADEOUT")
+        and naming_screen.state == "CONFIRM"
 end
 
 return preview
