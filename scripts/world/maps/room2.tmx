@@ -130,7 +130,7 @@
 </data>
  </layer>
  <imagelayer id="7" name="bg1" offsetx="0" offsety="920">
-  <image source="../../../assets/sprites/world/maps/ebott/room_area12.png" width="1360" height="520"/>
+  <image source="../../../assets/sprites/world/maps/ebott/room_area1.png" width="1360" height="520"/>
  </imagelayer>
  <objectgroup color="#0000ff" id="3" name="collision" opacity="0.5">
   <object id="1" x="120" y="120" width="40" height="200"/>
