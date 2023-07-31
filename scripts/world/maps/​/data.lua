@@ -156,7 +156,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["texture"] = "world/mb"
+            ["texture"] = "world/npcs/mb"
           }
         },
         {

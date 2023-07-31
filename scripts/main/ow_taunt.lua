@@ -44,7 +44,7 @@ function Mod:updateTaunt()
             local charax1, charay1 = chara:getRelativePos(chara.width/2, chara.height/2)
 
             -- the shine effect
-            local effect = Sprite("effects/taunteffect", charax1, charay1)
+            local effect = Sprite("effects/taunt", charax1, charay1)
             effect:setOrigin(0.5, 0.5)
             effect:setScale(1)
             effect.layer = chara.layer - 0.1

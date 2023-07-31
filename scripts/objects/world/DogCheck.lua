@@ -53,8 +53,9 @@ function DogCheck:start()
     end
     self.variant = Utils.pick(variant_choices)
 
+    local cust_sprites_base = "world/cutscenes/dogcheck"
     if self.variant == "dance" then
-        createDog("objects/dogcheck/dog_dance", 0.2)
+        createDog(cust_sprites_base.."/dog_dance", 0.2)
         playSong("dance_of_dog", 0.95, 1.05)
     elseif self.variant == "sleep" then
         createDog("misc/dog_sleep", 0.8)
@@ -62,13 +63,13 @@ function DogCheck:start()
         local song_is_sog = song_here == "sigh_of_dog"
         playSong(song_here, song_is_sog and 0.8 or 1, 1)
     elseif self.variant == "maracas" then
-        createDog("objects/dogcheck/dog_maracas", 0.1, 20, -20)
+        createDog(cust_sprites_base.."/dog_maracas", 0.1, 20, -20)
         playSong("baci_perugina2")
     elseif self.variant == "summer" then
-        createDog("objects/dogcheck/dog_summer", 0.8)
+        createDog(cust_sprites_base.."/dog_summer", 0.8)
         playSong("options_summer")
     elseif self.variant == "xmas" then
-        createDog("objects/dogcheck/dog_winter", 0.8, 0, -10)
+        createDog(cust_sprites_base.."/dog_winter", 0.8, 0, -10)
         playSong("options_winter")
     end
 end

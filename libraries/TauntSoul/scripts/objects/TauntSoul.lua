@@ -92,7 +92,7 @@ function TauntSoul:update()
             chara.overlay_sprite:setSprite(Utils.pick(sprites))
 
             -- the shine effect
-            local effect = Sprite("effects/taunteffect", 10, 15)
+            local effect = Sprite("effects/taunt", 10, 15)
             effect:setOrigin(0.5)
             effect:setScale(0.5)
             effect.layer = -1

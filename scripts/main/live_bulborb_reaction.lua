@@ -1,5 +1,5 @@
 function Mod:initBulborb()
-    self.bulborb_reaction = LiveBulborbReaction()
+    self.bulborb_reaction = Sprite("world/live_bulborb_reaction")
     self:resetBulborb()
     -- "", APPEARING, IDLE, VANISHING
     self.bulborb_state = ""
