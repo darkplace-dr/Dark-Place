@@ -170,7 +170,7 @@ function DarkPartyMenu:draw()
 	love.graphics.printf("PARTY", 0, 0, self.bg.width, "center")
 	
     for i=1,4 do
-        local path = "party/head"
+        local path = "ui/menu/party/head"
         if Game.party[i] then
             path = Game.party[i].menu_icon
         end
