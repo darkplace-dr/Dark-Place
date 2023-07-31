@@ -12,7 +12,7 @@
  <tileset firstgid="71" source="../../../tilesets/other-objects.tsx"/>
  <objectgroup color="#ffaaff" id="2" name="objects_bg"/>
  <imagelayer id="3" name="mountains" offsetx="0" offsety="105">
-  <image source="../../../../../assets/sprites/objects/vaporbg/mountains.png" width="640" height="480"/>
+  <image source="../../../../../assets/sprites/world/maps/vapor/background/mountains.png" width="640" height="480"/>
  </imagelayer>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data encoding="csv">

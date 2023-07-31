@@ -6,17 +6,17 @@ function VaporBG:init(do_mountains)
     self.parallax_x = 0
     self.parallax_y = 0
 
-    self.backdrop = Sprite("objects/vaporbg/backdrop", 0, 0)
+    self.backdrop = Sprite("world/maps/vapor/background/backdrop", 0, 0)
     self.backdrop:setScale(2)
     self:addChild(self.backdrop)
 
-    self.mask = Sprite("objects/vaporbg/sun_mask", 0, 0)
+    self.mask = Sprite("world/maps/vapor/background/sun_mask", 0, 0)
     self.mask:setScale(2)
 	self.mask.visible = false
 	self.mask.layer = 10
     self:addChild(self.mask)
 
-    self.sun = Sprite("objects/vaporbg/sun", 0, 0)
+    self.sun = Sprite("world/maps/vapor/background/sun", 0, 0)
     self.sun:setScale(2)
 	self.sun.alpha = 0.8
     self.sun:addFX(ShaderFX(Mod.shaders["wave"], {
@@ -28,13 +28,13 @@ function VaporBG:init(do_mountains)
 	self.sun:addFX(MaskFX(self.mask))
     self:addChild(self.sun)
 
-    self.sun_overlay = Sprite("objects/vaporbg/sun", 0, 0)
+    self.sun_overlay = Sprite("world/maps/vapor/background/sun", 0, 0)
     self.sun_overlay:setScale(2)
 	self.sun_overlay:addFX(MaskFX(self.mask))
     self:addChild(self.sun_overlay)
 
     if do_mountains or do_mountains == nil then
-        self.mountains = Sprite("objects/vaporbg/mountains", 0, 105)
+        self.mountains = Sprite("world/maps/vapor/background/mountains", 0, 105)
         self.mountains:setScale(1)
         self.mountains:setLayer(self.layer + 0.1)
         self.mountains.wrap_texture_x = true

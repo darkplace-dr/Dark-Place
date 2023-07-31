@@ -64,7 +64,7 @@ function item:onWorldUse()
         else
             og_facing = leader.facing
             leader:setFacing("down")
-            key = Sprite("world/sfb_key")
+            key = Sprite("world/cutscenes/sfb_key")
             key:setOrigin(0.5, 1)
             key:setPosition(leader.width/2, 0)
             leader:addChild(key)

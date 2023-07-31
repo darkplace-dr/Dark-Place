@@ -5,27 +5,27 @@
  </editorsettings>
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="10">
-  <image width="66" height="40" source="../../../assets/sprites/objects/spamton_graffiti.png"/>
+  <image width="66" height="40" source="../../../assets/sprites/world/maps/example_area/spamton_graffiti.png"/>
  </tile>
  <tile id="11">
-  <image width="67" height="64" source="../../../assets/sprites/objects/vapor_palmtree_cyan.png"/>
+  <image width="67" height="64" source="../../../assets/sprites/world/maps/vapor/palmtree_cyan.png"/>
  </tile>
  <tile id="13">
-  <image width="120" height="120" source="../../../assets/sprites/objects/billboard.png"/>
+  <image width="120" height="120" source="../../../assets/sprites/world/events/devroom/billboard.png"/>
  </tile>
  <tile id="32">
-  <image width="116" height="128" source="../../../assets/sprites/objects/cybercity/alley_dumpster_empty.png"/>
+  <image width="116" height="128" source="../../../assets/sprites/world/events/cybercity/alley_dumpster_empty.png"/>
  </tile>
  <tile id="33">
-  <image width="116" height="118" source="../../../assets/sprites/objects/cybercity/dumpster_closed.png"/>
+  <image width="116" height="118" source="../../../assets/sprites/world/events/cybercity/dumpster_closed.png"/>
  </tile>
  <tile id="34">
-  <image width="116" height="128" source="../../../assets/sprites/objects/cybercity/dumpster_open.png"/>
+  <image width="116" height="128" source="../../../assets/sprites/world/events/cybercity/dumpster_open.png"/>
  </tile>
  <tile id="35">
-  <image width="116" height="118" source="../../../assets/sprites/objects/cybercity/dumpster1.png"/>
+  <image width="116" height="118" source="../../../assets/sprites/world/events/cybercity/dumpster1.png"/>
  </tile>
  <tile id="36">
-  <image width="116" height="118" source="../../../assets/sprites/objects/cybercity/dumpster2.png"/>
+  <image width="116" height="118" source="../../../assets/sprites/world/events/cybercity/dumpster2.png"/>
  </tile>
 </tileset>

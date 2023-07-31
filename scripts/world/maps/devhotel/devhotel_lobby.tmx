@@ -100,8 +100,7 @@
     <property name="text1">* The breakfast buffet 
 is the way! -Sci</property>
     <property name="text2">* Of course, 
-only open at the start of the day... 
--Sci</property>
+only open at the start of the day... -Sci</property>
    </properties>
   </object>
   <object id="77" gid="433" x="80" y="640" width="40" height="40"/>

@@ -27,19 +27,19 @@ return {
   tiles = {
     {
       id = 0,
-      image = "../../../assets/sprites/objects/hoteldoors/000.png",
+      image = "../../../assets/sprites/world/events/devroom/hoteldoors/000.png",
       width = 32,
       height = 50
     },
     {
       id = 1,
-      image = "../../../assets/sprites/objects/hoteldoors/001.png",
+      image = "../../../assets/sprites/world/events/devroom/hoteldoors/001.png",
       width = 32,
       height = 50
     },
     {
       id = 2,
-      image = "../../../assets/sprites/objects/hoteldoors/002.png",
+      image = "../../../assets/sprites/world/events/devroom/hoteldoors/002.png",
       width = 32,
       height = 50
     }

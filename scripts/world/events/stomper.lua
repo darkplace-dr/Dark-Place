@@ -3,7 +3,7 @@ local Stomper, super = Class(Event)
 function Stomper:init(x, y, data)
     super.init(self, x, y, data)
 
-    self.sprite = Sprite("world/events/stomper/thwomp")
+    self.sprite = Sprite("world/events/ch1dark_ribbitmodbt/stomper/thwomp")
     self.sprite:setScale(2)
     self:addChild(self.sprite)
 

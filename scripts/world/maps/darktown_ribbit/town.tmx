@@ -9,7 +9,7 @@
   <property name="use_footstep_sounds" value="true"/>
  </properties>
  <imagelayer id="3" name="Image Layer 1">
-  <image source="../../../../../assets/sprites/objects/darktown.png" width="640" height="1160"/>
+  <image source="../../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/town.png" width="640" height="1160"/>
  </imagelayer>
  <objectgroup color="#0000ff" id="2" name="collision">
   <object id="1" x="0" y="1120" width="278" height="40"/>
@@ -55,7 +55,7 @@
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
     <property name="speed" type="float" value="0.25"/>
-    <property name="texture" value="objects/torch/torch"/>
+    <property name="texture" value="world/maps/ch1dark/torch"/>
    </properties>
   </object>
   <object id="30" name="sprite" x="594" y="876" width="25" height="40">
@@ -63,7 +63,7 @@
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
     <property name="speed" type="float" value="0.25"/>
-    <property name="texture" value="objects/torch/torch"/>
+    <property name="texture" value="world/maps/ch1dark/torch"/>
    </properties>
   </object>
   <object id="31" name="sprite" x="144" y="876" width="25" height="40">
@@ -71,7 +71,7 @@
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
     <property name="speed" type="float" value="0.25"/>
-    <property name="texture" value="objects/torch/torch"/>
+    <property name="texture" value="world/maps/ch1dark/torch"/>
    </properties>
   </object>
   <object id="32" name="sprite" x="16" y="876" width="25" height="40">
@@ -79,14 +79,14 @@
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
     <property name="speed" type="float" value="0.25"/>
-    <property name="texture" value="objects/torch/torch"/>
+    <property name="texture" value="world/maps/ch1dark/torch"/>
    </properties>
   </object>
   <object id="33" name="sprite" x="124" y="458" width="158" height="166">
    <properties>
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
-    <property name="texture" value="objects/castle_building1"/>
+    <property name="texture" value="world/maps/ch1dark/ribbitmodbt/town_building1"/>
    </properties>
   </object>
   <object id="35" name="transition" x="246" y="192" width="150" height="20">
@@ -109,21 +109,21 @@
    <properties>
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
-    <property name="texture" value="objects/castle_building2"/>
+    <property name="texture" value="world/maps/ch1dark/ribbitmodbt/town_building2"/>
    </properties>
   </object>
   <object id="45" name="sprite" x="366" y="612" width="158" height="166">
    <properties>
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
-    <property name="texture" value="objects/castle_building3"/>
+    <property name="texture" value="world/maps/ch1dark/ribbitmodbt/town_building3"/>
    </properties>
   </object>
   <object id="47" name="sprite" x="158" y="702" width="88" height="76">
    <properties>
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
-    <property name="texture" value="objects/castle_computer"/>
+    <property name="texture" value="world/maps/ch1dark/ribbitmodbt/computer"/>
    </properties>
   </object>
   <object id="49" name="stomper" x="495" y="805" width="48" height="64"/>

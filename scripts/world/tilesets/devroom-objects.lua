@@ -27,85 +27,85 @@ return {
   tiles = {
     {
       id = 10,
-      image = "../../../assets/sprites/objects/spamton_graffiti.png",
+      image = "../../../assets/sprites/world/maps/example_area/spamton_graffiti.png",
       width = 66,
       height = 40
     },
     {
       id = 11,
-      image = "../../../assets/sprites/objects/vapor_palmtree_cyan.png",
+      image = "../../../assets/sprites/world/maps/vapor/palmtree_cyan.png",
       width = 67,
       height = 64
     },
     {
       id = 13,
-      image = "../../../assets/sprites/objects/billboard.png",
+      image = "../../../assets/sprites/world/events/devroom/billboard.png",
       width = 120,
       height = 120
     },
     {
       id = 18,
-      image = "../../../assets/sprites/objects/pillar.png",
+      image = "../../../assets/sprites/world/maps/vapor/pillar.png",
       width = 29,
       height = 90
     },
     {
       id = 19,
-      image = "../../../assets/sprites/objects/spamgolor_door.png",
+      image = "../../../assets/sprites/world/events/devroom/warphub/spamgolor_door.png",
       width = 51,
       height = 40
     },
     {
       id = 20,
-      image = "../../../assets/sprites/objects/diner_table.png",
+      image = "../../../assets/sprites/world/events/devroom/diner_table.png",
       width = 50,
       height = 35
     },
     {
       id = 21,
-      image = "../../../assets/sprites/objects/devroom_doorway.png",
+      image = "../../../assets/sprites/world/events/devroom/doorway.png",
       width = 40,
       height = 60
     },
     {
       id = 22,
-      image = "../../../assets/sprites/objects/cabinet.png",
+      image = "../../../assets/sprites/world/events/devroom/cabinet.png",
       width = 145,
       height = 64
     },
     {
       id = 23,
-      image = "../../../assets/sprites/objects/devroom_counter.png",
+      image = "../../../assets/sprites/world/events/devroom/counter.png",
       width = 100,
       height = 30
     },
     {
       id = 27,
-      image = "../../../assets/sprites/objects/SoldSign.png",
+      image = "../../../assets/sprites/world/maps/devroom/warphub/sold_sign.png",
       width = 50,
       height = 22
     },
     {
       id = 28,
-      image = "../../../assets/sprites/objects/pink_stall.png",
+      image = "../../../assets/sprites/world/events/example_area/pink_shop.png",
       width = 59,
       height = 83
     },
     {
       id = 31,
-      image = "../../../assets/sprites/objects/pasta_shop_door.png",
+      image = "../../../assets/sprites/world/events/devroom/warphub/pasta_shop_door.png",
       width = 62,
       height = 93
     },
     {
       id = 37,
-      image = "../../../assets/sprites/objects/devroom_doorway_double.png",
+      image = "../../../assets/sprites/world/events/devroom/doorway_double.png",
       width = 80,
       height = 60
     },
     {
       id = 40,
-      image = "../../../assets/sprites/objects/devfountain_1.png",
+      image = "../../../assets/sprites/world/events/devroom/devfountain_1.png",
       width = 81,
       height = 39,
       animation = {
@@ -121,31 +121,31 @@ return {
     },
     {
       id = 41,
-      image = "../../../assets/sprites/objects/devfountain_2.png",
+      image = "../../../assets/sprites/world/events/devroom/devfountain_2.png",
       width = 81,
       height = 39
     },
     {
       id = 42,
-      image = "../../../assets/sprites/objects/devsign.png",
+      image = "../../../assets/sprites/world/events/devroom/devsign.png",
       width = 40,
       height = 40
     },
     {
       id = 43,
-      image = "../../../assets/sprites/objects/sign.png",
+      image = "../../../assets/sprites/world/events/sign.png",
       width = 40,
       height = 40
     },
     {
       id = 44,
-      image = "../../../assets/sprites/objects/blankie_wall_note.png",
+      image = "../../../assets/sprites/world/events/example_area/blankie_wall_note.png",
       width = 34,
       height = 34
     },
     {
       id = 45,
-      image = "../../../assets/sprites/objects/Addison_plushies.png",
+      image = "../../../assets/sprites/world/maps/devroom/hotel/addison_plushies.png",
       width = 115,
       height = 29
     }

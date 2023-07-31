@@ -27,49 +27,49 @@ return {
   tiles = {
     {
       id = 10,
-      image = "../../../assets/sprites/objects/spamton_graffiti.png",
+      image = "../../../assets/sprites/world/maps/example_area/spamton_graffiti.png",
       width = 66,
       height = 40
     },
     {
       id = 11,
-      image = "../../../assets/sprites/objects/vapor_palmtree_cyan.png",
+      image = "../../../assets/sprites/world/maps/vapor/palmtree_cyan.png",
       width = 67,
       height = 64
     },
     {
       id = 13,
-      image = "../../../assets/sprites/objects/billboard.png",
+      image = "../../../assets/sprites/world/events/devroom/billboard.png",
       width = 120,
       height = 120
     },
     {
       id = 32,
-      image = "../../../assets/sprites/objects/cybercity/alley_dumpster_empty.png",
+      image = "../../../assets/sprites/world/events/cybercity/alley_dumpster_empty.png",
       width = 116,
       height = 128
     },
     {
       id = 33,
-      image = "../../../assets/sprites/objects/cybercity/dumpster_closed.png",
+      image = "../../../assets/sprites/world/events/cybercity/dumpster_closed.png",
       width = 116,
       height = 118
     },
     {
       id = 34,
-      image = "../../../assets/sprites/objects/cybercity/dumpster_open.png",
+      image = "../../../assets/sprites/world/events/cybercity/dumpster_open.png",
       width = 116,
       height = 128
     },
     {
       id = 35,
-      image = "../../../assets/sprites/objects/cybercity/dumpster1.png",
+      image = "../../../assets/sprites/world/events/cybercity/dumpster1.png",
       width = 116,
       height = 118
     },
     {
       id = 36,
-      image = "../../../assets/sprites/objects/cybercity/dumpster2.png",
+      image = "../../../assets/sprites/world/events/cybercity/dumpster2.png",
       width = 116,
       height = 118
     }

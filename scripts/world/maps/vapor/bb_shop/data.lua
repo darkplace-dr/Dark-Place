@@ -53,7 +53,7 @@ return {
     },
     {
       type = "imagelayer",
-      image = "../../../../../assets/sprites/objects/vaporbg/mountains.png",
+      image = "../../../../../assets/sprites/world/maps/vapor/background/mountains.png",
       id = 3,
       name = "mountains",
       class = "",

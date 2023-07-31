@@ -10,7 +10,7 @@ function GonerBackground:init(x, y, song, song_pitch_gradually_increases)
     self:setScale(2)
     self:setOrigin(0, 0)
 
-    self.sprite = Assets.getTexture("world/cutscenes/intro/IMAGE_DEPTH")
+    self.sprite = Assets.getTexture("world/cutscenes/intro/DEPTH")
 
     self.parallax_x = 0
     self.parallax_y = 0

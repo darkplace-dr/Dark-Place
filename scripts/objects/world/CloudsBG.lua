@@ -6,11 +6,11 @@ function CloudsBG:init()
     self.parallax_x = 0
     self.parallax_y = 0
 
-    local backdrop = Sprite("objects/cloudworld/backdrop", 0, 0)
+    local backdrop = Sprite("world/maps/cloudworld/backdrop", 0, 0)
     backdrop:setScale(2)
     self:addChild(backdrop)
 
-    local clouds = Sprite("objects/cloudworld/cloud_big", 0, 0)
+    local clouds = Sprite("world/maps/cloudworld/cloud_big", 0, 0)
     clouds:setWrap(true)
     clouds.physics.speed_x = 0.2
     clouds:setScale(2)
@@ -27,7 +27,7 @@ function CloudsBG:init()
 
 
     --[[
-    local clouds = Sprite("objects/cloudworld/clouds", 0, 0)
+    local clouds = Sprite("world/maps/cloudworld/clouds", 0, 0)
     clouds:setScale(2)
     clouds.visible = true
     self:addChild(clouds)
@@ -55,7 +55,7 @@ function CloudsBG:init()
             for i= 1,20 do
                 
 
-                local clouds = Sprite("objects/cloudworld/cloud_b", love.math.random(-50,900), love.math.random(-50,900))
+                local clouds = Sprite("world/maps/cloudworld/cloud_b", love.math.random(-50,900), love.math.random(-50,900))
                 clouds:setScale(2)
                 clouds.visible = true
                 self:addChild(clouds)

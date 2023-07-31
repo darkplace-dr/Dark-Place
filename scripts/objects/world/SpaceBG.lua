@@ -1,7 +1,7 @@
 local SpaceBG, super = Class(Sprite)
 
 function SpaceBG:init()
-    super.init(self, "objects/spacebg", 0, 0)
+    super.init(self, "world/maps/devroom/spacebg", 0, 0)
 
     self.wrap_texture_x = true
     self:setScale(1)

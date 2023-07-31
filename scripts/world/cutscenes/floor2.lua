@@ -3,7 +3,7 @@ return {
     backrooms_entry = function(cutscene, event)
         Game.world.music:fade(0, 0.25)
         Assets.playSound("dooropen")
-        event:setSprite("world/events/backroomsdoor/open")
+        event:setSprite("world/events/floor2/backroomsdoor_open")
         cutscene:wait(0.5)
 
         cutscene:wait(cutscene:mapTransition("backrooms/entrance", "entry"))
