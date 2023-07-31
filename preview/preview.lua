@@ -45,30 +45,28 @@ function preview:update()
         })
     end
 
-    if self:areWeSelected() then
-        if self:shouldShowSwellow() then
-            if not self.swellow then
-                self.swellow = love.graphics.newImage(self.base_path.."/swellow.png")
-            end
-            self.swellow_timer = self.swellow_timer + DT
-        else
-            self.swellow_timer = 0
+    if self:shouldShowSwellow() then
+        if not self.swellow then
+            self.swellow = love.graphics.newImage(self.base_path.."/swellow.png")
         end
+        self.swellow_timer = self.swellow_timer + DT
+    else
+        self.swellow_timer = 0
+    end
 
-        if self:shouldPaul() then
-            if not self.paul_played then
-                if not self.paul_stream then
-                    self.paul_stream = love.audio.newSource(self.base_path.."/paul.ogg", "stream")
-                end
-                self.paul_stream:play()
-                self.paul_played = true
+    if self:shouldPaul() then
+        if not self.paul_played then
+            if not self.paul_stream then
+                self.paul_stream = love.audio.newSource(self.base_path.."/paul.ogg", "stream")
             end
-        else
-            if self.paul_played then
-                self.paul_stream:stop()
-            end
-            self.paul_played = false
+            self.paul_stream:play()
+            self.paul_played = true
         end
+    else
+        if self.paul_played then
+            self.paul_stream:stop()
+        end
+        self.paul_played = false
     end
 end
 
@@ -98,13 +96,13 @@ function preview:draw()
 end
 
 function preview:areWeSelected()
-    return self.menu.selected_mod == self.mod_id
+    return self.menu.selected_mod.id == self.mod_id
 end
 
 function preview:shouldShowSwellow()
     ---@type FileNamer
     local naming_screen = self.menu.naming_screen
-    return naming_screen
+    return self:areWeSelected() and naming_screen
         and string.upper(naming_screen.name) == "SWELLOW"
         and (naming_screen.state == "CONFIRM" or naming_screen.state == "FADEOUT")
 end
@@ -112,7 +110,7 @@ end
 function preview:shouldPaul()
     ---@type FileNamer
     local naming_screen = self.menu.naming_screen
-    return naming_screen
+    return self:areWeSelected() and naming_screen
         and string.upper(naming_screen.name) == "PAUL"
         and naming_screen.state == "CONFIRM"
 end
