@@ -9,7 +9,7 @@
   <property name="use_footstep_sounds" value="true"/>
  </properties>
  <imagelayer id="3" name="Image Layer 1">
-  <image source="../../../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/town.png" width="640" height="1160"/>
+  <image source="../../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/town.png" width="640" height="1160"/>
  </imagelayer>
  <objectgroup color="#0000ff" id="2" name="collision">
   <object id="1" x="0" y="1120" width="278" height="40"/>
