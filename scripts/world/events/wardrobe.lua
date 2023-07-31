@@ -9,7 +9,7 @@ function Wardrobe:init(data)
 	
 	self:setHitbox(0, 78, 60, 25)
 
-    self:setSprite("objects/wardrobe_closed")
+    self:setSprite("world/events/devroom/wardrobe_closed")
 end
 
 function Wardrobe:onInteract(chara, dir)

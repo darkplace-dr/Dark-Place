@@ -27,7 +27,7 @@ return {
   tiles = {
     {
       id = 10,
-      image = "../../../assets/sprites/objects/spamton_graffiti.png",
+      image = "../../../assets/sprites/world/maps/example_area/spamton_graffiti.png",
       width = 66,
       height = 40
     },
@@ -57,25 +57,25 @@ return {
     },
     {
       id = 20,
-      image = "../../../assets/sprites/objects/diner_table.png",
+      image = "../../../assets/sprites/world/events/devroom/diner_table.png",
       width = 50,
       height = 35
     },
     {
       id = 21,
-      image = "../../../assets/sprites/objects/devroom_doorway.png",
+      image = "../../../assets/sprites/world/events/devroom/doorway.png",
       width = 40,
       height = 60
     },
     {
       id = 22,
-      image = "../../../assets/sprites/objects/cabinet.png",
+      image = "../../../assets/sprites/world/events/devroom/cabinet.png",
       width = 145,
       height = 64
     },
     {
       id = 23,
-      image = "../../../assets/sprites/objects/devroom_counter.png",
+      image = "../../../assets/sprites/world/events/devroom/counter.png",
       width = 100,
       height = 30
     },
@@ -93,19 +93,19 @@ return {
     },
     {
       id = 31,
-      image = "../../../assets/sprites/objects/pasta_shop_door.png",
+      image = "../../../assets/sprites/world/events/devroom/warpzone/pasta_shop_door.png",
       width = 62,
       height = 93
     },
     {
       id = 37,
-      image = "../../../assets/sprites/objects/devroom_doorway_double.png",
+      image = "../../../assets/sprites/world/events/devroom/doorway_double.png",
       width = 80,
       height = 60
     },
     {
       id = 40,
-      image = "../../../assets/sprites/objects/devfountain_1.png",
+      image = "../../../assets/sprites/world/events/devroom/devfountain_1.png",
       width = 81,
       height = 39,
       animation = {
@@ -121,13 +121,13 @@ return {
     },
     {
       id = 41,
-      image = "../../../assets/sprites/objects/devfountain_2.png",
+      image = "../../../assets/sprites/world/events/devroom/devfountain_2.png",
       width = 81,
       height = 39
     },
     {
       id = 42,
-      image = "../../../assets/sprites/objects/devsign.png",
+      image = "../../../assets/sprites/world/events/devroom/devsign.png",
       width = 40,
       height = 40
     },
@@ -139,7 +139,7 @@ return {
     },
     {
       id = 44,
-      image = "../../../assets/sprites/objects/blankie_wall_note.png",
+      image = "../../../assets/sprites/world/events/example_area/blankie_wall_note.png",
       width = 34,
       height = 34
     },
