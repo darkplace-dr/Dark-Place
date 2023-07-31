@@ -650,7 +650,7 @@ return {
           properties = {
             ["solid"] = true,
             ["text1"] = "* The breakfast buffet \nis the way! -Sci",
-            ["text2"] = "* Of course, \nonly open at the start of the day... \n-Sci"
+            ["text2"] = "* Of course, \nonly open at the start of the day... -Sci"
           }
         },
         {
