@@ -34,11 +34,11 @@ function spell:onCast(user, target)
 
 		local starparticle = nil
 		if random == 0 then
-			starparticle = Sprite("effects/spells/dess/StarstormEffectBig", Utils.random(SCREEN_WIDTH), Utils.random(SCREEN_HEIGHT))
+			starparticle = Sprite("effects/spells/dess/starstorm_big", Utils.random(SCREEN_WIDTH), Utils.random(SCREEN_HEIGHT))
 		elseif random == 1 then
-			starparticle = Sprite("effects/spells/dess/StarstormEffectMedium", Utils.random(SCREEN_WIDTH), Utils.random(SCREEN_HEIGHT))
+			starparticle = Sprite("effects/spells/dess/starstorm_medium", Utils.random(SCREEN_WIDTH), Utils.random(SCREEN_HEIGHT))
 		else
-			starparticle = Sprite("effects/spells/dess/StarstormEffectSmall", Utils.random(SCREEN_WIDTH), Utils.random(SCREEN_HEIGHT))
+			starparticle = Sprite("effects/spells/dess/starstorm_small", Utils.random(SCREEN_WIDTH), Utils.random(SCREEN_HEIGHT))
 		end
 
 		starparticle:setOrigin(0.5, 0.5)
