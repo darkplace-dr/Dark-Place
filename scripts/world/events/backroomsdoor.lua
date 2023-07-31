@@ -3,7 +3,7 @@ local BackroomsDoor, super = Class(Event)
 function BackroomsDoor:init(data)
     super.init(self, data)
 
-    self.sprite = Sprite("world/events/backroomsdoor/closed")
+    self.sprite = Sprite("world/events/floor2/backroomsdoor_closed")
     self.sprite:setScale(2)
     self:addChild(self.sprite)
 

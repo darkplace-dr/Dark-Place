@@ -11,7 +11,7 @@
   <image width="67" height="64" source="../../../assets/sprites/world/maps/vapor/palmtree_cyan.png"/>
  </tile>
  <tile id="13">
-  <image width="120" height="120" source="../../../assets/sprites/world/events/billboard.png"/>
+  <image width="120" height="120" source="../../../assets/sprites/world/events/devroom/billboard.png"/>
  </tile>
  <tile id="18">
   <image width="29" height="90" source="../../../assets/sprites/world/maps/vapor/pillar.png"/>

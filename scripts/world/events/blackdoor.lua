@@ -3,7 +3,7 @@ local BlackDoor, super = Class(Event)
 function BlackDoor:init(data)
     super.init(self, data)
 
-    self.sprite = Sprite("world/events/black_door")
+    self.sprite = Sprite("world/events/whitespace/blackspace/black_door")
     self.sprite:setScale(2)
 	self.sprite:setOrigin(0.5, 1)
     self:addChild(self.sprite)

@@ -3,7 +3,7 @@ local TickDoor, super = Class(Event)
 function TickDoor:init(data)
     super.init(self, data)
 
-    self.sprite = Sprite("world/events/potadoor")
+    self.sprite = Sprite("world/events/floor2/potadoor")
     self.sprite:setScale(2)
     self:addChild(self.sprite)
 

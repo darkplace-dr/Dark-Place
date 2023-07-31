@@ -5,7 +5,7 @@ local DarkDoor, super = Class(Event)
 function DarkDoor:init(data)
     super.init(self, data)
 
-    self:setSprite("world/events/darkdoor_closed")
+    self:setSprite("world/events/closet_doorclosed")
 end
 
 return DarkDoor

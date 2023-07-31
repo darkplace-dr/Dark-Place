@@ -3,7 +3,7 @@ local PatateDoor, super = Class(Event)
 function PatateDoor:init(data)
     super.init(self, data)
 
-    self.sprite = Sprite("world/events/croustidoor")
+    self.sprite = Sprite("world/events/floor2/croustidoor")
     self.sprite:setScale(2)
     self:addChild(self.sprite)
 

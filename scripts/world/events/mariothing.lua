@@ -34,7 +34,7 @@ function WobblyThing:init(data)
     self.shoot_amount = data.properties["shootamount"] or 3
 
 
-    self:setSprite(Assets.getFrames(self.evil and "world/events/mariothing_evil" or "world/events/mariothing"))
+    self:setSprite(Assets.getFrames(self.evil and "world/events/ch1dark_ribbitmodbt/mariothing_evil" or "world/events/ch1dark_ribbitmodbt/mariothing"))
     self.sprite:stop()
 end
 

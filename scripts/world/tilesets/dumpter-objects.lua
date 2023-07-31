@@ -39,7 +39,7 @@ return {
     },
     {
       id = 13,
-      image = "../../../assets/sprites/world/events/billboard.png",
+      image = "../../../assets/sprites/world/events/devroom/billboard.png",
       width = 120,
       height = 120
     },
