@@ -11,5 +11,4 @@ function shine:init(x, y, width, height)
     self.solid = true
 end
 
-
 return shine
