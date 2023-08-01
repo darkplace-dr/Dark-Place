@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-field
 return {
     fommt = function(cutscene, event)
         if not Game:getFlag("fommt_save") then

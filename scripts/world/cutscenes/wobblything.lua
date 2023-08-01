@@ -7,18 +7,18 @@ return {
             scale = scale or 2
             wait_time = wait_time or 0.2
 
-            local text = Game.world:spawnObject(Text(text, x, y, 300, 500, { style = goner and "GONER" or "dark" }))
-            text:setScale(scale)
-            text.parallax_x = 0
-            text.parallax_y = 0
+            local text_o = Game.world:spawnObject(Text(text, x, y, 300, 500, { style = goner and "GONER" or "dark" }))
+            text_o:setScale(scale)
+            text_o.parallax_x = 0
+            text_o.parallax_y = 0
             if goner then
-                text.alpha = 1
+                text_o.alpha = 1
             end
-            table.insert(texts, text)
+            table.insert(texts, text_o)
 
             cutscene:wait(wait_time)
 
-            return text
+            return text_o
         end
         
         local function removeBigText()

@@ -101,7 +101,7 @@ return {
                 cutscene:text("* Just wow.", "confused_side", "bor")
                 cutscene:text("* I LITERALLY TOLD YOU THE CODE YOU PRIMATE", "HOLYFUCK", "bor")
                 cutscene:text("* YOU FUCKIGN APE", "OHMYFUCKINGGOD", "bor")
-                if timesusedthisshid == 5 then
+                if event.timeouted then
                     cutscene:text("* Nice", "happy", "bor")
                     cutscene:text("* FUCKINg nice", "oml", "bor")
                     cutscene:text("* I'm now locked out of my own room. For an entire minute.", "blush", "bor")

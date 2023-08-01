@@ -1,10 +1,9 @@
 return {
-
     smallwalker1 = function(cutscene)
         cutscene:text("* The [color:yellow]city[color:reset] is [color:yellow]Annoying[color:reset] me...")
         cutscene:text("* I'm a   [color:yellow]Smallwalker[color:reset]")
     end,
-    
+
     smallwalker2 = function(cutscene)
         cutscene:text("* I'm [color:yellow]hiding[color:reset]...")
         cutscene:text("* I'm a   [color:yellow]Smallwalker[color:reset]")
@@ -29,8 +28,6 @@ return {
         cutscene:text("* No way,          baby Starwalker")
     end,
 
-
-
     bigwalker = function(cutscene)
         cutscene:text("* These [color:red]Walkers[color:reset] are [color:red]Enraging[color:reset] me...")
         cutscene:text("* I'm the   [color:red]Big Walker[color:reset]")
@@ -44,5 +41,4 @@ return {
         end
         ]]
     end,
-
 }

@@ -385,58 +385,7 @@ return {
             velvet:resetSprite()
             cutscene:hideNametag()
 
-        elseif event.interact_count == 6 then
-            local susie = cutscene:getCharacter("susie")
-            if susie then
-                cutscene:showNametag("Susie")
-                cutscene:setSpeaker(susie)
-                cutscene:text("* Squeak...", "smile")
-                cutscene:hideNametag()
-            end
-
-            local velvet = cutscene:getCharacter("velvet")
-            cutscene:showNametag("Velvet")
-            cutscene:setSpeaker(velvet)
-            velvet:setAnimation("phone_look_up")
-            cutscene:text("* No...", "pissed_b", "velvet")
-            velvet:resetSprite()
-            cutscene:hideNametag()
-
-        elseif event.interact_count == 7 then
-            local susie = cutscene:getCharacter("susie")
-            if susie then
-                cutscene:showNametag("Susie")
-                cutscene:setSpeaker(susie)
-                cutscene:text("* Squeak...", "smile")
-                cutscene:hideNametag()
-            end
-
-            local velvet = cutscene:getCharacter("velvet")
-            cutscene:showNametag("Velvet")
-            cutscene:setSpeaker(velvet)
-            velvet:setAnimation("phone_look_up")
-            cutscene:text("* No...", "pissed_b", "velvet")
-            velvet:resetSprite()
-            cutscene:hideNametag()
-
-        elseif event.interact_count == 8 then
-            local susie = cutscene:getCharacter("susie")
-            if susie then
-                cutscene:showNametag("Susie")
-                cutscene:setSpeaker(susie)
-                cutscene:text("* Squeak...", "smile")
-                cutscene:hideNametag()
-            end
-
-            local velvet = cutscene:getCharacter("velvet")
-            cutscene:showNametag("Velvet")
-            cutscene:setSpeaker(velvet)
-            velvet:setAnimation("phone_look_up")
-            cutscene:text("* No...", "pissed_b", "velvet")
-            velvet:resetSprite()
-            cutscene:hideNametag()
-
-        elseif event.interact_count == 9 then
+        elseif event.interact_count >= 6 and event.interact_count < 10 then
             local susie = cutscene:getCharacter("susie")
             if susie then
                 cutscene:showNametag("Susie")
@@ -554,6 +503,7 @@ return {
             end
 		end
     end,
+
     ---@param cutscene WorldCutscene
     shadowshop = function(cutscene, event)
         Game.world:shopTransition("shadowsalesman")

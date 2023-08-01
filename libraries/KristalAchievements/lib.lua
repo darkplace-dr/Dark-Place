@@ -1,4 +1,5 @@
 local lib = {}
+AchLib = lib
 
 -- Called when the game is loaded. Registers achievement scripts.
 function lib:onRegistered()

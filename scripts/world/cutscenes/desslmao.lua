@@ -76,9 +76,10 @@ return {
 		cutscene:wait(1.5)
 
 		if #Game.party >= 4 then
-			Game:setFlag("dessRemovedLeader", Game.party[1])
-			Game:removePartyMember(Game.party[1])
-			Game:setFlag(Game:getFlag("dessRemovedLeader").."_party", false)
+			local prev_leader_pm = Game.party[1]
+			Game:setFlag("dessRemovedLeader", prev_leader_pm.id)
+			Game:removePartyMember(prev_leader_pm)
+			Game:setFlag(prev_leader_pm.id.."_party", false)
 		end
 		
 		Game:addPartyMember("dess", 1)
@@ -363,7 +364,7 @@ return {
 		if Game:getFlag("dessRemovedLeader") then
 			Game:removePartyMember("dess")
 			Game:setFlag("dess_party", false)
-			Game:addPartyMember(Game:getFlag("dessRemovedLeader").id, 1)
+			Game:addPartyMember(Game:getFlag("dessRemovedLeader"), 1)
 			Game:setFlag(Game:getFlag("dessRemovedLeader").."_party", true)
 			cutscene:showNametag("Dess")
 			cutscene:text("* I'll be waiting for you at the diner aight?", "eyebrow", "dess")

@@ -101,7 +101,7 @@ function ShadowShop:startTalk(talk)
 				"* [emote:eyebrow_raise]Actually,[wait:5] nevermind,[wait:5] I don't feel bad at all.",
 				"[emote:idle]* I think I speak for everyone when I say everyone hates [color:red]HER[color:reset].",
 			})
-			Game:setFlag("talkedAboutMistCard")
+			Game:setFlag("talkedAboutMistCard", true)
 		else
 			self:startDialogue({
 				"* Yep,[wait:10] cards are sort of a system put in-place for 'special' customers.",
