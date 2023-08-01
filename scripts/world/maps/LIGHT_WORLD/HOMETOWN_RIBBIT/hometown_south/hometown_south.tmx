@@ -12,7 +12,7 @@
  <tileset firstgid="1" source="../../../../tilesets/castle.tsx"/>
  <tileset firstgid="61" source="../../../../tilesets/other-objects.tsx"/>
  <imagelayer id="11" name="bg">
-  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_south.png" width="2640" height="480"/>
+  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/south.png" width="2640" height="480"/>
  </imagelayer>
  <layer id="14" name="tiles" width="66" height="12">
   <data encoding="csv">

@@ -52,7 +52,7 @@ return {
           properties = {
             ["scalex"] = 2,
             ["scaley"] = 2,
-            ["texture"] = "world/maps/cliffs/bigposter1"
+            ["texture"] = "world/maps/chapter1/ribbitmodbt/cliffs/bigposter1"
           }
         }
       }

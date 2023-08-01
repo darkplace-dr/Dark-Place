@@ -5,10 +5,10 @@
  </editorsettings>
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
-  <image width="360" height="310" source="../../../assets/sprites/world/maps/ch1dark/darkdoor_closed.png"/>
+  <image width="360" height="310" source="../../../assets/sprites/world/maps/chapter1/darkdoor_closed.png"/>
  </tile>
  <tile id="1">
-  <image width="360" height="310" source="../../../assets/sprites/world/maps/ch1dark/darkdoor_open.png"/>
+  <image width="360" height="310" source="../../../assets/sprites/world/maps/chapter1/darkdoor_open.png"/>
  </tile>
  <tile id="2">
   <image width="66" height="140" source="../../../assets/sprites/world/maps/chapter1/peon.png"/>

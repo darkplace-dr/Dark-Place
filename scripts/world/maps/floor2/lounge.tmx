@@ -72,7 +72,7 @@
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
     <property name="speed" type="float" value="0.25"/>
-    <property name="texture" value="world/maps/ch1dark/torch"/>
+    <property name="texture" value="world/maps/chapter1/torch"/>
    </properties>
   </object>
   <object id="50" name="sprite" x="328" y="40" width="25" height="40">
@@ -80,7 +80,7 @@
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
     <property name="speed" type="float" value="0.25"/>
-    <property name="texture" value="world/maps/ch1dark/torch"/>
+    <property name="texture" value="world/maps/chapter1/torch"/>
    </properties>
   </object>
   <object id="51" name="sprite" x="488" y="40" width="25" height="40">
@@ -88,7 +88,7 @@
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
     <property name="speed" type="float" value="0.25"/>
-    <property name="texture" value="world/maps/ch1dark/torch"/>
+    <property name="texture" value="world/maps/chapter1/torch"/>
    </properties>
   </object>
   <object id="52" name="sprite" x="608" y="160" width="25" height="40">
@@ -96,7 +96,7 @@
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
     <property name="speed" type="float" value="0.25"/>
-    <property name="texture" value="world/maps/ch1dark/torch"/>
+    <property name="texture" value="world/maps/chapter1/torch"/>
    </properties>
   </object>
  </objectgroup>

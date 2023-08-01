@@ -25,7 +25,7 @@ return {
   layers = {
     {
       type = "imagelayer",
-      image = "../../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/castle_front.png",
+      image = "../../../../assets/sprites/world/maps/chapter1/ribbitmodbt/castle_front.png",
       id = 2,
       name = "castle",
       class = "",
