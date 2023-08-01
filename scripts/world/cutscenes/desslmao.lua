@@ -362,10 +362,12 @@ return {
 			cutscene:hideNametag()
 		end
 		if Game:getFlag("dessRemovedLeader") then
+			local removed_member_id = Game:getFlag("dessRemovedLeader")
+			if type(removed_member_id) == "table" then removed_member_id = removed_member_id.id end
 			Game:removePartyMember("dess")
 			Game:setFlag("dess_party", false)
-			Game:addPartyMember(Game:getFlag("dessRemovedLeader"), 1)
-			Game:setFlag(Game:getFlag("dessRemovedLeader").."_party", true)
+			Game:addPartyMember(removed_member_id, 1)
+			Game:setFlag(removed_member_id.."_party", true)
 			cutscene:showNametag("Dess")
 			cutscene:text("* I'll be waiting for you at the diner aight?", "eyebrow", "dess")
 			cutscene:hideNametag()
