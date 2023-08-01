@@ -35,15 +35,7 @@ return {
 
     bordoor = function(cutscene, event)
         if Game:getFlag("BorDoorCodeUnlocked", false) then
-            --take to room instantly
-            Game.world.fader:fadeOut(nil, {
-                speed = 0.3,
-            })
-            cutscene:wait(0.5)
-            cutscene:loadMap("floor2/roombor", "entryup", "up")
-            Game.world.fader:fadeIn(nil, {
-                speed = 0.2,
-            })
+            cutscene:mapTransition("floor2/roombor", "entryup", "up")
             return
         end
 

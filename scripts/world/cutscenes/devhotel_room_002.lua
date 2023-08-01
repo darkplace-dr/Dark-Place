@@ -6,7 +6,7 @@ return {
             cutscene:wait(1)
 
             cutscene:showNametag("Susie")
-            cutscene:text("[voice:susie]* Huh... Guess we fit afterall", "surprise_smile", "susie")
+            cutscene:text("[voice:susie]* Huh... Guess we fit after all", "surprise_smile", "susie")
             cutscene:hideNametag()
         end
 

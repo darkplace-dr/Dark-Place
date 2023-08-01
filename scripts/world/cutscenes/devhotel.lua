@@ -50,8 +50,12 @@ return {
         cutscene:text("* Will you attempt to squeeze inside?")
 
         if cutscene:choicer({"Yes", "No"}) == 1 then
+            cutscene:wait(cutscene:fadeOut(0.2))
+            cutscene:wait(.3)
+
             if not Game:getFlag("enter_velvet_room") then
                 cutscene:text("* You crawled down, trying to enter the hole...")
+
                 Assets.playSound("bump")
                 cutscene:wait(.5)
                 Assets.playSound("squeak")
@@ -59,11 +63,17 @@ return {
                 Assets.playSound("dog_yip")
                 cutscene:wait(.5)
                 Assets.playSound("bageldefeat")
+                cutscene:wait(.3)
             end
-            cutscene:wait(.3)
-            Assets.playSound("slidewhist")
 
-            Game.world:mapTransition("devhotel/rooms/room_002", "spawn")
+            -- FIXME: what the orange
+            cutscene:fadeIn(0)
+            cutscene:fadeOut(0, { global = true })
+            cutscene:wait(cutscene:playSound("slidewhist"))
+
+            cutscene:after(function()
+                Game.world:mapTransition("devhotel/rooms/room_002", "spawn")
+            end)
         else
             cutscene:text("* You decided not to try and crawl into the hole...")
         end
