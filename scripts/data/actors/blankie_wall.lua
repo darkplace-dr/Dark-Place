@@ -14,7 +14,7 @@ function actor:init()
 
     self.flip = nil
 
-    self.path = "world/cutscenes/blankie_wall"
+    self.path = "world/events/example_area/blankie_wall"
     self.default = "blankie_wall_day"
 
     self.voice = nil

@@ -116,7 +116,7 @@ return {
     },
     {
       type = "imagelayer",
-      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_shelter.png",
+      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/shelter_room.png",
       id = 11,
       name = "bg",
       class = "",

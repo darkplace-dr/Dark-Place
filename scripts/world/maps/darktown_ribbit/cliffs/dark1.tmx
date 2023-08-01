@@ -13,7 +13,7 @@
    <properties>
     <property name="scalex" type="float" value="2"/>
     <property name="scaley" type="float" value="2"/>
-    <property name="texture" value="world/maps/cliffs/bigposter1"/>
+    <property name="texture" value="world/maps/chapter1/ribbitmodbt/cliffs/bigposter1"/>
    </properties>
   </object>
  </objectgroup>

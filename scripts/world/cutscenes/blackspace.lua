@@ -10,8 +10,7 @@ return {
         end
 
         cutscene:text("You opened the door...")
-        cutscene:fadeOut(2, {color = {0, 0, 0}, music = true})
-        cutscene:wait(2)
+        cutscene:wait(cutscene:fadeOut(2, {color = {0, 0, 0}, music = true}))
         if Game.world.map.id == "room3" then
             cutscene:loadMap("BlackSpace/blackspace_hub", "entry")
         elseif Game.world.map.id == "BlackSpace/blackspace_hub" then

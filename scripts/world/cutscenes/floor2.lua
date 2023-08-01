@@ -35,15 +35,7 @@ return {
 
     bordoor = function(cutscene, event)
         if Game:getFlag("BorDoorCodeUnlocked", false) then
-            --take to room instantly
-            Game.world.fader:fadeOut(nil, {
-                speed = 0.3,
-            })
-            cutscene:wait(0.5)
-            cutscene:loadMap("floor2/roombor", "entryup", "up")
-            Game.world.fader:fadeIn(nil, {
-                speed = 0.2,
-            })
+            cutscene:mapTransition("floor2/roombor", "entryup", "up")
             return
         end
 
@@ -101,7 +93,7 @@ return {
                 cutscene:text("* Just wow.", "confused_side", "bor")
                 cutscene:text("* I LITERALLY TOLD YOU THE CODE YOU PRIMATE", "HOLYFUCK", "bor")
                 cutscene:text("* YOU FUCKIGN APE", "OHMYFUCKINGGOD", "bor")
-                if timesusedthisshid == 5 then
+                if event.timeouted then
                     cutscene:text("* Nice", "happy", "bor")
                     cutscene:text("* FUCKINg nice", "oml", "bor")
                     cutscene:text("* I'm now locked out of my own room. For an entire minute.", "blush", "bor")
@@ -125,6 +117,7 @@ return {
         end
 
         Game:setFlag("BorDoorCodeUnlocked", true)
+        event.sprite:set("bordoor_open")
         cutscene:text("* Door unlocked.")
 
         cutscene:mapTransition("floor2/roombor", "entryup", "up")

@@ -17,7 +17,7 @@
   <image width="418" height="240" source="../../../assets/sprites/world/maps/hometown_ribbit/shelter.png"/>
  </tile>
  <tile id="29">
-  <image width="43" height="39" source="../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/firstbridge.png"/>
+  <image width="43" height="39" source="../../../assets/sprites/world/maps/chapter1/ribbitmodbt/firstbridge.png"/>
  </tile>
  <tile id="43">
   <image width="40" height="40" source="../../../assets/sprites/world/events/sign.png"/>

@@ -40,32 +40,42 @@ return {
         if not Game:getFlag("enter_velvet_room") then
             local susie = cutscene:getCharacter("susie")
             if susie then
-                cutscene:getCharacter("susie")
                 cutscene:showNametag("Susie")
                 cutscene:text("[voice:susie]* There's no way we're gonna fit in there!", "annoyed", "susie")
                 cutscene:text("[voice:susie]* Don't think we can convince that mouse for the key...", "annoyed", "susie")
                 cutscene:hideNametag()
             end
         end
-        cutscene:text("* Will you attempt to squeeze inside?")
-            local opinion = cutscene:choicer({"Yes", "No"})
-            if opinion == 1 then
-                if not Game:getFlag("enter_velvet_room") then
-                    cutscene:text("* You crawled down, trying to enter the hole...")
-                    Assets.playSound("bump")
-                    cutscene:wait(.5)
-                    Assets.playSound("squeak")
-                    cutscene:wait(.5)
-                    Assets.playSound("dog_yip")
-                    cutscene:wait(.5)
-                    Assets.playSound("bageldefeat")
-                end
-                cutscene:wait(.3)
-                Assets.playSound("slidewhist")
 
-                Game.world:mapTransition("devhotel/rooms/room_002", "spawn")
-            else
-                cutscene:text("* You decided not to try and crawl into the hole...")
+        cutscene:text("* Will you attempt to squeeze inside?")
+
+        if cutscene:choicer({"Yes", "No"}) == 1 then
+            cutscene:wait(cutscene:fadeOut(0.2))
+            cutscene:wait(.3)
+
+            if not Game:getFlag("enter_velvet_room") then
+                cutscene:text("* You crawled down, trying to enter the hole...")
+
+                Assets.playSound("bump")
+                cutscene:wait(.5)
+                Assets.playSound("squeak")
+                cutscene:wait(.5)
+                Assets.playSound("dog_yip")
+                cutscene:wait(.5)
+                Assets.playSound("bageldefeat")
+                cutscene:wait(.3)
             end
-        end,
+
+            -- FIXME: what the orange
+            cutscene:fadeIn(0)
+            cutscene:fadeOut(0, { global = true })
+            cutscene:wait(cutscene:playSound("slidewhist"))
+
+            cutscene:after(function()
+                Game.world:mapTransition("devhotel/rooms/room_002", "spawn")
+            end)
+        else
+            cutscene:text("* You decided not to try and crawl into the hole...")
+        end
+    end,
 }

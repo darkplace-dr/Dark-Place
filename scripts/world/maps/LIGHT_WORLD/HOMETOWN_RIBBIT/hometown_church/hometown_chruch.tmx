@@ -11,7 +11,7 @@
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/castle.tsx"/>
  <imagelayer id="11" name="bg" offsetx="10.9091" offsety="0">
-  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_church.png" width="1520" height="1280"/>
+  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/church.png" width="1520" height="1280"/>
  </imagelayer>
  <layer id="14" name="tiles" width="38" height="32">
   <data encoding="csv">

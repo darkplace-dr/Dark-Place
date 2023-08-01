@@ -8,7 +8,7 @@
  </properties>
  <tileset firstgid="1" source="../../tilesets/castle_ribbit_mobdt.tsx"/>
  <imagelayer id="2" name="castle" offsetx="190" offsety="0">
-  <image source="../../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/castle_front.png" width="660" height="480"/>
+  <image source="../../../../assets/sprites/world/maps/chapter1/ribbitmodbt/castle_front.png" width="660" height="480"/>
  </imagelayer>
  <layer id="1" name="tiles" width="25" height="25">
   <data encoding="csv">

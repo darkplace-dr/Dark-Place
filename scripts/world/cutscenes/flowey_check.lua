@@ -1,5 +1,3 @@
----@diagnostic disable: undefined-field
-
 ---@param cutscene WorldCutscene
 return function(cutscene, player_name_override)
     local player_name = (player_name_override or Game.save_name):upper()

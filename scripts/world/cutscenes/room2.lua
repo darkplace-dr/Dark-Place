@@ -5,13 +5,12 @@ return {
         cutscene:text("* Sonichu! Use EXPLOSION!!!")
         cutscene:hideNametag()
 
-        local explosion = event:explode()
-        cutscene:wait(function() return explosion:isRemoved() end)
+        event:explode()
 
         local susie = cutscene:getCharacter("susie")
         if susie then
-            cutscene:wait(3 - 8.5/30)
-            
+            cutscene:wait(3)
+
             cutscene:setSpeaker(susie)
             cutscene:showNametag("Susie")
             cutscene:text("* What?", "shock")
@@ -34,11 +33,10 @@ return {
         cutscene:text("* Silence my child")
         cutscene:hideNametag()
 
-        local explosion = event:explode()
-        cutscene:wait(function() return explosion:isRemoved() end)
+        event:explode()
 
         if susie then
-            cutscene:wait(3 - 8.5/30)
+            cutscene:wait(3)
 
             cutscene:setSpeaker(susie)
             cutscene:showNametag("Susie")
@@ -119,18 +117,17 @@ return {
         cutscene:shakeCharacter("grimkris", 4, 0)
         cutscene:setSprite("grimkris", "grimaced", 0)
         cutscene:wait(4)
-        local explosion = event:explode()
-        cutscene:wait(function() return explosion:isRemoved() end)
+
+        event:explode()
 
         local susie = cutscene:getCharacter("susie")
         if susie then
-            cutscene:wait(3 - 8.5/30)
-            
+            cutscene:wait(3)
+
             cutscene:setSpeaker(susie)
             cutscene:showNametag("Susie")
             cutscene:text("* What?", "shock")
             cutscene:hideNametag()
         end
     end
-
 }

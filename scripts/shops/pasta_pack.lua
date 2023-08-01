@@ -68,27 +68,27 @@ end
 function PastaShop:startTalk(talk)
     if talk == "About You" then
         self:startDialogue({
-        "* Yip!",
-        "* (It seems that you already know the dog...)",
-        "* (Dogs can't talk so no need for an introduction!)",
-        "[emote:wink_blep]* Yip yip!"
-    })
+            "* Yip!",
+            "* (It seems that you already know the dog...)",
+            "* (Dogs can't talk so no need for an introduction!)",
+            "[emote:wink_blep]* Yip yip!"
+        })
     elseif talk == "About Owners" then
         if not self:getFlag("About Owners", false) then
             self:setFlag("About Owners", true)
             self:startDialogue({
-            "* (The dog pressed a button on a recorder)",
-            "[voice:velvet]* This is a prerecorded message...",
-            "[voice:velvet]* Hi! I'm Velvet, I own the Pasta Pack...",
-            "[voice:chevelour]* And I'm Chevelour! I also own this place!\n  *Squeak*\n* Call me Chev for short!",
-            "[voice:chevelour]* We also sell some delicious donuts!\n  *Squeak* *Squeak*",
-            "* ...",
-            "[voice:velvet]* Anyways I made this place since I wanted to cook food more.\n * Place got big and bam! Tada!",
-            "[voice:velvet]* People's pick? The Calizonia!\n * All Italian, Filipino-made, and from California baby!",
-            "[voice:chevelour]* Whadya say? Go order some food!",
-            "[voice:chevelour]* Don't forget to try our donuts!\n  *Squeak*",
-            "* (The recording stopped)",
-        })
+                "* (The dog pressed a button on a recorder)",
+                "[voice:velvet]* This is a prerecorded message...",
+                "[voice:velvet]* Hi! I'm Velvet, I own the Pasta Pack...",
+                "[voice:chevelour]* And I'm Chevelour! I also own this place!\n  *Squeak*\n* Call me Chev for short!",
+                "[voice:chevelour]* We also sell some delicious donuts!\n  *Squeak* *Squeak*",
+                "* ...",
+                "[voice:velvet]* Anyways I made this place since I wanted to cook food more.\n * Place got big and bam! Tada!",
+                "[voice:velvet]* People's pick? The Calizonia!\n * All Italian, Filipino-made, and from California baby!",
+                "[voice:chevelour]* Whadya say? Go order some food!",
+                "[voice:chevelour]* Don't forget to try our donuts!\n  *Squeak*",
+                "* (The recording stopped)",
+            })
         end
     elseif talk == "Pasta or Pizza?" then
         self:startDialogue({

@@ -313,7 +313,7 @@ return {
             ["scalex"] = 2,
             ["scaley"] = 2,
             ["speed"] = 0.25,
-            ["texture"] = "world/maps/ch1dark/torch"
+            ["texture"] = "world/maps/chapter1/torch"
           }
         },
         {
@@ -331,7 +331,7 @@ return {
             ["scalex"] = 2,
             ["scaley"] = 2,
             ["speed"] = 0.25,
-            ["texture"] = "world/maps/ch1dark/torch"
+            ["texture"] = "world/maps/chapter1/torch"
           }
         },
         {
@@ -349,7 +349,7 @@ return {
             ["scalex"] = 2,
             ["scaley"] = 2,
             ["speed"] = 0.25,
-            ["texture"] = "world/maps/ch1dark/torch"
+            ["texture"] = "world/maps/chapter1/torch"
           }
         },
         {
@@ -367,7 +367,7 @@ return {
             ["scalex"] = 2,
             ["scaley"] = 2,
             ["speed"] = 0.25,
-            ["texture"] = "world/maps/ch1dark/torch"
+            ["texture"] = "world/maps/chapter1/torch"
           }
         }
       }

@@ -34,7 +34,7 @@ return {
   layers = {
     {
       type = "imagelayer",
-      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_south.png",
+      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/south.png",
       id = 11,
       name = "bg",
       class = "",

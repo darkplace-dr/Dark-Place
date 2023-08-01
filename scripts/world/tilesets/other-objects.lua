@@ -51,7 +51,7 @@ return {
     },
     {
       id = 29,
-      image = "../../../assets/sprites/world/maps/ch1dark/ribbitmodbt/firstbridge.png",
+      image = "../../../assets/sprites/world/maps/chapter1/ribbitmodbt/firstbridge.png",
       width = 43,
       height = 39
     },

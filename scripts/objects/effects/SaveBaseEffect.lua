@@ -11,15 +11,12 @@ function SaveBaseEffect:init()
 	self.layer = BATTLE_LAYERS["above_battlers"]
     self.image = Assets.getTexture("effects/spells/dess/savebase")
 	self.alpha = 0
-	
+
 	self:fadeTo(0.5, 1)
-	
+
 	Game.battle.timer:after(2, function(wait)
-	
 		self:fadeOutAndRemove(0.5)
-	
 	end)
-	
 end
 
 function SaveBaseEffect:update()
@@ -29,8 +26,6 @@ function SaveBaseEffect:update()
     if self.offset > self.size*2 then
         self.offset = self.offset - self.size*2
     end
-
-	
 end
 
 function SaveBaseEffect:draw()

@@ -73,6 +73,8 @@ function PartyMember:getNextLv()
     return Utils.clamp(self:getNextLvRequiredEXP() - self.exp, 0, self.max_exp)
 end
 
+-- FIXME
+
 function PartyMember:save()
     local data = {
         id = self.id,
