@@ -117,6 +117,7 @@ return {
         end
 
         Game:setFlag("BorDoorCodeUnlocked", true)
+        event.sprite:set("bordoor_open")
         cutscene:text("* Door unlocked.")
 
         cutscene:mapTransition("floor2/roombor", "entryup", "up")
