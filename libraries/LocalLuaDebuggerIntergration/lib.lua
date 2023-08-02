@@ -1,4 +1,5 @@
 local lib = {}
+LLDbg = lib
 
 function lib:preInit()
     if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" and not package.loaded["lldebugger"] then
@@ -19,6 +20,7 @@ function lib:breakpoint()
         lldebugger.requestBreak()
     end
 end
+lib.bp = lib.breakpoint
 
 function lib:stopDebugger()
     if package.loaded["lldebugger"] then
