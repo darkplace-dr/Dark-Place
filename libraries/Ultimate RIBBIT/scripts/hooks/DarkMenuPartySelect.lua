@@ -10,6 +10,8 @@ function DarkMenuPartySelect:draw()
         end
         local ox, oy = party:getMenuIconOffset()
         local im = Assets.getTexture(party:getMenuIcon())
+        -- TODO: If we could get a reliable timer we could just do this
+        -- in YOU:getMenuIcon instead
         if party.id == "YOU" then
             local head_frames = Assets.getFrames("party/you/head")
             im = head_frames[(math.floor(self.heart_siner/20)-1)%#head_frames+1]
