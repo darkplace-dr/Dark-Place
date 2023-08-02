@@ -156,14 +156,14 @@ return {
   },
   {
     name = "MERRY CD",
-    file = "Jb_toby.rpgmvo",
+    file = "jb_toby",
     composer = "Toby Fox",
     released = "Dec 25, 2020",
     origin = "Omori"
   },
   {
     name = "My Time",
-    file = "My_Time.rpgmvo",
+    file = "My_Time_Full(SpedUp)",
     composer = "bo en",
     released = "Sept 6, 2013 / Dec 25, 2020",
     -- originally released as a part of pale machine [MARU-123], modified for omori
@@ -177,6 +177,7 @@ return {
     -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
     released = "April 10th, 2009",
     -- CC BY-NC-SA 2.5
+    -- the recording in DP is based on https://modarchive.org/index.php?request=view_by_moduleid&query=186901
     origin = "8bitcollective.com/members/surasshu (deadlink)"
   },
   {
@@ -209,7 +210,7 @@ return {
   },
   {
     name = "The Death That I Deservioli",
-    file = "The_Death_That_I Deservioli",
+    file = "The_Death_That_I_Deservioli",
     composer = "Mr. Sauceman",
     released = "2023",
     origin = "Pizza Tower"
