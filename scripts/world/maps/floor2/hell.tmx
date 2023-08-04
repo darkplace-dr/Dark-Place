@@ -3,6 +3,9 @@
  <editorsettings>
   <export target="hell.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="music" value="flandre"/>
+ </properties>
  <tileset firstgid="1" source="../../tilesets/queen_room.tsx"/>
  <layer id="1" name="Tile Layer 1" width="16" height="30">
   <data encoding="csv">
