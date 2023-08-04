@@ -18,6 +18,7 @@ function Battle:update()
 			
 			if Game.tension <= 0 then
 				self.superpower = false
+				self.music:play(self.encounter.music)
 			end
 		end
 	
