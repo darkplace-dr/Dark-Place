@@ -44,6 +44,10 @@ function Mod:postInit(new_file)
 
     if new_file then
         Game.world:startCutscene("_main.introcutscene")
+		
+		if Game.save_name == "SUPER" then
+			Game.inventory:addItem("chaos_emeralds")
+		end
     end
     
     self:initBulborb()
