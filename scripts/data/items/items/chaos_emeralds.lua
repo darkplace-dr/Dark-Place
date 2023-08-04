@@ -72,6 +72,7 @@ function item:onBattleUse(user, target)
 				Game.battle.superpower = true
 				Game.battle.timer:tween(0.25, fade_rect, {alpha = 0}, "linear", function()
 					fade_rect:remove()
+					Game.battle.music:play("undefeatable")
 				end)
 			end)
 		end
