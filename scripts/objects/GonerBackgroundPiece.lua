@@ -1,7 +1,10 @@
 local GonerBackgroundPiece, super = Class(Object)
 
 function GonerBackgroundPiece:init()
-    super.init(self, SCREEN_WIDTH/2, SCREEN_WIDTH/2, SCREEN_WIDTH, SCREEN_WIDTH)
+    super.init(self,
+        SCREEN_WIDTH/2/2, SCREEN_HEIGHT/2/2,
+        SCREEN_WIDTH/2, SCREEN_HEIGHT/2
+    )
     self:setOrigin(0.5, 0.5)
     self.sprite = Assets.getTexture("world/cutscenes/intro/DEPTH")
 
@@ -36,17 +39,14 @@ end
 
 function GonerBackgroundPiece:draw()
     local function drawPart(x_dir, y_dir)
-        love.graphics.draw(self.sprite, 0, 0, 0,
-            x_dir + x_dir * self.x_stretch,
-            y_dir + y_dir * self.y_stretch
-        )
     end
 
     love.graphics.setColor(1, 1, 1, self.alpha)
-    drawPart(-1, -1) -- left up
-    drawPart(-1,  1) -- left down
-    drawPart( 1, -1) -- right up
-    drawPart( 1,  1) -- right down
+    love.graphics.draw(
+        self.sprite, 0, 0, 0,
+        1 + self.x_stretch, 1 + self.y_stretch,
+        SCREEN_WIDTH/2/2, SCREEN_HEIGHT/2/2
+    )
 end
 
 return GonerBackgroundPiece

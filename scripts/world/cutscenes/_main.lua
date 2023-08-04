@@ -39,7 +39,7 @@ return {
         cover:setLayer(WORLD_LAYERS["below_ui"])
         Game.world:addChild(cover)
 
-        cutscene:wait(2)
+        --[[cutscene:wait(2)
         gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
         cutscene:wait(0.5)
         gonerText("ARE WE[wait:40]\nCONNECTED?[wait:20]")
@@ -108,7 +108,7 @@ return {
         world_music:stop()
         soul:hide()
 		
-        cutscene:wait(1.75)
+        cutscene:wait(1.75)]]
 
         local background = GonerBackground(nil, nil, "AUDIO_DONKEY_b", true)
         background.layer = WORLD_LAYERS["ui"]
