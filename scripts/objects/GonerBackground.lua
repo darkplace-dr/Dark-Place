@@ -1,6 +1,6 @@
 local GonerBackground, super = Class(Object)
 
-function GonerBackground:init(x, y, song, song_pitch_gradually_increases)
+function GonerBackground:init(x, y, song, song_pitch_increases)
     super.init(self,
         x or SCREEN_WIDTH/2, y or SCREEN_HEIGHT/2,
         -- specifically, LW dimensions
@@ -11,17 +11,17 @@ function GonerBackground:init(x, y, song, song_pitch_gradually_increases)
     self:setParallax(0, 0)
 
     song = song or "AUDIO_ANOTHERHIM"
-    if song_pitch_gradually_increases == nil then
-        song_pitch_gradually_increases = true
+    if song_pitch_increases == nil then
+        song_pitch_increases = true
     end
 
-    local music_pitch = 0.02
+    self.music_pitch_inc = 0.02
+    local music_pitch = self.music_pitch_inc
     self.music_target_pitch = song == "AUDIO_ANOTHERHIM" and 0.8 or 1
-    if not song_pitch_gradually_increases then
+    if not song_pitch_increases then
         music_pitch = 1
         self.music_target_pitch = 1
     end
-    self.music_pitch_inc = 0.02
     self.music = Music(song, 1, music_pitch)
 
     self.piece_depth = 0
