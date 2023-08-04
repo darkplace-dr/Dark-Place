@@ -11,8 +11,8 @@ function GonerBackgroundPiece:init()
     self.alpha = 0.2
     self.xstretch = 1
     self.ystretch = 1
+    self.stretch_speed = 0.005
     self.o_insurance = 0
-    self.stretch_speed = 0.02
     self.b_insurance = -0.2
 end
 
