@@ -17,6 +17,9 @@ function preview:init(mod, button, menu)
 
 	self.paul_played = false
     self.paul_stream = nil
+
+    self.croak_played = false
+    self.croak_stream = nil
 end
 
 function preview:update()
@@ -68,6 +71,21 @@ function preview:update()
         end
         self.paul_played = false
     end
+
+    if self:shouldCroak() then
+        if not self.croak_played then
+            if not self.croak_stream then
+                self.croak_stream = love.audio.newSource(self.base_path.."/croakreverb.ogg", "stream")
+            end
+            self.croak_stream:play()
+            self.croak_played = true
+        end
+    else
+        if self.croak_played then
+            self.croak_stream:stop()
+        end
+        self.croak_played = false
+    end
 end
 
 function preview:draw()
@@ -112,6 +130,14 @@ function preview:shouldPaul()
     local naming_screen = self.menu.naming_screen
     return self:areWeSelected() and naming_screen
         and string.upper(naming_screen.name) == "PAUL"
+        and naming_screen.state == "CONFIRM"
+end
+
+function preview:shouldCroak()
+    ---@type FileNamer
+    local naming_screen = self.menu.naming_screen
+    return self:areWeSelected() and naming_screen
+        and string.upper(naming_screen.name) == "YOU"
         and naming_screen.state == "CONFIRM"
 end
 
