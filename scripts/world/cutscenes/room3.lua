@@ -461,14 +461,12 @@ return {
 
         if Game.money <= item.price then
             onMoneyNotEnough()
-            return
-        end
-        if not Game.inventory:addItem(item.id) then
+        elseif not Game.inventory:addItem(item.id) then
             onInventoryFull()
-            return
+        else
+            Game.money = Game.money - item.price
+            onPurchaseComplete(item.post_purchase)
         end
-        Game.money = Game.money - item.price
-        onPurchaseComplete(item.post_purchase)
     end,
 
     whitedoor = function(cutscene, event)
