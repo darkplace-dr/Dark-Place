@@ -32,7 +32,7 @@ function Nametag:init(text, options)
     if self.options["right"] == false then
         -- Just to make sure locational top doesn't prioritize over options bottom.
         -- Don't need to do anything here; it's already where we want it.
-    elseif self.options["right"] or (player_x < 330 and not Game.world.stage:includes(Shopbox)) then
+    elseif self.options["right"] or (player_x < 330 and #Game.world.stage:getObjects(Shopbox) == 0) then
         self.x = 585 - self.box.width
     end
     
