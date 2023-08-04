@@ -94,11 +94,7 @@ function character:init()
     self.menu_icon_offset = nil
 
     -- Message shown on gameover (optional)
-    self.gameover_message = nil
-end
-
-function character:getGameOverMessage(main)
-    return {
+    self.gameover_message = {
         "damn bitch you ded",
         "get up hoe"
     }

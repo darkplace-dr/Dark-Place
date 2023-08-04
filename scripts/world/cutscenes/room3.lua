@@ -127,19 +127,34 @@ return {
         local teas = {
             "kris_tea",
             "susie_tea",
-            "noelle_tea"
+            "noelle_tea",
         }
+        local tea_price = 100
+
+        --------------------------------
+
+        ---@type Item[]
+        local _teas = {}
+        for i,tea_id in ipairs(teas) do
+            local tea = Registry.createItem(tea_id)
+            assert(tea, string.format("Tea %s does not exist", tea_id))
+            _teas[i] = tea
+        end
 
         cutscene:showNametag(skp_name)
         cutscene:text("* Hi there! Welcome!", "default", skp)
         cutscene:text("* Would you care for some tea?", "wink_b", skp)
         cutscene:hideNametag()
 
-        if cutscene:choicer({"Yes", "No"}) == 2 then
+        local function exitingMessage()
             cutscene:showNametag(skp_name)
             cutscene:text("* That's alright! Come back anytime!", "default", skp)
             cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
             cutscene:hideNametag()
+        end
+
+        if cutscene:choicer({"Yes", "No"}) == 2 then
+            exitingMessage()
             return
         end
 
@@ -148,67 +163,61 @@ return {
         cutscene:text("* Alright what can I get you?", "wink", skp)
         cutscene:hideNametag()
 
+        local tea = nil
         local pos = 0
-        while pos < #teas do
-            local selection_table_raw = {unpack(teas, pos + 1, pos + 3)}
-            pos = pos + #selection_table_raw
-            local ended = pos >= #teas
+        while pos < #_teas do
+            local selection_max = 3
+            local selections_raw = {unpack(_teas, pos + 1, pos + selection_max)}
+            local ended = (pos + selection_max) >= #_teas
 
-            local selection_table = {}
-            for _,item_id in ipairs(selection_table_raw) do
-                ---@type Item
-                local item = Registry.createItem(item_id)
-                table.insert(selection_table, item:getName())
+            local selections = {}
+            for _,item in ipairs(selections_raw) do
+                table.insert(selections, item:getName())
             end
-            table.insert(selection_table, not ended and "Next Page" or "None")
+            table.insert(selections, not ended and "More" or "None")
 
-            local choice = cutscene:choicer(selection_table)
-            if choice < #selection_table then
-                local tea = selection_table_raw[choice]
-                assert(tea)
-
-                cutscene:showNametag(skp_name)
-                cutscene:text("* Okay! That would cost ya 100D$...", "default", skp)
-                cutscene:hideNametag()
-
-                if cutscene:choicer({"Yes", "No"}) == 2 then
-                    cutscene:hideShop()
-                    cutscene:showNametag(skp_name)
-                    cutscene:text("* That's alright! Come back anytime!", "default", skp)
-                    cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
-                    cutscene:hideNametag()
-                    break
-                end
-
-                cutscene:hideShop()
-                if Game.money < 100 then
-                    cutscene:showNametag(skp_name)
-                    cutscene:text("* Sorry, we don't serve barterers", "pissed", skp)
-                    cutscene:text("* Please come back when you can afford this...", "pissed_b", skp)
-                    cutscene:hideNametag()
-                elseif not Game.inventory:addItem(tea) then
-                    cutscene:showNametag(skp_name)
-                    cutscene:text("* Oh dear, looks like you don't have space in your pockets...", "upset", skp)
-                    cutscene:hideNametag()
-                else
-                    Game.money = Game.money - 100
-                    cutscene:playSound("locker")
-
-                    cutscene:showNametag(skp_name)
-                    cutscene:text("* Okay! Here's your tea!", "wink", skp)
-                    cutscene:text("* Thank you and come again", "blush", skp)
-                    cutscene:hideNametag()
-                end
-
+            local choice = cutscene:choicer(selections)
+            if choice < #selections then
+                tea = selections_raw[choice]
                 break
-            elseif ended then
-                cutscene:hideShop()
-                cutscene:showNametag(skp_name)
-                cutscene:text("* That's alright! Come back anytime!", "default", skp)
-                cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
-                cutscene:hideNametag()
-                break
+            elseif not ended and pos == 0 then
+                cutscene:text("* I got some more here! What would you like?", "wink", skp)
             end
+
+            pos = pos + selection_max
+        end
+
+        if not tea then
+            cutscene:hideShop()
+            exitingMessage()
+        end
+
+        cutscene:showNametag(skp_name)
+        cutscene:text(string.format("* Okay! That would cost ya %dD$...", tea_price), "default", skp)
+        cutscene:hideNametag()
+
+        local buying = cutscene:choicer({"Yes", "No"}) == 1
+        cutscene:hideShop()
+
+        if not buying then
+            exitingMessage()
+        elseif Game.money < tea_price then
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Sorry, we don't serve barterers", "pissed", skp)
+            cutscene:text("* Please come back when you can afford this...", "pissed_b", skp)
+            cutscene:hideNametag()
+        elseif not Game.inventory:addItem(tea) then
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Oh dear, looks like you don't have space in your pockets...", "upset", skp)
+            cutscene:hideNametag()
+        else
+            Game.money = Game.money - tea_price
+            cutscene:playSound("locker")
+
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Okay! Here's your tea!", "wink", skp)
+            cutscene:text("* Thank you and come again", "blush", skp)
+            cutscene:hideNametag()
         end
     end,
 
@@ -399,13 +408,11 @@ return {
             cutscene:hideNametag()
         end
         local function onPurchaseComplete(special_message)
-            special_message = special_message or function() end
-
             cutscene:playSound("locker")
             cutscene:showNametag("Magolor")
             cutscene:text("* Here you go!", "happy", "magolor")
             cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
-            special_message()
+            if special_message then special_message() end
             cutscene:hideNametag()
         end
 
@@ -414,35 +421,35 @@ return {
         cutscene:text("* What would you like to buy?", "neutral", "magolor")
         cutscene:hideNametag()
 
-        local fstlvl_opinion_list = {}
+        local cate_opinions = {}
         for _, v in ipairs(menu) do
-            table.insert(fstlvl_opinion_list, v.first_level_disp)
+            table.insert(cate_opinions, v.first_level_disp)
         end
-        table.insert(fstlvl_opinion_list, "None")
-        local fstlvl_opinion = cutscene:choicer(fstlvl_opinion_list)
-        if fstlvl_opinion == #fstlvl_opinion_list then
+        table.insert(cate_opinions, "None")
+        local cate_opinion = cutscene:choicer(cate_opinions)
+        if cate_opinion == #cate_opinions then
             onDeclined()
             return
         end
 
-        local cate = menu[fstlvl_opinion]
-        if #cate.items < 1 then
+        local cate = menu[cate_opinion]
+        if #cate.items <= 0 then
             onCateHasNoItems(cate.name_counted or cate.name)
             return
         end
         onCateSelected(cate.prompt or cate.name)
-        local sndlvl_opinion_list = {}
+        local item_opinions = {}
         for _, v in ipairs(cate.items) do
-            table.insert(sndlvl_opinion_list, v.name)
+            table.insert(item_opinions, v.name)
         end
-        table.insert(sndlvl_opinion_list, "None")
-        local sndlvl_opinion = cutscene:choicer(sndlvl_opinion_list)
-        if sndlvl_opinion == #sndlvl_opinion_list then
+        table.insert(item_opinions, "None")
+        local item_opinion = cutscene:choicer(item_opinions)
+        if item_opinion == #item_opinions then
             onDeclined()
             return
         end
 
-        local item = cate.items[sndlvl_opinion]
+        local item = cate.items[item_opinion]
         cutscene:showShop()
         onItemSelected(item)
         local buy = cutscene:choicer({ "Yes", "No" })
@@ -454,14 +461,12 @@ return {
 
         if Game.money <= item.price then
             onMoneyNotEnough()
-            return
-        end
-        if not Game.inventory:addItem(item.id) then
+        elseif not Game.inventory:addItem(item.id) then
             onInventoryFull()
-            return
+        else
+            Game.money = Game.money - item.price
+            onPurchaseComplete(item.post_purchase)
         end
-        Game.money = Game.money - item.price
-        onPurchaseComplete(item.post_purchase)
     end,
 
     whitedoor = function(cutscene, event)
@@ -475,8 +480,7 @@ return {
         end
 
         cutscene:text("* You opened the door...")
-        cutscene:fadeOut(2, {color = {1, 1, 1}, music = true, blend = "add"})
-        cutscene:wait(2)
+        cutscene:wait(cutscene:fadeOut(2, {color = {1, 1, 1}, music = true, blend = "add"}))
         if Game.world.map.id == "room3" then
             cutscene:loadMap("whitespace", "entry")
         elseif Game.world.map.id == "whitespace" then
@@ -508,8 +512,7 @@ return {
         end
 
         cutscene:text("* You opened the door...")
-        cutscene:fadeOut(2, {color = {0, 0, 0}, music = true})
-        cutscene:wait(2)
+        cutscene:wait(cutscene:fadeOut(2, {color = {0, 0, 0}, music = true}))
         if Game.world.map.id == "room3" then
             cutscene:loadMap("BlackSpace/blackspace_hub", "entry")
         elseif Game.world.map.id == "whitespace" then
