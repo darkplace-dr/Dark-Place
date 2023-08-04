@@ -10,21 +10,17 @@ function GonerBackground:init(x, y, song, song_pitch_gradually_increases)
     self:setScale(2)
     self:setOrigin(0, 0)
 
-    self.sprite = Assets.getTexture("world/cutscenes/intro/DEPTH")
-
     self.parallax_x = 0
     self.parallax_y = 0
 
-    self.OBM = 0.5
-
-    self.ob_depth = 0
+    self.piece_depth = 0
 
     self.timer = Timer()
     self.timer:every(40/30, function()
-        self.ob_depth = self.ob_depth - 0.001
-        local piece = self:addChild(GonerBackgroundPiece(self.sprite, self.x, self.y))
-        piece.stretch_speed = 0.01 * self.OBM
-        piece.layer = self.ob_depth
+        self.piece_depth = self.piece_depth - 0.001
+        local piece = self:addChild(GonerBackgroundPiece())
+        piece.stretch_speed = 0.005
+        piece.layer = self.piece_depth
     end)
     self:addChild(self.timer)
 

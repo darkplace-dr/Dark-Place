@@ -1,11 +1,11 @@
 local GonerBackgroundPiece, super = Class(Object)
 
-function GonerBackgroundPiece:init(sprite, x, y)
-    super.init(self, 320/2, 240/2, 320, 240)
+function GonerBackgroundPiece:init()
+    super.init(self, SCREEN_WIDTH/2, SCREEN_WIDTH/2, SCREEN_WIDTH, SCREEN_WIDTH)
 
     self:setOrigin(0.5, 0.5)
 
-    self.sprite = sprite
+    self.sprite = Assets.getTexture("world/cutscenes/intro/DEPTH")
 
     self.timer = 0
     self.alpha = 0.2
@@ -13,7 +13,6 @@ function GonerBackgroundPiece:init(sprite, x, y)
     self.ystretch = 1
     self.o_insurance = 0
     self.stretch_speed = 0.02
-    self.b_insurance = 0
     self.b_insurance = -0.2
 end
 
