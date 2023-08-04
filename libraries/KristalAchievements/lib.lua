@@ -48,6 +48,15 @@ function lib:postInit()
     end
 end
 
+-- Called during saving. Writes the achievement savedata.
+function lib:save(data)
+    if self.global then
+        self:writeGlobalAchievements()
+    else
+        data.achievements = self:generateAchSaveData()
+    end
+end
+
 -- Called during loading. Loads the achievement savedata.
 function lib:load(data)
     if self.global then
@@ -61,12 +70,9 @@ function lib:load(data)
     end
 end
 
--- Called during saving. Writes the achievement savedata.
-function lib:save(data)
+function lib:unload()
     if self.global then
         self:writeGlobalAchievements()
-    else
-        data.achievements = self:generateAchSaveData()
     end
 end
 
