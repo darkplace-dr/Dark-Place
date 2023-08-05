@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.10.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -9,8 +9,8 @@ return {
   height = 40,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 14,
-  nextobjectid = 252,
+  nextlayerid = 15,
+  nextobjectid = 258,
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -990,9 +990,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 2320,
-          y = 280,
+          y = 680,
           width = 40,
-          height = 600,
+          height = 200,
           rotation = 0,
           visible = true,
           properties = {}
@@ -1487,6 +1487,19 @@ return {
           y = 360,
           width = 120,
           height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 256,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2320,
+          y = 280,
+          width = 40,
+          height = 320,
           rotation = 0,
           visible = true,
           properties = {}
@@ -2102,8 +2115,74 @@ return {
             ["map"] = "cybercity/starwalkeralley",
             ["marker"] = "spawn"
           }
+        },
+        {
+          id = 254,
+          name = "setflag",
+          type = "",
+          shape = "rectangle",
+          x = 2315,
+          y = 600,
+          width = 20,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "glitch_oob",
+            ["once"] = false,
+            ["value"] = "step1"
+          }
+        },
+        {
+          id = 255,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 1880,
+          y = 320,
+          width = 40,
+          height = 520,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["controller"] = { id = 253 },
+            ["once"] = false,
+            ["script"] = "glitch_oob"
+          }
+        },
+        {
+          id = 257,
+          name = "dokokashira",
+          type = "",
+          shape = "rectangle",
+          x = 2320,
+          y = 600,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flagObject"] = { id = 254 },
+            ["solid"] = true,
+            ["tileFucker"] = { id = 255 }
+          }
         }
       }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 14,
+      name = "controllers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {}
     },
     {
       type = "objectgroup",
