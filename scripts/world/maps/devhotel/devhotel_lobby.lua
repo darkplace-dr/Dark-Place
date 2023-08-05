@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 82,
+  nextobjectid = 84,
   properties = {
     ["music"] = "devhotel"
   },
@@ -29,13 +29,13 @@ return {
     },
     {
       name = "city_alleyway",
-      firstgid = 76,
+      firstgid = 77,
       filename = "../../tilesets/city_alleyway.tsx",
       exportfilename = "../../tilesets/city_alleyway.lua"
     },
     {
       name = "devroom-objects",
-      firstgid = 391,
+      firstgid = 392,
       filename = "../../tilesets/devroom-objects.tsx",
       exportfilename = "../../tilesets/devroom-objects.lua"
     }
@@ -402,7 +402,7 @@ return {
           width = 200,
           height = 60,
           rotation = 0,
-          gid = 414,
+          gid = 415,
           visible = true,
           properties = {}
         },
@@ -416,7 +416,7 @@ return {
           width = 80,
           height = 120,
           rotation = 0,
-          gid = 412,
+          gid = 413,
           visible = true,
           properties = {}
         },
@@ -430,7 +430,7 @@ return {
           width = 160,
           height = 120,
           rotation = 0,
-          gid = 428,
+          gid = 429,
           visible = true,
           properties = {}
         }
@@ -492,7 +492,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -506,7 +506,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -520,7 +520,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -534,7 +534,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -548,7 +548,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -562,7 +562,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -576,7 +576,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -590,7 +590,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -604,7 +604,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -618,7 +618,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -632,7 +632,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 304,
+          gid = 305,
           visible = true,
           properties = {}
         },
@@ -663,7 +663,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 433,
+          gid = 434,
           visible = true,
           properties = {}
         },
@@ -677,9 +677,26 @@ return {
           width = 162,
           height = 78,
           rotation = 0,
-          gid = 431,
+          gid = 432,
           visible = true,
           properties = {}
+        },
+        {
+          id = 83,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 840,
+          y = 460,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "marcy",
+            ["cutscene"] = "devhotel_room_003.marcy_pre",
+            ["flagcheck"] = "!acj_marcy"
+          }
         }
       }
     },
