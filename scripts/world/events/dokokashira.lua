@@ -59,6 +59,7 @@ function Dokokashira:onEnter(chara)
     		wait(1)
     		Game:setFlag("glitch_passed", true)
     		Game.world:loadMap("cybercity/alley2", 2000, 610)
+    		Game.lock_movement = false
     		Kristal.callEvent("completeAchievement", "glitch_music")
     		Game.fader.alpha = 0
     	end)
