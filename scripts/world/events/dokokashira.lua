@@ -2,23 +2,22 @@ local Dokokashira, super = Class(Event)
 
 function Dokokashira:init(data)
 	super:init(self, data)
-	print(data.properties.flagObject.id)
 	self.solid = true
 
-	if not Game:getFlag("glitch_passed", false) then
+	if not Game:getFlag("glitch_passed") then
 		Game:setFlag("glitch_passed", false)
 	end
 
 	self.wall_bump = Game.world:getEvent(data.properties.flagObject.id)
 	self.tile_fucker = Game.world:getEvent(data.properties.tileFucker.id)
 
+	Game:setFlag("glitch_oob", "")
+
 	if Game:getFlag("glitch_passed") or not Game.inventory:isFull("items") then
 		self.wall_bump:remove()
 		self.tile_fucker:remove()
 		return
 	end
-
-	Game:setFlag("glitch_oob", "")
 end
 
 function Dokokashira:update()
