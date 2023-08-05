@@ -53,6 +53,11 @@ Mod.warp_bin_codes = {
             end
         end
     },
+    ["TOMBSITE"] = {
+        result = function(cutscene)
+            cutscene:text("* (Work in progress. Check back in another update.)")
+        end
+    },
 }
 
 -- heres some new totally cool helper functions wowee
