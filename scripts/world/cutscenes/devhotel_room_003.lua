@@ -101,6 +101,7 @@ return {
 						cutscene:showNametag("Dess")
 						cutscene:text("* i'm not wrong lmao", "condescending", "dess")
 					else
+						cutscene:hideNametag()
 						cutscene:text("* You don't say it,[wait:5] but Marcy seems pretty weak.")
 					
 						cutscene:showNametag("Marcy")
