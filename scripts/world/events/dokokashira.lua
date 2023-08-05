@@ -50,7 +50,7 @@ function Dokokashira:onEnter(chara)
     				Game.world.map:setTile(i, j, love.math.random(0, 924))
     			end
     		end
-    		Game.world.music:play("glitch_song")
+    		Game.world.music:play("glitch_music")
     		while not Input.pressed("confirm") do
     			wait()
     		end
@@ -60,7 +60,7 @@ function Dokokashira:onEnter(chara)
     		wait(1)
     		Game:setFlag("glitch_passed", true)
     		Game.world:loadMap("cybercity/alley2", 2000, 610)
-    		Kristal.callEvent("completeAchievement", "glitch_song")
+    		Kristal.callEvent("completeAchievement", "glitch_music")
     		Game.fader.alpha = 0
     	end)
     end
