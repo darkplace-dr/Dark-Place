@@ -30,7 +30,7 @@ function World:loadMap(...)
     end
 
     if not Game:getFlag("s", false)
-        and Utils.random(1, 1000) < 10
+        and Utils.random(1, 1000) == 1
         and (not Game.world.cutscene and not Game.battle)
     then
         Mod.world_dest_map_bak = map
