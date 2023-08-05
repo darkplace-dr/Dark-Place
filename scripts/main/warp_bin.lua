@@ -25,7 +25,7 @@ Mod.warp_bin_codes = {
     ["SPAMROOM"] = { result = "spamroom" },
     ["DESSHERE"] = { result = "dessstuff/dessstart" },
     ["BOSSRUSH"] = { result = "thearena" },
-    ["DEVDINER"] = { result = "devstart" },
+    ["DEVDINER"] = { result = "devhotel/devdiner/devstart" },
     ["MAUSHOLE"] = { result = "chevroom" },
     ["WIFIDOWN"] = { result = "googlefield" },
     ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },

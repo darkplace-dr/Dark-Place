@@ -335,6 +335,27 @@
             "width": 3240,
             "x": -2900,
             "y": 13064
+        },
+        {
+            "fileName": "maps/devhotel/devdiner/devroom/devroom.tmx",
+            "height": 480,
+            "width": 1760,
+            "x": 5281,
+            "y": 4280
+        },
+        {
+            "fileName": "maps/devhotel/devdiner/partyroom/partyroom.tmx",
+            "height": 720,
+            "width": 960,
+            "x": 6081,
+            "y": 3520
+        },
+        {
+            "fileName": "maps/devhotel/devdiner/devstart.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 4601,
+            "y": 4280
         }
     ],
     "onlyShowAdjacentMaps": false,

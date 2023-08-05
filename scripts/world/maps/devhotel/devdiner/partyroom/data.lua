@@ -9,7 +9,7 @@ return {
   height = 18,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 7,
+  nextlayerid = 8,
   nextobjectid = 40,
   properties = {
     ["music"] = "greenroom"
@@ -18,17 +18,32 @@ return {
     {
       name = "devroom",
       firstgid = 1,
-      filename = "../tilesets/devroom.tsx",
-      exportfilename = "../tilesets/devroom.lua"
+      filename = "../../../../tilesets/devroom.tsx",
+      exportfilename = "../../../../tilesets/devroom.lua"
     },
     {
       name = "devroom-objects",
-      firstgid = 37,
-      filename = "../tilesets/devroom-objects.tsx",
-      exportfilename = "../tilesets/devroom-objects.lua"
+      firstgid = 73,
+      filename = "../../../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../../../tilesets/devroom-objects.lua"
     }
   },
   layers = {
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 7,
+      name = "objects_bg",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {}
+    },
     {
       type = "tilelayer",
       x = 0,
@@ -291,7 +306,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "devroom",
+            ["map"] = "devhotel/devdiner/devroom",
             ["marker"] = "entry1"
           }
         },
@@ -398,7 +413,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 93,
           visible = true,
           properties = {}
         },
@@ -412,7 +427,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 93,
           visible = true,
           properties = {}
         },
@@ -426,7 +441,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 93,
           visible = true,
           properties = {}
         },
@@ -440,7 +455,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 93,
           visible = true,
           properties = {}
         },
@@ -454,7 +469,7 @@ return {
           width = 100,
           height = 70,
           rotation = 0,
-          gid = 57,
+          gid = 93,
           visible = true,
           properties = {}
         }
