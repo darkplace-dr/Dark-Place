@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 29,
+  nextobjectid = 30,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown"
@@ -73,7 +73,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 240,
@@ -86,7 +86,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 360,
@@ -99,7 +99,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 200,
@@ -112,7 +112,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 200,
@@ -125,7 +125,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 200,
@@ -138,7 +138,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1880,
           y = 240,
@@ -167,7 +167,7 @@ return {
         {
           id = 24,
           name = "backroomsdoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 204,
           y = 144,
@@ -180,7 +180,7 @@ return {
         {
           id = 25,
           name = "queendoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 84,
@@ -193,7 +193,7 @@ return {
         {
           id = 24,
           name = "tickdoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 625,
           y = 64,
@@ -206,7 +206,7 @@ return {
         {
           id = 25,
           name = "patatedoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 882,
           y = 64,
@@ -219,7 +219,7 @@ return {
         {
           id = 28,
           name = "justadoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1164,
           y = 144,
@@ -248,7 +248,7 @@ return {
         {
           id = 14,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 480,
@@ -264,7 +264,7 @@ return {
         {
           id = 15,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1760,
           y = 480,
@@ -280,7 +280,7 @@ return {
         {
           id = 20,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 230,
@@ -296,7 +296,7 @@ return {
         {
           id = 21,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 160,
@@ -328,7 +328,7 @@ return {
         {
           id = 16,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 100,
           y = 440,
@@ -341,7 +341,7 @@ return {
         {
           id = 17,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 960,
           y = 320,
@@ -354,7 +354,7 @@ return {
         {
           id = 19,
           name = "exit_queen",
-          type = "",
+          class = "",
           shape = "point",
           x = 480,
           y = 280,
@@ -367,10 +367,23 @@ return {
         {
           id = 23,
           name = "entry2",
-          type = "",
+          class = "",
           shape = "point",
           x = 1820,
           y = 440,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 29,
+          name = "exit_backrooms",
+          class = "",
+          shape = "point",
+          x = 240,
+          y = 280,
           width = 0,
           height = 0,
           rotation = 0,
