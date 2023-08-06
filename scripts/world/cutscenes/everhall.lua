@@ -18,7 +18,7 @@ return {
 	progress = function(cutscene, event)
 		cutscene:wait(cutscene:fadeOut(0.25))
 		Game:addFlag("hallways", 1)
-		if (Game:getFlag("hallways", 0) < 100) then
+		if (Game:getFlag("hallways", 0) < 10000) then
 			cutscene:loadMap("everhall", "leftmark")
 		else
 			cutscene:loadMap("everhall_end", "entry")
