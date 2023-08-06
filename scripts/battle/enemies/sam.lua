@@ -39,7 +39,6 @@ function Sam:init()
     self:registerAct("DualHeal", "Heals\neveryone", "ralsei", 50)
 
     self.killable = true
-	Game:setFlag("can_kill", true)
 end
 
 function Sam:onSpared()
