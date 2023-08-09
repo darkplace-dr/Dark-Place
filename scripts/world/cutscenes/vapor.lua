@@ -111,5 +111,49 @@ return {
         })
 
         cutscene:hideNametag()
-	end
+	end,
+    addisonsoda = function(cutscene, event)
+        local skp = cutscene:getCharacter("addisonsoda")
+        local skp_name = Mod:addiSwitch() and "Fizz" or "Yellow Addison"
+
+        cutscene:showNametag(skp_name)
+        cutscene:text("* SynthSoda at half price! Now at 100D$", "smile", skp)
+        cutscene:text("* Hey there! You look like you need a refreshment!", "default", skp)
+        cutscene:text("* Would you like a taste of Synthsoda?", "default", skp)
+        cutscene:hideNametag()
+
+        cutscene:text("* (Buy SynthSoda for 100D$?)")
+        cutscene:showShop()
+        local choice = cutscene:choicer({ "Buy", "Don't Buy" })
+        cutscene:hideShop()
+
+        if choice == 1 then
+            if Game.money < 100 then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Even with a discount, you still don't have enough...", "pissed_b", skp)
+                cutscene:hideNametag()
+            elseif not Game.inventory:addItem("synthsoda") then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Come back when you got space in your pockets...", "pissed", skp)
+                cutscene:hideNametag()
+                return
+            else
+            Game.money = Game.money - 100
+            cutscene:playSound("locker")
+
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Happy to give you this special offer!", "wink", skp)
+            cutscene:text("* Come back if you want more!", "wink", skp)
+            cutscene:hideNametag()
+            end
+        end
+
+        if choice == 2 then
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Is that so? Okay then!", "default", skp)
+            cutscene:text("* I'll still be here if you change your mind!", "smile", skp)
+            cutscene:text("* That's until we sold out...", "pissed", skp)
+            cutscene:hideNametag()
+        end
+    end
 }
