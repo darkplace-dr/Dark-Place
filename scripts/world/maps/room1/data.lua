@@ -9,8 +9,8 @@ return {
   height = 24,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 8,
-  nextobjectid = 49,
+  nextlayerid = 9,
+  nextobjectid = 57,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -22,6 +22,12 @@ return {
       firstgid = 1,
       filename = "../../tilesets/castle.tsx",
       exportfilename = "../../tilesets/castle.lua"
+    },
+    {
+      name = "devroom-objects",
+      firstgid = 61,
+      filename = "../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../tilesets/devroom-objects.lua"
     }
   },
   layers = {
@@ -44,7 +50,7 @@ return {
       encoding = "lua",
       data = {
         0, 22, 13, 23, 23, 13, 23, 23, 23, 13, 23, 23, 13, 24, 0, 0, 0, 0, 0, 0,
-        0, 22, 23, 23, 23, 23, 23, 23, 23, 23, 23, 21, 23, 24, 0, 0, 0, 0, 0, 0,
+        0, 22, 23, 21, 23, 23, 23, 23, 23, 23, 23, 21, 23, 24, 0, 0, 0, 0, 0, 0,
         0, 26, 27, 27, 27, 27, 23, 23, 23, 27, 27, 27, 27, 28, 0, 0, 0, 0, 0, 0,
         0, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 0, 0, 0, 0, 0, 0,
         0, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 0, 0, 0, 0, 0, 0,
@@ -65,8 +71,8 @@ return {
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 15, 15, 15, 15, 16, 0,
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 0, 0, 0, 0, 0, 0,
         11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 0, 0, 0, 0, 0, 0,
-        15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 16, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        15, 15, 15, 15, 15, 15, 11, 11, 11, 15, 15, 15, 15, 16, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 10, 11, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
     {
@@ -188,19 +194,6 @@ return {
       properties = {},
       objects = {
         {
-          id = 1,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 40,
-          y = 80,
-          width = 520,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 2,
           name = "",
           type = "",
@@ -311,7 +304,7 @@ return {
           shape = "rectangle",
           x = 0,
           y = 920,
-          width = 560,
+          width = 240,
           height = 40,
           rotation = 0,
           visible = true,
@@ -485,6 +478,45 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 920,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 53,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 40,
+          y = 80,
+          width = 219.996,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 54,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 339.997,
+          y = 80,
+          width = 220.003,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -515,6 +547,7 @@ return {
           visible = true,
           properties = {
             ["actor"] = "starwalker",
+            ["cond"] = "not Game:getFlag(\"ostarwalker_inparty\", false) and not Game:getFlag(\"ostarwalker_killed\", false)",
             ["cutscene"] = "room1.star"
           }
         },
@@ -580,22 +613,6 @@ return {
           }
         },
         {
-          id = 34,
-          name = "interactable",
-          type = "",
-          shape = "rectangle",
-          x = 160,
-          y = 80,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "blankie_wall",
-            ["cutscene"] = "room1.blankie_wall",
-          }
-        },          
-        {
           id = 35,
           name = "npc",
           type = "",
@@ -610,21 +627,6 @@ return {
             ["actor"] = "wall",
             ["cutscene"] = "room1.guardian",
             ["flagcheck"] = "wall_hit"
-          }
-        },
-        {
-          id = 36,
-          name = "npc",
-          type = "",
-          shape = "point",
-          x = 180,
-          y = 80,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "blankie_wall",
           }
         },
         {
@@ -697,7 +699,7 @@ return {
           type = "",
           shape = "rectangle",
           x = 258,
-          y = 122,
+          y = 110,
           width = 84,
           height = 5,
           rotation = 0,
@@ -754,6 +756,70 @@ return {
           properties = {
             ["actor"] = "diagonal_mario",
             ["cutscene"] = "room1.diagonal_mario"
+          }
+        },
+        {
+          id = 50,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 960,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "room_lighttransition",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 54,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 520,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cond"] = "Game:getFlag(\"fun\", 0) > 40 and Game:getFlag(\"fun\", 0) < 50",
+            ["cutscene"] = "room1.sans_under_attack",
+            ["once"] = false
+          }
+        },
+        {
+          id = 55,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 120,
+          y = 80,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "room1.blankie_wall"
+          }
+        },
+        {
+          id = 56,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 120,
+          y = 80,
+          width = 39.2829,
+          height = 40,
+          rotation = 0,
+          gid = 105,
+          visible = true,
+          properties = {
+            ["cond"] = "Game:getFlag(\"blankie_acquired\")"
           }
         }
       }
@@ -831,6 +897,19 @@ return {
           shape = "point",
           x = 30,
           y = 570,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "entry3",
+          type = "",
+          shape = "point",
+          x = 300,
+          y = 920,
           width = 0,
           height = 0,
           rotation = 0,

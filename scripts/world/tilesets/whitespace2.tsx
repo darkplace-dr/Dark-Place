@@ -3,5 +3,5 @@
  <editorsettings>
   <export target="whitespace2.lua" format="lua"/>
  </editorsettings>
- <image source="../../../../Dark-Place-main/assets/sprites/tilesets/whitespace.png" width="240" height="240"/>
+ <image source="../../../assets/sprites/tilesets/whitespace.png" width="240" height="240"/>
 </tileset>

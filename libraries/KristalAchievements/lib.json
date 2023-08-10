@@ -10,6 +10,7 @@
     ],
     "config": {
         // If the achievements button will appear in the config menu
+        // If false, the DarkConfigMenu hook will not be applied
         "config_button": true,
         // If the achievements are global (true) or local (false)
         // Local ach data is only saved when save progress is invoked
@@ -20,6 +21,7 @@
         "full": false,
         // Load ach order from scripts/ach_order.lua (which evaluates to a table of ach IDs)
         // DP hack
-        "cooperative_ordering": false
+        "cooperative_ordering": false,
+        "print_console_intro": true
     }
 }

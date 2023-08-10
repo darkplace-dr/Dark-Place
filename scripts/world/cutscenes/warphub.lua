@@ -11,5 +11,14 @@ return {
                 Game.world:shopTransition("spamgolor", { marker="door1", facing="down" })
             end
         end
+    end,
+
+    pasta_shop = function(cutscene, event)
+        cutscene:text("* The Pasta Pack is open")
+        cutscene:text("* Will you go inside?")
+        if cutscene:choicer({"Yes", "No"}) == 1 then
+            Game.world:shopTransition("pastashop", { marker="door2", facing="down" })
+        end
     end
 }
+

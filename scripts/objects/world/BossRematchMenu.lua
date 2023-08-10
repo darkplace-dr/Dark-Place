@@ -26,8 +26,10 @@ function BossRematchMenu:init()
     self.soul = Assets.getTexture("player/heart")
 
     self.encounters = {
-        { name = "Spamgolor", flag = "spamgolor_defeated", encounter = "spamgolor" },
-        { name = "Mimic",     flag = "mimic_defeated",     encounter = "mimicboss" },
+        { name = "Spamgolor",  flag = "spamgolor_defeated",  encounter = "spamgolor" },
+        { name = "Mimic",      flag = "mimic_defeated",      encounter = "mimicboss" },
+        { name = "Starwalker", flag = "starwalker_defeated", encounter = "starwalker" },
+        { name = "Sam", 	   flag = "sam_defeated", 		 encounter = "sam" },
     }
 
     self.currently_selected = 1
@@ -40,9 +42,9 @@ end
 function BossRematchMenu:draw()
     love.graphics.setColor(1, 1, 1)
     love.graphics.setFont(self.font)
-    love.graphics.print("Bosses", 200, 0)
+    love.graphics.printf("Bosses", 0, 0, self.width, "center")
 
-    local y_off = 20
+    local y_off = 16
 
     love.graphics.setFont(self.font_2)
     love.graphics.setColor(1, 0, 0)
@@ -51,13 +53,13 @@ function BossRematchMenu:draw()
 
     local line_x = 24
     local line_y = y_off + self.line_height * 1
-    for i, v in ipairs(self.encounters) do
-        if Game:getFlag(v.flag) then
+    for _, encounter in ipairs(self.encounters) do
+        if Game:getFlag(encounter.flag) then
             love.graphics.setColor(unpack(self.item_color))
-            love.graphics.print(v.name, line_x, line_y)
+            love.graphics.print(encounter.name, line_x, line_y)
         else
             love.graphics.setColor(unpack(self.item_color_unk))
-            love.graphics.print(string.rep("?", utf8.len(v.name)), line_x, line_y)
+            love.graphics.print(string.rep("?", utf8.len(encounter.name)), line_x, line_y)
         end
         love.graphics.setColor(1, 1, 1)
         line_y = line_y + self.line_height

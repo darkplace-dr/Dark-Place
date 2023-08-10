@@ -74,7 +74,17 @@ return {
 		leader:explode(0, 0, true)
 		cutscene:slideTo(leader, leader.x - 700, leader.y - 50, 1)
 		cutscene:wait(1.5)
+
+		if #Game.party >= 4 then
+			local prev_leader_pm = Game.party[1]
+			Game:setFlag("dessRemovedLeader", prev_leader_pm.id)
+			Game:removePartyMember(prev_leader_pm)
+			Game:setFlag(prev_leader_pm.id.."_party", false)
+		end
+		
 		Game:addPartyMember("dess", 1)
+		Game:setFlag("dess_party", true)
+		Game:setFlag("dess_obtained", true)
 		Game.world:spawnPlayer(dess.x, dess.y, "dess")
 		dess:remove()
 		Game.world:removeFollower(leader)
@@ -82,10 +92,9 @@ return {
 
 		cutscene:showNametag("Dess")
 		cutscene:text("* Ok lets go", "neutral", "dess")
-		if not Kristal.libCall("achievements", "hasAch", "starstruck") then
-            Kristal.callEvent("completeAchievement", "starstruck")
-        end
 		cutscene:hideNametag()
+
+        Kristal.callEvent("completeAchievement", "starstruck")
 
 		cutscene:attachFollowers(1)
 		cutscene:interpolateFollowers()
@@ -93,7 +102,8 @@ return {
 		cutscene:wait(0.5)
 
 		Game:setFlag("gotDess", true)
-	end,
+		table.insert(Game:getFlag("party"), "dess")
+  end,
 
 	dessgetoverhere = function(cutscene, event)
 		if Game:getFlag("gotDess") then
@@ -349,6 +359,17 @@ return {
 			end
 			Assets.playSound("ominous")
 			Game:setFlag("can_kill", true)
+			cutscene:hideNametag()
+		end
+		if Game:getFlag("dessRemovedLeader") then
+			local removed_member_id = Game:getFlag("dessRemovedLeader")
+			if type(removed_member_id) == "table" then removed_member_id = removed_member_id.id end
+			Game:removePartyMember("dess")
+			Game:setFlag("dess_party", false)
+			Game:addPartyMember(removed_member_id, 1)
+			Game:setFlag(removed_member_id.."_party", true)
+			cutscene:showNametag("Dess")
+			cutscene:text("* I'll be waiting for you at the diner aight?", "eyebrow", "dess")
 			cutscene:hideNametag()
 		end
 	end,

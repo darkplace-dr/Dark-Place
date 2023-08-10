@@ -1,25 +1,21 @@
 local lib = {}
 
+function lib:init()
+    self.voice_timer = 0
+end
+
+function lib:preUpdate(dt)
+    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
+end
+
 function lib:onTextSound(sound, node)
-    if sound == "wingdings" then
-        local ranNum = love.math.random(1, 7)
-        if ranNum == 1 then
-            Assets.playSound("voice/wingding_1")
-        elseif ranNum == 2 then
-            Assets.playSound("voice/wingding_2")
-        elseif ranNum == 3 then
-            Assets.playSound("voice/wingding_3")
-        elseif ranNum == 4 then
-            Assets.playSound("voice/wingding_4")
-        elseif ranNum == 5 then
-            Assets.playSound("voice/wingding_5")
-        elseif ranNum == 6 then
-            Assets.playSound("voice/wingding_6")
-        elseif ranNum == 7 then
-            Assets.playSound("voice/wingding_7")
-        end
-        return true
-    end
+    if sound == "wingding" or sound == "wingding_1" then
+        if self.voice_timer == 0 then
+            local snd = Assets.playSound(Utils.pick{"voice/wingding_1", "voice/wingding_2", "voice/wingding_3", "voice/wingding_4", "voice/wingding_5", "voice/wingding_6", "voice/wingding_7"})
+            self.voice_timer = 2
+		end
+		return true
+	end
 end
 
 return lib

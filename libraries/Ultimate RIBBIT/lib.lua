@@ -1,3 +1,4 @@
+---@diagnostic disable: redundant-return-value
 local lib = {}
 
 function lib:postInit()
@@ -55,8 +56,6 @@ function lib:postInit()
             orig(self)
         end
     end)
-
-
 
     Utils.hook(DarkEquipMenu, "drawAbilityPreview", function(orig, self, index, x, y, abilities, compare)
         local party = self.party:getSelected()
@@ -134,7 +133,6 @@ function lib:postInit()
                 else
                     text = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!\n* But it wasn't [color:yellow]APPEASED[color:reset]..."
                 end
-                
             end
         end
         return text

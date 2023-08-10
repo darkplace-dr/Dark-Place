@@ -3,8 +3,6 @@ return {
         local susie = cutscene:getCharacter("susie")
         local dess = cutscene:getCharacter("dess")
 
-        Game.battle:resetAttackers()
-
         cutscene:wait(1)
         enemy:shake(5)
         Assets.playSound("wing")

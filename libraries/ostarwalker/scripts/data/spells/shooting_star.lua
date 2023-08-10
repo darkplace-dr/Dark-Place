@@ -1,7 +1,7 @@
 local spell, super = Class(Spell, "shooting_star")
 
 function spell:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name
     self.name = "ShootingStar"
@@ -47,6 +47,7 @@ function spell:onCast(user, target)
     Game.battle.timer:script(function(wait)
         wait(1/30)
         -- Initial star
+        -- FIXME: ???
         Assets.playSound("snd_crow")
         particles = createParticle(userx, -25)
 

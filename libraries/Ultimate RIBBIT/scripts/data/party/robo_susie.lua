@@ -101,7 +101,10 @@ function character:init()
     self.menu_icon_offset = nil
 
     -- Message shown on gameover (optional)
-    self.gameover_message = nil -- Handled by getGameOverMessage for Susie
+    self.gameover_message = {
+        "Protag is gone.",
+        "Goodbye."
+    }
 
     -- Character flags (saved to the save file)
     self.flags = {
@@ -131,13 +134,6 @@ function character:onLevelUp(level)
         self:increaseStat("attack", 1)
         self:increaseStat("magic", 1)
     end
-end
-
-function character:getGameOverMessage(main)
-    return {
-        "Protag is gone.",
-        "Goodbye."
-    }
 end
 
 function PartyMember:getTitle()

@@ -17,7 +17,7 @@ function item:init()
     -- Battle description
     self.effect = "Healing\nVaries"
     -- Shop description
-    self.shop = "100% Red Velvet\nFlavor!"
+    self.shop = "100% Donut!\nNot a Bagel!"
     -- Menu description
     self.description = "A donut shaped like Chevelour's face.\nIt's just a bagel with jam inside. Heals +??HP"
 
@@ -27,12 +27,16 @@ function item:init()
         ["susie"] = 20,
         ["ralsei"] = 100,
         ["noelle"] = 250,
+        ["berdly"] = 60,
+        ["YOU"] = 80,
 		["dess"] = 60,
-        ["brandon"] = 80
+        ["brandon"] = 80,
+        ["dumbie"] = 80,
+        ["bor"] = 80
 	}
 
     -- Default shop price (sell price is halved)
-    self.price = 50
+    self.price = 80
     -- Whether the item can be sold
     self.can_sell = true
 
@@ -59,8 +63,9 @@ function item:init()
         susie = "It's just a jam sandiwch...",
         ralsei = "I never knew Chevelour can bake well!",
         noelle = "The jam's taste reminds me of new year's eve...!",
+        berdly = "7/10 too much bagel!",
 		dess = "Should've been hollyberry...",
-        brandon = "She's an okay baker."
+        brandon = "Creamy!"
     }
 end
 

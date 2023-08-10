@@ -1,3 +1,4 @@
+---@class GameOver
 local GameOver, super = Class("GameOver")
 
 function GameOver:init(x, y, force_message)

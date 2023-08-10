@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="38" height="32" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="97">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="38" height="32" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="97">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -11,7 +11,7 @@
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/castle.tsx"/>
  <imagelayer id="11" name="bg" offsetx="10.9091" offsety="0">
-  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_church.png" width="1520" height="1280"/>
+  <image source="../../../../../../assets/sprites/world/maps/hometown_ribbit/church.png" width="1520" height="1280"/>
  </imagelayer>
  <layer id="14" name="tiles" width="38" height="32">
   <data encoding="csv">

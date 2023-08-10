@@ -49,7 +49,7 @@ function item:init()
         susie = "ARGH! I think I chipped a tooth!",
         ralsei = "Um, I don't think I can eat this...",
         noelle = "Did we get scammed?",
-		dess = "fucking microtransactions",
+        dess = "fucking microtransactions",
         brandon = "The hell am I supposed to do with this?!"
     }
 end
@@ -64,7 +64,7 @@ function item:onWorldUse(target)
     if target.id ~= "susie" then
         return true
     end
-    target.health = math.max(1, target.health - 1)
+    target:setHealth(math.max(1, target:getHealth() - 1))
     Assets.playSound("hurt")
     return true
 end

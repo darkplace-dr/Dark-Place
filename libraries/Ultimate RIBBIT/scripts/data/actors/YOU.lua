@@ -7,14 +7,14 @@ function actor:init()
     self.name = "YOU"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 19
-    self.height = 37
+    self.width = 28
+    self.height = 41
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {0, 25, 19, 14}
+    self.hitbox = {7, 30, 14, 12}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
-    self.color = {0, 1, 1}
+    self.color = {1, 0, 0}
 
     -- Path to this actor's sprites (defaults to "")
     self.path = "party/you/dark"
@@ -36,6 +36,8 @@ function actor:init()
     self.animations = {
         -- Movement animations
         ["slide"]               = {"slide", 4/30, true},
+        ["fell"]                = {"fell", 4/30, true},
+        ["fell_serious"]        = {"fell", 4/30, true},
 
         -- Battle animations
         ["battle/idle"]         = {"battle/idle", 0.2, true},
@@ -47,7 +49,7 @@ function actor:init()
         ["battle/spare"]        = {"battle/act", 1/15, false, next="battle/idle"},
 
         ["battle/attack_ready"] = {"battle/attackready", 0.2, true},
-        ["battle/act_ready"]    = {"battle/actready", 0.2, true},
+        ["battle/act_ready"]    = {"battle/actready", 1/15, false},
         ["battle/spell_ready"]  = {"battle/actready", 0.2, true},
         ["battle/item_ready"]   = {"battle/itemready", 0.2, true},
         ["battle/defend_ready"] = {"battle/defend", 1/15, false},
@@ -58,8 +60,9 @@ function actor:init()
         ["battle/defeat"]       = {"battle/defeat", 1/15, false},
 
         ["battle/transition"]   = {"walk/right", 0, true},
-        ["battle/intro"]        = {"battle/attack", 1/15, true},
-        ["battle/victory"]      = {"battle/victory", 1/10, false},
+        ["battle/intro"]        = {"battle/intro", 1/18, true},
+        ["battle/victory"]      = {"battle/victory", 1/10, false, duration=4, next="battle/victoryconcern"},
+        ["battle/victoryconcern"] = {"battle/victoryconcern", 1/10, false},
 
         -- Cutscene animations
         ["jump_fall"]           = {"fall", 1/5, true},
@@ -69,62 +72,38 @@ function actor:init()
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {
         -- Movement offsets
-        ["walk/left"] = {0, 0},
-        ["walk/right"] = {0, 0},
-        ["walk/up"] = {0, 0},
-        ["walk/down"] = {0, 0},
-
-        ["walk_blush/down"] = {0, 0},
-
-        ["slide"] = {0, 0},
 
         -- Battle offsets
-        ["battle/idle"] = {-5, -1},
+        ["battle/idle"] = {-4, 3},
 
-        ["battle/attack"] = {-8, -6},
-        ["battle/attackready"] = {-8, -6},
-        ["battle/act"] = {-6, -6},
-        ["battle/actend"] = {-6, -6},
-        ["battle/actready"] = {-6, -6},
-        ["battle/item"] = {-6, -6},
-        ["battle/itemready"] = {-6, -6},
-        ["battle/defend"] = {-5, -3},
+        ["battle/attack"] = {-8, -4},
+        ["battle/attackready"] = {-8, -4},
+        ["battle/act"] = {-10, -4},
+        ["battle/actend"] = {-10, -4},
+        ["battle/actready"] = {-10, -4},
+        ["battle/item"] = {-15, 1},
+        ["battle/itemready"] = {-15, 1},
+        ["battle/defend"] = {-20, -10},
 
         ["battle/defeat"] = {-8, -5},
-        ["battle/hurt"] = {-5, -6},
+        ["battle/hurt"] = {-3, -4},
 
-        ["battle/intro"] = {-8, -9},
-        ["battle/victory"] = {-3, 0},
+        ["battle/intro"] = {-8, -8},
+        ["battle/victory"] = {-8, -6},
+        ["battle/victoryconcern"] = {-8, 0},
 
         -- Cutscene offsets
-        ["pose"] = {-4, -2},
-
         ["fall"] = {-5, -6},
         ["ball"] = {1, 8},
         ["landed"] = {-4, -2},
-
-        ["fell"] = {-14, 1},
-
-        ["sword_jump_down"] = {-19, -5},
-        ["sword_jump_settle"] = {-27, 4},
-        ["sword_jump_up"] = {-17, 2},
-
-        ["hug_left"] = {-4, -1},
-        ["hug_right"] = {-2, -1},
-
-        ["peace"] = {0, 0},
-        ["rude_gesture"] = {0, 0},
-
-        ["reach"] = {-3, -1},
-
-        ["sit"] = {-3, 0},
-
-        ["t_pose"] = {-4, 0},
-
-        ["date"] = {-2, 6},
-        ["date_flowey"] = {-2, 6},
 		
+        ["fell"] = {-12, -10},
+        ["fell_serious"] = {-12, -5},
         ["disappointed"] = {0, -1},
+        ["riot"] = {-2, 4},
+
+        ["date"] = {-6, 8},
+        ["date_flowey"] = {-4, 8},
     }
 end
 

@@ -1,7 +1,9 @@
 local Lib = {}
 
 function Lib:init()
-	print("the blue soul loaded!")
+    if Kristal.getLibConfig("bluesoul", "print_console_intro") then
+         print("the blue soul loaded!")
+    end
 end
 
 return Lib

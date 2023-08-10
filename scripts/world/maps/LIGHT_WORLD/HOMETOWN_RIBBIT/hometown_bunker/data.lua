@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 15,
-  nextobjectid = 78,
+  nextobjectid = 79,
   properties = {
     ["border"] = "simple",
     ["light"] = true,
@@ -26,8 +27,8 @@ return {
     {
       name = "objects",
       firstgid = 61,
-      filename = "../../../../tilesets/objects.tsx",
-      exportfilename = "../../../../tilesets/objects.lua"
+      filename = "../../../../tilesets/other-objects.tsx",
+      exportfilename = "../../../../tilesets/other-objects.lua"
     }
   },
   layers = {
@@ -39,6 +40,7 @@ return {
       height = 62,
       id = 14,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -114,9 +116,10 @@ return {
     },
     {
       type = "imagelayer",
-      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/room_town_shelter.png",
+      image = "../../../../../../assets/sprites/world/maps/hometown_ribbit/shelter_room.png",
       id = 11,
       name = "bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -132,6 +135,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -571,6 +575,7 @@ return {
       draworder = "topdown",
       id = 7,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -596,11 +601,11 @@ return {
           }
         },
         {
-          id = 77,
+          id = 78,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 108,
+          x = 109,
           y = 2332,
           width = 418,
           height = 240,
@@ -616,6 +621,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

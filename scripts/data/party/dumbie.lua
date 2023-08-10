@@ -57,7 +57,7 @@ function character:init()
     self.head_icon_offset = {-7, -3}
     self.menu_icon_offset = nil
 
-    self.gameover_message = "Wake up, punk!"
+    self.gameover_message = { "Wake up, punk!" }
 end
 
 function character:onLevelUp(level)

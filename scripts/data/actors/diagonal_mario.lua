@@ -20,9 +20,9 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npc/diagonal_mario"
+    self.path = "world/npcs/diagonal_mario"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-    self.default = "idle"
+    self.default = ""
 
     -- Sound to play when this actor speaks (optional)
     self.voice = nil
@@ -39,7 +39,7 @@ function actor:init()
 
     -- Table of sprite animations
     self.animations = {
-		["idle"]         = {"idle", 0.2, true},
+		[""]         = {"", 0.2, true},
 	}
 
     -- Table of sprite offsets (indexed by sprite name)

@@ -4,7 +4,6 @@ return {
         local doobie = cutscene:getCharacter("doobie")
 
         local cust_wait_timer = 0
-
         local function waitForTimeOrUserCancellation(time)
             cust_wait_timer = time
             return function()
@@ -16,8 +15,9 @@ return {
                 return cust_wait_timer == 0
             end
         end
+
         local function showMorshuAnim(sprite, speed)
-            local m_anim = Sprite("world/cutscenes/room3_morshu/" .. sprite)
+            local m_anim = Sprite(sprite, 0, 0, nil, nil, "world/cutscenes/room3_morshu/morshu")
             m_anim:play(speed, true)
             m_anim.layer = WORLD_LAYERS["ui"]
             m_anim.parallax_x = 0
@@ -31,10 +31,14 @@ return {
                 m_anim:remove()
             end
         end
+        local music_inst = Music()
+        cutscene:after(function()
+            music_inst:remove()
+        end)
         local function showMorshuAnimWithVoc(sprite, speed, clip, time, disallow_cancel)
             local anim, rem = showMorshuAnim(sprite, speed)
             Game.world.music:pause()
-            Assets.playSound(clip)
+            music_inst:play(clip, 1, 1, false)
             rem(time, disallow_cancel)
             Assets.stopSound(clip)
             Game.world.music:resume()
@@ -43,7 +47,7 @@ return {
 
         Input.clear("cancel")
 
-        showMorshuAnimWithVoc("rubies", 0.095, "vo_mline", 8.8)
+        showMorshuAnimWithVoc("rubies", 0.095, "voiceover/morshu_rubies", 8.8)
 
         cutscene:text("* (Buy Lamp Oil for 40 dolla-[wait:5] er-[wait:5] rupee-[wait:5] er-[wait:5] rubies?)")
         cutscene:showShop()
@@ -56,7 +60,7 @@ return {
         end
 
         if Game.money < 40 then
-            showMorshuAnimWithVoc("richer", 0.095, "vo_mline2", 7)
+            showMorshuAnimWithVoc("richer", 0.095, "voiceover/morshu_richer", 7)
             return
         end
 
@@ -116,6 +120,112 @@ return {
         cutscene:hideNametag()
     end,
 
+    addisonshop = function(cutscene, event)
+        local skp = cutscene:getCharacter("addisonshop")
+        local skp_name = Mod:addiSwitch() and "Java" or "Pink Addison"
+
+        local teas = {
+            "kris_tea",
+            "susie_tea",
+            "noelle_tea",
+        }
+        local tea_price = 100
+
+        --------------------------------
+
+        ---@type Item[]
+        local _teas = {}
+        for i,tea_id in ipairs(teas) do
+            local tea = Registry.createItem(tea_id)
+            assert(tea, string.format("Tea %s does not exist", tea_id))
+            _teas[i] = tea
+        end
+
+        cutscene:showNametag(skp_name)
+        cutscene:text("* Hi there! Welcome!", "default", skp)
+        cutscene:text("* Would you care for some tea?", "wink_b", skp)
+        cutscene:hideNametag()
+        local choice = cutscene:choicer({ "Buy", "Don't Buy" })
+        
+        if choice == 1 then
+            cutscene:showShop()
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Alright what can I get you?", "wink", skp)
+            cutscene:hideNametag()
+
+            local tea = nil
+            local pos = 0
+            while pos < #_teas do
+                local selection_max = 3
+                local selections_raw = {unpack(_teas, pos + 1, pos + selection_max)}
+                local ended = (pos + selection_max) >= #_teas
+
+                local selections = {}
+                for _,item in ipairs(selections_raw) do
+                    table.insert(selections, item:getName())
+                end
+                table.insert(selections, not ended and "More" or "None")
+
+                local choice = cutscene:choicer(selections)
+                if choice < #selections then
+                    tea = selections_raw[choice]
+                    break
+                elseif not ended and pos == 0 then
+                    cutscene:text("* I got some more here! What would you like?", "wink", skp)
+                end
+
+                pos = pos + selection_max
+            end
+
+            if not tea then
+                cutscene:hideShop()
+                cutscene:showNametag(skp_name)
+                cutscene:text("* That's alright! Come back anytime!", "default", skp)
+                cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+                cutscene:hideNametag()
+            end
+
+            cutscene:showNametag(skp_name)
+            cutscene:text(string.format("* Okay! That would cost ya %dD$...", tea_price), "default", skp)
+            cutscene:hideNametag()
+
+            local buying = cutscene:choicer({"Yes", "No"}) == 1
+            cutscene:hideShop()
+
+            
+            if Game.money < tea_price then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Sorry, we don't serve barterers", "pissed", skp)
+                cutscene:text("* Please come back when you can afford this...", "pissed_b", skp)
+                cutscene:hideNametag()
+            elseif not Game.inventory:addItem(tea) then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Oh dear, looks like you don't have space in your pockets...", "upset", skp)
+                cutscene:hideNametag()
+            elseif not buying then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* That's alright! Come back anytime!", "default", skp)
+                cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+                cutscene:hideNametag()
+            else
+                Game.money = Game.money - tea_price
+                cutscene:playSound("locker")
+
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Okay! Here's your tea!", "wink", skp)
+                cutscene:text("* Thank you and come again", "blush", skp)
+                cutscene:hideNametag()
+            end
+        end
+
+        if choice == 2 then
+            cutscene:showNametag(skp_name)
+            cutscene:text("* That's alright! Come back anytime!", "default", skp)
+            cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+            cutscene:hideNametag()
+        end
+    end,
+
     doobie = function(cutscene, event)
         if not Game:getFlag("room3_doobie") then
             return
@@ -143,9 +253,7 @@ return {
 
         cutscene:look("down")
 
-        if not Kristal.libCall("achievements", "hasAch", "doobie") then
-            Kristal.callEvent("completeAchievement", "doobie")
-        end
+        Kristal.callEvent("completeAchievement", "doobie")
     end,
 
     garbage = function(cutscene, event)
@@ -154,18 +262,18 @@ return {
             scale = scale or 2
             wait_time = wait_time or 0.2
 
-            local text = Game.world:spawnObject(Text(text, x, y, 300, 500, { style = goner and "GONER" or "dark" }))
-            text:setScale(scale)
-            text.parallax_x = 0
-            text.parallax_y = 0
+            local text_o = Game.world:spawnObject(Text(text, x, y, 300, 500, { style = goner and "GONER" or "dark" }))
+            text_o:setScale(scale)
+            text_o.parallax_x = 0
+            text_o.parallax_y = 0
             if goner then
-                text.alpha = 1
+                text_o.alpha = 1
             end
-            table.insert(texts, text)
+            table.insert(texts, text_o)
 
             cutscene:wait(wait_time)
 
-            return text
+            return text_o
         end
         local function flashScreen()
             local flash = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -191,10 +299,12 @@ return {
         local garbage = cutscene:getCharacter("diamond_trash")
 
         Game.world.music:pause()
+        local music_inst = Music()
+        cutscene:after(function() music_inst:remove() end)
 
         if event.interact_count == 1 then
             cutscene:showNametag("Trash Rudinn")
-            Assets.playSound("garbage")
+            music_inst:play("voiceover/garbage", 1, 1, false)
             cutscene:text("[noskip][voice:nil]* Hellooo...[wait:1.5]", nil, garbage, { auto = true })
             cutscene:hideNametag()
             genBigText("I'm", 240, 40)
@@ -206,7 +316,7 @@ return {
             fadeOutBigText()
         else
             cutscene:showNametag("Trash Rudinn")
-            Assets.playSound("stillgarbage")
+            music_inst:play("voiceover/stillgarbage", 1, 1, false)
             cutscene:text("[noskip][voice:nil]* Oh hi,[wait:1] thanks for checking in.[wait:2]\n* I'm...", nil, garbage, { auto = true })
             cutscene:hideNametag()
             genBigText("still", 210, 40)
@@ -258,7 +368,7 @@ return {
                         end
                     end },
                     { id = "powerring", name = "PowerRing", price = 1000 },
-                    { id = "superscope", name = "SuperScope", price = 650},
+                    { id = "superscope", name = "SuperScope", price = 650 },
                 }
             },
             {
@@ -266,7 +376,7 @@ return {
                 name_counted = "armors",
                 first_level_disp = "Armor",
                 items = {
-                    {id = "leadmaker", name = "Leadmaker", price = 750}
+                    { id = "leadmaker", name = "Leadmaker", price = 750 }
                 }
             }
         }
@@ -303,13 +413,11 @@ return {
             cutscene:hideNametag()
         end
         local function onPurchaseComplete(special_message)
-            special_message = special_message or function() end
-
             cutscene:playSound("locker")
             cutscene:showNametag("Magolor")
             cutscene:text("* Here you go!", "happy", "magolor")
             cutscene:text("* Pleasure doing business with you!", "wink", "magolor")
-            special_message()
+            if special_message then special_message() end
             cutscene:hideNametag()
         end
 
@@ -318,35 +426,35 @@ return {
         cutscene:text("* What would you like to buy?", "neutral", "magolor")
         cutscene:hideNametag()
 
-        local fstlvl_opinion_list = {}
+        local cate_opinions = {}
         for _, v in ipairs(menu) do
-            table.insert(fstlvl_opinion_list, v.first_level_disp)
+            table.insert(cate_opinions, v.first_level_disp)
         end
-        table.insert(fstlvl_opinion_list, "None")
-        local fstlvl_opinion = cutscene:choicer(fstlvl_opinion_list)
-        if fstlvl_opinion == #fstlvl_opinion_list then
+        table.insert(cate_opinions, "None")
+        local cate_opinion = cutscene:choicer(cate_opinions)
+        if cate_opinion == #cate_opinions then
             onDeclined()
             return
         end
 
-        local cate = menu[fstlvl_opinion]
-        if #cate.items < 1 then
+        local cate = menu[cate_opinion]
+        if #cate.items <= 0 then
             onCateHasNoItems(cate.name_counted or cate.name)
             return
         end
         onCateSelected(cate.prompt or cate.name)
-        local sndlvl_opinion_list = {}
+        local item_opinions = {}
         for _, v in ipairs(cate.items) do
-            table.insert(sndlvl_opinion_list, v.name)
+            table.insert(item_opinions, v.name)
         end
-        table.insert(sndlvl_opinion_list, "None")
-        local sndlvl_opinion = cutscene:choicer(sndlvl_opinion_list)
-        if sndlvl_opinion == #sndlvl_opinion_list then
+        table.insert(item_opinions, "None")
+        local item_opinion = cutscene:choicer(item_opinions)
+        if item_opinion == #item_opinions then
             onDeclined()
             return
         end
 
-        local item = cate.items[sndlvl_opinion]
+        local item = cate.items[item_opinion]
         cutscene:showShop()
         onItemSelected(item)
         local buy = cutscene:choicer({ "Yes", "No" })
@@ -358,17 +466,12 @@ return {
 
         if Game.money <= item.price then
             onMoneyNotEnough()
-            return
-        end
-
-        local itemcheck = Game.inventory:addItem(item.id)
-        if not itemcheck then
+        elseif not Game.inventory:addItem(item.id) then
             onInventoryFull()
-            return
+        else
+            Game.money = Game.money - item.price
+            onPurchaseComplete(item.post_purchase)
         end
-        Game.money = Game.money - item.price
-
-        onPurchaseComplete(item.post_purchase)
     end,
 
     whitedoor = function(cutscene, event)
@@ -382,13 +485,11 @@ return {
         end
 
         cutscene:text("* You opened the door...")
-        cutscene:fadeOut(2, {color = {1, 1, 1}, music = true, blend = "add"})
-        cutscene:wait(2)
-        Game.fader.fade_color = {1, 1, 1} -- overwrite default for mapTransition
+        cutscene:wait(cutscene:fadeOut(2, {color = {1, 1, 1}, music = true, blend = "add"}))
         if Game.world.map.id == "room3" then
-            cutscene:mapTransition("whitespace", "entry")
+            cutscene:loadMap("whitespace", "entry")
         elseif Game.world.map.id == "whitespace" then
-            cutscene:mapTransition("room3", "exit_whitespace")
+            cutscene:loadMap("room3", "exit_whitespace")
         end
         cutscene:look("down")
         cutscene:wait(cutscene:fadeIn(2, {color = {1, 1, 1}}))
@@ -400,5 +501,29 @@ return {
         else
             Game.world:mapTransition("room1", "entry2")
         end
+    end,
+
+    blackdoor = function(cutscene, event)
+        cutscene:text("* A black door casts a heavy shadow...")
+        if Game.world.map.id == "room3" then
+            cutscene:text("* You feel as if this isn't what's normally here.")
+        end
+        cutscene:text("* Will you enter it?")
+
+        local choice = cutscene:choicer({"Yes", "No"})
+        if choice == 2 then
+            cutscene:text("* You doorn't.")
+            return
+        end
+
+        cutscene:text("* You opened the door...")
+        cutscene:wait(cutscene:fadeOut(2, {color = {0, 0, 0}, music = true}))
+        if Game.world.map.id == "room3" then
+            cutscene:loadMap("BlackSpace/blackspace_hub", "entry")
+        elseif Game.world.map.id == "whitespace" then
+            cutscene:loadMap("room3", "exit_whitespace")
+        end
+        cutscene:look("down")
+        cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}}))
     end,
 }

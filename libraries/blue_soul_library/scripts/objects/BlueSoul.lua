@@ -1,7 +1,7 @@
 local BlueSoul, super = Class(Soul)
 
 function BlueSoul:init(x, y, angle)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
 	-- Do not modify these variables
     self.color = {0,0,1}
@@ -20,7 +20,7 @@ function BlueSoul:init(x, y, angle)
 end
 
 function BlueSoul:update()
-    super:update(self)
+    super.update(self)
 	if self.direction == "down" then self.rotation = math.rad(0) end
 	if self.direction == "up" then self.rotation = math.rad(180) end
 	if self.direction == "left" then self.rotation = math.rad(90) end
@@ -169,7 +169,7 @@ function BlueSoul:draw()
     local heart_texture = Assets.getTexture(self.sprite.texture_path)
     local heart_w, heart_h = heart_texture:getDimensions()
 
-    super:draw(self)
+    super.draw(self)
     self.color = {r,g,b}
 end
 

@@ -1,13 +1,12 @@
 ---@class WarpBinInputMenu : Object
+---@field finish_cb? fun(action?: WarpBinCodeInfo, raw_input: string)
 local WarpBinInputMenu, super = Class(Object)
 
 function WarpBinInputMenu:init()
-    local w = 288
-    local h = 40
-    super.init(self, SCREEN_WIDTH / 2 - w / 2, SCREEN_HEIGHT / 2 - h / 2, w, h)
+    super.init(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 288, 40)
 
-    self.parallax_x = 0
-    self.parallax_y = 0
+    self:setParallax(0, 0)
+    self:setOrigin(0.5, 0.5)
 
     self.draw_children_below = 0
     self.box = UIBox(0, 0, self.width, self.height)
@@ -15,19 +14,17 @@ function WarpBinInputMenu:init()
     self.box.debug_select = false
     self:addChild(self.box)
 
-    self.caret_flash_time = 30
-    self.caret_flash_timer = 0
-
+    ---@type love.Font
     self.font = Assets.getFont("main_mono", 32)
     self.char_w = 32
     self.char_h = self.char_w
     self.char_spacing = 5
 
-    -- a table of lines (except our input is not multiline)
+    -- yes, a table of lines
     self.input = {""}
     self.code_len = 8
 
-    ---@type function|nil
+    self.as_warp_bin_ui = true
     self.finish_cb = nil
 
     TextInput.attachInput(self.input, {
@@ -35,21 +32,18 @@ function WarpBinInputMenu:init()
         enter_submits = true,
         text_restriction = function(c)
             if utf8.len(self.input[1]) == self.code_len then return end
-            self.caret_flash_timer = 0
+            if c == " " then return end
             return c:upper()
         end
     })
-    TextInput.pressed_callback = function(c)
-        self.caret_flash_timer = 0
-    end
     TextInput.text_callback = function()
-        self.input[1] = self.input[1]:sub(1, utf8.offset(self.input[1], self.code_len))
+        self.input[1] = Utils.sub(self.input[1], 1, self.code_len)
     end
     TextInput.submit_callback = function()
         if self.finish_cb then
-            self.finish_cb(Mod:getBinCode(self.input[1]))
+            self.finish_cb((self.as_warp_bin_ui or nil) and Mod:getBinCode(self.input[1]), self.input[1])
         end
-        Game.world:closeMenu()
+        self:remove()
     end
 end
 
@@ -63,13 +57,11 @@ function WarpBinInputMenu:draw()
     assert(actual_input_len <= self.code_len)
     for i = 1, self.code_len do
         if actual_input_len >= i then
-            local char_off = utf8.offset(self.input[1], i)
-            local char = self.input[1]:sub(char_off, char_off)
+            local char = Utils.sub(self.input[1], i, i)
             love.graphics.printf(char, draw_x, draw_y, self.char_w, "center")
         end
 
-        if i ~= (actual_input_len == self.code_len and actual_input_len or actual_input_len + 1)
-            or self.caret_flash_timer <= self.caret_flash_time / 2 then
+        if i ~= math.min(TextInput.cursor_x + 1, self.code_len) or TextInput.flash_timer < 0.5 then
             local line_y = draw_y + self.char_h + 2
             love.graphics.line(draw_x, line_y, draw_x + self.char_w, line_y)
         end
@@ -77,15 +69,15 @@ function WarpBinInputMenu:draw()
         draw_x = draw_x + self.char_w + self.char_spacing
     end
 
-    self.caret_flash_timer = (self.caret_flash_timer + 1 * DTMULT) % self.caret_flash_time
-
     super.draw(self)
 end
 
-function WarpBinInputMenu:close()
+function WarpBinInputMenu:endInput()
     TextInput.endInput()
-    Game.world.menu = nil
-    self:remove()
+end
+
+function WarpBinInputMenu:onRemove()
+    self:endInput()
 end
 
 return WarpBinInputMenu

@@ -8,6 +8,7 @@ function UfoEncounter:init()
 
     -- Battle music ("battle" is rude buster)
     self.music = "threestrikesyoureout"
+
     -- Enables the purple grid battle background
     self.background = false
 	self.hide_world = true
@@ -15,18 +16,28 @@ function UfoEncounter:init()
 	self.energy = 0
 
     -- Add the dummy enemy to the encounter
-    self:addEnemy("mimic")
+    self.mimic = self:addEnemy("mimic")
+    self.death_cine_played = false
 end
 
-function UfoEncounter:onBattleStart()
-	super.onBattleStart(self)
-
-	Game.battle.encounter.bg = StarsBG({1, 1, 1})
-	Game.battle:addChild(Game.battle.encounter.bg)
-	Game.battle.encounter.bg.visible = true
+function UfoEncounter:onBattleInit()
+	self.bg = StarsBG({1, 1, 1})
+	Game.battle:addChild(self.bg)
 end
 
-function UfoEncounter:onBattleEnd() 
+function UfoEncounter:onActionsEnd()
+    if (self.mimic.done_state == "VIOLENCE" or self.mimic.done_state == "KILLED")
+        and not self.death_cine_played then
+        self.death_cine_played = true
+        local cutscene = Game.battle:startCutscene("mimic.dies", nil, self.mimic)
+        cutscene:after(function ()
+            Game.battle:setState("ENEMYDIALOGUE")
+        end)
+        return true
+    end
+end
+
+function UfoEncounter:onBattleEnd()
     Game:setFlag("mimic_defeated", true)
 end
 

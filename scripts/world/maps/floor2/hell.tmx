@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="30" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="346">
+ <editorsettings>
+  <export target="hell.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="flandre"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/queen_room.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="30">
+  <data encoding="csv">
+138,50,50,50,50,50,50,50,50,50,50,50,50,50,50,138,
+138,14,15,14,15,14,15,14,15,14,15,14,15,14,23,138,
+138,27,29,30,31,32,28,29,30,31,32,33,34,35,36,138,
+138,40,41,42,43,44,45,46,47,48,47,42,43,44,45,138,
+138,53,54,55,56,57,58,59,60,61,62,53,54,80,47,138,
+138,66,67,68,69,70,71,72,73,74,75,47,47,48,62,138,
+138,79,80,81,82,83,84,85,86,87,88,47,47,110,58,50,
+138,92,93,94,95,96,97,98,99,100,101,47,47,75,47,138,
+138,106,107,108,109,79,111,112,113,53,47,47,80,47,47,138,
+138,92,93,94,95,79,97,98,99,100,101,62,62,62,62,138,
+138,40,41,42,43,44,45,46,47,48,47,42,43,44,45,138,
+138,53,54,55,56,57,58,59,60,61,62,53,54,80,47,138,
+138,66,67,68,69,70,71,72,73,74,75,47,47,48,47,138,
+138,79,80,81,82,83,84,85,86,87,88,47,47,110,58,138,
+138,92,93,94,95,96,97,98,99,100,101,47,47,62,47,138,
+138,106,107,108,109,79,111,112,113,53,79,79,80,47,47,138,
+138,92,93,94,95,96,97,98,99,100,101,79,47,47,47,138,
+138,40,41,42,43,44,45,46,47,48,79,42,43,44,45,138,
+138,53,54,55,56,57,58,59,60,61,62,53,54,80,79,138,
+138,66,67,68,69,70,71,72,73,74,75,47,47,48,47,138,
+138,79,80,81,82,83,84,85,86,87,88,79,79,110,58,138,
+138,92,93,94,95,96,97,98,99,100,101,79,79,80,79,138,
+138,53,54,55,56,53,54,55,56,57,58,59,60,61,62,138,
+138,92,93,94,95,96,49,49,49,47,49,49,49,49,49,138,
+138,53,54,55,56,57,58,59,60,61,62,53,54,80,79,138,
+138,66,67,68,69,70,71,72,73,74,75,47,47,48,93,138,
+118,79,80,81,82,83,84,85,86,87,88,79,79,110,58,138,
+118,92,93,94,95,96,97,98,99,100,101,79,79,96,79,138,
+118,105,107,108,109,110,111,112,113,53,79,79,80,79,114,138,
+118,118,118,118,138,138,138,138,138,138,138,50,138,138,138,138
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="4" name="collision">
+  <object id="2" x="1" y="2" width="39" height="1198"/>
+  <object id="6" x="599" y="-2" width="39" height="1202"/>
+  <object id="8" x="41" y="-1" width="556" height="41"/>
+  <object id="9" x="41" y="1158" width="554" height="42"/>
+  <object id="10" x="43" y="38" width="555" height="43"/>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="3" name="markers">
+  <object id="113" name="spawn" x="300" y="1150">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="6" name="objects">
+  <object id="208" name="enemy" x="301.369" y="659.635" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="209" name="enemy" x="144.255" y="895.306" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="210" name="enemy" x="352.55" y="886.974" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="211" name="enemy" x="496.571" y="894.116" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="212" name="enemy" x="207.339" y="737.002" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="213" name="enemy" x="154.967" y="890.545" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="214" name="enemy" x="95.4547" y="761.997" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="215" name="enemy" x="325.174" y="783.422" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="216" name="enemy" x="373.974" y="829.842" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="217" name="enemy" x="224.002" y="660.826" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="218" name="enemy" x="257.329" y="898.877" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="219" name="enemy" x="341.837" y="808.417" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="220" name="enemy" x="294.227" y="738.192" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="221" name="enemy" x="348.979" y="798.895" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="222" name="enemy" x="150.206" y="791.754" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="223" name="enemy" x="81.1717" y="857.218" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="224" name="enemy" x="101.406" y="939.345" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="225" name="enemy" x="307.32" y="960.77" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="226" name="enemy" x="400.16" y="951.248" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="227" name="enemy" x="476.336" y="936.965" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="228" name="enemy" x="390.638" y="851.267" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="229" name="enemy" x="309.701" y="817.939" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="230" name="enemy" x="328.745" y="763.188" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="231" name="enemy" x="363.262" y="608.455" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="232" name="enemy" x="458.482" y="589.41" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="233" name="enemy" x="498.951" y="791.754" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="234" name="enemy" x="394.209" y="721.529" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="235" name="enemy" x="265.661" y="763.188" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="236" name="enemy" x="238.285" y="820.32" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="237" name="enemy" x="160.919" y="764.378" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="238" name="enemy" x="141.875" y="481.097" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="239" name="enemy" x="135.923" y="488.239" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="240" name="enemy" x="99.0255" y="609.645" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="241" name="enemy" x="128.782" y="658.445" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="242" name="enemy" x="103.786" y="640.591" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="243" name="enemy" x="164.489" y="596.552" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="244" name="enemy" x="294.227" y="435.868" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="245" name="enemy" x="384.687" y="478.717" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="246" name="enemy" x="396.589" y="491.81" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="247" name="enemy" x="197.817" y="634.64" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="248" name="enemy" x="166.87" y="432.297" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="249" name="enemy" x="191.865" y="302.559" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="250" name="enemy" x="133.543" y="248.998" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="251" name="enemy" x="160.919" y="190.675" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="252" name="enemy" x="237.095" y="200.197" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="253" name="enemy" x="316.842" y="209.719" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="254" name="enemy" x="425.155" y="212.1" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="255" name="enemy" x="470.385" y="260.9" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="256" name="enemy" x="477.527" y="329.935" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="257" name="enemy" x="269.232" y="334.696" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="258" name="enemy" x="213.29" y="381.116" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="259" name="enemy" x="257.329" y="489.429" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="260" name="enemy" x="346.598" y="481.097" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="261" name="enemy" x="300.179" y="483.478" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="262" name="enemy" x="300.179" y="529.898" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="263" name="enemy" x="248.998" y="575.127" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="264" name="enemy" x="316.842" y="450.151" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="265" name="enemy" x="460.863" y="410.872" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="266" name="enemy" x="460.863" y="358.501" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="267" name="enemy" x="358.501" y="341.837" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="268" name="enemy" x="372.784" y="383.496" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="269" name="enemy" x="443.009" y="484.668" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="270" name="enemy" x="531.088" y="587.03" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="271" name="enemy" x="539.42" y="688.202" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="272" name="enemy" x="483.478" y="709.626" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="273" name="enemy" x="377.545" y="644.162" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="274" name="enemy" x="144.255" y="497.761" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="275" name="enemy" x="110.928" y="393.018" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="276" name="enemy" x="85.9327" y="306.13" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="277" name="enemy" x="74.0301" y="244.237" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="278" name="enemy" x="78.7911" y="385.877" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="279" name="enemy" x="66.8886" y="479.907" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="280" name="enemy" x="45.464" y="601.313" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="281" name="enemy" x="46.6543" y="665.587" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="282" name="enemy" x="46.6543" y="672.728" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="283" name="enemy" x="64.5081" y="575.127" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="284" name="enemy" x="74.0301" y="478.717" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="285" name="enemy" x="185.914" y="326.364" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="286" name="enemy" x="252.568" y="268.042" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="287" name="enemy" x="345.408" y="196.626" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="288" name="enemy" x="441.819" y="129.972" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="289" name="enemy" x="470.385" y="200.197" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="290" name="enemy" x="401.35" y="319.223" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="291" name="enemy" x="437.058" y="357.311" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="292" name="enemy" x="460.863" y="402.54" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="293" name="enemy" x="625.118" y="546.561" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="294" name="enemy" x="569.176" y="466.814" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="295" name="enemy" x="512.044" y="288.276" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="296" name="enemy" x="488.239" y="184.724" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="297" name="enemy" x="470.385" y="99.0255" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="298" name="enemy" x="296.608" y="103.786" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="299" name="enemy" x="190.675" y="132.353" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="300" name="enemy" x="104.977" y="45.464" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="301" name="enemy" x="133.543" y="93.0742" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="302" name="enemy" x="97.8352" y="109.738" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="303" name="enemy" x="79.9814" y="114.499" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="304" name="enemy" x="75.2204" y="158.538" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="305" name="enemy" x="99.0255" y="216.861" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="306" name="enemy" x="133.543" y="235.905" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="307" name="enemy" x="163.299" y="193.056" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="308" name="enemy" x="165.68" y="191.865" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="309" name="enemy" x="129.972" y="200.197" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="310" name="enemy" x="194.246" y="983.385" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="311" name="enemy" x="165.68" y="979.814" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="312" name="enemy" x="457.292" y="961.96" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="313" name="enemy" x="56.1763" y="827.461" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="314" name="enemy" x="54.9861" y="840.554" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="315" name="enemy" x="39.5127" y="916.731" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="316" name="enemy" x="41.8932" y="964.341" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="317" name="enemy" x="51.4153" y="964.341" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="318" name="enemy" x="46.6543" y="726.29" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="319" name="enemy" x="149.016" y="737.002" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="320" name="enemy" x="539.42" y="834.603" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="321" name="enemy" x="588.22" y="956.009" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="322" name="enemy" x="556.083" y="798.895" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="323" name="enemy" x="544.181" y="796.515" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="324" name="enemy" x="556.083" y="614.406" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="325" name="enemy" x="558.464" y="450.151" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="326" name="enemy" x="553.703" y="497.761" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="327" name="enemy" x="540.61" y="187.104" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="328" name="enemy" x="538.229" y="366.833" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="329" name="enemy" x="539.42" y="512.044" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="330" name="enemy" x="278.754" y="258.52" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="331" name="enemy" x="165.68" y="352.55" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="332" name="enemy" x="87.1229" y="268.042" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="333" name="enemy" x="41.8932" y="220.431" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="334" name="enemy" x="20.4687" y="572.747" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="335" name="enemy" x="38.3225" y="196.626" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="336" name="enemy" x="39.5127" y="331.125" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="337" name="enemy" x="39.5127" y="446.58" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="338" name="enemy" x="37.1322" y="297.798" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="339" name="enemy" x="53.7958" y="323.984" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="340" name="enemy" x="41.8932" y="284.705" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="341" name="enemy" x="41.8932" y="89.5034" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="342" name="enemy" x="44.2738" y="237.095" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="343" name="enemy" x="331.125" y="556.083" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="344" name="enemy" x="360.882" y="601.313" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+  <object id="345" name="enemy" x="410.872" y="463.243" width="40" height="40">
+   <properties>
+    <property name="actor" value="bluehaunt"/>
+    <property name="encounter" value="bluehaunt"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

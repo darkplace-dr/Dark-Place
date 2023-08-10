@@ -34,6 +34,8 @@ function character:init()
 	-- man idk
 	--self:addSpell("wideangle")
 	self:addSpell("starshot")
+	-- Fuck it we ballin'
+	self:addSpell("starstorm")
 
     -- Current health (saved to the save file)
     self.health = 120
@@ -89,7 +91,7 @@ function character:init()
     self.menu_icon_offset = nil
 
     -- Message shown on gameover (optional)
-    self.gameover_message = "You aren't done, buddy.[wait:10]\nGive em' hell!"
+    self.gameover_message = { "You aren't done, buddy.[wait:10]\nGive em' hell!" }
 end
 
 --function character:onLevelUp(level)

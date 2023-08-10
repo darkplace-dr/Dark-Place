@@ -1,3 +1,4 @@
+---@class Mimic : EnemyBattler
 local Mimic, super = Class(EnemyBattler)
 
 function Mimic:init()
@@ -116,13 +117,17 @@ function Mimic:onAct(battler, name)
 end
 
 function Mimic:onDefeat(damage, battler)
+    if self.encounter.id ~= "mimicboss" then
+        return super.onDefeat(self, damage, battler)
+    end
+
+    -- mark us as defeated first
+    -- sprite is not destroyed yet
     if not Mod:isInRematchMode() then
         self:defeat("KILLED", true)
     else
         self:defeat("VIOLENCE", true)
     end
-
-    Game.battle:startActCutscene("mimic.dies", battler, self)
 end
 
 return Mimic

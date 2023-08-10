@@ -28,8 +28,8 @@ function DarkPartyMenu:init()
 	self.selected_party = 1
 	
 	self.list = {
-		{"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "unknown", "unknown"},
-		--{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
+		{"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor"},
+		{"robo_susie", "noyno", "iphone", "frisk2", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 		--{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 	}
 	
@@ -92,9 +92,13 @@ function DarkPartyMenu:onKeyPressed(key)
 		if Input.pressed("confirm") then
 			if self.list[self.selected_y][self.selected_x] ~= "unknown" then
 				for index,party in pairs(Game.party) do
+					if index == self.selected_party then
+						Game:setFlag(party.id.."_party", false)
+					end
 					if party.id == self.list[self.selected_y][self.selected_x] then return end
 				end
 				Game.party[self.selected_party] = Game:getPartyMember(self.list[self.selected_y][self.selected_x])
+				Game:setFlag(self.list[self.selected_y][self.selected_x].."_party", true)
 				--[[for k,v in pairs(Game.world.healthbar.action_boxes) do
 					v:remove()
 				end]]
@@ -134,7 +138,7 @@ function DarkPartyMenu:onKeyPressed(key)
 			end
 		end
 		if Input.pressed("down") then
-			if self.selected_y < 1 then
+			if self.selected_y < 2 then
                 self.ui_move:stop()
                 self.ui_move:play()
 				self.selected_y = self.selected_y + 1
@@ -166,7 +170,7 @@ function DarkPartyMenu:draw()
 	love.graphics.printf("PARTY", 0, 0, self.bg.width, "center")
 	
     for i=1,4 do
-        local path = "party/head"
+        local path = "ui/menu/party/head"
         if Game.party[i] then
             path = Game.party[i].menu_icon
         end

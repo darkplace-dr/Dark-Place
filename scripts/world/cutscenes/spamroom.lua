@@ -21,6 +21,12 @@ return {
         cutscene:text("* BIG SHOT AUTOS![wait:5] TAKE A RIDE\nAROUND TOWN IN OUR SPECIAL")
         cutscene:text("* (The rest is cut off.)")
     end,
+    mari = function(cutscene, event)
+        cutscene:showNametag("Mariton")
+        cutscene:text("* HEY [wait:5][wave]EVERY~", "", "marispam")
+        cutscene:text("* WAITING FOR [wave]SOMETHING[wave:0] TO HAPPEN?", "", "marispam")
+        cutscene:hideNametag()
+    end,
     cungadero = function(cutscene, event)
         cutscene:showNametag("Cungadero Spamton")
         cutscene:text("* Take a ride around town on our special Cungadero!", "", "cungaderospamton")
@@ -74,14 +80,23 @@ return {
         cutscene:hideNametag()
     end,
     velvetspam = function(cutscene, event)
-        local hour = os.date("*t").hour
-        if hour >= 21 or hour <= 8 then
-            local velvetspam = cutscene:getCharacter("velvetspam")
-            cutscene:setSpeaker(velvetspam)
-            cutscene:showNametag("Velvet!Spamton")
-            cutscene:text("* Noticed anything [[Different from the Leading Brand!]]?")
-            cutscene:text("* Well that difference is that I don't have my [specil] Blankie [TM] with me!")
-            cutscene:hideNametag()
+        if Mod:isNight() then
+            if Game:getFlag("blankie_returned") then
+                local velvetspam = cutscene:getCharacter("velvetspam")
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                cutscene:text("* You know the best part of [Restless Sleepless Nights]?")
+                cutscene:text("* Is having my [specil] Blankie [TM] on top!")
+                cutscene:text("* Nothing! And I mean NOTHING! Can [[BATTERIES NEED REPLACEMENT]]!")
+                cutscene:hideNametag()
+            else
+                local velvetspam = cutscene:getCharacter("velvetspam")
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                cutscene:text("* Noticed anything [[Different from the Leading Brand!]]?")
+                cutscene:text("* Well that difference is that I don't have my [specil] Blankie [TM] with me!")
+                cutscene:hideNametag()
+            end
         else
             local velvetspam = cutscene:getCharacter("velvetspam")
             cutscene:setSpeaker(velvetspam)
@@ -95,7 +110,7 @@ return {
             if susie then
                 cutscene:showNametag("Susie")
                 cutscene:setSpeaker(susie)
-                cutscene:text("* Actually that's not Kris...\n * It's YOU...", "nervous_side")
+                cutscene:text("* Actually that's not Kris\n * It's YOU...", "nervous_side")
                 cutscene:hideNametag()
             end
 
@@ -103,7 +118,7 @@ return {
             cutscene:setSpeaker(velvetspam)
             cutscene:showNametag("Velvet!Spamton")
             velvetspam:setAnimation("talk")
-            cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * That's Kris!")
+            cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * You're Kris!")
             velvetspam:setAnimation("idle")
             cutscene:hideNametag()
 
@@ -123,25 +138,22 @@ return {
     warpbin = function(cutscene, event)
         cutscene:text("* It's the warp bin.")
         cutscene:text("* Would you like to warp?[wait:10]\n* You only need the code.")
-		
+
 		if cutscene:choicer({"Sure", "Nope"}) == 2 then
 			return
 		end
 
-		cutscene:after(function()
-			local menu = WarpBinInputMenu()
-			-- I'm sorry
-			---@param action WarpBinCodeInfo
-			menu.finish_cb = function(action)
-				Game.world:startCutscene("spamroom", "warpbin_proc", action)
-			end
-			Game.world:openMenu(menu)
-		end)
-	end,
+        local wbi_ok = false
+        ---@type WarpBinCodeInfo
+        local action = nil
+        local wbi = WarpBinInputMenu()
+        wbi.finish_cb = function(_action)
+            wbi_ok = true
+            action = _action
+        end
+        Game.world:spawnObject(wbi, "ui")
+        cutscene:wait(function() return wbi_ok end)
 
-	---@param cutscene WorldCutscene
-	---@param action WarpBinCodeInfo
-	warpbin_proc = function(cutscene, action)
 		if not action then
 			cutscene:text("* That doesn't seem to work.")
 			return
