@@ -16,6 +16,8 @@ function Dummy:init()
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+
+
 end
 
 function Dummy:onReturnToWorld(events)
