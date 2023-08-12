@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 31,
+  nextobjectid = 32,
   properties = {
     ["border"] = "vaporwave",
     ["music"] = "forest"
@@ -23,8 +23,8 @@ return {
       exportfilename = "../../../tilesets/vapor.lua"
     },
     {
-      name = "objects",
-      firstgid = 22,
+      name = "devroom-objects",
+      firstgid = 36,
       filename = "../../../tilesets/devroom-objects.tsx",
       exportfilename = "../../../tilesets/devroom-objects.lua"
     }
@@ -197,7 +197,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "",
+            ["map"] = "vapor/start",
             ["marker"] = "entry"
           }
         },
@@ -243,7 +243,7 @@ return {
           width = 58,
           height = 180,
           rotation = 0,
-          gid = 40,
+          gid = 54,
           visible = true,
           properties = {}
         },
@@ -257,7 +257,7 @@ return {
           width = 58,
           height = 180,
           rotation = 0,
-          gid = 40,
+          gid = 54,
           visible = true,
           properties = {}
         },
@@ -271,7 +271,7 @@ return {
           width = 58,
           height = 180,
           rotation = 0,
-          gid = 40,
+          gid = 54,
           visible = true,
           properties = {}
         },
@@ -285,7 +285,7 @@ return {
           width = 58,
           height = 180,
           rotation = 0,
-          gid = 40,
+          gid = 54,
           visible = true,
           properties = {}
         },
@@ -299,7 +299,7 @@ return {
           width = 58,
           height = 180,
           rotation = 0,
-          gid = 40,
+          gid = 54,
           visible = true,
           properties = {}
         },
@@ -313,7 +313,7 @@ return {
           width = 58,
           height = 180,
           rotation = 0,
-          gid = 40,
+          gid = 54,
           visible = true,
           properties = {}
         }

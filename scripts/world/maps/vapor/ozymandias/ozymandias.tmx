@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="31">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="32">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -8,7 +8,7 @@
   <property name="music" value="forest"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/vapor.tsx"/>
- <tileset firstgid="22" source="../../../tilesets/devroom-objects.tsx"/>
+ <tileset firstgid="36" source="../../../tilesets/devroom-objects.tsx"/>
  <objectgroup id="5" name="objects_bg"/>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data encoding="csv">
@@ -37,7 +37,7 @@
  <objectgroup color="#ff00ff" id="3" name="objects">
   <object id="11" name="transition" x="-40" y="200" width="40" height="80">
    <properties>
-    <property name="map" value=""/>
+    <property name="map" value="vapor/start"/>
     <property name="marker" value="entry"/>
    </properties>
   </object>
@@ -54,12 +54,12 @@
    </properties>
    <point/>
   </object>
-  <object id="25" gid="40" x="88" y="396" width="58" height="180"/>
-  <object id="26" gid="40" x="291" y="396" width="58" height="180"/>
-  <object id="27" gid="40" x="491" y="396" width="58" height="180"/>
-  <object id="28" gid="40" x="491" y="188" width="58" height="180"/>
-  <object id="29" gid="40" x="291" y="188" width="58" height="180"/>
-  <object id="30" gid="40" x="88" y="188" width="58" height="180"/>
+  <object id="25" gid="54" x="88" y="396" width="58" height="180"/>
+  <object id="26" gid="54" x="291" y="396" width="58" height="180"/>
+  <object id="27" gid="54" x="491" y="396" width="58" height="180"/>
+  <object id="28" gid="54" x="491" y="188" width="58" height="180"/>
+  <object id="29" gid="54" x="291" y="188" width="58" height="180"/>
+  <object id="30" gid="54" x="88" y="188" width="58" height="180"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="3" name="entry" x="600" y="240">
