@@ -278,7 +278,7 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "googledino.begin",
-            ["once"] = false
+            ["once"] = true
           }
         },
         {
