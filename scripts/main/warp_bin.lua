@@ -31,6 +31,7 @@ Mod.warp_bin_codes = {
     ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
     ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
 	["_CHCKPNT"] = { result = "field" },
+    ["80SVAPOR"] = { result = "vapor/start" },
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
