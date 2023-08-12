@@ -3,7 +3,7 @@ local GoogleDino, super = Class(Encounter)
 function GoogleDino:init()
     super.init(self)
 
-    self.text = "* The tutorial begins...?"
+    self.text = "* The no wifi pastime begins."
 
     self.music = "battle"
 
