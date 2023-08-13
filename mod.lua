@@ -117,7 +117,12 @@ end
 
 function Mod:save(data)
     if data.room_id == "​" then
+        Log:print("Attempting to get this save out of the mb map", "warn")
+
         data.room_id = Mod.world_dest_map_bak or Mod.lastMap or data.room_id
+        local the_map = Registry.createMap(data.room_id)
+        data.room_name = (the_map and the_map.name) or "???"
+
         if Mod.world_dest_mk_bak then
             if type(Mod.world_dest_mk_bak) == "string" then
                 data.spawn_marker = Mod.world_dest_mk_bak
