@@ -59,7 +59,7 @@ function mb_map:update()
 						Game.world.fader.alpha = 0
 						Game.world.camera.keep_in_bounds = true
 						Game.lock_movement = false
-						if type(Mod.world_dest_mk_bak) == "string" then
+						if type(Mod.world_dest_mk_bak) == "string" or not Mod.world_dest_mk_bak then
 							Game.world:loadMap(self.return_map, Mod.world_dest_mk_bak, Mod.world_dest_fc_bak)
 						else
 							Game.world:loadMap(self.return_map, Mod.world_dest_mk_bak[1], Mod.world_dest_mk_bak[2], Mod.world_dest_fc_bak)

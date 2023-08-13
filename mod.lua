@@ -118,10 +118,12 @@ end
 function Mod:save(data)
     if data.room_id == "​" then
         data.room_id = Mod.world_dest_map_bak or Mod.lastMap or data.room_id
-        if type(Mod.world_dest_mk_bak) == "string" then
-            data.spawn_marker = Mod.world_dest_mk_bak
-        else
-            data.spawn_position = Mod.world_dest_mk_bak
+        if Mod.world_dest_mk_bak then
+            if type(Mod.world_dest_mk_bak) == "string" then
+                data.spawn_marker = Mod.world_dest_mk_bak
+            else
+                data.spawn_position = Mod.world_dest_mk_bak
+            end
         end
         --data.spawn_facing = Mod.world_dest_fc_bak
 
