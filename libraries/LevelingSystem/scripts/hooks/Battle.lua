@@ -72,11 +72,10 @@ function Battle:onStateChange(old,new)
         -- end
 
         if self.xp > 0 or self.freeze_xp > 0 then
-            local leveled_up
-            local xp_gain = self.xp
+            local leveled_up, shown_xp_gain = false, self.xp
 
             if not Kristal.getLibConfig("leveling", "global_love") then
-                xp_gain = self.xp + self.freeze_xp
+                shown_xp_gain = self.xp + self.freeze_xp
 
                 local function addExpTo(battler, xp)
                     if battler.chara:addExp(xp) then
@@ -85,18 +84,18 @@ function Battle:onStateChange(old,new)
                 end
 
                 for _,battler in ipairs(self.party) do
-                    addExpTo(battler, self.xp)
-
                     local local_freezing = Kristal.getLibConfig("leveling", "local_freezing")
                     local grant_fxp = not local_freezing
                     if local_freezing then
-                        for _,spell in ipairs(battler.chara.spells) do
+                        for _,spell in ipairs(battler.chara:getSpells()) do
                             if spell:hasTag("ice") then
                                 grant_fxp = true
                                 break
                             end
                         end
                     end
+
+                    addExpTo(battler, self.xp)
                     if grant_fxp then
                         addExpTo(battler, self.freeze_xp)
                     end
@@ -105,7 +104,7 @@ function Battle:onStateChange(old,new)
                 leveled_up = Kristal.callEvent("addGlobalEXP", self.xp)
             end
 
-            win_text = "* You won!\n* Got " .. xp_gain .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
+            win_text = "* You won!\n* Got " .. shown_xp_gain .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
             if leveled_up then
                 Assets.playSound("levelup")
                 win_text = win_text.."\n* Your LOVE increased."
