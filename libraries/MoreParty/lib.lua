@@ -513,7 +513,7 @@ function Lib:init()
 		Object.draw(self)
 	end)
 
-	if Kristal.getLibConfig("moreparty", "print_console_intro") then
+	if Kristal.getLibConfig("moreparty", "print_console_intro") ~= false then
 		print("Loaded MoreParty Library")
 	end
 end
