@@ -47,7 +47,7 @@
   <object id="8" name="transition" x="640" y="200" width="40" height="80">
    <properties>
     <property name="map" value="vapor/bb_shop"/>
-    <property name="marker" value="entry_bb_2"/>
+    <property name="marker" value="entry2"/>
    </properties>
   </object>
   <object id="9" gid="47" x="80" y="160" width="134" height="128"/>
