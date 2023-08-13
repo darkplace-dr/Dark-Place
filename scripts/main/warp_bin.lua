@@ -58,6 +58,7 @@ Mod.warp_bin_codes = {
             cutscene:text("* (Work in progress. Check back in another update.)")
         end
     },
+    ["WWC1YEAR"] = { result = "dinder" }, --Don't spoil this before it gets revealed or I will personally steal your organs >:[ -BrandonK7200
 }
 
 -- heres some new totally cool helper functions wowee

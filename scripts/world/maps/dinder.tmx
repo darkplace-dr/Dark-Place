@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="26">
+ <editorsettings>
+  <export target="dinder.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="glow"/>
+  <property name="music" value="deltarune/dogcheck"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/devroom-objects.tsx"/>
+ <tileset firstgid="47" source="../tilesets/city_alleyway.tsx"/>
+ <imagelayer id="2" name="dinder" offsetx="25" offsety="22.5">
+  <image source="../../../assets/sprites/world/maps/dinder.jpg" width="750" height="755"/>
+ </imagelayer>
+ <layer id="1" name="Tile Layer 1" width="20" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,268,269,270,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,283,284,285,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="collision">
+  <object id="1" x="0" y="0" width="25" height="800"/>
+  <object id="2" x="0" y="777.504" width="800" height="22.4961"/>
+  <object id="3" x="775" y="0" width="25" height="800"/>
+  <object id="4" x="0" y="0" width="800" height="22.5"/>
+ </objectgroup>
+ <objectgroup id="4" name="objects">
+  <object id="5" gid="44" x="400" y="400" width="40" height="40"/>
+  <object id="6" name="interactable" x="400" y="360" width="40" height="40">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* Heya,[wait:5] welcome to the Dinder room![wait:10] Aka,[wait:5] the half-baked WWC 1 year celebration room!"/>
+    <property name="text10" value="* Even during my toughest times."/>
+    <property name="text11" value="* I know WWC is nowhere close to being finished..."/>
+    <property name="text12" value="* But I still would like to thank all of you."/>
+    <property name="text13" value="* - BrandonK7200"/>
+    <property name="text14" value="* P.S:[wait:10] If you get a Maxim Tomato instead of a weapon/armor..."/>
+    <property name="text15" value="* It's because the item hasn't been made yet."/>
+    <property name="text16" value="* Rest assured,[wait:5] they'll be added eventually."/>
+    <property name="text2" value="* Here,[wait:5] you'll find several items that are planned for When Worlds Collide."/>
+    <property name="text3" value="* Specifically,[wait:5] the weapons and armors given out by each section's secret boss."/>
+    <property name="text4" value="* Along side a chest containing a butt ton of money,[wait:5] as a way of saying thanks."/>
+    <property name="text5" value="* Thanks to everyone who is,[wait:5] has,[wait:5] and will help out with WWC."/>
+    <property name="text6" value="* Without you guys,[wait:5] WWC could never get as far as I wanted it to."/>
+    <property name="text7" value="* Thanks to the entire Kristal engine dev team."/>
+    <property name="text8" value="* Without your hard work,[wait:5] WWC would most likely never have seen the light of day."/>
+    <property name="text9" value="* Thanks to all of my friends who've helped me through a lot."/>
+   </properties>
+  </object>
+  <object id="7" name="chest" x="320" y="480" width="40" height="40">
+   <properties>
+    <property name="item" value="maximtomato"/>
+   </properties>
+  </object>
+  <object id="8" name="chest" x="480" y="480" width="40" height="40">
+   <properties>
+    <property name="item" value="maximtomato"/>
+   </properties>
+  </object>
+  <object id="9" name="chest" x="400" y="240" width="40" height="40">
+   <properties>
+    <property name="item" value="originshield"/>
+   </properties>
+  </object>
+  <object id="10" name="chest" x="280" y="360" width="40" height="40">
+   <properties>
+    <property name="item" value="maximtomato"/>
+   </properties>
+  </object>
+  <object id="11" name="chest" x="520" y="360" width="40" height="40">
+   <properties>
+    <property name="item" value="maximtomato"/>
+   </properties>
+  </object>
+  <object id="17" name="chest" x="400" y="160" width="40" height="40">
+   <properties>
+    <property name="item" value="aeonlance"/>
+   </properties>
+  </object>
+  <object id="19" name="chest" x="600" y="360" width="40" height="40">
+   <properties>
+    <property name="item" value="maximtomato"/>
+   </properties>
+  </object>
+  <object id="20" name="chest" x="560" y="560" width="40" height="40">
+   <properties>
+    <property name="item" value="maximtomato"/>
+   </properties>
+  </object>
+  <object id="21" name="chest" x="240" y="560" width="40" height="40">
+   <properties>
+    <property name="item" value="maximtomato"/>
+   </properties>
+  </object>
+  <object id="22" name="chest" x="200" y="360" width="40" height="40">
+   <properties>
+    <property name="item" value="maximtomato"/>
+   </properties>
+  </object>
+  <object id="23" name="chest" x="400" y="440" width="40" height="40">
+   <properties>
+    <property name="money" value="9999"/>
+   </properties>
+  </object>
+  <object id="25" name="interactable" x="364" y="600" width="116" height="80">
+   <properties>
+    <property name="cutscene" value="spamroom.warpbin"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="markers">
+  <object id="24" name="spawn" x="420" y="560">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
