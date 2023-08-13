@@ -152,7 +152,7 @@ function Mod:onTextSound(sound, node)
 
     if sound == "omori" then
         if self.voice_timer == 0 then
-            local snd = Assets.playSound("voice/omori", nil, 0.9 + Utils.random(0.18))
+            Assets.playSound("voice/omori", nil, 0.9 + Utils.random(0.18))
             self.voice_timer = 1.1
         end
         return true
