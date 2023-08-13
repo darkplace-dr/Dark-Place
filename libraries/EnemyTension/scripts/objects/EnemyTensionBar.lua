@@ -1,3 +1,4 @@
+---@class EnemyTensionBar : Object
 local EnemyTensionBar, super = Class(Object)
 
 --[[
@@ -70,7 +71,7 @@ function EnemyTensionBar:show()
 end
 
 function EnemyTensionBar:getDebugInfo()
-    local info = super:getDebugInfo(self)
+    local info = super.getDebugInfo(self)
     table.insert(info, "Tension: "  .. Utils.round(self:getPercentageFor(Game.battle.encounter.enemy_tension) * 100) .. "%")
     table.insert(info, "Apparent: " .. Utils.round(self.apparent / 2.5))
     table.insert(info, "Current: "  .. Utils.round(self.current / 2.5))
@@ -162,7 +163,7 @@ function EnemyTensionBar:update()
     end
 
 
-    super:update(self)
+    super.update(self)
 end
 
 function EnemyTensionBar:draw()
@@ -269,7 +270,7 @@ function EnemyTensionBar:draw()
         love.graphics.print("X", 36, 110)
     end
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return EnemyTensionBar

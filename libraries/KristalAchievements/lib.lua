@@ -31,7 +31,7 @@ function lib:init()
         end
     end
 
-    if Kristal.getLibConfig("achievements", "print_console_intro") then
+    if Kristal.getLibConfig("achievements", "print_console_intro") ~= false then
         print("Achievement library loaded - courtesy of SciSpace, BrandonK7200, AcousticJamm, and Dobby233Liu")
     end
 end
@@ -90,8 +90,14 @@ end
 
 -- Loads data from the achievement savefile in the filesystem.
 function lib:loadGlobalAchievements()
-    local data = JSON.decode(love.filesystem.read(self:getGlobalAchFile()))
+    local data_raw, info = love.filesystem.read(self:getGlobalAchFile())
+    if not data_raw then
+        print("ACH: error while loading global ach. file: " .. info)
+        return false
+    end
+    local data = JSON.decode(data_raw)
     self:loadAchievements(data.achievements)
+    return true
 end
 
 -- Loads data from a hashtable of achievements.
@@ -120,7 +126,11 @@ end
 function lib:writeGlobalAchievements()
     local data = { achievements = self:generateAchSaveData() }
 
-    love.filesystem.write(self:getGlobalAchFile(), JSON.encode(data))
+    local success, info = love.filesystem.write(self:getGlobalAchFile(), JSON.encode(data))
+    if not success then
+        print("ACH: error while writing global ach. file: " .. info)
+    end
+    return success
 end
 
 -- Gets a specific achievement from memory.
@@ -148,6 +158,9 @@ function lib:earnedAch(achievement)
     return getAchievement(achievement).earned
 end
 
+---@deprecated
+-- Returns whether a achievement was completed or not.
+-- For compatability with old DP code.
 function lib:hasAch(achievement)
     return self:earnedAch(achievement)
 end

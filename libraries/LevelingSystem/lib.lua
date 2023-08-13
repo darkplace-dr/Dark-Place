@@ -1,7 +1,7 @@
 local Lib = {}
 
 function Lib:init()
-    if Kristal.getLibConfig("leveling", "print_console_intro") then
+    if Kristal.getLibConfig("leveling", "print_console_intro") ~= false then
         print("Leveling System library loaded - It's time to get LOVE!")
     end
 end

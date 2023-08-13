@@ -2,7 +2,7 @@ local Ach, super = Class(Achievement)
 
 function Ach:init()
     super.init(self)
-    
+
     self.name = "The Song Of My People" -- Display name
 
     self.icon = "achievements/glitch_music" -- Normal icon

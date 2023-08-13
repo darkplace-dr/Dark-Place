@@ -47,12 +47,14 @@ function LancerGotchi:update()
     if self.movecon == 0 or self.movecon == 1 then
         if self.con == 0 then
             if self.movecon == 0 then
+                ---@diagnostic disable-next-line: missing-fields
                 self:setPhysics({
                     speed_x = -4,
                 })
                 self.lancer:setSprite("walk/left")
 			end
             if self.movecon == 1 then
+                ---@diagnostic disable-next-line: missing-fields
                 self:setPhysics({
                     speed_x = 4,
                 })
@@ -80,6 +82,7 @@ function LancerGotchi:update()
                 self.lancer:setSprite("walk/down")
             end
             if self.stop == 1 then
+                ---@diagnostic disable-next-line: missing-fields
                 self:setPhysics({
                     speed_x = 0,
                 })
@@ -91,6 +94,7 @@ function LancerGotchi:update()
     if self.movecon == 2 or self.movecon == 3 then
         if self.con == 0 then
             if self.movecon == 3 then
+                ---@diagnostic disable-next-line: missing-fields
                 self:setPhysics({
                     speed_y = -8,
                     gravity = 1,
@@ -106,6 +110,7 @@ function LancerGotchi:update()
         end
         if self.con == 1 then
             if self.y >= self.maxy then
+                ---@diagnostic disable-next-line: missing-fields
                 self:setPhysics({
                     speed_y = 0,
                     gravity = 0,
@@ -134,6 +139,7 @@ function LancerGotchi:update()
                 self.spintimer = 0
             end
             if self.spincount >= 8 then
+                ---@diagnostic disable-next-line: missing-fields
                 self:setPhysics({
                     speed_x = 0,
                     speed_y = 0,
@@ -149,6 +155,7 @@ function LancerGotchi:update()
             self.lancer:setAnimation("wave")
             self.wavetimer = 0
             self.con = 1
+            ---@diagnostic disable-next-line: missing-fields
             self:setPhysics({
                 speed = 0,
                 speed_x = 0,
@@ -163,6 +170,7 @@ function LancerGotchi:update()
         end
     end
     if self.movecon == 10 then
+        ---@diagnostic disable-next-line: missing-fields
         self:setPhysics({
             speed = 0,
             speed_x = 0,
@@ -171,6 +179,7 @@ function LancerGotchi:update()
     end
     if self.movecon == 11 then
         self.lancer:setAnimation("stone")
+        ---@diagnostic disable-next-line: missing-fields
         self:setPhysics({
             speed_x = 0,
             gravity = 0,

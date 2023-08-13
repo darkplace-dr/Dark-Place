@@ -43,13 +43,13 @@ function Mod:postInit(new_file)
     self:initializeImportantFlags(new_file)
 
     if new_file then
-        Game.world:startCutscene("_main.introcutscene")
-		
 		if Game.save_name == "SUPER" then
 			Game.inventory:addItem("chaos_emeralds")
 		end
+
+        Game.world:startCutscene("_main.introcutscene")
     end
-    
+
     self:initBulborb()
 end
 
@@ -116,10 +116,42 @@ function Mod:unload()
 end
 
 function Mod:save(data)
-    if data.map == "​" then
-        data.map = Mod.world_dest_map_bak or Mod.lastMap
+    if data.room_id == "​" then
+        Log:print("Attempting to get this save out of the mb map", "warn")
+
+        data.room_id = Mod.world_dest_map_bak or Mod.lastMap or data.room_id
+        local the_map = Registry.createMap(data.room_id)
+        data.room_name = (the_map and the_map.name) or "???"
+
+        if Mod.world_dest_mk_bak then
+            if type(Mod.world_dest_mk_bak) == "string" then
+                data.spawn_marker = Mod.world_dest_mk_bak
+            else
+                data.spawn_position = Mod.world_dest_mk_bak
+            end
+        end
+        --data.spawn_facing = Mod.world_dest_fc_bak
+
+        if Game.world.map.id == "​" then
+            data.party = Game.world.map.old_party or data.party
+            data.flags["partySet"] = nil
+        end
     end
 end
+
+-- will not Work
+--[[function Mod:load(data, new_file)
+    local likely_old_save
+
+    if data.room_id == "devstart" or data.room_id == "devroom" or data.room_id == "partyroom" then
+        likely_old_save = true
+        data.room_id = "devhotel/devdiner/" .. data.room_id
+    end
+
+    if not new_file and likely_old_save then
+        Log:print("Save seems to be from an old version")
+    end
+end]]
 
 function Mod:preUpdate()
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
@@ -152,7 +184,7 @@ function Mod:onTextSound(sound, node)
 
     if sound == "omori" then
         if self.voice_timer == 0 then
-            local snd = Assets.playSound("voice/omori", nil, 0.9 + Utils.random(0.18))
+            Assets.playSound("voice/omori", nil, 0.9 + Utils.random(0.18))
             self.voice_timer = 1.1
         end
         return true

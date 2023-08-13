@@ -1,3 +1,4 @@
+---@class EnemyGrazeSprite : Object
 local EnemyGrazeSprite, super = Class(Object)
 
 function EnemyGrazeSprite:init(x, y)
@@ -45,7 +46,7 @@ function EnemyGrazeSprite:draw()
         love.graphics.pop()
     end
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return EnemyGrazeSprite

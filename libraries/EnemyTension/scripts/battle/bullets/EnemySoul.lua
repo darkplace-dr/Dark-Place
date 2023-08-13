@@ -1,10 +1,13 @@
+---@class EnemySoul : Bullet
 local EnemySoul, super = Class(Bullet)
 
 function EnemySoul:init(x, y, dir, speed)
-    
-    super:init(self, x, y, "battle/bullets/enemy_heart")
+    super.init(self, x, y, "battle/bullets/enemy_heart")
+
     self:setScale(1,1)
     self:setOrigin(0.5, 0.5)
+    -- FIXME: maybe something to be fixed in Kristal
+    ---@diagnostic disable-next-line: assign-type-mismatch
     self.collider = CircleCollider(self, 10, 10, 8)
     --self.color = {247/255, 143/255, 159/255}
 
@@ -12,7 +15,7 @@ function EnemySoul:init(x, y, dir, speed)
     self.yspeed = 0
 
     self.alpha = 0
-    
+
     self.remove_offscreen = false
 
     -- This bullet does no damage and cannot be grazed for TP.
@@ -34,11 +37,9 @@ function EnemySoul:init(x, y, dir, speed)
     self.graze_sprite.graze_scale = self.graze_size_factor
     self.graze_sprite.collider = self.graze_collider
     self:addChild(self.graze_sprite)
-
 end
 
 function EnemySoul:update()
-    
     if self.alpha < 1 then
         self.alpha = Utils.approach(self.alpha, 1, DT)
     end
@@ -52,10 +53,11 @@ function EnemySoul:update()
     local ydifference = (Game.battle.soul.y+Game.battle.soul.height*2) - self.y - 40
     local xspeed = self.xspeed / 2 + xdifference / 100
     local yspeed = self.yspeed / 2 + ydifference / 100
+    -- FIXME?: DT moment !!
     self.x, self.y=self.x+xspeed, self.y+yspeed
     self.xspeed = xspeed
     self.yspeed = yspeed
-    super:update(self)
+    super.update(self)
 
     -- This bullet will try to graze YOU to steal your TP instead of doing damage.
     -- It SHOULD be at about the same rate you'd gain TP from grazing enemy bullets, but grazing is complicated enough that it may be slightly off.
@@ -69,11 +71,10 @@ function EnemySoul:update()
             Assets.playSound("graze")
         end
     end
-
 end
 
 function EnemySoul:onCollide(soul)
--- Do literally nothing
+    -- Do literally nothing
 end
 
 return EnemySoul

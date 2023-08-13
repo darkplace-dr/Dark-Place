@@ -29,12 +29,15 @@ function World:loadMap(...)
     	marker = "spawn"
     end
 
+    Mod.world_dest_map_bak = nil
+    Mod.world_dest_mk_bak = nil
+    Mod.world_dest_fc_bak = nil
     if not Game:getFlag("s", false)
         and Utils.random(1, 1000) == 1
         and (not Game.world.cutscene and not Game.battle)
     then
         Mod.world_dest_map_bak = map
-        Mod.world_dest_mk_bak = marker
+        Mod.world_dest_mk_bak = marker or {x, y}
         Mod.world_dest_fc_bak = facing
         map = "​"
         marker = "spawn"
