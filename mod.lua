@@ -139,6 +139,19 @@ function Mod:save(data)
     end
 end
 
+function Mod:load(data)
+    local likely_old_save
+
+    if data.room_id == "devstart" or data.room_id == "devroom" or data.room_id == "partyroom" then
+        likely_old_save = true
+        data.room_id = "devhotel/devdiner/" .. data.room_id
+    end
+
+    if likely_old_save then
+        Log:print("Save seems to be from an old version")
+    end
+end
+
 function Mod:preUpdate()
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
 end
