@@ -73,49 +73,18 @@ function PartyMember:getNextLv()
     return Utils.clamp(self:getNextLvRequiredEXP() - self.exp, 0, self.max_exp)
 end
 
--- FIXME
+function PartyMember:onSave(data)
+    if Kristal.getLibConfig("leveling", "global_love") then return end
 
-function PartyMember:save()
-    local data = {
-        id = self.id,
-        title = self.title,
-        level = self.level,
-        health = self.health,
-        stats = self.stats,
-        lw_lv = self.lw_lv,
-        lw_exp = self.lw_exp,
-        lw_health = self.lw_health,
-        lw_stats = self.lw_stats,
-        spells = self:saveSpells(),
-        equipped = self:saveEquipment(),
-        flags = self.flags,
-        exp = self.exp,
-        love = self.love
-    }
-    self:onSave(data)
-    return data
+    data.exp = self.exp
+    data.love = self.love
 end
 
-function PartyMember:load(data)
-    self.title = data.title or self.title
-    self.level = data.level or self.level
-    self.stats = data.stats or self.stats
-    self.lw_lv = data.lw_lv or self.lw_lv
-    self.lw_exp = data.lw_exp or self.lw_exp
-    self.lw_stats = data.lw_stats or self.lw_stats
-    if data.spells then
-        self:loadSpells(data.spells)
-    end
-    if data.equipped then
-        self:loadEquipment(data.equipped)
-    end
-    self.flags = data.flags or self.flags
-    self.health = data.health or self:getStat("health", 0, false)
-    self.lw_health = data.lw_health or self:getStat("health", 0, true)
+function PartyMember:onLoad(data)
+    if Kristal.getLibConfig("leveling", "global_love") then return end
+
     self.exp = data.exp or self.exp
     self.love = data.love or self.love
-
-    self:onLoad(data)
 end
 
 return PartyMember
