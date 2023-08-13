@@ -62,7 +62,7 @@ function Dummy:onAct(battler, name)
 end
 
 function Dummy:update()
-	super:update(self)
+	super.update(self)
 	self.health = 1000000
 end
 

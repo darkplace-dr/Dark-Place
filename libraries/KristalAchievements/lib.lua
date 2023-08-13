@@ -158,6 +158,9 @@ function lib:earnedAch(achievement)
     return getAchievement(achievement).earned
 end
 
+---@deprecated
+-- Returns whether a achievement was completed or not.
+-- For compatability with old DP code.
 function lib:hasAch(achievement)
     return self:earnedAch(achievement)
 end
