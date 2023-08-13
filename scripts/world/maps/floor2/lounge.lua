@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 48,
+  nextobjectid = 49,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown",
@@ -78,7 +78,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 140,
           y = 160,
@@ -91,7 +91,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 120,
@@ -104,7 +104,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 160,
@@ -117,7 +117,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 480,
@@ -130,7 +130,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 480,
@@ -143,7 +143,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 460,
           y = 120,
@@ -156,7 +156,7 @@ return {
         {
           id = 30,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 160,
@@ -169,7 +169,7 @@ return {
         {
           id = 31,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 780,
           y = 160,
@@ -198,7 +198,7 @@ return {
         {
           id = 20,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 378,
           y = 140,
@@ -214,7 +214,7 @@ return {
         {
           id = 27,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 320,
@@ -227,7 +227,7 @@ return {
         {
           id = 28,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 640,
@@ -240,7 +240,7 @@ return {
         {
           id = 29,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 840,
           y = 320,
@@ -256,7 +256,7 @@ return {
         {
           id = 32,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 58,
           y = 315,
@@ -272,7 +272,7 @@ return {
         {
           id = 34,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 698,
           y = 315,
@@ -288,7 +288,7 @@ return {
         {
           id = 46,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 380,
@@ -301,7 +301,7 @@ return {
         {
           id = 49,
           name = "sprite",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 208,
           y = 160,
@@ -319,7 +319,7 @@ return {
         {
           id = 50,
           name = "sprite",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 328,
           y = 40,
@@ -337,7 +337,7 @@ return {
         {
           id = 51,
           name = "sprite",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 488,
           y = 40,
@@ -355,7 +355,7 @@ return {
         {
           id = 52,
           name = "sprite",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 608,
           y = 160,
@@ -368,6 +368,21 @@ return {
             ["scaley"] = 2,
             ["speed"] = 0.25,
             ["texture"] = "world/maps/chapter1/torch"
+          }
+        },
+        {
+          id = 48,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 601.738,
+          y = 243.345,
+          width = 73.1361,
+          height = 76.6241,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "lounge.rightsign"
           }
         }
       }
@@ -389,7 +404,7 @@ return {
         {
           id = 10,
           name = "entry_elevator",
-          class = "",
+          type = "",
           shape = "point",
           x = 418,
           y = 190,
@@ -402,7 +417,7 @@ return {
         {
           id = 45,
           name = "entry_doorsright",
-          class = "",
+          type = "",
           shape = "point",
           x = 740,
           y = 360,
@@ -415,7 +430,7 @@ return {
         {
           id = 47,
           name = "entry_doorsleft",
-          class = "",
+          type = "",
           shape = "point",
           x = 100,
           y = 360,
@@ -428,7 +443,7 @@ return {
         {
           id = 48,
           name = "entry_east",
-          class = "",
+          type = "",
           shape = "point",
           x = 800,
           y = 400,
