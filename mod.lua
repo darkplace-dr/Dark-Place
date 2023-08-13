@@ -139,7 +139,8 @@ function Mod:save(data)
     end
 end
 
-function Mod:load(data)
+-- will not Work
+--[[function Mod:load(data, new_file)
     local likely_old_save
 
     if data.room_id == "devstart" or data.room_id == "devroom" or data.room_id == "partyroom" then
@@ -147,10 +148,10 @@ function Mod:load(data)
         data.room_id = "devhotel/devdiner/" .. data.room_id
     end
 
-    if likely_old_save then
+    if not new_file and likely_old_save then
         Log:print("Save seems to be from an old version")
     end
-end
+end]]
 
 function Mod:preUpdate()
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
