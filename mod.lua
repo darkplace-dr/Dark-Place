@@ -117,7 +117,18 @@ end
 
 function Mod:save(data)
     if data.room_id == "​" then
-        data.room_id = Mod.world_dest_map_bak or Mod.lastMap
+        data.room_id = Mod.world_dest_map_bak or Mod.lastMap or data.room_id
+        if type(Mod.world_dest_mk_bak) == "string" then
+            data.spawn_marker = Mod.world_dest_mk_bak
+        else
+            data.spawn_position = Mod.world_dest_mk_bak
+        end
+        --data.spawn_facing = Mod.world_dest_fc_bak
+
+        if Game.world.map.id == "​" then
+            data.party = Game.world.map.old_party or data.party
+            data.flags["partySet"] = nil
+        end
     end
 end
 
