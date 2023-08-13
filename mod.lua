@@ -43,13 +43,13 @@ function Mod:postInit(new_file)
     self:initializeImportantFlags(new_file)
 
     if new_file then
-        Game.world:startCutscene("_main.introcutscene")
-		
 		if Game.save_name == "SUPER" then
 			Game.inventory:addItem("chaos_emeralds")
 		end
+
+        Game.world:startCutscene("_main.introcutscene")
     end
-    
+
     self:initBulborb()
 end
 
@@ -116,8 +116,8 @@ function Mod:unload()
 end
 
 function Mod:save(data)
-    if data.map == "​" then
-        data.map = Mod.world_dest_map_bak or Mod.lastMap
+    if data.room_id == "​" then
+        data.room_id = Mod.world_dest_map_bak or Mod.lastMap
     end
 end
 
