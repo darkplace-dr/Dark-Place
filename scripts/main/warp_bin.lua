@@ -25,7 +25,7 @@ Mod.warp_bin_codes = {
     ["SPAMROOM"] = { result = "spamroom" },
     ["DESSHERE"] = { result = "dessstuff/dessstart" },
     ["BOSSRUSH"] = { result = "thearena" },
-    ["DEVDINER"] = { result = "devstart" },
+    ["DEVDINER"] = { result = "devhotel/devdiner/devstart" },
     ["MAUSHOLE"] = { result = "chevroom" },
     ["WIFIDOWN"] = { result = "googlefield" },
     ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
@@ -51,6 +51,11 @@ Mod.warp_bin_codes = {
             else
                 cutscene:text("* Okay,[wait:5] are you fucking done?")
             end
+        end
+    },
+    ["TOMBSITE"] = {
+        result = function(cutscene)
+            cutscene:text("* (Work in progress. Check back in another update.)")
         end
     },
 }

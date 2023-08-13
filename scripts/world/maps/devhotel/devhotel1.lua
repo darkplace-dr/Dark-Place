@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 54,
+  nextobjectid = 56,
   properties = {
     ["music"] = "greenroom"
   },
@@ -29,7 +29,7 @@ return {
     },
     {
       name = "dw_city_alley",
-      firstgid = 76,
+      firstgid = 77,
       filename = "../../tilesets/dw_city_alley.tsx"
     }
   },
@@ -237,7 +237,7 @@ return {
           width = 64,
           height = 100,
           rotation = 0,
-          gid = 73,
+          gid = 76,
           visible = true,
           properties = {}
         },
@@ -335,8 +335,8 @@ return {
           }
         },
         {
-          id = 43,
-          name = "",
+          id = 54,
+          name = "interactable",
           type = "",
           shape = "rectangle",
           x = 440,
@@ -346,7 +346,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "devhotel.template",
+            ["cutscene"] = "devhotel.jamm",
             ["solid"] = true
           }
         },
@@ -430,6 +430,19 @@ return {
           type = "",
           shape = "point",
           x = 360,
+          y = 306,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 55,
+          name = "door_003",
+          type = "",
+          shape = "point",
+          x = 480,
           y = 306,
           width = 0,
           height = 0,

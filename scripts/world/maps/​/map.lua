@@ -14,6 +14,8 @@ function mb_map:load()
 	self.stepback = 0.01
 	Game.world.camera.keep_in_bounds = false
 
+	self.limit_timer = 900
+
 	super.load(self)
 end
 
@@ -62,6 +64,13 @@ function mb_map:update()
 				end)
 			end)
 		end
+	else
+		if not Game:getFlag("finish") then
+			self.limit_timer = self.limit_timer - DTMULT
+			if self.limit_timer <= 0 then
+				self:casuallyApproachChild()
+			end
+		end
 	end
 end
 
@@ -71,6 +80,19 @@ function mb_map:onExit()
 		Game:setFlag("partySet", nil)
 	end
 	Game.world.camera.keep_in_bounds = true
+end
+
+function mb_map:casuallyApproachChild()
+	if not Game:getFlag("finish", false) then
+		Game:setFlag("finish", true)
+	end
+	self.back = true
+	for i=#self.collision, 1, -1 do
+		table.remove(self.collision, i)
+	end
+	local mb = Game.world:getEvent(10)
+	mb:setHitbox(0, 0, mb.width, mb.height)
+	Game.world.camera.keep_in_bounds = false
 end
 
 return mb_map

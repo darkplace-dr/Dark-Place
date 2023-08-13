@@ -18,5 +18,9 @@ return {
         end
 
         Kristal.callEvent("completeAchievement", "dummy")
-    end
+    end,
+	
+	end_battle = function(cutscene)
+		Game.battle:returnToWorld()
+	end
 }

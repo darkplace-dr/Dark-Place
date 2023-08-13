@@ -29,6 +29,7 @@ function BossRematchMenu:init()
         { name = "Spamgolor",  flag = "spamgolor_defeated",  encounter = "spamgolor" },
         { name = "Mimic",      flag = "mimic_defeated",      encounter = "mimicboss" },
         { name = "Starwalker", flag = "starwalker_defeated", encounter = "starwalker" },
+        { name = "Sam", 	   flag = "sam_defeated", 		 encounter = "sam" },
     }
 
     self.currently_selected = 1

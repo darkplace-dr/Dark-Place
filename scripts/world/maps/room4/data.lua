@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 40,
+  nextobjectid = 41,
   properties = {
     ["border"] = "castle",
     ["music"] = "castletown_empty",
@@ -57,8 +57,8 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 0, 0,
-        15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 16, 0, 0,
+        7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 0,
+        15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 16, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
@@ -127,7 +127,7 @@ return {
           shape = "rectangle",
           x = 0,
           y = 400,
-          width = 560,
+          width = 640,
           height = 40,
           rotation = 0,
           visible = true,
@@ -138,7 +138,7 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 560,
+          x = 600,
           y = 320,
           width = 40,
           height = 80,
@@ -179,7 +179,7 @@ return {
           shape = "rectangle",
           x = 520,
           y = 280,
-          width = 80,
+          width = 120,
           height = 40,
           rotation = 0,
           visible = true,
@@ -347,6 +347,22 @@ return {
           properties = {
             ["flagcheck"] = "!mrbeast_greatdoorunlocked",
             ["solid"] = true
+          }
+        },
+        {
+          id = 40,
+          name = "NPC",
+          type = "",
+          shape = "point",
+          x = 560,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "sam",
+            ["cutscene"] = "room4.sam"
           }
         }
       }

@@ -30,13 +30,14 @@ function GoogleDino:init()
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "AT 5 DF 2"
+    self.check = "AT 5 DF 2\nA dinosaur on a journey.\nIt seems you are in its way."
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
         "* (Your internet has been disconnected.)",
         "* The Dino stares at you with a blank expression on its face.",
         "* Smells like network diagnostics.",
+        "* You don't think you'll complete the game.",
     }
     -- Text displayed at the bottom of the screen when the enemy has low health
     self.low_health_text = "* The servers are crashing."
@@ -57,7 +58,7 @@ function GoogleDino:onShortAct(battler, name)
         elseif battler.chara.id == "dess" then
             return "* Dess did absolutely nothing."
         elseif battler.chara.id == "brandon" then
-            return "* Brandon did something!"
+            return "* Brandon did an epic noscope!"
         elseif battler.chara.id == "dumbie" then
             return "* Dumbie did something!"
         elseif battler.chara.id == "robo_susie" then

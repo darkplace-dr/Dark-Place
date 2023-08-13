@@ -76,44 +76,51 @@
 
   // Reaction messages for specific names that players may input in the naming screen.
   "namesMessages": {
-    "YOU": "[style:GONER][spacing:3.2]*croak*",
+    // Characters (I guess)
+    "YOU": "[spacing:3.2]*croak*",
     "KRIS": "[style:GONER][spacing:3.2]THE FUTURE IS IN\nYOUR HANDS.",
-    "SUSIE": "[style:GONER][spacing:3.2]Uhhh, yeah sure.\nI guess...",
-    "DESS": "[style:GONER][spacing:3.2]fat chance, lmao.",
-
-    "BRANDON": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
-    "BRENDA": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
-    "JARU": "[style:GONER][spacing:3.2]NOTE: NOT TO BE CONFUSED\nWITH A CERTAIN DELTARUNE\nTHEORIST.",
-    "VELVET": "[style:GONER][spacing:3.2]WAIT WHICH ONE ARE YOU\nTALKING ABOUT???\nTHERE'S THE FABRIC, CAKE,\nAND THE MOUSE.\nWHICH ONE?",
-
+    "SUSIE": "[spacing:3.2]Uhhh, yeah sure.\nI guess...",
+    "DESS": "[spacing:3.2]fat chance, lmao.",
     "SPAMTON": "[style:GONER][spacing:3.2]GET YOUR OWN [Account\nName] YOU [!@?#]!!!",
     "SOAMTON": "[style:GONER][spacing:3.2]YOU KNOW WHAT? I'LL\n[[Accept Terms &\nAgreements]] THIS TIME...",
     "MORSHU": "[style:GONER][spacing:3.2]SORRY. I CAN'T LET YOU USE\nMY NAME! COME BACK WHEN\nYOU'RE A LITTLE...\nMMMMMM...ORIGINAL!",
 
-    "MERG": "[style:GONER][spacing:3.2]You will be challenged.",
+    // Devs
+    "BRANDON": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
+    "BRENDA": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
+    "JARU": "[style:GONER][spacing:3.2]NOTE: NOT TO BE CONFUSED\nWITH A CERTAIN DELTARUNE\nTHEORIST.",
+    "VELVET": "[style:GONER][spacing:3.2]WAIT WHICH ONE ARE YOU\nTALKING ABOUT???\nTHERE'S THE FABRIC, CAKE,\nAND THE MOUSE.\nWHICH ONE?",
+    // Agent 7? ~~(Would her Dess% speedrun be invalid just for this change)~~
+    "LUCY": "[style:GONER][spacing:3.2]HEY, THAT'S ME!",
+
+    // Misc. jokes
     "GHASTTEAR": "[style:GONER][spacing:3.2]HOLY SHIT!!!!!\nGHAST TEAR REAL!!!!!!!!!!",
     "AMOGUS": "[style:GONER][spacing:3.2]WHEN THE LIGHT IS\nRUNNING LOW!!! :flushed:",
-    "BLUE": "[style:GONER][spacing:3.2][color:blue]WHAT IS WRONG WITH YOU?\nWHY ARE YOU BLUE?",
     "WALTER": "[style:GONER][spacing:3.2]I AM THE ONE WHO\nPROCEEDS.",
     "PLAGUEIS": "[style:GONER][spacing:3.2]IT'S NOT A STORY THE\nLIGHTNERS WOULD TELL\nYOU...",
     "GARFZONE": "[style:GONER][spacing:3.2]GEE...SOME PEOPLE ENJOY\nA LITTLE MUSIC IN THE\nMORNING...",
     "SWALLOW": "[style:GONER][spacing:3.2]WHAT DO YOU MEAN?\nAFRICAN OR EUROPEAN?",
-    "PEPPINO": "[style:GONER][spacing:3.2]I'M NOT GONNA\nSUGARCOAT IT:\n\nDID YOU KNOW THAT\nYOU CAN BLOCK AND\n\n\nPARRY ANY PROJECTILE\nOR DAMAGE BY PRESSING \n[V] BEFORE GETTING HURT?",
     // Extra visual bit is handled by preview.lua
     "SWELLOW": "[style:GONER][spacing:3.2]AWW THE SCRUNKLY.\nTHE GOOBER. A\nSWELL FELLOW. A\nLITTLE FELLA.",
-	"PAUL": "KAAAAAAAAA!\nPaul is the favorite\nof all!",
-	"SUPER": "[style:GONER][spacing:3.2]Start with seven\nChaos Emeralds?"
+    "PAUL": "[spacing:3.2]KAAAAAAAAA!\nPaul is the favorite\nof all!",
+
+    // Challenges
+    // FIXME: Should we use the GONER style on these lower-case messages?
+    "BLUE": "[style:GONER][spacing:3.2][color:blue]WHAT IS WRONG WITH YOU?\nWHY ARE YOU BLUE?",
+    "PEPPINO": "[style:GONER][spacing:3.2]I'M NOT GONNA\nSUGARCOAT IT:\n\nDID YOU KNOW THAT\nYOU CAN BLOCK AND\n\n\nPARRY ANY PROJECTILE\nOR DAMAGE BY PRESSING \n[V] BEFORE GETTING HURT?",
+    "MERG": "[style:GONER][spacing:3.2]You will be challenged.",
+    "SUPER": "[style:GONER][spacing:3.2]Start with seven\nChaos Emeralds?"
   },
   // Names to disallow player from using in the naming screen.
   "namesDeny": [
-    "SPAMTON",
-    "MORSHU",
     "DESS",
+    "SPAMTON",
+    "MORSHU"
   ],
   // Names that crash the game.
   "namesCrash": [
-    "RALSEI",
     "GASTER",
+    "RALSEI"
   ],
 
   // Config values for the engine and any libraries you may have.

@@ -52,7 +52,7 @@ function spell:onCast(user, target)
         Assets.playSound("rudebuster_swing")
         local x, y = user:getRelativePos(user.width, user.height/2 - 10, Game.battle)
         local tx, ty = target:getRelativePos(target.width/2, target.height/2, Game.battle)
-        local blast = RudeBusterBeam(false, x, y, tx, ty, function(pressed)
+        local blast = RudeBusterBeam(true, x, y, tx, ty, function(pressed)
             local damage = math.ceil((user.chara:getStat("magic") * 6) + (user.chara:getStat("attack") * 13) - (target.defense * 6)) + 90
             if pressed then
                 damage = damage + 30
