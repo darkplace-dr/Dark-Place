@@ -12,7 +12,6 @@ function Ach:init()
     self.hidden = true -- Doesn't show up in the menu if not collected
     self.rarity = "Uncommon" -- An indicator on how difficult this achievement is. "Common", "Uncommon", "Rare", "Epic" "Legendary", "Unique", "Impossible"
     self.completion = false -- Shows a percent indicator if true, shows x/int if an integer, nothing if false.
-    self.index = 2 -- Order in which the achievements will show up on the menu.
 end
 
 return Ach

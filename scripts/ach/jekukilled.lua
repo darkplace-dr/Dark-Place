@@ -2,7 +2,7 @@ local Ach, super = Class(Achievement)
 
 function Ach:init()
     super.init(self)
-    
+
     self.name = "Mess with the OP" -- Display name
 
     self.icon = "achievements/jekukilled" -- Normal icon
