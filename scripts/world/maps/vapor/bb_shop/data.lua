@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 28,
+  nextobjectid = 31,
   properties = {
     ["border"] = "vaporwave",
     ["music"] = "forest"
@@ -23,14 +23,14 @@ return {
       exportfilename = "../../../tilesets/vapor.lua"
     },
     {
-      name = "objects",
-      firstgid = 22,
+      name = "devroom-objects",
+      firstgid = 36,
       filename = "../../../tilesets/devroom-objects.tsx",
       exportfilename = "../../../tilesets/devroom-objects.lua"
     },
     {
-      name = "objects",
-      firstgid = 71,
+      name = "other-objects",
+      firstgid = 82,
       filename = "../../../tilesets/other-objects.tsx",
       exportfilename = "../../../tilesets/other-objects.lua"
     }
@@ -90,9 +90,9 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 1, 1, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 0, 0,
         0, 0, 1, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 0, 0,
-        0, 0, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1,
-        0, 0, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 1,
-        0, 0, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 8, 8,
+        1, 1, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1,
+        1, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 1,
+        8, 8, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 8, 8,
         0, 0, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 1, 0, 0,
         0, 0, 9, 10, 10, 9, 9, 9, 8, 8, 8, 8, 8, 8, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -196,10 +196,23 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 40,
+          x = 0,
           y = 120,
-          width = 40,
-          height = 240,
+          width = 80,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 28,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 280,
+          width = 80,
+          height = 80,
           rotation = 0,
           visible = true,
           properties = {}
@@ -300,7 +313,7 @@ return {
           width = 134,
           height = 128,
           rotation = 0,
-          gid = 33,
+          gid = 47,
           visible = true,
           properties = {}
         },
@@ -314,7 +327,7 @@ return {
           width = 134,
           height = 128,
           rotation = 0,
-          gid = 2147483681,
+          gid = 2147483695,
           visible = true,
           properties = {}
         },
@@ -328,9 +341,25 @@ return {
           width = 180,
           height = 66,
           rotation = 0,
-          gid = 83,
+          gid = 94,
           visible = true,
           properties = {}
+        },
+        {
+          id = 30,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = -40,
+          y = 200,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "vapor/fizz_room",
+            ["marker"] = "fizz_entry"
+          }
         }
       }
     },
@@ -354,6 +383,19 @@ return {
           type = "",
           shape = "point",
           x = 600,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 29,
+          name = "entry2",
+          type = "",
+          shape = "point",
+          x = 40,
           y = 240,
           width = 0,
           height = 0,

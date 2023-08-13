@@ -256,7 +256,7 @@ return {
           visible = true,
           properties = {
             ["map"] = "vapor/bb_shop",
-            ["marker"] = "entry_bb_2"
+            ["marker"] = "entry2"
           }
         },
         {
