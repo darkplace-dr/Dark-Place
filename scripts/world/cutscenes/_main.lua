@@ -33,7 +33,7 @@ return {
         cutscene:during(function()
             if not can_exit then return false end
             if Input.down("menu") and Input.pressed("d") then
-                Assets.playSound("item", 0.2, 1.2)
+                Assets.playSound("item", 0.1, 1.2)
                 Game:setFlag("skipped_intro", true)
                 cutscene:after(function()
                     Game.world:loadMap("room1", nil, "down")
