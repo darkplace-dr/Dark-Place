@@ -55,7 +55,7 @@ return {
         cover:setLayer(WORLD_LAYERS["below_ui"])
         Game.world:addChild(cover)
 
-        local keypress_notice = Text("Press C+D to skip",
+        local keypress_notice = Text("Hold C+D to skip",
             0, SCREEN_HEIGHT/2+50, SCREEN_WIDTH, SCREEN_HEIGHT,
             {
                 align = "center",
