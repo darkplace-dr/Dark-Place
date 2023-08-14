@@ -55,10 +55,12 @@ end
 
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
+	
+	if Game:getFlag("quest_desc")[1] == "This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description." then
+		likely_old_save = true
+	end
 
-    if new_file then
-        likely_old_save = true
-
+    if new_file or likely_old_save then
         Kristal.callEvent("setDesc", "mainline",
             "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, \z
             they just get weirder the more you make. Susie has been making them left right and center, \z
