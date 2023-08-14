@@ -29,9 +29,12 @@ return {
             end
         end
 
+        local can_exit = true
         cutscene:during(function()
-            if Input.pressed("s") then
+            if not can_exit then return false end
+            if Input.down("menu") and Input.pressed("d") then
                 Assets.playSound("item", 0.2, 1.2)
+                Game:setFlag("skipped_intro", true)
                 cutscene:after(function()
                     Game.world:loadMap("room1", nil, "down")
                 end)
@@ -49,7 +52,21 @@ return {
         cover:setLayer(WORLD_LAYERS["below_ui"])
         Game.world:addChild(cover)
 
+        local keypress_notice = Text("Press C+D to skip",
+            0, SCREEN_HEIGHT/2+50, SCREEN_WIDTH, SCREEN_HEIGHT,
+            {
+                align = "center",
+                font = "plain"
+            }
+        )
+        keypress_notice.alpha = 0.025
+        keypress_notice:setParallax(0, 0)
+        keypress_notice:setLayer(WORLD_LAYERS["ui"])
+        Game.world:addChild(keypress_notice)
         cutscene:wait(2)
+        keypress_notice:remove()
+        can_exit = false
+
         gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
         cutscene:wait(0.5)
         gonerText("ARE WE[wait:40]\nCONNECTED?[wait:20]")
@@ -241,11 +258,6 @@ return {
             gonerText("CORRECT-A-MUNDO![wait:20]\nITS NAME IS YOU.[wait:20]")
             gonerText("ALRIGHT KIDDO,\nSENDING YA OFF\nNOW![wait:20] BYE-BYE![wait:20]")
         end
-
-        cutscene:wait(1)
-        gonerText("OH BTW YOU CAN PRESS\n\"S\" TO SKIP THIS\nCUTSCENE.")
-        gonerText("PROBABLY SHOULD HAVE\nTOLD YOU THIS AT\nTHE START BUT OH WELL.")
-        gonerText("OK SENDING YOU OFF\nTHIS TIME FR ONG.")
 
         Game:setFlag("vesselChosen", 1)
         cutscene:wait(1)
