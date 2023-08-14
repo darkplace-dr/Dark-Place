@@ -56,6 +56,17 @@ end
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
 
+    if new_file or Game:getFlag("quest_name")[Kristal.callEvent("getQuest", "mainline")] == "Mainline" then
+        likely_old_save = true
+
+        Kristal.callEvent("setName", "mainline", "Dark Place")
+        Kristal.callEvent("setDesc", "mainline",
+            "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, \z
+            they just get weirder the more you make. Susie has been making them left right and center, \z
+            and she is now on her 1000th fountain. Go and explore the world, there's lots to discover!"
+        )
+    end
+
     if new_file then
         self:rollFun()
     end
@@ -99,17 +110,6 @@ function Mod:initializeImportantFlags(new_file)
 
         Game:setFlag("bulborb_scale", 0.3)
         Game:setFlag("bulborb_position", 2)
-    end
-
-    if new_file then
-        Kristal.callEvent("setName", "mainline", "Dark Place")
-        Kristal.callEvent("setDesc", "mainline", "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, they just get weirder the more you make. Susie has been making them left right and center, and she is now on her 1000th fountain. Go and explore the world, there's lots to discover!")
-    end
-
-    if not new_file and not Game:getFlag("intro_over") then
-        likely_old_save = true
-        
-        Game:setFlag("intro_over", true)
     end
 
     ----------
@@ -241,13 +241,5 @@ end
 function Mod:loadObject(world, name, properties)
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
-    end
-end
-
-function Mod:onKeyPressed(key)
-    if key == "s" and not Game:getFlag("intro_over") then
-        Game.world:stopCutscene()
-        Game.world:mapTransition("room1", nil, "down")
-        Game:setFlag("intro_over", true)
     end
 end

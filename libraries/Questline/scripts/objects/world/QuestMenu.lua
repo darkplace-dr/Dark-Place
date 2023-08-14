@@ -31,6 +31,10 @@ function QuestMenu:init()
 	self.pages = math.ceil(#Game:getFlag("quest_name")/11)
 end
 
+function QuestMenu:onAdd()
+	Assets.playSound("dimbox")
+end
+
 function QuestMenu:update()
     super:update(self)
 	self.pages = math.ceil(#Game:getFlag("quest_name")/11)

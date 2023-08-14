@@ -13,11 +13,12 @@ return {
             end
         end
 
-        local function gonerText(str, advance)
+        -- FIXME: actually use skippable
+        local function gonerText(str, advance, skippable)
             text = DialogueText("[speed:0.5][spacing:6][style:GONER][voice:none]" .. str, 160, 100, 640, 480,
                 { auto_size = true })
             text.layer = WORLD_LAYERS["textbox"]
-            text.skip_speed = true
+            text.skip_speed = not skippable
             text.parallax_x = 0
             text.parallax_y = 0
             Game.world:addChild(text)
@@ -28,8 +29,23 @@ return {
             end
         end
 
-        ---@type Music
-        -- satisfy LLS
+        local can_exit = true
+        cutscene:during(function()
+            if not can_exit then return false end
+            if Input.down("menu") and Input.down("d") then
+                Assets.playSound("item", 0.1, 1.2)
+                Input.clear("d")
+                Game:setFlag("skipped_intro", true)
+                -- NOTE: when this cutscene gets complex we may need to do
+                -- some fallback configurations here
+                cutscene:after(function()
+                    Game.world:loadMap("room1", nil, "down")
+                end)
+                cutscene:endCutscene()
+            end
+        end)
+
+        ---@type Music -- satisfy LLS
         local world_music = Game.world.music
         world_music:play("AUDIO_DRONE", 0.8)
 
@@ -39,7 +55,21 @@ return {
         cover:setLayer(WORLD_LAYERS["below_ui"])
         Game.world:addChild(cover)
 
+        local skip_hint = Text("Hold C+D to skip",
+            0, SCREEN_HEIGHT/2+50, SCREEN_WIDTH, SCREEN_HEIGHT,
+            {
+                align = "center",
+                font = "plain"
+            }
+        )
+        skip_hint.alpha = 0.05
+        skip_hint:setParallax(0, 0)
+        skip_hint:setLayer(WORLD_LAYERS["ui"])
+        Game.world:addChild(skip_hint)
         cutscene:wait(2)
+        skip_hint:remove()
+        can_exit = false
+
         gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
         cutscene:wait(0.5)
         gonerText("ARE WE[wait:40]\nCONNECTED?[wait:20]")
@@ -65,7 +95,7 @@ return {
         gonerText("NOW.[wait:20]")
         cutscene:wait(0.5)
         gonerText("WE MAY-")
-		
+
         world_music:stop()
         Assets.playSound("phone")
         cutscene:wait(1)
@@ -79,7 +109,7 @@ return {
 		Assets.playSound("item")
         cutscene:wait(1.25)
         gonerText("HELLO?[wait:20]")
-		
+
         local wahwah = Music("voiceover/wahwah", 0.8)
         wahwah:play()
         cutscene:wait(1.25)
@@ -110,7 +140,7 @@ return {
 		
         cutscene:wait(1.75)
 
-        local background = GonerBackground(nil, nil, "AUDIO_DONKEY_b", true)
+        local background = GonerBackground(nil, nil, "AUDIO_DONKEY_b", true, world_music)
         background.layer = WORLD_LAYERS["ui"]
         Game.world:addChild(background)
 
@@ -232,11 +262,6 @@ return {
             gonerText("ALRIGHT KIDDO,\nSENDING YA OFF\nNOW![wait:20] BYE-BYE![wait:20]")
         end
 
-        cutscene:wait(1)
-        gonerText("OH BTW YOU CAN PRESS\n\"S\" TO SKIP THIS\nCUTSCENE.")
-        gonerText("PROBABLY SHOULD HAVE\nTOLD YOU THIS AT\nTHE START BUT OH WELL.")
-        gonerText("OK SENDING YOU OFF\nTHIS TIME FR ONG.")
-
         Game:setFlag("vesselChosen", 1)
         cutscene:wait(1)
 
@@ -248,7 +273,6 @@ return {
 
         cutscene:after(function()
             Game.world:mapTransition("room1", nil, "down")
-            Game:setFlag("intro_over", true)
         end)
     end,
 }

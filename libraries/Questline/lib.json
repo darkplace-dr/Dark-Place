@@ -5,4 +5,7 @@
 	"authors": [
 		"AcousticJamm"
 	],
+    "config": {
+        "print_console_intro": true
+    }
 }

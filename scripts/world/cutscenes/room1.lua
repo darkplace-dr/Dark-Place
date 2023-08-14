@@ -5,7 +5,7 @@ return {
         if not susie then return end
 
         Game.world.music:stop()
-        cutscene:wait(1)
+        cutscene:wait(0.5)
 
         cutscene:detachFollowers()
 
