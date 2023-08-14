@@ -8,7 +8,7 @@ end
 
 function Lib:onKeyPressed(key)
     if key == "q" then
-		if Game.world:openMenu(QuestMenu()) then
+		if (not Game.world.menu or not Game.world.menu:includes(QuestMenu)) and Game.world:openMenu(QuestMenu()) then
 			Assets.playSound("dimbox")
 		end
 	end
