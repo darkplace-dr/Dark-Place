@@ -1,6 +1,6 @@
 local GonerBackground, super = Class(Object)
 
-function GonerBackground:init(x, y, song, song_pitch_increases)
+function GonerBackground:init(x, y, song, song_pitch_increases, music_obj)
     super.init(self,
         x or SCREEN_WIDTH/2, y or SCREEN_HEIGHT/2,
         -- specifically, LW dimensions
@@ -22,7 +22,8 @@ function GonerBackground:init(x, y, song, song_pitch_increases)
         music_pitch = 1
         self.music_target_pitch = 1
     end
-    self.music = Music(song, 1, music_pitch)
+    self.music = music_obj or Music()
+    self.music:play(song, 1, music_pitch)
 
     self.piece_depth = 0
 
@@ -35,12 +36,6 @@ function GonerBackground:init(x, y, song, song_pitch_increases)
     self:addChild(self.timer)
 end
 
-function GonerBackground:onRemove(...)
-    super.onRemove(self, ...)
-
-    self.music:stop()
-end
-
 function GonerBackground:update()
     self.music:setPitch(
         Utils.approach(self.music:getPitch(), self.music_target_pitch,
@@ -48,6 +43,12 @@ function GonerBackground:update()
     )
 
     super.update(self)
+end
+
+function GonerBackground:onRemove(...)
+    super.onRemove(self, ...)
+
+    self.music:stop()
 end
 
 return GonerBackground
