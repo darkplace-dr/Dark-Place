@@ -30,10 +30,10 @@ function WorldCutscene:hideNametag()
     end
 end
 
--- FIXME: text choicers
-function WorldCutscene:closeText()
+-- FIXME
+--[[function WorldCutscene:closeText()
     super.closeText(self)
     self:hideNametag()
-end
+end]]
 
 return WorldCutscene
