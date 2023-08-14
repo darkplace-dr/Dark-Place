@@ -13,7 +13,7 @@ function Lib:onKeyPressed(key)
 end
 
 function Lib:postInit(new_file)
-	if new_file then
+	if not Game:getFlag("quest_name") then
 		Game:setFlag("quest_name", {Mod.info.name})
 		Game:setFlag("quest_id", {"mainline"})
 		Game:setFlag("quest_desc", {"This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description."})
