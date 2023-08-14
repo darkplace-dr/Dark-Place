@@ -131,6 +131,7 @@ return {
 			cutscene:text("[voice:marcy]* Marcy thinks papa is busy at work or something.", "confused", "marcy")
 			cutscene:text("[voice:marcy]* Although.[wait:5].[wait:5].[wait:5] Marcy did hear him say[wait:5] \"[color:b8b8b8]TOMBSITE[color:white]\",[wait:5] or something like that.", "neutral", "marcy")
 			cutscene:text("[voice:marcy]* Marcy doesn't know what it means.", "confused", "marcy")
+			Kristal.callEvent("createQuest", "AcousticFamily", "acj", "AcousticJamm's daughter, Marcy, states that her father mentioned a \"TOMBSITE\" when leaving the room. Where could he have gone, and what does the TOMBSITE mean?")
 			Game:setFlag("marcy_father", true)
 		elseif choice == 3 then
 			cutscene:showNametag("Marcy")
