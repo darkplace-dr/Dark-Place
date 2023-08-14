@@ -28,6 +28,15 @@ return {
             end
         end
 
+        cutscene:during(function()
+            if Input.pressed("s") then
+                cutscene:after(function()
+                    Game.world:mapTransition("room1", nil, "down")
+                end)
+                cutscene:endCutscene()
+            end
+        end)
+
         ---@type Music
         -- satisfy LLS
         local world_music = Game.world.music
@@ -110,7 +119,7 @@ return {
 		
         cutscene:wait(1.75)
 
-        local background = GonerBackground(nil, nil, "AUDIO_DONKEY_b", true)
+        local background = GonerBackground(nil, nil, "AUDIO_DONKEY_b", true, world_music)
         background.layer = WORLD_LAYERS["ui"]
         Game.world:addChild(background)
 
@@ -248,7 +257,6 @@ return {
 
         cutscene:after(function()
             Game.world:mapTransition("room1", nil, "down")
-            Game:setFlag("intro_over", true)
         end)
     end,
 }

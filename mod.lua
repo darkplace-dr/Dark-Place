@@ -112,12 +112,6 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("bulborb_position", 2)
     end
 
-    if not new_file and not Game:getFlag("intro_over") then
-        likely_old_save = true
-
-        Game:setFlag("intro_over", true)
-    end
-
     ----------
 
     if not new_file and likely_old_save then
@@ -247,13 +241,5 @@ end
 function Mod:loadObject(world, name, properties)
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
-    end
-end
-
-function Mod:onKeyPressed(key)
-    if key == "s" and not Game:getFlag("intro_over") then
-        Game.world:stopCutscene()
-        Game.world:mapTransition("room1", nil, "down")
-        Game:setFlag("intro_over", true)
     end
 end
