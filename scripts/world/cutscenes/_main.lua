@@ -31,6 +31,7 @@ return {
 
         cutscene:during(function()
             if Input.pressed("s") then
+                Assets.playSound("item", 0.2, 1.2)
                 cutscene:after(function()
                     Game.world:loadMap("room1", nil, "down")
                 end)
