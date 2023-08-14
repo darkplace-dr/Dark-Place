@@ -27,7 +27,7 @@ function Lib:createQuest(name, id, desc, progress_max)
 		error("Quest must have name.")
 	end
 	if type(name) ~= "string" then
-		error("Quest name must be a string (expected string, got " .. type(desc) .. ")")
+		error("Quest name must be a string (expected string, got " .. type(name) .. ")")
 	end
 	if not id then
 		error("Quest must have ID.")
