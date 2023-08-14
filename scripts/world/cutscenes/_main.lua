@@ -32,8 +32,9 @@ return {
         local can_exit = true
         cutscene:during(function()
             if not can_exit then return false end
-            if Input.down("menu") and Input.pressed("d") then
+            if Input.down("menu") and Input.down("d") then
                 Assets.playSound("item", 0.1, 1.2)
+                Input.clear("d")
                 Game:setFlag("skipped_intro", true)
                 -- NOTE: when this cutscene gets complex we may need to do
                 -- some fallback configurations here
