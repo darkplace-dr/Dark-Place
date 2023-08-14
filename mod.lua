@@ -102,8 +102,8 @@ function Mod:initializeImportantFlags(new_file)
     end
 
     if new_file then
-        Kristal.callEvent("setName", "mainline", "Dark Place")
-        Kristal.callEvent("setDesc", "mainline", "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, they just get weirder the more you make. Susie has been making them left right and center, and she is now on her 1000th fountain. Go and explore the world, there's lots to discover!")
+        Game:getFlag("quest_name")[Kristal.callEvent("getQuest", "mainline")] = "Dark Place"
+        Kristal.callEvent("setDesc", "mainline", "Well, as it turns out, Ralsei was wrong when he said that making Dark Fountains causes The Roaring. They just get weirder and weirder the more you make. Susie has been making them left, right, and center, and now she is on her 1000th fountain. Go and explore the world, there's lots to discover!")
     end
 
     if not new_file and not Game:getFlag("intro_over") then
