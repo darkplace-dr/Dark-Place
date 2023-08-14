@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="75" height="75" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="1639">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="flipside1"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/subtunnel-objects.tsx"/>
+ <imagelayer id="8" name="layout">
+  <image source="../../../../../assets/sprites/world/maps/flipside/firstglitch/layout.png" width="3000" height="3000"/>
+ </imagelayer>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="1536" x="120" y="120" width="520" height="40"/>
+  <object id="1537" x="120" y="160" width="120" height="80"/>
+  <object id="1538" x="120" y="240" width="80" height="320"/>
+  <object id="1539" x="173" y="440" width="80" height="80"/>
+  <object id="1540" x="200" y="520" width="200" height="840"/>
+  <object id="1541" x="400" y="1080" width="560" height="200"/>
+  <object id="1542" x="520" y="1280" width="360" height="400"/>
+  <object id="1543" x="880" y="1560" width="160" height="200"/>
+  <object id="1544" x="600" y="1680" width="280" height="160"/>
+  <object id="1546" x="880" y="1480" width="80" height="80"/>
+  <object id="1548" x="200" y="1360" width="120" height="360"/>
+  <object id="1549" x="200" y="1720" width="40" height="280"/>
+  <object id="1550" x="240" y="1880" width="80" height="80"/>
+  <object id="1551" x="240" y="1960" width="160" height="200"/>
+  <object id="1552" x="360" y="2040" width="680" height="120"/>
+  <object id="1553" x="960" y="1960" width="80" height="80"/>
+  <object id="1555" x="1320" y="1400" width="400" height="520"/>
+  <object id="1556" x="1240" y="1400" width="80" height="280"/>
+  <object id="1557" x="1480" y="1920" width="880" height="160"/>
+  <object id="1558" x="1720" y="1560" width="40" height="360"/>
+  <object id="1559" x="1760" y="1560" width="80" height="40"/>
+  <object id="1560" x="1760" y="1880" width="80" height="40"/>
+  <object id="1561" x="1720" y="2080" width="280" height="80"/>
+  <object id="1562" x="1960" y="2160" width="40" height="120"/>
+  <object id="1563" x="1800" y="2280" width="200" height="120"/>
+  <object id="1564" x="1240" y="2280" width="360" height="200"/>
+  <object id="1565" x="1600" y="2360" width="200" height="40"/>
+  <object id="1567" x="680" y="2200" width="560" height="200"/>
+  <object id="1568" x="1040" y="2120" width="80" height="80"/>
+  <object id="1569" x="360" y="2200" width="320" height="120"/>
+  <object id="1570" x="360" y="2320" width="40" height="80"/>
+  <object id="1571" x="280" y="2200" width="80" height="480"/>
+  <object id="1572" x="360" y="2600" width="200" height="80"/>
+  <object id="1573" x="760" y="2400" width="120" height="80"/>
+  <object id="1574" x="1240" y="2480" width="280" height="80"/>
+  <object id="1576" x="960" y="1080" width="640" height="120"/>
+  <object id="1577" x="1640" y="1080" width="120" height="40"/>
+  <object id="1578" x="1160" y="840" width="600" height="240"/>
+  <object id="1579" x="1480" y="760" width="280" height="80"/>
+  <object id="1580" x="1720" y="760" width="280" height="200"/>
+  <object id="1581" x="1960" y="760" width="240" height="280"/>
+  <object id="1582" x="2320" y="240" width="80" height="1000"/>
+  <object id="1583" x="2400" y="1160" width="160" height="280"/>
+  <object id="1584" x="2400" y="1440" width="80" height="80"/>
+  <object id="1585" x="2320" y="120" width="160" height="120"/>
+  <object id="1586" x="2480" y="120" width="240" height="40"/>
+  <object id="1588" x="2680" y="160" width="120" height="80"/>
+  <object id="1589" x="2760" y="200" width="40" height="320"/>
+  <object id="1590" x="2680" y="440" width="80" height="520"/>
+  <object id="1591" x="2600" y="520" width="80" height="200"/>
+  <object id="1592" x="2760" y="920" width="40" height="640"/>
+  <object id="1593" x="2680" y="1560" width="80" height="80"/>
+  <object id="1594" x="2600" y="1640" width="120" height="200"/>
+  <object id="1595" x="2680" y="1840" width="40" height="360"/>
+  <object id="1596" x="2360" y="2120" width="120" height="120"/>
+  <object id="1597" x="2320" y="1790" width="80" height="370"/>
+  <object id="1598" x="2440" y="2200" width="280" height="40"/>
+  <object id="1599" x="1720" y="1320" width="680" height="240"/>
+  <object id="1600" x="2040" y="1560" width="280" height="40"/>
+  <object id="1601" x="2120" y="1788" width="200" height="172"/>
+  <object id="1602" x="2120" y="1600" width="200" height="106"/>
+  <object id="1603" x="2320" y="1546" width="80" height="160"/>
+  <object id="1604" x="2000" y="2080" width="280" height="400"/>
+  <object id="1606" x="2280" y="2120" width="40" height="280"/>
+  <object id="1607" x="2320" y="2240" width="320" height="120"/>
+  <object id="1608" x="2520" y="2360" width="80" height="40"/>
+  <object id="1609" x="2600" y="2360" width="40" height="240"/>
+  <object id="1610" x="1640" y="2600" width="400" height="120"/>
+  <object id="1611" x="2040" y="2680" width="400" height="120"/>
+  <object id="1612" x="2440" y="2600" width="200" height="120"/>
+  <object id="1613" x="1240" y="2723" width="800" height="80"/>
+  <object id="1614" x="280" y="2680" width="960" height="120"/>
+  <object id="1615" x="600" y="200" width="440" height="600"/>
+  <object id="1616" x="1040" y="280" width="320" height="360"/>
+  <object id="1617" x="1360" y="280" width="160" height="280"/>
+  <object id="1618" x="1520" y="499" width="80" height="60"/>
+  <object id="1619" x="1520" y="240" width="240" height="80"/>
+  <object id="1620" x="1720" y="320" width="120" height="80"/>
+  <object id="1621" x="1800" y="400" width="360" height="160"/>
+  <object id="1622" x="1960" y="560" width="160" height="80"/>
+  <object id="1623" x="2040" y="640" width="200" height="120"/>
+  <object id="1625" x="2200" y="600" width="120" height="680"/>
+  <object id="1626" x="1800" y="1240" width="640" height="80"/>
+  <object id="1627" x="680" y="800" width="280" height="94"/>
+  <object id="1628" x="440" y="160" width="160" height="80"/>
+  <object id="1629" x="520" y="240" width="80" height="80"/>
+  <object id="1630" x="400" y="1000" width="160" height="80"/>
+  <object id="1631" x="2040" y="1880" width="80" height="40"/>
+  <object id="1632" x="1040" y="640" width="80" height="80"/>
+  <object id="1633" x="1080" y="1000" width="80" height="80"/>
+  <object id="1634" x="1143" y="1200" width="80" height="81"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="1635" gid="2" x="321" y="361" width="38" height="37"/>
+  <object id="1636" gid="2" x="2561" y="359" width="38" height="37"/>
+  <object id="1637" gid="2" x="501" y="2480" width="38" height="37"/>
+  <object id="1638" gid="2" x="1841" y="1079" width="38" height="37"/>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="5" name="spawn" x="339" y="360">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="objects_fg">
+  <object id="1532" gid="1" x="2350" y="1780" width="70" height="70"/>
+  <object id="1533" gid="1" x="2110" y="1780" width="70" height="70"/>
+  <object id="1534" gid="1" x="2190" y="1780" width="70" height="70"/>
+  <object id="1535" gid="1" x="2270" y="1780" width="70" height="70"/>
+ </objectgroup>
+</map>
