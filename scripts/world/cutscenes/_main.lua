@@ -232,6 +232,11 @@ return {
             gonerText("ALRIGHT KIDDO,\nSENDING YA OFF\nNOW![wait:20] BYE-BYE![wait:20]")
         end
 
+        cutscene:wait(1)
+        gonerText("OH BTW YOU CAN PRESS\n\"S\" TO SKIP THIS\nCUTSCENE.")
+        gonerText("PROBABLY SHOULD HAVE\nTOLD YOU THIS AT\nTHE START BUT OH WELL.")
+        gonerText("OK SENDING YOU OFF\nTHIS TIME FR ONG.")
+
         Game:setFlag("vesselChosen", 1)
         cutscene:wait(1)
 
@@ -243,6 +248,7 @@ return {
 
         cutscene:after(function()
             Game.world:mapTransition("room1", nil, "down")
+            Game:setFlag("intro_over", true)
         end)
     end,
 }

@@ -232,3 +232,11 @@ function Mod:loadObject(world, name, properties)
         return VaporBG(properties["mountains"])
     end
 end
+
+function Mod:onKeyPressed(key)
+    if key == "s" and not Game:getFlag("intro_over") then
+        Game.world:stopCutscene()
+        Game.world:mapTransition("room1", nil, "down")
+        Game:setFlag("intro_over", true)
+    end
+end
