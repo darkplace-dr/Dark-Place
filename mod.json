@@ -149,6 +149,9 @@
     },
     "CharacterKeyItems": {
       "print_console_intro": false
+    },
+    "questline": {
+      "print_console_intro": false
     }
   }
 }

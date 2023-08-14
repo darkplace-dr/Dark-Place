@@ -1,13 +1,16 @@
 local Lib = {}
 
 function Lib:init()
-    print("Loaded the Questline library by AcousticJamm.")
+    if Kristal.getLibConfig("questline", "print_console_intro") ~= false then
+    	print("Loaded the Questline library by AcousticJamm.")
+	end
 end
 
 function Lib:onKeyPressed(key)
     if key == "q" then
-		Assets.newSound("dimbox"):play()
-		Game.world:openMenu(QuestMenu())
+		if Game.world:openMenu(QuestMenu()) then
+			Assets.playSound("dimbox")
+		end
 	end
 end
 
@@ -53,13 +56,13 @@ function Lib:createQuest(name, id, desc, progress_max)
 	if type(desc) ~= "string" then
 		error("Quest description must be a string (expected string, got " .. type(desc) .. ")")
 	end
-	
+
 	table.insert(Game:getFlag("quest_name"), name)
 	table.insert(Game:getFlag("quest_id"), id)
 	table.insert(Game:getFlag("quest_desc"), desc)
 	table.insert(Game:getFlag("quest_progress"), 0)
 	table.insert(Game:getFlag("quest_completed"), false)
-	
+
 	if progress_max then
 		table.insert(Game:getFlag("quest_progress_max"), progress_max)
 	else
@@ -69,7 +72,7 @@ end
 
 function Lib:printQuest(id)
 	local index = self:getQuest(id)
-	
+
 	if index then
 		if Game:getFlag("quest_progress_max")[index] > 0 then
 			Kristal.Console:log("Quest \"" .. Game:getFlag("quest_name")[index] .. "\". Progress: " .. Game:getFlag("quest_progress")[index] .. "/" .. Game:getFlag("quest_progress_max")[index])
@@ -83,11 +86,11 @@ end
 
 function Lib:completeQuest(id, complete)
 	local index = self:getQuest(id)
-	
+
 	if not index then
 		error("Quest " .. id .. " doesn't exist.")
 	end
-	
+
 	if complete == false then
 		Game:getFlag("quest_completed")[index] = false
 	else
@@ -99,42 +102,41 @@ function Lib:setQuestProgress(id, progress)
 	if type(progress) ~= "number" then
 		error("Progress must be a number (expected number, got " .. type(progress) .. ")")
 	end
-	
+
 	local index = self:getQuest(id)
-	
+
 	if not index then
 		error("Quest " .. id .. " doesn't exist.")
 	end
-	
+
 	if Game:getFlag("quest_progress_max")[index] <= 0 then
 		error("Quest " .. id .. " isn't a progress quest.")
 	end
-	
+
 	Game:getFlag("quest_progress")[index] = progress
-	
+
 	if Game:getFlag("quest_progress")[index] >= Game:getFlag("quest_progress_max")[index] then
 		self:completeQuest(id)
 	end
 end
 
 function Lib:addQuestProgress(id, progress)
-	
 	if type(progress) ~= "number" then
 		error("Progress must be a number (expected number, got " .. type(progress) .. ")")
 	end
-	
+
 	local index = self:getQuest(id)
-	
+
 	if not index then
 		error("Quest " .. id .. " doesn't exist.")
 	end
-	
+
 	if Game:getFlag("quest_progress_max")[index] <= 0 then
 		error("Quest " .. id .. " isn't a progress quest.")
 	end
-	
-	new_progress = Game:getFlag("quest_progress")[index] + progress
-	
+
+	local new_progress = Game:getFlag("quest_progress")[index] + progress
+
 	self:setQuestProgress(id, new_progress)
 end
 
@@ -142,27 +144,18 @@ function Lib:setDesc(id, desc)
 	if type(desc) ~= "string" then
 		error("Quest description must be a string (expected string, got " .. type(desc) .. ")")
 	end
-	
+
 	local index = self:getQuest(id)
-	
+
 	if not index then
 		error("Quest " .. id .. " doesn't exist.")
 	end
-	
+
 	Game:getFlag("quest_desc")[index] = desc
 end
 
 function Lib:getQuest(id)
-	locate = function( table, value )
-		for i = 1, #table do
-			if table[i] == value then return i end
-		end
-		return false
-	end
-	
-	index = locate(Game:getFlag("quest_id"), id)
-	
-	return index
+	return Utils.getIndex(Game:getFlag("quest_id"), id)
 end
 
 function Lib:setName(id, name)
