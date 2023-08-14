@@ -12,8 +12,8 @@ function Lib:onKeyPressed(key)
 end
 
 function Lib:postInit(new_file)
-	if not Game:getFlag("quest_name", nil) then
-		Game:setFlag("quest_name", {"Mainline"})
+	if new_file then
+		Game:setFlag("quest_name", {Mod.info.name})
 		Game:setFlag("quest_id", {"mainline"})
 		Game:setFlag("quest_desc", {"This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description."})
 		Game:setFlag("quest_progress", {0})
@@ -27,7 +27,7 @@ function Lib:createQuest(name, id, desc, progress_max)
 		error("Quest must have name.")
 	end
 	if type(name) ~= "string" then
-		error("Quest name must be a string (expected string, got " .. type(name) .. ")")
+		error("Quest name must be a string (expected string, got " .. type(desc) .. ")")
 	end
 	if not id then
 		error("Quest must have ID.")
