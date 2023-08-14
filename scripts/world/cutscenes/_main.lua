@@ -55,19 +55,19 @@ return {
         cover:setLayer(WORLD_LAYERS["below_ui"])
         Game.world:addChild(cover)
 
-        local keypress_notice = Text("Hold C+D to skip",
+        local skip_hint = Text("Hold C+D to skip",
             0, SCREEN_HEIGHT/2+50, SCREEN_WIDTH, SCREEN_HEIGHT,
             {
                 align = "center",
                 font = "plain"
             }
         )
-        keypress_notice.alpha = 0.05
-        keypress_notice:setParallax(0, 0)
-        keypress_notice:setLayer(WORLD_LAYERS["ui"])
-        Game.world:addChild(keypress_notice)
+        skip_hint.alpha = 0.05
+        skip_hint:setParallax(0, 0)
+        skip_hint:setLayer(WORLD_LAYERS["ui"])
+        Game.world:addChild(skip_hint)
         cutscene:wait(2)
-        keypress_notice:remove()
+        skip_hint:remove()
         can_exit = false
 
         gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
