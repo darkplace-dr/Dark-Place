@@ -198,9 +198,9 @@ return {
                 cutscene:text("* Hopefully he's okay...", "shy_down", "susie")
                 if not Game:getFlag("ralseimissing_known") then
                     Kristal.callEvent("setDesc", "mainline",
-                        "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, \
-                        they just get weirder the more you make. Susie has been making them left right and center, \
-                        and she is now on her 1000th fountain. Susie mentioned Ralsei being missing, \
+                        "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, \z
+                        they just get weirder the more you make. Susie has been making them left right and center, \z
+                        and she is now on her 1000th fountain. Susie mentioned Ralsei being missing, \z
                         maybe try and find clues relating to him?"
                     )
                     Game:setFlag("ralseimissing_known", true)

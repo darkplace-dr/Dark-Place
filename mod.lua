@@ -61,8 +61,8 @@ function Mod:initializeImportantFlags(new_file)
 
         Kristal.callEvent("setName", "mainline", "Dark Place")
         Kristal.callEvent("setDesc", "mainline",
-            "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, \
-            they just get weirder the more you make. Susie has been making them left right and center, \
+            "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, \z
+            they just get weirder the more you make. Susie has been making them left right and center, \z
             and she is now on her 1000th fountain. Go and explore the world, there's lots to discover!"
         )
     end
