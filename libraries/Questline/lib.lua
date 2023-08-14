@@ -68,14 +68,7 @@ function Lib:createQuest(name, id, desc, progress_max)
 end
 
 function Lib:printQuest(id)
-	locate = function( table, value )
-		for i = 1, #table do
-			if table[i] == value then return i end
-		end
-		return false
-	end
-	
-	index = locate(Game:getFlag("quest_id"), id)
+	local index = self:getQuest(id)
 	
 	if index then
 		if Game:getFlag("quest_progress_max")[index] > 0 then
@@ -89,14 +82,7 @@ function Lib:printQuest(id)
 end
 
 function Lib:completeQuest(id, complete)
-	locate = function( table, value )
-		for i = 1, #table do
-			if table[i] == value then return i end
-		end
-		return false
-	end
-	
-	index = locate(Game:getFlag("quest_id"), id)
+	local index = self:getQuest(id)
 	
 	if not index then
 		error("Quest " .. id .. " doesn't exist.")
@@ -110,18 +96,11 @@ function Lib:completeQuest(id, complete)
 end
 
 function Lib:setQuestProgress(id, progress)
-	locate = function( table, value )
-		for i = 1, #table do
-			if table[i] == value then return i end
-		end
-		return false
-	end
-	
 	if type(progress) ~= "number" then
 		error("Progress must be a number (expected number, got " .. type(progress) .. ")")
 	end
 	
-	index = locate(Game:getFlag("quest_id"), id)
+	local index = self:getQuest(id)
 	
 	if not index then
 		error("Quest " .. id .. " doesn't exist.")
@@ -139,18 +118,12 @@ function Lib:setQuestProgress(id, progress)
 end
 
 function Lib:addQuestProgress(id, progress)
-	locate = function( table, value )
-		for i = 1, #table do
-			if table[i] == value then return i end
-		end
-		return false
-	end
 	
 	if type(progress) ~= "number" then
 		error("Progress must be a number (expected number, got " .. type(progress) .. ")")
 	end
 	
-	index = locate(Game:getFlag("quest_id"), id)
+	local index = self:getQuest(id)
 	
 	if not index then
 		error("Quest " .. id .. " doesn't exist.")
@@ -166,6 +139,20 @@ function Lib:addQuestProgress(id, progress)
 end
 
 function Lib:setDesc(id, desc)
+	if type(desc) ~= "string" then
+		error("Quest description must be a string (expected string, got " .. type(desc) .. ")")
+	end
+	
+	local index = self:getQuest(id)
+	
+	if not index then
+		error("Quest " .. id .. " doesn't exist.")
+	end
+	
+	Game:getFlag("quest_desc")[index] = desc
+end
+
+function Lib:getQuest(id)
 	locate = function( table, value )
 		for i = 1, #table do
 			if table[i] == value then return i end
@@ -173,17 +160,9 @@ function Lib:setDesc(id, desc)
 		return false
 	end
 	
-	if type(desc) ~= "string" then
-		error("Quest description must be a string (expected string, got " .. type(desc) .. ")")
-	end
-	
 	index = locate(Game:getFlag("quest_id"), id)
 	
-	if not index then
-		error("Quest " .. id .. " doesn't exist.")
-	end
-	
-	Game:getFlag("quest_desc")[index] = desc
+	return index
 end
 
 return Lib
