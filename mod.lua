@@ -56,7 +56,7 @@ end
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
 
-    if new_file or Game:getFlag("quest_name")[Kristal.callEvent("getQuest", "mainline")] == "Mainline" then
+    if new_file then
         likely_old_save = true
 
         Kristal.callEvent("setDesc", "mainline",
