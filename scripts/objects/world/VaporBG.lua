@@ -36,7 +36,7 @@ function VaporBG:init(do_mountains)
     if do_mountains or do_mountains == nil then
         self.mountains = Sprite("world/maps/vapor/background/mountains", 0, 105)
         self.mountains:setScale(1)
-        self.mountains:setLayer(self.layer + 0.1)
+        self.mountains:setLayer(self.layer + 0.2)
         self.mountains.wrap_texture_x = true
         self.mountains.parallax_x = 0.1
         self.mountains.parallax_y = 0.1
