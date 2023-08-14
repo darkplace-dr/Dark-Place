@@ -196,6 +196,10 @@ return {
                 cutscene:text("* I haven't seen him in this Dark World at all.", "neutral", "susie")
                 cutscene:text("* I wonder what happend to him.", "neutral_side", "susie")
                 cutscene:text("* Hopefully he's okay...", "shy_down", "susie")
+                if not Game:getFlag("ralseimissing_known") then
+                    Kristal.callEvent("setDesc", "mainline", "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, they just get weirder the more you make. Susie has been making them left right and center, and she is now on her 1000th fountain. Susie mentioned Ralsei being missing, maybe try and find clues relating to him?")
+                    Game:setFlag("ralseimissing_known", true)
+                end
             elseif opinion == 3 then
                 cutscene:text("* Oh,[wait:5] Noelle?", "surprise", "susie")
                 cutscene:text("* Honestly she's really nice to me.", "sincere", "susie")
@@ -209,6 +213,15 @@ return {
                 cutscene:text("* But uh,[wait:5] even with THAT...", "shy", "susie")
                 cutscene:text("* I still consider him a friend.", "small_smile", "susie")
                 cutscene:text("* Somewhat.", "shy_b", "susie")
+            end
+            if not Game:getFlag("drcastsplitup_known") then
+                cutscene:text("* Y'know,[wait:5] speaking of those guys...", "neutral_side", "susie")
+                cutscene:text("* I didn't see them at all when I first entered this Dark World.", "nervous", "susie")
+                cutscene:text("* Which is strange because we were all together when we entered.", "nervous_side", "susie")
+                cutscene:text("* Not gonna lie,[wait:5] I'm starting to worry for them...", "shy_down", "susie")
+                Kristal.callEvent("createQuest", "Where's Kris", "krismissing", "Susie mentioned Kris not being with her when she entered the Dark World. Go search for clues on their wherabouts.")
+                Kristal.callEvent("createQuest", "Lost Girl", "noellemissing", "Susie mentioned Noelle not being with her when she entered the Dark World. Go search for clues on her wherabouts.")
+                Kristal.callEvent("createQuest", "Missing Berd", "berdlymissing", "Susie mentioned Berdly not being with her when she entered the Dark World. Go search for clues on his wherabouts.")
             end
         elseif opinion == 2 then
             cutscene:text("* What do I think of this place?", "neutral", "susie")

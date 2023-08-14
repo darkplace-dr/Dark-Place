@@ -27,7 +27,7 @@ function Lib:createQuest(name, id, desc, progress_max)
 		error("Quest must have name.")
 	end
 	if type(name) ~= "string" then
-		error("Quest name must be a string (expected string, got " .. type(desc) .. ")")
+		error("Quest name must be a string (expected string, got " .. type(name) .. ")")
 	end
 	if not id then
 		error("Quest must have ID.")
@@ -163,6 +163,20 @@ function Lib:getQuest(id)
 	index = locate(Game:getFlag("quest_id"), id)
 	
 	return index
+end
+
+function Lib:setName(id, name)
+	if type(name) ~= "string" then
+		error("Quest name must be a string (expected string, got " .. type(name) .. ")")
+	end
+
+	local index = self:getQuest(id)
+
+	if not index then
+		error("Quest " .. id .. " doesn't exist.")
+	end
+
+	Game:getFlag("quest_name")[index] = name
 end
 
 return Lib

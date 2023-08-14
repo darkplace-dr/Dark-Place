@@ -101,6 +101,17 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("bulborb_position", 2)
     end
 
+    if new_file then
+        Kristal.callEvent("setName", "mainline", "Dark Place")
+        Kristal.callEvent("setDesc", "mainline", "Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, they just get weirder the more you make. Susie has been making them left right and center, and she is now on her 1000th fountain. Go and explore the world, there's lots to discover!")
+    end
+
+    if not new_file and not Game:getFlag("intro_over") then
+        likely_old_save = true
+        
+        Game:setFlag("intro_over", true)
+    end
+
     ----------
 
     if not new_file and likely_old_save then
