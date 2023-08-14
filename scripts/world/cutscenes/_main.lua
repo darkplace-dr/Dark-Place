@@ -59,7 +59,7 @@ return {
                 font = "plain"
             }
         )
-        keypress_notice.alpha = 0.025
+        keypress_notice.alpha = 0.05
         keypress_notice:setParallax(0, 0)
         keypress_notice:setLayer(WORLD_LAYERS["ui"])
         Game.world:addChild(keypress_notice)
