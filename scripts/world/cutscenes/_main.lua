@@ -13,11 +13,12 @@ return {
             end
         end
 
-        local function gonerText(str, advance)
+        -- FIXME: actually use skippable
+        local function gonerText(str, advance, skippable)
             text = DialogueText("[speed:0.5][spacing:6][style:GONER][voice:none]" .. str, 160, 100, 640, 480,
                 { auto_size = true })
             text.layer = WORLD_LAYERS["textbox"]
-            text.skip_speed = true
+            text.skip_speed = not skippable
             text.parallax_x = 0
             text.parallax_y = 0
             Game.world:addChild(text)
@@ -31,14 +32,13 @@ return {
         cutscene:during(function()
             if Input.pressed("s") then
                 cutscene:after(function()
-                    Game.world:mapTransition("room1", nil, "down")
+                    Game.world:loadMap("room1", nil, "down")
                 end)
                 cutscene:endCutscene()
             end
         end)
 
-        ---@type Music
-        -- satisfy LLS
+        ---@type Music -- satisfy LLS
         local world_music = Game.world.music
         world_music:play("AUDIO_DRONE", 0.8)
 
@@ -74,7 +74,7 @@ return {
         gonerText("NOW.[wait:20]")
         cutscene:wait(0.5)
         gonerText("WE MAY-")
-		
+
         world_music:stop()
         Assets.playSound("phone")
         cutscene:wait(1)
@@ -88,7 +88,7 @@ return {
 		Assets.playSound("item")
         cutscene:wait(1.25)
         gonerText("HELLO?[wait:20]")
-		
+
         local wahwah = Music("voiceover/wahwah", 0.8)
         wahwah:play()
         cutscene:wait(1.25)
