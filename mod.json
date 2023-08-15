@@ -135,7 +135,8 @@
       "print_console_intro": false
     },
     "ribbit": {
-      "changeSavepointSound": false
+      "changeSavepointSound": false,
+      "addCheckSound": true
     },
     // Stop doing this
     "leveling": { "print_console_intro": false },

@@ -9,10 +9,12 @@
 	    "Simbel - YOU Party Member",
 	    "Just Another Random User - Vapor Forest Battle BG recreation and sprite rips from the 2.0 update",
 	    "TheMaxine - RIBBIT",
-        "Devilredd - YOU's 2.0 design as well as some updated sprites from the mod."
+        "Devilredd - YOU's 2.0 design as well as some updated sprites from the mod.",
+        "Dobby233Liu - sound effect playing hooks"
     ],
 
     "config": {
-        "changeSavepointSound": true
+        "changeSavepointSound": true,
+        "addCheckSound": true
     }
 }
