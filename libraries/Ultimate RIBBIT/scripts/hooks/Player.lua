@@ -7,7 +7,8 @@ local Player, super = Class("Player", true)
 
 function Player:updateWalk(key)
     super.updateWalk(self)
-    if Game.lock_movement then return end
+
+    if Game.lock_movement or TextInput.active then return end
 
     if Input.pressed("a") and (self.actor.id == "YOU" or self.actor.id == "YOU_lw") and Game.can_croak ~= false then
         self:croak()
