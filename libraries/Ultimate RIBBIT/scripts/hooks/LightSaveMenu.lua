@@ -1,3 +1,7 @@
+if not CLASS_NAME_GETTER("LightSaveMenu") then
+    return "LightSaveMenu is simply absent before Kristal#29; so this is added to make Kristal stop yelling about us returning nil in older versions. I know we target v0.8.1-dev, but..."
+end
+
 if not Kristal.getLibConfig("ribbit", "changeSavepointSound") then
     return CLASS_NAME_GETTER("LightSaveMenu")
 end
