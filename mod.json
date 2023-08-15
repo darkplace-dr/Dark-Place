@@ -134,6 +134,9 @@
       "config_button": false,
       "print_console_intro": false
     },
+    "ribbit": {
+      "changeSavepointSound": false
+    },
     // Stop doing this
     "leveling": { "print_console_intro": false },
     "bluesoul": { "print_console_intro": false },

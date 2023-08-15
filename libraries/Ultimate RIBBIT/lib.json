@@ -10,5 +10,9 @@
 	    "Just Another Random User - Vapor Forest Battle BG recreation and sprite rips from the 2.0 update",
 	    "TheMaxine - RIBBIT",
         "Devilredd - YOU's 2.0 design as well as some updated sprites from the mod."
-    ]
+    ],
+
+    "config": {
+        "changeSavepointSound": true
+    }
 }

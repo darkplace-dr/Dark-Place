@@ -1,3 +1,7 @@
+if not Kristal.getLibConfig("ribbit", "changeSavepointSound") then
+    return Savepoint
+end
+
 local Savepoint, super = Class("Savepoint", true)
 
 function Savepoint:onInteract(player, dir)
@@ -12,7 +16,7 @@ function Savepoint:onInteract(player, dir)
         self.used = true
     end
 
-    super.onInteract(self, player, dir)
+    super.super.onInteract(self, player, dir)
     return true
 end
 
