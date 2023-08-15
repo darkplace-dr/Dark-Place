@@ -43,7 +43,7 @@ function mb_map:update()
 			c:setColor(0, 0, 0)
 			Game.world:addChild(c)
 			Game.world.timer:after(10+1/120, function()
-				Game.world.music:play("TAEFED_OIDUA", 0)
+				Game.world.music:play("TAEFED", 0)
 				Game:setFlag("partySet", nil)
 				for i,v in ipairs(Game.stage:getObjects(Character)) do
 					v:remove()

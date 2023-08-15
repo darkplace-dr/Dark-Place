@@ -47,7 +47,7 @@ return {
 
         ---@type Music -- satisfy LLS
         local world_music = Game.world.music
-        world_music:play("AUDIO_DRONE", 0.8)
+        world_music:play("DRONE", 0.8)
 
         local cover = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
         cover:setColor(COLORS["black"])
