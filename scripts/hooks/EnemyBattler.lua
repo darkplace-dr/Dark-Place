@@ -11,7 +11,6 @@ function EnemyBattler:hurt(amount, battler, on_defeat, color, show_status_msg)
 
     amount = amount / (BadgesLib:getBadgeEquipped("deal") + 1)
 
-
     self.health = self.health - amount
     if show_status_msg then
         self:statusMessage("damage", amount, color or (battler and {battler.chara:getDamageColor()}))
