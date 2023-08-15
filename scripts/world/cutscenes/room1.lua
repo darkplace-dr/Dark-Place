@@ -611,7 +611,7 @@ return {
 		cutscene:text("* .[wait:5].[wait:5].[wait:10]Hello?")
         cutscene:hideNametag()
 
-        local dmc2 = Music("plaeDMC2")
+        local dmc2 = Music("voiceover/plaeDMC2")
         dmc2:play()
         cutscene:wait(2.5)
 
