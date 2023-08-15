@@ -2,7 +2,7 @@
 ---@class Battle
 ---
 ---@overload fun(...) : Battle
-local Battle, super = Class("Battle")
+local Battle, super = Class("Battle", true)
 
 function Battle:checkGameOver()
     for _,battler in ipairs(self.party) do
