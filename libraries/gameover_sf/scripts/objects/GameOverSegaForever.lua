@@ -46,8 +46,8 @@ function GameOverSF:onAdd(parent)
     parent:addChild(self.screenshot)
 
     self.timer:after(1/12, function()
-        local song = self.my_bars and "TAFFED_OI_DAU" or (Game:isLight() and "determination" or "AUDIO_DEFEAT")
-        self.music:play(song, song == "TAFFED_OI_DAU" and 0.8 or 1)
+        local song = self.my_bars and "TAFEED" or (Game:isLight() and "determination" or "AUDIO_DEFEAT")
+        self.music:play(song, song == "TAFEED" and 0.8 or 1)
         if self.scale_x == 0 then
             self.graphics.grow = 0.2
         end

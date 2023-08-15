@@ -1,5 +1,5 @@
 if not Kristal.getLibConfig("achievements", "config_button") then
-    return DarkConfigMenu
+    return CLASS_NAME_GETTER("DarkConfigMenu")
 end
 
 ---@class _DarkConfigMenu : DarkConfigMenu

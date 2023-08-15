@@ -112,6 +112,7 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("bulborb_scale", 0.3)
         Game:setFlag("bulborb_position", 2)
     end
+
     ----------
 
     if not new_file and likely_old_save then

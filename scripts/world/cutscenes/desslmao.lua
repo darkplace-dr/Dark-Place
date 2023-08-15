@@ -102,7 +102,7 @@ return {
 		cutscene:wait(0.5)
 
 		Game:setFlag("gotDess", true)
-		table.insert(Game:getFlag("party"), "dess")
+		Mod:unlockPartyMember("dess")
   end,
 
 	dessgetoverhere = function(cutscene, event)
