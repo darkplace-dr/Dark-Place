@@ -108,14 +108,18 @@ function QuestMenu:draw()
 	love.graphics.printf(Game:getFlag("quest_desc")[self.selected_item], 168, 90, 304)
 	
 	local total_steps = 0
-	for k,v in pairs(Game:getFlag("quest_progress_max")) do
-		local new_steps
-		if v <= 0 then
-			new_steps = 1
-		else
-			new_steps = v
+	if Game:getFlag("quest_total_steps") and Game:getFlag("quest_total_steps") > 0 then
+		total_steps = Game:getFlag("quest_total_steps")
+	else
+		for k,v in pairs(Game:getFlag("quest_progress_max")) do
+			local new_steps
+			if v <= 0 then
+				new_steps = 1
+			else
+				new_steps = v
+			end
+			total_steps = total_steps + new_steps
 		end
-		total_steps = total_steps + new_steps
 	end
 	
 	local comp_steps = 0
