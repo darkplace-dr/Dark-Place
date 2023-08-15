@@ -15,6 +15,7 @@
 
     "config": {
         "changeSavepointSound": true,
-        "addCheckSound": true
+        "addCheckSound": true,
+        "addCroaking": true
     }
 }

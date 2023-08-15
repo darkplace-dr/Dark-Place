@@ -1,5 +1,5 @@
 if not Kristal.getLibConfig("ribbit", "changeSavepointSound") then
-    return Savepoint
+    return CLASS_NAME_GETTER("Savepoint")
 end
 
 local Savepoint, super = Class("Savepoint", true)

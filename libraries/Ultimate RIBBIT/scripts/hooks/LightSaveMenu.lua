@@ -1,5 +1,5 @@
 if not Kristal.getLibConfig("ribbit", "changeSavepointSound") then
-    return LightSaveMenu
+    return CLASS_NAME_GETTER("LightSaveMenu")
 end
 
 ---@class LightSaveMenu
