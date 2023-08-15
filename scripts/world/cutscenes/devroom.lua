@@ -49,7 +49,7 @@ return {
                 cutscene:wait(0.5)
             end
             Game:setFlag("brandon_inparty", true)
-            table.insert(Game:getFlag("party"), "brandon")
+            Mod:unlockPartyMember("brandon")
         else
             cutscene:showNametag("Brandon")
             cutscene:text("* Ah,[wait:5] okay then.", "frown", "brandon")
@@ -494,7 +494,7 @@ return {
 			        cutscene:wait(0.5)
                 end
 			    Game:setFlag("dumbie_inparty", true)
-                table.insert(Game:getFlag("party"), "dumbie")
+                Mod:unlockPartyMember("dumbie")
             else
 			    cutscene:showNametag("Dumbie")
 			    cutscene:text("* So, go to penis!", "angryforward", "dumbie")

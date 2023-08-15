@@ -361,7 +361,7 @@ return {
                 end
 				
                 Game:setFlag("ostarwalker_inparty", true)
-                table.insert(Game:getFlag("party"), "ostarwalker")
+                Mod:unlockPartyMember("ostarwalker")
             end
             cutscene:interpolateFollowers()
             cutscene:attachFollowers()
@@ -1033,7 +1033,7 @@ return {
             Game.world.music:play(nil, 1)
             event:remove()
             event:setFlag("dont_load", true)
-            Game:setFlag("fun", love.math.random(1, 100))
+            Mod:rollFun()
         end
     end
 }
