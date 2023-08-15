@@ -15,22 +15,31 @@ function lib:save(data)
     data.total_bp = self.total_bp
 end
 
-function lib:preUpdate()
-end
-
-function lib:postUpdate()
-    for _, badge in ipairs(Game.inventory:getStorage("badges")) do
-        badge:update(badge.equipped)
-    end
-end
-
 function lib:createDarkInventory(inventory)
     inventory.storages["badges"] = {id = "badges", max = 48, sorted = true, name = "BADGEs", fallback = nil}
 end
 
-function lib:getUsedBadgePoints()
+---@param ignore_light? boolean -- if you still want some stats etc. despite being in LW
+function lib:getBadgeStorage(ignore_light)
+    if Game:isLight() and not ignore_light then return {} end
+    local inventory ---@type DarkInventory
+    if not Game:isLight() then
+        inventory = Game.inventory
+    else
+        inventory = Game.inventory:getItemByID("light/ball_of_junk").inventory
+    end
+    return inventory:getStorage("badges")
+end
+
+function lib:postUpdate()
+    for _, badge in ipairs(self:getBadgeStorage()) do
+        badge:update(badge.equipped)
+    end
+end
+
+function lib:getUsedBadgePoints(ignore_light)
     local total_bp = 0
-    for _, badge in ipairs(Game.inventory:getStorage("badges")) do
+    for _, badge in ipairs(self:getBadgeStorage(ignore_light)) do
         if badge.equipped then
             total_bp = total_bp + badge:getBadgePoints()
         end
@@ -38,9 +47,9 @@ function lib:getUsedBadgePoints()
     return total_bp
 end
 
-function lib:getBadgeEquipped(badge)
+function lib:getBadgeEquipped(badge, ignore_light)
     local total_count = 0
-    for _, b in ipairs(Game.inventory:getStorage("badges")) do
+    for _, b in ipairs(self:getBadgeStorage(ignore_light)) do
         if b.equipped and b.id == badge then
             total_count = total_count + 1
         end
