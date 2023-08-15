@@ -52,7 +52,6 @@ function Mod:updateBulborb()
 
             Assets.stopSound("vineboom_reversed")
             Assets.stopAndPlaySound("vineboom")
-            -- Note: doesn't function if camera is not detached
             if Game.state == "OVERWORLD" then
                 Game.world:shakeCamera(4)
             elseif Game.state == "BATTLE" then
