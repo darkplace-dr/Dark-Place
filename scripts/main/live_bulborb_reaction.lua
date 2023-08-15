@@ -36,6 +36,7 @@ function Mod:repositionBulborb()
 end
 
 function Mod:updateBulborb()
+    -- HACK for v0.8.0 "compatibility", should never happen
     if not self.bulborb_reaction then return end
 
     -- Just wanna make sure the internet checkpoint thing that Char added
