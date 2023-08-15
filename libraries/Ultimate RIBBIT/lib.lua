@@ -120,7 +120,7 @@ function lib:postInit()
         if Game:getPartyMember(battler.chara.id).ribbit then
             if type(text)=="table" then
                 --text[1] = text[1]:gsub("spared", "SENT")
-                
+
                 if success == true then
                     text[1] = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!"
                 else
@@ -148,6 +148,10 @@ function lib:getActionButtons(battler, buttons)
         end
     end
     return buttons
+end
+
+function lib:isLeaderRibbit()
+    return Game.party and Game.party[1] and Game.party[1].ribbit
 end
 
 return lib
