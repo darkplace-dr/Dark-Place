@@ -35,11 +35,11 @@ return {
     origin = "Deltarune: The Stars"
   },
   {
-    name = "I hope it will be fine tomorrow",
+    name = "I hope it will be fine tomorrow", -- 明日も晴れるといいね
     file = "inainaina",
-    composer = "shimtone (DOVA-SYNDROME)",
+    composer = "shimtone",
     released = "August 4, 2020",
-    origin = "Ninomae Ina'nis's Intro BGM"
+    origin = "free sound released to DOVA-SYNDROME; Ninomae Ina'nis's Intro BGM" -- https://dova-s.jp/bgm/play13226.html
   },
   {
     name = "Spamgolor",
