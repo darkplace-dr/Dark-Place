@@ -13,7 +13,7 @@ return {
   nextobjectid = 41,
   properties = {
     ["border"] = "castle",
-    ["music"] = "castletown_empty",
+    ["music"] = "deltarune/castletown_empty",
     ["name"] = "Test Map - Great Door"
   },
   tilesets = {
