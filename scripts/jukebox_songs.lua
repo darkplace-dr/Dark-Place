@@ -57,7 +57,7 @@ return {
   },
   {
     name = "サウンドと恋に C I T Y P O P",
-    file = "forest",
+    file = "citypop_sound_of_love",
     composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
     released = "2016",
     -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p
