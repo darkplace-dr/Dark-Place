@@ -1,7 +1,7 @@
 # Music2
 
-Kristal library that allow your funny Deltarune-style musics
-to have a intro before the loop
+Kristal library that rewrites Music to allow your funny
+Deltarune-style music to have an intro before the loop
 
 That said, if you aim for authenticity, I still suggest
 using start-to-end looping like Deltarune
@@ -14,6 +14,11 @@ folder
 In assets/music, put in the intro segment of your track naming it
 `<id>.ogg`, and put in the loop segment naming it `<id>.loop.ogg`.
 Then it should Work:registered: unconditionally
+
+## Known issues (v1.0.0)
+
+Position mainpulation functions are in an awakard state, complain
+to have it fixed
 
 ## Support
 
