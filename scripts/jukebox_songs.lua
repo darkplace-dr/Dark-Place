@@ -35,11 +35,11 @@ return {
     origin = "Deltarune: The Stars"
   },
   {
-    name = "I hope it will be fine tomorrow",
+    name = "I hope it will be fine tomorrow", -- 明日も晴れるといいね
     file = "inainaina",
-    composer = "shimtone (DOVA-SYNDROME)",
+    composer = "shimtone",
     released = "August 4, 2020",
-    origin = "Ninomae Ina'nis's Intro BGM"
+    origin = "free sound released to DOVA-SYNDROME; Ninomae Ina'nis's Intro BGM" -- https://dova-s.jp/bgm/play13226.html
   },
   {
     name = "Spamgolor",
@@ -57,7 +57,7 @@ return {
   },
   {
     name = "サウンドと恋に C I T Y P O P",
-    file = "forest",
+    file = "citypop_sound_of_love",
     composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
     released = "2016",
     -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p

@@ -39,6 +39,9 @@ function Music:init(music, volume, pitch, loop)
         self.pitch = pitch or 1
         self:play(music, volume, pitch, loop)
     end
+
+    self.intro_last_pos = -1
+    self.intro_dt = 0
 end
 
 -- Fades the music's volume to `to` at `speed`, calling `callback` when it finishes.
@@ -193,6 +196,7 @@ function Music:statusReset()
     self.fade_speed = 0
     self.intro_played = false
     self.temporary_halt = false
+    self.intro_last_pos = 0
 end
 
 function Music:stop(full, starting_another)
@@ -260,19 +264,24 @@ function Music:_update()
         end
     end
 
-    local function introIsPlaying()
-        local dur = self.source_intro:getDuration()
-        if dur > 0 then
-            return self.source_intro:isPlaying()
-                and self.source_intro:tell() <= (dur - BASE_DT) -- HACK
-        end
-        return self.source_intro:isPlaying()
-    end
     if self.source_intro
-        and (not self.intro_played)
-        and (not introIsPlaying() and not self.temporary_halt) then
-        self.intro_played = true
-        self.source:play()
+        and (not self.intro_played) then
+        if self.source_intro:isPlaying() then
+            self.intro_dt = self.source_intro:tell() - self.intro_last_pos
+            self.intro_last_pos = self.source_intro:tell()
+        end
+        local function introIsPlaying()
+            local dur = self.source_intro:getDuration()
+            if dur > 0 then
+                return self.source_intro:isPlaying()
+                    and self.source_intro:tell() <= (dur - self.intro_dt)
+            end
+            return self.source_intro:isPlaying()
+        end
+        if (not introIsPlaying() and not self.temporary_halt) then
+            self.intro_played = true
+            self.source:play()
+        end
     end
 
     local source = self:getActiveSource()

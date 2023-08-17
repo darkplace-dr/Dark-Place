@@ -32,7 +32,7 @@ return {
         cutscene:look(YOU, "down")
         cutscene:wait(2)
 
-        local zoom_sfx = cutscene:playSound("forestalt")
+        local zoom_sfx = cutscene:playSound("emotion")
         local function zoom(scale, wait, overwrite_pos)
             local tx, ty = YOU:getRelativePos(YOU.width/2, YOU.height/2)
             Game.world.camera:setZoom(scale)
