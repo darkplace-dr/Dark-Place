@@ -129,8 +129,8 @@
         {
             "fileName": "maps/cybercity/alley2/alley2.tmx",
             "height": 1600,
-            "width": 4000,
-            "x": -4540,
+            "width": 2800,
+            "x": -3340,
             "y": -1060
         },
         {
@@ -165,7 +165,7 @@
             "fileName": "maps/cybercity/starwalkeralley.tmx",
             "height": 920,
             "width": 800,
-            "x": -3620,
+            "x": -3460,
             "y": -2020
         },
         {
@@ -186,7 +186,7 @@
             "fileName": "maps/cybercity/starwalkeralley2.tmx",
             "height": 1000,
             "width": 1040,
-            "x": -3740,
+            "x": -3580,
             "y": -3060
         },
         {
@@ -356,6 +356,27 @@
             "width": 640,
             "x": 4601,
             "y": 4280
+        },
+        {
+            "fileName": "maps/cybercity/prototype_01.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 2560,
+            "y": -2536
+        },
+        {
+            "fileName": "maps/cybercity/prototype_02.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 3280,
+            "y": -2536
+        },
+        {
+            "fileName": "maps/cybercity/dog_highway.tmx",
+            "height": 1160,
+            "width": 1160,
+            "x": 2680,
+            "y": -2016
         }
     ],
     "onlyShowAdjacentMaps": false,
