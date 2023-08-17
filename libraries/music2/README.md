@@ -1,7 +1,10 @@
 # Music2
 
-Kristal library that provides controllable looping for
-your funny Deltarune musics
+Kristal library that allow your funny Deltarune-style musics
+to have a intro before the loop
+
+That said, if you aim for authenticity, I still suggest
+using start-to-end looping like Deltarune
 
 ## Usage
 
@@ -18,6 +21,6 @@ I am `dobby233liu` in the Kristal / Dark Place Discord server
 
 ## License
 
-Copyright 2023 Liu "Dobby233Liu" Wenyuan
+(C) 2023 Liu "Dobby233Liu" Wenyuan
 
 [3-Clause BSD License](./LICENSE)
