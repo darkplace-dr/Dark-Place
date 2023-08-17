@@ -131,5 +131,13 @@ return {
             cutscene:text("* I'm glad that wasn't the ACTUAL Kris!", "shy")
             cutscene:hideNametag()
         end
-    end
+    end,
+	
+	transition = function()
+        if love.math.random(1, 100) <= 5 then
+            Game.world:mapTransition("deltagaster/susie_hall", "entry")
+        else
+            Game.world:mapTransition("room4", "entry")
+        end
+    end,
 }
