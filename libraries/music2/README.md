@@ -1,12 +1,16 @@
 # Music2
 
-Start-to-loop looping for your funny Deltarune music
+Kristal library that provides controllable looping for
+your funny Deltarune musics
 
 ## Usage
 
+First install the library by dropping it in your mod's `libraries`
+folder
+
 In assets/music, put in the intro segment of your track naming it
 `<id>.ogg`, and put in the loop segment naming it `<id>.loop.ogg`.
-It should  work
+Then it should Work:registered: unconditionally
 
 ## Support
 
