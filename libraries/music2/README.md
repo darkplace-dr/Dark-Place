@@ -20,6 +20,13 @@ Then it should Work:registered: unconditionally
 Position mainpulation functions are in an awakard state, complain
 to have it fixed
 
+## Special thanks
+
+Touhou Patch Center for the file-naming scheme as seen
+[here](<https://www.thpatch.net/wiki/Touhou_Patch_Center:BGM_modding#Looping>),
+Nin★ for
+[audio_loop_sound](<https://github.com/ninstar/yyProjects/tree/main/Resources/audio_loop_sound>)
+
 ## Support
 
 I am `dobby233liu` in the Kristal / Dark Place Discord server
