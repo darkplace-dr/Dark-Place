@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="border" value="castle"/>
-  <property name="music" value="castletown_empty"/>
+  <property name="music" value="deltarune/castletown_empty"/>
   <property name="name" value="Test Map - Great Door"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/castle.tsx"/>

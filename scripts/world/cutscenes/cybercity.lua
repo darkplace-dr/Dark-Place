@@ -270,4 +270,12 @@ return {
         cutscene:text("* I'm still a WIP! Don't mind me here!", "wink", "addisonpink")
         addisonpink:resetSprite()
     end,
+
+    gamer = function(cutscene, event)
+        cutscene:text("* For some reason there's a door on the floor.")
+        cutscene:text("* Will you go inside?")
+        if cutscene:choicer({"Yes", "No"}) == 1 then
+            cutscene:text("* Amogus")
+        end
+    end,
 }

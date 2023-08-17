@@ -101,7 +101,7 @@ return {
 
     grimkris = function(cutscene, event)
         cutscene:showNametag("Kris")
-        cutscene:text("* Man, i don't know why people don't like Grimace Shake!", nil, "grimkris")
+        cutscene:text("* Man, I don't know why people don't like Grimace Shake!", nil, "grimkris")
         cutscene:text("* It's so go-", nil, "grimkris", {auto = true})
         cutscene:hideNametag()
         Game.world.music:fade(0, 0.5)
@@ -126,7 +126,9 @@ return {
 
             cutscene:setSpeaker(susie)
             cutscene:showNametag("Susie")
-            cutscene:text("* What?", "shock")
+            cutscene:text("* ...", "shock_down")
+            cutscene:text("* Well,[wait:5] uh[speed:0.25]...", "shock_nervous")
+            cutscene:text("* I'm glad that wasn't the ACTUAL Kris!", "shy")
             cutscene:hideNametag()
         end
     end
