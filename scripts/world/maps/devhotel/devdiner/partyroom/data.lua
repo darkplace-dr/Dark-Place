@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 40,
+  nextobjectid = 50,
   properties = {
     ["music"] = "greenroom"
   },
@@ -277,6 +277,32 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 46,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 520,
+          width = 100,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 47,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 280,
+          width = 100,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -472,6 +498,50 @@ return {
           gid = 93,
           visible = true,
           properties = {}
+        },
+        {
+          id = 40,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 535,
+          y = 410,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "dumbie",
+            ["flagcheck"] = "dumbie_inparty"
+          }
+        },
+        {
+          id = 48,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 570,
+          width = 100,
+          height = 70,
+          rotation = 0,
+          gid = 93,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 330,
+          width = 100,
+          height = 70,
+          rotation = 0,
+          gid = 93,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -564,6 +634,22 @@ return {
           properties = {
             ["flag"] = "!ostarwalker_party",
             ["target"] = { id = 33 }
+          }
+        },
+        {
+          id = 41,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 580,
+          y = 370,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!dumbie_party",
+            ["target"] = { id = 40 }
           }
         }
       }

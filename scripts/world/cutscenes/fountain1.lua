@@ -38,7 +38,8 @@ return function(cutscene)
     local party_poss = {
         { initial = {320, 600}, walk_up = {380, 10} },
         { initial = {250, 640}, walk_up = {420, 10} },
-        { initial = {380, 680}, walk_up = {460, 10} },
+        { initial = {380, 640}, walk_up = {420, 10} },
+        { initial = {320, 680}, walk_up = {440, 10} },
     }
     local party_walk_up_wait = nil
     for i, member in ipairs(members) do
