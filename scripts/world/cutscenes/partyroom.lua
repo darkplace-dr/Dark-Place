@@ -328,5 +328,26 @@ return {
         cutscene:text("* This [color:yellow]room[color:reset] is [color:yellow]Pissing[color:reset] me\noff...")
         cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
         cutscene:hideNametag()
-    end
+    end,
+
+    you = function(cutscene, event)
+        local you = cutscene:getCharacter("YOU")
+		
+        if Game:hasPartyMember("susie") then
+            cutscene:text("* Hey, YOU.[wait:5] How are you holding up?", "small_smile", "susie")
+        end
+
+        cutscene:wait(Game.world.music:fade(0, 0.5))
+        cutscene:wait(1)
+        Assets.playSound("croak")
+        you:setSprite("e4")
+        cutscene:wait(1)
+        you:setSprite("e1")
+        cutscene:wait(Game.world.music:fade(1, 0.5))
+        cutscene:wait(1)
+		
+        if Game:hasPartyMember("susie") then
+            cutscene:text("* Uh...[wait:5]good to hear.", "nervous_side", "susie")
+        end
+    end,
 }
