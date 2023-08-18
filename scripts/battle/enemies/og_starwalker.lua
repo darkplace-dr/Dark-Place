@@ -14,7 +14,7 @@ function OGStarwalker:init()
     self.health = 6000
     self.attack = 12
     self.defense = 2
-    self.money = 420
+    self.money = Game:getFlag("starwalker_money") / 3
     self.experience = Mod:isInRematchMode() and 0 or 0
 
     self.usedWalkerTimes = 0

@@ -161,12 +161,18 @@ return {
             cutscene:setSpeaker(event)
             
             cutscene:text("* These [color:yellow]bananas[color:reset] are [color:yellow]Pissing[color:reset] me\noff...")
+
+            Game:setFlag("starwalker_money", Game.money)
             
             while Game.money > 0 do
                 Game.money = math.floor(Utils.lerp(Game.money, 0, 0.33))
                 cutscene:wait(1/30)
             end
             
+            if cutscene:getCharacter("susie") then
+                cutscene:text("* WH-!", "shock", "susie")
+                cutscene:text("* HEY,[wait:5] WHAT THE HELL?!", "teeth_b", "susie")
+            end
             cutscene:text("* I'm a   [color:yellow]Starwalker[color:reset]")
             
             cutscene:setSpeaker()
@@ -178,7 +184,7 @@ return {
             
             cutscene:text("* (The   [color:yellow]Starwalker[color:reset][wait:6]\n   somehow saved your game...)")
             
-        else
+        elseif cutscene:getCharacter("susie") then
             Game.world.music:pause()
             
             cutscene:text("* [color:yellow]You[color:reset] are [color:yellow]Pissing[color:reset] me off...", nil, event)
@@ -261,6 +267,8 @@ return {
 
             cutscene:interpolateFollowers()
             cutscene:attachFollowers()
+        else
+            cutscene:text("* [color:yellow]Starwalker[color:reset].", nil, event)
         end
     end,
 
@@ -275,7 +283,7 @@ return {
         cutscene:text("* For some reason there's a door on the floor.")
         cutscene:text("* Will you go inside?")
         if cutscene:choicer({"Yes", "No"}) == 1 then
-            cutscene:text("* Amogus")
+            Game.world:mapTransition("gamertimeentrance", "spawn")
         end
     end,
 }

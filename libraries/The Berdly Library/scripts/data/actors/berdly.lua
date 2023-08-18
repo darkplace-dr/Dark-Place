@@ -85,14 +85,24 @@ function actor:init()
         ["walk/left"] = {0, 0},
         ["walk/right"] = {0, 0},
         ["walk/up"] = {0, 0},
+        ["walk/up_2"] = {0, 1},
+        ["walk/up_4"] = {0, 1},
         ["walk/down"] = {0, 0},
+        ["walk/down_2"] = {0, 1},
+        ["walk/down_4"] = {0, 1},
 
         ["walk_unhappy/down"] = {0, 0},
+        ["walk_unhappy/down_2"] = {0, 1},
+        ["walk_unhappy/down_4"] = {0, 1},
         ["walk_unhappy/left"] = {0, 0},
         ["walk_unhappy/right"] = {0, 0},
         ["walk_unhappy/up"] = {0, 0},
+        ["walk_unhappy/up_2"] = {0, 1},
+        ["walk_unhappy/up_4"] = {0, 1},
 
         ["walk_blush/down"] = {0, 0},
+        ["walk_blush/down_2"] = {0, 1},
+        ["walk_blush/down_4"] = {0, 1},
 
         ["slide"] = {0, 0},
 

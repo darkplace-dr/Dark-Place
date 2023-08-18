@@ -770,7 +770,7 @@ return {
         },
         {
           id = 87,
-          name = "transition",
+          name = "script",
           class = "",
           shape = "rectangle",
           x = 1340,
@@ -780,8 +780,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "room4",
-            ["marker"] = "entry"
+            ["cutscene"] = "room2.transition",
+            ["once"] = false
           }
         },
         {
