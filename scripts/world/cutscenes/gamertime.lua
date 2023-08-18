@@ -100,6 +100,8 @@ return {
                     Game:removePartyMember(v.id)
                     Game:setFlag(v.id.."_party", false)
                 end
+                Game:removePartyMember("susie")
+                Game:setFlag("susie_party", false)
                 Game:removePartyMember("dess")
                 Game:setFlag("dess_party", false)
                 Game:removePartyMember("brandon")
