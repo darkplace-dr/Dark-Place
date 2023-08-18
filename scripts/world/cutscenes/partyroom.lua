@@ -334,7 +334,9 @@ return {
         local you = cutscene:getCharacter("YOU")
 		
         if Game:hasPartyMember("susie") then
+            cutscene:showNametag("Susie")
             cutscene:text("* Hey, YOU.[wait:5] How are you holding up?", "small_smile", "susie")
+            cutscene:hideNametag()
         end
 
         cutscene:wait(Game.world.music:fade(0, 0.5))
@@ -347,7 +349,9 @@ return {
         cutscene:wait(1)
 		
         if Game:hasPartyMember("susie") then
+            cutscene:showNametag("Susie")
             cutscene:text("* Uh...[wait:5]good to hear.", "nervous_side", "susie")
+            cutscene:hideNametag()
         end
     end,
 }
