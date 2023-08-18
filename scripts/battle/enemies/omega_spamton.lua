@@ -14,7 +14,7 @@ function OmegaSpamton:init()
     -- Enemy attack (determines bullet damage)
     self.attack = 180
     -- Enemy defense (usually 0)
-    self.defense = -math.huge
+    self.defense = 200
     -- Enemy reward
     self.money = 5500
     self.experience = Mod:isInRematchMode() and 0 or 1500
