@@ -113,6 +113,19 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("bulborb_position", 2)
     end
 
+    local berdly = Game:getPartyMember("berdly")
+    if berdly:getBaseStats("health") == 300 then
+        likely_old_save = true
+
+        berdly.health = 200
+        berdly.stats = {
+            health = 200,
+            attack = 8,
+            defense = 4,
+            magic = 2
+        }
+    end
+
     ----------
 
     if not new_file and likely_old_save then

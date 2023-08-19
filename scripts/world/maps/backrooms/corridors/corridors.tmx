@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="48" height="53" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="34">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="48" height="53" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="36">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -227,12 +227,21 @@
     <property name="marker" value=""/>
    </properties>
   </object>
+  <object id="34" name="transition" x="880" y="-20" width="160" height="40">
+   <properties>
+    <property name="map" value="backrooms/gramophone"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="19" name="entry" x="960" y="2080">
    <point/>
   </object>
   <object id="21" name="spawn" x="960" y="1440">
+   <point/>
+  </object>
+  <object id="35" name="entry2" x="960" y="120">
    <point/>
   </object>
  </objectgroup>

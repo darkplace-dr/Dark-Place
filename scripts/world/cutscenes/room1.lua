@@ -186,7 +186,7 @@ return {
                 cutscene:walkTo("berdly", x - 60, y + 100, 0.75, "up")
             end
             if cutscene:getCharacter("dumbie") then
-                cutscene:walkTo("berdly", x - 60, y + 100, 0.75, "up")
+                cutscene:walkTo("dumbie", x - 60, y + 100, 0.75, "up")
             end
             if cutscene:getCharacter("bor") then
                 cutscene:walkTo("bor", x - 60, y + 100, 0.75, "up")

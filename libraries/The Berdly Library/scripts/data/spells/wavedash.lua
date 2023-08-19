@@ -14,7 +14,7 @@ function spell:init()
     self.description = "Wave-Dashes and deals moderate damage to one\nfoe. Depends on Attack & Magic."
 
     -- TP cost
-    self.cost = 0
+    self.cost = 32
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "enemy"

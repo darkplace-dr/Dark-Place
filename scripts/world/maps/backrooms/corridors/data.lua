@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 34,
+  nextobjectid = 36,
   properties = {
     ["music"] = "backrooms"
   },
@@ -18,8 +18,7 @@ return {
     {
       name = "backrooms",
       firstgid = 1,
-      filename = "../../../tilesets/backrooms.tsx",
-      exportfilename = "../../../tilesets/backrooms.lua"
+      filename = "../../../tilesets/backrooms.tsx"
     }
   },
   layers = {
@@ -799,6 +798,22 @@ return {
             ["map"] = "",
             ["marker"] = ""
           }
+        },
+        {
+          id = 34,
+          name = "transition",
+          class = "",
+          shape = "rectangle",
+          x = 880,
+          y = -20,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "backrooms/gramophone",
+            ["marker"] = "entry"
+          }
         }
       }
     },
@@ -836,6 +851,19 @@ return {
           shape = "point",
           x = 960,
           y = 1440,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 35,
+          name = "entry2",
+          class = "",
+          shape = "point",
+          x = 960,
+          y = 120,
           width = 0,
           height = 0,
           rotation = 0,

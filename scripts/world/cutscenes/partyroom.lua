@@ -227,6 +227,7 @@ return {
                 Kristal.callEvent("createQuest", "Where's Kris", "krismissing", "Susie mentioned Kris not being with her when she entered the Dark World. Go search for clues on their wherabouts.")
                 Kristal.callEvent("createQuest", "Lost Girl", "noellemissing", "Susie mentioned Noelle not being with her when she entered the Dark World. Go search for clues on her wherabouts.")
                 Kristal.callEvent("createQuest", "Missing Berd", "berdlymissing", "Susie mentioned Berdly not being with her when she entered the Dark World. Go search for clues on his wherabouts.")
+                Game:setFlag("drcastsplitup_known", true)
             end
         elseif opinion == 2 then
             cutscene:text("* What do I think of this place?", "neutral", "susie")
@@ -328,5 +329,30 @@ return {
         cutscene:text("* This [color:yellow]room[color:reset] is [color:yellow]Pissing[color:reset] me\noff...")
         cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
         cutscene:hideNametag()
-    end
+    end,
+
+    you = function(cutscene, event)
+        local you = cutscene:getCharacter("YOU")
+		
+        if Game:hasPartyMember("susie") then
+            cutscene:showNametag("Susie")
+            cutscene:text("* Hey, YOU.[wait:5] How are you holding up?", "small_smile", "susie")
+            cutscene:hideNametag()
+        end
+
+        cutscene:wait(Game.world.music:fade(0, 0.5))
+        cutscene:wait(1)
+        Assets.playSound("croak")
+        you:setSprite("e4")
+        cutscene:wait(1)
+        you:setSprite("e1")
+        cutscene:wait(Game.world.music:fade(1, 0.5))
+        cutscene:wait(1)
+		
+        if Game:hasPartyMember("susie") then
+            cutscene:showNametag("Susie")
+            cutscene:text("* Uh...[wait:5]good to hear.", "nervous_side", "susie")
+            cutscene:hideNametag()
+        end
+    end,
 }
