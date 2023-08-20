@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="16">
+ <editorsettings>
+  <export target="dumbierm.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="deltarune/cybercity_alt"/>
+  <property name="name" value="Dumbie - Dark Place /ref /srs"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/city_alleyway.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="20" height="15">
+  <data encoding="csv">
+289,280,290,290,290,290,279,290,290,290,280,290,290,290,290,290,290,280,290,299,
+278,290,290,290,295,290,290,290,290,290,290,290,290,290,290,279,290,290,290,299,
+289,298,290,298,298,290,290,290,290,290,290,290,278,290,290,290,290,290,295,299,
+289,298,298,298,293,298,298,298,293,298,295,298,298,298,298,298,294,298,298,299,
+289,278,298,298,298,298,298,298,298,298,298,298,298,279,298,298,298,298,298,299,
+304,305,308,305,310,305,305,305,305,310,305,308,305,305,310,305,305,309,305,314,
+298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,
+298,298,298,298,295,298,298,298,298,298,298,298,298,298,298,298,295,298,298,298,
+298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,
+298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,
+298,298,295,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,
+298,298,298,298,298,298,298,298,298,298,298,295,298,298,298,298,295,298,298,298,
+298,298,298,298,298,298,295,298,298,298,298,298,298,298,298,298,298,298,298,298,
+298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,
+298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="20" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,229,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,229,0,
+0,0,0,229,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,222,223,224,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,229,0,0,237,238,239,
+0,0,0,229,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#5500ff" id="3" name="collision">
+  <object id="1" x="240" y="280" width="40" height="40"/>
+  <object id="2" x="120" y="520" width="40" height="40"/>
+  <object id="3" x="560" y="480" width="40" height="40"/>
+  <object id="4" x="720" y="320" width="40" height="40"/>
+  <object id="5" x="0" y="200" width="800" height="40"/>
+  <object id="6" x="800" y="240" width="40" height="360"/>
+  <object id="7" x="0" y="600" width="800" height="40"/>
+  <object id="8" x="-40" y="240" width="40" height="360"/>
+  <object id="11" x="120" y="360" width="40" height="40"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="markers">
+  <object id="10" name="spawn" x="740" y="560">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="5" name="objects">
+  <object id="13" name="interactable" x="684.667" y="440" width="115.333" height="80">
+   <properties>
+    <property name="cutscene" value="spamroom.warpbin"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="9" name="npc" x="400" y="320">
+   <properties>
+    <property name="actor" value="dumbie"/>
+    <property name="cutscene" value="devroom.dumbie"/>
+    <property name="flagcheck" value="!dumbie_inparty"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="15" name="savepoint" x="720" y="240" width="40" height="40">
+   <properties>
+    <property name="text">* The power of Dummies feels you with sadness.[wait:5]
+* This guy is a asshole isn't he?</property>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
