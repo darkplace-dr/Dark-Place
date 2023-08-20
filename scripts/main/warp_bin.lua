@@ -32,6 +32,7 @@ Mod.warp_bin_codes = {
     ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
 	["_CHCKPNT"] = { result = "field" },
 	["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
+    ["DUMBIERM"] = { result = "dumbierm" },
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
