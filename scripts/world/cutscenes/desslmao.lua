@@ -7,6 +7,11 @@ return {
 			cutscene:text("* (Oh god...[wait:5] it's HER.)", "miffed", "brandon")
 		end
 
+		if cutscene:getCharacter("dumbie") then
+			cutscene:showNametag("Dumbie")
+			cutscene:text("* NO WAY DESS DELTARUNE", "pog", "dumbie")
+		end
+
 		cutscene:showNametag("Dess Holiday?")
 		cutscene:text("* Yo is that-", "condescending", "dess")
 		cutscene:text("* ([func:sound]Low quality burp sound effect like that one time in Rick and Morty like what they do in the show)", "neutral", "dess",

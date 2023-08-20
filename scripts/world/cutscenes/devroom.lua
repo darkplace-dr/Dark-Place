@@ -459,27 +459,27 @@ return {
         if not Game:getFlag("dumbie_talkedto") then
             local dumbie = cutscene:getCharacter("dumbie")
             cutscene:showNametag("Dummy?")
-            cutscene:text("* I'm a Dummy.", "fear", "dumbie")
+            cutscene:text("* heya", "heeey", "dumbie")
 			cutscene:showNametag("Susie")
-			cutscene:text("* Uh, no you're not?", "sus_nervous", "susie")
+			cutscene:text("* Uh,[wait:5] hey?", "sus_nervous", "susie")
 			cutscene:showNametag("Dumbie")
-			cutscene:text("* Well, your mom didn't say that!", "angryforward", "dumbie")
-			cutscene:text("* ...", "confused", "dumbie")
-			cutscene:text("* I'm a Dummy.", "fear", "dumbie")
+			cutscene:text("* how are you doing on this fine night", "heeey", "dumbie")
+			cutscene:text("* Nothing,[wait:5] i guess", "sus_nervous", "susie")
+			cutscene:text("* cool", "normal", "dumbie")
 			cutscene:hideNametag()
             Game:setFlag("dumbie_talkedto", true)
         elseif Game:getFlag("dumbie_talkedto") then
             local dumbie = cutscene:getCharacter("dumbie")
             cutscene:showNametag("Dumbie")
-            cutscene:text("* Hey, your party is a bit, empty, do you want me to enter?", "eyeshappy", "dumbie")
+            cutscene:text("* hey did you see kris deltarune /srs", "suspect", "dumbie")
             cutscene:hideNametag("Dumbie")
 	        local opinion = cutscene:choicer({"Yes", "No"})
 			if opinion == 1 then
 			    cutscene:showNametag("Dumbie")
-			    cutscene:text("* Heck yeah!", "veryhappy", "dumbie")
+			    cutscene:text("* show me where they are", "veryhappy", "dumbie")
                 if #Game.party >= 4 then
-                    cutscene:text("* Wait,[wait:5] you've got a full party.", "confused", "dumbie")
-                    cutscene:text("* Well I'll be in the party room if you need me.", "normal", "dumbie")
+                    cutscene:text("* wait you've a bunch of friends i can only be friend with persons with only 3 friends", "confused", "dumbie")
+                    cutscene:text("* well I'll be here if you need me.", "normal", "dumbie")
                     cutscene:hideNametag()
                     Assets.playSound("slidewhist")
                     cutscene:slideTo(event, event.x, -100, 2)
@@ -497,8 +497,7 @@ return {
                 Mod:unlockPartyMember("dumbie")
             else
 			    cutscene:showNametag("Dumbie")
-			    cutscene:text("* So, go to penis!", "angryforward", "dumbie")
-			    cutscene:text("* But, i'm here if you change your mind.", "normal", "dumbie")
+			    cutscene:text("* fuk u", "happy", "dumbie")
 			    cutscene:hideNametag()
             end
 		end
