@@ -4,7 +4,7 @@ return function(script, chara)
 		Game:addFlag("nb_bonk", 1)
 		for i=1,1+Game:getFlag("nb_bonk", 0) do
 			if Utils.random(0, 10) <= 3 then
-				Game.world.map:setTile(Utils.pick({58, 59, 60}), Utils.pick({15, 16}), love.math.random(0, 924))
+				Game.world.map:setTile(Utils.pick({32, 33, 34}), Utils.pick({15, 16}), love.math.random(0, 924))
 			end
 		end
 	end
