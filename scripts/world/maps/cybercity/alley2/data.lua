@@ -1453,7 +1453,6 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["controller"] = { id = 253 },
             ["once"] = false,
             ["script"] = "glitch_oob"
           }

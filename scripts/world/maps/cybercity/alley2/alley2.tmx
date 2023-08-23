@@ -330,7 +330,6 @@
   </object>
   <object id="255" name="script" x="840" y="320" width="40" height="520">
    <properties>
-    <property name="controller" type="object" value="253"/>
     <property name="once" type="bool" value="false"/>
     <property name="script" value="glitch_oob"/>
    </properties>
