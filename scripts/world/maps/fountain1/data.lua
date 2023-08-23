@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -67,7 +67,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 160,
@@ -80,7 +80,7 @@ return {
         {
           id = 13,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 480,
@@ -93,7 +93,7 @@ return {
         {
           id = 14,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 160,
@@ -106,7 +106,7 @@ return {
         {
           id = 15,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 120,
@@ -119,7 +119,7 @@ return {
         {
           id = 16,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 239,
@@ -148,7 +148,7 @@ return {
         {
           id = 1,
           name = "fountainfloor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 280,
@@ -161,7 +161,7 @@ return {
         {
           id = 2,
           name = "darkfountain",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 280,
@@ -190,7 +190,7 @@ return {
         {
           id = 4,
           name = "fountainshadow",
-          type = "",
+          class = "",
           shape = "point",
           x = 80,
           y = 80,
@@ -219,7 +219,7 @@ return {
         {
           id = 6,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 160,
@@ -250,7 +250,7 @@ return {
         {
           id = 3,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 400,

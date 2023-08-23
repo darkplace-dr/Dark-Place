@@ -6,7 +6,7 @@ function character:init()
     self.name = "Brandon"
 
     self:setActor("brandon")
-    self:setLightActor("kris_lw")
+    self:setLightActor("brandon_lw")
 
     self.level = 1
     self.title = "Marksman\nTakes aim with\na rifle."
@@ -19,6 +19,8 @@ function character:init()
 
     self.has_xact = true
     self.xact_name = "B-Action"
+
+    self:addSpell("gammabeam")
 
     self.health = 100
 
@@ -77,14 +79,14 @@ function character:drawPowerStat(index, x, y, menu)
     if index == 1  then
         local icon = Assets.getTexture("ui/menu/icon/demon")
         love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
-        love.graphics.print("Gaming Skills:", x, y, 0, 0.7, 1)
+        love.graphics.print("Gaming Skills", x, y, 0, 0.7, 1)
         love.graphics.print("Yes", x+130, y)
         return true
     elseif index == 2 then
         local icon = Assets.getTexture("ui/menu/icon/magic")
         love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
-        love.graphics.print("Bisexual:", x, y)
-        love.graphics.print("Yes", x+130, y, 0)
+        love.graphics.print("Bisexual", x, y)
+        love.graphics.print("Maybe", x+130, y, 0)
         return true
     elseif index == 3 then
         local icon = Assets.getTexture("ui/menu/icon/fire")

@@ -16,8 +16,11 @@ return {
             -- Ralsei text, if he's in the party
             cutscene:text("* Aww,[wait:5] Susie!", "blush_pleased", "ralsei")
         end
-        if not Kristal.libCall("achievements", "hasAch", "dummy") then
-            Kristal.callEvent("completeAchievement", "dummy")
-        end
-    end
+
+        Kristal.callEvent("completeAchievement", "dummy")
+    end,
+	
+	end_battle = function(cutscene)
+		Game.battle:returnToWorld()
+	end
 }

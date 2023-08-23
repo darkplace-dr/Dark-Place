@@ -1,7 +1,7 @@
 local character, super = Class("susie", true)
 
 function character:init()
-    super:init(self)
+    super.init(self)
 
     self.lw_health = 30
 

@@ -1,4 +1,33 @@
 return {
+    fommt = function(cutscene, event)
+        if not Game:getFlag("fommt_save") then
+            cutscene:showNametag("Fommt")
+            cutscene:text("* Hee hee hee...[wait:5]\n* Shall I help you SAVE?")
+            cutscene:text("* I have enough power to let you SAVE at least once!")
+            cutscene:hideNametag()
+            cutscene:text("* (Would you like to SAVE?)")
+            if cutscene:choicer({"Save", "Do Not"}) == 1 then
+                Game.world.music:fade(0, 0.5)
+                cutscene:wait(1)
+                Assets.playSound("save")
+
+                cutscene:wait(0.5)
+                Game:saveQuick(Game.world.player:getPosition())
+                cutscene:text("* You saved your game.[wait:2].[wait:2].[wait:5]somehow.")
+
+                Game.world.music:fade(1, 0.5)
+                cutscene:showNametag("Fommt")
+                cutscene:text("* Hee hee hee!")
+                cutscene:hideNametag()
+				
+                Game:setFlag("fommt_save", true)
+            end
+        else
+            cutscene:showNametag("Fommt")
+            cutscene:text("* Hee hee hee!")
+            cutscene:hideNametag()
+        end
+    end,
     bb = function(cutscene, event)
         cutscene:playSound(Utils.pick({
             "bb_hi",
@@ -49,4 +78,82 @@ return {
             cutscene:hideNametag()
         end
     end,
+    ---@param cutscene WorldCutscene
+    rook = function(cutscene, event)
+        --local rook = cutscene:getCharacter("rook")
+        local nodeface = NodeFace()
+
+        cutscene:showNametag("Rook")
+        cutscene:text("* Well,[wait:5] LOOK who it iz...", "lookback", "rook")
+        cutscene:text("* If it izn't the LIGHTNERZ!", "browraise", "rook")
+        cutscene:text("* Been a while,[wait:5] hazn't it, Amigooze?", "smug", "rook")
+
+        cutscene:showNametag("Susie")
+        cutscene:text("* ...", "suspicious", "susie")
+        cutscene:text("* Uh,[wait:3] I'm sorry, but who the hell are you?", "sus_nervous", "susie")
+
+        cutscene:showNametag("Rook")
+        cutscene:text("* WHO AM I?!", "browraise", "rook")
+        cutscene:text("* C'mon DAWG, don't act like you don't know me!", "smug", "rook")
+        cutscene:text("* We were bout to have a FIGHT and everything!![react:1]", "grin", "rook", {
+            reactions = {
+                {"At leazt until SHE showed up...", "mid", "bottom", "frown", "rook"}
+            },
+        })
+        cutscene:text("* Izn't that right, No-Goze and Done-zo?", "smug", "rook")
+
+        cutscene:showNametag("NG & DZ")
+        cutscene:text("[func:nodeface,dz,-8,32] Mhm[wait:15]\n[func:nodeface,ng,-5,32] Couldn't have put it better\n   myself, Bossman!!",
+        {
+            functions = {
+                nodeface = nodeface,
+            }
+        })
+
+        cutscene:hideNametag()
+	end,
+    addisonsoda = function(cutscene, event)
+        local skp = cutscene:getCharacter("addisonsoda")
+        local skp_name = Mod:addiSwitch() and "Fizz" or "Yellow Addison"
+
+        cutscene:showNametag(skp_name)
+        cutscene:text("* SynthSoda at half price! Now at 100D$", "smile", skp)
+        cutscene:text("* Hey there! You look like you need a refreshment!", "default", skp)
+        cutscene:text("* Would you like a taste of Synthsoda?", "default", skp)
+        cutscene:hideNametag()
+
+        cutscene:text("* (Buy SynthSoda for 100D$?)")
+        cutscene:showShop()
+        local choice = cutscene:choicer({ "Buy", "Don't Buy" })
+        cutscene:hideShop()
+
+        if choice == 1 then
+            if Game.money < 100 then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Even with a discount, you still don't have enough...", "pissed_b", skp)
+                cutscene:hideNametag()
+            elseif not Game.inventory:addItem("synthsoda") then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Come back when you got space in your pockets...", "pissed", skp)
+                cutscene:hideNametag()
+                return
+            else
+            Game.money = Game.money - 100
+            cutscene:playSound("locker")
+
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Happy to give you this special offer!", "wink", skp)
+            cutscene:text("* Come back if you want more!", "wink", skp)
+            cutscene:hideNametag()
+            end
+        end
+
+        if choice == 2 then
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Is that so? Okay then!", "default", skp)
+            cutscene:text("* I'll still be here if you change your mind!", "smile", skp)
+            cutscene:text("* That's until we sold out...", "pissed", skp)
+            cutscene:hideNametag()
+        end
+    end
 }

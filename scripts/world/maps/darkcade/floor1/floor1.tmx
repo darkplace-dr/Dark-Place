@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="14">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="castle-funk"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/darkcade_interior.tsx"/>
+ <tileset firstgid="43" source="../../../tilesets/castle.tsx"/>
+ <tileset firstgid="103" source="../../../tilesets/devroom.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="30" height="16">
+  <data encoding="csv">
+0,124,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,126,0,
+0,124,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,126,0,
+0,124,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,126,0,
+0,106,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,107,108,0,
+54,4,4,4,4,4,4,4,4,4,4,4,4,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,52,
+54,4,4,4,4,4,4,4,4,4,4,4,4,8,9,10,8,9,10,8,9,10,8,9,10,8,9,10,8,52,
+54,4,4,4,4,4,4,4,4,4,4,4,4,15,16,17,15,16,17,15,16,17,15,16,17,15,16,17,15,52,
+54,4,4,4,4,4,4,4,4,4,4,4,4,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,52,
+54,4,4,4,4,4,4,4,4,4,4,4,4,8,9,10,8,9,10,8,9,10,8,9,10,8,9,10,8,52,
+54,4,4,4,4,4,4,4,4,4,4,4,4,15,16,17,15,16,17,15,16,17,15,16,17,15,16,17,15,52,
+54,4,4,4,4,4,4,4,4,4,4,4,4,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,52,
+54,4,4,4,4,4,4,4,4,4,4,4,10,8,9,10,8,9,10,8,9,10,8,9,10,8,9,10,8,52,
+54,4,4,4,4,4,4,4,4,4,4,16,17,15,16,17,15,16,17,15,16,17,15,16,17,15,16,17,15,52,
+54,4,4,4,4,4,4,4,4,4,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,52,
+54,4,4,4,4,4,4,4,4,10,8,9,10,8,9,10,8,9,10,8,9,10,8,9,10,8,9,10,8,52,
+0,49,49,49,49,49,49,49,49,49,49,49,49,50,16,17,15,48,49,49,49,49,49,49,49,49,49,49,49,0
+</data>
+ </layer>
+ <layer id="4" name="Tile Layer 2" width="30" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <imagelayer id="3" name="Image Layer 1" offsetx="42" offsety="-4">
+  <image source="../../../../../assets/sprites/world/maps/darkcade/pizza_back.png" width="498" height="184"/>
+ </imagelayer>
+ <imagelayer id="7" name="Image Layer 2" offsetx="74" offsety="476">
+  <image source="../../../../../assets/sprites/world/maps/darkcade/table1.png" width="130" height="124"/>
+ </imagelayer>
+ <objectgroup id="2" name="collision">
+  <object id="1" x="0" y="0" width="1200" height="160"/>
+  <object id="2" x="0" y="160" width="40" height="480"/>
+  <object id="3" x="40" y="600" width="520" height="40"/>
+  <object id="4" x="680" y="600" width="480" height="40"/>
+  <object id="5" x="1160" y="160" width="40" height="480"/>
+  <object id="6" x="52" y="160" width="90" height="18"/>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="8" name="transition" x="560" y="640" width="120" height="80">
+   <properties>
+    <property name="map" value="darkcade/outside"/>
+    <property name="marker" value="exit"/>
+   </properties>
+  </object>
+  <object id="11" name="interactable" x="100" y="478" width="78" height="122">
+   <properties>
+    <property name="cutscene" value="darkcade_f1.table_1"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="13" name="interactable" x="74" y="488" width="130" height="110">
+   <properties>
+    <property name="cutscene" value="darkcade_f1.table_1"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="markers">
+  <object id="9" name="entry" x="620" y="600">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

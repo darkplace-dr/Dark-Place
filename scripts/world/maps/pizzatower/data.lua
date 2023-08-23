@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 15,
-  nextobjectid = 93,
+  nextobjectid = 97,
   properties = {
     ["border"] = "simple",
     ["music"] = "mmm_yess_put_the_tree_on_my_pizza",
@@ -19,8 +20,8 @@ return {
     {
       name = "objects",
       firstgid = 1,
-      filename = "../../tilesets/objects.tsx",
-      exportfilename = "../../tilesets/objects.lua"
+      filename = "../../tilesets/lario-objects.tsx",
+      exportfilename = "../../tilesets/lario-objects.lua"
     }
   },
   layers = {
@@ -29,6 +30,7 @@ return {
       image = "../../../../assets/sprites/world/maps/pizzatower/main.png",
       id = 6,
       name = "bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -44,6 +46,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -283,32 +286,6 @@ return {
           properties = {}
         },
         {
-          id = 46,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 388,
-          y = 468.5,
-          width = 66.5,
-          height = 44.5,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 47,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 451.091,
-          y = 495.091,
-          width = 56.5455,
-          height = 12,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 84,
           name = "",
           type = "",
@@ -346,6 +323,20 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 93,
+          name = "mushrum",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 540,
+          width = 125,
+          height = 99,
+          rotation = 0,
+          gid = 16,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -354,6 +345,7 @@ return {
       draworder = "topdown",
       id = 13,
       name = "objects_npcs2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -363,11 +355,11 @@ return {
       properties = {},
       objects = {
         {
-          id = 71,
+          id = 96,
           name = "ralgay",
           type = "",
           shape = "rectangle",
-          x = 457.833,
+          x = 457.83,
           y = 404.5,
           width = 147,
           height = 235,
@@ -383,6 +375,7 @@ return {
       draworder = "topdown",
       id = 12,
       name = "objects_npcs",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -392,12 +385,12 @@ return {
       properties = {},
       objects = {
         {
-          id = 68,
+          id = 94,
           name = "susy",
           type = "",
           shape = "rectangle",
-          x = 356.939,
-          y = 411.333,
+          x = 356.94,
+          y = 411.33,
           width = 118,
           height = 138,
           rotation = 0,
@@ -406,12 +399,12 @@ return {
           properties = {}
         },
         {
-          id = 70,
+          id = 95,
           name = "chris hansen",
           type = "",
           shape = "rectangle",
-          x = 592.333,
-          y = 407.333,
+          x = 592.33,
+          y = 407.33,
           width = 120,
           height = 103,
           rotation = 0,
@@ -426,6 +419,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -467,6 +461,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = false,
       opacity = 1,
       offsetx = 0,
@@ -475,22 +470,6 @@ return {
       parallaxy = 1,
       properties = {},
       objects = {
-        {
-          id = 34,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 382.167,
-          y = 519.333,
-          width = 125,
-          height = 99,
-          rotation = 0,
-          gid = 16,
-          visible = true,
-          properties = {
-            ["solid"] = true
-          }
-        },
         {
           id = 89,
           name = "transition",
@@ -562,6 +541,7 @@ return {
       image = "../../../../assets/sprites/world/maps/pizzatower/parallax.png",
       id = 11,
       name = "trees",
+      class = "",
       visible = true,
       opacity = 0,
       offsetx = 0,

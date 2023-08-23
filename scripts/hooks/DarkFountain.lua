@@ -1,4 +1,4 @@
----@class DarkFountain : Event
+---@class DarkFountain
 local DarkFountain, super = Class("DarkFountain", true)
 
 function DarkFountain:update()

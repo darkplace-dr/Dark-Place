@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 31,
@@ -14,15 +15,14 @@ return {
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
-    ["music"] = "deltarune/mus_school",
+    ["music"] = "orphanage",
     ["name"] = "School"
   },
   tilesets = {
     {
       name = "schooltiles2",
       firstgid = 1,
-      filename = "../../../../tilesets/schooltiles2.tsx",
-      exportfilename = "../../../../tilesets/schooltiles2.lua"
+      filename = "../../../../tilesets/schooltiles2.tsx"
     }
   },
   layers = {
@@ -34,6 +34,7 @@ return {
       height = 12,
       id = 17,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -65,6 +66,7 @@ return {
       height = 12,
       id = 18,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -93,6 +95,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -104,7 +107,7 @@ return {
         {
           id = 89,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 320,
@@ -117,7 +120,7 @@ return {
         {
           id = 90,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 240,
@@ -130,7 +133,7 @@ return {
         {
           id = 91,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 200,
@@ -143,7 +146,7 @@ return {
         {
           id = 95,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1120,
           y = 240,
@@ -156,7 +159,7 @@ return {
         {
           id = 96,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 680,
           y = 320,
@@ -169,7 +172,7 @@ return {
         {
           id = 97,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 680,
           y = 360,
@@ -182,7 +185,7 @@ return {
         {
           id = 98,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 360,
@@ -199,6 +202,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -210,7 +214,7 @@ return {
         {
           id = 16,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 320,
@@ -223,7 +227,7 @@ return {
         {
           id = 55,
           name = "entryup",
-          type = "",
+          class = "",
           shape = "point",
           x = 620,
           y = 440,
@@ -240,6 +244,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -251,7 +256,7 @@ return {
         {
           id = 54,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 460,
@@ -267,7 +272,7 @@ return {
         {
           id = 84,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 200,
@@ -282,7 +287,7 @@ return {
         {
           id = 104,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1000,
           y = 200,
@@ -297,7 +302,7 @@ return {
         {
           id = 105,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 200,
@@ -312,7 +317,7 @@ return {
         {
           id = 106,
           name = "darkdoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 576,
           y = 124,

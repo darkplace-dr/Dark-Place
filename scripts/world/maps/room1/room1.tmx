@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="51">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="57">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -9,10 +9,11 @@
   <property name="name" value="Test Map - Room 1"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/castle.tsx"/>
+ <tileset firstgid="61" source="../../tilesets/devroom-objects.tsx"/>
  <layer id="1" name="tiles" width="20" height="24">
   <data encoding="csv">
 0,22,13,23,23,13,23,23,23,13,23,23,13,24,0,0,0,0,0,0,
-0,22,23,23,23,23,23,23,23,23,23,21,23,24,0,0,0,0,0,0,
+0,22,23,21,23,23,23,23,23,23,23,21,23,24,0,0,0,0,0,0,
 0,26,27,27,27,27,23,23,23,27,27,27,27,28,0,0,0,0,0,0,
 0,6,7,7,7,7,7,7,7,7,7,7,7,8,0,0,0,0,0,0,
 0,10,11,11,11,11,11,11,11,11,11,11,11,12,0,0,0,0,0,0,
@@ -33,8 +34,8 @@
 11,11,11,11,11,11,11,11,11,11,11,11,11,11,15,15,15,15,16,0,
 11,11,11,11,11,11,11,11,11,11,11,11,11,12,0,0,0,0,0,0,
 11,11,11,11,11,11,11,11,11,11,11,11,11,12,0,0,0,0,0,0,
-15,15,15,15,15,15,15,15,15,15,15,15,15,16,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+15,15,15,15,15,15,11,11,11,15,15,15,15,16,0,0,0,0,0,0,
+0,0,0,0,0,0,10,11,12,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <imagelayer id="7" name="Image Layer 1" offsetx="600" offsety="40">
@@ -97,7 +98,6 @@
 </data>
  </layer>
  <objectgroup color="#0000ff" id="3" name="collision" opacity="0.5">
-  <object id="1" x="40" y="80" width="520" height="40"/>
   <object id="2" x="560" y="120" width="40" height="80"/>
   <object id="3" x="600" y="160" width="200" height="40"/>
   <object id="4" x="560" y="280" width="40" height="80"/>
@@ -106,7 +106,7 @@
   <object id="7" x="360" y="400" width="80" height="40"/>
   <object id="8" x="360" y="680" width="280" height="40"/>
   <object id="9" x="560" y="800" width="40" height="120"/>
-  <object id="10" x="0" y="920" width="560" height="40"/>
+  <object id="10" x="0" y="920" width="240" height="40"/>
   <object id="12" x="0" y="680" width="240" height="40"/>
   <object id="14" x="160" y="400" width="80" height="40"/>
   <object id="15" x="40" y="360" width="120" height="40"/>
@@ -120,11 +120,15 @@
   <object id="49" x="200" y="580" width="40" height="100"/>
   <object id="50" x="0" y="500" width="200" height="40"/>
   <object id="51" x="0" y="580" width="200" height="40"/>
+  <object id="49" x="360" y="920" width="200" height="40"/>
+  <object id="53" x="40" y="80" width="219.996" height="40"/>
+  <object id="54" x="339.997" y="80" width="220.003" height="40"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="4" name="objects">
   <object id="19" name="npc" x="480" y="840" width="40" height="40">
    <properties>
     <property name="actor" value="starwalker"/>
+    <property name="cond" value="not Game:getFlag(&quot;ostarwalker_inparty&quot;, false) and not Game:getFlag(&quot;ostarwalker_killed&quot;, false)"/>
     <property name="cutscene" value="room1.star"/>
    </properties>
   </object>
@@ -181,7 +185,7 @@
     <property name="text2" value="* There is a room between..."/>
    </properties>
   </object>
-  <object id="45" name="transition" x="258" y="122" width="84" height="5">
+  <object id="45" name="transition" x="258" y="110" width="84" height="5">
    <properties>
     <property name="map" value="elevator"/>
     <property name="marker" value="entry"/>
@@ -208,11 +212,27 @@
    </properties>
    <point/>
   </object>
-  <object id="50" name="script" x="240" y="520" width="120" height="40">
+  <object id="50" name="transition" x="240" y="960" width="120" height="40">
+   <properties>
+    <property name="map" value="room_lighttransition"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="54" name="script" x="240" y="520" width="120" height="40">
    <properties>
     <property name="cond" value="Game:getFlag(&quot;fun&quot;, 0) &gt; 40 and Game:getFlag(&quot;fun&quot;, 0) &lt; 50"/>
     <property name="cutscene" value="room1.sans_under_attack"/>
     <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="55" name="interactable" x="120" y="80" width="40" height="40">
+   <properties>
+    <property name="cutscene" value="room1.blankie_wall"/>
+   </properties>
+  </object>
+  <object id="56" gid="105" x="120" y="80" width="39.2829" height="40">
+   <properties>
+    <property name="cond" value="Game:getFlag(&quot;blankie_acquired&quot;)"/>
    </properties>
   </object>
  </objectgroup>
@@ -230,6 +250,9 @@
    <point/>
   </object>
   <object id="53" name="entry_j" x="30" y="570">
+   <point/>
+  </object>
+  <object id="51" name="entry3" x="300" y="920">
    <point/>
   </object>
  </objectgroup>

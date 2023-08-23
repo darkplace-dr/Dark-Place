@@ -1,0 +1,11 @@
+{
+    "id": "gameover_sf",
+    "version": "1.0.0",
+    "engineVersion": "0.8.1-dev",
+    "authors": [
+        "Dobby233Liu"
+    ],
+    "config": {
+        "replaces_original": false
+    }
+}

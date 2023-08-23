@@ -1,9 +1,10 @@
+---@param cutscene WorldCutscene
 return function(cutscene)
     local function textFinish(text)
         return function() return text.done end
     end
 
-    local function showText(obj, tbl)
+    local function showText(obj, tbl, options)
         local _tbl
         if type(tbl) ~= "table" then
             _tbl = {tbl}
@@ -37,7 +38,8 @@ return function(cutscene)
     local party_poss = {
         { initial = {320, 600}, walk_up = {380, 10} },
         { initial = {250, 640}, walk_up = {420, 10} },
-        { initial = {380, 680}, walk_up = {460, 10} },
+        { initial = {380, 640}, walk_up = {420, 10} },
+        { initial = {320, 680}, walk_up = {440, 10} },
     }
     local party_walk_up_wait = nil
     for i, member in ipairs(members) do
@@ -50,27 +52,28 @@ return function(cutscene)
 
     local text = DialogueText({"ass"}, 100, 80, (SCREEN_WIDTH - 100 * 2) + 14, SCREEN_HEIGHT, nil, "dark")
     text:setLayer(WORLD_LAYERS["textbox"])
+    text:addFunction("look", function(self, chara, dir)
+        cutscene:look(chara, dir)
+    end)
     Game.world:addChild(text)
 
     local v_susie = "[spacing:1.75][voice:susie]"
 
     if not used_fountain_once then
+        local look_str = "[func:look,susie,right]"
         showText(text, {
             v_susie.."So here's the fountain of this place...",
             v_susie.."It feels... so different from the previous ones.",
             v_susie.."Like it's way more powerful... and stable.",
             v_susie.."Is it what [color:blue]PURE DARKNESS[color:reset] is like?",
             v_susie.."...",
-            v_susie.."Something tells me we might not be able to seal it."
-        })
-        cutscene:look(susie, "right")
-        showText(text,
+            v_susie.."Something tells me we might not be able to seal it.",
             leader.id == "kris"
-            and v_susie.."But I guess we can still try.\nRight, Kris?"
-            or v_susie..string.format("Actually, %s... Can you even seal one?", leader.actor.name)
-        )
+            and v_susie..look_str.."But I guess we can still try.\nRight, Kris?"
+            or v_susie..look_str..string.format("Actually, %s... Can you even seal one?", leader.actor.name)
+        })
     else
-        showText(text, "[speed:1](Do you want to return to the Light World?)")
+        showText(text, "[noskip:false][speed:1](Do you want to return to the Light World?)")
     end
 
     local seal = cutscene:choicer({"Yes", "No"})
@@ -91,10 +94,13 @@ return function(cutscene)
         local soul = UsefountainSoul(leader.x, leader.y - leader.height + 10)
         soul.layer = WORLD_LAYERS["ui"]
         Game.world:addChild(soul)
-        cutscene:playSound("snd_great_shine")
+
+        cutscene:playSound("great_shine")
         cutscene:wait(1)
 
-        cutscene:playSound("snd_usefountain")
+        Game.world.music:play("usefountain", 1)
+        Game.world.music.source:setLooping(false)
+
         cutscene:wait(50/30)
         fountain.adjust = 1 -- fade out color
         Game.world.timer:tween(170/30, soul, {y = 160})

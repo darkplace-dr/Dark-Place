@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "blankie_wall")
 
-function actor:init(x, y)
-    super.init(self, x, y)
+function actor:init()
+    super.init(self)
 
     self.name = "blankie_wall"
 
@@ -14,7 +14,7 @@ function actor:init(x, y)
 
     self.flip = nil
 
-    self.path = "world/cutscenes/blankie_wall"
+    self.path = "world/events/example_area/blankie_wall"
     self.default = "blankie_wall_day"
 
     self.voice = nil

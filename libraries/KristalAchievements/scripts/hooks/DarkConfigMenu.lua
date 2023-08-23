@@ -1,18 +1,12 @@
+if not Kristal.getLibConfig("achievements", "config_button") then
+    return CLASS_NAME_GETTER("DarkConfigMenu")
+end
+
 ---@class _DarkConfigMenu : DarkConfigMenu
 ---@overload fun(...) : _DarkConfigMenu
 local DarkConfigMenu, super = Class("DarkConfigMenu", true)
 
-function DarkConfigMenu:init()
-    super.init(self)
-
-    self.show_ach = Kristal.getLibConfig("achievements", "config_button")
-end
-
 function DarkConfigMenu:update()
-    if not self.show_ach then
-        return super.update(self)
-    end
-
     if self.state == "MAIN" then
         if Input.pressed("confirm") then
             self.ui_select:stop()
@@ -96,10 +90,6 @@ function DarkConfigMenu:update()
 end
 
 function DarkConfigMenu:draw()
-    if not self.show_ach then
-        return super.draw(self)
-    end
-
     if Game.state == "EXIT" then
         super.super.draw(self)
         return

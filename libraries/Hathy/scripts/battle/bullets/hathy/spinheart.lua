@@ -32,7 +32,7 @@ function SpinHeart:update()
     end
     if self.con == 1 then
         self.htimer = self.htimer + 0.5
-        if self.htimer >=10 then
+        if self.htimer >= 10 then
             if math.random(1, 4) == 1 then
                 self.spinmax = 26.25
             elseif math.random(1, 4) == 2 then

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="120">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="castle"/>
+  <property name="music" value="deltarune/field_of_hopes"/>
+  <property name="name" value="Field"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../../tilesets/bg_darkfield_tiles.tsx"/>
+ <tileset firstgid="67" source="../../../../../tilesets/bg_treetiles_new.tsx"/>
+ <tileset firstgid="75" source="../../../../../tilesets/bg_neoruins.tsx"/>
+ <tileset firstgid="123" source="../../../../../tilesets/chapter1.tsx"/>
+ <layer id="11" name="tiles0" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,56,56,0,0,56,56,0,0,0,0,0,
+0,0,0,0,0,0,56,56,56,56,0,0,0,0,0,0,
+0,0,0,0,0,0,56,56,56,56,0,0,0,0,0,0,
+0,0,0,0,0,0,56,56,56,56,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="1" name="tiles" width="16" height="12">
+  <data encoding="csv">
+0,0,113,114,0,0,0,0,0,0,0,0,112,114,0,0,
+0,0,116,118,113,113,113,0,0,113,113,113,116,118,0,0,
+0,0,116,117,117,117,117,0,0,117,117,117,117,118,0,0,
+0,0,120,121,121,121,121,0,0,121,121,121,121,122,0,0,
+0,15,52,52,52,52,52,52,52,52,52,52,52,52,13,0,
+20,21,52,52,52,16,9,52,52,7,18,52,52,52,13,0,
+52,52,52,52,52,52,13,8,8,15,52,52,52,52,13,0,
+52,52,52,52,52,52,13,0,0,15,52,52,52,52,13,0,
+8,9,52,52,52,52,19,20,20,21,52,52,52,52,13,0,
+0,15,52,52,52,52,52,52,52,52,52,52,52,52,13,0,
+0,15,52,52,52,52,52,52,52,52,52,52,52,52,13,0,
+0,0,8,8,8,8,8,8,8,8,8,8,8,8,0,0
+</data>
+ </layer>
+ <objectgroup id="14" name="objects_props">
+  <object id="107" name="doorism" gid="128" x="278" y="160" width="86" height="120">
+   <properties>
+    <property name="flagcheck" value="!hasOpenedRoaringWorldButtonPuzzleDoorFields"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="6" name="trees1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="decal" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="3" name="collision" opacity="0.5">
+  <object id="88" x="0" y="200" width="80" height="40"/>
+  <object id="89" x="40" y="160" width="40" height="40"/>
+  <object id="91" x="0" y="320" width="80" height="40"/>
+  <object id="92" x="40" y="360" width="40" height="120"/>
+  <object id="93" x="80" y="440" width="480" height="40"/>
+  <object id="94" x="560" y="160" width="40" height="320"/>
+  <object id="108" x="80" y="120" width="200" height="40"/>
+  <object id="109" x="360" y="120" width="200" height="40"/>
+  <object id="110" x="280" y="80" width="80" height="40"/>
+ </objectgroup>
+ <objectgroup color="#00ffff" id="12" name="blockcollision">
+  <object id="95" x="200" y="200">
+   <polyline points="0,0 80,0 80,40 160,40 160,0 240,0 240,40 200,40 200,160 40,160 40,40 0,40"/>
+  </object>
+  <object id="96" x="200" y="200">
+   <polyline points="0,0 0,40"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="13" name="objects_buttons">
+  <object id="101" name="tilebutton" x="400" y="200" width="40" height="40">
+   <properties>
+    <property name="blocks" type="bool" value="true"/>
+    <property name="cutscene" value="ROARING_DARK_WORLD/fields.unlocked_fields_door"/>
+    <property name="group" value="button_roaring_fields"/>
+    <property name="once" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="102" name="tilebutton" x="200" y="200" width="40" height="40">
+   <properties>
+    <property name="blocks" type="bool" value="true"/>
+    <property name="cutscene" value="ROARING_DARK_WORLD/fields.unlocked_fields_door"/>
+    <property name="group" value="button_roaring_fields"/>
+    <property name="once" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="4" name="markers">
+  <object id="117" name="entrydown" x="320" y="220">
+   <point/>
+  </object>
+  <object id="118" name="entryright" x="40" y="280">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="5" name="objects">
+  <object id="105" name="pushblock" x="280" y="320" width="40" height="40"/>
+  <object id="106" name="pushblock" x="320" y="320" width="40" height="40"/>
+  <object id="113" name="interactable" x="280" y="148.875" width="80" height="11.125">
+   <properties>
+    <property name="flagcheck" value="!hasOpenedRoaringWorldButtonPuzzleDoorFields"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="114" x="280" y="108" width="80" height="40"/>
+  <object id="119" name="transition" x="-20" y="240" width="40" height="80">
+   <properties>
+    <property name="map" value="cloudwebs/_Chapter1/Fields/fields_13"/>
+    <property name="marker" value="entryleft"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="objects_trees"/>
+ <objectgroup id="10" name="objects_treesobj"/>
+</map>

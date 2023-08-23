@@ -1,0 +1,82 @@
+---@class World
+local World, super = Class("World", true)
+
+function World:loadMap(...)
+    local args = {...}
+    -- x, y, facing
+    local map = table.remove(args, 1)
+    local marker, x, y, facing
+    if type(args[1]) == "string" then
+        marker = table.remove(args, 1)
+    elseif type(args[1]) == "number" then
+        x = table.remove(args, 1)
+        y = table.remove(args, 1)
+    else
+        marker = "spawn"
+    end
+    if args[1] then
+        facing = table.remove(args, 1)
+    end
+
+    -- Recreation of the famous Punch Card glitch
+    if Mod.punch_speedrun then
+    	Mod.punch_speedrun = false
+    	Game.lock_movement = false
+    	if Mod.glitch_timer then
+    		self.timer:cancel(Mod.glitch_timer)
+    	end
+    	self:stopCutscene()
+    	marker = "spawn"
+    end
+
+    Mod.world_dest_map_bak = nil
+    Mod.world_dest_mk_bak = nil
+    Mod.world_dest_fc_bak = nil
+    if not Game:getFlag("s", false)
+        and Utils.random(1, 1000) == 1
+        and (not Game.world.cutscene and not Game.battle)
+    then
+        Mod.world_dest_map_bak = map
+        Mod.world_dest_mk_bak = marker or {x, y}
+        Mod.world_dest_fc_bak = facing
+        map = "​"
+        marker = "spawn"
+        x, y = nil, nil
+        facing = nil
+    end
+
+    if self.map then
+        self.map:onExit()
+    end
+
+    self:setupMap(map, unpack(args))
+
+    if self.map.markers["spawn"] then
+        local spawn = self.map.markers["spawn"]
+        self.camera:setPosition(spawn.center_x, spawn.center_y)
+    end
+
+    if marker then
+        self:spawnParty(marker, nil, nil, facing)
+    else
+        self:spawnParty({x, y}, nil, nil, facing)
+    end
+
+    self:setState("GAMEPLAY")
+
+    for _,event in ipairs(self.map.events) do
+        if event.postLoad then
+            event:postLoad()
+        end
+    end
+
+    self.map:onEnter()
+end
+
+function World:setupMap(...)
+    super.setupMap(self, ...)
+
+    Mod:setOmori(self.map.omori)
+end
+
+return World

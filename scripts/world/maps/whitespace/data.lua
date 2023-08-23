@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 144,
@@ -9,11 +10,12 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 29,
+  nextobjectid = 34,
   properties = {
     ["border"] = "omori/omori",
     ["music"] = "whitespace",
-    ["name"] = "WHITE SPACE"
+    ["name"] = "WHITE SPACE",
+    ["omori"] = "true"
   },
   tilesets = {
     {
@@ -25,8 +27,8 @@ return {
     {
       name = "objects",
       firstgid = 10,
-      filename = "../../tilesets/objects.tsx",
-      exportfilename = "../../tilesets/objects.lua"
+      filename = "../../tilesets/omori-objects.tsx",
+      exportfilename = "../../tilesets/omori-objects.lua"
     }
   },
   layers = {
@@ -38,6 +40,7 @@ return {
       height = 108,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -162,6 +165,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -229,6 +233,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -242,8 +247,8 @@ return {
           name = "spawn",
           type = "",
           shape = "point",
-          x = 2880,
-          y = 2200,
+          x = 2800,
+          y = 2000,
           width = 0,
           height = 0,
           rotation = 0,
@@ -270,6 +275,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -280,7 +286,7 @@ return {
       objects = {
         {
           id = 4,
-          name = "whitedoor",
+          name = "whitedoor_b",
           type = "",
           shape = "point",
           x = 2800,
@@ -308,20 +314,6 @@ return {
           }
         },
         {
-          id = 8,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 2944,
-          y = 2270,
-          width = 42,
-          height = 40,
-          rotation = 0,
-          gid = 10,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 10,
           name = "interactable",
           type = "",
@@ -337,20 +329,6 @@ return {
           }
         },
         {
-          id = 11,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 2820,
-          y = 2130,
-          width = 62,
-          height = 42,
-          rotation = 0,
-          gid = 11,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 14,
           name = "interactable",
           type = "",
@@ -364,20 +342,6 @@ return {
           properties = {
             ["cutscene"] = "whitespace.laptop"
           }
-        },
-        {
-          id = 15,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 2950,
-          y = 2130,
-          width = 28,
-          height = 34,
-          rotation = 0,
-          gid = 14,
-          visible = true,
-          properties = {}
         },
         {
           id = 16,
@@ -408,6 +372,48 @@ return {
           properties = {
             ["cutscene"] = "whitespace.lightbulb"
           }
+        },
+        {
+          id = 29,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2820.33,
+          y = 2130,
+          width = 60,
+          height = 42,
+          rotation = 0,
+          gid = 11,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 32,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2950,
+          y = 2130,
+          width = 28,
+          height = 34,
+          rotation = 0,
+          gid = 14,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 33,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 2944,
+          y = 2270,
+          width = 42,
+          height = 40,
+          rotation = 0,
+          gid = 10,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -416,6 +422,7 @@ return {
       draworder = "topdown",
       id = 8,
       name = "objects_fg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -425,7 +432,7 @@ return {
       properties = {},
       objects = {
         {
-          id = 28,
+          id = 30,
           name = "",
           type = "",
           shape = "rectangle",

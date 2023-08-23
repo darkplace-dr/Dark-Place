@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -9,10 +10,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 25,
+  nextobjectid = 31,
   properties = {
     ["border"] = "vaporwave",
-    ["music"] = "forest"
+    ["music"] = "citypop_sound_of_love"
   },
   tilesets = {
     {
@@ -22,10 +23,16 @@ return {
       exportfilename = "../../../tilesets/vapor.lua"
     },
     {
-      name = "objects",
-      firstgid = 22,
-      filename = "../../../tilesets/objects.tsx",
-      exportfilename = "../../../tilesets/objects.lua"
+      name = "devroom-objects",
+      firstgid = 36,
+      filename = "../../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../../tilesets/devroom-objects.lua"
+    },
+    {
+      name = "other-objects",
+      firstgid = 82,
+      filename = "../../../tilesets/other-objects.tsx",
+      exportfilename = "../../../tilesets/other-objects.lua"
     }
   },
   layers = {
@@ -34,6 +41,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -45,9 +53,10 @@ return {
     },
     {
       type = "imagelayer",
-      image = "../../../../../assets/sprites/objects/vaporbg/mountains.png",
+      image = "../../../../../assets/sprites/world/maps/vapor/background/mountains.png",
       id = 3,
       name = "mountains",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -66,6 +75,7 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -80,9 +90,9 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 1, 1, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 0, 0,
         0, 0, 1, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 0, 0,
-        0, 0, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1,
-        0, 0, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 1,
-        0, 0, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 8, 8,
+        1, 1, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1,
+        1, 1, 2, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 1,
+        8, 8, 3, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 8, 8,
         0, 0, 3, 6, 7, 5, 3, 3, 4, 1, 1, 1, 1, 1, 0, 0,
         0, 0, 9, 10, 10, 9, 9, 9, 8, 8, 8, 8, 8, 8, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -94,6 +104,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -185,10 +196,23 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 40,
+          x = 0,
           y = 120,
-          width = 40,
-          height = 240,
+          width = 80,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 28,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 280,
+          width = 80,
+          height = 80,
           rotation = 0,
           visible = true,
           properties = {}
@@ -239,6 +263,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -264,48 +289,6 @@ return {
           }
         },
         {
-          id = 10,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 134,
-          y = 160,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 33,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 12,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 371,
-          y = 160,
-          width = 134,
-          height = 128,
-          rotation = 0,
-          gid = 2147483681,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 22,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 231,
-          y = 200,
-          width = 180,
-          height = 66,
-          rotation = 0,
-          gid = 34,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 24,
           name = "interactable",
           type = "",
@@ -319,6 +302,64 @@ return {
           properties = {
             ["cutscene"] = "vapor.bb"
           }
+        },
+        {
+          id = 25,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 135,
+          y = 160,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 47,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 26,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 371.5,
+          y = 160,
+          width = 134,
+          height = 128,
+          rotation = 0,
+          gid = 2147483695,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 27,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 230,
+          y = 200,
+          width = 180,
+          height = 66,
+          rotation = 0,
+          gid = 94,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 30,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = -40,
+          y = 200,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "vapor/fizz_room",
+            ["marker"] = "fizz_entry"
+          }
         }
       }
     },
@@ -327,6 +368,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -341,6 +383,19 @@ return {
           type = "",
           shape = "point",
           x = 600,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 29,
+          name = "entry2",
+          type = "",
+          shape = "point",
+          x = 40,
           y = 240,
           width = 0,
           height = 0,

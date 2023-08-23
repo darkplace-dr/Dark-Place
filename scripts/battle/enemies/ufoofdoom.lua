@@ -24,9 +24,9 @@ function UFOOfDoom:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "starsides",
-		"starcircle",
-		"starfade",
+        "thestars/starsides",
+        "thestars/starcircle",
+        "thestars/starfade",
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble

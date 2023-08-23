@@ -76,7 +76,7 @@ function LightTransition.cutscene(cutscene, self, player)
 	local settings = self.cutsceneSettings
 	
 	local kris_only = self.kris_only
-    local kris = Mod.getKrisActor and Mod:getKrisActor() or cutscene:getCharacter("kris")
+    local kris = Mod:getLeader("chara")
     local susie = cutscene:getCharacter("susie")
     local ralsei = cutscene:getCharacter("ralsei")
 	
@@ -132,7 +132,9 @@ function LightTransition.cutscene(cutscene, self, player)
 	fakeKris:remove()
 	if fakeSusie then fakeSusie:remove() end
     kris.visible = true
-    susie.visible = true
+	if susie then
+    	susie.visible = true
+	end
 	cutscene:fadeOut(0)
 	cutscene:fadeIn(settings.fadeIn_speed, {color = {1, 1, 1}})
 	cutscene:interpolateFollowers()

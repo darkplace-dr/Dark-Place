@@ -1,0 +1,23 @@
+{
+    "id": "pie",
+    "authors": [
+        "Mr_Oinky"
+    ],
+
+    "version": "v1.2.1",
+    "engineVer": "v0.8.0",
+
+    "config": {
+        // Whether heal() is called if a HealItem does 0 healing.
+        "alwaysDoHealItemHealing": false,
+        // Whether the heal bonus should be applied to items that have 0 base healing or less.
+        "alwaysApplyHealBonus": false,
+        // Whether passive hurt is able to knock down the wearer from damage.
+        "passiveHurtCanKill": true,
+        // Whether passive effects with a hp cost can knock down their wearer.
+        "passiveEffectCostCanKill": false,
+        // Whether healing multipliers take precedent over additive heal bonuses from equipment, when using a HealItem.
+        "healMultiplierTakesPriority": true,
+        "print_console_intro": true
+    } 
+}

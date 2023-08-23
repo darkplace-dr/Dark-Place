@@ -47,10 +47,10 @@ function character:init()
     }
 
     -- Weapon icon in equip menu
-    self.weapon_icon = "ui/menu/equip/sword"
+    self.weapon_icon = "ui/menu/equip/guitar"
 
     -- Equipment (saved to the save file)
-    self:setWeapon("slime_blade")
+    self:setWeapon("vee")
     --self:setArmor(1, "realshield")
 
     -- Default light world equipment item IDs (saves current equipment)
@@ -69,7 +69,7 @@ function character:init()
     self.xact_color = {0.5, 1, 1}
 
     -- Head icon in the equip / power menu
-    self.menu_icon = "party/you/head"
+    self.menu_icon = "party/you/head_1"
     -- Path to head icons used in battle
     self.head_icons = "party/you/icon"
     -- Name sprite

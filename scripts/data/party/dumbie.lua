@@ -21,13 +21,13 @@ function character:init()
     self.xact_name = "U-Action"
 	self:addSpell("hyper_slash")
 
-    self.health = 100
+    self.health = 130
 
     self.stats = {
-        health = 100,
-        attack = 6,
-        defense = 2,
-        magic = 6
+        health = 130,
+        attack = 14,
+        defense = 4,
+        magic = 14
     }
 
     self.weapon_icon = "ui/menu/equip/knife"
@@ -39,11 +39,11 @@ function character:init()
     self.lw_weapon_default = "light/pencil"
     self.lw_armor_default = "light/bandage"
 
-    self.color = {239, 228, 176}
-    self.dmg_color = {239, 228, 176}
-    self.attack_bar_color = {239, 228, 176}
-    self.attack_box_color = {239, 228, 176}
-    self.xact_color = {239, 228, 176}
+    self.color = {255 / 255, 226 / 255, 143 / 255}
+    self.dmg_color = {255 / 255, 226 / 255, 143 / 255}
+    self.attack_bar_color = {255 / 255, 226 / 255, 143 / 255}
+    self.attack_box_color = {255 / 255, 226 / 255, 143 / 255}
+    self.xact_color = {255 / 255, 226 / 255, 143 / 255}
 
     self.menu_icon = "party/dumbie/head"
     self.head_icons = "party/dumbie/icon"
@@ -55,9 +55,9 @@ function character:init()
 
     self.battle_offset = {3, 9}
     self.head_icon_offset = {-7, -3}
-    self.menu_icon_offset = nil
+    self.menu_icon_offset = "6, 5"
 
-    self.gameover_message = "Wake up, punk!"
+    self.gameover_message = { "loser lol" }
 end
 
 function character:onLevelUp(level)

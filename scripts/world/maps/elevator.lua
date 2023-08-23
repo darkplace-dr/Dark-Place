@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -31,7 +31,7 @@ return {
         {
           id = 21,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 240,
@@ -44,7 +44,7 @@ return {
         {
           id = 23,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 201,
           y = 200,
@@ -57,7 +57,7 @@ return {
         {
           id = 24,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 240,
@@ -70,7 +70,7 @@ return {
         {
           id = 25,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 360,
@@ -83,7 +83,7 @@ return {
         {
           id = 26,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 360,
@@ -112,7 +112,7 @@ return {
         {
           id = 6,
           name = "elevatorbuttons",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 200,
@@ -125,7 +125,7 @@ return {
         {
           id = 7,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 480,
@@ -141,7 +141,7 @@ return {
         {
           id = 29,
           name = "elevator",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -150,20 +150,20 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["color_1"] = "#ff7f7f7f",
-            ["color_2"] = "#ffc0c0c0",
-            ["color_3"] = "#ffc0c0c0",
+            ["color_1"] = "#ff414185",
+            ["color_2"] = "#ff455a8d",
+            ["color_3"] = "#ffffffff",
             ["dest_1"] = "room1",
-            ["dest_2"] = "spamroom",
+            ["dest_2"] = "floor2/lounge",
             ["dest_3"] = "whitespace",
-            ["dir_1"] = 1,
-            ["dir_2"] = -1,
-            ["dir_3"] = -1,
-            ["length_1"] = 40,
-            ["length_2"] = 40,
-            ["length_3"] = 40,
-            ["name_1"] = "Room 1",
-            ["name_2"] = "Spamroom",
+            ["dir_1"] = -1,
+            ["dir_2"] = 1,
+            ["dir_3"] = 1,
+            ["length_1"] = 80,
+            ["length_2"] = 80,
+            ["length_3"] = 150,
+            ["name_1"] = "Floor 1",
+            ["name_2"] = "Floor 2",
             ["name_3"] = "WHITESPACE"
           }
         }
@@ -186,7 +186,7 @@ return {
         {
           id = 5,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 440,
@@ -199,7 +199,7 @@ return {
         {
           id = 33,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 320,
           y = 440,
@@ -212,7 +212,7 @@ return {
         {
           id = 32,
           name = "buttons",
-          type = "",
+          class = "",
           shape = "point",
           x = 380,
           y = 260,

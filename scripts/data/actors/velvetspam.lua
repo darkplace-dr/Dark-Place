@@ -1,7 +1,8 @@
+---@class velvetspam : Actor
 local actor, super = Class(Actor, "velvetspam")
 
-function actor:init(x, y)
-    super.init(self, x, y)
+function actor:init()
+    super.init(self)
 
     self.name = "Velvet!Spamton"
 
@@ -17,6 +18,7 @@ function actor:init(x, y)
     self.path = "world/npcs/velvetspam"
     self.path_night = "world/npcs/velvetspam/candle"
     self.default = "idle"
+    self.default_night = "idle"
 
     self.voice = "spamton"
     self.portrait_path = nil
@@ -24,67 +26,71 @@ function actor:init(x, y)
 
     self.animations = {
         ["idle"] = {"idle", 1, true},
+        ["day_blankie"] = {"day_blankie", 1, true},
+        ["box"] = {"box", 1, true},
         ["talk"] = {"talk", 0.2, true},
-        ["candle_idle"] = {"candle/idle", 1, true},
-        ["candle/blankie"] = {"candle/blankie", 1, true},
     }
-	
-    self.talk_sprites = {
+    self.animations_night = {
+        ["idle"] = {"idle", 1, true},
+        ["talk"] = {"talk", 0.2, true},
+        ["blankie"] = {"blankie", 1, true},
+        ["bundled"] = {"bundled", 1, true},
+        ["pissed"] = {"pissed", 1, true},
+        ["pipis"] = {"pipis", 1, true},
     }
 
+    self.talk_sprites = {}
+
     self.offsets = {
-        ["candle/blankie"] = {0, 0}
+        ["day_blankie_hug"] = {-3, 0},
+        ["bundled"] = {-1, 0},
+        ["pipis"] = {-1, 0},
+        ["italian"] = {-1, 0}
 	}
+
+    self.taunt_sprites = {"day_blankie", "day_blankie_hug", "box", "day_pipis"}
+    self.taunt_sprites_night = {"pissed", "bundled", "pipis", "italian"}
+
+    self.night = Mod:isNight()
+    self.blankie_returned = Game:getFlag("blankie_returned")
+    self.default_night = self.blankie_returned and "blankie" or "idle"
+end
+
+function actor:preSpriteUpdate(sprite)
+    local night_bak = self.night
+    self.night = Mod:isNight()
+    if self.night ~= night_bak then
+        Mod:softResetActorSprite(sprite)
+    end
+
+    local retd_bak = self.blankie_returned
+    self.blankie_returned = Game:getFlag("blankie_returned")
+    if self.blankie_returned ~= retd_bak then
+        local reset_sprite = self.night and sprite.sprite == self:getDefault()
+        self.default_night = self.blankie_returned and "blankie" or "idle"
+        if reset_sprite then
+            sprite:resetSprite()
+        end
+    end
 end
 
 function actor:getSpritePath()
-    local hour = os.date("*t").hour
-    return hour <= 20 and hour >= 9 and self.path or self.path_night
+    return not self.night and self.path or self.path_night
 end
- 
-local function updateTexture(self, sprite, night)
-    local path_prev = sprite.path
-    sprite.path = self:getSpritePath()
-    local tex_name = sprite.texture_path
-    tex_name = Utils.sub(tex_name, utf8.len(path_prev) + 1)
-    if utf8.len(tex_name) > 0 and Utils.sub(tex_name, 1, 1) == "/" then
-        tex_name = Utils.sub(tex_name, 2)
-    end
-    for i = 3,1,-1 do
-        local num = tonumber(tex_name:sub(-i))
-        if num then
-            tex_name = tex_name:sub(1, -i - 1)
-            if tex_name:sub(-1, -1) == "_" then
-                tex_name = tex_name:sub(1, -2)
-            end
-            break
-        end
-    end
-    local new_path = sprite:getPath(tex_name)
-    local new_frames = Assets.getFrames(new_path)
-    if new_frames then
-        sprite:setFrames(new_frames, true)
-        if self.animations[sprite.path] then
-            sprite:setAnimation(self.animations[sprite.path])
-        end
-    else
-        sprite:setTexture(Assets.getTexture(new_path), true)
-    end
-    sprite:updateTexture()
+
+function actor:getDefault()
+    return not self.night and self.default or self.default_night
 end
- 
-function actor:onSpriteInit(sprite)
-    self.night = false
+
+function actor:getAnimations()
+    return not self.night and self.animations or self.animations_night
 end
- 
-function actor:onSpriteUpdate(sprite)
-    local hour = os.date("*t").sec
-    local night_bak = self.night
-    self.night = hour % 5 == 0 -- anything
- 
-    if self.night ~= night_bak then
-        updateTexture(self, sprite, self.night)
-    end
+function actor:getAnimation(anim)
+    return self:getAnimations()[anim]
+end
+
+function actor:getTauntSprites()
+    return not self.night and self.taunt_sprites or self.taunt_sprites_night
 end
 
 return actor

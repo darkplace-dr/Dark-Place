@@ -1,3 +1,4 @@
+---@diagnostic disable: redundant-return-value
 local lib = {}
 
 function lib:postInit()
@@ -55,8 +56,6 @@ function lib:postInit()
             orig(self)
         end
     end)
-
-
 
     Utils.hook(DarkEquipMenu, "drawAbilityPreview", function(orig, self, index, x, y, abilities, compare)
         local party = self.party:getSelected()
@@ -121,7 +120,7 @@ function lib:postInit()
         if Game:getPartyMember(battler.chara.id).ribbit then
             if type(text)=="table" then
                 --text[1] = text[1]:gsub("spared", "SENT")
-                
+
                 if success == true then
                     text[1] = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!"
                 else
@@ -134,7 +133,6 @@ function lib:postInit()
                 else
                     text = "* " .. battler.chara:getName() .. " SENT " .. self.name .. "!\n* But it wasn't [color:yellow]APPEASED[color:reset]..."
                 end
-                
             end
         end
         return text
@@ -150,6 +148,10 @@ function lib:getActionButtons(battler, buttons)
         end
     end
     return buttons
+end
+
+function lib:isLeaderRibbit()
+    return Game.party and Game.party[1] and Game.party[1].ribbit
 end
 
 return lib

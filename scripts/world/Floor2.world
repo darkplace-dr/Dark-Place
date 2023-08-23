@@ -1,0 +1,69 @@
+{
+    "maps": [
+        {
+            "fileName": "maps/floor2/lounge.tmx",
+            "height": 640,
+            "width": 840,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "fileName": "maps/floor2/doors_left/doors_left.tmx",
+            "height": 480,
+            "width": 1920,
+            "x": -1720,
+            "y": -520
+        },
+        {
+            "fileName": "maps/floor2/doors_right/doors_right.tmx",
+            "height": 480,
+            "width": 1920,
+            "x": 640,
+            "y": -520
+        },
+        {
+            "fileName": "maps/floor2/queen.tmx",
+            "height": 480,
+            "width": 1280,
+            "x": -5160,
+            "y": -4920
+        },
+        {
+            "fileName": "maps/floor2/roombor/roombor.tmx",
+            "height": 1040,
+            "width": 1200,
+            "x": -5160,
+            "y": -4360
+        },
+        {
+            "fileName": "maps/floor2/lancer.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -5160,
+            "y": -5480
+        },
+        {
+            "fileName": "maps/cloudwebs/cloudwebs_entrance/data.tmx",
+            "height": 1440,
+            "width": 3240,
+            "x": -3880,
+            "y": -4360
+        },
+        {
+            "fileName": "maps/backrooms/entrance/entrance.tmx",
+            "height": 960,
+            "width": 640,
+            "x": 8080,
+            "y": -200
+        },
+        {
+            "fileName": "maps/backrooms/corridors/corridors.tmx",
+            "height": 2120,
+            "width": 1920,
+            "x": 7440,
+            "y": -2320
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}

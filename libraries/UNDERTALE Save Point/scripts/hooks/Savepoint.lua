@@ -1,5 +1,4 @@
 ---@class Savepoint : Event
----@overload fun(...) : Savepoint
 local Savepoint, super = Class("Savepoint", true)
 
 function Savepoint:init(x, y, properties)

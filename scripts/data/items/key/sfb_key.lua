@@ -64,7 +64,7 @@ function item:onWorldUse()
         else
             og_facing = leader.facing
             leader:setFacing("down")
-            key = Sprite("world/sfb_key")
+            key = Sprite("world/cutscenes/sfb_key")
             key:setOrigin(0.5, 1)
             key:setPosition(leader.width/2, 0)
             leader:addChild(key)
@@ -83,6 +83,10 @@ function item:onWorldUse()
             Game.world.music:resume()
         end
     end)
+end
+
+function item:convertToLight(inventory)
+    return "light/old_cartridge"
 end
 
 return item

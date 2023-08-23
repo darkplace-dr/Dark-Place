@@ -8,6 +8,7 @@ function UfoEncounter:init()
 
     -- Battle music ("battle" is rude buster)
     self.music = "batterup"
+
     -- Enables the purple grid battle background
     self.background = false
 	self.hide_world = true
@@ -18,11 +19,9 @@ function UfoEncounter:init()
 
 end
 
-function UfoEncounter:onBattleStart()
-	super.onBattleStart(self)
-	Game.battle.encounter.bg = StarsBG({1, 1, 1})
-	Game.battle:addChild(Game.battle.encounter.bg)
-	Game.battle.encounter.bg.visible = true
+function UfoEncounter:onBattleInit()
+	self.bg = StarsBG({1, 1, 1})
+	Game.battle:addChild(self.bg)
 end
 
 function UfoEncounter:onReturnToWorld(events)

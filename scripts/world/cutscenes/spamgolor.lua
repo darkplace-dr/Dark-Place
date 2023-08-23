@@ -16,7 +16,7 @@ return {
         cutscene:text("* WHY,[wait:5] HELLO THERE !!", "", "spamgolor")
         local spamgolor = cutscene:getEvent(13)
         spamgolor:setSprite("greeting")
-        cutscene:text("* I'M YOUR FRIENDLY [[NumberOneRatedSalesman2007]]!", "", "spamgolor")
+        cutscene:text("* I'M YOUR FRIENDLY [[NumberOneRatedSalesman2011]]!", "", "spamgolor")
         spamgolor:shake(3)
         spamgolor:setSprite("hurt")
         cutscene:text("[noskip]* SPAM-", "", "spamgolor", {auto = true})

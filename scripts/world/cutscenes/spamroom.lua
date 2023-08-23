@@ -21,6 +21,12 @@ return {
         cutscene:text("* BIG SHOT AUTOS![wait:5] TAKE A RIDE\nAROUND TOWN IN OUR SPECIAL")
         cutscene:text("* (The rest is cut off.)")
     end,
+    mari = function(cutscene, event)
+        cutscene:showNametag("Mariton")
+        cutscene:text("* HEY [wait:5][wave]EVERY~", "", "marispam")
+        cutscene:text("* WAITING FOR [wave]SOMETHING[wave:0] TO HAPPEN?", "", "marispam")
+        cutscene:hideNametag()
+    end,
     cungadero = function(cutscene, event)
         cutscene:showNametag("Cungadero Spamton")
         cutscene:text("* Take a ride around town on our special Cungadero!", "", "cungaderospamton")
@@ -74,45 +80,110 @@ return {
         cutscene:hideNametag()
     end,
     velvetspam = function(cutscene, event)
-        local hour = os.date("*t").hour
-        if hour >= 21 or hour <= 8 then
-            local velvetspam = cutscene:getCharacter("velvetspam")
-            cutscene:setSpeaker(velvetspam)
-            cutscene:showNametag("Velvet!Spamton")
-            cutscene:text("* Noticed anything [[Different from the Leading Brand!]]?")
-            cutscene:text("* Well that difference is that I don't have my [specil] Blankie [TM] with me!")
-            cutscene:hideNametag()
-        else
-            local velvetspam = cutscene:getCharacter("velvetspam")
-            cutscene:setSpeaker(velvetspam)
-            cutscene:showNametag("Velvet!Spamton")
-            velvetspam:setAnimation("talk")
-            cutscene:text("* KRIS!!! So nice 2 see you! I am doing [[Easy Well-Done Beef]]!")
-            velvetspam:setAnimation("idle")
-            cutscene:hideNametag()
-            
-            local susie = cutscene:getCharacter("susie")
-            if susie then
-                cutscene:showNametag("Susie")
-                cutscene:setSpeaker(susie)
-                cutscene:text("* Actually that's not Kris...\n * It's YOU...", "nervous_side")
+        if Mod:isNight() then
+            if Game:getFlag("blankie_returned") then
+                local velvetspam = cutscene:getCharacter("velvetspam")
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                cutscene:text("* You know the best part of [Restless Sleepless Nights]?")
+                cutscene:text("* Is having my [specil] Blankie [TM] on top!")
+                cutscene:text("* Nothing! And I mean NOTHING! Can [[BATTERIES NEED REPLACEMENT]]!")
+                cutscene:hideNametag()
+            else
+                local velvetspam = cutscene:getCharacter("velvetspam")
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                cutscene:text("* Noticed anything [[Different from the Leading Brand!]]?")
+                cutscene:text("* Well that difference is that I don't have my [specil] Blankie [TM] with me!")
                 cutscene:hideNametag()
             end
-
+        else
             local velvetspam = cutscene:getCharacter("velvetspam")
-            cutscene:setSpeaker(velvetspam)
-            cutscene:showNametag("Velvet!Spamton")
-            velvetspam:setAnimation("talk")
-            cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * That's Kris!")
-            velvetspam:setAnimation("idle")
-            cutscene:hideNametag()
+            if Game:getFlag("blankie_returned") then
+                local rnd = math.random(1, 5)
+                    if rnd == 1 then
+                        cutscene:setSpeaker(velvetspam)
+                        cutscene:showNametag("Velvet!Spamton")
+                        velvetspam:setSprite("curious")
+                        cutscene:text("* Have you met [HOT JAVA LAVA] yet?")
+                        cutscene:text("* You should grab some [[Hot Dealz]] tea! All personalized!")
+                        velvetspam:resetSprite()
+                        cutscene:hideNametag()
 
-            local susie = cutscene:getCharacter("susie")
-            if susie then
-                cutscene:showNametag("Susie")
-                cutscene:setSpeaker(susie)
-                cutscene:text("* Nevermind then...", "annoyed")
+                        Game:setFlag("about_java", true)
+                    elseif rnd == 2 then
+                        cutscene:setSpeaker(velvetspam)
+                        cutscene:showNametag("Velvet!Spamton")
+                        velvetspam:setSprite("curious")
+                        cutscene:text("* Hey! [CLICK THE BLUE LINK] has some sweet shoes somewhere!")
+                        cutscene:text("* Don't forget to try some [[Free Samples!]]")
+                        velvetspam:resetSprite()
+                        cutscene:hideNametag()
+
+                        Game:setFlag("about_click", true)
+                    elseif rnd == 3 then
+                        cutscene:setSpeaker(velvetspam)
+                        cutscene:showNametag("Velvet!Spamton")
+                        velvetspam:setSprite("curious")
+                        cutscene:text("* Did you know [[Press the Button]] made this suit for me?")
+                        cutscene:text("* He put all his [blood and tears] into this!")
+                        velvetspam:resetSprite()
+                        cutscene:hideNametag()
+
+                        Game:setFlag("about_button", true)
+                    elseif rnd == 4 then
+                        cutscene:setSpeaker(velvetspam)
+                        cutscene:showNametag("Velvet!Spamton")
+                        velvetspam:setSprite("curious")
+                        cutscene:text("* You look like a [dried raisin]")
+                        cutscene:text("* Don't worry! [[Fizzy Lemon Soda]] has got some refreshments!")
+                        velvetspam:resetSprite()
+                        cutscene:hideNametag()
+
+                        Game:setFlag("about_fizz", true)
+                    else
+                        cutscene:setSpeaker(velvetspam)
+                        cutscene:showNametag("Velvet!Spamton")
+                        velvetspam:setSprite("curious")
+                        cutscene:text("* Hey, [specil thanks] for finding my Blankie[tm]")
+                        cutscene:text("* I owe you my [[GRATITUDE]]!")
+                        velvetspam:resetSprite()
+                        cutscene:hideNametag()
+                    end
+                if Game:getFlag("about_java") and Game:getFlag("about_click") and Game:getFlag("about_button") and Game:getFlag("about_fizz") then
+                    Kristal.callEvent("createQuest", "5 for 1 Specil", "vspamfamily", "Velvet!Spam told the gang about his family, but he barely mentioned about their names. Only about their jobs and what they sell. You think you can find who Velvet!Spamton is refering to?\n\nHINT: There's a switch in the EXTRAS menu that can help!")
+                end
+            else
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                velvetspam:setAnimation("talk")
+                cutscene:text("* KRIS!!! So nice 2 see you! I am doing [[Easy Well-Done Beef]]!")
+                velvetspam:setAnimation("idle")
                 cutscene:hideNametag()
+                
+                local susie = cutscene:getCharacter("susie")
+                if susie then
+                    cutscene:showNametag("Susie")
+                    cutscene:setSpeaker(susie)
+                    cutscene:text("* Actually that's not Kris\n * It's YOU...", "nervous_side")
+                    cutscene:hideNametag()
+                end
+
+                local velvetspam = cutscene:getCharacter("velvetspam")
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                velvetspam:setAnimation("talk")
+                cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * You're Kris!")
+                velvetspam:setAnimation("idle")
+                cutscene:hideNametag()
+
+                local susie = cutscene:getCharacter("susie")
+                if susie then
+                    cutscene:showNametag("Susie")
+                    cutscene:setSpeaker(susie)
+                    cutscene:text("* Nevermind then...", "annoyed")
+                    cutscene:hideNametag()
+                end
             end
         end
     end,
@@ -123,25 +194,22 @@ return {
     warpbin = function(cutscene, event)
         cutscene:text("* It's the warp bin.")
         cutscene:text("* Would you like to warp?[wait:10]\n* You only need the code.")
-		
+
 		if cutscene:choicer({"Sure", "Nope"}) == 2 then
 			return
 		end
 
-		cutscene:after(function()
-			local menu = WarpBinInputMenu()
-			-- I'm sorry
-			---@param action WarpBinCodeInfo
-			menu.finish_cb = function(action)
-				Game.world:startCutscene("spamroom", "warpbin_proc", action)
-			end
-			Game.world:openMenu(menu)
-		end)
-	end,
+        local wbi_ok = false
+        ---@type WarpBinCodeInfo
+        local action = nil
+        local wbi = WarpBinInputMenu()
+        wbi.finish_cb = function(_action)
+            wbi_ok = true
+            action = _action
+        end
+        Game.world:spawnObject(wbi, "ui")
+        cutscene:wait(function() return wbi_ok end)
 
-	---@param cutscene WorldCutscene
-	---@param action WarpBinCodeInfo
-	warpbin_proc = function(cutscene, action)
 		if not action then
 			cutscene:text("* That doesn't seem to work.")
 			return

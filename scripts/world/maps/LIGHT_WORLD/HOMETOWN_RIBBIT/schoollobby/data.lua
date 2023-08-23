@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 47,
@@ -9,26 +10,25 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 21,
-  nextobjectid = 142,
+  nextobjectid = 143,
   backgroundcolor = { 0, 0, 0 },
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
-    ["music"] = "deltarune/mus_school",
+    ["music"] = "orphanage",
     ["name"] = "School"
   },
   tilesets = {
     {
       name = "schooltiles2",
       firstgid = 1,
-      filename = "../../../../tilesets/schooltiles2.tsx",
-      exportfilename = "../../../../tilesets/schooltiles2.lua"
+      filename = "../../../../tilesets/schooltiles2.tsx"
     },
     {
       name = "objects",
       firstgid = 109,
-      filename = "../../../../tilesets/objects.tsx",
-      exportfilename = "../../../../tilesets/objects.lua"
+      filename = "../../../../tilesets/other-objects.tsx",
+      exportfilename = "../../../../tilesets/other-objects.lua"
     }
   },
   layers = {
@@ -40,6 +40,7 @@ return {
       height = 21,
       id = 17,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -80,6 +81,7 @@ return {
       height = 21,
       id = 18,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -117,6 +119,7 @@ return {
       draworder = "topdown",
       id = 20,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -124,28 +127,14 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 141,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 80,
-          y = 520,
-          width = 120,
-          height = 200,
-          rotation = 0,
-          gid = 134,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -388,6 +377,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -442,6 +432,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -693,6 +684,20 @@ return {
             ["map"] = "LIGHT_WORLD/HOMETOWN_RIBBIT/schooldoor",
             ["marker"] = "entryup"
           }
+        },
+        {
+          id = 142,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 80,
+          y = 520,
+          width = 120,
+          height = 200,
+          rotation = 0,
+          gid = 134,
+          visible = true,
+          properties = {}
         }
       }
     }

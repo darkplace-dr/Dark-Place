@@ -1,28 +1,24 @@
 local ChaserBullet, super = Class(Bullet)
 
-function ChaserBullet:init(x, y, dir, speed)
+function ChaserBullet:init(x, y)
     -- Last argument = sprite path
     super.init(self, x, y, "battle/bullets/poseurbullet")
     self:setScale(1, 1)
 
-    -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
-    self.physics.direction = dir
-    -- Speed the bullet moves (pixels per frame at 30FPS)
-    self.physics.speed = speed
     self.destroy_on_hit = false
 
-    self.xspeed = 0
-    self.yspeed = 0
+    self.speed_x_ours = 0
+    self.speed_y_ours = 0
 end
 
 function ChaserBullet:update()
-    -- For more complicated bullet behaviours, code here gets called every update
-    local selfx, selfy = self:getRelativePos(self.width / 2, self.height / 2)
-    local xdifference = Game.battle.soul.x - selfx
-    local ydifference = Game.battle.soul.y - selfy
-    self.xspeed = (self.xspeed / 2) + (xdifference / 100)
-    self.yspeed = (self.yspeed / 2) + (ydifference / 100)
-    self:move(self.xspeed, self.yspeed, DTMULT)
+    local dtmult60 = DT * 60
+
+    local x_diff = Game.battle.soul.x - self.x
+    local y_diff = Game.battle.soul.y - self.y
+    self.speed_x_ours = self.speed_x_ours + (-self.speed_x_ours/2 + x_diff / 100) * dtmult60
+    self.speed_y_ours = self.speed_y_ours + (-self.speed_y_ours/2 + y_diff / 100) * dtmult60
+    self:move(self.speed_x_ours, self.speed_y_ours, dtmult60)
 
     super.update(self)
 end

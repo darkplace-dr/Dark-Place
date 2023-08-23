@@ -14,6 +14,7 @@ function Grounder:init()
     self.attack = 6
     self.defense = 0
     self.gold = 30
+    self.experience = 6
 
     self.spare_points = 20
 
@@ -40,11 +41,7 @@ function Grounder:init()
     self.text_override = nil
 end
 
-function EnemyBattler:isXActionShort(battler)
-    return true
-end
-
-function EnemyBattler:isXActionShort(battler)
+function Grounder:isXActionShort(battler)
     return true
 end
 

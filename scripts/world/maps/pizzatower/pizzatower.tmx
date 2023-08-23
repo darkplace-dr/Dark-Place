@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="93">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="40" tileheight="40" infinite="0" nextlayerid="15" nextobjectid="97">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -8,7 +8,7 @@
   <property name="music" value="mmm_yess_put_the_tree_on_my_pizza"/>
   <property name="name" value="Gnome Forest...?"/>
  </properties>
- <tileset firstgid="1" source="../../tilesets/objects.tsx"/>
+ <tileset firstgid="1" source="../../tilesets/lario-objects.tsx"/>
  <imagelayer id="6" name="bg">
   <image source="../../../../assets/sprites/world/maps/pizzatower/main.png" width="960" height="550"/>
  </imagelayer>
@@ -43,18 +43,17 @@
   </object>
   <object id="37" x="858" y="360" width="142" height="200"/>
   <object id="41" x="-40" y="160" width="53.3333" height="440"/>
-  <object id="46" x="388" y="468.5" width="66.5" height="44.5"/>
-  <object id="47" x="451.091" y="495.091" width="56.5455" height="12"/>
   <object id="84" x="360" y="266" width="104" height="140"/>
   <object id="85" x="467.333" y="231.333" width="128.667" height="164.667"/>
   <object id="86" x="597.455" y="281.5" width="111.045" height="120.864"/>
+  <object id="93" name="mushrum" gid="16" x="360" y="540" width="125" height="99"/>
  </objectgroup>
  <objectgroup color="#ffaaff" id="13" name="objects_npcs2">
-  <object id="71" name="ralgay" gid="17" x="457.833" y="404.5" width="147" height="235"/>
+  <object id="96" name="ralgay" gid="17" x="457.83" y="404.5" width="147" height="235"/>
  </objectgroup>
  <objectgroup id="12" name="objects_npcs">
-  <object id="68" name="susy" gid="18" x="356.939" y="411.333" width="118" height="138"/>
-  <object id="70" name="chris hansen" gid="15" x="592.333" y="407.333" width="120" height="103"/>
+  <object id="94" name="susy" gid="18" x="356.94" y="411.33" width="118" height="138"/>
+  <object id="95" name="chris hansen" gid="15" x="592.33" y="407.33" width="120" height="103"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="9" name="entrance" x="146" y="355.667">
@@ -65,11 +64,6 @@
   </object>
  </objectgroup>
  <objectgroup color="#ff00ff" id="4" name="objects" visible="0">
-  <object id="34" gid="16" x="382.167" y="519.333" width="125" height="99">
-   <properties>
-    <property name="solid" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="89" name="transition" x="-40" y="160" width="103.667" height="218.333">
    <properties>
     <property name="map" value="room1"/>

@@ -11,6 +11,7 @@ function Hathy:init()
     self.attack = 6
     self.defense = 0
     self.money = 28
+    self.experience = 7
 
     self.spare_points = 20
 

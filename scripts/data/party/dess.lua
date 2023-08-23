@@ -89,7 +89,7 @@ function character:init()
     self.menu_icon_offset = nil
 
     -- Message shown on gameover (optional)
-    self.gameover_message = "You aren't done, buddy.[wait:10]\nGive em' hell!"
+    self.gameover_message = { "You aren't done, buddy.[wait:10]\nGive em' hell!" }
 end
 
 --function character:onLevelUp(level)
@@ -112,15 +112,10 @@ function character:onLevelUpLVLib(level)
     self:increaseStat("attack", 2)
     self:increaseStat("defense", 1)
 	self:increaseStat("magic", 1)
-	
-	if not Kristal.getLibConfig("leveling", "global_love") then
-	
-	  self.love = self.love + 1
-	  self.req_exp = self.exp_needed[self.love + 1] or 0
-	  if self.love == 2 then
-		self:addSpell("starstorm")
-	  end
-	end
+
+    if level == 2 then
+        self:addSpell("starstorm")
+    end
 end
 
 function character:drawPowerStat(index, x, y, menu)

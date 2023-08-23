@@ -1,14 +1,14 @@
 -- Warp Bin
 -- god I am so sorry for how shitty this code is
 
---- The thing you put in the Warp Bin to warp to places like yeah \
---- must be 8-characters and be in lower case
+--- The thing you put in the Warp Bin to warp to places \
+--- must be 8 characters long and be in upper case
 ---@alias WarpBinCode string
 
 --- defines the behavior of a Warp Bin code
 ---@class WarpBinCodeInfo
---- what to do after the code is entered. \
---- if a string, treated as a map's id and the player is teleported there; \
+--- what to do after the code is entered \
+--- if a string, treated as a map's id and the player is teleported there \
 --- if the last argument is a function, the function is run
 ---@field result string|fun(cutscene: WorldCutscene)
 ---@field marker string|nil in case result is a string, the name of the marker you want to teleport the player to
@@ -22,12 +22,21 @@
 ---@type table<WarpBinCode, WarpBinCodeInfo>
 Mod.warp_bin_codes = {
     ["00000000"] = { result = "warphub" },
-    ["spamroom"] = { result = "spamroom" },
-    ["desshere"] = { result = "dessstuff/dessstart" },
-    ["wtf1998s"] = {
+    ["SPAMROOM"] = { result = "spamroom" },
+    ["DESSHERE"] = { result = "dessstuff/dessstart" },
+    ["BOSSRUSH"] = { result = "thearena" },
+    ["DEVDINER"] = { result = "devhotel/devdiner/devstart" },
+    ["MAUSHOLE"] = { result = "chevroom" },
+    ["WIFIDOWN"] = { result = "googlefield" },
+    ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
+    ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
+	["_CHCKPNT"] = { result = "field" },
+	["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
+    ["DUMBIERM"] = { result = "dumbierm" },
+    ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
-            Mod:addBinCode("sppispod", function(cutscene2)
+            Mod:addBinCode("SPPISPOD", function(cutscene2)
                 cutscene2:text({
                     "* Since you found another one...",
                     "* Here's a fun fact:",
@@ -36,8 +45,22 @@ Mod.warp_bin_codes = {
             end)
         end
     },
-    ["bossrush"] = { result = "thearena" },
-    ["devdiner"] = { result = "devstart" }
+    ["SCRTACHV"] = {
+        result = function(cutscene)
+            if not Kristal.callEvent("earnedAch", "codebreaker") then
+                Kristal.callEvent("completeAchievement", "codebreaker")
+                cutscene:text("* Congratulations![wait:10] We're all so proud of you![wait:10] What a crazy achievement!")
+            else
+                cutscene:text("* Okay,[wait:5] are you fucking done?")
+            end
+        end
+    },
+    ["TOMBSITE"] = {
+        result = function(cutscene)
+            cutscene:text("* (Work in progress. Check back in another update.)")
+        end
+    },
+    ["WWC1YEAR"] = { result = "dinder" }, --Don't spoil this before it gets revealed or I will personally steal your organs >:[ -BrandonK7200
 }
 
 -- heres some new totally cool helper functions wowee
@@ -46,7 +69,9 @@ Mod.warp_bin_codes = {
 ---@param code WarpBinCode
 ---@return WarpBinCodeInfo info
 function Mod:getBinCode(code)
-    return Mod.warp_bin_codes[code:lower()]
+    code = code:upper()
+
+    return Mod.warp_bin_codes[code]
 end
 
 --- adds a code to the warp bin code table
@@ -56,23 +81,25 @@ end
 ---@param overwrite? boolean whether to overwrite existing entries or not
 ---@return boolean success false if the code already exists and overwrite is false. just in-case someone else steals your code before you get to use it.
 function Mod:addBinCode(code, result, marker, overwrite)
-    if Mod:getBinCode(code) and not overwrite then
+    code = code:upper()
+
+    if self:getBinCode(code) and not overwrite then
         -- whoops, no success
         return false
     end
 
     -- lmao
-    Mod.warp_bin_codes[code:lower()] = { result = result, marker = marker or "spawn" }
+    Mod.warp_bin_codes[code] = { result = result, marker = marker or "spawn" }
     return true
 end
 
---- delets a Bin Code
+--- deletes a Bin Code
 ---@param code WarpBinCode
 ---@return boolean success false if the code doesnt exist
 function Mod:deleteBinCode(code)
-    code = code:lower()
+    code = code:upper()
 
-    if not Mod:getBinCode(code) then return false end
+    if not self:getBinCode(code) then return false end
     Mod.warp_bin_codes[code] = nil
     return true
 end
