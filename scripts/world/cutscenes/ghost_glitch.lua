@@ -13,6 +13,7 @@ return function(cutscene)
     end)
 
     cutscene:wait(0.8)
+    ghost:setSprite("walk")
 
     local dir = love.math.random(1,4)
     local walk

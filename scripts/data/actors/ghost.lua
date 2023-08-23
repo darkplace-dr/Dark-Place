@@ -24,7 +24,7 @@ function actor:init()
     -- Path to this actor's sprites (defaults to "")
     self.path = "world/npcs/ghost"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-    self.default = "down"
+    self.default = "walk"
 
     self.order = {"down", "right", "up", "left"}
     self.order_index = 1
@@ -58,7 +58,7 @@ function actor:onWorldUpdate(chara)
                 if self.order_index > #self.order then
                     self.order_index = 1
                 end
-                chara:setSprite(self.order[self.order_index])
+                chara:setSprite("walk/"..self.order[self.order_index])
             end
         end)
     end
