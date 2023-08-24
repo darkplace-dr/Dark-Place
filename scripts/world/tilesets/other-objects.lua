@@ -1,8 +1,8 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  name = "objects",
+  tiledversion = "1.10.0",
+  name = "other-objects",
   class = "",
   tilewidth = 418,
   tileheight = 240,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 11,
+  tilecount = 12,
   tiles = {
     {
       id = 12,
@@ -90,6 +90,12 @@ return {
       image = "../../../assets/sprites/world/maps/starwalkervalley/livetree_5.png",
       width = 270,
       height = 160
+    },
+    {
+      id = 50,
+      image = "../../../assets/sprites/world/castle_sign.png",
+      width = 32,
+      height = 37
     }
   }
 }

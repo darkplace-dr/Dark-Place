@@ -2,6 +2,7 @@ local JekuShop, super = Class(Shop,  "jeku_shop")
 
 function JekuShop:init()
     super.init(self)
+    Game:setFlag("meet_jeku", true)
 
     self.encounter_text = "[emote:happy]* HE EH EH!! A PLAYER HAS FINALLY COME TO ME!!"
     self.shop_text = "[emote:playful]* Eh he eh..."
