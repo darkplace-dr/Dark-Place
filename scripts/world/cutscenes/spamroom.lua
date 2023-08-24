@@ -102,15 +102,25 @@ return {
             if Game:getFlag("blankie_returned") then
                 local rnd = math.random(1, 5)
                     if rnd == 1 then
-                        cutscene:setSpeaker(velvetspam)
-                        cutscene:showNametag("Velvet!Spamton")
-                        velvetspam:setSprite("curious")
-                        cutscene:text("* Have you met [HOT JAVA LAVA] yet?")
-                        cutscene:text("* You should grab some [[Hot Dealz]] tea! All personalized!")
-                        velvetspam:resetSprite()
-                        cutscene:hideNametag()
+                        if Game:setFlag("asked_java", false) then
+                            cutscene:setSpeaker(velvetspam)
+                            cutscene:showNametag("Velvet!Spamton")
+                            velvetspam:setSprite("curious")
+                            cutscene:text("* Have you met [HOT JAVA LAVA] yet?")
+                            cutscene:text("* You should grab some [[Hot Dealz]] tea! All personalized!")
+                            velvetspam:resetSprite()
+                            cutscene:hideNametag()
 
-                        Game:setFlag("about_java", true)
+                            Game:setFlag("about_java", true)
+                        else
+                            cutscene:setSpeaker(velvetspam)
+                            cutscene:showNametag("Velvet!Spamton")
+                            velvetspam:setSprite("curious")
+                            cutscene:text("* Look at you! Just had some [Hot Brewed Tea]!")
+                            cutscene:text("* Told you [[Free Java Coding Lessons]] makes great tea!")
+                            velvetspam:resetSprite()
+                            cutscene:hideNametag()
+                        end
                     elseif rnd == 2 then
                         cutscene:setSpeaker(velvetspam)
                         cutscene:showNametag("Velvet!Spamton")
@@ -132,15 +142,25 @@ return {
 
                         Game:setFlag("about_button", true)
                     elseif rnd == 4 then
-                        cutscene:setSpeaker(velvetspam)
-                        cutscene:showNametag("Velvet!Spamton")
-                        velvetspam:setSprite("curious")
-                        cutscene:text("* You look like a [dried raisin]")
-                        cutscene:text("* Don't worry! [[Fizzy Lemon Soda]] has got some refreshments!")
-                        velvetspam:resetSprite()
-                        cutscene:hideNametag()
+                        if Game:setFlag("asked_fizz", false) then
+                            cutscene:setSpeaker(velvetspam)
+                            cutscene:showNametag("Velvet!Spamton")
+                            velvetspam:setSprite("curious")
+                            cutscene:text("* You look like a [dried raisin]...")
+                            cutscene:text("* Don't worry! [[Fizzy Lemon Soda]] has got some refreshments!")
+                            velvetspam:resetSprite()
+                            cutscene:hideNametag()
 
-                        Game:setFlag("about_fizz", true)
+                            Game:setFlag("about_fizz", true)
+                        else
+                            cutscene:setSpeaker(velvetspam)
+                            cutscene:showNametag("Velvet!Spamton")
+                            velvetspam:setSprite("curious")
+                            cutscene:text("* WOW! Lookin like a [Energetic Sports Drink]!")
+                            cutscene:text("* See? [[Bubbly Fizz]] has all the flavors!")
+                            velvetspam:resetSprite()
+                            cutscene:hideNametag()
+                        end
                     else
                         cutscene:setSpeaker(velvetspam)
                         cutscene:showNametag("Velvet!Spamton")
@@ -150,8 +170,9 @@ return {
                         velvetspam:resetSprite()
                         cutscene:hideNametag()
                     end
-                if Game:getFlag("about_java") and Game:getFlag("about_click") and Game:getFlag("about_button") and Game:getFlag("about_fizz") then
+                if Game:getFlag("about_java") and Game:getFlag("about_click") and Game:getFlag("about_button") and Game:getFlag("about_fizz") and Game:getFlag("addison_family", false) == false then
                     Kristal.callEvent("createQuest", "5 for 1 Specil", "vspamfamily", "Velvet!Spam told the gang about his family, but he barely mentioned about their names. Only about their jobs and what they sell. You think you can find who Velvet!Spamton is refering to?\n\nHINT: There's a switch in the EXTRAS menu that can help!")
+                    Game:setFlag("addison_family", true)
                 end
             else
                 cutscene:setSpeaker(velvetspam)
@@ -161,13 +182,10 @@ return {
                 velvetspam:setAnimation("idle")
                 cutscene:hideNametag()
                 
-                local susie = cutscene:getCharacter("susie")
-                if susie then
+                if cutscene:getCharacter("susie") then
                     cutscene:showNametag("Susie")
-                    cutscene:setSpeaker(susie)
-                    cutscene:text("* Actually that's not Kris\n * It's YOU...", "nervous_side")
+                    cutscene:text("* Actually that's not Kris\n * It's YOU...", "nervous_side", "susie")
                     cutscene:hideNametag()
-                end
 
                 local velvetspam = cutscene:getCharacter("velvetspam")
                 cutscene:setSpeaker(velvetspam)
@@ -177,11 +195,8 @@ return {
                 velvetspam:setAnimation("idle")
                 cutscene:hideNametag()
 
-                local susie = cutscene:getCharacter("susie")
-                if susie then
                     cutscene:showNametag("Susie")
-                    cutscene:setSpeaker(susie)
-                    cutscene:text("* Nevermind then...", "annoyed")
+                    cutscene:text("* Nevermind then...", "annoyed", "susie")
                     cutscene:hideNametag()
                 end
             end
