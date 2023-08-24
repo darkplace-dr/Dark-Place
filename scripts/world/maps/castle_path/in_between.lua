@@ -429,7 +429,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "castle_path.idk_yet"
+            ["map"] = "castle_path/sign",
+            ["marker"] = "entry_down"
           }
         }
       }

@@ -9,7 +9,7 @@
  </properties>
  <tileset firstgid="1" source="../../tilesets/castle_path.tsx"/>
  <tileset firstgid="25" source="../../tilesets/other-objects.tsx"/>
- <tileset firstgid="74" source="../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="76" source="../../tilesets/city_alleyway.tsx"/>
  <layer id="1" name="tiles" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -42,22 +42,6 @@
 0,0,0,19,19,19,19,19,19,19,19,19,0,0,0,0
 </data>
  </layer>
- <layer id="4" name="warp bin" width="16" height="12">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,295,296,297,0,0,0,0,0,0,0,
-0,0,0,0,0,0,310,311,312,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
  <objectgroup color="#0000ff" id="3" name="collisions">
   <object id="1" x="120" y="80" width="360" height="40"/>
   <object id="2" x="480" y="120" width="40" height="80"/>
@@ -67,8 +51,24 @@
   <object id="6" x="120" y="400" width="360" height="40"/>
   <object id="7" x="80" y="120" width="40" height="280"/>
  </objectgroup>
+ <layer id="4" name="warp bin" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,297,298,299,0,0,0,0,0,0,0,
+0,0,0,0,0,0,312,313,314,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <objectgroup color="#ff00ff" id="5" name="objects">
-  <object id="9" name="interactable" x="244" y="200" width="116" height="40">
+  <object id="9" name="interactable" x="244" y="160" width="116" height="80">
    <properties>
     <property name="cutscene" value="spamroom.warpbin"/>
     <property name="solid" type="bool" value="true"/>

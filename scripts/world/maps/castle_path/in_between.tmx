@@ -120,7 +120,8 @@
   </object>
   <object id="17" name="transition" x="920" y="-40" width="120" height="40">
    <properties>
-    <property name="map" value="castle_path.idk_yet"/>
+    <property name="map" value="castle_path/sign"/>
+    <property name="marker" value="entry_down"/>
    </properties>
   </object>
  </objectgroup>
