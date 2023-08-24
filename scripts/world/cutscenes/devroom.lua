@@ -442,6 +442,7 @@ return {
     end,
     simbel = function(cutscene, event)
         local simbel = cutscene:getCharacter("simbel")
+        local leader = Game.world.player
         local susie = cutscene:getCharacter("susie")
 
         cutscene:showNametag("Sam")
@@ -457,6 +458,17 @@ return {
             else
                 cutscene:text("..?")
             end
+
+            local s_facing = "left"
+            if leader.facing == "down" then
+                s_facing = "up"
+            elseif leader.facing == "left" then
+                s_facing = "right"
+            else
+                s_facing = "down"
+            end
+
+            simbel:setFacing(s_facing)
 
             cutscene:text("* A-[wait:2]Ah![wait:3] Hello!")
             cutscene:text("* Sorry,[wait:2] I was daydreaming...[wait:3] kinda?[wait:3] I don't even know if time exists here.")
@@ -505,6 +517,17 @@ return {
             end
             cutscene:text("* So uh...[wait:2] Do you want to talk about something?")
         else
+            local s_facing = "left"
+            if leader.facing == "down" then
+                s_facing = "up"
+            elseif leader.facing == "left" then
+                s_facing = "right"
+            elseif leader.facing == "up" then
+                s_facing = "down"
+            end
+            print(leader.facing, s_facing)
+
+            simbel:setFacing(s_facing)
             cutscene:text("* What's up?")
         end
         cutscene:hideNametag()
@@ -613,6 +636,7 @@ return {
         elseif c == 4 then
             cutscene:text("* Oh,[wait:2] okay.")
         end
+        simbel:setFacing("down")
         cutscene:hideNametag()
     end,
     wardrobe = function(cutscene, event)
