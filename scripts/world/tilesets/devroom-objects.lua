@@ -1,8 +1,8 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  name = "objects",
+  tiledversion = "1.9.0",
+  name = "devroom-objects",
   class = "",
   tilewidth = 145,
   tileheight = 120,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 45,
+  tilecount = 20,
   tiles = {
     {
       id = 10,
@@ -148,6 +148,12 @@ return {
       image = "../../../assets/sprites/world/maps/devroom/hotel/addison_plushies.png",
       width = 115,
       height = 29
+    },
+    {
+      id = 48,
+      image = "../../../assets/sprites/world/events/devroom/tv.png",
+      width = 40,
+      height = 40
     }
   }
 }

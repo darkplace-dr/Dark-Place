@@ -306,6 +306,7 @@ return {
             Kristal.callEvent("createQuest", "Where's Kris", "krismissing", "Susie mentioned Kris not being with her when she entered the Dark World. Go search for clues on their wherabouts.")
             Kristal.callEvent("createQuest", "Lost Girl", "noellemissing", "Susie mentioned Noelle not being with her when she entered the Dark World. Go search for clues on her wherabouts.")
             Kristal.callEvent("createQuest", "Missing Berd", "berdlymissing", "Berdly, along side Susie and Brandon, are locked inside a video game in the Cybercity! Perhaps Spamton has the way out? Use a bomb to blow up the door to the house he's in!")
+            Game:setFlag("drcastsplitup_known", true)
         else
             Kristal.callEvent("setDesc", "berdlymissing", "Berdly, along side Susie and Brandon, are locked inside a video game in the Cybercity! Perhaps Spamton has the way out? Use a bomb to blow up the door to the house he's in!")
         end

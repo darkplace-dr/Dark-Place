@@ -55,7 +55,7 @@ function character:init()
 
     self.battle_offset = {3, 9}
     self.head_icon_offset = {-7, -3}
-    self.menu_icon_offset = "6, 5"
+    self.menu_icon_offset = {6, 5}
 
     self.gameover_message = { "loser lol" }
 end

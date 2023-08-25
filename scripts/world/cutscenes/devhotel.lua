@@ -22,6 +22,7 @@ return {
             if opinion == 1 then
                 Assets.playSound("dooropen")
                 cutscene:text("* You open the door.")
+                Game.world:mapTransition("devhotel/rooms/room_001/entrance", "spawn")
             else
                 cutscene:showNametag("Brandon")
                 cutscene:text("* Uh,[wait:5] okay then?", "suspicious", "brandon")

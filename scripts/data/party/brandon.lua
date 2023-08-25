@@ -12,7 +12,7 @@ function character:init()
     self.title = "Marksman\nTakes aim with\na rifle."
 
     self.soul_priority = 1
-    self.soul_color = {1, 0, 0}
+    self.soul_color = {0.26, 1, 1}
 
     self.has_act = false
     self.has_spells = true
