@@ -571,7 +571,7 @@ return {
                     cutscene:text("* Thanks![wait:3] I've added a code to the warp bin that should guide you.")
                 end
                 cutscene:text("* The code is [color:yellow]SPHEREML[color:reset].")
-                Kristal.callEvent("createQuest", "Red, Green and this Blue\nthing", "m&l", "\n\nSam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"SPHEREML\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
+                Kristal.callEvent("createQuest", "Red, Green and.. Blue??", "rgb", "Sam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"SPHEREML\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
                 Mod:addBinCode("SPHEREML", "castle_path/start")
                 Game:setFlag("started_sphere_quest", true)
             end
@@ -584,7 +584,10 @@ return {
             if Game:getFlag("library_kills", 0) > 0 and Game:getFlag("library_kills", 0) <= 2 then
                 cutscene:text("* And you don't seem to be the type to make peace, aren't you?")
             else
-                local love = Game:getFlag("library_love", 1)
+                local sum_love = 0
+                for _,char in ipairs(Game.party) do sum_love = sum_love + char:getLevel() end
+                local love = sum_love/#Game.party
+
                 if love >= 19 then
                     cutscene:text("* And I really don't like the way you're looking at me.")
                 elseif love >= 15 then
