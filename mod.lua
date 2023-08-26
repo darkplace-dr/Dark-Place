@@ -214,6 +214,13 @@ function Mod:onTextSound(sound, node)
         end
         return true
     end
+    if sound == "mago1" then
+        if self.voice_timer == 0 then
+            local snd = Assets.playSound(Utils.pick{"voice/mago1", "voice/mago2", "voice/mago3", "voice/mago4", "voice/mago5", "voice/mago6", "voice/mago7"})
+            self.voice_timer = 2
+		end
+		return true
+    end
 end
 
 function Mod:onFootstep(char, num)

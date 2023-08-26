@@ -25,7 +25,7 @@ function actor:init()
     self.default = "shop"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "magolor"
+    self.voice = "mago1"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/magolor"
     -- Offset position for this actor's portrait (optional)
