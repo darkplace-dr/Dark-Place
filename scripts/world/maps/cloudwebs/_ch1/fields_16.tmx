@@ -87,7 +87,7 @@
   <object id="106" gid="68" x="1240" y="222" width="210" height="182"/>
   <object id="109" name="transition" x="100" y="460" width="120" height="40">
    <properties>
-    <property name="map" value="cloudwebs/_Chapter1/Fields/fields_15"/>
+    <property name="map" value="cloudwebs/_ch1/fields_15"/>
     <property name="marker" value="entrydown"/>
    </properties>
   </object>

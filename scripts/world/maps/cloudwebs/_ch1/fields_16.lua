@@ -422,7 +422,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "cloudwebs/_Chapter1/Fields/fields_15",
+            ["map"] = "cloudwebs/_ch1/fields_15",
             ["marker"] = "entrydown"
           }
         }
