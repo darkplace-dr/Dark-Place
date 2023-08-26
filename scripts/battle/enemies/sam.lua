@@ -49,7 +49,7 @@ function Sam:onSpared()
 end
 
 function Sam:isXActionShort(battler)
-    return true
+    return false
 end
 
 function Sam:onActStart(battler, name)
