@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 35,
+  nextobjectid = 37,
   properties = {
     ["music"] = "spamton_battle_eb"
   },
@@ -168,7 +168,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1040,
           y = 400,
@@ -181,7 +181,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1360,
           y = 0,
@@ -194,7 +194,7 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1080,
           y = 0,
@@ -207,7 +207,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 0,
@@ -220,7 +220,7 @@ return {
         {
           id = 25,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 400,
@@ -233,7 +233,7 @@ return {
         {
           id = 32,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -246,7 +246,7 @@ return {
         {
           id = 33,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 320,
@@ -275,7 +275,7 @@ return {
         {
           id = 7,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 960,
           y = 480,
@@ -291,7 +291,7 @@ return {
         {
           id = 10,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1320,
           y = 240,
@@ -307,7 +307,7 @@ return {
         {
           id = 11,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 200,
@@ -323,7 +323,7 @@ return {
         {
           id = 12,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 780,
           y = 94,
@@ -338,7 +338,7 @@ return {
         {
           id = 13,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1150,
           y = 140,
@@ -354,7 +354,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1110,
           y = 160,
@@ -371,7 +371,7 @@ return {
         {
           id = 16,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 1080,
           y = 390,
@@ -387,7 +387,7 @@ return {
         {
           id = 20,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 920,
           y = -20,
@@ -403,7 +403,7 @@ return {
         {
           id = 22,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 200,
@@ -416,9 +416,25 @@ return {
           }
         },
         {
+          id = 36,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 180,
+          y = 180,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "spamroom.mosquito",
+            ["solid"] = true
+          }
+        },
+        {
           id = 27,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 520,
           y = 240,
@@ -434,7 +450,7 @@ return {
         {
           id = 28,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 840,
           y = 390,
@@ -450,7 +466,7 @@ return {
         {
           id = 30,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 240,
@@ -466,7 +482,7 @@ return {
         {
           id = 34,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 1320,
           y = 390,
@@ -477,6 +493,21 @@ return {
           properties = {
             ["actor"] = "marispam",
             ["cutscene"] = "spamroom.mari"
+          }
+        },
+        {
+          id = 35,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "spam_mosquito"
           }
         }
       }
@@ -498,7 +529,7 @@ return {
         {
           id = 9,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 1000,
           y = 440,
@@ -511,7 +542,7 @@ return {
         {
           id = 15,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 1200,
           y = 270,
@@ -524,7 +555,7 @@ return {
         {
           id = 23,
           name = "entry1",
-          class = "",
+          type = "",
           shape = "point",
           x = 1000,
           y = 105,
@@ -537,7 +568,7 @@ return {
         {
           id = 31,
           name = "entry_left",
-          class = "",
+          type = "",
           shape = "point",
           x = 40,
           y = 280,

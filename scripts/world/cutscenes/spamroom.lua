@@ -27,6 +27,14 @@ return {
         cutscene:text("* WAITING FOR [wave]SOMETHING[wave:0] TO HAPPEN?", "", "marispam")
         cutscene:hideNametag()
     end,
+    mosquito = function(cutscene, event)
+        cutscene:showNametag("Spamton Mosquito")
+        cutscene:text("* EVER WANTED TO JUST RELAX FOR THE [[Hot Summer Deals]]?", "", "spam_mosquito")
+        cutscene:text("* BUT ALL THE DAMN [bugs] ARE IN THE WAY?", "", "spam_mosquito")
+        cutscene:text("* WE GOT YOU COVERED WITH THE NEW [[Hyperlink Blocked]]!", "", "spam_mosquito")
+        cutscene:text("* [currently not in stock].", "", "spam_mosquito")
+        cutscene:hideNametag()
+    end,
     cungadero = function(cutscene, event)
         cutscene:showNametag("Cungadero Spamton")
         cutscene:text("* Take a ride around town on our special Cungadero!", "", "cungaderospamton")
