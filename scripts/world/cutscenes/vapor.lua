@@ -103,7 +103,7 @@ return {
         cutscene:text("* Izn't that right, No-Goze and Done-zo?", "smug", "rook")
 
         cutscene:showNametag("NG & DZ")
-        cutscene:text("[func:nodeface,dz,-8,32] Mhm[wait:15]\n[func:nodeface,ng,-5,32] Couldn't have put it better\n   myself, Bossman!!",
+        cutscene:text("[func:nodeface,dz,-8,32] Mhm[wait:10]\n[func:nodeface,ng,-5,32] Can't say it better, Bossman!!",
         {
             functions = {
                 nodeface = nodeface,
