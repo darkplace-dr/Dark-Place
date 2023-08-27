@@ -61,6 +61,7 @@ function item:init()
         susie = "Stay Hydrated!",
         ralsei = "Stay Hydrated!",
         noelle = "Stay Hydrated!",
+		jamm = "r/hydrohomies",
     }
 	
 	--self.light_item = "light/gamerblood"

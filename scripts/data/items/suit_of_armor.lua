@@ -50,6 +50,7 @@ function item:init()
         susie = "This is badass!",
         ralsei = "*huff* Now I'm protected! *puff*",
         noelle = "No way can I wear that!",
+		jamm = "No different than the Halloween I went as a knight.",
     }
 end
 

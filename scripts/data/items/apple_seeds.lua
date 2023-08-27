@@ -53,7 +53,8 @@ function item:init()
         ralsei = "I don't feel so well...",
         noelle = "(I feel like I'm gonna puke...)",
 		dess= "yummy cyanide",
-        brandon = "Why did I eat that?"
+        brandon = "Why did I eat that?",
+		jamm = "I could've used those for my sling..."
     }
 end
 
@@ -67,6 +68,8 @@ function item:onWorldUse(target)
         health_dec = 50
 	elseif target.id == "dess" then
         health_dec = -10
+    elseif target.id == "jamm" then
+        health_dec = 40
     end
     target.health = math.max(1, target.health - health_dec)
     Assets.playSound("hurt")
