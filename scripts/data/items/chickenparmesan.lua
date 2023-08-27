@@ -29,7 +29,7 @@ function item:init()
         ["YOU"] = 60,
         ["dess"] = 60,
         ["brandon"] = 999,
-		["jamm"] = 9999,
+		["jamm"] = 100,
 	}
 
     -- Default shop price (sell price is halved)
@@ -53,7 +53,7 @@ function item:init()
         noelle = "I... don't eat meat.",
 		dess = "should of deep fried it lmao",
         brandon = "Made exactly how I like it!",
-		jamm = "I put mine between buns."
+		jamm = "I haven't had one of these since my college days. Tuesday, specifically."
 	}
 end
 
