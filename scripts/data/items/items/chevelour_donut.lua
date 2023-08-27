@@ -32,7 +32,8 @@ function item:init()
 		["dess"] = 60,
         ["brandon"] = 80,
         ["dumbie"] = 80,
-        ["bor"] = 80
+        ["bor"] = 80,
+		["jamm"] = 999,
 	}
 
     -- Default shop price (sell price is halved)
@@ -65,7 +66,8 @@ function item:init()
         noelle = "The jam's taste reminds me of new year's eve...!",
         berdly = "7/10 too much bagel!",
 		dess = "Should've been hollyberry...",
-        brandon = "Creamy!"
+        brandon = "Creamy!",
+		jamm = "Oh, ha ha. Jamm eats the jam. Real mature, guys."
     }
 end
 

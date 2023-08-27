@@ -54,7 +54,8 @@ function item:init()
         ralsei = "Wow, it's um... very big.",
         noelle = "Is this supposed to replace your arm?",
 		dess = "pokemon is better tbh",
-        brandon = "It's fightin' time!"
+        brandon = "It's fightin' time!",
+		jamm = "Three times what I'm used to..."
     }
 end
 

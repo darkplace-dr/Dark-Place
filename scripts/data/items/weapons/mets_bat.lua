@@ -47,11 +47,15 @@ function item:init()
 
     -- Character reactions
     self.reactions = {
-		dess = "IT'S ABOUT THE METS BABY THE METS",
+		dess = {
+			dess = "IT'S ABOUT THE METS BABY THE METS",
+			jamm = "OH MY GOD SHUT UP"
+		},
 		ralsei = "Who? I've never 'met' them!",
 		susie = "Never heard of em'.",
 		noelle = "Baseball is Dess' thing...",
-        brandon = "I prefer the Bluejays."
+        brandon = "I prefer the Bluejays.",
+		jamm = "DAYTON DRAGONS!"
     }
 end
 

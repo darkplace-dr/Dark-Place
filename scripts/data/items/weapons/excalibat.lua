@@ -52,7 +52,8 @@ function item:init()
 		ralsei = "I'm not worthy of this!",
 		susie = "Too holy for me.",
 		noelle = "How is this Christmas-themed??",
-        brandon = "It sure is green."
+        brandon = "It sure is green.",
+		jamm = "I know I like green, but..."
     }
 end
 

@@ -29,7 +29,8 @@ function item:init()
         noelle = 5,
         YOU = 10,
         dess = 15,
-        brandon = 5
+        brandon = 5,
+		jamm = 0
     }
 
     -- Default shop price (sell price is halved)
@@ -61,7 +62,8 @@ function item:init()
         ralsei = "This tastes... not good...",
         noelle = "Wh-why did you make me eat this?!",
 		dess = "yeah this is still good",
-        brandon = "...Ew."
+        brandon = "...Ew.",
+		jamm = "Yeah... No way am I eating that..."
     }
 end
 
