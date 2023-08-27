@@ -51,7 +51,8 @@ function item:init()
 		ralsei = "Isn't that a bit violent?",
 		susie = "...That's gonna break.",
 		noelle = "That's not mine!",
-        brandon = "SMASH!"
+        brandon = "SMASH!",
+		jamm = "I... don't think this works."
     }
 end
 

@@ -5,7 +5,8 @@ function item:init()
 
     self.reactions = Utils.merge(self.reactions, {
 		dess = "You did snowgrave lmao",
-        brandon = "Uh, no thanks."
+        brandon = "Uh, no thanks.",
+		jamm = "It feels cold..."
     })
 end
 

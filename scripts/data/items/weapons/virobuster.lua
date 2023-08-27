@@ -53,7 +53,8 @@ function item:init()
         ralsei = "It feels... dangerous?",
         noelle = "U-um, th-this is for Susie.",
         dess = "woah it hates me, cool!",
-        brandon = "Yeah uh, keep that away from me please."
+        brandon = "Yeah uh, keep that away from me please.",
+		jamm = "Hey, can I use this for Deoxynn? No? Damn...",
     }
 end
 
