@@ -33,6 +33,7 @@ Mod.warp_bin_codes = {
 	["_CHCKPNT"] = { result = "field" },
 	["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
     ["DUMBIERM"] = { result = "dumbierm" },
+    ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
@@ -53,11 +54,6 @@ Mod.warp_bin_codes = {
             else
                 cutscene:text("* Okay,[wait:5] are you fucking done?")
             end
-        end
-    },
-    ["TOMBSITE"] = {
-        result = function(cutscene)
-            cutscene:text("* (Work in progress. Check back in another update.)")
         end
     },
     ["WWC1YEAR"] = { result = "dinder" }, --Don't spoil this before it gets revealed or I will personally steal your organs >:[ -BrandonK7200
