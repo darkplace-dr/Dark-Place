@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 17,
+  nextobjectid = 21,
   properties = {
     ["music"] = "greenroom"
   },
@@ -190,6 +190,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 19,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 250,
+          y = 420,
+          width = 100,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -240,7 +253,7 @@ return {
         },
         {
           id = 11,
-          name = "interactable",
+          name = "transition",
           class = "",
           shape = "rectangle",
           x = -40,
@@ -250,8 +263,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["solid"] = true,
-            ["text1"] = "* Bedroom currently under renovations."
+            ["map"] = "devhotel/rooms/room_001/bedroom",
+            ["marker"] = "entry"
           }
         },
         {
@@ -353,6 +366,32 @@ return {
           shape = "point",
           x = 300,
           y = 560,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 17,
+          name = "west",
+          class = "",
+          shape = "point",
+          x = 40,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 20,
+          name = "sleepover",
+          class = "",
+          shape = "point",
+          x = 300,
+          y = 260,
           width = 0,
           height = 0,
           rotation = 0,
