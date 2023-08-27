@@ -19,6 +19,8 @@ function Mimic:init()
     -- Enemy reward
     self.money = 1000
     self.experience = Mod:isInRematchMode() and 0 or 50
+	
+	self.boss = true
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0

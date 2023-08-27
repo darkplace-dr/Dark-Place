@@ -19,6 +19,8 @@ function GoogleDino:init()
     self.money = 98
     self.experience = 5
 	
+	self.boss = true
+	
     self.difficulty = 1
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)

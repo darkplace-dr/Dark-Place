@@ -12,6 +12,8 @@ function Sam:init()
     self.defense = 0
     self.money = 0
     self.experience = Mod:isInRematchMode() and 0 or 420
+	
+	self.boss = true
 
     self.spare_points = 0
     self.tired_percentage = 0

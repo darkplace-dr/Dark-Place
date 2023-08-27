@@ -20,6 +20,7 @@ function character:init()
     self.xact_name = "J-Action"
 
     self:addSpell("supersling")
+    self:addSpell("darksling")
 
     self.health = 120
 
@@ -48,8 +49,8 @@ function character:init()
     self.name_sprite = "party/jamm/name"
 
     self.attack_sprite = "effects/attack/sling"
-    self.attack_sound = "bigcut"
-    self.attack_pitch = 1.5
+    self.attack_sound = "sling"
+    self.attack_pitch = 1
 
     self.battle_offset = {2, 1}
     self.head_icon_offset = {0, -3}
