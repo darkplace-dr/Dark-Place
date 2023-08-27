@@ -48,6 +48,7 @@ function item:init()
         susie = "This ain't Disney+...",
         ralsei = "Is it... Free?",
         iphone = "I thought it was to clean it.",
+		jamm = "Now all I need is the chill."
     }
 end
 

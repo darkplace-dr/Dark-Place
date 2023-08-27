@@ -43,7 +43,9 @@ function item:init()
     self.bonus_icon = nil
 
     -- Equippable characters (default true for armors, false for weapons)
-    self.can_equip = {}
+    self.can_equip = {
+		jamm = false,
+	}
 
     -- Character reactions
     self.reactions = {
@@ -51,7 +53,8 @@ function item:init()
         ralsei = "It's really heavy...",
         noelle = "(Smells like Susie...)",
         dess = "I feel just like Halojack Metropolis",
-        brandon = "Jeez it's hard to move my head..."
+        brandon = "Jeez it's hard to move my head...",
+		jamm = "No thanks. Not after last time."
     }
 end
 
