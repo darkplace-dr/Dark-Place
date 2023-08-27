@@ -53,7 +53,7 @@ function item:init()
         noelle = "I... don't eat meat.",
 		dess = "should of deep fried it lmao",
         brandon = "Made exactly how I like it!",
-		jamm = "According to Brandon, I'm not supposed to like this."
+		jamm = "I haven't had one of these since my college days. Tuesday, specifically."
 	}
 end
 
