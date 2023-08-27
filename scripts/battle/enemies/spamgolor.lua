@@ -11,6 +11,8 @@ function Spamgolor:init()
     self.attack = 8
     self.defense = 0
     self.money = 97
+	
+	self.boss = true
 
     self.spare_points = 0
     self.tired_percentage = 0

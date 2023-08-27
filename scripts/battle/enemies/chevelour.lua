@@ -17,6 +17,8 @@ function chevelour:init()
     self.defense = 3
     -- Enemy reward
     self.money = 100
+	
+	self.boss = true
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 20
