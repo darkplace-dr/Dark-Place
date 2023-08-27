@@ -32,7 +32,8 @@ function item:init()
 		["dess"] = 50,
         ["brandon"] = 50,
         ["dumbie"] = 50,
-        ["bor"] = 50
+        ["bor"] = 50,
+		["jamm"] = 100
 	}
 
     -- Default shop price (sell price is halved)
@@ -64,6 +65,7 @@ function item:init()
         ralsei = "Nice to have a new chef!",
         noelle = "This is actually nice...",
 		dess = "Bro isn't from Florida",
+		jamm = "Haven't had one of these in a long time."
     }
 end
 
