@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 20,
+  tilecount = 21,
   tiles = {
     {
       id = 10,
@@ -152,6 +152,12 @@ return {
     {
       id = 48,
       image = "../../../assets/sprites/world/events/devroom/tv.png",
+      width = 40,
+      height = 40
+    },
+    {
+      id = 49,
+      image = "../../../assets/sprites/world/events/devroom/foodbowl.png",
       width = 40,
       height = 40
     }

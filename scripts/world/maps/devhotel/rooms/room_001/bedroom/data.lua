@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 11,
+  nextobjectid = 14,
   properties = {
     ["music"] = "greenroom"
   },
@@ -26,6 +26,12 @@ return {
       firstgid = 73,
       filename = "../../../../../tilesets/devhotelfurniture.tsx",
       exportfilename = "../../../../../tilesets/devhotelfurniture.lua"
+    },
+    {
+      name = "devroom-objects",
+      firstgid = 161,
+      filename = "../../../../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../../../../tilesets/devroom-objects.lua"
     }
   },
   layers = {
@@ -85,10 +91,10 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 81, 83, 0, 0, 0, 0, 0, 0,
         0, 78, 79, 0, 0, 0, 0, 0, 0, 102, 103, 105, 0, 0, 0, 0, 0, 0,
         0, 100, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 122, 123, 73, 75, 76, 75, 76, 77, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 95, 97, 98, 97, 98, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 117, 0, 0, 0, 0, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 117, 0, 0, 0, 0, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 122, 123, 73, 75, 76, 75, 76, 77, 37, 38, 40, 41, 0, 0, 0, 0, 0,
+        0, 0, 0, 95, 97, 98, 97, 98, 99, 43, 44, 46, 47, 0, 0, 0, 0, 0,
+        0, 0, 0, 117, 0, 0, 0, 0, 121, 55, 56, 58, 59, 0, 0, 0, 0, 0,
+        0, 0, 0, 117, 0, 0, 0, 0, 121, 61, 62, 64, 65, 0, 0, 0, 0, 0,
         0, 0, 0, 139, 141, 141, 141, 141, 143, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -240,6 +246,52 @@ return {
           properties = {
             ["map"] = "devhotel/rooms/room_001/entrance",
             ["marker"] = "west"
+          }
+        },
+        {
+          id = 11,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 600,
+          y = 160,
+          width = 80,
+          height = 80,
+          rotation = 0,
+          gid = 210,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 440,
+          y = 210,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "breadulous",
+            ["cutscene"] = "devhotel_room_001.breadulous"
+          }
+        },
+        {
+          id = 13,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 618,
+          y = 130,
+          width = 44,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "devhotel_room_001.foodbowl",
+            ["solid"] = true
           }
         }
       }
