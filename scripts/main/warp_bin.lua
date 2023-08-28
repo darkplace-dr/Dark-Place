@@ -56,7 +56,12 @@ Mod.warp_bin_codes = {
             end
         end
     },
-    ["WWC1YEAR"] = { result = "dinder" }, --Don't spoil this before it gets revealed or I will personally steal your organs >:[ -BrandonK7200
+    ["WWC1YEAR"] = { result = "dinder" },
+    ["PIKNF404"] = {
+        result = function(cutscene)
+            cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
+        end
+    },
 }
 
 -- heres some new totally cool helper functions wowee
