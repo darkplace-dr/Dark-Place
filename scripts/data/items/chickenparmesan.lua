@@ -18,7 +18,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "Some chicken parmesan made and prepared by Hazel. Heals party 60HP"
+    self.description = "Some chicken parmesan made and prepared by Willow. Heals party 60HP"
 
     -- Amount this item heals for specific characters
     self.heal_amounts = {

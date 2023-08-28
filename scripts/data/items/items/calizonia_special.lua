@@ -65,6 +65,7 @@ function item:init()
         ralsei = "Nice to have a new chef!",
         noelle = "This is actually nice...",
 		dess = "Bro isn't from Florida",
+        brandon = "I'm gonna regret eating this later, aren't I?",
 		jamm = "Haven't had one of these in a long time."
     }
 end

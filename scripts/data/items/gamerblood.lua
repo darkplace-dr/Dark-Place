@@ -61,6 +61,7 @@ function item:init()
         susie = "Hell yeah.",
         ralsei = "This tastes like green...?",
         noelle = "How does Berdly drink these?",
+        brandon = "I can just taste the heart disease.",
 		jamm = "*cough* My throat... *cough*"
     }
 	
