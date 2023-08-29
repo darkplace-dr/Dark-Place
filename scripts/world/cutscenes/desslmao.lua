@@ -62,7 +62,7 @@ return {
 		if cutscene:getCharacter("jamm") then
 			cutscene:text("* Oh hey didn't your wife die?", "kind", "dess")
 
-			cutscene:showNametag("Brandon")
+			cutscene:showNametag("Jamm")
 			cutscene:text("* She lasted longer than my patience with you, thank you very much.", "shaded_pissed", "jamm")
 
 			cutscene:showNametag("Dess")
