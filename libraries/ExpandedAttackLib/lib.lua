@@ -1,4 +1,3 @@
----@diagnostic disable: redundant-return-value
 local Lib = {}
 
 --[[  TODO:
@@ -13,14 +12,10 @@ function Lib:init()
     -----  BITCH
     ----------------------------------------------------------------------------------
 
-    if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") ~= false then
-        print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
-    end
+    print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
 
     if Mod.libs["moreparty"] then
-        if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") ~= false then
-            print(self.info.id .. ": MoreParty detected!")
-        end
+        print(self.info.id .. ": MoreParty detected!")
         Lib.MOREPARTY = true
     end
 
@@ -699,10 +694,10 @@ function Lib:init()
         end
 
         if action.action == "ATTACK" or action.action == "AUTOATTACK" then
-            if attackbox.attacked then
-
+            if action.action == "ATTACK" and attackbox.attacked then
                 battler_weapon:onAttack(action, battler, enemy, attackbox.score, attackbox.bolts, attackbox.close)
-
+            elseif action.action == "AUTOATTACK" then
+                battler_weapon:onAttack(action, battler, enemy, 150, 1, 0)
             end
         elseif action.action == "SKIP" then
             return true -- multi act fix
@@ -862,9 +857,7 @@ function Lib:init()
     -----  I DID IT
     ----------------------------------------------------------------------------------
 
-    if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") ~= false then
-        print(self.info.id .. ": Ready!")
-    end
+    print(self.info.id .. ": Ready!")
 
 end
 
