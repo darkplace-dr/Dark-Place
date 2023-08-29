@@ -118,7 +118,7 @@ return {
 				end
 			end
 		elseif choice == 2 then
-			if Game:getFlag("acj_marcy", false) then
+			if not Game:getFlag("fake_jamm", false) then
 				if brandon then
 					cutscene:showNametag("Brandon")
 					cutscene:text("* So where is Acoustic,[wait:5] by the way?", "neutral", "brandon")
