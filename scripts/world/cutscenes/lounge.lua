@@ -14,6 +14,10 @@ return {
             cutscene:showNametag("Susie")
             cutscene:text("* Wait, what?", "sus_nervous", "susie")
         end
+		if cutscene:getCharacter("jamm") then
+			cutscene:showNametag("Jamm")
+            cutscene:text("* How would a sign have a gun?", "neutral", "jamm")
+		end
         if cutscene:getCharacter("brandon") then
             cutscene:showNametag("Brandon")
             cutscene:text("* I don't think it means anything.", "frown_side", "brandon")

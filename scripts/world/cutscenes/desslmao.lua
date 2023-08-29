@@ -11,6 +11,11 @@ return {
 			cutscene:showNametag("Dumbie")
 			cutscene:text("* NO WAY DESS DELTARUNE", "pog", "dumbie")
 		end
+		
+		if cutscene:getCharacter("jamm") then
+			cutscene:showNametag("Jamm")
+            cutscene:text("* (Did we really have to do this one?)", "nervous", "jamm")
+		end
 
 		cutscene:showNametag("Dess Holiday?")
 		cutscene:text("* Yo is that-", "condescending", "dess")
@@ -53,6 +58,15 @@ return {
 
 			cutscene:showNametag("Dess")
 			cutscene:text("* yeah I knew that", "condescending", "dess")
+		end
+		if cutscene:getCharacter("jamm") then
+			cutscene:text("* Oh hey didn't your wife die?", "kind", "dess")
+
+			cutscene:showNametag("Brandon")
+			cutscene:text("* She lasted longer than my patience with you, thank you very much.", "shaded_pissed", "jamm")
+
+			cutscene:showNametag("Dess")
+			cutscene:text("* yeah true I figured", "condescending", "dess")
 		end
 		cutscene:text("* Oh yeah can I join your team btw", "neutral", "dess")
 
@@ -123,6 +137,10 @@ return {
 				cutscene:showNametag("Brandon")
 				cutscene:text("* (Agreed.)", "miffed", "brandon")
 			end
+			if cutscene:getCharacter("jamm") then
+				cutscene:showNametag("Jamm")
+				cutscene:text("* (Are we only agreeing on this now?)", "nervous_left", "jamm")
+			end
 			cutscene:hideNametag()
 
 			Game:setFlag("dessThingy", true)
@@ -133,6 +151,11 @@ return {
 
 			cutscene:showNametag("???")
 			cutscene:text("* Hey fucker you need to come talk to me first", "neutral", "dess")
+			
+			if cutscene:getCharacter("jamm") then
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Well, there goes THAT idea.", "nervous", "jamm")
+			end
 			cutscene:hideNametag()
 		end
 	end,
@@ -144,6 +167,7 @@ return {
 		local leader = Game.world.player
 		local dess = cutscene:getCharacter("dess")
 		local brandon = cutscene:getCharacter("brandon")
+		local jamm = cutscene:getCharacter("jamm")
 
 		cutscene:detachFollowers()
 		cutscene:detachCamera()
@@ -152,6 +176,9 @@ return {
 		cutscene:walkTo(susie, dess.x, dess.y+32, 1, "up")
 		if brandon then
 			cutscene:walkTo(brandon, dess.x, dess.y+48, 1, "up")
+		end
+		if jamm then
+			cutscene:walkTo(jamm, dess.x, dess.y+64, 1, "up")
 		end
 
 		cutscene:showNametag("Susie")
@@ -203,6 +230,9 @@ return {
 		cutscene:look(leader, "down")
 		if brandon then
 			cutscene:look(brandon, "down")
+		end
+		if jamm then
+			cutscene:look(jamm, "down")
 		end
 
 		cutscene:wait(1.2)
@@ -278,6 +308,11 @@ return {
 			cutscene:showNametag("Brandon")
 			cutscene:text("* Let's do this.", "happy", "brandon")
 		end
+		
+		if jamm then
+			cutscene:showNametag("Jamm")
+            cutscene:text("* Here we go!", "smug", "jamm")
+		end
 
 		cutscene:showNametag("???")
 		cutscene:text("* Suit yourself![wait:5] Uheehee!")
@@ -340,6 +375,10 @@ return {
 		if brandon then
 			cutscene:showNametag("Brandon")
 			cutscene:text("* (God damnit.)", "miffed", "brandon")
+		end
+		if jamm then
+			cutscene:showNametag("Jamm")
+			cutscene:text("* (And dreams were broken that day.)", "neutral", "jamm")
 		end
 		cutscene:hideNametag()
 

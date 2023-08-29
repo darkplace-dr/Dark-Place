@@ -43,6 +43,10 @@ return {
         event:setSprite("wink")
         cutscene:text("* Everybody's favorite salseman,[wait:5] Spamton G. Spamton!", "", "cungaderospamton")
         event:setSprite("neutral")
+		if cutscene:getCharacter("jamm") then
+			cutscene:showNametag("Jamm")
+            cutscene:text("* (Which one are you talking about?)", "neutral", "jamm")
+		end
         if cutscene:getCharacter("susie") then
             cutscene:showNametag("Susie")
             cutscene:text("* Uh,[wait:5] why is your car parked on the sidewalk?", "neutral", "susie")

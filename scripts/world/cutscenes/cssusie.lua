@@ -3,6 +3,7 @@ return {
         local susie = cutscene:getCharacter("susie")
         local dess = cutscene:getCharacter("dess")
         local brandon = cutscene:getCharacter("brandon")
+        local jamm = cutscene:getCharacter("jamm")
         if not Game:getFlag("cssusie_quest") then
 
             if susie then
@@ -47,6 +48,14 @@ return {
 
             cutscene:text("[voice:cssusie]* HEY,[wait:5] I'VE GOT SOMETHING REALLY COOL TO SHOW YOU.", "", nil)
             cutscene:text("[voice:cssusie]* THERE ARE THREE PIECES OF A KEY TO FIND.", "", nil)
+			
+			if cutscene:getCharacter("jamm") then
+				cutscene:showNametag("Jamm")
+				cutscene:text("* A secret boss with a fetch quest.\n* Sounds about right.", "neutral", "jamm")
+
+                cutscene:showNametag("???")
+			end
+			
             cutscene:text("[voice:cssusie]* ASSEMBLE THEM AND BRING IT BACK HERE.", "", nil)
             cutscene:text("[voice:cssusie]* THEN YOU WILL ALL BE TRULY FREE.", "", nil)
 
