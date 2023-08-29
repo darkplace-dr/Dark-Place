@@ -1,7 +1,8 @@
 return {
 
     spamdumpster = function(cutscene)
-        
+        local jamm = cutscene:getCharacter("jamm")
+		
         if Game:getFlag("weird") then
             if Game:getFlag("weirdEnemiesKilled", 0) <= 19 then
                 -- FIXME: otherwise unset variable
@@ -40,6 +41,11 @@ return {
                             end
                             cutscene:text("[voice:spamton]* HERE'S YOUR [microwehv]![wait:0.1s] CAREFUL,[wait:0.1s] IT MIGHT [Burn]\n* EAHEAHEAH")
                             cutscene:text("(You got the Microwave.)")
+							if jamm then
+								cutscene:showNametag("Jamm")
+								cutscene:text("* (What the hell...)", "neutral", "jamm")
+								cutscene:hideNametag()
+							end
                             return
                         else
                             cutscene:text("[voice:spamton]* [Money] NO")

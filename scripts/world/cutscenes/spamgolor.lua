@@ -91,6 +91,10 @@ return {
             cutscene:showNametag("Brandon")
             cutscene:text("* Uh,[wait:5] yeah,[wait:5] you can say that again.", "neutral", "brandon")
         end
+		if cutscene:getCharacter("jamm") then
+			cutscene:showNametag("Jamm")
+            cutscene:text("* No argument here.", "neutral", "jamm")
+		end
         cutscene:hideNametag()
 
         cutscene:attachCamera()
