@@ -24,9 +24,9 @@ function actor:init()
     -- Sound to play when this actor speaks (optional)
     self.voice = "jamm"
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = nil
+    self.portrait_path = "face/jamm"
     -- Offset position for this actor's portrait (optional)
-    self.portrait_offset = nil
+    self.portrait_offset = {-19,-3}
 
     -- Whether this actor as a follower will blush when close to the player
     self.can_blush = false
@@ -41,8 +41,8 @@ function actor:init()
 
         ["battle/attack"]       = {"battle/attack", 1/15, false},
         ["battle/act"]          = {"battle/act", 1/15, false},
-        ["battle/spell"]        = {"battle/act", 1/15, false},
-        ["battle/item"]         = {"battle/item", 1/12, false, next="battle/idle"},
+        ["battle/spell"]        = {"battle/spell", 1/15, false},
+        ["battle/item"]         = {"battle/item", 1/15, false, next="battle/idle"},
         ["battle/spare"]        = {"battle/act", 1/15, false, next="battle/idle"},
 
         ["battle/attack_ready"] = {"battle/attackready", 0.2, true},
@@ -54,11 +54,14 @@ function actor:init()
         ["battle/act_end"]      = {"battle/actend", 1/15, false, next="battle/idle"},
 
         ["battle/hurt"]         = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
-        ["battle/defeat"]       = {"battle/defeat", 1/15, false},
+        ["battle/defeat"]       = {"battle/defeat", 0.5, true},
 
-        ["battle/transition"]   = {"sword_jump_down", 0.2, true},
+        ["battle/transition"]   = {"walk/right", 0.2, true},
         ["battle/intro"]        = {"battle/attack", 1/15, true},
-        ["battle/victory"]      = {"battle/victory", 1/10, false}
+        ["battle/victory"]      = {"battle/victory", 1/10, false},
+		
+		-- Cutscene animations
+		["sit"]               	= {"sit", 4/30, true},
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -74,27 +77,29 @@ function actor:init()
         -- Battle offsets
         ["battle/idle"] = {-5, -1},
 
-        ["battle/attack"] = {-8, -6},
-        ["battle/attackready"] = {-8, -6},
-        ["battle/act"] = {-6, -6},
-        ["battle/actend"] = {-6, -6},
-        ["battle/actready"] = {-6, -6},
-        ["battle/item"] = {-6, -6},
-        ["battle/itemready"] = {-6, -6},
-        ["battle/defend"] = {-5, -3},
+        ["battle/attack"] = {-5, -1},
+        ["battle/attackready"] = {-5, -1},
+        ["battle/act"] = {-5, -1},
+        ["battle/actend"] = {-5, -1},
+        ["battle/actready"] = {-5, -1},
+        ["battle/item"] = {-5, -1},
+        ["battle/itemready"] = {-5, -1},
+        ["battle/defend"] = {-5, -1},
 
         ["battle/defeat"] = {-8, -5},
         ["battle/hurt"] = {-5, -6},
 
         ["battle/intro"] = {-8, -9},
-        ["battle/victory"] = {-3, 0}
+        ["battle/victory"] = {-3, 0},
+		
+		["sit"] = {4, -8},
     }
 
     self.mirror_sprites = {
-        ["walk_shadowed/down"] = "walk/up",
-        ["walk_shadowed/up"] = "walk/down",
-        ["walk_shadowed/left"] = "walk/left",
-        ["walk_shadowed/right"] = "walk/right",
+        ["walk/down"] = "walk_shadowed/up",
+        ["walk/up"] = "walk_shadowed/down",
+        ["walk/left"] = "walk_shadowed/left",
+        ["walk/right"] = "walk_shadowed/right",
     }
 
     self.taunt_sprites = {"box"}
