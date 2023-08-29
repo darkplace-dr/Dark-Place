@@ -9,8 +9,8 @@ return {
   height = 14,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 6,
-  nextobjectid = 28,
+  nextlayerid = 7,
+  nextobjectid = 30,
   properties = {
     ["music"] = "room_003"
   },
@@ -434,6 +434,23 @@ return {
             ["map"] = "devhotel/devhotel1",
             ["marker"] = "door_003"
           }
+        },
+        {
+          id = 28,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 298,
+          y = 216,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "jamm",
+            ["cutscene"] = "devhotel_room_003.jamm",
+            ["flagcheck"] = "fake_jamm"
+          }
         }
       }
     },
@@ -476,6 +493,38 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "controllers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 29,
+          name = "toggle",
+          type = "",
+          shape = "point",
+          x = 320,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!jamm_party",
+            ["target"] = { id = 28 }
+          }
         }
       }
     }
