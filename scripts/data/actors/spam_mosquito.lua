@@ -4,14 +4,14 @@ function actor:init()
     super.init(self)
 
     -- Display name (optional)
-    self.name = "Mosquiton"
+    self.name = "Spamosquito"
 
     -- Width and height for this actor, used to determine its center
     self.width = 33
     self.height = 39
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {15.5, 19, 1, 1}
+    self.hitbox = {16, 19, 1, 1}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {1, 0, 0}
@@ -48,6 +48,8 @@ end
 
 function actor:onWorldUpdate(chara)
     chara.y = 200 + math.sin(Kristal.getTime()*1)*15
+    chara.sprite:setScale(0.5)
+    chara.sprite:setOrigin(-0.5, 0)
 end
 
 return actor
