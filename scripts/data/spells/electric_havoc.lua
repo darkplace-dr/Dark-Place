@@ -26,7 +26,7 @@ function spell:getCastMessage(user, target)
 end
 
 function spell:onCast(user, target)
-	local damage = 250
+	local damage = 200
 
 	local function shock(scale_x)
 		local cutAnim = Sprite("party/jamm/dark/special/shock")

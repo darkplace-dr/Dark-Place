@@ -4,6 +4,8 @@ local EnemyBattler, super = Class("EnemyBattler", true)
 function EnemyBattler:init(...)
     super.init(self, ...)
     self.killable = true
+	
+	self.service_mercy = 50
 end
 
 function EnemyBattler:hurt(amount, battler, on_defeat, color, show_status_msg)
