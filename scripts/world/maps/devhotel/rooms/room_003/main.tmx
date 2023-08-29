@@ -103,8 +103,8 @@
   <object id="28" name="npc" x="298" y="216">
    <properties>
     <property name="actor" value="jamm"/>
+    <property name="cond" value="fake_jamm  and not Game:hasPartyMember(&quot;jamm&quot;)"/>
     <property name="cutscene" value="devhotel_room_003.jamm"/>
-    <property name="flagcheck" value="fake_jamm"/>
    </properties>
    <point/>
   </object>

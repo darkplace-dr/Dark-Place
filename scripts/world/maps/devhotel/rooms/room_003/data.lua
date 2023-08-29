@@ -448,8 +448,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "jamm",
-            ["cutscene"] = "devhotel_room_003.jamm",
-            ["flagcheck"] = "fake_jamm"
+            ["cond"] = "fake_jamm  and not Game:hasPartyMember(\"jamm\")",
+            ["cutscene"] = "devhotel_room_003.jamm"
           }
         }
       }
