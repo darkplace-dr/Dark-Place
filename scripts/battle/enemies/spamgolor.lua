@@ -11,6 +11,7 @@ function Spamgolor:init()
     self.attack = 8
     self.defense = 0
     self.money = 97
+	self.service_mercy = -3
 	
 	self.boss = true
 

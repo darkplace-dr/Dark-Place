@@ -12,6 +12,7 @@ function Sam:init()
     self.defense = 0
     self.money = 0
     self.experience = Mod:isInRematchMode() and 0 or 420
+	self.service_mercy = 100
 	
 	self.boss = true
 

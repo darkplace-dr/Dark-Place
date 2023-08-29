@@ -20,6 +20,7 @@ function Dummy:init()
     -- Enemy reward
     self.money = 100
     self.experience = 5
+	self.service_mercy = 0
 	
 	self.boss = true
 	

@@ -16,6 +16,7 @@ function OGStarwalker:init()
     self.defense = 2
     self.money = Game:getFlag("starwalker_money") / 3
     self.experience = Mod:isInRematchMode() and 0 or 0
+	self.service_mercy = 0
 	
 	self.boss = true
 

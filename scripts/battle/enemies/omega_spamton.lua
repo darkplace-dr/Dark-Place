@@ -18,6 +18,7 @@ function OmegaSpamton:init()
     -- Enemy reward
     self.money = 5500
     self.experience = Mod:isInRematchMode() and 0 or 1500
+	self.service_mercy = 0
 	
 	self.boss = true
 	

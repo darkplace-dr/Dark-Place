@@ -19,6 +19,7 @@ function Mimic:init()
     -- Enemy reward
     self.money = 1000
     self.experience = Mod:isInRematchMode() and 0 or 50
+	self.service_mercy = 0
 	
 	self.boss = true
 

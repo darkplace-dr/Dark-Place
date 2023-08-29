@@ -18,6 +18,7 @@ function GoogleDino:init()
     -- Enemy reward
     self.money = 98
     self.experience = 5
+	self.service_mercy = 5
 	
 	self.boss = true
 	
