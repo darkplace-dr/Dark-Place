@@ -1,17 +1,17 @@
-local actor, super = Class(Actor, "shadowman_player")
+local actor, super = Class(Actor, "swatch")
 
 function actor:init()
     super.init(self)
 
     -- Display name (optional)
-    self.name = "Shadowman"
+    self.name = "Swatch"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 56
-    self.height = 57
+    self.width = 45
+    self.height = 40
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {14, 26, 40, 30}
+    self.hitbox = {5, 24, 35, 16}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {1, 1, 1}
@@ -20,12 +20,12 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "world/npcs/shadowman_player"
+    self.path = "world/npcs/swatch"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-    self.default = "saxophone"
+    self.default = ""
 	
 	self.animations = {
-        ["saxophone"] = {"saxophone", 6/40, true}
+        [""] = {"", 1, true}
 	}
 end
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="19">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="20">
  <editorsettings>
   <export target="cafe_ch4.lua" format="lua"/>
  </editorsettings>
@@ -44,8 +44,14 @@
    </properties>
    <point/>
   </object>
+  <object id="19" name="npc" x="725" y="136">
+   <properties>
+    <property name="actor" value="swatch"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
-  <object id="13" name="spawn" x="740" y="440"/>
+  <object id="13" name="spawn" x="740" y="320"/>
  </objectgroup>
 </map>

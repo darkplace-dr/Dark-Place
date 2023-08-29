@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 36,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 19,
+  nextobjectid = 20,
   properties = {
     ["music"] = "castle_funk"
   },
@@ -20,6 +21,7 @@ return {
       image = "../../../assets/sprites/rooms/bg_dw_castle_cafe_new_0.png",
       id = 2,
       name = "Image Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -35,6 +37,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -46,7 +49,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 157,
@@ -59,7 +62,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 840,
           y = 120,
@@ -72,7 +75,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 24,
           y = 197,
@@ -91,7 +94,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 200,
@@ -104,7 +107,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 400,
@@ -117,7 +120,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 561,
           y = 400,
@@ -130,7 +133,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 861,
           y = 400,
@@ -143,7 +146,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 840,
           y = 92,
@@ -156,7 +159,7 @@ return {
         {
           id = 9,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1197,
           y = 111,
@@ -169,7 +172,7 @@ return {
         {
           id = 10,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1422,
           y = 120,
@@ -182,7 +185,7 @@ return {
         {
           id = 11,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 880,
           y = 400,
@@ -195,7 +198,7 @@ return {
         {
           id = 12,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 480,
@@ -212,6 +215,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -223,7 +227,7 @@ return {
         {
           id = 14,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 156,
           y = 164,
@@ -238,7 +242,7 @@ return {
         {
           id = 15,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 416,
           y = 162,
@@ -253,7 +257,7 @@ return {
         {
           id = 18,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 503,
           y = 152,
@@ -264,6 +268,21 @@ return {
           properties = {
             ["actor"] = "shadowman_player"
           }
+        },
+        {
+          id = 19,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 725,
+          y = 136,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "swatch"
+          }
         }
       }
     },
@@ -272,6 +291,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -283,10 +303,10 @@ return {
         {
           id = 13,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 740,
-          y = 440,
+          y = 320,
           width = 0,
           height = 0,
           rotation = 0,
