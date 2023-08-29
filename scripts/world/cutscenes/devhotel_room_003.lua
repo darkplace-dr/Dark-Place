@@ -301,6 +301,13 @@ return {
 			cutscene:text("* Enzio, right...", "shaded_frown", "jamm")
 			cutscene:text("* He's kinda the whole reason I'm in this condition.", "shaded_frown", "jamm")
 			cutscene:text("* Let's just say... I have nothing but resentment for him.", "shaded_pisses", "jamm")
+			if not Game:getFlag("video_jamm") then
+				cutscene:text("* This should give you all the answers you need.", "shaded_frown", "jamm")
+				cutscene:hideNametag()
+				cutscene:text("* (You got Jamm's video tape!)")
+				Game.inventory:addItem("videotape_jamm")
+				Game:setFlag("video_jamm", true)
+			end
 		else
 			cutscene:showNametag("Jamm")
 			cutscene:text("* Alright, let's see what I have to say about your party.", "side_smile", "jamm")
