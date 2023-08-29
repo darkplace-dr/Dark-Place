@@ -12,7 +12,7 @@ function spell:init()
     self.description = "Deals massive damage to non-boss enemies."
 
     -- TP cost
-    self.cost = 70
+    self.cost = 55
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "enemy"
@@ -26,9 +26,9 @@ function spell:getCastMessage(user, target)
 end
 
 function spell:onCast(user, target)
-	local damage = math.floor((((user.chara:getStat("attack") * 600) / 20) - 3 * (target.defense)) * 1.3)
+	local damage = math.floor((((user.chara:getStat("attack") * 400) / 20) - 3 * (target.defense)) * 1.3)
 	if target.boss then
-		damage = math.floor((((user.chara:getStat("attack") * 100) / 20) - 3 * (target.defense)) * 1.7)
+		damage = math.floor((((user.chara:getStat("attack") * 130) / 20) - 3 * (target.defense)) * 1.7)
 	end
 
 	local function generateSlash(scale_x)

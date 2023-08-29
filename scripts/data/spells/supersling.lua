@@ -4,21 +4,21 @@ function spell:init()
     super.init(self)
 
     -- Display name
-    self.name = "SuperSling"
+    self.name = "HealSling"
 
     -- Battle description
-    self.effect = "Physical\nDamage"
+    self.effect = "Healing\nService"
     -- Menu description
-    self.description = "Deals large physical damage to 1 enemy."
+    self.description = "Slingshot healing bullets to an enemy, making them more likely to spare us."
 
     -- TP cost
-    self.cost = 50
+    self.cost = 32
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "enemy"
 
     -- Tags that apply to this spell
-    self.tags = {"Damage"}
+    self.tags = {"Heal"}
 end
 
 function spell:getCastMessage(user, target)
@@ -26,7 +26,7 @@ function spell:getCastMessage(user, target)
 end
 
 function spell:onCast(user, target)
-	local damage = math.floor((((user.chara:getStat("attack") * 300) / 20) - 3 * (target.defense)) * 1.3)
+	local damage = math.floor((user.chara:getStat("attack") * 15))
 
 	local function generateSlash(scale_x)
 		local cutAnim = Sprite("effects/attack/sling")
@@ -56,7 +56,12 @@ function spell:onCast(user, target)
 
 	Game.battle.timer:after(0.1/2, function()
 		generateSlash(1)
-		target:hurt(damage, user)
+		local mult = 1
+		if target.health == target.max_health then
+			mult = 0.5
+		end
+		target:heal(damage)
+		target:addMercy(math.ceil(target.service_mercy*1.3*mult))
 	end)
 end
 
