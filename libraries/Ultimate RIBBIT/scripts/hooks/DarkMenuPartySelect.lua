@@ -15,6 +15,12 @@ function DarkMenuPartySelect:draw()
         if party.id == "YOU" then
             local head_frames = Assets.getFrames("party/you/head")
             im = head_frames[(math.floor(self.heart_siner/20)-1)%#head_frames+1]
+        elseif party.id == "robo_susie" then
+            local head_frames = Assets.getFrames("party/robo_susie/head")
+            im = head_frames[(math.floor(self.heart_siner/20)-1)%#head_frames+1]
+        elseif party.id == "noyno" then
+            local head_frames = Assets.getFrames("party/noyno/head")
+            im = head_frames[(math.floor(self.heart_siner/20)-1)%#head_frames+1]
         end
         Draw.draw(im, (i-1)*50 + (ox*2), oy*2, 0, 2, 2)
     end
