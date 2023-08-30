@@ -89,22 +89,6 @@ function BallDude:onAct(battler, name)
         elseif battler.chara.id == "susie" then
             -- S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
             return "* Susie started hitting Ball Dude with a tennis racket repeatedly."
-        elseif battler.chara.id == "jamm" then
-            -- J-Action text
-			local has_dess = false
-			for _,party in ipairs(Game.party) do
-				if party.id == "dess" then
-					has_dess = true
-					break
-				end
-			end
-			if has_dess then
-				return {
-					"* Jamm takes Dess's bat and taps home plate with it.",
-					"* ...Dess takes the bat back."
-				}
-			end
-            return "* Jamm asks if Ball Dude has ever heard of kickball."
         else
             -- Text for any other character (like Noelle)
             return "* "..battler.chara:getName().." straightened the\ndummy's hat."
