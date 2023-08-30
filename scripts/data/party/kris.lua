@@ -10,4 +10,14 @@ function character:init()
     self:addSpell("xslash")
 end
 
+function character:onAttackHit(enemy, damage)
+    if self:checkWeapon("aeonlance") then
+        for i, v in ipairs(Game.battle:getActiveEnemies()) do
+            if v ~= enemy then
+                v:hurt(Utils.round(damage/3), nil, nil, self.dmg_color)
+            end
+        end
+    end
+end
+
 return character
