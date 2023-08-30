@@ -71,6 +71,11 @@ function Spamgolor:onAct(battler, name)
             Game.battle:startActCutscene("spamgolor.brandon_insult")
             return
         end
+        if battler.chara.id == "jamm" then
+            return {
+				"* Jamm refused to make a deal."
+			}
+        end
         return {
             "* "..battler.chara:getName().." tried to make a deal...",
             "* ... but they didn't know how to."

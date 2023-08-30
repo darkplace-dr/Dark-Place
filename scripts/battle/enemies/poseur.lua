@@ -66,6 +66,11 @@ function Poseur:onAct(battler, name)
             -- D-Action lmao
             return "* "..battler.chara:getName().." used their X-Action but like wrong somehow."
         end
+		if battler.chara.id == "jamm" then
+            -- J-Action
+			self:addMercy(10)
+            return "* "..battler.chara:getName().." used their X-Action expertly."
+        end
 		return "* "..battler.chara:getName().." used their X-Action."
     end
 
