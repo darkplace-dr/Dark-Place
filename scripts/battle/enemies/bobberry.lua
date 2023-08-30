@@ -107,9 +107,6 @@ function Bobberry:onAct(battler, name)
         elseif battler.chara.id == "susie" then
             -- S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
             return "* Susie shook a tree really hard and a bunch of berries came down."
-        elseif battler.chara.id == "jamm" then
-            -- J-Action text
-            return "* Jamm asks what flavor the berry is, showing interest."
         else
             -- Text for any other character (like Noelle)
             return "* "..battler.chara:getName().." straightened the\ndummy's hat."
