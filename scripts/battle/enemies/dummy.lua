@@ -86,6 +86,9 @@ function Dummy:onAct(battler, name)
 		elseif battler.chara.id == "dess" then
             -- D-Action text
             return "* Dess spun something around."
+		elseif battler.chara.id == "jamm" then
+            -- J-Action text
+            return "* Jamm shot a rock in the air.\nIt landed perfectly on Dummy's hat!"
         else
             -- Text for any other character (like Noelle)
             return "* "..battler.chara:getName().." straightened the\ndummy's hat."
