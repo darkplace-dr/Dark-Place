@@ -15,7 +15,8 @@ An open source Kristal mod that anyone can contribute to.
 ## Installation
 Those instructions are intended to those who only want to play Dark Place. If you want to contribute, see **Contributing** below.
 
-### Installing Kristal's dev version
+<details><summary>Installing Kristal's dev version</summary>
+
 Kristal is the engine Dark Place was made on. As such, you will need it to play.
 
 For diverse reasons, the mod currently only runs on **0.8.1-dev** which is not a released version, you will need to install the source code version of Kristal which can easily be done with the CI builds.
@@ -28,7 +29,10 @@ If you are on Windows, you can simply extract the content of `kristal-0.8.1-dev-
 
 If you are on Linux or Mac, you'll have to install [LÖVE2D](https://love2d.org/) beforehand. After that, you can extract `kristal-0.8.1-dev.love` and run the love file.
 
-### Downloading Dark Place
+</details>
+
+<details><summary>Downloading Dark Place</summary>
+
 After installing Kristal, download the latest version of Dark Place by clicking on the green button and then the "Download ZIP" one.
 
 ![The green "Code" button opens a menu where "Download ZIP" is available](https://cdn.discordapp.com/attachments/755844178474303538/1143194072148881479/image.png)
@@ -41,6 +45,8 @@ Once the download is done, open Kristal and look in the main menu for the option
 After that, you can start the mod as you would start any other Kristal mod by choosing "Play a mod" and select Dark Place.
 
 > *Note: if for some reason it doesn't work and you are sure you did everything correctly, join the [Kristal Discord server](https://discord.gg/8ZGuKXJE2C) to ask for help.*
+
+</details>
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforementioned document before contributing** as it contains the very important contribution rouxls (pronounced "rules").
