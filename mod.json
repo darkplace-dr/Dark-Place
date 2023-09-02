@@ -103,7 +103,7 @@
     "SWALLOW": "[style:GONER][spacing:3.2]WHAT DO YOU MEAN?\nAFRICAN OR EUROPEAN?",
     // Extra visual bit is handled by preview.lua
     "SWELLOW": "[style:GONER][spacing:3.2]AWW THE SCRUNKLY.\nTHE GOOBER. A\nSWELL FELLOW. A\nLITTLE FELLA.",
-    "PAUL": "[spacing:3.2]KAAAAAAAAA!\nPaul is the favorite\nof all!",
+    "PAUL": "[style:none][spacing:0]KAAAAAAAAA!\nPaul is the favorite\nof all!",
 
     // Challenges
     // FIXME: Should we use the GONER style on these lower-case messages?
