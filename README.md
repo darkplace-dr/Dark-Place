@@ -123,4 +123,6 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * MoviesMovies1 - [U.N Owen Was Her? 8 Bit Remix](https://www.youtube.com/watch?v=YJ3LH6u8G1M)
 * Nin★ - [audio_loop_sound](https://github.com/ninstar/yyProjects/tree/main/Resources/audio_loop_sound)
 * The Caretaker - Creator of the [Everywhere at the End of Time](https://thecaretaker.bandcamp.com/album/everywhere-at-the-end-of-time) album
+* SEGA & Sonic Team - Original creators of Sonic.
+* Rovio Entertainment Ltd. - Original creators of Angry Birds.
 </details>
