@@ -21,4 +21,13 @@ function character:onLevelUpLVLib()
     self:increaseStat("defense", 1)
 end
 
+-- This function could be very useful for costumes
+function character:getActor(light)
+    if (Game.world and Game.world.map) and Game.world.map.id:find("flipside/") then
+        return "flipside/susie"
+    else
+        return super.getActor(self, light)
+    end
+end
+
 return character

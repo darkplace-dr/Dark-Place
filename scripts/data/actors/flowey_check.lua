@@ -35,7 +35,16 @@ function actor:init()
     }
 
     -- Tables of sprites to change into in mirrors
-    self.mirror_sprites = {}
+    self.talk_sprites = {
+        ["plain"] = 0.15,
+        ["nice"] = 0.15,
+        ["niceside"] = 0.15,
+        ["nicesideum"] = 0.15,
+        ["evil"] = 0.15,
+        ["grin"] = 0.15,
+        ["sassy"] = 0.15,
+        ["pissed"] = 0.15,
+	}
 
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {

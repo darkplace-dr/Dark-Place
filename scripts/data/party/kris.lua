@@ -10,13 +10,12 @@ function character:init()
     self:addSpell("xslash")
 end
 
-function character:onAttackHit(enemy, damage)
-    if self:checkWeapon("aeonlance") then
-        for i, v in ipairs(Game.battle:getActiveEnemies()) do
-            if v ~= enemy then
-                v:hurt(Utils.round(damage/3), nil, nil, self.dmg_color)
-            end
-        end
+-- This function could be very useful for costumes
+function character:getActor(light)
+    if (Game.world and Game.world.map) and Game.world.map.id:find("flipside/") then
+        return "flipside/kris"
+    else
+        return super.getActor(self, light)
     end
 end
 

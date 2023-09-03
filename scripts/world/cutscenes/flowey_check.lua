@@ -37,7 +37,7 @@ return function(cutscene, player_name_override)
     end
 
     cutscene:showNametag("Flowey")
-    showText("* Uh...[wait:5] Howdy.")
+    showText("* Uh...[wait:5]\n* Howdy.")
     cutscene:hideNametag()
 
     cutscene:wait(3)
@@ -71,7 +71,11 @@ return function(cutscene, player_name_override)
 
     flowey:setSprite("nice")
 
-    if player_name == "BLUE" or player_name == "PLAGUEIS" then
+    if player_name == "YOU" 
+	or player_name == "BLUE" 
+	or player_name == "PLAGUEIS" 
+	or player_name == "DESS" 
+	then
         cutscene:wait(2)
 
         cutscene:showNametag("Flowey")
@@ -80,26 +84,36 @@ return function(cutscene, player_name_override)
         showText("* "..player_name.."?", "nice")
         cutscene:hideNametag()
 
-        if player_name == "BLUE" then
+        -- Dialogue for YOU is a WIP.
+        if player_name == "YOU" then
+            cutscene:wait(2)
             cutscene:showNametag("Flowey")
-            showText("* Y'know,[wait:5] I've been wondering...", "nicesideum")
+            showText("* Ah yes...[wait:5]\n* The orphaned amphibian.", "sassy")
+            cutscene:hideNametag()
+        elseif player_name == "BLUE" then
+            cutscene:showNametag("Flowey")
+            showText("* I've been wondering...", "nicesideum")
             showText("* Why exactly ARE you blue?", "plain")
-            showText("* Is it because you're sad?[wait:5]\n* Or pure?", "side")
+            showText("* Is it because you're sad or depressed about something?", "side")
+            showText("* Did someone turn your SOUL blue?", "plain")
+            cutscene:hideNametag()
+            cutscene:wait(1)
+            cutscene:showNametag("Flowey")
             showText("* ...or is it because you've been working in a meth lab of some kind?", "sassy")
             showText("* Not saying that I would know, of course!", "nicesideum")
             showText("* After all...", "niceside")
-            showText("* I'm not some balding, middle-aged human who has his own drug business.", "nice")
+            showText("* I'm not some balding, middle-aged human who owns a drug business.", "nice")
             cutscene:hideNametag()
         elseif player_name == "PLAGUEIS" then
             cutscene:showNametag("Flowey")
-            showText("* Y'know,[wait:5] I've actually heard a legend of someone who went by that name once...", "nicesideum")
+            showText("* I've actually heard a legend of someone who went by that name once...", "nicesideum")
             showText("* It was said that he had the power to save the ones he loved from death.", "plain")
             showText("* His life however,[wait:5] was cut short.", "side")
             showText("* When he taught his apprentice everything he knew...", "niceside")
             showText("* His apprentice KILLED him in his sleep!", "nice")
             showText("* Hee hee hee...[wait:5]\n* It's kind of ironic really.", "niceside")
             showText("* He had the power to save others...", "nicesideum")
-            showText("[voice:flowey2][speed:0.6]* But he couldn't even use them to save his own SOUL.", "evil")
+            showText("[voice:flowey2][speed:0.6][shake:2]* But he couldn't even use them to save his own SOUL.", "evil")
             cutscene:hideNametag()
 
             flowey:setAnimation("laugh")
@@ -107,7 +121,33 @@ return function(cutscene, player_name_override)
             cutscene:wait(4)
 
             cutscene:showNametag("Flowey")
-            showText("[voice:flowey2]* Hahaha!!\n[wait:5]* What an absolute IDIOT!", "grin")
+            showText("[voice:flowey2]* Golly! That's rich!", "grin")
+            cutscene:hideNametag()
+        -- People aren't even gonna see this one normally since Dess denies you from using her name, 
+		-- but I thought it'd be funny to include anyways, lol. - J.A.R.U.
+        elseif player_name == "DESS" then
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Flowey")
+            showText("* Seriously?[wait:5]\n* Is this a joke?", "pissed")
+            showText("* Out of ALL the names you could have chosen...", "pissed")
+            showText("* You just HAD to choose [color:red]HER[color:reset]'s.", "pissed")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Flowey")
+            showText("* I'm just gonna say it.", "side")
+            showText("* I think I speak for everyone when I say that I HATE that doe-eyed dumbass.", "plain")
+            showText("* Yeah,[wait:2] that's right.[wait:5]\n* Even [color:yellow]I[color:reset] hate her!", "nice")
+            showText("* And to think,[wait:2] she's not even the REAL Dess!", "nicesideum")
+            showText("* She's just some weird clone of a Dess from another timeline!", "nice")
+            showText("* That makes me wonder though.", "nicesideum")
+            showText("* What if she's not the ONLY Dess here?", "nice")
+            showText("* There could be more of those freaks out there!", "niceside")
+            showText("* Just some food for thought.", "nice")
+            showText("* But besides all of that,[wait:5] let me give you a little bit of advice...", "niceeyesclosed")
+            showText("[voice:flowey2][speed:0.6]* STAY. [wait:10]AWAY. [wait:10]FROM. [wait:10]HER.", "grin")
+            showText("[voice:flowey2]* She's like a tumor...", "evil")
+            showText("[voice:flowey2]* One she clings on,[wait:5] she'll NEVER come off.", "evil")
             cutscene:hideNametag()
         end
     end
