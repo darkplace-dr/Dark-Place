@@ -79,6 +79,8 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * SciSpaceProductions - Contributor
 * Nyako - Contributor
 * Sam Deluxe - Contributor
+* Silvaz - Contributor
+* LancerGaming2 - Contributor
 
 <a href="https://github.com/BrandonK7200/Dark-Place/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=BrandonK7200/Dark-Place" />
@@ -91,7 +93,6 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Kristal Team - Creating the Kristal engine
 * Toby Fox - Original author for Undertale and Deltarune
 * Lena Raine - Composer for "Hug for Ralsei" and "Lullaby for Lancer"
-* Sam Deluxe#0057 - X-Slash code
 * KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
 * Brylee - Original author for Deltarune: Ozymandias, dialogue portraits for Rook
