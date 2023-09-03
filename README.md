@@ -78,6 +78,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * PatateAuBeurr - Contributor
 * SciSpaceProductions - Contributor
 * Nyako - Contributor
+* Sam Deluxe - Contributor
 
 <a href="https://github.com/BrandonK7200/Dark-Place/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=BrandonK7200/Dark-Place" />
@@ -94,7 +95,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * KateBulka#2611 - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
 * Brylee - Original author for Deltarune: Ozymandias, dialogue portraits for Rook
-* Mr. Luwigi - Rook, DZ & NG sprites
+* Mr. Luwigi - Rook, DZ & NG sprites for Deltarune: Ozymandias
 * FireRainV#1958 - MoreParty Library
 * TrashcatYT#6658 - Blue Soul Library
 * TheMaxine - Original author for Ribbit
@@ -107,6 +108,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * FireStar8903 - Made music for the Pasta Pack Shop
 * OMOCAT, LLC - Original author for OMORI
 * Ninomae Ina'nis - Creator and designer of the Takodachis
+* Nintendo - Original author for Pikmin
 * HAL Laboratories - Original author for Kirby
 * Tour de Pizza - Original authors for Pizza Tower
 * Eminus - Original author for Mario's Mystery Meat
@@ -119,4 +121,5 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Scott Cawthon - Creator of the Five Nights at Freddy's franchise
 * MoviesMovies1 - [U.N Owen Was Her? 8 Bit Remix](https://www.youtube.com/watch?v=YJ3LH6u8G1M)
 * Nin★ - [audio_loop_sound](https://github.com/ninstar/yyProjects/tree/main/Resources/audio_loop_sound)
+* The Caretaker - Creator of the [Everywhere at the End of Time](https://thecaretaker.bandcamp.com/album/everywhere-at-the-end-of-time) album
 </details>
