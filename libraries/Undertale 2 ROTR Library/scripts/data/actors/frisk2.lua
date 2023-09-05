@@ -22,7 +22,7 @@ function actor:init()
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "frisk"
+    self.voice = "frisk2"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/frisk"
     -- Offset position for this actor's portrait (optional)

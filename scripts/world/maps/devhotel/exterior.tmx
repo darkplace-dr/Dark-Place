@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="42">
+ <editorsettings>
+  <export target="exterior.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="greenroom_outside"/>
+  <property name="name" value="Dev Diner - Exterior"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/devroom-objects.tsx"/>
+ <imagelayer id="2" name="bg">
+  <image source="../../../../assets/sprites/world/maps/devroom/exterior/layout.png" width="960" height="800"/>
+ </imagelayer>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="1" x="0" y="0" width="40" height="440"/>
+  <object id="2" x="920" y="0" width="40" height="440"/>
+  <object id="3" x="200" y="600" width="120" height="40"/>
+  <object id="4" x="640" y="600" width="120" height="40"/>
+  <object id="7" x="400" y="680" width="40" height="120"/>
+  <object id="8" x="520" y="680" width="40" height="120"/>
+  <object id="10" x="320" y="600">
+   <polygon points="0,0 120,40 120,80 0,80"/>
+  </object>
+  <object id="11" x="520" y="680">
+   <polygon points="0,0 120,0 120,-80 0,-40"/>
+  </object>
+  <object id="13" x="760" y="600">
+   <polygon points="0,0 160,0 160,-160"/>
+  </object>
+  <object id="14" x="40" y="440">
+   <polygon points="0,0 160,160 0,160"/>
+  </object>
+  <object id="24" x="240" y="280" width="480" height="120"/>
+  <object id="25" x="120" y="0" width="120" height="280"/>
+  <object id="26" x="720" y="0" width="120" height="280"/>
+  <object id="36" x="242" y="572" width="40" height="20"/>
+  <object id="37" x="681" y="564" width="40" height="20"/>
+  <object id="38" x="52" y="422" width="40" height="20"/>
+  <object id="39" x="870" y="422" width="40" height="20"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="20" name="transition" x="40" y="-32" width="80" height="40">
+   <properties>
+    <property name="map" value="devhotel/dumpster"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="21" name="transition" x="440" y="792" width="80" height="40">
+   <properties>
+    <property name="map" value=""/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="23" name="transition" x="440" y="362" width="80" height="40">
+   <properties>
+    <property name="map" value="devhotel/devhotel_lobby"/>
+    <property name="marker" value="south"/>
+   </properties>
+  </object>
+  <object id="27" name="dogconegroup" x="440" y="720" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="28" name="dogconegroup" x="480" y="720" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="29" name="dogconegroup" x="40" y="80" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="30" name="dogconegroup" x="80" y="80" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="31" name="transition" x="840" y="-32" width="80" height="40">
+   <properties>
+    <property name="marker" value="entry_bor"/>
+    <property name="shop" value="borshop"/>
+   </properties>
+  </object>
+  <object id="32" gid="51" x="240" y="590" width="108" height="180"/>
+  <object id="33" gid="2147483699" x="615" y="590" width="108" height="180"/>
+  <object id="34" gid="51" x="50" y="440" width="108" height="180"/>
+  <object id="35" gid="2147483699" x="804" y="440" width="108" height="180"/>
+  <object id="40" name="dogconegroup" x="840" y="80" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="41" name="dogconegroup" x="880" y="80" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="15" name="spawn" x="480" y="560">
+   <point/>
+  </object>
+  <object id="16" name="entry_diner" x="480" y="460">
+   <point/>
+  </object>
+  <object id="17" name="entry_alley" x="80" y="80">
+   <point/>
+  </object>
+  <object id="18" name="entry_bor" x="880" y="80">
+   <point/>
+  </object>
+  <object id="22" name="entry" x="480" y="760">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

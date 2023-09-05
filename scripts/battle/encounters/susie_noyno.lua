@@ -5,7 +5,7 @@ function SusieNoyno:init()
 
     self.text = "* Susie and Noyno block the way!"
 
-    self.music = "vs_susie_and_noyno"
+    self.music = "vs_susie_noyno"
 
     self.background = false
 

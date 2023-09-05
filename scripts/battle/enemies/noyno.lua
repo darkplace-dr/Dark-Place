@@ -31,6 +31,10 @@ function Noyno:init()
         "movingarena"
     }
 
+    self.text = {
+        "* Smells like Pepsi.",
+    }
+
     -- Dialogue randomly displayed in the enemy's speech bubble
     self.dialogue = {
         "..."
