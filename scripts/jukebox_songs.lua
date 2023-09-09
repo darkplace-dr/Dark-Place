@@ -1,17 +1,165 @@
 return {
   {
-    name = "Green Room",
-    file = "greenroom",
+    name = "Empty Town",
+    file = "deltarune/castletown_empty",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune"
+  },
+  {
+    name = "Field of Hopes and Dreams",
+    file = "deltarune/field_of_hopes",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune"
+  },
+  {
+    name = "Rude Buster",
+    file = "battle",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune"
+  },
+  {
+    name = "Scarlet Forest",
+    file = "deltarune/forest",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune"
+  },
+  {
+    name = "THE HOLY",
+    file = "deltarune/THE_HOLY",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune"
+  },
+  {
+    name = "A Town Called Hometown",
+    file = "deltarune/town",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune"
+  },
+  {
+    name = "My Castle Town",
+    file = "deltarune/castletown",
     composer = "Toby Fox",
     released = "2022",
     origin = "Deltarune"
   },
   {
-    name = "WHITE SPACE",
-    file = "whitespace",
-    composer = "Jami Lynne",
-    released = "2020",
-    origin = "Omori"
+    name = "Berdly",
+    file = "deltarune/berdly_theme",
+    composer = "Toby Fox",
+    released = "2022",
+    origin = "Deltarune"
+  },
+  {
+    name = "WELCOME TO THE CITY",
+    file = "deltarune/cybercity",
+    composer = "Toby Fox",
+    released = "2022",
+    origin = "Deltarune"
+  },
+  {
+    name = "WELCOME TO THE CITY (Weird Route)",
+    file = "deltarune/cybercity_alt",
+    composer = "Toby Fox",
+    released = "2022",
+    origin = "Deltarune"
+  },
+  {
+    name = "Cool Mixtape",
+    file = "deltarune/queen_car_radio",
+    composer = "Toby Fox",
+    released = "2022",
+    origin = "Deltarune"
+  },
+  {
+    name = "Song That Emerges From A Sleeping Dog",
+    file = "deltarune/dogcheck",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune"
+  },
+  {
+    name = "Green Room",
+    file = "greenroom",
+    composer = "Toby Fox",
+    released = "2022",
+    origin = "deltarune.com/ramb"
+  },
+  {
+    name = "KEYGEN (Credits Mix)",
+    file = "keygen_credits",
+    composer = "Toby Fox",
+    released = "Sept 17, 2022",
+    origin = "deltarune.com"
+  },
+  {
+    name = "Baci Perugina",
+    file = "baci_perugina2",
+    composer = "Toby Fox",
+    released = "2022",
+    origin = "deltarune.com"
+  },
+  {
+    name = "NYCTBA (Earthbound Remix)",
+    file = "spamton_battle_eb",
+    composer = "Stardust",
+    released = "2022",
+    origin = "soundcloud.com/speedwaystardst"
+  },
+  {
+    name = "Enemy Approaching!",
+    file = "utbattle",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Dance of Dog",
+    file = "dance_of_dog",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Sigh of Dog",
+    file = "sigh_of_dog",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Uwa!! So Temperate♫",
+    file = "options_summer",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Uwa!! So Holiday♫",
+    file = "options_holiday",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Hugs for Ralsei",
+    file = "Hugs_for_Ralsei",
+    composer = "Lena Raine",
+    released = "2018",
+    -- https://www.youtube.com/playlist?list=OLAK5uy_mYgyn1zifjvF1d1oXIeri1Q4I6ACfdfPw
+    origin = "Lullaby for Lancer"
+  },
+  {
+    name = "Lullaby for Lancer",
+    file = "Lullaby_for_Lancer",
+    composer = "Lena Raine",
+    released = "2018",
+    origin = "Lullaby for Lancer"
   },
   {
     name = "Gimmie Your Wallet, Miss",
@@ -35,13 +183,6 @@ return {
     origin = "Deltarune: The Stars"
   },
   {
-    name = "I hope it will be fine tomorrow", -- 明日も晴れるといいね
-    file = "inainaina",
-    composer = "shimtone",
-    released = "August 4, 2020",
-    origin = "free sound released to DOVA-SYNDROME; Ninomae Ina'nis's Intro BGM" -- https://dova-s.jp/bgm/play13226.html
-  },
-  {
     name = "Spamgolor",
     file = "spamgolor",
     composer = "BrandonK7200",
@@ -49,40 +190,39 @@ return {
     origin = "Dark Place"
   },
   {
-    name = "mmm yes put the tree on my pizza",
-    file = "mmm_yess_put_the_tree_on_my_pizza",
-    composer = "ClascyJitto",
+    name = "Warp Zone",
+    file = "warphub",
+    composer = "Charbomber",
     released = "2023",
-    origin = "Pizza Tower"
+    origin = "Dark Place"
   },
   {
-    name = "サウンドと恋に C I T Y P O P",
-    file = "citypop_sound_of_love",
-    composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
-    released = "2016",
-    -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p
-    origin = "SoundCloud (original upload was removed)" -- "Soundcloud Edits Part II"
+    name = "Spooky Battle",
+    file = "spookybattle",
+    composer = "Charbomber",
+    released = "2023",
+    origin = "Dark Place"
   },
   {
-    name = "Snick",
-    file = "snick",
-    composer = "ClassyJitto",
+    name = "Forgotten Ruins",
+    file = "ruins_beta",
+    composer = "Just another random user.",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
+    name = "Cursed Cathedral (Cover)",
+    file = "cursedcathedral_cover",
+    composer = "Just another random user.",
+    released = "2023",
+    origin = "Mario's Mystery Meat"
+  },
+  {
+    name = "Rude Buster (Repaint Mix)",
+    file = "battle_repainted",
+    composer = "Cvaxx",
     released = "2019",
-    origin = "Pizza Tower SAGE Demo"
-  },
-  {
-    name = "Enemy Approaching!",
-    file = "utbattle",
-    composer = "Toby Fox",
-    released = "2015",
-    origin = "Undertale"
-  },
-  {
-    name = "NYCTBA (Earthbound Remix)",
-    file = "spamton_battle_eb",
-    composer = "Stardust",
-    released = "2022",
-    origin = "soundcloud.com/speedwaystardst"
+    origin = "Deltarune: Repainted"
   },
   {
     name = "BUTTERFLY OF JUDGEMENT",
@@ -120,20 +260,6 @@ return {
     origin = "Crystalseeker"
   },
   {
-    name = "Forgotten Ruins",
-    file = "ruins_beta",
-    composer = "Just another random user.",
-    released = "2023",
-    origin = "Dark Place"
-  },
-  {
-    name = "KEYGEN (Credits Mix)",
-    file = "keygen_credits",
-    composer = "Toby Fox",
-    released = "Sept 17, 2022",
-    origin = "deltarune.com"
-  },
-  {
     name = "No More Nuzzles",
     file = "no_more_nuzzles",
     composer = "Lunaxis",
@@ -148,11 +274,11 @@ return {
     origin = "soundcloud.com/jamangar"
   },
   {
-    name = "Funky Theme",
-    file = "funky_theme",
-    composer = "AriTunes",
-    released = "Dec 17, 2009",
-    origin = "Angry Birds"
+    name = "WHITE SPACE",
+    file = "whitespace",
+    composer = "Jami Lynne",
+    released = "2020",
+    origin = "Omori"
   },
   {
     name = "MERRY CD",
@@ -169,16 +295,6 @@ return {
     -- originally released as a part of pale machine [MARU-123], modified for omori
     -- tbh "origin" is a bit misleading
     origin = "pale machine (this is the Omori version)"
-  },
-  {
-    name = "Eek!",
-    file = "eek",
-    composer = "surasshu",
-    -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
-    released = "April 10th, 2009",
-    -- CC BY-NC-SA 2.5
-    -- the recording in DP is based on https://modarchive.org/index.php?request=view_by_moduleid&query=186901
-    origin = "8bitcollective.com/members/surasshu (deadlink)"
   },
   {
     name = "Cold Spaghetti",
@@ -198,6 +314,13 @@ return {
     name = "Tropical Crust",
     file = "Tropical_Crust",
     composer = "Mr. Sauceman",
+    released = "2023",
+    origin = "Pizza Tower"
+  },
+  {
+    name = "mmm yes put the tree on my pizza",
+    file = "mmm_yess_put_the_tree_on_my_pizza",
+    composer = "ClascyJitto",
     released = "2023",
     origin = "Pizza Tower"
   },
@@ -223,6 +346,38 @@ return {
     origin = "Pizza Tower"
   },
   {
+    name = "Snick",
+    file = "snick",
+    composer = "ClassyJitto",
+    released = "2019",
+    origin = "Pizza Tower SAGE Demo"
+  },
+  {
+    name = "Eek!",
+    file = "eek",
+    composer = "surasshu",
+    -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
+    released = "April 10th, 2009",
+    -- CC BY-NC-SA 2.5
+    -- the recording in DP is based on https://modarchive.org/index.php?request=view_by_moduleid&query=186901
+    origin = "8bitcollective.com/members/surasshu (deadlink)"
+  },
+  {
+    name = "サウンドと恋に C I T Y P O P",
+    file = "citypop_sound_of_love",
+    composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
+    released = "2016",
+    -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p
+    origin = "SoundCloud (original upload was removed)" -- "Soundcloud Edits Part II"
+  },
+  {
+    name = "I hope it will be fine tomorrow", -- 明日も晴れるといいね
+    file = "inainaina",
+    composer = "shimtone",
+    released = "August 4, 2020",
+    origin = "free sound released to DOVA-SYNDROME; Ninomae Ina'nis's Intro BGM" -- https://dova-s.jp/bgm/play13226.html
+  },
+  {
     name = "Stickerbrush Symphony",
     file = "stickerbrushsymphony",
     composer = "Dave Wise",
@@ -230,46 +385,24 @@ return {
     origin = "Donkey Kong Country 2"
   },
   {
+    name = "Glass Ocean",
+    file = "vs_susie_noyno",
+    composer = "Machine Girl",
+    released = "June 16, 2022",
+    origin = "Neon White"
+  },
+  {
+    name = "Funky Theme",
+    file = "funky_theme",
+    composer = "AriTunes",
+    released = "Dec 17, 2009",
+    origin = "Angry Birds"
+  },
+  {
     name = "Industrial Fields & Oil Rig",
     file = "sbspss_ch5_1",
     composer = "Matt Simmonds",
     released = "2001",
     origin = "SpongeBob SquarePants: SuperSponge (PS1)"
-  },
-  {
-    name = "Cursed Cathedral (Cover)",
-    file = "cursedcathedral_cover",
-    composer = "Just another random user.",
-    released = "2023",
-    origin = "Mario's Mystery Meat"
-  },
-  {
-    name = "Rude Buster (Repaint Mix)",
-    file = "battle_repainted",
-    composer = "Cvaxx",
-    released = "2019",
-    origin = "Deltarune: Repainted"
-  },
-  {
-    name = "Warp Zone",
-    file = "warphub",
-    composer = "Charbomber",
-    released = "2023",
-    origin = "Dark Place"
-  },
-  {
-    name = "Hugs for Ralsei",
-    file = "Hugs_for_Ralsei",
-    composer = "Lena Raine",
-    released = "2018",
-    -- https://www.youtube.com/playlist?list=OLAK5uy_mYgyn1zifjvF1d1oXIeri1Q4I6ACfdfPw
-    origin = "Lullaby for Lancer"
-  },
-  {
-    name = "Lullaby for Lancer",
-    file = "Lullaby_for_Lancer",
-    composer = "Lena Raine",
-    released = "2018",
-    origin = "Lullaby for Lancer"
   },
 }
