@@ -405,4 +405,11 @@ return {
     released = "2001",
     origin = "SpongeBob SquarePants: SuperSponge (PS1)"
   },
+  {
+    name = "Journey's Just Begun",
+    file = "room_003",
+    composer = "Saurdino420",
+    released = "2023",
+    origin = "Deoxynn Act 1"
+  },
 }
