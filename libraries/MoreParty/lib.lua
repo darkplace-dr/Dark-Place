@@ -48,6 +48,9 @@ function Lib:init()
 			love.graphics.setColor(self.actbox.battler.chara:getColor())
 			love.graphics.rectangle("fill", 118, 22 - self.actbox.data_offset, math.ceil(health), 9)
 		end
+		
+		Draw.setColor({128/255, 128/255, 128/255})
+		love.graphics.rectangle("fill", 118, 27 - self.actbox.data_offset, math.ceil((self.actbox.battler.shield / self.actbox.battler.chara:getStat("health")) * 39), 4)
 
 		local color = PALETTE["action_health_text"]
 		if health <= 0 then
