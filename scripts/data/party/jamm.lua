@@ -12,6 +12,7 @@ function character:init()
     self.title = "Slingshotter\nTakes aim, then\nfires"
 
     self.soul_priority = 1
+    self.soul_color = {1, 106/255, 0}
 
     self.has_act = false
     self.has_spells = true
