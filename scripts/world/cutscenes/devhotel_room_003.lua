@@ -231,7 +231,26 @@ return {
 					Game:getPartyMember("susie"):setFlag("auto_attack", false)
 				end
             elseif id == "dess" then
-				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
+				cutscene:text("* Ah, Dess.\n* How's the most hated party member?", "smirk", "jamm")
+				cutscene:text("* Y'know, I had a talk with your creator recently...", "smirk", "jamm")
+				cutscene:text("* Char had told me you had some interesting mechanics.", "wink", "jamm")
+				cutscene:text("* Something about [color:yellow]pacifist-oriented spells[color:white], right?", "side_smile", "jamm")
+				cutscene:text("* I feel like these spells will make you slightly less annoying.", "smile", "jamm")
+				cutscene:text("* ...Slightly.", "nervous_left", "jamm")
+				cutscene:text("* (Toggle Dess's pacifist spells?)")
+				if cutscene:choicer({"Enable", "Disable"}) == 1 then
+					if not Game:getFlag("acj_dess_pacifist") then
+						Game:setFlag("acj_dess_pacifist", true)
+						Game:getPartyMember("dess"):removeSpell("starshot")
+						-- TODO: Add Dess's pacifist spells to her spells list.
+					end
+				else
+					if Game:getFlag("acj_dess_pacifist") then
+						Game:setFlag("acj_dess_pacifist", false)
+						-- TODO: Add Dess's pacifist spells to her spells list.
+						Game:getPartyMember("dess"):addSpell("starshot")
+					end
+				end
             elseif id == "dumbie" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "kris" then
