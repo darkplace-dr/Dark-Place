@@ -102,12 +102,13 @@ function LightTransition.cutscene(cutscene, self, player)
 	
 	-- kris
     kris.visible = false
-	local fakeKris = Sprite(kris.actor.path.."../dark_transition/dark", kris.x - 29, kris.y - 86)
+	local fakeKris = Sprite(kris.actor.path.."/dark_transition/dark", kris.x - 29, kris.y - 86)
 	fakeKris.physics.speed_y = settings.fake_speed_y
 	fakeKris.physics.gravity = settings.fake_gravity
-	fakeKris:setAnimation{"party/kris/dark_transition/dark", 0.1, true}
+	fakeKris:setAnimation{kris.actor.path.."/dark_transition/dark", 0.1, true}
 	fakeKris:setScale(2)
 	Game.world:spawnObject(fakeKris, settings.fake_layer)
+
 	
 	-- sus
 	local fakeSusie
