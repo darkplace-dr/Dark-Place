@@ -140,7 +140,7 @@ return {
     origin = "Undertale"
   },
   {
-    name = "Uwa!! So Temperate",
+    name = "Uwa!! So HEATS!!",
     file = "options_summer",
     composer = "Toby Fox",
     released = "2015",
