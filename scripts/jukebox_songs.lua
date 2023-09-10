@@ -88,13 +88,20 @@ return {
     file = "greenroom",
     composer = "Toby Fox",
     released = "2022",
-    origin = "deltarune.com/ramb"
+    origin = "deltarune.com"
   },
   {
     name = "KEYGEN (Credits Mix)",
     file = "keygen_credits",
     composer = "Toby Fox",
     released = "Sept 17, 2022",
+    origin = "deltarune.com"
+  },
+  {
+    name = "Results",
+    file = "results",
+    composer = "Toby Fox",
+    released = "2022",
     origin = "deltarune.com"
   },
   {
@@ -133,15 +140,15 @@ return {
     origin = "Undertale"
   },
   {
-    name = "Uwa!! So Temperate♫",
+    name = "Uwa!! So Temperate",
     file = "options_summer",
     composer = "Toby Fox",
     released = "2015",
     origin = "Undertale"
   },
   {
-    name = "Uwa!! So Holiday♫",
-    file = "options_holiday",
+    name = "Uwa!! So Holiday",
+    file = "options_winter",
     composer = "Toby Fox",
     released = "2015",
     origin = "Undertale"
@@ -162,30 +169,16 @@ return {
     origin = "Lullaby for Lancer"
   },
   {
-    name = "Gimmie Your Wallet, Miss",
-    file = "gimmieyourwalletmiss",
-    composer = "Charbomber",
-    released = "TBA",
-    origin = "Deltarune: The Stars"
-  },
-  {
-    name = "Batter Up!",
-    file = "batterup",
-    composer = "Charbomber",
-    released = "TBA",
-    origin = "Deltarune: The Stars"
-  },
-  {
-    name = "Three Strikes, You're Out!",
-    file = "threestrikesyoureout",
-    composer = "Charbomber",
-    released = "TBA",
-    origin = "Deltarune: The Stars"
-  },
-  {
     name = "Spamgolor",
     file = "spamgolor",
     composer = "BrandonK7200",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
+    name = "Exception",
+    file = "exception",
+    composer = "Simbel",
     released = "2023",
     origin = "Dark Place"
   },
@@ -216,6 +209,34 @@ return {
     composer = "Just another random user.",
     released = "2023",
     origin = "Mario's Mystery Meat"
+  },
+  {
+    name = "Gimmie Your Wallet, Miss",
+    file = "gimmieyourwalletmiss",
+    composer = "Charbomber",
+    released = "TBA",
+    origin = "Deltarune: The Stars"
+  },
+  {
+    name = "Batter Up!",
+    file = "batterup",
+    composer = "Charbomber",
+    released = "TBA",
+    origin = "Deltarune: The Stars"
+  },
+  {
+    name = "Three Strikes, You're Out!",
+    file = "threestrikesyoureout",
+    composer = "Charbomber",
+    released = "TBA",
+    origin = "Deltarune: The Stars"
+  },
+  {
+    name = "Journey's Just Begun",
+    file = "room_003",
+    composer = "Saurdino420",
+    released = "2023",
+    origin = "Deoxynn Act 1"
   },
   {
     name = "Rude Buster (Repaint Mix)",
@@ -285,6 +306,20 @@ return {
     file = "jb_toby",
     composer = "Toby Fox",
     released = "Dec 25, 2020",
+    origin = "Omori"
+  },
+  {
+    name = "Welcome Again",
+    file = "bs_entrance",
+    composer = "Pedro Silva",
+    released = "2020",
+    origin = "Omori"
+  },
+  {
+    name = "August/Water",
+    file = "august_water",
+    composer = "Pedro Silva",
+    released = "2020",
     origin = "Omori"
   },
   {
@@ -392,6 +427,41 @@ return {
     origin = "Neon White"
   },
   {
+    name = "Colosseum Battle (The Arena)",
+    file = "kssu_arena",
+    composer = "Jun Ishikawa, Hirokazu Ando",
+    released = "2008",
+    origin = "Kirby Super Star Ultra"
+  },
+  {
+    name = "Underworld Forest",
+    file = "underworldforest",
+    composer = "Hiroyuki Yanada",
+    released = "1995",
+    origin = "Last Bible 3"
+  },
+  {
+    name = "Battle",
+    file = "smtbattle",
+    composer = "Tsukasa Masuko, Kenichi Tsuchiya",
+    released = "2001",
+    origin = "Shin Megami Tensei (PS1)"
+  },
+  {
+    name = "Search ~ In the Midst 2002",
+    file = "investigation",
+    composer = "Akemi Kimura",
+    released = "2002",
+    origin = "Phoenix Wright: Ace Attorney Justice for All"
+  },
+  {
+    name = "The Almighty",
+    file = "almighty",
+    composer = "Shoji Meguro",
+    released = "2012",
+    origin = "Persona 4 Gold"
+  },
+  {
     name = "Funky Theme",
     file = "funky_theme",
     composer = "AriTunes",
@@ -404,12 +474,5 @@ return {
     composer = "Matt Simmonds",
     released = "2001",
     origin = "SpongeBob SquarePants: SuperSponge (PS1)"
-  },
-  {
-    name = "Journey's Just Begun",
-    file = "room_003",
-    composer = "Saurdino420",
-    released = "2023",
-    origin = "Deoxynn Act 1"
   },
 }
