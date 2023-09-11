@@ -8,6 +8,8 @@ function EnemyBattler:init(...)
 	self.service_mercy = 50
 	self.tiredness = 0
 	self.tired_text = nil
+	
+	self.back_attack = nil
 end
 
 function EnemyBattler:hurt(amount, battler, on_defeat, color, show_status_msg)
