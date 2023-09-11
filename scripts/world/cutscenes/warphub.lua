@@ -19,6 +19,13 @@ return {
         if cutscene:choicer({"Yes", "No"}) == 1 then
             Game.world:shopTransition("pastashop", { marker="door2", facing="down" })
         end
+    end,
+
+    katana0 = function (cutscene, event)
+        cutscene:text("* The door is unlocked.[wait:10] Go inside?")
+        if cutscene:choicer({"Yes", "No"}) == 1 then
+            cutscene:text("* Lucy put the warp here please")
+        end
     end
 }
 

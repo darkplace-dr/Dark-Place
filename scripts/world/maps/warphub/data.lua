@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 23,
@@ -10,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 11,
-  nextobjectid = 95,
+  nextobjectid = 99,
   properties = {
     ["border"] = "glow",
     ["music"] = "warphub",
@@ -47,7 +46,7 @@ return {
       exportfilename = "../../tilesets/warphub_doors.lua"
     },
     {
-      name = "objects",
+      name = "devroom-objects",
       firstgid = 457,
       filename = "../../tilesets/devroom-objects.tsx",
       exportfilename = "../../tilesets/devroom-objects.lua"
@@ -59,7 +58,6 @@ return {
       draworder = "topdown",
       id = 9,
       name = "objects_bg",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -74,7 +72,6 @@ return {
       draworder = "topdown",
       id = 10,
       name = "objects_doors",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -107,7 +104,6 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -151,7 +147,6 @@ return {
       height = 24,
       id = 2,
       name = "decal",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -170,7 +165,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 439, 440, 441, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 445, 446, 447, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 456, 451, 452, 453, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 298, 298, 298, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 291, 292, 293, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -192,7 +187,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -408,6 +402,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 98,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 760,
+          y = 360,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -416,7 +423,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -471,7 +477,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -619,24 +624,6 @@ return {
           }
         },
         {
-          id = 56,
-          name = "interactable",
-          type = "",
-          shape = "rectangle",
-          x = 780,
-          y = 320,
-          width = 80,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["solid"] = true,
-            ["text1"] = "* \"SOLD TO:[wait:10] \n[color:#ff6912]LUCY[wait:5] 'AGENT 7'[wait:5] LASTNAME[color:reset]\"",
-            ["text2"] = "* The door is locked.[wait:10] You can see a fox working on a computer through the keyhole.",
-            ["text3"] = "* Looks like she's making a game?[wait:10] Maybe she'll let you in once it's done."
-          }
-        },
-        {
           id = 91,
           name = "",
           type = "",
@@ -677,6 +664,23 @@ return {
           gid = 488,
           visible = true,
           properties = {}
+        },
+        {
+          id = 97,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 780,
+          y = 320,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solid"] = true,
+            ["text1"] = "* This room appears to be for rent.",
+            ["text2"] = "* But,[wait:10] you don't know how to rent it."
+          }
         }
       }
     }
