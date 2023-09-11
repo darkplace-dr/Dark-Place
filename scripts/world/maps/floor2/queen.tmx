@@ -51,6 +51,8 @@
   <object id="15" name="npc" x="174" y="389">
    <properties>
     <property name="actor" value="rouxls"/>
+    <property name="cond" value="Game:getFlag(&quot;hasObtainedRouxls&quot;) == false"/>
+    <property name="cutscene" value="floor2.rouxls"/>
     <property name="sprite" value="lamp"/>
    </properties>
    <point/>

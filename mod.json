@@ -137,7 +137,7 @@
       "print_console_intro": false
     },
     "ribbit": {
-      "changeSavepointSound": false,
+      "changeSavepointSound": true,
       "addCheckSound": true
     },
     // Stop doing this

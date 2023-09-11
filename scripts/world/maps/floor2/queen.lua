@@ -234,6 +234,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "rouxls",
+            ["cond"] = "Game:getFlag(\"hasObtainedRouxls\") == false",
+            ["cutscene"] = "floor2.rouxls",
             ["sprite"] = "lamp"
           }
         }
