@@ -21,6 +21,21 @@ function Battle:postInit(state, encounter)
     end
 end
 
+function Battle:updateIntro()
+    self.intro_timer = self.intro_timer + 1 * DTMULT
+    if self.intro_timer >= 15 then -- TODO: find out why this is 15 instead of 13
+        for _,v in ipairs(self.party) do
+            v:setAnimation("battle/idle")
+        end
+		if Mod.back_attack then
+			self:setState("ENEMYDIALOGUE", "INTRO")
+		else
+			self:setState("ACTIONSELECT", "INTRO")
+			self:nextTurn()
+		end
+    end
+end
+
 function Battle:showUI()
     super.showUI(self)
     if self.enemy_tension_bar then
@@ -39,6 +54,23 @@ function Battle:onStateChange(old,new)
             self.enemy_tension_bar.physics.friction = -0.4
         end
     end
+	
+	if new == "ENEMYDIALOGUE" then
+		local had_started = self.started
+        if not self.started then
+            self.started = true
+
+            for _,battler in ipairs(self.party) do
+                battler:resetSprite()
+            end
+
+            if self.encounter.music then
+                self.music:play(self.encounter.music)
+            end
+        end
+
+        self:showUI()
+	end
 end
 
 ---Adds TP to the enemy's TP bar. Doesn't work if no enemy TP bar exists.
