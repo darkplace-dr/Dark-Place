@@ -46,7 +46,7 @@ function item:init()
     -- Character reactions (key = party member id)
     self.reactions = {}
 
-    self.im_texture = Assets.getTexture("npcs/rouxls")
+    self.im_texture = Assets.getTexture("ui/menu/rouxls")
 end
 
 function item:onMenuOpen(menu)

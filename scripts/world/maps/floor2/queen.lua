@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 15,
+  nextobjectid = 16,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/queen_car_radio"
@@ -219,6 +219,22 @@ return {
           properties = {
             ["actor"] = "queen_speakers",
             ["cutscene"] = "floor2.queen_sip"
+          }
+        },
+        {
+          id = 15,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 174,
+          y = 389,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "rouxls",
+            ["sprite"] = "lamp"
           }
         }
       }
