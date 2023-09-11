@@ -1,4 +1,3 @@
----@diagnostic disable: redundant-return-value
 local Lib = {}
 
 --[[  TODO:
@@ -13,14 +12,10 @@ function Lib:init()
     -----  BITCH
     ----------------------------------------------------------------------------------
 
-    if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") ~= false then
-        print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
-    end
+    print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
 
     if Mod.libs["moreparty"] then
-        if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") ~= false then
-            print(self.info.id .. ": MoreParty detected!")
-        end
+        print(self.info.id .. ": MoreParty detected!")
         Lib.MOREPARTY = true
     end
 
@@ -472,13 +467,14 @@ function Lib:init()
 
     -----  INIT
 
-    Utils.hook(AttackBox, "init", function(orig, self, battler, offset, x, y)
+    Utils.hook(AttackBox, "init", function(orig, self, battler, offset, index, x, y)
 
         AttackBox.__super.init(self, x, y)
     
         self.battler = battler
         self.weapon = battler.chara:getWeapon()
         self.offset = offset + self.battler:getBoltOffset()
+        self.index = index
     
         self.head_sprite = Sprite(battler.chara:getHeadIcons().."/head", 21, 19)
         self.head_sprite:setOrigin(0.5, 0.5)
@@ -516,7 +512,7 @@ function Lib:init()
             
         end
     
-        self.fade_rect = Rectangle(0, 0, SCREEN_WIDTH, 38)
+        self.fade_rect = Rectangle(0, 0, SCREEN_WIDTH, 300)
         self.fade_rect:setColor(0, 0, 0, 0)
         self.fade_rect.layer = 2
         self:addChild(self.fade_rect)
@@ -527,6 +523,7 @@ function Lib:init()
         self.flash = 0
     
         self.attacked = false
+        self.removing = false
 
     end)
 
@@ -567,8 +564,8 @@ function Lib:init()
     -----  UPDATE
 
     Utils.hook(AttackBox, "update", function(orig, self)
-        if Game.battle.cancel_attack then
-            self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, DTMULT/20)
+        if self.removing or Game.battle.cancel_attack then
+            self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
         end
     
         if not self.attacked then
@@ -636,17 +633,21 @@ function Lib:init()
         love.graphics.setLineWidth(2)
         love.graphics.setLineStyle("rough")
 
+        local ch1_offset = Game:getConfig("oldUIPositions")
+
         local box_height
         if Lib.MOREPARTY then
-            box_height = (self.realHeight or 38) - 2
+            box_height = (self.realHeight or (ch1_offset and 37 or 36))
         else
-            box_height = 38 - 2
+            box_height = ch1_offset and 37 or 36
         end
     
         love.graphics.setColor(box_color)
-        love.graphics.rectangle("line", 80, 1, (15 * (self.battler:getBoltSpeed())) + 3, box_height)
+        love.graphics.rectangle("line", 80, ch1_offset and 0 or 1, (15 * (self.battler:getBoltSpeed())) + 3, box_height)
         love.graphics.setColor(target_color)
         love.graphics.rectangle("line", self.bolt_target + 1, 1, 8, box_height)
+        Draw.setColor(0, 0, 0)
+        love.graphics.rectangle("fill", 84, 2, 6, 34)
     
         love.graphics.setLineWidth(1)
     
@@ -699,10 +700,10 @@ function Lib:init()
         end
 
         if action.action == "ATTACK" or action.action == "AUTOATTACK" then
-            if attackbox.attacked then
-
+            if action.action == "ATTACK" and attackbox.attacked then
                 battler_weapon:onAttack(action, battler, enemy, attackbox.score, attackbox.bolts, attackbox.close)
-
+            elseif action.action == "AUTOATTACK" then
+                battler_weapon:onAttack(action, battler, enemy, 150, 1, 0)
             end
         elseif action.action == "SKIP" then
             return true -- multi act fix
@@ -817,7 +818,7 @@ function Lib:init()
     -----  MOREPARTY COMPAT
     ----------------------------------------------------------------------------------
 
-    -----  BEGINATTACK
+    -----  BATTLEUI => BEGINATTACK
 
     Utils.hook(BattleUI, "beginAttack", function(orig, self)
     
@@ -862,9 +863,7 @@ function Lib:init()
     -----  I DID IT
     ----------------------------------------------------------------------------------
 
-    if Kristal.getLibConfig("ExpandedAttackLib", "print_console_intro") ~= false then
-        print(self.info.id .. ": Ready!")
-    end
+    print(self.info.id .. ": Ready!")
 
 end
 
