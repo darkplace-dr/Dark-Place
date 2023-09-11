@@ -84,6 +84,13 @@ return {
     origin = "Deltarune"
   },
   {
+    name = "My Funky Town",
+    file = "castle_funk",
+    composer = "Toby Fox",
+    released = "2022",
+    origin = "deltarune.com"
+  },
+  {
     name = "Green Room",
     file = "greenroom",
     composer = "Toby Fox",

@@ -1,6 +1,6 @@
 {
   // The ID of your mod. Should be unique!
-  "id": "dark_place",
+  "id": "dark_place-fork",
   // Displays on the main menu.
   "name": "Dark Place",
   // Displays underneath the name. Optional.
@@ -80,6 +80,7 @@
     "YOU": "[spacing:3.2]*croak*",
     "KRIS": "[style:GONER][spacing:3.2]THE FUTURE IS IN\nYOUR HANDS.",
     "SUSIE": "[spacing:3.2]Uhhh, yeah sure.\nI guess...",
+    "ROUXLS": "[spacing:3.2]I DID NOT GIVE THOUST\nTHE PERMITS TO USETH\nMINE NAME!",
     "DESS": "[spacing:3.2]fat chance, lmao.",
     "FRISKTWO": "[spacing:3.2]i feel just like john\nwick",
     "SPAMTON": "[style:GONER][spacing:3.2]GET YOUR OWN [Account\nName] YOU [!@?#]!!!",
@@ -115,6 +116,7 @@
   },
   // Names to disallow player from using in the naming screen.
   "namesDeny": [
+    "ROUXLS",
     "DESS",
     "SPAMTON",
     "MORSHU"
@@ -137,7 +139,7 @@
       "print_console_intro": false
     },
     "ribbit": {
-      "changeSavepointSound": false,
+      "changeSavepointSound": true,
       "addCheckSound": true
     },
     // Stop doing this
