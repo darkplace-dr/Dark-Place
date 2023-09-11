@@ -23,6 +23,11 @@ return {
 		if susie then
 			cutscene:showNametag("Susie")
             cutscene:text("* The hell was that about?", "sus_nervous", "susie")
+			
+			if cutscene:getCharacter("jamm") then
+				cutscene:showNametag("Jamm")
+				cutscene:text("* I know even less than you, Susie.", "nervous", "jamm")
+			end
 		end
 		cutscene:hideNametag()
     end,

@@ -7,11 +7,11 @@ function actor:init()
     self.name = "Kris-Chan"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 37
-    self.height = 36
+    self.width = 19
+    self.height = 37
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {2, 26, 27, 10}
+    self.hitbox = {0, 25, 19, 14}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {1, 1, 0}

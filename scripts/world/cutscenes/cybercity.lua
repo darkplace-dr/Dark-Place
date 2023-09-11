@@ -1,7 +1,8 @@
 return {
 
     spamdumpster = function(cutscene)
-        
+        local jamm = cutscene:getCharacter("jamm")
+		
         if Game:getFlag("weird") then
             if Game:getFlag("weirdEnemiesKilled", 0) <= 19 then
                 -- FIXME: otherwise unset variable
@@ -40,6 +41,11 @@ return {
                             end
                             cutscene:text("[voice:spamton]* HERE'S YOUR [microwehv]![wait:0.1s] CAREFUL,[wait:0.1s] IT MIGHT [Burn]\n* EAHEAHEAH")
                             cutscene:text("(You got the Microwave.)")
+							if jamm then
+								cutscene:showNametag("Jamm")
+								cutscene:text("* (What the hell...)", "neutral", "jamm")
+								cutscene:hideNametag()
+							end
                             return
                         else
                             cutscene:text("[voice:spamton]* [Money] NO")
@@ -161,12 +167,18 @@ return {
             cutscene:setSpeaker(event)
             
             cutscene:text("* These [color:yellow]bananas[color:reset] are [color:yellow]Pissing[color:reset] me\noff...")
+
+            Game:setFlag("starwalker_money", Game.money)
             
             while Game.money > 0 do
                 Game.money = math.floor(Utils.lerp(Game.money, 0, 0.33))
                 cutscene:wait(1/30)
             end
             
+            if cutscene:getCharacter("susie") then
+                cutscene:text("* WH-!", "shock", "susie")
+                cutscene:text("* HEY,[wait:5] WHAT THE HELL?!", "teeth_b", "susie")
+            end
             cutscene:text("* I'm a   [color:yellow]Starwalker[color:reset]")
             
             cutscene:setSpeaker()
@@ -178,7 +190,7 @@ return {
             
             cutscene:text("* (The   [color:yellow]Starwalker[color:reset][wait:6]\n   somehow saved your game...)")
             
-        else
+        elseif cutscene:getCharacter("susie") then
             Game.world.music:pause()
             
             cutscene:text("* [color:yellow]You[color:reset] are [color:yellow]Pissing[color:reset] me off...", nil, event)
@@ -261,6 +273,8 @@ return {
 
             cutscene:interpolateFollowers()
             cutscene:attachFollowers()
+        else
+            cutscene:text("* [color:yellow]Starwalker[color:reset].", nil, event)
         end
     end,
 
@@ -269,5 +283,13 @@ return {
         addisonpink:setAnimation("idle")
         cutscene:text("* I'm still a WIP! Don't mind me here!", "wink", "addisonpink")
         addisonpink:resetSprite()
+    end,
+
+    gamer = function(cutscene, event)
+        cutscene:text("* For some reason there's a door on the floor.")
+        cutscene:text("* Will you go inside?")
+        if cutscene:choicer({"Yes", "No"}) == 1 then
+            Game.world:mapTransition("gamertimeentrance", "spawn")
+        end
     end,
 }

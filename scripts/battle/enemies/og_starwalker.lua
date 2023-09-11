@@ -14,8 +14,11 @@ function OGStarwalker:init()
     self.health = 6000
     self.attack = 12
     self.defense = 2
-    self.money = 420
+    self.money = Game:getFlag("starwalker_money") / 3
     self.experience = Mod:isInRematchMode() and 0 or 0
+	self.service_mercy = 0
+	
+	self.boss = true
 
     self.usedWalkerTimes = 0
 
@@ -97,6 +100,8 @@ function OGStarwalker:onAct(battler, name)
             return "* Susie more like sussy\n(it got [color:yellow]absorbed[color:reset])"
         elseif battler.chara.id == "bor" then
             return "* Bor got bored\n(it got [color:yellow]absorbed[color:reset])"
+        elseif battler.chara.id == "jamm" then
+            return "* Mmm strawberry jamm\n(it got [color:yellow]absorbed[color:reset])"
         else
             return "* " .. battler.chara.name .. " did a thing\n(it got [color:yellow]absorbed[color:reset])"
         end
@@ -114,6 +119,8 @@ function OGStarwalker:onShortAct(battler, name)
             return "* Susie more like sussy"
         elseif battler.chara.id == "bor" then
             return "* Bor got bored"
+        elseif battler.chara.id == "jamm" then
+            return "* Mmm strawberry jamm"
         else
             return "* " .. battler.chara.name .. " did a thing"
         end

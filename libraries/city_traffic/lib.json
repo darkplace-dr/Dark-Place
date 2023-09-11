@@ -1,0 +1,18 @@
+{
+    "id" : "city_traffic",
+    "authors": [
+        "Mr_Oinky"
+    ],
+
+    "version": "v1.0.0",
+    "engineVer": "v0.8.1-dev",
+
+    "config": {
+        // Unused
+        "allowInvalidCarDirection": false,
+        // Whether Noelle should attach to the player in fear when crossing traffic
+        "doNoelleScaredInTraffic": true,
+        // Kris is supposed to spin when struck by a car! This functionality is restored when this option is set to true
+        "fixPlayerSpinning": false
+    }
+}

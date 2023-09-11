@@ -18,6 +18,9 @@ function GoogleDino:init()
     -- Enemy reward
     self.money = 98
     self.experience = 5
+	self.service_mercy = 5
+	
+	self.boss = true
 	
     self.difficulty = 1
 
@@ -53,24 +56,16 @@ function GoogleDino:onShortAct(battler, name)
             return "* Susie roared at the Dino!"
         elseif battler.chara.id == "ralsei" then
             return "* * Ralsei jumped as high as he could!"
-        elseif battler.chara.id == "noelle" then
-            return "* Noelle did something!"
         elseif battler.chara.id == "dess" then
             return "* Dess did absolutely nothing."
         elseif battler.chara.id == "brandon" then
             return "* Brandon did an epic noscope!"
-        elseif battler.chara.id == "dumbie" then
-            return "* Dumbie did something!"
-        elseif battler.chara.id == "robo_susie" then
-            return "* Susie did something!"
-        elseif battler.chara.id == "noyno" then
-            return "* Noyno did something!"
-        elseif battler.chara.id == "berdly" then
-            return "* Berdly did something!"
-        elseif battler.chara.id == "bor" then
-            return "* Bor did something!"
+        elseif battler.chara.id == "jamm" then
+            return "* Jamm slinged a rock at a cactus!"
         elseif battler.chara.id == "ostarwalker" then
             return "* Starwalker did    something!"
+		else
+			return "* "..battler.chara:getName().." did something!"
         end
     end
     return nil
@@ -120,6 +115,10 @@ function GoogleDino:onAct(battler, name)
 		elseif battler.chara.id == "brandon" then
             -- B-Action text
             return "* Brandon got up and did the dinosaur. The Dino wasn't sure what to make of this."
+        elseif battler.chara.id == "jamm" then
+            --S-Action text
+            self:addMercy(5)
+            return "* Jamm slinged a rock at a distant cactus!\n* The Dino is grateful!"
         else
             -- Text for any other character (like Noelle)
             self:addMercy(5)

@@ -18,7 +18,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "Some chicken parmesan made and prepared by Hazel. Heals party 60HP"
+    self.description = "Some chicken parmesan made and prepared by Willow. Heals party 60HP"
 
     -- Amount this item heals for specific characters
     self.heal_amounts = {
@@ -28,7 +28,8 @@ function item:init()
         ["noelle"] = 10,
         ["YOU"] = 60,
         ["dess"] = 60,
-        ["brandon"] = 999
+        ["brandon"] = 999,
+		["jamm"] = 100,
 	}
 
     -- Default shop price (sell price is halved)
@@ -51,7 +52,8 @@ function item:init()
         ralsei = "Oh, this tastes good!",
         noelle = "I... don't eat meat.",
 		dess = "should of deep fried it lmao",
-        brandon = "Made exactly how I like it!"
+        brandon = "Made exactly how I like it!",
+		jamm = "I haven't had one of these since my college days. Tuesday, specifically."
 	}
 end
 

@@ -140,7 +140,7 @@ return {
         cutscene:wait(1)
         cutscene:fadeOut(1)
         cutscene:wait(1)
-        Game.world:loadMap("cloudwebs/_Chapter1/Fields/fields_1", "entrydown", "down")
+        Game.world:loadMap("cloudwebs/ch1/fields_1", "entrydown", "down")
         cutscene:wait(1)
         cutscene:fadeIn(1)
         Game.world.music:fade(1, 1)

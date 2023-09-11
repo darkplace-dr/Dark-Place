@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="17">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="forgotten_wood"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/forgotten_wood.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,
+56,56,56,56,56,56,56,56,56,56,39,56,56,56,56,56,
+56,56,56,56,56,56,56,41,56,56,56,56,56,56,56,56,
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,
+56,56,56,56,47,56,56,56,56,56,56,56,56,56,40,56,
+56,56,56,41,56,56,56,56,56,56,39,56,56,56,56,56,
+56,56,56,56,56,56,56,39,56,56,56,56,56,56,56,56,
+56,39,56,56,56,56,56,56,56,56,56,56,56,41,56,56,
+56,56,47,56,56,56,56,56,56,56,56,56,56,56,40,56,
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,
+56,56,56,56,56,56,39,56,56,41,56,56,56,56,56,56,
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="16" height="12">
+  <data encoding="csv">
+151,152,151,152,151,152,95,0,0,0,93,150,151,150,151,150,
+151,152,151,152,151,152,95,0,0,0,93,150,151,150,151,150,
+151,152,151,152,151,152,95,0,0,0,93,150,151,150,151,150,
+146,147,146,147,146,147,102,0,0,0,104,147,146,147,146,147,
+157,156,157,156,157,156,113,0,0,0,115,156,157,156,157,116,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+135,134,135,134,135,83,84,0,0,0,82,134,135,134,135,83,
+151,150,151,150,151,94,95,0,0,0,93,150,151,150,151,150,
+151,150,151,150,151,94,95,0,0,0,93,150,151,150,151,150,
+151,150,151,150,151,94,95,0,0,0,93,150,151,150,151,150
+</data>
+ </layer>
+ <objectgroup id="3" name="collision">
+  <object id="1" x="0" y="0" width="280" height="200"/>
+  <object id="2" x="400" y="0" width="240" height="200"/>
+  <object id="3" x="0" y="320" width="280" height="160"/>
+  <object id="4" x="400" y="320" width="240" height="160"/>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="5" name="up" x="340" y="40">
+   <point/>
+  </object>
+  <object id="6" name="down" x="340" y="440">
+   <point/>
+  </object>
+  <object id="7" name="left" x="40" y="260">
+   <point/>
+  </object>
+  <object id="8" name="right" x="600" y="260">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="13" name="script" x="280" y="-40" width="120" height="40">
+   <properties>
+    <property name="cutscene" value="tombsite.up"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="14" name="script" x="280" y="480" width="120" height="40">
+   <properties>
+    <property name="cutscene" value="tombsite.down"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="15" name="script" x="-40" y="200" width="40" height="120">
+   <properties>
+    <property name="cutscene" value="tombsite.left"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="16" name="script" x="640" y="200" width="40" height="120">
+   <properties>
+    <property name="cutscene" value="tombsite.right"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

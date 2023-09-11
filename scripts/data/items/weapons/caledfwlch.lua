@@ -52,7 +52,8 @@ function item:init()
         ralsei = "That's a mouthfull!",
         noelle = "Reminds me of spelling bees...",
 		dess = "what to heck",
-        brandon = "I hate Welsh."
+        brandon = "I hate Welsh.",
+		jamm = "Cald.. Cael... Caledfa... No thanks."
     }
 end
 

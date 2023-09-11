@@ -128,6 +128,9 @@ function HHaunt:onAct(battler, name)
 		elseif battler.chara.id == "dumbie" then
             -- D-Action text
             return "* Dumbie made ghost noises."
+        elseif battler.chara.id == "jamm" then
+			-- S-Action text
+            return "* Jamm already looks like a zombie."
         end
         -- Text for any other character
         return "* "..battler.chara:getName().." pretended to be a halloween monster."

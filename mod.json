@@ -81,6 +81,7 @@
     "KRIS": "[style:GONER][spacing:3.2]THE FUTURE IS IN\nYOUR HANDS.",
     "SUSIE": "[spacing:3.2]Uhhh, yeah sure.\nI guess...",
     "DESS": "[spacing:3.2]fat chance, lmao.",
+    "FRISKTWO": "[spacing:3.2]i feel just like john\nwick",
     "SPAMTON": "[style:GONER][spacing:3.2]GET YOUR OWN [Account\nName] YOU [!@?#]!!!",
     "SOAMTON": "[style:GONER][spacing:3.2]YOU KNOW WHAT? I'LL\n[[Accept Terms &\nAgreements]] THIS TIME...",
     "MORSHU": "[style:GONER][spacing:3.2]SORRY. I CAN'T LET YOU USE\nMY NAME! COME BACK WHEN\nYOU'RE A LITTLE...\nMMMMMM...ORIGINAL!",
@@ -92,6 +93,7 @@
     "VELVET": "[style:GONER][spacing:3.2]WAIT WHICH ONE ARE YOU\nTALKING ABOUT???\nTHERE'S THE FABRIC, CAKE,\nAND THE MOUSE.\nWHICH ONE?",
     // Agent 7? ~~(Would her Dess% speedrun be invalid just for this change)~~
     "LUCY": "[style:GONER][spacing:3.2]HEY, THAT'S ME!",
+    "JAMM": "[style:GONER][spacing:3.2]AS IN THAT ASSHAT WHO\nMADE 16 BITS OF CANNED\nSPAM?",
 
     // Misc. jokes
     "GHASTTEAR": "[style:GONER][spacing:3.2]HOLY SHIT!!!!!\nGHAST TEAR REAL!!!!!!!!!!",
@@ -102,7 +104,7 @@
     "SWALLOW": "[style:GONER][spacing:3.2]WHAT DO YOU MEAN?\nAFRICAN OR EUROPEAN?",
     // Extra visual bit is handled by preview.lua
     "SWELLOW": "[style:GONER][spacing:3.2]AWW THE SCRUNKLY.\nTHE GOOBER. A\nSWELL FELLOW. A\nLITTLE FELLA.",
-    "PAUL": "[spacing:3.2]KAAAAAAAAA!\nPaul is the favorite\nof all!",
+    "PAUL": "[style:none][spacing:0]KAAAAAAAAA!\nPaul is the favorite\nof all!",
 
     // Challenges
     // FIXME: Should we use the GONER style on these lower-case messages?

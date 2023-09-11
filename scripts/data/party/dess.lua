@@ -34,8 +34,6 @@ function character:init()
 	-- man idk
 	--self:addSpell("wideangle")
 	self:addSpell("starshot")
-	-- Fuck it we ballin'
-	self:addSpell("starstorm")
 
     -- Current health (saved to the save file)
     self.health = 120

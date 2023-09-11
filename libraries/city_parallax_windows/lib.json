@@ -1,0 +1,14 @@
+{
+    "id" : "city_parallax_windows",
+    "authors": [
+        "Mr_Oinky"
+    ],
+
+    "version": "v1.0.0-dev",
+    "engineVer": "v0.8.0",
+
+    "config": {
+        "windowBackground": "ffff00",
+        "windowBackgroundInverted": "da5aff"
+    }
+}

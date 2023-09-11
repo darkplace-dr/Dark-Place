@@ -80,7 +80,7 @@ function character:init()
     self.xact_color = {1, 0.5, 1}
 
     -- Head icon in the equip / power menu
-    self.menu_icon = "party/robo_susie/head"
+    self.menu_icon = "party/robo_susie/head_1"
     -- Path to head icons used in battle
     self.head_icons = "party/robo_susie/icon"
     -- Name sprite (optional)

@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="border" value="vaporwave"/>
-  <property name="music" value="forest"/>
+  <property name="music" value="citypop_sound_of_love"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/vapor.tsx"/>
  <tileset firstgid="36" source="../../../tilesets/devroom-objects.tsx"/>

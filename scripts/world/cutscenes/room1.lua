@@ -32,7 +32,7 @@ return {
         cutscene:look(YOU, "down")
         cutscene:wait(2)
 
-        local zoom_sfx = cutscene:playSound("forestalt")
+        local zoom_sfx = cutscene:playSound("emotion")
         local function zoom(scale, wait, overwrite_pos)
             local tx, ty = YOU:getRelativePos(YOU.width/2, YOU.height/2)
             Game.world.camera:setZoom(scale)
@@ -186,7 +186,7 @@ return {
                 cutscene:walkTo("berdly", x - 60, y + 100, 0.75, "up")
             end
             if cutscene:getCharacter("dumbie") then
-                cutscene:walkTo("berdly", x - 60, y + 100, 0.75, "up")
+                cutscene:walkTo("dumbie", x - 60, y + 100, 0.75, "up")
             end
             if cutscene:getCharacter("bor") then
                 cutscene:walkTo("bor", x - 60, y + 100, 0.75, "up")

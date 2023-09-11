@@ -48,7 +48,8 @@ function item:init()
 
     -- Character reactions
     self.reactions = {
-        iphone = "..."
+        iphone = "...",
+		jamm = "I mean, am I supposed to throw it, or...?"
     }
 end
 

@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 87,
+  nextobjectid = 88,
   properties = {
     ["music"] = "greenroom",
     ["name"] = "Dev Diner - Dining Area"
@@ -516,23 +516,6 @@ return {
           }
         },
         {
-          id = 64,
-          name = "npc",
-          class = "",
-          shape = "point",
-          x = 1119,
-          y = 180,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "dumbie",
-            ["cutscene"] = "devroom.dumbie",
-            ["flagcheck"] = "!dumbie_inparty"
-          }
-        },
-        {
           id = 65,
           name = "npc",
           class = "",
@@ -720,6 +703,22 @@ return {
           gid = 93,
           visible = true,
           properties = {}
+        },
+        {
+          id = 87,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 1530,
+          y = 220,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "simbel",
+            ["cutscene"] = "devroom.simbel"
+          }
         }
       }
     },
@@ -756,7 +755,7 @@ return {
           class = "",
           shape = "point",
           x = 1440,
-          y = 180,
+          y = 190,
           width = 0,
           height = 0,
           rotation = 0,

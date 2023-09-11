@@ -50,15 +50,22 @@ function Dokokashira:onEnter(chara)
     			end
     		end
     		Game.world.music:play("glitch_music")
-    		while not Input.pressed("confirm") do
+    		Game.world:spawnNPC("ghost", 2340, 1395)
+    		for i=1,love.math.random(10,30) do
+    			local script = Script(Utils.random(2035, 2830), Utils.random(1150, 1680), 40, 40, {cutscene="ghost_glitch"})
+    			script.layer = Game.world:parseLayer("objects")
+    			Game.world:addChild(script)
+    		end
+    		while not (Input.pressed("confirm") and not Kristal.Console.is_open and not Game.world.cutscene) and not Kristal.force_quit_glitch do
     			wait()
     		end
+    		Kristal.force_quit_glitch = nil
     		Game.world.music:stop()
     		Game.fader.alpha = 1
     		Registry.initMaps()
     		wait(1)
     		Game:setFlag("glitch_passed", true)
-    		Game.world:loadMap("cybercity/alley2", 2000, 610)
+    		Game.world:loadMap("cybercity/alley2", 965, 600)
     		Game.lock_movement = false
     		Kristal.callEvent("completeAchievement", "glitch_music")
     		Game.fader.alpha = 0

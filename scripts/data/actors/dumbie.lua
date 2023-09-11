@@ -22,11 +22,11 @@ function actor:init()
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = nil
+    self.voice = "dumbie"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/dumbie"
     -- Offset position for this actor's portrait (optional)
-    self.portrait_offset = {-12, -10}
+    self.portrait_offset = {-12, 3}
 
     -- Whether this actor as a follower will blush when close to the player
     self.can_blush = false

@@ -31,6 +31,9 @@ Mod.warp_bin_codes = {
     ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
     ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
 	["_CHCKPNT"] = { result = "field" },
+	["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
+    ["DUMBIERM"] = { result = "dumbierm" },
+    ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
@@ -53,12 +56,12 @@ Mod.warp_bin_codes = {
             end
         end
     },
-    ["TOMBSITE"] = {
+    ["WWC1YEAR"] = { result = "dinder" },
+    ["PIKNF404"] = {
         result = function(cutscene)
-            cutscene:text("* (Work in progress. Check back in another update.)")
+            cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
         end
     },
-    ["WWC1YEAR"] = { result = "dinder" }, --Don't spoil this before it gets revealed or I will personally steal your organs >:[ -BrandonK7200
 }
 
 -- heres some new totally cool helper functions wowee

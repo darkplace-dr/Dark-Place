@@ -51,7 +51,9 @@ function item:init()
         noelle = {
             noelle = "I-I'll um, p-protect you, Susie!",
             susie = "Uh, thanks I guess?"
-        }
+        },
+        brandon = "So I can just say \"no\" to damage sometimes with this?",
+		jamm = "Oof! It's heavy..."
     }
 
     self.dodge_chance = 0.1

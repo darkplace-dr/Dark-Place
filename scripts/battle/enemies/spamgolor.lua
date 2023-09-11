@@ -11,6 +11,9 @@ function Spamgolor:init()
     self.attack = 8
     self.defense = 0
     self.money = 97
+	self.service_mercy = -3
+	
+	self.boss = true
 
     self.spare_points = 0
     self.tired_percentage = 0
@@ -67,6 +70,11 @@ function Spamgolor:onAct(battler, name)
         if battler.chara.id == "brandon" then
             Game.battle:startActCutscene("spamgolor.brandon_insult")
             return
+        end
+        if battler.chara.id == "jamm" then
+            return {
+				"* Jamm refused to make a deal."
+			}
         end
         return {
             "* "..battler.chara:getName().." tried to make a deal...",

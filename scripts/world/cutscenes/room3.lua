@@ -124,103 +124,122 @@ return {
         local skp = cutscene:getCharacter("addisonshop")
         local skp_name = Mod:addiSwitch() and "Java" or "Pink Addison"
 
-        local teas = {
-            "kris_tea",
-            "susie_tea",
-            "noelle_tea",
-        }
-        local tea_price = 100
-
-        --------------------------------
-
-        ---@type Item[]
-        local _teas = {}
-        for i,tea_id in ipairs(teas) do
-            local tea = Registry.createItem(tea_id)
-            assert(tea, string.format("Tea %s does not exist", tea_id))
-            _teas[i] = tea
-        end
-
-        cutscene:showNametag(skp_name)
-        cutscene:text("* Hi there! Welcome!", "default", skp)
-        cutscene:text("* Would you care for some tea?", "wink_b", skp)
-        cutscene:hideNametag()
-
-        if cutscene:choicer({ "Buy", "Don't Buy" }) == 2 then
+        if Mod:addiSwitch() and Game:getFlag("about_java") and Game:getFlag("asked_java", false) == false and event.interact_count == 1 then
             cutscene:showNametag(skp_name)
-            cutscene:text("* That's alright! Come back anytime!", "default", skp)
-            cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+            cutscene:text("* Hi there! Welcome!", "default", skp)
+            cutscene:text("* Would you care for some tea?", "wink_b", skp)
             cutscene:hideNametag()
-            return
-        end
-
-        cutscene:showShop()
-        cutscene:showNametag(skp_name)
-        cutscene:text("* Alright what can I get you?", "wink", skp)
-        cutscene:hideNametag()
-
-        local tea = nil
-        local pos = 0
-        while pos < #_teas do
-            local selection_max = 3
-            local selections_raw = {unpack(_teas, pos + 1, pos + selection_max)}
-            local ended = (pos + selection_max) >= #_teas
-
-            local selections = {}
-            for _,item in ipairs(selections_raw) do
-                table.insert(selections, item:getName())
-            end
-            table.insert(selections, not ended and "More" or "None")
-
-            local choice = cutscene:choicer(selections)
-            if choice < #selections then
-                tea = selections_raw[choice]
-                break
-            elseif not ended and pos == 0 then
-                cutscene:text("* I got some more here! What would you like?", "wink", skp)
-            end
-
-            pos = pos + selection_max
-        end
-
-        if not tea then
-            cutscene:hideShop()
+            cutscene:wait(0.5)
             cutscene:showNametag(skp_name)
-            cutscene:text("* That's alright! Come back anytime!", "default", skp)
-            cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+            cutscene:text("* What's that?\n* You've met Spamton?", "default", skp)
+            cutscene:text("* He said something about his family? That's very sweet of him!", "blush", skp)
+            cutscene:text("* I'll go meet him in a bit, for now thank you for letting me know.", "wink_b", skp)
             cutscene:hideNametag()
-            return
-        end
 
-        cutscene:showNametag(skp_name)
-        cutscene:text(string.format("* Okay! That would cost ya %dD$...", tea_price), "default", skp)
-        cutscene:hideNametag()
-
-        local buying = cutscene:choicer({"Yes", "No"}) == 1
-        cutscene:hideShop()
-
-        if not buying then
+            Game:setFlag("asked_java", true)
+        elseif not Mod:addiSwitch() and Game:getFlag("about_java") and Game:getFlag("asked_java", false) == false and event.interact_count == 1 then
             cutscene:showNametag(skp_name)
-            cutscene:text("* That's alright! Come back anytime!", "default", skp)
-            cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
-            cutscene:hideNametag()
-        elseif Game.money < tea_price then
-            cutscene:showNametag(skp_name)
-            cutscene:text("* Sorry, we don't serve barterers", "pissed", skp)
-            cutscene:text("* Please come back when you can afford this...", "pissed_b", skp)
-            cutscene:hideNametag()
-        elseif not Game.inventory:addItem(tea) then
-            cutscene:showNametag(skp_name)
-            cutscene:text("* Oh dear, looks like you don't have space in your pockets...", "upset", skp)
+            cutscene:text("* Spamton? ... Never heard of that guy.", "default", skp)
             cutscene:hideNametag()
         else
-            Game.money = Game.money - tea_price
-            cutscene:playSound("locker")
+            local teas = {
+                "kris_tea",
+                "susie_tea",
+                "noelle_tea",
+            }
+            local tea_price = 100
+
+            --------------------------------
+
+            ---@type Item[]
+            local _teas = {}
+            for i,tea_id in ipairs(teas) do
+                local tea = Registry.createItem(tea_id)
+                assert(tea, string.format("Tea %s does not exist", tea_id))
+                _teas[i] = tea
+            end
 
             cutscene:showNametag(skp_name)
-            cutscene:text("* Okay! Here's your tea!", "wink", skp)
-            cutscene:text("* Thank you and come again", "blush", skp)
+            cutscene:text("* Hi there! Welcome!", "default", skp)
+            cutscene:text("* Would you care for some tea?", "wink_b", skp)
             cutscene:hideNametag()
+
+            if cutscene:choicer({ "Buy", "Don't Buy" }) == 2 then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* That's alright! Come back anytime!", "default", skp)
+                cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+                cutscene:hideNametag()
+                return
+            end
+
+            cutscene:showShop()
+            cutscene:showNametag(skp_name)
+            cutscene:text("* Alright what can I get you?", "wink", skp)
+            cutscene:hideNametag()
+
+            local tea = nil
+            local pos = 0
+            while pos < #_teas do
+                local selection_max = 3
+                local selections_raw = {unpack(_teas, pos + 1, pos + selection_max)}
+                local ended = (pos + selection_max) >= #_teas
+
+                local selections = {}
+                for _,item in ipairs(selections_raw) do
+                    table.insert(selections, item:getName())
+                end
+                table.insert(selections, not ended and "More" or "None")
+
+                local choice = cutscene:choicer(selections)
+                if choice < #selections then
+                    tea = selections_raw[choice]
+                    break
+                elseif not ended and pos == 0 then
+                    cutscene:text("* I got some more here! What would you like?", "wink", skp)
+                end
+
+                pos = pos + selection_max
+            end
+
+            if not tea then
+                cutscene:hideShop()
+                cutscene:showNametag(skp_name)
+                cutscene:text("* That's alright! Come back anytime!", "default", skp)
+                cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+                cutscene:hideNametag()
+                return
+            end
+
+            cutscene:showNametag(skp_name)
+            cutscene:text(string.format("* Okay! That would cost ya %dD$...", tea_price), "default", skp)
+            cutscene:hideNametag()
+
+            local buying = cutscene:choicer({"Yes", "No"}) == 1
+            cutscene:hideShop()
+
+            if not buying then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* That's alright! Come back anytime!", "default", skp)
+                cutscene:text("* I'll be here whenever you need a drink!", "wink_b", skp)
+                cutscene:hideNametag()
+            elseif Game.money < tea_price then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Sorry, we don't serve barterers", "pissed", skp)
+                cutscene:text("* Please come back when you can afford this...", "pissed_b", skp)
+                cutscene:hideNametag()
+            elseif not Game.inventory:addItem(tea) then
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Oh dear, looks like you don't have space in your pockets...", "upset", skp)
+                cutscene:hideNametag()
+            else
+                Game.money = Game.money - tea_price
+                cutscene:playSound("locker")
+
+                cutscene:showNametag(skp_name)
+                cutscene:text("* Okay! Here's your tea!", "wink", skp)
+                cutscene:text("* Thank you and come again", "blush", skp)
+                cutscene:hideNametag()
+            end
         end
     end,
 

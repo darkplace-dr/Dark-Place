@@ -50,7 +50,8 @@ function item:init()
         ralsei = "Two pairs of glasses?",
         noelle = "How can you see through this?!",
 		dess = "holy shit spamton reference",
-        brandon = "Time to be a Big Shot!"
+        brandon = "Time to be a Big Shot!",
+		jamm = "(The glasses are clear...)"
     }
 end
 

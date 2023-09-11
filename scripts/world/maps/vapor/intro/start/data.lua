@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 12,
-  nextobjectid = 40,
+  nextobjectid = 42,
   properties = {
     ["music"] = "resonance_muffled"
   },
@@ -369,7 +369,24 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 40,
+          name = "transition",
+          class = "",
+          shape = "rectangle",
+          x = 630,
+          y = 200,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "vapor/intro/slides",
+            ["marker"] = "entry"
+          }
+        }
+      }
     },
     {
       type = "objectgroup",
@@ -384,7 +401,21 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 41,
+          name = "entry",
+          class = "",
+          shape = "point",
+          x = 580,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     }
   }
 }

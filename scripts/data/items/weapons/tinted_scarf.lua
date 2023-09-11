@@ -52,6 +52,7 @@ function item:init()
         ralsei = "It's... Familiar!",
         prince = "Going classy, are we?",
         noelle = "Huh? N-No, I'm not cold.",
+		jamm = "Missed a spot. Yeah, right there.",
     }
 end
 

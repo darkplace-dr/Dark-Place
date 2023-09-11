@@ -27,6 +27,13 @@ return {
         cutscene:text("* Do You Want A Sip", "smile", "queen")
 
         cutscene:text("* Uhh...[wait:3] that's acid. We'd die.", "nervous_side", "susie")
+		
+		if cutscene:getCharacter("jamm") then
+			cutscene:showNametag("Jamm")
+            cutscene:text("* Correction, Susie. YOU'd die.", "smug", "jamm")
+            cutscene:text("* Wait, why's everyone looking at me like that?", "neutral", "jamm")
+			cutscene:hideNametag()
+		end
 
         cutscene:text("* Oh Dear First You Don't Want To Swim In The Free Pool", "smile", "queen")
         cutscene:text("* Now You Don't Want To Drink The Free Pool Water", "pout", "queen")

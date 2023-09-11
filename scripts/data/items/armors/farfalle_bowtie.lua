@@ -51,7 +51,8 @@ function item:init()
         ralsei = "Fancy!",
         noelle = "I don't usually play with my food but sure...",
         dess = "somebody touched my spaghet",
-        brandon = "Pasta la Vista!"
+        brandon = "Pasta la Vista!",
+		jamm = "...He pasta way!"
     }
 end
 

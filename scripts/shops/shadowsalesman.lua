@@ -70,6 +70,8 @@ function ShadowShop:init()
     self:registerTalk("Cards")
     self:registerTalk("Party Members")
     self:registerTalk("Other Universes")
+	
+    self:registerTalkAfter("What Place?", 4)
 
     self.shopkeeper:setActor("shadowsalesman_shop")
     self.shopkeeper.sprite:setPosition(0, 15)
@@ -79,6 +81,12 @@ function ShadowShop:init()
 
     self.background = "ui/shop/devdiner_bg"
     self.shop_music = nil
+	
+    if self:getFlag("vhs_obtain", 0) == 0 then
+        self.vapor_vhs = Sprite("ui/shop/devdiner_vhs_item", 514, 180)
+        self.vapor_vhs:setScale(2)
+        self:addChild(self.vapor_vhs)
+	end
 end
 
 function ShadowShop:startTalk(talk)
@@ -131,11 +139,43 @@ function ShadowShop:startTalk(talk)
             "[emote:idle]* First, there's a universe where every character's role is swapped.[wait:5]\n* Like the clown and the salesman takin' each other's place, to name a couple.",
             "[emote:eyebrow_raise]* Next,[wait:5] there's a universe where a pizzeria owner has to prevent a giant floatin' pizza from destroying his restaurant...",
             "[emote:annoyed]* ...by destroying a 5-story tower that the pizza built.",
-            "[emote:eyebrow_raise]* And if ya think THAT'S weird,[wait:5] there's this one universe that I frequently visit that-",
+            "[emote:eyebrow_raise]* And if ya think THAT'S weird,[wait:5] there's this one world that I frequently visit that-",
             "[emote:idle]* ...",
             "* Actually,[wait:5] y'know what?[wait:10]\n[emote:annoyed]* You don't need to know about that place.",
             "[emote:idle]* Besides,[wait:10] the only people that can only know about that dimension are me,[wait:5] myself[wait:5], and I."
         })
+    elseif talk == "What Place?" then
+        if self:getFlag("vhs_obtain", 0) == 0 then
+            self:startDialogue({
+                -- dialogue is kinda shit, but I'll try to retweak it in the future.
+                "[emote:annoyed]* Kid,[wait:5] I already told ya I ain't tellin' a damn soul about it.",
+                "* Besides,[wait:5] I doubt someone of YOUR standards could even handle the dangers of-",
+                "[emote:idle]* ...",
+                "[emote:eyebrow_raise]* Hmmm...",
+                "[emote:idle]* Alright fine, buster.[wait:10] You wanna learn about that place so badly?",
+                "[emote:annoyed]* Then you can have the damn key to it!",
+                "[emote:eyebrow_raise]* Don't be fooled by its blocky appearance.[wait:10][emote:idle] Just pop this bad boy into a VCR somewhere, and you're off!",
+                "[sound:shadowsalesman_laugh][emote:happy][wait:50][noskip]* Who knows?[wait:10] Maybe you'll find somethin' interestin' there.",
+            })
+        else
+            self:startDialogue({
+                "[emote:annoyed]* Well?[wait:5] Are ya goin' or what, kid?",
+            })
+        end
+        self:setFlag("vhs_obtain", self:getFlag("vhs_obtain", 0)+1)
+    end
+end
+
+function ShadowShop:onStateChange(old, new)
+    super.onStateChange(self, old, new)
+    if old == "DIALOGUE" and new == "TALKMENU" then
+        if self:getFlag("vhs_obtain") == 1 then
+            Game:setFlag("vaporland_sidestory", 1)
+            Assets.playSound("item")
+            Assets.playSound("creepyjingle")
+            Game.inventory:tryGiveItem("retrotape")
+            self.vapor_vhs:remove()
+        end
     end
 end
 

@@ -440,6 +440,208 @@ return {
             cutscene:hideNametag()
 	    end
     end,
+    simbel = function(cutscene, event)
+        local simbel = cutscene:getCharacter("simbel")
+        local leader = Game.world.player
+        local susie = cutscene:getCharacter("susie")
+
+        cutscene:showNametag("Sam")
+        cutscene:text("* ...")
+        if not Game:getFlag("interact_once_sam", false) then
+            Game:setFlag("interact_once_sam", true)
+            cutscene:text("* .....")
+
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:text("* Uh...[wait:3] Hello?", "neutral", "susie")
+                cutscene:showNametag("Sam")
+            else
+                cutscene:text("..?")
+            end
+
+            local s_facing = "left"
+            if leader.facing == "down" then
+                s_facing = "up"
+            elseif leader.facing == "left" then
+                s_facing = "right"
+            else
+                s_facing = "down"
+            end
+
+            simbel:setFacing(s_facing)
+
+            cutscene:text("* A-[wait:2]Ah![wait:3] Hello!")
+            cutscene:text("* Sorry,[wait:2] I was daydreaming...[wait:3] kinda?[wait:3] I don't even know if time exists here.")
+
+            if susie then
+                cutscene:showNametag("Susie")
+                cutscene:text("* Uh..[wait:3] Okay, I guess.", "neutral_side", "susie")
+                cutscene:showNametag("Sam")
+            end
+
+            cutscene:text("* You guys are like,[wait:2] the legends of the Delta Rune, right?")
+
+            if not cutscene:getCharacter("kris") then
+                cutscene:text("* Actually wait,[wait:2] no,[wait:2] you're not Kris.")
+                if not susie then
+                    cutscene:text("* Neither are you Susie actually...")
+                    cutscene:text("* Well that's a complete failure of an introduction...")
+                    cutscene:text("* ...")
+                else
+                    cutscene:showNametag("Susie")
+                    if Game:getFlag("brandon_talkedto") then
+                        cutscene:text("* Wait,[wait:2] how do you all know Kris's name??", "angry", "susie")
+                    else
+                        cutscene:text("* How do you know Kris's name?", "nervous_side", "susie")
+                    end
+                    cutscene:showNametag("Sam")
+                    cutscene:text("* That's a long story I don't have the energy to explain.")
+                end
+            else
+                if not susie then
+                    cutscene:text("* Well uh... Without Susie, actually.")
+                    cutscene:text("* H-[wait:2]Hey,[wait:2] don't look at me like that.")
+                    cutscene:text("* The reason why I know her name is totally fine I swear!")
+                else
+                    cutscene:text("* But this your prophecy,[wait:2] uh..[wait:3] turned out fake...")
+                    cutscene:text("* Can we still call you guys the heroes of the legend?")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* I mean...[wait:3] You've got a point.", "neutral", "susie")
+                    cutscene:text("* But even if the prophecy means nothing,[wait:2] we're still the Delta Warriors,[wait:2] you know?", "neutral_side", "susie")
+                    cutscene:text("* We're still gonna go on crazy adventures together,[wait:2] no matter what!", "smirk", "susie")
+                    cutscene:text("* ...", "smirk", "susie")
+                    cutscene:text("* Kris,[wait:1] stop with that little smile of yours!!", "angry_c")
+                    cutscene:showNametag("Sam")
+                    cutscene:text("* Ha ha![wait:3] Yeah,[wait:2] I guess you guys are fine even without the prophecy.")
+                end
+            end
+            cutscene:text("* So uh...[wait:2] Do you want to talk about something?")
+        else
+            local s_facing = "left"
+            if leader.facing == "down" then
+                s_facing = "up"
+            elseif leader.facing == "left" then
+                s_facing = "right"
+            elseif leader.facing == "up" then
+                s_facing = "down"
+            end
+            print(leader.facing, s_facing)
+
+            simbel:setFacing(s_facing)
+            cutscene:text("* What's up?")
+        end
+        cutscene:hideNametag()
+        local choices = {"Talk", "Party"}
+        if Game:getFlag("meet_jeku", false) then
+            table.insert(choices, "Jeku")
+        end
+        table.insert(choices, "Nope")
+        local c = cutscene:choicer(choices)
+        cutscene:showNametag("Sam")
+        if c == 1 then
+            cutscene:text("* This world is pretty cool,[wait:2] honestly.")
+            cutscene:text("* Sometimes it feels like nothing more than a few ideas coming together.")
+            cutscene:text("* And sometimes it feels like a whole universe got linked to this one.")
+            cutscene:text("* Imagination is just that powerful,[wait:2] I guess.[wait:3] Wouldn't you agree?")
+            if event.interact_count > 1 and not Game:getFlag("started_sphere_quest", false) then
+                cutscene:text("* Actually, speaking of powerful...")
+                cutscene:text("* Can I ask you guys a favor?")
+                cutscene:text("* You see,[wait:2] when I went here,[wait:2] I took a powerful artefact with me.")
+                cutscene:text("* But on my way,[wait:2] she kinda slip out of my grasp.")
+                if susie then
+                    cutscene:text("* I get it.[wait:3] And if it falls in bad hands,[wait:2] the world is doomed,[wait:2] right?", "smile", "susie")
+                    cutscene:text("* Honestly,[wait:2] no.[wait:3] I'm not scared about the world.")
+                    cutscene:text("* I'm more scared of the person who will try to absorb her power.")
+                    cutscene:text("* Because they will go insane??", "sus_nervous", "susie")
+                    cutscene:text("* No.[wait:3] Just that very few people can actually withstand her power.")
+                    cutscene:text("* Like,[wait:2] even I can't withstand it for too long.")
+                    cutscene:text("* So if any random person were to absorb it...")
+                    cutscene:text("* They'll be dead,[wait:2] right?", "nervous", "susie")
+                    cutscene:text("* Yeah.[wait:3] Their physical form badly damaged and their SOUL destroyed.")
+                    cutscene:text("* Alright then,[wait:2] we'll get you that thing of yours back.", "smirk", "susie")
+                    cutscene:text("* But uh...[wait:3] Any clues as to where to start?", "nervous", "susie")
+                    cutscene:text("* Yeah.[wait:3] I've added a destination to the warp bin to where I think she fell.")
+                else
+                    cutscene:text("* If someone were to try to absorb her power...")
+                    cutscene:text("* That would damage their physical form and their SOUL.")
+                    cutscene:text("* And while a crack on the skin is not much...")
+                    cutscene:text("* A small crack on your SOUL can reduce your lifespan by a lot,[wait:2] you know?")
+                    cutscene:text("* And here, we're not talking about a small crack at all.")
+                    cutscene:text("* Hm?[wait:3] You will do it?")
+                    cutscene:text("* Thanks![wait:3] I've added a code to the warp bin that should guide you.")
+                end
+                cutscene:text("* The code is [color:yellow]SPHEREML[color:reset].")
+                Kristal.callEvent("createQuest", "Red, Green and.. Blue??", "rgb", "Sam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"SPHEREML\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
+                Mod:addBinCode("SPHEREML", "castle_path/start")
+                Game:setFlag("started_sphere_quest", true)
+            end
+        elseif c == 2 then
+            cutscene:text("* Huh?[wait:3] You want me to join your party?")
+            cutscene:text("* Yeah no,[wait:2] I'm no good in a fight.")
+            cutscene:text("* Well I do have powerful healing and defensive magic...")
+            cutscene:text("* But I'm more of the peaceful type of guy,[wait:2] you know?")
+            local first_word = "But"
+            if Game:getFlag("library_kills", 0) > 0 and Game:getFlag("library_kills", 0) <= 2 then
+                cutscene:text("* And you don't seem to be the type to make peace, aren't you?")
+            else
+                local sum_love = 0
+                for _,char in ipairs(Game.party) do sum_love = sum_love + char:getLevel() end
+                local love = sum_love/#Game.party
+
+                if love >= 19 then
+                    cutscene:text("* And I really don't like the way you're looking at me.")
+                elseif love >= 15 then
+                    cutscene:text("* And uh.. You look like you could stab me at any moment so...")
+                elseif love >= 12 then
+                    cutscene:text("* And you look too miserable for peace, to be honest...")
+                elseif love >= 10 then
+                    cutscene:text("* And if the blood and dust on your hand is any indication...")
+                elseif love >= 5 then
+                    cutscene:text("* And you're, uh... Pretty bad, actually, at peace, to be honest.")
+                elseif love >= 2 then
+                    cutscene:text("* And uh.. You don't seem to consider peace as an option, do you?")
+                else
+                    first_word = "Well"
+                    cutscene:text("* Oh wait,[wait:2] you seems to be pretty peaceful too actually.")
+                end
+            end
+            cutscene:text("* "..first_word.." even then,[wait:2] I won't join your party for now.")
+            cutscene:text("* You could say it's because of a skill issue.")
+        elseif c == 3 then
+            if #choices == 4 then
+                cutscene:text("* Oh so you have met Jeku.")
+                cutscene:text("* He's uh...[wait:3] A pretty unstable guy,[wait:2] right?")
+                cutscene:text("* He's kinda out of my control so just don't mess with him too much.")
+                cutscene:text("* I think he's nice but he got powers that can change reality itself.")
+                cutscene:text("* Not the type of person you want to go against,[wait:2]you know?")
+                if Game:getFlag("jekukilled", false) then
+                    cutscene:text("* Actually, you uh... Already found out by yourself, didn't you?")
+                    cutscene:text("* Yeah, I can see it in the way you look at me.")
+                    cutscene:text("* That look that screams \"No kidding?\".")
+                    cutscene:text("* Not sure what he did to you before, but [color:red]he can probably do worse now[color:reset].")
+                    cutscene:text("* So you should let him alone.")
+                    Game:setFlag("allow_shop_fight", true)
+                else
+                    cutscene:text("* So just stay out of his reach,[wait:2] if there's even one.")
+                end
+                cutscene:text("* He'll probably just go one day to another one of my projects anyway.")
+                cutscene:text("* Huh?[wait:4] What about his shop?")
+                cutscene:text("* Wait,[wait:2] he made a SHOP??[wait:5] Just that??")
+                cutscene:text("* I kinda expected worse of him,[wait:2] to be honest.")
+                cutscene:text("* Well I guess he can still do whatever he wants behind the counter...")
+                cutscene:text("* Don't take what the game doesn't allow for granted.")
+                cutscene:text("* Jeku can and will attack you in the shop if he wants too.")
+                cutscene:text("* ...[wait:5]Oh yeah,[wait:2] the original question.")
+                cutscene:text("* Well I don't know,[wait:2] maybe someone else will replace him?")
+            else
+                cutscene:text("* Oh,[wait:2] okay.")
+            end
+        elseif c == 4 then
+            cutscene:text("* Oh,[wait:2] okay.")
+        end
+        simbel:setFacing("down")
+        cutscene:hideNametag()
+    end,
     wardrobe = function(cutscene, event)
         cutscene:text("* (It's a wardrobe.)\n* (What drawer would you like to open?)")
 
@@ -459,27 +661,27 @@ return {
         if not Game:getFlag("dumbie_talkedto") then
             local dumbie = cutscene:getCharacter("dumbie")
             cutscene:showNametag("Dummy?")
-            cutscene:text("* I'm a Dummy.", "fear", "dumbie")
+            cutscene:text("* heya", "heeey", "dumbie")
 			cutscene:showNametag("Susie")
-			cutscene:text("* Uh, no you're not?", "sus_nervous", "susie")
+			cutscene:text("* Uh,[wait:5] hey?", "sus_nervous", "susie")
 			cutscene:showNametag("Dumbie")
-			cutscene:text("* Well, your mom didn't say that!", "angryforward", "dumbie")
-			cutscene:text("* ...", "confused", "dumbie")
-			cutscene:text("* I'm a Dummy.", "fear", "dumbie")
+			cutscene:text("* how are you doing on this fine night", "heeey", "dumbie")
+			cutscene:text("* Nothing,[wait:5] i guess", "sus_nervous", "susie")
+			cutscene:text("* cool", "normal", "dumbie")
 			cutscene:hideNametag()
             Game:setFlag("dumbie_talkedto", true)
         elseif Game:getFlag("dumbie_talkedto") then
             local dumbie = cutscene:getCharacter("dumbie")
             cutscene:showNametag("Dumbie")
-            cutscene:text("* Hey, your party is a bit, empty, do you want me to enter?", "eyeshappy", "dumbie")
+            cutscene:text("* hey did you see kris deltarune /srs", "suspect", "dumbie")
             cutscene:hideNametag("Dumbie")
 	        local opinion = cutscene:choicer({"Yes", "No"})
 			if opinion == 1 then
 			    cutscene:showNametag("Dumbie")
-			    cutscene:text("* Heck yeah!", "veryhappy", "dumbie")
+			    cutscene:text("* show me where they are", "veryhappy", "dumbie")
                 if #Game.party >= 4 then
-                    cutscene:text("* Wait,[wait:5] you've got a full party.", "confused", "dumbie")
-                    cutscene:text("* Well I'll be in the party room if you need me.", "normal", "dumbie")
+                    cutscene:text("* wait you've a bunch of friends i can only be friend with persons with only 3 friends", "confused", "dumbie")
+                    cutscene:text("* well I'll be here if you need me.", "normal", "dumbie")
                     cutscene:hideNametag()
                     Assets.playSound("slidewhist")
                     cutscene:slideTo(event, event.x, -100, 2)
@@ -497,8 +699,7 @@ return {
                 Mod:unlockPartyMember("dumbie")
             else
 			    cutscene:showNametag("Dumbie")
-			    cutscene:text("* So, go to penis!", "angryforward", "dumbie")
-			    cutscene:text("* But, i'm here if you change your mind.", "normal", "dumbie")
+			    cutscene:text("* fuk u", "happy", "dumbie")
 			    cutscene:hideNametag()
             end
 		end

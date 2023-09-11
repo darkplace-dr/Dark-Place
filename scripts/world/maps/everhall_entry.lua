@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -102,7 +102,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -115,7 +115,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 160,
@@ -128,7 +128,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 240,
@@ -157,7 +157,7 @@ return {
         {
           id = 4,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 160,
           y = 440,
@@ -170,7 +170,7 @@ return {
         {
           id = 5,
           name = "hall_exit",
-          type = "",
+          class = "",
           shape = "point",
           x = 600,
           y = 200,
@@ -199,7 +199,7 @@ return {
         {
           id = 7,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 480,
@@ -208,14 +208,14 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "devstart",
+            ["map"] = "devhotel/devdiner/devstart",
             ["marker"] = "hall"
           }
         },
         {
           id = 8,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 120,
@@ -233,7 +233,7 @@ return {
         {
           id = 9,
           name = "script",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 640,
           y = 160,

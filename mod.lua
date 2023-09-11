@@ -113,6 +113,19 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("bulborb_position", 2)
     end
 
+    local berdly = Game:getPartyMember("berdly")
+    if berdly:getBaseStats("health") == 300 then
+        likely_old_save = true
+
+        berdly.health = 200
+        berdly.stats = {
+            health = 200,
+            attack = 8,
+            defense = 4,
+            magic = 2
+        }
+    end
+
     ----------
 
     if not new_file and likely_old_save then
@@ -200,6 +213,20 @@ function Mod:onTextSound(sound, node)
             self.voice_timer = 1.1
         end
         return true
+    end
+    if sound == "frisk2" then
+        if self.voice_timer == 0 then
+            Assets.playSound("voice/frisk2", nil, 0.9 + Utils.random(0.18))
+            self.voice_timer = 1.1
+        end
+        return true
+    end
+    if sound == "mago1" then
+        if self.voice_timer == 0 then
+            local snd = Assets.playSound(Utils.pick{"voice/mago1", "voice/mago2", "voice/mago3", "voice/mago4", "voice/mago5", "voice/mago6", "voice/mago7"})
+            self.voice_timer = 2
+		end
+		return true
     end
 end
 

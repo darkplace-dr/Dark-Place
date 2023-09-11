@@ -5,12 +5,14 @@ function SusieNoyno:init()
 
     self.text = "* Susie and Noyno block the way!"
 
-    self.music = "vs_susie_and_noyno"
+    self.music = "vs_susie_noyno"
 
     self.background = false
 
-    self.sus = self:addEnemy("robo_susie", 530, 154)
-    self.noy = self:addEnemy("noyno", 540, 270)
+    self.sus = self:addEnemy("robo_susie", 530, 184)
+    self.noy = self:addEnemy("noyno", 540, 272)
+	
+    self.enemy_tension = 0
 end
 
 function SusieNoyno:onBattleStart()

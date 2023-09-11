@@ -49,7 +49,8 @@ function item:init()
         ralsei = false,
         noelle = true,
         dess = true,
-        brandon = true
+        brandon = true,
+        jamm = true
     }
 
     -- Character reactions
@@ -58,7 +59,8 @@ function item:init()
         ralsei = "How is it supposed to work...?",
         noelle = "Oh it's just like that movie!",
         dess = "LMAO wtf is that?",
-        brandon = "Does it say something?"
+        brandon = "Does it say something?",
+		jamm = "What did you say about Ania!?"
     }
 end
 

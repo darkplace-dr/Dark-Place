@@ -53,7 +53,8 @@ function item:init()
         ralsei = "Tastes sweet!",
         noelle = "Wow, it's very fizzy.",
 		dess = "big soda fan",
-        brandon = "*burp* Oh, excuse me."
+        brandon = "*burp* Oh, excuse me.",
+		jamm = "Gotta save some for Marcy. She'd love this."
     }
 end
 

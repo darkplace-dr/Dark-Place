@@ -10,4 +10,13 @@ function character:init()
     self:addSpell("xslash")
 end
 
+-- This function could be very useful for costumes
+function character:getActor(light)
+    if (Game.world and Game.world.map) and Game.world.map.id:find("flipside/") then
+        return "flipside/kris"
+    else
+        return super.getActor(self, light)
+    end
+end
+
 return character

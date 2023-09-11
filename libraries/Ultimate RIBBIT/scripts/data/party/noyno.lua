@@ -69,7 +69,7 @@ function character:init()
     self.xact_color = { 0.5, 1, 0.5 }
 
     -- Head icon in the equip / power menu
-    self.menu_icon = "party/noyno/head"
+    self.menu_icon = "party/noyno/head_1"
     -- Path to head icons used in battle
     self.head_icons = "party/noyno/icon"
     -- Name sprite (optional)

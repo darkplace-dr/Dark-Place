@@ -45,6 +45,21 @@ return {
                 cutscene:text("* Anyways...", "neutral_side", "brandon")
                 cutscene:text("* I really hope you haven't been doing you-know-what.", "neutral", "brandon")
                 cutscene:text("* I'm sure you know what I'm talking about.", "dissapointed", "brandon")
+            elseif id == "jamm" then
+                cutscene:text("* Oh,[wait:5] hey Acoustic.", "happy", "brandon")
+                cutscene:text("* Y'know,[wait:5] I think now would be a great time to tell you this...", "neutral", "brandon")
+                cutscene:text("* I'm sorry to bring this up,[wait:5] but have you told Marcy about...", "neutral_side", "brandon")
+                cutscene:text("* ... Y'know...", "frown_side", "brandon")
+                cutscene:text("* Because um,[wait:5] last I checked,[wait:5] she uh...", "frown", "brandon")
+                cutscene:text("* She doesn't know that Ania,[wait:5] well...", "frown_side", "brandon")
+                cutscene:text("* Once again,[wait:5] I'm so sorry for your loss,[wait:5] it's just...", "frown", "brandon")
+                cutscene:text("* It's better to tell her sooner rather than later about it.", "neutral", "brandon")
+                cutscene:text("* Trust me,[wait:5] it's better to rip off the bandage than to slowly peel it.", "happy", "brandon")
+                cutscene:text("* And if you need the support,[wait:5] we're here for you man.", "happy_side", "brandon")
+                cutscene:text("* I know it's hard to tell Marcy this.", "frown_side", "brandon")
+                cutscene:text("* And if you need help taking care of her...", "neutral", "brandon")
+                cutscene:text("* Willow and I will be happy to help you out.", "happy_b", "brandon")
+                cutscene:text("* Take care out there man.", "happy", "brandon")
             elseif id == "ralsei" then
                 Game.world.music:fade(0, 0.5)
                 cutscene:text("[speed:0.3]* ...", "shock", "brandon")
@@ -227,6 +242,7 @@ return {
                 Kristal.callEvent("createQuest", "Where's Kris", "krismissing", "Susie mentioned Kris not being with her when she entered the Dark World. Go search for clues on their wherabouts.")
                 Kristal.callEvent("createQuest", "Lost Girl", "noellemissing", "Susie mentioned Noelle not being with her when she entered the Dark World. Go search for clues on her wherabouts.")
                 Kristal.callEvent("createQuest", "Missing Berd", "berdlymissing", "Susie mentioned Berdly not being with her when she entered the Dark World. Go search for clues on his wherabouts.")
+                Game:setFlag("drcastsplitup_known", true)
             end
         elseif opinion == 2 then
             cutscene:text("* What do I think of this place?", "neutral", "susie")
@@ -312,6 +328,16 @@ return {
                 cutscene:showNametag("Dess", {right = true})
                 cutscene:text("* Ah my b", "neutral_b", "dess")
                 cutscene:showNametag("Dess")
+            elseif Game.party[1].id == "jamm" then
+                cutscene:text("* oh hey I heard your wife died", "kind", "dess")
+                cutscene:text("* Yeah that must really suck", "genuine", "dess")
+                cutscene:text("* Trust me,[wait:5] I know how it feels to lose someone you love.", "neutral", "dess")
+                cutscene:text("* One time I was enjoying some Mug:tm: root beer.", "neutral_b", "dess")
+                cutscene:text("* Then some shadow guy hit me with a hammer", "angry", "dess")
+                cutscene:text("* I ended up losing my Mug:tm: root beer that I totally didn't steal", "neutral", "dess")
+                cutscene:text("* Sometimes I still shed a tear thinking about it...", "neutral_c", "dess")
+                cutscene:text("* ...", "genuine", "dess")
+                cutscene:text("* oh hey also do you normally look this pissed off?", "kind", "dess")
             else
                 cutscene:text("* Alan please add dialogue", "neutral", "dess")
             end
@@ -328,5 +354,30 @@ return {
         cutscene:text("* This [color:yellow]room[color:reset] is [color:yellow]Pissing[color:reset] me\noff...")
         cutscene:text("* I was the original   [color:yellow]Starwalker[color:reset]")
         cutscene:hideNametag()
-    end
+    end,
+
+    you = function(cutscene, event)
+        local you = cutscene:getCharacter("YOU")
+		
+        if Game:hasPartyMember("susie") then
+            cutscene:showNametag("Susie")
+            cutscene:text("* Hey, YOU.[wait:5] How are you holding up?", "small_smile", "susie")
+            cutscene:hideNametag()
+        end
+
+        cutscene:wait(Game.world.music:fade(0, 0.5))
+        cutscene:wait(1)
+        Assets.playSound("croak")
+        you:setSprite("e4")
+        cutscene:wait(1)
+        you:setSprite("e1")
+        cutscene:wait(Game.world.music:fade(1, 0.5))
+        cutscene:wait(1)
+		
+        if Game:hasPartyMember("susie") then
+            cutscene:showNametag("Susie")
+            cutscene:text("* Uh...[wait:5]good to hear.", "nervous_side", "susie")
+            cutscene:hideNametag()
+        end
+    end,
 }

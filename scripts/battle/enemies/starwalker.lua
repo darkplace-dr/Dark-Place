@@ -16,6 +16,9 @@ function Starwalker:init()
     self.defense = 2
     self.money = 420
     self.experience = Mod:isInRematchMode() and 0 or 420
+	self.service_mercy = 0
+	
+	self.boss = true
 
     self.spare_points = 0
 

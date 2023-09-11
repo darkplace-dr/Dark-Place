@@ -20,7 +20,6 @@ end
 
 function Dummy:onBattleEnd()
     Game:setFlag("sam_defeated", true)
-	Game:setFlag("can_kill", false)
 end
 
 function Dummy:update()

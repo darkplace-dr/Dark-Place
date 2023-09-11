@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 40,
+  nextobjectid = 52,
   properties = {
     ["music"] = "greenroom"
   },
@@ -271,7 +271,33 @@ return {
           class = "",
           shape = "rectangle",
           x = 440,
-          y = 410,
+          y = 400,
+          width = 100,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 46,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 520,
+          width = 100,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 47,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 280,
           width = 100,
           height = 30,
           rotation = 0,
@@ -357,7 +383,7 @@ return {
           name = "npc",
           class = "",
           shape = "point",
-          x = 107,
+          x = 105,
           y = 400,
           width = 0,
           height = 0,
@@ -437,7 +463,7 @@ return {
           class = "",
           shape = "rectangle",
           x = 440,
-          y = 460,
+          y = 450,
           width = 100,
           height = 70,
           rotation = 0,
@@ -472,6 +498,67 @@ return {
           gid = 93,
           visible = true,
           properties = {}
+        },
+        {
+          id = 40,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 535,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "dumbie",
+            ["flagcheck"] = "dumbie_inparty"
+          }
+        },
+        {
+          id = 48,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 570,
+          width = 100,
+          height = 70,
+          rotation = 0,
+          gid = 93,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 330,
+          width = 100,
+          height = 70,
+          rotation = 0,
+          gid = 93,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 290,
+          y = 442,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "YOU",
+            ["cutscene"] = "partyroom.you",
+            ["sprite"] = "e1"
+          }
         }
       }
     },
@@ -564,6 +651,38 @@ return {
           properties = {
             ["flag"] = "!ostarwalker_party",
             ["target"] = { id = 33 }
+          }
+        },
+        {
+          id = 41,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 580,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!dumbie_party",
+            ["target"] = { id = 40 }
+          }
+        },
+        {
+          id = 50,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 320,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!YOU_party",
+            ["target"] = { id = 51 }
           }
         }
       }

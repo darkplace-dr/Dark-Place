@@ -31,6 +31,11 @@ function RibbitSusie:init()
         "movingarena"
     }
 
+    self.text = {
+        "* Susie menacingly twirls her axe.",
+        "* Smells like unstability.",
+    }
+
     -- Dialogue randomly displayed in the enemy's speech bubble
     self.dialogue = {
         "..."

@@ -12,7 +12,7 @@ function character:init()
     self.title = "Marksman\nTakes aim with\na rifle."
 
     self.soul_priority = 1
-    self.soul_color = {1, 0, 0}
+    self.soul_color = {0.26, 1, 1}
 
     self.has_act = false
     self.has_spells = true
@@ -79,14 +79,14 @@ function character:drawPowerStat(index, x, y, menu)
     if index == 1  then
         local icon = Assets.getTexture("ui/menu/icon/demon")
         love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
-        love.graphics.print("Gaming Skills:", x, y, 0, 0.7, 1)
+        love.graphics.print("Gaming Skills", x, y, 0, 0.7, 1)
         love.graphics.print("Yes", x+130, y)
         return true
     elseif index == 2 then
         local icon = Assets.getTexture("ui/menu/icon/magic")
         love.graphics.draw(icon, x-26, y+6, 0, 2, 2)
-        love.graphics.print("Bisexual:", x, y)
-        love.graphics.print("Yes", x+130, y, 0)
+        love.graphics.print("Bisexual", x, y)
+        love.graphics.print("Maybe", x+130, y, 0)
         return true
     elseif index == 3 then
         local icon = Assets.getTexture("ui/menu/icon/fire")

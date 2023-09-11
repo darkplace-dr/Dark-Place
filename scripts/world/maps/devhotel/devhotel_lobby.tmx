@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="26" height="28" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="86">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="26" height="28" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="88">
  <editorsettings>
   <export target="devhotel_lobby.lua" format="lua"/>
  </editorsettings>
@@ -8,8 +8,8 @@
  </properties>
  <tileset firstgid="1" source="../../tilesets/devroom.tsx"/>
  <tileset firstgid="73" source="../../tilesets/hoteldoors.tsx"/>
- <tileset firstgid="76" source="../../tilesets/city_alleyway.tsx"/>
- <tileset firstgid="391" source="../../tilesets/devroom-objects.tsx"/>
+ <tileset firstgid="77" source="../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="392" source="../../tilesets/devroom-objects.tsx"/>
  <layer id="1" name="Tile Layer 1" width="26" height="28">
   <data encoding="csv">
 8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
@@ -57,17 +57,16 @@
   <object id="41" x="80" y="960" width="280" height="40"/>
   <object id="42" x="320" y="1000" width="40" height="120"/>
   <object id="56" x="0" y="640" width="40" height="120"/>
-  <object id="57" x="360" y="960" width="80" height="40"/>
   <object id="58" x="440" y="1000" width="40" height="120"/>
   <object id="72" x="480" y="400" width="160" height="40"/>
   <object id="73" x="720" y="400" width="80" height="40"/>
   <object id="74" x="120" y="400" width="200" height="40"/>
  </objectgroup>
  <objectgroup id="3" name="objects_props">
-  <object id="79" gid="414" x="140" y="440" width="200" height="60"/>
-  <object id="80" gid="412" x="720" y="440" width="80" height="120"/>
-  <object id="81" gid="428" x="480" y="440" width="160" height="120"/>
-  <object id="85" gid="412" x="360" y="160" width="80" height="120"/>
+  <object id="79" gid="415" x="140" y="440" width="200" height="60"/>
+  <object id="80" gid="413" x="720" y="440" width="80" height="120"/>
+  <object id="81" gid="429" x="480" y="440" width="160" height="120"/>
+  <object id="85" gid="413" x="360" y="160" width="80" height="120"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="4" name="objects">
   <object id="44" name="transition" x="1020" y="640" width="40" height="120">
@@ -82,17 +81,15 @@
     <property name="marker" value="entry2"/>
    </properties>
   </object>
-  <object id="51" gid="304" x="360" y="1000" width="40" height="40"/>
-  <object id="52" gid="304" x="400" y="1000" width="40" height="40"/>
-  <object id="53" gid="304" x="0" y="680" width="40" height="40"/>
-  <object id="54" gid="304" x="0" y="720" width="40" height="40"/>
-  <object id="55" gid="304" x="0" y="760" width="40" height="40"/>
-  <object id="66" gid="304" x="480" y="440" width="40" height="40"/>
-  <object id="67" gid="304" x="520" y="440" width="40" height="40"/>
-  <object id="68" gid="304" x="560" y="440" width="40" height="40"/>
-  <object id="69" gid="304" x="600" y="440" width="40" height="40"/>
-  <object id="70" gid="304" x="720" y="440" width="40" height="40"/>
-  <object id="71" gid="304" x="760" y="440" width="40" height="40"/>
+  <object id="53" gid="305" x="0" y="680" width="40" height="40"/>
+  <object id="54" gid="305" x="0" y="720" width="40" height="40"/>
+  <object id="55" gid="305" x="0" y="760" width="40" height="40"/>
+  <object id="66" gid="305" x="480" y="440" width="40" height="40"/>
+  <object id="67" gid="305" x="520" y="440" width="40" height="40"/>
+  <object id="68" gid="305" x="560" y="440" width="40" height="40"/>
+  <object id="69" gid="305" x="600" y="440" width="40" height="40"/>
+  <object id="70" gid="305" x="720" y="440" width="40" height="40"/>
+  <object id="71" gid="305" x="760" y="440" width="40" height="40"/>
   <object id="76" name="interactable" x="80" y="600" width="40" height="40">
    <properties>
     <property name="solid" type="bool" value="true"/>
@@ -102,8 +99,8 @@ is the way! -Sci</property>
 only open at the start of the day... -Sci</property>
    </properties>
   </object>
-  <object id="77" gid="433" x="80" y="640" width="40" height="40"/>
-  <object id="78" gid="431" x="320" y="760" width="162" height="78"/>
+  <object id="77" gid="434" x="80" y="640" width="40" height="40"/>
+  <object id="78" gid="432" x="320" y="760" width="162" height="78"/>
   <object id="83" name="npc" x="840" y="460">
    <properties>
     <property name="actor" value="marcy"/>
@@ -111,6 +108,12 @@ only open at the start of the day... -Sci</property>
     <property name="flagcheck" value="!acj_marcy"/>
    </properties>
    <point/>
+  </object>
+  <object id="86" name="transition" x="360" y="1112" width="80" height="40">
+   <properties>
+    <property name="map" value="devhotel/exterior"/>
+    <property name="marker" value="entry_diner"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
@@ -121,6 +124,9 @@ only open at the start of the day... -Sci</property>
    <point/>
   </object>
   <object id="82" name="north" x="400" y="200">
+   <point/>
+  </object>
+  <object id="87" name="south" x="400" y="1080">
    <point/>
   </object>
  </objectgroup>

@@ -20,7 +20,7 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npcs/shadowman_player"
+    self.path = "world/npcs/shadowman_player"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "saxophone"
 	
