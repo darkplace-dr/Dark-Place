@@ -32,7 +32,7 @@ function ActionBoxDisplay:draw()
     end
 
     Draw.setColor({128/255, 128/255, 128/255})
-    love.graphics.rectangle("fill", 128, 27 - self.actbox.data_offset, math.ceil((self.actbox.battler.shield / self.actbox.battler.chara:getStat("health")) * 76), 4)
+    love.graphics.rectangle("fill", 128, 27 - self.actbox.data_offset, math.ceil((self.actbox.battler.shield / self.actbox.battler.chara:getMaxShield()) * 76), 4)
 
     local color = PALETTE["action_health_text"]
     if health <= 0 then
