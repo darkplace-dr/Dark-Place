@@ -20,8 +20,8 @@ function PartyBattler:addShield(amount)
 
     self:flash()
 
-    if self.shield >= self.chara:getStat("health") then
-        self.shield = self.chara:getStat("health")
+    if self.shield >= self.chara:getMaxShield() then
+        self.shield = self.chara:getMaxShield()
     else
         self:statusMessage("heal", amount, {128/255, 128/255, 128/255})
     end
