@@ -377,7 +377,7 @@ return {
         if cutscene:getCharacter("berdly") then
             cutscene:showNametag("Berdly")
             cutscene:text("* Ah,[wait:5] but Susan...", "questioning", "berdly")
-            cutscene:text("* What if there's some EPIC GAMER LOOT in there?", "chef_kiss", "berdly")
+            cutscene:text("* What if there's some EPIC GAMER LOOT in there?", "chef_kiss", "berdly", {x = -4}) -- for Deltarune accuracy, Berdly's "chef_kiss" portrait should be offsetted like this.
             cutscene:showNametag("Susie")
             cutscene:text("* ...", "suspicious", "susie")
         end
