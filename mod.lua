@@ -26,6 +26,8 @@ function Mod:init()
 
     MUSIC_VOLUMES["vs_susie_and_noyno"] = 0.45
 
+    MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
+
     self.voice_timer = 0
 
     self:registerShaders()

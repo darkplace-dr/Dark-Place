@@ -183,6 +183,27 @@ return {
     origin = "Dark Place"
   },
   {
+    name = "Spamgolor Battle",
+    file = "spamgolor_battle",
+    composer = "BrandonK7200",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
+    name = "Spamgolor Shop",
+    file = "spamgolor_shop",
+    composer = "BrandonK7200",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
+    name = "Vs. Chevelour",
+    file = "vs_chevelour",
+    composer = "Kross (?)",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
     name = "Exception",
     file = "exception",
     composer = "Simbel",
@@ -193,6 +214,20 @@ return {
     name = "Warp Zone",
     file = "warphub",
     composer = "Charbomber",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
+    name = "Checkpoint",
+    file = "checkpoint",
+    composer = "Charbomber",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
+    name = "Cloudwebs",
+    file = "cloudwebs",
+    composer = "???",
     released = "2023",
     origin = "Dark Place"
   },
@@ -405,6 +440,13 @@ return {
     origin = "8bitcollective.com/members/surasshu (deadlink)"
   },
   {
+    name = "Marble 大理石 (ft. Ultra)",
+    file = "marble_ft_ultra",
+    composer = "Architecture in Tokyo",
+    released = "2013",
+    origin = "https://discomotionrecords.bandcamp.com/album/dmr021-marble"
+  },
+  {
     name = "サウンドと恋に C I T Y P O P",
     file = "citypop_sound_of_love",
     composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
@@ -448,6 +490,20 @@ return {
     origin = "Last Bible 3"
   },
   {
+    name = "Wait for Truth",
+    file = "waitfortruth",
+    composer = "Yoko Shimomura",
+    released = "1994",
+    origin = "Live A Live"
+  },
+  {
+    name = "Chit Chat",
+    file = "yiik",
+    composer = "???",
+    released = "2019",
+    origin = "YIIK: A Postmodern RPG (NS)"
+  },
+  {
     name = "Battle",
     file = "smtbattle",
     composer = "Tsukasa Masuko, Kenichi Tsuchiya",
@@ -467,6 +523,20 @@ return {
     composer = "Shoji Meguro",
     released = "2012",
     origin = "Persona 4 Gold"
+  },
+  {
+    name = "Undefeatable",
+    file = "undefeatable",
+    composer = "Tomoya Ohtani, SEGA",
+    released = "2022",
+    origin = "Sonic Frontiers"
+  },
+  {
+    name = "Burned Tower",
+    file = "burned",
+    composer = "Junichi Masuda",
+    released = "2000",
+    origin = "Pokémon Crystal"
   },
   {
     name = "Funky Theme",
