@@ -12,7 +12,7 @@ function actor:init()
 
     self.flip = "right"
 
-    self.path = "battle/enemies/virovirokun"
+    self.path = "enemies/virovirokun"
     self.default = "idle"
 
     self.animations = {

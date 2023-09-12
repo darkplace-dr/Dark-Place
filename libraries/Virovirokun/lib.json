@@ -4,8 +4,8 @@
         "Sylvi",
         "Nyako"
     ],
-    "version": "v1.1.0",
-    "engineVer": "v0.4.0",
+    "version": "v1.2.0",
+    "engineVer": "v0.8.1",
 
     "config": {
         "enable_cook": false,
