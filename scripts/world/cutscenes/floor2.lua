@@ -88,17 +88,17 @@ return {
 
             cutscene:text("* Oh,[wait:2] really?[wait:8]\n* Well, in that case...", "surprise", "susie")
 			
-            cutscene:text("* Hey, Queen! Can we borrow your lamp for a bit?", "smirk", "susie", {reactions = { 
-                {"Wait what-", "right", "bottommid", "shock", "rouxls"}
+            cutscene:text("* Hey, Queen! Can we borrow your lamp for a bit?[react:1]", "smirk", "susie", {reactions = { 
+                {"Wait what-", "right", "bottom", "shock", "rouxls"}
             }})
 
             Assets.playSound("queen/queensip_3")
             cutscene:text("[noskip]*[wait:2s]", "sip", "queen", {top = false, auto = true})
-            cutscene:text("* Processing Verification", "smile", "queen", {top = false, reactions = { 
-                {"No wait I-", "right", "bottommid", "shock_right", "rouxls"}
+            cutscene:text("* Processing Verification[react:1]", "smile", "queen", {top = false, reactions = { 
+                {"No, wait I-", "right", "bottom", "shock_right", "rouxls"}
             }})
             cutscene:text("* ...", "down_a", "queen", {top = false})
-            cutscene:text("* Yeah You Take It", "smile_side_l", "queen", {top = false})
+            cutscene:text("* Yeah You Can Take It", "smile_side_l", "queen", {top = false})
 			
             cutscene:text("* Sick! Thanks, Queen.", "smile", "susie")
 			
