@@ -595,7 +595,7 @@ function Lib:init()
                         local afterimg
 
                         if Lib.MOREPARTY then
-                            afterimg = AttackBar(self.bolt_start_x - (self.afterimage_count * self.battler:getBoltSpeed() * 2), 0, 6, self.realHeight)
+                            afterimg = AttackBar(self.bolt_start_x - (self.afterimage_count * self.battler:getBoltSpeed() * 2), 0, 6, 28)
                         else
                             afterimg = AttackBar(self.bolt_start_x - (self.afterimage_count * self.battler:getBoltSpeed() * 2), 0, 6, 38)
                         end
@@ -636,18 +636,19 @@ function Lib:init()
         local ch1_offset = Game:getConfig("oldUIPositions")
 
         local box_height
-        if Lib.MOREPARTY then
-            box_height = (self.realHeight or (ch1_offset and 37 or 36))
+        if Lib.MOREPARTY and #Game.battle.party > 3 then
+            box_height = ch1_offset and 28 or 27
         else
             box_height = ch1_offset and 37 or 36
         end
-    
+
         love.graphics.setColor(box_color)
         love.graphics.rectangle("line", 80, ch1_offset and 0 or 1, (15 * (self.battler:getBoltSpeed())) + 3, box_height)
+
         love.graphics.setColor(target_color)
         love.graphics.rectangle("line", self.bolt_target + 1, 1, 8, box_height)
         Draw.setColor(0, 0, 0)
-        love.graphics.rectangle("fill", 84, 2, 6, 34)
+        love.graphics.rectangle("fill", 84, 2, 6, box_height - 2)
     
         love.graphics.setLineWidth(1)
     
@@ -837,9 +838,6 @@ function Lib:init()
                 for _,bolt in ipairs(box.bolts) do
                     bolt.height = height
                 end
-
-                box.fade_rect.height = height
-                box.realHeight = height
 
                 local battler
                 local name = Game:getPartyMember(box.battler.chara.id)
