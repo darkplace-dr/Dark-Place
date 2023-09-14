@@ -8,21 +8,21 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 5,
-  nextobjectid = 9,
+  nextlayerid = 6,
+  nextobjectid = 11,
   properties = {},
   tilesets = {
     {
       name = "city_alleyway",
       firstgid = 1,
-      filename = "../../tilesets/city_alleyway.tsx",
-      exportfilename = "../../tilesets/city_alleyway.lua"
+      filename = "../../../tilesets/city_alleyway.tsx",
+      exportfilename = "../../../tilesets/city_alleyway.lua"
     },
     {
       name = "dw_city_alley_2",
       firstgid = 316,
-      filename = "../../tilesets/dw_city_alley_2.tsx",
-      exportfilename = "../../tilesets/dw_city_alley_2.lua"
+      filename = "../../../tilesets/dw_city_alley_2.tsx",
+      exportfilename = "../../../tilesets/dw_city_alley_2.lua"
     }
   },
   layers = {
@@ -55,6 +55,34 @@ return {
         245, 245, 245, 245, 248, 245, 245, 245, 245, 249, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 249, 259, 260, 260, 260,
         260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 259, 260, 260, 260,
         260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 260, 259, 260, 260, 260
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "battleareas",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 10,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 240,
+          width = 840,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
       }
     },
     {

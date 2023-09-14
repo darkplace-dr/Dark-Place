@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 16,
-  nextobjectid = 126,
+  nextobjectid = 127,
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -337,49 +337,17 @@ return {
           }
         },
         {
-          id = 120,
-          name = "dogconegroup",
+          id = 126,
+          name = "forcefield",
           type = "",
           shape = "rectangle",
           x = 800,
           y = 240,
           width = 40,
-          height = 40,
+          height = 120,
           rotation = 0,
           visible = true,
-          properties = {
-            ["default_state"] = true
-          }
-        },
-        {
-          id = 121,
-          name = "dogconegroup",
-          type = "",
-          shape = "rectangle",
-          x = 800,
-          y = 280,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["default_state"] = true
-          }
-        },
-        {
-          id = 122,
-          name = "dogconegroup",
-          type = "",
-          shape = "rectangle",
-          x = 800,
-          y = 320,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["default_state"] = true
-          }
+          properties = {}
         }
       }
     }

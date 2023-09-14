@@ -24,6 +24,8 @@ function Zero:init()
     self.timebulletmult = 1
 
     --leader = Game.battle.party[1]
+    -- Only reason this should happen is if someone debugs into the fight.
+    error("This fight is incomplete. Please come back later.")
 
 end
 

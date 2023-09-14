@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="9">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="11">
  <editorsettings>
-  <export target="alleyzero.lua" format="lua"/>
+  <export target="data.lua" format="lua"/>
  </editorsettings>
- <tileset firstgid="1" source="../../tilesets/city_alleyway.tsx"/>
- <tileset firstgid="316" source="../../tilesets/dw_city_alley_2.tsx"/>
+ <tileset firstgid="1" source="../../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="316" source="../../../tilesets/dw_city_alley_2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="30" height="12">
   <data encoding="csv">
 244,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,245,246,259,260,260,260,
@@ -21,6 +21,9 @@
 260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,260,259,260,260,260
 </data>
  </layer>
+ <objectgroup color="#00ff00" id="5" name="battleareas">
+  <object id="10" x="200" y="240" width="840" height="120"/>
+ </objectgroup>
  <objectgroup color="#ff00ff" id="2" name="objects">
   <object id="5" name="enemy" x="920" y="280" width="40" height="40">
    <properties>
