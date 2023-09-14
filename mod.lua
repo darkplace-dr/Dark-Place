@@ -26,6 +26,8 @@ function Mod:init()
 
     MUSIC_VOLUMES["vs_susie_and_noyno"] = 0.45
 
+    MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
+
     self.voice_timer = 0
 
     self:registerShaders()
@@ -82,7 +84,11 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("BorDoorCodeUnlocked", false)
         Game:setFlag("AddiSwitchOn", false)
 
+        Game:setFlag("hasObtainedLancer", false)
+        Game:setFlag("hasObtainedRouxls", false)
+
         Game:setFlag("cloudwebStoryFlag", 0)
+        Game:setFlag("vaporland_sidestory", 0)
     end
 
     if new_file then
@@ -224,6 +230,13 @@ function Mod:onTextSound(sound, node)
     if sound == "mago1" then
         if self.voice_timer == 0 then
             local snd = Assets.playSound(Utils.pick{"voice/mago1", "voice/mago2", "voice/mago3", "voice/mago4", "voice/mago5", "voice/mago6", "voice/mago7"})
+            self.voice_timer = 2
+		end
+		return true
+    end
+    if sound == "rx1" then
+        if self.voice_timer == 0 then
+            local snd = Assets.playSound(Utils.pick{"voice/rx1", "voice/rx2", "voice/rx3"})
             self.voice_timer = 2
 		end
 		return true

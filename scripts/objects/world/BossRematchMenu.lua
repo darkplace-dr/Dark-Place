@@ -30,7 +30,8 @@ function BossRematchMenu:init()
         { name = "Mimic",         flag = "mimic_defeated",        encounter = "mimicboss" },
         { name = "Starwalker",    flag = "starwalker_defeated",   encounter = "starwalker" },
         { name = "Sam", 	      flag = "sam_defeated", 		  encounter = "sam" },
-        { name = "Omega Spamton", flag = "omegaspamton_defeated", encounter = "omegaspamtonbossfight"}
+        { name = "Omega Spamton", flag = "omegaspamton_defeated", encounter = "omegaspamtonbossfight" },
+        { name = "Google Dino",   flag = "googledino_defeated",   encounter = "googledino" },
     }
 
     self.currently_selected = 1

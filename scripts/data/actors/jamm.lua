@@ -38,6 +38,7 @@ function actor:init()
 
         -- Battle animations
         ["battle/idle"]         = {"battle/idle", 0.2, true},
+        ["battle/low_health"]   = {"battle/low_hp", 0.2, true},
 
         ["battle/attack"]       = {"battle/attack", 1/15, false},
         ["battle/act"]          = {"battle/act", 1/15, false},
@@ -76,6 +77,7 @@ function actor:init()
 
         -- Battle offsets
         ["battle/idle"] = {-5, -1},
+        ["battle/low_health"] = {-5, -1},
 
         ["battle/attack"] = {-5, -1},
         ["battle/attackready"] = {-5, -1},
@@ -87,7 +89,7 @@ function actor:init()
         ["battle/defend"] = {-5, -1},
 
         ["battle/defeat"] = {-8, -5},
-        ["battle/hurt"] = {-5, -6},
+        ["battle/hurt"] = {-5, -1},
 
         ["battle/intro"] = {-8, -9},
         ["battle/victory"] = {-3, 0},

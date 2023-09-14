@@ -7,10 +7,14 @@ function GoogleDino:init()
 
     self.music = "battle"
 
-    self.background = false
+    self.background = true
 
     self:addEnemy("googledino")
 
+end
+
+function GoogleDino:onBattleEnd()
+    Game:setFlag("googledino_defeated", true)
 end
 
 function GoogleDino:onReturnToWorld(events)

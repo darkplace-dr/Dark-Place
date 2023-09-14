@@ -218,6 +218,7 @@ return {
 		cutscene:text("* Hee...")
 		boss:shake(16, 0)
 		cutscene:text("* Uheeheehee!!")
+		cutscene:hideNametag()
 
 		boss:fadeTo(0, 0.1, function() boss:fadeTo(1, 0.05) end)
 		cutscene:panTo(boss.x, boss.y+256, 2)
@@ -236,6 +237,7 @@ return {
 		end
 
 		cutscene:wait(1.2)
+		cutscene:showNametag("???")
 		cutscene:text("* I'm sorry![wait:10]\n* I simply couldn't contain myself!")
 		cutscene:text("* Uheehee!")
 
