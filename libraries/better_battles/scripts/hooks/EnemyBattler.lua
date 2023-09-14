@@ -6,7 +6,6 @@ function EnemyBattler:init(actor, use_overlay)
     super:init(self, actor, use_overlay)
 	
 	self.tiredness = 0
-	self.tired_text = nil
 end
 
 function EnemyBattler:addTired(amount)
@@ -39,19 +38,6 @@ function EnemyBattler:addTired(amount)
         end
 		self:statusMessage("tired", amount)
     end
-end
-
-function EnemyBattler:getEncounterText()
-    if self.low_health_text and self.health <= (self.max_health * self.tired_percentage) then
-        return self.low_health_text
-    end
-    if self.spareable_text and self:canSpare() then
-        return self.spareable_text
-    end
-    if self.tired_text and self.tired then
-        return self.tired_text
-    end
-    return Utils.pick(self.text)
 end
 
 function EnemyBattler:canSleep()
