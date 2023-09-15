@@ -26,7 +26,8 @@ function chevelour:init()
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
         "chevelour/mousedrop",
-        "chevelour/mouserun"
+        "chevelour/mouserun",
+        "chevelour/charge"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -35,7 +36,7 @@ function chevelour:init()
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "AT 2 DF 3\n* Rat :)"
+    self.check = "AT 2 DF 3\n* A rebelious rat with attitude."
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
@@ -55,13 +56,13 @@ function chevelour:init()
     
     function chevelour:onAct(battler, name)
         if name == "Insult" then
-            self:addMercy(10)
+            self:addMercy(5)
             self.attack = self.attack + .5
             Game.battle:startActCutscene("chevelour", "Insult")
             return
 
         elseif name == "X2 Insult" then
-            self:addMercy(15)
+            self:addMercy(10)
             self.attack = self.attack + 1
             Game.battle:startActCutscene("chevelour", "X2_Insult")
             return
