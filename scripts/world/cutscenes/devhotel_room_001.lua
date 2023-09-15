@@ -107,5 +107,300 @@ return {
         else
             cutscene:text("* A sleepover would be nice if there were 4 people.")
         end
-    end
+    end,
+
+    tv = function(cutscene, event)
+		local susie = cutscene:getCharacter("susie")
+		local brandon = cutscene:getCharacter("brandon")
+		local dess = cutscene:getCharacter("dess")
+		local jamm = Game:hasPartyMember("jamm")
+	
+        cutscene:text("* It's a TV.")
+        cutscene:text("* It doesn't seem to be working though...")
+		if Game:getFlag("video_jamm") and not Game:getFlag("video_jamm_watched") then
+			cutscene:text("* (Insert Jamm's VHS into the TV?)")
+			if cutscene:choicer({"Yes", "No"}) == 1 then
+				Game:setFlag("video_jamm_watched", true)
+				cutscene:text("* You insert the VHS into the TV.")
+				cutscene:text("* Suddenly, the TV comes to life.")
+				
+				if brandon then
+					cutscene:showNametag("Brandon")
+					cutscene:text("* Huh?\n* I thought the TV wasn't working?", "shock", "brandon")
+					
+					if jamm then
+						cutscene:showNametag("Jamm")
+						cutscene:text("* (At this point, I wish it wasn't...)", "shaded_frown", "jamm")
+					end
+					cutscene:hideNametag()
+				end
+				
+				Game.world.music:fade(0,1)
+				cutscene:wait(cutscene:fadeOut(1))
+				
+				cutscene:text("[voice:ania]* And are you sure that we'll be friends?")
+				cutscene:text("[voice:enzio]* Trust me, Ania.\n* I knew Jamm my whole life.")
+				cutscene:text("[voice:enzio]* You will make great friends, I just know it!")
+				cutscene:text("[voice:enzio]* Oh, here he comes now!\n* Hey! Jamm!")
+				cutscene:text("[voice:jamm]* Heya, Enzi! Who did you want me to meet?")
+				cutscene:text("[voice:enzio]* Jamm, this is my sister, Ania.")
+				cutscene:text("[voice:ania]* H-hello!")
+				cutscene:text("[voice:jamm]* Ania, huh?\n* It's nice to meet you!")
+				cutscene:text("[voice:ania]* I-it is...?")
+				cutscene:text("[voice:enzio]* Oh, don't be so worried, Ania!\n* You're doing great!")
+				cutscene:text("[voice:jamm]* Oh, sorry!\n* I don't really have much time!")
+				cutscene:text("[voice:jamm]* Simbel, J.A.R.U., and I are working on a mod together.")
+				cutscene:text("[voice:jamm]* Though...\n* Ania, would you object to meeting later?")
+				cutscene:text("[voice:ania]* O-oh, not at all!")
+				cutscene:text("[voice:jamm]* Great!\n* See you later!")
+				
+				cutscene:wait(2)
+				
+				local party_talk = false
+				
+				if brandon then
+					party_talk = true
+					cutscene:showNametag("Brandon")
+					cutscene:text("* Is...\n* Is that when they met?", "shock", "brandon")
+					
+					if susie then
+						cutscene:showNametag("Susie")
+						cutscene:text("[voice:susie]* I...\n* I guess so.", "shock", "susie")
+						cutscene:text("[voice:susie]* But...\n* Why would Jamm hate Enzio for that?", "neutral", "susie")
+					end
+				elseif susie then
+					party_talk = true
+					cutscene:showNametag("Susie")
+					cutscene:text("[voice:susie]* What???\n* It's just how they met???", "shock", "susie")
+					cutscene:text("[voice:susie]* Why the hell would you hate someone for that???", "neutral", "susie")
+				end
+				
+				if jamm then
+					party_talk = true
+					cutscene:showNametag("Jamm")
+					cutscene:text("* There's more to the tape.", "shaded_frown", "jamm")
+					
+					if dess then
+						cutscene:showNametag("Dess")
+						cutscene:text("* then i'm gonna get popcorn.", "heckyeah", "dess")
+						
+						if brandon then
+							cutscene:showNametag("Brandon")
+							cutscene:text("* Now, Dess???\n* For this???", "shock", "brandon")
+						end
+					end
+				else
+					if brandon then
+						party_talk = true
+						cutscene:showNametag("Brandon")
+						cutscene:text("* Wait, there's more to this tape...", "neutral", "brandon")
+						
+						if dess then
+							cutscene:showNametag("Dess")
+							cutscene:text("* then i'm gonna get popcorn.", "heckyeah", "dess")
+							
+							if brandon then
+								cutscene:showNametag("Brandon")
+								cutscene:text("* Now, Dess???\n* For this???", "shock", "brandon")
+							end
+						end
+					end
+				end
+				cutscene:hideNametag()
+				
+				cutscene:wait(2)
+				
+				cutscene:text("* Do you, Luthane Jamm, take Ania to be your wife?")
+				cutscene:text("[voice:jamm]* I do.")
+				cutscene:text("* Do you, Ania Bishop, take Luthane to be your husband?")
+				cutscene:text("[voice:ania]* I do.")
+				cutscene:text("* Then, with the power vested in me...")
+				cutscene:text("* I pronounce you husband and wife.")
+				cutscene:text("* You may kiss the bride.")
+				
+				cutscene:wait(2)
+				
+				party_talk = false
+				
+				if brandon then
+					party_talk = true
+					cutscene:showNametag("Brandon")
+					cutscene:text("* Oh, I remember that day!", "grin", "brandon")
+					cutscene:text("* Jamm had invited me to be his best man!", "joy", "brandon")
+					cutscene:text("* Wow, time really flies!", "happy", "brandon")
+					
+					if jamm then
+						cutscene:showNametag("Jamm")
+						cutscene:text("* I-it really does...", "shaded_frown", "jamm")
+					end
+				end
+				
+				if susie then
+					party_talk = true
+					cutscene:showNametag("Susie")
+					cutscene:text("* Y'know, this Ania...", "nervous", "susie")
+					cutscene:text("* I could be wrong, but we haven't seen her at all.", "nervous_side", "susie")
+					cutscene:text("* Why is that...?", "nervous", "susie")
+					
+					if brandon then
+						cutscene:showNametag("Brandon")
+						cutscene:text("* Susie--", "frown_side", "brandon", {auto = true})
+					end
+					
+					if jamm then
+						cutscene:showNametag("Jamm")
+						cutscene:text("* That will be answered soon.", "shaded_frown", "jamm")
+					end
+				end
+				
+				if dess then
+					party_talk = true
+					cutscene:showNametag("Dess")
+					cutscene:text("* i got the popcorn", "heckyeah", "dess")
+					
+					if brandon then
+						cutscene:showNametag("Brandon")
+						cutscene:text("* I don't think that's appropriate...", "frown_side", "brandon")
+						
+						cutscene:showNametag("Dess")
+						cutscene:text("* but it's a movie lmao", "heckyeah", "dess")
+					end
+				end
+				cutscene:hideNametag()
+				
+				if party_talk then
+					cutscene:wait(2)
+				end
+				
+				cutscene:text("[voice:jamm]* Isn't she beautiful, Ania?")
+				cutscene:text("[voice:ania]* Y-yes, she is...")
+				cutscene:text("[voice:jamm]* Do you want to hold her?")
+				cutscene:text("[voice:ania]* I would like that...")
+				cutscene:text("[voice:jamm]* Here you go, Ania.\n* Just like this.")
+				cutscene:text("[voice:ania]* And when did you become the baby-holding expert?")
+				cutscene:text("[voice:jamm]* Probably when my sister gave me some pointers with Jaek.")
+				cutscene:text("[voice:jamm]* So, have you given some thought to what she'd be named?")
+				cutscene:text("[voice:ania]* Yeah... Marcy.")
+				cutscene:text("[voice:jamm]* Marcy?\n* Like your grandmother, huh?")
+				cutscene:text("[voice:jamm]* I wish I could've seen eye to eye with her before she...")
+				cutscene:text("[voice:ania]* Please, for me?\n* I was really close with Nana Marcy...")
+				cutscene:text("[voice:jamm]* ...Alright.\n* Just for you, dear.")
+				
+				cutscene:wait(2)
+				
+				party_talk = false
+				
+				if dess then
+					party_talk = true
+					cutscene:showNametag("Dess")
+					cutscene:text("* thank you for skipping the gross part, Jamm.", "neutral", "dess")
+					
+					if brandon then
+						cutscene:showNametag("Brandon")
+						cutscene:text("* Yeah, that would've raised the age rating of this mod.", "frown_side", "brandon")
+					end
+					
+					if jamm then
+						cutscene:showNametag("Jamm")
+						cutscene:text("* This mod isn't particularly for kids, anyways.", "shaded_frown", "jamm")
+					end
+				end
+				
+				if brandon and jamm then
+					party_talk = true
+					
+					cutscene:showNametag("Brandon")
+					cutscene:text("* You know what, though?", "frown_side", "brandon")
+					cutscene:text("* I never got to say this, but I'm proud of you, Jamm.", "frown_side", "brandon")
+					cutscene:text("* You raised Marcy to be a great girl up to this point.", "frown_side", "brandon")
+					cutscene:text("* I know what's coming up might not be too good, but...", "frown_side", "brandon")
+				end
+				cutscene:hideNametag()
+				
+				if party_talk then
+					cutscene:wait(2)
+				end
+				
+				cutscene:text("[voice:ania]* You know, I never really got to explore TOMBSITE that much.")
+				cutscene:text("[voice:jamm]* Yeah.\n* You've been busy at that job of yours, haven't you?")
+				cutscene:text("[voice:ania]* Yeah, and I never got a day off until--", nil, nil, {auto = true})
+				cutscene:text("[voice:ania]* Jamm, look out!")
+				
+				Assets.playSound("stab_death")
+				
+				cutscene:wait(1)
+				
+				cutscene:text("[voice:jamm][shake:1]* A-Ania!?")
+				cutscene:text("[voice:jamm][shake:1]* Ania, please, speak to me!")
+				cutscene:text("[voice:jamm][shake:1]* Don't die on me, Ania!\n* Please, I...")
+				cutscene:text("[voice:jamm][shake:1]* There's so much I want to say to you...")
+				cutscene:text("[speed:0.5][voice:ania]* L... Luthane, I...")
+				cutscene:text("[speed:0.5][voice:ania]* I love you...\n* So much...")
+				cutscene:text("[voice:jamm][shake:1]* ...")
+				cutscene:text("[voice:jamm][shake:1]* Wait, there's writing on the...")
+				cutscene:text("[voice:jamm][shake:1]* ...")
+				cutscene:text("[voice:jamm]* ...")
+				cutscene:text("[voice:jamm]* ...Enzio...")
+				cutscene:text("[voice:jamm]* I will never forgive you.")
+				
+				cutscene:wait(2)
+				
+				jamm_in_party = true
+				if not jamm then
+					jamm = NPC("fake_jamm")
+					jamm.x = 480
+					jamm.y = 200
+					Game.world:spawnObject(jamm)
+					cutscene:look(jamm, "right")
+					jamm_in_party = false
+				end
+				
+				cutscene:wait(cutscene:fadeIn(1))
+				
+				if brandon then
+					cutscene:showNametag("Brandon")
+					cutscene:text("* ...", "shock", "brandon")
+				end
+				
+				if susie then
+					cutscene:showNametag("Susie")
+					cutscene:text("* ...", "sad", "susie")
+				end
+				
+				cutscene:showNametag("Jamm")
+				cutscene:text("* And now, you know why I hate Enzio so much.", "shaded_frown", "jamm")
+				
+				if brandon then
+					cutscene:showNametag("Brandon")
+					cutscene:text("* J-Jamm, I...\n* I had no idea...", "sad", "brandon")
+					cutscene:text("* That's...\n* That's really how she...", "sad", "brandon")
+				end
+				
+				if susie then
+					cutscene:showNametag("Susie")
+					cutscene:text("* ...", "shy_down", "susie")
+					cutscene:text("* It all makes sense now.", "shy_down", "susie")
+				end
+				
+				cutscene:showNametag("Jamm")
+				cutscene:text("* ...", "shaded_frown", "jamm")
+				cutscene:text("* In TOMBSITE, there is another place.", "shaded_frown", "jamm")
+				cutscene:text("* Left, down, right, up.", "shaded_frown", "jamm")
+				cutscene:text("* And you'll need me to get through the door there.", "shaded_frown", "jamm")
+				cutscene:text("* Whenever you're ready, okay?", "shaded_frown", "jamm")
+				cutscene:hideNametag()
+				
+				if not jamm_in_party then
+					cutscene:wait(cutscene:fadeOut(0.75))
+					jamm:remove()
+					cutscene:wait(cutscene:fadeIn(0.75))
+				end
+				
+				Kristal.callEvent("createQuest", "Jamm's Closure", "acj2", "Jamm revealed to you the reason why he hates Enzio so much. He says to head back to the TOMBSITE and walk \"left, down, right, up\". What will you find in the new area Jamm told you about?")
+				cutscene:text("* (WIP, check back in a future update)")
+			else
+				cutscene:text("* You insertn't.")
+			end
+		end
+    end,
 }
