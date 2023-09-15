@@ -114,7 +114,7 @@ return {
             if Game:getFlag("blankie_returned") then
                 local rnd = math.random(1, 5)
                     if rnd == 1 then
-                        if Game:setFlag("asked_java", false) then
+                        if Game:getFlag("asked_java", false) then
                             cutscene:setSpeaker(velvetspam)
                             cutscene:showNametag("Velvet!Spamton")
                             velvetspam:setSprite("curious")
@@ -154,7 +154,7 @@ return {
 
                         Game:setFlag("about_button", true)
                     elseif rnd == 4 then
-                        if Game:setFlag("asked_fizz", false) then
+                        if Game:getFlag("asked_fizz", false) then
                             cutscene:setSpeaker(velvetspam)
                             cutscene:showNametag("Velvet!Spamton")
                             velvetspam:setSprite("curious")
