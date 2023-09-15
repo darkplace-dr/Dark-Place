@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="15">
+ <editorsettings>
+  <export target="fakehallway.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="simple"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/devroom.tsx"/>
+ <tileset firstgid="73" source="../../tilesets/hoteldoors.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,
+7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,
+7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,
+7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,
+4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="3" x="0" y="320" width="640" height="40"/>
+  <object id="4" x="0" y="160" width="640" height="40"/>
+ </objectgroup>
+ <objectgroup id="5" name="objects_props">
+  <object id="6" gid="77" x="290" y="202" width="64" height="100"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="8" name="transition" x="640" y="200" width="40" height="120">
+   <properties>
+    <property name="map" value="devhotel/devhotel1"/>
+    <property name="marker" value="entryright"/>
+   </properties>
+  </object>
+  <object id="9" name="transition" x="-40" y="200" width="40" height="120">
+   <properties>
+    <property name="map" value="devhotel/devhotel_lobby"/>
+    <property name="marker" value="entryleft"/>
+   </properties>
+  </object>
+  <object id="12" name="interactable" x="280" y="161" width="80" height="40">
+   <properties>
+    <property name="cutscene" value="devhotel.room269"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="14" name="hideparty" x="0" y="200" width="640" height="120"/>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="2" name="markers">
+  <object id="2" name="spawn" x="320" y="280">
+   <point/>
+  </object>
+  <object id="10" name="entry" x="40" y="280">
+   <point/>
+  </object>
+  <object id="13" name="entrydoor" x="320" y="240">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
