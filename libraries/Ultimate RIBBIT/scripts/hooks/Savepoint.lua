@@ -5,7 +5,11 @@ end
 local Savepoint, super = Class("Savepoint", true)
 
 function Savepoint:onInteract(player, dir)
-    Assets.playSound(Kristal.callEvent("isLeaderRibbit") and "powerfrog" or "power")
+    if Kristal.callEvent("isLeaderRibbit") then
+        Assets.playSound("powerfrog")
+    elseif not Kristal.callEvent("isLeaderRibbit") then -- Don't know WHY I need to specify this, but "power" plays anyway if I make it just "else".
+        Assets.playSound("power")
+    end
 
     if self.text_once and self.used then
         self:onTextEnd()
@@ -20,10 +24,12 @@ function Savepoint:onInteract(player, dir)
     return true
 end
 
+--[[
 function Savepoint:onTextEnd()
     super.onTextEnd(self)
 
     Assets.stopSound("powerfrog")
 end
+--]]
 
 return Savepoint
