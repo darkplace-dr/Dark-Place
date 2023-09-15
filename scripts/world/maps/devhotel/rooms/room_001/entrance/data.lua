@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 21,
+  nextobjectid = 25,
   properties = {
     ["music"] = "greenroom"
   },
@@ -116,7 +116,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 120,
@@ -129,7 +129,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 80,
@@ -142,7 +142,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 120,
@@ -155,7 +155,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 560,
@@ -168,7 +168,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 560,
@@ -181,7 +181,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 240,
@@ -194,7 +194,7 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 250,
           y = 420,
@@ -223,7 +223,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 260,
           y = 160,
@@ -237,7 +237,7 @@ return {
         {
           id = 9,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 265,
           y = 120,
@@ -246,15 +246,14 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["solid"] = true,
-            ["text1"] = "* It's a TV.",
-            ["text2"] = "* It doesn't seem to be working though..."
+            ["cutscene"] = "devhotel_room_001.tv",
+            ["solid"] = true
           }
         },
         {
           id = 11,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 160,
@@ -270,7 +269,7 @@ return {
         {
           id = 12,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 600,
@@ -286,7 +285,7 @@ return {
         {
           id = 13,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 250,
           y = 460,
@@ -300,7 +299,7 @@ return {
         {
           id = 14,
           name = "chest",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 480,
@@ -315,7 +314,7 @@ return {
         {
           id = 15,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 520,
@@ -329,7 +328,7 @@ return {
         {
           id = 16,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 480,
@@ -362,7 +361,7 @@ return {
         {
           id = 10,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 300,
           y = 560,
@@ -375,7 +374,7 @@ return {
         {
           id = 17,
           name = "west",
-          class = "",
+          type = "",
           shape = "point",
           x = 40,
           y = 200,
@@ -388,7 +387,7 @@ return {
         {
           id = 20,
           name = "sleepover",
-          class = "",
+          type = "",
           shape = "point",
           x = 300,
           y = 260,
