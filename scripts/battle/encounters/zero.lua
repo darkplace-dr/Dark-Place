@@ -25,7 +25,6 @@ function Zero:init()
 
     --leader = Game.battle.party[1]
     -- Only reason this should happen is if someone debugs into the fight.
-    error("This fight is incomplete. Please come back later.")
 
 end
 
@@ -39,6 +38,13 @@ function Zero:update()
     --[[
     --]]
     super:update(self)
+end
+
+function Zero:onStateChange(old, new)
+    if new == "BATTLETEXT" or new == "DEFENDING" then
+        Game.battle:returnToWorld()
+        Game.world:loadMap("misc/dogcheck")
+    end
 end
 
 return Zero
