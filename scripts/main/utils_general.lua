@@ -78,3 +78,13 @@ function Mod:resetWindow()
         end
     end
 end
+
+--- Get the average LOVE for the whole party
+--- @returns LOVE number The LOVE of the party
+function Mod:getPartyLove()
+    local sum_love = 0
+    for _,char in ipairs(Game.party) do
+        sum_love = sum_love + char:getLevel()
+    end
+    return sum_love/#Game.party
+end

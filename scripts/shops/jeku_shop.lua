@@ -149,9 +149,18 @@ function JekuShop:startTalk(talk)
             "[emote:crazy]* EH HE HE! IT IS BUT SO EASY TO UNDERSTAND!"
         })
     elseif talk == "Threaten" then
-        if love.filesystem.read("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id) then
+        local nb = love.filesystem.read("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id)
+        nb = tonumber(nb)
+        if nb == 1 then
             self:startDialogue({
                 "[emote:wink_tongueout]* I take it that it amused you?"
+            })
+        elseif nb == 2 then
+            self:startDialogue({
+                "[emote:crazy]* YOU ARE FUN TO PLAY WITH, "..Game.save_name.."!",
+                "[emote:wink_tongueout]* ARE YOU AGAINST THE TIME OR SOMETHING?",
+                "[emote:side]* Time is so important for people like you, eh he eh...",
+                "[emote:crazy]* Ever wondered how many things you missed by rushing whatever you're doing?"
             })
         else
             if self:getFlag("threaten_jeku", 0) == 0 then
@@ -210,7 +219,10 @@ function JekuShop:onStateChange(old, new)
     super.onStateChange(self, old, new)
     if old == "DIALOGUE" and new == "TALKMENU" then
         if self:getFlag("threaten_jeku") == 6 then
-            love.filesystem.write("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id, "1")
+            local succ, err = love.filesystem.write("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id, "1")
+            if not succ then
+                print("Writing error: "..err)
+            end
             self:remove()
             Game.world:remove()
             Game.state = "GAMEOVER"

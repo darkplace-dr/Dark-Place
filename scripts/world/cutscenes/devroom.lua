@@ -612,9 +612,7 @@ return {
             if Game:getFlag("library_kills", 0) > 0 and Game:getFlag("library_kills", 0) <= 2 then
                 cutscene:text("* And you don't seem to be the type to make peace, aren't you?")
             else
-                local sum_love = 0
-                for _,char in ipairs(Game.party) do sum_love = sum_love + char:getLevel() end
-                local love = sum_love/#Game.party
+                local love = Mod:getPartyLove()
 
                 if love >= 19 then
                     cutscene:text("* And I really don't like the way you're looking at me.")
@@ -650,7 +648,7 @@ return {
                     cutscene:text("* So you should let him alone.")
                     Game:setFlag("allow_shop_fight", true)
                 else
-                    cutscene:text("* So just stay out of his reach,[wait:2] if there's even one.")
+                    cutscene:text("* So just stay out of his reach,[wait:2] if it's even possible.")
                 end
                 cutscene:text("* He'll probably just go one day to another one of my projects anyway.")
                 cutscene:text("* Huh?[wait:4] What about his shop?")

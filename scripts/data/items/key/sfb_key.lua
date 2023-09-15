@@ -89,4 +89,8 @@ function item:convertToLight(inventory)
     return "light/old_cartridge"
 end
 
+function item:getBuyPrice()
+    return (self.buy_price or self:getPrice())*Mod:getPartyLove()
+end
+
 return item
