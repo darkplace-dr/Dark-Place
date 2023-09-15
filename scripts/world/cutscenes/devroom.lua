@@ -648,7 +648,7 @@ return {
                     cutscene:text("* So you should let him alone.")
                     Game:setFlag("allow_shop_fight", true)
                 else
-                    cutscene:text("* So just stay out of his reach,[wait:2] if there's even one.")
+                    cutscene:text("* So just stay out of his reach,[wait:2] if it's even possible.")
                 end
                 cutscene:text("* He'll probably just go one day to another one of my projects anyway.")
                 cutscene:text("* Huh?[wait:4] What about his shop?")
