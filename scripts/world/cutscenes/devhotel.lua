@@ -115,4 +115,36 @@ return {
 			cutscene:text("* It appears to be locked.")
 		end
     end,
+
+    hallwayrng = function (cutscene, event)
+        if love.math.random(1, 100) <= 5 then
+            Game.world:mapTransition("devhotel/fakehallway", "entry")
+        else
+            Game.world:mapTransition("devhotel/fakehallway", "entry")
+            --Game.world:mapTransition("devhotel/devhotel1", "entryright")
+        end
+    end,
+
+    room269 = function (cutscene, event)
+        Assets.playSound("dooropen")
+        Game.world:mapTransition("mysteryman", "spawn")
+    end,
+
+    mysteryman = function (cutscene, event)
+        event:setAnimation("interact")
+        local mysteryblast = Assets.playSound("mysteryblast")
+        cutscene:wait(1.2)
+        event:setAnimation("fast")
+        cutscene:wait(0.7)
+        event:setAnimation("interact")
+        cutscene:wait(0.3)
+        event:setAnimation("blaster")
+        cutscene:wait(0.77)
+        event:setAnimation("blasterfire")
+        cutscene:fadeOut(0.1, {color = {1, 1, 1}})
+        cutscene:wait(0.9)
+        cutscene:loadMap("devhotel/devhotel_lobby", "spawn", "down")
+        cutscene:fadeIn(1/30, {color = {1, 1, 1}})
+        Kristal.callEvent("completeAchievement", "mysteryman")
+    end
 }

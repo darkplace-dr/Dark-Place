@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="15">
+ <editorsettings>
+  <export target="mysteryman.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="simple"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/newhome.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,17,17,17,17,17,17,17,17,0,0,0,0,
+0,0,0,0,17,17,17,17,17,17,17,17,0,0,0,0,
+0,0,0,0,17,17,17,17,17,17,17,17,0,0,0,0,
+0,0,0,0,17,17,17,17,17,17,17,17,0,0,0,0,
+0,0,0,0,0,0,0,17,17,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,17,17,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,17,17,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,17,17,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="2" name="collision">
+  <object id="1" x="240" y="320" width="40" height="160"/>
+  <object id="2" x="360" y="320" width="40" height="160"/>
+  <object id="3" x="400" y="320" width="80" height="40"/>
+  <object id="4" x="160" y="320" width="80" height="40"/>
+  <object id="5" x="120" y="160" width="40" height="160"/>
+  <object id="6" x="160" y="120" width="320" height="40"/>
+  <object id="7" x="480" y="160" width="40" height="160"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="3" name="objects">
+  <object id="8" name="npc" x="320" y="260">
+   <properties>
+    <property name="actor" value="mysteryman"/>
+    <property name="cutscene" value="devhotel.mysteryman"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="9" name="transition" x="280" y="480" width="80" height="40">
+   <properties>
+    <property name="map" value="devhotel/fakehallway"/>
+    <property name="marker" value="entrydoor"/>
+   </properties>
+  </object>
+  <object id="14" name="hideparty" x="120" y="120" width="400" height="360"/>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="4" name="markers">
+  <object id="11" name="spawn" x="320" y="440">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

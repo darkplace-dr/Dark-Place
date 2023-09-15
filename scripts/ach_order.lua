@@ -9,6 +9,7 @@ return {
     "blankiequest",
     "velvetsqueak",
     "takodownbad",
+    "mysteryman",
     "jekukilled",
     "dirtyhacker"
 }
