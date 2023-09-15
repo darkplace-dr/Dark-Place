@@ -213,6 +213,13 @@ function GameOver:update()
             self.skipping = self.skipping + 1
         end
         if (self.skipping >= 4) then
+            if self.force_message and self.force_message == "EH HE EH HE!![wait:5]\nHAPPY NOW??" then
+                local succ, err = love.filesystem.write("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id, "2")
+                if not succ then
+                    print("Writing error: "..err)
+                end
+                Game:setFlag("skipped_jeku", true)
+            end
             Game:loadQuick()
         end
     end
