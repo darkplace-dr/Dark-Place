@@ -612,9 +612,7 @@ return {
             if Game:getFlag("library_kills", 0) > 0 and Game:getFlag("library_kills", 0) <= 2 then
                 cutscene:text("* And you don't seem to be the type to make peace, aren't you?")
             else
-                local sum_love = 0
-                for _,char in ipairs(Game.party) do sum_love = sum_love + char:getLevel() end
-                local love = sum_love/#Game.party
+                local love = Mod:getPartyLove()
 
                 if love >= 19 then
                     cutscene:text("* And I really don't like the way you're looking at me.")
