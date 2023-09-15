@@ -118,20 +118,20 @@ return {
                             cutscene:setSpeaker(velvetspam)
                             cutscene:showNametag("Velvet!Spamton")
                             velvetspam:setSprite("curious")
+                            cutscene:text("* Look at you! Just had some [Hot Brewed Tea]!")
+                            cutscene:text("* Told you [[Free Java Coding Lessons]] makes great tea!")
+                            velvetspam:resetSprite()
+                            cutscene:hideNametag()
+                        else
+                            cutscene:setSpeaker(velvetspam)
+                            cutscene:showNametag("Velvet!Spamton")
+                            velvetspam:setSprite("curious")
                             cutscene:text("* Have you met [HOT JAVA LAVA] yet?")
                             cutscene:text("* You should grab some [[Hot Dealz]] tea! All personalized!")
                             velvetspam:resetSprite()
                             cutscene:hideNametag()
 
                             Game:setFlag("about_java", true)
-                        else
-                            cutscene:setSpeaker(velvetspam)
-                            cutscene:showNametag("Velvet!Spamton")
-                            velvetspam:setSprite("curious")
-                            cutscene:text("* Look at you! Just had some [Hot Brewed Tea]!")
-                            cutscene:text("* Told you [[Free Java Coding Lessons]] makes great tea!")
-                            velvetspam:resetSprite()
-                            cutscene:hideNametag()
                         end
                     elseif rnd == 2 then
                         cutscene:setSpeaker(velvetspam)
@@ -158,20 +158,20 @@ return {
                             cutscene:setSpeaker(velvetspam)
                             cutscene:showNametag("Velvet!Spamton")
                             velvetspam:setSprite("curious")
+                            cutscene:text("* WOW! Lookin like a [Energetic Sports Drink]!")
+                            cutscene:text("* See? [[Bubbly Fizz]] has all the flavors!")
+                            velvetspam:resetSprite()
+                            cutscene:hideNametag()
+                        else
+                            cutscene:setSpeaker(velvetspam)
+                            cutscene:showNametag("Velvet!Spamton")
+                            velvetspam:setSprite("curious")
                             cutscene:text("* You look like a [dried raisin]...")
                             cutscene:text("* Don't worry! [[Fizzy Lemon Soda]] has got some refreshments!")
                             velvetspam:resetSprite()
                             cutscene:hideNametag()
 
                             Game:setFlag("about_fizz", true)
-                        else
-                            cutscene:setSpeaker(velvetspam)
-                            cutscene:showNametag("Velvet!Spamton")
-                            velvetspam:setSprite("curious")
-                            cutscene:text("* WOW! Lookin like a [Energetic Sports Drink]!")
-                            cutscene:text("* See? [[Bubbly Fizz]] has all the flavors!")
-                            velvetspam:resetSprite()
-                            cutscene:hideNametag()
                         end
                     else
                         cutscene:setSpeaker(velvetspam)
