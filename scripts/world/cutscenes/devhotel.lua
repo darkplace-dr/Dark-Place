@@ -120,8 +120,7 @@ return {
         if love.math.random(1, 100) <= 5 then
             Game.world:mapTransition("devhotel/fakehallway", "entry")
         else
-            Game.world:mapTransition("devhotel/fakehallway", "entry")
-            --Game.world:mapTransition("devhotel/devhotel1", "entryright")
+            Game.world:mapTransition("devhotel/devhotel1", "entryright")
         end
     end,
 
