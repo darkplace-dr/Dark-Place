@@ -6,7 +6,7 @@ function character:init()
     self.name = "Jamm"
 
     self:setActor("jamm")
-    self:setLightActor("jamm")
+    self:setLightActor("jamm_lw")
 
     self.level = 1
     self.title = "Slingshotter\nTakes aim, then\nfires"
