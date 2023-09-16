@@ -552,4 +552,32 @@ return {
     released = "2001",
     origin = "SpongeBob SquarePants: SuperSponge (PS1)"
   },
+  {
+    name = "He is Lost",
+    file = "Lost",
+    composer = "FireStar8903",
+    released = "2023",
+    origin = "A Salesman's Lament"
+  },
+  {
+    name = "Find Him",
+    file = "Find",
+    composer = "FireStar8903",
+    released = "2023",
+    origin = "A Salesman's Lament"
+  },
+  {
+    name = "Tell Him He's Okay",
+    file = "Okay",
+    composer = "FireStar8903",
+    released = "2023",
+    origin = "A Salesman's Lament"
+  },
+  {
+    name = "He is Loved",
+    file = "Loved",
+    composer = "FireStar8903",
+    released = "2023",
+    origin = "A Salesman's Lament"
+  },
 }

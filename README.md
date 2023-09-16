@@ -106,7 +106,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Team Inundation - Original authors for MOBDT
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 * MrkySpices - Deltarune-styled Backrooms tileset
-* FireStar8903 - Made music for the Pasta Pack Shop
+* FireStar8903 - Made music for the Pasta Pack Shop and A Salesman's Lament
 * OMOCAT, LLC - Original author for OMORI
 * Ninomae Ina'nis - Creator and designer of the Takodachis
 * Nintendo - Original author for Pikmin

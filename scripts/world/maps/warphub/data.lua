@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 23,
@@ -58,6 +59,7 @@ return {
       draworder = "topdown",
       id = 9,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -72,6 +74,7 @@ return {
       draworder = "topdown",
       id = 10,
       name = "objects_doors",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -104,6 +107,7 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -147,6 +151,7 @@ return {
       height = 24,
       id = 2,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -187,6 +192,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -423,6 +429,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -477,6 +484,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -537,7 +545,8 @@ return {
             ["text5"] = "* (Want to meet the devs of this game? Check out \"[color:blue]DEVDINER[color:reset]\"!)",
             ["text6"] = "* (Do you have horrible internet? Visit \"[color:black]WIFIDOWN[color:reset]\" now to resolve all of your network troubles!)",
             ["text7"] = "* (Squeak Squeak! All the Maus are in \"[color:maroon]MAUSHOLE[color:reset]\"!)",
-            ["text8"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here."
+            ["text8"] = "* (Check out the Dark Place X \"[color:#5fcde4]GARRYMOD[color:reset]\" crossover!\nMods included!)",
+            ["text9"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here."
           }
         },
         {
@@ -622,6 +631,20 @@ return {
             ["text1"] = "* This room appears to be for rent.",
             ["text2"] = "* But,[wait:10] you don't know how to rent it."
           }
+        },
+        {
+          id = 91,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 795,
+          y = 320,
+          width = 50,
+          height = 22,
+          rotation = 0,
+          gid = 484,
+          visible = true,
+          properties = {}
         },
         {
           id = 92,

@@ -1,11 +1,17 @@
 {
     "id": "moreparty",
     
-    "version": "v1.1.0",
-    "engineVer": "v0.8.1-dev",
+    "version": "v1.3.5",
+    "engineVer": "v0.8.1",
     
     "authors": [
         "Core",
         "FireRainV"
-    ]
+    ],
+	
+    "config": {
+		// This option will only allow up to 6 party members.
+		// It will only show 3 party members in a row.
+		"classic_mode": false
+	}
 }
