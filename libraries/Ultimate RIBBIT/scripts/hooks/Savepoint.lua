@@ -7,8 +7,6 @@ local Savepoint, super = Class("Savepoint", true)
 function Savepoint:onInteract(player, dir)
     if Kristal.callEvent("isLeaderRibbit") then
         Assets.playSound("powerfrog")
-    else
-        Assets.playSound("power")
     end
 
     if self.text_once and self.used then
@@ -21,6 +19,9 @@ function Savepoint:onInteract(player, dir)
     end
 
     super.super.onInteract(self, player, dir)
+    if Kristal.callEvent("isLeaderRibbit") then
+        Assets.stopSound("power")
+    end
     return true
 end
 
