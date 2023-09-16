@@ -9,6 +9,8 @@ function Spamgolor:init()
     self.background = true
 
     self:addEnemy("spamgolor")
+	
+	self.flee = false
 end
 
 function Spamgolor:onBattleEnd()
