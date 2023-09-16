@@ -18,6 +18,8 @@ function UfoEncounter:init()
     -- Add the dummy enemy to the encounter
     self.mimic = self:addEnemy("mimic")
     self.death_cine_played = false
+	
+	self.flee = false
 end
 
 function UfoEncounter:onBattleInit()
