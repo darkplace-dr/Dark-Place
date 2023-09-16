@@ -42,12 +42,18 @@ function actor:init()
         -- Looping animation with 0.25 seconds between each frame
         -- (even though there's only 1 idle frame)
         ["idle"] = {"idle", 0.1, true},
+        ["headphones_in"] = {"headphones_in", 0.1, false, next="headphones_still"},
+        ["headphones_still"] = {"headphones_still", 0, false},
+        ["headphones_end"] = {"headphones_end", 0.1, false, next="idle"}
     }
 
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {
         -- Since the width and height is the idle sprite size, the offset is 0,0
         ["idle"] = {0, 0},
+        ["headphones_in"] = {0, -4},
+        ["headphones_still"] = {0, -4},
+        ["headphones_end"] = {0, -4},
     }
 end
 

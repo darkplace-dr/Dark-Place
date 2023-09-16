@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="99">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="99">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -166,7 +166,6 @@ Mods included!)</property>
     <property name="text2" value="* But,[wait:10] you don't know how to rent it."/>
    </properties>
   </object>
-  <object id="91" gid="484" x="795" y="320" width="50" height="22"/>
   <object id="92" gid="470" x="400" y="360" width="120" height="120"/>
   <object id="94" gid="488" x="200" y="120" width="83.6" height="120.69"/>
   <object id="97" name="interactable" x="780" y="320" width="80" height="40">

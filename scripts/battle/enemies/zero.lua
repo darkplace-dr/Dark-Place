@@ -42,7 +42,7 @@ function Zero:init()
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
-        ""
+        "* Enemy flavor text."
     }
     -- Text displayed at the bottom of the screen when the enemy has low health
     self.low_health_text = "* He's running out of time."

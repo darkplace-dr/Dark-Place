@@ -99,4 +99,23 @@ function Mod:registerDebugOptions(debug)
     debug:registerOption("main", "Replenish Party", "Replenishes health.", replenish, in_game)
 
     debug:registerOption("main", "Create Ach. List Image", "Just for muscle flexing. LMAO", createAchListImage, in_game)
+
+    debug:registerOption("main", "Funky", "Enter the  Funky  Menu.", function() debug:enterMenu("funky_menu", 1) end)
+
+    debug:registerMenu("funky_menu", "Funky Menu")
+    debug:registerOption("funky_menu", "Hi", "nice to meet u", function() print("hi") end)
+    debug:registerOption("funky_menu", "Bye", "bye", function() print("bye") end)
+    debug:registerOption("funky_menu", "Quit", "quit", function() print("quit") end)
+    debug:registerOption("funky_menu", "Funker", function() return debug:appendBool("Toggle Funky Mode.....", Game.stage:getFX("funky_mode")) end, function()
+        if Game.stage:getFX("funky_mode") then
+            Game.stage:removeFX("funky_mode")
+        else
+            Game.stage:addFX(ShaderFX(Mod.wave_shader, {
+                ["wave_sine"] = function() return Kristal.getTime() * 1200 end,
+                ["wave_mag"] = 10,
+                ["wave_height"] = 1,
+                ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT}
+            }), "funky_mode")
+        end
+    end)
 end
