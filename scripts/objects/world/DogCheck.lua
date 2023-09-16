@@ -46,30 +46,41 @@ function DogCheck:start()
     end
 
     local variant_choices = {"dance", "sleep", "maracas"}
-    if self.month >= 6 and self.month <= 8 then
+    if self.month >= 3 and self.month <= 5 then
+        table.insert(variant_choices, "spring")
+    elseif self.month >= 6 and self.month <= 8 then
         table.insert(variant_choices, "summer")
-    elseif self.month == 12 then
-        table.insert(variant_choices, "xmas")
+    elseif self.month >= 9 and self.month <= 11 then
+        table.insert(variant_choices, "autumn")
+    elseif self.month >= 12 and self.month < 3 then
+        table.insert(variant_choices, "winter")
     end
     self.variant = Utils.pick(variant_choices)
 
     local cust_sprites_base = "world/cutscenes/dogcheck"
+
     if self.variant == "dance" then
         createDog(cust_sprites_base.."/dog_dance", 0.2)
         playSong("dance_of_dog", 0.95, 1.05)
     elseif self.variant == "sleep" then
         createDog("misc/dog_sleep", 0.8)
-        local song_here = Utils.pick({"deltarune/dogcheck", "results", "sigh_of_dog"})
+        local song_here = Utils.pick({"deltarune/dogcheck", "results", "sigh_of_dog", "dogcheck_anniversary"})
         local song_is_sog = song_here == "sigh_of_dog"
         playSong(song_here, song_is_sog and 0.8 or 1, 1)
     elseif self.variant == "maracas" then
         createDog(cust_sprites_base.."/dog_maracas", 0.1, 20, -20)
         playSong("baci_perugina2")
+    elseif self.variant == "spring" then
+        createDog(cust_sprites_base.."/dog_spring", 0.2, -2, -13)
+        playSong("options_fall")
     elseif self.variant == "summer" then
         createDog(cust_sprites_base.."/dog_summer", 0.8)
         playSong("options_summer")
-    elseif self.variant == "xmas" then
-        createDog(cust_sprites_base.."/dog_winter", 0.8, 0, -10)
+    elseif self.variant == "autumn" then
+        createDog(cust_sprites_base.."/dog_autumn", 0.8, -2, -10)
+        playSong("options_fall")
+    elseif self.variant == "winter" then
+        createDog(cust_sprites_base.."/dog_winter", 0.8, -2, -14)
         playSong("options_winter")
     end
 end

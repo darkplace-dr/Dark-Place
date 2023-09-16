@@ -232,13 +232,6 @@ return {
     origin = "Dark Place"
   },
   {
-    name = "Spooky Battle",
-    file = "spookybattle",
-    composer = "Charbomber",
-    released = "2023",
-    origin = "Dark Place"
-  },
-  {
     name = "Forgotten Ruins",
     file = "ruins_beta",
     composer = "Just another random user.",
@@ -487,7 +480,14 @@ return {
     file = "underworldforest",
     composer = "Hiroyuki Yanada",
     released = "1995",
-    origin = "Last Bible 3"
+    origin = "Last Bible III"
+  },
+  {
+    name = "Battle IV",
+    file = "spookybattle",
+    composer = "Hiroyuki Yanada",
+    released = "1995",
+    origin = "Last Bible III"
   },
   {
     name = "Wait for Truth",
