@@ -6,6 +6,12 @@ function PartyBattler:init(chara, x, y)
 	
 	self.super_flash = 0
 	self.shield = 0
+	
+	self.guard_chance = 0 -- out of 100
+    for _,equipment in ipairs(self.chara:getEquipment()) do
+        self.guard_chance = self.guard_chance + (equipment.bonuses.guard_chance or 0)
+    end
+	self.guard_mult = self.chara.guard_mult or 0.8
 end
 
 function PartyBattler:addShield(amount)
@@ -104,7 +110,9 @@ function PartyBattler:update()
 end
 
 function PartyBattler:getHeadIcon()
-    if self.sleeping then
+    if self.is_down then
+        return "head_down"
+    elseif self.sleeping then
         return "sleep"
     elseif self.defending then
         return "defend"
@@ -127,31 +135,35 @@ function PartyBattler:setAnimation(animation, callback)
 end
 
 function PartyBattler:hurt(amount, exact, color, options)
-    super:hurt(self, amount, exact, color, options)
+	if love.math.random(1,100) < self.guard_chance then
+		self:statusMessage("msg", "guard")
+		amount = math.ceil(amount * self.guard_mult)
+	end
+	super:hurt(self, amount, exact, color, options)
 	
 	if (not self.defending) and (not self.is_down) then
-        self.sleeping = false
-        self.hurting = true
-        self:toggleOverlay(true)
-        self.overlay_sprite:setAnimation("battle/hurt", function()
-            if self.hurting then
-                self.hurting = false
-                self:toggleOverlay(false)
-            end
+		self.sleeping = false
+		self.hurting = true
+		self:toggleOverlay(true)
+		self.overlay_sprite:setAnimation("battle/hurt", function()
+			if self.hurting then
+				self.hurting = false
+				self:toggleOverlay(false)
+			end
 			
 			if (self.chara:getHealth() <= (self.chara:getStat("health") / 4)) and self.chara.actor:getAnimation("battle/low_health") then
 				self:setAnimation("battle/low_health")
 			end
-        end)
-        if not self.overlay_sprite.anim_frames then -- backup if the ID doesn't animate, so it doesn't get stuck with the hurt animation
-            Game.battle.timer:after(0.5, function()
-                if self.hurting then
-                    self.hurting = false
-                    self:toggleOverlay(false)
-                end
-            end)
-        end
-    end
+		end)
+		if not self.overlay_sprite.anim_frames then -- backup if the ID doesn't animate, so it doesn't get stuck with the hurt animation
+			Game.battle.timer:after(0.5, function()
+				if self.hurting then
+					self.hurting = false
+					self:toggleOverlay(false)
+				end
+			end)
+		end
+	end
 end
 
 return PartyBattler
