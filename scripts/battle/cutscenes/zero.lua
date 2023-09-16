@@ -1,12 +1,25 @@
 return {
     start = function(cutscene, battler, enemy)
-        
-        Game.battle.music:play("zero_boss")
-        cutscene:wait(2)
+
         local zero = Game.battle:getEnemyBattler("zero")
-        cutscene:wait(2)
-        zero:setAnimation("idle")
-        --cutscene:after(function() Game.battle:setState("INTRO") end, true)
+        zero:setAnimation("headphones_in")
+        cutscene:wait(1)
+        Assets.playSound("zero/casettesearch")
+        cutscene:wait(1.8)
+        zero:setAnimation("headphones_end")
+        cutscene:wait(0.3)
+        Assets.playSound("zero/tv_thump_full")
+        Game.stage:addFX(ShaderFX(Mod.wave_shader, {
+            ["wave_sine"] = function() return Kristal.getTime() * 1200 end,
+            ["wave_mag"] = 10,
+            ["wave_height"] = 1,
+            ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT}
+        }), "funky_mode")
+        Game.stage:addFX(VHSFilter(), "introvhs")
+        Game.battle.timer:after(0.585, function ()
+            Game.stage:removeFX("funky_mode")
+            Game.stage:removeFX("introvhs")
+        end)
 
     end,
     

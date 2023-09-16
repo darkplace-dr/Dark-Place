@@ -4,13 +4,11 @@ function Zero:init()
     super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
-    self.text = "* Encounter start text."
+    self.text = "[wait:20]* \"The Dragon\" begins planning."
     --self.text = "* Testing start!"
 
     -- Battle music ("battle" is rude buster)
-    -- Starts playing during a cutscene, so no need to do it here
-    self.music = nil
-    Game.world.music:pause()
+    self.music = "zero_boss"
     -- Enables the purple grid battle background
     self.background = true
 
