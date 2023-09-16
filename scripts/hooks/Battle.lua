@@ -31,7 +31,6 @@ function Battle:updateIntro()
 			self:setState("ENEMYDIALOGUE", "INTRO")
 		else
 			self:setState("ACTIONSELECT", "INTRO")
-			self:nextTurn()
 		end
     end
 end
