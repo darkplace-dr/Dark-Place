@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="99">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="99">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -128,7 +128,9 @@ Go to &quot;[color:yellow]BOSSRUSH[color:reset]&quot;!)</property>
     <property name="text5" value="* (Want to meet the devs of this game? Check out &quot;[color:blue]DEVDINER[color:reset]&quot;!)"/>
     <property name="text6" value="* (Do you have horrible internet? Visit &quot;[color:black]WIFIDOWN[color:reset]&quot; now to resolve all of your network troubles!)"/>
     <property name="text7" value="* (Squeak Squeak! All the Maus are in &quot;[color:maroon]MAUSHOLE[color:reset]&quot;!)"/>
-    <property name="text8" value="* It looks like until someone posts another ad,[wait:10] that's all there is here."/>
+    <property name="text8">* (Check out the Dark Place X &quot;[color:#5fcde4]GARRYMOD[color:reset]&quot; crossover!
+Mods included!)</property>
+    <property name="text9" value="* It looks like until someone posts another ad,[wait:10] that's all there is here."/>
    </properties>
   </object>
   <object id="46" name="interactable" x="80" y="320" width="80" height="40">
