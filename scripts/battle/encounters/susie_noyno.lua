@@ -13,6 +13,8 @@ function SusieNoyno:init()
     self.noy = self:addEnemy("noyno", 540, 272)
 	
     self.enemy_tension = 0
+	
+	self.flee = false
 end
 
 function SusieNoyno:onBattleStart()
