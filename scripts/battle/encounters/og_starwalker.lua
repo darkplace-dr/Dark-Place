@@ -28,6 +28,8 @@ function OGStarwalker:init()
 
     --Game.battle:registerXAction("susie", "Snap")
     --Game.battle:registerXAction("susie", "Supercharge", "Charge\nfaster", 80)
+	
+	self.flee = false
 end
 
 function OGStarwalker:setMode(mode)
