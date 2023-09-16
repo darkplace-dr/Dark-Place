@@ -7,6 +7,10 @@ function actor:init()
 
     self.cursed_song = Music("cursed")
     self.cursed_song:stop()
+
+    self.offsets = {
+        ["hold_key"] = {-7, -12}
+    }
 end
 
 function actor:onWorldUpdate()
