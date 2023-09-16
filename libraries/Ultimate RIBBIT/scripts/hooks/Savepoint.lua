@@ -7,7 +7,7 @@ local Savepoint, super = Class("Savepoint", true)
 function Savepoint:onInteract(player, dir)
     if Kristal.callEvent("isLeaderRibbit") then
         Assets.playSound("powerfrog")
-    elseif not Kristal.callEvent("isLeaderRibbit") then -- Don't know WHY I need to specify this, but "power" plays anyway if I make it just "else".
+    else
         Assets.playSound("power")
     end
 
