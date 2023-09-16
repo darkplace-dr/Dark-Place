@@ -16,6 +16,8 @@ function Dummy:init()
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+
+	self.flee = false
 end
 
 function Dummy:beforeStateChange(old, new)

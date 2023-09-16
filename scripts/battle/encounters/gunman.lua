@@ -6,6 +6,8 @@ function Gunman:init()
     self.background = true
     self:addEnemy("gunman")
     self.text = "* your gonna die lol"
+	
+	self.flee = false
 end
 
 return Gunman

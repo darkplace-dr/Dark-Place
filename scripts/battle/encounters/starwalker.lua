@@ -28,6 +28,8 @@ function Starwalker:init()
 
     --Game.battle:registerXAction("susie", "Snap")
     --Game.battle:registerXAction("susie", "Supercharge", "Charge\nfaster", 80)
+	
+	self.flee = false
 end
 
 function Starwalker:setMode(mode)

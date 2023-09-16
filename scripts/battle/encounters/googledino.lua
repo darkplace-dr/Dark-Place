@@ -10,7 +10,8 @@ function GoogleDino:init()
     self.background = true
 
     self:addEnemy("googledino")
-
+	
+	self.flee = false
 end
 
 function GoogleDino:onBattleEnd()

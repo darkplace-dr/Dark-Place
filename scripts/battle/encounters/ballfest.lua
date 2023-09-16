@@ -18,6 +18,8 @@ function Ballfest:init()
 	
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+	
+	self.flee = false
 end
 
 function Ballfest:onBattleEnd()

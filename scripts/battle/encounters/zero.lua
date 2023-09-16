@@ -23,7 +23,8 @@ function Zero:init()
 
     --leader = Game.battle.party[1]
     -- Only reason this should happen is if someone debugs into the fight.
-
+	
+	self.flee = false
 end
 
 function Zero:createSoul(x, y)

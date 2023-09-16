@@ -12,6 +12,8 @@ function ShadowMen:init()
         self:addEnemy("shadowmen"),
         self:addEnemy("shadowmen")
     }
+	
+	self.flee = false
 end
 
 function ShadowMen:onStateChange(old, new)

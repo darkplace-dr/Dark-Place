@@ -16,6 +16,8 @@ function chevelour:init()
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+	
+	self.flee = false
 end
 
 return chevelour
