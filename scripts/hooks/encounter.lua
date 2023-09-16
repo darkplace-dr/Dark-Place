@@ -1,6 +1,6 @@
 ---@class Encounter
 ---@overload fun(...) : Encounter
-local Encounter = Class("Encounter", true)
+local Encounter, super = Class("Encounter", true)
 
 function Encounter:init()
 	super:init(self)
