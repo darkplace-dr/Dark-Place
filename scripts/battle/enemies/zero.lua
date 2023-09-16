@@ -17,6 +17,8 @@ function Zero:init()
     self.defense = 0
     -- Enemy reward
     self.money = 100
+    -- Disables running away
+    self.boss = true
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
