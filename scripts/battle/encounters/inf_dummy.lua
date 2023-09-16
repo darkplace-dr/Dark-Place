@@ -13,6 +13,8 @@ function Dummy:init()
 
     -- Add the dummy enemy to the encounter
     self:addEnemy("inf_dummy")
+	
+	self.flee = false
 end
 
 return Dummy
