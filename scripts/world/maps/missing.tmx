@@ -9,7 +9,7 @@
  </properties>
  <tileset firstgid="1" source="../tilesets/[Base]BaseChip_pipo.tsx"/>
  <tileset firstgid="1993" source="../tilesets/missing.tsx"/>
- <tileset firstgid="1994" source="../../../../../AppData/Roaming/LOVE/kristal/mods/Dark-Place-main/scripts/world/tilesets/dumpter-objects.tsx"/>
+ <tileset firstgid="1994" source="../tilesets/dumpter-objects.tsx"/>
  <layer id="1" name="Ground" width="40" height="20">
   <data encoding="csv">
 73,74,74,74,74,74,74,74,74,74,74,74,74,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,

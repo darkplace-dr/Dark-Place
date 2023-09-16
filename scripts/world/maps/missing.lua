@@ -29,8 +29,8 @@ return {
     {
       name = "dumpter-objects",
       firstgid = 1994,
-      filename = "../../../../../AppData/Roaming/LOVE/kristal/mods/Dark-Place-main/scripts/world/tilesets/dumpter-objects.tsx",
-      exportfilename = "../../../../../AppData/Roaming/LOVE/kristal/mods/Dark-Place-main/scripts/world/tilesets/dumpter-objects.lua"
+      filename = "../tilesets/dumpter-objects.tsx",
+      exportfilename = "../tilesets/dumpter-objects.lua"
     }
   },
   layers = {
