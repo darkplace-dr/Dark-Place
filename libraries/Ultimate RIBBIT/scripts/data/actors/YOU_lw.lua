@@ -32,10 +32,55 @@ function actor:init()
     self.can_blush = false
 
     -- Table of sprite animations
-    self.animations = {}
+    self.animations = {
+        -- Battle animations
+        ["battle/idle"]         = {"battle/idle", 0.2, true},
+
+        ["battle/attack"]       = {"battle/attack", 1/15, false},
+        ["battle/act"]          = {"battle/act", 1/15, false},
+        ["battle/spell"]        = {"battle/act", 1/15, false},
+        ["battle/item"]         = {"battle/item", 1/12, false, next="battle/idle"},
+        ["battle/spare"]        = {"battle/act", 1/15, false, next="battle/idle"},
+
+        ["battle/attack_ready"] = {"battle/attackready", 0.2, true},
+        ["battle/act_ready"]    = {"battle/actready", 1/15, false},
+        ["battle/spell_ready"]  = {"battle/actready", 0.2, true},
+        ["battle/item_ready"]   = {"battle/itemready", 0.2, true},
+        ["battle/defend_ready"] = {"battle/defend", 1/15, false},
+
+        ["battle/act_end"]      = {"battle/actend", 1/15, false, next="battle/idle"},
+
+        ["battle/hurt"]         = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
+        ["battle/defeat"]       = {"battle/defeat", 1/15, false},
+
+        ["battle/transition"]   = {"walk/right", 0, true},
+        ["battle/intro"]        = {"battle/intro", 1/18, true},
+        ["battle/victory"]      = {"battle/victory", 1/10, false, duration=4, next="battle/victoryconcern"},
+        ["battle/victoryconcern"] = {"battle/victoryconcern", 1/10, false},
+    }
 
     -- Table of sprite offsets (indexed by sprite name)
-    self.offsets = {}
+    self.offsets = {
+
+        -- Battle offsets
+        ["battle/idle"] = {-4, 3},
+
+        ["battle/attack"] = {-8, -4},
+        ["battle/attackready"] = {-8, -4},
+        ["battle/act"] = {-10, -4},
+        ["battle/actend"] = {-10, -4},
+        ["battle/actready"] = {-10, -4},
+        ["battle/item"] = {-15, 1},
+        ["battle/itemready"] = {-15, 1},
+        ["battle/defend"] = {-20, -10},
+
+        ["battle/defeat"] = {-8, -5},
+        ["battle/hurt"] = {-3, -4},
+
+        ["battle/intro"] = {-8, -8},
+        ["battle/victory"] = {-8, -6},
+        ["battle/victoryconcern"] = {-8, 0},
+    }
 end
 
 return actor

@@ -164,7 +164,6 @@ Go to &quot;[color:yellow]BOSSRUSH[color:reset]&quot;!)</property>
     <property name="text2" value="* But,[wait:10] you don't know how to rent it."/>
    </properties>
   </object>
-  <object id="91" gid="484" x="795" y="320" width="50" height="22"/>
   <object id="92" gid="470" x="400" y="360" width="120" height="120"/>
   <object id="94" gid="488" x="200" y="120" width="83.6" height="120.69"/>
   <object id="97" name="interactable" x="780" y="320" width="80" height="40">

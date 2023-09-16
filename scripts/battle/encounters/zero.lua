@@ -41,7 +41,7 @@ function Zero:update()
 end
 
 function Zero:onStateChange(old, new)
-    if new == "BATTLETEXT" or new == "DEFENDING" then
+    if new == "DEFENDING" then
         Game.battle:returnToWorld()
         Game.world:loadMap("misc/dogcheck")
     end

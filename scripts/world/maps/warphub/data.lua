@@ -624,20 +624,6 @@ return {
           }
         },
         {
-          id = 91,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 795,
-          y = 320,
-          width = 50,
-          height = 22,
-          rotation = 0,
-          gid = 484,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 92,
           name = "",
           type = "",
