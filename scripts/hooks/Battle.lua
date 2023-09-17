@@ -52,6 +52,19 @@ function Battle:onStateChange(old,new)
             self.enemy_tension_bar.physics.speed_x = 10
             self.enemy_tension_bar.physics.friction = -0.4
         end
+        if Game.battle:getPartyBattler("YOU") then
+            local guitarspin = Sprite("objects/guitarspin")
+            local YOU = Game.battle:getPartyBattler("YOU")
+            guitarspin:play(2/30, true)
+            self:addChild(guitarspin)
+            guitarspin.x = YOU.x
+            guitarspin.y = YOU.y
+            guitarspin.layer = YOU.layer - 1
+            guitarspin:setScale(2)
+            guitarspin:setOrigin(0.5, 1)
+            guitarspin.physics.direction = math.rad(270)
+            guitarspin.physics.speed = 20
+        end
     end
 	
 	if new == "ENEMYDIALOGUE" then

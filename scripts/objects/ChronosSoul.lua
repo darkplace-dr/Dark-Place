@@ -18,7 +18,7 @@ function ChronosSoul:init(x, y)
     self:addChild(self.outline)
 
     self.afterimage_delay = 5
-    self.drain_rate = 10        -- Number of frames to wait between each 
+    self.drain_rate = 3        -- Number of frames to wait before losing TP
     self.drain_timer = 0
 
 
@@ -61,6 +61,7 @@ function ChronosSoul:update()
     if not self.transitioning and Input.down("a") and Game:getTension() > 0 then
         if self.drain_timer == self.drain_rate then
             Game:removeTension(1)
+            self.drain_timer = 0
         else
             self.drain_timer = self.drain_timer + 1
         end

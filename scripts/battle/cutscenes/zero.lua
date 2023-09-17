@@ -22,7 +22,22 @@ return {
         end)
 
     end,
-    
+
+    susie_action = function (cutscene, battler, enemy)
+        cutscene:text("* Uh...", "suspicious", "susie")
+        if Game.party[1].name == "Susie" then
+            cutscene:text("* The hell am I supposed to do?", "nervous", "susie")
+        else
+            cutscene:text("* The hell do you want me to do?", "nervous", "susie")
+        end
+    end,
+    robo_susie_action = function (cutscene, battler, enemy)
+        cutscene:text("* ...[wait:20]\n* No.", "default", "robo_susie")
+        battler:setAnimation("battle/act_end")
+        cutscene:wait(20/30)
+        Game.battle:pushForcedAction(battler, "AUTOATTACK", Game.battle:getActiveEnemies()[1], nil, {points = 150})
+    end,
+
     ending = function(cutscene, battler, enemy)
         cutscene:wait(20/30)
     end
