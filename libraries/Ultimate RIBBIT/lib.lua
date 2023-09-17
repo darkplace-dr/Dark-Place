@@ -138,7 +138,7 @@ function lib:postInit()
     			if #Game.battle.party > 1 then
     				Game.battle:addMenuItem({
     					["name"] = "SEND ALL",
-    					["unusable"] = not Game.battle.encounter.flee,
+    					["unusable"] = false,
     					["description"] = "Spare\nEveryone",
     					["color"] = sparable and {1, 1, 0, 1} or {1, 1, 1, 1},
     					["tp"] = 16,
