@@ -9,13 +9,13 @@ function BlueSoul:init(x, y, angle)
     self.ground_pounded = false
     self.gravity = 0
     self.jumps_left = 0
-	
+
 	-- Variables that can be changed
     self.can_jump = true 		-- Can the blue soul jump? [boolean] (true; false) | default: true
     self.can_doublejump = false -- Can the blue soul double jump? [boolean] (true; false) | default: false
     self.can_groundpound = false -- Can the blue soul ground pound? W.I.P. [boolean] (true; false) | default: true
     self.jump_height = 5 		-- How high can the blue soul jump? [real] (any number) | default: 5
-    self.jump_count = 2 		-- How much can the blue soul double jump? [real] (any number) | default: 2
+    self.jump_count = 1 		-- How much can the blue soul double jump? [real] (any number) | default: 2
     self.direction = "down" 	-- What directiion is the soul facing and falling? [string] ("down"; "left"; "up"; "right") | default: "down"
 end
 
@@ -33,7 +33,7 @@ function BlueSoul:doMovement()
     if Input.down("cancel") then speed = speed / 2 end -- Focus mode.
 
     local move_x, move_y = 0, 0
-	
+
 	if self.direction == "down" then
 		-- Keyboard input:
 		if Input.down("left")  then move_x = move_x - 1 end

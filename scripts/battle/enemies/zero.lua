@@ -9,12 +9,12 @@ function Zero:init()
     self:setActor("zero")
 
     -- Enemy health
-    self.max_health = 1000
-    self.health = 1000
+    self.max_health = 3500
+    self.health = 3500
     -- Enemy attack (determines bullet damage)
     self.attack = 10
     -- Enemy defense (usually 0)
-    self.defense = 0
+    self.defense = 5
     -- Enemy reward
     self.money = 100
     -- Disables running away
@@ -49,10 +49,29 @@ function Zero:init()
     -- Text displayed at the bottom of the screen when the enemy has low health
     self.low_health_text = "* He's running out of time."
 
+    self:registerAct("Red Buster", "Red\nDamage", {"susie"}, 60)
+    --self:registerAct("Red Buster", "Red\nDamage", {"robo_susie"}, 60)
+
 end
 
 function Zero:onAct(battler, name)
-    return super.onAct(self, battler, name)
+    if name == "Red Buster" then
+        Game.battle:powerAct("red_buster", battler, "susie", self)
+        -- Fun fact! this function crashes if you return a string!
+        return
+    elseif name == "Standard" then --X-Action
+        if battler.chara.id == "susie" then
+            -- S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
+            Game.battle:startActCutscene("zero", "susie_action")
+            return
+        elseif battler.chara.id == "robo_susie" then
+            -- Robo-S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
+            Game.battle:startActCutscene("zero", "robo_susie_action")
+            return
+        end
+    else
+        return super.onAct(self, battler, name)
+    end
 end
 
 return Zero
