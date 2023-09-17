@@ -13,8 +13,6 @@ function Runner:init()
 end
 
 function Runner:onStart()
-    Game.battle:swapSoul(BlueSoul())
-
     --ground texture
     self.ground = self:spawnObjectTo(Game.battle.mask, Sprite("battle/bullets/dino_ground", 0, 220))
     self.ground:setScale(2)

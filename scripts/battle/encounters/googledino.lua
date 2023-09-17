@@ -14,6 +14,10 @@ function GoogleDino:init()
 	self.flee = false
 end
 
+function GoogleDino:createSoul(x, y)
+    return BlueSoul(x, y)
+end
+
 function GoogleDino:onBattleEnd()
     Game:setFlag("googledino_defeated", true)
 end
