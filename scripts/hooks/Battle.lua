@@ -59,11 +59,27 @@ function Battle:onStateChange(old,new)
             self:addChild(guitarspin)
             guitarspin.x = YOU.x
             guitarspin.y = YOU.y
+            guitarspin.oldlayer = guitarspin.layer
             guitarspin.layer = YOU.layer - 1
             guitarspin:setScale(2)
             guitarspin:setOrigin(0.5, 1)
             guitarspin.physics.direction = math.rad(270)
             guitarspin.physics.speed = 20
+            local bonkrr = love.math.random(27, 30)
+            if bonkrr >= 27 then
+                guitarspin.bonkem = 1
+                Game.battle.timer:after(0.5, function ()
+                    guitarspin.physics.gravity = 1
+                    guitarspin.layer = guitarspin.oldlayer
+                    Game.battle.timer:after((1 + 20/30), function ()
+                        Assets.playSound("bonk")
+                        guitarspin.physics.direction = 0
+                        guitarspin.physics.gravity = 3
+                        local YOU = Game.battle:getPartyBattler("YOU")
+                        YOU:setAnimation("battle/victoryconcern")
+                    end)
+                end)
+            end
         end
     end
 	

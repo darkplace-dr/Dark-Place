@@ -117,10 +117,19 @@ return {
     end,
 
     hallwayrng = function (cutscene, event)
-        if love.math.random(1, 100) <= 5 then
-            Game.world:mapTransition("devhotel/fakehallway", "entry")
+        if Input.down("cancel") and Input.down("menu") then
+            local speedrunners = "appeased"
+            if love.math.random(1, 100) <= 50 then
+                Game.world:mapTransition("devhotel/fakehallway", "entry")
+            else
+                Game.world:mapTransition("devhotel/devhotel1", "entryright")
+            end
         else
-            Game.world:mapTransition("devhotel/devhotel1", "entryright")
+            if love.math.random(1, 100) <= 5 then
+                Game.world:mapTransition("devhotel/fakehallway", "entry")
+            else
+                Game.world:mapTransition("devhotel/devhotel1", "entryright")
+            end
         end
     end,
 
