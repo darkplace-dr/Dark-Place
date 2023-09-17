@@ -66,7 +66,7 @@ function Battle:onStateChange(old,new)
             guitarspin.physics.direction = math.rad(270)
             guitarspin.physics.speed = 20
             local bonkrr = love.math.random(27, 30)
-            if bonkrr >= 27 then
+            if bonkrr <= 27 then
                 guitarspin.bonkem = 1
                 Game.battle.timer:after(0.5, function ()
                     guitarspin.physics.gravity = 1
