@@ -98,7 +98,68 @@ function lib:postInit()
 
     Utils.hook(ActionButton, "select", function(orig, self)
         if self.type == "send" then
-            Game.battle:setState("ENEMYSELECT", "SPARE")
+            if self.battler == Game.battle.party[1] then
+    			Game.battle:clearMenuItems()
+    			local sparable = false
+    			for k,v in pairs(Game.battle:getActiveEnemies()) do
+    				if v.mercy >= 100 then
+    					sparable = true
+    					break
+    				end
+    			end
+    			Game.battle:addMenuItem({
+                    ["name"] = "SEND",
+                    ["unusable"] = false,
+                    ["description"] = "",
+    				["color"] = sparable and {1, 1, 0, 1} or {1, 1, 1, 1},
+                    ["callback"] = function(menu_item)
+                        Game.battle:setState("ENEMYSELECT", "SPARE")
+                    end
+                })
+    			local party = {}
+    			for k,chara in ipairs(Game.party) do
+    				if k > 1 then
+    					table.insert(party, chara.id)
+    				end
+                end
+    			Game.battle:addMenuItem({
+                    ["name"] = "FLY",
+                    ["unusable"] = not Game.battle.encounter.flee,
+                    ["description"] = Game.battle.encounter.flee and "" or "Can't\nEscape",
+    				["party"] = Game.battle.encounter.flee and party or {},
+                    ["callback"] = function(menu_item)
+    					if (love.math.random(1,100) < Game.battle.encounter.flee_chance) then
+    						Game.battle:setState("FLEE")
+    					else
+    						Game.battle:setState("ENEMYDIALOGUE", "FLEE")
+    					end
+                    end
+                })
+    			if #Game.battle.party > 1 then
+    				Game.battle:addMenuItem({
+    					["name"] = "SEND ALL",
+    					["unusable"] = not Game.battle.encounter.flee,
+    					["description"] = "Spare\nEveryone",
+    					["color"] = sparable and {1, 1, 0, 1} or {1, 1, 1, 1},
+    					["tp"] = 16,
+    					["party"] = party,
+    					["callback"] = function(menu_item)
+    						Game:removeTension(16)
+    						for k,v in pairs(Game.battle:getActiveEnemies()) do
+    							if v:canSpare() then
+    								v:spare()
+    							else
+    								v:addMercy(v.spare_points * 1.5)
+    							end
+    						end
+    						Game.battle:setState("ENEMYDIALOGUE", "SPAREALL")
+    					end
+    				})
+    			end
+    			Game.battle:setState("MENUSELECT", "SPARE")
+    		else
+    			Game.battle:setState("ENEMYSELECT", "SPARE")
+    		end
         else
             orig(self)
         end
