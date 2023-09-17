@@ -397,7 +397,6 @@ return {
 				end
 				
 				Kristal.callEvent("createQuest", "Jamm's Closure", "acj2", "Jamm revealed to you the reason why he hates Enzio so much. He says to head back to the TOMBSITE and walk \"left, down, right, up\". What will you find in the new area Jamm told you about?")
-				cutscene:text("* (WIP, check back in a future update)")
 			else
 				cutscene:text("* You insertn't.")
 			end
