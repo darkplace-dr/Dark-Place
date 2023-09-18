@@ -10,13 +10,13 @@ function BattleUI:drawState()
         local x = 0
         local y = 0
 		local party = Game.battle.party[Game.battle.current_selecting].chara
-		if party.soul_color then
+		if party.soul_color and Kristal.getLibConfig("better_battles", "party_souls") then
 			Draw.setColor(party.soul_color)
 		else
 			Draw.setColor(Game.battle.encounter:getSoulColor())
 		end
 		local heart_sprite = self.heart_sprite
-		if party.heart_sprite then
+		if party.heart_sprite and Kristal.getLibConfig("better_battles", "party_souls") then
 			heart_sprite = Assets.getTexture(party.heart_sprite)
 		end
         Draw.draw(heart_sprite, 5 + ((Game.battle.current_menu_x - 1) * 230), 30 + ((Game.battle.current_menu_y - (page*3)) * 30))
@@ -136,13 +136,13 @@ function BattleUI:drawState()
         local page_offset = page * 3
 
 		local party = Game.battle.party[Game.battle.current_selecting].chara
-        if party.soul_color then
+        if party.soul_color and Kristal.getLibConfig("better_battles", "party_souls") then
 			Draw.setColor(party.soul_color)
 		else
 			Draw.setColor(Game.battle.encounter:getSoulColor())
 		end
 		local heart_sprite = self.heart_sprite
-		if party.heart_sprite then
+		if party.heart_sprite and Kristal.getLibConfig("better_battles", "party_souls") then
 			heart_sprite = Assets.getTexture(party.heart_sprite)
 		end
         Draw.draw(heart_sprite, 55, 30 + ((Game.battle.current_menu_y - page_offset) * 30))
@@ -292,7 +292,7 @@ function BattleUI:drawState()
                     love.graphics.rectangle("fill", 520, 55 + y_off, ((enemy.mercy / 100) * 81), 16)
 					if Kristal.getLibConfig("better_battles", "tiredness_bar") then
 						Draw.setColor(64/255, 1, 1, 1)
-						love.graphics.rectangle("fill", 520, 63 + y_off, ((enemy.tiredness / 100) * 81), 8)
+						love.graphics.rectangle("fill", 520, 71 + y_off, ((enemy.tiredness / 100) * 81), 2)
 					end
 
                     if draw_percents and enemy.selectable then
@@ -316,13 +316,13 @@ function BattleUI:drawState()
         local page_offset = page * 3
 
 		local party = Game.battle.party[Game.battle.current_selecting].chara
-        if party.soul_color then
+        if party.soul_color and Kristal.getLibConfig("better_battles", "party_souls") then
 			Draw.setColor(party.soul_color)
 		else
 			Draw.setColor(Game.battle.encounter:getSoulColor())
 		end
 		local heart_sprite = self.heart_sprite
-		if party.heart_sprite then
+		if party.heart_sprite and Kristal.getLibConfig("better_battles", "party_souls") then
 			heart_sprite = Assets.getTexture(party.heart_sprite)
 		end
         Draw.draw(heart_sprite, 55, 30 + ((Game.battle.current_menu_y - page_offset) * 30))

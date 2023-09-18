@@ -6,6 +6,9 @@
         "AcousticJamm"
     ],
 	"config": {
+		//Party souls
+		"party_souls": true,
+		
 		//Tiredness bar
 		"tiredness_bar": true,
 		

@@ -72,7 +72,9 @@ function EnemyBattler:addTired(amount)
             local src = Assets.playSound("mercyadd", 0.8)
             src:setPitch(pitch)
         end
-		self:statusMessage("tired", amount)
+		if Kristal.getLibConfig("better_battles", "tiredness_bar") then
+			self:statusMessage("tired", amount)
+		end
     end
 end
 
