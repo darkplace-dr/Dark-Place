@@ -5,4 +5,19 @@
     "authors": [
         "AcousticJamm"
     ],
+	"config": {
+		//Tiredness bar
+		"tiredness_bar": true,
+		
+		//Back attacks
+		"back_attack": true,
+		
+		//Spare tactics
+		"spare_tactics": true,
+		
+		// Skill button
+		"skill_button": true,
+		"magic_name": "Magic",
+		
+	},
 }
