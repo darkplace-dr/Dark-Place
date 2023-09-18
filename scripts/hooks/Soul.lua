@@ -128,7 +128,7 @@ function Soul:update()
         self.parry_sfx:play()
 
         for _,chara in pairs(Game.battle.stage:getObjects(PartyBattler)) do
-            if not chara.actor then goto continue end
+            if not chara.actor or chara.is_down then goto continue end
 
             -- workaround due of actors being loaded first by registry
             local sprites = chara.actor.getTauntSprites and chara.actor:getTauntSprites() or chara.actor.taunt_sprites
