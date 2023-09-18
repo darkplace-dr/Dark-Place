@@ -290,8 +290,10 @@ function BattleUI:drawState()
                 else
                     Draw.setColor(1, 1, 0, 1)
                     love.graphics.rectangle("fill", 520, 55 + y_off, ((enemy.mercy / 100) * 81), 16)
-                    Draw.setColor(64/255, 1, 1, 1)
-                    love.graphics.rectangle("fill", 520, 63 + y_off, ((enemy.tiredness / 100) * 81), 8)
+					if Kristal.getLibConfig("better_battles", "tiredness_bar") then
+						Draw.setColor(64/255, 1, 1, 1)
+						love.graphics.rectangle("fill", 520, 63 + y_off, ((enemy.tiredness / 100) * 81), 8)
+					end
 
                     if draw_percents and enemy.selectable then
                         Draw.setColor(PALETTE["battle_mercy_text"])

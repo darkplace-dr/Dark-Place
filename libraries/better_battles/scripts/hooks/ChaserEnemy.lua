@@ -9,7 +9,7 @@ function ChaserEnemy:onCollide(player)
 		Mod.back_attack = false
 		local angle = Utils.angle(Game.world.player.x, Game.world.player.y, self.x, self.y)
 		local facing = Utils.facingFromAngle(angle)
-		if facing == self:getBackFace() then
+		if facing == self:getBackFace() and Kristal.getLibConfig("better_battles", "back_attack") then
 			print("Back attack!")
 			Mod.back_attack = true
 		end

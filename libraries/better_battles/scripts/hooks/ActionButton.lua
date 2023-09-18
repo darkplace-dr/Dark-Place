@@ -132,7 +132,7 @@ function ActionButton:select()
             Game.battle:setState("MENUSELECT", "ITEM")
         end
     elseif self.type == "spare" then
-		if self.battler == Game.battle.party[1] then
+		if self.battler == Game.battle.party[1] and Kristal.getLibConfig("better_battles", "spare_tactics") then
 			Game.battle:clearMenuItems()
 			local sparable = false
 			for k,v in pairs(Game.battle:getActiveEnemies()) do
@@ -196,6 +196,18 @@ function ActionButton:select()
 		end
     elseif self.type == "defend" then
         Game.battle:pushAction("DEFEND", nil, {tp = -16})
+    elseif self.type == "skill" then
+        Game.battle:clearMenuItems()
+
+        for id, action in ipairs(self.battler.chara:getSkills()) do
+            Game.battle:addMenuItem({
+                ["name"] = action[1],
+                ["description"] = action[2],
+                ["callback"] = action[3]
+            })
+        end
+
+        Game.battle:setState("MENUSELECT", "SKILL")
     end
 end
 
