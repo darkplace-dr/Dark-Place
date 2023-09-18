@@ -28,32 +28,17 @@ function Zero:init()
 end
 
 function Zero:createSoul(x, y)
-    local soul = ChronosSoul(x, y)
+    local soul = Soul(x, y)
+    soul.force_timeslow = true
     return soul
-    
 end
 
-function Zero:update()
-    --[[
-    --]]
-    super:update(self)
-end
-
---
 function Zero:beforeStateChange(old, new)
     if old == "INTRO" and new == "ACTIONSELECT" then
         Game.battle:startCutscene("zero", "start")
     end
 end
---]]
-
---[[
-function Zero:onBattleStart()
-    Game.battle:startCutscene("zero", "start")
-end
---]]
-
---[[
+--
 function Zero:onStateChange(old, new)
     if new == "DEFENDING" then
         Game.battle:returnToWorld()
