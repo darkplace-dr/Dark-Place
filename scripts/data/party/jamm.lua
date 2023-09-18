@@ -14,7 +14,11 @@ function character:init()
     self.soul_priority = 0
     self.soul_color = {1, 106/255, 0}
 
-    self.has_act = false
+    if Game:getFlag("jamm_canact") then
+        self.has_act = true
+    else
+        self.has_act = false
+    end
     self.has_spells = true
 
     self.has_xact = true
