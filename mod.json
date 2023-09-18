@@ -77,20 +77,22 @@
   // Reaction messages for specific names that players may input in the naming screen.
   "namesMessages": {
     // Characters (I guess)
-    "YOU": "[spacing:3.2]*croak*",
     "KRIS": "[style:GONER][spacing:3.2]THE FUTURE IS IN\nYOUR HANDS.",
-    "SUSIE": "[spacing:3.2]Uhhh, yeah sure.\nI guess...",
+    "SUSIE": "[spacing:3.2]That's MY name, punk!\nGo get your own!",
     "ROUXLS": "[spacing:3.2]I DID NOT GIVE THOUST\nTHE PERMITS TO USETH\nMINE NAME!",
-    "DESS": "[spacing:3.2]fat chance, lmao.",
-    "FRISKTWO": "[spacing:3.2]i feel just like john\nwick",
+    "STARWALKER": "[spacing:3.2]This name is [color:yellow]pissing[color:reset]\nme off.",
     "SPAMTON": "[style:GONER][spacing:3.2]GET YOUR OWN [Account\nName] YOU [!@?#]!!!",
     "SOAMTON": "[style:GONER][spacing:3.2]YOU KNOW WHAT? I'LL\n[[Accept Terms &\nAgreements]] THIS TIME...",
+    "SANS": "[spacing:3.2]nope.",
+    "YOU": "[spacing:3.2]*croak*",
+    "DESS": "[spacing:3.2]fat chance, lmao.",
+    "FRISKTWO": "[spacing:3.2]i feel just like john\nwick",
     "MORSHU": "[style:GONER][spacing:3.2]SORRY. I CAN'T LET YOU USE\nMY NAME! COME BACK WHEN\nYOU'RE A LITTLE...\nMMMMMM...ORIGINAL!",
 
     // Devs
     "BRANDON": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
     "BRENDA": "[style:GONER][spacing:3.2]WELL... I GUESS YOU\nCOULD SAY THAT WAS...\nWHEN WORLDS COLLIDE.\nWAIT... WRONG MOD.",
-    "JARU": "[style:GONER][spacing:3.2]NOTE: NOT TO BE CONFUSED\nWITH A CERTAIN DELTARUNE\nTHEORIST.",
+    "JARU": "[style:GONER][spacing:3.2]NOT TO BE CONFUSED WITH\nA CERTAIN DELTARUNE\nTHEORIST.",
     "VELVET": "[style:GONER][spacing:3.2]WAIT WHICH ONE ARE YOU\nTALKING ABOUT???\nTHERE'S THE FABRIC, CAKE,\nAND THE MOUSE.\nWHICH ONE?",
     // Agent 7? ~~(Would her Dess% speedrun be invalid just for this change)~~
     "LUCY": "[style:GONER][spacing:3.2]HEY, THAT'S ME!",
@@ -103,6 +105,7 @@
     "PLAGUEIS": "[style:GONER][spacing:3.2]IT'S NOT A STORY THE\nLIGHTNERS WOULD TELL\nYOU...",
     "GARFZONE": "[style:GONER][spacing:3.2]GEE...SOME PEOPLE ENJOY\nA LITTLE MUSIC IN THE\nMORNING...",
     "SWALLOW": "[style:GONER][spacing:3.2]WHAT DO YOU MEAN?\nAFRICAN OR EUROPEAN?",
+    "A": "[spacing:3.2]Oh wow, reeaaal\ncreative there,\nbucko...",
     // Extra visual bit is handled by preview.lua
     "SWELLOW": "[style:GONER][spacing:3.2]AWW THE SCRUNKLY.\nTHE GOOBER. A\nSWELL FELLOW. A\nLITTLE FELLA.",
     "PAUL": "[style:none][spacing:0]KAAAAAAAAA!\nPaul is the favorite\nof all!",
@@ -116,7 +119,9 @@
   },
   // Names to disallow player from using in the naming screen.
   "namesDeny": [
+    "SUSIE",
     "ROUXLS",
+    "SANS",
     "DESS",
     "SPAMTON",
     "MORSHU"
