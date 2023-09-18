@@ -211,4 +211,37 @@ function ActionButton:select()
     end
 end
 
+function ActionButton:hasSpecial()
+    if self.type == "magic" or self.type == "skill" then
+        if self.battler then
+            local has_tired = false
+            for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                if enemy.tired then
+                    has_tired = true
+                    break
+                end
+            end
+            if has_tired then
+                local has_pacify = false
+                for _,spell in ipairs(self.battler.chara:getSpells()) do
+                    if spell and spell:hasTag("spare_tired") then
+                        if spell:isUsable(self.battler.chara) and spell:getTPCost(self.battler.chara) <= Game:getTension() then
+                            has_pacify = true
+                            break
+                        end
+                    end
+                end
+                return has_pacify
+            end
+        end
+    elseif self.type == "spare" then
+        for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+            if enemy.mercy >= 100 then
+                return true
+            end
+        end
+    end
+    return false
+end
+
 return ActionButton
