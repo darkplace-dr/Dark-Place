@@ -1,7 +1,7 @@
 local MyEncounter, super = Class(Encounter)
 
 function MyEncounter:init()
-    super.init(self)
+    super:init(self)
 	
     local enemy = self:addEnemy("shadowmen")
 	enemy.y = enemy.y + enemy.height * .5

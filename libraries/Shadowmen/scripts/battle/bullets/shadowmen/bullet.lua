@@ -2,17 +2,21 @@ local id = "shadowmen/bullet"
 local MyBullet, super = Class(Bullet, id)
 
 function MyBullet:init(x, y)
-    super.init(self, x, y)
+    super:init(self, x, y)
 
     self:setSprite("bullets/" .. id, 4 / 60, true)
     self:setHitbox(0, 0, 15, 7)
 	self:setRotationOrigin(0.5)
 	
 	self._destroy = false
+	
+	if Kristal.getLibConfig("shadowmen", "play_sfx") then
+		Assets.playSound("shadowmen_shoot", 2)
+	end
 end
 
 function MyBullet:update()
-	super.update(self)
+	super:update(self)
 	
 	if self._destroy then return end
 	

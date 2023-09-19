@@ -23,6 +23,10 @@ local function spawnNote(self, wave, enemy)
 end
 
 local function generateWave(self, enemy)
+	if Kristal.getLibConfig("shadowmen", "play_sfx") then
+		Assets.playSound("shadowmen_saxophone", 2)
+	end
+	
 	-- local enemy = self.enemy
 	local wave = {}
 	
@@ -56,6 +60,7 @@ local function generateWave(self, enemy)
 		128, midY,
 		0, 180,
 	}
+	wave.curve:translate(-8, 0)
 	
 	wave.derivative = wave.curve:getDerivative()
 	
@@ -64,7 +69,6 @@ local function generateWave(self, enemy)
 	
 	self.timer:script(function(wait)
 		wait(0.03)
-        Assets.playSound("spearappear")
 		
 		local seg = wave.curve:renderSegment(0, 0.1, 10)
 		seg.color = {1, 0, 0, 1}
@@ -104,7 +108,7 @@ local function generateWave(self, enemy)
 				table.remove(wave.segments, k)
 			end)
 		end
-		
+	
 		wait(1)
 		collectgarbage()
 		
@@ -185,7 +189,7 @@ local function drawCurve(wave)
 end
 
 function MyWave:draw()
-	super.draw(self)
+	super:draw(self)
 
 	for k,wave in ipairs(self.waves) do
 		drawCurve(wave)

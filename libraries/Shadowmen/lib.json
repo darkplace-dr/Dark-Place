@@ -3,42 +3,35 @@
     "authors": [
         "KateBulka"
     ],
-    "version": "v1.0.0",
+    "version": "v1.0.3",
     "engineVer": "v0.8.0",
 	
     "config": {
+		"name": "Shadowmen",
+		
+		"play_sfx": true,
+		
 		"text": [
 			"* You feel mafia's presence.",
 			"* It's thrillin' time.",
-			"* You have a big urge to dance!",
-			"* Shadowman readies his gun.",
-        	"* Shadowman remembers he has a casting soon.",
-        	"* Shadowman looks for something impressive.",
-        	"* Shadowman looks for his shadow before realizing there's none."
 		],
 		
 		"dialogue": [
 			"Care to join us?",
 			"It'll knock your\nsocks OFF!",
 			"What's up with that\nZOMBIE walk?",
-			"Aaow!",
-			"We're the shadows!\n...And men.",
-        	"Surprise me!",
-        	"I don't have shade\nto throw.",
-        	"I like my coffee black.\nJust like me."
+			"Aaow!"
 		],
 		
 		"full_mercy": [
 			"That was COOL!",
 			"Maybe we should do some\nmusic clip.",
-			"Hee Hee!",
-			"Nice show, kids.",
-			"You guys are cool!\nYou could become big!"
+			"Hee Hee!"
 		],
 		
-		"low_health_text": "* Shadowman is slowly fading into the darkness.",
+		"low_health_text": "* Crime rates goes up.",
 		
-		"check": "AT 8 DF 3\n* Always looking for something that would knock their socks off.",
+		"check": "Has a collection\nof nice socks!",
 		
 		"spare_points": 25,
 		"attack": 10,
@@ -46,6 +39,6 @@
 		"gold": 96,
 		
 		"act_name": "PointHearts",
-		"act_text": "* %s pointed at Shadowmen!"
+		"act_text": "* <name> pointed at Shadowmen!"
 	}
 }
