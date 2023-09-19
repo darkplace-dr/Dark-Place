@@ -92,9 +92,15 @@ function Soul:update()
 
 	local player = Game.party[1]
 	local player_name = Game.save_name:upper()
+    local toque_equipped = false
+    local focus_equipped = false
+	for _,party in ipairs(Game.party) do
+        if party:checkArmor("pizza_toque") then toque_equipped = true end
+        if party:checkArmor("focus") then focus_equipped = true end
+    end
 	-- Taunt code starts here
 	if self.force_taunt ~= false then
-	if player:checkArmor("pizza_toque") or player_name == "PEPPINO" or self.force_taunt == true then
+	if toque_equipped or player_name == "PEPPINO" or self.force_taunt == true then
 	if self.transitioning then
         if self.parried_loop_sfx then
             self.parried_loop_sfx:stop()
@@ -167,7 +173,7 @@ function Soul:update()
 
 	-- Focus code starts here
 	if self.force_timeslow ~= false then
-	if player:checkArmor("focus") or self.force_timeslow == true then
+	if focus_equipped or self.force_timeslow == true then
 	if not self.transitioning then
         outlinefx.active = true
     end

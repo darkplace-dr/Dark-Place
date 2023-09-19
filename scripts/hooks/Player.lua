@@ -3,9 +3,12 @@ local Player, super = Class("Player", true)
 
 function Player:update()
     -- Holding run with the Pizza Toque equipped (or if the file name is "PEPPINO") will cause a gradual increase in speed.
-    local player = Game.party[1]
+    toque_equipped = false
+    for _,party in ipairs(Game.party) do
+        if party:checkArmor("pizza_toque") then toque_equipped = true end
+    end
     local player_name = Game.save_name:upper()
-    if player:checkArmor("pizza_toque") or player_name == "PEPPINO" then
+    if toque_equipped == true or player_name == "PEPPINO" then
         if self.run_timer > 60 then
             self.walk_speed = self.walk_speed + DT
         elseif self.walk_speed > 4 then
@@ -16,7 +19,7 @@ function Player:update()
     super.update(self)
 
     -- Hitting a wall at a speed of 10 or higher will do a small collision effect
-    if player:checkArmor("pizza_toque") or player_name == "PEPPINO" then
+    if toque_equipped == true or player_name == "PEPPINO" then
         if self.last_collided_x or self.last_collided_y then
             if self.walk_speed >= 10 then
                 Game.world.player:shake(4, 0)
@@ -27,7 +30,7 @@ function Player:update()
 
     --[[
     Old code that will either explode the player or do 20 damage to the party depending on their speed when hitting a wall.
-    if player:checkArmor("pizza_toque") or player_name == "PEPPINO" then
+    if toque_equipped == true or player_name == "PEPPINO" then
         if self.last_collided_x or self.last_collided_y then
                 if self.walk_speed >= 16 then
                     self:explode()
