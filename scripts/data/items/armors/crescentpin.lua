@@ -16,7 +16,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "A gift from one lover to another.\nGrants extra bonuses to a specific person."
+    self.description = "A gift representing the bond between close friends.\nGrants extra bonuses to a specific person."
 
     -- Default shop price (sell price is halved)
     self.price = nil
