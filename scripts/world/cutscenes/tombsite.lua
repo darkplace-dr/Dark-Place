@@ -93,10 +93,15 @@ return {
 				Game.world:mapTransition("fwood/cross", "down")
 				Game:addFlag("jamm_cross", 1)
 			end
+		elseif Game:getFlag("jamm_cross_2") == 3 then
+			Game.world:mapTransition("fwood/dungeon", "entry")
+			Game:setFlag("jamm_cross", 0)
+			Game:setFlag("jamm_cross_2", 0)
         else
             Game.world:mapTransition("fwood/graves", "entry")
 			Assets.playSound("incorrect", 1, 1)
 			Game:setFlag("jamm_cross", 0)
+			Game:setFlag("jamm_cross_2", 0)
         end
 	end,
 	down = function(cutscene, event)
@@ -113,20 +118,27 @@ return {
 		if has_value({3,6},Game:getFlag("jamm_cross")) then
             Game.world:mapTransition("fwood/cross", "up")
 			Game:addFlag("jamm_cross", 1)
+		elseif Game:getFlag("jamm_cross_2") == 1 then
+            Game.world:mapTransition("fwood/cross", "up")
+			Game:setFlag("jamm_cross", 0)
+			Game:addFlag("jamm_cross_2", 1)
         else
             Game.world:mapTransition("fwood/graves", "entry")
 			Assets.playSound("incorrect", 1, 1)
 			Game:setFlag("jamm_cross", 0)
+			Game:setFlag("jamm_cross_2", 0)
         end
 	end,
 	left = function(cutscene, event)
 		if Game:getFlag("jamm_cross", 0) < 1 then
             Game.world:mapTransition("fwood/cross", "right")
 			Game:addFlag("jamm_cross", 1)
+			Game:addFlag("jamm_cross_2", 1)
         else
             Game.world:mapTransition("fwood/graves", "entry")
 			Assets.playSound("incorrect", 1, 1)
 			Game:setFlag("jamm_cross", 0)
+			Game:setFlag("jamm_cross_2", 0)
         end
 	end,
 	right = function(cutscene, event)
@@ -143,9 +155,14 @@ return {
 		if has_value({1,5},Game:getFlag("jamm_cross")) then
             Game.world:mapTransition("fwood/cross", "left")
 			Game:addFlag("jamm_cross", 1)
+		elseif Game:getFlag("jamm_cross_2") == 2 then
+            Game.world:mapTransition("fwood/cross", "left")
+			Game:setFlag("jamm_cross", 0)
+			Game:addFlag("jamm_cross_2", 1)
         else
             Game.world:mapTransition("fwood/graves", "entry")
 			Game:setFlag("jamm_cross", 0)
+			Game:setFlag("jamm_cross_2", 0)
 			Assets.playSound("incorrect", 1, 1)
         end
 	end,
@@ -318,6 +335,99 @@ return {
 	jamm = function(cutscene, event)
 		cutscene:showNametag("Jamm")
 		cutscene:text("* See you later!", "smile", "jamm")
+		cutscene:hideNametag()
+	end,
+	door = function(cutscene, event)
+		local jamm = cutscene:getCharacter("jamm")
+		local dess = cutscene:getCharacter("dess")
+		
+		if Game:getFlag("video_jamm_watched") then
+			if jamm then
+				if dess then
+					local x,y = event:getRelativePos()
+					cutscene:detachCamera()
+					cutscene:detachFollowers()
+					cutscene:walkTo(Game.world.player, x + 20, y + 150, 0.75, "up")
+					for i, v in ipairs(Game.world.followers) do
+						if i == 1 then
+							cutscene:walkTo(v, x + 80, y + 150, 0.75, "up")
+						elseif i == 2 then
+							cutscene:walkTo(v, x + 20, y + 200, 0.75, "up")
+						elseif i == 3 then
+							cutscene:walkTo(v, x + 80, y + 200, 0.75, "up")
+						end
+					end
+					cutscene:showNametag("Jamm")
+					cutscene:text("* I can give it a shot.", "smile", "jamm")
+					cutscene:hideNametag()
+					cutscene:wait(cutscene:walkTo(jamm, x + 20, y + 80, 0.75, "up"))
+					cutscene:showNametag("Dess")
+					cutscene:text("* opening a door with your mind is definitely possible", "condescending", "dess")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* Oh, you have no idea, Dess.", "smirk", "jamm")
+					cutscene:showNametag("Dess")
+					cutscene:text("* okay", "condescending", "dess")
+					cutscene:hideNametag()
+					cutscene:wait(cutscene:walkTo(dess, x + 80, y + 80, 0.75, "up"))
+					
+					local layer = Game.world.map:getTileLayer("door_closed")
+					layer.visible = false
+					Assets.playSound("noise")
+					
+					cutscene:wait(1)
+					cutscene:look(jamm, "right")
+					cutscene:look(dess, "left")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* ...So I guess it's you and me, huh?", "stern", "jamm")
+					cutscene:showNametag("Dess")
+					cutscene:text("* are you asking me out?", "condescending", "dess")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* Hell no.\n* Let's just go in already.", "stern", "jamm")
+					cutscene:hideNametag()
+					cutscene:look(jamm, "up")
+					cutscene:look(dess, "up")
+					
+					cutscene:wait(cutscene:fadeOut(0.75))
+					for k,chara in ipairs(Game.party) do
+						Game:setFlag(chara.id .. "_party", false)
+					end
+					Game.party = {}
+					Game:addPartyMember("jamm")
+					Game:addPartyMember("dess")
+					Game:setFlag("jamm_party", true)
+					Game:setFlag("dess_party", true)
+					Assets.playSound("impact")
+					cutscene:wait(1)
+					cutscene:loadMap("fwood/dungeon_inside/entrance", "entry", "up")
+					
+					cutscene:wait(cutscene:fadeIn(0.75))
+					
+					cutscene:showNametag("Dess")
+					cutscene:text("* hey Jamm, the door locked behind us.", "condescending", "dess")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* ...That makes this a lot worse.", "nervous", "jamm")
+					cutscene:hideNametag()
+					local jamm_party = Game:getPartyMember("jamm")
+					jamm_party.has_act = true
+					Game:setFlag("jamm_canact", true)
+					cutscene:text("* Jamm can now use ACTs!")
+				else
+					cutscene:showNametag("Jamm")
+					cutscene:text("* Well, this is the door Ania mentioned.", "smile", "jamm")
+					cutscene:text("* She said she's been working on this a lot, but...", "neutral", "jamm")
+					cutscene:text("* She told me I need help from [color:yellow]a certain person[color:white].", "neutral", "jamm")
+				end
+			else
+				cutscene:text("* It's a door.\n* It doesn't seem to budge.")
+			end
+		else
+			if jamm then
+				cutscene:showNametag("Jamm")
+				cutscene:text("* ...Not yet.", "shaded_frown", "jamm")
+			else
+				cutscene:text("* It's a door.\n* It doesn't seem to budge.")
+			end
+		end
 		cutscene:hideNametag()
 	end
 }
