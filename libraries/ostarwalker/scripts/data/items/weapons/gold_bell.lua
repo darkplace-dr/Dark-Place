@@ -10,7 +10,7 @@ function item:init()
     self.type = "weapon"
     -- Item icon (for equipment)
     -- I couldn't draw a bell sprite that looked good, so...
-    self.icon = "ui/menu/icon/magic"
+    self.icon = "ui/menu/icon/star"
 
     -- Battle description
     self.effect = ""
