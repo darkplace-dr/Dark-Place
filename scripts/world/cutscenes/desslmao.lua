@@ -122,6 +122,9 @@ return {
 
 		Game:setFlag("gotDess", true)
 		Mod:unlockPartyMember("dess")
+
+		local susie_party = Game:getPartyMember("susie")
+		susie_party.opinions.dess = susie_party.opinions.dess - 20
   end,
 
 	dessgetoverhere = function(cutscene, event)
@@ -383,6 +386,9 @@ return {
 			cutscene:text("* (And dreams were broken that day.)", "neutral", "jamm")
 		end
 		cutscene:hideNametag()
+
+		local susie_party = Game:getPartyMember("susie")
+		susie_party.opinions.dess = susie_party.opinions.dess - 20
 
 		cutscene:detachFollowers()
 		Game:movePartyMember("dess", 2)

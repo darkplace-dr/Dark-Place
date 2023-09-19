@@ -95,6 +95,8 @@ return {
                 cutscene:showNametag("Brandon")
                 cutscene:text("* Yup!", "happy_b", "brandon")
                 cutscene:text("* Alright,[wait:5] let's get started!", "happy", "brandon")
+                Game:getPartyMember("brandon").opinions.susie = Game:getPartyMember("brandon").opinions.susie + 15
+                Game:getPartyMember("susie").opinions.brandon = Game:getPartyMember("susie").opinions.brandon + 15
                 cutscene:hideNametag()
                 for k,chara in ipairs(Game.party) do
 					Game:setFlag(chara.id .. "_party", false)
@@ -159,7 +161,7 @@ return {
         cutscene:text("* ...", "sus_nervous", "susie")
         cutscene:text("* I have no idea what anything you just said meant.", "neutral", "susie")
         cutscene:showNametag("Brandon")
-        cutscene:text("* Eh,[wait:5] don't think to hard about it.", "neutral_side", "brandon")
+        cutscene:text("* Eh,[wait:5] don't think too hard about it.", "neutral_side", "brandon")
         cutscene:showNametag("Susie")
         cutscene:text("* ... Whatever.", "neutral_side", "susie")
         cutscene:walkTo(susie, x, y + 140, 0.2, "down")
@@ -233,11 +235,15 @@ return {
         cutscene:text("* Wait,[wait:5] can I even call you a friend,[wait:5] Susie?", "neutral_side", "brandon")
         cutscene:showNametag("Susie")
         cutscene:text("* I mean,[wait:5] I don't see why you shouldn't.", "sincere_smile", "susie")
+        Game:getPartyMember("brandon").opinions.susie = Game:getPartyMember("brandon").opinions.susie + 25
+        Game:getPartyMember("susie").opinions.brandon = Game:getPartyMember("susie").opinions.brandon + 25
         cutscene:showNametag("Brandon")
         cutscene:text("* Alright.", "happy_b", "brandon")
         cutscene:text("* Anyways I'm a friend of Susie.", "happy", "brandon")
         cutscene:showNametag("Berdly")
         cutscene:text("* Ah.[wait:10] Well any friend of Susan is a friend of me.", "happy", "berdly")
+        Game:getPartyMember("brandon").opinions.berdly = Game:getPartyMember("brandon").opinions.berdly + 10
+        Game:getPartyMember("berdly").opinions.brandon = Game:getPartyMember("berdly").opinions.brandon + 15
         cutscene:showNametag("Susie")
         cutscene:text("* Anyways,[wait:5] why were you trying to break down that door?", "neutral", "susie")
         cutscene:showNametag("Berdly")
@@ -337,7 +343,7 @@ return {
                 cutscene:text("[voice:spamton2]* IT'S ON LIKE [[Legally Distinct Ape]]!!")
                 cutscene:hideNametag()
                 cutscene:startEncounter("omegaspamtonbossfight", true)
-                cutscene:text("* This part is VERY WIP (as you can tell from Spamton not haing any unique attacks)")
+                cutscene:text("* This part is VERY WIP (as you can tell from Spamton not having any unique attacks)")
                 cutscene:text("* Uhh I'll finish up the rest of this segment another time")
                 cutscene:text("* -BrandonK7200")
                 Game.world:mapTransition("gamertimeentrance", "exit", "down")

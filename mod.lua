@@ -132,6 +132,319 @@ function Mod:initializeImportantFlags(new_file)
         }
     end
 
+    if new_file or berdly.opinions == {} then
+        likely_old_save = true
+
+        local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm"}
+        for i, v in ipairs(party_members) do
+            local party = Game:getPartyMember(v)
+            if v == "YOU" then
+                party.opinions = {
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "kris" then
+                party.opinions = {
+                    YOU = 50,
+                    susie = 120,
+                    noelle = 70,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 70,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "susie" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 120,
+                    noelle = 120,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 60,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "noelle" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 70,
+                    susie = 400,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 100,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "dess" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 70,
+                    susie = 50,
+                    noelle = 100,
+                    brandon = 60,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 60,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 60
+                }
+            end
+            if v == "brandon" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 30,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 80,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 70
+                }
+            end
+            if v == "dumbie" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "ostarwalker" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "berdly" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 80,
+                    susie = 150,
+                    noelle = 120,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "bor" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 80,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "robo_susie" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    nonyo = 120,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "nonyo" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 120,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "iphone" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "frisk2" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    alseri = 50,
+                    jamm = 50
+                }
+            end
+            if v == "alseri" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    jamm = 50
+                }
+            end
+            if v == "jamm" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 15,
+                    brandon = 80,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50
+                }
+            end
+        end
+    end
+
     ----------
 
     if not new_file and likely_old_save then
