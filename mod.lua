@@ -132,7 +132,7 @@ function Mod:initializeImportantFlags(new_file)
         }
     end
 
-    if new_file or berdly.opinions == {} then
+    if new_file or berdly.opinions == nil then
         likely_old_save = true
 
         local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm"}
