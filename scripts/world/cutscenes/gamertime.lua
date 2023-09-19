@@ -96,20 +96,14 @@ return {
                 cutscene:text("* Yup!", "happy_b", "brandon")
                 cutscene:text("* Alright,[wait:5] let's get started!", "happy", "brandon")
                 cutscene:hideNametag()
-                for i, v in ipairs(Game.party) do
-                    Game:removePartyMember(v.id)
-                    Game:setFlag(v.id.."_party", false)
-                end
-                Game:removePartyMember("susie")
-                Game:setFlag("susie_party", false)
-                Game:removePartyMember("dess")
-                Game:setFlag("dess_party", false)
-                Game:removePartyMember("brandon")
-                Game:setFlag("brandon_party", false)
-                Game:addPartyMember("susie")
-                Game:addPartyMember("brandon")
-                Game:setFlag("susie_party", true)
-                Game:setFlag("brandon_party", true)
+                for k,chara in ipairs(Game.party) do
+					Game:setFlag(chara.id .. "_party", false)
+				end
+				Game.party = {}
+				Game:addPartyMember("susie")
+				Game:addPartyMember("brandon")
+				Game:setFlag("susie_party", true)
+				Game:setFlag("brandon_party", true)
                 Game.world:mapTransition("gamertimemain", "spawn", "down")
             else
                 cutscene:text("* Unfortunatly,[wait:5] none of your party seems interested in playing it.")
