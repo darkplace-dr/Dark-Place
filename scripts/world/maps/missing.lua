@@ -852,7 +852,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "starwalker",
+            ["actor"] = "og_starwalker",
             ["text1"] = "* The lack of\n[color:yellow]Counter-Strike: Source[color:reset] is [color:yellow]Pissing[color:reset] me off...",
             ["text2"] = "* I'm the original   [color:yellow]Starwalker[color:reset]"
           }
