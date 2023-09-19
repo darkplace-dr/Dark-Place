@@ -8,7 +8,7 @@ function Player:update()
         if party:checkArmor("pizza_toque") then toque_equipped = true end
     end
     local player_name = Game.save_name:upper()
-    if toque_equipped == true or player_name == "PEPPINO" then
+    if Game.world.map.id ~= "everhall" and Game.world.map.id ~= "everhall_entry" and toque_equipped == true or player_name == "PEPPINO" then
         if self.run_timer > 60 then
             self.walk_speed = self.walk_speed + DT
         elseif self.walk_speed > 4 then
