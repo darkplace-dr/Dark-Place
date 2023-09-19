@@ -51,7 +51,7 @@ end
 
 function Dummy:onAct(battler, name)
     if name == "Stop" then
-		Game.battle:startActCutscene("dummy.end_battle")
+		Game.battle:setState("TRANSITIONOUT")
 
     elseif name == "Standard" then
         return "* "..battler.chara:getName().." did something.."

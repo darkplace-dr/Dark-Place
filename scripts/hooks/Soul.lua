@@ -16,7 +16,7 @@ function Soul:init(x, y, color)
     self:addChild(self.sprite_focus)
 
 	self.force_taunt = nil -- Forces taunting in battle on or off, regardless of if the PizzaToque is equipped.
-	self.force_timeslow = nil -- Forces the focus ability on or off, regardless of if the placebo is equipped.
+	self.force_timeslow = nil -- Forces the Focus ability on or off, regardless of if the placebo is equipped.
 
 
 	-- Taunt variables start here
@@ -54,27 +54,43 @@ function Soul:init(x, y, color)
     --self.outline.alpha = 0
     --self:addChild(self.outline)
 
+    self.timeslow_sfx = Assets.getSound("concentrating")
+    self.timeslow_sfx:setLooping(true)
+
     self.afterimage_delay = 5
     self.drain_rate = 3        -- Number of frames to wait before losing TP
     self.drain_timer = 0
 
 
-    self.leader = Game.battle.party[1]
+    self.focus_holder = nil
+    for _,party in ipairs(Game.battle.party) do
+        if self.force_timeslow then self.focus_holder = Game.battle.party[1]     
+        elseif Game.party[_]:checkArmor("focus") then self.focus_holder = party
+        end
+    end
     outlinefx = BattleOutlineFX()
     outlinefx:setAlpha(0)
 
-    if self.leader:getFX("outlinefx") then
-        self.leader:removeFX("outlinefx")
+    if self.focus_holder then
+        if self.focus_holder:getFX("outlinefx") then
+            self.focus_holder:removeFX("outlinefx")
+        end
     end
     if Game.stage:getFX("vhs") then
         Game.stage:removeFX("vhs")
     end
 
-    self.leader:addFX(outlinefx, "outlinefx")
+    -- Apply outlinefx to whoever has Focus equipped, or the leader if force_timeslow is true
+    if self.focus_holder then self.focus_holder:addFX(outlinefx, "outlinefx") end
     vhsfx = Game.stage:addFX(VHSFilter(), "vhs")
     vhsfx.timescale = 2 -- I dunno if this even works.
 	vhsfx.active = false
     self.basespeed = self.speed
+    self.concentratebg = ConcentrateBG({1, 1, 1})
+    self.concentratebg.alpha_fx = self.concentratebg:addFX(AlphaFX())
+    self.concentratebg.alpha_fx.alpha = 0
+    Game.battle:addChild(self.concentratebg)
+
 	-- Timeslow ("Focus" Placebo) variables end here
 
 end
@@ -183,11 +199,13 @@ function Soul:update()
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, 0.5, DTMULT / 4)
         self.speed = Utils.approach(self.speed, self.basespeed * 2, DTMULT / 4)
         vhsfx.active = true
+        self.timeslow_sfx:play()
 	else
         Game.stage.timescale = Utils.approach(Game.stage.timescale, 1, DTMULT / 4)
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, 1, DTMULT / 4)
         self.speed = Utils.approach(self.speed, self.basespeed, DTMULT / 4)
         vhsfx.active = false
+        self.timeslow_sfx:stop()
     end
 
     -- Remove 1 TP for every drain_rate frames of slowdown active
@@ -208,6 +226,7 @@ function Soul:update()
     -- Soul VFX
     if not self.transitioning and Input.down("a") and Game:getTension() > 0 then
     self.outline.alpha = Utils.approach(self.outline.alpha, 1, DTMULT / 4)
+    self.concentratebg.alpha_fx.alpha = 1
     if self.afterimage_delay == 5 then
         local afterimage = AfterImage(self.outline, 0.5)
         self:addChild(afterimage)
@@ -217,8 +236,9 @@ function Soul:update()
     end
     else
     self.outline.alpha = Utils.approach(self.outline.alpha, 0, DTMULT / 4)
+    self.concentratebg.alpha_fx.alpha = Utils.approach(self.concentratebg.alpha_fx.alpha, 0, DTMULT / 4)
     end
-    outlinefx:setAlpha(self.outline.alpha - 0.2)
+    if self.focus_holder then outlinefx:setAlpha(self.outline.alpha - 0.2) end
 	end
 	end
 
