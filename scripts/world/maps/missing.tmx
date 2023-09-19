@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="48" tileheight="48" infinite="0" nextlayerid="8" nextobjectid="68">
  <editorsettings>
-  <export target="glitchy.lua" format="lua"/>
+  <export target="missing.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="music" value="GM_Construct"/>
@@ -145,7 +145,7 @@
   </object>
   <object id="64" name="npc" x="1817.5" y="865" width="40" height="40">
    <properties>
-    <property name="actor" value="starwalker"/>
+    <property name="actor" value="og_starwalker"/>
     <property name="text1">* The lack of
 [color:yellow]Counter-Strike: Source[color:reset] is [color:yellow]Pissing[color:reset] me off...</property>
     <property name="text2" value="* I'm the original   [color:yellow]Starwalker[color:reset]"/>

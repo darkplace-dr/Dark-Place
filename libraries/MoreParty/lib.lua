@@ -193,7 +193,7 @@ function Lib:init()
 		end
 		btn_types = Kristal.modCall("getActionButtons", self.battler, btn_types) or btn_types
 
-		local x = 16 + (5 - #btn_types) * 16
+		local x = 16 + (5 - #self.buttons) * 16
 		
 		for i,v in ipairs(self.buttons) do
 			v.visible = (Game.battle.current_selecting == self.index)
@@ -349,21 +349,25 @@ function Lib:init()
 						-- We're not able to select this, so make the heads gray.
 						Draw.setColor(COLORS.gray)
 					end
+					-- Head counter
+					local heads = 0
+					for index, party_id in ipairs(item.party) do
+						local chara = Game:getPartyMember(party_id)
+						if Game.battle:getPartyIndex(party_id) ~= Game.battle.current_selecting then
+							heads = heads + 1
+						end
+					end
 					for index, party_id in ipairs(item.party) do
 						local chara = Game:getPartyMember(party_id)
 						-- Draw head only if it isn't the currently selected character
 						if Game.battle:getPartyIndex(party_id) ~= Game.battle.current_selecting then
 							local ox, oy = chara:getHeadIconOffset()
-							Draw.draw(Assets.getTexture(chara:getHeadIcons() .. "/head"), text_offset + 30 + (x * 230) + ox, 50 + (y * 30) + oy)
 							local party = 0
-							if #item.party > 4 then
-								party = #item.party - 4
+							if heads > 2 then
+								party = heads - 2
 							end
-							if index >= #item.party then
-								text_offset = text_offset + 30
-							else
-								text_offset = text_offset + (30 * (1 - party * 0.167)) - party % 4 * 2.5
-							end
+							Draw.draw(Assets.getTexture(chara:getHeadIcons() .. "/head"), text_offset + 30 + (x * 230) + ox, 50 + (y * 30) + oy + (party ~= 0 and (3.6 + party * 2.3) or 0), 0, 1 / (1 + party * 0.35))
+							text_offset = text_offset + (30 / (1 + party * 0.5))
 						end
 					end
 				end
