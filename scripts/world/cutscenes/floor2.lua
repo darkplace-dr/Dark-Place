@@ -305,5 +305,106 @@ return {
         end
 
         cutscene:gotoCutscene("TimeVortexCutscene", "roombor")
+    end,
+    meet_lancer = function(cutscene, event)
+        local leader = Mod:getLeader("chara")
+        local susie = cutscene:getCharacter("susie")
+        local lancer = cutscene:getCharacter("lancer")
+
+        cutscene:detachFollowers()
+        lancer:setPosition(325, 236)
+        lancer:setFacing("up")
+		
+        cutscene:wait(1)
+
+        if susie then
+            cutscene:text("* Wait,[wait:2] is that-?", "surprise", "susie")
+
+            Game.world.music:fade(0, 0.25)
+
+            lancer:setFacing("right")
+            cutscene:wait(0.5)
+            lancer:setFacing("down")
+
+            lancer.alert_icon = Sprite("effects/alert", lancer.sprite.width/2)
+            lancer.alert_icon:setOrigin(0.5, 1)
+            lancer.alert_icon.layer = 100
+            lancer:addChild(lancer.alert_icon)
+            Game.world.timer:after(0.8, function()
+                lancer.alert_icon:remove()
+            end)
+
+            cutscene:wait(1)
+            local lancer_theme = Music("deltarune/lancer", 0.8, 1)
+
+            cutscene:text("* Susie!!", "smile_tongue", "lancer")
+            cutscene:text("* Lancer!", "surprise_smile", "susie")
+
+            cutscene:wait(cutscene:walkTo(susie, susie.x, 300, 0.4))
+            cutscene:wait(cutscene:walkTo(susie, 400, susie.y, 0.25))
+            cutscene:wait(cutscene:walkTo(susie, susie.x, 240, 0.2))
+
+            susie:setFacing("left")
+            lancer:setFacing("right")
+
+            susie.visible = false
+            lancer:setAnimation("highfive")
+
+            cutscene:wait(0.2)
+            Assets.playSound("jump")
+            cutscene:wait(0.3)
+            Assets.playSound("whip_hard")
+            cutscene:wait(0.5)
+            Assets.playSound("lancerlaugh")
+            cutscene:wait(2)
+
+            cutscene:text("* Great to see you again, dude!", "sincere_smile", "susie")
+            cutscene:text("* But,[wait:2] uh,[wait:5] how'd you end up here?", "nervous", "susie")
+			
+            susie.visible = true
+            lancer:setSprite("walk")
+            lancer:setFacing("right")
+
+            cutscene:text("* I really don't know!", "tongue_b", "lancer")
+            cutscene:text("* There I was,[wait:5] residing in Kris' Spacious Pants Hole...[react:1]", "handsome", "lancer", {reactions={
+                {"Uhhh, pocket.", "right", "bottommid", "nervous_side", "susie"}
+            }})
+            cutscene:text("* When all of a sudden,[wait:5] I fell out and somehow ended up here!", "tongue_b", "lancer")
+            cutscene:text("* Speaking of Kris,[wait:2] where DID those two clowns run off too?", "confused_b", "lancer")
+            cutscene:text("* Aren't they usually with you?", "confused_b", "lancer")
+
+            susie:setSprite("away_scratch")
+
+            cutscene:text("* Yeah...[wait:5] they, uh,[wait:2] kinda vanished on me, heh.", "nervous_side", "susie")
+            cutscene:text("* Not really sure where they are either.", "nervous", "susie")
+			
+            susie:setSprite("away_scratch")
+
+            lancer:setFacing("down")
+            cutscene:wait(2)
+
+            if leader.actor.id == "YOU" then
+                cutscene:text("* Say[speed:0.5]...[wait:5]\n[speed:1]* Who's that lanky amphibian fellow over there?", "tongue_c", "lancer")
+            end
+
+            susie:resetSprite()
+            lancer:resetSprite()
+            lancer_theme:stop()
+            Game.world.music:fade(1, 0.25)
+
+            cutscene:text("* NOTE:[wait:10] This cutscene is a very big WIP,[wait:5] so there's obviously gonna be some bugs.")
+            cutscene:text("* Stay tuned for the full thing.[wait:10]\n- J.A.R.U.")
+        end
+    end,
+
+    lancer_obtain = function(cutscene, event)
+        local leader = Mod:getLeader("chara")
+        local lancer = cutscene:getCharacter("lancer")
+
+        cutscene:text("So,[wait:5] have you changed your mind?", "smile", "lancer")
+
+        if cutscene:choicer({ "Yes", "No" }) == 1 then
+            return
+        end
     end
 }

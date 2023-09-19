@@ -9,8 +9,8 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 6,
-  nextobjectid = 44,
+  nextlayerid = 7,
+  nextobjectid = 47,
   properties = {
     ["music"] = "deltarune/castletown"
   },
@@ -450,6 +450,70 @@ return {
           properties = {
             ["map"] = "floor2/doors_left",
             ["marker"] = "entry_lancer"
+          }
+        },
+        {
+          id = 44,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 340,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "lancer",
+            ["cutscene"] = "floor2.lancer_obtain"
+          }
+        },
+        {
+          id = 45,
+          name = "script",
+          class = "",
+          shape = "rectangle",
+          x = 0,
+          y = 0,
+          width = 640,
+          height = 480,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "floor2.meet_lancer",
+            ["once"] = false
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "controllers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 46,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 480,
+          y = 120,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!lancer_item",
+            ["target"] = { id = 44 }
           }
         }
       }
