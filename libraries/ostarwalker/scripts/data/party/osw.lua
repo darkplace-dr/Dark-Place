@@ -14,7 +14,7 @@ function character:init()
     -- Display level (saved to the save file)
     self.level = Game.chapter
     -- Default title / class (saved to the save file)
-    self.title = "Starwalker\nThe original."
+    self.title = "Star\nThe original."
 
     -- Determines which character the soul comes from (higher number = higher priority)
     self.soul_priority = 1
@@ -28,7 +28,7 @@ function character:init()
     -- Whether the party member can use their X-Action
     self.has_xact = true
     -- X-Action name (displayed in this character's spell menu)
-    self.xact_name = "S-Action"
+    self.xact_name = "O-Action"
 
     -- Spells
 
@@ -36,14 +36,19 @@ function character:init()
     self:addSpell("shooting_star")
 
     -- Current health (saved to the save file)
-    self.health = 150
+    self.health = 140
 
     -- Base stats (saved to the save file)
     self.stats = {
-        health = 150,
+        health = 140,
         attack = 7,
-        defense = 4,
+        defense = 2,
         magic = 13
+    }
+	
+    -- Max stats from level-ups
+    self.max_stats = {
+        health = 180
     }
 
     -- Weapon icon in equip menu
@@ -92,6 +97,28 @@ function character:init()
 
     -- Message shown on gameover (optional)
     self.gameover_message = nil
+end
+
+function character:onLevelUp(level)
+   self:increaseStat("health", 2)
+   if level % 10 == 0 then
+       self:increaseStat("attack", 1)
+	   self:increaseStat("magic", 1)
+   end
+end
+
+function character:drawPowerStat(index, x, y, menu)
+    if index == 3 then
+        local icon = Assets.getTexture("ui/menu/icon/fire")
+        Draw.draw(icon, x-26, y+6, 0, 2, 2)
+        love.graphics.print("Guts:", x, y)
+
+        Draw.draw(icon, x+90, y+6, 0, 2, 2)
+        if Game.chapter >= 2 then
+            Draw.draw(icon, x+110, y+6, 0, 2, 2)
+        end
+        return true
+    end
 end
 
 -- Function overrides go here
