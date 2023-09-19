@@ -14,7 +14,7 @@ local function update(self, wait, enemy)
 	for i = 1, 12 do
 		local actor = enemy.sprite
 		local gun = actor.gun
-		
+
 		gun.rotation = math.rad(math.random(-32, 64))
 		local x, y = gun:getRelativePos(0, 7, Game.battle)
 
@@ -32,8 +32,6 @@ local function update(self, wait, enemy)
 		shoot.rotation = gun.rotation
 		shoot.layer = 8999
 		
-        Assets.playSound("gunshoot", 0.4)
-		
 		self.timer:script(function(wait)
 			wait()
 			wait()
@@ -41,7 +39,7 @@ local function update(self, wait, enemy)
 			shoot:remove()
 		end)
 		
-		self:spawnObject(shoot, 8999)
+		Game.battle:addChild(shoot)
 		
 		-- local bullet = self:spawnBullet("shadowmen/bullet", x, y)
 		
@@ -62,7 +60,7 @@ function MyWave:onStart()
 	for _, enemy in ipairs(self.enemies) do
 		enemy.ogPos = enemy.x
 		enemy:setAnimation("shoots")
-        Assets.playSound("glock", 0.6)
+	
 		self.timer:tween(0.5, enemy, {x = enemy.x + 64}, 'out-sine', function()
 			self.timer:script(function(wait)
 				while true do

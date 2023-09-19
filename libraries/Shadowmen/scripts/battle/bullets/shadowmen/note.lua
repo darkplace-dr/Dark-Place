@@ -2,19 +2,23 @@ local id = "shadowmen/note"
 local MyBullet, super = Class(Bullet, id)
 
 function MyBullet:init(x, y)
-    super.init(self, x, y)
+    super:init(self, x, y)
 
     self:setSprite("bullets/" .. id, 4 / 60, true)
 	self:setScale(2.5)
 	
     self:setHitbox(0, 0, 12, 12)
 	self.t = 0
+	
+	if Kristal.getLibConfig("shadowmen", "play_sfx") then
+		Assets.playSound("shadowmen_note", 4)
+	end
 end
 
 local count = 0.04
 
 function MyBullet:update()
-	super.update(self)
+	super:update(self)
 	
 	local curve = self.curve
 	

@@ -3,7 +3,7 @@ local actor, super = Class(Actor, id)
 
 function actor:init()
     super.init(self)
-    self.name = "Shadowmen"
+    self.name = Kristal.getLibConfig("shadowmen", "name")
 
     -- Width and height for this actor, used to determine its center
     self.width = 54
@@ -44,11 +44,7 @@ function actor:init()
 end
 
 function actor:createSprite()
-    return ShadowmenActor(self)
-end
-
-function actor:createSprite()
-    return ShadowmenActor(self)
+	return ShadowmenActor(self)
 end
 
 function actor:preSetAnimation(sprite, anim, ...)
