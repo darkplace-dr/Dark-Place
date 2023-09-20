@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.4",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.4.3",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 48,
@@ -10,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 30,
+  nextobjectid = 32,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown"
@@ -20,7 +19,28 @@ return {
       name = "castle_1f",
       firstgid = 1,
       filename = "../../../tilesets/castle_1f.tsx",
-      exportfilename = "../../../tilesets/castle_1f.lua"
+      tilewidth = 40,
+      tileheight = 40,
+      spacing = 0,
+      margin = 0,
+      columns = 16,
+      image = "../../../../../assets/sprites/tilesets/bg_dw_castle_1f.png",
+      imagewidth = 640,
+      imageheight = 320,
+      objectalignment = "unspecified",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 40,
+        height = 40
+      },
+      properties = {},
+      terrains = {},
+      tilecount = 128,
+      tiles = {}
     }
   },
   layers = {
@@ -32,13 +52,10 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       encoding = "lua",
       data = {
@@ -61,19 +78,16 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 240,
@@ -86,7 +100,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 360,
@@ -99,7 +113,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 200,
@@ -112,7 +126,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 200,
@@ -125,7 +139,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 200,
@@ -138,7 +152,7 @@ return {
         {
           id = 12,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1880,
           y = 240,
@@ -155,19 +169,16 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects_doors",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
           id = 24,
           name = "backroomsdoor",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 204,
           y = 144,
@@ -180,7 +191,7 @@ return {
         {
           id = 25,
           name = "queendoor",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 84,
@@ -193,7 +204,7 @@ return {
         {
           id = 24,
           name = "tickdoor",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 625,
           y = 64,
@@ -206,7 +217,7 @@ return {
         {
           id = 25,
           name = "patatedoor",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 882,
           y = 64,
@@ -219,7 +230,7 @@ return {
         {
           id = 28,
           name = "justadoor",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1164,
           y = 144,
@@ -236,19 +247,16 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
           id = 14,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 480,
@@ -264,7 +272,7 @@ return {
         {
           id = 15,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1760,
           y = 480,
@@ -280,7 +288,7 @@ return {
         {
           id = 20,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 230,
@@ -296,7 +304,7 @@ return {
         {
           id = 21,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 160,
@@ -308,6 +316,22 @@ return {
             ["text1"] = "* NOTE: [wait:5]This room was designed so people can add doors to different areas or rooms.",
             ["text2"] = "* Feel free to add any doors you want here! ^^[wait:5]\n- J.A.R.U."
           }
+        },
+        {
+          id = 30,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 624.969,
+          y = 230,
+          width = 169.969,
+          height = 10.6364,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "floor2/tick",
+            ["marker"] = "entry"
+          }
         }
       }
     },
@@ -316,19 +340,16 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
       properties = {},
       objects = {
         {
           id = 16,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 100,
           y = 440,
@@ -341,7 +362,7 @@ return {
         {
           id = 17,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 960,
           y = 320,
@@ -354,7 +375,7 @@ return {
         {
           id = 19,
           name = "exit_queen",
-          class = "",
+          type = "",
           shape = "point",
           x = 480,
           y = 280,
@@ -367,7 +388,7 @@ return {
         {
           id = 23,
           name = "entry2",
-          class = "",
+          type = "",
           shape = "point",
           x = 1820,
           y = 440,
@@ -380,9 +401,22 @@ return {
         {
           id = 29,
           name = "exit_backrooms",
-          class = "",
+          type = "",
           shape = "point",
           x = 240,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 31,
+          name = "exit_tick",
+          type = "",
+          shape = "point",
+          x = 710,
           y = 280,
           width = 0,
           height = 0,

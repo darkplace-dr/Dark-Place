@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="30">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="32">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -65,6 +65,12 @@
 - J.A.R.U.</property>
    </properties>
   </object>
+  <object id="30" name="transition" x="624.969" y="230" width="169.969" height="10.6364">
+   <properties>
+    <property name="map" value="floor2/tick"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="16" name="entry" x="100" y="440">
@@ -80,6 +86,9 @@
    <point/>
   </object>
   <object id="29" name="exit_backrooms" x="240" y="280">
+   <point/>
+  </object>
+  <object id="31" name="exit_tick" x="710" y="280">
    <point/>
   </object>
  </objectgroup>
