@@ -669,15 +669,22 @@ return {
         cutscene:hideNametag()
     end,
     wardrobe = function(cutscene, event)
+        local leader = Game.world.player
+        cutscene:walkTo(leader, "wardrobe_unstuck", 0.5, "up", true)
+        cutscene:detachFollowers()
         cutscene:text("* (It's a wardrobe.)\n* (What drawer would you like to open?)")
 
         local menu = cutscene:choicer({ "Party", "Costumes" })
 
         if menu == 1 then
+            cutscene:interpolateFollowers()
+            cutscene:attachFollowers()
             cutscene:after(function()
                 Game.world:openMenu(DarkPartyMenu())
             end)
         else
+            cutscene:interpolateFollowers()
+            cutscene:attachFollowers()
             cutscene:after(function()
                 Game.world:openMenu(Costumes())
             end)
