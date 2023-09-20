@@ -497,6 +497,20 @@ end
     end
 end]]
 
+function Mod:getActionButtons(battler, buttons)
+    if Game:getPartyMember(battler.chara.id).ribbit then
+        if Game:getPartyMember(battler.chara.id).has_act == true
+           and Game:getPartyMember(battler.chara.id).has_spells == true then
+            return {"fight", "skill", "item", "send", "defend"}
+        elseif Game:getPartyMember(battler.chara.id).has_act == true then
+            return {"fight", "act", "item", "send", "defend"}
+        else
+            return {"fight", "magic", "item", "send", "defend"}
+        end
+    end
+    return buttons
+end
+
 function Mod:preUpdate()
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
 end
