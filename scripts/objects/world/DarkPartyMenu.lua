@@ -82,12 +82,27 @@ function DarkPartyMenu:onKeyPressed(key)
 				self.state = "SELECT"
 			end
 		end
-		if Input.pressed("cancel") or Input.pressed("menu") then
+		if Input.pressed("cancel") then
             self.ui_cancel_small:stop()
             self.ui_cancel_small:play()
+			self:reorderParty()
             Game.world:closeMenu()
             return
         end
+		if Input.pressed("menu") then
+			if self.selected_party == 1 or Game.party[self.selected_party] == nil then
+				self.ui_cant_select:stop()
+				self.ui_cant_select:play()
+			else
+				self.ui_cancel_small:stop()
+            	self.ui_cancel_small:play()
+				Game:setFlag(Game.party[self.selected_party].id.."_party", false)
+				 if Game.world.followers[self.selected_party-1] then
+					Game.world.followers[self.selected_party-1]:remove()
+				 end
+				Game.party[self.selected_party] = nil
+			end
+		end
 	elseif self.state == "SELECT" then
 		if Input.pressed("confirm") then
 			if self.list[self.selected_y][self.selected_x] ~= "unknown" then
@@ -168,6 +183,9 @@ end
 
 function DarkPartyMenu:draw()
 	love.graphics.printf("PARTY", 0, 0, self.bg.width, "center")
+	if self.state == "MAIN" then
+		love.graphics.printf("["..Input.key_bindings["menu"][1]:upper().."] REMOVE", 185, -20, self.bg.width, "center")
+	end
 	
     for i=1,4 do
         local path = "ui/menu/party/head"
@@ -197,6 +215,31 @@ function DarkPartyMenu:draw()
 	end
 
     super.draw(self)
+end
+
+function DarkPartyMenu:reorderParty()
+	if Game.party[2] == nil then
+		if Game.party[3] ~= nil then
+			Game.party[2] = Game.party[3]
+			Game.party[3] = nil
+		elseif Game.party[4] ~= nil then
+			Game.party[2] = Game.party[4]
+			Game.party[4] = nil
+		end
+
+	end
+	if Game.party[3] == nil and Game.party[4] ~= nil then
+		Game.party[3] = Game.party[4]
+		Game.party[4] = nil
+	end
+	-- Double check that followers are the right actors
+	if Game.world.followers[1] and Game.party[2] then Game.world.followers[1]:setActor(Game.party[2].actor) end
+	if Game.world.followers[2] and Game.party[3] then Game.world.followers[2]:setActor(Game.party[3].actor) end
+	if Game.world.followers[3] and Game.party[4] then Game.world.followers[3]:setActor(Game.party[4].actor) end
+
+	-- for SOME reason I've had one(1) follower stick around when I have a 1 person party. We remove them here.
+	if Game.world.followers[1] and not Game.party[2] then Game.world.followers[1]:remove() end
+
 end
 
 return DarkPartyMenu
