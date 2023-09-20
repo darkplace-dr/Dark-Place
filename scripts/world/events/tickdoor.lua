@@ -7,16 +7,16 @@ function TickDoor:init(data)
     self.sprite:setScale(2)
     self:addChild(self.sprite)
 
-    self.solid = true
+    self.solid = false
 end
 
-function TickDoor:onInteract(player, dir)
+--[[function TickDoor:onInteract(player, dir)
     Game.world:startCutscene(function(cutscene)
         cutscene:text("* (There is a big note on the door.)")
         cutscene:text("* The Potassium will crush the Croustibat.\n[wait:10]- Tick")
         cutscene:text("* (There is also a smaller note on the door.)")
         cutscene:text("* Don't worry, I'm coming back!\n[wait:10]- Again, [wait:5]Tick")
     end)
-end
+end]]
 
 return TickDoor
