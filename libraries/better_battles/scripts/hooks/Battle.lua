@@ -84,21 +84,77 @@ function Battle:onStateChange(old,new)
 			"Don't slow me down."
 		}
 		
+		for _,battler in pairs(Game.battle.party) do
+			for _,text in pairs(battler.chara.flee_text) do
+				table.insert(flee_list, text)
+			end
+		end
+		
 		flee_text = flee_text .. Utils.pick(flee_list)
-
-        win_text = self.encounter:getVictoryText(win_text, self.money, self.xp) or win_text
 		
         self:battleText(flee_text, function()
-			while not flee_complete do end
 			for _,battler in ipairs(self.party) do
 				battler:getActiveSprite().run_away_2 = false
-				battler.x = battler.x - 160
+				battler.x = battler.x - 240
 			end
             self:setState("TRANSITIONOUT")
             self.encounter:onBattleEnd()
             return true
         end)
 	end
+end
+
+function Battle:pierce(amount, exact, target)
+    target = target or "ANY"
+
+
+    if type(target) == "number" then
+        target = self.party[target]
+    end
+
+    if isClass(target) and target:includes(PartyBattler) then
+        if (not target) or (target.chara:getHealth() <= 0) then -- Why doesn't this look at :canTarget()? Weird.
+            target = self:randomTargetOld()
+        end
+    end
+
+    if target == "ANY" then
+        target = self:randomTargetOld()
+
+        local party_average_hp = 1
+
+        for _,battler in ipairs(self.party) do
+            if battler.chara:getHealth() ~= battler.chara:getStat("health") then
+                party_average_hp = 0
+                break
+            end
+        end
+
+        if target.chara:getHealth() / target.chara:getStat("health") < (party_average_hp / 2) then
+            target = self:randomTargetOld()
+        end
+
+        -- They got hit, so un-darken them
+        target.should_darken = false
+        target.targeted = true
+    end
+
+    -- Now it's time to actually damage them!
+    if isClass(target) and target:includes(PartyBattler) then
+        target:pierce(amount, exact)
+        return {target}
+    end
+
+    if target == "ALL" then
+        Assets.playSound("hurt")
+        for _,battler in ipairs(self.party) do
+            if not battler.is_down then
+                battler:pierce(amount, exact, nil, {all = true})
+            end
+        end
+        -- Return the battlers who aren't down, aka the ones we hit.
+        return Utils.filter(self.party, function(item) return not item.is_down end)
+    end
 end
 
 return Battle

@@ -1,16 +1,13 @@
----@class Bullet
-local Bullet, super = Class("Bullet", true)
+---@class Bullet : Bullet
+---@overload fun(...) : Bullet
+---@field attacker EnemyBattler
+---@field wave Wave
+local Bullet, super = Class(Bullet)
 
 function Bullet:init(x, y, texture)
 	super:init(self, x, y, texture)
 	
 	self.pierce = false
-end
-
-function Bullet:onCollide(soul)
-    if not Game.battle.superpower then
-		super.onCollide(self, soul)
-	end
 end
 
 function Bullet:onDamage(soul)
