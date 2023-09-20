@@ -2,6 +2,14 @@
 ---@overload fun(...) : PartyMember
 local PartyMember, super = Class("PartyMember", true)
 
+function PartyMember:init()
+	super:init(self)
+	
+	self.flee_text = {}
+	
+	self.has_command = false
+end
+
 function PartyMember:getMaxShield()
 	return self:getStat("health") / 2
 end

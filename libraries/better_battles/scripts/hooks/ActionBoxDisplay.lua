@@ -31,7 +31,7 @@ function ActionBoxDisplay:draw()
         love.graphics.rectangle("fill", 128, 22 - self.actbox.data_offset, math.ceil(health), 9)
     end
 
-    Draw.setColor({128/255, 128/255, 128/255})
+    Draw.setColor(self.actbox.battler.chara.shield_color or {128/255, 128/255, 128/255})
     love.graphics.rectangle("fill", 128, 27 - self.actbox.data_offset, math.ceil((self.actbox.battler.shield / self.actbox.battler.chara:getMaxShield()) * 76), 4)
 
     local color = PALETTE["action_health_text"]
