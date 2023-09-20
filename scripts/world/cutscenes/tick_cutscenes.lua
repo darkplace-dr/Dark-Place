@@ -76,13 +76,13 @@ return {
                 cutscene:wait(wait)
             end
 
-            local dancing_banana = Sprite("world/events/banana")
+            local dancing_banana = Sprite("kristal/banana")
             dancing_banana:setScale(4)
             dancing_banana.layer = WORLD_LAYERS["ui"]
             dancing_banana:play(1/100, true)
             dancing_banana.x = 425
             dancing_banana.y = 200
-            local dancing_banana2 = Sprite("world/events/banana")
+            local dancing_banana2 = Sprite("kristal/banana")
             dancing_banana2:setScale(4)
             dancing_banana2.layer = WORLD_LAYERS["ui"]
             dancing_banana2:play(1/100, true)
