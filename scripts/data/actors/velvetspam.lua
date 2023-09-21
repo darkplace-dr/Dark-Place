@@ -20,7 +20,7 @@ function actor:init()
     self.default = "idle"
     self.default_night = "idle"
 
-    self.voice = "spamton"
+    self.voice = "v!spam"
     self.portrait_path = nil
     self.portrait_offset = {0, 0}
 
