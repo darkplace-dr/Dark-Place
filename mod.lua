@@ -91,6 +91,21 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("vaporland_sidestory", 0)
     end
 
+    -- Create save flags for costumes if they don't already exist
+    if new_file or Game:getFlag("YOU_costume") == nil then
+        Game:setFlag("YOU_costume", 0)
+    end
+    if Game:getFlag("susie_costume") == nil then
+        Game:setFlag("susie_costume", 0)
+    end
+    if Game:getFlag("kris_costume") == nil then
+        Game:setFlag("kris_costume", 0)
+    end
+    if Game:getFlag("brandon_costume") == nil then
+        Game:setFlag("brandon_costume", 0)
+    end
+
+
     if new_file then
         -- FIXME: instead of using these flags in maps we should probably use
         -- the `cond` property instead
