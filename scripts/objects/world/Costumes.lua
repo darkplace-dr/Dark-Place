@@ -97,6 +97,7 @@ function Costumes:init()
                 {"LIGHT", "light", {-4, -5}},
             }
         },
+        --[[
         {
             name = "Bor",
             icon = Assets.getTexture("ui/partyselect/bor"),
@@ -115,6 +116,7 @@ function Costumes:init()
                 {"DEFAULT", "dark", {168, 120}}
             }
         }
+        --]]
     }
 end
 
@@ -162,6 +164,30 @@ end
 
 function Costumes:close()
     Game.world.menu = nil
+    Game.world:startCutscene(function (cutscene)
+        local p1 = Game.party[1]
+        local p2 = Game.party[2]
+        local p3 = Game.party[3]
+        local p4 = Game.party[4]
+    
+        if p1 then
+            local p1c = cutscene:getCharacter(p1.actor.id)
+            p1c:resetSprite()
+        end
+        if p2 then
+            local p2c = cutscene:getCharacter(p2.actor.id)
+            p2c:resetSprite()
+        end
+        if p3 then
+            local p3c = cutscene:getCharacter(p3.actor.id)
+            p3c:resetSprite()
+        end
+        if p4 then
+            local p4c = cutscene:getCharacter(p4.actor.id)
+            p4c:resetSprite()
+        end
+        
+    end) -- Does this need to be done in a cutscene? probably not, but resetSprite is a cutscene function, so I'm playing it safe.
     self:remove()
 end
 
@@ -191,6 +217,22 @@ function Costumes:update()
     if Input.pressed("down") then
         Assets.playSound("ui_move")
         self.skin_index = self.skin_index + 1
+    end
+
+    if Input.pressed("confirm") then
+        Assets.playSound("ui_select")
+        local cos = self.costumes[self.selected_index]
+        local skin = cos.skins[self.skin_index]
+        if cos.name == "YOU" then
+            Game:setFlag(cos.name .. "_costume", self.skin_index - 1)
+            local selmember = Game:getPartyMember(cos.name)
+            selmember.actor.path = "party/you/" .. skin[2]:lower()
+        else
+            Game:setFlag(cos.name:lower() .. "_costume", self.skin_index - 1)
+            local selmember = Game:getPartyMember(cos.name:lower())
+            selmember.actor.path = "party/" .. selmember.actor.id .. "/" .. skin[2]:lower()
+
+        end
     end
     self.skin_index = Utils.clamp(self.skin_index, 1, #self.costumes[self.selected_index].skins)
 

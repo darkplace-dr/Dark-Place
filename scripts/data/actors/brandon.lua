@@ -17,7 +17,18 @@ function actor:init()
     self.color = {0, 1, 1}
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "party/brandon/dark"
+    local costume = Game:getFlag("brandon_costume")
+    if costume ~= nil then
+        if costume == 0 or costume > 2 then
+            self.path = "party/brandon/dark"
+        elseif costume == 1 then
+            self.path = "party/brandon/dark"
+        elseif costume == 2 then
+            self.path = "party/brandon/light"
+        end
+    else
+        self.path = "party/brandon/dark"
+    end
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
 
