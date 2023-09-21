@@ -151,16 +151,20 @@ function ActionButton:select()
                 end
             })
 			local party = {}
+			local party_up = {}
 			for k,chara in ipairs(Game.party) do
 				if k > 1 then
 					table.insert(party, chara.id)
+					if not Game.battle.party[k].is_down then
+						table.insert(party_up, chara.id)
+					end
 				end
             end
 			Game.battle:addMenuItem({
                 ["name"] = "Flee",
                 ["unusable"] = not Game.battle.encounter.flee,
                 ["description"] = Game.battle.encounter.flee and "" or "Can't\nEscape",
-				["party"] = Game.battle.encounter.flee and party or {},
+				["party"] = Game.battle.encounter.flee and (Kristal.getLibConfig("better_battles", "down_flee") and party_up or party) or {},
                 ["callback"] = function(menu_item)
 					if (love.math.random(1,100) < Game.battle.encounter.flee_chance) then
 						Game.battle:setState("FLEE")
