@@ -19,9 +19,24 @@ function PartyMember:hasSkills()
 end
 
 function PartyMember:getSkills()
+    local color = {1, 1, 1, 1}
+    for _,spell in ipairs(self:getSpells()) do
+        if spell:hasTag("spare_tired") and spell:isUsable(spell) and spell:getTPCost(spell) <= Game:getTension() then
+            local has_tired = false
+            for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                if enemy.tired then
+                    has_tired = true
+                    break
+                end
+            end
+            if has_tired then
+                color = {0, 178/255, 1, 1}
+            end
+        end
+    end
 	return {
-		{"ACT", "Do all\nsorts of\nthings", function() Game.battle:setState("ENEMYSELECT", "ACT") end},
-		{Kristal.getLibConfig("better_battles", "magic_name") or "Magic", "Cast\nSpells", function()
+		{"ACT", "Do all\nsorts of\nthings", nil, function() Game.battle:setState("ENEMYSELECT", "ACT") end},
+		{(Kristal.getLibConfig("better_battles", "magic_name")) or "Magic", Kristal.getLibConfig("better_battles", "magic_description") or "Cast\nSpells", color, function()
 			Game.battle:clearMenuItems()
 
 			-- First, register X-Actions as menu items.
