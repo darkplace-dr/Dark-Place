@@ -151,7 +151,7 @@ return {
 				Game:setFlag("gotCharQuest1", true)
 			else
 				cutscene:showNametag("Char")
-				cutscene:text("* Any updates yet on [color:blue]UWFOREST[color:reset]?")
+				cutscene:text("* Any updates yet?")
 				
 				if not Game:getFlag("finishedCharQuest1") then
 					
