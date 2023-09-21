@@ -94,7 +94,7 @@ function PartyBattler:getHeadIcon()
 end
 
 function PartyBattler:setAnimation(animation, callback)
-	if (self.chara:getHealth() <= (self.chara:getStat("health") / 4)) and animation == "battle/idle" and self.chara.actor:getAnimation("battle/low_health") then
+	if self.chara and (self.chara:getHealth() <= (self.chara:getStat("health") / 4)) and animation == "battle/idle" and self.chara.actor:getAnimation("battle/low_health") then
 		return self:setAnimation("battle/low_health", callback)
 	end
     return self.sprite:setAnimation(animation, callback)
