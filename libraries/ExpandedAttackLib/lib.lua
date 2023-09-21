@@ -9,17 +9,6 @@ local Lib = {}
 function Lib:init()
 
     ----------------------------------------------------------------------------------
-    -----  BITCH
-    ----------------------------------------------------------------------------------
-
-    print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
-
-    if Mod.libs["moreparty"] then
-        print(self.info.id .. ": MoreParty detected!")
-        Lib.MOREPARTY = true
-    end
-
-    ----------------------------------------------------------------------------------
     -----  ITEM HOOKS
     ----------------------------------------------------------------------------------
 
@@ -466,66 +455,67 @@ function Lib:init()
     ----------------------------------------------------------------------------------
 
     -----  INIT
+    if not Mod.libs["moreparty"] then
+        Utils.hook(AttackBox, "init", function(orig, self, battler, offset, index, x, y)
 
-    Utils.hook(AttackBox, "init", function(orig, self, battler, offset, index, x, y)
+            AttackBox.__super.init(self, x, y)
+        
+            self.battler = battler
+            self.weapon = battler.chara:getWeapon()
+            self.offset = offset + self.battler:getBoltOffset()
+            self.index = index
+        
+            self.head_sprite = Sprite(battler.chara:getHeadIcons().."/head", 21, 19)
+            self.head_sprite:setOrigin(0.5, 0.5)
+            self:addChild(self.head_sprite)
+        
+            self.press_sprite = Sprite("ui/battle/press", 42, 0)
+            self:addChild(self.press_sprite)
+        
+            self.bolt_target = (80 + 2) + self.weapon:getBoltTarget()
+            self.bolt_miss_threshold = self.weapon:getBoltMissThreshold()
 
-        AttackBox.__super.init(self, x, y)
-    
-        self.battler = battler
-        self.weapon = battler.chara:getWeapon()
-        self.offset = offset + self.battler:getBoltOffset()
-        self.index = index
-    
-        self.head_sprite = Sprite(battler.chara:getHeadIcons().."/head", 21, 19)
-        self.head_sprite:setOrigin(0.5, 0.5)
-        self:addChild(self.head_sprite)
-    
-        self.press_sprite = Sprite("ui/battle/press", 42, 0)
-        self:addChild(self.press_sprite)
-    
-        self.bolt_target = (80 + 2) + self.weapon:getBoltTarget()
-        self.bolt_miss_threshold = self.weapon:getBoltMissThreshold()
+            self.bolt_start_x = self.bolt_target + (self.offset * self.battler:getBoltSpeed())
+        
+            self.bolts = {}
+            self.score = 0
 
-        self.bolt_start_x = self.bolt_target + (self.offset * self.battler:getBoltSpeed())
-    
-        self.bolts = {}
-        self.score = 0
+            for i = 0, self.battler:getBoltCount() - 1 do
 
-        for i = 0, self.battler:getBoltCount() - 1 do
+                local bolt
 
-            local bolt
+                if i == 0 then
+                    bolt = AttackBar(self.bolt_start_x + (i * 80), 0, 6, 38)
+                else
 
-            if i == 0 then
-                bolt = AttackBar(self.bolt_start_x + (i * 80), 0, 6, 38)
-            else
+                    local min = self.weapon:getMultiboltVariance()[1]
+                    local max = self.weapon:getMultiboltVariance()[2]
+                    local bolt_variance = Utils.round(Utils.random(min, max))
+                    bolt = AttackBar(self.bolts[1].x + (i * (80 + bolt_variance)), 0, 6, 38)
 
-                local min = self.weapon:getMultiboltVariance()[1]
-                local max = self.weapon:getMultiboltVariance()[2]
-                local bolt_variance = Utils.round(Utils.random(min, max))
-                bolt = AttackBar(self.bolts[1].x + (i * (80 + bolt_variance)), 0, 6, 38)
+                end
 
+                bolt.layer = 1
+                table.insert(self.bolts, bolt)
+                self:addChild(bolt)
+                
             end
+        
+            self.fade_rect = Rectangle(0, 0, SCREEN_WIDTH, 300)
+            self.fade_rect:setColor(0, 0, 0, 0)
+            self.fade_rect.layer = 2
+            self:addChild(self.fade_rect)
+        
+            self.afterimage_timer = 0
+            self.afterimage_count = -1
+        
+            self.flash = 0
+        
+            self.attacked = false
+            self.removing = false
 
-            bolt.layer = 1
-            table.insert(self.bolts, bolt)
-            self:addChild(bolt)
-            
-        end
-    
-        self.fade_rect = Rectangle(0, 0, SCREEN_WIDTH, 300)
-        self.fade_rect:setColor(0, 0, 0, 0)
-        self.fade_rect.layer = 2
-        self:addChild(self.fade_rect)
-    
-        self.afterimage_timer = 0
-        self.afterimage_count = -1
-    
-        self.flash = 0
-    
-        self.attacked = false
-        self.removing = false
-
-    end)
+        end)
+    end
 
     -----  GETCLOSE
 
@@ -562,99 +552,50 @@ function Lib:init()
     end)
 
     -----  UPDATE
+    if not Mod.libs["moreparty"] then
+        Utils.hook(AttackBox, "update", function(orig, self)
+            if self.removing or Game.battle.cancel_attack then
+                self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
+            end
+        
+            if not self.attacked then
 
-    Utils.hook(AttackBox, "update", function(orig, self)
-        if self.removing or Game.battle.cancel_attack then
-            self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
-        end
-    
-        if not self.attacked then
+                self.afterimage_timer = self.afterimage_timer + DTMULT/2
 
-            self.afterimage_timer = self.afterimage_timer + DTMULT/2
+                for _,bolt in ipairs(self.bolts) do
 
-            for _,bolt in ipairs(self.bolts) do
+                    local accel = self.weapon:getBoltAcceleration()
 
-                local accel = self.weapon:getBoltAcceleration()
+                    if accel > 0 then
+                        bolt.physics.gravity = accel
+                        bolt.physics.gravity_direction = math.pi
+                        bolt:move(-(self.battler:getBoltSpeed() - 8) * DTMULT, 0)
+                    else
+                        bolt:move(-(self.battler:getBoltSpeed()) * DTMULT, 0)
+                    end
 
-                if accel > 0 then
-                    bolt.physics.gravity = accel
-                    bolt.physics.gravity_direction = math.pi
-                    bolt:move(-(self.battler:getBoltSpeed() - 8) * DTMULT, 0)
-                else
-                    bolt:move(-(self.battler:getBoltSpeed()) * DTMULT, 0)
                 end
-
-                if not bolt.afterimage_count then
-                    bolt.afterimage_count = 0
-                end
-
-                if self.battler:getBoltCount() == 1 and accel == 0 then
-                    while math.floor(self.afterimage_timer) > self.afterimage_count do
-                        self.afterimage_count = self.afterimage_count + 1
-
-                        local afterimg
-
-                        if Lib.MOREPARTY then
-                            afterimg = AttackBar(self.bolt_start_x - (self.afterimage_count * self.battler:getBoltSpeed() * 2), 0, 6, 28)
-                        else
-                            afterimg = AttackBar(self.bolt_start_x - (self.afterimage_count * self.battler:getBoltSpeed() * 2), 0, 6, 38)
-                        end
-
+                while math.floor(self.afterimage_timer) > self.afterimage_count do
+                    self.afterimage_count = self.afterimage_count + 1
+                    for _,bolt in ipairs(self.bolts) do
+                        local afterimg = AttackBar(bolt.x, 0, 6, 38)
                         afterimg.layer = 3
                         afterimg.alpha = 0.4
                         afterimg:fadeOutSpeedAndRemove()
                         self:addChild(afterimg)
                     end
                 end
-
             end
-        end
-    
-        if not Game.battle.cancel_attack and Input.pressed("confirm") then
-            self.flash = 1
-        else
-            self.flash = Utils.approach(self.flash, 0, DTMULT/5)
-        end
+        
+            if not Game.battle.cancel_attack and Input.pressed("confirm") then
+                self.flash = 1
+            else
+                self.flash = Utils.approach(self.flash, 0, DTMULT/5)
+            end
 
-        AttackBox.__super.update(self)
-    end)
-
-    -----  DRAW
-
-    Utils.hook(AttackBox, "draw", function(orig, self)
-
-        local target_color = {self.battler.chara:getAttackBarColor()}
-        local box_color = {self.battler.chara:getAttackBoxColor()}
-    
-        if self.flash > 0 then
-            box_color = Utils.lerp(box_color, {1, 1, 1}, self.flash)
-        end
-    
-        love.graphics.setLineWidth(2)
-        love.graphics.setLineStyle("rough")
-
-        local ch1_offset = Game:getConfig("oldUIPositions")
-
-        local box_height
-        if Lib.MOREPARTY and #Game.battle.party > 3 then
-            box_height = ch1_offset and 28 or 27
-        else
-            box_height = ch1_offset and 37 or 36
-        end
-
-        love.graphics.setColor(box_color)
-        love.graphics.rectangle("line", 80, ch1_offset and 0 or 1, (15 * (self.battler:getBoltSpeed())) + 3, box_height)
-
-        love.graphics.setColor(target_color)
-        love.graphics.rectangle("line", self.bolt_target + 1, 1, 8, box_height)
-        Draw.setColor(0, 0, 0)
-        love.graphics.rectangle("fill", 84, 2, 6, box_height - 2)
-    
-        love.graphics.setLineWidth(1)
-    
-        AttackBox.__super.draw(self)
-
-    end)
+            AttackBox.__super.update(self)
+        end)
+    end
 
     ----------------------------------------------------------------------------------
     -----  BATTLE HOOKS  
@@ -663,22 +604,23 @@ function Lib:init()
     -----  PROCESSACTION
 
     Utils.hook(Battle, "processAction", function(orig, self, action)
-
         local battler = self.party[action.character_id]
-        local party_member = battler.chara -- ???
+        local party_member = battler.chara
         local enemy = action.target
         local battler_weapon = battler.chara:getWeapon()
-    
+
         self.current_processing_action = action
 
-        if enemy and enemy.done_state then
-            enemy = self:retargetEnemy()
-            action.target = enemy
-            if not enemy then
-                return true
-            end
+        local next_enemy = self:retargetEnemy()
+        if not next_enemy then
+            return true
         end
-    
+
+        if enemy and enemy.done_state then
+            enemy = next_enemy
+            action.target = next_enemy
+        end
+
         -- Call mod callbacks for onBattleAction to either add new behaviour for an action or override existing behaviour
         -- Note: non-immediate actions require explicit "return false"!
         local callback_result = Kristal.modCall("onBattleAction", action, action.action, battler, enemy)
@@ -691,7 +633,7 @@ function Lib:init()
                 return callback_result
             end
         end
-
+        
         local attackbox
         for _,box in ipairs(Game.battle.battle_ui.attack_boxes) do
             if box.battler == battler then
@@ -701,17 +643,103 @@ function Lib:init()
         end
 
         if action.action == "ATTACK" or action.action == "AUTOATTACK" then
+            local src = Assets.stopAndPlaySound(battler.chara:getAttackSound() or "laz_c")
+            src:setPitch(battler.chara:getAttackPitch() or 1)
+
+            self.actions_done_timer = 1.2
+
+            local crit = action.points == 150 and action.action ~= "AUTOATTACK"
+            if crit then
+                Assets.stopAndPlaySound("criticalswing")
+
+                for i = 1, 3 do
+                    local sx, sy = battler:getRelativePos(battler.width, 0)
+                    local sparkle = Sprite("effects/criticalswing/sparkle", sx + Utils.random(50), sy + 30 + Utils.random(30))
+                    sparkle:play(4/30, true)
+                    sparkle:setScale(2)
+                    sparkle.layer = BATTLE_LAYERS["above_battlers"]
+                    sparkle.physics.speed_x = Utils.random(2, 6)
+                    sparkle.physics.friction = -0.25
+                    sparkle:fadeOutSpeedAndRemove()
+                    self:addChild(sparkle)
+                end
+            end
+
+            battler:setAnimation("battle/attack", function()
+                action.icon = nil
+
+                if action.target and action.target.done_state then
+                    enemy = self:retargetEnemy()
+                    action.target = enemy
+                    if not enemy then
+                        self.cancel_attack = true
+                        self:finishAction(action)
+                        return
+                    end
+                end
+
+                local damage = Utils.round(enemy:getAttackDamage(action.damage or 0, battler, action.points or 0))
+                if damage < 0 then
+                    damage = 0
+                end
+
+                if damage > 0 then
+                    Game:giveTension(Utils.round(enemy:getAttackTension(action.points or 100)))
+
+                    local dmg_sprite = Sprite(battler.chara:getAttackSprite() or "effects/attack/cut")
+                    dmg_sprite:setOrigin(0.5, 0.5)
+                    if crit then
+                        dmg_sprite:setScale(2.5, 2.5)
+                    else
+                        dmg_sprite:setScale(2, 2)
+                    end
+                    dmg_sprite:setPosition(enemy:getRelativePos(enemy.width/2, enemy.height/2))
+                    dmg_sprite.layer = enemy.layer + 0.01
+                    dmg_sprite:play(1/15, false, function(s) s:remove() end)
+                    enemy.parent:addChild(dmg_sprite)
+
+                    local sound = enemy:getDamageSound() or "damage"
+                    if sound and type(sound) == "string" then
+                        Assets.stopAndPlaySound(sound)
+                    end
+                    enemy:hurt(damage, battler)
+
+                    battler.chara:onAttackHit(enemy, damage)
+                else
+                    enemy:hurt(0, battler)
+                end
+
+                self:finishAction(action)
+
+                Utils.removeFromTable(self.normal_attackers, battler)
+                Utils.removeFromTable(self.auto_attackers, battler)
+
+                if not self:retargetEnemy() then
+                    self.cancel_attack = true
+                elseif #self.normal_attackers == 0 and #self.auto_attackers > 0 then
+                    local next_attacker = self.auto_attackers[1]
+
+                    local next_action = self:getActionBy(next_attacker, true)
+                    if next_action then
+                        self:beginAction(next_action)
+                        self:processAction(next_action)
+                    end
+                end
+            end)
             if action.action == "ATTACK" and attackbox.attacked then
                 battler_weapon:onAttack(action, battler, enemy, attackbox.score, attackbox.bolts, attackbox.close)
             elseif action.action == "AUTOATTACK" then
                 battler_weapon:onAttack(action, battler, enemy, 150, 1, 0)
             end
+
+            return false
         elseif action.action == "SKIP" then
             return true -- multi act fix
         else
             orig(self, action)
         end
     end)
+        
 
     -----  UPDATEATTACKING
 
@@ -813,48 +841,6 @@ function Lib:init()
 
         end
         
-    end)
-
-    ----------------------------------------------------------------------------------
-    -----  MOREPARTY COMPAT
-    ----------------------------------------------------------------------------------
-
-    -----  BATTLEUI => BEGINATTACK
-
-    Utils.hook(BattleUI, "beginAttack", function(orig, self)
-    
-        orig(self)
-
-        if Lib.MOREPARTY then
-
-            if #Game.party <= 3 then return end
-
-            local height = (115 / #Game.battle.party)
-		
-            for _,box in ipairs(self.attack_boxes) do
-
-                box.head_sprite.height = height + 4
-
-                for _,bolt in ipairs(box.bolts) do
-                    bolt.height = height
-                end
-
-                local battler
-                local name = Game:getPartyMember(box.battler.chara.id)
-                for i, member in ipairs(Game.party) do
-                    if member == name then
-                        battler = i
-                        break
-                    end
-                end
-
-                box.y = 40 + (height * (battler - 1))
-            end
-
-            -- if you use k,v in for loops, i hate you
-
-        end
-
     end)
 
     ----------------------------------------------------------------------------------
