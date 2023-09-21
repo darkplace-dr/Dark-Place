@@ -55,11 +55,13 @@ function item:init()
     }
 
     self.sounds = {
-        ["kris"] = "cd_bagel/kris",
-        ["susie"] = "cd_bagel/susie",
-        ["ralsei"] = "cd_bagel/ralsei",
-        ["noelle"] = "cd_bagel/noelle",
-		["jamm"] = "cd_bagel/jamm",
+        ["kris"] = "synthsoda/kris",
+        ["susie"] = "synthsoda/susie",
+        ["ralsei"] = "synthsoda/ralsei",
+        ["noelle"] = "synthsoda/noelle",
+		["YOU"] = "synthsoda/you",
+		["brandon"] = "synthsoda/brandon",
+		["dess"] = "synthsoda/dess",
     }
 end
 
