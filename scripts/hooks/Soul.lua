@@ -76,13 +76,13 @@ function Soul:init(x, y, color)
             self.focus_holder:removeFX("outlinefx")
         end
     end
-    if Game.stage:getFX("vhs") then
-        Game.stage:removeFX("vhs")
+    if Game.stage:getFX("timeslowvhs") then
+        Game.stage:removeFX("timeslowvhs")
     end
 
     -- Apply outlinefx to whoever has Focus equipped, or the leader if force_timeslow is true
     if self.focus_holder then self.focus_holder:addFX(outlinefx, "outlinefx") end
-    vhsfx = Game.stage:addFX(VHSFilter(), "vhs")
+    vhsfx = Game.stage:addFX(VHSFilter(), "timeslowvhs")
     vhsfx.timescale = 2 -- I dunno if this even works.
 	vhsfx.active = false
     self.basespeed = self.speed
