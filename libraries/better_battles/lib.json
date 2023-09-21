@@ -18,6 +18,7 @@
 		
 		//Spare tactics
 		"spare_tactics": true,
+		"down_flee": false,
 		
 		// Skill button
 		"skill_button": true,

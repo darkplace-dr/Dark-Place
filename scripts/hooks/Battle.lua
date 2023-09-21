@@ -113,7 +113,7 @@ function Battle:onStateChange(old,new)
 
             if battler.chara:getHealth() <= 0 then
                 battler:revive()
-                battler.chara:setHealth(battler.chara:autoHealAmount())
+                battler.chara:setHealth(1)
             end
 
 			battler:setAnimation("battle/hurt")
