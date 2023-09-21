@@ -183,7 +183,11 @@ function ActionButton:select()
 							if v:canSpare() then
 								v:spare()
 							else
-								v:addMercy(v.spare_points * 1.5)
+                                local mercy_points = math.ceil(v.spare_points * #Game.battle.party/#Game.battle:getActiveEnemies())
+								v:addMercy(math.min(mercy_points,100))
+                                if mercy_points > 100 and v.auto_spare then
+                                    v:spare()
+                                end
 							end
 						end
 						Game.battle:setState("ENEMYDIALOGUE", "SPAREALL")
@@ -203,7 +207,8 @@ function ActionButton:select()
             Game.battle:addMenuItem({
                 ["name"] = action[1],
                 ["description"] = action[2],
-                ["callback"] = action[3]
+                ["color"] = action[3],
+                ["callback"] = action[4]
             })
         end
 

@@ -1,9 +1,10 @@
 {
     "id": "better_battles",
-    "version": "1.1.0",
-    "engineVersion": "0.8.0",
+    "version": "v5.1",
+    "engineVer": "v0.8.1",
     "authors": [
-        "AcousticJamm"
+        "AcousticJamm",
+        "FireRainV"
     ],
 	"config": {
 		//Party souls
@@ -21,6 +22,7 @@
 		// Skill button
 		"skill_button": true,
 		"magic_name": "Magic",
+        "magic_description": "Cast\nSpells",
 		
 	},
 }
