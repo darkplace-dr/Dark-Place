@@ -535,15 +535,18 @@ function Mod:postUpdate()
     self:updateBulborb()
 
     if Game.save_name == "MERG" then
-        for _, member in ipairs(Game.party) do
-            member:getBaseStats().health = 1
-            member:getMaxStats().health = 1
-            member:setHealth(math.min(member:getHealth(), 1))
+        for _, party in ipairs(Game.party) do
+            if party.health > 1 then
+                party.health = 1
+            end
+            if party.stats.health ~= 1 then
+                party.stats.health = 1
+            end
         end
-
         if Game.battle then
-            for _, member in ipairs(Game.battle.party) do
-                member:checkHealth()
+            Game.battle:targetAll()
+            for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                enemy.current_target = "ALL"
             end
         end
     end
