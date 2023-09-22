@@ -670,8 +670,10 @@ return {
     end,
     wardrobe = function(cutscene, event)
         local leader = Game.world.player
+        if cutscene:getMarker("wardrobe_unstuck") and event then
         cutscene:walkTo(leader, "wardrobe_unstuck", 0.5, "up", true)
         cutscene:detachFollowers()
+        end
         cutscene:text("* (It's a wardrobe.)\n* (What drawer would you like to open?)")
 
         local menu = cutscene:choicer({ "Party", "Costumes" })

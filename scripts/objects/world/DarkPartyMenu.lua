@@ -14,6 +14,10 @@ function DarkPartyMenu:init()
 
     self.heart_sprite = Assets.getTexture("player/heart")
 
+	self.parallax_x = 0
+    self.parallax_y = 0
+    self.layer = WORLD_LAYERS["ui"]
+
     self.bg = UIBox(0, 0, self.width, self.height)
     self.bg.layer = -1
     self.bg.debug_select = false

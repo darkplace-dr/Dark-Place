@@ -215,6 +215,61 @@ return {
         end
     end,
 
+    cardspam = function (cutscene, event, player)
+        if player.facing == "left" then
+            event.flip_x = true
+        else
+            event.flip_x = false
+        end
+        cutscene:showNametag("Spamton")
+        event:setSprite("hold_cards")
+        cutscene:text("* PICK A CARD,[wait:5]\nANY [Kaard].", "", "cungaderospamton")
+
+        cutscene:hideNametag()
+        cutscene:choicer({"1", "3", "2"})
+        Assets.playSound("item")
+        Game.world.music:fade(0, 0.1, Game.world.music:pause())
+        cutscene:wait(1)
+        for _, party in ipairs(Game.party) do
+            local pc = cutscene:getCharacter(party.actor.id)
+            if party.actor.id == "YOU" then
+            pc:setSprite("fightorflight")
+            elseif party.actor.id == "susie" then
+                pc:setSprite("shock_right")
+            else
+            pc:setSprite("battle/hurt")
+            end
+            if player.facing == "left" then
+            pc.flip_x = true
+            end
+        end
+        cutscene:showNametag("Spamton")
+        cutscene:text("[voice:silent][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD",  "", "cungaderospamton", {
+            functions = {
+                gigatalk = function ()
+                    event:setSprite("laugh_1")
+                    Assets.playSound("voice/gigatalk")
+                    Game.world.fader:fadeIn(nil, {speed = 0.5, color = {1, 1, 1}, alpha = 1})
+                    Game.world.timer:after(0.5,  function ()
+                        event:setSprite("laugh_2")
+                        
+                    end)
+                    
+                end
+
+        }})
+        cutscene:hideNametag()
+        cutscene:wait(2)
+        for _, party in ipairs(Game.party) do
+            local pc = cutscene:getCharacter(party.actor.id)
+            pc:resetSprite()
+            pc.flip_x = false
+        end
+        event:resetSprite()
+        Game.world.music:resume()
+        Game.world.music:fade(1, 0.1)
+    end,
+
 	-- ┌───────────────────────┐ --
 	-- │     The Warp Bin      │ --
 	-- └───────────────────────┘ --

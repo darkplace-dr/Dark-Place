@@ -167,9 +167,11 @@ function Costumes:close()
     Game.world:startCutscene(function (cutscene)
     for _, party in ipairs(Game.party) do
         local pc = cutscene:getCharacter(party.actor.id)
+        if cutscene:getCharacter(party.actor.id, 2) then -- compensate for duplicate actors in the party room
+            pc = cutscene:getCharacter(party.actor.id, 2)
+        end
         pc:resetSprite()
     end
-        
     end) -- Does this need to be done in a cutscene? probably not, but resetSprite is a cutscene function, so I'm playing it safe.
     self:remove()
 end
