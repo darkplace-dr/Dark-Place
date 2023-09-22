@@ -123,6 +123,7 @@ return {
     file = "spamton_battle_eb",
     composer = "Stardust",
     released = "2022",
+    -- original upload of this song is gone as of September 22, 2023 lmao
     origin = "soundcloud.com/speedwaystardst"
   },
   {
@@ -142,6 +143,13 @@ return {
   {
     name = "Sigh of Dog",
     file = "sigh_of_dog",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Uwa!! So Temperate",
+    file = "options_fall",
     composer = "Toby Fox",
     released = "2015",
     origin = "Undertale"
@@ -246,6 +254,14 @@ return {
     origin = "Mario's Mystery Meat"
   },
   {
+    name = "Tick's Room",
+    file = "tickroom",
+    composer = "AlexGamingSW",
+    released = "2023",
+    -- Not sure about the origin of this one. Feel free to correct it if I got it wrong, lol.
+    origin = "Dark Place"
+  },
+  {
     name = "Gimmie Your Wallet, Miss",
     file = "gimmieyourwalletmiss",
     composer = "Charbomber",
@@ -265,6 +281,13 @@ return {
     composer = "Charbomber",
     released = "TBA",
     origin = "Deltarune: The Stars"
+  },
+  {
+    name = "Beasts",
+    file = "beasts",
+    composer = "Saurdino420",
+    released = "2023",
+    origin = "Deoxynn Act 1"
   },
   {
     name = "Journey's Just Begun",
@@ -423,6 +446,13 @@ return {
     origin = "Pizza Tower SAGE Demo"
   },
   {
+    name = "Title Theme",
+    file = "mysterious_castle",
+    composer = "Toby Fox",
+    released = "2019",
+    origin = "Escaped Chasm"
+  },
+  {
     name = "Eek!",
     file = "eek",
     composer = "surasshu",
@@ -431,6 +461,20 @@ return {
     -- CC BY-NC-SA 2.5
     -- the recording in DP is based on https://modarchive.org/index.php?request=view_by_moduleid&query=186901
     origin = "8bitcollective.com/members/surasshu (deadlink)"
+  },
+  {
+    name = "Life Is",
+    file = "orphanage",
+    composer = "Cosimo Fogg (201)",
+    released = "2017",
+    origin = "https://www.youtube.com/watch?v=RaPCf9msKIQ"
+  },
+  {
+    name = "Enchanted Lady",
+    file = "jazzylandscape",
+    composer = "Milt Jackson & Ray Brown",
+    released = "1970",
+    origin = "https://www.youtube.com/watch?v=bQOGfwBOykE"
   },
   {
     name = "Marble 大理石 (ft. Ultra)",
@@ -537,6 +581,13 @@ return {
     composer = "Junichi Masuda",
     released = "2000",
     origin = "Pokémon Crystal"
+  },
+  {
+    name = "All for Now",
+    file = "zero_boss",
+    composer = "LudoWic",
+    released = "2019",
+    origin = "Katana Zero"
   },
   {
     name = "Funky Theme",
