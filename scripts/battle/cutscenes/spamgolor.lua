@@ -83,7 +83,7 @@ return {
         cutscene:text("* Wait I forgot you don't even have feet.", "shock", "brandon")
 
         cutscene:text("* But nothing of use happened...")
-    end
+    end,
 
     frisk2_talk = function(cutscene, battler, enemy)
         cutscene:text("* Frisk tried to initiate a conversation with Spamgolor...")
