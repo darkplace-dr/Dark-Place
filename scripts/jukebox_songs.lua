@@ -659,11 +659,11 @@ return {
     origin = "8-Bit Fantasy & Adventure Music Pack"
   },
   {
-    name = "Boss Battle",
+    name = "The Other One",
     file = "jamm_boss", -- apparently is going to be replaced
-    composer = "Kim Minjeong", -- eastern order :bangbang:
-    released = "July 28, 2020",
-    origin = "Guardian Tales"
+    composer = "Tristan Alric", -- eastern order :bangbang:
+    released = "November 21, 2019",
+    origin = "Bug Fables"
   },
   ]]
 }
