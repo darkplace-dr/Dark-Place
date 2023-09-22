@@ -5,7 +5,7 @@ function preview:init(mod, button, menu)
     button:setFavoritedColor(0.9, 0.8, 1)
 
     self.mod_id = mod.id
-    self.menu = menu
+    self.menu = menu or MainMenu
     self.base_path = mod.path.."/preview"
 
     self.particles = {}
