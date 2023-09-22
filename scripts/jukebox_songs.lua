@@ -658,5 +658,12 @@ return {
     released = "Mar 30, 2021",
     origin = "8-Bit Fantasy & Adventure Music Pack"
   },
+  {
+    name = "Boss Battle",
+    file = "jamm_boss", -- apparently is going to be replaced
+    composer = "Kim Minjeong", -- eastern order :bangbang:
+    released = "July 28, 2020",
+    origin = "Guardian Tales"
+  },
   ]]
 }
