@@ -48,7 +48,7 @@ function preview:update()
         })
     end
 
-    if self:shouldShowSwellow() then
+    if self:isNameChosen("SWELLOW", true) then
         if not self.swellow then
             self.swellow = love.graphics.newImage(self.base_path.."/swellow.png")
         end
@@ -57,7 +57,7 @@ function preview:update()
         self.swellow_timer = 0
     end
 
-    if self:shouldPaul() then
+    if self:isNameChosen("PAUL") then
         if not self.paul_played then
             if not self.paul_stream then
                 self.paul_stream = love.audio.newSource(self.base_path.."/paul.ogg", "stream")
@@ -72,7 +72,7 @@ function preview:update()
         self.paul_played = false
     end
 
-    if self:shouldCroak() then
+    if self:isNameChosen("YOU") then
         if not self.croak_played then
             if not self.croak_stream then
                 self.croak_stream = love.audio.newSource(self.base_path.."/croakreverb.ogg", "stream")
@@ -99,10 +99,9 @@ function preview:draw()
     end
     love.graphics.setColor(1, 1, 1)
 
-    if self:shouldShowSwellow() and self.swellow then
+    if self:isNameChosen("SWELLOW", true) and self.swellow then
         local alpha = math.min((self.swellow_timer - 1.8) * 0.2, 0.8)
-        ---@type FileNamer
-        local naming_screen = self.menu.naming_screen
+        local naming_screen = self:getNamingScreen()
         local xs_inc = math.max(0, (self.swellow_timer - 3) * 0.02 + naming_screen.whiten)
         love.graphics.setColor(1, 1, 1, alpha)
         love.graphics.draw(self.swellow,
@@ -117,28 +116,22 @@ function preview:areWeSelected()
     return self.menu.selected_mod and self.menu.selected_mod.id == self.mod_id
 end
 
-function preview:shouldShowSwellow()
-    ---@type FileNamer
-    local naming_screen = self.menu.naming_screen
-    return self:areWeSelected() and naming_screen
-        and string.upper(naming_screen.name) == "SWELLOW"
-        and (naming_screen.state == "CONFIRM" or naming_screen.state == "FADEOUT")
+---@return FileNamer?
+function preview:getNamingScreen()
+    if not self:areWeSelected() then return nil end
+    return
+        self.menu.naming_screen
+        or (self.menu.file_name_screen and self.menu.file_name_screen.file_namer)
 end
 
-function preview:shouldPaul()
-    ---@type FileNamer
-    local naming_screen = self.menu.naming_screen
-    return self:areWeSelected() and naming_screen
-        and string.upper(naming_screen.name) == "PAUL"
-        and naming_screen.state == "CONFIRM"
-end
-
-function preview:shouldCroak()
-    ---@type FileNamer
-    local naming_screen = self.menu.naming_screen
-    return self:areWeSelected() and naming_screen
-        and string.upper(naming_screen.name) == "YOU"
-        and naming_screen.state == "CONFIRM"
+function preview:isNameChosen(name, include_fadeout)
+    local naming_screen = self:getNamingScreen()
+    return naming_screen
+        and string.upper(naming_screen.name) == string.upper(name)
+        and (
+            naming_screen.state == "CONFIRM"
+            or (include_fadeout and naming_screen.state == "FADEOUT")
+        )
 end
 
 return preview
