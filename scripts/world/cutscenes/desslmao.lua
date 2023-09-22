@@ -214,7 +214,7 @@ return {
             cutscene:text("* Alright...[wait:10] let's finally get outta here.", "annoyed_down", "susie")
         else
             cutscene:showNametag("Dess")
-            cutscene:text("* That was fun![wait:5] Finally I have someone to play around with", "condescending", "dess")
+            cutscene:text("* This area is very well designed i'm so glad i have it all to myself", "condescending", "dess")
         end
 		cutscene:hideNametag()
 
