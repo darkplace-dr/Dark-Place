@@ -19,11 +19,11 @@ function Mod:updateTaunt()
         if party:checkArmor("pizza_toque") then toque_equipped = true end
     end
     if
-        (toque_equipped == true or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
+        (toque_equipped or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
         and Input.pressed("v", false)
         and self.taunt_cooldown == 0
-        and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene() and not Game.lock_movement
-        and not Kristal.Console.is_open and not Kristal.DebugSystem:isMenuOpen())
+        and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene() and not Game.lock_movement)
+        and not (OVERLAY_OPEN or TextInput.active)
     then
         self.taunt_cooldown = 0.4
         self.taunt_lock_movement = true
