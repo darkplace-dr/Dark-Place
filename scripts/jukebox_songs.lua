@@ -605,28 +605,28 @@ return {
   },
   {
     name = "He is Lost",
-    file = "Lost",
+    file = "spamlament_lost",
     composer = "FireStar8903",
     released = "2023",
     origin = "A Salesman's Lament"
   },
   {
     name = "Find Him",
-    file = "Find",
+    file = "spamlament_find",
     composer = "FireStar8903",
     released = "2023",
     origin = "A Salesman's Lament"
   },
   {
     name = "Tell Him He's Okay",
-    file = "Okay",
+    file = "spamlament_okay",
     composer = "FireStar8903",
     released = "2023",
     origin = "A Salesman's Lament"
   },
   {
     name = "He is Loved",
-    file = "Loved",
+    file = "spamlament_loved",
     composer = "FireStar8903",
     released = "2023",
     origin = "A Salesman's Lament"
