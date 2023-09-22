@@ -27,7 +27,7 @@ return {
         if opinion == 1 then
             cutscene:showNametag("Brandon")
             cutscene:text("* Nice,[wait:5] thanks!", "happy", "brandon")
-            if #Game.party >= 4 then
+            if #Game.party >= Game:getFlag("party_max") then
                 cutscene:text("* Hold on,[wait:5] it looks like you've got a full party.", "neutral", "brandon")
                 cutscene:text("* Well,[wait:5] I'll still be in your party.", "happy", "brandon")
                 cutscene:text("* Just in the \"reserves\",[wait:5] so to speak.", "neutral", "brandon")
@@ -714,8 +714,8 @@ return {
 			if opinion == 1 then
 			    cutscene:showNametag("Dumbie")
 			    cutscene:text("* show me where they are", "veryhappy", "dumbie")
-                if #Game.party >= 4 then
-                    cutscene:text("* wait you've a bunch of friends i can only be friend with persons with only 3 friends", "confused", "dumbie")
+                if #Game.party >= Game:getFlag("party_max") then
+                    cutscene:text("* wait you've a bunch of friends i can only be friend with persons with at most " .. (Game:getFlag("party_max") - 1) .. " friends", "confused", "dumbie")
                     cutscene:text("* well I'll be here if you need me.", "normal", "dumbie")
                     cutscene:hideNametag()
                     Assets.playSound("slidewhist")
