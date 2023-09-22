@@ -95,7 +95,7 @@ function GoogleDino:onAct(battler, name)
             "dialup_4",
             "dialup_5",
         })
-        self:addMercy(25)
+        self:addMercy(20)
         self.difficulty = self.difficulty + 1
         return "* Everyone attempted to reboot the internet...\n[wait:5]* Difficulty increased!"
 

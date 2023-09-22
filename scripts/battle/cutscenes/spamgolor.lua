@@ -84,4 +84,15 @@ return {
 
         cutscene:text("* But nothing of use happened...")
     end
+
+    frisk2_talk = function(cutscene, battler, enemy)
+        cutscene:text("* Frisk tried to initiate a conversation with Spamgolor...")
+
+        cutscene:text("* So do you like.", "neutral", "frisk2")
+        cutscene:text("* Come here often?", "neutral", "frisk2")
+		
+        cutscene:text("* NO[wait:5], NOT REALLY.", "", "spamgolor")
+
+        cutscene:text("* Oh ok I see, Thanks.", "neutral", "frisk2")
+    end,
 }
