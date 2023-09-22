@@ -541,7 +541,7 @@ return {
     name = "Frankton",
     file = "yiik",
     composer = "Andrew Allanson",
-    released = "2019",
+    released = "January 17, 2019",
     origin = "YIIK: A Postmodern RPG"
   },
   {
