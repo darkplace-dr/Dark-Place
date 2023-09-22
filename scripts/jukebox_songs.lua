@@ -556,7 +556,7 @@ return {
     file = "investigation",
     composer = "Akemi Kimura",
     released = "2002",
-    origin = "Phoenix Wright Ace Attorney: Justice for All"
+    origin = "Phoenix Wright: Ace Attorney - Justice for All"
   },
   {
     name = "The Almighty",
