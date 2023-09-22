@@ -144,15 +144,15 @@ return {
                 cutscene:showNametag("Susie")
                 cutscene:text("* ...", "annoyed", "susie")
                 cutscene:text("* (We need to get rid of her as fast as possible.)", "annoyed", "susie")
+                if cutscene:getCharacter("brandon") then
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* (Agreed.)", "miffed", "brandon")
+                end
+                if cutscene:getCharacter("jamm") then
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* (Are we only agreeing on this now?)", "nervous_left", "jamm")
+                end
             end
-			if cutscene:getCharacter("brandon") then
-				cutscene:showNametag("Brandon")
-				cutscene:text("* (Agreed.)", "miffed", "brandon")
-			end
-			if cutscene:getCharacter("jamm") then
-				cutscene:showNametag("Jamm")
-				cutscene:text("* (Are we only agreeing on this now?)", "nervous_left", "jamm")
-			end
 			cutscene:hideNametag()
 			Game:setFlag("dessThingy", true)
 			event:remove()
