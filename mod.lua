@@ -113,6 +113,10 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("YOU_party", true)
         Game:setFlag("susie_party", true)
     end
+    
+    if new_file or Game:getFlag("party_max") == nil then
+        Game:setFlag("party_max", 4)
+    end
 
     if new_file or not Game:getFlag("party") then
         likely_old_save = true
