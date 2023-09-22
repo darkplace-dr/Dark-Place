@@ -385,9 +385,7 @@ return {
     file = "My_Time_Full(SpedUp)",
     composer = "bo en",
     released = "Sept 6, 2013 / Dec 25, 2020",
-    -- originally released as a part of pale machine [MARU-123], modified for omori
-    -- tbh "origin" is a bit misleading
-    origin = "pale machine (this is the Omori version)"
+    origin = "pale machine (modified for Omori)"
   },
   {
     name = "Cold Spaghetti",
@@ -450,7 +448,7 @@ return {
     file = "mysterious_castle",
     composer = "Toby Fox",
     released = "2019",
-    origin = "Escaped Chasm"
+    origin = "Escaped Chasm (trimmed for Modbt)"
   },
   {
     name = "Eek!",
@@ -458,7 +456,6 @@ return {
     composer = "surasshu",
     -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
     released = "April 10th, 2009",
-    -- CC BY-NC-SA 2.5
     -- the recording in DP is based on https://modarchive.org/index.php?request=view_by_moduleid&query=186901
     origin = "8bitcollective.com/members/surasshu (deadlink)"
   },
@@ -510,7 +507,7 @@ return {
     file = "vs_susie_noyno",
     composer = "Machine Girl",
     released = "June 16, 2022",
-    origin = "Neon White"
+    origin = "Neon White (trimmed for Dark Place)"
   },
   {
     name = "Colosseum Battle (The Arena)",
@@ -541,11 +538,11 @@ return {
     origin = "Live A Live"
   },
   {
-    name = "Chit Chat",
+    name = "Frankton",
     file = "yiik",
-    composer = "???",
+    composer = "Andrew Allanson",
     released = "2019",
-    origin = "YIIK: A Postmodern RPG (NS)"
+    origin = "YIIK: A Postmodern RPG"
   },
   {
     name = "Battle",
@@ -559,7 +556,7 @@ return {
     file = "investigation",
     composer = "Akemi Kimura",
     released = "2002",
-    origin = "Phoenix Wright: Ace Attorney Justice for All"
+    origin = "Phoenix Wright Ace Attorney: Justice for All"
   },
   {
     name = "The Almighty",
@@ -571,7 +568,7 @@ return {
   {
     name = "Undefeatable",
     file = "undefeatable",
-    composer = "Tomoya Ohtani, SEGA",
+    composer = "Tomoya Ohtani",
     released = "2022",
     origin = "Sonic Frontiers"
   },
@@ -580,7 +577,8 @@ return {
     file = "burned",
     composer = "Junichi Masuda",
     released = "2000",
-    origin = "Pokémon Crystal"
+    -- recorded in Polished Crystal, though there seems to be no changes made
+    origin = "Pokémon Gold/Silver"
   },
   {
     name = "All for Now",
@@ -631,4 +629,34 @@ return {
     released = "2023",
     origin = "A Salesman's Lament"
   },
+  --[[
+  {
+    name = "The Road Leading to the Secret",
+    file = "road_secret",
+    composer = "Yoko Shimomura",
+    released = "2009",
+    origin = "Mario & Luigi: Bowser's Inside Story (NDS)"
+  },
+  {
+    name = "Dogcheck (Anniversary Mix)",
+    file = "dogcheck_anniversary",
+    composer = "Toby Fox",
+    released = "Sept 15, 2023",
+    origin = "https://www.youtube.com/watch?v=b623zT7eMXo"
+  },
+  {
+    name = "Forgotten Wood", -- Creepy Forest slowed down
+    file = "forgotten_wood",
+    composer = "Saurdino420",
+    released = "Mar 26, 2023 / ---",
+    origin = "Deoxynn Act 1 / Dark Place"
+  },
+  {
+    name = "Mysterious Dungeon",
+    file = "jamm_dungeon",
+    composer = "xDeviruchi",
+    released = "Mar 30, 2021",
+    origin = "8-Bit Fantasy & Adventure Music Pack"
+  },
+  ]]
 }
