@@ -340,7 +340,7 @@ return {
                 cutscene:showNametag("Susie")
                 cutscene:text("* Oh.", "surprise", "susie")
 
-                if #Game.party >= 4 then
+                if #Game.party >= Game:getFlag("party_max") then
                     cutscene:showNametag("Starwalker")
                     cutscene:text("* Oh")
                     cutscene:text("* Your [color:yellow]party[color:reset] is        full")
