@@ -205,7 +205,7 @@ function DarkPartyMenu:draw()
         love.graphics.draw(sprite, x, 35, 0, 2, 2, 11*width/8, 0.5)
         if self.selected_party == i then
             love.graphics.setColor(1, 0, 0)
-            love.graphics.draw(self.heart_sprite, x - 50, 80, 0, 1, 1, 0.5, 0.5)
+            love.graphics.draw(self.heart_sprite, x - 51, 80, 0, 1, 1, 0.5, 0.5)
         end
     end
 	
