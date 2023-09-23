@@ -95,6 +95,24 @@ function Mod:registerDebugOptions(debug)
     local in_battle = function() return in_game() and Game.state == "BATTLE" end
     local in_overworld = function() return in_game() and Game.state == "OVERWORLD" end
 
+    debug:registerOption("main", "Open Party Menu", "Change the current party.", function ()
+        debug:enterMenu("party_menu", 1)
+    end, in_overworld)
+
+    debug:registerMenu("party_menu", "Which menu?")
+
+    debug:registerOption("party_menu", "Normal", "Contains unlocked members.", function ()
+        Game.world:openMenu(DarkPartyMenu())
+        debug:returnMenu()
+        debug:closeMenu()
+    end, in_overworld)
+
+    debug:registerOption("party_menu", "Full", "Contains ALL members.", function ()
+        Game.world:openMenu(DarkPartyMenu(true))
+        debug:returnMenu()
+        debug:closeMenu()
+    end, in_overworld)
+
     -- Stole this idea from ULCA Deltarune
     debug:registerOption("main", "Replenish Party", "Replenishes health.", replenish, in_game)
 

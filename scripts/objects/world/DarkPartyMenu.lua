@@ -1,6 +1,6 @@
 local DarkPartyMenu, super = Class(Object)
 
-function DarkPartyMenu:init()
+function DarkPartyMenu:init(debug)
     super.init(self, 82, 112, 477, 277)
 
     self.draw_children_below = 0
@@ -41,8 +41,10 @@ function DarkPartyMenu:init()
 	
 	for i,list in ipairs(self.list) do
 		for i2,entry in ipairs(list) do
-			if not self:hasValue(self.listreference, entry) then
-				self.list[i][i2] = "unknown"
+			if not debug then
+				if not self:hasValue(self.listreference, entry) then
+					self.list[i][i2] = "unknown"
+				end
 			end
 		end
 	end
