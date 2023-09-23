@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,8 +10,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 13,
-  properties = {},
+  nextobjectid = 14,
+  properties = {
+    ["name"] = "Chevelour's Room"
+  },
   tilesets = {
     {
       name = "castle",
@@ -108,7 +110,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 160,
@@ -121,7 +123,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 120,
@@ -134,7 +136,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1240,
           y = 160,
@@ -147,7 +149,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 440,
@@ -160,7 +162,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 160,
@@ -173,7 +175,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 200,
@@ -197,12 +199,16 @@ return {
       offsety = 0,
       parallaxx = 1,
       parallaxy = 1,
-      properties = {},
+      properties = {
+        ["actor"] = "chevelour",
+        ["chase"] = false,
+        ["encounter"] = "chevelour"
+      },
       objects = {
         {
           id = 8,
           name = "squeak",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 320,
@@ -213,22 +219,9 @@ return {
           properties = {}
         },
         {
-          id = 11,
-          name = "interactable",
-          class = "",
-          shape = "rectangle",
-          x = 86.2521,
-          y = 202.348,
-          width = 112.436,
-          height = 75.0282,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 12,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 750.558,
           y = 271.916,
@@ -238,8 +231,23 @@ return {
           visible = true,
           properties = {
             ["actor"] = "chevelour",
-            ["chase"] = false,
             ["encounter"] = "chevelour"
+          }
+        },
+        {
+          id = 13,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 84.5,
+          y = 200.258,
+          width = 115.75,
+          height = 79.9838,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "spamroom.warpbin",
+            ["solid"] = true
           }
         }
       }
@@ -261,7 +269,7 @@ return {
         {
           id = 9,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 140,
           y = 320,
