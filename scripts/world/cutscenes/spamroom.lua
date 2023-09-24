@@ -230,6 +230,7 @@ return {
         Assets.playSound("item")
         Game.world.music:fade(0, 0.1, Game.world.music:pause())
         cutscene:wait(1)
+        cutscene:detachCamera()
         for _, party in ipairs(Game.party) do
             local pc = cutscene:getCharacter(party.actor.id)
             if party.actor.id == "YOU" then
@@ -244,7 +245,7 @@ return {
             end
         end
         cutscene:showNametag("Spamton")
-        cutscene:text("[voice:silent][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD",  "", "cungaderospamton", {
+        cutscene:text("[style:GONER][voice:silent][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD",  "", "cungaderospamton", {
             functions = {
                 gigatalk = function ()
                     event:setSprite("laugh_1")
@@ -265,6 +266,7 @@ return {
             pc:resetSprite()
             pc.flip_x = false
         end
+        cutscene:attachCamera()
         event:resetSprite()
         Game.world.music:resume()
         Game.world.music:fade(1, 0.1)
