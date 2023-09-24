@@ -115,7 +115,11 @@ function DarkPartyMenu:onKeyPressed(key)
 					if index == self.selected_party then
 						Game:setFlag(party.id.."_party", false)
 					end
-					if party.id == self.list[self.selected_y][self.selected_x] then return end
+					if party.id == self.list[self.selected_y][self.selected_x] then
+                        self.ui_cant_select:stop()
+                        self.ui_cant_select:play()
+                        return
+                    end
 				end
 				Game.party[self.selected_party] = Game:getPartyMember(self.list[self.selected_y][self.selected_x])
 				Game:setFlag(self.list[self.selected_y][self.selected_x].."_party", true)
