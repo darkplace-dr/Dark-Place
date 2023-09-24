@@ -101,10 +101,9 @@ function DarkPartyMenu:onKeyPressed(key)
 			else
 				self.ui_cancel_small:stop()
             	self.ui_cancel_small:play()
-				Game:setFlag(Game.party[self.selected_party].id.."_party", false)
-				 if Game.world.followers[self.selected_party-1] then
+				if Game.world.followers[self.selected_party-1] then
 					Game.world.followers[self.selected_party-1]:remove()
-				 end
+                end
 				Game.party[self.selected_party] = nil
 			end
 		end
@@ -112,9 +111,6 @@ function DarkPartyMenu:onKeyPressed(key)
 		if Input.pressed("confirm") then
 			if self.list[self.selected_y][self.selected_x] ~= "unknown" then
 				for index,party in pairs(Game.party) do
-					if index == self.selected_party then
-						Game:setFlag(party.id.."_party", false)
-					end
 					if party.id == self.list[self.selected_y][self.selected_x] then
                         self.ui_cant_select:stop()
                         self.ui_cant_select:play()
@@ -186,7 +182,16 @@ function DarkPartyMenu:onKeyPressed(key)
 end
 
 function DarkPartyMenu:update()
-
+    for i = 1, #self.list do
+        for index,party in pairs(self.list[i]) do
+            if party ~= "unknown" then
+                Game:setFlag(party.."_party", false)
+            end
+        end
+    end
+    for index,party in pairs(Game.party) do
+        Game:setFlag(party.id.."_party", true)
+    end
     super.update(self)
 end
 
