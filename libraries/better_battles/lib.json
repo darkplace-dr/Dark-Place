@@ -1,6 +1,6 @@
 {
     "id": "better_battles",
-    "version": "v5.1",
+    "version": "v6.0",
     "engineVer": "v0.8.1",
     "authors": [
         "AcousticJamm",
@@ -18,7 +18,9 @@
 		
 		//Spare tactics
 		"spare_tactics": true,
+        "dynamic_battle_leader": false,
 		"down_flee": false,
+		"down_spare_all": false,
 		
 		// Skill button
 		"skill_button": true,
