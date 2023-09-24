@@ -19,14 +19,14 @@ function actor:init()
     -- Path to this actor's sprites (defaults to "")
     local costume = Game:getFlag("YOU_costume")
     if costume ~= nil then
-        if costume == 0 or costume > 3 then
-            self.path = "party/you/dark"
-        elseif costume == 1 then
+        if costume == 1 then
             self.path = "party/you/light"
         elseif costume == 2 then
             self.path = "party/you/old_dark"
         elseif costume == 3 then
             self.path = "party/you/old_light"
+        else
+            self.path = "party/you/dark"
         end
     else
         self.path = "party/you/dark"

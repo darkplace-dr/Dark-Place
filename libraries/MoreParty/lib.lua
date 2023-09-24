@@ -18,7 +18,7 @@ function Lib:init()
         end
 
         love.graphics.setLineWidth(2)
-        love.graphics.line(0  , Game:getConfig("oldUIPositions") and 2 or 1, x + 1, Game:getConfig("oldUIPositions") and 2 or 1)
+        love.graphics.line((Game.battle.current_selecting == self.actbox.index) and 0 or 2 , Game:getConfig("oldUIPositions") and 2 or 1, x + 1, Game:getConfig("oldUIPositions") and 2 or 1)
 
         love.graphics.setLineWidth(2)
         if Game.battle.current_selecting == self.actbox.index then
@@ -166,7 +166,7 @@ function Lib:init()
         
         if #Game.battle.party <= 3 or Kristal.getLibConfig("moreparty", "classic_mode") then return end
 
-        local x = 16 + math.min((5 - #self.buttons),5) * 16
+        local x = 16 + (5 - #self.buttons) * 16
         
         for _,button in ipairs(self.buttons) do
             button.visible = (Game.battle.current_selecting == self.index)
