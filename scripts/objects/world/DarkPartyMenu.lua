@@ -68,10 +68,10 @@ end
 function DarkPartyMenu:onKeyPressed(key)
 	if self.state == "MAIN" then
 		if Input.pressed("right") then
-			if self.selected_party < 4 then
+			if self.selected_party < Game:getFlag("party_max") and self.selected_party <= #Game.party then
                 self.ui_move:stop()
                 self.ui_move:play()
-				self.selected_party = self.selected_party + 1
+                self.selected_party = self.selected_party + 1
 			end
 		end
 		if Input.pressed("left") then
@@ -91,21 +91,19 @@ function DarkPartyMenu:onKeyPressed(key)
 		if Input.pressed("cancel") then
             self.ui_cancel_small:stop()
             self.ui_cancel_small:play()
-			self:reorderParty()
             Game.world:closeMenu()
             return
         end
 		if Input.pressed("menu") then
-			if self.selected_party == 1 or Game.party[self.selected_party] == nil then
+			if self.selected_party == 1 or Game.party[self.selected_party] == nil or self.selected_party < #Game.party then
 				self.ui_cant_select:stop()
 				self.ui_cant_select:play()
 			else
 				self.ui_cancel_small:stop()
             	self.ui_cancel_small:play()
-				Game:setFlag(Game.party[self.selected_party].id.."_party", false)
-				 if Game.world.followers[self.selected_party-1] then
+				if Game.world.followers[self.selected_party-1] then
 					Game.world.followers[self.selected_party-1]:remove()
-				 end
+                end
 				Game.party[self.selected_party] = nil
 			end
 		end
@@ -113,10 +111,11 @@ function DarkPartyMenu:onKeyPressed(key)
 		if Input.pressed("confirm") then
 			if self.list[self.selected_y][self.selected_x] ~= "unknown" then
 				for index,party in pairs(Game.party) do
-					if index == self.selected_party then
-						Game:setFlag(party.id.."_party", false)
-					end
-					if party.id == self.list[self.selected_y][self.selected_x] then return end
+					if party.id == self.list[self.selected_y][self.selected_x] then
+                        self.ui_cant_select:stop()
+                        self.ui_cant_select:play()
+                        return
+                    end
 				end
 				Game.party[self.selected_party] = Game:getPartyMember(self.list[self.selected_y][self.selected_x])
 				Game:setFlag(self.list[self.selected_y][self.selected_x].."_party", true)
@@ -183,7 +182,16 @@ function DarkPartyMenu:onKeyPressed(key)
 end
 
 function DarkPartyMenu:update()
-
+    for i = 1, #self.list do
+        for index,party in pairs(self.list[i]) do
+            if party ~= "unknown" then
+                Game:setFlag(party.."_party", false)
+            end
+        end
+    end
+    for index,party in pairs(Game.party) do
+        Game:setFlag(party.id.."_party", true)
+    end
     super.update(self)
 end
 
@@ -193,18 +201,22 @@ function DarkPartyMenu:draw()
 		love.graphics.printf("["..Input.key_bindings["menu"][1]:upper().."] REMOVE", 185, -20, self.bg.width, "center")
 	end
 	
-    for i=1,4 do
+    local x = 9 + (8 - Game:getFlag("party_max")) * 30
+    for i=1,Game:getFlag("party_max") do
+        love.graphics.setColor(1, 1, 1)
         local path = "ui/menu/party/head"
         if Game.party[i] then
             path = Game.party[i].menu_icon
         end
         local sprite = Assets.getTexture(path)
         local width  = sprite:getWidth()
-        love.graphics.draw(sprite, i*105 + 15, 35, 0, 2, 2, 11*width/8, 0.5)
+        x = x + 60
+        love.graphics.draw(sprite, x, 35, 0, 2, 2, 11*width/8, 0.5)
+        if self.selected_party == i then
+            love.graphics.setColor(1, 0, 0)
+            love.graphics.draw(self.heart_sprite, x - 51, 80, 0, 1, 1, 0.5, 0.5)
+        end
     end
-	
-	love.graphics.setColor(1, 0, 0)
-    love.graphics.draw(self.heart_sprite, (self.selected_party*105 + 20) - 55, 80, 0, 1, 1, 0.5, 0.5)
 	
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.rectangle("fill", -20, 100, 517, 4)
@@ -221,31 +233,6 @@ function DarkPartyMenu:draw()
 	end
 
     super.draw(self)
-end
-
-function DarkPartyMenu:reorderParty()
-	if Game.party[2] == nil then
-		if Game.party[3] ~= nil then
-			Game.party[2] = Game.party[3]
-			Game.party[3] = nil
-		elseif Game.party[4] ~= nil then
-			Game.party[2] = Game.party[4]
-			Game.party[4] = nil
-		end
-
-	end
-	if Game.party[3] == nil and Game.party[4] ~= nil then
-		Game.party[3] = Game.party[4]
-		Game.party[4] = nil
-	end
-	-- Double check that followers are the right actors
-	if Game.world.followers[1] and Game.party[2] then Game.world.followers[1]:setActor(Game.party[2].actor) end
-	if Game.world.followers[2] and Game.party[3] then Game.world.followers[2]:setActor(Game.party[3].actor) end
-	if Game.world.followers[3] and Game.party[4] then Game.world.followers[3]:setActor(Game.party[4].actor) end
-
-	-- for SOME reason I've had one(1) follower stick around when I have a 1 person party. We remove them here.
-	if Game.world.followers[1] and not Game.party[2] then Game.world.followers[1]:remove() end
-
 end
 
 return DarkPartyMenu

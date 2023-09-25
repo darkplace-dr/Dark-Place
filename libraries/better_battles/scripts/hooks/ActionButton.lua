@@ -132,7 +132,16 @@ function ActionButton:select()
             Game.battle:setState("MENUSELECT", "ITEM")
         end
     elseif self.type == "spare" then
-		if self.battler == Game.battle.party[1] and Kristal.getLibConfig("better_battles", "spare_tactics") then
+        local battle_leader = 1
+        if Kristal.getLibConfig("better_battles", "dynamic_battle_leader") then
+            for i,battler in ipairs(Game.battle.party) do
+                if not battler.is_down then
+                    battle_leader = i
+                    break
+                end
+            end
+        end
+		if self.battler == Game.battle.party[battle_leader] and Kristal.getLibConfig("better_battles", "spare_tactics") then
 			Game.battle:clearMenuItems()
 			local sparable = false
 			for k,v in pairs(Game.battle:getActiveEnemies()) do
@@ -153,12 +162,10 @@ function ActionButton:select()
 			local party = {}
 			local party_up = {}
 			for k,chara in ipairs(Game.party) do
-				if k > 1 then
-					table.insert(party, chara.id)
-					if not Game.battle.party[k].is_down then
-						table.insert(party_up, chara.id)
-					end
-				end
+                table.insert(party, chara.id)
+                if not Game.battle.party[k].is_down then
+                    table.insert(party_up, chara.id)
+                end
             end
 			Game.battle:addMenuItem({
                 ["name"] = "Flee",
@@ -170,24 +177,25 @@ function ActionButton:select()
 						Game.battle:setState("FLEE")
 					else
 						Game.battle:setState("ENEMYDIALOGUE", "FLEE")
+                        Game.battle.current_selecting = 0
 					end
                 end
             })
 			if #Game.battle.party > 1 then
 				Game.battle:addMenuItem({
 					["name"] = "Spare All",
-					["unusable"] = false,
+					["unusable"] = (#party_up <= 1),
 					["description"] = "Spare\nEveryone",
 					["color"] = sparable and {1, 1, 0, 1} or {1, 1, 1, 1},
 					["tp"] = 16,
-					["party"] = party,
+					["party"] = (Kristal.getLibConfig("better_battles", "down_spare_all") and party_up or party),
 					["callback"] = function(menu_item)
 						Game:removeTension(16)
 						for k,v in pairs(Game.battle:getActiveEnemies()) do
 							if v:canSpare() then
 								v:spare()
 							else
-                                local mercy_points = math.ceil(v.spare_points * #Game.battle.party/#Game.battle:getActiveEnemies())
+                                local mercy_points = math.ceil(v.spare_points * #party_up/#Game.battle:getActiveEnemies())
 								v:addMercy(math.min(mercy_points,100))
                                 if mercy_points > 100 and v.auto_spare then
                                     v:spare()

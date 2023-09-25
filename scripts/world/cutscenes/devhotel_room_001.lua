@@ -68,7 +68,7 @@ return {
     bed = function(cutscene, event)
         cutscene:text("* It's a bed for two people.")
         cutscene:text("* It looks very comfortable.")
-        if Mod:isNight() and #Game.party == 4 then
+        if Mod:isNight() and #Game.party >= 4 then
             cutscene:showNametag("Brandon")
             cutscene:text("* Actually...[wait:10] It's getting pretty late,[wait:5] isn't it?", "happy_side", "brandon")
             cutscene:text("* You guys can spend the night here if you'd like!", "happy_b", "brandon")
@@ -105,7 +105,7 @@ return {
                 cutscene:hideNametag()
             end
         else
-            cutscene:text("* A sleepover would be nice if there were 4 people.")
+            cutscene:text("* A sleepover would be nice if there were at least 4 people.")
         end
     end,
 

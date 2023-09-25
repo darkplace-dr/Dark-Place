@@ -8,7 +8,7 @@ function character:init()
     self:setActor("dumbie")
     self:setLightActor("dumbie")
 
-    self.level = 2
+    self.level = Game.chapter
     self.title = "Just\na\ndumb Dummy."
 
     self.soul_priority = 1
@@ -53,9 +53,9 @@ function character:init()
     self.attack_sound = "bigcut"
     self.attack_pitch = 1.5
 
-    self.battle_offset = {3, 9}
-    self.head_icon_offset = {-7, -3}
-    self.menu_icon_offset = {6, 5}
+    self.battle_offset = {4, 3}
+    self.head_icon_offset = {0, 0}
+    self.menu_icon_offset = {0, 0}
 
     self.gameover_message = { "loser lol" }
 end

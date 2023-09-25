@@ -24,8 +24,6 @@ function Mod:init()
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
 
-    MUSIC_VOLUMES["vs_susie_and_noyno"] = 0.45
-
     MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
 
     self.voice_timer = 0
@@ -112,6 +110,10 @@ function Mod:initializeImportantFlags(new_file)
         -- ["cond"] = "Game:hasPartyMember(\"susie\")"
         Game:setFlag("YOU_party", true)
         Game:setFlag("susie_party", true)
+    end
+    
+    if new_file or Game:getFlag("party_max") == nil then
+        Game:setFlag("party_max", 4)
     end
 
     if new_file or not Game:getFlag("party") then
