@@ -598,7 +598,7 @@ function Lib:init()
             end
         end
         x = 80 + column
-        y = (60 / classic) + ((SCREEN_HEIGHT * .5) / classic) * (index - 1 - reset) + middle
+        y = (((not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.battle.party <= 4) and 120 or 50) / classic) + ((SCREEN_HEIGHT * 0.5) / classic) * (index - 1 - reset) + middle
 
         local battler = Game.battle.party[index]
         local ox, oy = battler.chara:getBattleOffset()
