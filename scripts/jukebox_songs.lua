@@ -580,13 +580,13 @@ return {
     -- recorded in Polished Crystal, though there seems to be no changes made
     origin = "Pokémon Gold/Silver"
   },
-  {
+  --[[{ Leave this out for now. I'll add it back once the fight is complete. - Agent 7
     name = "All for Now",
     file = "zero_boss",
     composer = "LudoWic",
     released = "2019",
     origin = "Katana Zero"
-  },
+  },]]
   {
     name = "Funky Theme",
     file = "funky_theme",
