@@ -45,35 +45,35 @@ return {
     name = "My Castle Town",
     file = "deltarune/castletown",
     composer = "Toby Fox",
-    released = "2022",
+    released = "2021",
     origin = "Deltarune"
   },
   {
     name = "Berdly",
     file = "deltarune/berdly_theme",
     composer = "Toby Fox",
-    released = "2022",
+    released = "2021",
     origin = "Deltarune"
   },
   {
     name = "WELCOME TO THE CITY",
     file = "deltarune/cybercity",
     composer = "Toby Fox",
-    released = "2022",
+    released = "2021",
     origin = "Deltarune"
   },
   {
     name = "WELCOME TO THE CITY (Weird Route)",
     file = "deltarune/cybercity_alt",
     composer = "Toby Fox",
-    released = "2022",
+    released = "2021",
     origin = "Deltarune"
   },
   {
     name = "Cool Mixtape",
     file = "deltarune/queen_car_radio",
     composer = "Toby Fox",
-    released = "2022",
+    released = "2021",
     origin = "Deltarune"
   },
   {
@@ -638,11 +638,39 @@ return {
     origin = "Mario & Luigi: Bowser's Inside Story (NDS)"
   },
   {
+    name = "Lost Girl",
+    file = "deltarune/noelle_normal",
+    composer = "Toby Fox",
+    released = "2021",
+    origin = "Deltarune"
+  },
+  {
+    name = "Digital Roots",
+    file = "deltarune/spamton_basement",
+    composer = "Toby Fox",
+    released = "2021",
+    origin = "Deltarune"
+  },
+  {
+    name = "BIG SHOT",
+    file = "deltarune/spamton_neo_mix_ex_wip",
+    composer = "Toby Fox",
+    released = "2021",
+    origin = "Deltarune"
+  },
+  {
     name = "Dogcheck (Anniversary Mix)",
     file = "dogcheck_anniversary",
     composer = "Toby Fox",
     released = "Sept 15, 2023",
     origin = "https://www.youtube.com/watch?v=b623zT7eMXo"
+  },
+  {
+    name = "Sneaking",
+    file = "sneaking",
+    composer = "Toby Fox",
+    released = "Sept 15, 2023",
+    origin = "https://toby.fangamer.com/newsletters/autumn23/"
   },
   {
     name = "Forgotten Wood", -- Creepy Forest slowed down
@@ -664,6 +692,13 @@ return {
     composer = "Tristan Alric", -- eastern order :bangbang:
     released = "November 21, 2019",
     origin = "Bug Fables"
+  },
+  {
+    name = "Grinch's Ultimatum",
+    file = "ultimatum",
+    composer = "PilotRedSun",
+    released = "December 25th, 2016",
+    origin = "https://www.youtube.com/watch?v=BuKft9LpL_0"
   },
   ]]
 }
