@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 11,
+  nextobjectid = 12,
   properties = {},
   tilesets = {
     {
@@ -98,28 +98,14 @@ return {
       draworder = "topdown",
       id = 5,
       name = "battleareas",
-      visible = false,
+      visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 10,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 200,
-          y = 240,
-          width = 840,
-          height = 120,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",
@@ -136,7 +122,7 @@ return {
       objects = {
         {
           id = 5,
-          name = "enemy",
+          name = "npc",
           type = "",
           shape = "rectangle",
           x = 920,
@@ -147,7 +133,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "zero",
-            ["encounter"] = "zero"
+            ["encounter"] = "zero",
+            ["solid"] = false
           }
         },
         {
@@ -164,6 +151,22 @@ return {
           properties = {
             ["map"] = "cybercity/alley1",
             ["marker"] = "entry_right"
+          }
+        },
+        {
+          id = 11,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 400,
+          y = 240,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "zero_alley.start",
+            ["once"] = false
           }
         }
       }
@@ -186,7 +189,7 @@ return {
           name = "spawn",
           type = "",
           shape = "point",
-          x = 440,
+          x = 280,
           y = 310,
           width = 0,
           height = 0,

@@ -4,9 +4,10 @@ local Soul, super = Class(Soul)
 function Soul:init(x, y, color)
 	super.init(self, x, y, color)
 
-	self.outline = Sprite("player/heart_slow") -- Creating this first so sprite_focus will be on top of it
+	self.outline = Sprite("player/heart_invert") -- Creating this first so sprite_focus will be on top of it
     self.outline:setOrigin(0.5, 0.5)
     self.outline.alpha = 0
+    self.outline.color = {0, 1, 1}
     self:addChild(self.outline)
 
 	self.sprite_focus = Sprite("player/heart_dodge_focus")
@@ -338,6 +339,10 @@ function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effec
 	Game.battle.music.pitch = 1
 	vhsfx.active = false
 	outlinefx.active = false
+    if should_destroy == true then
+        self.concentratebg:remove()
+        self.timeslow_sfx:stop()
+    end
 	Input.clear("a")
 	super.transitionTo(self, x, y, should_destroy)
 end

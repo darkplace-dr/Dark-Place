@@ -42,9 +42,15 @@ function actor:init()
         -- Looping animation with 0.25 seconds between each frame
         -- (even though there's only 1 idle frame)
         ["idle"] = {"idle", 0.1, true},
+        ["run"] = {"run", 1/15, true},
         ["headphones_in"] = {"headphones_in", 0.1, false, next="headphones_still"},
         ["headphones_still"] = {"headphones_still", 0, false},
-        ["headphones_end"] = {"headphones_end", 0.1, false, next="idle"}
+        ["headphones_end"] = {"headphones_end", 0.1, false, next="idle"},
+        ["struggle"] = {"struggle", 1/15, true},
+        ["hurt_fly"] = {"hurt_fly", 1/15, false, next="hurt_fly_loop"},
+        ["hurt_fly_loop"] = {"hurt_fly_loop", 1/15, true},
+        ["hurt_ground"] = {"hurt_ground", 1/15, false},
+        ["threaten"] = {"threaten", 1/15, false}
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -54,6 +60,8 @@ function actor:init()
         ["headphones_in"] = {0, -4},
         ["headphones_still"] = {0, -4},
         ["headphones_end"] = {0, -4},
+        ["struggle"] = {-25, 0},
+        ["threaten"] = {-30, -5},
     }
 end
 

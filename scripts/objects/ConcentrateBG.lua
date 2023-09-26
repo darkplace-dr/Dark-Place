@@ -18,7 +18,9 @@ end
 
 function ConcentrateBG:update()
     super.update(self)
+    if Game.battle then
     self.fade = Game.battle.transition_timer / 10
+    end
 	self.offset = self.offset + self.speed*DTMULT
 
     if self.offset > self.size*2 then
