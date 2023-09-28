@@ -1,4 +1,4 @@
-local Werewire, super = Class("custom_encounter")
+local Werewire, super = Class(Encounter)
 
 function Werewire:init()
     super:init(self)
