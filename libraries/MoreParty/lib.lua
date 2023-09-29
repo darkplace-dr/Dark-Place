@@ -39,7 +39,7 @@ function Lib:init()
                 love.graphics.rectangle("fill", 118, 22 - self.actbox.data_offset, math.ceil(health), 9)
             end
             
-            if Mod.libs["better_battles"] and self.actbox.battler.shield then -- Compatability with 'better_battles' Library.
+            if Mod.libs["better_battles"] and self.actbox.battler.shield then -- Compatibility with 'better_battles' Library.
                 Draw.setColor({128/255, 128/255, 128/255})
                 love.graphics.rectangle("fill", 118, 27 - self.actbox.data_offset, math.ceil((self.actbox.battler.shield / self.actbox.battler.chara:getMaxShield()) * 39), 4)
             end
@@ -76,7 +76,7 @@ function Lib:init()
                 love.graphics.rectangle("fill", 128, 22 - self.actbox.data_offset, math.ceil(health), 9)
             end
 
-            if Mod.libs["better_battles"] and self.actbox.battler.shield then -- Compatability with 'better_battles' Library.
+            if Mod.libs["better_battles"] and self.actbox.battler.shield then -- Compatibility with 'better_battles' Library.
                 Draw.setColor({128/255, 128/255, 128/255})
                 love.graphics.rectangle("fill", 128, 27 - self.actbox.data_offset, math.ceil((self.actbox.battler.shield / self.actbox.battler.chara:getMaxShield()) * 76), 4)
             end
@@ -115,7 +115,7 @@ function Lib:init()
             Draw.setColor(self.battler.chara:getColor())
             love.graphics.setLineWidth(2)
             love.graphics.line(1  , 2, 1,   37)
-            love.graphics.line(Game:getConfig("oldUIPositions") and (x - 1) or x, 2, Game:getConfig("oldUIPositions") and (x - 1) or x, 37)
+            love.graphics.line(Game:getConfig("oldUIPositions") and Kristal.getLibConfig("moreparty", "classic_mode") and (x - 1) or x, 2, Game:getConfig("oldUIPositions") and Kristal.getLibConfig("moreparty", "classic_mode") and (x - 1) or x, 37)
             love.graphics.line(0  , 6, x, 6 )
         end
         Draw.setColor(1, 1, 1, 1)
@@ -178,13 +178,12 @@ function Lib:init()
 
       
     Utils.hook(AttackBox, "draw", function(orig, self, ...)
-        if #Game.battle.party <= 3 then orig(self, ...) return end
 
         local target_color = {self.battler.chara:getAttackBarColor()}
         local box_color = {self.battler.chara:getAttackBoxColor()}
 
         if self.flash > 0 then
-        box_color = Utils.lerp(box_color, {1, 1, 1}, self.flash)
+            box_color = Utils.lerp(box_color, {1, 1, 1}, self.flash)
         end
 
         love.graphics.setLineWidth(2)
@@ -193,11 +192,13 @@ function Lib:init()
         local ch1_offset = Game:getConfig("oldUIPositions")
 
         Draw.setColor(box_color)
-        local height = math.floor(104 / #Game.battle.party)
-        love.graphics.rectangle("line", 80, ch1_offset and 0 or 1, (15 * AttackBox.BOLTSPEED) + 3, height)
+        local height = #Game.battle.party > 3 and math.floor(104 / #Game.battle.party) or 36
+        
+        -- Compatibility with 'ExpandedAttackLib' Library.
+        love.graphics.rectangle("line", 80, ch1_offset and 0 or 1, (15 * (Mod.libs["ExpandedAttackLib"] and self.battler:getBoltSpeed() or AttackBox.BOLTSPEED)) + 3, height + (ch1_offset and 1 or 0))
 
         Draw.setColor(target_color)
-        love.graphics.rectangle("line", 83, 1, 8, height)
+        love.graphics.rectangle("line", Mod.libs["ExpandedAttackLib"] and self.bolt_target + 1 or 83, 1, 8, height)
         Draw.setColor(0, 0, 0)
         love.graphics.rectangle("fill", 84, 2, 6, height - 2)
 
@@ -249,7 +250,7 @@ function Lib:init()
 
             self.afterimage_timer = self.afterimage_timer + DTMULT/2
             
-            if Mod.libs["ExpandedAttackLib"] then -- Compatability with 'ExpandedAttackLib' Library.
+            if Mod.libs["ExpandedAttackLib"] then -- Compatibility with 'ExpandedAttackLib' Library.
                 for _,bolt in ipairs(self.bolts) do
 
                     local accel = self.weapon:getBoltAcceleration()
@@ -295,7 +296,7 @@ function Lib:init()
         Object.update(self)
     end)
     
-    if not Mod.libs["ExpandedAttackLib"] then -- Compatability with 'ExpandedAttackLib' Library.
+    if not Mod.libs["ExpandedAttackLib"] then -- Compatibility with 'ExpandedAttackLib' Library.
         Utils.hook(AttackBox, "init", function(orig, self, ...)
             orig(self, ...)
             if #Game.battle.party <= 3 then return end
@@ -331,28 +332,63 @@ function Lib:init()
             self.bolts = {}
             self.score = 0
 
-            for i = 0, self.battler:getBoltCount() - 1 do
-
+            for i = 1, self.battler:getBoltCount() do
                 local bolt
 
-                if i == 0 then
-                    bolt = AttackBar(self.bolt_start_x + (i * 80), 0, 6, 38)
+                if i == 1 then
+                    bolt = AttackBar(self.bolt_start_x, 0, 6, 38)
                 else
+                    local next_bolt_x
+                    local variance = self.weapon:getMultiboltVariance()
+                    if Kristal.getLibConfig("ExpandedAttackLib", "calculate_multibolt_from") == "last_bolt" then
+                        -- following code written by firerainv (thank you) and adjusted by me
+                        if type(variance) == "table" then
+                            local index = variance[i - 1] and (i - 1) or #variance
+                            if type(variance[index]) == "number" then
+                                next_bolt_x = variance[index]
+                            elseif type(variance[index]) == "table" then
+                                next_bolt_x = Utils.pick(variance[index])
+                            else
+                                error("self.multibolt_variance must either be an integer, a table populated with integers, or a table of tables populated with integers.")
+                            end
+                        elseif type(variance) == "number" then
+                            next_bolt_x = variance
+                        else
+                            error("self.multibolt_variance must be either a table or a number value.")
+                        end
+                        
+                        bolt = AttackBar(self.bolts[i - 1].x + next_bolt_x, 0, 6, 38)
+                    elseif Kristal.getLibConfig("ExpandedAttackLib", "calculate_multibolt_from") == "first_bolt" then
+                        local index = i - 1
 
-                    local min = self.weapon:getMultiboltVariance()[1]
-                    local max = self.weapon:getMultiboltVariance()[2]
-                    local bolt_variance = Utils.round(Utils.random(min, max))
-                    bolt = AttackBar(self.bolts[1].x + (i * (80 + bolt_variance)), 0, 6, 38)
+                        if variance[index] then
+                            if type(variance) == "table" then
+                                if type(variance[index]) == "number" then
+                                    next_bolt_x = variance[index]
+                                elseif type(variance[index]) == "table" then
+                                    next_bolt_x = Utils.pick(variance[index])
+                                else
+                                    error("self.multibolt_variance must either be an integer, a table populated with integers, or a table of tables populated with integers.")
+                                end
+                            elseif type(variance) == "number" then
+                                next_bolt_x = variance
+                            else
+                                error("self.multibolt_variance must be either a table or a number value.")
+                            end
+                        else
+                            next_bolt_x = Utils.pick(variance[#variance]) + (Utils.pick(variance[#variance]) * (index - #variance))
+                        end
 
+                        bolt = AttackBar(self.bolts[1].x + next_bolt_x, 0, 6, 38)
+                    end
                 end
-                
+
                 bolt.layer = 1
                 if #Game.battle.party > 3 then
                     bolt.height = math.floor(112 / #Game.battle.party)
                 end
                 table.insert(self.bolts, bolt)
                 self:addChild(bolt)
-                
             end
         
             self.fade_rect = Rectangle(0, 0, SCREEN_WIDTH, 300)
@@ -389,7 +425,15 @@ function Lib:init()
             for c = 1, (#Game.battle.party - 1) do
                 love.graphics.setColor(PALETTE["battle_attack_lines"])
                 y = y + h
-                love.graphics.rectangle("fill", 79 - (ch1_offset and 2 or 0), y, 224 + (ch1_offset and 2 or 0), 2)
+                if not ch1_offset then
+                    love.graphics.rectangle("fill", 79, y, 224, 2)
+                else
+                    local has_index = {}
+                    for _,box in ipairs(self.attack_boxes) do
+                        has_index[box.index] = true
+                    end
+                    love.graphics.rectangle("fill", has_index[c+1] and 77 or 2, y, has_index[c+1] and 226 or 301, 3)
+                end
             end
         elseif Game.battle.state == "MENUSELECT" then
             local page = math.ceil(Game.battle.current_menu_y / 3) - 1
