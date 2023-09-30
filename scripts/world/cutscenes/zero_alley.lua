@@ -1,6 +1,7 @@
 return{
 
-    choice = function (cutscene)
+    choice = function (cutscene, event)
+        event:remove()
         if Game.zero_quick
         or Input.down("kp0") or Input.down("0") -- You're welcome, speedrunners.
         then
@@ -11,22 +12,20 @@ return{
     end,
 
     -- very much wip
-    start = function (cutscene, event)
-        -- Play the faster cutscene after a failed attempt.
+    start = function (cutscene)
+        -- Temporary flag to cause a faster cutscene to play the next time the trigger is approached. Does not reset on a Game Over, but DOES reset if the mod is reloaded.
         Game.zero_quick = true
 
         --Game.lock_movement = false
         local zero = cutscene:getEvent(5) -- ID for the Zero NPC.
         local player = Game.world.player
         local susie = cutscene:getCharacter("susie")
+        cutscene:detachFollowers()
 
         -- Zero charges at the player (or Susie if she's in the party), wait until he reaches them
-        zero.layer = WORLD_LAYERS["ui"] - 1
         zero:setAnimation("run")
         if susie then
             cutscene:slideToSpeed(zero, susie.x+50, player.y, 20)
-            susie.layer_old = susie.layer
-            susie.layer = WORLD_LAYERS["ui"] - 2
         else
             cutscene:slideToSpeed(zero, player.x+60, player.y, 20)
         end
@@ -38,21 +37,85 @@ return{
         -- Pause, Timeslow FX go here once I can figure it out. Pressing UP continues the cutscene, with YOU stepping out of the way.
         zero.x = player.x+60
         zero.active = false
-        cutscene:text("* Timeslow FX will go here,[wait:5] press [UP] to continue.")
-        cutscene:wait(function () return Input.down("up") and not Kristal.Console.is_open end)
-        player.y = player.y - 34
-        player.facing = "down"
-        player:setSprite("seentoomuch")
+        --cutscene:text("* Timeslow FX will go here,[wait:5] press [UP] to continue.")
+
+        Game.stage:addFX(ShaderFX(Mod.wave_shader, {
+            ["wave_sine"] = function() return Kristal.getTime() * 400 end,
+            ["wave_mag"] = 1,
+            ["wave_height"] = 3,
+            ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT}
+        }), "funky_mode")
+        Game.stage:addFX(VHSFilter(), "introvhs")
+        Assets.playSound("zero/casette_pause")
+        local casettenoise = Assets.getSound("zero/casette_noise")
+        casettenoise:setLooping(true)
+        casettenoise:play()
+
+
+        cutscene:wait(2)
+        player:resetSprite()
+        player:setFacing("left")
+        cutscene:wait(0.5)
+        player:setFacing("right")
+        cutscene:wait(0.5)
+        player:setFacing("left")
+        cutscene:wait(0.5)
+        player:setFacing("right")
+        cutscene:wait(0.5)
+        cutscene.inputplease = Text("[UP]/[DOWN]", -15, 40, SCREEN_WIDTH, SCREEN_HEIGHT,
+        {
+            --align = "center",
+            --font = "plain"
+            font_size = 16
+        }
+        )
+        cutscene.inputplease.color = COLORS.silver
+        cutscene.inputplease.alpha = 0
+        player:addChild(cutscene.inputplease)
+
+        Game.world.timer:after(5, function ()
+            if cutscene.inputplease then
+                cutscene.inputplease.alpha = 0.8
+            end
+            
+        end)
+
+
+
+        cutscene:wait(function () return (Input.down("up") or Input.down("down")) and not Kristal.Console.is_open end)
+        cutscene.inputplease:remove()
+        if Input.down("up") then
+            cutscene:walkTo(player, player.x, player.y - 34, 1)
+            cutscene:wait(1)
+            player:setFacing("down")
+            player:setSprite("seentoomuch")
+        elseif Input.down("down") then
+            cutscene:walkTo(player, player.x, player.y + 34, 1)
+            cutscene:wait(1)
+            player:setFacing("up")
+            player.layer = 1.5
+        end
+        zero.layer = 1.4
+            if susie then susie.layer = 1.3 end
+        Assets.playSound("item")
+        cutscene:text("* (You got [color:yellow]FOCUS[color:reset].[wait:10]\nHold [color:yellow][A][color:reset] to slow time.)")
+
+        casettenoise:stop()
+        Assets.playSound("zero/casette_pause")
+        Game.stage:removeFX("funky_mode")
+        Game.stage:removeFX("introvhs")
+
+
 
         -- Resume. if Susie is in the party, wait until Zero reaches her, then the two will clash.
         zero.active = true
         if susie then
             cutscene:wait(function () return zero.x <= susie.x+50 end)
+            Log:print(susie.layer .. ", " .. zero.layer)
             zero.x = susie.x + 50
             zero.y = susie.y
             Assets.playSound("zero/normal_slash_" .. math.ceil(Utils.random(3)))
             zero:setAnimation("struggle")
-            cutscene:detachFollowers()
             cutscene:setSprite(susie, "hold_axe")
             susie.graphics.shake_x = 1
             Assets.playSound("wing")
@@ -60,7 +123,9 @@ return{
             sword_struggle:setLooping(true)
             sword_struggle:play()
             cutscene:wait(0.5)
+            cutscene:showNametag("Susie")
             cutscene:text("[facec:susie_bangs/nervous_annoyed]* W-Woah![wait:5] The hell's your problem!?", "angry_b", "susie")
+            cutscene:hideNametag()
             sword_struggle:stop()
 
             -- Susie knocks Zero away.
@@ -70,10 +135,10 @@ return{
             zero.physics.gravity = 1
             -- offsets are weird so we need to fake an attack animation with this
             susie.alpha = 0
-            local battleanims = Sprite("party/susie/dark/battle/attack")
-            battleanims.x = -26 battleanims.y = -25
-            battleanims:play(1/15, false)
-            susie:addChild(battleanims)
+            cutscene.battleanims = Sprite("party/susie/dark/battle/attack")
+            cutscene.battleanims.x = -26 cutscene.battleanims.y = -25
+            cutscene.battleanims:play(1/15, false)
+            susie:addChild(cutscene.battleanims)
             susie.graphics.shake_x = 0
             Assets.playSound("laz_c")
             Assets.playSound("bigcut")
@@ -93,7 +158,7 @@ return{
             Assets.playSound("weaponpull_fast")
             susie.physics.speed = 5
             susie.physics.friction = 0.5
-            battleanims:setSprite("party/susie/dark/battle/attackready")
+            cutscene.battleanims:setSprite("party/susie/dark/battle/attackready")
         
 
             -- Zero gets up and draws his sword, beginning the fight.
@@ -102,7 +167,6 @@ return{
             Assets.playSound("sword_draw")
             zero:setAnimation("threaten")
             cutscene:wait(0.5)
-            cutscene:startEncounter("zero", true, {{"zero", zero}})
         
 
         -- If Susie is NOT in the party...
@@ -130,15 +194,26 @@ return{
             Assets.playSound("sword_draw")
             zero:setAnimation("threaten")
             cutscene:wait(0.5)
-            cutscene:startEncounter("zero", true, {{"zero", zero}})
 
         end
 
-        if player.y < 263 then cutscene:slideTo(player, player.x, player.y + 34, 0.5) end
+        -- Cleanup
+        player:resetSprite()
+        player.x = 386 player.y = 310
+        player.layer = 0.4
+        cutscene:interpolateFollowers()
+        cutscene:attachFollowers()
+        if susie then
+            cutscene.battleanims:remove()
+            susie.alpha = 1
+            susie:resetSprite()
+            susie.layer = 0.4
+        end
 
-        
-        --cutscene:attachFollowers()
-        
+        cutscene:startEncounter("zero", true, {{"zero", zero}})
+
+        cutscene:gotoCutscene("zero_alley", "endscene")
+
     end,
 
     start_quick = function (cutscene, event)
@@ -147,15 +222,16 @@ return{
         local susie = cutscene:getCharacter("susie")
 
         -- Zero charges at the player (or Susie if she's in the party), wait until he reaches them
-        zero.layer = WORLD_LAYERS["ui"] - 1
+
         zero:setAnimation("run")
         if susie then
             cutscene:slideToSpeed(zero, susie.x+50, player.y, 20)
             susie.layer_old = susie.layer
-            susie.layer = WORLD_LAYERS["ui"] - 2
         else
             cutscene:slideToSpeed(zero, player.x+60, player.y, 20)
         end
+        zero.layer = 1.4
+        if susie then susie.layer = 1.3 end
         Assets.playSound("escaped")
 
 
@@ -180,10 +256,10 @@ return{
 
             -- offsets are weird so we need to fake an attack animation with this
             susie.alpha = 0
-            local battleanims = Sprite("party/susie/dark/battle/attack")
-            battleanims.x = -26 battleanims.y = -25
-            battleanims:play(1/15, false)
-            susie:addChild(battleanims)
+            cutscene.battleanims = Sprite("party/susie/dark/battle/attack")
+            cutscene.battleanims.x = -26 cutscene.battleanims.y = -25
+            cutscene.battleanims:play(1/15, false)
+            susie:addChild(cutscene.battleanims)
             susie.graphics.shake_x = 0
             Assets.playSound("laz_c")
             Assets.playSound("bigcut")
@@ -201,7 +277,7 @@ return{
             Assets.playSound("weaponpull_fast")
             susie.physics.speed = -10
             susie.physics.friction = 0.5
-            battleanims:setSprite("party/susie/dark/battle/attackready")
+            cutscene.battleanims:setSprite("party/susie/dark/battle/attackready")
 
             -- Zero gets up and draws his sword, beginning the fight.
             zero:setAnimation("hurt_recover")
@@ -209,7 +285,7 @@ return{
             Assets.playSound("sword_draw")
             zero:setAnimation("threaten")
             cutscene:wait(0.5)
-            cutscene:startEncounter("zero", true, {{"zero", zero}})
+
         -- If Susie is NOT in the party...
         else
             -- Zero attacks and slides forward a bit.
@@ -235,8 +311,37 @@ return{
             Assets.playSound("sword_draw")
             zero:setAnimation("threaten")
             cutscene:wait(0.5)
-            cutscene:startEncounter("zero", true, {{"zero", zero}})
 
+        end
+
+        -- Cleanup
+        player:resetSprite()
+        player.x = 386 player.y = 310
+        player.layer = 0.4
+        cutscene:interpolateFollowers()
+        cutscene:attachFollowers()
+        if susie then
+            cutscene.battleanims:remove()
+            susie.alpha = 1
+            susie:resetSprite()
+            susie.layer = 0.4
+        end
+
+        cutscene:startEncounter("zero", true, {{"zero", zero}})
+
+        cutscene:gotoCutscene("zero_alley", "endscene")
+
+    end,
+
+    endscene = function (cutscene)
+        if Game.inventory:isFull("armors") then
+            cutscene:text("* You BITCH.[wait:10] I put that forcefield there for a reason.")
+            cutscene:text("* Y'know what?[wait:5] Fuck you.")
+            Game.world:loadMap("misc/dogcheck")
+            cutscene:text("* Get Dogchecked,[wait:5] [style:GONER]idiot[style:reset].")
+        else
+        Game.inventory:tryGiveItem("focus")
+        cutscene:text("* ([color:yellow]FOCUS[color:reset] was added to your [color:yellow]ARMORS[color:reset].)")
         end
     end
 }

@@ -52,7 +52,11 @@ function actor:init()
         ["hurt_fly_loop"] = {"hurt_fly_loop", 1/15, true},
         ["hurt_ground"] = {"hurt_ground", 1/15, false},
         ["hurt_recover"] = {"hurt_recover", 1/15, false, next="idle"},
-        ["threaten"] = {"threaten", 1/15, false}
+        ["threaten"] = {"threaten", 1/15, false},
+
+        ["drawsword/normal"] = {"drawsword/normal", 1/30, false},
+        ["drawsword/blue"] = {"drawsword/blue", 1/30, false},
+        ["drawsword/orange"] = {"drawsword/orange", 1/30, false},
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -66,6 +70,10 @@ function actor:init()
         ["struggle"] = {-25, 0},
         ["hurt_recover"] = {-10, -10},
         ["threaten"] = {-30, -5},
+
+        ["drawsword/normal"] = {-40, -11},
+        ["drawsword/blue"] = {-40, -11},
+        ["drawsword/orange"] = {-40, -11},
     }
 end
 
