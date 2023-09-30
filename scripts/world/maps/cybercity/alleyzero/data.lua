@@ -165,7 +165,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "zero_alley.start",
+            ["cutscene"] = "zero_alley.choice",
             ["once"] = false
           }
         }

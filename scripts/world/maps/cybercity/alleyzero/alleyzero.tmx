@@ -55,7 +55,7 @@
   </object>
   <object id="11" name="script" x="400" y="240" width="40" height="120">
    <properties>
-    <property name="cutscene" value="zero_alley.start"/>
+    <property name="cutscene" value="zero_alley.choice"/>
     <property name="once" type="bool" value="false"/>
    </properties>
   </object>
