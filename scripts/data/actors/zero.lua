@@ -57,6 +57,7 @@ function actor:init()
         ["drawsword/normal"] = {"drawsword/normal", 1/30, false},
         ["drawsword/blue"] = {"drawsword/blue", 1/30, false},
         ["drawsword/orange"] = {"drawsword/orange", 1/30, false},
+        ["drawsword/finish"] = {"drawsword/finish", 1/30, false},
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -74,6 +75,7 @@ function actor:init()
         ["drawsword/normal"] = {-40, -11},
         ["drawsword/blue"] = {-40, -11},
         ["drawsword/orange"] = {-40, -11},
+        ["drawsword/finish"] = {-40, -11},
     }
 end
 
