@@ -85,6 +85,23 @@ function DogCheck:start()
     end
 end
 
+function DogCheck:update()
+    super.update(self)
+    Game.lock_movement = true -- Also prevents opening the menu
+    if Input.pressed("confirm") and
+    not Game.world:hasCutscene() and
+    not Kristal.Console.is_open and Kristal.DebugSystem.state == "IDLE" then
+        Game.fader:fadeOut(nil, {
+            speed = 0.5
+        })
+        Game.world.music:fade(0, 20/30)
+        Game.world.timer:after(1, function ()
+            Game:returnToMenu()
+        end)
+    end
+
+end
+
 function DogCheck:getDebugInfo()
     if not self.started then
         return { string.format("Starting in: %gs", self.start_wait_handle.limit - self.start_wait_handle.time) }

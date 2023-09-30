@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 12,
+  nextobjectid = 17,
   properties = {},
   tilesets = {
     {
@@ -165,8 +165,24 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "zero_alley.start",
+            ["cutscene"] = "zero_alley.choice",
             ["once"] = false
+          }
+        },
+        {
+          id = 14,
+          name = "forcefield",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 240,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "Game.inventory:isFull(\"armors\")",
+            ["visible"] = true
           }
         }
       }

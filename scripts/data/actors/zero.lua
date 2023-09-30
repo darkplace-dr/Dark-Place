@@ -43,6 +43,7 @@ function actor:init()
         -- (even though there's only 1 idle frame)
         ["idle"] = {"idle", 0.1, true},
         ["run"] = {"run", 1/15, true},
+        ["attack"] = {"attack", 1/15, false, next="idle"},
         ["headphones_in"] = {"headphones_in", 0.1, false, next="headphones_still"},
         ["headphones_still"] = {"headphones_still", 0, false},
         ["headphones_end"] = {"headphones_end", 0.1, false, next="idle"},
@@ -50,18 +51,29 @@ function actor:init()
         ["hurt_fly"] = {"hurt_fly", 1/15, false, next="hurt_fly_loop"},
         ["hurt_fly_loop"] = {"hurt_fly_loop", 1/15, true},
         ["hurt_ground"] = {"hurt_ground", 1/15, false},
-        ["threaten"] = {"threaten", 1/15, false}
+        ["hurt_recover"] = {"hurt_recover", 1/15, false, next="idle"},
+        ["threaten"] = {"threaten", 1/15, false},
+
+        ["drawsword/normal"] = {"drawsword/normal", 1/30, false},
+        ["drawsword/blue"] = {"drawsword/blue", 1/30, false},
+        ["drawsword/orange"] = {"drawsword/orange", 1/30, false},
     }
 
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {
         -- Since the width and height is the idle sprite size, the offset is 0,0
         ["idle"] = {0, 0},
+        ["attack"] = {-15, 0},
         ["headphones_in"] = {0, -4},
         ["headphones_still"] = {0, -4},
         ["headphones_end"] = {0, -4},
         ["struggle"] = {-25, 0},
+        ["hurt_recover"] = {-10, -10},
         ["threaten"] = {-30, -5},
+
+        ["drawsword/normal"] = {-40, -11},
+        ["drawsword/blue"] = {-40, -11},
+        ["drawsword/orange"] = {-40, -11},
     }
 end
 
