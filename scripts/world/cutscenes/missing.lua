@@ -39,6 +39,7 @@ return {
             Game.money = Game.money - SM:getPrice()
             cutscene:playSound("locker")
             cutscene:text("* Whohooo![wait:5] Here's your mushroom.\n(The Super Shroom was added to your ITEMS.)")
+            cutscene:text("* Be careful where the leader eats it,[wait:5] you may get stuck."
         end
         cutscene:hideShop()
         cutscene:hideNametag()
