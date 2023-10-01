@@ -148,7 +148,7 @@
     <property name="actor" value="og_starwalker"/>
     <property name="text1">* The lack of
 [color:yellow]Counter-Strike: Source[color:reset] is [color:yellow]Pissing[color:reset] me off...</property>
-    <property name="text2" value="* I'm the original   [color:yellow]Starwalker[color:reset]"/>
+    <property name="text2" value="* I'm an original   [color:yellow]Starwalker[color:reset]"/>
    </properties>
   </object>
   <object id="65" name="script" x="1223" y="1" width="121" height="859">
