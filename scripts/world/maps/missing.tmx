@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="48" tileheight="48" infinite="0" nextlayerid="8" nextobjectid="68">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="48" tileheight="48" infinite="0" nextlayerid="8" nextobjectid="69">
  <editorsettings>
   <export target="missing.lua" format="lua"/>
  </editorsettings>
@@ -162,6 +162,14 @@
     <property name="cutscene" value="spamroom.warpbin"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
+  </object>
+  <object id="68" name="npc" x="552" y="162">
+   <properties>
+    <property name="actor" value="tpose_mario"/>
+    <property name="cutscene" value="missing.tpose_mario"/>
+    <property name="turn" type="bool" value="true"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
 </map>

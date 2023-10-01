@@ -10,7 +10,7 @@ return {
   tilewidth = 48,
   tileheight = 48,
   nextlayerid = 8,
-  nextobjectid = 68,
+  nextobjectid = 69,
   properties = {
     ["music"] = "GM_Construct",
     ["name"] = "Missing"
@@ -887,6 +887,23 @@ return {
           properties = {
             ["cutscene"] = "spamroom.warpbin",
             ["solid"] = true
+          }
+        },
+        {
+          id = 68,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 552,
+          y = 162,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "tpose_mario",
+            ["cutscene"] = "missing.tpose_mario",
+            ["turn"] = true
           }
         }
       }
