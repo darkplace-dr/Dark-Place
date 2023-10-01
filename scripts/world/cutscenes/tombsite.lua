@@ -306,7 +306,7 @@ return {
 			cutscene:text("* Sorry that you were involved in all this..", "look_left", "jamm")
 		end
 		
-		if #Game.party >= 4 then
+		if #Game.party >= Game:getFlag("party_max") then
 			cutscene:text("* I'd join you guys, but it looks like you have a full party.", "neutral", "jamm")
 			cutscene:text("* I'll see you later then.\n* Let me think for now.", "neutral", "jamm")
 			cutscene:hideNametag()
