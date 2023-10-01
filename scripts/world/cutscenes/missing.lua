@@ -33,13 +33,16 @@ return {
             cutscene:text("* Mamma mia...")
         elseif Game.money < SM:getPrice() then
             cutscene:text("* Oh no...[wait:5] You don't have the money...")
-        elseif not Game.inventory:addItem(SM) then
-            cutscene:text("* Oh no...[wait:5] You don't have enough space...")
         else
-            Game.money = Game.money - SM:getPrice()
-            cutscene:playSound("locker")
-            cutscene:text("* Whohooo![wait:5] Here's your mushroom.\n(The Super Shroom was added to your ITEMS.)")
-            cutscene:text("* Beware where the leader eats it,[wait:5] you may get stuck.")
+            local success, result_text = Game.inventory:tryGiveItem(SM)
+            if success then
+                Game.money = Game.money - SM:getPrice()
+                cutscene:playSound("locker")
+                cutscene:text("* Whohooo![wait:5] Here's your mushroom.\n"..result_text)
+                cutscene:text("* Beware where the leader eats it,[wait:5] you may get stuck.")
+            else
+                cutscene:text("* Oh no...[wait:5] You don't have enough space...")
+            end
         end
         cutscene:hideShop()
         cutscene:hideNametag()
