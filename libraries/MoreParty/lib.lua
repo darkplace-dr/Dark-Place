@@ -577,7 +577,7 @@ function Lib:init()
         
         for k,v in ipairs(self.action_boxes) do
             if k > (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then
-                v.x = x - e + (Kristal.getLibConfig("moreparty", "classic_mode") and ((6 - #Game.party) * 106.5) or ((8 - #Game.party) * 79.5))
+                v.x = x - e + (Kristal.getLibConfig("moreparty", "classic_mode") and ((6 - #Game.party) * (SCREEN_WIDTH - 1)/6) or ((8 - #Game.party) * (SCREEN_WIDTH - 1)/8))
                 v.y = Game:getConfig("oldUIPositions") and 36 or 37
                 v.realWidth = realW
                 x = x + realW
@@ -700,7 +700,9 @@ function Lib:init()
         orig(self, ...)
         if #Game.party <= 3 then return end
       
-        self.party:setPosition(-15, 48)
+        if not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.party >= 4 or #Game.party == 4 then
+            self.party:setPosition(-15, 48)
+        end
         
         if #Game.party > 4 then
             self.party:setScale(0.5)
@@ -711,7 +713,9 @@ function Lib:init()
         orig(self, ...)
         if #Game.party <= 3 then return end
       
-        self.party:setPosition(-15, 48)
+        if not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.party >= 4 or #Game.party == 4 then
+            self.party:setPosition(-15, 48)
+        end
         
         if #Game.party > 4 then
             self.party:setScale(0.5)
@@ -735,7 +739,7 @@ function Lib:init()
         
         for k,v in ipairs(parent.action_boxes) do
             if k > (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then
-                v.x = x - e + (Kristal.getLibConfig("moreparty", "classic_mode") and ((6 - #Game.party) * 106.5) or ((8 - #Game.party) * 79.5))
+                v.x = x - e + (Kristal.getLibConfig("moreparty", "classic_mode") and ((6 - #Game.party) * (SCREEN_WIDTH - 1)/6) or ((8 - #Game.party) * (SCREEN_WIDTH - 1)/8))
                 v.y = 44
                 v.realWidth = realW
                 x = x + realW
