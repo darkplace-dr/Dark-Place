@@ -16,6 +16,7 @@ function character:init()
 
     if Game:getFlag("jamm_canact") then
         self.has_act = true
+		self.soul_priority = 10
     else
         self.has_act = false
     end
@@ -62,6 +63,12 @@ function character:init()
     self.menu_icon_offset = nil
 
     self.gameover_message = nil
+end
+
+function character:onTurnStart(battler)
+	if self.stun then
+		Game.battle:pushForcedAction(battler, "SKIP")
+	end
 end
 
 function character:onLevelUp(level)

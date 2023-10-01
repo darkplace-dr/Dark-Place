@@ -6,11 +6,11 @@ function Shadynn:init()
     -- Enemy name
     self.name = "Shade Ania"
     -- Sets the actor, which handles the enemy's sprites (see scripts/data/actors/dummy.lua)
-    self:setActor("dummy")
+    self:setActor("shade_ania")
 
     -- Enemy health
-    self.max_health = 1500
-    self.health = 1500
+    self.max_health = 1700
+    self.health = 1700
     -- Enemy attack (determines bullet damage)
     self.attack = 8
     -- Enemy defense (usually 0)
@@ -41,12 +41,8 @@ function Shadynn:init()
     -- Text displayed at the bottom of the screen when the enemy has low health
     self.low_health_text = "* Shade Ania's darkness fades."
 
-    -- Register act called "Smile"
-    self:registerAct("Smile")
+    self:registerAct("Dispell")
     self:registerAct("Barrier", "Protect\nAll", {"jamm"}, 70)
-    -- Register party act with Ralsei called "Tell Story"
-    -- (second argument is description, usually empty)
-    self:registerAct("Tell Story", "", {"ralsei"})
 	
 	self.siner = 0
 	self.shadow = false
@@ -55,38 +51,23 @@ function Shadynn:init()
     self.low_health_percentage = 0.1
 end
 
+function Shadynn:getXAction(battler)
+    return "Dispell"
+end
 
 function Shadynn:onAct(battler, name)
     if name == "Barrier" then
-		Game.battle:powerAct("super_shield", battler, "jamm")
-    elseif name == "Tell Story" then
+		Game.battle:startActCutscene(function(cutscene)
+			cutscene:text("* Jamm formed a strong barrier around the party!")
+			for _,battler in ipairs(Game.battle.party) do
+				battler:addShield(1000)
+			end
+		end)
+		return
+    elseif name == "Dispell" then
         -- Loop through all enemies
-        for _, enemy in ipairs(Game.battle.enemies) do
-            -- Make the enemy tired
-            enemy:setTired(true)
-        end
-        return "* You and Ralsei told the dummy\na bedtime story.\n* The enemies became [color:blue]TIRED[color:reset]..."
-
-    elseif name == "Standard" then --X-Action
-        -- Give the enemy 50% mercy
-        self:addMercy(50)
-        if battler.chara.id == "ralsei" then
-            -- R-Action text
-            return "* Ralsei bowed politely.\n* The dummy spiritually bowed\nin return."
-        elseif battler.chara.id == "susie" then
-            -- S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
-            Game.battle:startActCutscene("dummy", "susie_punch")
-            return
-		elseif battler.chara.id == "dess" then
-            -- D-Action text
-            return "* Dess spun something around."
-		elseif battler.chara.id == "jamm" then
-            -- J-Action text
-            return "* Jamm shot a rock in the air.\nIt landed perfectly on Dummy's hat!"
-        else
-            -- Text for any other character (like Noelle)
-            return "* "..battler.chara:getName().." straightened the\ndummy's hat."
-        end
+        self:addMercy(5)
+        return "* " .. battler.chara:getName() .. " dispells a bit of Shade Ania's magic."
     end
 
     -- If the act is none of the above, run the base onAct function
@@ -131,6 +112,19 @@ function Shadynn:hurt(amount, battler, on_defeat, color)
 	else
 		self:statusMessage("msg", "miss")
 	end
+end
+
+function Shadynn:selectWave()
+	if Game.battle.turn_count%5 == 3 then
+		if self.cutscened then
+			self.selected_wave = "unavoidable_ania"
+		else
+			self.selected_wave = "unavoidable_first_ania"
+			self.cutscened = true
+		end
+		return self.selected_wave
+	end
+	return super:selectWave(self)
 end
 
 return Shadynn
