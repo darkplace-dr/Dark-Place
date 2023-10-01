@@ -33,6 +33,16 @@ function PartyBattler:addShield(amount)
     end
 end
 
+function PartyBattler:breakShield()
+    Assets.stopAndPlaySound("hurt")
+
+    self.shield = 0
+	
+	self:setAnimation("battle/hurt")
+	
+	self:statusMessage("msg", "break")
+end
+
 function PartyBattler:removeHealth(amount)
 	if not Game.battle.superpower then
 		amount = amount * (BadgesLib:getBadgeEquipped("double_pain") + 1)
