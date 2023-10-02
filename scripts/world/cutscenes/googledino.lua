@@ -31,6 +31,8 @@ return {
 		
         cutscene:wait(0.5)
 		
+        Game:setFlag("googledino_defeated", true)
+
         Assets.playSound("dino_jump")
         Game.world.timer:tween(0.2, dino, {y=player.y-100})
         cutscene:wait(0.2)
