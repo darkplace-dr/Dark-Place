@@ -70,6 +70,7 @@ return {
         cutscene:startEncounter("spamgolor", true, {{"spamgolor", spamgolor}})
 
         spamgolor:setSprite("idle")
+        Game:setFlag("spamgolor_defeated", true)
         cutscene:showNametag("Spamgolor")
         cutscene:text("* WOW,[wait:5] THAT WAS CERTAINLY [[A fight to remember]]!", "", "spamgolor")
         cutscene:text("* HEY,[wait:5] I'VE ACTUALLY GOT A [[In-game store]] OF MY OWN.", "", "spamgolor")

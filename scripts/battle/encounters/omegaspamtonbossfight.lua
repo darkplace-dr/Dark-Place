@@ -22,6 +22,20 @@ function OmegaSpamtonBossfight:init()
     --self:addEnemy("dummy")
 	
 	self.flee = false
+
+    self.boss_rush = false
+	
+    if Game:getFlag("omegaspamton_defeated") == true then
+        self.boss_rush = true
+    end
+end
+
+function OmegaSpamtonBossfight:onBattleInit()
+    super.onBattleInit(self)
+    if self.boss_rush == true then
+        Game.battle.dojo_bg = DojoBG({1, 1, 1})
+        Game.battle:addChild(Game.battle.dojo_bg)
+    end
 end
 
 function OmegaSpamtonBossfight:onBattleStart()
@@ -57,10 +71,6 @@ function OmegaSpamtonBossfight:beforeStateChange(old, new)
 	end
 	
 	return override
-end
-
-function OmegaSpamtonBossfight:onBattleEnd()
-    Game:setFlag("omegaspamton_defeated", true)
 end
 
 return OmegaSpamtonBossfight

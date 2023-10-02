@@ -30,6 +30,20 @@ function Starwalker:init()
     --Game.battle:registerXAction("susie", "Supercharge", "Charge\nfaster", 80)
 	
 	self.flee = false
+
+    self.boss_rush = false
+	
+    if Game:getFlag("starwalker_defeated") == true then
+        self.boss_rush = true
+    end
+end
+
+function OmegaSpamtonBossfight:onBattleInit()
+    super.onBattleInit(self)
+    if self.boss_rush == true then
+        Game.battle.dojo_bg = DojoBG({1, 1, 1})
+        Game.battle:addChild(Game.battle.dojo_bg)
+    end
 end
 
 function Starwalker:setMode(mode)
@@ -38,10 +52,6 @@ function Starwalker:setMode(mode)
     self.old_y = self.starwalker.y
     self.ease = true
     self.ease_timer = 0
-end
-
-function Starwalker:onBattleEnd()
-    Game:setFlag("starwalker_defeated", true)
 end
 
 function Starwalker:update()

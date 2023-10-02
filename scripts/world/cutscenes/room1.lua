@@ -359,10 +359,11 @@ return {
                     cutscene:text("* [color:yellow]Starwalker[color:reset] joined the party.")
                     cutscene:wait(0.5)
                 end
-				
+
                 Game:setFlag("ostarwalker_inparty", true)
                 Mod:unlockPartyMember("ostarwalker")
             end
+            Game:setFlag("starwalker_defeated", true)
             cutscene:interpolateFollowers()
             cutscene:attachFollowers()
         end

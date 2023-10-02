@@ -343,6 +343,7 @@ return {
                 cutscene:text("[voice:spamton2]* IT'S ON LIKE [[Legally Distinct Ape]]!!")
                 cutscene:hideNametag()
                 cutscene:startEncounter("omegaspamtonbossfight", true)
+                Game:setFlag("omegaspamton_defeated", true)
                 cutscene:text("* This part is VERY WIP (as you can tell from Spamton not having any unique attacks)")
                 cutscene:text("* Uhh I'll finish up the rest of this segment another time")
                 cutscene:text("* -BrandonK7200")
