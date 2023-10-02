@@ -1,3 +1,4 @@
+-- Based on the unlockable "Prism Sword"
 local ColorSlash, super = Class(Wave)
 
 function ColorSlash:init()
@@ -7,9 +8,13 @@ function ColorSlash:init()
 end
 
 function ColorSlash:onStart()
-    self.time = 3.5
+    self.time = -1
     self.user = self:getAttackers()[1]
-    self.order = {Utils.pick{"Blue", "Orange"}, Utils.pick{"Blue", "Orange"}, Utils.pick{"Blue", "Orange"}}
+    self.order = {}
+    for i = 1, self.user.difficulty+3 do
+        self.order[i] = Utils.pick{"Blue", "Orange"}
+        Log:print(self.order[i])
+    end
     local currtell = 1
     local currslash = 1
 
@@ -27,7 +32,9 @@ function ColorSlash:onStart()
             self.user.sprite:set("drawsword/"..self.order[currtell]:lower())
             currtell = currtell + 1
         elseif currtell == #self.order + 1 then
-            self.user.sprite:set("drawsword/finish")
+            self.user.sprite:set("drawsword/finish", function ()
+                self.user.sprite:set("drawsword/sheath")
+            end)
             currtell = currtell + 1
         end
         end)
@@ -41,6 +48,8 @@ function ColorSlash:onStart()
                 self.rgb[2] = bullet.color[2]
                 self.rgb[3] = bullet.color[3]
                 currslash = currslash + 1
+            else
+                self.time = 1
             end
         end)
     end)

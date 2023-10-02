@@ -66,7 +66,8 @@ return{
         {
             --align = "center",
             --font = "plain"
-            font_size = 16
+            font_size = 16,
+            style = "dark"
         }
         )
         cutscene.inputplease.color = COLORS.silver

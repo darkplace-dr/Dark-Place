@@ -31,7 +31,7 @@ function ColorBullet:init(x, y, dir, speed, color)
     self.destroy_on_hit = false
 
 
-    Game.battle.timer:after(5/30, function ()
+    Game.battle.timer:after(3/30, function ()
         self.collider = nil
     end)
 
