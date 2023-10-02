@@ -12,7 +12,10 @@ return {
 		
 		cutscene:wait(1)
 		
-		cutscene:shakeCamera(4)
+		Game.battle:shakeCamera(2, 2, 0)
+        local src = Assets.playSound("rumble")
+        src:setLooping(true)
+        src:setVolume(0.75)
 		
 		cutscene:moveTo(cutscene:getEnemies("omega_spamton")[1], 800, 1000, 2)
 		
@@ -20,6 +23,8 @@ return {
 		
 		cutscene:fadeOut(0.2, {color = {255, 255, 255}})
 		Assets.playSound("screenshake")
+        Game.battle:shakeCamera(0)
+        src:stop()
 		cutscene:fadeIn(5)
 		cutscene:wait(3)
 		

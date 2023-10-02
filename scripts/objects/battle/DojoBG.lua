@@ -35,7 +35,7 @@ function BG:draw()
     for x = 0, 1, 50 do
         for y = 0, 1, 50 do
             local dojo = Assets.getTexture("battle/dojo_battlebg")
-            love.graphics.draw(dojo, SCREEN_WIDTH/2, (SCREEN_HEIGHT/2)-50, 0, (2 + math.sin(self.offset/2) * 0.008), (2 + math.cos(self.offset/2) * 0.008), dojo:getWidth()/2, dojo:getHeight()/2)
+            love.graphics.draw(dojo, SCREEN_WIDTH/2, (SCREEN_HEIGHT/2)-75, 0, (2 + math.sin(self.offset/2) * 0.008), (2 + math.cos(self.offset/2) * 0.008), dojo:getWidth()/2, dojo:getHeight()/2)
         end
     end
 end
