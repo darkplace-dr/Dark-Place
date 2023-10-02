@@ -2,7 +2,7 @@ local ErrorArenaHazard, super = Class(Bullet)
 
 function ErrorArenaHazard:init(x, y, rot)
     -- Last argument = sprite path
-    super.init(self, x, y, "bullets/error")
+    super.init(self, x, y, "battle/bullets/error")
 
     -- Top-center origin point (will be rotated around it)
     self:setOrigin(0.5, 0)
