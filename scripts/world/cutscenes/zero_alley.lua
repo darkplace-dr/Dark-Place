@@ -89,7 +89,7 @@ return{
             cutscene:walkTo(player, player.x, player.y - 34, 1)
             cutscene:wait(1)
             player:setFacing("down")
-            player:setSprite("seentoomuch")
+            if Game.party[1].name == "YOU" then player:setSprite("seentoomuch") end
         elseif Input.down("down") then
             cutscene:walkTo(player, player.x, player.y + 34, 1)
             cutscene:wait(1)
@@ -238,7 +238,7 @@ return{
 
         cutscene:wait(function () return zero.x <= player.x+60 end)
         cutscene:slideTo(player, player.x, player.y - 34, 0.5, "out-expo")
-        player:setSprite("walk/down")
+        player:setFacing("down")
         if susie then
             cutscene:wait(function () return zero.x <= susie.x+50 end)
             zero.x = susie.x + 50
