@@ -161,6 +161,17 @@ function Battle:onStateChange(old,new)
             return true
         end)
 	end
+
+
+    if self.discoball then
+        -- For some reason this happens twice
+        if new == "ACTIONSELECT" then
+        self.discoball.tweendir = 1
+        elseif new == "ENEMYDIALOGUE" or new == "DEFENDINGBEGIN" or new == "TRANSITIONOUT" then
+        self.discoball.tweendir = -1
+        end
+    end
+
 end
 
 ---Adds TP to the enemy's TP bar. Doesn't work if no enemy TP bar exists.
