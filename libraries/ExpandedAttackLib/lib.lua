@@ -9,6 +9,17 @@ local Lib = {}
 function Lib:init()
 
     ----------------------------------------------------------------------------------
+    -----  BITCH
+    ----------------------------------------------------------------------------------
+
+    print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
+
+    if Mod.libs["moreparty"] then
+        print(self.info.id .. ": MoreParty detected!")
+        Lib.MOREPARTY = true
+    end
+
+    ----------------------------------------------------------------------------------
     -----  ITEM HOOKS
     ----------------------------------------------------------------------------------
 
@@ -22,10 +33,10 @@ function Lib:init()
         self.bolt_speed = nil
         self.bolt_offset = 0
         self.bolt_accel = 0
-        self.multibolt_variance = {0, 0}
+        self.multibolt_variance = {{80}}
 
         self.bolt_target = 0
-        self.bolt_miss_threshold = nil
+        self.bolt_miss_threshold = -5
 
         self.critical_threshold = 30 -- here for ease of use and for the debug display
         self.critical_bonus = 0
@@ -45,7 +56,7 @@ function Lib:init()
         return self.bolt_offset
     end)
 
-    Utils.hook(Item, "getMultiboltVariance", function(orig, self)
+    Utils.hook(Item, "getMultiboltVariance", function(orig, self, index)
         return self.multibolt_variance
     end)
 
@@ -58,11 +69,6 @@ function Lib:init()
     end)
 
     Utils.hook(Item, "getBoltMissThreshold", function(orig, self)
-
-        if not self.bolt_miss_threshold then
-            self.bolt_miss_threshold = -5
-        end
-
         return self.bolt_miss_threshold
     end)
  
@@ -115,9 +121,9 @@ function Lib:init()
         local src = Assets.stopAndPlaySound(battler.chara:getAttackSound() or "laz_c")
         src:setPitch(battler.chara:getAttackPitch() or 1)
 
-        self.actions_done_timer = 1.2
+        Game.battle.actions_done_timer = 1.2
 
-        local crit = action.points >= 150 --[[i lied]] and action.action ~= "AUTOATTACK"
+        local crit = action.points >= 150 and action.action ~= "AUTOATTACK"
         if crit then
             Assets.stopAndPlaySound("criticalswing")
 
@@ -455,7 +461,8 @@ function Lib:init()
     ----------------------------------------------------------------------------------
 
     -----  INIT
-    if not Mod.libs["moreparty"] then
+
+    if not Lib.MOREPARTY then
         Utils.hook(AttackBox, "init", function(orig, self, battler, offset, index, x, y)
 
             AttackBox.__super.init(self, x, y)
@@ -480,25 +487,60 @@ function Lib:init()
             self.bolts = {}
             self.score = 0
 
-            for i = 0, self.battler:getBoltCount() - 1 do
-
+            for i = 1, self.battler:getBoltCount() do
                 local bolt
 
-                if i == 0 then
-                    bolt = AttackBar(self.bolt_start_x + (i * 80), 0, 6, 38)
+                if i == 1 then
+                    bolt = AttackBar(self.bolt_start_x, 0, 6, 38)
                 else
+                    local next_bolt_x
+                    local variance = self.weapon:getMultiboltVariance()
+                    if Kristal.getLibConfig("ExpandedAttackLib", "calculate_multibolt_from") == "last_bolt" then
+                        -- following code written by firerainv (thank you) and adjusted by me
+                        if type(variance) == "table" then
+                            local index = variance[i - 1] and (i - 1) or #variance
+                            if type(variance[index]) == "number" then
+                                next_bolt_x = variance[index]
+                            elseif type(variance[index]) == "table" then
+                                next_bolt_x = Utils.pick(variance[index])
+                            else
+                                error("self.multibolt_variance must either be an integer, a table populated with integers, or a table of tables populated with integers.")
+                            end
+                        elseif type(variance) == "number" then
+                            next_bolt_x = variance
+                        else
+                            error("self.multibolt_variance must be either a table or a number value.")
+                        end
+                        
+                        bolt = AttackBar(self.bolts[i - 1].x + next_bolt_x, 0, 6, 38)
+                    elseif Kristal.getLibConfig("ExpandedAttackLib", "calculate_multibolt_from") == "first_bolt" then
+                        local index = i - 1
 
-                    local min = self.weapon:getMultiboltVariance()[1]
-                    local max = self.weapon:getMultiboltVariance()[2]
-                    local bolt_variance = Utils.round(Utils.random(min, max))
-                    bolt = AttackBar(self.bolts[1].x + (i * (80 + bolt_variance)), 0, 6, 38)
+                        if variance[index] then
+                            if type(variance) == "table" then
+                                if type(variance[index]) == "number" then
+                                    next_bolt_x = variance[index]
+                                elseif type(variance[index]) == "table" then
+                                    next_bolt_x = Utils.pick(variance[index])
+                                else
+                                    error("self.multibolt_variance must either be an integer, a table populated with integers, or a table of tables populated with integers.")
+                                end
+                            elseif type(variance) == "number" then
+                                next_bolt_x = variance
+                            else
+                                error("self.multibolt_variance must be either a table or a number value.")
+                            end
+                        else
+                            next_bolt_x = Utils.pick(variance[#variance]) + (Utils.pick(variance[#variance]) * (index - #variance))
+                        end
 
+                        bolt = AttackBar(self.bolts[1].x + next_bolt_x, 0, 6, 38)
+                    end
                 end
 
                 bolt.layer = 1
                 table.insert(self.bolts, bolt)
                 self:addChild(bolt)
-                
             end
         
             self.fade_rect = Rectangle(0, 0, SCREEN_WIDTH, 300)
@@ -552,6 +594,7 @@ function Lib:init()
     end)
 
     -----  UPDATE
+
     if not Mod.libs["moreparty"] then
         Utils.hook(AttackBox, "update", function(orig, self)
             if self.removing or Game.battle.cancel_attack then
@@ -594,6 +637,40 @@ function Lib:init()
             end
 
             AttackBox.__super.update(self)
+        end)
+    end
+
+    -----  DRAW
+
+    if not Lib.MOREPARTY then
+        Utils.hook(AttackBox, "draw", function(orig, self)
+
+            local target_color = {self.battler.chara:getAttackBarColor()}
+            local box_color = {self.battler.chara:getAttackBoxColor()}
+        
+            if self.flash > 0 then
+                box_color = Utils.lerp(box_color, {1, 1, 1}, self.flash)
+            end
+        
+            love.graphics.setLineWidth(2)
+            love.graphics.setLineStyle("rough")
+
+            local ch1_offset = Game:getConfig("oldUIPositions")
+
+            local box_height = ch1_offset and 37 or 36
+
+            love.graphics.setColor(box_color)
+            love.graphics.rectangle("line", 80, ch1_offset and 0 or 1, (15 * (self.battler:getBoltSpeed())) + 3, box_height)
+
+            love.graphics.setColor(target_color)
+            love.graphics.rectangle("line", self.bolt_target + 1, 1, 8, box_height)
+            Draw.setColor(0, 0, 0)
+            love.graphics.rectangle("fill", 84, 2, 6, box_height - 2)
+        
+            love.graphics.setLineWidth(1)
+        
+            AttackBox.__super.draw(self)
+
         end)
     end
 
@@ -643,95 +720,11 @@ function Lib:init()
         end
 
         if action.action == "ATTACK" or action.action == "AUTOATTACK" then
-            local src = Assets.stopAndPlaySound(battler.chara:getAttackSound() or "laz_c")
-            src:setPitch(battler.chara:getAttackPitch() or 1)
-
-            self.actions_done_timer = 1.2
-
-            local crit = action.points == 150 and action.action ~= "AUTOATTACK"
-            if crit then
-                Assets.stopAndPlaySound("criticalswing")
-
-                for i = 1, 3 do
-                    local sx, sy = battler:getRelativePos(battler.width, 0)
-                    local sparkle = Sprite("effects/criticalswing/sparkle", sx + Utils.random(50), sy + 30 + Utils.random(30))
-                    sparkle:play(4/30, true)
-                    sparkle:setScale(2)
-                    sparkle.layer = BATTLE_LAYERS["above_battlers"]
-                    sparkle.physics.speed_x = Utils.random(2, 6)
-                    sparkle.physics.friction = -0.25
-                    sparkle:fadeOutSpeedAndRemove()
-                    self:addChild(sparkle)
-                end
-            end
-
-            battler:setAnimation("battle/attack", function()
-                action.icon = nil
-
-                if action.target and action.target.done_state then
-                    enemy = self:retargetEnemy()
-                    action.target = enemy
-                    if not enemy then
-                        self.cancel_attack = true
-                        self:finishAction(action)
-                        return
-                    end
-                end
-
-                local damage = Utils.round(enemy:getAttackDamage(action.damage or 0, battler, action.points or 0))
-                if damage < 0 then
-                    damage = 0
-                end
-
-                if damage > 0 then
-                    Game:giveTension(Utils.round(enemy:getAttackTension(action.points or 100)))
-
-                    local dmg_sprite = Sprite(battler.chara:getAttackSprite() or "effects/attack/cut")
-                    dmg_sprite:setOrigin(0.5, 0.5)
-                    if crit then
-                        dmg_sprite:setScale(2.5, 2.5)
-                    else
-                        dmg_sprite:setScale(2, 2)
-                    end
-                    dmg_sprite:setPosition(enemy:getRelativePos(enemy.width/2, enemy.height/2))
-                    dmg_sprite.layer = enemy.layer + 0.01
-                    dmg_sprite:play(1/15, false, function(s) s:remove() end)
-                    enemy.parent:addChild(dmg_sprite)
-
-                    local sound = enemy:getDamageSound() or "damage"
-                    if sound and type(sound) == "string" then
-                        Assets.stopAndPlaySound(sound)
-                    end
-                    enemy:hurt(damage, battler)
-
-                    battler.chara:onAttackHit(enemy, damage)
-                else
-                    enemy:hurt(0, battler)
-                end
-
-                self:finishAction(action)
-
-                Utils.removeFromTable(self.normal_attackers, battler)
-                Utils.removeFromTable(self.auto_attackers, battler)
-
-                if not self:retargetEnemy() then
-                    self.cancel_attack = true
-                elseif #self.normal_attackers == 0 and #self.auto_attackers > 0 then
-                    local next_attacker = self.auto_attackers[1]
-
-                    local next_action = self:getActionBy(next_attacker, true)
-                    if next_action then
-                        self:beginAction(next_action)
-                        self:processAction(next_action)
-                    end
-                end
-            end)
             if action.action == "ATTACK" and attackbox.attacked then
                 battler_weapon:onAttack(action, battler, enemy, attackbox.score, attackbox.bolts, attackbox.close)
             elseif action.action == "AUTOATTACK" then
                 battler_weapon:onAttack(action, battler, enemy, 150, 1, 0)
             end
-
             return false
         elseif action.action == "SKIP" then
             return true -- multi act fix
@@ -739,7 +732,6 @@ function Lib:init()
             orig(self, action)
         end
     end)
-        
 
     -----  UPDATEATTACKING
 

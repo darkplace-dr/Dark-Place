@@ -1,4 +1,4 @@
-# ExpandedAttackLib for [Kristal](https://github.com/KristalTeam/Kristal)
+# ExpandedAttackLib v1.3 for [Kristal](https://github.com/KristalTeam/Kristal)
 
 Add more variety to your FIGHT actionbutton today!
 
@@ -13,6 +13,9 @@ Add more variety to your FIGHT actionbutton today!
 
 ### Creator:
 * Sam Deluxe
+
+### Contributors:
+* FireRainV
 
 ### Testers:
 * Charbomber
@@ -30,15 +33,3 @@ https://github.com/Idunno1/ExpandedAttackLib/releases<br>
 
 ## Docs:
 https://github.com/Idunno1/ExpandedAttackLib/wiki
-
-# Questions that I'm probably going to get asked
-## "Why do multibolt attacks lack the afterimage effect?"
-I'm not exactly the most experienced programmer out there, so I had a lot of trouble trying to get them to work the way I wanted, which was to make the afterimages less prominent the more bolts an attack had.
-However, I had a lot of trouble trying to get the other bolts to even spawn afterimages in the first place, so I just scrapped that idea and made them not have any afterimages.
-They can get kind of distracting for multibolt attacks anyway, so I was hesitant to even include them in the first place.
-Maybe they'll come back in an update.
-
-- Old stuff, fixed and optimized by FireRainV
-
-## "Why is this thing not optimized?"
-See above.

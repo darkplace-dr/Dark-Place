@@ -1,0 +1,8 @@
+{
+    "id": "yellowsoul",
+    "version": "1.1.0",
+    "engineVersion": "0.7.0-dev",
+    "config": {
+        "allowcheat": true
+    }
+}

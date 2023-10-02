@@ -81,6 +81,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Sam Deluxe - Contributor
 * Silvaz - Contributor
 * LancerGaming2 - Contributor
+* FireRainV - Contributor
 
 <a href="https://github.com/BrandonK7200/Dark-Place/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=BrandonK7200/Dark-Place" />
@@ -97,12 +98,12 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * HUECYCLES - Custom BG Library code
 * Brylee - Original author for Deltarune: Ozymandias, dialogue portraits for Rook
 * Mr. Luwigi - Rook, DZ & NG sprites for Deltarune: Ozymandias
-* FireRainV#1958 - MoreParty Library
 * TrashcatYT#6658 - Blue Soul Library
-* TheMaxine - Original author for Ribbit
-* RhenaudTheLukark - Original author for Unitale/Create Your Frisk/Create Your Kris
-* STD Repaints - Original author for Deltarune Repainted
-* RynoGG - Original author for Deltatraveler
+* Glavvrach - Splitting effect for SNEO bullets
+* TheMaxine - Original author for [Ribbit](https://gamejolt.com/games/ribbitmod/671888)
+* RhenaudTheLukark - Original author for [Unitale/Create Your Frisk/Create Your Kris](https://github.com/RhenaudTheLukark/CreateYourFrisk/releases)
+* STD Repaints - Original author for [Deltarune Repainted](https://gamejolt.com/games/nudealert/496504)
+* RynoGG - Original author for [Deltatraveler](https://gamejolt.com/games/deltatraveler/661464)
 * Team Inundation - Original authors for MOBDT
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 * MrkySpices - Deltarune-styled Backrooms tileset

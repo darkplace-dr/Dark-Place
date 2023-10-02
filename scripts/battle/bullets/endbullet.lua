@@ -2,7 +2,7 @@ local EndBullet, super = Class(Bullet)
 
 function EndBullet:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super:init(self, x, y, "bullets/Health")
+    super:init(self, x, y, "battle/bullets/Health")
     self.destroy_on_hit = false
     self.sprite:play(1/15)
     self:setScale(1,1)

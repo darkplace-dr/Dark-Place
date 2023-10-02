@@ -39,7 +39,7 @@ function Costumes:init()
                 {"DEFAULT", "dark", {0, 0}},
                 {"LIGHT", "light", {0, 0}},
                 {"MTT", "repainted", {0, 0}},
-                {"VESSEL", "dark", {0, 0}}
+                {"RODEO", "rodeo", {-8, -8}}
             }
         },
         {
@@ -67,7 +67,7 @@ function Costumes:init()
         {
             name = "YOU",
             icon = Assets.getTexture("ui/partyselect/you"),
-            gradient_color = {0, 0.5, 1},
+            gradient_color = {0, 1, 0},
             sprite_base_path = "party/you",
             skins = {
                 {"DEFAULT", "dark", {-8, -6}},
@@ -97,26 +97,25 @@ function Costumes:init()
                 {"LIGHT", "light", {-4, -5}},
             }
         },
-        --[[
         {
             name = "Bor",
             icon = Assets.getTexture("ui/partyselect/bor"),
-            color = {113/255, 113/255, 231/255},
+            gradient_color = {113/255, 113/255, 231/255},
             sprite_base_path = "party/bor",
             skins = {
-                {"DEFAULT", "dark", {175, 190}}
+                {"DEFAULT", "dark", {-4, 40}},
+                {"OLD", "dark_old", {-4, 40}}
             }
         },
         {
             name = "iPhone 7 Plus",
             icon = Assets.getTexture("ui/partyselect/iphone"),
-            color = {198/255, 136/255, 132/255},
+            gradient_color = {198/255, 136/255, 132/255},
             sprite_base_path = "party/iphone",
             skins = {
-                {"DEFAULT", "dark", {168, 120}}
+                {"DEFAULT", "dark", {-8, -28}}
             }
         }
-        --]]
     }
 end
 
@@ -152,7 +151,7 @@ function Costumes:draw()
     end
 
     for i, char in ipairs(self.costumes) do
-        local icon_x = 170 + (i - 1) * 50
+        local icon_x = 125 + (i - 1) * 50
         love.graphics.setColor(1, 1, 1)
         if i ~= self.selected_index then
             love.graphics.setColor(1, 1, 1, 0.25)

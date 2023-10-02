@@ -1,12 +1,12 @@
 {
     "id": "moreparty",
     
-    "version": "v1.4.1",
+    "version": "v1.4.4",
     "engineVer": "v0.8.1",
     
     "authors": [
-        "Core",
-        "FireRainV"
+        "FireRainV",
+        "Core"
     ],
 	
     "config": {

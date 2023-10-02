@@ -2,7 +2,7 @@ local ErrorBullet, super = Class(Bullet)
 
 function ErrorBullet:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super.init(self, x, y, "bullets/error")
+    super.init(self, x, y, "battle/bullets/error")
 
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
     self.physics.direction = dir

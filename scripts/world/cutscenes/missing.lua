@@ -17,4 +17,35 @@ return {
 			cutscene:hideNametag()
 		end
 	end,
+    
+    tpose_mario = function(cutscene, event)
+        local SM = Registry.createItem("super_mushroom")
+        cutscene:showShop()
+        cutscene:showNametag("Mario")
+        cutscene:text("* Hello![wait:5] It's a me Super Mario on the PS4.[wait:5] Whohooo!")
+        cutscene:text(string.format("* I got some spare Super Mushrooms to sell.\nThey're %dD$,[wait:5] interested?", SM:getPrice()))
+        cutscene:hideNametag()
+
+        local buying = cutscene:choicer({"Buy", "Do not"}) == 1
+        
+        cutscene:showNametag("Mario")
+        if not buying then
+            cutscene:text("* Mamma mia...")
+        elseif Game.money < SM:getPrice() then
+            cutscene:text("* Oh no...[wait:5] You don't have the money...")
+        else
+            local success, result_text = Game.inventory:tryGiveItem(SM)
+            if success then
+                Game.money = Game.money - SM:getPrice()
+                cutscene:playSound("locker")
+                cutscene:text("* Whohooo![wait:5] Here's your mushroom.\n"..result_text)
+                cutscene:text("* Beware where the leader eats it,[wait:5] you may get stuck.")
+            else
+                cutscene:text("* Oh no...[wait:5] You don't have enough space...")
+            end
+        end
+        cutscene:hideShop()
+        cutscene:hideNametag()
+	end,
+    
 }

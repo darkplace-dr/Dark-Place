@@ -20,7 +20,7 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "enemies/error"
+    self.path = "battle/enemies/error"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "error"
 

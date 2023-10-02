@@ -104,7 +104,10 @@ function actor:init()
         ["walk/right"] = "walk_shadowed/right",
     }
 
-    self.taunt_sprites = {"box"}
+    self.taunt_sprites = {"box", "bs_win", "maid"}
+	if Game:getFlag("jamm_closure") then
+		self.taunt_sprites = {"box", "ghost_bs", "maid"}
+	end
 end
 
 return actor
