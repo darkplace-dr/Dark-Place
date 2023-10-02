@@ -15,8 +15,8 @@ function BG:update(dt)
     self.fade = Game.battle.transition_timer / 10
     self.offset = self.offset + self.speed*DTMULT
 	
-    if self.offset > self.size*2 then
-        self.offset = self.offset - self.size*2
+    if self.offset >= 100 then
+        self.offset = self.offset - 100
     end
 end
 
@@ -31,8 +31,8 @@ function BG:draw()
     love.graphics.setColor(r,g,b, a or self.fade)
     for x = 0, 1, 50 do
         for y = 0, 1, 50 do
-            dojo = Assets.getTexture("battle/dojo_battlebg")
-            love.graphics.draw(dojo, x + Game.battle.camera.width/2, y + 340, 0, 2 + math.sin(self.offset/2 * 0.008), 2 + math.cos(self.offset/2 * 0.008), 0.5)
+            local dojo = Assets.getTexture("battle/dojo_battlebg")
+            love.graphics.draw(dojo, SCREEN_WIDTH/2, (SCREEN_HEIGHT/2)-50, 0, (2 + math.sin(self.offset/2) * 0.008), (2 + math.cos(self.offset/2) * 0.008), dojo:getWidth()/2, dojo:getHeight()/2)
         end
     end
 end
