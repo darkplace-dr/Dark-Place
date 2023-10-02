@@ -66,7 +66,8 @@ return{
         {
             --align = "center",
             --font = "plain"
-            font_size = 16
+            font_size = 16,
+            style = "dark"
         }
         )
         cutscene.inputplease.color = COLORS.silver
@@ -88,7 +89,7 @@ return{
             cutscene:walkTo(player, player.x, player.y - 34, 1)
             cutscene:wait(1)
             player:setFacing("down")
-            player:setSprite("seentoomuch")
+            if Game.party[1].name == "YOU" then player:setSprite("seentoomuch") end
         elseif Input.down("down") then
             cutscene:walkTo(player, player.x, player.y + 34, 1)
             cutscene:wait(1)
@@ -96,7 +97,7 @@ return{
             player.layer = 1.5
         end
         zero.layer = 1.4
-            if susie then susie.layer = 1.3 end
+        if susie and Game.party[1].name ~= "Susie" then susie.layer = 1.3 end
         Assets.playSound("item")
         cutscene:text("* (You got [color:yellow]FOCUS[color:reset].[wait:10]\nHold [color:yellow][A][color:reset] to slow time.)")
 
@@ -109,7 +110,7 @@ return{
 
         -- Resume. if Susie is in the party, wait until Zero reaches her, then the two will clash.
         zero.active = true
-        if susie then
+        if susie and Game.party[1].name ~= "Susie" then
             cutscene:wait(function () return zero.x <= susie.x+50 end)
             Log:print(susie.layer .. ", " .. zero.layer)
             zero.x = susie.x + 50
@@ -203,7 +204,7 @@ return{
         player.layer = 0.4
         cutscene:interpolateFollowers()
         cutscene:attachFollowers()
-        if susie then
+        if susie and Game.party[1].name ~= "Susie" then
             cutscene.battleanims:remove()
             susie.alpha = 1
             susie:resetSprite()
@@ -237,8 +238,8 @@ return{
 
         cutscene:wait(function () return zero.x <= player.x+60 end)
         cutscene:slideTo(player, player.x, player.y - 34, 0.5, "out-expo")
-        player:setSprite("walk/down")
-        if susie then
+        player:setFacing("down")
+        if susie and Game.party[1].name ~= "Susie" then
             cutscene:wait(function () return zero.x <= susie.x+50 end)
             zero.x = susie.x + 50
             zero.y = susie.y
@@ -320,7 +321,7 @@ return{
         player.layer = 0.4
         cutscene:interpolateFollowers()
         cutscene:attachFollowers()
-        if susie then
+        if susie and Game.party[1].name ~= "Susie" then
             cutscene.battleanims:remove()
             susie.alpha = 1
             susie:resetSprite()

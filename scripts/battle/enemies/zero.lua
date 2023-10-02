@@ -24,9 +24,11 @@ function Zero:init()
     self.spare_points = 0
     self.disable_mercy = true
 
+    self.difficulty = 0
+
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "basic",
+        "zero/ColorSlash",
         --"aiming",
         --"movingarena"
     }
