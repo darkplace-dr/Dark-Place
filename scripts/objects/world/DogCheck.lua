@@ -90,7 +90,8 @@ function DogCheck:update()
     Game.lock_movement = true -- Also prevents opening the menu
     if Input.pressed("confirm") and
     not Game.world:hasCutscene() and
-    not Kristal.Console.is_open and Kristal.DebugSystem.state == "IDLE" then
+    not Kristal.Console.is_open and Kristal.DebugSystem.state == "IDLE"
+    and self.started then
         Game.fader:fadeOut(nil, {
             speed = 0.5
         })

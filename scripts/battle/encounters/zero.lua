@@ -38,7 +38,7 @@ function Zero:beforeStateChange(old, new)
         Game.battle:startCutscene("zero", "start")
     end
 end
---[[
+--
 function Zero:onStateChange(old, new)
     if new == "DEFENDING" then
         Game.battle:returnToWorld()
