@@ -26,7 +26,7 @@ function Dummy:init()
     end
 end
 
-function OmegaSpamtonBossfight:onBattleInit()
+function Dummy:onBattleInit()
     super.onBattleInit(self)
     if self.boss_rush == true then
         Game.battle.dojo_bg = DojoBG({1, 1, 1})
