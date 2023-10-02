@@ -33,6 +33,14 @@ function BossRematchMenu:init()
         { name = "Omega Spamton", flag = "omegaspamton_defeated", encounter = "omegaspamtonbossfight" },
         { name = "Google Dino",   flag = "googledino_defeated",   encounter = "googledino" },
     }
+	
+	self.bosses = {}
+	
+	for i, v in ipairs(self.encounters) do
+		if Game:getFlag(v.flag) then
+			table.insert(self.bosses, v)
+		end
+	end
 
     self.currently_selected = 1
     self.page = 1
@@ -45,6 +53,8 @@ function BossRematchMenu:draw()
     love.graphics.setColor(1, 1, 1)
     love.graphics.setFont(self.font)
     love.graphics.printf("Bosses", 0, 0, self.width, "center")
+    love.graphics.setFont(self.font_2)
+    love.graphics.printf("Press [R] to fight all bosses in a boss rush.", 0, -10, self.width, "center")
 
     local y_off = 16
 
@@ -119,6 +129,20 @@ function BossRematchMenu:onKeyPressed(key, is_repeat)
             self.ui_cant_select:stop()
             self.ui_cant_select:play()
         end
+    end
+    if Input.pressed("r") then
+        self.ui_select:stop()
+        self.ui_select:play()
+        Game.world:closeMenu()
+        Game.world:startCutscene(function(cutscene)
+            for i, v in ipairs(self.bosses) do
+                -- cutscene:text("* "..#self.bosses-(i-1).." left to go.[wait:10]\n* Up next:[wait:5] "..v[1]..".")
+				cutscene:text("* "..#self.bosses-(i-1).." left to go.[wait:10]\n* Up next:[wait:5] "..v.name..".")
+                Game:encounter(v.encounter, true)
+                cutscene:wait(1)
+            end
+            cutscene:text("* Congratulations![wait:10] You win absolutely nothing!")
+        end)
     end
 end
 
