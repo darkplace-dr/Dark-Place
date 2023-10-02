@@ -385,6 +385,7 @@ return {
 		cutscene:startEncounter("mimicboss", true, boss)
 
 		Game:setFlag("mimicBossDone", true)
+		Game:setFlag("mimic_defeated", true)
 		boss:remove()
 		cutscene:attachFollowers(5)
 		cutscene:wait(1)

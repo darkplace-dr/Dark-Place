@@ -19,6 +19,8 @@ return {
 		cutscene:hideNametag()
 		
 		local encounter = cutscene:startEncounter("sam", true, {{"sam", sam}})
+
+		Game:setFlag("sam_defeated", true)
 		
 		if susie then
 			cutscene:showNametag("Susie")

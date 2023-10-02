@@ -18,10 +18,20 @@ function Dummy:init()
     --self:addEnemy("dummy")
 	
 	self.flee = false
+
+    self.boss_rush = false
+	
+    if Game:getFlag("sam_defeated") == true then
+        self.boss_rush = true
+    end
 end
 
-function Dummy:onBattleEnd()
-    Game:setFlag("sam_defeated", true)
+function OmegaSpamtonBossfight:onBattleInit()
+    super.onBattleInit(self)
+    if self.boss_rush == true then
+        Game.battle.dojo_bg = DojoBG({1, 1, 1})
+        Game.battle:addChild(Game.battle.dojo_bg)
+    end
 end
 
 function Dummy:update()

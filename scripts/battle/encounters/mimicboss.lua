@@ -20,11 +20,23 @@ function UfoEncounter:init()
     self.death_cine_played = false
 	
 	self.flee = false
+
+    self.boss_rush = false
+	
+    if Game:getFlag("mimic_defeated") == true then
+        self.boss_rush = true
+    end
 end
 
 function UfoEncounter:onBattleInit()
-	self.bg = StarsBG({1, 1, 1})
-	Game.battle:addChild(self.bg)
+    super.onBattleInit(self)
+    if self.boss_rush == true then
+        Game.battle.dojo_bg = DojoBG({1, 1, 1})
+        Game.battle:addChild(Game.battle.dojo_bg)
+    else
+        self.bg = StarsBG({1, 1, 1})
+	    Game.battle:addChild(self.bg)
+    end
 end
 
 function UfoEncounter:onActionsEnd()
@@ -37,10 +49,6 @@ function UfoEncounter:onActionsEnd()
         end)
         return true
     end
-end
-
-function UfoEncounter:onBattleEnd()
-    Game:setFlag("mimic_defeated", true)
 end
 
 return UfoEncounter
