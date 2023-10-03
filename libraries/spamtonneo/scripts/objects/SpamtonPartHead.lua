@@ -1,7 +1,7 @@
 local Head, super = Class("SpamtonPart", "SpamtonHead")
 
 function Head:init(x, y)
-    super.init(self, "npcs/spamton/head", x, y, 17, 26, math.rad(10))
+    super.init(self, "npcs/sneo/head", x, y, 17, 26, math.rad(10))
     self.animating = true
     self.anim_timer = 0
     self.anim_speed = 0.5

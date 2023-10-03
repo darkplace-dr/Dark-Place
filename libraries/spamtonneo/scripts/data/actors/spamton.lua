@@ -4,7 +4,7 @@ function Spamton:init()
     super.init(self)
     self.width, self.height = 50, 84
     self.hitbox = {12,41, 30,40}
-    self.path = "npcs/spamton"
+    self.path = "npcs/sneo"
     self.voice = "sneo"
     self.flip = "right"
 end
@@ -20,7 +20,7 @@ function Spamton:onSetAnimation(sprite, anim, ...)
     elseif anim == "down" then
         sprite:resetParts()
         sprite:setHeadFrame(1)
-        sprite:setSwingSpeed(0.5)
+        sprite:setSwingSpeed(1)
     elseif anim == "shaking" then
         sprite:setHeadFrame(3)
         sprite:setAllPartsShaking(true)
