@@ -117,13 +117,12 @@ function DogCheck:update()
         if (self.extreme >= 1100 and math.abs(math.sin((self.siner / 15))) < 0.1) then
             self.extreme = 0
             self.extreme2 = 0
-            self.siner = 0
         end
     end
 
 
 
-        self.dog:setScale((2 + (math.sin((self.siner / 15)) * (0.2 + (self.extreme / 900)))) + 1, (2 - (math.sin((self.siner / 15)) * (0.2 + (self.extreme / 900)))) + 1)
+        self.dog:setScale((2 + (math.sin((self.siner / 15)) * (0.2 + (self.extreme / 900)))) + 3, (2 - (math.sin((self.siner / 15)) * (0.2 + (self.extreme / 900)))) + 3)
         self.siner = self.siner + 1
     end
         self.oddeven = 1
@@ -141,6 +140,18 @@ function DogCheck:getDebugInfo()
         "Variant: " .. self.variant,
         string.format("Song: %s (%gx)", self.song, self.song_pitch)
     }
+end
+
+function DogCheck:draw()
+    super.draw(self)
+    -- Ported the sun out of boredom, uncomment this if you want. - Agent 7
+    --[[
+    if self.variant == "summer" then
+        Draw.setColor(1,1,0)
+        love.graphics.circle("fill", (420 + (math.cos((self.siner / 18)) * 6)), (40 + (math.sin((self.siner / 18)) * 6)), (28 + (math.sin((self.siner / 6)) * 4)), 100)
+    end
+    --]]
+    
 end
 
 return DogCheck
