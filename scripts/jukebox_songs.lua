@@ -563,7 +563,7 @@ return {
     file = "almighty",
     composer = "Shoji Meguro",
     released = "2012",
-    origin = "Persona 4 Gold"
+    origin = "Persona 4 Golden"
   },
   {
     name = "Undefeatable",
@@ -629,6 +629,13 @@ return {
     released = "2023",
     origin = "A Salesman's Lament"
   },
+  {
+    name = "Cait's Theme",
+    file = "cait",
+    composer = "Yasunori Nishiki",
+    released = "2023",
+    origin = "OCTOPATH TRAVELER II"
+  }
   --[[
   {
     name = "The Road Leading to the Secret",

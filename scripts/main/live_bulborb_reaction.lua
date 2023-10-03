@@ -63,7 +63,7 @@ function Mod:updateBulborb()
         if self.bulborb_state == "" then
             self.bulborb_state = "APPEARING"
 
-            local you_dont_see_anything = Utils.random(420) + Game:getFlag("fun")
+            local you_dont_see_anything = Utils.random(0, 420, 1) + Game:getFlag("fun")
             if you_dont_see_anything > 415 then
                 self.bulborb_reaction:setSprite("ui/battle/msg/AWOOOOOGA")
             end
