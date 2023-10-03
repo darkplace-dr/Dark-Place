@@ -6,6 +6,13 @@ function Mod:initBulborb()
 end
 
 function Mod:resetBulborb()
+    if self.bulborb_reaction.texture ~= "ui/live_bulborb_reaction" then
+        if Game.state == "OVERWORLD" then
+            Game.world.timer:after(1/2, function() self.bulborb_reaction:setSprite("ui/live_bulborb_reaction") end)
+        elseif Game.state == "BATTLE" then
+            Game.battle.timer:after(1/2, function() self.bulborb_reaction:setSprite("ui/live_bulborb_reaction") end)
+        end
+    end
     self.bulborb_reaction:setScale(Game:getFlag("bulborb_scale", 0.3))
     self.bulborb_reaction.alpha = 1
     self:repositionBulborb()
@@ -41,7 +48,13 @@ function Mod:updateBulborb()
 
     -- Just wanna make sure the internet checkpoint thing that Char added
     -- doesn't get its mood ruined by a Live Bulborb Reaction
-    local can_show = Game.world.map.id ~= "field"
+
+    -- hi -sam
+    local anti_bulborb_maps = {
+        "field"
+    }
+
+    local can_show = not Utils.containsValue(anti_bulborb_maps, Game.world.map.id)
     if not can_show then
         self.bulborb_reaction:remove()
     end
@@ -49,6 +62,11 @@ function Mod:updateBulborb()
     if can_show and not (OVERLAY_OPEN or TextInput.active) and Input.pressed("b") and not Input.ctrl() then
         if self.bulborb_state == "" then
             self.bulborb_state = "APPEARING"
+
+            local you_dont_see_anything = Utils.random(0, 420, 1) + Game:getFlag("fun")
+            if you_dont_see_anything > 415 then
+                self.bulborb_reaction:setSprite("ui/battle/msg/AWOOOOOGA")
+            end
 
             self:resetBulborb()
             Game.stage:addChild(self.bulborb_reaction)
