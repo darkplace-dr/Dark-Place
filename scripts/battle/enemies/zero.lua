@@ -28,7 +28,8 @@ function Zero:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "zero/ColorSlash",
+        --"zero/ColorSlash",
+        "zero/Aiming"
         --"aiming",
         --"movingarena"
     }
