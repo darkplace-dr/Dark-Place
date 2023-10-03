@@ -2,8 +2,12 @@
 ---@field finish_cb? fun(action?: WarpBinCodeInfo, raw_input: string)
 local WarpBinInputMenu, super = Class(Object)
 
-function WarpBinInputMenu:init()
-    super.init(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 288, 40)
+function WarpBinInputMenu:init(length)
+    if length then
+        super.init(self, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, (36 * length), 40)
+    else
+        super.init(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 288, 40)
+    end
 
     self:setParallax(0, 0)
     self:setOrigin(0.5, 0.5)
@@ -22,7 +26,7 @@ function WarpBinInputMenu:init()
 
     -- yes, a table of lines
     self.input = {""}
-    self.code_len = 8
+    self.code_len = length or 8
 
     self.as_warp_bin_ui = true
     self.finish_cb = nil
