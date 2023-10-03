@@ -266,11 +266,9 @@ return{
             Assets.playSound("bigcut")
             --cutscene:wait(1/30)
 
-            cutscene:wait(function () return zero.y >= 310 end)
             zero.physics.speed = 0
             zero.physics.direction = 0
             zero.physics.gravity = 0
-            zero.y = 310
             zero:setAnimation("hurt_ground")
             Assets.playSound("impact")
 
@@ -335,13 +333,22 @@ return{
     end,
 
     endscene = function (cutscene)
+        Game.world.map:getEvent(5):remove()
         if Game.inventory:isFull("armors") then
             cutscene:text("* You BITCH.[wait:10] I put that forcefield there for a reason.")
             cutscene:text("* Y'know what?[wait:5] Fuck you.")
             Game.world:loadMap("misc/dogcheck")
             cutscene:text("* Get Dogchecked,[wait:5] [style:GONER]idiot[style:reset].")
         else
+            if Game:getFlag("fun") == 12 then
+                local susie = cutscene:getCharacter("susie")
+                if susie then
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ...[wait:10] [facec:susie_bangs/nervous_smile]What.", "shock", "susie")
+                end
+            end
         Game.inventory:tryGiveItem("focus")
+        cutscene:hideNametag()
         cutscene:text("* ([color:yellow]FOCUS[color:reset] was added to your [color:yellow]ARMORS[color:reset].)")
         end
     end
