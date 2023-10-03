@@ -9,24 +9,23 @@ function Shadynn:init()
     self:setActor("shade_ania")
 
     -- Enemy health
-    self.max_health = 1700
-    self.health = 1700
+    self.max_health = 2300
+    self.health = 2300
     -- Enemy attack (determines bullet damage)
     self.attack = 8
     -- Enemy defense (usually 0)
     self.defense = 0
     -- Enemy reward
-    self.money = 100
-    self.experience = 5
+    self.money = Game:getFlag("shade_ania_rematch") and 0 or 100
+    self.experience = 0
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "basic",
-        "aiming",
-        "movingarena"
+        "darkfire_down",
+		"sing"
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
@@ -34,14 +33,14 @@ function Shadynn:init()
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
-        "* The dummy gives you a soft\nsmile.",
-        "* The power of fluffy boys is\nin the air.",
-        "* Smells like cardboard.",
+        "* A dark energy surrounds you, whispering around you.",
+        "* The power of shadows spreads through the air.",
+        "* Smells like strawberries.",
     }
     -- Text displayed at the bottom of the screen when the enemy has low health
     self.low_health_text = "* Shade Ania's darkness fades."
 
-    self:registerAct("Dispell")
+    self:registerAct("Dispel")
     self:registerAct("Barrier", "Protect\nAll", {"jamm"}, 70)
 	
 	self.siner = 0
@@ -49,25 +48,29 @@ function Shadynn:init()
 	
 	self.tired_percentage = 0
     self.low_health_percentage = 0.1
+	
+	self.auto_spare = true
+	
+	self.cutscened = Game:getFlag("shade_ania_rematch")
 end
 
 function Shadynn:getXAction(battler)
-    return "Dispell"
+    return "Dispel"
 end
 
 function Shadynn:onAct(battler, name)
     if name == "Barrier" then
 		Game.battle:startActCutscene(function(cutscene)
-			cutscene:text("* Jamm formed a strong barrier around the party!")
+			cutscene:text("* " .. battler.chara:getName() .. " formed a strong barrier around the party!")
 			for _,battler in ipairs(Game.battle.party) do
-				battler:addShield(1000)
+				battler:addShield(math.huge)
 			end
 		end)
 		return
-    elseif name == "Dispell" then
+    elseif name == "Dispel" then
         -- Loop through all enemies
-        self:addMercy(5)
-        return "* " .. battler.chara:getName() .. " dispells a bit of Shade Ania's magic."
+        self:addMercy(Game:getFlag("shade_ania_rematch") and 2 or 5)
+        return "* " .. battler.chara:getName() .. " dispels a bit of Shade Ania's magic."
     end
 
     -- If the act is none of the above, run the base onAct function

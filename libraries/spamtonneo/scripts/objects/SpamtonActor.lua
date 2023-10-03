@@ -3,38 +3,38 @@ local Spamton, super = Class(ActorSprite)
 function Spamton:init(actor)
     super.init(self, actor)
 
-    self.body = SpamtonPart("npcs/spamton/body", 11, 25, 0, 0.33)
+    self.body = SpamtonPart("npcs/sneo/body", 11, 25, 0, 0.33)
     self.body.id = "body"
     self.body.layer = -5
     self.body.swing_range = {math.rad(-7.5),math.rad(7.5)}
     self:addChild(self.body)
 
-    self.leg_l = SpamtonPart("npcs/spamton/leg_l", 16, 49, 0.5, 0)
+    self.leg_l = SpamtonPart("npcs/sneo/leg_l", 16, 49, 0.5, 0)
     self.leg_l.id = "leg_l"
     self.leg_l.layer = -10
     self:addChild(self.leg_l)
 
-    self.leg_r = SpamtonPart("npcs/spamton/leg_r", 25, 48, 0.5, 0)
+    self.leg_r = SpamtonPart("npcs/sneo/leg_r", 25, 48, 0.5, 0)
     self.leg_r.id = "leg_r"
     self.leg_r.layer = -10
     self:addChild(self.leg_r)
 
-    self.arm_l = SpamtonPart("npcs/spamton/arm_l", 16, 27, 0, 0.5, math.pi/2)
+    self.arm_l = SpamtonPart("npcs/sneo/arm_l", 16, 27, 0, 0.5, math.pi/2)
     self.arm_l.id = "arm_l"
     self.arm_l.layer = -12
     self:addChild(self.arm_l)
 
-    self.arm_r = SpamtonPart("npcs/spamton/arm_r", 33, 25, 0, 1, math.pi/2)
+    self.arm_r = SpamtonPart("npcs/sneo/arm_r", 33, 25, 0, 1, math.pi/2)
     self.arm_r.id = "arm_r"
     self.arm_r.layer = -4
     self:addChild(self.arm_r)
 
-    self.wing_l = SpamtonPart("npcs/spamton/wing_l", 0, 4, 1, 0.5)
+    self.wing_l = SpamtonPart("npcs/sneo/wing_l", 0, 4, 1, 0.5)
     self.wing_l.id = "wing_l"
     self.wing_l.layer = -15
     self:addChild(self.wing_l)
 
-    self.wing_r = SpamtonPart("npcs/spamton/wing_r", 27, 0, 0, 0.5)
+    self.wing_r = SpamtonPart("npcs/sneo/wing_r", 27, 0, 0, 0.5)
     self.wing_r.id = "wing_r"
     self.wing_r.layer = 5
     self:addChild(self.wing_r)
@@ -56,7 +56,7 @@ function Spamton:init(actor)
         self.wing_r,
     }
 
-    self.swing_speed = 1
+    self.swing_speed = 2
     self.swing_range = {math.rad(-10), math.rad(10)}
     for i,part in ipairs(self.parts) do
         if part ~= self.head then
