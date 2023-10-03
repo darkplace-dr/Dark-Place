@@ -9,6 +9,7 @@ function BlueSoul:init(x, y, angle)
     self.ground_pounded = false
     self.gravity = 0
     self.jumps_left = 0
+	self.blue = true -- Checking this to disable the reduced hitbox for it
 
 	-- Variables that can be changed
     self.can_jump = true 		-- Can the blue soul jump? [boolean] (true; false) | default: true
@@ -60,6 +61,9 @@ function BlueSoul:doMovement()
 		else
 			self.jumped = true
 		end
+		if self.last_collided_y == -1 and self.gravity < 0 then
+			self.gravity = 0
+		end
 	elseif self.direction == "up" then
 		-- Keyboard input:
 		if Input.down("left")  then move_x = move_x - 1 end
@@ -85,6 +89,9 @@ function BlueSoul:doMovement()
 			self:jumpReset()
 		else
 			self.jumped = true
+		end
+		if self.last_collided_y == 1 and self.gravity < 0 then
+			self.gravity = 0
 		end
 	elseif self.direction == "left" then
 		-- Keyboard input:
@@ -112,6 +119,9 @@ function BlueSoul:doMovement()
 		else
 			self.jumped = true
 		end
+		if self.last_collided_x == 1 and self.gravity < 0 then
+			self.gravity = 0
+		end
 	elseif self.direction == "right" then
 		-- Keyboard input:
 		if Input.down("up")  then move_y = move_y - 1 end
@@ -137,6 +147,9 @@ function BlueSoul:doMovement()
 			self:jumpReset()
 		else
 			self.jumped = true
+		end
+		if self.last_collided_x == -1 and self.gravity < 0 then
+			self.gravity = 0
 		end
 	end
 	
@@ -177,6 +190,10 @@ function BlueSoul:jumpStart()
 	if self.can_jump then
 		if self.can_doublejump then
 			if self.jumps_left > 0 then
+				if self.jumps_left ~= self.jump_count then
+					local djumpfx = DoubleJumpEffect()
+					Game.battle:addChild(djumpfx)
+				end
 				self.gravity = -self.jump_height
 				self.jumps_left = self.jumps_left - 1*DTMULT
 			end
@@ -213,10 +230,10 @@ end
 function BlueSoul:doGravity()
 	if self.gravity >= -25 and self.gravity < -6 then self.gravity = self.gravity + 0.25*DTMULT end
 	if self.gravity >= -6 and self.gravity < -0.8 then self.gravity = self.gravity + 0.20*DTMULT end
-	if self.gravity >= -0.8 and self.gravity < 0.8 then self.gravity = self.gravity + 0.15*DTMULT end
-	if self.gravity >= 0.8 and self.gravity < 2.5 then self.gravity = self.gravity + 0.20*DTMULT end
-	if self.gravity >= 2.5 and self.gravity < 6 then self.gravity = self.gravity + 0.25*DTMULT end
-	if self.gravity >= 6 and self.gravity < 13 then self.gravity = self.gravity + 0.30*DTMULT end
+	if self.gravity >= -0.8 and self.gravity < 0.8 then self.gravity = self.gravity + 0.15*DTMULT*2 end
+	if self.gravity >= 0.8 and self.gravity < 2.5 then self.gravity = self.gravity + 0.20*DTMULT*2 end
+	if self.gravity >= 2.5 and self.gravity < 6 then self.gravity = self.gravity + 0.25*DTMULT*2 end
+	if self.gravity >= 6 and self.gravity < 13 then self.gravity = self.gravity + 0.30*DTMULT*2 end
 end
 
 return BlueSoul

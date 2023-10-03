@@ -99,7 +99,7 @@ end
 function Soul:update()
 	super.update(self)
 
-	if Input.down("cancel") then
+	if Input.down("cancel") and not self.blue then -- Reduced hitbox size can get you stuck in collision with the blue soul, so it can't use this.
 		self.collider.radius = 4
 		self.sprite_focus.alpha = 1
 	else
