@@ -19,6 +19,11 @@ function DogCheck:init()
 
 	self.month = tonumber(os.date("%m"))
     self.day = tonumber(os.date("%d"))
+
+    self.siner = 0
+    self.extreme2 = 0
+    self.extreme = 0
+    self.oddeven = 0
 end
 
 function DogCheck:start()
@@ -75,6 +80,8 @@ function DogCheck:start()
         playSong("options_fall")
     elseif self.variant == "summer" then
         createDog(cust_sprites_base.."/dog_summer", 0.8)
+        self.dog:setOrigin(0.5,1)
+        self.dog.y = self.dog.y + 23
         playSong("options_summer")
     elseif self.variant == "autumn" then
         createDog(cust_sprites_base.."/dog_autumn", 0.8, -2, -10)
@@ -99,6 +106,29 @@ function DogCheck:update()
         Game.world.timer:after(1, function ()
             Game:returnToMenu()
         end)
+    end
+
+    -- Do this every other frame
+    if self.oddeven == 0 then
+    if self.started and self.variant == "summer" then
+        self.extreme2 = self.extreme2 + 1
+    if (self.extreme2 >= 240) then
+        self.extreme = self.extreme + 1
+        if (self.extreme >= 1100 and math.abs(math.sin((self.siner / 15))) < 0.1) then
+            self.extreme = 0
+            self.extreme2 = 0
+            self.siner = 0
+        end
+    end
+
+
+
+        self.dog:setScale((2 + (math.sin((self.siner / 15)) * (0.2 + (self.extreme / 900)))) + 1, (2 - (math.sin((self.siner / 15)) * (0.2 + (self.extreme / 900)))) + 1)
+        self.siner = self.siner + 1
+    end
+        self.oddeven = 1
+    else
+        self.oddeven = 0
     end
 
 end
