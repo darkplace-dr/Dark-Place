@@ -19,6 +19,11 @@ function DogCheck:init()
 
 	self.month = tonumber(os.date("%m"))
     self.day = tonumber(os.date("%d"))
+
+    self.siner = 0
+    self.extreme2 = 0
+    self.extreme = 0
+    self.oddeven = 0
 end
 
 function DogCheck:start()
@@ -75,6 +80,8 @@ function DogCheck:start()
         playSong("options_fall")
     elseif self.variant == "summer" then
         createDog(cust_sprites_base.."/dog_summer", 0.8)
+        self.dog:setOrigin(0.5,1)
+        self.dog.y = self.dog.y + 23
         playSong("options_summer")
     elseif self.variant == "autumn" then
         createDog(cust_sprites_base.."/dog_autumn", 0.8, -2, -10)
@@ -101,6 +108,28 @@ function DogCheck:update()
         end)
     end
 
+    -- Do this every other frame
+    if self.oddeven == 0 then
+    if self.started and self.variant == "summer" then
+        self.extreme2 = self.extreme2 + 1
+    if (self.extreme2 >= 240) then
+        self.extreme = self.extreme + 1
+        if (self.extreme >= 1100 and math.abs(math.sin((self.siner / 15))) < 0.1) then
+            self.extreme = 0
+            self.extreme2 = 0
+        end
+    end
+
+
+
+        self.dog:setScale((2 + (math.sin((self.siner / 15)) * (0.2 + (self.extreme / 900)))) + 3, (2 - (math.sin((self.siner / 15)) * (0.2 + (self.extreme / 900)))) + 3)
+        self.siner = self.siner + 1
+    end
+        self.oddeven = 1
+    else
+        self.oddeven = 0
+    end
+
 end
 
 function DogCheck:getDebugInfo()
@@ -111,6 +140,18 @@ function DogCheck:getDebugInfo()
         "Variant: " .. self.variant,
         string.format("Song: %s (%gx)", self.song, self.song_pitch)
     }
+end
+
+function DogCheck:draw()
+    super.draw(self)
+    -- Ported the sun out of boredom, uncomment this if you want. - Agent 7
+    --[[
+    if self.variant == "summer" then
+        Draw.setColor(1,1,0)
+        love.graphics.circle("fill", (420 + (math.cos((self.siner / 18)) * 6)), (40 + (math.sin((self.siner / 18)) * 6)), (28 + (math.sin((self.siner / 6)) * 4)), 100)
+    end
+    --]]
+    
 end
 
 return DogCheck
