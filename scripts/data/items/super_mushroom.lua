@@ -68,7 +68,7 @@ end
 function item:onWorldUse(target)
     Game.world:heal(target, self.heal_amount)
     self.map_id = Game.world.map.id
-    Game.stage.timer:every(1/30, function()
+    Game.stage.timer:everyInstant(1/30, function()
         if self.map_id ~= Game.world.map.id then
             return false
         end
@@ -91,7 +91,7 @@ end
 function item:onBattleUse(user, target)
     target:heal(self.heal_amount)
     self.map_id = Game.world.map.id
-    Game.stage.timer:every(1/30, function()
+    Game.stage.timer:everyInstant(1/30, function()
         if self.map_id ~= Game.world.map.id then
             for i, party in ipairs(Game.party) do
                 Game.party[i].scale = nil
