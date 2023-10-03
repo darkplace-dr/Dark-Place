@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -9,10 +9,10 @@ return {
   height = 16,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 27,
-  nextobjectid = 36,
+  nextlayerid = 28,
+  nextobjectid = 39,
   properties = {
-    ["music"] = "deltarune/dogcheck"
+    ["music"] = "dogcheck_anniversary"
   },
   tilesets = {
     {
@@ -36,6 +36,21 @@ return {
   },
   layers = {
     {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 27,
+      name = "objects_bg",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {}
+    },
+    {
       type = "tilelayer",
       x = 0,
       y = 0,
@@ -53,7 +68,7 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        8, 8, 7, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 9, 8, 8,
+        8, 8, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 8, 8,
         8, 8, 7, 8, 8, 8, 8, 8, 8, 8, 8, 10, 11, 11, 11, 12, 9, 8, 8,
         8, 8, 7, 8, 8, 8, 8, 8, 8, 8, 8, 16, 17, 17, 17, 18, 9, 8, 8,
         8, 8, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8,
@@ -161,7 +176,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 560,
@@ -174,7 +189,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 0,
@@ -187,7 +202,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 0,
@@ -200,7 +215,7 @@ return {
         {
           id = 10,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 0,
@@ -213,7 +228,7 @@ return {
         {
           id = 26,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 138.872,
@@ -226,7 +241,7 @@ return {
         {
           id = 34,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 560,
@@ -239,10 +254,23 @@ return {
         {
           id = 35,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 560,
+          width = 80,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 37,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 520,
+          y = 360,
           width = 80,
           height = 80,
           rotation = 0,
@@ -268,7 +296,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 424.166,
           y = 240,
@@ -298,7 +326,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 431.961,
           y = 182.216,
@@ -312,7 +340,7 @@ return {
         {
           id = 25,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 117.058,
           y = 400,
@@ -342,7 +370,7 @@ return {
         {
           id = 19,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 424.166,
           y = 160,
@@ -353,13 +381,14 @@ return {
           properties = {
             ["solid"] = true,
             ["text1"] = "* There are tiny plushie Addisons all lined up!",
-            ["text2"] = "* Already to advertise in their small sizes!"
+            ["text2"] = "* ... Plus one puppet.",
+            ["text3"] = "* All ready to advertise in small qauntities!"
           }
         },
         {
           id = 23,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 625,
@@ -375,7 +404,7 @@ return {
         {
           id = 30,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 494.004,
@@ -388,26 +417,9 @@ return {
           }
         },
         {
-          id = 27,
-          name = "interactable",
-          class = "",
-          shape = "rectangle",
-          x = 520,
-          y = 360,
-          width = 80,
-          height = 80,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["solid"] = true,
-            ["text1"] = "* It's a dog bed!",
-            ["text2"] = "* Made for a little corgi"
-          }
-        },
-        {
           id = 28,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 160,
@@ -419,6 +431,22 @@ return {
             ["solid"] = true,
             ["text1"] = "* It's a bed!",
             ["text2"] = "* It looks too big for a mouse..."
+          }
+        },
+        {
+          id = 36,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 560,
+          y = 420,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "corgi",
+            ["cutscene"] = "devhotel_room_002.corgi"
           }
         }
       }
@@ -440,7 +468,7 @@ return {
         {
           id = 24,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 200,
           y = 528.28,
