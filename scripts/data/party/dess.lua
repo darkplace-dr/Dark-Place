@@ -141,11 +141,6 @@ function character:drawPowerStat(index, x, y, menu)
 		love.graphics.draw(icon, x+130, y+6, 0, 2, 2)
 		love.graphics.draw(icon, x+150, y+6, 0, 2, 2)
 		love.graphics.draw(icon, x+170, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+190, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+210, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+230, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+250, y+6, 0, 2, 2)
-		love.graphics.draw(icon, x+270, y+6, 0, 2, 2)
         return true
     end
 end
