@@ -11,6 +11,7 @@ end
 
 function CollideTest:onStart()
     Game.battle:swapSoul(BlueSoul())
+    Game.battle.soul.can_doublejump = true
     local arena = Game.battle.arena
 
     --[[
