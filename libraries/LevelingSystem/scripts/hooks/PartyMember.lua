@@ -37,7 +37,11 @@ end
 -- Getters
 
 function PartyMember:getLevel()
-    return Kristal.getLibConfig("leveling", "global_love") and self.level or self.love
+    return self.level
+end
+
+function PartyMember:getLOVE()
+    return self.love
 end
 
 -- Functions / Getters & Setters

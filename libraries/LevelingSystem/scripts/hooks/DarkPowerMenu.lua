@@ -40,12 +40,16 @@ function DarkPowerMenu:getNextLv()
         or self.party:getSelected():getNextLv()
 end
 
+function DarkPowerMenu:getLOVE()
+    return self.leveling_use_global_values
+        and Game:getFlag("library_love")
+        or self.party:getSelected():getLOVE()
+end
+
 function DarkPowerMenu:drawExp()
     love.graphics.setColor(1, 1, 1)
-    if self.leveling_use_global_values then
-        love.graphics.print("LOVE:", 225, 240)
-        love.graphics.print(Game:getFlag("library_love"), 290, 240)
-    end
+    love.graphics.print("LOVE:", 225, 240)
+    love.graphics.print(self:getLOVE(), 290, 240)
     love.graphics.print("EXP:", 225, 265)
     love.graphics.print(self:getExp(), 275, 265)
     love.graphics.print("Next:", 350, 265)
