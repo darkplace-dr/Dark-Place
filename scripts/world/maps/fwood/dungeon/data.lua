@@ -21,8 +21,7 @@ return {
     {
       name = "jamm_dungeon",
       firstgid = 430,
-      filename = "../../../tilesets/jamm_dungeon.tsx",
-      exportfilename = "../../../tilesets/jamm_dungeon.lua"
+      filename = "../../../tilesets/jamm_dungeon.tsx"
     }
   },
   layers = {
@@ -235,7 +234,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "fwood/entry",
+            ["map"] = "fwood/graves",
             ["marker"] = "exit"
           }
         },
