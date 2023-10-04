@@ -8,12 +8,14 @@ function Soul:init(x, y, color)
     self.outline:setOrigin(0.5, 0.5)
     self.outline.alpha = 0
     self.outline.color = {0, 1, 1}
+    self.outline.debug_select = false
     self:addChild(self.outline)
 
 	self.sprite_focus = Sprite("player/heart_dodge_focus")
     self.sprite_focus:setOrigin(0.5, 0.5)
     self.sprite_focus.inherit_color = false
 	self.sprite_focus.alpha = 0
+    self.sprite_focus.debug_select = false
     self:addChild(self.sprite_focus)
 
 	self.force_taunt = nil -- Forces taunting in battle on or off, regardless of if the PizzaToque is equipped.
@@ -198,13 +200,19 @@ function Soul:update()
     end
     -- Cut timescale in half when holding A and not out of TP
     if not self.transitioning and Input.down("a") and Game:getTension() > 0 then
+        -- Make sure the game pauses when object selection and selection slowdown is active.
+        if not (Kristal.DebugSystem.state == "SELECTION" and Kristal.Config["objectSelectionSlowdown"]) then
         Game.stage.timescale = Utils.approach(Game.stage.timescale, 0.5, DTMULT / 4)
+        end
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch/2, DTMULT / 4)
         self.timescale = Utils.approach(self.timescale, 2, DTMULT / 4)
         vhsfx.active = true
         self.timeslow_sfx:play()
 	else
+        -- Make sure the game pauses when object selection and selection slowdown is active.
+        if not (Kristal.DebugSystem.state == "SELECTION" and Kristal.Config["objectSelectionSlowdown"]) then
         Game.stage.timescale = Utils.approach(Game.stage.timescale, 1, DTMULT / 4)
+        end
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch, DTMULT / 4)
         self.timescale = Utils.approach(self.timescale, 1, DTMULT / 4)
         vhsfx.active = false
@@ -232,6 +240,7 @@ function Soul:update()
     self.concentratebg.alpha_fx.alpha = 1
     if self.afterimage_delay == 5 then
         local afterimage = AfterImage(self.outline, 0.5)
+        afterimage.debug_select = false
         self:addChild(afterimage)
         self.afterimage_delay = 0
     else
