@@ -4,6 +4,10 @@ function MinigameHandler:init()
     super.init(self, 0, 0)
 end
 
+function MinigameHandler:postInit()
+
+end
+
 function MinigameHandler:update()
     super.update(self)
 end
