@@ -86,7 +86,6 @@ function Soul:init(x, y, color)
     vhsfx = Game.stage:addFX(VHSFilter(), "timeslowvhs")
     vhsfx.timescale = 2 -- I dunno if this even works.
 	vhsfx.active = false
-    self.basespeed = self.speed
     self.concentratebg = ConcentrateBG({1, 1, 1})
     self.concentratebg.alpha_fx = self.concentratebg:addFX(AlphaFX())
     self.concentratebg.alpha_fx.alpha = 0
@@ -201,13 +200,13 @@ function Soul:update()
     if not self.transitioning and Input.down("a") and Game:getTension() > 0 then
         Game.stage.timescale = Utils.approach(Game.stage.timescale, 0.5, DTMULT / 4)
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch/2, DTMULT / 4)
-        self.speed = Utils.approach(self.speed, self.basespeed * 2, DTMULT / 4)
+        self.timescale = Utils.approach(self.timescale, 2, DTMULT / 4)
         vhsfx.active = true
         self.timeslow_sfx:play()
 	else
         Game.stage.timescale = Utils.approach(Game.stage.timescale, 1, DTMULT / 4)
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch, DTMULT / 4)
-        self.speed = Utils.approach(self.speed, self.basespeed, DTMULT / 4)
+        self.timescale = Utils.approach(self.timescale, 1, DTMULT / 4)
         vhsfx.active = false
         self.timeslow_sfx:stop()
     end
