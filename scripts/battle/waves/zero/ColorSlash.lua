@@ -43,7 +43,7 @@ function ColorSlash:onStart()
         self.timer:every(10/30, function ()
             if currslash <= #self.order then
 
-                local bullet = self:spawnBullet("colorslash", 330, 170, math.rad(180), 0, self.order[currslash])
+                local bullet = self:spawnBullet("zero/colorslash", 330, 170, math.rad(180), 0, self.order[currslash])
                 self.rgb[1] = bullet.color[1]
                 self.rgb[2] = bullet.color[2]
                 self.rgb[3] = bullet.color[3]

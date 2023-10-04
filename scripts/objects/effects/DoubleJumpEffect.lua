@@ -23,6 +23,7 @@ function DoubleJumpEffect:init()
     self.layer = BATTLE_LAYERS["soul"] - 1
     --self.alpha = 0.75
     self.color = COLORS.gray
+    self.debug_select = false
 
 end
 
