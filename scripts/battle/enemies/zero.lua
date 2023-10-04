@@ -33,7 +33,8 @@ function Zero:init()
         }
     else
         self.waves = {
-            "zero/ColorSlash",
+            --"zero/ColorSlash",
+            "zero/Aiming",
         }
     end
 

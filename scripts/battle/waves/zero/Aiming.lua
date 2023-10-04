@@ -2,12 +2,14 @@ local Aiming, super = Class(Wave)
 
 function Aiming:init()
     super.init(self)
-    
 end
 
 function Aiming:onStart()
     self.user = self:getAttackers()[1]
-    self.time = -1
+    self.user.layer_old = self.user.layer
+    self.user.layer = BATTLE_LAYERS["top"]
+    self.time = 4.5
+    self.linecolor = {1,1,0}
     self.drawline = true
     self.lockline = false
     self.mx, self.my = self.user:getRelativePos(self.user.width/2 - 7, self.user.height/2)
@@ -18,13 +20,27 @@ function Aiming:onStart()
 
     self.timer:after(3, function ()
         self.angle = Utils.angle(self.mx, self.my, self.targetx, self.targety)
-        self.timer:everyInstant(0.1, function ()
-            Assets.playSound("mtt_prebomb")
-        end, 3)
         self.lockline = true
-        self.timer:after(0.5, function ()
+        self.timer:everyInstant(2/30, function ()
+            Assets.playSound("mtt_prebomb")
+            if self.linecolor[2] == 0 then
+            self.linecolor = {1,1,0}
+            else
+            self.linecolor = {1,0,0}
+            end
+        end, 5)
+        self.timer:after(0.3, function ()
+            self.drawline = false
             self.user.physics.direction = self.angle
-            self.user.physics.speed = 10
+            self.user.physics.speed = 25
+            self.user.sprite:set("run")
+
+            self.timer:after(0.1, function ()
+                self.user.sprite:set("attack", function ()
+                    self.user.sprite:set("run")
+                end)
+                local bullet = self:spawnBulletTo(self.user, "zero/katanaslash", -90, 20)
+            end)
         end)
     end)
 end
@@ -43,7 +59,7 @@ end
 function Aiming:draw()
     super.draw(self)
     -- Get the attacker's center position
-    Draw.setColor(1,0,0, 1)
+    Draw.setColor(self.linecolor)
     love.graphics.setLineWidth(1)
     love.graphics.setLineStyle("smooth")
     local scale = 100
