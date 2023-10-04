@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 47,
+  nextobjectid = 51,
   properties = {
     ["music"] = "jamm_dungeon"
   },
@@ -18,8 +18,7 @@ return {
     {
       name = "jamm_dungeon",
       firstgid = 1,
-      filename = "../../../../tilesets/jamm_dungeon.tsx",
-      exportfilename = "../../../../tilesets/jamm_dungeon.lua"
+      filename = "../../../../tilesets/jamm_dungeon.tsx"
     }
   },
   layers = {
@@ -454,6 +453,23 @@ return {
             ["encounter"] = "shadynn_2",
             ["group"] = "A"
           }
+        },
+        {
+          id = 50,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 880,
+          y = 200,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "down",
+            ["map"] = "fwood/dungeon_inside/music_hall",
+            ["marker"] = "entry"
+          }
         }
       }
     },
@@ -478,6 +494,19 @@ return {
           shape = "point",
           x = 540,
           y = 600,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 48,
+          name = "music",
+          type = "",
+          shape = "point",
+          x = 940,
+          y = 280,
           width = 0,
           height = 0,
           rotation = 0,
