@@ -92,6 +92,9 @@ function Soul:init(x, y, color)
     self.concentratebg.alpha_fx.alpha = 0
     Game.battle:addChild(self.concentratebg)
 
+
+    Game.battle.music.basepitch = Game.battle.music.pitch
+
 	-- Timeslow ("Focus" Placebo) variables end here
 
 end
@@ -197,13 +200,13 @@ function Soul:update()
     -- Cut timescale in half when holding A and not out of TP
     if not self.transitioning and Input.down("a") and Game:getTension() > 0 then
         Game.stage.timescale = Utils.approach(Game.stage.timescale, 0.5, DTMULT / 4)
-        Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, 0.5, DTMULT / 4)
+        Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch/2, DTMULT / 4)
         self.speed = Utils.approach(self.speed, self.basespeed * 2, DTMULT / 4)
         vhsfx.active = true
         self.timeslow_sfx:play()
 	else
         Game.stage.timescale = Utils.approach(Game.stage.timescale, 1, DTMULT / 4)
-        Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, 1, DTMULT / 4)
+        Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch, DTMULT / 4)
         self.speed = Utils.approach(self.speed, self.basespeed, DTMULT / 4)
         vhsfx.active = false
         self.timeslow_sfx:stop()
@@ -336,7 +339,7 @@ end
 
 function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effects staying around after a wave. for some reason, doing this when self.transitioning doesn't work.
 	Game.stage.timescale = 1
-	Game.battle.music.pitch = 1
+	Game.battle.music.pitch = Game.battle.music.basepitch
 	vhsfx.active = false
 	outlinefx.active = false
     if should_destroy == true then
