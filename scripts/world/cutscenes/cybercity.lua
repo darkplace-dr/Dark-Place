@@ -300,8 +300,8 @@ return {
                 if Game.world.cutscene and not cutscene.ended then
                     cutscene:during(function()
                         if not cutscene.textbox then return false end
-                        cutscene.textbox.text.y = cutscene.textbox.text.y - 0.6
-                    end)
+                        cutscene.textbox.text.y = cutscene.textbox.text.y - 1.2*DTMULT
+                    end, false)
                 end
             end)
             Game.world.timer:after(1/FRAMERATE, function()
@@ -310,8 +310,22 @@ return {
                     cutscene.textbox.text:processInitialNodes()
                 end
             end)
+            local skipped = false
+            cutscene:during(function()
+                if (cutscene.textbox.text:isTyping() and (Input.pressed("cancel") or Input.pressed("menu"))) or FAST_FORWARD then
+                    skipped = true
+                end
+            end)
             cutscene:text("Ohh boy...I think I need to shower before I start talking...I mean streaming...I mean entertain you guys. I mean, sorry about that....errr...lets get back to what I was saying before I was distracted there for a second by the smell of my own body odor...ummm....I really hope I don't smell too bad because I haven't had a shower in like two days now and I've been wearing this t-shirt with like five layers of clothes under it for the last few days because I haven't washed it since I wore it last week and I'm kinda starting to smell like a gym bag right now....oh god I hope I'm not offending anyone with my bad hygiene right now because I'm just not used to this level of exposure yet and I don't want to make anyone feel uncomfortable around me or anything so I'm gonna take a shower real quick and hopefully after that I won't smell too bad and I'll be able to continue talking with you guys without any more distractions from my stinky self thank you guys so much for reading my ramblings and I'm sorry if I made you uncomfortable in any way shape or form.")
-            event:explode()
+            local e = event:explode()
+            if not skipped then
+                Game.world.timer:during(math.huge, function()
+                    if not e or (e and not e.parent) then
+                        Kristal.callEvent("completeAchievement", "airant")
+                        return false
+                    end
+                end)
+            end
         else
             if event.interact_count == 1 then
                 event.interacted_with = nil

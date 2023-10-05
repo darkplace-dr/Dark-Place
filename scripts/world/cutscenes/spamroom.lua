@@ -332,6 +332,7 @@ return {
             cutscene:text("[noskip]* Hello princess.")
             cutscene:hideNametag()
             Game.world.music:resume()
+            Kristal.callEvent("completeAchievement", "flipacursed")
         else
             cutscene:text("* INTERESTED IN SEEING MY [[Sitting Cheeks]]?", nil, "spamtong")
             event:setSprite("hands")
@@ -353,6 +354,7 @@ return {
                 cutscene:text("* Cool thank you.", "genuine_b", "dess")
                 cutscene:hideNametag()
                 Game.money = Game.money - 19 --I could prevent negative money but it's funnier not to do that
+                local money_drop = Game:addFlag("money_drop_spamton", 19)
                 local again = event.interact_count > 2 and "..[wait:5] again." or ""
                 cutscene:text("* (Dess bought some sort of subscription for whatever Spamton was selling."..again..")")
                 cutscene:showNametag("Dess")
@@ -361,6 +363,9 @@ return {
                 cutscene:showNametag("Bikini Spamton")
                 event:setSprite("arms_up")
                 cutscene:text("* GLAD YOU LIKE MY ONLYPipis.", nil, "spamtong")
+                if money_drop >= 300 then
+                    Kristal.callEvent("completeAchievement", "fuckinscam")
+                end
             end
         end
         event:resetSprite()
