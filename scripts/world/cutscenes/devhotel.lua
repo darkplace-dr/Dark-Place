@@ -116,6 +116,30 @@ return {
 		end
     end,
 
+    sam = function(cutscene, event)
+        cutscene:text("* It's a door.")
+        cutscene:text("* The sign reads \"THIS ROOM BELONGS TO: SIMBEL\"")
+        cutscene:text("* For some reason, this door doesn't follow the numerical order.")
+        if not Game:getFlag("finished_sphere_quest", false) then
+            cutscene:text("* It appears to be locked.")
+            cutscene:text("* Maybe the owner of the room will give you a spare key at some point.")
+        else
+            cutscene:text("* Will you enter?")
+            if cutscene:choicer({"Yes", "No"})==1 then
+                cutscene:wait(0.25)
+                Assets.playSound("dooropen")
+                if Utils.random(0, 100)<=1 then
+                    Game:setFlag("gonergirl", true)
+                    cutscene:wait(cutscene:mapTransition("chair_room"))
+                else
+                    cutscene:wait(cutscene:mapTransition("devhotel/rooms/room_004"))
+                end
+            else
+                cutscene:text("* You let the door lives its door life peacefully.")
+            end
+        end
+    end,
+
     hallwayrng = function (cutscene, event)
         if Input.down("cancel") and Input.down("menu") then
             local speedrunners = "appeased"
