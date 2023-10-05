@@ -112,7 +112,7 @@ function actor:init()
         ["landed"] = {-4, -2},
 		
         ["fell"] = {-12, -10},
-        ["fell_serious"] = {-12, -5},
+        ["fell_serious"] = {-12, 25},
         ["disappointed"] = {0, -1},
         ["riot"] = {-2, 4},
 
