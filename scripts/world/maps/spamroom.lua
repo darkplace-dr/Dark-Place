@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 37,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 38,
+  nextobjectid = 41,
   properties = {
     ["music"] = "spamton_battle_eb"
   },
@@ -30,6 +31,7 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -61,6 +63,7 @@ return {
       height = 12,
       id = 3,
       name = "props",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = -20,
@@ -92,6 +95,7 @@ return {
       height = 12,
       id = 4,
       name = "props2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = -20,
@@ -123,6 +127,7 @@ return {
       height = 12,
       id = 8,
       name = "props3",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -151,6 +156,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -257,6 +263,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -518,6 +525,22 @@ return {
             ["actor"] = "cardspam",
             ["cutscene"] = "spamroom.cardspam"
           }
+        },
+        {
+          id = 39,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 160,
+          y = 390,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "spamtong",
+            ["cutscene"] = "spamroom.bikini"
+          }
         }
       }
     },
@@ -526,6 +549,7 @@ return {
       draworder = "topdown",
       id = 7,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

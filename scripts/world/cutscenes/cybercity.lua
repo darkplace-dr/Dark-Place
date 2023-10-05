@@ -292,4 +292,201 @@ return {
             Game.world:mapTransition("gamertimeentrance", "spawn")
         end
     end,
+
+    notypee = function(cutscene, event)
+        if event:getFlag("can_rant", {false, false})[1] and love.math.random(0, 3)==1 then
+            cutscene:showNametag(event:getFlag("can_rant", {false, false})[2] and "Notypee" or "???")
+            Game.world.timer:after(3, function()
+                if Game.world.cutscene and not cutscene.ended then
+                    cutscene:during(function()
+                        if not cutscene.textbox then return false end
+                        cutscene.textbox.text.y = cutscene.textbox.text.y - 1.2*DTMULT
+                    end, false)
+                end
+            end)
+            Game.world.timer:after(1/FRAMERATE, function()
+                if Game.world.cutscene and not cutscene.ended and cutscene.textbox then
+                    cutscene.textbox.text.canvas = love.graphics.newCanvas(cutscene.textbox.text.width, 1300)
+                    cutscene.textbox.text:processInitialNodes()
+                end
+            end)
+            local skipped = false
+            cutscene:during(function()
+                if (cutscene.textbox.text:isTyping() and (Input.pressed("cancel") or Input.pressed("menu"))) or FAST_FORWARD then
+                    skipped = true
+                end
+            end)
+            cutscene:text("Ohh boy...I think I need to shower before I start talking...I mean streaming...I mean entertain you guys. I mean, sorry about that....errr...lets get back to what I was saying before I was distracted there for a second by the smell of my own body odor...ummm....I really hope I don't smell too bad because I haven't had a shower in like two days now and I've been wearing this t-shirt with like five layers of clothes under it for the last few days because I haven't washed it since I wore it last week and I'm kinda starting to smell like a gym bag right now....oh god I hope I'm not offending anyone with my bad hygiene right now because I'm just not used to this level of exposure yet and I don't want to make anyone feel uncomfortable around me or anything so I'm gonna take a shower real quick and hopefully after that I won't smell too bad and I'll be able to continue talking with you guys without any more distractions from my stinky self thank you guys so much for reading my ramblings and I'm sorry if I made you uncomfortable in any way shape or form.")
+            local e = event:explode()
+            if not skipped then
+                Game.world.timer:during(math.huge, function()
+                    if not e or (e and not e.parent) then
+                        Kristal.callEvent("completeAchievement", "airant")
+                        return false
+                    end
+                end)
+            end
+        else
+            if event.interact_count == 1 then
+                event.interacted_with = nil
+                cutscene:showNametag("???")
+                cutscene:text("[color:red]* DO NOT APPROCH!![wait:5] FOR I AM THE MASTER OF HELL AND DEATH!!")
+                cutscene:text("[color:red]* I CAN HAVE YOUR SOUL IN A SECOND!!")
+                if cutscene:getCharacter("susie") then
+                    event.interacted_with = "susie"
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Dude,[wait:2] you're a flame in a gymbag.", "suspicious", "susie")
+                    cutscene:text("* You think you're scary or something?", "neutral_side", "susie")
+                    cutscene:showNametag("???")
+                    cutscene:text("* What-[wait:2] Hey![wait:5] I'm not a flame!")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Then what are you?", "nervous", "susie")
+                    cutscene:showNametag("???")
+                    cutscene:text("[color:red]* WHAT I AM IS PURE MYSTERY.[wait:5] NONE CAN SEE PAST THE MEANING OF MY EXISTENCE")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Cut it off.", "annoyed", "susie")
+                    cutscene:text("* Your whole act sucks.[wait:3] Plus anyone can see right through it.", "bangs_neutral", "susie")
+                    cutscene:text("* So I repeat:[wait:5] what are you?", "bangs_teeth", "susie")
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...")
+                    cutscene:showNametag("Notypee")
+                    cutscene:text("* Notypee.[wait:5] I'm Notypee...")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* There we go.[wait:3] Easy,[wait:2] right?", "smile", "susie")
+                    cutscene:showNametag("Notypee")
+                    cutscene:text("* Mmm...")
+                elseif cutscene:getCharacter("dess") then
+                    event.interacted_with = "dess"
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* i have no soul tho", "condescending", "dess")
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...")
+                    cutscene:text("* Are you,[wait:2] like,[wait:2] sure?")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* Yeah.", "neutral", "dess")
+                    cutscene:showNametag("???")
+                    cutscene:text("* Not even a little bit?")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* Nope.", "wink", "dess")
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...")
+                    cutscene:text("* Damn...[wait:3] Here goes my whole act...")
+                --elseif cutscene:getCharacter("brandon") then
+                    -- TODO
+                --elseif cutscene:getCharacter("jamm") then
+                    -- TODO
+                elseif cutscene:getCharacter("YOU") then
+                    event.interacted_with = "YOU"
+                    local YOU = cutscene:getCharacter("YOU")
+                    cutscene:hideNametag()
+                    cutscene:wait(1)
+                    YOU:setSprite("walk/"..YOU.facing.."_2")
+                    local frog = Assets.playSound("frog")
+                    cutscene:wait(function()
+                        if not frog:isPlaying() then
+                            YOU:resetSprite()
+                            return true
+                        end
+                        return false
+                    end)
+                    cutscene:wait(2)
+                    cutscene:showNametag("???")
+                    cutscene:text("* Uhm...[wait:3] What?")
+                    cutscene:hideNametag()
+                    YOU:setSprite("walk/"..YOU.facing.."_2")
+                    local frog = Assets.playSound("frog")
+                    cutscene:wait(function()
+                        if not frog:isPlaying() then
+                            YOU:resetSprite()
+                            return true
+                        end
+                        return false
+                    end)
+                    cutscene:wait(0.5)
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...")
+                    cutscene:text("* You look like a turtle.")
+                    cutscene:text("* I don't know if I can hurt turtles.")
+                    YOU:setSprite("fightorflight")
+                    if YOU.x >= event.x then
+                        YOU.flip_x = true
+                    end
+                    cutscene:text("* Or if I should put you in the rhum.")
+                    YOU:resetSprite()
+                    YOU.flip_x = false
+                    cutscene:text("* I should have asked for more instructions...")
+                end
+            else
+                if event.interacted_with == "susie" then
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* So what the hell are you even doing?", "neutral_side", "susie")
+                    cutscene:showNametag("Notypee")
+                    cutscene:text("[color:red]* MY-")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ...", "bangs_teeth", "susie")
+                    cutscene:showNametag("Notypee")
+                    cutscene:text("* ...[wait:2]I am part of an evil army...")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Oh yeah?[wait:3] Which one?", "smirk", "susie")
+                    cutscene:showNametag("Notypee")
+                    cutscene:text("* I-[wait:2]I can't just say that![wait:3] I'd betray our leader!")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Are you sure?", "closed_grin", "susie")
+                    cutscene:showNametag("Notypee")
+                    cutscene:text("* Look,[wait:2] I don't think she wanna come her anyway so you're safe,[wait:2] okay?")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ...Yeah,[wait:2] I'll take that.", "nervous", "susie")
+                    cutscene:text("* But you better not lie.", "closed_grin", "susie")
+                elseif event.interacted_with == "dess" then
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* ...", "neutral", "dess")
+                    cutscene:showNametag("???")
+                    cutscene:text("* Still no soul?")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* Last I checked,[wait:2] nope.", "neutral_c", "dess")
+                    cutscene:showNametag("???")
+                    cutscene:text("* When did you last check?")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* I don't know man.[wait:3] I mean I don't really need a soul since the player's soul takes over ours anyway.", "condescending", "dess")
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...What.")
+                --elseif event.interacted_with == "brandon" then
+                    -- TODO
+                --elseif event.interacted_with == "jamm" then
+                    -- TODO
+                elseif event.interacted_with == "YOU" then
+                    local YOU = cutscene:getCharacter("YOU")
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...")
+                    cutscene:text("* So uh,[wait:2] do you have a girlfriend?")
+                    YOU:setSprite("disappointed")
+                    cutscene:text("* I know a turtle like you,[wait:2] y'know?")
+                    cutscene:text("* It was easier for him to create an AI than to have a girlfriend.")
+                    cutscene:text("* Or so my leader's sister said.")
+                    YOU:resetSprite()
+                    cutscene:hideNametag()
+                    cutscene:wait(0.5)
+                    YOU:setSprite("walk/"..YOU.facing.."_2")
+                    local frog = Assets.playSound("frog")
+                    cutscene:wait(function()
+                        if not frog:isPlaying() then
+                            YOU:resetSprite()
+                            return true
+                        end
+                        return false
+                    end)
+                    cutscene:wait(0.5)
+                    cutscene:showNametag("???")
+                    cutscene:text("* Yeah,[wait:2] my leader is an AI.[wait:3] Her sister too.")
+                    YOU:setSprite("confused")
+                    cutscene:text("* And the turtle is their dad.[wait:3]\n* Funny how that works.")
+                    YOU:resetSprite()
+                end
+                event:setFlag("can_rant", {true, event.interacted_with == "susie"})
+            end
+        end
+        cutscene:hideNametag()
+    end
 }
