@@ -48,7 +48,12 @@ function actor:init()
     self.offsets = {
         -- Since the width and height is the idle sprite size, the offset is 0,0
         ["idle"] = {0, 0},
+        ["gymbag"] = {-1.5, 0},
+        ["tutel"] = {-6, 9},
+        ["the_swarm"] = {-2, 0}
     }
+
+    self.taunt_sprites = {"gymbag", "tutel", "the_swarm"}
 end
 
 return actor

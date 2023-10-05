@@ -71,6 +71,8 @@ function actor:init()
         ["thisisfuckinghorrible_2"] = {-21, -80},
         ["thisisfuckinghorrible_3"] = {-21, -80}
     }
+
+    self.taunt_sprites = {"grow_5", "jump", "laugh_glitch_16", "myfirstartdontsteal", "up_look_down"}
 end
 
 return actor
