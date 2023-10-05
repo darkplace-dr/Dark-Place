@@ -272,6 +272,103 @@ return {
         Game.world.music:fade(1, 0.1)
     end,
 
+    bikini = function(cutscene, event)
+        local old_x = event.x
+        if Game.world.player.x >= event.x and event.interact_count ~= 10 then
+            event.flip_x = true
+            event.x = 125
+        end
+        cutscene:showNametag("Bikini Spamton")
+        if event.interact_count == 1 then
+            cutscene:text("* HEY YOU!! DO YOU WANNA BE A [[Certified Fanservice Character]]??", nil, "spamtong")
+            if cutscene:getCharacter("susie") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* What's that?", "neutral", "susie")
+                cutscene:showNametag("Bikini Spamton")
+                event:setSprite("arms_up")
+                cutscene:text("* THE ONLY WAY TO [Heaven]!!", nil, "spamtong")
+                cutscene:text("* PEOPLE WOULD GIVE ANYTHING JUST TO SEE THAT [You Have Been Terminated For Breaching TOS]!!", nil, "spamtong")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Uh...[wait:3] Ok?", "nervous", "susie")
+            end
+            if cutscene:getCharacter("dess") then
+                cutscene:showNametag("Dess")
+                cutscene:text("* Joke's on you I'm already one.", "condescending", "dess")
+                event:resetSprite()
+                cutscene:showNametag("Bikini Spamton")
+                cutscene:text("* OH?[wait:3] SO YOU'RE A REGULAR AT [Green Site]?", nil, "spamtong")
+                cutscene:showNametag("Dess")
+                cutscene:text("* Oh wait that's what you meant", "wtf", "dess")
+                cutscene:text("* Well it's inevitable for us all anyway.", "genuine", "dess")
+                cutscene:showNametag("Bikini Spamton")
+                event:setSprite("dark")
+                cutscene:text("[speed:0.9]* [You're God Damn Right.]", nil, "spamtong")
+            end
+        elseif event.interact_count == 10 then
+            Game.world.music:pause()
+            Assets.playSound("daddygirl")
+            cutscene:showNametag("Bikini Spamton")
+            cutscene:text("[noskip]* Baby girl?")
+            cutscene:hideNametag()
+            cutscene:wait(1)
+            event:setSprite("myfirstartdontsteal")
+            cutscene:wait(1)
+            event:setSprite("mysecondartitscool")
+            Assets.playSound("babyhome")
+            cutscene:showNametag("Bikini Spamton")
+            cutscene:text("[noskip]* Daddy's home.")
+            cutscene:hideNametag()
+            cutscene:wait(3)
+            Assets.playSound("dimbox")
+            event:setSprite("thisisfuckinghorrible_1")
+            event:flash()
+            cutscene:wait(1.5)
+            event:setSprite("thisisfuckinghorrible_2")
+            cutscene:wait(0.5)
+            event:setSprite("thisisfuckinghorrible_3")
+            cutscene:wait(1.5)
+            Assets.playSound("helloprincess")
+            cutscene:showNametag("Bikini Spamton?")
+            cutscene:text("[noskip]* Hello princess.")
+            cutscene:hideNametag()
+            Game.world.music:resume()
+        else
+            cutscene:text("* INTERESTED IN SEEING MY [[Sitting Cheeks]]?", nil, "spamtong")
+            event:setSprite("hands")
+            cutscene:text("* I'LL GIVE YOU A SMALL [[Subcribe Now For 19.97% Less]]", nil, "spamtong")
+            if cutscene:getCharacter("susie") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* No thanks??", "sus_nervous", "susie")
+                cutscene:showNametag("Bikini Spamton")
+                event:resetSprite()
+                cutscene:text("* YOU'RE MISSING OUT KID.", nil, "spamtong")
+            end
+            if cutscene:getCharacter("dess") then
+                cutscene:showNametag("Dess")
+                cutscene:text("* I'm interested.", "genuine", "dess")
+                cutscene:text("* Hey "..Mod:getLeader().name.." give me money", "condescending", "dess")
+                cutscene:hideNametag()
+                cutscene:choicer({"Ok", "Hell no"})
+                cutscene:showNametag("Dess")
+                cutscene:text("* Cool thank you.", "genuine_b", "dess")
+                cutscene:hideNametag()
+                Game.money = Game.money - 19 --I could prevent negative money but it's funnier not to do that
+                local again = event.interact_count > 2 and "..[wait:5] again." or ""
+                cutscene:text("* (Dess bought some sort of subscription for whatever Spamton was selling."..again..")")
+                cutscene:showNametag("Dess")
+                cutscene:text("* Damn guys you're missing out.", "neutral", "dess")
+                cutscene:text("* He even has cool merchandise.", "neutral_b", "dess")
+                cutscene:showNametag("Bikini Spamton")
+                event:setSprite("arms_up")
+                cutscene:text("* GLAD YOU LIKE MY ONLYPipis.", nil, "spamtong")
+            end
+        end
+        event:resetSprite()
+        event.flip_x = false
+        event.x = old_x
+        cutscene:hideNametag()
+    end,
+
 	-- ┌───────────────────────┐ --
 	-- │     The Warp Bin      │ --
 	-- └───────────────────────┘ --
