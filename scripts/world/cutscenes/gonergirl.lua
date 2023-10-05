@@ -42,6 +42,7 @@ return function(cutscene, event, player, dir)
 		cutscene:hideNametag()
 		event.girl:remove()
 		Assets.playSound("mysterygo")
+		Game:setFlag("seen_gonergirl", true)
 		event.girl = nil
 	end
 end
