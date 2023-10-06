@@ -742,7 +742,7 @@ return {
 			if correct >= 3 then
 				gonerText(correct .. " OUT OF 5.")
 				gonerText("CONGRATULATIONS!")
-				gonerText("YOU FINISHED THE\nMUSIC TRIAL!")
+				gonerText("YOU FINISHED THE\nOBSERVATION TRIAL!")
 				gonerText("YOUR [color:purple]KEY[color:white] AWAITS.")
 				Game:setFlag("acj_observation_win", true)
 			else
