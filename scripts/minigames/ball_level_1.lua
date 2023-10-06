@@ -4,6 +4,9 @@ function BallTest:init()
     super.init(self)
 	
 	self.req_score = 5000
+	
+	self.flag = "acj_game_win"
+	self.hs_flag = "ball_jump_1_hs"
 end
 
 function BallTest:update()
