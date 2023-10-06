@@ -4,10 +4,8 @@ return {
 		--Game.battle:setState("INTRO")
 		cutscene:wait(0.5)
 		
-		if not Mod:isInRematchMode() then
-			cutscene:getCharacter("brandon"):setAnimation("battle/idle")
-			cutscene:getCharacter("susie"):setAnimation("battle/idle")
-			cutscene:getCharacter("berdly"):setAnimation("battle/idle")
+		for i,battler in ipairs(Game.battle.party) do
+			battler:setAnimation("battle/idle")
 		end
 		
 		cutscene:wait(1)

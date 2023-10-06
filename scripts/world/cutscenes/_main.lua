@@ -275,4 +275,25 @@ return {
             Game.world:mapTransition("room1", nil, "down")
         end)
     end,
+    unlock_ralsei = function(cutscene)
+        Game.world.music:stop()
+
+        local cover = Rectangle(-5, -5, 650, 490)
+        cover:setColor(COLORS["black"])
+        cover:setParallax(0, 0)
+        cover.layer = WORLD_LAYERS["top"]
+        Game.world:addChild(cover)
+		
+        local ral = Sprite("world/cutscenes/ralsei_unlock_popup", 90, 210)
+        ral:setScale(2)
+        ral:setParallax(0, 0)
+        ral.alpha = 0
+        ral.layer = WORLD_LAYERS["top"] + 1
+        Game.world:addChild(ral)
+
+        cutscene:wait(5)
+		
+        Assets.playSound("ralsei_unlock")
+        Game.world.timer:tween(0.5, ral, {alpha = 1}, "linear")
+    end,
 }

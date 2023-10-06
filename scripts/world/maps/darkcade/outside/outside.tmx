@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="14">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="16">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="music" value="castle-funk"/>
+ </properties>
  <imagelayer id="2" name="Image Layer 1">
   <image source="../../../../../assets/sprites/world/maps/darkcade/outside.png" width="640" height="480"/>
  </imagelayer>
@@ -24,6 +27,12 @@
   <object id="13" name="savepoint" x="500" y="340" width="40" height="40">
    <properties>
     <property name="text1" value="* The power of video games and pizza shines within you."/>
+   </properties>
+  </object>
+  <object id="15" name="transition" x="320" y="160" width="120" height="80">
+   <properties>
+    <property name="map" value="darkcade/floor1"/>
+    <property name="marker" value="entry"/>
    </properties>
   </object>
  </objectgroup>

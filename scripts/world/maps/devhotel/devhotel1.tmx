@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="50" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="57">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="50" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="59">
  <editorsettings>
   <export target="devhotel1.lua" format="lua"/>
  </editorsettings>
@@ -8,7 +8,7 @@
  </properties>
  <tileset firstgid="1" source="../../tilesets/devroom.tsx"/>
  <tileset firstgid="73" source="../../tilesets/hoteldoors.tsx"/>
- <tileset firstgid="77" source="../../tilesets/dw_city_alley.tsx"/>
+ <tileset firstgid="80" source="../../tilesets/dw_city_alley.tsx"/>
  <layer id="1" name="Tile Layer 1" width="50" height="12">
   <data encoding="csv">
 8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
@@ -39,8 +39,8 @@
  <objectgroup id="3" name="objects_props">
   <object id="14" gid="74" x="208" y="280" width="64" height="100"/>
   <object id="26" gid="76" x="448" y="280" width="64" height="100"/>
-  <object id="28" gid="73" x="568" y="280" width="64" height="100"/>
   <object id="52" gid="75" x="328" y="280" width="64" height="100"/>
+  <object id="57" gid="79" x="568" y="281" width="64" height="100"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="4" name="objects">
   <object id="40" name="interactable" x="1120" y="360" width="40" height="40">
@@ -70,9 +70,9 @@
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="44" x="560" y="240" width="80" height="40">
+  <object id="44" name="interactable" x="560" y="240" width="80" height="40">
    <properties>
-    <property name="cutscene" value="devhotel.template"/>
+    <property name="cutscene" value="devhotel.sam"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>
@@ -97,6 +97,9 @@
    <point/>
   </object>
   <object id="56" name="door_001" x="240" y="306">
+   <point/>
+  </object>
+  <object id="58" name="door_004" x="600" y="306">
    <point/>
   </object>
  </objectgroup>

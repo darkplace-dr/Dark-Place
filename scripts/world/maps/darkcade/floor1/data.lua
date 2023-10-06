@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 14,
+  nextobjectid = 15,
   properties = {
     ["music"] = "castle-funk"
   },
@@ -293,6 +293,24 @@ return {
           properties = {
             ["cutscene"] = "darkcade_f1.table_1",
             ["solid"] = true
+          }
+        },
+        {
+          id = 14,
+          name = "darkcade_machine",
+          type = "",
+          shape = "point",
+          x = 640,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["level_1"] = "ball_level_1",
+            ["name"] = "Ball Jump",
+            ["sflag"] = "acj_game_win",
+            ["sprite"] = "minigames/ball_jump"
           }
         }
       }
