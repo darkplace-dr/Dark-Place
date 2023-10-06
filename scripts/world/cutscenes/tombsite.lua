@@ -343,7 +343,10 @@ return {
 		
 		if Game:getFlag("video_jamm_watched") then
 			if jamm then
-				if dess then
+				if Game:getFlag("jamm_closure") then
+					cutscene:showNametag("Jamm")
+					cutscene:text("* Never again.", "neutral", "jamm")
+				elseif dess then
 					local x,y = event:getRelativePos()
 					cutscene:detachCamera()
 					cutscene:detachFollowers()
