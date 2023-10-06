@@ -51,7 +51,7 @@ function Shadynn:init()
 	
 	self.auto_spare = true
 	
-	self.cutscened = Game.battle.boss_rush
+	self.cutscened = Game.battle.encounter.boss_rus
 end
 
 function Shadynn:getXAction(battler)
@@ -69,7 +69,7 @@ function Shadynn:onAct(battler, name)
 		return
     elseif name == "Dispel" then
         -- Loop through all enemies
-        self:addMercy(Game.battle.boss_rush and 2 or 5)
+        self:addMercy(Game.battle.encounter.boss_rush and 2 or 5)
         return "* " .. battler.chara:getName() .. " dispels a bit of Shade Ania's magic."
     end
 
