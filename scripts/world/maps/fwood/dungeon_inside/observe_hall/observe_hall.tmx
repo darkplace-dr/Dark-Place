@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="7">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="jamm_dungeon"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../tilesets/jamm_dungeon.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,52,51,25,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,51,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,51,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,33,51,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,34,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,51,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,51,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,41,51,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,51,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,51,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,41,50,0,0,0,0,0,0,
+0,0,0,0,0,0,52,51,51,50,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="1" x="0" y="0" width="240" height="480"/>
+  <object id="2" x="400" y="0" width="240" height="480"/>
+ </objectgroup>
+ <objectgroup id="3" name="markers">
+  <object id="3" name="entry" x="320" y="440">
+   <point/>
+  </object>
+  <object id="4" name="trial" x="320" y="40">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="objects">
+  <object id="5" name="transition" x="240" y="-40" width="160" height="40">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="fwood/dungeon_inside/observe_trial"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="6" name="transition" x="240" y="480" width="160" height="40">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="fwood/dungeon_inside/floor2_main"/>
+    <property name="marker" value="observe"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
