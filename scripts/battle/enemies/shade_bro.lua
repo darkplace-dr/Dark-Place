@@ -18,8 +18,7 @@ function Shadynn:init()
     self.spare_points = 25
 
     self.waves = {
-        "rudinn/diamonds_up",
-        "rudinn/diamonds_aim"
+        "lob_hammer"
     }
 
     self.check = "AT 6 DEF 0\nIf you can dodge a hammer,\nyou can dodge a ball."

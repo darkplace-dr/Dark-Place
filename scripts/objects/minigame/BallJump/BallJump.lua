@@ -191,7 +191,7 @@ function BallJump:draw()
 				if self.flag then
 					Game:setFlag(self.flag, true)
 				end
-				if self.hs_flag and self.total_score > Game:getFlag(self.hs_flag) then
+				if self.hs_flag and self.total_score > Game:getFlag(self.hs_flag, 0) then
 					Game:setFlag(self.hs_flag, self.total_score)
 				end
 			else

@@ -1036,5 +1036,18 @@ return {
             event:setFlag("dont_load", true)
             Mod:rollFun()
         end
-    end
+    end,
+    spooky = function(cutscene)
+        local skid = cutscene:getCharacter("skid")
+        local pump = cutscene:getCharacter("pump")
+		
+        Game.world.music:stop()
+        cutscene:showNametag("Skid & Pump")
+        cutscene:text("* IT IS THE SPOOKY MONTH!")
+        cutscene:hideNametag("Skid & Pump")
+		
+        Game.world.music:play("spookymonth")
+        skid:setAnimation("dance")
+        pump:setAnimation("dance")
+    end,
 }

@@ -19,10 +19,28 @@ return {
 		cutscene:hideNametag()
     end,
     music_key = function(cutscene, event)
-		cutscene:text("* You search the hay and find a [color:red]key[color:white] on a keychain.")
+		cutscene:text("* You look down and find a [color:red]key[color:white].")
 		cutscene:text("* You put the [color:red]key[color:white] on the keychain.")
 		Game:setFlag("acj_music_key", true)
 		Game.world.map:getEvent(9):remove()
+    end,
+    game_key = function(cutscene, event)
+		cutscene:text("* You look down and find a [color:blue]key[color:white].")
+		cutscene:text("* You put the [color:blue]key[color:white] on the keychain.")
+		Game:setFlag("acj_game_key", true)
+		Game.world.map:getEvent(9):remove()
+    end,
+    observe_key = function(cutscene, event)
+		cutscene:text("* You look down and find a [color:purple]key[color:white].")
+		cutscene:text("* You put the [color:purple]key[color:white] on the keychain.")
+		Game:setFlag("acj_observe_key", true)
+		Game.world.map:getEvent(9):remove()
+    end,
+    combat_key = function(cutscene, event)
+		cutscene:text("* You look down and find a [color:yellow]key[color:white].")
+		cutscene:text("* You put the [color:yellow]key[color:white] on the keychain.")
+		Game:setFlag("acj_combat_key", true)
+		Game.world.map:getEvent(20):remove()
     end,
     lock1 = function(cutscene, event)
 		if Game:getFlag("acj_key1") then
@@ -496,4 +514,264 @@ return {
 		end
 		cutscene:hideNametag()
     end,
+    game = function(cutscene, event)
+		local text
+
+        local function gonerTextFade(wait)
+            local this_text = text
+            Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function()
+                this_text:remove()
+            end)
+            if wait ~= false then
+                cutscene:wait(1)
+            end
+        end
+
+        -- FIXME: actually use skippable
+        local function gonerText(str, advance, skippable)
+            text = DialogueText("[speed:0.5][spacing:6][voice:none]" .. str, 160, 100, 640, 480,
+                { auto_size = true })
+            text.layer = WORLD_LAYERS["textbox"]
+            text.skip_speed = not skippable
+            text.parallax_x = 0
+            text.parallax_y = 0
+            Game.world:addChild(text)
+
+            cutscene:wait(function() return not text:isTyping() end)
+			cutscene:wait(function() return Input.pressed("confirm") or Input.down("menu") end)
+            gonerTextFade(true)
+        end
+		if Game:getFlag("acj_game_win") then
+			cutscene:text("* It appears doing this trial again won't earn you anything else.")
+		else
+			cutscene:text("* You press the button on the machine...")
+			
+			local fade_rect = Rectangle(0, 0, Game.world.width, Game.world.height)
+			fade_rect:setColor(0, 0, 0)
+			fade_rect.alpha = 0
+			Game.world:spawnObject(fade_rect, "below_ui")
+			
+			Game.stage.timer:tween(1, fade_rect, {alpha = 0.5}, "linear")
+			
+			cutscene:wait(1)
+			
+			gonerText("GOOD DAY,[wait:20] LUTHANE.")
+			gonerText("I AM THE TRIAL OF\nTHE GAME.")
+			gonerText("TO PASS,[wait:20] YOU MUST\nGET 5000 POINTS ON\nBALL JUMP.")
+			gonerText("WHENEVER YOU'RE\nREADY.")
+			
+			Game.stage.timer:tween(1, fade_rect, {alpha = 0}, "linear")
+			cutscene:wait(1)
+			
+			cutscene:showNametag("Jamm")
+			cutscene:text("* That sounds simple enough.", "smug", "jamm")
+			cutscene:hideNametag()
+			
+			cutscene:wait(cutscene:startMinigame("ball_level_1"))
+			
+			if not Game:getFlag("acj_game_win") then
+				cutscene:showNametag("Dess")
+				cutscene:text("* welp, we're stuck now", "neutral", "dess")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Oh, don't worry!\n* These things have short-term memory!", "side_smile", "jamm")
+				cutscene:text("* We can try again whenever.", "side_smile", "jamm")
+			else
+				Game.stage.timer:tween(1, fade_rect, {alpha = 0.5}, "linear")
+				cutscene:wait(1)
+				
+				gonerText("CONGRATULATIONS!")
+				gonerText("YOU FINISHED THE\nGAME TRIAL!")
+				gonerText("YOUR [color:blue]KEY[color:white] AWAITS.")
+				
+				Game.stage.timer:tween(1, fade_rect, {alpha = 0}, "linear")
+				cutscene:wait(1)
+				
+				cutscene:text("* (Ball Jump has been unlocked in the Darkcade.)")
+				
+				local layer = Game.world.map:getTileLayer("door_layer")
+				layer.visible = false
+				local shape = Game.world.map:getHitbox("door_collision")
+				shape.collidable = false
+			end
+			cutscene:hideNametag()
+		end
+	end,
+	observation = function(cutscene, event)
+		local text
+
+        local function gonerTextFade(wait)
+            local this_text = text
+            Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function()
+                this_text:remove()
+            end)
+            if wait ~= false then
+                cutscene:wait(1)
+            end
+        end
+
+        -- FIXME: actually use skippable
+        local function gonerText(str, advance, skippable)
+            text = DialogueText("[speed:0.5][spacing:6][voice:none]" .. str, 160, 100, 640, 480,
+                { auto_size = true })
+            text.layer = WORLD_LAYERS["textbox"]
+            text.skip_speed = not skippable
+            text.parallax_x = 0
+            text.parallax_y = 0
+            Game.world:addChild(text)
+
+            cutscene:wait(function() return not text:isTyping() end)
+			cutscene:wait(function() return Input.pressed("confirm") or Input.down("menu") end)
+            gonerTextFade(true)
+        end
+		if Game:getFlag("acj_observation_win") then
+			cutscene:text("* It appears doing this trial again won't earn you anything else.")
+		else
+			local correct = 0
+			cutscene:text("* You press the button...")
+			
+			local fade_rect = Rectangle(0, 0, Game.world.width, Game.world.height)
+			fade_rect:setColor(0, 0, 0)
+			fade_rect.alpha = 0
+			Game.world:spawnObject(fade_rect, "below_ui")
+			
+			Game.stage.timer:tween(1, fade_rect, {alpha = 0.5}, "linear")
+			
+			cutscene:wait(1)
+			
+			gonerText("GOOD DAY,[wait:20] LUTHANE.")
+			gonerText("I AM THE TRIAL OF\nOBSERVATION.")
+			gonerText("TO PASS,[wait:20] YOU MUST\nANSWER THREE OF MY\nFIVE QUESTIONS.")
+			gonerText("WITHOUT FURTHER\nADO...")
+			gonerText("QUESTION ONE.")
+			gonerText("ON THE SIGN NEXT\nTO THE BUTTON...")
+			gonerText("WHAT IS THE CORRECT\nSPELLING OF THE\nMISSPELLED WORD?")
+			
+			local wbi_ok = false
+			local action = nil
+			wbi = WarpBinInputMenu(10)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+			
+			if string.upper(action) == "WILL" then
+				gonerText("EXCELLENT.")
+				correct = correct + 1
+			else
+				gonerText("INCORRECT.")
+			end
+			
+			gonerText("QUESTION TWO.")
+			gonerText("HOW MANY TALLY MARKS\nARE ON THE WALL\nNEXT TO KING?")
+			
+			wbi_ok = false
+			action = nil
+			wbi = WarpBinInputMenu(2)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+			
+			if string.upper(action) == "8" then
+				gonerText("EXCELLENT.")
+				correct = correct + 1
+			else
+				gonerText("INCORRECT.")
+			end
+			
+			gonerText("QUESTION THREE.")
+			gonerText("HOW MANY CELLS\nARE IN THE\nBASEMENT?")
+			
+			wbi_ok = false
+			action = nil
+			wbi = WarpBinInputMenu(2)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+			
+			if string.upper(action) == "2" then
+				gonerText("EXCELLENT.")
+				correct = correct + 1
+			else
+				gonerText("INCORRECT.")
+			end
+			
+			gonerText("QUESTION FOUR.")
+			gonerText("HOW MANY TRIALS\nHAVE BONUSES?")
+			
+			wbi_ok = false
+			action = nil
+			wbi = WarpBinInputMenu(1)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+			
+			if string.upper(action) == "1" then
+				gonerText("EXCELLENT.")
+				correct = correct + 1
+			else
+				gonerText("INCORRECT.")
+			end
+			
+			gonerText("FINAL QUESTION.")
+			gonerText("HOW MANY TALLY MARKS\nARE IN THE\nBASEMENT?")
+			
+			wbi_ok = false
+			action = nil
+			wbi = WarpBinInputMenu(2)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+			
+			if string.upper(action) == "3" then
+				gonerText("EXCELLENT.")
+				correct = correct + 1
+			else
+				gonerText("INCORRECT.")
+			end
+			
+			gonerText("SO...[wait:20]\nHOW DID YOU\nDO?")
+			gonerText("...")
+			if correct >= 3 then
+				gonerText(correct .. " OUT OF 5.")
+				gonerText("CONGRATULATIONS!")
+				gonerText("YOU FINISHED THE\nOBSERVATION TRIAL!")
+				gonerText("YOUR [color:purple]KEY[color:white] AWAITS.")
+				Game:setFlag("acj_observation_win", true)
+			else
+				gonerText(correct .. " OUT OF 5.")
+				gonerText("UNFORTUNATELY,\nYOU DID NOT\nPASS THIS TRIAL.")
+			end
+			
+			Game.stage.timer:tween(1, fade_rect, {alpha = 0}, "linear")
+			cutscene:wait(1)
+			
+			if Game:getFlag("acj_observation_win") then
+				local layer = Game.world.map:getTileLayer("door_layer")
+				layer.visible = false
+				local shape = Game.world.map:getHitbox("door_collision")
+				shape.collidable = false
+			else
+				cutscene:showNametag("Dess")
+				cutscene:text("* welp, we're stuck now", "neutral", "dess")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Oh, don't worry!\n* These things have short-term memory!", "side_smile", "jamm")
+				cutscene:text("* We can try again whenever.", "side_smile", "jamm")
+			end
+		end
+		cutscene:hideNametag()
+	end
 }

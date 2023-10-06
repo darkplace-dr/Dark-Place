@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="10">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="11">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="jamm_dungeon"/>
+ </properties>
  <tileset firstgid="1" source="../../../../tilesets/jamm_dungeon.tsx"/>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data encoding="csv">
@@ -46,6 +52,13 @@
   <object id="9" name="shine" x="160" y="120" width="20" height="20">
    <properties>
     <property name="flagcheck" value="!acj_music_key"/>
+   </properties>
+  </object>
+  <object id="10" name="transition" x="280" y="480" width="80" height="40">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="fwood/dungeon_inside/music_trial"/>
+    <property name="marker" value="prize"/>
    </properties>
   </object>
  </objectgroup>
