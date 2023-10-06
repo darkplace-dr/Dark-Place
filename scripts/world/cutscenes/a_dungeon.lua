@@ -19,19 +19,19 @@ return {
 		cutscene:hideNametag()
     end,
     music_key = function(cutscene, event)
-		cutscene:text("* You search the hay and find a [color:red]key[color:white] on a keychain.")
+		cutscene:text("* You look down and find a [color:red]key[color:white].")
 		cutscene:text("* You put the [color:red]key[color:white] on the keychain.")
 		Game:setFlag("acj_music_key", true)
 		Game.world.map:getEvent(9):remove()
     end,
     game_key = function(cutscene, event)
-		cutscene:text("* You search the hay and find a [color:blue]key[color:white] on a keychain.")
+		cutscene:text("* You look down and find a [color:blue]key[color:white]")
 		cutscene:text("* You put the [color:blue]key[color:white] on the keychain.")
 		Game:setFlag("acj_music_key", true)
 		Game.world.map:getEvent(9):remove()
     end,
-    game_key = function(cutscene, event)
-		cutscene:text("* You search the hay and find a [color:purple]key[color:white] on a keychain.")
+    observe_key = function(cutscene, event)
+		cutscene:text("* You look down and find a [color:purple]key[color:white]")
 		cutscene:text("* You put the [color:purple]key[color:white] on the keychain.")
 		Game:setFlag("acj_observe_key", true)
 		Game.world.map:getEvent(9):remove()
@@ -742,7 +742,7 @@ return {
 			if correct >= 3 then
 				gonerText(correct .. " OUT OF 5.")
 				gonerText("CONGRATULATIONS!")
-				gonerText("YOU FINISHED THE\nMUSIC TRIAL!")
+				gonerText("YOU FINISHED THE\nOBSERVATION TRIAL!")
 				gonerText("YOUR [color:purple]KEY[color:white] AWAITS.")
 				Game:setFlag("acj_observation_win", true)
 			else
