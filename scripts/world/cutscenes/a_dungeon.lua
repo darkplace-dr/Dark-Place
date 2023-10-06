@@ -30,7 +30,7 @@ return {
 		Game:setFlag("acj_music_key", true)
 		Game.world.map:getEvent(9):remove()
     end,
-    game_key = function(cutscene, event)
+    observe_key = function(cutscene, event)
 		cutscene:text("* You search the hay and find a [color:purple]key[color:white] on a keychain.")
 		cutscene:text("* You put the [color:purple]key[color:white] on the keychain.")
 		Game:setFlag("acj_observe_key", true)
