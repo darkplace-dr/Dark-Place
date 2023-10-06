@@ -41,7 +41,7 @@ function Shadynn:init()
     self.low_health_text = "* Shade Ania's darkness fades."
 
     self:registerAct("Dispel")
-    self:registerAct("Barrier", "Protect\nAll", {"jamm"}, 70)
+    self:registerAct("Barrier", "Protect\nAll", {}, 70)
 	
 	self.siner = 0
 	self.shadow = false
