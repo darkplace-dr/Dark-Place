@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 57,
+  nextobjectid = 59,
   properties = {
     ["music"] = "jamm_dungeon"
   },
@@ -504,6 +504,23 @@ return {
             ["map"] = "fwood/dungeon_inside/observe_hall",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 57,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 160,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "down",
+            ["map"] = "fwood/dungeon_inside/combat_hall",
+            ["marker"] = "entry"
+          }
         }
       }
     },
@@ -566,6 +583,19 @@ return {
           type = "",
           shape = "point",
           x = 340,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 58,
+          name = "combat",
+          type = "",
+          shape = "point",
+          x = 740,
           y = 240,
           width = 0,
           height = 0,

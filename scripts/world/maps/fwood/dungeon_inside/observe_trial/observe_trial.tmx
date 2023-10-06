@@ -95,7 +95,7 @@
     <property name="cutscene" value="a_dungeon.observation"/>
    </properties>
   </object>
-  <object id="17" name="transition" x="440" y="480" width="120" height="40">
+  <object id="17" name="transition" x="440" y="480" width="160" height="40">
    <properties>
     <property name="facing" value="down"/>
     <property name="map" value="fwood/dungeon_inside/observe_hall"/>

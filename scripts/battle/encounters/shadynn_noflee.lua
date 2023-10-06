@@ -3,12 +3,12 @@ local Shadynn, super = Class(Encounter)
 function Shadynn:init()
     super.init(self)
 
-    self.text = "* Shade Bro draws its hammer!"
+    self.text = "* Shadynn drew near!"
 
     self.music = "beasts"
     self.background = true
 
-    self:addEnemy("shade_bro")
+    self:addEnemy("shadynn")
 
 	self.flee = false
 end
