@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 14,
+  nextobjectid = 15,
   properties = {
     ["music"] = "jamm_dungeon"
   },
@@ -351,6 +351,23 @@ return {
             ["facing"] = "down",
             ["map"] = "fwood/dungeon_inside/game_win",
             ["marker"] = "entry"
+          }
+        },
+        {
+          id = 14,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 640,
+          y = 240,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "down",
+            ["map"] = "fwood/dungeon_inside/game_hall",
+            ["marker"] = "trial"
           }
         }
       }
