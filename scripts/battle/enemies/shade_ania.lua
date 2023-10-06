@@ -51,7 +51,7 @@ function Shadynn:init()
 	
 	self.auto_spare = true
 	
-	self.cutscened = Game.battle.encounter.boss_rus
+	self.cutscened = Game.battle.encounter.boss_rush
 end
 
 function Shadynn:getXAction(battler)
