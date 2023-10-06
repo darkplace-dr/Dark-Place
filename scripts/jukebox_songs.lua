@@ -200,21 +200,21 @@ return {
   {
     name = "Spamgolor",
     file = "spamgolor",
-    composer = "BrandonK7200",
+    composer = "BrendaK7200",
     released = "2023",
     origin = "Dark Place"
   },
   {
-    name = "Spamgolor Battle",
+    name = "I WILL SHOW YOU THE POWER OF",
     file = "spamgolor_battle",
-    composer = "BrandonK7200",
+    composer = "BrendaK7200",
     released = "2023",
     origin = "Dark Place"
   },
   {
-    name = "Spamgolor Shop",
+    name = "Incomming Signal",
     file = "spamgolor_shop",
-    composer = "BrandonK7200",
+    composer = "BrendaK7200",
     released = "2023",
     origin = "Dark Place"
   },
@@ -242,7 +242,7 @@ return {
   {
     name = "Checkpoint",
     file = "checkpoint",
-    composer = "Charbomber",
+    composer = "BrendaK7200",
     released = "2023",
     origin = "Dark Place"
   },
@@ -320,35 +320,35 @@ return {
   {
     name = "BUTTERFLY OF JUDGEMENT",
     file = "morpho_boss",
-    composer = "BrandonK7200",
+    composer = "BrendaK7200",
     released = "2022",
     origin = "Deltarune: New Connections"
   },
   {
     name = "Elegy for Hope (Cover)",
     file = "mirati_bk7200cover",
-    composer = "BrandonK7200",
+    composer = "BrendaK7200",
     released = "2022",
     origin = "soundcloud.com/brandonk7200"
   },
   {
     name = "YOUR LOVE",
     file = "mari_neo",
-    composer = "BrandonK7200",
+    composer = "BrendaK7200",
     released = "2022",
     origin = "soundcloud.com/brandonk7200"
   },
   {
     name = "THE DARK",
     file = "csralsei_hyperdeath",
-    composer = "BrandonK7200",
+    composer = "BrendaK7200",
     released = "2023",
     origin = "Crystalseeker"
   },
   {
     name = "IMMINENT AXECUTION",
     file = "cssusie_battle",
-    composer = "BrandonK7200",
+    composer = "BrendaK7200",
     released = "2023",
     origin = "Crystalseeker"
   },
