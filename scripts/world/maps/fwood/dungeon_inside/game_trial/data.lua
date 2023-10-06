@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 13,
+  nextobjectid = 14,
   properties = {
     ["music"] = "jamm_dungeon"
   },
@@ -334,6 +334,23 @@ return {
             ["text3"] = "* As such,[wait:5] here is your trial:",
             ["text4"] = "* Upon pressing this button,[wait:5] you will start playing Ball Jump level 1.",
             ["text5"] = "* Get 5000 points and beat the level,[wait:5] and you win."
+          }
+        },
+        {
+          id = 13,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 118,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "down",
+            ["map"] = "fwood/dungeon_inside/game_win",
+            ["marker"] = "entry"
           }
         }
       }
