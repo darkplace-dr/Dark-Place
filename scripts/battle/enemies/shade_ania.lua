@@ -16,7 +16,7 @@ function Shadynn:init()
     -- Enemy defense (usually 0)
     self.defense = 0
     -- Enemy reward
-    self.money = Game:getFlag("shade_ania_rematch") and 0 or 100
+    self.money = Game.battle.boss_rush and 0 or 100
     self.experience = 0
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
@@ -51,7 +51,7 @@ function Shadynn:init()
 	
 	self.auto_spare = true
 	
-	self.cutscened = Game:getFlag("shade_ania_rematch")
+	self.cutscened = Game.battle.boss_rush
 end
 
 function Shadynn:getXAction(battler)
@@ -69,7 +69,7 @@ function Shadynn:onAct(battler, name)
 		return
     elseif name == "Dispel" then
         -- Loop through all enemies
-        self:addMercy(Game:getFlag("shade_ania_rematch") and 2 or 5)
+        self:addMercy(Game.battle.boss_rush and 2 or 5)
         return "* " .. battler.chara:getName() .. " dispels a bit of Shade Ania's magic."
     end
 

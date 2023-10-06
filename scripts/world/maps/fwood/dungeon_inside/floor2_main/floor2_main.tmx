@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="27" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="59">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="27" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="63">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -128,6 +128,12 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
+  <object id="60" name="interactable" x="480" y="160" width="121" height="40">
+   <properties>
+    <property name="cutscene" value="a_dungeon.lock2"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="5" name="markers">
   <object id="43" name="f1" x="540" y="600">
@@ -143,6 +149,9 @@
    <point/>
   </object>
   <object id="58" name="combat" x="740" y="240">
+   <point/>
+  </object>
+  <object id="62" name="final" x="540" y="240">
    <point/>
   </object>
  </objectgroup>
