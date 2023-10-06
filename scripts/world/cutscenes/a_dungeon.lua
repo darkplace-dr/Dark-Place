@@ -25,16 +25,22 @@ return {
 		Game.world.map:getEvent(9):remove()
     end,
     game_key = function(cutscene, event)
-		cutscene:text("* You look down and find a [color:blue]key[color:white]")
+		cutscene:text("* You look down and find a [color:blue]key[color:white].")
 		cutscene:text("* You put the [color:blue]key[color:white] on the keychain.")
 		Game:setFlag("acj_music_key", true)
 		Game.world.map:getEvent(9):remove()
     end,
     observe_key = function(cutscene, event)
-		cutscene:text("* You look down and find a [color:purple]key[color:white]")
+		cutscene:text("* You look down and find a [color:purple]key[color:white].")
 		cutscene:text("* You put the [color:purple]key[color:white] on the keychain.")
 		Game:setFlag("acj_observe_key", true)
 		Game.world.map:getEvent(9):remove()
+    end,
+    combat_key = function(cutscene, event)
+		cutscene:text("* You look down and find a [color:yellow]key[color:white].")
+		cutscene:text("* You put the [color:yellow]key[color:white] on the keychain.")
+		Game:setFlag("acj_combat_key", true)
+		Game.world.map:getEvent(20):remove()
     end,
     lock1 = function(cutscene, event)
 		if Game:getFlag("acj_key1") then
