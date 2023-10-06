@@ -96,7 +96,6 @@
    <properties>
     <property name="text1" value="* You are trapped within the walls of the dungeon."/>
     <property name="text2" value="* Through the power of teamwork, you will make it through."/>
-    <property name="text3" value="* (This is WIP, saving here will lock you in the dungeon.)"/>
    </properties>
   </object>
   <object id="22" name="transition" x="760" y="160" width="120" height="40">

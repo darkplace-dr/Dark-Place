@@ -19,8 +19,7 @@ return {
     {
       name = "jamm_dungeon",
       firstgid = 1,
-      filename = "../../../../tilesets/jamm_dungeon.tsx",
-      exportfilename = "../../../../tilesets/jamm_dungeon.lua"
+      filename = "../../../../tilesets/jamm_dungeon.tsx"
     }
   },
   layers = {
@@ -392,8 +391,7 @@ return {
           visible = true,
           properties = {
             ["text1"] = "* You are trapped within the walls of the dungeon.",
-            ["text2"] = "* Through the power of teamwork, you will make it through.",
-            ["text3"] = "* (This is WIP, saving here will lock you in the dungeon.)"
+            ["text2"] = "* Through the power of teamwork, you will make it through."
           }
         },
         {
