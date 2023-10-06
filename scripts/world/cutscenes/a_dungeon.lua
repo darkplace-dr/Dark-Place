@@ -905,5 +905,7 @@ return {
 		Game:setFlag("jamm_closure", true)
 		cutscene:wait(cutscene:mapTransition("fwood/entry", "exit", "down"))
 		Kristal.callEvent("completeQuest", "acj2")
+        jamm_party.has_act = false
+        Game:setFlag("jamm_canact", false)
     end,
 }
