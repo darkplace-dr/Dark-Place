@@ -36,28 +36,21 @@
   </object>
  </objectgroup>
  <objectgroup id="4" name="objects">
-  <object id="7" name="chest" x="380" y="140">
-   <properties>
-    <property name="flagcheck" value="acj_music_bonus"/>
-    <property name="item" value="simpsling"/>
-   </properties>
-   <point/>
-  </object>
   <object id="8" name="interactable" x="160" y="120" width="40" height="40">
    <properties>
-    <property name="cutscene" value="a_dungeon.music_key"/>
-    <property name="flagcheck" value="!acj_music_key"/>
+    <property name="cutscene" value="a_dungeon.game_key"/>
+    <property name="flagcheck" value="!acj_game_key"/>
    </properties>
   </object>
   <object id="9" name="shine" x="160" y="120" width="20" height="20">
    <properties>
-    <property name="flagcheck" value="!acj_music_key"/>
+    <property name="flagcheck" value="!acj_game_key"/>
    </properties>
   </object>
   <object id="10" name="transition" x="280" y="480" width="80" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="fwood/dungeon_inside/music_trial"/>
+    <property name="map" value="fwood/dungeon_inside/game_trial"/>
     <property name="marker" value="prize"/>
    </properties>
   </object>
