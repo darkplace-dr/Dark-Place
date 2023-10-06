@@ -86,6 +86,7 @@
    <properties>
     <property name="level_1" value="ball_level_1"/>
     <property name="name" value="Ball Jump"/>
+    <property name="sflag" value="acj_game_win"/>
     <property name="sprite" value="minigames/ball_jump"/>
    </properties>
    <point/>

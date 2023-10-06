@@ -7,6 +7,7 @@ function Machine:init(data)
 	
 	self.machine = properties["sprite"] or "ball_jump"
 	self.name = properties["name"] or ""
+	self.sflag = properties["sflag"]
 	self.levels = {}
 	
 	local i = 1
@@ -28,14 +29,18 @@ end
 
 function Machine:onInteract(player, dir)
 	Game.world:startCutscene(function(cutscene)
-		cutscene:text("It's an arcade machine for " .. self.name .. ".")
-		cutscene:text("Play a round of " .. self.name .. "?")
-		local play = cutscene:choicer({"Yes", "No"})
-		if play == 1 then
-			local level = cutscene:choicer(self.level_names)
-			Mod:startMinigame(self.levels[level])
+		if self.sflag and not Game:getFlag(self.sflag) then
+			cutscene:text("* The machine doesn't seem set up yet.")
 		else
-			cutscene:text("You leave the machine alone.")
+			cutscene:text("* It's an arcade machine for " .. self.name .. ".")
+			cutscene:text("* Play a round of " .. self.name .. "?")
+			local play = cutscene:choicer({"Yes", "No"})
+			if play == 1 then
+				local level = cutscene:choicer(self.level_names)
+				Mod:startMinigame(self.levels[level])
+			else
+				cutscene:text("* You leave the machine alone.")
+			end
 		end
 	end)
 end
