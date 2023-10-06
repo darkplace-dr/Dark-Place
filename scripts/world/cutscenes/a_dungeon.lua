@@ -24,6 +24,12 @@ return {
 		Game:setFlag("acj_music_key", true)
 		Game.world.map:getEvent(9):remove()
     end,
+    game_key = function(cutscene, event)
+		cutscene:text("* You search the hay and find a [color:blue]key[color:white] on a keychain.")
+		cutscene:text("* You put the [color:blue]key[color:white] on the keychain.")
+		Game:setFlag("acj_music_key", true)
+		Game.world.map:getEvent(9):remove()
+    end,
     lock1 = function(cutscene, event)
 		if Game:getFlag("acj_key1") then
 			cutscene:text("* Unlock the door with your [color:green]key[color:white]?")
@@ -496,4 +502,86 @@ return {
 		end
 		cutscene:hideNametag()
     end,
+    game = function(cutscene, event)
+		local text
+
+        local function gonerTextFade(wait)
+            local this_text = text
+            Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function()
+                this_text:remove()
+            end)
+            if wait ~= false then
+                cutscene:wait(1)
+            end
+        end
+
+        -- FIXME: actually use skippable
+        local function gonerText(str, advance, skippable)
+            text = DialogueText("[speed:0.5][spacing:6][voice:none]" .. str, 160, 100, 640, 480,
+                { auto_size = true })
+            text.layer = WORLD_LAYERS["textbox"]
+            text.skip_speed = not skippable
+            text.parallax_x = 0
+            text.parallax_y = 0
+            Game.world:addChild(text)
+
+            cutscene:wait(function() return not text:isTyping() end)
+			cutscene:wait(function() return Input.pressed("confirm") or Input.down("menu") end)
+            gonerTextFade(true)
+        end
+		if Game:getFlag("acj_game_win") then
+			cutscene:text("* It appears doing this trial again won't earn you anything else.")
+		else
+			cutscene:text("* You press the button on the machine...")
+			
+			local fade_rect = Rectangle(0, 0, Game.world.width, Game.world.height)
+			fade_rect:setColor(0, 0, 0)
+			fade_rect.alpha = 0
+			Game.world:spawnObject(fade_rect, "below_ui")
+			
+			Game.stage.timer:tween(1, fade_rect, {alpha = 0.5}, "linear")
+			
+			cutscene:wait(1)
+			
+			gonerText("GOOD DAY,[wait:20] LUTHANE.")
+			gonerText("I AM THE TRIAL OF\nTHE GAME.")
+			gonerText("TO PASS,[wait:20] YOU MUST\nGET 5000 POINTS ON\nBALL JUMP.")
+			gonerText("WHENEVER YOU'RE\nREADY.")
+			
+			Game.stage.timer:tween(1, fade_rect, {alpha = 0}, "linear")
+			cutscene:wait(1)
+			
+			cutscene:showNametag("Jamm")
+			cutscene:text("* That sounds simple enough.", "smug", "jamm")
+			cutscene:hideNametag()
+			
+			cutscene:wait(cutscene:startMinigame("ball_level_1"))
+			
+			if not Game:getFlag("acj_game_win") then
+				cutscene:showNametag("Dess")
+				cutscene:text("* welp, we're stuck now", "neutral", "dess")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Oh, don't worry!\n* These things have short-term memory!", "side_smile", "jamm")
+				cutscene:text("* We can try again whenever.", "side_smile", "jamm")
+			else
+				Game.stage.timer:tween(1, fade_rect, {alpha = 0.5}, "linear")
+				cutscene:wait(1)
+				
+				gonerText("CONGRATULATIONS!")
+				gonerText("YOU FINISHED THE\nGAME TRIAL!")
+				gonerText("YOUR [color:blue]KEY[color:white] AWAITS.")
+				
+				Game.stage.timer:tween(1, fade_rect, {alpha = 0}, "linear")
+				cutscene:wait(1)
+				
+				cutscene:text("* (Ball Jump has been unlocked in the Darkcade.)")
+				
+				local layer = Game.world.map:getTileLayer("door_layer")
+				layer.visible = false
+				local shape = Game.world.map:getHitbox("door_collision")
+				shape.collidable = false
+			end
+			cutscene:hideNametag()
+		end
+	end,
 }
