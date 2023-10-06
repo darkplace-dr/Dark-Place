@@ -27,16 +27,25 @@ function Zero:init()
     self.difficulty = 0
 
     -- List of possible wave ids, randomly picked each turn
-    self.waves = {
-        "zero/ColorSlash",
-        --"aiming",
-        --"movingarena"
-    }
+    if Game:getFlag("fun") == 12 then
+        self.waves = {
+            "zero/Ascend"
+        }
+    else
+        self.waves = {
+            --"zero/ColorSlash",
+            "zero/Aiming",
+        }
+    end
 
     -- Dialogue randomly displayed in the enemy's speech bubble
-    self.dialogue = {
-        --"..."
-    }
+    if Game:getFlag("fun") == 12 then
+        self.dialogue = {
+            "I must go.[wait:5] My people need me."
+        }
+    else
+        self.dialogue = {}
+    end
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
     self.check = {

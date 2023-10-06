@@ -77,7 +77,7 @@
  <objectgroup id="6" name="objects">
   <object id="4" name="transition" x="120" y="480" width="400" height="40">
    <properties>
-    <property name="map" value="fwood/entry"/>
+    <property name="map" value="fwood/graves"/>
     <property name="marker" value="exit"/>
    </properties>
   </object>

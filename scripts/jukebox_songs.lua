@@ -14,6 +14,13 @@ return {
     origin = "Deltarune"
   },
   {
+    name = "I'm The Bad Guy!", --name in the sound test of SCC's shop in Chapter 2
+    file = "deltarune/lancer",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune"
+  },
+  {
     name = "Rude Buster",
     file = "battle",
     composer = "Toby Fox",
@@ -167,6 +174,13 @@ return {
     composer = "Toby Fox",
     released = "2015",
     origin = "Undertale"
+  },
+  {
+    name = "Dogcheck (Anniversary Mix)",
+    file = "dogcheck_anniversary",
+    composer = "Toby Fox",
+    released = "Sept 15, 2023",
+    origin = "https://www.youtube.com/watch?v=b623zT7eMXo"
   },
   {
     name = "Hugs for Ralsei",
@@ -337,6 +351,34 @@ return {
     composer = "BrandonK7200",
     released = "2023",
     origin = "Crystalseeker"
+  },
+  {
+    name = "He is Lost",
+    file = "spamlament_lost",
+    composer = "FireStar8903",
+    released = "2023",
+    origin = "A Salesman's Lament"
+  },
+  {
+    name = "Find Him",
+    file = "spamlament_find",
+    composer = "FireStar8903",
+    released = "2023",
+    origin = "A Salesman's Lament"
+  },
+  {
+    name = "Tell Him He's Okay",
+    file = "spamlament_okay",
+    composer = "FireStar8903",
+    released = "2023",
+    origin = "A Salesman's Lament"
+  },
+  {
+    name = "He is Loved",
+    file = "spamlament_loved",
+    composer = "FireStar8903",
+    released = "2023",
+    origin = "A Salesman's Lament"
   },
   {
     name = "No More Nuzzles",
@@ -602,40 +644,19 @@ return {
     origin = "SpongeBob SquarePants: SuperSponge (PS1)"
   },
   {
-    name = "He is Lost",
-    file = "spamlament_lost",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "Find Him",
-    file = "spamlament_find",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "Tell Him He's Okay",
-    file = "spamlament_okay",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "He is Loved",
-    file = "spamlament_loved",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
     name = "Cait's Theme",
     file = "cait",
     composer = "Yasunori Nishiki",
     released = "2023",
     origin = "OCTOPATH TRAVELER II"
-  }
+  },
+  {
+    name = "Athletic Theme (PAL Version)",
+    file = "minigames/ball_jump/ball_jump",
+    composer = "SiivaGunner",
+    released = "Apr 22, 2016",
+    origin = "https://www.youtube.com/watch?v=rEcOzjg7vBU (edited for Dark Place)"
+  },
   --[[
   {
     name = "The Road Leading to the Secret",
@@ -664,13 +685,6 @@ return {
     composer = "Toby Fox",
     released = "2021",
     origin = "Deltarune"
-  },
-  {
-    name = "Dogcheck (Anniversary Mix)",
-    file = "dogcheck_anniversary",
-    composer = "Toby Fox",
-    released = "Sept 15, 2023",
-    origin = "https://www.youtube.com/watch?v=b623zT7eMXo"
   },
   {
     name = "Sneaking",

@@ -135,7 +135,7 @@ function lib:postInit()
     					end
                     end
                 })
-    			if #Game.battle.party > 1 then
+    			if #Game.battle.party > 1 and not Game.battle.disable_spare_all then
     				Game.battle:addMenuItem({
     					["name"] = "SEND ALL",
     					["unusable"] = false,

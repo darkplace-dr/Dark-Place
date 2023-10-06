@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="16" nextobjectid="127">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="16" nextobjectid="128">
  <editorsettings>
   <export target="alley1.lua" format="lua"/>
  </editorsettings>
@@ -50,7 +50,7 @@
  </objectgroup>
  <objectgroup color="#ff00ff" id="2" name="objects">
   <object id="2" name="savepoint" x="360" y="185" width="40" height="40"/>
-  <object id="84" name="interactable" x="80" y="200" width="81" height="40">
+  <object id="84" name="#interactable" x="80" y="200" width="81" height="40">
    <properties>
     <property name="cutscene" value="test"/>
    </properties>
@@ -89,5 +89,11 @@
    </properties>
   </object>
   <object id="126" name="forcefield" x="800" y="240" width="40" height="120"/>
+  <object id="127" name="npc" x="520" y="240" width="40" height="40">
+   <properties>
+    <property name="actor" value="notypee"/>
+    <property name="cutscene" value="cybercity.notypee"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

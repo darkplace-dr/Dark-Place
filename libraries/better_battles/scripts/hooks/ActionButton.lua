@@ -181,7 +181,7 @@ function ActionButton:select()
 					end
                 end
             })
-			if #Game.battle.party > 1 then
+			if #Game.battle.party > 1 and not Game.battle.disable_spare_all then
 				Game.battle:addMenuItem({
 					["name"] = "Spare All",
 					["unusable"] = (#party_up <= 1),

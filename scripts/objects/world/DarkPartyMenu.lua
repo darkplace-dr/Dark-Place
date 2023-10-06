@@ -32,9 +32,9 @@ function DarkPartyMenu:init(debug)
 	self.selected_party = 1
 	
 	self.list = {
-		{"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor"},
-		{"robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm", "pauling", "unknown", "unknown", "unknown"},
-		--{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
+		{"kris", "susie", "noelle", "berdly", "ostarwalker", "YOU", "robo_susie", "noyno", "pauling", "eusei"},
+		{"frisk2", "dess", "alseri", "brandon", "jamm", "bor", "dumbie", "iphone", "unknown", "unknown"},
+		{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 	}
 	
 	self.listreference = Game:getFlag("party", {"YOU", "susie"})

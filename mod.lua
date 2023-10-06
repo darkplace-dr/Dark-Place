@@ -127,6 +127,56 @@ function Mod:init()
             self:loadMap(Utils.unpack(args))
         end)
     end) ]]
+	
+	Utils.hook(Game, "getActiveMusic", function(orig, self)
+		if self.state == "OVERWORLD" then
+			return self.world.music
+		elseif self.state == "BATTLE" then
+			return self.battle.music
+		elseif self.state == "MINIGAME" then
+			return self.minigame.music
+		elseif self.state == "SHOP" then
+			return self.shop.music
+		elseif self.state == "GAMEOVER" then
+			return self.gameover.music
+		else
+			return self.music
+		end
+	end)
+	
+	Utils.hook(Game, "onKeyPressed", function(orig, self, key, is_repeat)
+		if Kristal.callEvent("onKeyPressed", key, is_repeat) then
+			-- Mod:onKeyPressed returned true, cancel default behaviour
+			return
+		end
+
+		if is_repeat and not self.key_repeat then
+			-- Ignore key repeat unless enabled by a game state
+			return
+		end
+
+		if self.state == "BATTLE" then
+			if self.battle then
+				self.battle:onKeyPressed(key)
+			end
+		elseif self.state == "MINIGAME" then
+			if self.minigame then
+				self.minigame:onKeyPressed(key)
+			end
+		elseif self.state == "OVERWORLD" then
+			if self.world then
+				self.world:onKeyPressed(key)
+			end
+		elseif self.state == "SHOP" then
+			if self.shop then
+				self.shop:onKeyPressed(key, is_repeat)
+			end
+		elseif self.state == "GAMEOVER" then
+			if self.gameover then
+				self.gameover:onKeyPressed(key)
+			end
+		end
+	end)
 end
 
 function Mod:postInit(new_file)
@@ -563,6 +613,39 @@ function Mod:initializeImportantFlags(new_file)
     if not new_file and likely_old_save then
         Log:print("Save seems to be from an old version")
     end
+end
+
+function Mod:onRegistered()
+	self.minigames = { }
+	
+	for _,path,game in Registry.iterScripts("minigames") do
+		assert(game ~= nil, '"minigames/' .. path .. '.lua" does not return value')
+		game.id = game.id or path
+		self.minigames[game.id] = game
+	end
+end
+
+function Mod:createMinigame(id, ...)
+	if self.minigames[id] then
+		return self.minigames[id](...)
+	else
+		error("Attempt to create nonexistent minigame \"" .. tostring(id) .. "\"")
+	end
+end
+
+function Mod:startMinigame(game)
+
+    if Game.minigame then
+        error("Attempt to enter card game while already in card game")
+    end
+
+    Game.state = "MINIGAME"
+
+    Game.minigame = self:createMinigame(game)
+
+    Game.minigame:postInit()
+	
+    Game.stage:addChild(Game.minigame)
 end
 
 function Mod:unload()

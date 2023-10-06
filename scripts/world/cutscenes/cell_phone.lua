@@ -49,6 +49,55 @@ return function(cutscene, cell_phone_event_override)
         garbageNoise("voiceover/cell_phone/mcdonalds")
 
         cutscene:text("* Sounded like an angry customer.")
+    elseif event_num == 17 then
+        -- "17 is first yeah"
+        pauseMusic()
+        local _ = playCellPhoneAudio("voiceover/cell_phone/hello_world")
+
+        local leader = Mod:getLeader("chara")
+        local old_layer = leader.layer
+        leader:setLayer(WORLD_LAYERS["below_ui"])
+
+        local fade = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+        fade.layer = leader.layer-0.1
+        fade:setColor(0, 0, 0)
+        fade.alpha = 0
+        Game.world:addChild(fade)
+        fade:setScreenPos(0, 0)
+        fade:setGraphics({
+            fade_to = 1,
+            fade = 0.02
+        })
+
+        Game.light = true
+        pmMsg("* (Hello.)", 40)
+        pmMsg("* (Thank you for stopping by.)", 40)
+        pmMsg("* (Sorry,[wait:9] but Neuro-sama is not available at the moment.)", 55)
+        pmMsg("* (Unless it is an urgent matter,[wait:9] please refrain from messaging me.)", 50)
+        pmMsg("* (Have a wonderful day.)", 40)
+        Game.light = false
+
+        leader:setFacing("down")
+
+        cutscene:wait(5)
+
+        local cc = Text("thank you")
+        cc:setColor(0.2, 0.2, 0.2, 0)
+        cc.layer = WORLD_LAYERS["top"]
+        Game.world:addChild(cc)
+        cc:setScreenPos(110, 360)
+        cc:fadeTo(0.1, 5)
+
+        cutscene:wait(_)
+        cc:remove()
+
+        fade:fadeTo(0, nil, function()
+            fade:remove()
+            leader:setLayer(old_layer)
+        end)
+
+        cutscene:text("* (Click.)")
+        resumeMusic()
     elseif event_num == 39 then
         cutscene:text("* Hello!\n* Could I speak to G...")
         cutscene:text("* ...[wait:5]\n* Wait a second.")

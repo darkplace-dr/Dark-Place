@@ -9,10 +9,9 @@ function SNEORematch:init()
 
     self.background = true
 
-	--self.default_xactions = false
+	self.default_xactions = false
 
-    -- Add the enemy to the encounter
-    self:addEnemy("spamtonneo", 518, 250)
+    self:addEnemy("sneo", 518, 250)
 	
 	self.flee = false
 
@@ -23,13 +22,23 @@ function SNEORematch:init()
     end
 end
 
+function SNEORematch:onBattleInit()
+    super.onBattleInit(self)
+    if self.boss_rush == true then
+        Game.battle.dojo_bg = DojoBG({1, 1, 1})
+        Game.battle:addChild(Game.battle.dojo_bg)
+    end
+end
+
 function SNEORematch:onBattleStart(battler)
     --Game:setFlag("f1", true)
-    if Game:hasPartyMember("susie") then
-	    Game.battle:registerXAction("susie", "Snap")
-	    Game.battle:registerXAction("susie", "AutoAim", "Homing\nbullets", 80)
-    else
-	    Game.battle:registerXAction(battler.chara.id, "Snap")
+    for _,battler in ipairs(Game.battle.party) do
+        if battler.chara.id == "susie" then
+	        Game.battle:registerXAction("susie", "Snap")
+	        Game.battle:registerXAction("susie", "AutoAim", "Homing\nbullets", 80)
+        else
+	        Game.battle:registerXAction(battler.chara.id, "Snap")
+        end
     end
 end
 

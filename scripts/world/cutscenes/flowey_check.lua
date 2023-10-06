@@ -75,6 +75,8 @@ return function(cutscene, player_name_override)
 	or player_name == "BLUE" 
 	or player_name == "PLAGUEIS" 
 	or player_name == "DESS" 
+    or player_name == "BRANDON" 
+    or player_name == "BRENDA" 
 	then
         cutscene:wait(2)
 
@@ -148,6 +150,26 @@ return function(cutscene, player_name_override)
             showText("[voice:flowey2][speed:0.6]* STAY. [wait:10]AWAY. [wait:10]FROM. [wait:10]HER.", "grin")
             showText("[voice:flowey2]* She's like a tumor...", "evil")
             showText("[voice:flowey2]* One she clings on,[wait:5] she'll NEVER come off.", "evil")
+            cutscene:hideNametag()
+        elseif player_name == "BRANDON" or player_name == "BRENDA" then
+            cutscene:showNametag("Flowey")
+            showText("* Y'know,[wait:5] I've always wondered what it's like to visit other worlds.", "side")
+            showText("* To see what endless possibilites lie outside your reach.", "nice")
+            showText("[voice:flowey2]* Hehehe...[wait:5] imagine all the FUN I could have...", "evil")
+            showText("* But anyways,[wait:5] that name...", "plain")
+            showText("* It reminds me of a certain story.", "side")
+            showText("* One about someone who had the power to fuse universes.", "nice")
+            showText("* Naturally,[wait:5] they used it to try and see what fun stories could be made.", "niceside")
+            showText("* Y'know,[wait:5] it reminds me of,[wait:5] well,[wait:5] ME.", "nicesideum")
+            showText("* Curious about all the possibilites their power had.", "nice")
+            showText("* Well,[wait:5] you know how they said that curiosity killed the cat?", "sassy")
+            showText("[voice:flowey2]* Their powers backfired horribly,[wait:5] causing all of reality to begin falling apart.", "evil")
+            showText("[voice:flowey2]* How pathetic,[wait:5] not knowing that your actions have consequences!", "grin")
+            showText("[voice:flowey2]* Hehehe... if only they had the power to RESET,[wait:5] like how I did.", "evil")
+            showText("* What happened to them after that?", "side")
+            showText("* Well,[wait:5] that part is up to you to decide.", "niceside")
+            showText("* Will they end up having a happy ending?", "nice")
+            showText("[voice:flowey2]* Or will reality itself fall apart?", "evil")
             cutscene:hideNametag()
         end
     end

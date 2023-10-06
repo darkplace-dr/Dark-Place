@@ -10,8 +10,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 14,
-  properties = {},
+  nextobjectid = 16,
+  properties = {
+    ["music"] = "castle-funk"
+  },
   tilesets = {},
   layers = {
     {
@@ -167,6 +169,22 @@ return {
           visible = true,
           properties = {
             ["text1"] = "* The power of video games and pizza shines within you."
+          }
+        },
+        {
+          id = 15,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 160,
+          width = 120,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "darkcade/floor1",
+            ["marker"] = "entry"
           }
         }
       }
