@@ -105,7 +105,7 @@ function Mimic:onAct(battler, name)
         Assets.playSound("scytheburst")
         self:flash()
     
-        self:addMercy(self.encounter.energy / 5)
+        self:addMercy(math.ceil(self.encounter.energy / 3.75))
         self.encounter.energy = 0
         
         return "* Energy was sent to Mimic!"
