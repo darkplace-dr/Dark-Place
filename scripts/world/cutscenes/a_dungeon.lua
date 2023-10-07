@@ -1055,6 +1055,7 @@ return {
 			cutscene:wait(cutscene:walkToSpeed("dess", 540, 280, 4))
 			Game.world.map:getEvent(2):remove()
 			Game.inventory:addItem("oblitersling")
+			Game:getPartyMember("jamm").title = "Slingshotter\nNot so sure of\nhimself anymore"
 		else
 			cutscene:text("* ...I'm fine.", "shaded_neutral", "jamm")
 			cutscene:showNametag("Dess")
