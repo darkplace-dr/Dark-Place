@@ -3,8 +3,6 @@ local PartyMember, super = Class("PartyMember", true)
 
 function PartyMember:init()
     super.init(self)
-
-    self.opinions = {}
 end
 
 function PartyMember:onSave(data)
