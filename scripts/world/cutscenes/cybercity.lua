@@ -326,6 +326,12 @@ return {
                     end
                 end)
             end
+            if cutscene:getCharacter("brandon") then
+                cutscene:wait(3)
+                cutscene:showNametag("Brandon")
+                cutscene:text("* Excuse me what the actual fuck was that.", "shock", "brandon")
+                cutscene:hideNametag()
+            end
         else
             if event.interact_count == 1 then
                 event.interacted_with = nil
@@ -371,8 +377,28 @@ return {
                     cutscene:showNametag("???")
                     cutscene:text("* ...")
                     cutscene:text("* Damn...[wait:3] Here goes my whole act...")
-                --elseif cutscene:getCharacter("brandon") then
-                    -- TODO
+                elseif cutscene:getCharacter("brandon") then
+                    event.interacted_with = "brandon"
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Oh yeah?[wait:10]\n* Prove it then.", "smug", "brandon")
+                    cutscene:showNametag("???")
+                    cutscene:text("* ... Uh...")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Steal my soul right now.", "smug", "brandon")
+                    cutscene:showNametag("???")
+                    cutscene:text("[color:red]* YES YOUR SOUL WILL SOON BE MINE!")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* ...", "suspicious", "brandon")
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* ... Do it no balls?", "neutral_side", "brandon")
+                    cutscene:showNametag("???")
+                    cutscene:text("* ...")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* You can't steal souls,[wait:5] can you?", "dissapointed", "brandon")
+                    cutscene:showNametag("???")
+                    cutscene:text("* AND SO WHAT IF I CAN'T????")
                 elseif cutscene:getCharacter("jamm") then
                     event.interacted_with = "jamm"
                     cutscene:showNametag("Jamm")
@@ -461,8 +487,14 @@ return {
                     cutscene:text("* I don't know man.[wait:3] I mean I don't really need a soul since the player's soul takes over ours anyway.", "condescending", "dess")
                     cutscene:showNametag("???")
                     cutscene:text("* ...What.")
-                --elseif event.interacted_with == "brandon" then
-                    -- TODO
+                elseif event.interacted_with == "brandon" then
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* So uhhhhhhhhh...", "neutral_side", "brandon")
+                    cutscene:text("* Read any good books lately?", "neutral", "brandon")
+                    cutscene:showNametag("???")
+                    cutscene:text("* No.")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Uh okay then.", "neutral_side", "brandon")
                 elseif event.interacted_with == "jamm" then
                     cutscene:showNametag("Jamm")
                     cutscene:text("* Are you sure the name Mario doesn't ring a bell?", "neutral", "jamm")
