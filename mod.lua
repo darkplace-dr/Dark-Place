@@ -4,6 +4,7 @@ modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
+Speen = modRequire("scripts/main/ow_speen")
 
 function Mod:preInit()
     if Kristal.Version < SemVer(self.info.engineVer) then
@@ -31,6 +32,7 @@ function Mod:init()
     self:registerShaders()
 
     self:initTaunt()
+    Speen:init()
 
 --[[     Utils.hook(World, "setupMap", function(orig, self, map, ...)
         for _,child in ipairs(self.children) do
@@ -731,6 +733,7 @@ end
 function Mod:postUpdate()
     self:updateTaunt()
     self:updateBulborb()
+    Speen:update()
 
     if Game.save_name == "MERG" then
         for _, party in ipairs(Game.party) do
