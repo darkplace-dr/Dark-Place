@@ -298,7 +298,7 @@ return {
           visible = true,
           properties = {
             ["text1"] = "* My dearest Luthane,[wait:5] an observant individual..",
-            ["text2"] = "* You take not of many precious details in your life.",
+            ["text2"] = "* You take note of many precious details in your life.",
             ["text3"] = "* As such,[wait:5] here is your trial:",
             ["text4"] = "* Upon pressing this button,[wait:5] you wil be asked 5 questions.",
             ["text5"] = "* Before doing so,[wait:5] however,[wait:5] I urge you to explore.",
