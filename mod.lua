@@ -201,9 +201,11 @@ end
 
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
+    local old_save_issues = {}
 	
 	if Game:getFlag("quest_desc")[1] == "This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description." then
 		likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before Questline was added.")
 	end
 
     if new_file or likely_old_save then
@@ -266,6 +268,7 @@ function Mod:initializeImportantFlags(new_file)
 
     if new_file or not Game:getFlag("party") then
         likely_old_save = true
+        table.insert(old_save_issues, "The party flag was not initialized")
 
         -- Unlocked party members for the Party Menu
         Game:setFlag("party", { "YOU", "susie" })
@@ -273,12 +276,14 @@ function Mod:initializeImportantFlags(new_file)
 
     if not new_file and not Game:getFlag("#room1:played_intro", false) then
         likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before the intro was added.")
 
         Game:setFlag("#room1:played_intro", true)
     end
 
     if new_file or Game:getFlag("bulborb_position") == nil then
         likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before Bulborb Live Reaction was implemented")
 
         Game:setFlag("bulborb_scale", 0.3)
         Game:setFlag("bulborb_position", 2)
@@ -287,6 +292,7 @@ function Mod:initializeImportantFlags(new_file)
     local berdly = Game:getPartyMember("berdly")
     if berdly:getBaseStats("health") == 300 then
         likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before Berdly was added.")
 
         berdly.health = 200
         berdly.stats = {
@@ -299,6 +305,7 @@ function Mod:initializeImportantFlags(new_file)
 
     if new_file or berdly.opinions == nil then
         likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before the relationship system was added.")
 
         local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm"}
         for i, v in ipairs(party_members) do
@@ -614,6 +621,10 @@ function Mod:initializeImportantFlags(new_file)
 
     if not new_file and likely_old_save then
         Log:print("Save seems to be from an old version")
+        Log:print("Possible reasons:")
+        for i,v in ipairs(old_save_issues) do
+            Log:print("- "..v)
+        end
     end
 end
 
