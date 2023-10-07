@@ -305,7 +305,10 @@ return {
                 cutscene:text("[speed:0.9]* [You're God Damn Right.]", nil, "spamtong")
             end
 			if cutscene:getCharacter("jamm") then
-				if Game:getFlag("jamm_closure") then
+				if Game:getFlag("dungeonkiller") then
+					cutscene:showNametag("jamm")
+					cutscene:text("* ...Nah.", "neutral", "jamm")
+				elseif Game:getFlag("jamm_closure") then
 					cutscene:showNametag("Jamm")
 					cutscene:text("* I dunno,[wait:5] man.[wait:5]\n* Bikinis aren't my style.", "neutral", "jamm")
 					event:resetSprite()
@@ -339,9 +342,7 @@ return {
                 end
                 if cutscene:getCharacter("jamm") then
                     cutscene:showNametag("Jamm")
-                    cutscene:text("* Wait,[wait:5] the hell?[wait:5]\n* You were actually considering that?", "worried", "jamm")
-                    cutscene:text("* That is...[wait:5] Deeply concering.", "worried", "jamm")
-                    cutscene:text("* And I never thought it'd be you,[wait:5] either...", "worried", "jamm")
+                    cutscene:text("* The fact that you were actually considering it is deeply concering.", "worried", "jamm")
                 end
             end
         elseif event.interact_count == 10 then
