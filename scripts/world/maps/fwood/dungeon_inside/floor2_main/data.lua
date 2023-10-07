@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 59,
+  nextobjectid = 63,
   properties = {
     ["music"] = "jamm_dungeon"
   },
@@ -521,6 +521,22 @@ return {
             ["map"] = "fwood/dungeon_inside/combat_hall",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 60,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 480,
+          y = 160,
+          width = 121,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "a_dungeon.lock2",
+            ["solid"] = true
+          }
         }
       }
     },
@@ -596,6 +612,19 @@ return {
           type = "",
           shape = "point",
           x = 740,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 62,
+          name = "final",
+          type = "",
+          shape = "point",
+          x = 540,
           y = 240,
           width = 0,
           height = 0,
