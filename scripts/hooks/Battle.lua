@@ -7,6 +7,10 @@ function Battle:init()
 	self.super_timer = 0
 
 	self.superpower = false
+
+    self.freeze_xp = 0
+
+    self.killed = false
 end
 
 -- FIXME: \/ copied from libraries/EnemyTension/scripts/hooks/Battle.lua
@@ -80,6 +84,118 @@ function Battle:onStateChange(old,new)
                     end)
                 end)
             end
+        end
+		for _,battler in ipairs(self.party) do
+            battler:setSleeping(false)
+            battler.defending = false
+            battler.action = nil
+
+            if battler.chara:getHealth() <= 0 then
+                battler:revive()
+                battler.chara:setHealth(battler.chara:autoHealAmount())
+            end
+
+            battler:setAnimation("battle/victory")
+
+            local box = self.battle_ui.action_boxes[self:getPartyIndex(battler.chara.id)]
+            box:resetHeadIcon()
+        end
+
+        self.money = self.money + (math.floor(((Game:getTension() * 2.5) / 10)) * Game.chapter)
+
+        for _,battler in ipairs(self.party) do
+            for _,equipment in ipairs(battler.chara:getEquipment()) do
+                self.money = math.floor(equipment:applyMoneyBonus(self.money) or self.money)
+            end
+        end
+
+        self.money = math.floor(self.money)
+
+        self.money = self.encounter:getVictoryMoney(self.money) or self.money
+        self.xp = self.encounter:getVictoryXP(self.xp) or self.xp
+        -- if (in_dojo) then
+        --     self.money = 0
+        -- end
+
+        Game.money = Game.money + self.money
+        Game.xp = Game.xp + self.xp
+
+        if (Game.money < 0) then
+            Game.money = 0
+        end
+
+        local win_text = "* You won!\n* Got " .. self.xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
+        -- if (in_dojo) then
+        --     win_text == "* You won the battle!"
+        -- end
+
+        if self.xp > 0 or self.freeze_xp > 0 then
+            local leveled_up, shown_xp_gain = false, self.xp
+
+            if not Kristal.getLibConfig("leveling", "global_love") then
+                shown_xp_gain = self.xp + self.freeze_xp
+
+                local function addExpTo(battler, xp)
+                    if battler.chara:addExp(xp) then
+                        leveled_up = true
+                    end
+                end
+
+                for _,battler in ipairs(self.party) do
+                    local local_freezing = Kristal.getLibConfig("leveling", "local_freezing")
+                    local grant_fxp = not local_freezing
+                    if local_freezing then
+                        for _,spell in ipairs(battler.chara:getSpells()) do
+                            if spell:hasTag("ice") then
+                                grant_fxp = true
+                                break
+                            end
+                        end
+                    end
+
+                    addExpTo(battler, self.xp)
+                    if grant_fxp then
+                        addExpTo(battler, self.freeze_xp)
+                    end
+                end
+            else
+                leveled_up = Kristal.callEvent("addGlobalEXP", self.xp)
+            end
+
+            win_text = "* You won!\n* Got " .. shown_xp_gain .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
+            if leveled_up then
+                Assets.playSound("levelup")
+                win_text = win_text.."\n* Your LOVE increased."
+            end
+        elseif self.used_violence and Game:getConfig("growStronger") then
+            local stronger = "You"
+
+            for _,battler in ipairs(self.party) do
+                Game.level_up_count = Game.level_up_count + 1
+                battler.chara:onLevelUp(Game.level_up_count)
+
+                if battler.chara.id == Game:getConfig("growStrongerChara") then
+                    stronger = battler.chara:getName()
+                end
+            end
+
+            win_text = "* You won!\n* Got " .. self.money .. " "..Game:getConfig("darkCurrencyShort")..".\n* "..stronger.." became stronger."
+
+            Assets.playSound("dtrans_lw", 0.7, 2)
+            --scr_levelup()
+        end
+
+        win_text = self.encounter:getVictoryText(win_text, self.money, self.xp) or win_text
+
+        if self.encounter.no_end_message then
+            self:setState("TRANSITIONOUT")
+            self.encounter:onBattleEnd()
+        else
+            self:battleText(win_text, function()
+                self:setState("TRANSITIONOUT")
+                self.encounter:onBattleEnd()
+                return true
+            end)
         end
     end
 	
