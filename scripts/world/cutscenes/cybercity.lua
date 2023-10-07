@@ -373,8 +373,17 @@ return {
                     cutscene:text("* Damn...[wait:3] Here goes my whole act...")
                 --elseif cutscene:getCharacter("brandon") then
                     -- TODO
-                --elseif cutscene:getCharacter("jamm") then
-                    -- TODO
+                elseif cutscene:getCharacter("jamm") then
+                    event.interacted_with = "jamm"
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Uh oh.[wait:5]\n* Did Tubba Blubba lose his heart again?", "neutral", "jamm")
+                    cutscene:showNametag("???")
+                    cutscene:text("* What-[wait:2] Hey![wait:5] I'm not a heart!")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* I dunno.[wait:5] You kinda look like him.", "neutral", "jamm")
+                    cutscene:text("* Are you sure you don't belong to Tubba Blubba?", "neutral", "jamm")
+                    cutscene:showNametag("???")
+                    cutscene:text("* I don't even know who that is!")
                 elseif cutscene:getCharacter("YOU") then
                     event.interacted_with = "YOU"
                     local YOU = cutscene:getCharacter("YOU")
@@ -454,8 +463,14 @@ return {
                     cutscene:text("* ...What.")
                 --elseif event.interacted_with == "brandon" then
                     -- TODO
-                --elseif event.interacted_with == "jamm" then
-                    -- TODO
+                elseif event.interacted_with == "jamm" then
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Are you sure the name Mario doesn't ring a bell?", "neutral", "jamm")
+                    cutscene:text("* Goombario?[wait:5] Kooper?[wait:5] Bombette?[wait:5] Parakarry?[wait:5] Bow?", "neutral", "jamm")
+                    cutscene:showNametag("???")
+                    cutscene:text("* I'M NOT A PAPER MARIO CHARACTER!")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Jeez, alright![wait:5]\n* No need to get your ventricles in a twist.", "neutral", "jamm")
                 elseif event.interacted_with == "YOU" then
                     local YOU = cutscene:getCharacter("YOU")
                     cutscene:showNametag("???")
