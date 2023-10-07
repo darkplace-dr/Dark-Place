@@ -328,7 +328,11 @@ return {
                 cutscene:text("* I ended up losing my Mug:tm: root beer that I totally didn't steal", "neutral", "dess")
                 cutscene:text("* Sometimes I still shed a tear thinking about it...", "neutral_c", "dess")
                 cutscene:text("* ...", "genuine", "dess")
-                cutscene:text("* oh hey also do you normally look this pissed off?", "kind", "dess")
+				if Game:getFlag("dungeonkiller") then
+					cutscene:text("* oh hey also do you normally look this pissed off?", "kind", "dess")
+				else
+					cutscene:text("* oh hey, actually, are you okay from before?", "kind", "dess")
+				end
             elseif Game.party[1].id == "ostarwalker" then
                 cutscene:text("* Oh hey it's the Starman.", "condescending", "dess")
                 cutscene:text("* I bet I piss you off like everything else huh?", "challenging", "dess")

@@ -38,9 +38,42 @@ return {
     end,
     combat_key = function(cutscene, event)
 		cutscene:text("* You look down and find a [color:yellow]key[color:white].")
-		cutscene:text("* You put the [color:yellow]key[color:white] on the keychain.")
+		if Game:getFlag("dungeonkiller") then
+			if Game:getFlag("acj_observe_key") and Game:getFlag("acj_game_key") and Game:getFlag("acj_music_key") then
+				cutscene:showNametag("Jamm")
+				cutscene:text("* H-hold on...", "nervous", "jamm")
+				cutscene:text("* What exactly ARE we doing here?", "nervous", "jamm")
+				cutscene:text("* Destroying some trials,[wait:5] barely passing others...", "nervous", "jamm")
+				cutscene:text("* Is this disrespect really worth it,[wait:5] Dess?", "nervous", "jamm")
+				cutscene:text("* Again,[wait:5] what are we doing here?", "nervous", "jamm")
+				cutscene:showNametag("Jamm")
+				if cutscene:choicer({"Something\nnew", "shit lol"}) == 1 then
+					cutscene:showNametag("Jamm")
+					cutscene:text("* ...", "nervous", "jamm")
+					cutscene:text("* I'm not picking up this key then.", "nervous", "jamm")
+					cutscene:showNametag("Dess")
+					cutscene:text("* Then I will.", "neutral", "dess")
+					Assets.playSound("ominous")
+					Game:setFlag("acj_dungeonkiller_2", true)
+				else
+					cutscene:showNametag("Jamm")
+					cutscene:text("* ...", "nervous", "jamm")
+					cutscene:text("* Yeah, that checks out.", "neutral", "jamm")
+					cutscene:text("* You put the [color:yellow]key[color:white] on the keychain.")
+					Assets.playSound("ominous_cancel")
+					Game:setFlag("dungeonkiller", false)
+				end
+			else
+				cutscene:text("* You put the [color:yellow]key[color:white] on the keychain.")
+				Assets.playSound("ominous_cancel")
+				Game:setFlag("dungeonkiller", false)
+			end
+		else
+			cutscene:text("* You put the [color:yellow]key[color:white] on the keychain.")
+		end
 		Game:setFlag("acj_combat_key", true)
 		Game.world.map:getEvent(20):remove()
+		cutscene:hideNametag()
     end,
     lock1 = function(cutscene, event)
 		if Game:getFlag("acj_key1") then
@@ -75,7 +108,7 @@ return {
 		cutscene:hideNametag()
     end,
     king = function(cutscene, event)
-		if not Game:getFlag("acj_king_talk") then
+		if not Game:getFlag("acj_king_talk") and not Game:getFlag("dungeonkiller") then
 			Game:setFlag("acj_king_talk", true)
 			cutscene:showNametag("King")
 			cutscene:text("[facec:king/regretful][voice:king]* Hm.")
@@ -109,6 +142,7 @@ return {
 				{"I'm fat too!", 372, 50, "ouch", "jamm"}
 			}})
 		else
+			Game:setFlag("acj_king_talk", true)
 			cutscene:showNametag("King")
 			cutscene:text("[facec:king/straightfaced][voice:king]* We have NOTHING to\ndiscuss.")
 		end
@@ -505,6 +539,17 @@ return {
 				gonerText("UNFORTUNATELY,\nYOU DID NOT\nPASS THIS TRIAL.")
 			end
 			
+			if correct > 7 then
+				Assets.playSound("ominous_cancel")
+				Game:setFlag("dungeonkiller", false)
+			elseif correct == 7 then
+				Assets.playSound("ominous")
+			end
+			
+			if not Game:getFlag("dungeonkiller") then
+				Game:setFlag("dungeonkiller", false)
+			end
+			
 			Game.stage.timer:tween(1, fade_rect, {alpha = 0}, "linear")
 			cutscene:wait(1)
 			
@@ -591,6 +636,68 @@ return {
 				cutscene:showNametag("Jamm")
 				cutscene:text("* Oh, don't worry!\n* These things have short-term memory!", "side_smile", "jamm")
 				cutscene:text("* We can try again whenever.", "side_smile", "jamm")
+				if Game:getFlag("can_kill") and Game:getFlag("dungeonkiller") == nil then
+					cutscene:showNametag("Dess")
+					cutscene:text("* Hey actually wait", "genuine", "dess")
+					cutscene:text("* Let me try something", "genuine", "dess")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* Are you going to give the game a try?", "neutral", "jamm")
+					cutscene:showNametag("Dess")
+					cutscene:text("* Something like that", "genuine", "dess")
+					cutscene:hideNametag()
+					cutscene:detachFollowers()
+					local jamm = cutscene:getCharacter("jamm")
+					local dess = cutscene:getCharacter("dess")
+					cutscene:walkTo(jamm, "jamm_dungeonkiller", 1, "up")
+					cutscene:walkTo(dess, "dess_dungeonkiller", 1, "left")
+					cutscene:wait(1)
+					Game.world.map:getEvent(10):explode()
+					Game:setFlag("acj_dungeonkiller_1", true)
+					cutscene:wait(1)
+					cutscene:showNametag("Jamm")
+					cutscene:look(dess, "down")
+					cutscene:text("* Are.[wait:5] You.[wait:5] SERIOUS.", "determined", "jamm")
+					cutscene:text("* You destroyed our only way of getting past!", "determined", "jamm")
+					cutscene:text("* ARE YOU INSANE!?[wait:5]\n* What were you trying to do!?", "determined", "jamm")
+					cutscene:showNametag("Dess")
+					if cutscene:choicer({"Something\nnew", "Beating\nthe trial"}) == 1 then
+						Game:setFlag("dungeonkiller", true)
+						cutscene:showNametag("Jamm")
+						cutscene:text("* Something new!?\n* SOMETHING NEW!?", "determined", "jamm")
+						cutscene:text("* How about doing \"something helpful!?\"", "determined", "jamm")
+					else
+						cutscene:showNametag("Jamm")
+						cutscene:text("* Oh yeah,[wait:5] solving the trial?", "determined", "jamm")
+						cutscene:text("* How about doing it the way it's intended?", "determined", "jamm")
+					end
+					cutscene:hideNametag()
+					
+					Game.stage.timer:tween(1, fade_rect, {alpha = 0.5}, "linear")
+					cutscene:wait(1)
+					
+					gonerText("UM...")
+					gonerText("I GUESS YOU \"BEAT\"\nTHE TRIAL?")
+					gonerText("YOUR [color:blue]KEY[color:white] AWAITS...?")
+					
+					Game.stage.timer:tween(1, fade_rect, {alpha = 0}, "linear")
+					cutscene:wait(1)
+				
+					local layer = Game.world.map:getTileLayer("door_layer")
+					layer.visible = false
+					local shape = Game.world.map:getHitbox("door_collision")
+					shape.collidable = false
+					
+					Game:setFlag("acj_game_win", true)
+					
+					cutscene:showNametag("Jamm")
+					cutscene:text("* dafuq", "stern", "jamm")
+					cutscene:hideNametag()
+					
+					if Game:getFlag("dungeonkiller") then
+						Game.world.music.pitch = 0.5
+						Assets.playSound("ominous")
+					end
+				end
 			else
 				Game.stage.timer:tween(1, fade_rect, {alpha = 0.5}, "linear")
 				cutscene:wait(1)
@@ -772,6 +879,17 @@ return {
 				gonerText("UNFORTUNATELY,\nYOU DID NOT\nPASS THIS TRIAL.")
 			end
 			
+			if correct > 3 then
+				Assets.playSound("ominous_cancel")
+				Game:setFlag("dungeonkiller", false)
+			elseif correct == 3 then
+				Assets.playSound("ominous")
+			end
+			
+			if not Game:getFlag("dungeonkiller") then
+				Game:setFlag("dungeonkiller", false)
+			end
+			
 			Game.stage.timer:tween(1, fade_rect, {alpha = 0}, "linear")
 			cutscene:wait(1)
 			
@@ -795,35 +913,70 @@ return {
 		cutscene:text("* So,[wait:5] your wife made this dungeon for you?", "eyebrow", "dess")
 		cutscene:showNametag("Jamm")
 		cutscene:text("* Yeah.[wait:5]\n* She must've spent a lot of time on this.", "neutral", "jamm")
-		cutscene:showNametag("Dess")
-		cutscene:text("* How much time?", "eyebrow", "dess")
-		cutscene:showNametag("Jamm")
-		cutscene:text("* I...[wait:5] Don't know.", "neutral", "jamm")
+		if Game:getFlag("dungeonkiller") then
+			cutscene:text("* If she knew we were going to do this to it...", "neutral", "jamm")
+			cutscene:showNametag("Dess")
+			cutscene:text("* We're getting through it, aren't we?", "genuine", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* In the worst way possible...", "shaded_pissed", "jamm")
+		else
+			cutscene:showNametag("Dess")
+			cutscene:text("* How much time?", "eyebrow", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* I...[wait:5] Don't know.", "neutral", "jamm")
+		end
 		cutscene:hideNametag()
     end,
     hallway_2 = function(cutscene, event)
-		cutscene:showNametag("Dess")
-		cutscene:text("* because clearly it's our dungeon,[wait:5] not yours lol", "condescending", "dess")
-		cutscene:showNametag("Jamm")
-		cutscene:text("* Don't you start with--", "determined", "jamm", {auto = true})
-		cutscene:showNametag("Dess")
-		cutscene:text("* No,[wait:5] hear me out.", "neutral", "dess")
-		cutscene:text("* That door only opened when we were BOTH at it,[wait:5] right?", "neutral", "dess")
-		cutscene:text("* So clearly,[wait:5] it's both of ours.", "wink", "dess")
-		cutscene:showNametag("Jamm")
-		cutscene:text("* I...[wait:5]\n* Never thought about it that way.", "nervous", "jamm")
-		cutscene:text("* Why DID it only open with us both?", "nervous", "jamm")
+		if not Game:getFlag("dungeonkiller") then
+			cutscene:showNametag("Dess")
+			cutscene:text("* because clearly it's our dungeon,[wait:5] not yours lol", "condescending", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* Don't you start with--", "determined", "jamm", {auto = true})
+			cutscene:showNametag("Dess")
+			cutscene:text("* No,[wait:5] hear me out.", "neutral", "dess")
+			cutscene:text("* That door only opened when we were BOTH at it,[wait:5] right?", "neutral", "dess")
+			cutscene:text("* So clearly,[wait:5] it's both of ours.", "wink", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* I...[wait:5]\n* Never thought about it that way.", "nervous", "jamm")
+			cutscene:text("* Why DID it only open with us both?", "nervous", "jamm")
+		else
+			cutscene:showNametag("Dess")
+			cutscene:text("* Could this be why she opened it up to us both?", "genuine", "dess")
+			cutscene:text("* Could she have wanted this to be a possibility?", "genuine", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* I don't know,[wait:5] Dess...", "shaded_neutral", "jamm")
+			cutscene:text("* I feel like we're doing this horribly...", "shaded_neutral", "jamm")
+			cutscene:text("* She spent all this time setting this up for me...", "shaded_neutral", "jamm")
+			cutscene:showNametag("Dess")
+			cutscene:text("* What other reason would there be then?", "genuine", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* ...", "shaded_neutral", "jamm")
+		end
 		cutscene:hideNametag()
     end,
     hallway_3 = function(cutscene, event)
-		cutscene:showNametag("Dess")
-		cutscene:text("* so where's the fakeout", "condescending", "dess")
-		cutscene:showNametag("Jamm")
-		cutscene:text("* What?", "neutral", "jamm")
-		cutscene:showNametag("Dess")
-		cutscene:text("* it's a dungeon,[wait:5] there's always a fakeout", "wink", "dess")
-		cutscene:showNametag("Jamm")
-		cutscene:text("* No???[wait:5]\n* That's extremely rare???", "neutral", "jamm")
+		if not Game:getFlag("dungeonkiller") then
+			cutscene:showNametag("Dess")
+			cutscene:text("* so where's the fakeout", "condescending", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* What?", "neutral", "jamm")
+			cutscene:showNametag("Dess")
+			cutscene:text("* it's a dungeon,[wait:5] there's always a fakeout", "wink", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* No???[wait:5]\n* That's extremely rare???", "neutral", "jamm")
+		else
+			cutscene:showNametag("Dess")
+			cutscene:text("* So, what are you going to do then?", "eyebrow", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* ...", "shaded_neutral", "jamm")
+			if cutscene:choicer({"Something\nnew", "What's right"}) == 1 then
+				Assets.playSound("ominous")
+			else
+				Assets.playSound("ominous_cancel")
+				Game:setFlag("dungeonkiller", false)
+			end
+		end
 		cutscene:hideNametag()
     end,
     boss = function(cutscene, event)
@@ -844,20 +997,37 @@ return {
 		cutscene:text("* then go get it.", "neutral", "dess")
 		cutscene:text("* I want to get out of here.", "annoyed", "dess")
 		cutscene:showNametag("Jamm")
-		cutscene:text("* As fun as this was,[wait:5] I think I agree.", "stern", "jamm")
+		if Game:getFlag("dungeonkiller") then
+			cutscene:text("* Couldn't agree more.", "shaded_neutral", "jamm")
+		else
+			cutscene:text("* As fun as this was,[wait:5] I think I agree.", "stern", "jamm")
+		end
 		cutscene:hideNametag()
 		cutscene:wait(cutscene:slideTo(sa, 480, 240, 0.5))
 		Assets.playSound("impact")
 		cutscene:shakeCharacter(sa, 2, 0)
 		cutscene:setSprite("jamm", "battle/hurt_1")
-		Game.world.music:play("jamm_boss", 1, 1)
+		if Game:getFlag("dungeonkiller") then
+			Game.world.music:play("jamm_boss", 1, 0.5)
+		else
+			Game.world.music:play("jamm_boss", 1, 1)
+		end
 		cutscene:wait(1)
 		cutscene:showNametag("Jamm")
-		cutscene:text("* A-Ania!?", "shaded_pissed", "jamm")
-		cutscene:showNametag("Dess")
-		cutscene:text("* Jamm,[wait:5] snap out of it![wait:5]\n* That's not Ania!", "neutral", "dess")
+		if Game:getFlag("dungeonkiller") then
+			cutscene:text("* ...", "shaded_neutral", "jamm")
+			cutscene:showNametag("Dess")
+		else
+			cutscene:text("* A-Ania!?", "shaded_pissed", "jamm")
+			cutscene:showNametag("Dess")
+			cutscene:text("* Jamm,[wait:5] snap out of it![wait:5]\n* That's not Ania!", "neutral", "dess")
+		end
 		cutscene:text("* ...", "neutral_c", "dess")
-		cutscene:text("* alright,[wait:5] let's do this lmao", "challenging", "dess")
+		if Game:getFlag("dungeonkiller") then
+			cutscene:text("* Let's do this.", "challenging", "dess")
+		else
+			cutscene:text("* alright,[wait:5] let's do this lmao", "challenging", "dess")
+		end
 		cutscene:hideNametag()
 		
 		cutscene:startEncounter("ania_boss", true, sa)
@@ -874,38 +1044,53 @@ return {
 		cutscene:text("* you okay,[wait:5] bro?", "genuine", "dess")
 		cutscene:showNametag("Jamm")
 		cutscene:text("* ...", "shaded_neutral", "jamm")
-		cutscene:text("* ...I'm fine.", "shaded_neutral", "jamm")
-		cutscene:showNametag("Dess")
-		cutscene:text("* you sure?", "genuine", "dess")
-		cutscene:showNametag("Jamm")
-		cutscene:text("* Just give me a moment,[wait:5] okay?", "neutral", "jamm")
-		cutscene:hideNametag()
-		cutscene:wait(cutscene:walkToSpeed("jamm", 360, 140, 4, "up"))
-		cutscene:look(dess, "right")
-		cutscene:showNametag("Jamm")
-		cutscene:text('* "My dearest Luthane..."', "neutral", "jamm")
-		cutscene:text('* "I was with you throughout the dungeon."', "neutral", "jamm")
-		cutscene:text('* "In life or death."', "neutral", "jamm")
-		cutscene:text('* "And I will always be by your side."', "neutral", "jamm")
-		cutscene:text('* "\'Til death do us part?[wait:5]\nNot really my style."', "neutral", "jamm")
-		cutscene:text('* "But what about past that?"', "neutral", "jamm")
-		cutscene:text('* "I will always be with you,[wait:5] Luthane."', "neutral", "jamm")
-		cutscene:hideNametag()
-		cutscene:wait(cutscene:walkToSpeed("dess", 540, 280, 4))
-		cutscene:showNametag("Jamm")
-		cutscene:text('* "I also included a dear possession of mine with the key."', "neutral", "jamm")
-		cutscene:text('* "Keep it with you at all times."', "neutral", "jamm")
-		cutscene:text('* ...I will,[wait:5] Ania.', "neutral", "jamm")
-		Game.world.map:getEvent(2):remove()
-		Game.inventory:addItem("flowerbrace")
-		cutscene:look(dess, "left")
-		cutscene:showNametag("Dess")
-		cutscene:text("* i got the stuff,[wait:5] let's bolt", "neutral", "dess")
+		if Game:getFlag("dungeonkiller") then
+			cutscene:hideNametag()
+			cutscene:wait(cutscene:walkToSpeed("jamm", "jamm_spawn", 4, "up"))
+			Game:getPartyMember("jamm").opinions.dess = 0
+			Game:getPartyMember("jamm"):removeSpell("supersling")
+			cutscene:showNametag("Dess")
+			cutscene:text("* (What have I done to him...)", "genuine", "dess")
+			cutscene:hideNametag()
+			cutscene:wait(cutscene:walkToSpeed("dess", 540, 280, 4))
+			Game.world.map:getEvent(2):remove()
+			Game.inventory:addItem("oblitersling")
+		else
+			cutscene:text("* ...I'm fine.", "shaded_neutral", "jamm")
+			cutscene:showNametag("Dess")
+			cutscene:text("* you sure?", "genuine", "dess")
+			cutscene:showNametag("Jamm")
+			cutscene:text("* Just give me a moment,[wait:5] okay?", "neutral", "jamm")
+			cutscene:hideNametag()
+			cutscene:wait(cutscene:walkToSpeed("jamm", 360, 140, 4, "up"))
+			cutscene:look(dess, "right")
+			cutscene:showNametag("Jamm")
+			cutscene:text('* "My dearest Luthane..."', "neutral", "jamm")
+			cutscene:text('* "I was with you throughout the dungeon."', "neutral", "jamm")
+			cutscene:text('* "In life or death."', "neutral", "jamm")
+			cutscene:text('* "And I will always be by your side."', "neutral", "jamm")
+			cutscene:text('* "\'Til death do us part?[wait:5]\nNot really my style."', "neutral", "jamm")
+			cutscene:text('* "But what about past that?"', "neutral", "jamm")
+			cutscene:text('* "I will always be with you,[wait:5] Luthane."', "neutral", "jamm")
+			cutscene:hideNametag()
+			cutscene:wait(cutscene:walkToSpeed("dess", 540, 280, 4))
+			cutscene:showNametag("Jamm")
+			cutscene:text('* "I also included a dear possession of mine with the key."', "neutral", "jamm")
+			cutscene:text('* "Keep it with you at all times."', "neutral", "jamm")
+			cutscene:text('* ...I will,[wait:5] Ania.', "neutral", "jamm")
+			Game.world.map:getEvent(2):remove()
+			Game.inventory:addItem("flowerbrace")
+			cutscene:look(dess, "left")
+			cutscene:showNametag("Dess")
+			cutscene:text("* i got the stuff,[wait:5] let's bolt", "neutral", "dess")
+			Game:getPartyMember("jamm").opinions.dess = Game:getPartyMember("jamm").opinions.dess + 20
+			Game:getPartyMember("dess").opinions.jamm = Game:getPartyMember("dess").opinions.jamm + 20
+		end
 		cutscene:hideNametag()
 		Game:setFlag("jamm_closure", true)
 		cutscene:wait(cutscene:mapTransition("fwood/entry", "exit", "down"))
 		Kristal.callEvent("completeQuest", "acj2")
-        jamm_party.has_act = false
+        Game:getPartyMember("jamm").has_act = false
         Game:setFlag("jamm_canact", false)
     end,
 }

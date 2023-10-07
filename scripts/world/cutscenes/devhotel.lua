@@ -9,7 +9,7 @@ return {
 
     brandon = function(cutscene, event)
         cutscene:text("* It's a door.")
-        cutscene:text("* The sign reads \"THIS ROOM BELONGS TO: BRANDONK7200\"")
+        cutscene:text("* The sign reads \"THIS ROOM BELONGS TO: BRENDAK7200\"")
         if not cutscene:getCharacter("brandon") then
             cutscene:text("* It appears to be locked.")
         else

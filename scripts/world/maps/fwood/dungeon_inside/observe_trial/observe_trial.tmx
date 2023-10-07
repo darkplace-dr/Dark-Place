@@ -82,7 +82,7 @@
   <object id="15" name="interactable" x="200" y="120" width="80" height="40">
    <properties>
     <property name="text1" value="* My dearest Luthane,[wait:5] an observant individual.."/>
-    <property name="text2" value="* You take not of many precious details in your life."/>
+    <property name="text2" value="* You take note of many precious details in your life."/>
     <property name="text3" value="* As such,[wait:5] here is your trial:"/>
     <property name="text4" value="* Upon pressing this button,[wait:5] you wil be asked 5 questions."/>
     <property name="text5" value="* Before doing so,[wait:5] however,[wait:5] I urge you to explore."/>

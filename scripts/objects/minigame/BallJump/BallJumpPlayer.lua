@@ -34,7 +34,7 @@ function BallJumpPlayer:update()
 	super:update(self)
 	
 	if not self.on_ground then
-		self.y = self.y + self.velocity
+		self.y = self.y + self.velocity * DTMULT * 2
 		self.velocity = self.velocity + DTMULT
 	end
 	if not self.on_ground and self.velocity > 0 and self.y > 284 then

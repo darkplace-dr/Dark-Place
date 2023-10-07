@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 15,
+  nextobjectid = 19,
   properties = {
     ["music"] = "jamm_dungeon"
   },
@@ -270,6 +270,32 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 15,
+          name = "dess_dungeonkiller",
+          type = "",
+          shape = "point",
+          x = 240,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 18,
+          name = "jamm_dungeonkiller",
+          type = "",
+          shape = "point",
+          x = 160,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -299,7 +325,9 @@ return {
           rotation = 0,
           gid = 106,
           visible = true,
-          properties = {}
+          properties = {
+            ["flagcheck"] = "!acj_dungeonkiller_1"
+          }
         },
         {
           id = 11,
@@ -314,6 +342,7 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "a_dungeon.game",
+            ["flagcheck"] = "!acj_dungeonkiller_1",
             ["solid"] = "true"
           }
         },
