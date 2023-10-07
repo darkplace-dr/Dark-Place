@@ -130,4 +130,12 @@ function Shadynn:selectWave()
 	return super:selectWave(self)
 end
 
+function Shadynn:onSpared()
+	super:onSpared(self)
+	
+	if not Game:getFlag("jamm_closure") then
+		Game:setFlag("dungeonkiller", false)
+	end
+end
+
 return Shadynn
