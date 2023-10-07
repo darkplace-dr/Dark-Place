@@ -304,6 +304,25 @@ return {
                 event:setSprite("dark")
                 cutscene:text("[speed:0.9]* [You're God Damn Right.]", nil, "spamtong")
             end
+			if cutscene:getCharacter("jamm") then
+				if Game:getFlag("jamm_closure") then
+					cutscene:showNametag("Jamm")
+					cutscene:text("* I dunno,[wait:5] man.[wait:5]\n* Bikinis aren't my style.", "neutral", "jamm")
+					event:resetSprite()
+					cutscene:showNametag("Bikini Spamton")
+					cutscene:text("* OH?[wait:3] IS A THONG MORE YOUR [Stylish!]?", nil, "spamtong")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* HELL.[wait:5] NO.", "determined", "jamm")
+				else
+					cutscene:showNametag("Jamm")
+					cutscene:text("* But we didn't even do my second sidequest yet.", "neutral", "jamm")
+					cutscene:text("* I'm barely even a character at this point in the story.", "neutral", "jamm")
+					cutscene:showNametag("Bikini Spamton")
+					cutscene:text("* SINCE WHEN DO YOU [Authentication required] TO BE A MAIN CHARACTER TO [Change-up] YOUR", nil, "spamtong")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* ...Pass.", "neutral", "jamm")
+				end
+			end
         elseif event.interact_count == 10 then
             Game.world.music:pause()
             Assets.playSound("daddygirl")
