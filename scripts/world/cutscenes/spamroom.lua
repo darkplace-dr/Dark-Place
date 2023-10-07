@@ -341,6 +341,7 @@ return {
                     cutscene:showNametag("Jamm")
                     cutscene:text("* Wait,[wait:5] the hell?[wait:5]\n* You were actually considering that?", "worried", "jamm")
                     cutscene:text("* That is...[wait:5] Deeply concering.", "worried", "jamm")
+                    cutscene:text("* And I never thought it'd be you,[wait:5] either...", "worried", "jamm")
                 end
             end
         elseif event.interact_count == 10 then
