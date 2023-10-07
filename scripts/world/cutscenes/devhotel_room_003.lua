@@ -139,6 +139,10 @@ return {
 			else
 				cutscene:showNametag("Marcy")
 				cutscene:text("[voice:marcy]* Yay! You found papa!", "smile", "marcy")
+				if Game:getFlag("dungeonkiller") then
+					cutscene:text("[voice:marcy]* But...\n* Marcy sees papa is concerned...", "sad", "marcy")
+					cutscene:text("[voice:marcy]* Marcy is worried...\n* Did something happen to papa?", "sad", "marcy")
+				end
 			end
 		elseif choice == 3 then
 			cutscene:showNametag("Marcy")
@@ -153,6 +157,13 @@ return {
 	
     note = function(cutscene, event)
 		local susie = cutscene:getCharacter("susie")
+		
+		if Game:getFlag("dungeonkiller") then
+			cutscene:showNametag("Jamm")
+			cutscene:text("* Respect my privacy, please.", "neutral", "jamm")
+			cutscene:hideNametag()
+			return
+		end
 	
 		if Game:getFlag("fake_jamm") then
 			if Game.party[1].id ~= "jamm" then
@@ -290,9 +301,13 @@ return {
 		local dess = cutscene:getCharacter("dess")
 		
 		cutscene:showNametag("Jamm")
-		cutscene:text("* Oh, hey, guys! Nice seeing you again!", "smile", "jamm")
-		cutscene:text("* I've just been keeping my daughter company, is all.", "smile", "jamm")
-		cutscene:text("* Did you want to talk about something?", "smile", "jamm")
+		if Game:getFlag("dungeonkiller") then
+			cutscene:text("* Oh, hey.", "neutral", "jamm")
+		else
+			cutscene:text("* Oh, hey, guys! Nice seeing you again!", "smile", "jamm")
+			cutscene:text("* I've just been keeping my daughter company, is all.", "smile", "jamm")
+			cutscene:text("* Did you want to talk about something?", "smile", "jamm")
+		end
 		cutscene:hideNametag()
 		
 		local choice = cutscene:choicer({"Wife", "Marcy", "Enzio", "Party"})

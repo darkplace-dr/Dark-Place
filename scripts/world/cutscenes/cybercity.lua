@@ -41,7 +41,7 @@ return {
                             end
                             cutscene:text("[voice:spamton]* HERE'S YOUR [microwehv]![wait:0.1s] CAREFUL,[wait:0.1s] IT MIGHT [Burn]\n* EAHEAHEAH")
                             cutscene:text("(You got the Microwave.)")
-							if jamm then
+							if jamm and not Game:getFlag("dungeonkiller") then
 								cutscene:showNametag("Jamm")
 								cutscene:text("* (What the hell...)", "neutral", "jamm")
 								cutscene:hideNametag()
@@ -399,7 +399,7 @@ return {
                     cutscene:text("* You can't steal souls,[wait:5] can you?", "dissapointed", "brandon")
                     cutscene:showNametag("???")
                     cutscene:text("* AND SO WHAT IF I CAN'T????")
-                elseif cutscene:getCharacter("jamm") then
+                elseif cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
                     event.interacted_with = "jamm"
                     cutscene:showNametag("Jamm")
                     cutscene:text("* Uh oh.[wait:5]\n* Did Tubba Blubba lose his heart again?", "neutral", "jamm")
@@ -495,7 +495,7 @@ return {
                     cutscene:text("* No.")
                     cutscene:showNametag("Brandon")
                     cutscene:text("* Uh okay then.", "neutral_side", "brandon")
-                elseif event.interacted_with == "jamm" then
+                elseif event.interacted_with == "jamm" and not Game:getFlag("dungeonkiller") then
                     cutscene:showNametag("Jamm")
                     cutscene:text("* Are you sure the name Mario doesn't ring a bell?", "neutral", "jamm")
                     cutscene:text("* Goombario?[wait:5] Kooper?[wait:5] Bombette?[wait:5] Parakarry?[wait:5] Bow?", "neutral", "jamm")

@@ -49,7 +49,7 @@ return {
             cutscene:text("[voice:cssusie]* HEY,[wait:5] I'VE GOT SOMETHING REALLY COOL TO SHOW YOU.", "", nil)
             cutscene:text("[voice:cssusie]* THERE ARE THREE PIECES OF A KEY TO FIND.", "", nil)
 			
-			if cutscene:getCharacter("jamm") then
+			if cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
 				cutscene:showNametag("Jamm")
 				cutscene:text("* A secret boss with a fetch quest.\n* Sounds about right.", "neutral", "jamm")
 

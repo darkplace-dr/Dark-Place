@@ -2,7 +2,11 @@ local Basic, super = Class(Wave)
 
 function Basic:onStart()
     -- Every 0.33 seconds...
-    self.timer:every(1/8, function()
+	local timer = 1/8
+	if Game:getFlag("dungeonkiller") then
+		timer = 1/10
+	end
+    self.timer:every(timer, function()
         -- Our X position is offscreen, to the right
         local x = Utils.random(Game.battle.arena.left, Game.battle.arena.right)
         -- Get a random Y position between the top and the bottom of the arena
