@@ -621,9 +621,13 @@ function Mod:initializeImportantFlags(new_file)
 
     if not new_file and likely_old_save then
         Log:print("Save seems to be from an old version")
-        Log:print("Possible reasons:")
-        for i,v in ipairs(old_save_issues) do
-            Log:print("- "..v)
+        if #old_save_issues == 0 then
+            Lod:print("No possible reasons found. That is weird.")
+        else
+            Log:print("Possible reasons:")
+            for i,v in ipairs(old_save_issues) do
+                Log:print("- "..v)
+            end
         end
     end
 end
