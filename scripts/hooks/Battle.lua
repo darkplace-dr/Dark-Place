@@ -553,7 +553,13 @@ function Battle:processAction(action)
 
     elseif action.action == "ITEM" then
         local item = action.data
+        if BadgesLib:getBadgeEquipped("refund") >= 1 then
+            for i = 1, BadgesLib:getBadgeEquipped("refund") do -- Add money for each instance of the badge equipped
+                self.money = self.money + item.price / 4
+            end
+        end
         if item.instant then
+            -- RefundTxt is created in commitSingleAction for instant items.
             self:finishAction(action)
         else
             local text = item:getBattleText(battler, action.target)
@@ -561,6 +567,10 @@ function Battle:processAction(action)
                 self:battleText(text)
             end
             battler:setAnimation("battle/item", function()
+                if BadgesLib:getBadgeEquipped("refund") >= 1 then
+                    local refundTxt = RefundTxt()
+                    battler:addChild(refundTxt)
+                end
                 local result = item:onBattleUse(battler, action.target)
                 if result or result == nil then
                     self:finishAction(action)
@@ -580,6 +590,21 @@ function Battle:processAction(action)
         return true
     end
 end
+
+
+function Battle:commitSingleAction(action)
+    super.commitSingleAction(self, action)
+    local battler = self.party[action.character_id]
+
+    -- Spawns RefundTxt when using instant items.
+    if (action.action == "ITEM" and action.data and (action.data.instant)) then
+        if BadgesLib:getBadgeEquipped("refund") >= 1 then
+            local refundTxt = RefundTxt()
+            battler:addChild(refundTxt)
+        end
+    end
+end
+
 
 function Battle:pierce(amount, exact, target)
     target = target or "ANY"

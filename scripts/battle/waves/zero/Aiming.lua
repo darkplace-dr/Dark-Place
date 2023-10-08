@@ -70,6 +70,7 @@ function Aiming:draw()
 end
 
 function Aiming:onEnd()
+    self.user.layer = self.user.layer_old
     self.user.sprite:set("idle")
     self.user.x = 690
     self.user.y = 216

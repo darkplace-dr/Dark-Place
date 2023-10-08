@@ -52,6 +52,15 @@ function actor:init()
         ["hurt_fly_loop"] = {"hurt_fly_loop", 1/15, true},
         ["hurt_ground"] = {"hurt_ground", 1/15, false},
         ["hurt_recover"] = {"hurt_recover", 1/15, false, next="idle"},
+
+        -- I know, this kinda sucks. I don't really care, though.
+        ["hurtlong"] = {"hurt_ground", 1/15, false, next="hurt_recover"},
+
+
+        ["KO"] = {"hurt_ground", 1/5, false, next="downed"},
+        ["downed"] = {"downed", 1/10, true},
+        ["getup"] = {"getup", 1/10, false},
+
         ["threaten"] = {"threaten", 1/15, false},
 
         ["drawsword/normal"] = {"drawsword/normal", 1/30, false},
@@ -71,6 +80,8 @@ function actor:init()
         ["headphones_end"] = {0, -4},
         ["struggle"] = {-25, 0},
         ["hurt_recover"] = {-10, -10},
+        ["downed"] = {0, 15},
+        ["getup"] = {0, 5},
         ["threaten"] = {-30, -5},
 
         ["drawsword/normal"] = {-40, -11},

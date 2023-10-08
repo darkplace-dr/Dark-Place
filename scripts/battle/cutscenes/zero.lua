@@ -23,23 +23,78 @@ return {
 
     end,
 
-    susie_action = function (cutscene, battler, enemy)
-        cutscene:text("* Uh...", "suspicious", "susie")
-        if Game.party[1].name == "Susie" then
-            cutscene:text("* The hell am I supposed to do?", "nervous", "susie")
-        else
-            cutscene:text("* The hell do you want me to do?", "nervous", "susie")
+    killed = function(cutscene, battler, enemy)
+        local zero = Game.battle:getEnemyBattler("zero")
+        cutscene:wait(4)
+        Game.stage:addFX(ShaderFX(Mod.wave_shader, {
+            ["wave_sine"] = function() return Kristal.getTime() * 1200 end,
+            ["wave_mag"] = 20,
+            ["wave_height"] = 1,
+            ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT}
+        }), "funky_mode")
+        Game.stage:addFX(VHSFilter(), "introvhs")
+        Game.battle.timer:after(0.585, function ()
+            Game.stage:removeFX("funky_mode")
+            Game.stage:removeFX("introvhs")
+        end)
+        Assets.playSound("zero/rewind")
+        cutscene:wait(0.479)
+
+        for i,battler in ipairs(Game.battle.party) do
+            Game.battle:pushForcedAction(battler, "SKIP")
+            battler:setAnimation("battle/idle")
+            if Game.party[i].health < Game.battle.encounter.startinghp[i] then
+            Game.battle.party[i]:heal(Game.battle.encounter.startinghp[i] - Game.party[i].health)
+            end
+            if Game.party[i].health > Game.battle.encounter.startinghp[i] then
+                Game.battle.party[i]:removeHealth(Game.party[i].health - Game.battle.encounter.startinghp[i])
+            end
         end
-    end,
-    robo_susie_action = function (cutscene, battler, enemy)
-        cutscene:text("* ...[wait:20]\n* No.", "default", "robo_susie")
-        battler:setAnimation("battle/act_end")
-        cutscene:wait(20/30)
-        Game.battle:pushForcedAction(battler, "AUTOATTACK", Game.battle:getActiveEnemies()[1], nil, {points = 150})
+        zero:setAnimation("idle")
+        cutscene:wait(0.479)
+        Game.stage:removeFX("funky_mode")
+        Game.stage:removeFX("introvhs")
+
+        cutscene:wait(2)
+
+        zero.x = zero.x - 40
+        zero.flip_x = true
+        zero:setAnimation("run")
+        Assets.playSound("escaped")
+        cutscene:slideTo(zero, 690, 216, 0.5)
+
+        cutscene:wait(2)
+        cutscene:after(function ()
+        Game.battle:setState("ACTIONSDONE")
+        Game.battle.encounter.endfight = true
+        end)
     end,
 
-    ending = function(cutscene, battler, enemy)
-        cutscene:wait(20/30)
+    spared = function(cutscene, battler, enemy)
+        local zero = Game.battle:getEnemyBattler("zero")
+        local doneyet = false
+        Game.battle.timer:every(1/30, function ()
+        if doneyet == false then
+        Game.battle:setState("CUTSCENE") -- FUCK you, stop going back to my turn in the middle of the cutscene
+        end
+        end)
+        cutscene:wait(1)
+        zero:setAnimation("getup")
+        cutscene:wait(2)
+
+        zero.x = zero.x - 40
+        zero.flip_x = true
+        zero:setAnimation("run")
+        Assets.playSound("escaped")
+        cutscene:slideTo(zero, 690, 216, 0.5)
+
+        cutscene:wait(2)
+        cutscene:after(function ()
+        doneyet = true
+        Game.battle:setState("ACTIONSDONE")
+        Game.battle.encounter.endfight = true
+        end)
     end
+
 
 }
