@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="21">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="jamm_dungeon"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../tilesets/jamm_dungeon.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="48" height="12">
+  <data encoding="csv">
+0,23,23,23,23,23,23,23,23,23,23,0,0,23,23,23,23,23,23,23,23,23,23,0,0,23,23,23,23,23,23,23,23,23,23,0,0,23,23,23,23,23,23,23,23,23,23,0,
+0,23,23,23,23,31,23,23,23,30,24,0,0,23,31,23,23,23,23,23,29,23,23,0,0,23,23,23,30,23,23,23,30,23,23,0,0,22,23,23,23,23,23,30,23,23,24,0,
+0,22,23,30,23,23,29,23,23,23,23,0,0,22,23,23,23,30,23,23,23,23,24,0,0,23,29,23,23,23,23,30,23,23,23,0,0,23,23,30,23,23,29,23,23,23,23,0,
+0,38,37,37,37,37,36,37,37,37,37,0,0,37,37,37,37,37,37,38,37,37,37,0,0,36,37,37,38,37,37,37,37,37,37,0,0,37,37,37,37,37,37,36,37,37,37,0,
+0,48,58,58,58,58,58,58,58,58,47,0,0,48,58,58,58,58,58,58,58,58,47,0,0,48,58,58,58,58,58,58,58,58,47,0,0,48,58,58,58,58,58,58,58,58,47,0,
+0,52,51,33,51,51,34,51,40,51,50,0,0,52,51,40,51,51,51,51,33,51,50,0,0,52,41,51,33,51,51,40,51,51,50,0,0,52,41,51,51,40,51,51,34,51,50,0,
+0,52,51,51,51,51,51,51,51,51,50,0,0,52,51,51,51,34,51,51,51,51,50,0,0,52,51,51,51,34,51,51,51,51,50,0,0,52,51,51,33,51,51,51,51,51,50,0,
+0,52,51,51,51,40,51,51,41,51,51,46,46,51,51,51,33,51,51,51,34,51,51,46,46,51,51,51,51,51,51,51,40,51,51,46,46,51,51,51,51,34,51,51,33,51,50,0,
+0,52,51,34,51,51,51,51,51,51,50,0,0,52,51,51,51,51,40,51,51,51,50,0,0,52,51,40,51,51,33,51,51,51,50,0,0,52,51,33,51,51,51,51,51,51,50,0,
+0,52,51,51,51,51,51,51,33,51,50,0,0,52,34,51,51,41,51,51,41,51,50,0,0,52,41,51,51,51,51,51,51,34,50,0,0,52,41,51,51,51,51,40,51,51,50,0,
+0,52,51,41,51,44,44,44,44,44,32,0,0,27,44,44,44,44,44,44,44,44,32,0,0,27,44,44,44,44,44,44,44,44,32,0,0,27,44,44,44,44,44,44,44,44,32,0,
+0,52,51,51,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="collision">
+  <object id="1" x="0" y="0" width="40" height="480"/>
+  <object id="4" x="1880" y="0" width="40" height="480"/>
+  <object id="5" x="200" y="440" width="1680" height="40"/>
+  <object id="6" x="440" y="320" width="80" height="120"/>
+  <object id="7" x="920" y="320" width="80" height="120"/>
+  <object id="8" x="1400" y="320" width="80" height="120"/>
+  <object id="9" x="440" y="160" width="80" height="120"/>
+  <object id="10" x="920" y="160" width="80" height="120"/>
+  <object id="11" x="1400" y="160" width="80" height="120"/>
+  <object id="12" x="40" y="0" width="1840" height="160"/>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="16" name="entry" x="120" y="440">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="14" name="enemy" x="460" y="280" width="40" height="40">
+   <properties>
+    <property name="actor" value="shadynn"/>
+    <property name="encounter" value="shadynn_noflee"/>
+   </properties>
+  </object>
+  <object id="15" name="transition" x="40" y="480" width="160" height="40">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="fwood/dungeon_inside/combat_hall"/>
+    <property name="marker" value="trial"/>
+   </properties>
+  </object>
+  <object id="17" name="enemy" x="940" y="280" width="40" height="40">
+   <properties>
+    <property name="actor" value="shade_bro"/>
+    <property name="encounter" value="shade_bro"/>
+   </properties>
+  </object>
+  <object id="18" name="enemy" x="1420" y="280" width="40" height="40">
+   <properties>
+    <property name="actor" value="shadynn"/>
+    <property name="encounter" value="shade_duo"/>
+   </properties>
+  </object>
+  <object id="19" name="interactable" x="1480" y="160" width="40" height="40">
+   <properties>
+    <property name="cutscene" value="a_dungeon.combat_key"/>
+    <property name="flagcheck" value="!acj_combat_key"/>
+   </properties>
+  </object>
+  <object id="20" name="shine" x="1480" y="160" width="20" height="20">
+   <properties>
+    <property name="flagcheck" value="!acj_combat_key"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

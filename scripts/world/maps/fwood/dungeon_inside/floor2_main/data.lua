@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 51,
+  nextobjectid = 63,
   properties = {
     ["music"] = "jamm_dungeon"
   },
@@ -470,6 +470,73 @@ return {
             ["map"] = "fwood/dungeon_inside/music_hall",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 54,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 80,
+          y = 200,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "down",
+            ["map"] = "fwood/dungeon_inside/game_hall",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 55,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 280,
+          y = 160,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "down",
+            ["map"] = "fwood/dungeon_inside/observe_hall",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 57,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 160,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "down",
+            ["map"] = "fwood/dungeon_inside/combat_hall",
+            ["marker"] = "entry"
+          }
+        },
+        {
+          id = 60,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 480,
+          y = 160,
+          width = 121,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "a_dungeon.lock2",
+            ["solid"] = true
+          }
         }
       }
     },
@@ -507,6 +574,58 @@ return {
           shape = "point",
           x = 940,
           y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 53,
+          name = "game",
+          type = "",
+          shape = "point",
+          x = 140,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 56,
+          name = "observe",
+          type = "",
+          shape = "point",
+          x = 340,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 58,
+          name = "combat",
+          type = "",
+          shape = "point",
+          x = 740,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 62,
+          name = "final",
+          type = "",
+          shape = "point",
+          x = 540,
+          y = 240,
           width = 0,
           height = 0,
           rotation = 0,

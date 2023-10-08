@@ -18,8 +18,7 @@ function Shadynn:init()
     self.spare_points = 25
 
     self.waves = {
-        "rudinn/diamonds_up",
-        "rudinn/diamonds_aim"
+        "lob_hammer"
     }
 
     self.check = "AT 6 DEF 0\nIf you can dodge a hammer,\nyou can dodge a ball."
@@ -149,6 +148,12 @@ function Shadynn:hurt(amount, battler, on_defeat, color)
 	else
 		self:statusMessage("msg", "miss")
 	end
+end
+
+function Shadynn:onSpared()
+	super:onSpared(self)
+	
+	Game:setFlag("dungeonkiller", false)
 end
 
 return Shadynn

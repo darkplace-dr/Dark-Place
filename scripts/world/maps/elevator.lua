@@ -152,19 +152,19 @@ return {
           properties = {
             ["color_1"] = "#ff414185",
             ["color_2"] = "#ff455a8d",
-            ["color_3"] = "#ffffffff",
+            ["color_3"] = "#ffa8e483",
             ["dest_1"] = "room1",
             ["dest_2"] = "floor2/lounge",
-            ["dest_3"] = "whitespace",
+            ["dest_3"] = "floor3/elevator_hall",
             ["dir_1"] = -1,
             ["dir_2"] = 1,
             ["dir_3"] = 1,
             ["length_1"] = 80,
             ["length_2"] = 80,
-            ["length_3"] = 150,
+            ["length_3"] = 80,
             ["name_1"] = "Floor 1",
             ["name_2"] = "Floor 2",
-            ["name_3"] = "WHITESPACE"
+            ["name_3"] = "Floor 3"
           }
         }
       }

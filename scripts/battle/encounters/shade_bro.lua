@@ -10,6 +10,7 @@ function Shadynn:init()
 
     self:addEnemy("shade_bro")
 
+	self.flee = false
 end
 
 function Shadynn:onReturnToWorld(events)

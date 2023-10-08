@@ -93,8 +93,6 @@ return {
 		dess.flip_x = true
 		cutscene:wait(0.2)
 		local leader = Game.world.player
-		local leader_x_backup = leader.x
-		local leader_y_backup = leader.y
 		leader:explode(0, 0, true)
 		cutscene:slideTo(leader, leader.x - 700, leader.y - 50, 1)
 		cutscene:wait(1.5)
@@ -112,7 +110,7 @@ return {
 		Game.world:spawnPlayer(dess.x, dess.y, "dess")
 		dess:remove()
 		Game.world:removeFollower(leader)
-		cutscene:walkTo("dess", leader_x_backup, leader_y_backup, 1, "left")
+		cutscene:walkTo("dess", dess.x - 30, dess.y + 10, 1, "left")
 
 		cutscene:showNametag("Dess")
 		cutscene:text("* Ok lets go", "neutral", "dess")
@@ -158,8 +156,7 @@ return {
 			event:remove()
 		else
 			local leader = Game.world.player
-			leader.y = leader.y + 4
-
+			
 			cutscene:showNametag("???")
 			cutscene:text("* Hey fucker you need to come talk to me first", "neutral", "dess")
 			
@@ -168,6 +165,7 @@ return {
 				cutscene:text("* Well, there goes THAT idea.", "nervous", "jamm")
 			end
 			cutscene:hideNametag()
+            leader.y = leader.y + 12
 		end
 	end,
 
@@ -179,29 +177,13 @@ return {
 		local dess = cutscene:getCharacter("dess")
 		local brandon = cutscene:getCharacter("brandon")
 		local jamm = cutscene:getCharacter("jamm")
-        local YOU = cutscene:getCharacter("YOU")
 
 		cutscene:detachFollowers()
 		cutscene:detachCamera()
 
-		cutscene:walkTo(leader, dess.x, dess.y+16, 1, "up")
-        local y = 32
-        if susie then
-            cutscene:walkTo(susie, dess.x, dess.y+y, 1, "up")
-            y = y + 16
+        for i,party in ipairs (Game.party) do
+            cutscene:walkTo(cutscene:getCharacter(party.id), leader.x, leader.y+16*i, 1, "up")
         end
-        if YOU then
-			cutscene:walkTo(YOU, dess.x, dess.y+y, 1, "up")
-            y = y + 16
-		end
-		if brandon then
-			cutscene:walkTo(brandon, dess.x, dess.y+y, 1, "up")
-            y = y + 16
-		end
-		if jamm then
-			cutscene:walkTo(jamm, dess.x, dess.y+y, 1, "up")
-            y = y + 16
-		end
 
         if susie then
             cutscene:showNametag("Susie")
@@ -264,21 +246,11 @@ return {
 
 		cutscene:wait(0.8)
 
-        if susie then
-            cutscene:look(susie, "down")
+        for i,party in ipairs (Game.party) do
+            cutscene:look(cutscene:getCharacter(party.id), "down")
         end
-		cutscene:look(dess, "down")
-		cutscene:look(leader, "down")
-		if brandon then
-			cutscene:look(brandon, "down")
-		end
-		if jamm then
-			cutscene:look(jamm, "down")
-		end
-		if YOU then
-			cutscene:look(YOU, "down")
-		end
-
+        cutscene:look(leader, "down")
+        
 		cutscene:wait(1.2)
 		cutscene:showNametag("???")
 		cutscene:text("* I'm sorry![wait:10]\n* I simply couldn't contain myself!")

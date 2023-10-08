@@ -32,6 +32,7 @@ function BossRematchMenu:init()
         { name = "Sam", 	      flag = "sam_defeated", 		  encounter = "sam" },
         { name = "Omega Spamton", flag = "omegaspamton_defeated", encounter = "omegaspamtonbossfight" },
         { name = "Google Dino",   flag = "googledino_defeated",   encounter = "googledino" },
+        { name = "Shade Ania",    flag = "jamm_closure",   		  encounter = "ania_boss" },
     }
 	
 	self.bosses = {}

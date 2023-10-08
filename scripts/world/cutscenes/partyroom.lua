@@ -39,27 +39,33 @@ return {
                 cutscene:text("* People can get uh,[wait:5] a bit too crazy about that.", "dissapointed", "brandon")
             elseif id == "noelle" then
                 cutscene:text("* Oh hey,[wait:5] it's Noelle!", "happy", "brandon")
-                cutscene:text("* Honestly,[wait:5] you remind me a lot of someone.", "happy_side", "brandon")
-                cutscene:text("* Someone I really,[wait:5] really like.", "happy_side_blush", "brandon")
-                cutscene:text("* Oh![wait:10] I swear I'm not flirting with you.", "blush", "brandon")
-                cutscene:text("* Anyways...", "neutral_side", "brandon")
                 cutscene:text("* I really hope you haven't been doing you-know-what.", "neutral", "brandon")
                 cutscene:text("* I'm sure you know what I'm talking about.", "dissapointed", "brandon")
             elseif id == "jamm" then
                 cutscene:text("* Oh,[wait:5] hey Acoustic.", "happy", "brandon")
                 cutscene:text("* Y'know,[wait:5] I think now would be a great time to tell you this...", "neutral", "brandon")
-                cutscene:text("* I'm sorry to bring this up,[wait:5] but have you told Marcy about...", "neutral_side", "brandon")
-                cutscene:text("* ... Y'know...", "frown_side", "brandon")
-                cutscene:text("* Because um,[wait:5] last I checked,[wait:5] she uh...", "frown", "brandon")
-                cutscene:text("* She doesn't know that Ania,[wait:5] well...", "frown_side", "brandon")
-                cutscene:text("* Once again,[wait:5] I'm so sorry for your loss,[wait:5] it's just...", "frown", "brandon")
-                cutscene:text("* It's better to tell her sooner rather than later about it.", "neutral", "brandon")
-                cutscene:text("* Trust me,[wait:5] it's better to rip off the bandage than to slowly peel it.", "happy", "brandon")
-                cutscene:text("* And if you need the support,[wait:5] we're here for you man.", "happy_side", "brandon")
-                cutscene:text("* I know it's hard to tell Marcy this.", "frown_side", "brandon")
-                cutscene:text("* And if you need help taking care of her...", "neutral", "brandon")
-                cutscene:text("* Willow and I will be happy to help you out.", "happy_b", "brandon")
-                cutscene:text("* Take care out there man.", "happy", "brandon")
+                cutscene:text("* It must be rough taking care of Marcy by yourself...", "neutral_side", "brandon")
+                cutscene:text("* So,[wait:5] I'm just letting you know that if you need help...", "happy", "brandon")
+                cutscene:text("* ... I'd be more than willing to help you take care of her!", "happy_b", "brandon")
+                cutscene:text("* I could also use some parent training as well.", "happy_side", "brandon")
+                cutscene:text("* Just for when I eventually have a child of my own.", "happy_b", "brandon")
+                if Game:getFlag("dungeonkiller") then
+                    cutscene:text("* ...", "happy_b", "brandon")
+                    cutscene:text("* ... Jamm,[wait:5] you good man?", "neutral_side", "brandon")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* ...", "shaded_neutral", "jamm")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* What the heck happened?", "frown_side", "brandon")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* I don't wanna talk about it...", "shaded_frown", "jamm")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* O-oh...", "frown_side", "brandon")
+                else
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Thanks Brandon,[wait:5] I really apreciate that.", "side_smile", "jamm")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* You're welcome man.", "grin", "brandon")
+                end
             elseif id == "ralsei" then
                 Game.world.music:fade(0, 0.5)
                 cutscene:text("[speed:0.3]* ...", "shock", "brandon")
@@ -328,7 +334,11 @@ return {
                 cutscene:text("* I ended up losing my Mug:tm: root beer that I totally didn't steal", "neutral", "dess")
                 cutscene:text("* Sometimes I still shed a tear thinking about it...", "neutral_c", "dess")
                 cutscene:text("* ...", "genuine", "dess")
-                cutscene:text("* oh hey also do you normally look this pissed off?", "kind", "dess")
+				if Game:getFlag("dungeonkiller") then
+					cutscene:text("* oh hey also do you normally look this pissed off?", "kind", "dess")
+				else
+					cutscene:text("* oh hey, actually, are you okay from before?", "kind", "dess")
+				end
             elseif Game.party[1].id == "ostarwalker" then
                 cutscene:text("* Oh hey it's the Starman.", "condescending", "dess")
                 cutscene:text("* I bet I piss you off like everything else huh?", "challenging", "dess")

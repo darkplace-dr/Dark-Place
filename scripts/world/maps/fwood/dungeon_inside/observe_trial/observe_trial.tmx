@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="18">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="jamm_dungeon"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../tilesets/jamm_dungeon.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,23,23,23,30,23,23,23,23,23,23,23,23,23,23,0,
+0,23,29,23,23,23,23,31,23,23,30,23,23,23,24,0,
+0,22,23,23,23,29,23,23,23,29,23,23,31,23,23,0,
+0,37,37,37,37,37,37,37,37,37,37,37,37,37,37,0,
+0,48,58,58,58,58,58,58,58,58,58,58,58,58,39,0,
+0,52,51,51,51,51,33,51,51,51,51,51,51,25,50,0,
+0,52,33,51,51,51,51,51,51,51,40,51,51,51,50,0,
+0,52,51,51,51,51,51,51,51,51,51,51,51,51,50,0,
+0,52,51,40,51,51,51,51,41,51,51,51,51,51,50,0,
+0,35,44,44,44,44,44,44,44,44,44,51,51,33,50,0,
+0,0,0,0,0,0,0,0,0,0,0,52,51,51,50,0,
+0,0,0,0,0,0,0,0,0,0,0,52,41,51,50,0
+</data>
+ </layer>
+ <layer id="4" name="Tile Layer 2" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,53,54,55,0,0,0,0,
+0,0,0,0,0,0,0,0,0,60,61,62,0,0,0,0,
+0,0,0,7,0,20,21,0,0,67,68,69,0,0,0,0,
+0,0,0,0,0,0,0,0,0,74,75,76,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="6" name="door_layer" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,71,72,73,0,0,0,0,
+0,0,0,0,0,0,0,0,0,78,79,80,0,0,0,0,
+0,0,0,0,0,0,0,0,0,85,86,87,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="2" x="600" y="160" width="40" height="320"/>
+  <object id="3" x="0" y="160" width="40" height="240"/>
+  <object id="4" x="0" y="400" width="440" height="80"/>
+  <object id="6" x="0" y="0" width="360" height="160"/>
+  <object id="7" x="480" y="0" width="160" height="160"/>
+  <object id="8" name="door_collision" x="360" y="120" width="120" height="40"/>
+ </objectgroup>
+ <objectgroup id="3" name="markers">
+  <object id="5" name="entry" x="520" y="440">
+   <point/>
+  </object>
+  <object id="13" name="observe" x="420" y="200">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="14" name="transition" x="360" y="118" width="120" height="40">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="fwood/dungeon_inside/observe_win"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="15" name="interactable" x="200" y="120" width="80" height="40">
+   <properties>
+    <property name="text1" value="* My dearest Luthane,[wait:5] an observant individual.."/>
+    <property name="text2" value="* You take note of many precious details in your life."/>
+    <property name="text3" value="* As such,[wait:5] here is your trial:"/>
+    <property name="text4" value="* Upon pressing this button,[wait:5] you wil be asked 5 questions."/>
+    <property name="text5" value="* Before doing so,[wait:5] however,[wait:5] I urge you to explore."/>
+    <property name="text6" value="* Find as many details as possible."/>
+    <property name="text7" value="* If you get 3 of the questions right, you win."/>
+   </properties>
+  </object>
+  <object id="16" name="interactable" x="120" y="120" width="40" height="40">
+   <properties>
+    <property name="cutscene" value="a_dungeon.observation"/>
+   </properties>
+  </object>
+  <object id="17" name="transition" x="440" y="480" width="160" height="40">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="fwood/dungeon_inside/observe_hall"/>
+    <property name="marker" value="trial"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

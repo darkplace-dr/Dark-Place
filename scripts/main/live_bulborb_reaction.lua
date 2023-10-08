@@ -3,6 +3,10 @@ function Mod:initBulborb()
     self:resetBulborb()
     -- "", APPEARING, IDLE, VANISHING
     self.bulborb_state = ""
+
+    self.anti_bulborb_maps = {
+        "field"
+    }
 end
 
 function Mod:resetBulborb()
@@ -50,11 +54,7 @@ function Mod:updateBulborb()
     -- doesn't get its mood ruined by a Live Bulborb Reaction
 
     -- hi -sam
-    local anti_bulborb_maps = {
-        "field"
-    }
-
-    local can_show = not Utils.containsValue(anti_bulborb_maps, Game.world.map.id)
+    local can_show = not Utils.containsValue(self.anti_bulborb_maps, Game.world.map.id)
     if not can_show then
         self.bulborb_reaction:remove()
     end

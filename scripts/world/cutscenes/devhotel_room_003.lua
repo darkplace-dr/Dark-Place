@@ -139,6 +139,10 @@ return {
 			else
 				cutscene:showNametag("Marcy")
 				cutscene:text("[voice:marcy]* Yay! You found papa!", "smile", "marcy")
+				if Game:getFlag("dungeonkiller") then
+					cutscene:text("[voice:marcy]* But...\n* Marcy sees papa is concerned...", "sad", "marcy")
+					cutscene:text("[voice:marcy]* Marcy is worried...\n* Did something happen to papa?", "sad", "marcy")
+				end
 			end
 		elseif choice == 3 then
 			cutscene:showNametag("Marcy")
@@ -153,6 +157,13 @@ return {
 	
     note = function(cutscene, event)
 		local susie = cutscene:getCharacter("susie")
+		
+		if Game:getFlag("dungeonkiller") then
+			cutscene:showNametag("Jamm")
+			cutscene:text("* Respect my privacy, please.", "neutral", "jamm")
+			cutscene:hideNametag()
+			return
+		end
 	
 		if Game:getFlag("fake_jamm") then
 			if Game.party[1].id ~= "jamm" then
@@ -211,19 +222,19 @@ return {
 		local function jammPartyOpinion(id)
             cutscene:showNametag("Jamm")
             if id == "YOU" then
-				cutscene:text("* Oh, you must be YOU.", "neutral", "jamm")
-				cutscene:text("* I'll be honest, I never played your mod.", "look_left", "jamm")
+				cutscene:text("* Oh,[wait:5] you must be YOU.", "neutral", "jamm")
+				cutscene:text("* I'll be honest,[wait:5] I never played your mod.", "look_left", "jamm")
 				cutscene:text("* Sorry about that.", "nervous", "jamm")
-				cutscene:text("* From what I hear, though, you've had quite the adventure.", "side_smile", "jamm")
+				cutscene:text("* From what I hear,[wait:5] though,[wait:5] you've had quite the adventure.", "side_smile", "jamm")
 				cutscene:text("* Keep that main character energy going!", "smug", "jamm")
             elseif id == "susie" then
-				cutscene:text("* Well, if it isn't the brute herself.", "smirk", "jamm")
+				cutscene:text("* Well,[wait:5] if it isn't the brute herself.", "smirk", "jamm")
 				cutscene:text("* You've had quite the character arc in chapter 1.", "smirk", "jamm")
-				cutscene:text("* Honestly, I would've preferred if you didn't change.", "neutral", "jamm")
-				cutscene:text("* I mean, I like the new you, but...", "nervous", "jamm")
-				cutscene:text("* Fact is, I just prefer the gameplay.", "snile", "jamm")
+				cutscene:text("* Honestly,[wait:5] I would've preferred if you didn't change.", "neutral", "jamm")
+				cutscene:text("* I mean,[wait:5] I like the new you,[wait:5] but...", "nervous", "jamm")
+				cutscene:text("* Fact is,[wait:5] I just prefer the gameplay.", "snile", "jamm")
 				cutscene:text("* I like the idea of trying to protect the enemies.", "happy", "jamm")
-				cutscene:text("* It's... kinda why I made Deoxynn.", "smile", "jamm")
+				cutscene:text("* It's...[wait:5] kinda why I made Deoxynn.", "smile", "jamm")
 				cutscene:text("* (Toggle Susie's autofight?)")
 				if cutscene:choicer({"Enable", "Disable"}) == 1 then
 					Game:getPartyMember("susie"):setFlag("auto_attack", true)
@@ -231,12 +242,17 @@ return {
 					Game:getPartyMember("susie"):setFlag("auto_attack", false)
 				end
             elseif id == "dess" then
-				cutscene:text("* Ah, Dess.\n* How's the most hated party member?", "smirk", "jamm")
-				cutscene:text("* Y'know, I had a talk with your creator recently...", "smirk", "jamm")
-				cutscene:text("* Char had told me you had some interesting mechanics.", "wink", "jamm")
-				cutscene:text("* Something about [color:yellow]pacifist-oriented spells[color:white], right?", "side_smile", "jamm")
-				cutscene:text("* I feel like these spells will make you slightly less annoying.", "smile", "jamm")
-				cutscene:text("* ...Slightly.", "nervous_left", "jamm")
+				if Game:getFlag("dungeonkiller") then
+					cutscene:text("* Yeah,[wait:5] no,[wait:5] we shouldn't take any chances.", "stern", "jamm")
+					cutscene:text("* Let's make you more peaceful with your spells.", "stern", "jamm")
+				else
+					cutscene:text("* Ah,[wait:5] Dess.[wait:5]\n* How's the most hated party member?", "smirk", "jamm")
+					cutscene:text("* Y'know,[wait:5] I had a talk with your creator recently...", "smirk", "jamm")
+					cutscene:text("* Char had told me you had some interesting mechanics.", "wink", "jamm")
+					cutscene:text("* Something about [color:yellow]pacifist-oriented spells[color:white], right?", "side_smile", "jamm")
+					cutscene:text("* I feel like these spells will make you slightly less annoying.", "smile", "jamm")
+					cutscene:text("* ...Slightly.", "nervous_left", "jamm")
+				end
 				cutscene:text("* (Toggle Dess's pacifist spells?)")
 				if cutscene:choicer({"Enable", "Disable"}) == 1 then
 					if not Game:getFlag("acj_dess_pacifist") then
@@ -290,9 +306,13 @@ return {
 		local dess = cutscene:getCharacter("dess")
 		
 		cutscene:showNametag("Jamm")
-		cutscene:text("* Oh, hey, guys! Nice seeing you again!", "smile", "jamm")
-		cutscene:text("* I've just been keeping my daughter company, is all.", "smile", "jamm")
-		cutscene:text("* Did you want to talk about something?", "smile", "jamm")
+		if Game:getFlag("dungeonkiller") then
+			cutscene:text("* Oh, hey.", "neutral", "jamm")
+		else
+			cutscene:text("* Oh, hey, guys! Nice seeing you again!", "smile", "jamm")
+			cutscene:text("* I've just been keeping my daughter company, is all.", "smile", "jamm")
+			cutscene:text("* Did you want to talk about something?", "smile", "jamm")
+		end
 		cutscene:hideNametag()
 		
 		local choice = cutscene:choicer({"Wife", "Marcy", "Enzio", "Party"})

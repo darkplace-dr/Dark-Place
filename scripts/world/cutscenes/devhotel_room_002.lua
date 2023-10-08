@@ -53,7 +53,11 @@ return {
                     if noelle then
                         cutscene:showNametag("Noelle")
                         cutscene:text("* Come on! Admit it, playing with dogs are worht it!", "blush_finger", "noelle")
+
+                        cutscene:showNametag("Susie")
+                    cutscene:text("* I guess...", "small_smile", "susie")
                     end
+
                     cutscene:hideNametag()
                 end
 
@@ -105,6 +109,51 @@ return {
                 cutscene:text("* What's it doing out of the shop?", "surprise_frown", "susie")
                 cutscene:text("* Better not question that...", "nervous", "susie")
                 cutscene:hideNametag()
+            end
+
+            cutscene:text("* Do you want to wake the dog again?")
+            local choice = cutscene:choicer({"Yes", "No"})
+            if choice == 1 then
+                corgi:setSprite("awake")
+                Assets.playSound("noise")
+                cutscene:wait(1.5)
+                cutscene:text("* You woke up the dog!")
+
+                corgi:setSprite("awake_bark")
+                Assets.playSound("dog_yip")
+                cutscene:wait(0.3)
+                corgi:setSprite("awake")
+
+                cutscene:wait(1.5)
+
+                corgi:shake(2)
+                corgi:setSprite("sleepy_sit")
+                Assets.playSound("wing")
+
+                cutscene:wait(1.5)
+
+                corgi:setSprite("bark_2")
+                Assets.playSound("dog_yip")
+                cutscene:wait(0.2)
+                corgi:setSprite("bark_1")
+                cutscene:wait(0.4)
+                corgi:setSprite("bark_2")
+                Assets.playSound("dog_yip")
+                cutscene:wait(0.4)
+                corgi:setSprite("bark_1")
+                
+                cutscene:wait(1.5)
+
+                corgi:setSprite("sleepy_sit")
+                Assets.playSound("noise")
+                corgi:shake(2)
+
+                cutscene:wait(1.5)
+
+                Assets.playSound("wing")
+                corgi:resetSprite()
+            else
+                cutscene:text("* Let the dog sleep...")
             end
         end
     end,

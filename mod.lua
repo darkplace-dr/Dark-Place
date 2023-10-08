@@ -4,6 +4,7 @@ modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
+Speen = modRequire("scripts/main/ow_speen")
 
 function Mod:preInit()
     if Kristal.Version < SemVer(self.info.engineVer) then
@@ -31,6 +32,103 @@ function Mod:init()
     self:registerShaders()
 
     self:initTaunt()
+    Speen:init()
+
+--[[     Utils.hook(World, "setupMap", function(orig, self, map, ...)
+        for _,child in ipairs(self.children) do
+            if not child.persistent then
+                self:removeChild(child)
+            end
+        end
+        for _,child in ipairs(self.controller_parent.children) do
+            if not child.persistent then
+                self.controller_parent:removeChild(child)
+            end
+        end
+    
+        self:updateChildList()
+    
+        self.healthbar = nil
+        self.followers = {}
+    
+        self.camera:resetModifiers(true)
+        self.camera:setAttached(true)
+    
+        if isClass(map) then
+            self.map = map
+        elseif type(map) == "string" then
+            if not Registry.getMap(map) and not Registry.getMapData(map) then
+                error("fuck")
+            else
+                self.map = Registry.createMap(map, self, ...)
+            end
+        elseif type(map) == "table" then
+            self.map = Map(self, map, ...)
+        else
+            self.map = Map(self, nil, ...)
+        end
+    
+        self.map:load()
+    
+        local dark_transitioned = self.map.light ~= Game:isLight()
+    
+        Game:setLight(self.map.light)
+    
+        self.width = self.map.width * self.map.tile_width
+        self.height = self.map.height * self.map.tile_height
+    
+        --self.camera:setBounds(0, 0, self.map.width * self.map.tile_width, self.map.height * self.map.tile_height)
+    
+        self.battle_fader = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.battle_fader:setParallax(0, 0)
+        self.battle_fader:setColor(0, 0, 0)
+        self.battle_fader.alpha = 0
+        self.battle_fader.layer = self.map.battle_fader_layer
+        self.battle_fader.debug_select = false
+        self:addChild(self.battle_fader)
+    
+        self.in_battle = false
+        self.in_battle_area = false
+        self.battle_alpha = 0
+    
+        local map_border = self.map:getBorder(dark_transitioned)
+        if map_border then
+            Game:setBorder(map_border)
+        end
+    
+        if not self.map.keep_music then
+            self:transitionMusic(Kristal.callEvent("onMapMusic", self.map, self.map.music) or self.map.music)
+        end
+    end)
+
+    Utils.hook(World, "mapTransition", function(orig, self, ...)
+        local args = {...}
+        local map = args[1]
+        if type(map) == "string" then
+            if not Registry.getMap(map) and not Registry.getMapData(map) then
+                local xp = XPWindow()
+                if Game.world.cutscene then
+                    Game.world:stopCutscene()
+                end
+                Game.lock_movement = false
+                Game.world:loadMap("warphub")
+                return
+            else
+                local map = Registry.createMap(map)
+                if not map.keep_music then
+                    self:transitionMusic(Kristal.callEvent("onMapMusic", self.map, self.map.music) or map.music, true)
+                end
+                local dark_transition = map.light ~= Game:isLight()
+                local map_border = map:getBorder(dark_transition)
+                if map_border then
+                    Game:setBorder(map_border, 1)
+                end
+            end
+        end
+        self:fadeInto(function()
+            self:loadMap(Utils.unpack(args))
+        end)
+    end) ]]
 	
 	Utils.hook(Game, "getActiveMusic", function(orig, self)
 		if self.state == "OVERWORLD" then
@@ -105,9 +203,11 @@ end
 
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
+    local old_save_issues = {}
 	
 	if Game:getFlag("quest_desc")[1] == "This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description." then
 		likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before Questline was added.")
 	end
 
     if new_file or likely_old_save then
@@ -137,6 +237,8 @@ function Mod:initializeImportantFlags(new_file)
 
         Game:setFlag("cloudwebStoryFlag", 0)
         Game:setFlag("vaporland_sidestory", 0)
+
+        Game:setFlag("spookymonth", false)
     end
 
     -- Create save flags for costumes if they don't already exist
@@ -168,6 +270,7 @@ function Mod:initializeImportantFlags(new_file)
 
     if new_file or not Game:getFlag("party") then
         likely_old_save = true
+        table.insert(old_save_issues, "The party flag was not initialized")
 
         -- Unlocked party members for the Party Menu
         Game:setFlag("party", { "YOU", "susie" })
@@ -175,12 +278,14 @@ function Mod:initializeImportantFlags(new_file)
 
     if not new_file and not Game:getFlag("#room1:played_intro", false) then
         likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before the intro was added.")
 
         Game:setFlag("#room1:played_intro", true)
     end
 
     if new_file or Game:getFlag("bulborb_position") == nil then
         likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before Bulborb Live Reaction was implemented")
 
         Game:setFlag("bulborb_scale", 0.3)
         Game:setFlag("bulborb_position", 2)
@@ -189,6 +294,7 @@ function Mod:initializeImportantFlags(new_file)
     local berdly = Game:getPartyMember("berdly")
     if berdly:getBaseStats("health") == 300 then
         likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before Berdly was added.")
 
         berdly.health = 200
         berdly.stats = {
@@ -201,6 +307,7 @@ function Mod:initializeImportantFlags(new_file)
 
     if new_file or berdly.opinions == nil then
         likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before the relationship system was added.")
 
         local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm"}
         for i, v in ipairs(party_members) do
@@ -516,6 +623,14 @@ function Mod:initializeImportantFlags(new_file)
 
     if not new_file and likely_old_save then
         Log:print("Save seems to be from an old version")
+        if #old_save_issues == 0 then
+            Lod:print("No possible reasons found. That is weird.")
+        else
+            Log:print("Possible reasons:")
+            for i,v in ipairs(old_save_issues) do
+                Log:print("- "..v)
+            end
+        end
     end
 end
 
@@ -618,6 +733,7 @@ end
 function Mod:postUpdate()
     self:updateTaunt()
     self:updateBulborb()
+    Speen:update()
 
     if Game.save_name == "MERG" then
         for _, party in ipairs(Game.party) do
