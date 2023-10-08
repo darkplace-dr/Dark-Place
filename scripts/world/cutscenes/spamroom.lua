@@ -110,6 +110,7 @@ return {
                 cutscene:hideNametag()
             end
         else
+            local noelle = cutscene:getCharacter("noelle")
             local velvetspam = cutscene:getCharacter("velvetspam")
             if Game:getFlag("blankie_returned") then
                 local rnd = math.random(1, 5)
@@ -186,6 +187,66 @@ return {
                     Kristal.callEvent("createQuest", "5 for 1 Specil", "vspamfamily", "Velvet!Spam told the gang about his family, but he barely mentioned about their names. Only about their jobs and what they sell. You think you can find who Velvet!Spamton is refering to?\n\nHINT: There's a switch in the EXTRAS menu that can help!")
                     Game:setFlag("addison_family", true)
                 end
+            elseif noelle then
+                if noelle.facing == "left" then
+                    noelle:setSprite("walk_happy/left_1")
+                elseif noelle.facing == "right" then
+                    noelle:setSprite("walk_happy/right_1")
+                else
+                    noelle:setSprite("walk_happy/down_1")
+                end
+
+                cutscene:setSpeaker(noelle)
+                cutscene:showNametag("Noelle")
+                cutscene:text("* Spamton! Is that you?!", "smile_closed", "noelle")
+
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                velvetspam:setSprite("curious")
+                cutscene:text("* Is that [holidaygirl1225]?!\n* How are ya, pal?")
+                
+                cutscene:setSpeaker(noelle)
+                cutscene:showNametag("Noelle")
+                velvetspam:setAnimation("laugh")
+                cutscene:text("* I am doing so great!", "smile_closed", "noelle")
+                cutscene:text("* I have so much to tell you!", "smile", "noelle")
+                cutscene:text("* Now that I'm here, you wanna chat a bit?", "smile", "noelle")
+                cutscene:hideNametag()
+
+                cutscene:setSpeaker(velvetspam)
+                cutscene:showNametag("Velvet!Spamton")
+                velvetspam:setSprite("curious")
+                cutscene:text("* Of course!\n* We can [[Chat Not Available]] for days!")
+
+                    if cutscene:getCharacter("susie") then
+                        cutscene:showNametag("Susie")
+                        cutscene:text("* Great... Now we have to listen to you guys ramble...", "annoyed", "susie")
+                        cutscene:hideNametag()
+
+                        velvetspam:shake(2)
+                        noelle:shake(2)
+                        Assets.playSound("wing")
+                        velvetspam:setSprite("curious_angry")
+                        noelle:setSprite("hand_mouth_side")
+
+                        cutscene:wait(1.5)
+
+                        cutscene:setSpeaker(noelle)
+                        cutscene:showNametag("Noelle")
+                        cutscene:text("* Um. Nevermind then...", "what_smile_b", "noelle")
+                        cutscene:hideNametag()
+
+                        cutscene:setSpeaker(velvetspam)
+                        cutscene:showNametag("Velvet!Spamton")
+                        cutscene:text("* Of course the dinosaur has to ruin the [F.U.N. Inc.]...")
+
+                        cutscene:showNametag("Susie")
+                        cutscene:text("* HEY!", "teeth_b", "susie")
+                        cutscene:hideNametag()
+                    end
+                noelle:resetSprite()
+                velvetspam:resetSprite()
+                cutscene:hideNametag()
             else
                 cutscene:setSpeaker(velvetspam)
                 cutscene:showNametag("Velvet!Spamton")
@@ -211,6 +272,7 @@ return {
                     cutscene:text("* Nevermind then...", "annoyed", "susie")
                     cutscene:hideNametag()
                 end
+                velvetspam:resetSprite()
             end
         end
     end,
