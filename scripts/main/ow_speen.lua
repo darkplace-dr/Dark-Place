@@ -4,6 +4,7 @@ local self = Speen
 function Speen:init()
 	print("Loaded Speen")
 	self.spin_sound = Assets.newSound("spin_jump")
+	self.speen_sound = Assets.newSound("speen")
 
 	self.lancer_sound = Assets.newSound("lancer-spin")
 	self.lancer_sound:setLooping(true)
@@ -55,7 +56,11 @@ function Speen:update()
 				end
 				Game.world.music:pause()
 			else
-				self.spin_sound:play()
+				if love.math.random(1, 50) == 1 then
+					self.speen_sound:play()
+				else
+					self.spin_sound:play()
+				end
 			end
 		end
 	end
@@ -67,6 +72,9 @@ function Speen:update()
 			self.timer = 0
 			for i,member in ipairs(Game.party) do
 				local chara = Game.world:getCharacter(member.id)
+				if Game.world:getCharacter(member.id, 2) then
+					chara = Game.world:getCharacter(member.id, 2) -- compensate for duplicate actors in the party room
+				end
 				chara.sprite:setFacing(self.current_facing)
 			end
 			self:nextFacing()
