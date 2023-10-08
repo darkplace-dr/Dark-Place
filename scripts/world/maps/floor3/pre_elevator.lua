@@ -287,7 +287,7 @@ return {
           visible = true,
           properties = {
             ["text1"] = "* (The door isn't locked.)",
-            ["text2"] = "* (However,[wait:5] no one has made a room in their yet.)",
+            ["text2"] = "* (However,[wait:5] no one has made a room for it yet.)",
             ["text3"] = "* (So there's no point to go in there at the moment.)"
           }
         }

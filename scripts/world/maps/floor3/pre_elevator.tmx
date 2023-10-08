@@ -60,7 +60,7 @@
   <object id="40" name="interactable" x="800" y="200" width="80" height="40">
    <properties>
     <property name="text1" value="* (The door isn't locked.)"/>
-    <property name="text2" value="* (However,[wait:5] no one has made a room in their yet.)"/>
+    <property name="text2" value="* (However,[wait:5] no one has made a room for it yet.)"/>
     <property name="text3" value="* (So there's no point to go in there at the moment.)"/>
    </properties>
   </object>
