@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 28,
+  nextobjectid = 30,
   properties = {
     ["music"] = "greenroom"
   },
@@ -354,6 +354,19 @@ return {
           height = 40,
           rotation = 0,
           gid = 25,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 29,
+          name = "greenroom_sparkles",
+          class = "",
+          shape = "rectangle",
+          x = 200,
+          y = 40,
+          width = 240,
+          height = 40,
+          rotation = 0,
           visible = true,
           properties = {}
         }

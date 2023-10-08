@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="43">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="45">
  <editorsettings>
   <export target="pre_elevator.lua" format="lua"/>
  </editorsettings>
@@ -17,10 +17,10 @@
 0,0,0,0,0,10,10,10,10,10,10,1,2,1,2,1,2,1,2,1,2,1,2,1,
 0,0,0,0,0,10,10,10,10,10,10,8,9,8,9,8,9,8,9,8,9,8,9,8,
 0,0,0,0,0,10,10,10,10,10,10,15,16,15,16,15,16,15,16,15,16,15,16,15,
-0,0,0,0,0,10,10,10,10,10,10,3,3,4,5,5,3,3,3,3,3,3,3,3,
-0,0,0,0,0,10,10,10,10,10,10,10,11,12,12,10,10,10,10,10,10,10,10,10,
-0,0,0,0,0,10,10,10,10,10,10,11,12,12,10,10,10,10,10,10,10,10,10,10,
-0,0,0,0,0,10,10,10,10,10,11,12,12,10,10,10,10,10,10,10,10,10,10,10,
+0,0,0,0,0,10,10,10,10,10,10,3,3,4,5,5,17,14,18,5,5,19,3,3,
+0,0,0,0,0,10,10,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,
+0,0,0,0,0,10,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,10,
+0,0,0,0,0,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,10,10,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -76,7 +76,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="5" name="objects_fg">
+ <objectgroup color="#ff0000" id="5" name="objects_fg">
   <object id="13" gid="25" x="440" y="160" width="70" height="40"/>
   <object id="14" gid="25" x="504" y="160" width="70" height="40"/>
   <object id="15" gid="25" x="568" y="160" width="70" height="40"/>
@@ -85,5 +85,6 @@
   <object id="30" gid="25" x="760" y="160" width="70" height="40"/>
   <object id="31" gid="25" x="824" y="160" width="70" height="40"/>
   <object id="32" gid="25" x="888" y="160" width="70" height="40"/>
+  <object id="44" name="greenroom_sparkles" x="440" y="120" width="520" height="40"/>
  </objectgroup>
 </map>
