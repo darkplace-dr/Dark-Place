@@ -39,10 +39,6 @@ return {
                 cutscene:text("* People can get uh,[wait:5] a bit too crazy about that.", "dissapointed", "brandon")
             elseif id == "noelle" then
                 cutscene:text("* Oh hey,[wait:5] it's Noelle!", "happy", "brandon")
-                cutscene:text("* Honestly,[wait:5] you remind me a lot of someone.", "happy_side", "brandon")
-                cutscene:text("* Someone I really,[wait:5] really like.", "happy_side_blush", "brandon")
-                cutscene:text("* Oh![wait:10] I swear I'm not flirting with you.", "blush", "brandon")
-                cutscene:text("* Anyways...", "neutral_side", "brandon")
                 cutscene:text("* I really hope you haven't been doing you-know-what.", "neutral", "brandon")
                 cutscene:text("* I'm sure you know what I'm talking about.", "dissapointed", "brandon")
             elseif id == "jamm" then
@@ -50,7 +46,7 @@ return {
                 cutscene:text("* Y'know,[wait:5] I think now would be a great time to tell you this...", "neutral", "brandon")
                 cutscene:text("* It must be rough taking care of Marcy by yourself...", "neutral_side", "brandon")
                 cutscene:text("* So,[wait:5] I'm just letting you know that if you need help...", "happy", "brandon")
-                cutscene:text("* ... I'd be more than willing to help take care of her if you need me!", "happy_b", "brandon")
+                cutscene:text("* ... I'd be more than willing to help you take care of her!", "happy_b", "brandon")
                 cutscene:text("* I could also use some parent training as well.", "happy_side", "brandon")
                 cutscene:text("* Just for when I eventually have a child of my own.", "happy_b", "brandon")
                 if Game:getFlag("dungeonkiller") then
