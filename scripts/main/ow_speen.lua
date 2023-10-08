@@ -9,6 +9,8 @@ function Speen:init()
 	self.lancer_sound = Assets.newSound("lancer-spin")
 	self.lancer_sound:setLooping(true)
 	self.lancer_sprites = {}
+	
+	self.beyblade_sound = Assets.newSound("full_beyblade_theme_song")
 
 	self.rotate_speed = 1/4
 
@@ -35,6 +37,7 @@ function Speen:update()
 			self.current_facing = "down"
 			self.timer = FRAMERATE*self.rotate_speed
 			self.lancered = love.math.random(0, 100) <= 25
+			self.beyblade = love.math.random(0, 100) <= 10
 			if self.lancered then
 				self.lancer_sound:play()
 				for i=1,4 do
@@ -56,10 +59,15 @@ function Speen:update()
 				end
 				Game.world.music:pause()
 			else
-				if love.math.random(1, 50) == 1 then
-					self.speen_sound:play()
+				if self.beyblade then
+					self.beyblade_sound:play()
+					Game.world.music:pause()
 				else
-					self.spin_sound:play()
+					if love.math.random(1, 50) == 1 then
+						self.speen_sound:play()
+					else
+						self.spin_sound:play()
+					end
 				end
 			end
 		end
@@ -89,6 +97,11 @@ function Speen:update()
 				self.lancer_sprites = {}
 				Game.world.music:resume()
 				self.lancer_sound:stop()
+			end
+			if self.beyblade then
+				self.beyblade = false
+				Game.world.music:resume()
+				self.beyblade_sound:stop()
 			end
 		end
 	end
