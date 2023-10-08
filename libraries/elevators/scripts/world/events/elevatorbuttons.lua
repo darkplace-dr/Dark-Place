@@ -32,6 +32,7 @@ function ElevatorButtons:onInteract(chara)
             end
 
             local incmenu = IncMenu({1, #self.elevator.floors}, self.elevator.current_floor)
+            incmenu.elevatormode = true
             Game.world:spawnObject(incmenu, "ui")
             cutscene:wait(function() return incmenu.decision end)
             local decision = incmenu.decision

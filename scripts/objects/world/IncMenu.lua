@@ -7,6 +7,7 @@ function IncMenu:init(limits, startingnum)
     self.bg.debug_select = false
     self:addChild(self.bg)
 
+
     self.limits = limits or {0, 9}
     self.startingnum = startingnum or 0
     self.mynum = self.startingnum
@@ -44,6 +45,11 @@ function IncMenu:init(limits, startingnum)
 end
 
 function IncMenu:update()
+
+    if self.elevatormode == true then
+        self.width = 200
+        self.bg.width = 200
+    end
 
     if self.acceptinput then
     if Input.pressed("up") then
@@ -85,9 +91,15 @@ end
 
 
 function IncMenu:draw()
+    local elevator = Game.world.map:getEvent("elevator")
+
     love.graphics.setFont(self.font)
 
-    love.graphics.printf(self.mynum, 2, 2, self.bg.width, "center")
+    if self.elevatormode == true then
+        love.graphics.printf(elevator.floors[self.mynum].name, 2, 2, self.bg.width, "center")
+    else
+        love.graphics.printf(self.mynum, 2, 2, self.bg.width, "center")
+    end
 
     if self.mynum < self.limits[2] then
         love.graphics.draw(self.up_sprite, (self.width/2) - 5, -10)
