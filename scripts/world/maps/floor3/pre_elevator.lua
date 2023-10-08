@@ -9,7 +9,7 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 6,
+  nextlayerid = 7,
   nextobjectid = 45,
   properties = {
     ["music"] = "greenroom",
@@ -24,7 +24,7 @@ return {
     },
     {
       name = "floor3_objects",
-      firstgid = 22,
+      firstgid = 36,
       filename = "../../tilesets/floor3-objects.tsx",
       exportfilename = "../../tilesets/floor3-objects.lua"
     }
@@ -63,12 +63,44 @@ return {
       }
     },
     {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 24,
+      height = 12,
+      id = 6,
+      name = "Tile Layer 2",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
       type = "objectgroup",
       draworder = "topdown",
       id = 2,
       name = "collision",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -212,7 +244,7 @@ return {
           width = 60,
           height = 90,
           rotation = 0,
-          gid = 24,
+          gid = 38,
           visible = true,
           properties = {}
         },
@@ -226,7 +258,7 @@ return {
           width = 60,
           height = 90,
           rotation = 0,
-          gid = 24,
+          gid = 38,
           visible = true,
           properties = {}
         },
@@ -240,7 +272,7 @@ return {
           width = 76,
           height = 104,
           rotation = 0,
-          gid = 23,
+          gid = 37,
           visible = true,
           properties = {}
         },
@@ -254,7 +286,7 @@ return {
           width = 74,
           height = 90,
           rotation = 0,
-          gid = 22,
+          gid = 36,
           visible = true,
           properties = {}
         },
@@ -354,7 +386,7 @@ return {
       id = 5,
       name = "objects_fg",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -372,7 +404,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 25,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -386,7 +418,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 25,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -400,7 +432,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 25,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -414,7 +446,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 25,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -428,7 +460,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 25,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -442,7 +474,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 25,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -456,7 +488,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 25,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -470,7 +502,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 25,
+          gid = 39,
           visible = true,
           properties = {}
         },

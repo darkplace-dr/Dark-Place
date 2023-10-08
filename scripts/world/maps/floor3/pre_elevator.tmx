@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="45">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="45">
  <editorsettings>
   <export target="pre_elevator.lua" format="lua"/>
  </editorsettings>
@@ -8,7 +8,7 @@
   <property name="name" value="Floor 3 - Elevator Hallway"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/greenroom.tsx"/>
- <tileset firstgid="22" source="../../tilesets/floor3-objects.tsx"/>
+ <tileset firstgid="36" source="../../tilesets/floor3-objects.tsx"/>
  <layer id="1" name="Tile Layer 1" width="24" height="12">
   <data encoding="csv">
 0,0,0,0,0,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -25,7 +25,23 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#0000ff" id="2" name="collision">
+ <layer id="6" name="Tile Layer 2" width="24" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,29,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="2" name="collision" visible="0">
   <object id="1" x="440" y="0" width="520" height="240"/>
   <object id="2" x="200" y="400" width="760" height="40"/>
   <object id="3" x="160" y="0" width="40" height="400"/>
@@ -46,10 +62,10 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="9" gid="24" x="460" y="260" width="60" height="90"/>
-  <object id="10" gid="24" x="540" y="260" width="60" height="90"/>
-  <object id="11" gid="23" x="802" y="240" width="76" height="104"/>
-  <object id="33" gid="22" x="210" y="390" width="74" height="90"/>
+  <object id="9" gid="38" x="460" y="260" width="60" height="90"/>
+  <object id="10" gid="38" x="540" y="260" width="60" height="90"/>
+  <object id="11" gid="37" x="802" y="240" width="76" height="104"/>
+  <object id="33" gid="36" x="210" y="390" width="74" height="90"/>
   <object id="39" name="savepoint" x="680" y="240" width="40" height="40">
    <properties>
     <property name="text1">* (Green[wait:5], green[wait:5], green...)[wait:10]
@@ -76,15 +92,15 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup color="#ff0000" id="5" name="objects_fg">
-  <object id="13" gid="25" x="440" y="160" width="70" height="40"/>
-  <object id="14" gid="25" x="504" y="160" width="70" height="40"/>
-  <object id="15" gid="25" x="568" y="160" width="70" height="40"/>
-  <object id="16" gid="25" x="632" y="160" width="70" height="40"/>
-  <object id="29" gid="25" x="696" y="160" width="70" height="40"/>
-  <object id="30" gid="25" x="760" y="160" width="70" height="40"/>
-  <object id="31" gid="25" x="824" y="160" width="70" height="40"/>
-  <object id="32" gid="25" x="888" y="160" width="70" height="40"/>
+ <objectgroup color="#ff0000" id="5" name="objects_fg" visible="0" locked="1">
+  <object id="13" gid="39" x="440" y="160" width="70" height="40"/>
+  <object id="14" gid="39" x="504" y="160" width="70" height="40"/>
+  <object id="15" gid="39" x="568" y="160" width="70" height="40"/>
+  <object id="16" gid="39" x="632" y="160" width="70" height="40"/>
+  <object id="29" gid="39" x="696" y="160" width="70" height="40"/>
+  <object id="30" gid="39" x="760" y="160" width="70" height="40"/>
+  <object id="31" gid="39" x="824" y="160" width="70" height="40"/>
+  <object id="32" gid="39" x="888" y="160" width="70" height="40"/>
   <object id="44" name="greenroom_sparkles" x="440" y="120" width="520" height="40"/>
  </objectgroup>
 </map>
