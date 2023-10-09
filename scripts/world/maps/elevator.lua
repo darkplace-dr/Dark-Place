@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -19,7 +18,6 @@ return {
       draworder = "topdown",
       id = 6,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -31,7 +29,7 @@ return {
         {
           id = 21,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 240,
@@ -44,7 +42,7 @@ return {
         {
           id = 23,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 201,
           y = 200,
@@ -57,7 +55,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 240,
@@ -70,7 +68,7 @@ return {
         {
           id = 25,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 360,
@@ -83,7 +81,7 @@ return {
         {
           id = 26,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 360,
@@ -100,7 +98,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -112,7 +109,7 @@ return {
         {
           id = 6,
           name = "elevatorbuttons",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 200,
@@ -125,7 +122,7 @@ return {
         {
           id = 7,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 480,
@@ -141,7 +138,7 @@ return {
         {
           id = 29,
           name = "elevator",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -156,9 +153,6 @@ return {
             ["dest_1"] = "room1",
             ["dest_2"] = "floor2/lounge",
             ["dest_3"] = "floor3/elevator_hall",
-            ["dir_1"] = -1,
-            ["dir_2"] = 1,
-            ["dir_3"] = 1,
             ["length_1"] = 80,
             ["length_2"] = 80,
             ["length_3"] = 80,
@@ -174,7 +168,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -186,7 +179,7 @@ return {
         {
           id = 5,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 440,
@@ -199,7 +192,7 @@ return {
         {
           id = 33,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 440,
@@ -212,7 +205,7 @@ return {
         {
           id = 32,
           name = "buttons",
-          class = "",
+          type = "",
           shape = "point",
           x = 380,
           y = 260,

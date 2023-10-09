@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="16">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="19">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="music" value="castle-funk"/>
  </properties>
+ <tileset firstgid="1" source="../../../tilesets/devroom-objects.tsx"/>
  <imagelayer id="2" name="Image Layer 1">
   <image source="../../../../../assets/sprites/world/maps/darkcade/outside.png" width="640" height="480"/>
  </imagelayer>
@@ -33,6 +34,19 @@
    <properties>
     <property name="map" value="darkcade/floor1"/>
     <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="16" name="chest" x="480" y="200" width="40" height="40">
+   <properties>
+    <property name="item" value="refund"/>
+   </properties>
+  </object>
+  <object id="17" gid="43" x="440" y="240" width="40" height="40"/>
+  <object id="18" name="interactable" x="440" y="200" width="40" height="40">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* This place SUCKS![wait:5] All of the games are totally rigged!"/>
+    <property name="text2" value="* I want a refund, dammit!"/>
    </properties>
   </object>
  </objectgroup>
