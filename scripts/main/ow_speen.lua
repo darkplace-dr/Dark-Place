@@ -6,6 +6,8 @@ function Speen:init()
 	self.spin_sound = Assets.newSound("spin_jump")
 	self.speen_sound = Assets.newSound("speen")
 
+	self.rotat_e_sound = Assets.newSound("rotat_e")
+
 	self.lancer_sound = Assets.newSound("lancer-spin")
 	self.lancer_sound:setLooping(true)
 	self.lancer_sprites = {}
@@ -38,6 +40,7 @@ function Speen:update()
 			self.timer = FRAMERATE*self.rotate_speed
 			self.lancered = love.math.random(0, 100) <= 25
 			self.beyblade = love.math.random(0, 100) <= 10
+			self.rotat_e = love.math.random(0, 100) <= 5
 			if self.lancered then
 				self.lancer_sound:play()
 				for i=1,4 do
@@ -59,7 +62,10 @@ function Speen:update()
 				end
 				Game.world.music:pause()
 			else
-				if self.beyblade then
+				if self.rotat_e then
+					self.rotat_e_sound:play()
+					Game.world.music:pause()
+				elseif self.beyblade then
 					self.beyblade_sound:play()
 					Game.world.music:pause()
 				else
@@ -102,6 +108,11 @@ function Speen:update()
 				self.beyblade = false
 				Game.world.music:resume()
 				self.beyblade_sound:stop()
+			end
+			if self.rotat_e then
+				self.rotat_e = false
+				Game.world.music:resume()
+				self.rotat_e_sound:stop()
 			end
 		end
 	end
