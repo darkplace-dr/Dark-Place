@@ -68,6 +68,8 @@ function actor:init()
         ["drawsword/orange"] = {"drawsword/orange", 1/30, false},
         ["drawsword/finish"] = {"drawsword/finish", 1/30, false},
         ["drawsword/sheath"] = {"drawsword/sheath", 1/15, false, next="idle"},
+
+        ["roll"] = {"roll", 1/15, false, next="idle"}
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -89,6 +91,8 @@ function actor:init()
         ["drawsword/orange"] = {-40, -11},
         ["drawsword/finish"] = {-40, -11},
         ["drawsword/sheath"] = {-40, -11},
+
+        ["roll"] = {0, 5},
     }
 end
 

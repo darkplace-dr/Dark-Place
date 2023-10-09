@@ -2,6 +2,7 @@ return{
 
     choice = function (cutscene, event)
         event:remove()
+        if Game:getFlag("zero_defeated") == true then return end
         if Game.zero_quick
         or Input.down("kp0") or Input.down("0") -- You're welcome, speedrunners.
         then
@@ -15,6 +16,8 @@ return{
     start = function (cutscene)
         -- Temporary flag to cause a faster cutscene to play the next time the trigger is approached. Does not reset on a Game Over, but DOES reset if the mod is reloaded.
         Game.zero_quick = true
+
+        Game:saveQuick(Game.world.map:getMarker("spawn"))
 
         --Game.lock_movement = false
         local zero = cutscene:getEvent(5) -- ID for the Zero NPC.
@@ -350,6 +353,7 @@ return{
         Game.inventory:tryGiveItem("focus")
         cutscene:hideNametag()
         cutscene:text("* ([color:yellow]FOCUS[color:reset] was added to your [color:yellow]ARMORS[color:reset].)")
+        Game:setFlag("zero_defeated", true)
         end
     end
 }

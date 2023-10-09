@@ -9,12 +9,12 @@ function Zero:init()
     self:setActor("zero")
 
     -- Enemy health
-    self.max_health = 3500
-    self.health = 3500
+    self.max_health = 3000
+    self.health = 3000
     -- Enemy attack (determines bullet damage)
-    self.attack = 10
+    self.attack = 12
     -- Enemy defense (usually 0)
-    self.defense = 5
+    self.defense = 4
     -- Enemy reward
     self.money = 450
 
@@ -30,12 +30,13 @@ function Zero:init()
     self.difficulty = 0
 
     -- List of possible wave ids, randomly picked each turn
-    if Game:getFlag("fun") == 12 then
+    if Game:getFlag("fun") == 12 and not Mod:isInRematchMode() then
         self.waves = {
             "zero/Ascend"
         }
     else
         self.waves = {
+            "zero/Rolls",
             "zero/ColorSlash",
             "zero/Aiming",
         }
@@ -58,10 +59,10 @@ function Zero:init()
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
-        "* Enemy flavor text."
+        "* ..."
     }
     -- Text displayed at the bottom of the screen when the enemy has low health
-    self.low_health_text = "* He's running out of time."
+    --self.low_health_text = "* ..."
 
     self:registerAct("Red Buster", "Red\nDamage", {"susie"}, 60)
     --self:registerAct("Red Buster", "Red\nDamage", {"robo_susie"}, 60)
@@ -79,15 +80,7 @@ function Zero:onAct(battler, name)
         -- Fun fact! this function crashes if you return a string!
         return
     elseif name == "Standard" then --X-Action
-        if battler.chara.id == "susie" then
-            -- S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
-            Game.battle:startActCutscene("zero", "susie_action")
-            return
-        elseif battler.chara.id == "robo_susie" then
-            -- Robo-S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
-            Game.battle:startActCutscene("zero", "robo_susie_action")
-            return
-        end
+        return "* But "..battler.chara:getName().." didn't know what to do."
     else
         return super.onAct(self, battler, name)
     end
@@ -102,7 +95,7 @@ function Zero:onHurt(damage,battler)
 end
 
 function Zero:onDefeat(damage, battler)
-    if self.downed == true then
+    if self.downed == true and Game.battle.encounter.zero_downed == true then
         self:setAnimation("hurt_ground")
         if Game.battle.state ~= "BATTLETEXT" and Game.battle.state ~= "ACTIONS" then
             Game.battle:setState("CUTSCENE")
@@ -114,9 +107,9 @@ function Zero:onDefeat(damage, battler)
         Game.battle.music:pause()
         self.disable_mercy = false
         self.mercy = 100
-        self.low_health_text = "..."
+        self.low_health_text = "* ..."
         self:setAnimation("KO")
-        Assets.stopAndPlaySound("zero/downed")
+        if not self.downed then Assets.stopAndPlaySound("zero/downed") end
         self.waves = nil
         for i,battler in ipairs(Game.battle.party) do
             Game.battle:pushForcedAction(battler, "SKIP")
