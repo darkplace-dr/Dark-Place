@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -10,18 +9,24 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 16,
+  nextobjectid = 19,
   properties = {
     ["music"] = "castle-funk"
   },
-  tilesets = {},
+  tilesets = {
+    {
+      name = "devroom-objects",
+      firstgid = 1,
+      filename = "../../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../../tilesets/devroom-objects.lua"
+    }
+  },
   layers = {
     {
       type = "imagelayer",
       image = "../../../../../assets/sprites/world/maps/darkcade/outside.png",
       id = 2,
       name = "Image Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -37,7 +42,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -131,7 +135,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -186,6 +189,52 @@ return {
             ["map"] = "darkcade/floor1",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 16,
+          name = "chest",
+          type = "",
+          shape = "rectangle",
+          x = 480,
+          y = 200,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["item"] = "refund"
+          }
+        },
+        {
+          id = 17,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 440,
+          y = 240,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 43,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 18,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 440,
+          y = 200,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solid"] = true,
+            ["text1"] = "* This place SUCKS![wait:5] All of the games are totally rigged!",
+            ["text2"] = "* I want a refund, dammit!"
+          }
         }
       }
     },
@@ -194,7 +243,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
