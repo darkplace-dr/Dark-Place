@@ -60,7 +60,16 @@ end
 function Elevator:moveTo(number)
     self.target_floor = number
 
-    self.dir = self.floors[number].dir
+    -- If the target floor is below our current one, move down. Otherwise, move up.
+    if number < self.current_floor then
+    self.dir = -1
+    else
+    self.dir = 1
+    end
+
+    -- If a floor has a dir value set, use that instead
+    if self.floors[number].dir then self.dir = self.floors[number].dir end
+
     self.length = self.floors[number].length or 40
 
     self.con = 100

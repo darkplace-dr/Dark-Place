@@ -25,7 +25,7 @@ function ElevatorButtons:onInteract(chara)
         Game.world:startCutscene(function(cutscene)
             cutscene:text("* (Where will you ride the elevator to?)")
 
-            --Miiiiight end up adding a textbox that displays the name of the selected floor later, so I'm leaving this here. - Agent 7
+
             local names = {}
             for i, floor in ipairs(self.elevator.floors) do
                 names[i] = floor.name
@@ -38,6 +38,7 @@ function ElevatorButtons:onInteract(chara)
             local decision = incmenu.decision
             incmenu:remove()
             if decision == self.elevator.current_floor then
+                if Input.pressed("cancel") then return end
                 cutscene:text("* (You're there.)")
                 return
             end
