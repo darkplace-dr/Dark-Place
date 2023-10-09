@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 21,
@@ -56,7 +55,6 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -85,7 +83,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -166,7 +163,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -221,7 +217,6 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -340,19 +335,6 @@ return {
             ["map"] = "cybercity/alleyzero",
             ["marker"] = "entry_left"
           }
-        },
-        {
-          id = 126,
-          name = "forcefield",
-          type = "",
-          shape = "rectangle",
-          x = 800,
-          y = 240,
-          width = 40,
-          height = 120,
-          rotation = 0,
-          visible = true,
-          properties = {}
         },
         {
           id = 127,
