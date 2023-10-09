@@ -62,11 +62,11 @@ function Speen:update()
 				end
 				Game.world.music:pause()
 			else
-				if self.beyblade then
-					self.beyblade_sound:play()
-					Game.world.music:pause()
-				elseif self.rotat_e then
+				if self.rotat_e then
 					self.rotat_e_sound:play()
+					Game.world.music:pause()
+				elseif self.beyblade then
+					self.beyblade_sound:play()
 					Game.world.music:pause()
 				else
 					if love.math.random(1, 50) == 1 then
