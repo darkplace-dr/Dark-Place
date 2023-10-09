@@ -180,6 +180,84 @@ function GameOver:update()
             local sound = Assets.newSound("dtrans_lw")
             sound:play()
             self.fade_white = true
+
+            
+            -- I, SAD DIAMOND MAN, DIDDY THE FUNNY
+            local funnytitle = love.math.random(1, 13)
+
+            local scriptPath = debug.getinfo(1).source:match("@(.*)$")
+            local folderPath = scriptPath:match("(.*[/\\])")
+            folderPath = folderPath:gsub("[/\\]", "/")
+
+            if funnytitle <= 1 then
+                love.window.setTitle("Deltarune")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_1.png')
+                love.window.setIcon(ico)
+                --Player2 = require(folderPath ..'scripts.objects.player2')
+
+            elseif funnytitle <= 2 then
+                love.window.setTitle("Half-Life")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_2.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 3 then
+                love.window.setTitle("* GOD damnit KRIS where the HELL are WE!?")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_3.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 4 then
+                love.window.setTitle("* GOD damn YOU where the HELL are WE!?")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_4.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 5 then
+                love.window.setTitle("* SO, I have no fucking clue where we are.")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_5.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 6 then
+                love.window.setTitle("* z...z.....z.....z.......Z.........Z")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_6.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 7 then
+                love.window.setTitle("Kristale")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_7.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 8 then
+                love.window.setTitle("* WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT?")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_8.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 9 then
+                love.window.setTitle("Kris Tea")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_9.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 10 then
+                love.window.setTitle("* REDDIT GOLD POG!!")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_10.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 11 then
+                love.window.setTitle("LOOK ITS BrACON and MEGALORE!!!")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_11.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 12 then
+                love.window.setTitle("...")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_12.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 13 then
+                love.window.setTitle("Kristal")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_13.png')
+                love.window.setIcon(ico)
+            else
+                love.window.setTitle("Depa Runts")
+            end
+            --love.window.setTitle("Spamton Sweepstakes")
         end
     end
 
@@ -229,5 +307,6 @@ function GameOver:update()
         self.text:setColor(1, 1, 1, self.alpha)
     end
 end
-
+--local bonkrr = love.math.random(27, 30)
+--if bonkrr <= 27 then
 return GameOver
