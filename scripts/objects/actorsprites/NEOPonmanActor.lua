@@ -7,7 +7,6 @@ function NEOPonmanActor:init(actor)
     self.draw_children_above = 1
 
     local eye = Sprite("battle/enemies/neo_ponman/eye")
-    eye.sprite:setOrigin(1, 0.5)
     eye.visible = true
     eye.layer = self.layer + 1
     eye.angle = 0
@@ -21,7 +20,7 @@ function NEOPonmanActor:init(actor)
 	
     self.eyecon = 0
     self.spin_speed = 0
-    self.pon_total = 1
+    self.pon_total = 2
     self.x_angle = 0
 end
 
@@ -56,7 +55,7 @@ function NEOPonmanActor:update()
     end
 
     if self.eyecon == 10 then
-        self:setFrame(0)
+        self:setFrame(1)
         self.eye.radius = self.eye.radius * 0.7
 		
         if math.abs(self.eye.radius) < 0.5 then
