@@ -221,8 +221,8 @@ function Soul:update()
 
     -- Remove 1 TP for every drain_rate frames of slowdown active
     if not self.transitioning and Input.down("a") and Game:getTension() > 0 then
-        if self.drain_timer == self.drain_rate then
-            Game:removeTension(1)
+        if self.drain_timer >= self.drain_rate then
+            Game:removeTension(DTMULT*1.3) -- Should keep the drain rate roughly the same, regardless of framerate? Hopefully? Kinda looks like it does but I can't be sure?
             self.drain_timer = 0
         else
             self.drain_timer = self.drain_timer + 1
@@ -238,13 +238,13 @@ function Soul:update()
     if not self.transitioning and Input.down("a") and Game:getTension() > 0 then
     self.outline.alpha = Utils.approach(self.outline.alpha, 1, DTMULT / 4)
     self.concentratebg.alpha_fx.alpha = 1
-    if self.afterimage_delay == 5 then
+    if self.afterimage_delay >= 5 then
         local afterimage = AfterImage(self.outline, 0.5)
         afterimage.debug_select = false
         self:addChild(afterimage)
         self.afterimage_delay = 0
     else
-        self.afterimage_delay = self.afterimage_delay + 1
+        self.afterimage_delay = self.afterimage_delay + DTMULT
     end
     else
     self.outline.alpha = Utils.approach(self.outline.alpha, 0, DTMULT / 4)
