@@ -157,7 +157,7 @@ return {
         frisk_sprite.alpha = 0
         Game.world:addChild(frisk_sprite)
 
-        local you_sprite = Sprite("you", 320, 240, nil, nil, "world/cutscenes/intro")
+        local you_sprite = Sprite("doobie", 320, 240, nil, nil, "world/cutscenes/intro")
         you_sprite.parallax_x = 0
         you_sprite.parallax_y = 0
         you_sprite:setOrigin(0.5, 0.5)
@@ -252,13 +252,14 @@ return {
 
         Game.world.timer:tween(1, chara_y, { 240 })
 
-        if chara_name ~= "YOU" then
+        if chara_name ~= "DOOBIE" then
             gonerText("WRONG.[wait:40]\nYOU ARE SO[wait:40] STUPID.[wait:20]")
             gonerText(chara_name .. "?[wait:20]")
             gonerText("UNFORTUNATELY, YOU\nHAVE NOT PASSED\nTHE IQ TEST.[wait:20]")
             gonerText("BUT, I GUESS\nWE CAN... MAKE\nSOME EXCEPTIONS.[wait:20]")
         else
-            gonerText("CORRECT-A-MUNDO![wait:20]\nITS NAME IS YOU.[wait:20]")
+            --gonerText("CORRECT-A-MUNDO![wait:20]\nITS NAME IS YOU.[wait:20]")
+            gonerText("CORRECT-A-MUNDO![wait:20]\nITS NAME IS DOOBIE.[wait:20]")
             gonerText("ALRIGHT KIDDO,\nSENDING YA OFF\nNOW![wait:20] BYE-BYE![wait:20]")
         end
 
