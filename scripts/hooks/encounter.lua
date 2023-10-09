@@ -8,7 +8,10 @@ function Encounter:init()
 	-- Can the player flee the battle?
 	self.flee = true
 	-- Chance out of 100 that the player can flee this battle (x/100)
-	self.flee_chance = 60
+	self.flee_chance = 40
+	if BadgesLib:getBadgeEquipped("refund") >= 1 then
+		self.flee_chance = 80
+	end
 end
 
 function Encounter:createSoul(x, y, color)
