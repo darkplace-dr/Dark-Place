@@ -9,20 +9,25 @@ function Zero:init()
 
     -- Battle music ("battle" is rude buster)
     self.music = "zero_boss"
+    self.music = "none"
     -- Enables the purple grid battle background
     self.background = true
 
     -- Add the Zero enemy to the encounter
-    self:addEnemy("zero", 550, 216)
+    self.zero = self:addEnemy("zero", 550, 216)
 
     --- Uncomment this line to add another!
     --self:addEnemy("Dummy")
 
-
-    self.timebulletmult = 1
+    self.startinghp = {}
+    for i,battler in ipairs(Game.battle.party) do
+        self.startinghp[i] = Game.party[i].health
+    end
 
     --leader = Game.battle.party[1]
     -- Only reason this should happen is if someone debugs into the fight.
+
+    self.endfight = false
 	
 	self.flee = false
 end
@@ -36,6 +41,16 @@ end
 function Zero:beforeStateChange(old, new)
     if old == "INTRO" and new == "ACTIONSELECT" then
         Game.battle:startCutscene("zero", "start")
+    end
+
+    if new == "DEFENDINGBEGIN" and self.zero.downed == true then
+        if self.endfight == true then
+            Game.battle:setState("VICTORY")
+        elseif Game.battle:hasCutscene() then
+            Game.battle:setState("CUTSCENE")
+        else
+            Game.battle:setState("ACTIONSELECT")
+        end
     end
 end
 --[[

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="45">
+ <editorsettings>
+  <export target="pre_elevator.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="greenroom"/>
+  <property name="name" value="Floor 3 - Elevator Hallway"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/greenroom.tsx"/>
+ <tileset firstgid="36" source="../../tilesets/floor3-objects.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="24" height="12">
+  <data encoding="csv">
+0,0,0,0,0,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,10,10,10,10,10,10,1,2,1,2,1,2,1,2,1,2,1,2,1,
+0,0,0,0,0,10,10,10,10,10,10,8,9,8,9,8,9,8,9,8,9,8,9,8,
+0,0,0,0,0,10,10,10,10,10,10,15,16,15,16,15,16,15,16,15,16,15,16,15,
+0,0,0,0,0,10,10,10,10,10,10,3,3,4,5,5,17,14,18,5,5,19,3,3,
+0,0,0,0,0,10,10,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,
+0,0,0,0,0,10,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,10,
+0,0,0,0,0,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,10,10,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="6" name="Tile Layer 2" width="24" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,29,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="2" name="collision" visible="0">
+  <object id="1" x="440" y="0" width="520" height="240"/>
+  <object id="2" x="200" y="400" width="760" height="40"/>
+  <object id="3" x="160" y="0" width="40" height="400"/>
+  <object id="34" x="460" y="240" width="60" height="20"/>
+  <object id="35" x="540" y="240" width="60" height="20"/>
+  <object id="38" x="216" y="350" width="60" height="40"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="3" name="objects">
+  <object id="5" name="transition" x="200" y="-30" width="240" height="40">
+   <properties>
+    <property name="map" value="floor3/elevator_hall"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="8" name="transition" x="950" y="240" width="40" height="160">
+   <properties>
+    <property name="map" value=""/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="9" gid="38" x="460" y="260" width="60" height="90"/>
+  <object id="10" gid="38" x="540" y="260" width="60" height="90"/>
+  <object id="11" gid="37" x="802" y="240" width="76" height="104"/>
+  <object id="33" gid="36" x="210" y="390" width="74" height="90"/>
+  <object id="39" name="savepoint" x="680" y="240" width="40" height="40">
+   <properties>
+    <property name="text1">* (Green[wait:5], green[wait:5], green...)[wait:10]
+* (Oh yeah[wait:10], and more green...)</property>
+    <property name="text2" value="* (The power of the Green Rooms greens within you.)"/>
+   </properties>
+  </object>
+  <object id="40" name="interactable" x="800" y="200" width="80" height="40">
+   <properties>
+    <property name="text1" value="* (The door isn't locked.)"/>
+    <property name="text2" value="* (However,[wait:5] no one has made a room for it yet.)"/>
+    <property name="text3" value="* (So there's no point to go in there at the moment.)"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="4" name="markers">
+  <object id="6" name="entry" x="320" y="80">
+   <point/>
+  </object>
+  <object id="7" name="entry2" x="920" y="320">
+   <point/>
+  </object>
+  <object id="42" name="spawn" x="320" y="280">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff0000" id="5" name="objects_fg" visible="0" locked="1">
+  <object id="13" gid="39" x="440" y="160" width="70" height="40"/>
+  <object id="14" gid="39" x="504" y="160" width="70" height="40"/>
+  <object id="15" gid="39" x="568" y="160" width="70" height="40"/>
+  <object id="16" gid="39" x="632" y="160" width="70" height="40"/>
+  <object id="29" gid="39" x="696" y="160" width="70" height="40"/>
+  <object id="30" gid="39" x="760" y="160" width="70" height="40"/>
+  <object id="31" gid="39" x="824" y="160" width="70" height="40"/>
+  <object id="32" gid="39" x="888" y="160" width="70" height="40"/>
+  <object id="44" name="greenroom_sparkles" x="440" y="120" width="520" height="40"/>
+ </objectgroup>
+</map>

@@ -77,6 +77,7 @@ return function(cutscene, player_name_override)
 	or player_name == "DESS" 
     or player_name == "BRANDON" 
     or player_name == "BRENDA" 
+    or player_name == "LUCY" 
 	then
         cutscene:wait(2)
 
@@ -149,7 +150,7 @@ return function(cutscene, player_name_override)
             showText("* But besides all of that,[wait:5] let me give you a little bit of advice...", "niceeyesclosed")
             showText("[voice:flowey2][speed:0.6]* STAY. [wait:10]AWAY. [wait:10]FROM. [wait:10]HER.", "grin")
             showText("[voice:flowey2]* She's like a tumor...", "evil")
-            showText("[voice:flowey2]* One she clings on,[wait:5] she'll NEVER come off.", "evil")
+            showText("[voice:flowey2]* Once she clings on,[wait:5] she'll NEVER come off.", "evil")
             cutscene:hideNametag()
         elseif player_name == "BRANDON" or player_name == "BRENDA" then
             cutscene:showNametag("Flowey")
@@ -171,6 +172,20 @@ return function(cutscene, player_name_override)
             showText("* Will they end up having a happy ending?", "nice")
             showText("[voice:flowey2]* Or will reality itself fall apart?", "evil")
             cutscene:hideNametag()
+        elseif player_name == "LUCY" then
+            cutscene:showNametag("Flowey")
+            showText("* Y'know,[wait:5] there's a person in this world with that name who once said something like...", "niceside")
+            showText("* \"If I had a nickel for every person I know with my name,[wait:5] I'd have at least 25 cents.\"", "nicesideum")
+            showText("* Weird thing to say,[wait:5] I know.", "sassy")
+            showText("* But hey,[wait:5] maybe you'll get to meet her.[wait:5] Once you've updated Kristal, that is.", "plain")
+            showText("* Then she'd have 30 cents.[wait:10] Kinda useless, but hey.", "nicesideum")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Flowey")
+            showText("* Although,[wait:5] she is kind of shy in person, I've heard.", "side")
+            showText("* So good luck finding her.", "wink")
+            cutscene:hideNametag()
+
         end
     end
 
