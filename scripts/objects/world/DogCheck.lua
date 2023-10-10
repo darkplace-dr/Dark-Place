@@ -75,6 +75,10 @@ function DogCheck:start()
     elseif self.variant == "maracas" then
         createDog(cust_sprites_base.."/dog_maracas", 0.1, 20, -20)
         playSong("baci_perugina2")
+    elseif self.variant == "piano" then
+        createDog(cust_sprites_base.."/dog_piano", 0.5)
+        local song_here = Utils.pick({"legend_piano", "snowdin_piano", "home_piano", "5_4_improv", "bowser_piano_victory"})
+        playSong(song_here)
     elseif self.variant == "spring" then
         createDog(cust_sprites_base.."/dog_spring", 0.2, -2, -13)
         playSong("options_fall")
