@@ -493,7 +493,7 @@ return {
     origin = "Escaped Chasm (trimmed for Modbt)"
   },
   {
-    name = "Eek!",
+    name = "The Penis (Eek!)", -- Hehe I changed it to its actual name you cowards - BrendaK7200
     file = "eek",
     composer = "surasshu",
     -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
@@ -656,6 +656,20 @@ return {
     composer = "SiivaGunner",
     released = "Apr 22, 2016",
     origin = "https://www.youtube.com/watch?v=rEcOzjg7vBU (edited for Dark Place)"
+  },
+  {
+    name = "A TRUE AEON HERO",
+    file = "wwcgalacta",
+    composer = "BrendaK7200",
+    released = "2023 (YouTube Upload) 202X (When Worlds Collide)",
+    origin = "When Worlds Collide"
+  },
+  {
+    name = "Megalobuster",
+    file = "megalobuster",
+    composer = "BrendaK7200",
+    released = "2023",
+    origin = "??? - https://youtu.be/5rA2UmeD2x4"
   },
   --[[
   {
