@@ -43,12 +43,6 @@ return {
         for i,battler in ipairs(Game.battle.party) do
             Game.battle:pushForcedAction(battler, "SKIP")
             battler:setAnimation("battle/idle")
-            if Game.party[i].health < Game.battle.encounter.startinghp[i] then
-            Game.battle.party[i]:heal(Game.battle.encounter.startinghp[i] - Game.party[i].health)
-            end
-            if Game.party[i].health > Game.battle.encounter.startinghp[i] then
-                Game.battle.party[i]:removeHealth(Game.party[i].health - Game.battle.encounter.startinghp[i])
-            end
         end
         zero:setAnimation("idle")
         cutscene:wait(0.479)

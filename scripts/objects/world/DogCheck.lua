@@ -50,7 +50,7 @@ function DogCheck:start()
         Game.world.music:play(path, 0.8, self.song_pitch)
     end
 
-    local variant_choices = {"dance", "sleep", "maracas"}
+    local variant_choices = {"dance", "sleep", "maracas", "banned"}
     if self.month >= 3 and self.month <= 5 then
         table.insert(variant_choices, "spring")
     elseif self.month >= 6 and self.month <= 8 then
@@ -75,6 +75,10 @@ function DogCheck:start()
     elseif self.variant == "maracas" then
         createDog(cust_sprites_base.."/dog_maracas", 0.1, 20, -20)
         playSong("baci_perugina2")
+    elseif self.variant == "piano" then
+        createDog(cust_sprites_base.."/dog_piano", 0.5)
+        local song_here = Utils.pick({"legend_piano", "snowdin_piano", "home_piano", "5_4_improv", "bowser_piano_victory"})
+        playSong(song_here)
     elseif self.variant == "spring" then
         createDog(cust_sprites_base.."/dog_spring", 0.2, -2, -13)
         playSong("options_fall")
@@ -89,6 +93,13 @@ function DogCheck:start()
     elseif self.variant == "winter" then
         createDog(cust_sprites_base.."/dog_winter", 0.8, -2, -14)
         playSong("options_winter")
+    elseif self.variant == "banned" then
+        self.banned = Sprite("world/cutscenes/dogcheck/banned", 320, 240)
+        self.banned:setScale(2)
+        self.banned:setOrigin(0.5, 0.5)
+        self:addChild(self.banned)
+
+        playSong("AUDIO_DEFEAT", 1.5, 1.5)
     end
 end
 

@@ -9,7 +9,6 @@ function Zero:init()
 
     -- Battle music ("battle" is rude buster)
     self.music = "zero_boss"
-    self.music = "none"
     -- Enables the purple grid battle background
     self.background = true
 
@@ -19,17 +18,29 @@ function Zero:init()
     --- Uncomment this line to add another!
     --self:addEnemy("Dummy")
 
-    self.startinghp = {}
-    for i,battler in ipairs(Game.battle.party) do
-        self.startinghp[i] = Game.party[i].health
-    end
 
-    --leader = Game.battle.party[1]
-    -- Only reason this should happen is if someone debugs into the fight.
+    self.zero_downed = false
 
     self.endfight = false
 	
 	self.flee = false
+
+
+    self.boss_rush = false
+	
+    if Game:getFlag("zero_defeated") == true then
+        self.boss_rush = true
+    end
+
+end
+
+
+function Zero:onBattleInit()
+    super.onBattleInit(self)
+    if self.boss_rush then
+        Game.battle.dojo_bg = DojoBG({1, 1, 1})
+        Game.battle:addChild(Game.battle.dojo_bg)
+    end
 end
 
 function Zero:createSoul(x, y)
@@ -44,6 +55,7 @@ function Zero:beforeStateChange(old, new)
     end
 
     if new == "DEFENDINGBEGIN" and self.zero.downed == true then
+        self.zero_downed = true
         if self.endfight == true then
             Game.battle:setState("VICTORY")
         elseif Game.battle:hasCutscene() then

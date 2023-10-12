@@ -11,6 +11,10 @@ end
 function Spreadshot:onStart()
     for _, enemy in ipairs(self.enemies) do
         enemy.sprite.eyecon = 20
+		
+        self.timer:after(5.5, function()
+            enemy.sprite.eyecon = 10
+        end)
     end
 end
 
