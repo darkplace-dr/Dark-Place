@@ -117,6 +117,13 @@ function character:onLevelUp(level)
     end
 end
 
+function character:onLevelUpLVLib(level)
+    self:increaseStat("health", 15)
+    self:increaseStat("attack", 1)
+    self:increaseStat("defense", 2)
+	self:increaseStat("magic", 1)
+end
+
 function character:drawPowerStat(index, x, y, menu)
     if index == 1 then
         
