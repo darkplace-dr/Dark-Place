@@ -37,17 +37,13 @@ function character:init()
     self.health = 120
 
     -- Base stats (saved to the save file)
+    -- DO NOT CHANGE THESE PLEASE I BEG OF YOU
     self.stats = {
-        health = 120,
-        attack = 14,
-        defense = 2,
-        magic = 1
+        health = 200,
+        attack = 8,
+        defense = 4,
+        magic = 2
     }
-    -- Max stats from level-ups
-    -- Fecking don't change this, or else his health won't go up when leveling up at a certain point, and that's not supposed to happen >:[
-    --[[self.max_stats = {
-        health = 160
-    }]]
 
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/halberd"
