@@ -22,6 +22,9 @@ end
 function DarkRelationshipsMenu:draw()
     super.draw(self)
 
+    love.graphics.setFont(self.font)
+    love.graphics.printf("Relationships", 0, 0, self.width, "center")
+
     for i, v in ipairs(Game.party) do
         local head = nil
         if v.id == "YOU" then -- YOU's party sprite path isn't capitalized, so check if it's them specifically
@@ -59,10 +62,23 @@ function DarkRelationshipsMenu:draw()
             local member3 = Game.party[3].id
             love.graphics.print(member3opinions[member1], 30, 230, math.rad(270))
             love.graphics.print(member1opinions[member3], 70, 100, math.rad(90))
-            love.graphics.draw(self.relationship_arrows, 60, 90, math.rad(90), 2)
+            love.graphics.draw(self.relationship_arrows, 60, 95, math.rad(90), 2)
             love.graphics.print(member3opinions[member2], 80, 220, math.rad(-45))
-            love.graphics.print(member2opinions[member3], 200, 130, math.rad(-45))
+            love.graphics.print(member2opinions[member3], 202, 130, math.rad(-45))
             love.graphics.draw(self.relationship_arrows, 230, 110, math.rad(135), 2.8, 2)
+            if #Game.party >= 4 then
+                local member4opinions = Game.party[4].opinions
+                local member4 = Game.party[4].id
+                love.graphics.print(member4opinions[member1], 200, 232, math.rad(45))
+                love.graphics.print(member1opinions[member4], 100, 95, math.rad(45))
+                love.graphics.draw(self.relationship_arrows, 220, 255, math.rad(225), 2.8, 2)
+                love.graphics.print(member3opinions[member4], 80, 253)
+                love.graphics.print(member4opinions[member3], 200, 280)
+                love.graphics.draw(self.relationship_arrows, 75, 265, 0, 2)
+                love.graphics.print(member4opinions[member2], 230, 230, math.rad(270))
+                love.graphics.print(member2opinions[member4], 270, 100, math.rad(90))
+                love.graphics.draw(self.relationship_arrows, 260, 95, math.rad(90), 2)
+            end
         end
     end
 end

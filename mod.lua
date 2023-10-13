@@ -799,6 +799,13 @@ function Mod:onFootstep(char, num)
     end
 end
 
+function Mod:onKeyPressed(key)
+    if Game.world and Game.world.state == "GAMEPLAY" and key == "r" then
+        Assets.stopAndPlaySound("ui_select")
+        Game.world:openMenu(DarkRelationshipsMenu())
+    end
+end
+
 function Mod:getUISkin()
     if self:isOmori() then
         return "omori"
