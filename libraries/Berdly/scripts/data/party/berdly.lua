@@ -34,7 +34,7 @@ function character:init()
     self:addSpell("pacify")
 
     -- Current health (saved to the save file)
-    self.health = 120
+    self.health = 200
 
     -- Base stats (saved to the save file)
     -- DO NOT CHANGE THESE PLEASE I BEG OF YOU
