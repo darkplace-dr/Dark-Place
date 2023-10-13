@@ -44,9 +44,10 @@ function character:init()
         magic = 1
     }
     -- Max stats from level-ups
-    self.max_stats = {
+    -- Fecking don't change this, or else his health won't go up when leveling up at a certain point, and that's not supposed to happen >:[
+    --[[self.max_stats = {
         health = 160
-    }
+    }]]
 
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/halberd"
