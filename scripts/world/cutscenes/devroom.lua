@@ -739,6 +739,81 @@ return {
             end
 		end
     end,
+    starbeans = function(cutscene, event)
+        cutscene:showNametag("Alexa")
+		cutscene:text("[voice:alexa]* Oh,[wait:5] hello![wait:5]\n* Welcome to the Starbeans Cafe!")
+		if not Game:getFlag("starbeans_first") then
+			Game:setFlag("starbeans_first", true)
+			for k,v in pairs(Game.party) do
+				if v.id == "YOU" then
+				
+				elseif v.id == "kris" then
+				
+				elseif v.id == "susie" then
+				
+				elseif v.id == "noelle" then
+				
+				elseif v.id == "dess" then
+				
+				elseif v.id == "brandon" then
+				
+				elseif v.id == "dumbie" then
+				
+				elseif v.id == "ostarwalker" then
+				
+				elseif v.id == "berdly" then
+				
+				elseif v.id == "bor" then
+				
+				elseif v.id == "robo_susie" then
+				
+				elseif v.id == "nonyo" then
+				
+				elseif v.id == "iphone" then
+				
+				elseif v.id == "frisk2" then
+				
+				elseif v.id == "alseri" then
+				
+				elseif v.id == "jamm" then
+					if not Game:getFlag("dungeonkiller") then
+						cutscene:showNametag("Jamm")
+						cutscene:text("* Wait,[wait:5] Alexa?[wait:5]\n* You work here?", "neutral", "jamm")
+						cutscene:showNametag("Alexa")
+						cutscene:text("[voice:alexa]* Actually,[wait:5] Director,[wait:5] I own it!")
+						cutscene:text("[voice:alexa]* Remember how I've been telling you I need more money for stuff?")
+						cutscene:showNametag("Jamm")
+						cutscene:text("* Vaguely,[wait:5] if anything.", "neutral", "jamm")
+						cutscene:showNametag("Alexa")
+						cutscene:text("[voice:alexa]* Well,[wait:5] it turns out D$ can be converted to Coins!")
+						cutscene:showNametag("Jamm")
+						cutscene:text("* Good for you,[wait:5] Alexa!", "neutral", "jamm")
+						cutscene:text("* But...[wait:5]\n* What about this room?", "neutral", "jamm")
+						cutscene:showNametag("Alexa")
+						cutscene:text("[voice:alexa]* The shopkeeper outside is letting me run the place.")
+						cutscene:text("[voice:alexa]* I don't really get how the current model is sustaining money...")
+						cutscene:text("[voice:alexa]* But I'm happy as long as I make money from it!")
+					else
+						cutscene:showNametag("Alexa")
+						cutscene:text("[voice:alexa]* Wait,[wait:5] Director,[wait:5] is that you?")
+						cutscene:text("[voice:alexa]* Gosh,[wait:5] you look terrible...[wait:5]\n* What the fleck happened?")
+						cutscene:showNametag("Jamm")
+						cutscene:text("* ...Just get me a brew please.", "neutral", "jamm")
+						cutscene:showNametag("Alexa")
+						cutscene:text("[voice:alexa]* R-right...")
+					end
+				end
+			end
+			cutscene:showNametag("Alexa")
+		end
+		if #Game.party == 1 then
+			cutscene:text("[voice:alexa]* So![wait:5] How may I blend up your day?")
+		else
+			cutscene:text("[voice:alexa]* So![wait:5] How may I blend up your days?")
+		end
+		cutscene:hideNametag()
+		-- TODO: Blend stuff
+    end,
 
     ---@param cutscene WorldCutscene
     shadowshop = function(cutscene, event)
