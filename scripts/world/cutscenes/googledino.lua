@@ -1,6 +1,6 @@
 return {
     begin = function(cutscene, dino)
-        local player = cutscene:getCharacter("YOU")
+        local player = cutscene:getCharacter(Game.party[1].id)
         local dino = cutscene:spawnNPC("googledino", 1200, player.y)
         dino:setSprite("static")
         dino.sprite.flip_x = true
