@@ -107,6 +107,47 @@ function DarkPartyMenu:onKeyPressed(key)
 				Game.party[self.selected_party] = nil
 			end
 		end
+		if Input.pressed("v") then
+			-- Step 1: Set the list
+			local temp = {}
+			for k,v in pairs(Game:getFlag("party", {"YOU", "susie"})) do
+				temp[k] = v
+			end
+		
+			-- Step 2: Remove every party member
+			for k,chara in ipairs(Game.party) do
+				Game:setFlag(chara.id .. "_party", false)
+			end
+			Game.party = {}
+			
+			-- Step 3: Set all available slots to random
+			local val = math.min(#self.listreference, 4)
+			local indexes = Utils.pickMultiple(temp, val)
+			for i=1, #indexes do
+				local id = indexes[i]
+				Game:addPartyMember(id)
+				Game:setFlag(id.."_party", true)
+			end
+			
+			-- Step 4: Set all followers
+			if Game.world.followers[3] then
+				Game.world.followers[3]:remove()
+			end
+			if Game.world.followers[2] then
+				Game.world.followers[2]:remove()
+			end
+			if Game.world.followers[1] then
+				Game.world.followers[1]:remove()
+			end
+			Game.world.player:setActor(Game.party[1].actor)
+			for k,v in pairs(Game.party) do
+				if k > 1 then
+					Game.world:spawnFollower(v.actor)
+				end
+			end
+			Game.world.player:alignFollowers()
+			Game.world:attachFollowersImmediate()
+		end
 	elseif self.state == "SELECT" then
 		if Input.pressed("confirm") then
 			if self.list[self.selected_y][self.selected_x] ~= "unknown" then
@@ -199,6 +240,7 @@ function DarkPartyMenu:draw()
 	love.graphics.printf("PARTY", 0, 0, self.bg.width, "center")
 	if self.state == "MAIN" then
 		love.graphics.printf("["..Input.key_bindings["menu"][1]:upper().."] REMOVE", 185, -20, self.bg.width, "center")
+		love.graphics.printf("[V] RANDOM", 185, 12, self.bg.width, "center")
 	end
 	
     local x = 9 + (8 - Game:getFlag("party_max")) * 30
