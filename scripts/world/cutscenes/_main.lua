@@ -304,7 +304,7 @@ return {
 			
 			local player = Game.world.player
 			cutscene:setAnimation(player, "battle/act")
-			cutscene:wait(cutscene:slideTo(player, player.x - 160, player.y, 0.5, "out-cubic"))
+			cutscene:wait(cutscene:slideTo(player, player.x - 80, player.y, 0.5, "out-cubic"))
 			
 			local lancer = NPC("lancer", player.x, player.y, {facing = "down"})
 			lancer.layer = player.layer - 0.01
