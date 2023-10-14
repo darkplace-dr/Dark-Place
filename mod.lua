@@ -845,6 +845,10 @@ function Mod:loadObject(world, name, properties)
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
     end
+    if Game.world.map.id:find("archives/") then
+        self.voidbg = Game.world:spawnObject(VoidBGUT2())
+        self.voidbg.layer = -9999
+    end
 end
 
 Mod.wave_shader = love.graphics.newShader([[

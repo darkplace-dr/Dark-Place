@@ -1,0 +1,290 @@
+return {
+  version = "1.9",
+  luaversion = "5.1",
+  tiledversion = "1.9.0",
+  class = "",
+  orientation = "orthogonal",
+  renderorder = "right-down",
+  width = 20,
+  height = 16,
+  tilewidth = 40,
+  tileheight = 40,
+  nextlayerid = 5,
+  nextobjectid = 15,
+  properties = {
+    ["music"] = "archives"
+  },
+  tilesets = {
+    {
+      name = "dumpter-objects",
+      firstgid = 1,
+      filename = "../../tilesets/dumpter-objects.tsx",
+      exportfilename = "../../tilesets/dumpter-objects.lua"
+    },
+    {
+      name = "ut2archives",
+      firstgid = 38,
+      filename = "../../tilesets/ut2archives.tsx",
+      exportfilename = "../../tilesets/ut2archives.lua"
+    }
+  },
+  layers = {
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 20,
+      height = 16,
+      id = 1,
+      name = "Tile Layer 1",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 86, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 88, 0, 0, 0, 0,
+        0, 0, 86, 87, 72, 81, 103, 103, 103, 103, 103, 103, 103, 103, 80, 73, 87, 88, 0, 0,
+        0, 0, 94, 81, 103, 104, 111, 111, 111, 111, 111, 111, 111, 111, 102, 103, 80, 96, 0, 0,
+        0, 0, 94, 96, 111, 112, 119, 119, 119, 119, 119, 119, 119, 119, 110, 111, 94, 96, 0, 0,
+        0, 0, 94, 96, 119, 120, 127, 127, 127, 127, 127, 127, 127, 127, 118, 119, 94, 96, 0, 0,
+        0, 0, 94, 96, 127, 128, 57, 58, 38, 38, 38, 38, 56, 57, 126, 127, 94, 96, 0, 0,
+        0, 0, 94, 96, 57, 57, 65, 66, 38, 38, 38, 38, 64, 65, 57, 57, 94, 96, 0, 0,
+        0, 0, 94, 96, 65, 66, 38, 39, 39, 39, 39, 39, 39, 38, 64, 65, 94, 96, 0, 0,
+        0, 0, 94, 96, 38, 38, 38, 39, 39, 39, 39, 39, 39, 38, 38, 38, 94, 96, 0, 0,
+        0, 0, 94, 96, 38, 38, 38, 38, 38, 39, 39, 38, 38, 38, 38, 38, 94, 96, 0, 0,
+        0, 0, 94, 96, 38, 38, 38, 38, 38, 39, 39, 38, 38, 38, 38, 38, 94, 96, 0, 0,
+        0, 0, 94, 73, 87, 87, 87, 88, 38, 39, 39, 38, 86, 87, 87, 87, 72, 96, 0, 0,
+        0, 0, 102, 103, 103, 103, 80, 96, 38, 39, 39, 38, 94, 81, 103, 103, 103, 104, 0, 0,
+        0, 0, 0, 0, 0, 0, 94, 96, 38, 39, 39, 38, 94, 96, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 94, 96, 38, 39, 39, 38, 94, 96, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 2,
+      name = "collision",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 2,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 240,
+          y = 120,
+          width = 320,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 3,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 160,
+          y = 160,
+          width = 80,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 4,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 560,
+          y = 160,
+          width = 80,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 5,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 120,
+          y = 280,
+          width = 40,
+          height = 200,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 240,
+          y = 480,
+          width = 80,
+          height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 8,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 480,
+          y = 480,
+          width = 80,
+          height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 560,
+          y = 480,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 160,
+          y = 480,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 640,
+          y = 280,
+          width = 40,
+          height = 200,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 344.5,
+          y = 218.5,
+          width = 110.5,
+          height = 69,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 3,
+      name = "objects",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 1,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 342,
+          y = 290,
+          width = 116,
+          height = 118,
+          rotation = 0,
+          gid = 36,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 13,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 340,
+          y = 200,
+          width = 120,
+          height = 90,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "spamroom.warpbin",
+            ["solid"] = true
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 4,
+      name = "markers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 14,
+          name = "spawn",
+          class = "",
+          shape = "point",
+          x = 400,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    }
+  }
+}
