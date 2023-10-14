@@ -746,7 +746,15 @@ return {
 			Game:setFlag("starbeans_first", true)
 			for k,v in pairs(Game.party) do
 				if v.id == "YOU" then
-				
+					cutscene:hideNametag()
+					cutscene:wait(Game.world.music:fade(0, 0.5))
+					cutscene:wait(1)
+					Assets.playSound("croak")
+					cutscene:wait(1)
+					cutscene:wait(Game.world.music:fade(1, 0.5))
+					cutscene:wait(1)
+					cutscene:showNametag("Alexa")
+					cutscene:text("[voice:alexa]* Okay...?")
 				elseif v.id == "kris" then
 				
 				elseif v.id == "susie" then
