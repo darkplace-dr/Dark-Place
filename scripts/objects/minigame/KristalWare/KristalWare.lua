@@ -49,7 +49,7 @@ end
 
 function KristalWare:onStateChange(state)
     if self.state == "TITLE" then
-        Game.world.music:play("mod_menu")
+        self.music:play("mod_menu")
     end
 end
 
