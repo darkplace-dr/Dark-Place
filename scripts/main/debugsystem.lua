@@ -94,6 +94,7 @@ function Mod:registerDebugOptions(debug)
     local in_game = function() return Kristal.getState() == Game end
     local in_battle = function() return in_game() and Game.state == "BATTLE" end
     local in_overworld = function() return in_game() and Game.state == "OVERWORLD" end
+    local in_minigame = function() return in_game() and Game.state == "MINIGAME" end
 
     debug:registerOption("main", "Open Party Menu", "Change the current party.", function ()
         debug:enterMenu("party_menu", 1)
@@ -126,6 +127,11 @@ function Mod:registerDebugOptions(debug)
             debug:closeMenu()
         end)
     end
+
+    debug:registerOption("main", "End Minigame", "End the current minigame.", function()
+		Game.minigame:endMinigame()
+		debug:closeMenu()
+	end, in_minigame)
 
     debug:registerOption("main", "Funky", "Enter the  Funky  Menu.", function() debug:enterMenu("funky_menu", 1) end)
 
