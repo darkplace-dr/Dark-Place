@@ -297,4 +297,43 @@ return {
         Assets.playSound("ralsei_unlock")
         Game.world.timer:tween(0.5, ral, {alpha = 1}, "linear")
     end,
+	bean_spot = function(cutscene, event)
+		if Game:getFlag("hasObtainedLancer") then
+			cutscene:detachFollowers()
+			cutscene:detachCamera()
+			
+			local player = Game.world.player
+			cutscene:setAnimation(player, "battle/act")
+			cutscene:wait(cutscene:slideTo(player, player.x - 160, player.y, 0.5, "out-cubic"))
+			
+			local lancer = NPC("lancer", player.x, player.y, {facing = "down"})
+			lancer.layer = player.layer - 0.01
+			Game.world:addChild(lancer)
+			event.layer = lancer.layer - 0.01
+			
+			cutscene:wait(cutscene:slideTo(lancer, event.x, event.y, 0.5, "out-cubic"))
+			
+			cutscene:setAnimation(lancer, "wave")
+			
+			cutscene:wait(0.5)
+			
+			cutscene:text("* Lancer dug up a " .. event.name .. ".")
+			Game:addFlag(event.flag_inc, 1)
+			event:setFlag("dont_load", true)
+			
+			event:remove()
+			
+			cutscene:resetSprite(player)
+			cutscene:resetSprite(lancer)
+			cutscene:look(lancer, "left")
+			cutscene:wait(cutscene:walkTo(player, lancer.x, lancer.y, 1))
+			lancer:remove()
+			
+			cutscene:attachFollowers(4)
+			cutscene:attachCamera(0.5)
+			cutscene:wait(0.5)
+		else
+			cutscene:text("* It seems you can't dig without a spade.")
+		end
+	end,
 }
