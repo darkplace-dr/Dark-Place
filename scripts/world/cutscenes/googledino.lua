@@ -62,10 +62,9 @@ return {
 
             cutscene:wait(cutscene:slideTo(dino, 1400, dino.y))
 
-            cutscene:wait(cutscene:panTo(player, nil))
-
             dino:remove()
         end
+        cutscene:wait(cutscene:panTo(player, nil))
 
         cutscene:attachCameraImmediate()
     end,
