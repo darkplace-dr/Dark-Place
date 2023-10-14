@@ -9,7 +9,7 @@ function Runner:init()
     --self:setArenaPosition(320, 180)
 
     --soul starting position
-    self:setSoulPosition(200, 205)
+    self:setSoulPosition(200, 200)
 end
 
 function Runner:onStart()
