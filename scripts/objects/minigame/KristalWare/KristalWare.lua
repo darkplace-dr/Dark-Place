@@ -23,7 +23,7 @@ function KristalWare:init()
     self.title = Assets.getTexture("kristal/title_logo_shadow")
     self.title_bg = Assets.getTexture("kristal/title_bg_full")
 
-    self.leaderboard = {{"MATT", 100}, {"WARIO", 27}, {"SPAMTON", 97}}
+    self.leaderboard = {{"MATT", 100}, {"SPAMTON", 97}, {"WARIO", 27}}
 end
 
 function KristalWare:postInit()
