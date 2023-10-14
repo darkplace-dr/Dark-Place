@@ -117,6 +117,15 @@ function Mod:registerDebugOptions(debug)
     debug:registerOption("main", "Replenish Party", "Replenishes health.", replenish, in_game)
 
     debug:registerOption("main", "Create Ach. List Image", "Just for muscle flexing. LMAO", createAchListImage, in_game)
+    debug:registerOption("main", "Start Minigame", "Start a minigame.", function() debug:enterMenu("minigame_menu", 0) end, in_overworld)
+
+    debug:registerMenu("minigame_menu", "Minigame Select", "search")
+    for id,_ in pairs(Mod.minigames) do
+        debug:registerOption("minigame_menu", id, "Start this minigame.", function()
+            Mod:startMinigame(id)
+            debug:closeMenu()
+        end)
+    end
 
     debug:registerOption("main", "Funky", "Enter the  Funky  Menu.", function() debug:enterMenu("funky_menu", 1) end)
 
