@@ -2,11 +2,12 @@
 
 ## Contribution Rouxls (Pronounced "Rules")
 1. No NSFW, we gotta keep this mod at the very least PG-13.
-2. If you're using assets that you didn't make, be sure to credit the original author(s)!
-3. Don't just completely remove someone else's commit, although you can still edit what someone else has made.
-4. Don't add doxxing scripts, or really any script that is dangerous to ones safety.
-5. Always remember to test your commits before making a pull request. We would like to keep this mod as a bug-free experience.
-6. Please don't make us add more rules like Rule 4 please.
+2. No slurs. This one should be obvious 
+3. If you're using assets that you didn't make, be sure to credit the original author(s)!
+4. Don't just completely remove someone else's commit, although you can still edit what someone else has made.
+5. Don't add doxxing scripts, or really any script that is dangerous to ones safety.
+6. Always remember to test your commits before making a pull request. We would like to keep this mod as a bug-free experience.
+7. Please don't make us add more rules like Rule 4 please.
 
 ## Getting Started
 ![The Fork button](https://cdn.discordapp.com/attachments/909928008893227068/1091744974770548796/image.png)
