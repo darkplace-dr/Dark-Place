@@ -869,7 +869,9 @@ return {
 			cutscene:text("[voice:alexa]* So,[wait:5] what'll be your blend today?")
 			cutscene:hideNametag()
 			
-			Game.world:openMenu(BlendMenu())
+			cutscene:after(function()
+				Game.world:openMenu(BlendMenu())
+			end)
 		end
 		cutscene:hideNametag()
     end,
