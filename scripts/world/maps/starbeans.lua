@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 18,
+  nextobjectid = 20,
   properties = {
     ["music"] = "greenroom"
   },
@@ -272,6 +272,22 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "devroom.starbeans"
+          }
+        },
+        {
+          id = 18,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 480,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
           }
         }
       }

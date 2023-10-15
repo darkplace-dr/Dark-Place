@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="10">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="11">
  <editorsettings>
   <export target="everhall_entry.lua" format="lua"/>
  </editorsettings>
@@ -69,6 +69,13 @@
     <property name="cutscene" value="everhall.entry"/>
     <property name="once" type="bool" value="false"/>
    </properties>
+  </object>
+  <object id="10" name="beanspot" x="280" y="200">
+   <properties>
+    <property name="inc_flag" value="darkess_beans"/>
+    <property name="name" value="Darkess Bean"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
 </map>

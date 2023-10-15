@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="61">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="67">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -255,6 +255,41 @@
    </properties>
   </object>
   <object id="60" name="beanspot" x="360" y="800">
+   <properties>
+    <property name="inc_flag" value="darkess_beans"/>
+    <property name="name" value="Darkess Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="61" name="beanspot" x="160" y="840">
+   <properties>
+    <property name="inc_flag" value="darkess_beans"/>
+    <property name="name" value="Darkess Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="62" name="beanspot" x="720" y="720">
+   <properties>
+    <property name="inc_flag" value="darkess_beans"/>
+    <property name="name" value="Darkess Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="63" name="beanspot" x="360" y="360">
+   <properties>
+    <property name="inc_flag" value="darkess_beans"/>
+    <property name="name" value="Darkess Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="65" name="beanspot" x="160" y="240">
+   <properties>
+    <property name="inc_flag" value="darkess_beans"/>
+    <property name="name" value="Darkess Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="66" name="beanspot" x="640" y="240">
    <properties>
     <property name="inc_flag" value="darkess_beans"/>
     <property name="name" value="Darkess Bean"/>

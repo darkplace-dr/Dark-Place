@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 11,
-  nextobjectid = 56,
+  nextobjectid = 60,
   properties = {
     ["border"] = "city",
     ["music"] = "deltarune/cybercity_alt",
@@ -430,8 +430,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["inc_flag"] = "darkess_beans",
-            ["name"] = "Darkess Bean"
+            ["inc_flag"] = "fountain_beans",
+            ["name"] = "Fountain Bean"
           }
         },
         {
@@ -446,8 +446,72 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["inc_flag"] = "darkess_beans",
-            ["name"] = "Darkess Bean"
+            ["inc_flag"] = "fountain_bean",
+            ["name"] = "Fountain Bean"
+          }
+        },
+        {
+          id = 56,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 560,
+          y = 1440,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 57,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 520,
+          y = 1120,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 58,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 480,
+          y = 1800,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 59,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 520,
+          y = 800,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
           }
         }
       }

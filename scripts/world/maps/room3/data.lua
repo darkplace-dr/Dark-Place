@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 53,
+  nextobjectid = 59,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -356,6 +356,86 @@ return {
           properties = {
             ["actor"] = "addisonshop",
             ["cutscene"] = "room3.addisonshop"
+          }
+        },
+        {
+          id = 53,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 560,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 55,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 960,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 56,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 1200,
+          y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 57,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 800,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 58,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 680,
+          y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
           }
         }
       }

@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 41,
+  nextobjectid = 43,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -363,6 +363,38 @@ return {
           properties = {
             ["actor"] = "sam",
             ["cutscene"] = "room4.sam"
+          }
+        },
+        {
+          id = 41,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 320,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 42,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 120,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
           }
         }
       }
