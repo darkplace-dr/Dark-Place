@@ -761,10 +761,39 @@ return {
 				
 				elseif v.id == "noelle" then
 				
-				elseif v.id == "dess" then
-				
-				elseif v.id == "brandon" then
-				
+				elseif v.id == "dess" then -- If there's any intentional misspellings I need to do for Alexa please let me know Jamm, I sorta forgor them all - BrendaK7200
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* Holy fuck is that Alexa Greene from hit indie game Deoxynn??????", "wtf", "dess")
+                    cutscene:showNametag("Alexa")
+					cutscene:text("[voice:alexa]* ... What.")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* yeah can I get uhhhhhhhhhhhhhhhh", "calm", "dess")
+                    cutscene:showNametag("Dess", {top = true, right = false})
+                    -- noskip because fuck you >:]
+                    cutscene:text("[noskip]* large double double frappechino mocha extra sugar cappichino with frosting and sprinkles with a cherry on top and a boston cream donut with extra frosting and a chocolate chip muffin and a raisin oatmeal cookie", "kind", "dess", {top = true})
+                    cutscene:showNametag("Alexa")
+					cutscene:text("[voice:alexa]* ... We serve coffee here,[wait:5] ma'am.")
+				elseif v.id == "brandon" then -- If there's any intentional misspellings I need to do for Alexa please let me know Jamm, I sorta forgor them all - BrendaK7200
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Well this is kinda awkward.", "shock", "brandon")
+                    cutscene:showNametag("Alexa")
+					cutscene:text("[voice:alexa]* Hm?[wait:10]\n* What do you mean?")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Well I mean I made you kill a bunch of people,[wait:5] remember?", "neutral_side", "brandon")
+                    cutscene:showNametag("Alexa")
+					cutscene:text("[voice:alexa]* Uh,[wait:5] no????")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Ah so that's not canon in this mod?[wait:10] Cool.", "neutral", "brandon")
+                    cutscene:showNametag("Alexa")
+                    cutscene:text("[voice:alexa]* What???")
+                    cutscene:text("[voice:alexa]* Are you okay sir?[wait:10] Er,[wait:5] I mean,[wait:5] ma'am?[wait:10] Uh,[wait:5] sir-ma'am?")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* I don't care which one you use.", "happy", "brandon")
+                    cutscene:text("* Just please don't call me sir-ma'am,[wait:5] that just sounds dumb.", "dissapointed", "brandon")
+                    cutscene:text("* And to answer your question...", "neutral_side", "brandon")
+                    cutscene:text("* I have absolutely zero clue myself.", "grin", "brandon")
+                    cutscene:showNametag("Alexa")
+                    cutscene:text("[voice:alexa]* Oooookay then.")
 				elseif v.id == "dumbie" then
 				
 				elseif v.id == "ostarwalker" then
