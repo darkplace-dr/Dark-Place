@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="17">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="18">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -63,6 +63,11 @@
    <properties>
     <property name="flag" value="Game.inventory:isFull(&quot;armors&quot;)"/>
     <property name="visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="17" name="chest" x="880" y="280" width="40" height="40">
+   <properties>
+    <property name="item" value="bp_plus"/>
    </properties>
   </object>
  </objectgroup>
