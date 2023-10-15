@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 17,
+  nextobjectid = 18,
   properties = {},
   tilesets = {
     {
@@ -183,6 +183,21 @@ return {
           properties = {
             ["flag"] = "Game.inventory:isFull(\"armors\")",
             ["visible"] = true
+          }
+        },
+        {
+          id = 17,
+          name = "chest",
+          type = "",
+          shape = "rectangle",
+          x = 880,
+          y = 280,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["item"] = "bp_plus"
           }
         }
       }
