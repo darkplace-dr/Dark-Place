@@ -553,9 +553,11 @@ function Battle:processAction(action)
 
     elseif action.action == "ITEM" then
         local item = action.data
-        if BadgesLib:getBadgeEquipped("refund") >= 1 then
-            for i = 1, BadgesLib:getBadgeEquipped("refund") do -- Add money for each instance of the badge equipped
-                self.money = self.money + item.price / 4
+        if item.refundable ~= false then
+            if BadgesLib:getBadgeEquipped("refund") >= 1 then
+                for i = 1, BadgesLib:getBadgeEquipped("refund") do -- Add money for each instance of the badge equipped
+                    self.money = self.money + item.price / 4
+                end
             end
         end
         if item.instant then
@@ -567,9 +569,11 @@ function Battle:processAction(action)
                 self:battleText(text)
             end
             battler:setAnimation("battle/item", function()
-                if BadgesLib:getBadgeEquipped("refund") >= 1 then
-                    local refundTxt = RefundTxt()
-                    battler:addChild(refundTxt)
+                if item.refundable ~= false then
+                    if BadgesLib:getBadgeEquipped("refund") >= 1 then
+                        local refundTxt = RefundTxt()
+                        battler:addChild(refundTxt)
+                    end
                 end
                 local result = item:onBattleUse(battler, action.target)
                 if result or result == nil then
@@ -598,9 +602,11 @@ function Battle:commitSingleAction(action)
 
     -- Spawns RefundTxt when using instant items.
     if (action.action == "ITEM" and action.data and (action.data.instant)) then
-        if BadgesLib:getBadgeEquipped("refund") >= 1 then
-            local refundTxt = RefundTxt()
-            battler:addChild(refundTxt)
+        if action.data.refundable ~= false then
+            if BadgesLib:getBadgeEquipped("refund") >= 1 then
+                local refundTxt = RefundTxt()
+                battler:addChild(refundTxt)
+            end
         end
     end
 end
