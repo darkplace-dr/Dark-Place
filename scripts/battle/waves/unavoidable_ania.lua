@@ -21,6 +21,8 @@ function Basic:onStart()
 					battler:breakShield()
 				else
 					battler:hurt(math.huge)
+					battler.chara.health = 0
+					battler:checkHealth()
 				end
 			end
 			Game.battle.timer:after(1, function()
