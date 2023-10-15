@@ -761,7 +761,7 @@ return {
 				
 				elseif v.id == "noelle" then
 				
-				elseif v.id == "dess" then -- If there's any intentional misspellings I need to do for Alexa please let me know Jamm, I sorta forgor them all - BrendaK7200
+				elseif v.id == "dess" then
                     cutscene:showNametag("Dess")
                     cutscene:text("* Holy fuck is that Alexa Greene from hit indie game Deoxynn??????", "wtf", "dess")
                     cutscene:showNametag("Alexa")
@@ -773,7 +773,7 @@ return {
                     cutscene:text("[noskip]* large double double frappechino mocha extra sugar cappichino with frosting and sprinkles with a cherry on top and a boston cream donut with extra frosting and a chocolate chip muffin and a raisin oatmeal cookie", "kind", "dess", {top = true})
                     cutscene:showNametag("Alexa")
 					cutscene:text("[voice:alexa]* ... We serve coffee here,[wait:5] ma'am.")
-				elseif v.id == "brandon" then -- If there's any intentional misspellings I need to do for Alexa please let me know Jamm, I sorta forgor them all - BrendaK7200
+				elseif v.id == "brandon" then
                     cutscene:showNametag("Brandon")
                     cutscene:text("* Well this is kinda awkward.", "shock", "brandon")
                     cutscene:showNametag("Alexa")
@@ -817,7 +817,7 @@ return {
 						cutscene:showNametag("Jamm")
 						cutscene:text("* Wait,[wait:5] Alexa?[wait:5]\n* You work here?", "neutral", "jamm")
 						cutscene:showNametag("Alexa")
-						cutscene:text("[voice:alexa]* Actually,[wait:5] Director,[wait:5] I own it!")
+						cutscene:text("[voice:alexa]* Actually,[wait:5] Director,[wait:5] I own this cafe!")
 						cutscene:text("[voice:alexa]* Remember how I've been telling you I need more money for stuff?")
 						cutscene:showNametag("Jamm")
 						cutscene:text("* Vaguely,[wait:5] if anything.", "nervous_left", "jamm")
@@ -849,7 +849,29 @@ return {
 			cutscene:text("[voice:alexa]* So![wait:5] How may I blend up your days?")
 		end
 		cutscene:hideNametag()
-		-- TODO: Blend stuff
+		local choice = cutscene:choicer({"Blend", "Nevermind"})
+		if choice == 1 then
+			cutscene:showNametag("Alexa")
+			cutscene:text("[voice:alexa]* Sounds good![wait:5]\n* I'll get your blend ready soon!")
+			cutscene:text("[voice:alexa]* Oh,[wait:5] but first,[wait:5] I'm required to ask something.")
+			cutscene:text("[voice:alexa]* Want me to tell you about our StarB System?")
+			cutscene:hideNametag()
+			if cutscene:choicer({"Yes", "No need"}) == 1 then
+				cutscene:showNametag("Alexa")
+				cutscene:text("[voice:alexa]* Okay, here goes...")
+				cutscene:text("[voice:alexa]* At Starbeans Cafe,[wait:5] you don't have to pay a cent for a blend!")
+				cutscene:text("[voice:alexa]* Instead,[wait:5] you provide the ingredients for them.")
+				cutscene:text("[voice:alexa]* ...Well,[wait:5] it's mostly beans,[wait:5] but...")
+				cutscene:text("[voice:alexa]* Dig for beans and bring them here,[wait:5] and I'll blend them.")
+				cutscene:text("[voice:alexa]* Simple enough,[wait:5] right?")
+			end
+			cutscene:showNametag("Alexa")
+			cutscene:text("[voice:alexa]* So,[wait:5] what'll be your blend today?")
+			cutscene:hideNametag()
+			
+			Game.world:openMenu(BlendMenu())
+		end
+		cutscene:hideNametag()
     end,
 
     ---@param cutscene WorldCutscene
