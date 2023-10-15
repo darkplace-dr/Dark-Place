@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 61,
+  nextobjectid = 67,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty",
@@ -876,6 +876,86 @@ return {
           shape = "point",
           x = 360,
           y = 800,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 61,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 160,
+          y = 840,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 62,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 720,
+          y = 720,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 63,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 360,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 65,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 160,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
+          }
+        },
+        {
+          id = 66,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 640,
+          y = 240,
           width = 0,
           height = 0,
           rotation = 0,

@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 15,
+  nextobjectid = 18,
   properties = {
     ["music"] = "forgotten_wood"
   },
@@ -18,8 +18,7 @@ return {
     {
       name = "forgotten_wood",
       firstgid = 1,
-      filename = "../../../tilesets/forgotten_wood.tsx",
-      exportfilename = "../../../tilesets/forgotten_wood.lua"
+      filename = "../../../tilesets/forgotten_wood.tsx"
     }
   },
   layers = {
@@ -325,6 +324,54 @@ return {
           properties = {
             ["cutscene"] = "tombsite.transition_2",
             ["once"] = false
+          }
+        },
+        {
+          id = 15,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 560,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "binaribeans",
+            ["name"] = "Binaribean"
+          }
+        },
+        {
+          id = 16,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 480,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "binaribeans",
+            ["name"] = "Binaribean"
+          }
+        },
+        {
+          id = 17,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 440,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "binaribeans",
+            ["name"] = "Binaribean"
           }
         }
       }

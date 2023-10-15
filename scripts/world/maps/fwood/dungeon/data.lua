@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 7,
+  nextobjectid = 9,
   properties = {},
   tilesets = {
     {
@@ -251,6 +251,38 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "tombsite.door"
+          }
+        },
+        {
+          id = 7,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 400,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "binaribeans",
+            ["name"] = "Binaribean"
+          }
+        },
+        {
+          id = 8,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "binaribeans",
+            ["name"] = "Binaribean"
           }
         }
       }

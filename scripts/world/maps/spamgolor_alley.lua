@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 14,
+  nextobjectid = 18,
   properties = {
     ["border"] = "simple",
     ["name"] = "Mysterious Alleyway"
@@ -73,7 +73,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 0,
@@ -86,7 +86,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 320,
@@ -99,7 +99,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1080,
           y = 0,
@@ -112,7 +112,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 960,
           y = 0,
@@ -125,7 +125,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 160,
@@ -138,7 +138,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 0,
@@ -167,7 +167,7 @@ return {
         {
           id = 7,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = -40,
@@ -183,7 +183,7 @@ return {
         {
           id = 8,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1000,
           y = -40,
@@ -199,7 +199,7 @@ return {
         {
           id = 11,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 200,
@@ -215,7 +215,7 @@ return {
         {
           id = 13,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 880,
           y = 260,
@@ -226,6 +226,70 @@ return {
           properties = {
             ["actor"] = "spamgolor",
             ["flagcheck"] = "!spamgolor_defeated"
+          }
+        },
+        {
+          id = 14,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 320,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 15,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 640,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 16,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 1040,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 17,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 240,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
           }
         }
       }
@@ -247,7 +311,7 @@ return {
         {
           id = 9,
           name = "entrance",
-          class = "",
+          type = "",
           shape = "point",
           x = 160,
           y = 80,
@@ -260,7 +324,7 @@ return {
         {
           id = 10,
           name = "exit",
-          class = "",
+          type = "",
           shape = "point",
           x = 1040,
           y = 80,
@@ -273,7 +337,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 160,
           y = 260,
