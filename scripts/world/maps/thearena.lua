@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 17,
+  nextobjectid = 21,
   properties = {
     ["border"] = "whitespace",
     ["music"] = "kssu_arena",
@@ -30,7 +30,7 @@ return {
       exportfilename = "../tilesets/city_alleyway.lua"
     },
     {
-      name = "objects",
+      name = "devroom-objects",
       firstgid = 325,
       filename = "../tilesets/devroom-objects.tsx",
       exportfilename = "../tilesets/devroom-objects.lua"
@@ -229,6 +229,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 18,
+          name = "wardrobe_unstuck",
+          type = "",
+          shape = "point",
+          x = 300,
+          y = 260,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -333,6 +346,19 @@ return {
           height = 120,
           rotation = 0,
           gid = 338,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 17,
+          name = "wardrobe",
+          type = "",
+          shape = "rectangle",
+          x = 300,
+          y = 200,
+          width = 40,
+          height = 40,
+          rotation = 0,
           visible = true,
           properties = {}
         }
