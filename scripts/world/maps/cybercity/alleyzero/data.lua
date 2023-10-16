@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 18,
+  nextobjectid = 20,
   properties = {},
   tilesets = {
     {
@@ -198,6 +198,23 @@ return {
           visible = true,
           properties = {
             ["item"] = "bp_plus"
+          }
+        },
+        {
+          id = 19,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 820,
+          y = 300,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["count"] = 5,
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
           }
         }
       }
