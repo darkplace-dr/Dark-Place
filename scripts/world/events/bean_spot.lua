@@ -5,6 +5,7 @@ function BeanSpot:init(data)
 	
 	self.name = data.properties["name"]
 	self.flag_inc = data.properties["inc_flag"]
+    self.count = data.properties["count"]
 
     self:setOrigin(0.5, 0.5)
     self:setSprite("world/events/bean_spot")

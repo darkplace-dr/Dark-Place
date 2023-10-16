@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 21,
@@ -33,7 +32,6 @@ return {
       height = 16,
       id = 2,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -66,7 +64,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -186,7 +183,6 @@ return {
       draworder = "topdown",
       id = 7,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -208,7 +204,7 @@ return {
           visible = true,
           properties = {
             ["map"] = "elevator",
-            ["marker"] = "spawn"
+            ["marker"] = "entry_elevator"
           }
         },
         {
@@ -392,7 +388,6 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
