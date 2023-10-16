@@ -53,6 +53,12 @@ function character:init()
     self.menu_icon = "party/jamm/head"
     self.head_icons = "party/jamm/icon"
     self.name_sprite = "party/jamm/name"
+	
+	if Game:getFlag("dungeonkiller") and Game:getFlag("jamm_closure") then
+		self:setActor("jamm_hurt")
+		self:setLightActor("jamm_lw_hurt")
+		self.menu_icon = "party/jamm/head_shadowed"
+	end
 
     self.attack_sprite = "effects/attack/sling"
     self.attack_sound = "sling"

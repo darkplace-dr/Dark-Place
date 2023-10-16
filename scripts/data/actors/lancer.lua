@@ -30,6 +30,10 @@ function actor:init()
 
     -- Table of sprite animations
     self.animations = {
+        ["wave"] = {"wave", 0.05, false},
+        ["up_flip"] = {"up_flip", 0.1, true},
+        ["sleep"] = {"sleep", 0.25, true},
+        ["stone"] = {"stone", 0, true},
         ["highfive"] = {"highfive", 0.08, false},
     }
 
@@ -42,6 +46,8 @@ function actor:init()
         ["walk/up"] = {0, 0},
 		
         ["highfive"] = {-8, -23},
+        ["wave"] = {-2, -3},
+        ["sleep"] = {-2, 6},
     }
 end
 

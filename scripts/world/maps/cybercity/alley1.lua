@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 16,
-  nextobjectid = 128,
+  nextobjectid = 130,
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -350,6 +350,38 @@ return {
           properties = {
             ["actor"] = "notypee",
             ["cutscene"] = "cybercity.notypee"
+          }
+        },
+        {
+          id = 128,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 672,
+          y = 286,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 129,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 280,
+          y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
           }
         }
       }

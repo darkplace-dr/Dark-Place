@@ -79,25 +79,19 @@ return {
                 cutscene:text("* You guys can sleep in the living room.", "happy", "brandon")
                 cutscene:text("* I'd let one of you guys sleep with me,[wait:5] but...", "neutral", "brandon")
                 cutscene:text("* That just feels a bit weird,[wait:5] since well...", "neutral_side", "brandon")
-                cutscene:text("* It just feels off sleeping with someone you aren't super close with.", "frown_side", "brandon")
+                cutscene:text("* None of you guys are really super close with me.", "frown_side", "brandon")
                 cutscene:text("* But uh anyways...", "neutral", "brandon")
                 cutscene:text("* Goodnight guys,[wait:5] sweet dreams!", "joy", "brandon")
                 cutscene:hideNametag()
                 cutscene:wait(cutscene:fadeOut(2, {color = {0, 0, 0}, music = true}))
-                Game:removePartyMember("brandon")
-                -- TODO: Make this actually work
-                --[[local x,y = 300,260
-                Game.world:mapTransition("devhotel/rooms/room_001/entrance", "sleepover")
-                cutscene:detachCamera()
-                cutscene:detachFollowers()
                 if Game:hasPartyMember("YOU") and Game:hasPartyMember("susie") and Game:hasPartyMember("dess") then
-                    cutscene:walkTo("YOU", x, y - 20, 0.1, "up")
-                    cutscene:walkTo("susie", x - 50, y, 0.1, "up")
-                    cutscene:walkTo("dess", x + 50, y, 0.1, "up")
+					Game:removePartyMember("brandon")
+                	local x,y = 300,260
+                	Game.world:mapTransition("devhotel/rooms/room_001/entrance", "sleepover")
                     cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}, music = true}))
-                end]]
+					
+                end
                 cutscene:text("* Everyone had a good night's rest.")
-                Game:addPartyMember("brandon")
                 cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}, music = true}))
             else
                 cutscene:showNametag("Brandon")

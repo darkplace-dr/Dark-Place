@@ -23,4 +23,14 @@ function MinigameHandler:onKeyPressed(key)
 	
 end
 
+function MinigameHandler:endMinigame()
+	if self.resume_world_music then
+		Game.world.music:resume()
+		self.music:pause()
+	end
+	Game.state = "OVERWORLD"
+	self:remove()
+	Game.minigame = nil
+end
+
 return MinigameHandler

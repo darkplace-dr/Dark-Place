@@ -70,14 +70,22 @@ function item:onWorldUse(target)
     self.map_id = Game.world.map.id
     Game.stage.timer:everyInstant(1/30, function()
         if self.map_id ~= Game.world.map.id then
+            for i, party in ipairs(Game.party) do
+                party:setFlag("super_mushroom", nil)
+            end
             return false
         end
         for i, party in ipairs(Game.party) do
             if target == party then
+                party:setFlag("super_mushroom", true)
                 if i == 1 then
-                    Game.world.player:setScale(4)
+                    local player = Game.world.player
+                    player:setScale(4)
+                    player:setHitbox(player.actor.width/4, player.actor.height-6, player.actor.width/2, 7)
                 else
-                    Game.world.followers[i-1]:setScale(4)
+                    local follower = Game.world.followers[i-1]
+                    follower:setScale(4)
+                    follower:setHitbox(follower.actor.width/4, follower.actor.height-6, follower.actor.width/2, 7)
                 end
                 if Game.battle then
                     Game.battle.party[i]:setScale(4)
@@ -94,21 +102,25 @@ function item:onBattleUse(user, target)
     Game.stage.timer:everyInstant(1/30, function()
         if self.map_id ~= Game.world.map.id then
             for i, party in ipairs(Game.party) do
-                Game.party[i].scale = nil
+                party:setFlag("super_mushroom", nil)
             end
             return false
         end
         if Game.battle then
             for i, battler in ipairs(Game.battle.party) do
                 if target == battler then
-                    Game.party[i].scale = true
+                    Game.party[i]:setFlag("super_mushroom", true)
                 end
-                if Game.party[i].scale then
+                if Game.party[i]:getFlag("super_mushroom") then
                     battler:setScale(4)
                     if i == 1 then
-                        Game.world.player:setScale(4)
+                        local player = Game.world.player
+                        player:setScale(4)
+                        player:setHitbox(player.actor.width/4, player.actor.height-6, player.actor.width/2, 7)
                     else
-                        Game.world.followers[i-1]:setScale(4)
+                        local follower = Game.world.followers[i-1]
+                        follower:setScale(4)
+                        follower:setHitbox(follower.actor.width/4, follower.actor.height-6, follower.actor.width/2, 7)
                     end
                 end
             end

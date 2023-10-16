@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 17,
+  nextobjectid = 25,
   properties = {},
   tilesets = {
     {
@@ -183,6 +183,101 @@ return {
           properties = {
             ["flag"] = "Game.inventory:isFull(\"armors\")",
             ["visible"] = true
+          }
+        },
+        {
+          id = 17,
+          name = "chest",
+          type = "",
+          shape = "rectangle",
+          x = 880,
+          y = 280,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["item"] = "bp_plus"
+          }
+        },
+        {
+          id = 19,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 820,
+          y = 300,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 21,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 780,
+          y = 270,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 22,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 860,
+          y = 270,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 23,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 860,
+          y = 340,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 24,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 780,
+          y = 340,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
           }
         }
       }

@@ -161,7 +161,12 @@ function BallJump:draw()
 		else
 			love.graphics.print(score, 6, 0)
 		end
-		love.graphics.print("Press " .. Input.getText("confirm") .. " to jump", 6, 448)
+		if Input.active_gamepad then
+			love.graphics.print("Press        to jump", 6, 448)
+			love.graphics.draw(Input.getTexture("confirm"), 87, 452, 0, 2, 2)
+		else
+			love.graphics.print("Press " .. Input.getText("confirm") .. " to jump", 6, 448)
+		end
 		love.graphics.scale(2,2)
 		for i = 1, self.lives do
 			love.graphics.draw(self.life_icon, -12 + 16 * i, 18)
@@ -186,7 +191,7 @@ function BallJump:draw()
 		love.graphics.printf("All Coins Bonus: " .. (self.all_coins and 1000 or 0), 0, 230, SCREEN_WIDTH, "center")
 		love.graphics.printf("Total: " .. self.total_score, 0, 260, SCREEN_WIDTH, "center")
 		if self.req_score > 0 then
-			if self.total_score > self.req_score then
+			if self.total_score >= self.req_score then
 				love.graphics.printf("Score requirement (" .. self.req_score .. ") met!", 0, 290, SCREEN_WIDTH, "center")
 				if self.flag then
 					Game:setFlag(self.flag, true)
@@ -198,7 +203,12 @@ function BallJump:draw()
 				love.graphics.printf("Score requirement (" .. self.req_score .. ") not met.", 0, 290, SCREEN_WIDTH, "center")
 			end
 		end
-		love.graphics.printf("Press " .. Input.getText("confirm") .. " to continue.", 0, 350, SCREEN_WIDTH, "center")
+		if Input.active_gamepad then
+			love.graphics.printf("Press        to continue.", 0, 350, SCREEN_WIDTH, "center")
+			love.graphics.draw(Input.getTexture("confirm"), (SCREEN_WIDTH/2) - 53, 354, 0, 2, 2)
+		else
+			love.graphics.printf("Press " .. Input.getText("confirm") .. " to continue.", 0, 350, SCREEN_WIDTH, "center")
+		end
 	end
 	
 	if self.state == "DEAD" or self.state == "TRANSITIONOUT3" then
@@ -206,7 +216,12 @@ function BallJump:draw()
 		love.graphics.printf("Oof.", 0, 100, SCREEN_WIDTH, "center")
 		
 		love.graphics.setFont(self.font)
-		love.graphics.printf("Press " .. Input.getText("confirm") .. " to continue.", 0, 350, SCREEN_WIDTH, "center")
+		if Input.active_gamepad then
+			love.graphics.printf("Press        to continue.", 0, 350, SCREEN_WIDTH, "center")
+			love.graphics.draw(Input.getTexture("confirm"), (SCREEN_WIDTH/2) - 53, 354, 0, 2, 2)
+		else
+			love.graphics.printf("Press " .. Input.getText("confirm") .. " to continue.", 0, 350, SCREEN_WIDTH, "center")
+		end
 	end
 	
 	love.graphics.setColor(1, 1, 1, 1)

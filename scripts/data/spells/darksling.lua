@@ -57,10 +57,8 @@ function spell:onCast(user, target)
 		user.parent:addChild(afterimage2)
 	end
 
-	Game.battle.timer:after(0.1/2, function()
-		generateSlash(1)
-		target:hurt(damage, user)
-	end)
+	generateSlash(1)
+	target:hurt(damage, user)
 end
 
 return spell

@@ -32,7 +32,7 @@ function Speen:init()
     )
 end
 
-function Speen:update()
+function Speen:update() -- NOTE: Crashes the mod if used in the first Dess room after Dess bats away your party leader
 	if Input.pressed("s") and not self.is_spinning then
 		if (Game.world and not Game.world.cutscene) and not Game.battle and not Mod.taunt_lock_movement and not OVERLAY_OPEN then
 			self.is_spinning = true

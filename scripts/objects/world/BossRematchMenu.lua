@@ -24,16 +24,17 @@ function BossRematchMenu:init()
     self.up_sprite = Assets.getTexture("ui/page_arrow_up")
     self.down_sprite = Assets.getTexture("ui/page_arrow_down")
     self.soul = Assets.getTexture("player/heart")
+    self.gradient = Assets.getTexture("ui/char_gradient")
 
     self.encounters = {
-        { name = "Spamgolor",     flag = "spamgolor_defeated",    encounter = "spamgolor" },
-        { name = "Mimic",         flag = "mimic_defeated",        encounter = "mimicboss" },
-        { name = "Starwalker",    flag = "starwalker_defeated",   encounter = "starwalker" },
-        { name = "Sam", 	      flag = "sam_defeated", 		  encounter = "sam" },
-        { name = "Zero",          flag = "zero_defeated",         encounter = "zero"},
-        { name = "Omega Spamton", flag = "omegaspamton_defeated", encounter = "omegaspamtonbossfight" },
-        { name = "Google Dino",   flag = "googledino_defeated",   encounter = "googledino" },
-        { name = "Shade Ania",    flag = "jamm_closure",   		  encounter = "ania_boss" },
+        { name = "Spamgolor",     flag = "spamgolor_defeated",    encounter = "spamgolor",             grad_color = {20/255, 60/255, 194/255}  },
+        { name = "Mimic",         flag = "mimic_defeated",        encounter = "mimicboss",             grad_color = {24/255, 94/255, 231/255}  },
+        { name = "Starwalker",    flag = "starwalker_defeated",   encounter = "starwalker",            grad_color = {134/255, 148/255, 183/255}},
+        { name = "Sam",           flag = "sam_defeated",          encounter = "sam",                   grad_color = {0, 0, 1}                  },
+        { name = "Zero",          flag = "zero_defeated",         encounter = "zero",                  grad_color = {136/255, 48/255, 80/255}  },
+        { name = "Omega Spamton", flag = "omegaspamton_defeated", encounter = "omegaspamtonbossfight", grad_color = {93/255, 73/255, 139/255}  },
+        { name = "Google Dino",   flag = "googledino_defeated",   encounter = "googledino",            grad_color = {0.5, 0.5, 0.5}            },
+        { name = "Shade Ania",    flag = "jamm_closure",          encounter = "ania_boss",             grad_color = {92/255, 88/255, 188/255} },
     }
 	
 	self.bosses = {}
@@ -56,7 +57,27 @@ function BossRematchMenu:draw()
     love.graphics.setFont(self.font)
     love.graphics.printf("Bosses", 0, 0, self.width, "center")
     love.graphics.setFont(self.font_2)
-    love.graphics.printf("Press [R] to fight all bosses in a boss rush.", 0, -10, self.width, "center")
+    love.graphics.printf("Press [R] to fight all bosses in a boss rush.", 0, 300, self.width, "center")
+
+    local entry = self.encounters[self.currently_selected]
+	
+    if Game:getFlag(entry.flag) then
+	    love.graphics.setColor(entry.grad_color)
+    end
+
+    love.graphics.draw(self.gradient, 260, 50)
+
+    if Game:getFlag(entry.flag) then
+	    love.graphics.setColor(1, 1, 1)
+    else
+        love.graphics.setColor(0, 0, 0)
+    end
+	
+    --actor being drawn should go here.
+	
+	love.graphics.setColor(1, 1, 1)
+	love.graphics.setLineWidth(2)
+    love.graphics.rectangle("line", 260, 50, 200, 140)
 
     local y_off = 16
 
@@ -81,10 +102,10 @@ function BossRematchMenu:draw()
 
     love.graphics.setColor(1, 1, 1)
     if self.page > 1 then
-        love.graphics.draw(self.up_sprite, 470, 0, 0, 1, 1)
+        love.graphics.draw(self.up_sprite, 230, 0, 0, 1, 1)
     end
     if self.page < #self.encounters - 2 then
-        love.graphics.draw(self.down_sprite, 470, 262, 0, 1, 1)
+        love.graphics.draw(self.down_sprite, 230, 262, 0, 1, 1)
     end
 
     super.draw(self)
@@ -139,7 +160,7 @@ function BossRematchMenu:onKeyPressed(key, is_repeat)
         Game.world:startCutscene(function(cutscene)
             for i, v in ipairs(self.bosses) do
                 -- cutscene:text("* "..#self.bosses-(i-1).." left to go.[wait:10]\n* Up next:[wait:5] "..v[1]..".")
-				cutscene:text("* "..#self.bosses-(i-1).." left to go.[wait:10]\n* Up next:[wait:5] "..v.name..".")
+				cutscene:text("* "..#self.bosses-(i-1).." left to go.[wait:10]\n* Up next:[wait:5]"..v.name..".")
                 Game:encounter(v.encounter, true)
                 cutscene:wait(1)
             end

@@ -618,6 +618,15 @@ function Mod:initializeImportantFlags(new_file)
             end
         end
     end
+	
+	if not new_file and not Game:getFlag("darkess_beans") then
+        likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before the bean spots were added.")
+		Game:setFlag("darkess_beans", 0)
+		Game:setFlag("fountain_beans", 0)
+		Game:setFlag("spam_beans", 0)
+		Game:setFlag("binaribeans", 0)
+	end
 
     ----------
 
@@ -799,6 +808,13 @@ function Mod:onFootstep(char, num)
     end
 end
 
+function Mod:onKeyPressed(key)
+    if Game.world and Game.world.state == "GAMEPLAY" and key == "r" then
+        Assets.stopAndPlaySound("ui_select")
+        Game.world:openMenu(DarkRelationshipsMenu())
+    end
+end
+
 function Mod:getUISkin()
     if self:isOmori() then
         return "omori"
@@ -828,6 +844,10 @@ end
 function Mod:loadObject(world, name, properties)
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
+    end
+    if Game.world.map.id:find("archives/") then
+        self.voidbg = Game.world:spawnObject(VoidBGUT2())
+        self.voidbg.layer = -9999
     end
 end
 

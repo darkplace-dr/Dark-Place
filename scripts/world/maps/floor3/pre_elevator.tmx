@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="45">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="50">
  <editorsettings>
   <export target="pre_elevator.lua" format="lua"/>
  </editorsettings>
@@ -20,7 +20,7 @@
 0,0,0,0,0,10,10,10,10,10,10,3,3,4,5,5,17,14,18,5,5,19,3,3,
 0,0,0,0,0,10,10,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,
 0,0,0,0,0,10,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,10,
-0,0,0,0,0,10,10,10,10,10,11,12,12,13,20,7,12,12,6,10,10,10,10,10,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -41,13 +41,13 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#0000ff" id="2" name="collision" visible="0">
+ <objectgroup color="#0000ff" id="2" name="collision">
   <object id="1" x="440" y="0" width="520" height="240"/>
-  <object id="2" x="200" y="400" width="760" height="40"/>
+  <object id="2" x="200" y="360" width="760" height="40"/>
   <object id="3" x="160" y="0" width="40" height="400"/>
   <object id="34" x="460" y="240" width="60" height="20"/>
   <object id="35" x="540" y="240" width="60" height="20"/>
-  <object id="38" x="216" y="350" width="60" height="40"/>
+  <object id="38" x="216" y="310" width="60" height="40"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
   <object id="5" name="transition" x="200" y="-30" width="240" height="40">
@@ -56,16 +56,16 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="8" name="transition" x="950" y="240" width="40" height="160">
+  <object id="8" name="transition" x="950" y="240" width="40" height="120">
    <properties>
-    <property name="map" value=""/>
+    <property name="map" value="floor3/corridors1"/>
     <property name="marker" value="entry"/>
    </properties>
   </object>
   <object id="9" gid="38" x="460" y="260" width="60" height="90"/>
   <object id="10" gid="38" x="540" y="260" width="60" height="90"/>
   <object id="11" gid="37" x="802" y="240" width="76" height="104"/>
-  <object id="33" gid="36" x="210" y="390" width="74" height="90"/>
+  <object id="33" gid="36" x="210" y="350" width="74" height="90"/>
   <object id="39" name="savepoint" x="680" y="240" width="40" height="40">
    <properties>
     <property name="text1">* (Green[wait:5], green[wait:5], green...)[wait:10]

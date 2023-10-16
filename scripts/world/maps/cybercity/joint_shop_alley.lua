@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 20,
+  nextobjectid = 22,
   properties = {
     ["border"] = "city",
     ["music"] = "deltarune/cybercity"

@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 10,
+  nextobjectid = 11,
   properties = {},
   tilesets = {
     {
@@ -102,7 +102,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -115,7 +115,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 160,
@@ -128,7 +128,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 240,
@@ -157,7 +157,7 @@ return {
         {
           id = 4,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 160,
           y = 440,
@@ -170,7 +170,7 @@ return {
         {
           id = 5,
           name = "hall_exit",
-          class = "",
+          type = "",
           shape = "point",
           x = 600,
           y = 200,
@@ -199,7 +199,7 @@ return {
         {
           id = 7,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 480,
@@ -215,7 +215,7 @@ return {
         {
           id = 8,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 120,
@@ -233,7 +233,7 @@ return {
         {
           id = 9,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 160,
@@ -244,6 +244,22 @@ return {
           properties = {
             ["cutscene"] = "everhall.entry",
             ["once"] = false
+          }
+        },
+        {
+          id = 10,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 280,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "darkess_beans",
+            ["name"] = "Darkess Bean"
           }
         }
       }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="16" nextobjectid="128">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="16" nextobjectid="130">
  <editorsettings>
   <export target="alley1.lua" format="lua"/>
  </editorsettings>
@@ -93,6 +93,20 @@
     <property name="actor" value="notypee"/>
     <property name="cutscene" value="cybercity.notypee"/>
    </properties>
+  </object>
+  <object id="128" name="beanspot" x="672" y="286">
+   <properties>
+    <property name="inc_flag" value="spam_beans"/>
+    <property name="name" value="Spam Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="129" name="beanspot" x="280" y="320">
+   <properties>
+    <property name="inc_flag" value="spam_beans"/>
+    <property name="name" value="Spam Bean"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
 </map>

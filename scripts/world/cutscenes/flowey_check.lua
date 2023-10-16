@@ -78,6 +78,7 @@ return function(cutscene, player_name_override)
     or player_name == "BRANDON" 
     or player_name == "BRENDA" 
     or player_name == "LUCY" 
+    or player_name == "BONER"
 	then
         cutscene:wait(2)
 
@@ -185,7 +186,28 @@ return function(cutscene, player_name_override)
             showText("* Although,[wait:5] she is kind of shy in person, I've heard.", "side")
             showText("* So good luck finding her.", "wink")
             cutscene:hideNametag()
-
+        elseif player_name == "BONER" then
+            cutscene:wait(1)
+            flowey:setSprite("pissed")
+            cutscene:wait(1)
+            cutscene:showNametag("Flowey")
+            showText("* Is this a joke?[wait:10] Are you braindead?", "pissed")
+            showText("* Why the hell is your name \"BONER\"?", "pissed")
+            showText("* Wait a minute...", "plain")
+            showText("[voice:flowey2]* You think you're reaaaaally funny,[wait:5] don't you?", "evil")
+            showText("* You want me to say...[wait:10] THAT.", "sassy")
+            showText("* Seriously,[wait:5] that was just a one time thing.", "pissed")
+            showText("[voice:flowey2]* And now EVERYONE calls me the \"Big boner down the lane\" guy!", "evil")
+            showText("* I get people walking up to me on the streets and asking me:", "pissed")
+            showText("[voice:default]* \"Hey aren't you the guy who said 'Big boner down the lane'?\"", "frisk")
+            showText("* And then they ask me to say it like it's my catchphrase or something.", "pissed")
+            showText("* ...", "side")
+            showText("* Alright,[wait:5] fine,[wait:5] if it'll get you to leave me alone then I'll say it.", "pissed")
+            showText("* Okay...", "plain")
+            showText("* Big boner down the lane.", "concerned")
+            showText("* THERE,[wait:5] I SAID IT![wait:10] ARE YOU HAPPY NOW?!", "enraged")
+            showText("* Now leave me alone,[wait:5] asshole.", "pissed")
+            cutscene:hideNametag()
         end
     end
 

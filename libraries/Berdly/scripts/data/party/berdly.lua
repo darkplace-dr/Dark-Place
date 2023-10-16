@@ -34,18 +34,15 @@ function character:init()
     self:addSpell("pacify")
 
     -- Current health (saved to the save file)
-    self.health = 120
+    self.health = 200
 
     -- Base stats (saved to the save file)
+    -- DO NOT CHANGE THESE PLEASE I BEG OF YOU
     self.stats = {
-        health = 120,
-        attack = 14,
-        defense = 2,
-        magic = 1
-    }
-    -- Max stats from level-ups
-    self.max_stats = {
-        health = 160
+        health = 200,
+        attack = 8,
+        defense = 4,
+        magic = 2
     }
 
     -- Weapon icon in equip menu
@@ -118,6 +115,13 @@ function character:onLevelUp(level)
         self:increaseStat("attack", 1)
 		self:increaseStat("magic", 1)
     end
+end
+
+function character:onLevelUpLVLib(level)
+    self:increaseStat("health", 15)
+    self:increaseStat("attack", 1)
+    self:increaseStat("defense", 2)
+	self:increaseStat("magic", 1)
 end
 
 function character:drawPowerStat(index, x, y, menu)

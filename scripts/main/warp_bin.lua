@@ -34,6 +34,7 @@ Mod.warp_bin_codes = {
 	["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
     ["DUMBIERM"] = { result = "dumbierm" },
 	["GARRYMOD"] = { result = "missing" },
+	["JOHNWICK"] = { result = "archives/starting_room" },
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
     ["WTF1998S"] = {
         result = function(cutscene)

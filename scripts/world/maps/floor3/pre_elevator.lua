@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 45,
+  nextobjectid = 50,
   properties = {
     ["music"] = "greenroom",
     ["name"] = "Floor 3 - Elevator Hallway"
@@ -57,7 +57,7 @@ return {
         0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 3, 3, 4, 5, 5, 17, 14, 18, 5, 5, 19, 3, 3,
         0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 11, 12, 12, 13, 20, 7, 12, 12, 6, 10, 10, 10,
         0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 11, 12, 12, 13, 20, 7, 12, 12, 6, 10, 10, 10, 10,
-        0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 11, 12, 12, 13, 20, 7, 12, 12, 6, 10, 10, 10, 10, 10,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
@@ -100,7 +100,7 @@ return {
       id = 2,
       name = "collision",
       class = "",
-      visible = false,
+      visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -127,7 +127,7 @@ return {
           class = "",
           shape = "rectangle",
           x = 200,
-          y = 400,
+          y = 360,
           width = 760,
           height = 40,
           rotation = 0,
@@ -179,7 +179,7 @@ return {
           class = "",
           shape = "rectangle",
           x = 216,
-          y = 350,
+          y = 310,
           width = 60,
           height = 40,
           rotation = 0,
@@ -226,11 +226,11 @@ return {
           x = 950,
           y = 240,
           width = 40,
-          height = 160,
+          height = 120,
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "",
+            ["map"] = "floor3/corridors1",
             ["marker"] = "entry"
           }
         },
@@ -282,7 +282,7 @@ return {
           class = "",
           shape = "rectangle",
           x = 210,
-          y = 390,
+          y = 350,
           width = 74,
           height = 90,
           rotation = 0,

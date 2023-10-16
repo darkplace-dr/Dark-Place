@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 16,
+  nextobjectid = 18,
   properties = {
     ["music"] = "forgotten_wood",
     ["name"] = "F. Wood - Entrance"
@@ -19,8 +19,7 @@ return {
     {
       name = "forgotten_wood",
       firstgid = 1,
-      filename = "../../../tilesets/forgotten_wood.tsx",
-      exportfilename = "../../../tilesets/forgotten_wood.lua"
+      filename = "../../../tilesets/forgotten_wood.tsx"
     },
     {
       name = "city_alleyway",
@@ -279,6 +278,38 @@ return {
           properties = {
             ["cutscene"] = "spamroom.warpbin",
             ["solid"] = true
+          }
+        },
+        {
+          id = 16,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 400,
+          y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "binaribeans",
+            ["name"] = "Binaribean"
+          }
+        },
+        {
+          id = 17,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 240,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "binaribeans",
+            ["name"] = "Binaribean"
           }
         }
       }
