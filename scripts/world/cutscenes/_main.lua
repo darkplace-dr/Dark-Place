@@ -317,14 +317,8 @@ return {
 			
 			cutscene:wait(0.5)
 			
-            if event.count and event.count > 1 then
-                -- "* Lancer dug up N Beans."
-                cutscene:text("* Lancer dug up " .. event.count .. " " .. event.name .. "s.")
-                Game:addFlag(event.flag_inc, event.count)
-            else
-			    cutscene:text("* Lancer dug up a " .. event.name .. ".")
-                Game:addFlag(event.flag_inc, 1)
-            end
+			cutscene:text("* Lancer dug up a " .. event.name .. ".")
+			Game:addFlag(event.flag_inc, 1)
 			event:setFlag("dont_load", true)
 			
 			event:remove()
