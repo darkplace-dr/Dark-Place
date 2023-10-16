@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -18,6 +19,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -98,6 +100,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -150,15 +153,19 @@ return {
             ["color_1"] = "#ff414185",
             ["color_2"] = "#ff455a8d",
             ["color_3"] = "#ffa8e483",
+            ["color_4"] = "#ff00aa00",
             ["dest_1"] = "room1",
             ["dest_2"] = "floor2/lounge",
             ["dest_3"] = "floor3/elevator_hall",
+            ["dest_4"] = "deoxtest",
             ["length_1"] = 80,
             ["length_2"] = 80,
             ["length_3"] = 80,
+            ["length_4"] = 80,
             ["name_1"] = "Floor 1",
             ["name_2"] = "Floor 2",
-            ["name_3"] = "Floor 3"
+            ["name_3"] = "Floor 3",
+            ["name_4"] = "Deoxtest"
           }
         }
       }
@@ -168,6 +175,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
