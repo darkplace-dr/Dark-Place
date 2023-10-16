@@ -186,7 +186,7 @@ function BallJump:draw()
 		love.graphics.printf("All Coins Bonus: " .. (self.all_coins and 1000 or 0), 0, 230, SCREEN_WIDTH, "center")
 		love.graphics.printf("Total: " .. self.total_score, 0, 260, SCREEN_WIDTH, "center")
 		if self.req_score > 0 then
-			if self.total_score > self.req_score then
+			if self.total_score >= self.req_score then
 				love.graphics.printf("Score requirement (" .. self.req_score .. ") met!", 0, 290, SCREEN_WIDTH, "center")
 				if self.flag then
 					Game:setFlag(self.flag, true)
