@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="20">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="25">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -72,7 +72,34 @@
   </object>
   <object id="19" name="beanspot" x="820" y="300">
    <properties>
-    <property name="count" type="int" value="5"/>
+    <property name="inc_flag" value="spam_beans"/>
+    <property name="name" value="Spam Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="21" name="beanspot" x="780" y="270">
+   <properties>
+    <property name="inc_flag" value="spam_beans"/>
+    <property name="name" value="Spam Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="22" name="beanspot" x="860" y="270">
+   <properties>
+    <property name="inc_flag" value="spam_beans"/>
+    <property name="name" value="Spam Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="23" name="beanspot" x="860" y="340">
+   <properties>
+    <property name="inc_flag" value="spam_beans"/>
+    <property name="name" value="Spam Bean"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="24" name="beanspot" x="780" y="340">
+   <properties>
     <property name="inc_flag" value="spam_beans"/>
     <property name="name" value="Spam Bean"/>
    </properties>

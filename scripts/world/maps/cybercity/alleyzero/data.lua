@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 20,
+  nextobjectid = 25,
   properties = {},
   tilesets = {
     {
@@ -212,7 +212,70 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["count"] = 5,
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 21,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 780,
+          y = 270,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 22,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 860,
+          y = 270,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 23,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 860,
+          y = 340,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["inc_flag"] = "spam_beans",
+            ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 24,
+          name = "beanspot",
+          type = "",
+          shape = "point",
+          x = 780,
+          y = 340,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
             ["inc_flag"] = "spam_beans",
             ["name"] = "Spam Bean"
           }
