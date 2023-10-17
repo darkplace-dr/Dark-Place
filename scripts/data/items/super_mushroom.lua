@@ -80,12 +80,14 @@ function item:onWorldUse(target)
                 party:setFlag("super_mushroom", true)
                 if i == 1 then
                     local player = Game.world.player
-                    player:setScale(4)
-                    player:setHitbox(player.actor.width/4, player.actor.height-6, player.actor.width/2, 7)
+                    player.sprite:setScale(2)
+                    player.sprite.x = -player.actor.width/2
+                    player.sprite.y = -player.actor.height
                 else
                     local follower = Game.world.followers[i-1]
-                    follower:setScale(4)
-                    follower:setHitbox(follower.actor.width/4, follower.actor.height-6, follower.actor.width/2, 7)
+                    follower.sprite:setScale(2)
+                    follower.sprite.x = -follower.actor.width/2
+                    follower.sprite.y = -follower.actor.height
                 end
                 if Game.battle then
                     Game.battle.party[i]:setScale(4)
@@ -115,12 +117,14 @@ function item:onBattleUse(user, target)
                     battler:setScale(4)
                     if i == 1 then
                         local player = Game.world.player
-                        player:setScale(4)
-                        player:setHitbox(player.actor.width/4, player.actor.height-6, player.actor.width/2, 7)
+                        player.sprite:setScale(2)
+                        player.sprite.x = -player.actor.width/2
+                        player.sprite.y = -player.actor.height
                     else
                         local follower = Game.world.followers[i-1]
-                        follower:setScale(4)
-                        follower:setHitbox(follower.actor.width/4, follower.actor.height-6, follower.actor.width/2, 7)
+                        follower.sprite:setScale(2)
+                        follower.sprite.x = -follower.actor.width/2
+                        follower.sprite.y = -follower.actor.height
                     end
                 end
             end
