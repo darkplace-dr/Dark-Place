@@ -126,15 +126,9 @@ function DarkPartyMenu:onKeyPressed(key)
 			end
 			
 			-- Step 4: Set all followers
-			if Game.world.followers[3] then
-				Game.world.followers[3]:remove()
-			end
-			if Game.world.followers[2] then
-				Game.world.followers[2]:remove()
-			end
-			if Game.world.followers[1] then
-				Game.world.followers[1]:remove()
-			end
+            for i, follower in ipairs(Game.world.followers) do
+                follower:remove()
+            end
 			Game.world.player:setActor(Game.party[1].actor)
 			for k,v in pairs(Game.party) do
 				if k > 1 then
