@@ -210,8 +210,10 @@ return {
             return
         end
 
+        cutscene:shakeCamera(2, 2)
+        Assets.playSound("impact", 0.6)
+        Assets.playSound("screenshake")
         Game:setFlag("BorDoorCodeUnlocked", true)
-        event.sprite:set("bordoor_open")
         cutscene:text("* Door unlocked.")
 
         cutscene:mapTransition("floor2/roombor", "entryup", "up")
