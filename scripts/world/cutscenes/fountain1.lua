@@ -40,6 +40,10 @@ return function(cutscene)
         { initial = {250, 640}, walk_up = {420, 10} },
         { initial = {380, 640}, walk_up = {420, 10} },
         { initial = {320, 680}, walk_up = {440, 10} },
+        { initial = {180, 680}, walk_up = {440, 10} },
+        { initial = {450, 680}, walk_up = {440, 10} },
+        { initial = {250, 720}, walk_up = {460, 10} },
+        { initial = {380, 720}, walk_up = {460, 10} },
     }
     local party_walk_up_wait = nil
     for i, member in ipairs(members) do
