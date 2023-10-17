@@ -115,18 +115,14 @@ function DarkPartyMenu:onKeyPressed(key)
 			end
 		
 			-- Step 2: Remove every party member
-			for k,chara in ipairs(Game.party) do
-				Game:setFlag(chara.id .. "_party", false)
-			end
 			Game.party = {}
 			
 			-- Step 3: Set all available slots to random
-			local val = math.min(#self.listreference, 4)
+			local val = math.min(#self.listreference, Game:getFlag("party_max"))
 			local indexes = Utils.pickMultiple(temp, val)
 			for i=1, #indexes do
 				local id = indexes[i]
 				Game:addPartyMember(id)
-				Game:setFlag(id.."_party", true)
 			end
 			
 			-- Step 4: Set all followers
