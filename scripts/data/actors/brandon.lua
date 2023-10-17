@@ -67,7 +67,7 @@ function actor:init()
         ["battle/hurt"]         = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
         ["battle/defeat"]       = {"battle/defeat", 1/15, false},
 
-        ["battle/transition"]   = {"sword_jump_down", 0.2, true},
+        --["battle/transition"]   = {"sword_jump_down", 0.2, true}, --until we get an animation for this, I commenting it out for now, just so it doesn't appear as an error in the console, lol. - J.A.R.U.
         ["battle/intro"]        = {"battle/attack", 1/15, true},
         ["battle/victory"]      = {"battle/victory", 1/10, false}
     }
