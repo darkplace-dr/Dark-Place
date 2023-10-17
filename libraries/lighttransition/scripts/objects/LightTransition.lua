@@ -12,7 +12,7 @@ function LightTransition:init(x, y, data)
 	self.circle = Assets.getTexture("ui/lightcircle")
 	self.pillar = Assets.getTexture("ui/lightpillar")
 	
-	self.layer = 500000
+	self.layer = WORLD_LAYERS["below_ui"]
 	
 	self:setScale(1.5, 2)
 
@@ -75,9 +75,14 @@ function LightTransition.cutscene(cutscene, self, player)
 	local event = self.parent
 	local settings = self.cutsceneSettings
 	
-	local kris_only = self.kris_only
-    local kris = Mod:getLeader("chara")
-    local susie = cutscene:getCharacter("susie")
+	local kris_only = false
+	if Game.party[2] == nil then -- If no second member, assume empty party
+		kris_only = true
+	end
+    local p1 = cutscene:getCharacter(Game.party[1].actor.id)
+	local p2 if Game.party[2] then p2 = cutscene:getCharacter(Game.party[2].actor.id) end
+	local p3 if Game.party[3] then p3 = cutscene:getCharacter(Game.party[3].actor.id) end
+	local p4 if Game.party[4] then p4 = cutscene:getCharacter(Game.party[4].actor.id) end
     local ralsei = cutscene:getCharacter("ralsei")
 	
 	local distance = settings.walk_distance
@@ -85,12 +90,26 @@ function LightTransition.cutscene(cutscene, self, player)
 	
 	do
 		local toY = event.y + self.collider.radius
+		if p3 then toY = toY + 20 end
 		
-		cutscene:walkTo(kris, event.x + ((kris_only and 0) or distance), toY, wait, 'down', true)
+		cutscene:walkTo(p1, event.x + ((kris_only and 0) or 48), toY, 0.8, 'down', true)
 		
-		if susie and not self.kris_only then
-			cutscene:walkTo(susie, event.x - distance, toY, wait, 'down', true)
+		if p2 and not kris_only then
+			cutscene:walkTo(p2, event.x - 48, toY, 0.8, 'down', true)
 		end
+
+		if p3 and not kris_only then
+			if not p4 then
+				cutscene:walkTo(p3, event.x, toY - 30, 0.8, 'down', true)
+			else
+				cutscene:walkTo(p3, event.x + 28, toY - 30, 0.8, 'down', true)
+			end
+		end
+
+		if p4 and not kris_only then
+			cutscene:walkTo(p4, event.x - 28, toY - 30, 0.8, 'down', true)
+		end
+
 	end
 	
 	cutscene:wait(wait + settings.afterWalk_wait)
@@ -100,27 +119,66 @@ function LightTransition.cutscene(cutscene, self, player)
 
 	cutscene:playSound("dtrans_lw")
 	
-	-- kris
-    kris.visible = false
-	local fakeKris = Sprite(kris.actor.path.."/dark_transition/dark", kris.x - 29, kris.y - 86)
-	fakeKris.physics.speed_y = settings.fake_speed_y
-	fakeKris.physics.gravity = settings.fake_gravity
-	fakeKris:setAnimation{kris.actor.path.."/dark_transition/dark", 0.1, true}
-	fakeKris:setScale(2)
-	Game.world:spawnObject(fakeKris, settings.fake_layer)
+	-- Do we need to do this? why not just... do this to the actual characters?
+	-- p1
+    p1.visible = false
+	local fake_p1 = Sprite("party/"..p1.actor.id:lower().."/dark_transition/dark", p1.x, p1.y)
+	fake_p1.physics.speed_y = settings.fake_speed_y
+	fake_p1.physics.gravity = settings.fake_gravity
+	fake_p1:setAnimation{"party/"..p1.actor.id:lower().."/dark_transition/dark", 0.1, true}
+	fake_p1:setScale(2)
+	fake_p1:setOrigin(0.5, 1)
+	Game.world:spawnObject(fake_p1, settings.fake_layer)
 
-	
-	-- sus
-	local fakeSusie
-	if susie and not kris_only then
-		susie.visible = false
-		fakeSusie = Sprite("party/susie/dark_transition/dark", susie.x - 29, susie.y - 86)
-		fakeSusie.physics.speed_y = settings.fake_speed_y
-		fakeSusie.physics.gravity = settings.fake_gravity
-		fakeSusie:setAnimation{"party/susie/dark_transition/dark", 0.1, true}
-		fakeSusie:setScale(2)
-		Game.world:spawnObject(fakeSusie, settings.fake_layer)
+
+
+	-- p2
+	if p2 and not kris_only then
+		p2.visible = false
+		local fake_p2 = Sprite("party/"..p2.actor.id:lower().."/dark_transition/dark", p2.x, p2.y)
+		fake_p2.physics.speed_y = settings.fake_speed_y
+		fake_p2.physics.gravity = settings.fake_gravity
+		fake_p2:setAnimation{"party/"..p2.actor.id:lower().."/dark_transition/dark", 0.1, true}
+		fake_p2:setScale(2)
+		fake_p2:setOrigin(0.5, 1)
+		Game.world:spawnObject(fake_p2, settings.fake_layer)
 	end
+
+
+
+	-- p3
+	if p3 and not kris_only then
+		p3.visible = false
+		local fake_p3 = Sprite("party/"..p3.actor.id:lower().."/dark_transition/dark", p3.x, p3.y)
+		Log:print("party/"..p3.actor.id:lower().."/dark_transition/dark")
+		fake_p3.physics.speed_y = settings.fake_speed_y
+		fake_p3.physics.gravity = settings.fake_gravity
+		fake_p3:setAnimation{"party/"..p3.actor.id:lower().."/dark_transition/dark", 0.1, true}
+		fake_p3:setScale(2)
+		fake_p3:setOrigin(0.5, 1)
+		Game.world:spawnObject(fake_p3, settings.fake_layer)
+	end
+
+
+
+	-- p4
+	if p4 and not kris_only then
+		p4.visible = false
+		local fake_p4 = Sprite("party/"..p4.actor.id:lower().."/dark_transition/dark", p4.x, p4.y)
+		Log:print("party/"..p4.actor.id:lower().."/dark_transition/dark")
+		fake_p4.physics.speed_y = settings.fake_speed_y
+		fake_p4.physics.gravity = settings.fake_gravity
+		fake_p4:setAnimation{"party/"..p4.actor.id:lower().."/dark_transition/dark", 0.1, true}
+		fake_p4:setScale(2)
+		fake_p4:setOrigin(0.5, 1)
+		Game.world:spawnObject(fake_p4, settings.fake_layer)
+	end
+	--]]
+
+	--p1.physics.speed_y = settings.fake_speed_y
+	--p1.physics.gravity = settings.fake_gravity
+	--p1:setAnimation{p1.actor.path.."/dark_transition/dark", 0.1, true}
+
 	
 	self:beforeFadeCallback()
 
@@ -130,11 +188,11 @@ function LightTransition.cutscene(cutscene, self, player)
 	cutscene:loadMap(self.newMap.name, self.newMap.marker, self.newMap.facing)
 	self:afterFadeCallback()
 	
-	fakeKris:remove()
-	if fakeSusie then fakeSusie:remove() end
-    kris.visible = true
-	if susie then
-    	susie.visible = true
+	fake_p1:remove()
+	if fake_p2 then fake_p2:remove() end
+    p1.visible = true
+	if p2 then
+    	p2.visible = true
 	end
 	cutscene:fadeOut(0)
 	cutscene:fadeIn(settings.fadeIn_speed, {color = {1, 1, 1}})

@@ -75,11 +75,11 @@ function character:init()
     self.xact_color = nil
 
     -- Head icon in the equip / power menu
-    self.menu_icon = "party/osw/head"
+    self.menu_icon = "party/ostarwalker/head"
     -- Path to head icons used in battle
-    self.head_icons = "party/osw/icon"
+    self.head_icons = "party/ostarwalker/icon"
     -- Name sprite (optional)
-    self.name_sprite = "party/osw/name"
+    self.name_sprite = "party/ostarwalker/name"
 
     -- Effect shown above enemy after attacking it
     self.attack_sprite = "effects/attack/slap_n"
