@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 44,
@@ -10,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 94,
+  nextobjectid = 96,
   properties = {
     ["music"] = "greenroom",
     ["name"] = "Dev Diner - Dining Area"
@@ -35,7 +34,6 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects_bg",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -53,7 +51,6 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -82,7 +79,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects_props",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -140,7 +136,6 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -468,7 +463,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -762,6 +756,19 @@ return {
             ["map"] = "starbeans",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 95,
+          name = "confettigen",
+          type = "",
+          shape = "point",
+          x = 420,
+          y = 0,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -770,7 +777,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

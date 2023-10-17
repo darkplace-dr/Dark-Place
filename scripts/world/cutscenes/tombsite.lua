@@ -352,13 +352,13 @@ return {
 					cutscene:detachFollowers()
 					cutscene:walkTo(Game.world.player, x + 20, y + 150, 0.75, "up")
 					for i, v in ipairs(Game.world.followers) do
-						if i == 1 then
-							cutscene:walkTo(v, x + 80, y + 150, 0.75, "up")
-						elseif i == 2 then
-							cutscene:walkTo(v, x + 20, y + 200, 0.75, "up")
-						elseif i == 3 then
-							cutscene:walkTo(v, x + 80, y + 200, 0.75, "up")
-						end
+                        local transformed_x = (i+1 - 1) % 2
+                        local transformed_y = math.floor((i+1 - 1) / 2)
+
+                        -- Transform the grid into coordinates
+                        local offset_x = transformed_x * 120
+                        local offset_y = transformed_y * 40
+                        cutscene:walkTo(v, offset_x + x + 20, offset_y + y + 150, 0.75, "up")
 					end
 					cutscene:showNametag("Jamm")
 					cutscene:text("* I can give it a shot.", "smile", "jamm")
