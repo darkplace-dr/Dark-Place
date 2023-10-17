@@ -67,6 +67,7 @@
   <object id="44" name="npc" x="340" y="200">
    <properties>
     <property name="actor" value="lancer"/>
+    <property name="cond" value="Game:getFlag(&quot;hasObtainedLancer&quot;) == false"/>
     <property name="cutscene" value="floor2.lancer_obtain"/>
    </properties>
    <point/>
@@ -74,17 +75,8 @@
   <object id="45" name="script" x="0" y="0" width="640" height="480">
    <properties>
     <property name="cutscene" value="floor2.meet_lancer"/>
-    <property name="once" type="bool" value="false"/>
+    <property name="once" type="bool" value="true"/>
    </properties>
-  </object>
- </objectgroup>
- <objectgroup color="#00aa00" id="6" name="controllers">
-  <object id="46" name="toggle" x="480" y="120">
-   <properties>
-    <property name="flag" value="!lancer_item"/>
-    <property name="target" type="object" value="44"/>
-   </properties>
-   <point/>
   </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">

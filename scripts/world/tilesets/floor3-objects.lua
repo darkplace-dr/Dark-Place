@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 8,
+  tilecount = 9,
   tiles = {
     {
       id = 0,
@@ -72,6 +72,12 @@ return {
       image = "../../../assets/sprites/world/maps/floor3/gr_elevatordoor.png",
       width = 38,
       height = 52
+    },
+    {
+      id = 8,
+      image = "../../../assets/sprites/world/maps/floor3/sign.png",
+      width = 40,
+      height = 23
     }
   }
 }

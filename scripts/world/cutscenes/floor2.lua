@@ -306,6 +306,7 @@ return {
 
         cutscene:gotoCutscene("TimeVortexCutscene", "roombor")
     end,
+
     meet_lancer = function(cutscene, event)
         local leader = Mod:getLeader("chara")
         local susie = cutscene:getCharacter("susie")
@@ -342,7 +343,7 @@ return {
 
             cutscene:wait(cutscene:walkTo(susie, susie.x, 300, 0.4))
             cutscene:wait(cutscene:walkTo(susie, 400, susie.y, 0.25))
-            cutscene:wait(cutscene:walkTo(susie, susie.x, 240, 0.2))
+            cutscene:wait(cutscene:walkTo(susie, susie.x, 236, 0.2))
 
             susie:setFacing("left")
             lancer:setFacing("right")
@@ -365,12 +366,12 @@ return {
             lancer:setSprite("walk")
             lancer:setFacing("right")
 
-            cutscene:text("* I really don't know!", "tongue_b", "lancer")
+            cutscene:text("* I actually don't know!", "tongue_b", "lancer")
             cutscene:text("* There I was,[wait:5] residing in Kris' Spacious Pants Hole...[react:1]", "handsome", "lancer", {reactions={
-                {"Uhhh, pocket.", "right", "bottommid", "nervous_side", "susie"}
+                {"Uhhh, pocket.", "rightmid", "bottom", "nervous_side", "susie"}
             }})
             cutscene:text("* When all of a sudden,[wait:5] I fell out and somehow ended up here!", "tongue_b", "lancer")
-            cutscene:text("* Speaking of Kris,[wait:2] where DID those two clowns run off too?", "confused_b", "lancer")
+            cutscene:text("* Speaking of them,[wait:2] where DID those clowns run off too?", "confused_b", "lancer")
             cutscene:text("* Aren't they usually with you?", "confused_b", "lancer")
 
             susie:setSprite("away_scratch")
@@ -378,33 +379,34 @@ return {
             cutscene:text("* Yeah...[wait:5] they, uh,[wait:2] kinda vanished on me, heh.", "nervous_side", "susie")
             cutscene:text("* Not really sure where they are either.", "nervous", "susie")
 			
-            susie:setSprite("away_scratch")
+            susie:setSprite("walk")
+            susie:setFacing("left")
 
             lancer:setFacing("down")
             cutscene:wait(2)
 
-            if leader.actor.id == "YOU" then
-                cutscene:text("* Say[speed:0.5]...[wait:5]\n[speed:1]* Who's that lanky amphibian fellow over there?", "tongue_c", "lancer")
-            end
+            cutscene:text("* Say[speed:0.5]...[wait:5]\n[speed:1]* Who are those guys over there?", "tongue_c", "lancer")
+
+            susie:setFacing("down")
 
             susie:resetSprite()
             lancer:resetSprite()
             lancer_theme:stop()
-            Game.world.music:fade(1, 0.25)
+            Game.world.music:fade(1, 0.5)
 
             cutscene:text("* NOTE:[wait:10] This cutscene is a very big WIP,[wait:5] so there's obviously gonna be some bugs.")
-            cutscene:text("* Stay tuned for the full thing.[wait:10]\n- J.A.R.U.")
+            cutscene:text("* But for now, I'll just give you Lancer so the Bean mechanic has a purpose.")
+
+            lancer:remove()
+            Game.inventory:tryGiveItem("lancer")
+            Assets.playSound("item")
+            Game:setFlag("hasObtainedLancer", true)
+            cutscene:wait(1)
+			
+            cutscene:text("* Stay tuned for the finished cutscene.[wait:10]\n- J.A.R.U.")
+
+            cutscene:interpolateFollowers()
+            cutscene:attachFollowers()
         end
     end,
-
-    lancer_obtain = function(cutscene, event)
-        local leader = Mod:getLeader("chara")
-        local lancer = cutscene:getCharacter("lancer")
-
-        cutscene:text("So,[wait:5] have you changed your mind?", "smile", "lancer")
-
-        if cutscene:choicer({ "Yes", "No" }) == 1 then
-            return
-        end
-    end
 }

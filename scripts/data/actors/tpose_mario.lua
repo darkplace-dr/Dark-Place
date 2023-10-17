@@ -9,6 +9,9 @@ function actor:init()
     -- Width and height for this actor, used to determine its center
     self.width = 24
     self.height = 32
+    
+    -- Hitbox for this actor in the overworld (optional, uses width and height by default)
+    self.hitbox = {4, 20, 16, 12}
 
     -- Whether this actor flips horizontally (optional, values are "right" or "left", indicating the flip direction)
     self.flip = nil
