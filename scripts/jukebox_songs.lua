@@ -494,6 +494,7 @@ return {
   },
   {
     name = "The Penis (Eek!)", -- Hehe I changed it to its actual name you cowards - BrendaK7200
+    -- I could've sworn "Eek!" was its actual name. - Agent 7
     file = "eek",
     composer = "surasshu",
     -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
@@ -621,6 +622,14 @@ return {
     released = "2000",
     -- recorded in Polished Crystal, though there seems to be no changes made
     origin = "Pokémon Gold/Silver"
+  },
+  {
+    name = "Burned Tower ~ HGSS Version",
+    file = "burned_hgss",
+    composer = "Junichi Masuda",
+    released = "2009",
+    -- ripped from the HeartGold ROM using vgmtrans
+    origin = "Pokémon HeartGold/SoulSilver"
   },
   {
     name = "All for Now",

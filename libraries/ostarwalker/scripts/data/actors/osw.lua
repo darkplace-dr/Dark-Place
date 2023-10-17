@@ -19,7 +19,7 @@ function actor:init()
     self.flip = "left"
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "party/osw/dark"
+    self.path = "party/ostarwalker/dark"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
 
