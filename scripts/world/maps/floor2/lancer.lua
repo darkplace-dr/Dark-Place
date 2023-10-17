@@ -465,6 +465,7 @@ return {
           visible = true,
           properties = {
             ["actor"] = "lancer",
+            ["cond"] = "Game:getFlag(\"hasObtainedLancer\") == false",
             ["cutscene"] = "floor2.lancer_obtain"
           }
         },
@@ -481,39 +482,7 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "floor2.meet_lancer",
-            ["once"] = false
-          }
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 6,
-      name = "controllers",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 46,
-          name = "toggle",
-          class = "",
-          shape = "point",
-          x = 480,
-          y = 120,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["flag"] = "!lancer_item",
-            ["target"] = { id = 44 }
+            ["once"] = true
           }
         }
       }

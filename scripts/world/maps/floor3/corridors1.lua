@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 59,
+  nextobjectid = 60,
   properties = {
     ["music"] = "greenroom"
   },
@@ -353,7 +353,7 @@ return {
       id = 3,
       name = "collision",
       class = "",
-      visible = false,
+      visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -560,6 +560,22 @@ return {
           gid = 38,
           visible = true,
           properties = {}
+        },
+        {
+          id = 59,
+          name = "transition",
+          class = "",
+          shape = "rectangle",
+          x = 860,
+          y = 720,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "floor3/mike",
+            ["marker"] = "entry"
+          }
         }
       }
     },
@@ -595,7 +611,7 @@ return {
           name = "entry2",
           class = "",
           shape = "point",
-          x = 840,
+          x = 820,
           y = 800,
           width = 0,
           height = 0,

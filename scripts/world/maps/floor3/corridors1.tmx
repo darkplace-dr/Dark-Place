@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="59">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="60">
  <editorsettings>
   <export target="corridors1.lua" format="lua"/>
  </editorsettings>
@@ -111,7 +111,7 @@
   <object id="57" gid="39" x="146" y="640" width="70" height="40"/>
   <object id="58" gid="39" x="210" y="640" width="70" height="40"/>
  </objectgroup>
- <objectgroup color="#0000ff" id="3" name="collision" visible="0">
+ <objectgroup color="#0000ff" id="3" name="collision">
   <object id="1" x="0" y="0" width="280" height="720"/>
   <object id="2" x="440" y="0" width="520" height="720"/>
   <object id="3" x="440" y="840" width="520" height="760"/>
@@ -144,12 +144,18 @@
    </properties>
   </object>
   <object id="27" gid="38" x="480" y="740" width="60" height="90"/>
+  <object id="59" name="transition" x="860" y="720" width="40" height="120">
+   <properties>
+    <property name="map" value="floor3/mike"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="31" name="entry" x="40" y="800">
    <point/>
   </object>
-  <object id="32" name="entry2" x="840" y="800">
+  <object id="32" name="entry2" x="820" y="800">
    <point/>
   </object>
   <object id="33" name="entry4" x="360" y="1560">

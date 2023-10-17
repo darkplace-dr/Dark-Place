@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.9" tiledversion="1.9.0" name="floor3_objects" tilewidth="60" tileheight="102" tilecount="8" columns="0">
+<tileset version="1.9" tiledversion="1.9.0" name="floor3_objects" tilewidth="60" tileheight="102" tilecount="9" columns="0">
  <editorsettings>
   <export target="floor3-objects.lua" format="lua"/>
  </editorsettings>
@@ -27,5 +27,8 @@
  </tile>
  <tile id="7">
   <image width="38" height="52" source="../../../assets/sprites/world/maps/floor3/gr_elevatordoor.png"/>
+ </tile>
+ <tile id="8">
+  <image width="40" height="23" source="../../../assets/sprites/world/maps/floor3/sign.png"/>
  </tile>
 </tileset>

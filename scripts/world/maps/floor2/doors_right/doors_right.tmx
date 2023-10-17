@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="32">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="32">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -65,7 +65,7 @@
 - J.A.R.U.</property>
    </properties>
   </object>
-  <object id="30" name="transition" x="624.969" y="230" width="169.969" height="10.6364">
+  <object id="30" name="transition" x="625" y="232" width="170" height="10">
    <properties>
     <property name="map" value="floor2/tick"/>
     <property name="marker" value="entry"/>
