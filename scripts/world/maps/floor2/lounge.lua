@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 21,
@@ -32,6 +33,7 @@ return {
       height = 16,
       id = 2,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -64,6 +66,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -75,7 +78,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 140,
           y = 160,
@@ -88,7 +91,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 120,
@@ -101,7 +104,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 160,
@@ -114,7 +117,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 480,
@@ -127,7 +130,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 480,
@@ -140,7 +143,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 460,
           y = 120,
@@ -153,7 +156,7 @@ return {
         {
           id = 30,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 160,
@@ -166,7 +169,7 @@ return {
         {
           id = 31,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 780,
           y = 160,
@@ -183,6 +186,7 @@ return {
       draworder = "topdown",
       id = 7,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -194,7 +198,7 @@ return {
         {
           id = 20,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 378,
           y = 140,
@@ -204,13 +208,13 @@ return {
           visible = true,
           properties = {
             ["map"] = "elevator",
-            ["marker"] = "entry_elevator"
+            ["marker"] = "entry"
           }
         },
         {
           id = 27,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = -40,
           y = 320,
@@ -223,7 +227,7 @@ return {
         {
           id = 28,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 640,
@@ -236,7 +240,7 @@ return {
         {
           id = 29,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 840,
           y = 320,
@@ -252,7 +256,7 @@ return {
         {
           id = 32,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 58,
           y = 315,
@@ -268,7 +272,7 @@ return {
         {
           id = 34,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 698,
           y = 315,
@@ -284,7 +288,7 @@ return {
         {
           id = 46,
           name = "savepoint",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 380,
@@ -297,7 +301,7 @@ return {
         {
           id = 49,
           name = "sprite",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 208,
           y = 160,
@@ -315,7 +319,7 @@ return {
         {
           id = 50,
           name = "sprite",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 328,
           y = 40,
@@ -333,7 +337,7 @@ return {
         {
           id = 51,
           name = "sprite",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 488,
           y = 40,
@@ -351,7 +355,7 @@ return {
         {
           id = 52,
           name = "sprite",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 608,
           y = 160,
@@ -369,7 +373,7 @@ return {
         {
           id = 48,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 601.738,
           y = 243.345,
@@ -388,6 +392,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -399,7 +404,7 @@ return {
         {
           id = 10,
           name = "entry_elevator",
-          type = "",
+          class = "",
           shape = "point",
           x = 418,
           y = 190,
@@ -412,7 +417,7 @@ return {
         {
           id = 45,
           name = "entry_doorsright",
-          type = "",
+          class = "",
           shape = "point",
           x = 740,
           y = 360,
@@ -425,7 +430,7 @@ return {
         {
           id = 47,
           name = "entry_doorsleft",
-          type = "",
+          class = "",
           shape = "point",
           x = 100,
           y = 360,
@@ -438,7 +443,7 @@ return {
         {
           id = 48,
           name = "entry_east",
-          type = "",
+          class = "",
           shape = "point",
           x = 800,
           y = 400,
