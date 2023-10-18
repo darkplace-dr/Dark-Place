@@ -301,11 +301,13 @@ return {
 		if Game:getFlag("hasObtainedLancer") then
 			cutscene:detachFollowers()
 			cutscene:detachCamera()
-			
+
+            Assets.playSound("ultraswing")
 			local player = Game.world.player
 			cutscene:setAnimation(player, "battle/act")
 			cutscene:wait(cutscene:slideTo(player, player.x - 80, player.y, 0.5, "out-cubic"))
 			
+            Assets.playSound("lancerwhistle")
 			local lancer = NPC("lancer", player.x, player.y, {facing = "down"})
 			lancer.layer = player.layer - 0.01
 			Game.world:addChild(lancer)
@@ -313,6 +315,7 @@ return {
 			
 			cutscene:wait(cutscene:slideTo(lancer, event.x, event.y, 0.5, "out-cubic"))
 			
+            Assets.playSound("lancercough")
 			cutscene:setAnimation(lancer, "wave")
 			
 			cutscene:wait(0.5)
