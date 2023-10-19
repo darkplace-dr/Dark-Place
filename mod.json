@@ -129,7 +129,8 @@
   // Names that crash the game.
   "namesCrash": [
     "GASTER",
-    "RALSEI"
+    "RALSEI",
+    "NORWAY"
   ],
 
   // Config values for the engine and any libraries you may have.

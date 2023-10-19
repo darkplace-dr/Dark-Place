@@ -12,7 +12,7 @@ An open source Kristal mod that anyone can contribute to.
 
 [Discord Server](https://discord.gg/dYFchbRTES)
 
-[Official Website](https://justanotherrandomgithubuser.github.io/darkplace-dr/)
+[Official Website](https://darkplace-dr.github.io/)
 
 ## Installation
 Those instructions are intended to those who only want to play Dark Place. If you want to contribute, see **Contributing** below.

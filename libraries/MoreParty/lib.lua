@@ -983,7 +983,7 @@ function Lib:init()
 
                         -- Transform the grid into coordinates
                         local offset_x = transformed_x * 100
-                        local offset_y = transformed_y * (Kristal.getLibConfig("moreparty", "classic_mode") and 26 or 26)
+                        local offset_y = transformed_y * 26
 
                         local party_member = Game.party[i]
                         local can_equip = party_member:canEquip(current_item.item)
@@ -1067,7 +1067,7 @@ return Lib
 -- Debug Stuff
 
 -- local keysString = ""
--- for key, value in pairs(parent) do
+-- for key, value in pairs(Game.world.player) do
   -- keysString = keysString .. key .. " "
 -- end
--- error(keysString)
+-- os.execute("echo "..keysString.."|clip.exe")
