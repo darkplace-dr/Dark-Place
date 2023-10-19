@@ -28,6 +28,12 @@ function Player:update()
         end
     end
 
+    --haha backroom go brrrrrrr
+    if self.walk_speed >= 60 then
+	Game.world:mapTransition("backrooms/entrance")
+    end
+        
+
     --[[
     Old code that will either explode the player or do 20 damage to the party depending on their speed when hitting a wall.
     if toque_equipped == true or player_name == "PEPPINO" then
