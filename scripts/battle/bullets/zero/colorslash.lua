@@ -2,9 +2,9 @@ local ColorSlash, super = Class(Bullet)
 
 function ColorSlash:init(x, y, dir, speed, color)
     -- Last argument = sprite path
-    super.init(self, x, y, "battle/bullets/zero/PaintSlash")
+    super.init(self, x, y, "battle/bullets/zero_boss/PaintSlash")
     self.flip_x = true
-    self:setSprite("battle/bullets/zero/PaintSlash", 1/30, false, function()
+    self:setSprite("battle/bullets/zero_boss/PaintSlash", 1/30, false, function()
         self:remove()
     end)
     self.collider = Hitbox(self, 0, 0, 87, 43)

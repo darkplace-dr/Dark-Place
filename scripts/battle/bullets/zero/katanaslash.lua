@@ -2,11 +2,11 @@ local KatanaSlash, super = Class(Bullet)
 
 function KatanaSlash:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super.init(self, x, y, "battle/bullets/zero/KatanaSlash")
+    super.init(self, x, y, "battle/bullets/zero_boss/KatanaSlash")
     self.flip_x = true
     self:setScale(1,1)
     self:setOrigin(0,0.5)
-    self:setSprite("battle/bullets/zero/KatanaSlash", 1/15, false, function ()
+    self:setSprite("battle/bullets/zero_boss/KatanaSlash", 1/15, false, function ()
         self:remove()
     end)
     Assets.playSound("zero/normal_slash_" .. math.ceil(Utils.random(3)))
