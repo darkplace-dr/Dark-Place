@@ -28,6 +28,9 @@ function Soul:init(x, y, color)
     self.parry_inv = 0
     self.taunt_timer = 0
 
+    -- hi -sam
+    self.parry_lock_movement = 0
+
 	local player_name = (player_name_override or Game.save_name):upper()
     if player_name == "PEPPINO" then
         self.parry_sfx = Assets.getSound("sugarcoat")
@@ -35,6 +38,7 @@ function Soul:init(x, y, color)
         self.parry_sfx = Assets.getSound("taunt")
     end
     self.parried_sfx = Assets.getSound("sfx_parry")
+    self.parried_sfx:setVolume(5)
     self.parried_loop_sfx = nil
 
     -- Making sure it only parries once per Z press.
@@ -49,6 +53,7 @@ function Soul:init(x, y, color)
     self.parry_cap = 60         -- Maximum duration for parry invincibility, in the event that multiple bullets are parried in quick succession.
     self.cooldown = 30          -- Recovery time between one parry and the next, assuming the first one failed.
     self.special_only = false   -- If set to true, only bullets with the variable "self.special_parry" set to true can be parried.
+
 	-- Taunt variables end here
 
 	-- Timeslow ("Focus" Placebo) variables start here; outline is created above.
@@ -129,26 +134,31 @@ function Soul:update()
         end
         return
     end
-
+    
+    self.can_move = true
+    if self.parry_lock_movement > 0 then
+        self.parry_lock_movement = self.parry_lock_movement - DTMULT
+        self.can_move = false
+    end
 
     if self.parry_inv == 0 and self.did_parry then
         self.did_parry = false
     end
     --
     if not self.parried_loop_sfx then
-    self.parried_loop_sfx = Assets.getSound("chargeshot_charge")
-    self.parried_loop_sfx:setLooping(true)
-    self.parried_loop_sfx:setPitch(0.1)
-    self.parried_loop_sfx:setVolume(0)
-    self.parried_loop_sfx:play()
+        self.parried_loop_sfx = Assets.getSound("chargeshot_charge")
+        self.parried_loop_sfx:setLooping(true)
+        self.parried_loop_sfx:setPitch(0.1)
+        self.parried_loop_sfx:setVolume(0)
+        self.parried_loop_sfx:play()
     end
 
-    self.parried_loop_sfx:setPitch(Utils.clampMap(self.parry_inv, 0, self.parry_length / 2, 0.1,1))
-    self.parried_loop_sfx:setVolume(Utils.clampMap(self.parry_inv, 0, self.parry_length / 2, 0, 1))
+    self.parried_loop_sfx:setPitch( Utils.clampMap(self.parry_inv, 0, self.parry_length / 2, 0.1, 1))
+    self.parried_loop_sfx:setVolume(Utils.clampMap(self.parry_inv, 0, self.parry_length / 4, 0,   0.5))
     --]]
 
     if Input.pressed("v", false) and self:canParry() then
-        Game.lock_movement = true
+        self.parry_lock_movement = 8
 
         self:flash()
         self.parry_sfx:stop()
@@ -169,9 +179,8 @@ function Soul:update()
             effect:setOrigin(0.5)
             effect:setScale(0.5)
             effect.layer = -1
-            effect:play(0.02, false, function()
+            effect:play(1/30, false, function()
                 effect:remove()
-                Game.lock_movement = false
                 chara:toggleOverlay(false)
             end)
             chara:addChild(effect)
@@ -261,6 +270,7 @@ end
 function Soul:flash(sprite)
     local sprite_to_use = sprite or self.sprite
     local flash = FlashFade(sprite_to_use.texture, -10, -10)
+    flash.flash_speed = 1.5
     flash.layer = 100
     self:addChild(flash)
     return flash
@@ -320,6 +330,14 @@ end
 
 function Soul:onCollide(bullet)
     if self:isParrying() and not self.did_parry and ((self.special_only and bullet.special_parry) or (not self.special_only)) then
+
+        local burst = HeartBurst(-9, -9, {Game.battle.encounter:getSoulColor()})
+        self:addChild(burst)
+
+        self.physics.direction = (Utils.angle(self.x, self.y, bullet:getRelativePos(bullet.collider.width / 2, bullet.collider.height/2))) - math.pi
+        self.physics.speed = 3.3
+        self.physics.friction = 0.4
+
         self.parried_sfx:stop()
         self.parried_sfx:play()
         self.parry_inv = self.parry_inv + self.parry_length

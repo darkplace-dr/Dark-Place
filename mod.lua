@@ -3,6 +3,7 @@ modRequire("scripts/main/utils_general")
 modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
+modRequire("scripts/main/battle_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
 Speen = modRequire("scripts/main/ow_speen")
 
@@ -32,6 +33,7 @@ function Mod:init()
     self:registerShaders()
 
     self:initTaunt()
+    self:initBattleTaunt()
     Speen:init()
 
 --[[     Utils.hook(World, "setupMap", function(orig, self, map, ...)
@@ -741,6 +743,7 @@ end
 
 function Mod:postUpdate()
     self:updateTaunt()
+    self:updateBattleTaunt()
     self:updateBulborb()
     Speen:update()
 

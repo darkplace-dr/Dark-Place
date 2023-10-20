@@ -46,7 +46,7 @@ function Mod:updateTaunt()
             Game.world:addChild(shine)
 
             chara.sprite:set(Utils.pick(sprites))
-            shine:play(0.02, false, function()
+            shine:play(1/30, false, function()
                 shine:remove()
                 chara:resetSprite()
             end)
@@ -54,7 +54,7 @@ function Mod:updateTaunt()
             ::continue::
         end
 
-        Game.world.timer:after(0.2, function()
+        Game.world.timer:after(1/3, function()
             self.taunt_lock_movement = false
         end)
     end
