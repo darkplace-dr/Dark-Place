@@ -2,6 +2,11 @@ local Basic, super = Class(Wave)
 
 function Basic:init()
 	super:init(self)
+
+	-- wait a frame so the soul has a chance to spawn
+	Game.battle.timer:after(1/30, function ()
+		Game.battle.soul.force_taunt = false
+	end)
 	
 	self.arena_width = 20
     self.arena_height = 20
