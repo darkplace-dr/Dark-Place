@@ -2,7 +2,7 @@ function Mod:initBattleTaunt()
     self.taunt_cooldown = 0
     self.state_blacklist = {
         "DEFENDINGBEGIN",
-        "DEFENDING",
+        "DEFENDING", -- handled by the soul itself, so this is ignored
         "DEFENDINGEND",
         "ENEMYDIALOGUE",
         "ATTACKING",
@@ -23,7 +23,7 @@ function Mod:updateBattleTaunt()
         (toque_equipped or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
         and Input.pressed("v", false)
         and self.taunt_cooldown == 0
-        and (Game.state == "BATTLE" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene())
+        and (Game.state == "BATTLE" and not Game.battle:hasCutscene())
         and not Utils.containsValue(self.state_blacklist, Game.battle.state)
         and not (OVERLAY_OPEN or TextInput.active)
     then
