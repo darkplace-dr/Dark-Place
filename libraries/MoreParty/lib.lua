@@ -696,6 +696,31 @@ function Lib:init()
         end
     end)
     
+    Utils.hook(Battle, "shortActText", function(orig, self, text) 
+        local advances = 3 --initial override so we can run it
+        local function recurseiveSHAT()
+            advances = advances + 1
+            if(advances >= 3) then
+                self.battle_ui:clearEncounterText()
+                advances = 0
+            
+                local t1, t2, t3 = table.remove(text,1), table.remove(text,1), table.remove(text,1)
+                local text_exhausted = not (t1 and t2 and t3) or #text == 0
+                local opt_shat = (not text_exhausted) and recurseiveSHAT
+                self.battle_ui.short_act_text_1:setText(t1 or "",  opt_shat)
+                self.battle_ui.short_act_text_2:setText(t2 or "",  opt_shat)
+                self.battle_ui.short_act_text_3:setText(t3 or "",  opt_shat)
+
+                if(text_exhausted) then
+                    --this controls wheter or not we can advance to the next line?
+                    self:setState("SHORTACTTEXT")
+                end
+            end
+        end
+        
+        recurseiveSHAT()
+    end)
+    
    Utils.hook(DarkEquipMenu, "init", function(orig, self, ...)
         orig(self, ...)
         if #Game.party <= 3 then return end

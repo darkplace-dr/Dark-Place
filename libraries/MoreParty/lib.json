@@ -1,12 +1,13 @@
 {
     "id": "moreparty",
     
-    "version": "v1.4.4",
+    "version": "v1.4.5",
     "engineVer": "v0.8.1",
     
     "authors": [
         "FireRainV",
-        "Core"
+        "Core (MoreBattle)",
+        "skarph (Help with ShortAct hook)"
     ],
 	
     "config": {
