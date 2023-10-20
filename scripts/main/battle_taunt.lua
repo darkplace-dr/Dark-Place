@@ -27,7 +27,7 @@ function Mod:updateBattleTaunt()
         and not Utils.containsValue(self.state_blacklist, Game.battle.state)
         and not (OVERLAY_OPEN or TextInput.active)
     then
-        self.taunt_cooldown = 0.4
+        self.taunt_cooldown = 2.1
 
         Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
 

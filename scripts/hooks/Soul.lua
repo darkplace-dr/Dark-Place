@@ -38,7 +38,6 @@ function Soul:init(x, y, color)
         self.parry_sfx = Assets.getSound("taunt")
     end
     self.parried_sfx = Assets.getSound("sfx_parry")
-    self.parried_sfx:setVolume(5)
     self.parried_loop_sfx = nil
 
     -- Making sure it only parries once per Z press.
