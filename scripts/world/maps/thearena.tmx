@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="border" value="battle"/>
-  <property name="music" value="kssu_arena"/>
+  <property name="music" value="kssu_arena_pre"/>
   <property name="name" value="The Arena"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/whitespace.tsx"/>

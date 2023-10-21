@@ -553,6 +553,14 @@ return {
     origin = "Neon White (trimmed for Dark Place)"
   },
   {
+    -- I cannot find an official name for this for the life of me, it's got a different name pretty much everywhere it's uploaded. - Agent 7
+    name = "Prepare Yourself (The Arena)",
+    file = "kssu_arena_pre",
+    composer = "Jun Ishikawa, Hirokazu Ando",
+    released = "2008",
+    origin = "Kirby Super Star Ultra"
+  },
+  {
     name = "Colosseum Battle (The Arena)",
     file = "kssu_arena",
     composer = "Jun Ishikawa, Hirokazu Ando",
