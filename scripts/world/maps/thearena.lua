@@ -11,7 +11,7 @@ return {
   nextlayerid = 8,
   nextobjectid = 24,
   properties = {
-    ["border"] = "whitespace",
+    ["border"] = "battle",
     ["music"] = "kssu_arena",
     ["name"] = "The Arena"
   },

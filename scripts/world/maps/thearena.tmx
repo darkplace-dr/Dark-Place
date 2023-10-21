@@ -4,7 +4,7 @@
   <export target="thearena.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="border" value="whitespace"/>
+  <property name="border" value="battle"/>
   <property name="music" value="kssu_arena"/>
   <property name="name" value="The Arena"/>
  </properties>
