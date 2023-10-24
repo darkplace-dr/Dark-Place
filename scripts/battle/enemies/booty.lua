@@ -16,15 +16,16 @@ function Dummy:init()
     -- Enemy defense (usually 0)
     self.defense = 2
     -- Enemy reward
-    self.money = 100
-    self.experience = 50
+    self.money = Game:getFlag("booty_finished") and 0 or 100
+    self.experience = Game:getFlag("booty_finished") and 0 or 50
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "booty_surround"
+        "booty_surround",
+		"booty_stomp"
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
