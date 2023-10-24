@@ -621,7 +621,7 @@ function Mod:initializeImportantFlags(new_file)
         end
     end
 	
-	if not new_file and not Game:getFlag("darkess_beans") then
+	if new_file and not Game:getFlag("darkess_beans") then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before the bean spots were added.")
 		Game:setFlag("darkess_beans", 0)
