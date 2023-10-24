@@ -199,6 +199,17 @@ function Mod:postInit(new_file)
 
         Game.world:startCutscene("_main.introcutscene")
     end
+	
+	if not Game:getFlag("booty_time") then
+		Game:addFlag("booty_cd", 1)
+		if Game:getFlag("booty_cd") >= 5 then
+			if love.math.random(1,5) > 4 then
+				Game:setFlag("booty_time", true)
+			end
+		end
+	elseif not Game:getFlag("booty_finished") then
+		Game.world:startCutscene("booty.bootleg")
+	end
 
     self:initBulborb()
 end
