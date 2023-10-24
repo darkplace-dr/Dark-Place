@@ -9,7 +9,7 @@ return {
 
             if alseri then
 
-                cutscene:text("[speed:999]* Oh my!\n* The Great Door is\nopened?!", "surprise", "alseri")
+                cutscene:text("* Oh my!\n* The Great Door is\nopened?!", "surprise", "alseri")
                 cutscene:text("* No wonder Jimmy was\nable to come through...", "surprise", "alseri")
                 cutscene:text("* ...", "look_down", "alseri")
                 cutscene:text("* ".. Game.party[1].name ..",[wait:5] once we pass through this door...", "look_down", "alseri")
@@ -37,7 +37,7 @@ return {
     
             elseif susie then
     
-                cutscene:text("[speed:999]* What the?!\n* The Great Door is\nopened?!", "surprise_frown", "susie")
+                cutscene:text("* What the?!\n* The Great Door is\nopened?!", "surprise_frown", "susie")
                 cutscene:text("* No wonder Jimmy was\nable to come through...", "sus_nervous", "susie")
                 cutscene:text("* ...", "shy_down", "susie")
                 cutscene:text("* ".. Game.party[1].name ..",[wait:5] once we pass through this door...", "neutral", "susie")
@@ -65,7 +65,7 @@ return {
     
             elseif ralsei then
                 if ralsei.path == "party/ralsei/dark_ch1" then
-                    cutscene:text("[speed:999]* Oh my!\n* The Great Door is\nopened?!", "surprise", "ralsei")
+                    cutscene:text("* Oh my!\n* The Great Door is\nopened?!", "surprise", "ralsei")
                     cutscene:text("* No wonder Jimmy was\nable to come through...", "surprise", "ralsei")
                     cutscene:text("* ...", "look_down", "ralsei")
                     cutscene:text("* ".. Game.party[1].name ..",[wait:5] once we pass through this door...", "look_down", "ralsei")
@@ -100,13 +100,10 @@ return {
     end,
 
     greatdoor = function(cutscene)
-
         Game.world.music:fade(0, 1)
-
         cutscene:wait(0.1)
 
         local alpha = Game.world.player:addFX(AlphaFX())
-
         Game.stage.timer:tween(0.5, alpha, {alpha = 0})
 
         cutscene:wait(0.75)
@@ -147,11 +144,15 @@ return {
 
         cutscene:after(function()
             Game.world:startCutscene(function(cutscene)
-                cutscene:wait(cutscene:fadeOut(0)) -- remove fadein
-                cutscene:fadeIn(3)
+                cutscene:wait(cutscene:fadeOut(0))
+                cutscene:wait(cutscene:fadeIn(3))
+                if susie then
+                    cutscene:text("* ...", "neutral", susie)
+                    cutscene:text("* Well,[wait:5] this place seems,[wait:2] uh...", "nervous", susie)
+                    cutscene:text("* ...eerily familiar.", "nervous_side", susie)
+                end
             end)
         end)
-        
     end,
 
     fohad_sign_1 = function(cutscene)
@@ -174,7 +175,7 @@ return {
         local alseri = cutscene:getCharacter("alseri")
         local ralsei = cutscene:getCharacter("ralsei")
         if noyno then
-            cutscene:text("* Hey,[wait:5] would ya look at that.[wait:10] \"The Gift\" is lighting up the path again.", "doubt", "noyno")
+            cutscene:text("* Well,[wait:5] whaddya know.[wait:10] \"The Gift\" is lighting up the path again.", "doubt", "noyno")
             cutscene:text("* Last time it was more like...[wait:5] Shitty green colored.", "doubt", "noyno")
             cutscene:text("* Y'know,[wait:5] just like you?", "gleeful", "noyno")
             cutscene:text("* Oh well.", "look_left", "noyno")
@@ -190,73 +191,4 @@ return {
             cutscene:text("* That's,[wait:5] um,[wait:5], cool.", "smile_b", "ralsei")
         end
     end,
-
-    wall = function(cutscene, event)
-        -- Open textbox and wait for completion
-        cutscene:text("* The wall seems cracked.")
-
-        -- If we have Susie, play a cutscene
-        local susie = cutscene:getCharacter("susie")
-        if susie then
-            -- Detach camera and followers (since characters will be moved)
-            cutscene:detachCamera()
-            cutscene:detachFollowers()
-
-            -- All text from now is spoken by Susie
-            cutscene:setSpeaker(susie)
-            cutscene:text("* Hey,[wait:5] think I can break\nthis wall?", "smile")
-
-            -- Get the bottom-center of the broken wall
-            local x = event.x + event.width/2
-            local y = event.y + event.height/2
-
-            -- Move Susie up to the wall over 0.75 seconds
-            cutscene:walkTo(susie, x, y + 40, 0.75, "up")
-            -- Move other party members behind Susie
-            cutscene:walkTo(Game.world.player, x, y + 100, 0.75, "up")
-            if cutscene:getCharacter("ralsei") then
-                cutscene:walkTo("ralsei", x + 60, y + 100, 0.75, "up")
-            end
-            if cutscene:getCharacter("noelle") then
-                cutscene:walkTo("noelle", x - 60, y + 100, 0.75, "up")
-            end
-
-            -- Wait 1.5 seconds
-            cutscene:wait(1.5)
-
-            -- Walk back,
-            cutscene:wait(cutscene:walkTo(susie, x, y + 60, 0.5, "up", true))
-            -- and run forward!
-            cutscene:wait(cutscene:walkTo(susie, x, y + 20, 0.2))
-
-            -- Slam!!
-            Assets.playSound("impact")
-            susie:shake(4)
-            susie:setSprite("shock_up")
-
-            -- Slide back a bit
-            cutscene:slideTo(susie, x, y + 40, 0.1)
-            cutscene:wait(1.5)
-
-            -- owie
-            susie:setAnimation({"away_scratch", 0.25, true})
-            susie:shake(4)
-            Assets.playSound("wing")
-
-            cutscene:wait(1)
-            cutscene:text("* Guess not.", "nervous")
-
-            -- Reset Susie's sprite
-            susie:resetSprite()
-
-            -- Reattach the camera
-            cutscene:attachCamera()
-
-            -- Align the follower positions behind Kris's current position
-            cutscene:alignFollowers()
-            -- And reattach them, making them return to their target positions
-            cutscene:attachFollowers()
-        end
-    end,
-
 }
