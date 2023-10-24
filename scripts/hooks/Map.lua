@@ -83,6 +83,24 @@ function Map:init(world, data)
     self.use_footstep_sounds = data and data.properties and data.properties["use_footstep_sounds"] or false
 end
 
+function Map:onEnter()
+    if Game.world.map.id:find("archives/") then
+        self.voidbg = Game.world:spawnObject(VoidBGUT2())
+        self.voidbg.layer = -9999
+    elseif Game.world.map.id:find("cloudwebs/_ch1/") then
+        self.fog = Game.world:spawnObject(LabFog())
+        self.fog.layer = WORLD_LAYERS["below_ui"]
+    end
+end
+
+function Map:onExit()
+    if Game.world.map.id:find("archives/") then
+        self.voidbg:remove()
+    elseif Game.world.map.id:find("cloudwebs/_ch1/") then
+        self.fog:remove()
+    end
+end
+
 function Map:loadLayer(layer, depth)
     if layer.type == "tilelayer" then
         self:loadTiles(layer, depth)

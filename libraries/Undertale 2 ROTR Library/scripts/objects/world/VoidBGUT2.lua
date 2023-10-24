@@ -3,7 +3,7 @@ local BG, super = Class(Sprite)
 function BG:init()
     super.init(self, "world/maps/void", 0, 0)
 
-    self:setScale(2)
+    self:setScale(1)
     self:setParallax(0, 0)
 
     self.wrap_texture_x = true
