@@ -37,19 +37,19 @@ function BossRematchMenu:init()
     self.encounters = {
         -- Page 1
         {
-            { name = "Spamgolor",     flag = "spamgolor_defeated",    encounter = "spamgolor",             grad_color = {20/255, 60/255, 194/255}, preview = {"world/npcs/spamgolor/idle", 70, 50}},
-            { name = "Mimic",         flag = "mimic_defeated",        encounter = "mimicboss",             grad_color = {24/255, 94/255, 231/255},  preview = {"battle/enemies/ufoofdoom/idle_1", 70, 0}},
-            { name = "Starwalker",    flag = "starwalker_defeated",   encounter = "starwalker",            grad_color = {134/255, 148/255, 183/255}, preview = {"battle/enemies/starwalker2/starwalker", 60, 50}},
-            { name = "Sam",           flag = "sam_defeated",          encounter = "sam",                   grad_color = {0, 0, 1},                  preview = {"world/npcs/sam/idle", 60, 50}},
-            { name = "Zero",          flag = "zero_defeated",         encounter = "zero",                  grad_color = {136/255, 48/255, 80/255}, preview = {"battle/enemies/zero/idle_0", 70, 50}},
-            { name = "Omega Spamton", flag = "omegaspamton_defeated", encounter = "omegaspamtonbossfight", grad_color = {93/255, 73/255, 139/255}, preview = {"battle/enemies/omegaspamton/preview", -19, 0}},
-            { name = "Google Dino",   flag = "googledino_defeated",   encounter = "googledino",            grad_color = {0.5, 0.5, 0.5},           preview = {"world/npcs/googledino/static", 60, 50}},
-            { name = "Shade Ania",    flag = "jamm_closure",          encounter = "ania_boss",             grad_color = {92/255, 88/255, 188/255}, preview = {"battle/enemies/shade_ania/idle", 75, 50}},
+            { name = "Spamgolor",            flag = "spamgolor_defeated",    encounter = "spamgolor",             grad_color = {20/255, 60/255, 194/255}, preview = {"world/npcs/spamgolor/idle", 70, 50}},
+            { name = "Mimic",                flag = "mimic_defeated",        encounter = "mimicboss",             grad_color = {24/255, 94/255, 231/255},  preview = {"battle/enemies/ufoofdoom/idle_1", 70, 0}},
+            { name = "Starwalker",           flag = "starwalker_defeated",   encounter = "starwalker",            grad_color = {134/255, 148/255, 183/255}, preview = {"battle/enemies/starwalker2/starwalker", 60, 50}},
+            { name = "Sam",                  flag = "sam_defeated",          encounter = "sam",                   grad_color = {0, 0, 1},                  preview = {"world/npcs/sam/idle", 60, 50}},
+            { name = "Zero",                 flag = "zero_defeated",         encounter = "zero",                  grad_color = {136/255, 48/255, 80/255}, preview = {"battle/enemies/zero/idle_0", 70, 50}},
+            { name = "Omega Spamton",        flag = "omegaspamton_defeated", encounter = "omegaspamtonbossfight", grad_color = {93/255, 73/255, 139/255}, preview = {"battle/enemies/omegaspamton/preview", -19, 0}},
+            { name = "Google Dino",          flag = "googledino_defeated",   encounter = "googledino",            grad_color = {0.5, 0.5, 0.5},           preview = {"world/npcs/googledino/static", 60, 50}},
+            { name = "Shade Ania",           flag = "jamm_closure",          encounter = "ania_boss",             grad_color = {92/255, 88/255, 188/255}, preview = {"battle/enemies/shade_ania/idle", 75, 50}},
         },
         -- Page 2
-        --{
-            
-        --},
+        {
+            { name = "Booty the Bootleg",    flag = "booty_finished",        encounter = "big_booty",             grad_color = {20/255, 60/255, 194/255}, preview = {"battle/enemies/booty/idle", 75, 50}},
+        },
 
     }
 	
