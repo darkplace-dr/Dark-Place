@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="18">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="18">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="deoxynn/deep_forest"/>
   <property name="music" value="forgotten_wood"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/forgotten_wood.tsx"/>

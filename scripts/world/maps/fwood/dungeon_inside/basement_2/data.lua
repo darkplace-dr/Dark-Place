@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 32,
@@ -12,14 +11,14 @@ return {
   nextlayerid = 7,
   nextobjectid = 8,
   properties = {
+    ["border"] = "castle",
     ["music"] = "jamm_dungeon"
   },
   tilesets = {
     {
       name = "jamm_dungeon",
       firstgid = 1,
-      filename = "../../../../tilesets/jamm_dungeon.tsx",
-      exportfilename = "../../../../tilesets/jamm_dungeon.lua"
+      filename = "../../../../tilesets/jamm_dungeon.tsx"
     }
   },
   layers = {
@@ -31,7 +30,6 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -63,7 +61,6 @@ return {
       height = 12,
       id = 3,
       name = "Tile Layer 3",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -95,7 +92,6 @@ return {
       height = 12,
       id = 2,
       name = "Tile Layer 2",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -124,7 +120,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -192,7 +187,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -240,7 +234,6 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

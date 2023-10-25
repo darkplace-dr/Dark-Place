@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -11,7 +10,9 @@ return {
   tileheight = 40,
   nextlayerid = 5,
   nextobjectid = 10,
-  properties = {},
+  properties = {
+    ["border"] = "castle"
+  },
   tilesets = {
     {
       name = "jamm_dungeon",
@@ -28,7 +29,6 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -60,7 +60,6 @@ return {
       height = 12,
       id = 2,
       name = "Tile Layer 2",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -89,7 +88,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -133,7 +131,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
