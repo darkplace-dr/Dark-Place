@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 48,
@@ -11,7 +10,9 @@ return {
   tileheight = 40,
   nextlayerid = 10,
   nextobjectid = 9,
-  properties = {},
+  properties = {
+    ["border"] = "simple"
+  },
   tilesets = {
     {
       name = "dinofield",
@@ -32,7 +33,6 @@ return {
       draworder = "topdown",
       id = 8,
       name = "objects_bg",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -50,7 +50,6 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -82,7 +81,6 @@ return {
       height = 12,
       id = 9,
       name = "decal",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -114,7 +112,6 @@ return {
       height = 12,
       id = 3,
       name = "dithering",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -146,7 +143,6 @@ return {
       height = 12,
       id = 4,
       name = "dithering",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -175,7 +171,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -187,7 +182,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 320,
@@ -200,7 +195,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 80,
@@ -213,7 +208,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 120,
@@ -226,7 +221,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1840,
           y = 120,
@@ -239,7 +234,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1645,
           y = 120,
@@ -256,7 +251,6 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -268,7 +262,7 @@ return {
         {
           id = 6,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 800,
           y = 0,
@@ -284,7 +278,7 @@ return {
         {
           id = 8,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1648,
           y = 80,
@@ -304,7 +298,6 @@ return {
       draworder = "topdown",
       id = 7,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -316,7 +309,7 @@ return {
         {
           id = 5,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 40,
           y = 240,
