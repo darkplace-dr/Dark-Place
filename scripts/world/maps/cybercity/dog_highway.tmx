@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="29" height="29" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="5">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="29" height="29" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="5">
  <editorsettings>
   <export target="dog_highway.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="border" value="city"/>
+ </properties>
  <tileset firstgid="1" source="../../tilesets/bg_dw_city.tsx"/>
  <tileset firstgid="613" source="../../tilesets/city_sidewalk.tsx"/>
  <layer id="1" name="tiles" width="29" height="29">
