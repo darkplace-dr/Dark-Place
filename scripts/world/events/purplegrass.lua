@@ -10,19 +10,11 @@ function PurpleGrass:init(x, y, w, h)
     self.tiles_y = math.floor(self.height/40)
 
     self.time = 0
-    self.frame = 1
     self.speed = 0.2
 end
 
 function PurpleGrass:update()
     self.time = self.time + (self.speed * DTMULT)
-
-    self.frame = math.floor(self.time) + 1
-	
-    if self.frame > #self.frames then
-        self.frame = 1
-        self.time = 0
-    end
 
     super.update(self)
 end
@@ -30,7 +22,10 @@ end
 function PurpleGrass:draw()
     for i = 1, self.tiles_x do
         for j = 1, self.tiles_y do
-            Draw.draw(self.frames[self.frame], (i - 1) * 40, (j - 1) * 40, 0, 1, 1)
+
+            local frame = math.ceil((((self.time + (self.x/320)) + (i * .125)) + (j * .125)) + (self.y/320))
+            Draw.draw(self.frames[frame % #self.frames + 1], (i - 1) * 40, (j - 1) * 40, 0, 1, 1)
+
         end
     end
 
