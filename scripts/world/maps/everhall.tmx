@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="400" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="10">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="400" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="10">
  <editorsettings>
   <export target="everhall.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="border" value="everhall"/>
+ </properties>
  <tileset firstgid="1" source="../tilesets/devroom.tsx"/>
  <layer id="1" name="Tile Layer 1" width="400" height="12">
   <data encoding="csv">

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="24" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="21">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="24" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="21">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="none"/>
   <property name="music" value="backrooms"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/backrooms.tsx"/>

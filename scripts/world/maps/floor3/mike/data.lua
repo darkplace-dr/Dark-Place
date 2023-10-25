@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 32,
@@ -12,6 +11,7 @@ return {
   nextlayerid = 8,
   nextobjectid = 36,
   properties = {
+    ["border"] = "undertale/dog",
     ["music"] = "greenroom",
     ["name"] = "Floor 3 - Mike Room"
   },
@@ -38,7 +38,6 @@ return {
       height = 24,
       id = 1,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -82,7 +81,6 @@ return {
       height = 24,
       id = 7,
       name = "Tile Layer 2",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -123,7 +121,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects_bg",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -135,7 +132,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 520,
@@ -149,7 +146,7 @@ return {
         {
           id = 2,
           name = "greenroom_sparkles",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 40,
@@ -162,7 +159,7 @@ return {
         {
           id = 3,
           name = "greenroom_sparkles",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 80,
@@ -175,7 +172,7 @@ return {
         {
           id = 4,
           name = "greenroom_sparkles",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1040,
           y = 80,
@@ -188,7 +185,7 @@ return {
         {
           id = 5,
           name = "greenroom_sparkles",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 280,
@@ -201,7 +198,7 @@ return {
         {
           id = 6,
           name = "greenroom_sparkles",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 320,
@@ -218,7 +215,6 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -230,7 +226,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 40,
           y = 520,
@@ -248,7 +244,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 320,
@@ -261,7 +257,7 @@ return {
         {
           id = 9,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 280,
@@ -274,7 +270,7 @@ return {
         {
           id = 10,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 80,
@@ -287,7 +283,7 @@ return {
         {
           id = 11,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 80,
@@ -300,7 +296,7 @@ return {
         {
           id = 12,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 40,
@@ -313,7 +309,7 @@ return {
         {
           id = 13,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1040,
           y = 80,
@@ -326,7 +322,7 @@ return {
         {
           id = 14,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1120,
           y = 200,
@@ -339,7 +335,7 @@ return {
         {
           id = 15,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1080,
           y = 800,
@@ -352,7 +348,7 @@ return {
         {
           id = 16,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 840,
@@ -365,7 +361,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 800,
@@ -378,7 +374,7 @@ return {
         {
           id = 18,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 600,
@@ -391,7 +387,7 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 560,
@@ -404,7 +400,7 @@ return {
         {
           id = 20,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 440,
@@ -417,7 +413,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 800,
@@ -430,7 +426,7 @@ return {
         {
           id = 26,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 920,
           y = 800,
@@ -443,7 +439,7 @@ return {
         {
           id = 29,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 290,
           y = 400,
@@ -460,7 +456,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -472,7 +467,7 @@ return {
         {
           id = 27,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 60,
           y = 440,
@@ -488,7 +483,7 @@ return {
         {
           id = 32,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 290,
           y = 420,
@@ -502,7 +497,7 @@ return {
         {
           id = 34,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 180,
           y = 410,
@@ -516,7 +511,7 @@ return {
         {
           id = 35,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 180,
           y = 367,
@@ -536,7 +531,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -548,7 +542,7 @@ return {
         {
           id = 31,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 140,
           y = 520,
@@ -561,7 +555,7 @@ return {
         {
           id = 33,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 740,
           y = 600,
@@ -578,7 +572,6 @@ return {
       draworder = "topdown",
       id = 6,
       name = "objects_fg",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -590,7 +583,7 @@ return {
         {
           id = 21,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 840,
@@ -604,7 +597,7 @@ return {
         {
           id = 22,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 920,
           y = 840,

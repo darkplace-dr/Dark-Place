@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -12,6 +11,7 @@ return {
   nextlayerid = 7,
   nextobjectid = 23,
   properties = {
+    ["border"] = "dev",
     ["music"] = "greenroom",
     ["name"] = "Dev Diner - Spawn Point"
   },
@@ -38,7 +38,6 @@ return {
       height = 12,
       id = 6,
       name = "Tile Layer 3",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -70,7 +69,6 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -102,7 +100,6 @@ return {
       height = 12,
       id = 3,
       name = "decal",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -131,7 +128,6 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -143,7 +139,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 120,
@@ -156,7 +152,7 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 120,
@@ -169,7 +165,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 200,
@@ -182,7 +178,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 400,
@@ -195,7 +191,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 360,
@@ -208,7 +204,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 320,
@@ -221,7 +217,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 200,
@@ -234,7 +230,7 @@ return {
         {
           id = 9,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 120,
@@ -247,7 +243,7 @@ return {
         {
           id = 11,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 367,
           y = 155,
@@ -260,7 +256,7 @@ return {
         {
           id = 16,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 120,
@@ -273,7 +269,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 360,
@@ -290,7 +286,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -302,7 +297,7 @@ return {
         {
           id = 10,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 240,
@@ -318,7 +313,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 366,
           y = 111,
@@ -334,7 +329,7 @@ return {
         {
           id = 18,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 280,
@@ -349,7 +344,7 @@ return {
         {
           id = 20,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 40,
@@ -369,7 +364,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -381,7 +375,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 420,
           y = 235,
@@ -394,7 +388,7 @@ return {
         {
           id = 13,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 600,
           y = 280,
@@ -407,7 +401,7 @@ return {
         {
           id = 22,
           name = "hall",
-          class = "",
+          type = "",
           shape = "point",
           x = 240,
           y = 160,

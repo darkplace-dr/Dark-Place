@@ -3,6 +3,9 @@
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="border" value="city"/>
+ </properties>
  <tileset firstgid="1" source="../../../tilesets/city_alleyway.tsx"/>
  <tileset firstgid="316" source="../../../tilesets/dw_city_alley_2.tsx"/>
  <tileset firstgid="426" source="../../../tilesets/battleborder.tsx"/>

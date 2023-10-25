@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="15">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="30" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="15">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="dev"/>
   <property name="music" value="castle-funk"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/darkcade_interior.tsx"/>

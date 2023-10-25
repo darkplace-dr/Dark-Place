@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 29,
@@ -11,7 +10,9 @@ return {
   tileheight = 40,
   nextlayerid = 8,
   nextobjectid = 5,
-  properties = {},
+  properties = {
+    ["border"] = "city"
+  },
   tilesets = {
     {
       name = "bg_dw_city",
@@ -35,7 +36,6 @@ return {
       height = 29,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -84,7 +84,6 @@ return {
       height = 29,
       id = 3,
       name = "props",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -130,7 +129,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -142,7 +140,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 680,
@@ -155,7 +153,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 720,
           y = 680,
@@ -168,7 +166,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -181,7 +179,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 720,
           y = 0,
@@ -198,7 +196,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -213,7 +210,6 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -231,7 +227,6 @@ return {
       height = 29,
       id = 2,
       name = "fg",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

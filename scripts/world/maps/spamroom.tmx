@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="37" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="48">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="37" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="48">
  <editorsettings>
   <export target="spamroom.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="city"/>
   <property name="music" value="spamton_battle_eb"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/city_alleyway.tsx"/>

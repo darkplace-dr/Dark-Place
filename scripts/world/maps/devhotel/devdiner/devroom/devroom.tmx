@@ -4,6 +4,7 @@
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="dev"/>
   <property name="music" value="greenroom"/>
   <property name="name" value="Dev Diner - Dining Area"/>
  </properties>

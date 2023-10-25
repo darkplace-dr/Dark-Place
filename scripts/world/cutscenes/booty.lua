@@ -3,6 +3,7 @@ return {
 		local fade_rect = Rectangle(0, 0, Game.world.width, Game.world.height)
 		fade_rect:setColor(0, 0, 0)
 		fade_rect.alpha = 1
+		local oldborder = Game.world.map.border
 		Game:setBorder("none")
 		Game.world:spawnObject(fade_rect, "below_ui")
 		
@@ -107,6 +108,7 @@ return {
 			cutscene:text("* (You can press " .. Input.getText("cancel") .. " to back out and move,[wait:5] or...)")
 			cutscene:text("* (Hold a direction and press " .. Input.getText("confirm") .. " to throw a star.)")
 			
+			Game:setBorder("battle")
 			cutscene:startEncounter("big_booty")
 			
 			Game:setFlag("booty_finished", true)
@@ -115,6 +117,7 @@ return {
 		cutscene:hideNametag()
 		
 		Game.world.timer:tween(1, fade_rect, {alpha = 0}, "linear")
+		Game:setBorder(oldborder)
 		cutscene:wait(1)
 		
 		Game.world.music:resume()
