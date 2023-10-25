@@ -20,6 +20,8 @@ function field:onEnter()
 		"I hope everything is going to end up okay.",
 		"I hope that all of my friends stay safe.",
 		"I hope that I can handle whatever brings me down.",
+		"I hope this world lives on for many years to come.",
+		"I hope you all get to be happy.",
 		--"", -- Please, add more.
 		--"", -- All I ask for are your Hopes and Dreams.
 		--"", --       -Charbomber
