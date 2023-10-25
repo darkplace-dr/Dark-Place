@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -12,6 +11,7 @@ return {
   nextlayerid = 6,
   nextobjectid = 42,
   properties = {
+    ["border"] = "dev",
     ["music"] = "greenroom_outside",
     ["name"] = "Dev Diner - Exterior"
   },
@@ -29,7 +29,6 @@ return {
       image = "../../../../assets/sprites/world/maps/devroom/exterior/layout.png",
       id = 2,
       name = "bg",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -45,7 +44,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -57,7 +55,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -70,7 +68,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 920,
           y = 0,
@@ -83,7 +81,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 600,
@@ -96,7 +94,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 640,
           y = 600,
@@ -109,7 +107,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 680,
@@ -122,7 +120,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 680,
@@ -135,7 +133,7 @@ return {
         {
           id = 10,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 320,
           y = 600,
@@ -154,7 +152,7 @@ return {
         {
           id = 11,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 520,
           y = 680,
@@ -173,7 +171,7 @@ return {
         {
           id = 13,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 760,
           y = 600,
@@ -191,7 +189,7 @@ return {
         {
           id = 14,
           name = "",
-          class = "",
+          type = "",
           shape = "polygon",
           x = 40,
           y = 440,
@@ -209,7 +207,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 280,
@@ -222,7 +220,7 @@ return {
         {
           id = 25,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 0,
@@ -235,7 +233,7 @@ return {
         {
           id = 26,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 720,
           y = 0,
@@ -248,7 +246,7 @@ return {
         {
           id = 36,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 242,
           y = 572,
@@ -261,7 +259,7 @@ return {
         {
           id = 37,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 681,
           y = 564,
@@ -274,7 +272,7 @@ return {
         {
           id = 38,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 52,
           y = 422,
@@ -287,7 +285,7 @@ return {
         {
           id = 39,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 870,
           y = 422,
@@ -304,7 +302,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -316,7 +313,7 @@ return {
         {
           id = 20,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = -32,
@@ -332,7 +329,7 @@ return {
         {
           id = 21,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 792,
@@ -348,7 +345,7 @@ return {
         {
           id = 23,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 362,
@@ -364,7 +361,7 @@ return {
         {
           id = 27,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 720,
@@ -379,7 +376,7 @@ return {
         {
           id = 28,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 720,
@@ -394,7 +391,7 @@ return {
         {
           id = 29,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 80,
@@ -409,7 +406,7 @@ return {
         {
           id = 30,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 80,
@@ -424,7 +421,7 @@ return {
         {
           id = 31,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 840,
           y = -32,
@@ -440,7 +437,7 @@ return {
         {
           id = 32,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 590,
@@ -454,7 +451,7 @@ return {
         {
           id = 33,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 615,
           y = 590,
@@ -468,7 +465,7 @@ return {
         {
           id = 34,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 50,
           y = 440,
@@ -482,7 +479,7 @@ return {
         {
           id = 35,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 804,
           y = 440,
@@ -496,7 +493,7 @@ return {
         {
           id = 40,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 840,
           y = 80,
@@ -511,7 +508,7 @@ return {
         {
           id = 41,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 880,
           y = 80,
@@ -530,7 +527,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -542,7 +538,7 @@ return {
         {
           id = 15,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 480,
           y = 560,
@@ -555,7 +551,7 @@ return {
         {
           id = 16,
           name = "entry_diner",
-          class = "",
+          type = "",
           shape = "point",
           x = 480,
           y = 460,
@@ -568,7 +564,7 @@ return {
         {
           id = 17,
           name = "entry_alley",
-          class = "",
+          type = "",
           shape = "point",
           x = 80,
           y = 80,
@@ -581,7 +577,7 @@ return {
         {
           id = 18,
           name = "entry_bor",
-          class = "",
+          type = "",
           shape = "point",
           x = 880,
           y = 80,
@@ -594,7 +590,7 @@ return {
         {
           id = 22,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 480,
           y = 760,

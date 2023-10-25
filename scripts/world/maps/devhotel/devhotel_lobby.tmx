@@ -4,12 +4,13 @@
   <export target="devhotel_lobby.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="dev"/>
   <property name="music" value="devhotel"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/devroom.tsx"/>
  <tileset firstgid="73" source="../../tilesets/hoteldoors.tsx"/>
- <tileset firstgid="78" source="../../tilesets/city_alleyway.tsx"/>
- <tileset firstgid="393" source="../../tilesets/devroom-objects.tsx"/>
+ <tileset firstgid="81" source="../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="396" source="../../tilesets/devroom-objects.tsx"/>
  <layer id="1" name="Tile Layer 1" width="26" height="28">
   <data encoding="csv">
 8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
@@ -63,10 +64,10 @@
   <object id="74" x="120" y="400" width="200" height="40"/>
  </objectgroup>
  <objectgroup id="3" name="objects_props">
-  <object id="79" gid="416" x="140" y="440" width="200" height="60"/>
-  <object id="80" gid="414" x="720" y="440" width="80" height="120"/>
-  <object id="81" gid="430" x="480" y="440" width="160" height="120"/>
-  <object id="85" gid="414" x="360" y="160" width="80" height="120"/>
+  <object id="79" gid="419" x="140" y="440" width="200" height="60"/>
+  <object id="80" gid="417" x="720" y="440" width="80" height="120"/>
+  <object id="81" gid="433" x="480" y="440" width="160" height="120"/>
+  <object id="85" gid="417" x="360" y="160" width="80" height="120"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="4" name="objects">
   <object id="44" name="script" x="1020" y="640" width="40" height="120">
@@ -81,15 +82,15 @@
     <property name="marker" value="entry2"/>
    </properties>
   </object>
-  <object id="53" gid="306" x="0" y="680" width="40" height="40"/>
-  <object id="54" gid="306" x="0" y="720" width="40" height="40"/>
-  <object id="55" gid="306" x="0" y="760" width="40" height="40"/>
-  <object id="66" gid="306" x="480" y="440" width="40" height="40"/>
-  <object id="67" gid="306" x="520" y="440" width="40" height="40"/>
-  <object id="68" gid="306" x="560" y="440" width="40" height="40"/>
-  <object id="69" gid="306" x="600" y="440" width="40" height="40"/>
-  <object id="70" gid="306" x="720" y="440" width="40" height="40"/>
-  <object id="71" gid="306" x="760" y="440" width="40" height="40"/>
+  <object id="53" gid="309" x="0" y="680" width="40" height="40"/>
+  <object id="54" gid="309" x="0" y="720" width="40" height="40"/>
+  <object id="55" gid="309" x="0" y="760" width="40" height="40"/>
+  <object id="66" gid="309" x="480" y="440" width="40" height="40"/>
+  <object id="67" gid="309" x="520" y="440" width="40" height="40"/>
+  <object id="68" gid="309" x="560" y="440" width="40" height="40"/>
+  <object id="69" gid="309" x="600" y="440" width="40" height="40"/>
+  <object id="70" gid="309" x="720" y="440" width="40" height="40"/>
+  <object id="71" gid="309" x="760" y="440" width="40" height="40"/>
   <object id="76" name="interactable" x="80" y="600" width="40" height="40">
    <properties>
     <property name="solid" type="bool" value="true"/>
@@ -99,8 +100,8 @@ is the way! -Sci</property>
 only open at the start of the day... -Sci</property>
    </properties>
   </object>
-  <object id="77" gid="435" x="80" y="640" width="40" height="40"/>
-  <object id="78" gid="433" x="320" y="760" width="162" height="78"/>
+  <object id="77" gid="438" x="80" y="640" width="40" height="40"/>
+  <object id="78" gid="436" x="320" y="760" width="162" height="78"/>
   <object id="83" name="npc" x="840" y="460">
    <properties>
     <property name="actor" value="marcy"/>

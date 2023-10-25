@@ -4,6 +4,7 @@
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="dev"/>
   <property name="music" value="greenroom"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/devroom.tsx"/>
