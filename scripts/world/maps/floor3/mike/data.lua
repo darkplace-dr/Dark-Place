@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 36,
+  nextobjectid = 38,
   properties = {
     ["border"] = "undertale/dog",
     ["music"] = "greenroom",
@@ -523,6 +523,19 @@ return {
             ["text1"] = "* (Welcome to the MIKE ROOM!)",
             ["text2"] = "* (Feel free to add your Mikes here!)"
           }
+        },
+        {
+          id = 37,
+          name = "soda",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 160,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
