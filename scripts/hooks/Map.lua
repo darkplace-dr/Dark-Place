@@ -84,6 +84,7 @@ function Map:init(world, data)
 end
 
 function Map:onEnter()
+    super.onEnter(self)
     if Game.world.map.id:find("archives/") then
         self.voidbg = Game.world:spawnObject(VoidBGUT2())
         self.voidbg.layer = -9999
@@ -94,6 +95,7 @@ function Map:onEnter()
 end
 
 function Map:onExit()
+    super.onExit(self)
     if Game.world.map.id:find("archives/") then
         self.voidbg:remove()
     elseif Game.world.map.id:find("cloudwebs/_ch1/") then
