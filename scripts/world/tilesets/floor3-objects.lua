@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 9,
+  tilecount = 10,
   tiles = {
     {
       id = 0,
@@ -78,6 +78,12 @@ return {
       image = "../../../assets/sprites/world/maps/floor3/sign.png",
       width = 40,
       height = 23
+    },
+    {
+      id = 9,
+      image = "../../../assets/sprites/world/maps/floor3/bkmike_memorial.png",
+      width = 40,
+      height = 40
     }
   }
 }
