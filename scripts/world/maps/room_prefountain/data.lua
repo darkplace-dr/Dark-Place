@@ -423,7 +423,7 @@ return {
           name = "beanspot",
           type = "",
           shape = "point",
-          x = 626,
+          x = 586,
           y = 600,
           width = 0,
           height = 0,
