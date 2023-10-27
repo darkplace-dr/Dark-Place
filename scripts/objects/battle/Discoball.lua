@@ -3,7 +3,7 @@ local DiscoBall, super = Class(Object)
 function DiscoBall:init()
     super:init(self)
     self.sprite = Sprite("battle/discoball")
-    self.sprite.layer = BATTLE_LAYERS["top"]
+    self.layer = BATTLE_LAYERS["below_battlers"]
     self.sprite:setScale(2)
     self.sprite:setOrigin(0.5, 0)
     self.sprite:play(1/5, true)

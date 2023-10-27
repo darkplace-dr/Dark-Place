@@ -265,6 +265,26 @@ function Soul:update()
 
 end
 
+Utils.hook(Soul, "remove", function (orig, self)
+    -- Taunt
+    if self.parried_loop_sfx then
+        self.parried_loop_sfx:stop()
+        self.parried_loop_sfx = nil
+    end
+
+    -- Timeslow
+    Game.stage.timescale = 1
+	Game.battle.music.pitch = Game.battle.music.basepitch
+	vhsfx.active = false
+	outlinefx.active = false
+    self.concentratebg:remove()
+    self.timeslow_sfx:stop()
+	Input.clear("a")
+
+    orig(self)
+
+end)
+
 -- Why is this not a default function?
 function Soul:flash(sprite)
     local sprite_to_use = sprite or self.sprite
@@ -362,6 +382,8 @@ function Soul:onCollide(bullet)
         super.onCollide(self, bullet)
 end
 
+
+--[[
 function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effects staying around after a wave. for some reason, doing this when self.transitioning doesn't work.
 	Game.stage.timescale = 1
 	Game.battle.music.pitch = Game.battle.music.basepitch
@@ -374,5 +396,6 @@ function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effec
 	Input.clear("a")
 	super.transitionTo(self, x, y, should_destroy)
 end
+--]]
 
 return Soul

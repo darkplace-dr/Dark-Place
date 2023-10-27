@@ -3,7 +3,7 @@ local room, super = Class(Map)
 function room:onEnter()
     super.onEnter(self)
 
-    --
+    --[[
     Game.world:startCutscene(function (cs)
         Game.world:loadMap("misc/dogcheck")
         cs:wait(1)
