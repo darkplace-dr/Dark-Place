@@ -70,6 +70,7 @@ Mod.warp_bin_codes = {
             cutscene:text("* Area still in development![wait:5]\nCome back later.[wait:10]\n -Agent 7")
         end
     },
+    ["CASTLERD"] = {result = "castle_path/start"}
 }
 
 -- heres some new totally cool helper functions wowee
