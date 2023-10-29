@@ -10,7 +10,9 @@ return {
   tileheight = 40,
   nextlayerid = 7,
   nextobjectid = 25,
-  properties = {},
+  properties = {
+    ["border"] = "city"
+  },
   tilesets = {
     {
       name = "city_alleyway",

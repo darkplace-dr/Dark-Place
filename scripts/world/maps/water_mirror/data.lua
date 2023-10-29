@@ -237,7 +237,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "* Currently out to lunch.[wait:5]\nCome back later!"
+            ["text1"] = "* NOTE![wait:5]\n* One customer at a time.[wait:5]\n* For your safety and mine."
           }
         },
         {

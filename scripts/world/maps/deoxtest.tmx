@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="43" height="36" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="81">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="43" height="36" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="81">
  <editorsettings>
   <export target="deoxtest.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="border" value="forest"/>
+  <property name="border" value="deoxynn/forest"/>
   <property name="music" value="forest"/>
   <property name="name" value="Deoxynn Test Map"/>
  </properties>

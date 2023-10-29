@@ -10,8 +10,9 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 36,
+  nextobjectid = 40,
   properties = {
+    ["border"] = "undertale/dog",
     ["music"] = "greenroom",
     ["name"] = "Floor 3 - Mike Room"
   },
@@ -527,6 +528,49 @@ return {
           properties = {
             ["text1"] = "* (Welcome to the MIKE ROOM!)",
             ["text2"] = "* (Feel free to add your Mikes here!)"
+          }
+        },
+        {
+          id = 37,
+          name = "soda",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 160,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 38,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 700,
+          y = 200,
+          width = 80,
+          height = 80,
+          rotation = 0,
+          gid = 45,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 39,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 700,
+          y = 160,
+          width = 80,
+          height = 28,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "mike.bk",
+            ["solid"] = true
           }
         }
       }

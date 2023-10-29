@@ -155,7 +155,7 @@
     <property name="marker" value="spawn"/>
    </properties>
   </object>
-  <object id="52" name="beanspot" x="626" y="600">
+  <object id="52" name="beanspot" x="586" y="600">
    <properties>
     <property name="inc_flag" value="fountain_beans"/>
     <property name="name" value="Fountain Bean"/>

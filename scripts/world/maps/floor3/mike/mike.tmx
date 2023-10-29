@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="36">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="40">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="undertale/dog"/>
   <property name="music" value="greenroom"/>
   <property name="name" value="Floor 3 - Mike Room"/>
  </properties>
@@ -107,6 +108,14 @@
    <properties>
     <property name="text1" value="* (Welcome to the MIKE ROOM!)"/>
     <property name="text2" value="* (Feel free to add your Mikes here!)"/>
+   </properties>
+  </object>
+  <object id="37" name="soda" x="440" y="160" width="80" height="40"/>
+  <object id="38" gid="45" x="700" y="200" width="80" height="80"/>
+  <object id="39" name="interactable" x="700" y="160" width="80" height="28">
+   <properties>
+    <property name="cutscene" value="mike.bk"/>
+    <property name="solid" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

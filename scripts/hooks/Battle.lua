@@ -11,6 +11,25 @@ function Battle:init()
     self.freeze_xp = 0
 
     self.killed = false
+
+
+    local month = tonumber(os.date("%m"))
+    local day = tonumber(os.date("%d"))
+
+    if month == 10 and day == 31 then
+        local skeledance = Sprite("battle/skeledance/skeledance", SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+        skeledance:setOrigin(0.5)
+        skeledance:setColor(self.color)
+	    skeledance:play(1/15, true)
+	    skeledance:setScale(5, 2)
+        skeledance.alpha = 7/255
+        skeledance.debug_select = false
+	    self:addChild(skeledance)
+
+	    skeledance.layer = BATTLE_LAYERS["bottom"]
+    end
+
+
 end
 
 -- FIXME: \/ copied from libraries/EnemyTension/scripts/hooks/Battle.lua

@@ -11,6 +11,7 @@ return {
   nextlayerid = 7,
   nextobjectid = 96,
   properties = {
+    ["border"] = "dev",
     ["music"] = "greenroom",
     ["name"] = "Dev Diner - Dining Area"
   },

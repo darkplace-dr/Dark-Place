@@ -72,7 +72,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Dobby233Liu - Contributor
 * Willow with a W - Contributor
 * DeltaVelvet - Contributor
-* Pinto Molhado - Contributor
+* Kross - Contributor
 * Agent 7 - Contributor
 * Riverstar (Sumire) - Contributor
 * AlexGamingSW - Contributor
@@ -84,6 +84,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Silvaz - Contributor
 * LancerGaming2 - Contributor
 * FireRainV - Contributor
+* Sad Diamond Man - Contributor
 
 <a href="https://github.com/BrandonK7200/Dark-Place/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=BrandonK7200/Dark-Place" />
@@ -112,7 +113,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * FireStar8903 - Made music for the Pasta Pack Shop and A Salesman's Lament
 * OMOCAT, LLC - Original author for OMORI
 * Ninomae Ina'nis - Creator and designer of the Takodachis
-* Nintendo - Original author for Pikmin
+* Nintendo - Original authors for Pikmin
 * HAL Laboratories - Original author for Kirby
 * Tour de Pizza - Original authors for Pizza Tower
 * Eminus - Original author for Mario's Mystery Meat

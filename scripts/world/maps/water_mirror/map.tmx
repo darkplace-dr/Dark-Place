@@ -120,8 +120,9 @@
  <objectgroup id="2" name="objects">
   <object id="31" name="interactable" x="1440" y="200" width="40" height="40">
    <properties>
-    <property name="text1">* Currently out to lunch.[wait:5]
-Come back later!</property>
+    <property name="text1">* NOTE![wait:5]
+* One customer at a time.[wait:5]
+* For your safety and mine.</property>
    </properties>
   </object>
   <object id="32" gid="98" x="1440" y="240" width="40" height="40"/>

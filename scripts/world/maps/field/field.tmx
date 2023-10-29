@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="18">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="18">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="border" value="stars"/>
   <property name="music" value="checkpoint"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/castle.tsx"/>
@@ -65,7 +66,6 @@
     <property name="text1">* Welcome to the Field.[wait:10]
 * I'm sorry,[wait:5] I couldn't think of a better name.</property>
     <property name="text2" value="* What you are witnessing right now..."/>
-    <!-- [citiation needed] -->
     <property name="text3" value="* Is the combined hopes and dreams of everyone who has contributed to this mod."/>
     <property name="text4" value="* &quot;There is always hope.&quot;"/>
    </properties>

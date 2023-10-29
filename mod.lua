@@ -3,6 +3,7 @@ modRequire("scripts/main/utils_general")
 modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
+modRequire("scripts/main/battle_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
 Speen = modRequire("scripts/main/ow_speen")
 
@@ -32,6 +33,7 @@ function Mod:init()
     self:registerShaders()
 
     self:initTaunt()
+    self:initBattleTaunt()
     Speen:init()
 
 --[[     Utils.hook(World, "setupMap", function(orig, self, map, ...)
@@ -197,6 +199,17 @@ function Mod:postInit(new_file)
 
         Game.world:startCutscene("_main.introcutscene")
     end
+	
+	if not Game:getFlag("booty_time") then
+		Game:addFlag("booty_cd", 1)
+		if Game:getFlag("booty_cd") >= 5 then
+			if love.math.random(1,5) > 4 then
+				Game:setFlag("booty_time", true)
+			end
+		end
+	elseif not Game:getFlag("booty_finished") then
+		Game.world:startCutscene("booty.bootleg")
+	end
 
     self:initBulborb()
 end
@@ -619,7 +632,7 @@ function Mod:initializeImportantFlags(new_file)
         end
     end
 	
-	if not new_file and not Game:getFlag("darkess_beans") then
+	if new_file or not Game:getFlag("darkess_beans") then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before the bean spots were added.")
 		Game:setFlag("darkess_beans", 0)
@@ -741,6 +754,7 @@ end
 
 function Mod:postUpdate()
     self:updateTaunt()
+    self:updateBattleTaunt()
     self:updateBulborb()
     Speen:update()
 
@@ -844,10 +858,6 @@ end
 function Mod:loadObject(world, name, properties)
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
-    end
-    if Game.world.map.id:find("archives/") then
-        self.voidbg = Game.world:spawnObject(VoidBGUT2())
-        self.voidbg.layer = -9999
     end
 end
 

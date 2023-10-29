@@ -1,5 +1,4 @@
 function Mod:initTaunt()
-    self.taunt_cooldown = 0
     self.taunt_lock_movement = false
 
     Utils.hook(Player, "isMovementEnabled",
@@ -21,11 +20,10 @@ function Mod:updateTaunt()
     if
         (toque_equipped or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
         and Input.pressed("v", false)
-        and self.taunt_cooldown == 0
+        and not self.taunt_lock_movement
         and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene() and not Game.lock_movement)
         and not (OVERLAY_OPEN or TextInput.active)
     then
-        self.taunt_cooldown = 0.4
         self.taunt_lock_movement = true
 
         Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
@@ -46,7 +44,7 @@ function Mod:updateTaunt()
             Game.world:addChild(shine)
 
             chara.sprite:set(Utils.pick(sprites))
-            shine:play(0.02, false, function()
+            shine:play(1/30, false, function()
                 shine:remove()
                 chara:resetSprite()
             end)
@@ -54,10 +52,8 @@ function Mod:updateTaunt()
             ::continue::
         end
 
-        Game.world.timer:after(0.2, function()
+        Game.world.timer:after(1/3, function()
             self.taunt_lock_movement = false
         end)
     end
-
-    self.taunt_cooldown = Utils.approach(self.taunt_cooldown, 0, DT)
 end

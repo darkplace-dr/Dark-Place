@@ -11,6 +11,7 @@ return {
   nextlayerid = 6,
   nextobjectid = 89,
   properties = {
+    ["border"] = "dev",
     ["music"] = "devhotel"
   },
   tilesets = {
@@ -28,13 +29,13 @@ return {
     },
     {
       name = "city_alleyway",
-      firstgid = 78,
+      firstgid = 81,
       filename = "../../tilesets/city_alleyway.tsx",
       exportfilename = "../../tilesets/city_alleyway.lua"
     },
     {
       name = "devroom-objects",
-      firstgid = 393,
+      firstgid = 396,
       filename = "../../tilesets/devroom-objects.tsx",
       exportfilename = "../../tilesets/devroom-objects.lua"
     }
@@ -359,7 +360,7 @@ return {
           width = 200,
           height = 60,
           rotation = 0,
-          gid = 416,
+          gid = 419,
           visible = true,
           properties = {}
         },
@@ -373,7 +374,7 @@ return {
           width = 80,
           height = 120,
           rotation = 0,
-          gid = 414,
+          gid = 417,
           visible = true,
           properties = {}
         },
@@ -387,7 +388,7 @@ return {
           width = 160,
           height = 120,
           rotation = 0,
-          gid = 430,
+          gid = 433,
           visible = true,
           properties = {}
         },
@@ -401,7 +402,7 @@ return {
           width = 80,
           height = 120,
           rotation = 0,
-          gid = 414,
+          gid = 417,
           visible = true,
           properties = {}
         }
@@ -462,7 +463,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -476,7 +477,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -490,7 +491,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -504,7 +505,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -518,7 +519,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -532,7 +533,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -546,7 +547,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -560,7 +561,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -574,7 +575,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 306,
+          gid = 309,
           visible = true,
           properties = {}
         },
@@ -605,7 +606,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 435,
+          gid = 438,
           visible = true,
           properties = {}
         },
@@ -619,7 +620,7 @@ return {
           width = 162,
           height = 78,
           rotation = 0,
-          gid = 433,
+          gid = 436,
           visible = true,
           properties = {}
         },

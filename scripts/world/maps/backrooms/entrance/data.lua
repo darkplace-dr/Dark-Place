@@ -1,8 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -12,6 +11,7 @@ return {
   nextlayerid = 6,
   nextobjectid = 14,
   properties = {
+    ["border"] = "none",
     ["music"] = "backrooms",
     ["name"] = "Backrooms - Entrance"
   },
@@ -19,8 +19,7 @@ return {
     {
       name = "backrooms",
       firstgid = 1,
-      filename = "../../../tilesets/backrooms.tsx",
-      exportfilename = "../../../tilesets/backrooms.lua"
+      filename = "../../../tilesets/backrooms.tsx"
     }
   },
   layers = {
@@ -32,7 +31,6 @@ return {
       height = 24,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -76,7 +74,6 @@ return {
       height = 24,
       id = 2,
       name = "decor",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -117,7 +114,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -129,7 +125,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 0,
@@ -142,7 +138,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 0,
@@ -155,7 +151,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 400,
@@ -168,7 +164,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 560,
           y = 400,
@@ -181,7 +177,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 480,
@@ -194,7 +190,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 480,
@@ -207,7 +203,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 720,
@@ -220,7 +216,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 720,
@@ -237,7 +233,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -249,7 +244,7 @@ return {
         {
           id = 9,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = -20,
@@ -265,7 +260,7 @@ return {
         {
           id = 10,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 280,
           y = 940,
@@ -281,7 +276,7 @@ return {
         {
           id = 13,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 440,
@@ -301,7 +296,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -313,7 +307,7 @@ return {
         {
           id = 11,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 920,
@@ -326,7 +320,7 @@ return {
         {
           id = 12,
           name = "entry2",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 80,

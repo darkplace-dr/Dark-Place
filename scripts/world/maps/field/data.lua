@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -12,6 +11,7 @@ return {
   nextlayerid = 6,
   nextobjectid = 18,
   properties = {
+    ["border"] = "stars",
     ["music"] = "checkpoint"
   },
   tilesets = {
@@ -37,7 +37,6 @@ return {
       height = 18,
       id = 1,
       name = "tiles",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -75,7 +74,6 @@ return {
       height = 18,
       id = 2,
       name = "decor",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -110,7 +108,6 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -178,7 +175,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -229,7 +225,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

@@ -66,7 +66,7 @@ function Zero:init()
 
     self:registerAct("Red Buster", "Red\nDamage", {"susie"}, 60)
     --self:registerAct("Red Buster", "Red\nDamage", {"robo_susie"}, 60)
-    self:registerAct("Perish", "Perish")
+    --self:registerAct("Perish", "Perish")
 
 end
 
