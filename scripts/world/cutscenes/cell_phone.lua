@@ -285,6 +285,39 @@ return function(cutscene, cell_phone_event_override)
         resumeMusic()
 
         cutscene:text("* It's just an argument about soup.")
+    elseif event_num >= 70 and event_num <= 75 then
+        pauseMusic()
+        local waystuffis = playCellPhoneAudio("voiceover/cell_phone/stuffisway")
+
+        cutscene:wait(0.25)
+        cutscene:setTextboxTop(false)
+        pmMsg("[speed:0.9]* Did you just\n* What", 45)
+        pmMsg("[speed:0.9]* Is what you\n* Yes", 45)
+        pmMsg("[speed:0.9]* Did you whatever[wait:25]\n* Whatever you[wait:15]\n* I guess", 45)
+        pmMsg("[speed:0.9]* The stocking horse[wait:45]\n* Was hides the guy", 45)
+        pmMsg("[speed:0.9]* And which the pony[wait:15]\nis a phony[wait:15]\nwas a lie", 55)
+        pmMsg("[speed:0.9]* You[wait:5] say[wait:35] stuff[wait:5] is[wait:10] way,\n[wait:35]way[wait:10] to[wait:10] go\n[wait:35]go[wait:10] a[wait:10]way", 55)
+        pmMsg("[speed:0.9]* Who had\n* You was", 55)
+        pmMsg("[speed:0.9]* I\n* yes you would", 45)
+        pmMsg("[speed:0.9]* It was catastro[wait:25]\n* Catastro[wait:10]\n* Feeling good", 55)
+        pmMsg("[speed:0.9]* As it the drag[wait:45]\n* That has you are", 45)
+        pmMsg("[speed:0.9]* Is in the bag[wait:15][speed:0.6] that you drag behind your[wait:10] car.", 65)
+
+        cutscene:setTextboxTop(true)
+        Game.light = true
+        pmMsg("[speed:0.9]* Did you just\n* What", 45)
+        pmMsg("[speed:0.9]* Is what you\n* Yes", 45)
+        pmMsg("[speed:0.9]* Did you whatever[wait:25]\n* Whatever you[wait:15]\n* I guess", 45)
+        pmMsg("[speed:0.9]* The stocking horse[wait:45]\n* Was hides the guy", 45)
+        pmMsg("[speed:0.9]* And which the pony[wait:15]\nis a phony[wait:15]\nwas a lie", 55)
+        Game.light = false
+
+        music_inst:stop()
+        resumeMusic()
+        cutscene:setTextboxTop(nil)
+
+        cutscene:text("* (You're not sure what they were trying to say.)")
+        cutscene:text("* (I have an idea to have the two voices, but I'm lazy rn.[wait:10]\n- Simbel)")
     -- if anyone wants to add an additional easter egg, feel free to use the template below!
     --[[
     elseif event_num == 100 then
