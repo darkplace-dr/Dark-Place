@@ -110,7 +110,7 @@
   <object id="10" name="interactable" x="286.125" y="120" width="73.875" height="40">
    <properties>
     <property name="solid" type="bool" value="true"/>
-    <property name="text" value="* (The trusty light of the night,[wait:5] in case monsters start to manifest in the corners.)"/>
+    <property name="cutscene" value="devhotel_room_004.light"/>
    </properties>
   </object>
   <object id="8" name="interactable" x="360" y="80" width="240" height="160">
