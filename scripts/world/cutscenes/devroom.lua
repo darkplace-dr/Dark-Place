@@ -474,17 +474,16 @@ return {
         local susie = cutscene:getCharacter("susie")
 
         cutscene:showNametag("Sam")
-        cutscene:text("* ...", nil, "sam")
+        cutscene:text("* ...", "phone_moment", "sam")
         if not Game:getFlag("interact_once_sam", false) then
-            Game:setFlag("interact_once_sam", true)
-            cutscene:text("* .....", nil, "sam")
+            cutscene:text("* .....", "phone_moment", "sam")
 
             if susie then
                 cutscene:showNametag("Susie")
                 cutscene:text("* Uh...[wait:3] Hello?", "neutral", "susie")
                 cutscene:showNametag("Sam")
             else
-                cutscene:text("..?", nil, "sam")
+                cutscene:text("..?", "talk_look_away", "sam")
             end
 
             local s_facing = "left"
@@ -498,8 +497,8 @@ return {
 
             simbel:setFacing(s_facing)
 
-            cutscene:text("* A-[wait:2]Ah![wait:3] Hello!", nil, "sam")
-            cutscene:text("* Sorry,[wait:2] I was daydreaming...[wait:3] kinda?[wait:3] I don't even know if time exists here.", nil, "sam")
+            cutscene:text("* A-[wait:2]Ah![wait:3] Hello!", "surprised_blush", "sam")
+            cutscene:text("* Sorry,[wait:2] I was daydreaming...[wait:3] kinda?[wait:3] If time even exists here.", "shy_blush", "sam")
 
             if susie then
                 cutscene:showNametag("Susie")
@@ -507,14 +506,14 @@ return {
                 cutscene:showNametag("Sam")
             end
 
-            cutscene:text("* You guys are like,[wait:2] the legends of the Delta Rune, right?", nil, "sam")
+            cutscene:text("* You guys are like,[wait:2] the legends of the Delta Rune, right?", "talk_look_away", "sam")
 
             if not cutscene:getCharacter("kris") then
-                cutscene:text("* Actually wait,[wait:2] no,[wait:2] you're not Kris.", nil, "sam")
+                cutscene:text("* Actually wait,[wait:2] no,[wait:2] you're not Kris.", "dead_inside_b", "sam")
                 if not susie then
-                    cutscene:text("* Neither are you Susie actually...", nil, "sam")
-                    cutscene:text("* Well that's a complete failure of an introduction...", nil, "sam")
-                    cutscene:text("* ...", nil, "sam")
+                    cutscene:text("* Neither are you Susie actually...", "dead_inside", "sam")
+                    cutscene:text("* Well that's a complete failure of an introduction...", "dead_inside", "sam")
+                    cutscene:text("* ...", "huh_b", "sam")
                 else
                     cutscene:showNametag("Susie")
                     if Game:getFlag("brandon_talkedto") then
@@ -523,16 +522,16 @@ return {
                         cutscene:text("* How do you know Kris's name?", "nervous_side", "susie")
                     end
                     cutscene:showNametag("Sam")
-                    cutscene:text("* That's a long story I don't have the energy to explain.", nil, "sam")
+                    cutscene:text("* That's a long story I don't have the energy to explain.", "huh", "sam")
                 end
             else
                 if not susie then
                     cutscene:text("* Well uh... Without Susie, actually.")
-                    cutscene:text("* H-[wait:2]Hey,[wait:2] don't look at me like that.", nil, "sam")
-                    cutscene:text("* The reason why I know her name is totally fine I swear!", nil, "sam")
+                    cutscene:text("* H-[wait:2]Hey,[wait:2] don't look at me like that.", "shy_look_away", "sam")
+                    cutscene:text("* The reason why I know her name is totally fine I swear!", "shy_look_away", "sam")
                 else
-                    cutscene:text("* But this your prophecy,[wait:2] uh..[wait:3] turned out fake...", nil, "sam")
-                    cutscene:text("* Can we still call you guys the heroes of the legend?", nil, "sam")
+                    cutscene:text("* But this your prophecy,[wait:2] uh..[wait:3] turned out fake...", "talk_look_away", "sam")
+                    cutscene:text("* Can we still call you guys the heroes of the legend?", "talk_look_away", "sam")
                     cutscene:showNametag("Susie")
                     cutscene:text("* I mean...[wait:3] You've got a point.", "neutral", "susie")
                     cutscene:text("* But even if the prophecy means nothing,[wait:2] we're still the Delta Warriors,[wait:2] you know?", "neutral_side", "susie")
@@ -540,10 +539,11 @@ return {
                     cutscene:text("* ...", "smirk", "susie")
                     cutscene:text("* Kris,[wait:1] stop with that little smile of yours!!", "angry_c")
                     cutscene:showNametag("Sam")
-                    cutscene:text("* Ha ha![wait:3] Yeah,[wait:2] I guess you guys are fine even without the prophecy.", nil, "sam")
+                    cutscene:text("* Ha ha![wait:3] Yeah,[wait:2] I guess you guys are fine even without the prophecy.", "eyes_closed_happy", "sam")
                 end
             end
-            cutscene:text("* So uh...[wait:2] Do you want to talk about something?", nil, "sam")
+            cutscene:text("* So uh...[wait:2] Do you want to talk about something?", "shy_look_away", "sam")
+            Game:setFlag("interact_once_sam", true)
         else
             local s_facing = "left"
             if leader.facing == "down" then
@@ -556,7 +556,7 @@ return {
             print(leader.facing, s_facing)
 
             simbel:setFacing(s_facing)
-            cutscene:text("* What's up?", nil, "sam")
+            cutscene:text("* What's up?", "talk_look_away", "sam")
         end
         cutscene:hideNametag()
         local choices = {"Talk", "Party"}
@@ -567,103 +567,102 @@ return {
         local c = cutscene:choicer(choices)
         cutscene:showNametag("Sam")
         if c == 1 then
-            cutscene:text("* This world is pretty cool,[wait:2] honestly.", nil, "sam")
-            cutscene:text("* Sometimes it feels like nothing more than a few ideas coming together.", nil, "sam")
-            cutscene:text("* And sometimes it feels like a whole universe got linked to this one.", nil, "sam")
-            cutscene:text("* Imagination is just that powerful,[wait:2] I guess.[wait:3] Wouldn't you agree?", nil, "sam")
+            cutscene:text("* This world is pretty cool,[wait:2] honestly.", "talk_happy", "sam")
+            cutscene:text("* Sometimes it feels like nothing more than a few ideas coming together.", "talk_happy_look_side", "sam")
+            cutscene:text("* And sometimes it feels like a whole universe got linked to this one.", "happy_look_side", "sam")
+            cutscene:text("* Imagination is just that powerful,[wait:2] I guess.[wait:3] Wouldn't you agree?", "eyes_closed_happy", "sam")
             if event.interact_count > 1 and not Game:getFlag("started_sphere_quest", false) then
-                cutscene:text("* Actually, speaking of powerful...", nil, "sam")
-                cutscene:text("* Can I ask you guys a favor?", nil, "sam")
-                cutscene:text("* You see,[wait:2] when I went here,[wait:2] I took a powerful artefact with me.", nil, "sam")
-                cutscene:text("* But on my way,[wait:2] she kinda slip out of my grasp.", nil, "sam")
+                cutscene:text("* Actually, speaking of powerful...", "dead_inside", "sam")
+                cutscene:text("* Can I ask you guys a favor?", "dead_inside_b", "sam")
+                cutscene:text("* You see,[wait:2] when I went here,[wait:2] I took a powerful artefact with me.", "unsure", "sam")
+                cutscene:text("* But on my way,[wait:2] she kinda slip out of my grasp.", "whoops", "sam")
                 if susie then
                     cutscene:text("* I get it.[wait:3] And if it falls in bad hands,[wait:2] the world is doomed,[wait:2] right?", "smile", "susie")
-                    cutscene:text("* Honestly,[wait:2] no.[wait:3] I'm not scared about the world.", nil, "sam")
-                    cutscene:text("* I'm more scared of the person who will try to absorb her power.", nil, "sam")
+                    cutscene:text("* Honestly,[wait:2] no.[wait:3] I'm not scared about the world.", "shy_look_away", "sam")
+                    cutscene:text("* I'm more scared of the person who will try to absorb her power.", "scared_look_away", "sam")
                     cutscene:text("* Because they will go insane??", "sus_nervous", "susie")
-                    cutscene:text("* No.[wait:3] Just that very few people can actually withstand her power.", nil, "sam")
-                    cutscene:text("* Like,[wait:2] even I can't withstand it for too long.", nil, "sam")
-                    cutscene:text("* So if any random person were to absorb it...", nil, "sam")
+                    cutscene:text("* No.[wait:3] Just that very few people can actually withstand her power.", "talk_look_away", "sam")
+                    cutscene:text("* Like,[wait:2] even I can't withstand it for too long.", "unsure", "sam")
+                    cutscene:text("* So if any random person were to absorb it...", "surprised_scared", "sam")
                     cutscene:text("* They'll be dead,[wait:2] right?", "nervous", "susie")
-                    cutscene:text("* Yeah.[wait:3] Their physical form badly damaged and their SOUL destroyed.", nil, "sam")
+                    cutscene:text("* Yeah.[wait:3] Their physical form badly damaged and their SOUL destroyed.", "unsure", "sam")
                     cutscene:text("* Alright then,[wait:2] we'll get you that thing of yours back.", "smirk", "susie")
                     cutscene:text("* But uh...[wait:3] Any clues as to where to start?", "nervous", "susie")
-                    cutscene:text("* Yeah.[wait:3] I've added a destination to the warp bin to where I think she fell.", nil, "sam")
+                    cutscene:text("* Yeah.[wait:3] The warp bin can bring you to where I think she fell.", "talk_happy_look_side", "sam")
                 else
-                    cutscene:text("* If someone were to try to absorb her power...", nil, "sam")
-                    cutscene:text("* That would damage their physical form and their SOUL.", nil, "sam")
-                    cutscene:text("* And while a crack on the skin is not much...", nil, "sam")
-                    cutscene:text("* A small crack on your SOUL can reduce your lifespan by a lot,[wait:2] you know?", nil, "sam")
-                    cutscene:text("* And here, we're not talking about a small crack at all.", nil, "sam")
-                    cutscene:text("* Hm?[wait:3] You will do it?", nil, "sam")
-                    cutscene:text("* Thanks![wait:3] I've added a code to the warp bin that should guide you.", nil, "sam")
+                    cutscene:text("* If someone were to try to absorb her power...", "talk_look_away", "sam")
+                    cutscene:text("* That would damage their physical form and their SOUL.", "unsure", "sam")
+                    cutscene:text("* And while a crack on the skin is not much...", "shy_look_away", "sam")
+                    cutscene:text("* A small crack on your SOUL can reduce your lifespan by a lot,[wait:2] you know?", "shy_look_away", "sam")
+                    cutscene:text("* And here, we're not talking about a small crack at all.", "unsure", "sam")
+                    cutscene:text("* Hm?[wait:3] You will do it?", "surprised_b", "sam")
+                    cutscene:text("* Thanks![wait:3] I've added a code to the warp bin that should guide you.", "eyes_closed_happy", "sam")
                 end
-                cutscene:text("* The code is [color:yellow]CASTLERD[color:reset].", nil, "sam")
-                Kristal.callEvent("createQuest", "Blue and Green..?", "_gb", "Sam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"SPHEREML\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
-                Mod:addBinCode("CASTLERD", "castle_path/start")
+                cutscene:text("* The code is [color:yellow]CASTLERD[color:reset].", "happy_look_side", "sam")
+                Kristal.callEvent("createQuest", "Blue and Green..?", "_gb", "Sam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"CASTLERD\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
                 Game:setFlag("started_sphere_quest", true)
             end
         elseif c == 2 then
-            cutscene:text("* Huh?[wait:3] You want me to join your party?", nil, "sam")
-            cutscene:text("* Yeah no,[wait:2] I'm no good in a fight.", nil, "sam")
-            cutscene:text("* Well I do have powerful healing and defensive magic...", nil, "sam")
-            cutscene:text("* But I'm more of the peaceful type of guy,[wait:2] you know?", nil, "sam")
+            cutscene:text("* Huh?[wait:3] You want me to join your party?", "surprised_b", "sam")
+            cutscene:text("* Yeah no,[wait:2] I'm no good in a fight.", "shy_look_away", "sam")
+            cutscene:text("* Well I do have powerful healing and defensive magic...", "whoops", "sam")
+            cutscene:text("* But I'm more of the peaceful type of guy,[wait:2] you know?", "unsure", "sam")
             local first_word = "But"
             if Game:getFlag("library_kills", 0) > 0 and Game:getFlag("library_kills", 0) <= 2 then
-                cutscene:text("* And you don't seem to be the type to make peace, aren't you?", nil, "sam")
+                cutscene:text("* And you don't seem to be the type to make peace, aren't you?", "talk_look_away", "sam")
             else
                 local love = Mod:getPartyLove()
 
                 if love >= 19 then
-                    cutscene:text("* And I really don't like the way you're looking at me.", nil, "sam")
+                    cutscene:text("* And I really don't like the way you're looking at me.", "scared_look_away", "sam")
                 elseif love >= 15 then
-                    cutscene:text("* And uh.. You look like you could stab me at any moment so...", nil, "sam")
+                    cutscene:text("* And uh.. You look like you could stab me at any moment so...", "shy_look_away", "sam")
                 elseif love >= 12 then
-                    cutscene:text("* And you look too miserable for peace, to be honest...", nil, "sam")
+                    cutscene:text("* And if the blood and dust on your hand is any indication...", "unsure", "sam")
                 elseif love >= 10 then
-                    cutscene:text("* And if the blood and dust on your hand is any indication...", nil, "sam")
+                    cutscene:text("* And you look too miserable for peace, to be honest...", "phone_moment", "sam")
                 elseif love >= 5 then
-                    cutscene:text("* And you're, uh... Pretty bad, actually, at peace, to be honest.", nil, "sam")
+                    cutscene:text("* And you're, uh... Pretty bad, actually, at peace, to be honest.", "huh", "sam")
                 elseif love >= 2 then
-                    cutscene:text("* And uh.. You don't seem to consider peace as an option, do you?", nil, "sam")
+                    cutscene:text("* And uh.. You don't seem to consider peace as an option, do you?", "shy_look_away", "sam")
                 else
                     first_word = "Well"
-                    cutscene:text("* Oh wait,[wait:2] you seems to be pretty peaceful too actually.", nil, "sam")
+                    cutscene:text("* Oh wait,[wait:2] you seems to be pretty peaceful too actually.", "shy_look_away", "sam")
                 end
             end
-            cutscene:text("* "..first_word.." even then,[wait:2] I won't join your party for now.", nil, "sam")
-            cutscene:text("* You could say it's because of a skill issue.", nil, "sam")
+            cutscene:text("* "..first_word.." even then,[wait:2] I won't join your party for now.", "neutral", "sam")
+            cutscene:text("* You could say it's because of a skill issue.", "dead_inside_b", "sam")
         elseif c == 3 then
             if #choices == 4 then
-                cutscene:text("* Oh so you have met Jeku.", nil, "sam")
-                cutscene:text("* He's uh...[wait:3] A pretty unstable guy,[wait:2] right?", nil, "sam")
-                cutscene:text("* He's kinda out of my control so just don't mess with him too much.", nil, "sam")
-                cutscene:text("* I think he's nice but he got powers that can change reality itself.", nil, "sam")
-                cutscene:text("* Not the type of person you want to go against,[wait:2]you know?", nil, "sam")
+                cutscene:text("* Oh so you have met Jeku.", "talk_look_away", "sam")
+                cutscene:text("* He's uh...[wait:3] A pretty unstable guy,[wait:2] right?", "whoops", "sam")
+                cutscene:text("* He's kinda out of my control so just don't mess with him too much.", "unsure", "sam")
+                cutscene:text("* I think he's nice but he got powers that can change reality itself.", "talk_look_away", "sam")
+                cutscene:text("* Not the type of person you want to go against,[wait:2]you know?", "unsure", "sam")
                 if Game:getFlag("jekukilled", false) then
-                    cutscene:text("* Actually, you uh... Already found out by yourself, didn't you?", nil, "sam")
-                    cutscene:text("* Yeah, I can see it in the way you look at me.", nil, "sam")
-                    cutscene:text("* That look that screams \"No kidding?\".", nil, "sam")
-                    cutscene:text("* Not sure what he did to you before, but [color:red]he can probably do worse now[color:reset].", nil, "sam")
-                    cutscene:text("* So you should let him alone.", nil, "sam")
+                    cutscene:text("* Actually, you uh... Already found out by yourself, didn't you?", "whoops", "sam")
+                    cutscene:text("* Yeah, I can see it in the way you look at me.", "surprised_b", "sam")
+                    cutscene:text("* That look that screams \"No kidding?\".", "talk_look_away", "sam")
+                    cutscene:text("* Not sure what he did to you before, but [color:red]he can probably do worse now[color:reset].", "unsure", "sam")
+                    cutscene:text("* So you should let him alone.", "shy_look_away", "sam")
                     Game:setFlag("allow_shop_fight", true)
                 else
-                    cutscene:text("* So just stay out of his reach,[wait:2] if it's even possible.", nil, "sam")
+                    cutscene:text("* So just stay out of his reach,[wait:2] if it's even possible.", "shy_look_away", "sam")
                 end
-                cutscene:text("* He'll probably just go one day to another one of my projects anyway.", nil, "sam")
-                cutscene:text("* Huh?[wait:4] What about his shop?", nil, "sam")
-                cutscene:text("* Wait,[wait:2] he made a SHOP??[wait:5] Just that??", nil, "sam")
-                cutscene:text("* I kinda expected worse of him,[wait:2] to be honest.", nil, "sam")
-                cutscene:text("* Well I guess he can still do whatever he wants behind the counter...", nil, "sam")
-                cutscene:text("* Don't take what the game doesn't allow for granted.", nil, "sam")
-                cutscene:text("* Jeku can and will attack you in the shop if he wants too.", nil, "sam")
-                cutscene:text("* ...[wait:5]Oh yeah,[wait:2] the original question.", nil, "sam")
-                cutscene:text("* Well I don't know,[wait:2] maybe someone else will replace him?", nil, "sam")
+                cutscene:text("* He'll probably just go one day to another one of my projects anyway.", "happy_look_side", "sam")
+                cutscene:text("* Huh?[wait:4] What about his shop?", "surprised_b", "sam")
+                cutscene:text("* Wait,[wait:2] he made a SHOP??[wait:5] Just that??", "surprised", "sam")
+                cutscene:text("* I kinda expected worse of him,[wait:2] to be honest.", "talk_look_away", "sam")
+                cutscene:text("* Well I guess he can still do whatever he wants though...", "huh", "sam")
+                cutscene:text("* Don't take what the game doesn't allow for granted.", "talk_look_away", "sam")
+                cutscene:text("* Jeku can and will attack you in the shop if he wants too.", "talk_look_away", "sam")
+                cutscene:text("* ...[wait:5]Oh yeah,[wait:2] the original question.", "shy_blush", "sam")
+                cutscene:text("* Well I don't know,[wait:2] maybe someone else will replace him?", "shy_look_away", "sam")
             else
-                cutscene:text("* Oh,[wait:2] okay.", nil, "sam")
+                cutscene:text("* Oh,[wait:2] okay.", "huh_b", "sam")
             end
         elseif c == 4 then
-            cutscene:text("* Oh,[wait:2] okay.", nil, "sam")
+            cutscene:text("* Oh,[wait:2] okay.", "huh_b", "sam")
         end
         simbel:setFacing("down")
         cutscene:hideNametag()
