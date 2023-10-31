@@ -1,7 +1,7 @@
 local Pipis, super = Class(YellowSoulBullet)
 
 function Pipis:init(x, y, dir, speed)
-    super:init(self, x, y, "bullets/pipis/normal/pipis")
+    super:init(self, x, y, "bullets/sneo/pipis/normal/pipis")
     
     self.shot_health = 4
 
@@ -27,7 +27,7 @@ function Pipis:onYellowShot(shot, damage)
     self.shot_health = self.shot_health - damage
 	
 	if self.shot_health >= 1 then
-        local piece = Sprite("bullets/pipis/normal/piece", self.x, self.y)
+        local piece = Sprite("bullets/sneo/pipis/normal/piece", self.x, self.y)
         piece.layer = 800
         piece:play(0.05, true)
         piece:setScale(1)
@@ -44,11 +44,11 @@ function Pipis:onYellowShot(shot, damage)
     end
 
     if self.shot_health == 3 then
-        self:setSprite("bullets/pipis/normal/pipis_broken1")
+        self:setSprite("bullets/sneo/pipis/normal/pipis_broken1")
     elseif self.shot_health == 2 then
-        self:setSprite("bullets/pipis/normal/pipis_broken2")
+        self:setSprite("bullets/sneo/pipis/normal/pipis_broken2")
     elseif self.shot_health == 1 then
-        self:setSprite("bullets/pipis/normal/pipis_broken3")
+        self:setSprite("bullets/sneo/pipis/normal/pipis_broken3")
     elseif self.shot_health <= 0 then
         --effect
         local effect = Sprite("effects/boxing_crescent", self.x, self.y)
@@ -70,7 +70,7 @@ end
 function Pipis:destroy(shot)
     Game:giveTension(self.shot_tp)
     for i=1,5 do
-        local piece = Sprite("bullets/pipis/normal/piece", self.x, self.y)
+        local piece = Sprite("bullets/sneo/pipis/normal/piece", self.x, self.y)
 		piece.layer = 800
         piece:play(0.05, true)
         piece:setScale(2)
