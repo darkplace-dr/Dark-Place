@@ -1,7 +1,7 @@
 local WeirdEndPipis, super = Class(YellowSoulBullet)
 
 function WeirdEndPipis:init(x, y)
-    super:init(self, x, y, "bullets/sneo/pipis/normal/pipis")
+    super:init(self, x, y, "battle/bullets/sneo/pipis/normal/pipis")
 
     self.damage = 2
 	self.tp = 1
@@ -44,7 +44,7 @@ function WeirdEndPipis:destroy()
     for r = 0,1 do	
         for i = 0,bulcount - 1 do
             local spamhead = self.wave:spawnBullet("sneo/weird_end_pipis_bullet", self.x, self.y)
-            spamhead:setSprite("bullets/sneo/pipis/spamtonhead")
+            spamhead:setSprite("battle/bullets/sneo/pipis/spamtonhead")
             spamhead.sprite:setFrame(math.random(4))
             spamhead.sprite:play(0.25, true)
             spamhead.physics = {
