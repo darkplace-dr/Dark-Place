@@ -100,7 +100,7 @@ function LilGuy:fire()
     if self.collider.collidable == true then
         local bullet = self.wave:spawnBullet("sneo/lilguy_bullet", self.x, self.y + 12)
         bullet.physics.speed = self.bullet_speed
-        bullet.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x + 4, Game.battle.soul.y + 4)
+        bullet.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y)
         bullet.layer = self.layer - 1
     end
 end
@@ -123,7 +123,6 @@ function LilGuy:destroy(shot)
     Assets.playSound("bomb", 0.7, 1.1 + Utils.random(0.2))
 	
 	local death = breakeffect(self.sprite:getTexture(), 0, 0, function() self:remove() end)
-	death:setColor(1, 1, 0)
 	death:setScale(self.sprite:getScale())
 	self:addChild(death)
 	self.sprite.alpha=0
