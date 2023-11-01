@@ -124,6 +124,7 @@ function LilGuy:destroy(shot)
 	
 	local death = breakeffect(self.sprite:getTexture(), 0, 0, function() self:remove() end)
 	death:setScale(self.sprite:getScale())
+    death:setColor(self.color)
 	self:addChild(death)
 	self.sprite.alpha=0
 

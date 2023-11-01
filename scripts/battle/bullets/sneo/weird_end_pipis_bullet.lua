@@ -33,6 +33,7 @@ function WeirdEndPipisBullet:destroy(shot)
 	
 	local death = breakeffect(self.sprite:getTexture(), -22, -5, function() self:remove() end)
 	death:setScale(self.sprite:getScale())
+    death:setColor(self.color)
 	self:addChild(death)
 	self.sprite.alpha=0
     self.sprite:setOrigin(0.5, 0.5)
