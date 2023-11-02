@@ -5,12 +5,14 @@ function actor:init()
 
     local costume = Game:getFlag("susie_costume")
     if costume ~= nil then
-        if costume == 0 or costume > 2 then
+        if costume == 0 or costume > 3 then
             self.path = "party/susie/dark"
         elseif costume == 1 then
             self.path = "party/susie/light"
         elseif costume == 2 then
             self.path = "party/susie/repainted"
+        elseif costume == 3 then
+            self.path = "party/susie/dark_ch1"
         end
     else
         self.path = "party/susie/dark"
