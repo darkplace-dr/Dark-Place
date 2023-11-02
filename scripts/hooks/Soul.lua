@@ -18,6 +18,13 @@ function Soul:init(x, y, color)
     self.sprite_focus.debug_select = false
     self:addChild(self.sprite_focus)
 
+    if Game.battle.mirror_guard_uses > 0 then
+        self.sprite_mg = Sprite("player/heart_mg")
+        self.sprite_mg:setOrigin(0.5, 0.5)
+        self.sprite_mg.debug_select = false
+        self:addChild(self.sprite_mg)
+    end
+
 	self.force_taunt = nil -- Forces taunting in battle on or off, regardless of if the PizzaToque is equipped.
 	self.force_timeslow = nil -- Forces the Focus ability on or off, regardless of if the placebo is equipped.
 
@@ -265,7 +272,7 @@ function Soul:update()
 
 end
 
-Utils.hook(Soul, "remove", function (orig, self)
+function Soul:remove()
     -- Taunt
     if self.parried_loop_sfx then
         self.parried_loop_sfx:stop()
@@ -274,16 +281,14 @@ Utils.hook(Soul, "remove", function (orig, self)
 
     -- Timeslow
     Game.stage.timescale = 1
-	Game.battle.music.pitch = Game.battle.music.basepitch
-	vhsfx.active = false
-	outlinefx.active = false
+    Game.battle.music.pitch = Game.battle.music.basepitch
+    vhsfx.active = false
+    outlinefx.active = false
     self.concentratebg:remove()
     self.timeslow_sfx:stop()
-	Input.clear("a")
-
-    orig(self)
-
-end)
+    Input.clear("a")
+    super.remove(self)
+end
 
 -- Why is this not a default function?
 function Soul:flash(sprite)
@@ -379,11 +384,28 @@ function Soul:onCollide(bullet)
             bullet.damage = nil
         end
     end
+    if Game.battle.mirror_guard_uses > 0 and (not self:isParrying() and self.parry_inv == 0) and self.inv_timer == 0 then
+        self.inv_timer = (2/3)
+        Game.battle.mirror_guard_uses = Game.battle.mirror_guard_uses - 1
+        if Game.battle.mirror_guard_uses == 0 then
+            Assets.playSound("shakerbreaker")
+            self.sprite_mg:remove()
+            self.sprite_mg_break = Sprite("player/heart_mg_break")
+            self.sprite_mg_break:setOrigin(0.5)
+            self.sprite_mg_break.x = self.x self.sprite_mg_break.y = self.y
+            Game.battle:addChild(self.sprite_mg_break)
+            self.sprite_mg_break.layer = BATTLE_LAYERS["above_soul"]
+            self.sprite_mg_break:fadeOutAndRemove(1)
+        else
+            Assets.playSound("break1")
+        end
+        return
+    end
         super.onCollide(self, bullet)
 end
 
 
---[[
+
 function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effects staying around after a wave. for some reason, doing this when self.transitioning doesn't work.
 	Game.stage.timescale = 1
 	Game.battle.music.pitch = Game.battle.music.basepitch
@@ -396,6 +418,5 @@ function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effec
 	Input.clear("a")
 	super.transitionTo(self, x, y, should_destroy)
 end
---]]
 
 return Soul

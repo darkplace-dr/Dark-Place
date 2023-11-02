@@ -39,12 +39,16 @@ function Dummy:init()
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
-        "* The dummy gives you a soft\nsmile.",
-        "* The power of fluffy boys is\nin the air.",
-        "* Smells like cardboard.",
+        "* Countless croaks fill your ears.",
+        --"* The power of fluffy boys is\nin the air.",
+        --"* Smells like cardboard.",
     }
+    if Game:getFlag("weird") then
+        table.insert(self.text, "* Kill Susie")
+    end
     -- Text displayed at the bottom of the screen when the enemy has low health
-    self.low_health_text = "* The dummy looks like it's\nabout to fall over."
+    self.low_health_text = "* The croaks grow quiet."
+    self.tired_percentage = 0.1 -- 10%
 
     -- Register act called "Smile"
     self:registerAct("Smile")
