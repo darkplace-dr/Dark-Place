@@ -12,6 +12,8 @@ function Battle:init()
 
     self.killed = false
 
+    self.mirror_guard_uses = BadgesLib:getBadgeEquipped("mirror_guard")
+
 
     local month = tonumber(os.date("%m"))
     local day = tonumber(os.date("%d"))

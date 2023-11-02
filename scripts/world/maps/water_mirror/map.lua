@@ -3,6 +3,9 @@ local room, super = Class(Map)
 function room:onEnter()
     super.onEnter(self)
 
+    -- Missing some mirror sprites, so
+    Game.world.map:getEvent("mirror"):remove()
+
     --[[
     Game.world:startCutscene(function (cs)
         Game.world:loadMap("misc/dogcheck")
@@ -29,6 +32,8 @@ function room:onEnter()
     end)
     --]]
 
+    --[[
+
     for i in ipairs(Game.party) do
         Game.party[i].actor.mirror_sprites = {
         ["walk/down"] = "walk_mirror/up",
@@ -37,6 +42,8 @@ function room:onEnter()
         ["walk/right"] = "walk_mirror/right",
         }
     end
+    
+    --]]
 end
 
 function room:onExit()
