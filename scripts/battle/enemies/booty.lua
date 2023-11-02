@@ -57,4 +57,9 @@ function Dummy:onDefeat(...)
     end
 end
 
+function Dummy:update()
+	super:update(self)
+	self:setTired(false)
+end
+
 return Dummy

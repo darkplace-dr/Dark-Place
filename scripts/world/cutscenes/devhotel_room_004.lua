@@ -1,4 +1,48 @@
 return {
+	light = function(cutscene, event)
+		if event.interact_count == 2 then
+			cutscene:text("* (Under the lamp, there's a picture.[wait:5] Take a look?)")
+			if cutscene:choicer({"Yes", "No"}) == 1 then
+				cutscene:text("* (The picture shows a bunch of people together in what seems to be a park in a sunny day.)")
+				cutscene:text("* (Most of them have animal ears and tails.[wait:5] The others seem to just be normal humans.)")
+				cutscene:text("* (One of the human have skin and hair as white as snow with black sclera though.)")
+				cutscene:text("* (Sam is among them.)")
+			else
+				cutscene:text("* It's none of your buisiness after all.")
+				event.interact_count = 999
+			end
+		elseif event.interact_count == 3 then
+			cutscene:text("* (There's another picture under the lamp.[wait:5] Take a look?)")
+			if cutscene:choicer({"Yes", "No"}) == 1 then
+				if love.math.random(0, 100) <= 25 then
+					cutscene:text("* (It's the picture of someone surronded by a bunch of object in an empty white void.)")
+					cutscene:text("* (You look at the back of the photo.)")
+					cutscene:text("* (It's only written \"Kill This Character\".)")
+					cutscene:text("* (The date of the photo is set to somewhere in the future.)")
+				elseif love.math.random(0, 100) <= 25 then
+					cutscene:text("* (The picture shows a bunch of friends together.)")
+					cutscene:text("* (For some reason,[wait:2] everything in it feels fake.)")
+				elseif love.math.random(0, 100) <= 10 then
+					cutscene:text("* (The picture only has a creepy :) on it.)")
+					cutscene:text("* (The back just says \"is dead\".[wait:5] The word before is stained and unreadable.)")
+					event.interact_count = 999
+				else
+					cutscene:text("* (The picture seems to be a picture of a college class.)")
+					cutscene:text("* (There's a bunch of people that are even more varied in species than in the first.)")
+					cutscene:text("* (The snow white girl is also part of them.)")
+					if Game:getFlag("seen_gonergirl", false) then
+						cutscene:text("* (You recognize one of the girl in this picture.)")
+						cutscene:text("* (She looks happy.)")
+					end
+				end
+			else
+				cutscene:text("* I'd say it's none of your buisiness but haven't you already mess with it?")
+				event.interact_count = 999
+			end
+		else
+			cutscene:text("* (The trusty light of the night,[wait:5] in case monsters start to manifest in the corners.)")
+		end
+	end,
 	hifi = function(cutscene, event)
 		cutscene:text("* (It's an hi-fi station.)")
 		cutscene:text("* (A USB stick is plug in the station.)")

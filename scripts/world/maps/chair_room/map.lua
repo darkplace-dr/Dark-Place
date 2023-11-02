@@ -4,7 +4,7 @@ function Chair_Room:onEnter()
     self.has_gonergirl = Game:getFlag("gonergirl", false)
     Game:setFlag("gonergirl", nil)
 
-    if self.has_gonergirl and not Game:setFlag("seen_gonergirl", false) then
+    if self.has_gonergirl and not Game:getFlag("seen_gonergirl", false) then
         --Game:setFlag("seen_gonergirl", true)
         local shimai = Sprite("world/npcs/gonergirl/lower_hands_1", 30, 14)
         local chair = Game.world:getEvent(9)

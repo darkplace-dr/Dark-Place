@@ -50,7 +50,7 @@ function DogCheck:start()
         Game.world.music:play(path, 0.8, self.song_pitch)
     end
 
-    local variant_choices = {"dance", "sleep", "maracas", "banned"}
+    local variant_choices = {"dance", "sleep", "maracas", "piano", "banned"}
     if self.month >= 3 and self.month <= 5 then
         table.insert(variant_choices, "spring")
     elseif self.month >= 6 and self.month <= 8 then

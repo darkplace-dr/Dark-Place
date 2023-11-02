@@ -65,6 +65,7 @@ Mod.warp_bin_codes = {
             cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
         end
     },
+    ["CASTLERD"] = {result = "castle_path/start"}
 }
 
 -- heres some new totally cool helper functions wowee
