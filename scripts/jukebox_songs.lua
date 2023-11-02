@@ -176,6 +176,13 @@ return {
     origin = "Undertale"
   },
   {
+    name = "Star",
+    file = "mus_star",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale (Unused)"
+  },
+  {
     name = "Dogcheck (Anniversary Mix)",
     file = "dogcheck_anniversary",
     composer = "Toby Fox",
@@ -386,6 +393,13 @@ return {
     composer = "Lunaxis",
     released = "June 14, 2020",
     origin = "Undertale: Halloween Hack"
+  },
+  {
+    name = "One Step Ahead of Yourself",
+    file = "mus_unknown",
+    composer = "BNP Team", -- Don't know who exactly made this one
+    released = "???", -- ... Or exactly when the mirror fight was added to BNP.
+    origin = "Undertale: Bits and Pieces"
   },
   {
     name = "DEADRINGER",

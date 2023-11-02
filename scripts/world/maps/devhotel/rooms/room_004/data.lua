@@ -330,7 +330,7 @@ return {
           visible = true,
           properties = {
             ["solid"] = true,
-            ["text"] = "* (The trusty light of the night,[wait:5] in case monsters start to manifest in the corners.)"
+            ["cutscene"] =  "devhotel_room_004.light"
           }
         },
         {

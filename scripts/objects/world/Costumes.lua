@@ -50,7 +50,8 @@ function Costumes:init()
             skins = {
                 {"DEFAULT", "dark", {-6, -12}},
                 {"LIGHT", "light", {-6, -16}},
-                {"DIO", "repainted", {-6, -12}}
+                {"DIO", "repainted", {-6, -12}},
+                {"BANGS", "dark_ch1", {-6, -12}}
             }
         },
         {

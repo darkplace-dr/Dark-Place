@@ -36,6 +36,7 @@ Mod.warp_bin_codes = {
 	["GARRYMOD"] = { result = "missing" },
 	["JOHNWICK"] = { result = "archives/starting_room" },
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
+    ["MIRRORED"] = { result = "water_mirror", marker = "warp"},
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
@@ -64,12 +65,7 @@ Mod.warp_bin_codes = {
             cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
         end
     },
-    ["MIRRORED"] = {
-        result = function(cutscene)
-            cutscene:text("* (You find a note lying in the Warp Bin.)")
-            cutscene:text("* Area still in development![wait:5]\nCome back later.[wait:10]\n -Agent 7")
-        end
-    },
+    ["CASTLERD"] = {result = "castle_path/start"}
 }
 
 -- heres some new totally cool helper functions wowee

@@ -3,8 +3,14 @@ local Dummy, super = Class(Encounter)
 function Dummy:init()
     super.init(self)
 
+    self.murder = Game:getFlag("weird") -- Weird route
+
     -- Text displayed at the bottom of the screen at the start of the encounter
-    self.text = "* It's...[wait:15] you?"
+    if self.murder then
+        self.text = "* It's...[wait:15] me?"
+    else
+        self.text = "* It's...[wait:15] you?"
+    end
 
     -- Battle music ("battle" is rude buster)
     self.music = "mus_unknown"
@@ -101,16 +107,45 @@ function Dummy:beforeStateChange(old, new)
 end
 
 function Dummy:getEncounterText()
+    if self.fight_complete then
+        return "* Despite everything,[wait:5] it's still you."
+    end
+
+
     if self.no_escape then
         self.no_escape = false
         self.flee = false
         return "* Who are you running from?"
     end
+
+    local text_type = Utils.pick{"Generic", "Unique"}
+    if text_type == "Generic" then
+        if self.murder then
+            local my_text = Utils.pick{
+                "* There's nothing here.",
+                "* What's the holdup?",
+                "* You're trapped in your own head.",
+                ("* " .. string.rep("smells like ", 20)) -- Repeats "smells like " 20 times
+            }
+            return my_text
+        end
+        local my_text = Utils.pick{
+            "* You feel the sense you're not being watched.",
+            "* You're one step ahead.[wait:30]\n* Or was that one step behind?",
+            "* [wait:10] blocked the way.",
+            "* No problem here.",
+            "* Smells like .",
+            "* Your body feels numb.",
+            "* Who are you talking to?",
+        }
+        return my_text
+    end
+
+    -- Unique text, specified in the enemy files
     return super:getEncounterText(self)
 end
 
 function Dummy:onStateChange(old, new)
-    Log:print(new)
     if new == "DEFENDING" and self.no_escape then
         Game.battle.encounter:onWavesDone()
     end

@@ -14,6 +14,7 @@ function SpamtonNEO:init()
 
     self.waves = {
         "sneo/flyingheads",
+        "sneo/firework_pipis",
     }
 
 	self.boss = true

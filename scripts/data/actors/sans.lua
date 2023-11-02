@@ -22,7 +22,13 @@ function actor:init()
     -- Path to this actor's sprites (defaults to "")
     self.path = "world/npcs/sans"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-    self.default = "idle"
+    self.month = tonumber(os.date("%m"))
+    self.day = tonumber(os.date("%d"))
+    if self.month == 10 and self.day == 31 then
+        self.default = "sumpkin"
+    else
+        self.default = "idle"
+    end
 
     -- Sound to play when this actor speaks (optional)
     self.voice = "sans"
