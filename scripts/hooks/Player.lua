@@ -28,9 +28,11 @@ function Player:update()
         end
     end
 
-    --haha backroom go brrrrrrr
-    if self.walk_speed >= 60 then
-	Game.world:mapTransition("backrooms/entrance")
+        --haha backroom go brrrrrrr
+    if Game.world.map.id == "whitespace" then
+        if self.walk_speed >= 60 then
+    	    Game.world:mapTransition("greyarea", "entry")
+        end
     end
         
 

@@ -212,7 +212,7 @@ function GameOver:update()
 
             
             -- I, SAD DIAMOND MAN, DIDDY THE FUNNY
-            local funnytitle = love.math.random(1, 13)
+            local funnytitle = love.math.random(1, 20)
 
             local scriptPath = debug.getinfo(1).source:match("@(.*)$")
             local folderPath = scriptPath:match("(.*[/\\])")
@@ -283,6 +283,42 @@ function GameOver:update()
                 love.window.setTitle("Kristal")
                 ico = love.image.newImageData(folderPath ..'/funnyicons/icon_13.png')
                 love.window.setIcon(ico)
+
+            elseif funnytitle <= 14 then
+                love.window.setTitle("Spamton Sweepstakes")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_14.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 15 then
+                love.window.setTitle("Includes Darkness!")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_15.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 16 then
+                love.window.setTitle("It's raining somewhere else...")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_16.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 17 then
+                love.window.setTitle("Minecraft")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_17.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 18 then
+                love.window.setTitle("Counter Strike Source Not Found()")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_18.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 19 then
+                love.window.setTitle("Grian Is Watching You.")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_19.png')
+                love.window.setIcon(ico)
+
+            elseif funnytitle <= 20 then
+                love.window.setTitle("PLAY THE RIBBIT MOD, NOW!!!")
+                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_20.png')
+                love.window.setIcon(ico)
+
             else
                 love.window.setTitle("Depa Runts")
             end
