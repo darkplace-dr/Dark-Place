@@ -25,6 +25,8 @@ function item:init()
     self.price = 500
     -- Whether the item can be sold
     self.can_sell = true
+    
+    self.refundable = false
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"
