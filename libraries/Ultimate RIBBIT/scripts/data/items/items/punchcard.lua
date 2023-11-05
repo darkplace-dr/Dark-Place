@@ -25,6 +25,8 @@ function item:init()
     -- Whether the item can be sold
     self.can_sell = true
 
+    self.refundable = false
+
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "none"
     -- Where this item can be used (world, battle, all, or none)
