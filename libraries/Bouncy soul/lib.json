@@ -1,0 +1,8 @@
+{
+    "id": "bouncysoul",
+    "version": "2.0.0",
+    "engineVersion": "0.8.0-dev",
+    "config": {
+        "print_console_intro": true
+    }
+}
