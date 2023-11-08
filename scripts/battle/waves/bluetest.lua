@@ -7,6 +7,7 @@ function CollideTest:init()
     self.time = -1
     self.siner = 0
     self.solid = nil
+    self.mode = 0
 end
 
 function CollideTest:onStart()
@@ -52,6 +53,23 @@ end
 
 function CollideTest:update()
     super:update(self)
+
+    if Input.pressed("menu") then
+        local burst
+        Assets.playSound("bell")
+        if self.mode == 0 then
+            Game.battle:swapSoul(BouncySoul())
+            self.mode = 1
+            burst = HeartBurst(-9, -9, {1,(148/255),0})
+        else
+            Game.battle:swapSoul(BlueSoul())
+            self.mode = 0
+            burst = HeartBurst(-9, -9, {0,0,1})
+        end
+
+        Game.battle.soul.can_doublejump = true
+        Game.battle.soul:addChild(burst)
+    end
 
     self.siner = self.siner + DT
 

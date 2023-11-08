@@ -381,10 +381,10 @@ function Soul:onCollide(bullet)
         if bullet.parrydmg_old then
             bullet.damage = bullet.parrydmg_old
         else
-            bullet.damage = nil
+            bullet.damage = bullet:getDamage()
         end
     end
-    if Game.battle.mirror_guard_uses > 0 and (not self:isParrying() and self.parry_inv == 0) and self.inv_timer == 0 then
+    if Game.battle.mirror_guard_uses > 0 and (not self:isParrying() and self.parry_inv == 0) and self.inv_timer == 0 and bullet:getDamage() > 0 then
         self.inv_timer = (2/3)
         Game.battle.mirror_guard_uses = Game.battle.mirror_guard_uses - 1
         if Game.battle.mirror_guard_uses == 0 then
