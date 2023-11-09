@@ -1,14 +1,10 @@
 local BlueSoul, super = Class(Soul)
 
-function BlueSoul:init(x, y, bouncemode)
+function BlueSoul:init(x, y)
     super.init(self, x, y)
 
 	-- Do not modify these variables
-	if bouncemode then
-	self.color = {1,(148/255),0}
-	else
 	self.color = {0, 0, 1}
-	end
     self.jumped = false
     self.ground_pounded = false
     self.gravity = 0
@@ -22,7 +18,6 @@ function BlueSoul:init(x, y, bouncemode)
     self.jump_height = 5 		-- How high can the blue soul jump? [real] (any number) | default: 5
     self.jump_count = 1 		-- How much can the blue soul double jump? [real] (any number) | default: 2
     self.direction = "down" 	-- What directiion is the soul facing and falling? [string] ("down"; "left"; "up"; "right") | default: "down"
-	self.bouncemode = bouncemode or false
 end
 
 function BlueSoul:update()
@@ -221,7 +216,6 @@ function BlueSoul:jumpReset()
 	self.jumped = false
 	self.ground_pounded = false
 	self.gravity = 0
-	if self.bouncemode then self:jumpStart() end
 end
 
 function BlueSoul:doGroundPound()

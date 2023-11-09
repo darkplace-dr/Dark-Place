@@ -38,12 +38,14 @@ function DoubleJumpEffect:draw()
     super.draw(self)
     love.graphics.setLineWidth(2)
     local soul = Game.battle.soul
-    if soul.direction == "down" or soul.direction == "up" then
-        love.graphics.ellipse("line", 0, 0, 5 + self.timer/2, 2 + self.timer/4, 100)
-        love.graphics.ellipse("line", 0, 0, 10 + self.timer, 4 + self.timer/2, 100)
-    elseif soul.direction == "left" or soul.direction == "right" then
-        love.graphics.ellipse("line", 0, 0, 2 + self.timer/4, 5 + self.timer/2, 100)
-        love.graphics.ellipse("line", 0, 0, 4 + self.timer/2, 10 + self.timer, 100)
+    if soul then
+        if soul.direction == "down" or soul.direction == "up" then
+            love.graphics.ellipse("line", 0, 0, 5 + self.timer/2, 2 + self.timer/4, 100)
+            love.graphics.ellipse("line", 0, 0, 10 + self.timer, 4 + self.timer/2, 100)
+        elseif soul.direction == "left" or soul.direction == "right" then
+            love.graphics.ellipse("line", 0, 0, 2 + self.timer/4, 5 + self.timer/2, 100)
+            love.graphics.ellipse("line", 0, 0, 4 + self.timer/2, 10 + self.timer, 100)
+        end
     end
 end
 

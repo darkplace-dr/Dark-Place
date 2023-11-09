@@ -397,9 +397,10 @@ return {
   {
     name = "One Step Ahead of Yourself",
     file = "mus_unknown",
-    composer = "BNP Team", -- Don't know who exactly made this one
-    released = "???", -- ... Or exactly when the mirror fight was added to BNP.
+    composer = "Rishimazza, kiwiquest/Lex3x and chart_carr.", -- Thanks JARU
+    released = "2022", -- I don't have an exact day, but the SoundCloud upload says one year ago as of me updating this
     origin = "Undertale: Bits and Pieces"
+    -- https://soundcloud.com/undertale-bnp/one-step-ahead-of-yourself
   },
   {
     name = "DEADRINGER",
