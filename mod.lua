@@ -750,37 +750,6 @@ end
 
 function Mod:preUpdate()
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
-
-    local window_x, window_y = love.window.getPosition()
-    local offset_x, offset_y = 0, 0
-
-    if (Kristal.DebugSystem and not Kristal.DebugSystem:isMenuOpen()) and (Kristal.Console and not Kristal.Console.is_open) then
-        if Input.down("w") then
-            offset_y = -10
-        end
-
-        if Input.down("a") then
-            offset_x = -10
-        end
-
-        if Input.down("s") then
-            offset_y = 10
-        end
-
-        if Input.down("d") then
-            offset_x = 10
-        end
-    end
-
-    love.window.setPosition(window_x + offset_x, window_y + offset_y)
-
-    if self.do_window_move then
-            love.window.setPosition(self.windowmoving_x, self.windowmoving_y)
-        if self.windowmoving_x == self.windowtarget_x and self.windowmoving_y == self.windowtarget_y then
-            self.do_window_move = false
-        end
-    end
-
 end
 
 function Mod:postUpdate()
