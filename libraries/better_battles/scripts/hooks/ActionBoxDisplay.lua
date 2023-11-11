@@ -21,7 +21,7 @@ function ActionBoxDisplay:draw()
     Draw.setColor(PALETTE["action_fill"])
     love.graphics.rectangle("fill", 2, Game:getConfig("oldUIPositions") and 3 or 2, 209, Game:getConfig("oldUIPositions") and 34 or 35)
 
-    Draw.setColor(PALETTE["action_health_bg"])
+    Draw.setColor(self.actbox.battler.chara.health_bg_color or PALETTE["action_health_bg"])
     love.graphics.rectangle("fill", 128, 22 - self.actbox.data_offset, 76, 9)
 
     local health = (self.actbox.battler.chara:getHealth() / self.actbox.battler.chara:getStat("health")) * 76
