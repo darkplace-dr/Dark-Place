@@ -748,6 +748,10 @@ function Mod:getActionButtons(battler, buttons)
     return buttons
 end
 
+function Mod:preUpdate()
+    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
+end
+
 function Mod:postUpdate()
     self:updateTaunt()
     self:updateBattleTaunt()
