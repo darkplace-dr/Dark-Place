@@ -14,6 +14,10 @@ function Battle:init()
 
     self.mirror_guard_uses = BadgesLib:getBadgeEquipped("mirror_guard")
 
+    -- Base pitch for the music to return to when not using timeslow.
+    -- This must be changed along with music.pitch in order to correctly change the music's pitch.
+    self.music.basepitch = self.music.pitch
+
 
     local month = tonumber(os.date("%m"))
     local day = tonumber(os.date("%d"))
@@ -299,6 +303,11 @@ function Battle:onStateChange(old,new)
         end)
 	end
 
+    if old == "INTRO" then
+        self.music.basepitch = self.music.pitch
+    end
+
+
 
     if self.discoball then
         -- For some reason this happens twice
@@ -309,6 +318,19 @@ function Battle:onStateChange(old,new)
         end
     end
 
+end
+
+function Battle:swapSoul(object)
+
+    Game.stage.timescale = 1
+	Game.battle.music.pitch = Game.battle.music.basepitch
+	vhsfx.active = false
+	outlinefx.active = false
+	Input.clear("a")
+    
+    
+    super.swapSoul(self, object)
+    
 end
 
 ---Adds TP to the enemy's TP bar. Doesn't work if no enemy TP bar exists.
