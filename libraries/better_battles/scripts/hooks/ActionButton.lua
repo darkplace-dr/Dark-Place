@@ -181,28 +181,32 @@ function ActionButton:select()
 					end
                 end
             })
-			if #Game.battle.party > 1 and not Game.battle.disable_spare_all then
+			if #Game.battle.party >= Kristal.getLibConfig("better_battles", "minimum_spare_all") then
 				Game.battle:addMenuItem({
 					["name"] = "Spare All",
-					["unusable"] = (#party_up <= 1),
+					["unusable"] = (#party_up < Kristal.getLibConfig("better_battles", "minimum_spare_all")),
 					["description"] = "Spare\nEveryone",
 					["color"] = sparable and {1, 1, 0, 1} or {1, 1, 1, 1},
 					["tp"] = 16,
 					["party"] = (Kristal.getLibConfig("better_battles", "down_spare_all") and party_up or party),
 					["callback"] = function(menu_item)
 						Game:removeTension(16)
-						for k,v in pairs(Game.battle:getActiveEnemies()) do
-							if v:canSpare() then
-								v:spare()
-							else
-                                local mercy_points = math.ceil(v.spare_points * #party_up/#Game.battle:getActiveEnemies())
-								v:addMercy(math.min(mercy_points,100))
-                                if mercy_points > 100 and v.auto_spare then
-                                    v:spare()
-                                end
-							end
-						end
-						Game.battle:setState("ENEMYDIALOGUE", "SPAREALL")
+                        Game.battle.current_selecting = 0
+                        for i,battler in pairs(Game.battle.party) do
+                            if not battler.is_down and i ~= battle_leader then
+                                battler:setAnimation("battle/spare")
+                            elseif i == battle_leader then
+                                    battler:setAnimation("battle/spare", function()
+                                    for _,enemy in pairs(Game.battle:getActiveEnemies()) do
+                                        if not enemy:onMercy(battler, true) then enemy:mercyFlash() end
+                                    end
+                                end)
+                            end
+                        end
+                        Game.battle:battleText("* You spared everyone!", function()
+                            Game.battle:setState("ENEMYDIALOGUE", "SPAREALL")
+                            return true
+                        end)
 					end
 				})
 			end
