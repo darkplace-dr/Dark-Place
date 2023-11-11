@@ -105,7 +105,7 @@ function Soul:init(x, y, color)
     Game.battle:addChild(self.concentratebg)
 
 
-    Game.battle.music.basepitch = Game.battle.music.pitch
+    --Game.battle.music.basepitch = Game.battle.music.pitch
 
 	-- Timeslow ("Focus" Placebo) variables end here
 
