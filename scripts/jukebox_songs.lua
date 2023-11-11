@@ -395,14 +395,6 @@ return {
     origin = "Undertale: Halloween Hack"
   },
   {
-    name = "One Step Ahead of Yourself",
-    file = "mus_unknown",
-    composer = "Rishimazza, kiwiquest/Lex3x and chart_carr.", -- Thanks JARU
-    released = "2022", -- I don't have an exact day, but the SoundCloud upload says one year ago as of me updating this
-    origin = "Undertale: Bits and Pieces"
-    -- https://soundcloud.com/undertale-bnp/one-step-ahead-of-yourself
-  },
-  {
     name = "DEADRINGER",
     file = "deadringer",
     composer = "Jamangar",

@@ -12,7 +12,6 @@ function Battle:init()
 
     self.killed = false
 
-    self.mirror_guard_uses = BadgesLib:getBadgeEquipped("mirror_guard")
 
     -- Base pitch for the music to return to when not using timeslow.
     -- This must be changed along with music.pitch in order to correctly change the music's pitch.
