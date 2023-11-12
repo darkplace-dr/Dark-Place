@@ -68,7 +68,7 @@ function Brazier:update()
 		end
 	end
 	
-	if self.held and Input.pressed("confirm") and not Game.world:checkCollision(Game.world.player.interact_collider[Game.world.player.facing]) then
+	if self.held and Input.pressed("confirm") and not Game.world:checkCollision(Game.world.player.interact_collider[Game.world.player.facing]) and not Game.battle then
 		Assets.playSound("noise")
 		self:setParent(Game.world)
 		print(self.old_parent == self.parent)
