@@ -21,6 +21,7 @@
         "dynamic_battle_leader": false,
 		"down_flee": false,
 		"down_spare_all": false,
+		"minimum_spare_all": 4,
 		
 		// Skill button
 		"skill_button": true,
