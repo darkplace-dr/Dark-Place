@@ -35,7 +35,9 @@ function Battle:onStateChange(old,new)
             end
         end
 
-        self:showUI()
+		if #Game.battle.enemies > 0 then
+			self:showUI()
+		end
 	elseif new == "FLEE" then
         self.current_selecting = 0
 		local flee_complete = false
