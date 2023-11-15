@@ -20,6 +20,8 @@ function Dummy:init()
     -- Enables the purple grid battle background
     self.background = false
 
+    self.flee = false
+
     -- Add the dummy enemy to the encounter
     self:addEnemy("shade_ania")
 end
