@@ -17,6 +17,8 @@ function Dummy:init()
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
 
+    self.flee = false
+
 	if Game:getFlag("booty_finished") == true then
         self.boss_rush = true
     end
