@@ -36,7 +36,6 @@ Mod.warp_bin_codes = {
 	["GARRYMOD"] = { result = "missing" },
 	["JOHNWICK"] = { result = "archives/starting_room" },
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
-    ["MIRRORED"] = { result = "water_mirror", marker = "warp"},
     ["WTF1998S"] = {
         result = function(cutscene)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")

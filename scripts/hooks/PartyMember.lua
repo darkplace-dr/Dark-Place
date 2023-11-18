@@ -229,6 +229,10 @@ function PartyMember:getNextLv()
     return Utils.clamp(self:getNextLvRequiredEXP() - self.exp, 0, self.max_exp)
 end
 
+function PartyMember:getCommandOptions()
+	return {"FIGHT", "ACT", "MAGIC"}, {"ITEM", "SPARE", "DEFEND"}
+end
+
 --- Called whenever a HealItem is used. \
 --- Calculates the amount of healing an item should apply based on the character's healing bonuses.
 ---@param amount integer The amount of base healing for the item.
