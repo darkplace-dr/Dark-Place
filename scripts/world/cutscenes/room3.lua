@@ -491,6 +491,15 @@ return {
         end
     end,
 
+    badge_shop = function (cutscene, event)
+        cutscene:text("* It's a bake sale stand, with nobody running it.")
+        cutscene:text("* Will you shop here?")
+        local shopping = cutscene:choicer({"Yes", "No"})
+        if shopping == 1 then
+            Game.world:shopTransition("badgeshop")
+        end
+    end,
+
     whitedoor = function(cutscene, event)
         cutscene:text("* A white door casts a faint shadow...")
         cutscene:text("* Will you enter it?")
