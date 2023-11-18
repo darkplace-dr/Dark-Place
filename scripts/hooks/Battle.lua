@@ -12,7 +12,10 @@ function Battle:init()
 
     self.killed = false
 
-    self.mirror_guard_uses = BadgesLib:getBadgeEquipped("mirror_guard")
+
+    -- Base pitch for the music to return to when not using timeslow.
+    -- This must be changed along with music.pitch in order to correctly change the music's pitch.
+    self.music.basepitch = self.music.pitch
 
 
     local month = tonumber(os.date("%m"))
@@ -234,7 +237,9 @@ function Battle:onStateChange(old,new)
             end
         end
 
-        self:showUI()
+		if #Game.battle.enemies > 0 then
+			self:showUI()
+		end
 	elseif new == "FLEE" then
         self.current_selecting = 0
 		local flee_complete = false
@@ -273,7 +278,53 @@ function Battle:onStateChange(old,new)
             local box = self.battle_ui.action_boxes[self:getPartyIndex(battler.chara.id)]
             box:resetHeadIcon()
         end
+        
+        -- self.money = self.money + (math.floor(((Game:getTension() * 2.5) / 10)) * Game.chapter)
 
+        for _,battler in ipairs(self.party) do
+            for _,equipment in ipairs(battler.chara:getEquipment()) do
+                self.money = math.floor(equipment:applyMoneyBonus(self.money) or self.money)
+            end
+        end
+
+        self.money = math.floor(self.money)
+
+        self.money = self.encounter:getVictoryMoney(self.money) or self.money
+        self.xp = self.encounter:getVictoryXP(self.xp) or self.xp
+        -- if (in_dojo) then
+        --     self.money = 0
+        -- end
+
+        Game.money = Game.money + self.money
+        Game.xp = Game.xp + self.xp
+
+        if (Game.money < 0) then
+            Game.money = 0
+        end
+        
+        local earn_text = ""
+        if self.money ~= 0 or self.xp ~= 0 then
+            earn_text = "* Ran away with " .. self.xp .. " EXP and " .. self.money .. " "..Game:getConfig("darkCurrencyShort").."."
+        end
+            
+        if self.used_violence and Game:getConfig("growStronger") then
+            local stronger = "You"
+
+            for _,battler in ipairs(self.party) do
+                Game.level_up_count = Game.level_up_count + 1
+                battler.chara:onLevelUp(Game.level_up_count)
+
+                if battler.chara.id == Game:getConfig("growStrongerChara") then
+                    stronger = battler.chara:getName()
+                end
+            end
+
+            earn_text = "* Ran away with " .. self.money .. " "..Game:getConfig("darkCurrencyShort")..".\n* "..stronger.." became stronger."
+
+            Assets.playSound("dtrans_lw", 0.7, 2)
+            --scr_levelup()
+        end
+        
         local flee_text = "* "
 		
 		local flee_list = {
@@ -283,21 +334,33 @@ function Battle:onStateChange(old,new)
 			"Don't slow me down."
 		}
 		
-		flee_text = flee_text .. Utils.pick(flee_list)
-
-        win_text = self.encounter:getVictoryText(win_text, self.money, self.xp) or win_text
+        for _,battler in pairs(Game.battle.party) do
+            for _,text in pairs(battler.chara.flee_text) do
+                table.insert(flee_list, text)
+            end
+        end
+		
+        if earn_text == "" then
+            flee_text = flee_text .. Utils.pick(flee_list)
+        else
+            flee_text = earn_text
+        end
 		
         self:battleText(flee_text, function()
-			while not flee_complete do end
 			for _,battler in ipairs(self.party) do
 				battler:getActiveSprite().run_away_2 = false
-				battler.x = battler.x - 160
+				battler.x = battler.x - 240
 			end
             self:setState("TRANSITIONOUT")
             self.encounter:onBattleEnd()
             return true
         end)
 	end
+
+    if old == "INTRO" then
+        self.music.basepitch = self.music.pitch
+    end
+
 
 
     if self.discoball then
@@ -309,6 +372,19 @@ function Battle:onStateChange(old,new)
         end
     end
 
+end
+
+function Battle:swapSoul(object)
+
+    Game.stage.timescale = 1
+	Game.battle.music.pitch = Game.battle.music.basepitch
+	vhsfx.active = false
+	outlinefx.active = false
+	Input.clear("a")
+    
+    
+    super.swapSoul(self, object)
+    
 end
 
 ---Adds TP to the enemy's TP bar. Doesn't work if no enemy TP bar exists.

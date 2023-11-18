@@ -64,9 +64,7 @@ function SpamtonNEO:onAct(battler, name)
 		    }
 		end
 	elseif name == "Snap" then
-        -- this breaks YOU's death animation entirely for some reason??? Uncomment to try and fix it if you want, lol.
-	
-        --[[local upcount = 0
+        local upcount = 0
         for i,battler in ipairs(Game.battle.party) do
             if not battler.is_down then
                 upcount = upcount + 1
@@ -77,49 +75,45 @@ function SpamtonNEO:onAct(battler, name)
             self:addMercy(4)
         else
             self:addMercy(2)
-        end]]
+        end
 		
 		self.sprite:snapString()
 		Assets.playSound("damage")
 
 		if battler.chara.id == "kris" then
             Game.battle:startActCutscene(function(cutscene)
-                --[[if upcount == 1 then 
+                if upcount == 1 then 
                     cutscene:text("* Kris snapped desperately!")
                 else
                     cutscene:text("* Kris snapped a wire!")
-                end]]
-                cutscene:text("* Kris snapped a wire!")
+                end
             end)
             return
 		elseif battler.chara.id == "susie" then
             Game.battle:startActCutscene(function(cutscene)
-                --[[if upcount == 1 then 
+                if upcount == 1 then 
                     cutscene:text("* Susie snapped desperately!")
                 else
                     cutscene:text("* Susie snapped a wire!")
-                end]]
-                cutscene:text("* Susie snapped a wire!")
+                end
             end)
             return
         elseif battler.chara.id == "ralsei" then
             Game.battle:startActCutscene(function(cutscene)
-                --[[if upcount == 1 then 
+                if upcount == 1 then 
                     cutscene:text("* Ralsei snapped desperately!")
                 else
                     cutscene:text("* Ralsei snapped a wire!")
-                end]]
-                cutscene:text("* Ralsei snapped a wire!")
+                end
             end)
             return
 		else
             Game.battle:startActCutscene(function(cutscene)
-                --[[if upcount == 1 then 
+                if upcount == 1 then 
                     cutscene:text("* "..battler.chara:getName().." snapped desperately!")
                 else
                     cutscene:text("* "..battler.chara:getName().." snapped a wire!")
-                end]]
-                cutscene:text("* "..battler.chara:getName().." snapped a wire!")
+                end
             end)
             return
 		end

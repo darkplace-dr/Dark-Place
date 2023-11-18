@@ -395,13 +395,6 @@ return {
     origin = "Undertale: Halloween Hack"
   },
   {
-    name = "One Step Ahead of Yourself",
-    file = "mus_unknown",
-    composer = "BNP Team", -- Don't know who exactly made this one
-    released = "???", -- ... Or exactly when the mirror fight was added to BNP.
-    origin = "Undertale: Bits and Pieces"
-  },
-  {
     name = "DEADRINGER",
     file = "deadringer",
     composer = "Jamangar",

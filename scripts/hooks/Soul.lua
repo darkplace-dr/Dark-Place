@@ -18,12 +18,6 @@ function Soul:init(x, y, color)
     self.sprite_focus.debug_select = false
     self:addChild(self.sprite_focus)
 
-    if Game.battle.mirror_guard_uses > 0 then
-        self.sprite_mg = Sprite("player/heart_mg")
-        self.sprite_mg:setOrigin(0.5, 0.5)
-        self.sprite_mg.debug_select = false
-        self:addChild(self.sprite_mg)
-    end
 
 	self.force_taunt = nil -- Forces taunting in battle on or off, regardless of if the PizzaToque is equipped.
 	self.force_timeslow = nil -- Forces the Focus ability on or off, regardless of if the placebo is equipped.
@@ -105,7 +99,7 @@ function Soul:init(x, y, color)
     Game.battle:addChild(self.concentratebg)
 
 
-    Game.battle.music.basepitch = Game.battle.music.pitch
+    --Game.battle.music.basepitch = Game.battle.music.pitch
 
 	-- Timeslow ("Focus" Placebo) variables end here
 
@@ -381,26 +375,10 @@ function Soul:onCollide(bullet)
         if bullet.parrydmg_old then
             bullet.damage = bullet.parrydmg_old
         else
-            bullet.damage = nil
+            bullet.damage = bullet:getDamage()
         end
     end
-    if Game.battle.mirror_guard_uses > 0 and (not self:isParrying() and self.parry_inv == 0) and self.inv_timer == 0 then
-        self.inv_timer = (2/3)
-        Game.battle.mirror_guard_uses = Game.battle.mirror_guard_uses - 1
-        if Game.battle.mirror_guard_uses == 0 then
-            Assets.playSound("shakerbreaker")
-            self.sprite_mg:remove()
-            self.sprite_mg_break = Sprite("player/heart_mg_break")
-            self.sprite_mg_break:setOrigin(0.5)
-            self.sprite_mg_break.x = self.x self.sprite_mg_break.y = self.y
-            Game.battle:addChild(self.sprite_mg_break)
-            self.sprite_mg_break.layer = BATTLE_LAYERS["above_soul"]
-            self.sprite_mg_break:fadeOutAndRemove(1)
-        else
-            Assets.playSound("break1")
-        end
-        return
-    end
+
         super.onCollide(self, bullet)
 end
 

@@ -17,6 +17,11 @@ function Player:update()
     end
 
     super.update(self)
+	
+	if Kristal.getLibConfig("pickup_lib", "disable_hold_run") and self.holding then
+		running = false
+		self.run_timer = 0
+	end
 
     -- Hitting a wall at a speed of 10 or higher will do a small collision effect
     if toque_equipped == true or player_name == "PEPPINO" then
@@ -69,6 +74,12 @@ function Player:update()
     end
     --]]
 
+end
+
+function Player:interact()
+	if self.holding then return false end
+	
+    return super:interact(self)
 end
 
 return Player

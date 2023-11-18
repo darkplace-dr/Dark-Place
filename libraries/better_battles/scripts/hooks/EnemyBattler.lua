@@ -82,13 +82,28 @@ function EnemyBattler:canSleep()
     return self.tiredness >= 100
 end
 
-function EnemyBattler:setTired(bool)
-    self.tired = bool
-    if self.tired then
-		self.tiredness = 100
-        self.comment = "(Tired)"
+function EnemyBattler:onMercy(battler, spare_all)
+    if self:canSpare() then
+        self:spare()
+        return true
     else
-        self.comment = ""
+        if spare_all then
+            local alive = 0
+			for _,battler in ipairs(Game.battle.party) do
+                if not battler.is_down then
+                    alive = alive + 1
+                end
+            end
+            local mercy_points = Utils.round(self.spare_points * alive/#Game.battle:getActiveEnemies())
+            self:addMercy(math.min(mercy_points,100))
+            -- if mercy_points > 100 and self:canSpare() then
+                -- self:spare()
+            -- end
+            -- return true
+        else
+            self:addMercy(self.spare_points)
+        end
+        return false
     end
 end
 
