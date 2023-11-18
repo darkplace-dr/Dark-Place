@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "YOU")
 
 function actor:init()
-    super.init(self)
+    super.init(self, chara)
 
     -- Display name (optional)
     self.name = "YOU"
@@ -33,7 +33,9 @@ function actor:init()
     end
 
     -- This actor's default sprite or animation, relative to the path (defaults to "")
+
     self.default = "walk"
+
 
     -- Sound to play when this actor speaks (optional)
     self.voice = nil
