@@ -1050,4 +1050,167 @@ return {
         skid:setAnimation("dance")
         pump:setAnimation("dance")
     end,
+
+    well = function(cutscene, event)
+        Game.world.music:stop()
+        -- Open textbox and wait for completion
+        cutscene:text("* The wall seems cracked.")
+
+        -- If we have Susie, play a cutscene
+        local susie = cutscene:getCharacter("susie")
+        if susie then
+            -- Detach camera and followers (since characters will be moved)
+            cutscene:detachCamera()
+            cutscene:detachFollowers()
+
+            -- All text from now is spoken by Susie
+            cutscene:setSpeaker(susie)
+            --cutscene:text("* Hey,[wait:5] think I can break\nthis wall?", "smile")
+            cutscene:text("* I think I can break\nthis wall.", "smile")
+
+            -- Get the bottom-center of the broken wall
+            --local x = event.x + event.width/2
+            --local y = event.y + event.height/2
+
+            -- Move Susie up to the wall over 0.75 seconds
+            cutscene:walkTo(susie, 140, 140, 0.75, "up")
+            -- Move other party members behind Susie
+            cutscene:walkTo(Game.world.player, 140, 160, 0.75, "up")
+            if cutscene:getCharacter("ralsei") then
+                cutscene:walkTo("ralsei", 160, 100, 0.75, "up")
+            end
+            if cutscene:getCharacter("YOU") then
+                cutscene:walkTo("YOU", -60, 100, 0.75, "up")
+            end
+            cutscene:wait(1.5)
+            Assets.playSound("snd_fountain_make")
+            cutscene:spawnNPC("fountain_intro", 500, 240)
+            susie:setSprite("shock_right")
+            cutscene:slideTo(susie, 80, 180, 0.15)
+            -- Wait 1.5 seconds
+            cutscene:wait(1.5)
+            cutscene:wait(2)
+            local wata = cutscene:getCharacter("fountain_intro")
+            wata:setAnimation({"vanish", 1/4, false})
+            cutscene:wait(1)
+            cutscene:spawnNPC("YOU", 500, 220)
+            local YOU = cutscene:getCharacter("YOU")
+            YOU:setSprite("fell_serious_left")
+            --YOU:setSprite("collapsed")
+            --cutscene:slideTo(YOU, 504, 230, 0.1)
+            cutscene:wait(0.25)
+            --Assets.playSound("YOU_school")
+            cutscene:wait(4)
+            YOU:shake(4)
+            YOU:setAnimation({"darkwake_left", 1/4, true})
+            cutscene:slideTo(YOU, 480, 260, 0.01)
+            Assets.playSound("wing")
+
+            cutscene:wait(4)
+            YOU:shake(4)
+            YOU:setAnimation({"darkwake2", 1/4, true})
+            cutscene:slideTo(YOU, 480, 240, 0.01)
+            Assets.playSound("wing")
+
+            cutscene:wait(4)
+            --cutscene:slideTo(YOU, 504, 230, 0.00)
+
+            --`cutscene:text("* !?!?", "shock")
+            susie:resetSprite()
+            cutscene:walkTo(susie, 380, 220, 0.5, "right")
+            cutscene:wait(0.6)
+
+            --cutscene:text("* YOU?!?!", "shock")
+            cutscene:text("* Hey, are you ok?!", "teeth_b")
+            Assets.playSound("alert")
+            YOU:setSprite("wakewhat")
+            cutscene:wait(1)
+            YOU:shake(4)
+            --Assets.playSound("jump")
+            --Assets.playSound("croak")
+            Assets.playSound("bump")
+            YOU:setSprite("wakefell")
+            cutscene:slideTo(YOU, 510, 240, 0.2)
+            cutscene:wait(2)
+            susie:resetSprite()
+            cutscene:text("* You reacted, so I'm gonna take that as a yes.", "nervous")
+            cutscene:walkTo(susie, 260, 250, 5, "left")
+            --cutscene:text("* You're probably wondering how you got here.", "neutral")
+            cutscene:wait(1)
+            YOU:setSprite("wakeumm")
+            cutscene:wait(1)
+            Assets.playSound("wing")
+            YOU:shake(3)
+            YOU:setSprite("darkwaked_2")
+            cutscene:slideTo(YOU, 510, 260, 0.01)
+            cutscene:wait(2)
+            Assets.playSound("wing")
+            YOU:shake(3)
+            YOU:setSprite("walk/right")
+            cutscene:slideTo(YOU, 510, 220, 0.01)
+            cutscene:wait(2)
+            YOU:setSprite("walk/down")
+            cutscene:wait(2)
+            YOU:resetSprite()
+            cutscene:wait(0.1)
+            cutscene:walkTo(YOU, 340, 250, 3, "left")
+            cutscene:wait(2)
+            cutscene:text("* So uh...", "sus_nervous")
+            cutscene:look(YOU, "left")
+            --cutscene:wait(cutscene:walkTo(susie, YOU.x - 60, YOU.y))
+            cutscene:look(susie, "right")
+            cutscene:text("* Who are you supposed to be?", "nervous_side")
+            cutscene:wait(0.2)
+            cutscene:walkTo(YOU, 339, 250, 0.5, "left")
+            Assets.playSound("croak")
+            cutscene:wait(2)
+            cutscene:text("* ...YOU?", "surprise")
+            cutscene:text("* Dude, are you pulling my leg or what?", "surprise_smile")
+            cutscene:text("* No way someone can have such a LAME name![wait:5] Hahaha!!", "sincere_smile")
+            cutscene:text("* ...", "sincere_smile")
+            cutscene:text("* Wait, you're serious?", "shock_down")
+            cutscene:wait(0.2)
+            cutscene:walkTo(YOU, 338, 250, 0.5, "left")
+            Assets.playSound("croak")
+            cutscene:wait(2)
+            cutscene:text("* Oops.", "shock_nervous")
+            cutscene:showNametag("Susie")
+            cutscene:text("* Well uh.. I'm Susie!", "shy_b")
+            cutscene:text("* Nice to meet you,[wait:3] YOU the Frog...", "sincere_smile")
+            cutscene:text("* ...Who looks at me[wait:3] with a dead inside expression[wait:3] piercing me...", "sus_nervous")
+            cutscene:hideNametag()
+
+            cutscene:look(YOU, "down")
+            cutscene:wait(2)
+
+            local zoom_sfx = cutscene:playSound("emotion")
+            local function zoom(scale, wait, overwrite_pos)
+                local tx, ty = YOU:getRelativePos(YOU.width/2, YOU.height/2)
+               Game.world.camera:setZoom(scale)
+                if overwrite_pos then
+                    Game.world.camera:setPosition(overwrite_pos[1], overwrite_pos[2])
+                else
+                    Game.world.camera:setPosition(tx, ty)
+                end
+                cutscene:wait(wait)
+            end
+        
+            cutscene:detachCamera()
+            zoom(2, 1/4)
+            zoom(3, 1/4)
+            zoom(4, 1/2)
+            zoom(6, 1/2)
+            local emotion = Sprite("world/cutscenes/react_to_YOU/bigemotion", -5, 6.5)
+            emotion:setScale(0.125, 0.125)
+            YOU:addChild(emotion)
+            zoom(8, zoom_sfx, {Game.world.camera.x, Game.world.camera.y - 18})
+            emotion:remove()
+            cutscene:attachFollowersImmediate()
+            cutscene:look(susie, "down")
+            zoom(1, 0)
+            cutscene:attachCameraImmediate()
+
+            Game.world.music:play()
+        end
+    end,
 }

@@ -51,7 +51,7 @@ function Costumes:init()
                 {"DEFAULT", "dark", {-6, -12}},
                 {"LIGHT", "light", {-6, -16}},
                 {"DIO", "repainted", {-6, -12}},
-                {"BANGS", "dark_ch1", {-6, -12}}
+                {"BANGS", "dark_ch1", {-6, -16}}
             }
         },
         {
@@ -74,7 +74,8 @@ function Costumes:init()
                 {"DEFAULT", "dark", {-8, -6}},
                 {"LIGHT", "light", {-4, -6}},
                 {"DARK (OLD)", "old_dark", {0, 0}},
-                {"LIGHT (OLD)", "old_light", {0, 0}}
+                {"LIGHT (OLD)", "old_light", {0, 0}},
+                {"ALCHEMY", "alchemy", {-4, -6}}
             }
         },
         {
@@ -84,7 +85,8 @@ function Costumes:init()
             sprite_base_path = "party/dess",
             skins = {
                 {"DEFAULT", "", {-12, -18}},
-                {"FLIMBO", "", {-12, -18}}
+                {"FLIMBO", "", {-12, -18}},
+                {"ELF", "elf", {-12, -16}}
             }
         },
         {

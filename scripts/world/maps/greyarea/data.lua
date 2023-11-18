@@ -10,14 +10,14 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 10,
-  nextobjectid = 17,
+  nextobjectid = 26,
   properties = {},
   tilesets = {
     {
       name = "greyarea",
       firstgid = 1,
-      filename = "../tilesets/greyarea.tsx",
-      exportfilename = "../tilesets/greyarea.lua"
+      filename = "../../tilesets/greyarea.tsx",
+      exportfilename = "../../tilesets/greyarea.lua"
     }
   },
   layers = {
@@ -292,14 +292,40 @@ return {
       properties = {},
       objects = {
         {
-          id = 12,
-          name = "mirror",
-          class = "mirror",
+          id = 19,
+          name = "floormirror",
+          class = "floormirror",
           shape = "rectangle",
           x = 2760,
-          y = 2078,
+          y = 2120,
           width = 160,
-          height = 146,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 23,
+          name = "floormirror",
+          class = "floormirror",
+          shape = "rectangle",
+          x = 1160,
+          y = 0,
+          width = 480,
+          height = 4320,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 25,
+          name = "floormirror",
+          class = "floormirror",
+          shape = "rectangle",
+          x = 0,
+          y = 2640,
+          width = 5760,
+          height = 544,
           rotation = 0,
           visible = true,
           properties = {}
@@ -630,6 +656,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 21,
+          name = "spawn",
+          class = "",
+          shape = "point",
+          x = 2840,
+          y = 2240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -716,6 +755,22 @@ return {
           gid = 10,
           visible = true,
           properties = {}
+        },
+        {
+          id = 22,
+          name = "npc",
+          class = "",
+          shape = "rectangle",
+          x = 2797,
+          y = 2134,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "noel",
+            ["sprite"] = "sitting"
+          }
         }
       }
     }
