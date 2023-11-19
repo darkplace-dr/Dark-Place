@@ -810,6 +810,22 @@ function Mod:onTextSound(sound, node)
 		end
 		return true
     end
+    if sound == "hat_badge" then
+        -- Sounds are taken from the badge seller in A Hat in Time.
+        if self.voice_timer == 0 then
+            local snd = Assets.playSound(Utils.pick{
+            "voice/hat_badge1",
+            "voice/hat_badge2",
+            "voice/hat_badge3",
+            "voice/hat_badge4",
+            "voice/hat_badge5",
+            "voice/hat_badge6",
+            "voice/hat_badge7",
+            "voice/hat_badge8"})
+            self.voice_timer = 5
+		end
+		return true
+    end
 end
 
 function Mod:onFootstep(char, num)
