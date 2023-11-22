@@ -66,11 +66,12 @@ function ShadowShop:init()
 	end
 	
 
-    self:registerTalk("What Is This Place?")
+    self:registerTalk("Who are you?")
     self:registerTalk("Cards")
     self:registerTalk("Party Members")
     self:registerTalk("Other Universes")
 	
+    self:registerTalkAfter("The Diner", 1)
     self:registerTalkAfter("What Place?", 4)
 
     self.shopkeeper:setActor("shadowsalesman_shop")
@@ -90,18 +91,28 @@ function ShadowShop:init()
 end
 
 function ShadowShop:startTalk(talk)
-    if talk == "What Is This Place?" then
+    if talk == "Who are you?" then
 		self:startDialogue({
-			"* This is the Dev Diner, kid.[wait:5]\n* It's a place where [color:yellow]DEVS[color:reset] can eat, drink, or just lounge around...",
-			"* I set up shop here in this dimension, so the [color:yellow]DEVS[color:reset] of this mod could have a place to stay.",
-			"[emote:happy]* Thought it'd be a nice thing to do for all the folks that brought this world to life,[wait:5] y'know?",
-			"[emote:annoyed]* Speaking of which,[wait:5] are ya here to buy somethin', or are ya just gonna stand there and keep yakkin' away at me?",
-			"[emote:annoyed]* I ain't some sorta art museum exhibit,[wait:5] bub.",
+			"[emote:eyebrow_raise]* You wanna know about me, eh?",
+			"[emote:annoyed]* (Tsk,[wait:5] typical shopkeeper question...)",
+			"[emote:idle]* Well to be morally honest with you,[wait:5] I ain't really anybody that important...",
+			"* I'm known as the Shadow Salesman, kid. [wait:10]However, the folks here call me \"[color:yellow]JARU[color:reset]\".",
+			"[emote:annoyed]* And before you ask, no.[wait:5] I ain't THAT Jaru.",
+			"* I mean,[wait:5][emote:eyebrow_raise] come on.[wait:10]\n* Do I look like the kinda guy that would yammer on and on about piles of dust on cliffs or some jerk named \"Oberon Smog\"?",
+			"[emote:annoyed]* Yeah,[wait:5] didn't think so, bub.",
+		})
+    elseif talk == "The Diner" then
+		self:startDialogue({
+			"* This place is the Dev Diner, kid.[wait:5]\n* It's a place where [color:yellow]DEVS[color:reset] can eat, drink, or just lounge around.[wait:10]\n* It also doubles as a hotel of sorts.",
+			"* I set this whole place up here mainly so all my fellas could have a place to stay.",
+			"[emote:happy]* Thought I'd do somethin' nice for all the folks that brought this world to life,[wait:5] y'know?",
+			"[emote:annoyed]* Anyways,[wait:5] are ya gonna buy something or are ya gonna continue starin' at me with that deadpan look of yours?",
+			"[emote:annoyed]* I ain't some sorta art museum exhibit,[wait:5] buster.",
 		})
     elseif talk == "Cards" then
 		if Game.inventory:hasItem("mistcard") and not Game:getFlag("talkedAboutMistCard") then
 			self:startDialogue({
-				"* [emote:eyebrow_raise]Alright,[wait:10] where the heck did you get that?[wait:10]\n* Did'jya steal it while I wasn't looking?",
+				"* [emote:eyebrow_raise]Alright,[wait:10] where the hell did you get that?[wait:10]\n* Did'jya steal it while I wasn't looking?",
 				"* ...",
 				"[emote:idle]* Oh,[wait:5] you got it from him,[wait:5] didn't you?",
 				"* I feel kinda bad about it honestly.",
@@ -114,7 +125,7 @@ function ShadowShop:startTalk(talk)
 			self:startDialogue({
 				"* Yep,[wait:10] cards are sort of a system put in-place for 'special' customers.",
 				"* And by that I mean I give em' out to folks I know or folks I like.",
-				"[emote:annoyed]* No,[wait:5] I don't know you.[wait:10][emote:eyebrow_raise]\n* And I sure as heck don't like you.",
+				"[emote:annoyed]* No,[wait:5] I don't know ya.[wait:10][emote:eyebrow_raise]\n* And I sure as heck don't like ya.",
 				"[emote:idle]* Point is,[wait:5] these cards grant you special access to more expensive parts of our inventory.[wait:10]\n* That's about all you need to know.",
 			})
 		end

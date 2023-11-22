@@ -9,7 +9,7 @@ function GameOver:init(x, y, force_message)
     self.is_merg = Game.save_name:upper() == "MERG"
 
     -- Gameover is already initialized, hopefully it's safe to delete the soul here
-    if Game.battle.soul then Game.battle.soul:remove() end
+    if Game.battle and Game.battle.soul then Game.battle.soul:remove() end
 end
 
 function GameOver:update()
