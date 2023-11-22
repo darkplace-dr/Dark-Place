@@ -103,7 +103,7 @@ function ShadowShop:startTalk(talk)
 		})
     elseif talk == "The Diner" then
 		self:startDialogue({
-			"* You're the Dev Diner, kid.[wait:5]\n* It's a place where [color:yellow]DEVS[color:reset] can eat, drink, or just lounge around.[wait:10]\n* It also doubles as a hotel of sorts.",
+			"* You're in the Dev Diner, kid.[wait:5]\n* It's a place where [color:yellow]DEVS[color:reset] can eat, drink, or just lounge around.[wait:10]\n* It also doubles as a hotel of sorts.",
 			"* I set this whole place up here mainly so all my pals could have a place to stay.",
 			"[emote:happy]* Thought I'd do somethin' nice for all the folks that brought this world to life,[wait:5] y'know?",
 			"[emote:annoyed]* Anyways,[wait:5] are ya gonna buy something or are ya gonna continue starin' at me with that deadpan look of yours?",
