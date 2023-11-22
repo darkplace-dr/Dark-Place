@@ -79,4 +79,21 @@ function World:setupMap(...)
     Mod:setOmori(self.map.omori)
 end
 
+function World:spawnPlayer(...)
+    super:spawnPlayer(self, ...)
+	
+	if (BadgesLib:getBadgeEquipped("l_emblem") > 0) then
+		if (BadgesLib:getBadgeEquipped("w_emblem") > 0) then
+			self.player.emblem = ColorMaskFX({0.5,0,0.5}, 0.5)
+			self.player:addFX(self.player.emblem, "emblem")
+		else
+			self.player.emblem = ColorMaskFX({0,1,0}, 0.5)
+			self.player:addFX(self.player.emblem, "emblem")
+		end
+	elseif (BadgesLib:getBadgeEquipped("w_emblem") > 0) then
+		self.player.emblem = ColorMaskFX({1,1,0}, 0.5)
+		self.player:addFX(self.player.emblem, "emblem")
+	end
+end
+
 return World
