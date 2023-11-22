@@ -7,6 +7,8 @@ modRequire("scripts/main/battle_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
 Speen = modRequire("scripts/main/ow_speen")
 
+-- PR 500 stolen by AcousticJamm :troll:
+
 function Mod:preInit()
     if Kristal.Version < SemVer(self.info.engineVer) then
         self.legacy_kristal = true
