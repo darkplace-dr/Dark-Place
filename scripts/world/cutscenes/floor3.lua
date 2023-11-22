@@ -18,5 +18,6 @@ return {
         Game.state = "GAMEOVER"
         Kristal.hideBorder(0)
         Game.stage:addChild(GameOver(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "what the fuck"))
+        Mod:rollFun()
     end
 }
