@@ -44,6 +44,8 @@ function badge:onBadgeRemoved()
 	if (BadgesLib:getBadgeEquipped("w_emblem") > 0) then
 		Game.world.player.emblem = ColorMaskFX({1,1,0}, 0.5)
 		Game.world.player:addFX(Game.world.player.emblem, "emblem")
+	else
+		Game.world.player.emblem = nil
 	end
 end
 
