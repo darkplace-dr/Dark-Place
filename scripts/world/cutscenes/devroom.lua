@@ -599,7 +599,7 @@ return {
                     cutscene:text("* Thanks![wait:3] I've added a code to the warp bin that should guide you.", "eyes_closed_happy", "sam")
                 end
                 cutscene:text("* The code is [color:yellow]CASTLERD[color:reset].", "happy_look_side", "sam")
-                Kristal.callEvent("createQuest", "Blue and Green..?", "_gb", "Sam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"CASTLERD\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
+                Kristal.callEvent("createQuest", "Green and Blue..?", "_gb", "Sam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"CASTLERD\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
                 Game:setFlag("started_sphere_quest", true)
             end
         elseif c == 2 then

@@ -2,13 +2,13 @@ local mb_map, super = Class(Map)
 
 function mb_map:load()
 	self.return_map = Mod.world_dest_map_bak or Mod.lastMap
-	if not Game:getFlag("partySet", nil) then
+	if not Game:getFlag("mb_partySet", nil) then
 	    self.old_party = {}
 	    for _,v in ipairs(Game.party) do
 	    	table.insert(self.old_party, v.id)
 	    end
 		Game:setPartyMembers("kris")
-		Game:setFlag("partySet", true)
+		Game:setFlag("mb_partySet", true)
 	end
 
 	self.stepback = 0.01
@@ -26,7 +26,8 @@ function mb_map:update()
 		local mb_ev = Game.world:getEvent(10)
 		mb_ev.x = Utils.approach(mb_ev.x, player.x-mb_ev.width/2, self.stepback*DTMULT)
 		mb_ev.y = Utils.approach(mb_ev.y, player.y-mb_ev.height*2, self.stepback*DTMULT)
-		self.stepback = Utils.clamp(self.stepback + 0.1*DTMULT, 0.01, 12)
+		local limit = not Game.party[1]:checkArmor("pizza_toque")
+		self.stepback = Utils.clamp(self.stepback + 0.1*DTMULT, 0.01, limit and 12 or math.huge)
 		if player:collidesWith(mb_ev) then
 			Game:setFlag("s", true)
 			Game:setPartyMembers(Utils.unpack(self.old_party))
@@ -44,7 +45,7 @@ function mb_map:update()
 			Game.world:addChild(c)
 			Game.world.timer:after(10+1/120, function()
 				Game.world.music:play("TAEFED", 0)
-				Game:setFlag("partySet", nil)
+				Game:setFlag("mb_partySet", nil)
 				for i,v in ipairs(Game.stage:getObjects(Character)) do
 					v:remove()
 				end
@@ -69,7 +70,7 @@ function mb_map:update()
 			end)
 		end
 	else
-		if not Game:getFlag("finish") then
+		if not Game:getFlag("mb_finish") then
 			self.limit_timer = self.limit_timer - DTMULT
 			if self.limit_timer <= 0 then
 				self:casuallyApproachChild()
@@ -79,16 +80,16 @@ function mb_map:update()
 end
 
 function mb_map:onExit()
-	if Game:getFlag("partySet", nil) then
+	if Game:getFlag("mb_partySet", nil) then
 		Game:setPartyMembers(Utils.dump(self.old_party))
-		Game:setFlag("partySet", nil)
+		Game:setFlag("mb_partySet", nil)
 	end
 	Game.world.camera.keep_in_bounds = true
 end
 
 function mb_map:casuallyApproachChild()
-	if not Game:getFlag("finish", false) then
-		Game:setFlag("finish", true)
+	if not Game:getFlag("mb_finish", false) then
+		Game:setFlag("mb_finish", true)
 	end
 	self.back = true
 	for i=#self.collision, 1, -1 do
