@@ -40,7 +40,7 @@
   </object>
   <object id="11" name="setflag" x="1775" y="160" width="385" height="160">
    <properties>
-    <property name="flag" value="finish"/>
+    <property name="flag" value="mb_finish"/>
     <property name="once" type="bool" value="true"/>
    </properties>
   </object>

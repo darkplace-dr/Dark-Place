@@ -50,7 +50,7 @@ function item:init()
         susie = "Looks cool, but nah.",
         ralsei = "This looks really retro!",
         noelle = "I think I have one of these at home.",
-		dess = "y'all remember Yoshi's Safari?",
+		dess = "so retro",
         brandon = "Let's-a go!",
 		jamm = "Never thought I'd see one of these again..."
     }

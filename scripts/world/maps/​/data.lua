@@ -171,7 +171,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["flag"] = "finish",
+            ["flag"] = "mb_finish",
             ["once"] = true
           }
         }

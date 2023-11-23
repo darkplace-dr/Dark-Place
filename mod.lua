@@ -717,7 +717,7 @@ function Mod:save(data)
 
         if Game.world.map.id == "​" then
             data.party = Game.world.map.old_party or data.party
-            data.flags["partySet"] = nil
+            data.flags["mb_partySet"] = nil
         end
     end
 end
