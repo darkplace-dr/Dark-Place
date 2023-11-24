@@ -58,4 +58,13 @@ function DarkPowerMenu:drawExp()
     love.graphics.print(Game:getFlag("library_kills"), 429, 240)
 end
 
+
+function DarkPowerMenu:canCast(spell)
+    if not Game:getFlag("tension_storage") then return false end
+    if Game:getTension() < spell:getTPCost(self.party:getSelected()) then return false end
+
+    return (spell:hasWorldUsage(self.party:getSelected()))
+end
+
+
 return DarkPowerMenu
