@@ -226,6 +226,13 @@ return {
     origin = "Dark Place"
   },
   {
+    name = "BEST FRIENDS",
+    file = "spamgolor_neo",
+    composer = "BrendaK7200",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
     name = "Vs. Chevelour",
     file = "vs_chevelour",
     composer = "Kross (?)",
@@ -685,7 +692,14 @@ return {
     name = "A TRUE AEON HERO",
     file = "wwcgalacta",
     composer = "BrendaK7200",
-    released = "2023 (YouTube Upload) 202X (When Worlds Collide)",
+    released = "2023",
+    origin = "When Worlds Collide"
+  },
+  {
+    name = "The Radiant King",
+    file = "radiant",
+    composer = "BrendaK7200",
+    released = "2023",
     origin = "When Worlds Collide"
   },
   {
