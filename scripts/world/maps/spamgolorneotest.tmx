@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="7">
+ <tileset firstgid="1" source="../tilesets/basement1.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="20" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,0,0,
+0,0,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,0,0,
+0,0,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,0,0,
+0,0,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,0,0,
+0,0,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,0,0,
+0,0,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,0,0,
+0,0,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="1" x="80" y="200" width="640" height="40"/>
+  <object id="2" x="720" y="240" width="40" height="160"/>
+  <object id="3" x="80" y="400" width="640" height="40"/>
+  <object id="4" x="40" y="240" width="40" height="160"/>
+ </objectgroup>
+ <objectgroup id="3" name="markers">
+  <object id="5" name="spawn" x="160" y="320">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="objects">
+  <object id="6" name="npc" x="560" y="320">
+   <properties>
+    <property name="actor" value="spamgolorneo"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>
