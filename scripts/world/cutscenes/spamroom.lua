@@ -515,7 +515,13 @@ return {
 		end
 
 		if type(action.result) == "string" then
-			if Game.world.map.id == action.result then
+            local dest_map
+            pcall(function() dest_map = Registry.createMap(action.result, Game.world) end)
+            if not dest_map then
+				cutscene:text("* Where are you warping to?")
+				return
+            end
+			if Game.world.map.id == dest_map.id then
 				cutscene:text("* But you're already there.")
 				return
 			end
@@ -533,7 +539,7 @@ return {
 			cutscene:playSound("impact")
 
 			cutscene:wait(1)
-			cutscene:loadMap(action.result, action.marker, "down")
+			cutscene:loadMap(dest_map, action.marker, "down")
 			Game.world.fader:fadeIn(nil, {
 				speed = 0.25,
 			})
