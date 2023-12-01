@@ -16,7 +16,7 @@ function Mod:isNight()
     return hour < 8 or hour >= 21
 end
 
-function Mod:addiSwitch()
+function Mod:shouldUseVelvetAddisons()
     return Game:getFlag("AddiSwitchOn", false)
 end
 

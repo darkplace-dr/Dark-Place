@@ -122,9 +122,9 @@ return {
 
     addisonshop = function(cutscene, event)
         local skp = cutscene:getCharacter("addisonshop")
-        local skp_name = Mod:addiSwitch() and "Java" or "Pink Addison"
+        local skp_name = Mod:shouldUseVelvetAddisons() and "Java" or "Pink Addison"
 
-        if Mod:addiSwitch() and Game:getFlag("about_java") and Game:getFlag("asked_java", false) == false and event.interact_count == 1 then
+        if Mod:shouldUseVelvetAddisons() and Game:getFlag("about_java") and Game:getFlag("asked_java", false) == false and event.interact_count == 1 then
             cutscene:showNametag(skp_name)
             cutscene:text("* Hi there! Welcome!", "default", skp)
             cutscene:text("* Would you care for some tea?", "wink_b", skp)
@@ -137,7 +137,7 @@ return {
             cutscene:hideNametag()
 
             Game:setFlag("asked_java", true)
-        elseif not Mod:addiSwitch() and Game:getFlag("about_java") and Game:getFlag("asked_java", false) == false and event.interact_count == 1 then
+        elseif not Mod:shouldUseVelvetAddisons() and Game:getFlag("about_java") and Game:getFlag("asked_java", false) == false and event.interact_count == 1 then
             cutscene:showNametag(skp_name)
             cutscene:text("* Spamton? ... Never heard of that guy.", "default", skp)
             cutscene:hideNametag()

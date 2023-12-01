@@ -245,7 +245,7 @@ return {
                         cutscene:hideNametag()
                     end
                 if Game:getFlag("about_java") and Game:getFlag("about_click") and Game:getFlag("about_button") and Game:getFlag("about_fizz") and Game:getFlag("addison_family", false) == false then
-                    Kristal.callEvent("createQuest", "5 for 1 Specil", "vspamfamily", "Velvet!Spam told the gang about his family, but he barely mentioned about their names. Only about their jobs and what they sell. You think you can find who Velvet!Spamton is refering to?\n\nHINT: There's a switch in the EXTRAS menu that can help!")
+                    Kristal.callEvent("createQuest", "5 for 1 Specil", "vspamfamily", "Velvet!Spam told the gang about his family, but he barely mentioned about their names. Only about their jobs and what they sell. You think you can find who Velvet!Spamton is refering to?\n\nHINT: There's a option in the EXTRAS menu that can help!")
                     Game:setFlag("addison_family", true)
                 end
             else

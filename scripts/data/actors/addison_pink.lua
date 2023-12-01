@@ -35,7 +35,7 @@ function actor:init()
     self.offsets = {
 	}
 
-    self.switch = Mod:addiSwitch()
+    self.switch = Mod:shouldUseVelvetAddisons()
 end
 
 function actor:getSpritePath()
@@ -55,7 +55,7 @@ end
 
 function actor:onSpriteUpdate(sprite)
     local switch_bak = self.switch
-    self.switch = Mod:addiSwitch()
+    self.switch = Mod:shouldUseVelvetAddisons()
 
     if self.switch ~= switch_bak then
         Mod:softResetActorSprite(sprite)
