@@ -567,7 +567,9 @@ return {
     origin = "Neon White (trimmed for Dark Place)"
   },
   {
-    -- I cannot find an official name for this for the life of me, it's got a different name pretty much everywhere it's uploaded. - Agent 7
+    -- I cannot find an official name for this for the life of me, it's got
+    -- a different name pretty much everywhere it's uploaded. - Agent 7
+    -- It's just The Arena in the 2sf rip I have - d2l
     name = "Prepare Yourself (The Arena)",
     file = "kssu_arena_pre",
     composer = "Jun Ishikawa, Hirokazu Ando",

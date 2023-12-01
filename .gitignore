@@ -6,3 +6,6 @@
 
 ## Aseprite
 *.ase
+
+## vgmstream
+*.txtp

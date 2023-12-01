@@ -12,7 +12,7 @@ return {
   nextobjectid = 81,
   properties = {
     ["border"] = "deoxynn/forest",
-    ["music"] = "forest",
+    ["music"] = "deoxynn_forest",
     ["name"] = "Deoxynn Test Map"
   },
   tilesets = {
