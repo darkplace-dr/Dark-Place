@@ -42,7 +42,7 @@ return function(cutscene)
     local function showDialog(text)
         local style = "[noskip][speed:0.3][voice:nil]"
         local _text
-        if type(tbl) == "string" then
+        if type(text) == "string" then
             _text = style .. text
         else
             _text = Utils.copy(text)
@@ -87,7 +87,7 @@ return function(cutscene)
         cutscene:wait(cutscene:walkTo(leader, leader.x, leader.y - 80, 2))
         cutscene:wait(1)
 
-        showDialog("(It was as if your very SOUL was glowing...)")
+        showDialog((used_fountain_once and "[speed:1]" or "") .. "(It was as if your very SOUL was glowing...)")
 
         Game.world.music:stop()
 
@@ -147,7 +147,7 @@ return function(cutscene)
         cutscene:wait(50/30)
         fade(0.02, {1, 1, 1})
         cutscene:wait(20/30)
-        cutscene:wait(cutscene:fadeOut(100/30, {color = {0, 0, 0}}))
+        cutscene:wait(cutscene:fadeOut(used_fountain_once and 2 or 100/30, {color = {0, 0, 0}}))
         cutscene:wait(1)
 
         cutscene:fadeIn(1, {color = {1, 1, 1}})
