@@ -92,7 +92,8 @@ return {
             cutscene:detachCamera()
             cutscene:wait(1)
 
-            Assets.playSound("bananabed")
+            local self_music = Music("bananabed")
+            self_music:play()
             cutscene:wait(0.8)
 
             Game.world:addChild(dancing_banana)
@@ -105,16 +106,15 @@ return {
         
             cutscene:wait(8)
             removeBigText()
+            self_music:remove()
             Game.world.music:resume()
             zoom(1, 0)
             Game.world:removeChild(dancing_banana)
             Game.world:removeChild(dancing_banana2)
             cutscene:attachCameraImmediate()
-            cutscene:text("* It looks uncomfortable.")
-            Game:setFlag("bananabed", true)
-        else
-            cutscene:text("* It looks uncomfortable.")
         end
+        cutscene:text("* It looks uncomfortable.")
+        Game:setFlag("bananabed", true)
     end,
     news = function(cutscene, event)
         cutscene:text("* There is a newspaper article on the wall.")
