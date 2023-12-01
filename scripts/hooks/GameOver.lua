@@ -209,120 +209,6 @@ function GameOver:update()
             local sound = Assets.newSound("dtrans_lw")
             sound:play()
             self.fade_white = true
-
-            
-            -- I, SAD DIAMOND MAN, DIDDY THE FUNNY
-            local funnytitle = love.math.random(1, 20)
-
-            local scriptPath = debug.getinfo(1).source:match("@(.*)$")
-            local folderPath = scriptPath:match("(.*[/\\])")
-            folderPath = folderPath:gsub("[/\\]", "/")
-
-            if funnytitle <= 1 then
-                love.window.setTitle("Deltarune")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_1.png')
-                love.window.setIcon(ico)
-                --Player2 = require(folderPath ..'scripts.objects.player2')
-
-            elseif funnytitle <= 2 then
-                love.window.setTitle("Half-Life")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_2.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 3 then
-                love.window.setTitle("* GOD damnit KRIS where the HELL are WE!?")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_3.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 4 then
-                love.window.setTitle("* GOD damn YOU where the HELL are WE!?")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_4.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 5 then
-                love.window.setTitle("* SO, I have no fucking clue where we are.")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_5.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 6 then
-                love.window.setTitle("* z...z.....z.....z.......Z.........Z")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_6.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 7 then
-                love.window.setTitle("Kristale")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_7.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 8 then
-                love.window.setTitle("* WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT?")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_8.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 9 then
-                love.window.setTitle("Kris Tea")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_9.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 10 then
-                love.window.setTitle("* REDDIT GOLD POG!!")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_10.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 11 then
-                love.window.setTitle("LOOK ITS BrACON and MEGALORE!!!")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_11.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 12 then
-                love.window.setTitle("...")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_12.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 13 then
-                love.window.setTitle("Kristal")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_13.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 14 then
-                love.window.setTitle("Spamton Sweepstakes")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_14.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 15 then
-                love.window.setTitle("Includes Darkness!")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_15.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 16 then
-                love.window.setTitle("It's raining somewhere else...")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_16.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 17 then
-                love.window.setTitle("Minecraft")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_17.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 18 then
-                love.window.setTitle("Counter Strike Source Not Found()")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_18.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 19 then
-                love.window.setTitle("Grian Is Watching You.")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_19.png')
-                love.window.setIcon(ico)
-
-            elseif funnytitle <= 20 then
-                love.window.setTitle("PLAY THE RIBBIT MOD, NOW!!!")
-                ico = love.image.newImageData(folderPath ..'/funnyicons/icon_20.png')
-                love.window.setIcon(ico)
-
-            else
-                love.window.setTitle("Depa Runts")
-            end
-            --love.window.setTitle("Spamton Sweepstakes")
         end
     end
 
@@ -331,6 +217,35 @@ function GameOver:update()
         self.fader_alpha = self.fader_alpha + ((Game:isLight() and 0.02 or 0.01) * DTMULT)
         if self.timer >= (Game:isLight() and 80 or 120) then
             self.current_stage = 11
+
+            -- I, SAD DIAMOND MAN, DIDDY THE FUNNY
+            local funnytitle_rand = love.math.random(1, 20)
+            local funnytitle = ({
+                "Deltarune",
+                "Half-Life",
+                "* GOD damnit KRIS where the HELL are WE!?",
+                "* GOD damn YOU where the HELL are WE!?",
+                "* SO, I have no fucking clue where we are.",
+                "* z...z.....z.....z.......Z.........Z",
+                "Kristale",
+                "* WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT?",
+                "Kris Tea",
+                "* REDDIT GOLD POG!!",
+                "LOOK ITS BrACON and MEGALORE!!!",
+                "...",
+                "Kristal",
+                "Spamton Sweepstakes",
+                "Includes Darkness!",
+                "It's raining somewhere else...",
+                "Minecraft",
+                "Counter Strike Source Not Found()",
+                "Grian Is Watching You.",
+                "PLAY THE RIBBIT MOD, NOW!!!"
+            })[funnytitle_rand]  -- fallback: "Depa Runts"
+            local funnyicon = Assets.getTextureData("ui/funny_window_icons/icon_"..tostring(funnytitle_rand))
+            love.window.setTitle(funnytitle)
+            love.window.setIcon(funnyicon)
+
             Game:loadQuick()
         end
     end
