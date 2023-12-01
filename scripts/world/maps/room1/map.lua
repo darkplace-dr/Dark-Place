@@ -7,14 +7,14 @@ function Room1:onEnter()
 
     if not self:getFlag("played_intro", false) then
         self:setFlag("played_intro", true)
+        Game:saveQuick()
 
         if Game:hasPartyMember("YOU") then
             Game.world:startCutscene("room1", "react_to_YOU")
         end
     end
-	
+
 	self.month = tonumber(os.date("%m"))
-	
     if self.month == 10 then
         Game:setFlag("spookymonth", true)
     else
