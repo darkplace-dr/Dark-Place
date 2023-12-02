@@ -11,7 +11,10 @@
 --- if a string, treated as a map's id and the player is teleported there \
 --- if the last argument is a function, the function is run
 ---@field result string|fun(cutscene: WorldCutscene)
----@field marker string|nil in case result is a string, the name of the marker you want to teleport the player to
+---@field marker? string in case result is a string, the name of the marker you want to teleport the player to
+---@field cond? fun():boolean If defined, this must return true for the player to be allowed to warp.
+---@field flagcheck? string the name of a flag that must be true or be equal to flagvalue for the player to be allowed to warp. If this is prefixed with an !, then the condition is inverted
+---@field flagvalue? any the value that the flag in flagcheck should be equal to
 
 -- I'm going to cause pain and suffering with one weird trick:
 -- here's the table containing any and all warp codes for the 
@@ -30,11 +33,11 @@ Mod.warp_bin_codes = {
     ["WIFIDOWN"] = { result = "googlefield" },
     ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
     ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
-	["_CHCKPNT"] = { result = "field" },
-	["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
+    ["_CHCKPNT"] = { result = "field" },
+    ["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
     ["DUMBIERM"] = { result = "dumbierm" },
-	["GARRYMOD"] = { result = "missing" },
-	["JOHNWICK"] = { result = "archives/starting_room" },
+    ["GARRYMOD"] = { result = "missing" },
+    ["JOHNWICK"] = { result = "archives/starting_room" },
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
     ["WTF1998S"] = {
         result = function(cutscene)

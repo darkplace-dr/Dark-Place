@@ -514,6 +514,34 @@ return {
             return
         end
 
+        local warpable = true
+        if action.cond then
+            warpable = action.cond()
+        elseif action.flagcheck then
+            local inverted, flag = Utils.startsWith(action.flagcheck, "!")
+
+            local result = Game.flags[flag]
+            local value = action.flagvalue
+            local is_true
+            if value ~= nil then
+                is_true = result == value
+            elseif type(result) == "number" then
+                is_true = result > 0
+            else
+                is_true = result
+            end
+
+            if is_true then
+                warpable = not inverted
+            else
+                warpable = inverted
+            end
+        end
+        if not warpable then
+            cutscene:text("* That doesn't seem to work.")
+            return
+        end
+
         if type(action.result) == "string" then
             local dest_map
             pcall(function() dest_map = Registry.createMap(action.result, Game.world) end)
@@ -533,16 +561,12 @@ return {
             for key,_ in pairs(Assets.sound_instances) do
                 Assets.stopSound(key, true)
             end
-            Game.world.fader:fadeOut(nil, {
-                speed = 0,
-            })
+            cutscene:fadeOut(0)
             cutscene:playSound("impact")
 
             cutscene:wait(1)
             cutscene:loadMap(dest_map, action.marker, "down")
-            Game.world.fader:fadeIn(nil, {
-                speed = 0.25,
-            })
+            cutscene:fadeIn(0.25)
         else
             action.result(cutscene)
         end
