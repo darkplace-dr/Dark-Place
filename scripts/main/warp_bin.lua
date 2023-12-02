@@ -12,7 +12,7 @@
 --- if the last argument is a function, the function is run
 ---@field result string|fun(cutscene: WorldCutscene)
 ---@field marker? string in case result is a string, the name of the marker you want to teleport the player to
----@field cond? fun():boolean If defined, this must return true for the player to be allowed to warp.
+---@field cond? fun():boolean if defined, this must return true for the player to be allowed to warp
 ---@field flagcheck? string the name of a flag that must be true or be equal to flagvalue for the player to be allowed to warp. If this is prefixed with an !, then the condition is inverted
 ---@field flagvalue? any the value that the flag in flagcheck should be equal to
 
