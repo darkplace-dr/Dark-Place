@@ -3,7 +3,7 @@ return {
         if sus.interact_count == 1 then
             sus:setAnimation("dead")
             Assets.playSound("amoguskill", 0.7, 1)
-		else
+        else
             cutscene:text("* Spamongus was the imposter.")
         end
     end,
@@ -43,10 +43,10 @@ return {
         event:setSprite("wink")
         cutscene:text("* Everybody's favorite salseman,[wait:5] Spamton G. Spamton!", "", "cungaderospamton")
         event:setSprite("neutral")
-		if cutscene:getCharacter("jamm") then
-			cutscene:showNametag("Jamm")
+        if cutscene:getCharacter("jamm") then
+            cutscene:showNametag("Jamm")
             cutscene:text("* (Which one are you talking about?)", "neutral", "jamm")
-		end
+        end
         if cutscene:getCharacter("susie") then
             cutscene:showNametag("Susie")
             cutscene:text("* Uh,[wait:5] why is your car parked on the sidewalk?", "neutral", "susie")
@@ -245,7 +245,7 @@ return {
                         cutscene:hideNametag()
                     end
                 if Game:getFlag("about_java") and Game:getFlag("about_click") and Game:getFlag("about_button") and Game:getFlag("about_fizz") and Game:getFlag("addison_family", false) == false then
-                    Kristal.callEvent("createQuest", "5 for 1 Specil", "vspamfamily", "Velvet!Spam told the gang about his family, but he barely mentioned about their names. Only about their jobs and what they sell. You think you can find who Velvet!Spamton is refering to?\n\nHINT: There's a option in the EXTRAS menu that can help!")
+                    Kristal.callEvent("createQuest", "5 for 1 Specil", "vspamfamily", "Velvet!Spam told the gang about his family, but he barely mentioned about their names. Only about their jobs and what they sell. You think you can find who Velvet!Spamton is refering to?\n\nHINT: There's an option in the EXTRAS menu that can help!")
                     Game:setFlag("addison_family", true)
                 end
             else
@@ -255,19 +255,19 @@ return {
                 cutscene:text("* KRIS!!! So nice 2 see you! I am doing [[Easy Well-Done Beef]]!")
                 velvetspam:setAnimation("idle")
                 cutscene:hideNametag()
-                
+
                 if cutscene:getCharacter("susie") then
                     cutscene:showNametag("Susie")
-                    cutscene:text("* Actually that's not Kris\n * It's YOU...", "nervous_side", "susie")
+                    cutscene:text("* Actually that's not Kris\n* It's YOU...", "nervous_side", "susie")
                     cutscene:hideNametag()
 
-                local velvetspam = cutscene:getCharacter("velvetspam")
-                cutscene:setSpeaker(velvetspam)
-                cutscene:showNametag("Velvet!Spamton")
-                velvetspam:setAnimation("talk")
-                cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * You're Kris!")
-                velvetspam:setAnimation("idle")
-                cutscene:hideNametag()
+                    local velvetspam = cutscene:getCharacter("velvetspam")
+                    cutscene:setSpeaker(velvetspam)
+                    cutscene:showNametag("Velvet!Spamton")
+                    velvetspam:setAnimation("talk")
+                    cutscene:text("* What do you mean it's [[Me myself and I]]?!\n * You're Kris!")
+                    velvetspam:setAnimation("idle")
+                    cutscene:hideNametag()
 
                     cutscene:showNametag("Susie")
                     cutscene:text("* Nevermind then...", "annoyed", "susie")
@@ -367,28 +367,28 @@ return {
                 event:setSprite("dark")
                 cutscene:text("[speed:0.9]* [You're God Damn Right.]", nil, "spamtong")
             end
-			if cutscene:getCharacter("jamm") then
-				if Game:getFlag("dungeonkiller") then
-					cutscene:showNametag("jamm")
-					cutscene:text("* ...Nah.", "neutral", "jamm")
-				elseif Game:getFlag("jamm_closure") then
-					cutscene:showNametag("Jamm")
-					cutscene:text("* I dunno,[wait:5] man.[wait:5]\n* Bikinis aren't my style.", "neutral", "jamm")
-					event:resetSprite()
-					cutscene:showNametag("Bikini Spamton")
-					cutscene:text("* OH?[wait:3] IS A THONG MORE YOUR [Stylish!]?", nil, "spamtong")
-					cutscene:showNametag("Jamm")
-					cutscene:text("* HELL.[wait:5] NO.", "determined", "jamm")
-				else
-					cutscene:showNametag("Jamm")
-					cutscene:text("* But we didn't even do my second sidequest yet.", "neutral", "jamm")
-					cutscene:text("* I'm barely even a character at this point in the story.", "neutral", "jamm")
-					cutscene:showNametag("Bikini Spamton")
-					cutscene:text("* SINCE WHEN DO YOU [Authentication required] TO BE A MAIN CHARACTER TO [Change-up] YOUR", nil, "spamtong")
-					cutscene:showNametag("Jamm")
-					cutscene:text("* ...Pass.", "neutral", "jamm")
-				end
-			end
+            if cutscene:getCharacter("jamm") then
+                if Game:getFlag("dungeonkiller") then
+                    cutscene:showNametag("jamm")
+                    cutscene:text("* ...Nah.", "neutral", "jamm")
+                elseif Game:getFlag("jamm_closure") then
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* I dunno,[wait:5] man.[wait:5]\n* Bikinis aren't my style.", "neutral", "jamm")
+                    event:resetSprite()
+                    cutscene:showNametag("Bikini Spamton")
+                    cutscene:text("* OH?[wait:3] IS A THONG MORE YOUR [Stylish!]?", nil, "spamtong")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* HELL.[wait:5] NO.", "determined", "jamm")
+                else
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* But we didn't even do my second sidequest yet.", "neutral", "jamm")
+                    cutscene:text("* I'm barely even a character at this point in the story.", "neutral", "jamm")
+                    cutscene:showNametag("Bikini Spamton")
+                    cutscene:text("* SINCE WHEN DO YOU [Authentication required] TO BE A MAIN CHARACTER TO [Change-up] YOUR", nil, "spamtong")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* ...Pass.", "neutral", "jamm")
+                end
+            end
             if cutscene:getCharacter("brandon") then
                 cutscene:showNametag("Brandon")
                 cutscene:text("[noskip]* O-oh,[wait:5] well I-", "owo_blush", "brandon", {auto = true})
@@ -487,16 +487,16 @@ return {
         cutscene:text("* NOW YOU TOO CAN LISTEN TO MY [charming voice] IN THE SHAPE OF A [big mouth bass]!")
         cutscene:text("* Batteries not included")
     end,
-	-- ┌───────────────────────┐ --
-	-- │     The Warp Bin      │ --
-	-- └───────────────────────┘ --
+    -- ┌───────────────────────┐ --
+    -- │     The Warp Bin      │ --
+    -- └───────────────────────┘ --
     warpbin = function(cutscene, event)
         cutscene:text("* It's the warp bin.")
         cutscene:text("* Would you like to warp?[wait:10]\n* You only need the code.")
 
-		if cutscene:choicer({"Sure", "Nope"}) == 2 then
-			return
-		end
+        if cutscene:choicer({"Sure", "Nope"}) == 2 then
+            return
+        end
 
         local wbi_ok = false
         ---@type WarpBinCodeInfo
@@ -509,42 +509,42 @@ return {
         Game.world:spawnObject(wbi, "ui")
         cutscene:wait(function() return wbi_ok end)
 
-		if not action then
-			cutscene:text("* That doesn't seem to work.")
-			return
-		end
+        if not action then
+            cutscene:text("* That doesn't seem to work.")
+            return
+        end
 
-		if type(action.result) == "string" then
+        if type(action.result) == "string" then
             local dest_map
             pcall(function() dest_map = Registry.createMap(action.result, Game.world) end)
             if not dest_map then
-				cutscene:text("* Where are you warping to?")
-				return
+                cutscene:text("* Where are you warping to?")
+                return
             end
-			if Game.world.map.id == dest_map.id then
-				cutscene:text("* But you're already there.")
-				return
-			end
+            if Game.world.map.id == dest_map.id then
+                cutscene:text("* But you're already there.")
+                return
+            end
 
-			cutscene:wait(0.2)
+            cutscene:wait(0.2)
 
-			Game.world.music:stop()
-			-- Hell naw is this the only way to stop all sounds?
-			for key,_ in pairs(Assets.sound_instances) do
-				Assets.stopSound(key, true)
-			end
-			Game.world.fader:fadeOut(nil, {
-				speed = 0,
-			})
-			cutscene:playSound("impact")
+            Game.world.music:stop()
+            -- Hell naw is this the only way to stop all sounds?
+            for key,_ in pairs(Assets.sound_instances) do
+                Assets.stopSound(key, true)
+            end
+            Game.world.fader:fadeOut(nil, {
+                speed = 0,
+            })
+            cutscene:playSound("impact")
 
-			cutscene:wait(1)
-			cutscene:loadMap(dest_map, action.marker, "down")
-			Game.world.fader:fadeIn(nil, {
-				speed = 0.25,
-			})
-		else
-			action.result(cutscene)
-		end
+            cutscene:wait(1)
+            cutscene:loadMap(dest_map, action.marker, "down")
+            Game.world.fader:fadeIn(nil, {
+                speed = 0.25,
+            })
+        else
+            action.result(cutscene)
+        end
     end,
 }
