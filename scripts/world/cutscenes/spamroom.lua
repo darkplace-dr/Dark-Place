@@ -487,6 +487,7 @@ return {
         cutscene:text("* NOW YOU TOO CAN LISTEN TO MY [charming voice] IN THE SHAPE OF A [big mouth bass]!")
         cutscene:text("* Batteries not included")
     end,
+
     -- ┌───────────────────────┐ --
     -- │     The Warp Bin      │ --
     -- └───────────────────────┘ --

@@ -41,15 +41,17 @@ Mod.warp_bin_codes = {
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
     ["WTF1998S"] = {
         result = function(cutscene)
+            Game:setFlag("wb_wtf1998s", true)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
-            Mod:addBinCode("SPPISPOD", function(cutscene2)
-                cutscene2:text({
-                    "* Since you found another one...",
-                    "* Here's a fun fact:",
-                    "* This was made as a way to showcase what the warp bin can do!"
-                })
-            end)
         end
+    },
+    ["SPPISPOD"] = {
+        result = function(cutscene)
+            cutscene:text("* Since you found another one...")
+            cutscene:text("* Here's a fun fact:")
+            cutscene:text("* This was made as a way to showcase what the warp bin can do!")
+        end,
+        flagcheck = "wb_wtf1998s"
     },
     ["SCRTACHV"] = {
         result = function(cutscene)
@@ -67,10 +69,8 @@ Mod.warp_bin_codes = {
             cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
         end
     },
-    ["CASTLERD"] = {result = "castle_path/start"}
+    ["CASTLERD"] = { result = "castle_path/start" }
 }
-
--- heres some new totally cool helper functions wowee
 
 --- get a Bin Code's info
 ---@param code WarpBinCode
@@ -81,32 +81,4 @@ function Mod:getBinCode(code)
     return Mod.warp_bin_codes[code]
 end
 
---- adds a code to the warp bin code table
----@param code WarpBinCode if you came from the raw table, put this as the key of your new entry
----@param result string|fun(cutscene: WorldCutscene) see WarpBinCodeInfo.result
----@param marker? string see WarpBinCodeInfo.marker
----@param overwrite? boolean whether to overwrite existing entries or not
----@return boolean success false if the code already exists and overwrite is false. just in-case someone else steals your code before you get to use it.
-function Mod:addBinCode(code, result, marker, overwrite)
-    code = code:upper()
-
-    if self:getBinCode(code) and not overwrite then
-        -- whoops, no success
-        return false
-    end
-
-    -- lmao
-    Mod.warp_bin_codes[code] = { result = result, marker = marker or "spawn" }
-    return true
-end
-
---- deletes a Bin Code
----@param code WarpBinCode
----@return boolean success false if the code doesnt exist
-function Mod:deleteBinCode(code)
-    code = code:upper()
-
-    if not self:getBinCode(code) then return false end
-    Mod.warp_bin_codes[code] = nil
-    return true
-end
+-- the actual logic is implemented in scripts/world/cutscenes/spamroom.lua -> warpbin
