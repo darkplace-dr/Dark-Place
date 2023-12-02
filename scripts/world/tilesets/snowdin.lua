@@ -8,10 +8,10 @@ return {
   tileheight = 40,
   spacing = 0,
   margin = 0,
-  columns = 64,
+  columns = 33,
   image = "../../../assets/sprites/tilesets/snowdin.png",
-  imagewidth = 2570,
-  imageheight = 2288,
+  imagewidth = 1320,
+  imageheight = 1320,
   objectalignment = "unspecified",
   tilerendersize = "tile",
   fillmode = "stretch",
@@ -26,6 +26,6 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 3648,
+  tilecount = 1089,
   tiles = {}
 }
