@@ -2,7 +2,6 @@ local actor, super = Class(Actor, "spamtong")
 
 function actor:init()
     super:init(self)
-    print("oh")
 
     -- Display name (optional)
     self.name = "Spamton"

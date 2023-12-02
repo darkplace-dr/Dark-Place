@@ -123,6 +123,7 @@ return {
         gonerText("I SHALL BE THERE[wait:20]\nSHORTLY.[wait:20]")
         cutscene:wait(0.5)
 		wahwah:stop()
+		wahwah:remove()
 		Assets.playSound("item")
         cutscene:wait(1)
 

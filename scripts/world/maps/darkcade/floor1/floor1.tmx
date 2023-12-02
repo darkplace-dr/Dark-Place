@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="border" value="dev"/>
-  <property name="music" value="castle-funk"/>
+  <property name="music" value="castle_funk"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/darkcade_interior.tsx"/>
  <tileset firstgid="43" source="../../../tilesets/castle.tsx"/>

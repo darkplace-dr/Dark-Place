@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="border" value="dev"/>
-  <property name="music" value="castle-funk"/>
+  <property name="music" value="castle_funk"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/devroom-objects.tsx"/>
  <imagelayer id="2" name="Image Layer 1">

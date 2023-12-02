@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="border" value="deoxynn/forest"/>
-  <property name="music" value="forest"/>
+  <property name="music" value="deoxynn_forest"/>
   <property name="name" value="Deoxynn Test Map"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/castle.tsx"/>

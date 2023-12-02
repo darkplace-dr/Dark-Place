@@ -30,20 +30,21 @@ function DogCheck:start()
     if self.started then return end
     self.started = true
 
-    local function createDog(sprite, anim_speed, x_off, y_off)
+    local function createDog(sprite, anim_speed, x_off, y_off, scale)
         x_off = x_off or 0
         y_off = y_off or 0
+        scale = scale or 4
 
         self.dog = Sprite(sprite, self.width / 2 + x_off, self.height / 2 + y_off)
         self.dog:setOrigin(0.5, 0.5)
-        self.dog:setScale(4)
+        self.dog:setScale(scale)
         self.dog:play(anim_speed, true)
         self:addChild(self.dog)
     end
 
     local function playSong(path, pitch_rand_min, pitch_rand_max)
         pitch_rand_min = pitch_rand_min or 1
-        pitch_rand_max = pitch_rand_max or 1
+        pitch_rand_max = pitch_rand_max or pitch_rand_min
 
         self.song = path
         self.song_pitch = Utils.random(pitch_rand_min, pitch_rand_max)
@@ -94,12 +95,8 @@ function DogCheck:start()
         createDog(cust_sprites_base.."/dog_winter", 0.8, -2, -14)
         playSong("options_winter")
     elseif self.variant == "banned" then
-        self.banned = Sprite("world/cutscenes/dogcheck/banned", 320, 240)
-        self.banned:setScale(2)
-        self.banned:setOrigin(0.5, 0.5)
-        self:addChild(self.banned)
-
-        playSong("AUDIO_DEFEAT", 1.5, 1.5)
+        createDog(cust_sprites_base.."/banned", 1, 0, 0, 2)
+        playSong("AUDIO_DEFEAT", 1.5)
     end
 end
 

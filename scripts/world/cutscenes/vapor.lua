@@ -114,9 +114,9 @@ return {
 	end,
     addisonsoda = function(cutscene, event)
         local skp = cutscene:getCharacter("addisonsoda")
-        local skp_name = Mod:addiSwitch() and "Fizz" or "Yellow Addison"
+        local skp_name = Mod:shouldUseVelvetAddisons() and "Fizz" or "Yellow Addison"
 
-        if Mod:addiSwitch() and Game:getFlag("about_fizz") and Game:getFlag("asked_fizz", false) == false and event.interact_count == 1 then
+        if Mod:shouldUseVelvetAddisons() and Game:getFlag("about_fizz") and Game:getFlag("asked_fizz", false) == false and event.interact_count == 1 then
             cutscene:showNametag(skp_name)
             cutscene:text("* Hey there! You look like you need a refreshment!", "default", skp)
             cutscene:text("* Would you like a taste of Synthsoda?", "default", skp)
@@ -129,7 +129,7 @@ return {
             cutscene:hideNametag()
 
             Game:setFlag("asked_fizz", true)
-        elseif not Mod:addiSwitch() and Game:getFlag("about_fizz") and Game:getFlag("asked_fizz", false) == false and event.interact_count == 1 then
+        elseif not Mod:shouldUseVelvetAddisons() and Game:getFlag("about_fizz") and Game:getFlag("asked_fizz", false) == false and event.interact_count == 1 then
             cutscene:showNametag(skp_name)
             cutscene:text("* Spamton? ... Don't know him!", "default", skp)
             cutscene:hideNametag()

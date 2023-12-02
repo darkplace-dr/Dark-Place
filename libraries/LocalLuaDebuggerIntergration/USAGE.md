@@ -17,4 +17,40 @@
         ]
     }
     ```
+- Replace the `breakForError` function in `.vscode\extensions\tomblind.local-lua-debugger-vscode-0.3.3\debugger\lldebugger.lua` with the following
+    ```lua
+    local function breakForError(err, level, propagate)
+        local message
+        local kristalClassLoaderErrorTreatment -- dobby
+        if type(err) == "table" and err.included then
+            kristalClassLoaderErrorTreatment = true
+            message = mapSources(err.msg)
+            err.msg = message
+        else
+            message = mapSources(
+                tostring(err)
+            )
+        end
+        level = (level or 1) + 1
+        if skipNextBreak then
+            skipNextBreak = false
+        elseif not inDebugBreak then
+            local thread = getActiveThread()
+            Send.debugBreak(
+                message,
+                "error",
+                getThreadId(thread)
+            )
+            debugBreak(thread, level)
+        end
+        if propagate then
+            skipNextBreak = true
+            if kristalClassLoaderErrorTreatment then
+                luaError(err, level)
+            else
+                luaError(message, level)
+            end
+        end
+    end
+    ```
 - Now you can press F5 to start Kristal quickly and gain some other useful debugging tools
