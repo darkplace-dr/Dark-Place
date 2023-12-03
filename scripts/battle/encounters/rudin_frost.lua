@@ -11,6 +11,15 @@ function Rudinn:init()
     self:addEnemy("rudinn")
 	
 	self.first_turn = true
+
+    -- Enables the purple grid battle background
+    self.background = false
+	self.hide_world = true
+end
+
+function Rudinn:onBattleInit()
+	self.bg = FrostBG({1, 1, 1})
+	Game.battle:addChild(self.bg)
 end
 
 function Rudinn:onReturnToWorld(events)
