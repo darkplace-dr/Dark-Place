@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 16,
+  nextobjectid = 17,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/queen_car_radio"
@@ -238,6 +238,19 @@ return {
             ["cutscene"] = "floor2.rouxls",
             ["sprite"] = "lamp"
           }
+        },
+        {
+          id = 16,
+          name = "queen_arcade",
+          class = "",
+          shape = "rectangle",
+          x = 920,
+          y = 40,
+          width = 80,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
