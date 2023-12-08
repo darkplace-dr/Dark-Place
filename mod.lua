@@ -17,17 +17,11 @@ end
 
 function Mod:init()
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
-
-    MUSIC_VOLUMES["cybercity"] = 0.8
-    MUSIC_PITCHES["cybercity"] = 0.97
-
-    MUSIC_VOLUMES["cybercity_alt"] = 0.8
-    MUSIC_PITCHES["cybercity_alt"] = 1.2
-
+    MUSIC_PITCHES["deltarune/cybercity"] = 0.97
+    MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-
     MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
 
     self.voice_timer = 0
@@ -661,20 +655,12 @@ function Mod:initializeImportantFlags(new_file)
 end
 
 function Mod:initializeEvents()
-	local currentDate = os.date("*t")
-    
-	-- Christmas event
-	if currentDate.month == 12 or currentDate.month == 1 then
-		if (currentDate.month == 12 and currentDate.day >= 1) or
-		(currentDate.month == 1 and currentDate.day <= 6) then
-			self:addBinCode("WORKSHOP", "christmas/outside/outside_1", "warp", true)
-		end
-	end
+	local date = os.date("*t")
 end
 
 function Mod:onRegistered()
 	self.minigames = { }
-	
+
 	for _,path,game in Registry.iterScripts("minigames") do
 		assert(game ~= nil, '"minigames/' .. path .. '.lua" does not return value')
 		game.id = game.id or path
@@ -691,9 +677,8 @@ function Mod:createMinigame(id, ...)
 end
 
 function Mod:startMinigame(game)
-
     if Game.minigame then
-        error("Attempt to enter card game while already in card game")
+        error("Attempt to enter a minigame while already in one")
     end
 
     Game.state = "MINIGAME"
@@ -701,7 +686,7 @@ function Mod:startMinigame(game)
     Game.minigame = self:createMinigame(game)
 
     Game.minigame:postInit()
-	
+
     Game.stage:addChild(Game.minigame)
 end
 
