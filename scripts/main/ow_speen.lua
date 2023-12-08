@@ -51,7 +51,7 @@ function Speen:update()
 	then
 		self.is_spinning = true
 		self.current_facing = "down"
-		self.timer = self.rotate_speed
+		self.timer = 0
 		self.lancered = love.math.random(0, 100) <= 25
 		self.beyblade = love.math.random(0, 100) <= 10
 		self.rotat_e = love.math.random(0, 100) <= 5
@@ -60,7 +60,7 @@ function Speen:update()
 			self.lancer_sound:play()
 			for i=1,4 do
 				local l = Sprite("world/the_boy")
-				l:play(self.rotate_speed)
+				l:play(1/80)
 				l:setScale(2)
 				l:setLayer(WORLD_LAYERS["top"])
 				Game.world:addChild(l)
