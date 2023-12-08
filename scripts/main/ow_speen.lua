@@ -1,7 +1,15 @@
 local Speen = {}
 
 function Speen:init()
-	print("Loaded Speen")
+	self.is_spinning = false
+
+	self.timer = 0
+	self.current_facing = "down"
+	self.rotate_speed = 1/4
+
+	self.music_paused = false
+	self.last_music_play_status = true
+
 	self.spin_sound = Assets.newSound("spin_jump")
 	self.speen_sound = Assets.newSound("speen")
 
@@ -12,13 +20,6 @@ function Speen:init()
 	self.lancer_sprites = {}
 
 	self.beyblade_sound = love.audio.newSource(Assets.getMusicPath("full_beyblade_theme_song"), "stream")
-
-	self.rotate_speed = 1/4
-
-	self.timer = 0
-
-	self.is_spinning = false
-	self.current_facing = "down"
 
 	Utils.hook(Player, "isMovementEnabled",
         ---@return boolean
@@ -45,6 +46,7 @@ function Speen:update()
 		self.beyblade = love.math.random(0, 100) <= 10
 		self.rotat_e = love.math.random(0, 100) <= 5
 		if self.lancered then
+			self:pauseWorldMusic()
 			self.lancer_sound:play()
 			for i=1,4 do
 				local l = Sprite("world/the_boy")
@@ -63,13 +65,12 @@ function Speen:update()
 				end
 				table.insert(self.lancer_sprites, l)
 			end
-			Game.world.music:pause()
 		elseif self.rotat_e then
+			self:pauseWorldMusic()
 			self.rotat_e_sound:play()
-			Game.world.music:pause()
 		elseif self.beyblade then
+			self:pauseWorldMusic()
 			self.beyblade_sound:play()
-			Game.world.music:pause()
 		elseif love.math.random(1, 50) == 1 then
 			self.speen_sound:play()
 		else
@@ -80,9 +81,16 @@ function Speen:update()
 	if self.is_spinning then
 		self.timer = self.timer + DTMULT
 
+		if self.music_paused then
+			if Game.world.music:isPlaying() then
+				self.last_music_play_status = true
+				Game.world.music:pause()
+			end
+		end
+
 		if self.timer >= self.rotate_speed then
 			self.timer = 0
-			for i,member in ipairs(Game.party) do
+			for _,member in ipairs(Game.party) do
 				local chara = Game.world:getCharacter(member.id)
 				-- compensate for duplicate actors in the party room
 				if Game.world:getCharacter(member.id, 2) then
@@ -94,26 +102,27 @@ function Speen:update()
 			end
 			self:nextFacing()
 		end
+
 		if not Input.down("s") then
 			self.is_spinning = false
 			if self.lancered then
 				self.lancered = false
-				for i,lancer in ipairs(self.lancer_sprites) do
+				for _,lancer in ipairs(self.lancer_sprites) do
 					lancer:remove()
 				end
 				self.lancer_sprites = {}
-				Game.world.music:resume()
 				self.lancer_sound:stop()
+				self:resumeWorldMusic()
 			end
 			if self.beyblade then
 				self.beyblade = false
-				Game.world.music:resume()
 				self.beyblade_sound:stop()
+				self:resumeWorldMusic()
 			end
 			if self.rotat_e then
 				self.rotat_e = false
-				Game.world.music:resume()
 				self.rotat_e_sound:stop()
+				self:resumeWorldMusic()
 			end
 		end
 	end
@@ -121,16 +130,28 @@ end
 
 function Speen:nextFacing()
 	local order = {"down", "up", "left", "right"}
-	for i,facing in ipairs(order) do
-		if self.current_facing == facing then
-			if i == #order then
-				self.current_facing = order[1]
-			else
-				self.current_facing = order[i+1]
-			end
-			break
-		end
-	end
+	local i = Utils.getIndex(order, self.current_facing)
+	self.current_facing = order[Utils.clampWrap(i + 1, 1, #order)]
+end
+
+function Speen:pauseWorldMusic()
+	self.music_paused = true
+	if Game:getActiveMusic() ~= Game.world.music then return end
+	self.last_music_play_status = Game.world.music:isPlaying()
+	self:pauseWorldMusicReal()
+end
+function Speen:pauseWorldMusicReal()
+	Game.world.music:pause()
+end
+
+function Speen:resumeWorldMusic()
+	self.music_paused = false
+	if Game:getActiveMusic() ~= Game.world.music then return end
+	if not self.last_music_play_status then return end
+	self:resumeWorldMusicReal()
+end
+function Speen:resumeWorldMusicReal()
+	Game.world.music:resume()
 end
 
 return Speen
