@@ -9,6 +9,7 @@ function Speen:init()
 
 	self.music_paused = false
 	self.last_music_play_status = true
+	self.music_unpausing = false
 
 	self.spin_sound = Assets.newSound("spin_jump")
 	self.speen_sound = Assets.newSound("speen")
@@ -78,15 +79,17 @@ function Speen:update()
 		end
 	end
 
+	if self.music_paused then
+		if Game.world.music:isPlaying() then
+			self.last_music_play_status = true
+			self:pauseWorldMusicReal()
+		end
+	elseif self.music_unpausing and Game:getActiveMusic() == Game.world.music then
+		self:resumeWorldMusicReal()
+	end
+
 	if self.is_spinning then
 		self.timer = self.timer + DTMULT
-
-		if self.music_paused then
-			if Game.world.music:isPlaying() then
-				self.last_music_play_status = true
-				Game.world.music:pause()
-			end
-		end
 
 		if self.timer >= self.rotate_speed then
 			self.timer = 0
@@ -103,7 +106,7 @@ function Speen:update()
 			self:nextFacing()
 		end
 
-		if not Input.down("s") then
+		if not Input.down("s") or (Game.state ~= "OVERWORLD" or Game.world:hasCutscene()) then
 			self.is_spinning = false
 			if self.lancered then
 				self.lancered = false
@@ -146,7 +149,10 @@ end
 
 function Speen:resumeWorldMusic()
 	self.music_paused = false
-	if Game:getActiveMusic() ~= Game.world.music then return end
+	if Game:getActiveMusic() ~= Game.world.music then
+		self.music_unpausing = self.last_music_play_status
+		return
+	end
 	if not self.last_music_play_status then return end
 	self:resumeWorldMusicReal()
 end
