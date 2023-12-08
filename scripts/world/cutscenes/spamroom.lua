@@ -520,7 +520,7 @@ return {
                 action = { result = "backrooms/gramophone" }
             else
                 cutscene:text("* That doesn't seem to work.")
-                if event.foolproof_counter >= 3 then
+                if event.foolproof_counter >= 3 and event.foolproof_counter < 10 then
                     cutscene:text("* You're reminded of the fact that you can put in \"00000000\" when you're stuck.")
                     if event.foolproof_counter >= 5 then
                         cutscene:text("* Seriously, you're not getting anywhere with this.")
