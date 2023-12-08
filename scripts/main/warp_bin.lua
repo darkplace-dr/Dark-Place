@@ -16,6 +16,7 @@
 ---@field flagcheck? string the name of a flag that must be true or be equal to flagvalue for the player to be allowed to warp. If this is prefixed with an !, then the condition is inverted
 ---@field flagvalue? any the value that the flag in flagcheck should be equal to
 ---@field on_fail? fun(cutscene: WorldCutscene) called when the condition is not satifised
+---@field silence_system_messages? boolean
 
 ---@class WarpBinCodeInfoMini
 ---@field result string map id
