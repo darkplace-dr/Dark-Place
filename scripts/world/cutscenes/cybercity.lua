@@ -249,7 +249,7 @@ return {
                         cutscene:wait(1.5)
                         Game:setFlag("weird", true)
                         Game:setFlag("killedTRUEOriginalStarwalkerInAlley2", true)
-                        Game.world.music:play("cybercity_alt")
+                        Game.world.music:play("deltarune/cybercity_alt")
                         --Game.world.music.volume = 1
                         Game.world.player:setFacing("down")
                     else
@@ -262,7 +262,7 @@ return {
                         Game:setFlag("unlockedStarwalkerValley", true)
 
                         cutscene:text("* (You got the keys to the\n          [color:yellow]starwalker[color:reset]\n                    valley)")
-                        Game.world.music:resume("cybercity")
+                        Game.world.music:resume()
                         --Game.world.music.volume = 1
                         Game.world.player:setFacing("down")
                     end
