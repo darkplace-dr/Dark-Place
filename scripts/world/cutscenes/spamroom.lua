@@ -555,6 +555,10 @@ return {
 
         local result = action.result or action[1]
         local marker = action.marker or action[2]
+        local silence_system_messages = action.silence_system_messages
+        if silence_system_messages == nil then
+            silence_system_messages = false
+        end
 
         if type(result) == "function" then
             result = result(cutscene)
@@ -566,7 +570,7 @@ return {
         elseif not warpable then
             if action.on_fail then
                 action.on_fail(cutscene)
-            elseif not action.silence_system_messages then
+            elseif silence_system_messages then
                 cutscene:text("* That doesn't seem to work.")
             end
             return
@@ -577,13 +581,13 @@ return {
         local dest_map
         pcall(function() dest_map = Registry.createMap(result, Game.world) end)
         if not dest_map then
-            if not action.silence_system_messages then
+            if silence_system_messages then
                 cutscene:text("* Where are you warping to?")
             end
             return
         end
         if Game.world.map.id == dest_map.id then
-            if not action.silence_system_messages then
+            if silence_system_messages then
                 cutscene:text("* But you're already there.")
             end
             return
