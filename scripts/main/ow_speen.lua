@@ -5,7 +5,10 @@ function Speen:init()
 
 	self.timer = 0
 	self.current_facing = "down"
-	self.rotate_speed = 1/4
+	self.rotate_speed = 1/240
+	if Kristal.Config["simplifyVFX"] then
+		self.rotate_speed = 1/30
+	end
 
 	self.music_paused = false
 	self.last_music_play_status = true
@@ -34,6 +37,12 @@ function Speen:init()
 end
 
 function Speen:update()
+	if Kristal.Config["simplifyVFX"] then
+		self.rotate_speed = 1/30
+	else
+		self.rotate_speed = 1/240
+	end
+
 	if Input.pressed("s", false)
 		and not self.is_spinning
 		and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene())
@@ -42,7 +51,7 @@ function Speen:update()
 	then
 		self.is_spinning = true
 		self.current_facing = "down"
-		self.timer = FRAMERATE*self.rotate_speed
+		self.timer = self.rotate_speed
 		self.lancered = love.math.random(0, 100) <= 25
 		self.beyblade = love.math.random(0, 100) <= 10
 		self.rotat_e = love.math.random(0, 100) <= 5
@@ -89,8 +98,7 @@ function Speen:update()
 	end
 
 	if self.is_spinning then
-		self.timer = self.timer + DTMULT
-
+		self.timer = self.timer + DT
 		if self.timer >= self.rotate_speed then
 			self.timer = 0
 			for _,member in ipairs(Game.party) do
