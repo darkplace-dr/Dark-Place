@@ -661,12 +661,11 @@ function Mod:initializeImportantFlags(new_file)
 end
 
 function Mod:initializeEvents()
-	local currentDate = os.date("*t")
-    
+	local date = os.date("*t")
+
 	-- Christmas event
-	if currentDate.month == 12 or currentDate.month == 1 then
-		if (currentDate.month == 12 and currentDate.day >= 1) or
-		(currentDate.month == 1 and currentDate.day <= 6) then
+	if date.month == 12 or date.month == 1 then
+		if (date.month == 12 and date.day >= 1) or (date.month == 1 and date.day <= 6) then
 			self:addBinCode("WORKSHOP", "christmas/outside/outside_1", "warp", true)
 		end
 	end

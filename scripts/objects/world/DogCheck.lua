@@ -49,7 +49,7 @@ function DogCheck:start()
         Game.world.music:play(path, nil, self.song_pitch)
     end
 
-	local month = tonumber(os.date("%m"))
+	local month = os.date("*t").month
     local variant_choices = {"dance", "sleep", "maracas", "piano", "banned"}
     if month >= 3 and month <= 5 then
         table.insert(variant_choices, "spring")
