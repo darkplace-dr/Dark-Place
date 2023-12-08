@@ -662,8 +662,6 @@ end
 
 function Mod:initializeEvents()
 	local date = os.date("*t")
-
-	-- Christmas event
 end
 
 function Mod:onRegistered()
