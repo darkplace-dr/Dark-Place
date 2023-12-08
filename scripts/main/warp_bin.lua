@@ -69,7 +69,12 @@ Mod.warp_bin_codes = {
             cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
         end
     },
-    ["CASTLERD"] = { result = "castle_path/start" }
+    ["CASTLERD"] = { result = "castle_path/start" },
+    ["WORKSHOP"] = {
+		result = function(cutscene)
+			cutscene:text("* The warp exists,[wait:5] but is only available on certain days.")
+		end
+	}
 }
 
 --- get a Bin Code's info
@@ -80,5 +85,7 @@ function Mod:getBinCode(code)
 
     return Mod.warp_bin_codes[code]
 end
+
+-- if you were looking for addBinCode... just tamper with the table on your own
 
 -- the actual logic is implemented in scripts/world/cutscenes/spamroom.lua -> warpbin

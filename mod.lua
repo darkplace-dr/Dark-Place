@@ -666,14 +666,14 @@ function Mod:initializeEvents()
 	-- Christmas event
 	if date.month == 12 or date.month == 1 then
 		if (date.month == 12 and date.day >= 1) or (date.month == 1 and date.day <= 6) then
-			self:addBinCode("WORKSHOP", "christmas/outside/outside_1", "warp", true)
+			self.warp_bin_codes["WORKSHOP"] = { result = "christmas/outside/outside_1", marker = "warp" }
 		end
 	end
 end
 
 function Mod:onRegistered()
 	self.minigames = { }
-	
+
 	for _,path,game in Registry.iterScripts("minigames") do
 		assert(game ~= nil, '"minigames/' .. path .. '.lua" does not return value')
 		game.id = game.id or path
@@ -690,9 +690,8 @@ function Mod:createMinigame(id, ...)
 end
 
 function Mod:startMinigame(game)
-
     if Game.minigame then
-        error("Attempt to enter card game while already in card game")
+        error("Attempt to enter a minigame while already in one")
     end
 
     Game.state = "MINIGAME"
@@ -700,7 +699,7 @@ function Mod:startMinigame(game)
     Game.minigame = self:createMinigame(game)
 
     Game.minigame:postInit()
-	
+
     Game.stage:addChild(Game.minigame)
 end
 
