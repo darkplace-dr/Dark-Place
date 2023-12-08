@@ -90,6 +90,8 @@ function character:init()
 
     -- Message shown on gameover (optional)
     self.gameover_message = { "You aren't done, buddy.[wait:10]\nGive em' hell!" }
+	
+	self.frost_resist = true
 end
 
 --function character:onLevelUp(level)

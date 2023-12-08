@@ -1,18 +1,17 @@
 local Speen = {}
-local self = Speen
 
 function Speen:init()
 	print("Loaded Speen")
 	self.spin_sound = Assets.newSound("spin_jump")
 	self.speen_sound = Assets.newSound("speen")
 
-	self.rotat_e_sound = Assets.newSound("rotat_e")
+	self.rotat_e_sound = love.audio.newSource(Assets.getMusicPath("voiceover/rotat_e"), "stream")
 
 	self.lancer_sound = Assets.newSound("lancer-spin")
 	self.lancer_sound:setLooping(true)
 	self.lancer_sprites = {}
-	
-	self.beyblade_sound = Assets.newSound("full_beyblade_theme_song")
+
+	self.beyblade_sound = love.audio.newSource(Assets.getMusicPath("full_beyblade_theme_song"), "stream")
 
 	self.rotate_speed = 1/4
 
@@ -32,7 +31,8 @@ function Speen:init()
     )
 end
 
-function Speen:update() -- NOTE: Crashes the mod if used in the first Dess room after Dess bats away your party leader
+function Speen:update()
+	-- FIXME: Crashes the mod if used in the first Dess room after Dess bats away your party leader
 	if Input.pressed("s") and not self.is_spinning then
 		if (Game.world and not Game.world.cutscene) and not Game.battle and not Mod.taunt_lock_movement and not OVERLAY_OPEN then
 			self.is_spinning = true

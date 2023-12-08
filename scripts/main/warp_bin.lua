@@ -64,7 +64,12 @@ Mod.warp_bin_codes = {
             cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
         end
     },
-    ["CASTLERD"] = {result = "castle_path/start"}
+    ["CASTLERD"] = {result = "castle_path/start"},
+    ["WORKSHOP"] = {
+		result = function(cutscene)
+			cutscene:text("* The warp exists,[wait:5] but is only available on certain days.")
+		end
+	}
 }
 
 -- heres some new totally cool helper functions wowee

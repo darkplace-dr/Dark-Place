@@ -61,7 +61,8 @@ function item:init()
         dess = "Fuck yea!",
         YOU = {
             susie = "Heh, looking good YOU."
-        }
+        },
+		jamm = "if I was an Italian plumber whose girlfriend was constantly being imprisoned in castles by an evil fire breathing lizard I would simply not take part in recreational go-kart races with aforementioned lizard"
     }
 end
 

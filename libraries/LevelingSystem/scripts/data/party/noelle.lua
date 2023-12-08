@@ -9,6 +9,8 @@ function character:init()
     end
 
     self.max_stats = {}
+    
+    self.frost_resist = true
 end
 
 function character:getTitle()

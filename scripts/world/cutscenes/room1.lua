@@ -232,6 +232,14 @@ return {
 
             susie:resetSprite()
 
+            -- Special case, prevents softlock if Susie is the leader
+            local susiePlayer = Game:getPartyIndex("susie")
+
+            if susiePlayer == 1 then
+                cutscene:wait(cutscene:walkTo(susie, x, y + 60, 0.5, "down", true))
+            end
+            
+
             cutscene:attachCamera()
 
             cutscene:alignFollowers()

@@ -50,7 +50,8 @@ function item:init()
     -- Character reactions (key = party member id)
     self.reactions = {
         robo_susie = "I'm too ultimate for that.",
-        noyno = "Ommmmmm....."
+        noyno = "Ommmmmm.....",
+        jamm = "Speed. I am speed."
     }
 end
 

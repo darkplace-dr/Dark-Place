@@ -60,6 +60,10 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 
 <details><summary>For Dark Place itself</summary>
 
+<a href="https://github.com/BrandonK7200/Dark-Place/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=BrandonK7200/Dark-Place" />
+</a>
+
 * Racckoon - Mod idea, Contributor
 * BrandonK7200 - Making the GitHub page, Contributor
 * AcousticJamm - Name idea, Contributor
@@ -85,10 +89,6 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * LancerGaming2 - Contributor
 * FireRainV - Contributor
 * Sad Diamond Man - Contributor
-
-<a href="https://github.com/BrandonK7200/Dark-Place/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=BrandonK7200/Dark-Place" />
-</a>
 
 </details>
 

@@ -226,6 +226,13 @@ return {
     origin = "Dark Place"
   },
   {
+    name = "BEST FRIENDS",
+    file = "spamgolor_neo",
+    composer = "BrendaK7200",
+    released = "2023",
+    origin = "Dark Place"
+  },
+  {
     name = "Vs. Chevelour",
     file = "vs_chevelour",
     composer = "Kross (?)",
@@ -533,7 +540,7 @@ return {
   {
     name = "サウンドと恋に C I T Y P O P",
     file = "citypop_sound_of_love",
-    composer = "悲しい ANDROID - APARTMENT¶", -- or simply Android Apartment
+    composer = "Android Apartment",
     released = "2016",
     -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p
     origin = "SoundCloud (original upload was removed)" -- "Soundcloud Edits Part II"
@@ -543,7 +550,7 @@ return {
     file = "inainaina",
     composer = "shimtone",
     released = "August 4, 2020",
-    origin = "free sound released to DOVA-SYNDROME; Ninomae Ina'nis's Intro BGM" -- https://dova-s.jp/bgm/play13226.html
+    origin = "free sound on DOVA-SYNDROME; Ninomae Ina'nis's Intro BGM" -- https://dova-s.jp/bgm/play13226.html
   },
   {
     name = "Stickerbrush Symphony",
@@ -560,7 +567,9 @@ return {
     origin = "Neon White (trimmed for Dark Place)"
   },
   {
-    -- I cannot find an official name for this for the life of me, it's got a different name pretty much everywhere it's uploaded. - Agent 7
+    -- I cannot find an official name for this for the life of me, it's got
+    -- a different name pretty much everywhere it's uploaded. - Agent 7
+    -- It's just The Arena in the 2sf rip I have - d2l
     name = "Prepare Yourself (The Arena)",
     file = "kssu_arena_pre",
     composer = "Jun Ishikawa, Hirokazu Ando",
@@ -685,7 +694,14 @@ return {
     name = "A TRUE AEON HERO",
     file = "wwcgalacta",
     composer = "BrendaK7200",
-    released = "2023 (YouTube Upload) 202X (When Worlds Collide)",
+    released = "2023",
+    origin = "When Worlds Collide"
+  },
+  {
+    name = "The Radiant King",
+    file = "radiant",
+    composer = "BrendaK7200",
+    released = "2023",
     origin = "When Worlds Collide"
   },
   {
@@ -696,6 +712,8 @@ return {
     origin = "??? - https://youtu.be/5rA2UmeD2x4"
   },
   {
+    -- khinsiders S6 gamerip: Cookie Trials - Currant Cream Cookie
+    --   - d2l
     name = "Currant Cream Cookie's Trial",
     file = "Currant_Cream_Trial",
     composer = "Devsisters",
@@ -760,9 +778,10 @@ return {
     origin = "8-Bit Fantasy & Adventure Music Pack"
   },
   {
+    -- this has weird loop points in the og game
     name = "The Other One",
-    file = "jamm_boss", -- apparently is going to be replaced
-    composer = "Tristan Alric", -- eastern order :bangbang:
+    file = "jamm_boss",
+    composer = "Tristan Alric",
     released = "November 21, 2019",
     origin = "Bug Fables"
   },

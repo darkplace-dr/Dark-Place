@@ -214,6 +214,8 @@ function Mod:postInit(new_file)
 	end
 
     self:initBulborb()
+	
+	self:initializeEvents()
 end
 
 function Mod:initializeImportantFlags(new_file)
@@ -656,6 +658,18 @@ function Mod:initializeImportantFlags(new_file)
             end
         end
     end
+end
+
+function Mod:initializeEvents()
+	local currentDate = os.date("*t")
+    
+	-- Christmas event
+	if currentDate.month == 12 or currentDate.month == 1 then
+		if (currentDate.month == 12 and currentDate.day >= 1) or
+		(currentDate.month == 1 and currentDate.day <= 6) then
+			self:addBinCode("WORKSHOP", "christmas/outside/outside_1", "warp", true)
+		end
+	end
 end
 
 function Mod:onRegistered()

@@ -12,7 +12,7 @@ return {
   nextobjectid = 15,
   properties = {
     ["border"] = "dev",
-    ["music"] = "castle-funk"
+    ["music"] = "castle_funk"
   },
   tilesets = {
     {
