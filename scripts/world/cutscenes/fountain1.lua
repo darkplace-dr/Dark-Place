@@ -1,3 +1,7 @@
+-- (C) 2023 Simbel
+-- (C) 2023 Liu "Dobby233Liu" Wenyuan
+-- SPDX-License-Identifier: BSD-3-Clause
+
 ---@param cutscene WorldCutscene
 return function(cutscene)
     local fountain = Game.world:getEvent("darkfountain")
