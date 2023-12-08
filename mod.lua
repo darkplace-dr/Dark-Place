@@ -664,11 +664,6 @@ function Mod:initializeEvents()
 	local date = os.date("*t")
 
 	-- Christmas event
-	if date.month == 12 or date.month == 1 then
-		if (date.month == 12 and date.day >= 1) or (date.month == 1 and date.day <= 6) then
-			self.warp_bin_codes["WORKSHOP"] = { result = "christmas/outside/outside_1", marker = "warp" }
-		end
-	end
 end
 
 function Mod:onRegistered()

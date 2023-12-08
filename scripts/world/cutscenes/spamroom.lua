@@ -538,14 +538,29 @@ return {
                 warpable = inverted
             end
         end
-        if not warpable then
-            cutscene:text("* That doesn't seem to work.")
+
+        local result = action.result or action[1]
+        local marker = action.marker or action[2]
+
+        if type(result) == "function" then
+            result = result(cutscene)
+            if not result then return end
+            if type(result) == "table" then
+                marker = result.marker or result[2]
+                result = result.result or result[1]
+            end
+        elseif not warpable then
+            if action.on_fail then
+                action.on_fail(cutscene)
+            else
+                cutscene:text("* That doesn't seem to work.")
+            end
             return
         end
 
-        if type(action.result) == "string" then
+        if type(result) == "string" then
             local dest_map
-            pcall(function() dest_map = Registry.createMap(action.result, Game.world) end)
+            pcall(function() dest_map = Registry.createMap(result, Game.world) end)
             if not dest_map then
                 cutscene:text("* Where are you warping to?")
                 return
@@ -566,10 +581,10 @@ return {
             cutscene:playSound("impact")
 
             cutscene:wait(1)
-            cutscene:loadMap(dest_map, action.marker, "down")
+            cutscene:loadMap(dest_map, marker, "down")
             cutscene:fadeIn(0.25)
         else
-            action.result(cutscene)
+            error("result should be of type string or function (got "..type(result)..")")
         end
     end,
 }

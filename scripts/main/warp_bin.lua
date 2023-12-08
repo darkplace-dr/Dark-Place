@@ -10,11 +10,16 @@
 --- what to do after the code is entered \
 --- if a string, treated as a map's id and the player is teleported there \
 --- if the last argument is a function, the function is run
----@field result string|fun(cutscene: WorldCutscene)
+---@field result string|(fun(cutscene: WorldCutscene):string|WarpBinCodeInfoMini|nil) map id or cutscene
 ---@field marker? string in case result is a string, the name of the marker you want to teleport the player to
----@field cond? fun():boolean if defined, this must return true for the player to be allowed to warp
+---@field cond? fun():boolean|nil if defined, this must return true for the player to be allowed to warp
 ---@field flagcheck? string the name of a flag that must be true or be equal to flagvalue for the player to be allowed to warp. If this is prefixed with an !, then the condition is inverted
 ---@field flagvalue? any the value that the flag in flagcheck should be equal to
+---@field on_fail? fun(cutscene: WorldCutscene) called when the condition is not satifised
+
+---@class WarpBinCodeInfoMini
+---@field result string map id
+---@field marker? string in case result is a string, the name of the marker you want to teleport the player to
 
 -- I'm going to cause pain and suffering with one weird trick:
 -- here's the table containing any and all warp codes for the 
@@ -71,7 +76,15 @@ Mod.warp_bin_codes = {
     },
     ["CASTLERD"] = { result = "castle_path/start" },
     ["WORKSHOP"] = {
-		result = function(cutscene)
+        result = "christmas/outside/outside_1",
+        marker = "warp",
+		cond = function()
+            local date = os.date("*t")
+            if (date.month == 12 and date.day >= 1) or (date.month == 1 and date.day <= 6) then
+                return true
+            end
+        end,
+		on_fail = function(cutscene)
 			cutscene:text("* The warp exists,[wait:5] but is only available on certain days.")
 		end
 	}
