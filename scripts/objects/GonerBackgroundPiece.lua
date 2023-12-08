@@ -38,9 +38,6 @@ function GonerBackgroundPiece:update()
 end
 
 function GonerBackgroundPiece:draw()
-    local function drawPart(x_dir, y_dir)
-    end
-
     love.graphics.setColor(1, 1, 1, self.alpha)
     love.graphics.draw(
         self.sprite, 0, 0, 0,
