@@ -114,4 +114,11 @@ return {
 		end
 		cutscene:hideNametag()
 	end,
+    s_elf_2 = function(cutscene, event)
+		cutscene:showNametag("self", {font = "sans"})
+		cutscene:text("[font:sans]* wow,[wait:5] you solved that puzzle quickly.", "neutral", "self")
+		cutscene:text("[font:sans]* it's almost as if you saw xo puzzles before.", "neutral", "self")
+		cutscene:text("[font:sans]* which is weird,[wait:5] since they're exclusive to here.", "neutral", "self")
+		cutscene:hideNametag()
+	end,
 }
