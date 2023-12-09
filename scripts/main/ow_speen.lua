@@ -43,7 +43,7 @@ function Speen:update()
 		self.rotate_speed = 1/240
 	end
 
-	if Input.pressed("s", false)
+	if Input.pressed("s", false) and not Input.ctrl()
 		and not self.is_spinning
 		and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene())
 		and not (Game.lock_movement or self.taunt_lock_movement)
@@ -60,7 +60,7 @@ function Speen:update()
 			self.lancer_sound:play()
 			for i=1,4 do
 				local l = Sprite("world/the_boy")
-				l:play(1/80)
+				l:play(1/10)
 				l:setScale(2)
 				l:setLayer(WORLD_LAYERS["top"])
 				Game.world:addChild(l)

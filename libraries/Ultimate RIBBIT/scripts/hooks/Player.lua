@@ -5,12 +5,12 @@ end
 ---@class Player
 local Player, super = Class("Player", true)
 
-function Player:updateWalk(key)
+function Player:updateWalk()
     super.updateWalk(self)
 
-    if Game.lock_movement or TextInput.active then return end
+    if not self:isMovementEnabled() then return end
 
-    if Input.pressed("a") and (self.actor.id == "YOU" or self.actor.id == "YOU_lw") and Game.can_croak ~= false then
+    if Input.pressed("a") and (self.actor.id == "YOU" or self.actor.id == "YOU_lw") and Mod.can_croak ~= false then
         self:croak()
     end
 end
