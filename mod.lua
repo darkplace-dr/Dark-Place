@@ -248,8 +248,6 @@ function Mod:initializeImportantFlags(new_file)
 
         Game:setFlag("cloudwebStoryFlag", 0)
         Game:setFlag("vaporland_sidestory", 0)
-
-        Game:setFlag("spookymonth", false)
     end
 
     -- Create save flags for costumes if they don't already exist

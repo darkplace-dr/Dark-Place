@@ -13,13 +13,6 @@ function Room1:onEnter()
             Game.world:startCutscene("room1", "react_to_YOU")
         end
     end
-
-	self.month = tonumber(os.date("%m"))
-    if self.month == 10 then
-        Game:setFlag("spookymonth", true)
-    else
-        Game:setFlag("spookymonth", false)
-    end
 end
 
 function Room1:onExit()
