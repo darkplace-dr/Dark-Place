@@ -232,26 +232,27 @@
   </object>
   <object id="56" gid="105" x="120" y="80" width="39.2829" height="40">
    <properties>
-    <property name="cond" value="Game:getFlag(&quot;blankie_acquired&quot;)"/>
+    <property name="flagcheck" value="blankie_acquired"/>
    </properties>
   </object>
   <object id="57" name="npc" x="470" y="340">
    <properties>
     <property name="actor" value="skid"/>
-    <property name="flagcheck" value="spookymonth"/>
+    <property name="cond" value="os.date(&quot;*t&quot;).month == 10"/>
    </properties>
    <point/>
   </object>
   <object id="58" name="npc" x="530" y="340">
    <properties>
     <property name="actor" value="pump"/>
-    <property name="flagcheck" value="spookymonth"/>
+    <property name="cond" value="os.date(&quot;*t&quot;).month == 10"/>
    </properties>
    <point/>
   </object>
   <object id="59" name="interactable" x="450" y="320" width="100" height="40">
    <properties>
     <property name="cutscene" value="room1.spooky"/>
+    <property name="cond" value="os.date(&quot;*t&quot;).month == 10"/>
    </properties>
   </object>
   <object id="60" name="beanspot" x="360" y="800">

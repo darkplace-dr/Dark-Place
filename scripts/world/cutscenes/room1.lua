@@ -1048,15 +1048,23 @@ return {
     spooky = function(cutscene)
         local skid = cutscene:getCharacter("skid")
         local pump = cutscene:getCharacter("pump")
-		
+
         Game.world.music:stop()
         cutscene:showNametag("Skid & Pump")
         cutscene:text("* IT IS THE SPOOKY MONTH!")
-        cutscene:hideNametag("Skid & Pump")
-		
+        cutscene:hideNametag()
+
         Game.world.music:play("spookymonth")
-        skid:setAnimation("dance")
-        pump:setAnimation("dance")
+        if skid then
+            skid:setAnimation("dance")
+        else
+            Log:print("Skid does not exist! How the hell is this possible?", "error")
+        end
+        if pump then
+            pump:setAnimation("dance")
+        else
+            Log:print("Pump does not exist! How the hell is this possible?", "error")
+        end
     end,
 
     well = function(cutscene, event)
