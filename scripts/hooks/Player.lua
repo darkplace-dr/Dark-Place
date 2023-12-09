@@ -3,7 +3,7 @@ local Player, super = Class("Player", true)
 
 function Player:update()
     -- Holding run with the Pizza Toque equipped (or if the file name is "PEPPINO") will cause a gradual increase in speed.
-    toque_equipped = false
+    local toque_equipped = false
     for _,party in ipairs(Game.party) do
         if party:checkArmor("pizza_toque") then toque_equipped = true end
     end
@@ -24,7 +24,7 @@ function Player:update()
 	end
 
     -- Hitting a wall at a speed of 10 or higher will do a small collision effect
-    if toque_equipped == true or player_name == "PEPPINO" then
+    if toque_equipped or player_name == "PEPPINO" then
         if self.last_collided_x or self.last_collided_y then
             if self.walk_speed >= 10 then
                 Game.world.player:shake(4, 0)
@@ -33,53 +33,39 @@ function Player:update()
         end
     end
 
-        --haha backroom go brrrrrrr
+    --haha backroom go brrrrrrr
     if Game.world.map.id == "whitespace" then
         if self.walk_speed >= 60 then
     	    Game.world:mapTransition("greyarea", "entry")
         end
     end
-        
-
-    --[[
-    Old code that will either explode the player or do 20 damage to the party depending on their speed when hitting a wall.
-    if toque_equipped == true or player_name == "PEPPINO" then
-        if self.last_collided_x or self.last_collided_y then
-                if self.walk_speed >= 16 then
-                    self:explode()
-                    Game.world.music:stop()
-
-                    Game.stage.timer:after(2, function()
-                        local rect = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
-                        rect:setColor(0, 0, 0)
-                        rect:setLayer(100000)
-                        rect.alpha = 0
-                        Game.stage:addChild(rect)
-
-                        Game.stage.timer:tween(2, rect, {alpha = 1}, "linear", function()
-                            rect:remove()
-                            Game:gameOver(0, 0)
-                            Game.gameover.soul:remove()
-                            Game.gameover.soul = nil
-                            Game.gameover.screenshot = nil
-                            Game.gameover.timer = 150
-                            Game.gameover.current_stage = 4
-                        end)
-                    end)
-                elseif self.walk_speed >= 10 then
-                    Game.world:hurtParty(20)
-                end
-            end
-        end)
-    end
-    --]]
-
 end
 
 function Player:interact()
 	if self.holding then return false end
-	
+
     return super:interact(self)
+end
+
+function Player:updateWalk()
+    super.updateWalk(self)
+
+    if not self:isMovementEnabled() then return end
+
+    if Input.pressed("a") and (self.actor.id == "YOU" or self.actor.id == "YOU_lw") and Mod.can_croak ~= false then
+        self:croak()
+    end
+end
+
+function Player:croak()
+    Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))
+
+    local bubble = Sprite("croak", nil, nil, nil, nil, "party/you")
+    bubble:setOriginExact(60, 23) -- center??
+    bubble:setPosition(self.width/2 + 2.5, -20.5)
+    bubble.physics.speed_y = -0.8
+    bubble:fadeOutSpeedAndRemove(0.065)
+    self:addChild(bubble)
 end
 
 return Player
