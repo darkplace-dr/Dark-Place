@@ -516,7 +516,7 @@ return {
             if event.foolproof_counter == nil then event.foolproof_counter = 0 end
             event.foolproof_counter = event.foolproof_counter + 1
             if event.foolproof_counter == 10 then
-                cutscene:text("* For some reason, the lid opened...")
+                cutscene:text("* For some reason,[wait:5] the lid opened...")
                 action = { result = "backrooms/gramophone" }
             else
                 cutscene:text("* That doesn't seem to work.")
