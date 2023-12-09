@@ -60,7 +60,7 @@ function Speen:update()
 			self.lancer_sound:play()
 			for i=1,4 do
 				local l = Sprite("world/the_boy")
-				l:play(1/80)
+				l:play(1/10)
 				l:setScale(2)
 				l:setLayer(WORLD_LAYERS["top"])
 				Game.world:addChild(l)
