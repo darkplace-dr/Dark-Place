@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="48">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="52">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -146,6 +146,9 @@
   <object id="34" name="out_1" x="220" y="680">
    <point/>
   </object>
+  <object id="49" name="out_3" x="1200" y="432">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="9" name="objects">
   <object id="37" name="transition" x="120" y="720" width="200" height="40">
@@ -175,6 +178,12 @@
     <property name="encounter" value="rudin_frost"/>
    </properties>
    <point/>
+  </object>
+  <object id="48" name="transition" x="1280" y="400" width="40" height="40">
+   <properties>
+    <property name="map" value="christmas/outside/outside_3"/>
+    <property name="marker" value="out_2"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

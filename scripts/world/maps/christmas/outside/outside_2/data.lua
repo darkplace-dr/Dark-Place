@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 10,
-  nextobjectid = 48,
+  nextobjectid = 52,
   properties = {
     ["music"] = "christmas_outside"
   },
@@ -717,6 +717,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 49,
+          name = "out_3",
+          type = "",
+          shape = "point",
+          x = 1200,
+          y = 432,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -798,6 +811,22 @@ return {
             ["actor"] = "rudinn",
             ["chase"] = true,
             ["encounter"] = "rudin_frost"
+          }
+        },
+        {
+          id = 48,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 1280,
+          y = 400,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "christmas/outside/outside_3",
+            ["marker"] = "out_2"
           }
         }
       }
