@@ -1,0 +1,11 @@
+{
+    "id": "spikes",
+    "version": "1.0.0",
+    "engineVersion": "0.6.0",
+	"authors": [
+		"AcousticJamm"
+	],
+	"config": {
+		"spikedeath": true
+	},
+}
