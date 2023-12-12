@@ -47,14 +47,8 @@ Mod.warp_bin_codes = {
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
     ["WTF1998S"] = {
         result = function(cutscene)
+            Game:setFlag("wb_wtf1998s", true)
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
-            Mod:addBinCode("SPPISPOD", function(cutscene2)
-                cutscene2:text({
-                    "* Since you found another one...",
-                    "* Here's a fun fact:",
-                    "* This was made as a way to showcase what the warp bin can do!"
-                })
-            end)
         end
     },
     ["SCRTACHV"] = {
