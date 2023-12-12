@@ -121,7 +121,8 @@
    <properties>
     <property name="solid" type="bool" value="true"/>
     <property name="text1" value="* There appears to be some advertisements for codes here."/>
-    <property name="text10" value="* It looks like until someone posts another ad,[wait:10] that's all there is here."/>
+    <property name="text10" value="* (Hello! Go to &quot;[color:red]SLIDER[color:reset]&quot; for lotsa fun!)"/>
+    <property name="text11" value="* It looks like until someone posts another ad,[wait:10] that's all there is here."/>
     <property name="text2" value="* (Go to the code &quot;[color:yellow]SPAM[color:pink]ROOM[color:reset]&quot;! It's where all the [BIG SHOT]s are!)"/>
     <property name="text3" value="* (yo whaddup. go to &quot;[color:red]DESSHERE[color:reset]&quot;.)"/>
     <property name="text4">* (Want to fight bosses you've previously fought?[wait:10]

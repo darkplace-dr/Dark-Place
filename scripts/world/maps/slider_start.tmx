@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="10">
+ <editorsettings>
+  <export target="slider_start.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="slider"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/darktiles_ribbitmobdt.tsx"/>
+ <tileset firstgid="241" source="../tilesets/city_alleyway.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,2,3,3,3,3,3,3,3,3,3,3,3,3,4,0,
+0,14,15,13,15,15,15,15,15,15,15,15,15,15,16,0,
+0,14,15,15,15,15,15,15,13,15,15,15,15,15,16,0,
+0,14,15,15,15,15,15,15,15,15,15,13,15,15,16,0,
+0,14,25,15,15,15,15,15,15,15,15,15,15,15,15,3,
+0,14,15,15,15,15,15,15,15,25,15,15,15,15,13,27,
+0,14,15,15,15,13,15,15,15,15,15,15,15,15,16,38,
+0,26,15,15,15,15,15,15,15,15,15,15,15,15,28,50,
+0,38,39,39,39,39,39,39,39,39,39,39,39,39,40,50,
+0,50,51,51,5,51,51,51,51,51,5,51,51,51,29,50,
+0,41,51,51,51,17,51,51,51,51,51,51,51,51,52,50
+</data>
+ </layer>
+ <layer id="3" name="Tile Layer 2" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,462,463,464,0,0,0,0,0,0,0,0,0,0,0,
+0,0,477,478,479,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="1" x="0" y="0" width="640" height="40"/>
+  <object id="2" x="600" y="40" width="40" height="160"/>
+  <object id="3" x="600" y="280" width="40" height="80"/>
+  <object id="4" x="0" y="40" width="40" height="320"/>
+  <object id="5" x="0" y="360" width="640" height="120"/>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="7" name="spawn" x="160" y="160">
+   <point/>
+  </object>
+  <object id="8" name="slider" x="600" y="240">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="6" name="interactable" x="87" y="30" width="110" height="90">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text" value="* It doesn't seem to be working."/>
+   </properties>
+  </object>
+  <object id="9" name="transition" x="640" y="200" width="40" height="80">
+   <properties>
+    <property name="map" value="slider"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
