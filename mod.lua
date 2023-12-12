@@ -17,11 +17,17 @@ end
 
 function Mod:init()
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
-    MUSIC_PITCHES["deltarune/cybercity"] = 0.97
-    MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
+
+    MUSIC_VOLUMES["cybercity"] = 0.8
+    MUSIC_PITCHES["cybercity"] = 0.97
+
+    MUSIC_VOLUMES["cybercity_alt"] = 0.8
+    MUSIC_PITCHES["cybercity_alt"] = 1.2
+
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
+
     MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
 
     self.voice_timer = 0
@@ -248,6 +254,8 @@ function Mod:initializeImportantFlags(new_file)
 
         Game:setFlag("cloudwebStoryFlag", 0)
         Game:setFlag("vaporland_sidestory", 0)
+
+        Game:setFlag("spookymonth", false)
     end
 
     -- Create save flags for costumes if they don't already exist
@@ -301,6 +309,7 @@ function Mod:initializeImportantFlags(new_file)
     end
 
     local berdly = Game:getPartyMember("berdly")
+    local mario = Game:getPartyMember("mario")
     if berdly:getBaseStats("health") == 300 then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Berdly was added.")
@@ -337,7 +346,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "kris" then
@@ -356,7 +366,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "susie" then
@@ -375,7 +386,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "noelle" then
@@ -394,7 +406,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "dess" then
@@ -413,7 +426,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 60
+                    jamm = 60,
+					mario = 35
                 }
             end
             if v == "brandon" then
@@ -432,7 +446,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 70
+                    jamm = 70,
+					mario = 50
                 }
             end
             if v == "dumbie" then
@@ -451,7 +466,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "ostarwalker" then
@@ -470,7 +486,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "berdly" then
@@ -489,7 +506,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "bor" then
@@ -508,7 +526,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "robo_susie" then
@@ -527,7 +546,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "nonyo" then
@@ -546,7 +566,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "iphone" then
@@ -565,7 +586,8 @@ function Mod:initializeImportantFlags(new_file)
                     nonyo = 50,
                     frisk2 = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "frisk2" then
@@ -584,7 +606,8 @@ function Mod:initializeImportantFlags(new_file)
                     nonyo = 50,
                     iphone = 50,
                     alseri = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "alseri" then
@@ -603,7 +626,8 @@ function Mod:initializeImportantFlags(new_file)
                     nonyo = 50,
                     iphone = 50,
                     frisk2 = 50,
-                    jamm = 50
+                    jamm = 50,
+					mario = 50
                 }
             end
             if v == "jamm" then
@@ -622,7 +646,28 @@ function Mod:initializeImportantFlags(new_file)
                     nonyo = 50,
                     iphone = 50,
                     frisk2 = 50,
-                    alseri = 50
+                    alseri = 50,
+					mario = 65
+                }
+            end
+            if v == "mario" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+					jamm = 65
                 }
             end
         end
@@ -636,6 +681,116 @@ function Mod:initializeImportantFlags(new_file)
 		Game:setFlag("spam_beans", 0)
 		Game:setFlag("binaribeans", 0)
 	end
+	
+	if new_file or mario.opinions == nil then
+        likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before Mario was added.")
+
+        local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm"}
+        for i, v in ipairs(party_members) do
+            local party = Game:getPartyMember(v)
+            if v == "YOU" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "kris" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "susie" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "noelle" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "dess" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 35
+                })
+            end
+            if v == "brandon" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "dumbie" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "ostarwalker" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "berdly" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "bor" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "robo_susie" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "nonyo" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "iphone" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "frisk2" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "alseri" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 50
+                })
+            end
+            if v == "jamm" then
+                party.opinions = Utils.merge(party.opinions, {
+                    mario = 65
+                })
+            end
+            if v == "mario" then
+                party.opinions = {
+                    YOU = 50,
+                    kris = 50,
+                    susie = 50,
+                    noelle = 50,
+                    dess = 50,
+                    brandon = 50,
+                    dumbie = 50,
+                    ostarwalker = 50,
+                    berdly = 50,
+                    bor = 50,
+                    robo_susie = 50,
+                    nonyo = 50,
+                    iphone = 50,
+                    frisk2 = 50,
+                    alseri = 50,
+					jamm = 65
+                }
+            end
+        end
+    end
 
     ----------
 
@@ -653,12 +808,27 @@ function Mod:initializeImportantFlags(new_file)
 end
 
 function Mod:initializeEvents()
-	local date = os.date("*t")
+	local currentDate = os.date("*t")
+    
+	-- Christmas event
+	if currentDate.month == 12 or currentDate.month == 1 then
+		if (currentDate.month == 12 and currentDate.day >= 1) or
+		(currentDate.month == 1 and currentDate.day <= 6) then
+			self:addBinCode("WORKSHOP", "christmas/outside/outside_1", "warp", true)
+		end
+	end
+    
+	-- Art Club
+	if currentDate.month == 10 and currentDate.day == 11 then
+		self:addBinCode("ARTCLUB!", function(cutscene)
+			cutscene:text("* (Not yet implemented.)")
+		end)
+	end
 end
 
 function Mod:onRegistered()
 	self.minigames = { }
-
+	
 	for _,path,game in Registry.iterScripts("minigames") do
 		assert(game ~= nil, '"minigames/' .. path .. '.lua" does not return value')
 		game.id = game.id or path
@@ -675,8 +845,9 @@ function Mod:createMinigame(id, ...)
 end
 
 function Mod:startMinigame(game)
+
     if Game.minigame then
-        error("Attempt to enter a minigame while already in one")
+        error("Attempt to enter card game while already in card game")
     end
 
     Game.state = "MINIGAME"
@@ -684,7 +855,7 @@ function Mod:startMinigame(game)
     Game.minigame = self:createMinigame(game)
 
     Game.minigame:postInit()
-
+	
     Game.stage:addChild(Game.minigame)
 end
 
