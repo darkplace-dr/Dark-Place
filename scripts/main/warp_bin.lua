@@ -76,10 +76,19 @@ Mod.warp_bin_codes = {
     },
     ["CASTLERD"] = {result = "castle_path/start"},
     ["WORKSHOP"] = {
-		result = function(cutscene)
-			cutscene:text("* The warp exists,[wait:5] but is only available on certain days.")
-		end
-	}
+        result = "christmas/outside/outside_1",
+        marker = "warp",
+        -- Christmas event
+        cond = function()
+            local date = os.date("*t")
+            if (date.month == 12 and date.day >= 1) or (date.month == 1 and date.day <= 6) then
+                return true
+            end
+        end,
+        on_fail = function(cutscene)
+            cutscene:text("* The warp exists,[wait:5] but is only available on certain days.")
+        end
+    }
 }
 
 -- heres some new totally cool helper functions wowee
