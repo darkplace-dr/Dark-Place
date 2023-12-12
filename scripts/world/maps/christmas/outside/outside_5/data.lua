@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 35,
+  nextobjectid = 37,
   properties = {
     ["music"] = "christmas_outside"
   },
@@ -612,6 +612,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 36,
+          name = "out_6",
+          type = "",
+          shape = "point",
+          x = 660,
+          y = 40,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -659,6 +672,22 @@ return {
           visible = true,
           properties = {
             ["map"] = "christmas/outside/outside_4",
+            ["marker"] = "out_5"
+          }
+        },
+        {
+          id = 35,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 600,
+          y = -40,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "christmas/outside/outside_6",
             ["marker"] = "out_5"
           }
         }
