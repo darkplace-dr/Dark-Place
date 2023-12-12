@@ -39,11 +39,11 @@ Mod.warp_bin_codes = {
     ["WIFIDOWN"] = { result = "googlefield" },
     ["UWFOREST"] = { result = "underworld_forest/uwforest_startbin" },
     ["SEAWORLD"] = { result = "underwater_temple/underwater_startbin" },
-    ["_CHCKPNT"] = { result = "field" },
-    ["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
+	["_CHCKPNT"] = { result = "field" },
+	["DARKCADE"] = { result = "darkcade/outside", marker = "warp" },
     ["DUMBIERM"] = { result = "dumbierm" },
-    ["GARRYMOD"] = { result = "missing" },
-    ["JOHNWICK"] = { result = "archives/starting_room" },
+	["GARRYMOD"] = { result = "missing" },
+	["JOHNWICK"] = { result = "archives/starting_room" },
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
     ["WTF1998S"] = {
         result = function(cutscene)
@@ -70,12 +70,13 @@ Mod.warp_bin_codes = {
         end
     },
     ["WWC1YEAR"] = { result = "dinder" },
+    ["SLIDER"] = { result = "slider_start" },
     ["PIKNF404"] = {
         result = function(cutscene)
             cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
         end
     },
-    ["CASTLERD"] = { result = "castle_path/start" },
+    ["CASTLERD"] = {result = "castle_path/start"},
     ["WORKSHOP"] = {
         result = "christmas/outside/outside_1",
         marker = "warp",
@@ -91,6 +92,8 @@ Mod.warp_bin_codes = {
         end
     }
 }
+
+-- heres some new totally cool helper functions wowee
 
 --- get a Bin Code's info
 ---@param code WarpBinCode

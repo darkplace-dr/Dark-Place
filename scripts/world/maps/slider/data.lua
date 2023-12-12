@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 173,
+  nextobjectid = 175,
   properties = {
     ["music"] = "slider"
   },
@@ -2502,6 +2502,38 @@ return {
           properties = {
             ["cutscene"] = "slider.ending",
             ["once"] = false
+          }
+        },
+        {
+          id = 173,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = -40,
+          y = 80,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "slider_start",
+            ["marker"] = "slider"
+          }
+        },
+        {
+          id = 174,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 640,
+          y = 7760,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "slider_end",
+            ["marker"] = "slider"
           }
         }
       }
