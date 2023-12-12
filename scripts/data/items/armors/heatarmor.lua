@@ -43,9 +43,9 @@ function item:init()
 
     -- Character reactions
     self.reactions = {
-		jamm = "Toasty..."
+		jamm = "Toasty...",
 		mario = {
-				mario = "But I can just use a fire flower."
+				mario = "But I can just use a fire flower.",
 				jamm = "Eh."
 			}
     }
