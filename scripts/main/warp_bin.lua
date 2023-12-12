@@ -104,24 +104,7 @@ function Mod:getBinCode(code)
     return Mod.warp_bin_codes[code]
 end
 
---- adds a code to the warp bin code table
----@param code WarpBinCode if you came from the raw table, put this as the key of your new entry
----@param result string|fun(cutscene: WorldCutscene) see WarpBinCodeInfo.result
----@param marker? string see WarpBinCodeInfo.marker
----@param overwrite? boolean whether to overwrite existing entries or not
----@return boolean success false if the code already exists and overwrite is false. just in-case someone else steals your code before you get to use it.
-function Mod:addBinCode(code, result, marker, overwrite)
-    code = code:upper()
-
-    if self:getBinCode(code) and not overwrite then
-        -- whoops, no success
-        return false
-    end
-
-    -- lmao
-    Mod.warp_bin_codes[code] = { result = result, marker = marker or "spawn" }
-    return true
-end
+-- if you were looking for addBinCode... just tamper with the table on your own
 
 --- deletes a Bin Code
 ---@param code WarpBinCode
