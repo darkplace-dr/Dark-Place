@@ -31,6 +31,7 @@ function item:init()
         ["dess"] = 60,
         ["brandon"] = 60,
 		["jamm"] = 999,
+		["mario"] = 10,
 	}
 
     -- Default shop price (sell price is halved)
@@ -58,7 +59,8 @@ function item:init()
         ralsei = "A little thick on the sauce...",
         noelle = "It's JUST the meat???",
 		dess = "needs more salt lmao",
-		jamm = "I missed this... It's so good!"
+		jamm = "I missed this... It's so good!",
+		mario = "Blech! That tastes like shit!"
 	}
 end
 

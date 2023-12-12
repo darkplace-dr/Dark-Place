@@ -56,7 +56,8 @@ function item:init()
         bor = "What? You want more o' that?",
         dess = "AYYYYY LETST GET FUCJKKED BABY!!!! WOSAAAAAAAAHSDFHGSDJFHK",
         berdly = "I-W-What?! I'm sorry, my friend. But even a GAMER has STANDARS.",
-		jamm = "A friend with herb is a true friend."
+		jamm = "A friend with herb is a true friend.",
+		mario = "Mario's got to piss."
     }
 end
 

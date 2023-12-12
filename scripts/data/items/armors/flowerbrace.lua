@@ -47,6 +47,7 @@ function item:init()
 		susie = false,
 		noelle = false,
         brandon = false,
+        mario = false,
 	}
 
     -- Character reactions
@@ -55,7 +56,11 @@ function item:init()
         ralsei = "Look at all the colors!",
         noelle = "(It doesn't fit...?)",
         brandon = "This uh... isn't mine.",
-		jamm = "Thank you, Ania. I won't forget this."
+		jamm = "Thank you, Ania. I won't forget this.",
+		mario = {
+				mario = "Blech! That tastes like shit!",
+				jamm = "Did you try to eat it!?"
+			}
     }
 end
 
