@@ -51,6 +51,14 @@ Mod.warp_bin_codes = {
             cutscene:text("* Wow![wait:10]\n* You found a secret![wait:10]\n* Awesome!")
         end
     },
+    ["SPPISPOD"] = {
+        result = function(cutscene)
+            cutscene:text("* Since you found another one...")
+            cutscene:text("* Here's a fun fact:")
+            cutscene:text("* This was made as a way to showcase what the warp bin can do!")
+        end,
+        flagcheck = "wb_wtf1998s"
+    },
     ["SCRTACHV"] = {
         result = function(cutscene)
             if not Kristal.callEvent("earnedAch", "codebreaker") then
