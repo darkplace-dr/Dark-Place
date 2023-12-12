@@ -106,13 +106,4 @@ end
 
 -- if you were looking for addBinCode... just tamper with the table on your own
 
---- deletes a Bin Code
----@param code WarpBinCode
----@return boolean success false if the code doesnt exist
-function Mod:deleteBinCode(code)
-    code = code:upper()
-
-    if not self:getBinCode(code) then return false end
-    Mod.warp_bin_codes[code] = nil
-    return true
-end
+-- the actual logic is implemented in scripts/world/cutscenes/spamroom.lua -> warpbin
