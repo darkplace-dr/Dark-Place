@@ -53,7 +53,8 @@ function item:init()
             susie = "Uh, thanks I guess?"
         },
         brandon = "So I can just say \"no\" to damage sometimes with this?",
-		jamm = "Oof! It's heavy..."
+		jamm = "Oof! It's heavy...",
+		mario = "Mario feels like a gladiator again."
     }
 
     self.dodge_chance = 0.1
