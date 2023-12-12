@@ -814,15 +814,13 @@ function Mod:initializeEvents()
 	if currentDate.month == 12 or currentDate.month == 1 then
 		if (currentDate.month == 12 and currentDate.day >= 1) or
 		(currentDate.month == 1 and currentDate.day <= 6) then
-			self:addBinCode("WORKSHOP", "christmas/outside/outside_1", "warp", true)
+			
 		end
 	end
     
 	-- Art Club
 	if currentDate.month == 10 and currentDate.day == 11 then
-		self:addBinCode("ARTCLUB!", function(cutscene)
-			cutscene:text("* (Not yet implemented.)")
-		end)
+        
 	end
 end
 
