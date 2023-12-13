@@ -1,8 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
-  class = "",
+  tiledversion = "1.8.6",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -10,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 10,
+  nextobjectid = 11,
   properties = {
     ["music"] = "slider"
   },
@@ -37,7 +36,6 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -69,7 +67,6 @@ return {
       height = 12,
       id = 3,
       name = "Tile Layer 2",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -98,7 +95,6 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -179,7 +175,6 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -221,7 +216,6 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
-      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -260,6 +254,22 @@ return {
           properties = {
             ["map"] = "slider",
             ["marker"] = "entry"
+          }
+        },
+        {
+          id = 10,
+          name = "interactable",
+          type = "",
+          shape = "point",
+          x = 240,
+          y = 40,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "slider.fonttest",
+            ["once"] = false
           }
         }
       }
