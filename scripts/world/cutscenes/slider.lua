@@ -61,4 +61,44 @@ return {
 		end
 		cutscene:hideNametag()
     end,
+
+	fonttest = function (cutscene)
+		if false then
+		local texts = {}
+        local function genBigText(text, x, y, scale, goner, wait_time)
+            scale = scale or 2
+            wait_time = wait_time or 0.2
+
+            local text_o = Game.world:spawnObject(Text(text, x, y, 300, 500, { style = goner and "GONER" or "dark", font = "sm64_hud_c" }))
+            text_o:setScale(scale)
+            text_o.parallax_x = 0
+            text_o.parallax_y = 0
+            if goner then
+                text_o.alpha = 1
+            end
+            table.insert(texts, text_o)
+
+            cutscene:wait(wait_time)
+
+            return text_o
+        end
+		local function fadeOutBigText()
+            for _, v in ipairs(texts) do
+                Game.world.timer:tween(2, v, { alpha = 0 }, "linear", function()
+                    v:remove()
+                end)
+            end
+            cutscene:wait(2)
+        end
+
+		genBigText(
+		"0123456789\n" ..
+		"QWERTYUIOP\n" ..
+		"          \n" ..
+		"  ZXCVBNM\n"   ..
+		" \"'?!&%★$x", 150, 120, 2, false, 0)
+		genBigText("ASDFGHJKL", 175, 215, 2, false, 5)
+		fadeOutBigText()
+		end
+	end
 }
