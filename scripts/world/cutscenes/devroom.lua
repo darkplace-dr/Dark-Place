@@ -838,6 +838,15 @@ return {
 						cutscene:showNametag("Alexa")
 						cutscene:text("[voice:alexa]* R-right...")
 					end
+				elseif v.id == "mario" then
+                    cutscene:showNametag("Mario")
+					cutscene:text("* Do you have any spaghetti here?", "main", "mario")
+                    cutscene:showNametag("Alexa")
+					cutscene:text("[voice:alexa]* Um,[wait:5] no.[wait:5]\n* We only serve coffee.")
+                    cutscene:showNametag("Mario")
+					cutscene:text("* Where's my spaghetti!?", "main", "mario")
+                    cutscene:showNametag("Alexa")
+					cutscene:text("[voice:alexa]* I told you we don't have that stuff here!")
 				end
 			end
 			cutscene:showNametag("Alexa")

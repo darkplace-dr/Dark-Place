@@ -820,7 +820,7 @@ function Mod:initializeEvents()
     
 	-- Art Club
 	if currentDate.month == 10 and currentDate.day == 11 then
-        
+		
 	end
 end
 
@@ -913,6 +913,10 @@ function Mod:getActionButtons(battler, buttons)
             return {"fight", "magic", "item", "send", "defend"}
         end
     end
+	
+	if battler.chara.id == "mario" and Game:getFlag("acj_mario_fightless") then
+		table.remove(buttons,1)
+	end
     return buttons
 end
 
