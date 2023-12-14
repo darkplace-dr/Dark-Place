@@ -727,6 +727,13 @@ return {
     released = "2023",
     origin = "Cookie Run: Kingdom"
   },
+  {
+    name = "Beware the Nintendo's Pikmin Games (Cover)",
+    file = "pikminonthefuckinggamecube",
+    composer = "Yoko Shimomura (Music), Seaslux (Lyrics), BrendaK7200 (Vocals)",
+    released = "2023",
+    origin = "Pikmin on the fucking Gamecube"
+  },
   --[[
   {
     name = "The Road Leading to the Secret",
