@@ -28,12 +28,10 @@ function DarkConfigMenu:update()
             elseif self.currently_selected == 5 then
                 Kristal.Config["autoRun"] = not Kristal.Config["autoRun"]
             elseif self.currently_selected == 6 then
-                Game:returnToMenu()
-            elseif self.currently_selected == 7 then
                 self.state = "EXTRAS"
                 self.extras_substate = ""
                 self.currently_selected = 1
-            elseif self.currently_selected == 8 then
+            elseif self.currently_selected == 7 then
                 Game.world.menu:closeBox()
             end
 
@@ -58,7 +56,7 @@ function DarkConfigMenu:update()
             self.ui_move:play()
         end
 
-        self.currently_selected = Utils.clamp(self.currently_selected, 1, 8)
+        self.currently_selected = Utils.clamp(self.currently_selected, 1, 7)
     elseif self.state == "EXTRAS" then
         if self.extras_substate == "BORDER" then
             -- FIXME: if we write to Kristal.Config, we completely change the global setting,
@@ -151,6 +149,7 @@ function DarkConfigMenu:update()
                 if self.currently_selected == 1 then
                     Game.world:openMenu(AchievementsMenu())
                 elseif self.currently_selected == 2 then
+                    self.extras_substate = "ADDISON"
                     Game:setFlag("AddiSwitchOn", not Game:getFlag("AddiSwitchOn", false))
                 elseif self.currently_selected == 3 then
                     self.extras_substate = "BORDER"
@@ -185,7 +184,7 @@ function DarkConfigMenu:update()
                 self.ui_move:play()
             end
 
-            self.currently_selected = Utils.clamp(self.currently_selected, 1, 5)
+            self.currently_selected = Utils.clamp(self.currently_selected, 1, 6)
         end
     elseif self.state == "VOLUME" then
         if Input.pressed("cancel") or Input.pressed("confirm") then
@@ -233,15 +232,45 @@ function DarkConfigMenu:draw()
         love.graphics.print("EXTRAS", 188, -12)
 
         love.graphics.print("Achievements",     88, 38 + (0 * 32))
+        --[[
+        if self.extras_substate == "ADDISON" then
+            love.graphics.setColor(PALETTE["world_text_selected"])
+        end
+        ]]
         love.graphics.print("Addison Style",       88, 38 + (1 * 32))
+        --love.graphics.setColor(PALETTE["world_text"])
+        if self.extras_substate == "BORDER" then
+            love.graphics.setColor(PALETTE["world_text_selected"])
+        end
         love.graphics.print("Border",           88, 38 + (2 * 32))
+        love.graphics.setColor(PALETTE["world_text"])
+        if self.extras_substate == "BULBORBSCALE" then
+            love.graphics.setColor(PALETTE["world_text_selected"])
+        end
         love.graphics.print("Bulborb Scale",    88, 38 + (3 * 32))
+        love.graphics.setColor(PALETTE["world_text"])
+        if self.extras_substate == "BULBORBLOCATION" then
+            love.graphics.setColor(PALETTE["world_text_selected"])
+        end
         love.graphics.print("Bulborb Location", 88, 38 + (4 * 32))
+        love.graphics.setColor(PALETTE["world_text"])
         love.graphics.print("Back",             88, 38 + (5 * 32))
 
+
         love.graphics.print(Mod:shouldUseVelvetAddisons() and "Velvet" or "Vanilla",        348, 38 + (1 * 32))
+        if self.extras_substate == "BORDER" then
+            love.graphics.setColor(PALETTE["world_text_selected"])
+        end
         love.graphics.print(Kristal.getBorderName(),                                        348, 38 + (2 * 32))
+        love.graphics.setColor(PALETTE["world_text"])
+        if self.extras_substate == "BULBORBSCALE" then
+            love.graphics.setColor(PALETTE["world_text_selected"])
+        end
         love.graphics.print(tostring(Mod.bulborb_reaction:getScale()),                      348, 38 + (3 * 32))
+        love.graphics.setColor(PALETTE["world_text"])
+        if self.extras_substate == "BULBORBLOCATION" then
+            love.graphics.setColor(PALETTE["world_text_selected"])
+        end
         love.graphics.print(self.bulborb_positions[Game:getFlag("bulborb_position", 2)],    348, 38 + (4 * 32), 0, 0.9, 1)
 
         love.graphics.setColor(Game:getSoulColor())
@@ -258,9 +287,8 @@ function DarkConfigMenu:draw()
         love.graphics.print("Simplify VFX",    88, 38 + (2 * 32))
         love.graphics.print("Fullscreen",      88, 38 + (3 * 32))
         love.graphics.print("Auto-Run",        88, 38 + (4 * 32))
-        love.graphics.print("Return to Title", 88, 38 + (5 * 32))
-        love.graphics.print("Extras",          88, 38 + (6 * 32))
-        love.graphics.print("Back",            88, 38 + (7 * 32))
+        love.graphics.print("Extras",          88, 38 + (5 * 32))
+        love.graphics.print("Back",            88, 38 + (6 * 32))
 
         if self.state == "VOLUME" then
             love.graphics.setColor(PALETTE["world_text_selected"])

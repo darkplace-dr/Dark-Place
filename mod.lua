@@ -199,7 +199,12 @@ function Mod:postInit(new_file)
 			Game.inventory:addItem("chaos_emeralds")
 		end
 
-        Game.world:startCutscene("_main.introcutscene")
+        if Game.save_name == "KRIS" then
+			Game:setPartyMembers("kris")
+            Game.world:loadMap("woods/spawn")
+        else
+            Game.world:startCutscene("_main.introcutscene")
+		end
     end
 	
 	if not Game:getFlag("booty_time") then

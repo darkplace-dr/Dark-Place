@@ -5,27 +5,26 @@ function DarkPowerMenu:init()
     super.init(self)
 
     self.leveling_use_global_values = Kristal.getLibConfig("leveling", "global_love")
+
+    self.caption_sprites["experience"] = Assets.getTexture("ui/menu/caption_exp")
+end
+
+function DarkPowerMenu:getSpellLimit()
+    return 3
 end
 
 function DarkPowerMenu:draw()
     love.graphics.setFont(self.font)
 
-    love.graphics.setColor(PALETTE["world_border"])
-    love.graphics.rectangle("fill", -24, 104, 525, 6)
-    love.graphics.rectangle("fill", 212, 104, 6, 200)
-    love.graphics.rectangle("fill", 212, 240, 285, 6)
+    Draw.setColor(PALETTE["world_border"])
+    love.graphics.rectangle("fill", 216, 224-14, 285, 6)
 
-    love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.draw(self.caption_sprites[  "char"],  42, -28, 0, 2, 2)
-    love.graphics.draw(self.caption_sprites[ "stats"],  42,  98, 0, 2, 2)
-    love.graphics.draw(self.caption_sprites["spells"], 298,  98, 0, 2, 2)
+    Draw.setColor(1, 1, 1, 1)
+    Draw.draw(self.caption_sprites["experience"], 265,  218-14, 0, 2, 2)
 
-    self:drawChar()
-    self:drawStats()
-    self:drawSpells()
-    self:drawExp()
+    self:drawExperience()
 
-    super.super.draw(self)
+    super.draw(self)
 end
 
 function DarkPowerMenu:getExp()
@@ -46,16 +45,18 @@ function DarkPowerMenu:getLOVE()
         or self.party:getSelected():getLOVE()
 end
 
-function DarkPowerMenu:drawExp()
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.print("LOVE:", 225, 240)
-    love.graphics.print(self:getLOVE(), 290, 240)
-    love.graphics.print("EXP:", 225, 265)
-    love.graphics.print(self:getExp(), 275, 265)
-    love.graphics.print("Next:", 350, 265)
-    love.graphics.print(self:getNextLv(), 415, 265)
-    love.graphics.print("Kills:", 350, 240)
-    love.graphics.print(Game:getFlag("library_kills"), 429, 240)
+function DarkPowerMenu:drawExperience()
+    Draw.setColor(1, 1, 1, 1)
+    love.graphics.print( "LOVE:",   242-6, 224)
+    love.graphics.print( "EXP:",    242-6, 256)
+    love.graphics.print( "NEXT:",   348, 224)
+    love.graphics.print( "KILLS:",  348, 256)
+
+    love.graphics.print(self:getLOVE(),   242+64, 224)
+    love.graphics.print(self:getExp(), 242+64, 256)
+    love.graphics.print(self:getNextLv(), 342+90, 224)
+    love.graphics.print(Game:getFlag("library_kills"),  342+90, 256)
+    
 end
 
 return DarkPowerMenu
