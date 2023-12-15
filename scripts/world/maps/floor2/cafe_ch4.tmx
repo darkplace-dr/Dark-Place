@@ -6,8 +6,8 @@
  <properties>
   <property name="music" value="castle_funk"/>
  </properties>
- <imagelayer id="2" name="Image Layer 1">
-  <image source="../../../assets/sprites/rooms/bg_dw_castle_cafe_new_0.png" width="1440" height="480"/>
+ <imagelayer id="2" name="bg">
+  <image source="../../../../assets/sprites/world/maps/castle_cafe_ch4.png" width="1440" height="480"/>
  </imagelayer>
  <objectgroup color="#0000ff" id="3" name="collision">
   <object id="1" x="40" y="157" width="825" height="40"/>

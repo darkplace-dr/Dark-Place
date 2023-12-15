@@ -18,9 +18,9 @@ return {
   layers = {
     {
       type = "imagelayer",
-      image = "../../../assets/sprites/rooms/bg_dw_castle_cafe_new_0.png",
+      image = "../../../../assets/sprites/world/maps/castle_cafe_ch4.png",
       id = 2,
-      name = "Image Layer 1",
+      name = "bg",
       class = "",
       visible = true,
       opacity = 1,
