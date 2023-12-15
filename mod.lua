@@ -199,7 +199,7 @@ function Mod:postInit(new_file)
 			Game.inventory:addItem("chaos_emeralds")
 		end
 
-        if Game.save_name == "KRIS" then
+        if Game.save_name == "WOODS" then
 			Game:setPartyMembers("kris")
             Game.world:loadMap("woods/spawn")
         else

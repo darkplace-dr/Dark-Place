@@ -115,7 +115,8 @@
         "BLUE": "[style:GONER][spacing:3.2][color:blue]WHAT IS WRONG WITH YOU?\nWHY ARE YOU BLUE?",
         "PEPPINO": "[style:GONER][spacing:3.2]I'M NOT GONNA\nSUGARCOAT IT:\n\nDID YOU KNOW THAT\nYOU CAN BLOCK AND\n\n\nPARRY ANY PROJECTILE\nOR DAMAGE BY PRESSING \n[V] BEFORE GETTING HURT?",
         "MERG": "[style:GONER][spacing:3.2]You will be challenged.",
-        "SUPER": "[style:GONER][spacing:3.2]Start with seven\nChaos Emeralds?"
+        "SUPER": "[style:GONER][spacing:3.2]Start with seven\nChaos Emeralds?",
+        "WOODS": "[style:GONER][spacing:3.2]IT'S [color:#802a00]WOODS[color:reset] TIME\nFOR YOU."
     },
   // Names to disallow player from using in the naming screen.
   "namesDeny": [
