@@ -29,7 +29,8 @@ function Starwalker:init()
     self.movearound = true
 
     self.waves = {
-        "starwings_normal"
+        "starwings_normal",
+        "starcomets"
     }
 
     self.check = "The   original\n            ."
