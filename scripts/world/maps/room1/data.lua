@@ -819,7 +819,7 @@ return {
           gid = 105,
           visible = true,
           properties = {
-            ["cond"] = "Game:getFlag(\"blankie_acquired\")"
+            ["flagcheck"] = "blankie_acquired"
           }
         },
         {
@@ -835,7 +835,7 @@ return {
           visible = true,
           properties = {
             ["actor"] = "skid",
-            ["flagcheck"] = "spookymonth"
+            ["cond"] = "os.date(\"*t\").month == 10"
           }
         },
         {
@@ -851,7 +851,7 @@ return {
           visible = true,
           properties = {
             ["actor"] = "pump",
-            ["flagcheck"] = "spookymonth"
+            ["cond"] = "os.date(\"*t\").month == 10"
           }
         },
         {
@@ -866,7 +866,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "room1.spooky"
+            ["cutscene"] = "room1.spooky",
+            ["cond"] = "os.date(\"*t\").month == 10"
           }
         },
         {

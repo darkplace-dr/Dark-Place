@@ -232,9 +232,10 @@ return {
 				cutscene:text("* You've had quite the character arc in chapter 1.", "smirk", "jamm")
 				cutscene:text("* Honestly,[wait:5] I would've preferred if you didn't change.", "neutral", "jamm")
 				cutscene:text("* I mean,[wait:5] I like the new you,[wait:5] but...", "nervous", "jamm")
-				cutscene:text("* Fact is,[wait:5] I just prefer the gameplay.", "snile", "jamm")
+				cutscene:text("* Fact is,[wait:5] I just prefer the gameplay.", "smile", "jamm")
 				cutscene:text("* I like the idea of trying to protect the enemies.", "happy", "jamm")
 				cutscene:text("* It's...[wait:5] kinda why I made Deoxynn.", "smile", "jamm")
+				cutscene:hideNametag()
 				cutscene:text("* (Toggle Susie's autofight?)")
 				if cutscene:choicer({"Enable", "Disable"}) == 1 then
 					Game:getPartyMember("susie"):setFlag("auto_attack", true)
@@ -253,6 +254,7 @@ return {
 					cutscene:text("* I feel like these spells will make you slightly less annoying.", "smile", "jamm")
 					cutscene:text("* ...Slightly.", "nervous_left", "jamm")
 				end
+				cutscene:hideNametag()
 				cutscene:text("* (Toggle Dess's pacifist spells?)")
 				if cutscene:choicer({"Enable", "Disable"}) == 1 then
 					if not Game:getFlag("acj_dess_pacifist") then
@@ -279,11 +281,11 @@ return {
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "jamm" then
 				cutscene:text("[speed:0.3]* ...", "stern", "jamm")
-				cutscene:text("* Okay, why?", "stern", "jamm")
+				cutscene:text("* Okay,[wait:5] why?", "stern", "jamm")
 				cutscene:text("* Did you think you'd find a secret here?", "determined", "jamm")
-				cutscene:text("* Get a special achievement, maybe?", "determined", "jamm")
-				cutscene:text("* No, just for this, I'm deleting your save file.", "determined", "jamm")
-				cutscene:text("* You want to deal with files? We'll deal with files.", "smug", "jamm")
+				cutscene:text("* Get a special achievement,[wait:5] maybe?", "determined", "jamm")
+				cutscene:text("* No,[wait:5] just for this,[wait:5] I'm deleting your save file.", "determined", "jamm")
+				cutscene:text("* You want to deal with files?[wait:5] We'll deal with files.", "smug", "jamm")
 				cutscene:text("* Say goodbye to this save file.", "smug", "jamm")
 				cutscene:text("* Better hope you have a back-up.", "smug", "jamm")
 				cutscene:hideNametag()
@@ -291,10 +293,23 @@ return {
 				cutscene:wait(3)
 				
 				cutscene:showNametag("Jamm")
-				cutscene:text("* ...You thought I was being serious, didn't you?", "troll", "jamm")
-				cutscene:text("* You should've seen the look on your face, I bet it was priceless!", "happy", "jamm")
+				cutscene:text("* ...You thought I was being serious,[wait:5] didn't you?", "troll", "jamm")
+				cutscene:text("* You should've seen the look on your face,[wait:5] I bet it was priceless!", "happy", "jamm")
 				cutscene:text("* I bet you learned a valuable lesson today.", "smile", "jamm")
 				cutscene:text("* Not all developers like it when you cheat for impossible stuff.", "stern", "jamm")
+            elseif id == "mario" then
+				cutscene:text("* Well,[wait:5] well,[wait:5] well.[wait:5]\n* Never thought I'd see you here.", "troll", "jamm")
+				cutscene:text("* Mario from SMG4.[wait:5]\n* I still watch that guy.", "troll", "jamm")
+				cutscene:text("* I get it.[wait:5]\n* Jumpman can't jump here,[wait:5] right?", "troll", "jamm")
+				cutscene:text("* Well,[wait:5] what if we took your hammer away?", "troll", "jamm")
+				cutscene:text("* Let's see what you can do without it.", "troll", "jamm")
+				cutscene:hideNametag()
+				cutscene:text("* (Toggle Mario's fight button?)")
+				if cutscene:choicer({"Enable", "Disable"}) == 1 then
+					Game:setFlag("acj_mario_fightless", false)
+				else
+					Game:setFlag("acj_mario_fightless", true)
+				end
             end
         end
         local function checkMember(number, id)
@@ -307,9 +322,9 @@ return {
 		
 		cutscene:showNametag("Jamm")
 		if Game:getFlag("dungeonkiller") then
-			cutscene:text("* Oh, hey.", "neutral", "jamm")
+			cutscene:text("* Oh,[wait:5] hey.", "neutral", "jamm")
 		else
-			cutscene:text("* Oh, hey, guys! Nice seeing you again!", "smile", "jamm")
+			cutscene:text("* Oh,[wait:5] hey,[wait:5] guys![wait:5] Nice seeing you again!", "smile", "jamm")
 			cutscene:text("* I've just been keeping my daughter company, is all.", "smile", "jamm")
 			cutscene:text("* Did you want to talk about something?", "smile", "jamm")
 		end
@@ -319,27 +334,27 @@ return {
 		if choice == 1 then
 			cutscene:showNametag("Jamm")
 			cutscene:text("* You want to know about my wife?", "neutral", "jamm")
-			cutscene:text("* Ania was an amazing woman, that's for sure.", "peace", "jamm")
-			cutscene:text("* She was smart, helpful, caring...", "peace", "jamm")
-			cutscene:text("* And honestly, we knew each other since we were children.", "peace", "jamm")
-			cutscene:text("* Ania... was perfect.", "eyes_closed_neutral", "jamm")
-			cutscene:text("* I told Marcy about her death, and she knows it well.", "eyes_closed_neutral", "jamm")
-			cutscene:text("* She's just... still in denial. After all this time.", "eyes_closed_frown", "jamm")
+			cutscene:text("* Ania was an amazing woman,[wait:5] that's for sure.", "smile", "jamm")
+			cutscene:text("* She was smart,[wait:5] helpful,[wait:5] caring...", "smile", "jamm")
+			cutscene:text("* And honestly, we knew each other since we were children.", "smile", "jamm")
+			cutscene:text("* Ania...[wait:5] was perfect.", "neutral", "jamm")
+			cutscene:text("* I told Marcy about her death,[wait:5] and she knows it well.", "shaded_neutral", "jamm")
+			cutscene:text("* She's just...[wait:5] still in denial.[wait:5] After all this time.", "shaded_neutral", "jamm")
 		elseif choice == 2 then
 			cutscene:showNametag("Jamm")
-			cutscene:text("* Marcy is a great child. I couldn't ask for better.", "smile", "jamm")
-			cutscene:text("* She's always been a curious child, and I love that.", "side_smile", "jamm")
-			cutscene:text("* Unfortunately, she can be a little slow...", "look_left", "jamm")
-			cutscene:text("* But that gives me all the more time to help, right?", "smile", "jamm")
-			cutscene:text("* Marcy also always wanted to see the light, but...", "smile", "jamm")
+			cutscene:text("* Marcy is a great child.[wait:5] I couldn't ask for better.", "smile", "jamm")
+			cutscene:text("* She's always been a curious child,[wait:5] and I love that.", "side_smile", "jamm")
+			cutscene:text("* Unfortunately,[wait:5] she can be a little slow...", "look_left", "jamm")
+			cutscene:text("* But that gives me all the more time to help,[wait:5] right?", "smile", "jamm")
+			cutscene:text("* Marcy also always wanted to see the light,[wait:5] but...", "smile", "jamm")
 			cutscene:text("* She has a condition that makes her ill when she's there.", "nervous", "jamm")
-			cutscene:text("* I... guess it doesn't help that she was born in the dark.", "nervous_left", "jamm")
-			cutscene:text("* Marcy hasn't given up hope, though, and I'm with her all the way!", "smug", "jamm")
+			cutscene:text("* I...[wait:5] guess it doesn't help that she was born in the dark.", "nervous_left", "jamm")
+			cutscene:text("* Marcy hasn't given up hope,[wait:5] though,[wait:5] and I'm with her all the way!", "smug", "jamm")
 		elseif choice == 3 then
 			cutscene:showNametag("Jamm")
-			cutscene:text("* Enzio, right...", "shaded_frown", "jamm")
+			cutscene:text("* Enzio,[wait:5] right...", "shaded_frown", "jamm")
 			cutscene:text("* He's kinda the whole reason I'm in this condition.", "shaded_frown", "jamm")
-			cutscene:text("* Let's just say... I have nothing but resentment for him.", "shaded_pisses", "jamm")
+			cutscene:text("* Let's just say...[wait:5] I have nothing but resentment for him.", "shaded_pisses", "jamm")
 			if not Game:getFlag("video_jamm") then
 				cutscene:text("* This should give you all the answers you need.", "shaded_frown", "jamm")
 				cutscene:hideNametag()
@@ -349,9 +364,9 @@ return {
 			end
 		else
 			cutscene:showNametag("Jamm")
-			cutscene:text("* Alright, let's see what I have to say about your party.", "side_smile", "jamm")
-			cutscene:text("* And who knows? Maybe your attitude will change from this.", "smile", "jamm")
-			cutscene:text("* ...That is, if you want it to.", "neutral", "jamm")
+			cutscene:text("* Alright,[wait:5] let's see what I have to say about your party.", "side_smile", "jamm")
+			cutscene:text("* And who knows?[wait:5] Maybe your attitude will change from this.", "smile", "jamm")
+			cutscene:text("* ...That is,[wait:5] if you want it to.", "neutral", "jamm")
 			cutscene:text("* Anyone in specific you want to discuss?", "smile", "jamm")
             local partyOptions = {}
             for _, party in ipairs(Game.party) do

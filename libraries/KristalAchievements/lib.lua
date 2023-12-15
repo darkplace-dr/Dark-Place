@@ -219,4 +219,20 @@ function lib:completeAchievement(achievement, silent)
     end
 end
 
+-- Marks an achievement as incomplete.
+function lib:removeAchievement(achievement)
+    local ach_obj = getAchievement(achievement)
+
+    if not ach_obj.earned then
+        return
+    end
+
+    ach_obj.earned = false
+    ach_obj.progress = type(ach_obj.completion) == "number" and 0 or false
+
+    if self.global then
+        self:writeGlobalAchievements()
+    end
+end
+
 return lib

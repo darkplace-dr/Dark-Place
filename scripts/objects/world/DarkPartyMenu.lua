@@ -33,7 +33,7 @@ function DarkPartyMenu:init(debug)
 	
 	self.list = {
 		{"kris", "susie", "noelle", "berdly", "ostarwalker", "YOU", "robo_susie", "noyno", "pauling", "eusei"},
-		{"frisk2", "dess", "alseri", "brandon", "jamm", "bor", "dumbie", "iphone", "unknown", "unknown"},
+		{"frisk2", "dess", "alseri", "brandon", "jamm", "bor", "dumbie", "iphone", "mario", "unknown"},
 		{"unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 	}
 	

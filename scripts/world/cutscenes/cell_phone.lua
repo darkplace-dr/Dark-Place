@@ -1,4 +1,5 @@
-return function(cutscene, cell_phone_event_override)
+---@param cutscene WorldCutscene
+return function(cutscene, event_override)
     local had_music = Game.world.music:isPlaying()
     local function pauseMusic()
         if had_music then
@@ -38,12 +39,16 @@ return function(cutscene, cell_phone_event_override)
         cutscene:text("[noskip][voice:nil]" .. text .. string.format("[wait:%g]", wait), portrait, actor, { auto = true })
     end
     local pmMsg = pacematchingMsg
+    --[[local function textForTime(text, time, portrait, actor)
+        cutscene:text("[noskip][voice:nil]" .. text, portrait, actor, { advance = false })
+        cutscene:wait(time)
+    end]]
 
     Assets.playSound("phone", 0.7)
     cutscene:text("* (You tried to call on the Cell\nPhone.)", nil, nil, { advance = false })
     cutscene:wait(1.5)
 
-    local event_num = cell_phone_event_override ~= nil and cell_phone_event_override or love.math.random(1, 100)
+    local event_num = event_override ~= nil and event_override or love.math.random(1, 100)
 
     if event_num <= 10 then
         garbageNoise("voiceover/cell_phone/mcdonalds")

@@ -539,7 +539,8 @@ return {
           properties = {
             ["solid"] = true,
             ["text1"] = "* There appears to be some advertisements for codes here.",
-            ["text10"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here.",
+            ["text10"] = "* (Hello! Go to \"[color:red]SLIDER[color:reset]\" for lotsa fun!)",
+            ["text11"] = "* It looks like until someone posts another ad,[wait:10] that's all there is here.",
             ["text2"] = "* (Go to the code \"[color:yellow]SPAM[color:pink]ROOM[color:reset]\"! It's where all the [BIG SHOT]s are!)",
             ["text3"] = "* (yo whaddup. go to \"[color:red]DESSHERE[color:reset]\".)",
             ["text4"] = "* (Want to fight bosses you've previously fought?[wait:10]\nGo to \"[color:yellow]BOSSRUSH[color:reset]\"!)",

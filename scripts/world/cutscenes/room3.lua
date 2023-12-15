@@ -40,7 +40,7 @@ return {
             Game.world.music:pause()
             music_inst:play(clip, 1, 1, false)
             rem(time, disallow_cancel)
-            Assets.stopSound(clip)
+            music_inst:stop()
             Game.world.music:resume()
             return anim
         end
