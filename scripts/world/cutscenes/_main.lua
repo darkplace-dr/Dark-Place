@@ -333,9 +333,9 @@ return {
 			cutscene:wait(cutscene:walkTo(player, lancer.x, lancer.y, 1))
 			lancer:remove()
 			
-			cutscene:attachFollowers(4)
+			cutscene:attachFollowers()
 			cutscene:attachCamera(0.5)
-			cutscene:wait(0.5)
+			cutscene:wait(1)
 		else
 			cutscene:text("* It seems you can't dig without a spade.")
 		end
