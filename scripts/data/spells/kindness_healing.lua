@@ -27,4 +27,12 @@ function spell:onCast(user, target)
     target:heal(user.chara:getStat("magic") * 11)
 end
 
+function spell:hasWorldUsage(chara)
+    return true
+end
+
+function spell:onWorldCast(chara)
+    Game.world:heal(chara, 135)
+end
+
 return spell
