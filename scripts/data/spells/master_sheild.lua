@@ -39,4 +39,12 @@ function spell:getTPCost(chara)
     return Utils.clamp(self.cost + chara.health, 50, 100)
 end
 
+function spell:hasWorldUsage(chara)
+    return true
+end
+
+function spell:onWorldCast(chara)
+    Game.world:heal(chara, 999999)
+end
+
 return spell

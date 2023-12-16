@@ -9,8 +9,11 @@ function preview:init(mod, button, menu)
     self.base_path = mod.path.."/preview"
 
     self.particles = {}
+    self.particles2 = {}
     self.particle_timer = 0
+    self.particle2_timer = 0
     self.particle_tex = love.graphics.newImage(self.base_path.."/star.png")
+    self.particle2_heart = love.graphics.newImage(self.base_path.."/dess.png")
 
     self.swellow = nil
     self.swellow_timer = 0
@@ -42,6 +45,31 @@ function preview:update()
         self.particle_timer = 0
         local radius = Utils.random(12)
         table.insert(self.particles, {
+            radius = radius, max_radius = radius,
+            x = Utils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + radius,
+            speed = Utils.random(0.5, 1)
+        })
+    end
+
+    for _,particle2 in ipairs(self.particles2) do
+        particle2.radius = particle2.radius - DT
+        particle2.y = particle2.y - particle2.speed * (DTMULT * 6)
+
+        if particle2.radius <= 0 then
+            table.insert(to_remove, particle2)
+        end
+    end
+
+    for _,particle2 in ipairs(to_remove) do
+        Utils.removeFromTable(self.particles2, particle2)
+    end
+
+    self.particle2_timer = self.particle2_timer + DT
+    local timeheart = Utils.random(1, 100000)
+    if self.particle2_timer >= timeheart then
+        self.particle2_timer = 0
+        local radius = 12
+        table.insert(self.particles2, {
             radius = radius, max_radius = radius,
             x = Utils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + radius,
             speed = Utils.random(0.5, 1)
@@ -96,6 +124,13 @@ function preview:draw()
 
         love.graphics.setColor(1, 1, 1, alpha)
         love.graphics.draw(self.particle_tex, particle.x, particle.y, particle.radius)
+    end
+
+    for _,particle2 in ipairs(self.particles2) do
+        local alpha = (particle2.radius / particle2.max_radius) * self.fade
+
+        love.graphics.setColor(1, 1, 1, alpha)
+        love.graphics.draw(self.particle2_heart, particle2.x, particle2.y, particle2.radius)
     end
     love.graphics.setColor(1, 1, 1)
 

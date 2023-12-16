@@ -8,14 +8,14 @@ function character:init()
 
     -- Actor (handles sprites)
     self:setActor("noel")
-
+    local lever = "-1"
     -- Display level (saved to the save file)
-    self.level = Game.chapter
+    self.level = lever
     -- Default title / class (saved to the save file)
-    self.title = "Template\nPlaceholder\nPlaceholding."
+    self.title = "Preist\nDoesn't understand\nhow his class works."
 
     -- Determines which character the soul comes from (higher number = higher priority)
-    self.soul_priority = -20
+    self.soul_priority = 0.1
     -- The color of this character's soul (optional, defaults to red)
     self.soul_color = {1, 1, 1}
 
@@ -26,30 +26,22 @@ function character:init()
     -- Whether the party member can use their X-Action
     self.has_xact = true
     -- X-Action name (displayed in this character's spell menu)
-    self.xact_name = "Noel-Do"
+    self.xact_name = "Noel-Act"
 
     -- Spells
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
-    self:addSpell("ice_shock")
+    self:addSpell("soul_send")
+    self:addSpell("life_steal")
+
 
     -- Current health (saved to the save file)
-    self.health = 90
+    self.health = 210
 
     -- Base stats (saved to the save file)
     self.stats = {
-        health = 90,
+        health = 210,
         attack = 1,
-        defense = 1,
-        magic = 1
+        defense = -30,
+        magic = 6
     }
 
     -- Max stats from level-ups
@@ -78,7 +70,7 @@ function character:init()
     self.xact_color = {1, 1, 1}
 
     -- Head icon in the equip / power menu
-    self.menu_icon = "party/noelle/head"
+    self.menu_icon = "party/noel/head"
     -- Path to head icons used in battle
     self.head_icons = "party/noel/icon"
     -- Name sprite (optional)
@@ -89,7 +81,7 @@ function character:init()
     -- Sound played when this character attacks
     self.attack_sound = "laz_c"
     -- Pitch of the attack sound
-    self.attack_pitch = 1
+    self.attack_pitch = 0.8
     -- Battle position offset (optional)
     self.battle_offset = {0, 0}
     -- Head icon position offset (optional)

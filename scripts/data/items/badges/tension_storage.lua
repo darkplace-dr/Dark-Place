@@ -4,12 +4,12 @@ function badge:init()
     super.init(self)
 
     -- Display name
-    self.name = "Tension-Storage"
+    self.name = "Keep Tension"
 
     self.type = "badge"
 
     -- Menu description
-    self.description = "Keep your tension,\nto cast spells in the overworld."
+    self.description = "Keep your tension, to cast spells in the overworld."
 
     -- The cost of putting it on
     self.badge_points = 1
@@ -18,6 +18,13 @@ function badge:init()
     self.price = 20000
 end
 
-
+function badge:update(equipped)
+    if equipped then
+        Game:setFlag("tension_storage", true)
+    end
+    if not equipped then
+        Game:setFlag("tension_storage", false)
+    end
+end
 
 return badge

@@ -17,9 +17,11 @@ function spell:init()
     self.cost = 50
 
     -- Target mode (ally, party, enemy, enemies, or none)
+
     self.target = "enemy"
 
     -- Tags that apply to this spell
+
     self.tags = {"rude", "damage"}
 end
 
@@ -74,6 +76,14 @@ function spell:onCast(user, target)
         Game.battle:addChild(blast)
     end)
     return false
+end
+
+function spell:hasWorldUsage(chara)
+    return true
+end
+
+function spell:onWorldCast(chara)
+    Assets.playSound("scytheburst")
 end
 
 return spell

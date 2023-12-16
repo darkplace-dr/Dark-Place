@@ -59,4 +59,13 @@ function DarkPowerMenu:drawExperience()
     
 end
 
+
+function DarkPowerMenu:canCast(spell)
+    if not Game:getFlag("tension_storage") then return false end
+    if Game:getTension() < spell:getTPCost(self.party:getSelected()) then return false end
+
+    return (spell:hasWorldUsage(self.party:getSelected()))
+end
+
+
 return DarkPowerMenu
