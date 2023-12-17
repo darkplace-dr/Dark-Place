@@ -1,7 +1,7 @@
 return {
   version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.9.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 14,
+  nextobjectid = 15,
   properties = {
     ["music"] = "greenroom"
   },
@@ -292,6 +292,23 @@ return {
           properties = {
             ["cutscene"] = "devhotel_room_001.foodbowl",
             ["solid"] = true
+          }
+        },
+        {
+          id = 14,
+          name = "npc",
+          class = "",
+          shape = "rectangle",
+          x = 80,
+          y = 480,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "brandon_plush",
+            ["cutscene"] = "plushies.brandon_plush",
+            ["flagcheck"] = "!brandon_plush"
           }
         }
       }
