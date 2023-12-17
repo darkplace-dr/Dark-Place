@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 18,
+  nextobjectid = 19,
   properties = {
     ["border"] = "deoxynn/deep_forest",
     ["music"] = "forgotten_wood"
@@ -30,6 +31,7 @@ return {
       height = 16,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -65,6 +67,7 @@ return {
       height = 16,
       id = 2,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -100,6 +103,7 @@ return {
       height = 16,
       id = 3,
       name = "Tile Layer 3",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -132,6 +136,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -199,6 +204,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -368,6 +374,23 @@ return {
             ["inc_flag"] = "binaribeans",
             ["name"] = "Binaribean"
           }
+        },
+        {
+          id = 18,
+          name = "npc",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 120,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "jamm_plush",
+            ["cond"] = "not Game:getFlag(\"jamm_plush\", false) and Game:getFlag(\"jamm_closure\", true)",
+            ["cutscene"] = "plushies.jamm_plush"
+          }
         }
       }
     },
@@ -376,6 +399,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
