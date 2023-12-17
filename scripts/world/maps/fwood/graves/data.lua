@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -378,10 +378,10 @@ return {
         {
           id = 18,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
-          x = 340,
-          y = 180,
+          x = 680,
+          y = 120,
           width = 40,
           height = 40,
           rotation = 0,
