@@ -763,6 +763,49 @@ function Battle:pierce(amount, exact, target)
 end
 
 
+function Battle:returnToWorld()
+    if not Game:getFlag("tension_storage") then
+        Game:setTension(0)
+    end
+    self.encounter:setFlag("done", true)
+    if self.used_violence then
+        self.encounter:setFlag("violenced", true)
+    end
+    self.transition_timer = 0
+    for _,battler in ipairs(self.party) do
+        if self.party_world_characters[battler.chara.id] then
+            self.party_world_characters[battler.chara.id].visible = true
+        end
+    end
+    local all_enemies = {}
+    Utils.merge(all_enemies, self.defeated_enemies)
+    Utils.merge(all_enemies, self.enemies)
+    for _,enemy in ipairs(all_enemies) do
+        local world_chara = self.enemy_world_characters[enemy]
+        if world_chara then
+            world_chara.visible = true
+        end
+        if not enemy.exit_on_defeat and world_chara and world_chara.parent then
+            if world_chara.onReturnFromBattle then
+                world_chara:onReturnFromBattle(self.encounter, enemy)
+            end
+        end
+    end
+    if self.encounter_context and self.encounter_context:includes(ChaserEnemy) then
+        for _,enemy in ipairs(self.encounter_context:getGroupedEnemies(true)) do
+            enemy:onEncounterEnd(enemy == self.encounter_context, self.encounter)
+        end
+    end
+    self.music:stop()
+    if self.resume_world_music then
+        Game.world.music:resume()
+    end
+    self:remove()
+    self.encounter.defeated_enemies = self.defeated_enemies
+    Game.battle = nil
+    Game.state = "OVERWORLD"
+end
+
 -- Failed attempt at recreating the CONCENTRATING thing, uncomment for a kinda cool effect
 --[[
 function Battle:drawBackground()

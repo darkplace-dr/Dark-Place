@@ -146,7 +146,7 @@ return {
             Game.world:startCutscene(function(cutscene)
                 cutscene:wait(cutscene:fadeOut(0))
                 cutscene:wait(cutscene:fadeIn(3))
-                if susie then
+                if Game:hasPartyMember("susie") then
                     cutscene:text("* ...", "neutral", susie)
                     cutscene:text("* Well,[wait:5] this place seems,[wait:2] uh...", "nervous", susie)
                     cutscene:text("* ...eerily familiar.", "nervous_side", susie)
@@ -157,9 +157,20 @@ return {
 
     fohad_sign_1 = function(cutscene)
         cutscene:text("* (Enemies ahead![wait:5] You're gonna\ndie!)[wait:5]\n* (SIGNED, LANCER)")
-        cutscene:text("* Huh,[wait:5] a sign from Lancer?", "smile", "susie")
-        cutscene:text("* ...", "annoyed_down", "susie")
-        cutscene:text("* Hey,[wait:5] where the HELL is Lancer,[wait:5] anyway?", "annoyed", "susie")
+        if Game:getFlag("hasObtainedLancer") == false then
+            if Game:hasPartyMember("susie") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* Huh,[wait:5] a sign from Lancer?", "smile", "susie")
+                cutscene:text("* ...", "annoyed_down", "susie")
+                cutscene:text("* Hey,[wait:5] where the HELL is Lancer,[wait:5] anyway?", "annoyed", "susie")
+                cutscene:hideNametag()
+            end
+        else
+            cutscene:showNametag("Lancer")
+            cutscene:text("* Hey![wait:5] Who the heck is stealing my signs!?", "confused_b", "lancer")
+            cutscene:text("* I've got patent pending on those!!", "flat", "lancer")
+            cutscene:hideNametag()
+        end
     end,
     fohad_sign_2 = function(cutscene)
         cutscene:text("* (If you're reading this...[wait:5]\nI guess you're dead.)[wait:5]\n* (SIGNED, LANCER)")

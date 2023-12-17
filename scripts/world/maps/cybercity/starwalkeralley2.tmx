@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="26" height="25" tilewidth="40" tileheight="40" infinite="0" nextlayerid="23" nextobjectid="218">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="26" height="25" tilewidth="40" tileheight="40" infinite="0" nextlayerid="23" nextobjectid="219">
  <editorsettings>
   <export target="starwalkeralley2.lua" format="lua"/>
  </editorsettings>
@@ -244,6 +244,13 @@
   <object id="215" gid="6502" x="240" y="680" width="110" height="120"/>
   <object id="216" gid="6502" x="560" y="800" width="110" height="120"/>
   <object id="217" gid="6502" x="430" y="290" width="110" height="120"/>
+  <object id="218" name="npc" x="400" y="200" width="40" height="40">
+   <properties>
+    <property name="actor" value="starwalker_plush"/>
+    <property name="cutscene" value="plushies.starwalker_plush"/>
+    <property name="flagcheck" value="!starwalker_plush"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer id="22" name="roof" width="26" height="25">
   <data encoding="csv">

@@ -1,64 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="25" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="101">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="25" height="30" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="141">
  <editorsettings>
   <export target="fields_2.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="border" value="castle"/>
   <property name="music" value="deltarune/bird"/>
-  <property name="name" value="Field"/>
   <property name="use_footstep_sounds" type="bool" value="true"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/bg_darkfield_tiles.tsx"/>
  <tileset firstgid="67" source="../../../tilesets/bg_treetiles_new.tsx"/>
- <layer id="1" name="tiles" width="25" height="12">
+ <layer id="1" name="tiles" width="25" height="30">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,15,0,0,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,15,0,0,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,15,0,0,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,15,1,1,1,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,15,1,1,1,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,15,1,1,1,19,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,13,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,13,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,13,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,1,13,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,1,13,0,0,0,0,
+0,0,0,0,0,20,20,20,20,20,20,20,20,20,20,20,21,1,1,1,13,0,0,0,0,
+0,0,0,0,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,13,0,0,0,0,
+0,0,0,0,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,13,0,0,0,0,
+0,0,0,0,15,1,1,7,8,8,8,8,8,8,8,8,8,8,8,8,0,0,0,0,0,
+0,0,0,20,21,1,1,19,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,15,1,1,1,1,1,1,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,15,1,1,1,1,1,1,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,15,1,1,1,1,1,1,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,8,9,1,1,7,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,15,1,1,19,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
 0,0,0,0,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 0,0,0,0,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-0,0,0,0,0,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,8,8,8,8,8,8,8,8,8,8,9,1,1,7,8,8,8,8,8,8,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,21,1,1,19,20,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,1,1,1,1,13,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,1,1,1,1,13,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,1,1,1,1,13,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,9,1,1,7,8,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,13,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,13,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,13,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,13,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,1,1,13,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="2" name="decal" width="25" height="12">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <objectgroup id="7" name="objects_props1"/>
- <objectgroup id="8" name="objects_props2"/>
  <objectgroup color="#0000ff" id="3" name="collision" opacity="0.5">
-  <object id="81" x="320" y="280" width="680" height="40"/>
-  <object id="82" x="160" y="400" width="840" height="40"/>
-  <object id="83" x="160" y="0" width="40" height="400"/>
-  <object id="84" x="320" y="0" width="40" height="280"/>
+  <object id="83" x="800" y="0" width="40" height="400"/>
+  <object id="114" x="200" y="280" width="440" height="40"/>
+  <object id="115" x="640" y="0" width="40" height="320"/>
+  <object id="116" x="120" y="320" width="80" height="160"/>
+  <object id="117" x="280" y="400" width="520" height="80"/>
+  <object id="118" x="360" y="480" width="40" height="120"/>
+  <object id="119" x="280" y="600" width="720" height="80"/>
+  <object id="120" x="120" y="600" width="80" height="160"/>
+  <object id="121" x="200" y="760" width="440" height="80"/>
+  <object id="123" x="720" y="760" width="280" height="80"/>
+  <object id="124" x="800" y="840" width="40" height="120"/>
+  <object id="125" x="720" y="960" width="80" height="240"/>
+  <object id="126" x="520" y="840" width="40" height="120"/>
+  <object id="127" x="80" y="480" width="40" height="120"/>
+  <object id="128" x="560" y="960" width="80" height="240"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
-  <object id="87" name="entrydown" x="260" y="260">
+  <object id="87" name="entrydown" x="740" y="260">
    <point/>
   </object>
-  <object id="92" name="entryleft" x="960" y="360">
+  <object id="92" name="entryup" x="680" y="1160">
    <point/>
   </object>
-  <object id="100" name="spawn" x="880" y="360">
+  <object id="100" name="spawn" x="240" y="560">
    <properties>
     <property name="border" value="castle"/>
     <property name="music" value="deltarune/bird"/>
@@ -67,30 +77,54 @@
    </properties>
    <point/>
   </object>
+  <object id="138" name="entryleft" x="950" y="720">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#ff00ff" id="5" name="objects">
-  <object id="86" name="transition" x="200" y="160" width="120" height="40">
+  <object id="86" name="transition" x="680" y="160" width="120" height="40">
    <properties>
     <property name="map" value="cloudwebs/_ch1/fields_1"/>
     <property name="marker" value="entryup"/>
    </properties>
   </object>
-  <object id="93" name="transition" x="980" y="320" width="40" height="80">
+  <object id="93" name="transition" x="640" y="1180" width="80" height="40">
    <properties>
     <property name="map" value="cloudwebs/_ch1/fields_3"/>
-    <property name="marker" value="entryright"/>
+    <property name="marker" value="entrydown"/>
    </properties>
   </object>
-  <object id="48" gid="68" x="300" y="202" width="210" height="182"/>
-  <object id="50" gid="67" x="0" y="202" width="210" height="182"/>
-  <object id="51" gid="69" x="230" y="76" width="210" height="136"/>
-  <object id="52" gid="70" x="70" y="76" width="210" height="136"/>
-  <object id="53" gid="67" x="-22" y="402" width="210" height="182"/>
-  <object id="54" gid="67" x="22" y="582" width="210" height="182"/>
-  <object id="98" gid="67" x="493" y="582" width="210" height="182"/>
-  <object id="96" gid="67" x="256" y="582" width="210" height="182"/>
-  <object id="97" gid="67" x="727" y="582" width="210" height="182"/>
-  <object id="62" gid="68" x="470" y="302" width="210" height="182"/>
-  <object id="99" gid="68" x="690" y="302" width="210" height="182"/>
+  <object id="48" gid="68" x="780" y="202" width="210" height="182"/>
+  <object id="50" gid="67" x="480" y="202" width="210" height="182"/>
+  <object id="51" gid="69" x="710" y="76" width="210" height="136"/>
+  <object id="52" gid="70" x="550" y="76" width="210" height="136"/>
+  <object id="101" gid="67" x="440" y="320" width="210" height="182"/>
+  <object id="102" gid="67" x="240" y="320" width="210" height="182"/>
+  <object id="103" gid="67" x="40" y="400" width="210" height="182"/>
+  <object id="104" gid="67" x="-40" y="520" width="210" height="182"/>
+  <object id="105" gid="67" x="-40" y="680" width="210" height="182"/>
+  <object id="106" gid="68" x="680" y="520" width="210" height="182"/>
+  <object id="107" gid="68" x="480" y="520" width="210" height="182"/>
+  <object id="108" gid="68" x="280" y="520" width="210" height="182"/>
+  <object id="109" gid="67" x="280" y="680" width="210" height="182"/>
+  <object id="110" gid="67" x="550" y="680" width="210" height="182"/>
+  <object id="111" gid="67" x="800" y="680" width="210" height="182"/>
+  <object id="112" gid="67" x="40" y="800" width="210" height="182"/>
+  <object id="113" gid="68" x="800" y="360" width="210" height="182"/>
+  <object id="129" gid="68" x="720" y="1120" width="210" height="182"/>
+  <object id="130" gid="68" x="720" y="1240" width="210" height="182"/>
+  <object id="131" gid="67" x="440" y="1120" width="210" height="182"/>
+  <object id="132" gid="67" x="440" y="1240" width="210" height="182"/>
+  <object id="133" gid="67" x="400" y="880" width="210" height="182"/>
+  <object id="134" gid="67" x="200" y="880" width="210" height="182"/>
+  <object id="135" gid="68" x="760" y="880" width="210" height="182"/>
+  <object id="136" gid="68" x="800" y="1000" width="210" height="182"/>
+  <object id="137" gid="67" x="360" y="1000" width="210" height="182"/>
+  <object id="140" name="transition" x="980" y="680" width="40" height="80">
+   <properties>
+    <property name="map" value="cloudwebs/_ch1/fields_2b"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -1,7 +1,7 @@
 return {
   version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.9.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 23,
-  nextobjectid = 218,
+  nextobjectid = 219,
   properties = {
     ["border"] = "starwalkervalley",
     ["light"] = false,
@@ -855,6 +855,23 @@ return {
           gid = 6502,
           visible = true,
           properties = {}
+        },
+        {
+          id = 218,
+          name = "npc",
+          class = "",
+          shape = "rectangle",
+          x = 400,
+          y = 200,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "starwalker_plush",
+            ["cutscene"] = "plushies.starwalker_plush",
+            ["flagcheck"] = "!starwalker_plush"
+          }
         }
       }
     },

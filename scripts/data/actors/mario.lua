@@ -95,6 +95,9 @@ function actor:init()
     }
 	
 	self.taunt_sprites = {"pose_ready", "pose_star", "pose_t"}
+
+        -- Walk Speed (optional)
+        self.walk_speed_override = 16
 end
 
 return actor

@@ -69,4 +69,12 @@ function spell:onCast(user, target)
     return false
 end
 
+function spell:hasWorldUsage(chara)
+    return true
+end
+
+function spell:onWorldCast(chara)
+    Assets.playSound("celestial_hit")
+end
+
 return spell

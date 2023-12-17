@@ -148,7 +148,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -161,7 +161,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 720,
           y = 120,
@@ -174,7 +174,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 520,
@@ -187,7 +187,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 120,
@@ -216,7 +216,7 @@ return {
         {
           id = 6,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 210,
           y = 170,
@@ -232,7 +232,7 @@ return {
         {
           id = 7,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 330,
           y = 90,
@@ -248,7 +248,7 @@ return {
         {
           id = 8,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 370,
           y = 330,
@@ -264,7 +264,7 @@ return {
         {
           id = 9,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 530,
           y = 90,
@@ -280,7 +280,7 @@ return {
         {
           id = 10,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 650,
           y = 290,
@@ -296,7 +296,7 @@ return {
         {
           id = 11,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 360,
           y = 200,
@@ -314,7 +314,7 @@ return {
         {
           id = 14,
           name = "script",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 640,
@@ -330,7 +330,7 @@ return {
         {
           id = 15,
           name = "beanspot",
-          type = "",
+          class = "",
           shape = "point",
           x = 560,
           y = 400,
@@ -346,7 +346,7 @@ return {
         {
           id = 16,
           name = "beanspot",
-          type = "",
+          class = "",
           shape = "point",
           x = 200,
           y = 480,
@@ -362,7 +362,7 @@ return {
         {
           id = 17,
           name = "beanspot",
-          type = "",
+          class = "",
           shape = "point",
           x = 440,
           y = 200,
@@ -411,7 +411,7 @@ return {
         {
           id = 12,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 660,
           y = 600,
