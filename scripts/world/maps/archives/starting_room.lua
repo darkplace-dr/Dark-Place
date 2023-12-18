@@ -1,7 +1,7 @@
 return {
   version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.9.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -9,8 +9,8 @@ return {
   height = 16,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 5,
-  nextobjectid = 15,
+  nextlayerid = 6,
+  nextobjectid = 18,
   properties = {
     ["music"] = "archives"
   },
@@ -26,6 +26,12 @@ return {
       firstgid = 38,
       filename = "../../tilesets/ut2archives.tsx",
       exportfilename = "../../tilesets/ut2archives.lua"
+    },
+    {
+      name = "warp_bin",
+      firstgid = 134,
+      filename = "../../tilesets/warp_bin.tsx",
+      exportfilename = "../../tilesets/warp_bin.tsx"
     }
   },
   layers = {
@@ -254,6 +260,64 @@ return {
             ["cutscene"] = "spamroom.warpbin",
             ["solid"] = true
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "objects_warpbin",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 15,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 338,
+          y = 290,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 134,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 16,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 378,
+          y = 290,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 135,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 17,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 418,
+          y = 290,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 136,
+          visible = true,
+          properties = {}
         }
       }
     },

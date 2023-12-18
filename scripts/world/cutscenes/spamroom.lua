@@ -608,4 +608,12 @@ return {
         cutscene:loadMap(dest_map, marker, "down")
         cutscene:fadeIn(0.25)
     end,
+    muppet = function(cutscene, event)
+        cutscene:showNametag("Other Kris")
+        event:setAnimation("talk")
+        cutscene:text("* WOAH ISN'T IT A LI\n[wait:20]* A LOGH\n[wait:10]* A LIGHNR[wait:10]", nil, "muppet_kris", {auto = true})
+        cutscene:text("* I S'T A LIGNERE\n[wait:20]* A NEW ROACH\n[wait:10]* A LIGHT N3R?[wait:30]", nil, "muppet_kris", {auto = true})
+        cutscene:hideNametag()
+        event:setAnimation("idle")
+    end,
 }
