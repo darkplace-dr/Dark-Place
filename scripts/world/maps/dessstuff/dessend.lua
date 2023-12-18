@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 66,
+  nextobjectid = 69,
   properties = {
     ["border"] = "omori/whitespace",
     ["music"] = "gimmieyourwalletmiss",
@@ -40,6 +40,12 @@ return {
       firstgid = 385,
       filename = "../../tilesets/dumpter-objects.tsx",
       exportfilename = "../../tilesets/dumpter-objects.lua"
+    },
+    {
+      name = "warp_bin",
+      firstgid = 422,
+      filename = "../../tilesets/warp_bin.tsx",
+      exportfilename = "../../tilesets/warp_bin.tsx"
     }
   },
   layers = {
@@ -423,6 +429,48 @@ return {
             ["cutscene"] = "plushies.dess_plush",
             ["flagcheck"] = "!dess_plush"
           }
+        },
+        {
+          id = 66,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 316,
+          y = 160,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 424,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 67,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 276,
+          y = 160,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 423,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 68,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 236,
+          y = 160,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 422,
+          visible = true,
+          properties = {}
         }
       }
     },

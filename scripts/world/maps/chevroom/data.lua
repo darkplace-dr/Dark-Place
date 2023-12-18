@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.9.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -26,6 +26,12 @@ return {
       firstgid = 61,
       filename = "../../tilesets/city_alleyway.tsx",
       exportfilename = "../../tilesets/city_alleyway.lua"
+    },
+    {
+      name = "warp_bin",
+      firstgid = 376,
+      filename = "../../tilesets/warp_bin.tsx",
+      exportfilename = "../../tilesets/warp_bin.tsx"
     }
   },
   layers = {
@@ -85,7 +91,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 282, 283, 284, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 297, 298, 299, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 31, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 376, 377, 378, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 31, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 35, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 38, 39, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -110,7 +116,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 160,
@@ -123,7 +129,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 360,
           y = 120,
@@ -136,7 +142,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1240,
           y = 160,
@@ -149,7 +155,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 440,
@@ -162,7 +168,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 160,
@@ -175,7 +181,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 200,
@@ -208,7 +214,7 @@ return {
         {
           id = 8,
           name = "squeak",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 320,
@@ -221,7 +227,7 @@ return {
         {
           id = 12,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 750.558,
           y = 271.916,
@@ -237,7 +243,7 @@ return {
         {
           id = 13,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 84.5,
           y = 200.258,
@@ -269,7 +275,7 @@ return {
         {
           id = 9,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 140,
           y = 320,
