@@ -6,8 +6,6 @@ return {
     "squeaks",
 	"codebreaker",
     "dummy",
-    "blankiequest",
-    "velvetsqueak",
     "takodownbad",
     "mysteryman",
     "jekukilled",

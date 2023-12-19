@@ -1,7 +1,7 @@
 return {
   version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -26,7 +26,7 @@ return {
       name = "warp_bin",
       firstgid = 316,
       filename = "../tilesets/warp_bin.tsx",
-      exportfilename = "../tilesets/warp_bin.lua"
+      exportfilename = "../tilesets/warp_bin.tsx"
     }
   },
   layers = {
@@ -452,22 +452,6 @@ return {
           properties = {
             ["actor"] = "cungaderospamton",
             ["cutscene"] = "spamroom.cungadero"
-          }
-        },
-        {
-          id = 28,
-          name = "npc",
-          class = "",
-          shape = "point",
-          x = 840,
-          y = 390,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "velvetspam",
-            ["cutscene"] = "spamroom.velvetspam"
           }
         },
         {

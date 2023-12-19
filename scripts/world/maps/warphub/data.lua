@@ -1,7 +1,7 @@
 return {
   version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 11,
-  nextobjectid = 106,
+  nextobjectid = 107,
   properties = {
     ["border"] = "glow",
     ["music"] = "warphub",
@@ -181,10 +181,10 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        0, 0, 0, 0, 0, 17, 17, 17, 0, 0, 0, 0, 439, 440, 441, 439, 440, 441, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 17, 17, 17, 0, 0, 0, 0, 445, 446, 447, 445, 446, 447, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 17, 17, 17, 0, 0, 0, 456, 451, 452, 453, 451, 452, 453, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 385, 386, 386, 0, 0, 0, 0, 298, 298, 298, 298, 298, 298, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 439, 440, 441, 0, 0, 0, 0, 439, 440, 441, 439, 440, 441, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 445, 446, 447, 0, 0, 0, 0, 445, 446, 447, 445, 446, 447, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 451, 452, 453, 0, 0, 0, 456, 451, 452, 453, 451, 452, 453, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 298, 298, 298, 0, 0, 0, 0, 298, 298, 298, 298, 298, 298, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 439, 440, 441, 0,
@@ -472,19 +472,6 @@ return {
           properties = {}
         },
         {
-          id = 88,
-          name = "door2",
-          class = "",
-          shape = "point",
-          x = 260.764,
-          y = 141.5,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 104,
           name = "entry",
           class = "",
@@ -566,9 +553,8 @@ return {
             ["text4"] = "* (Want to fight bosses you've previously fought?[wait:10]\nGo to \"[color:yellow]BOSSRUSH[color:reset]\"!)",
             ["text5"] = "* (Want to meet the devs of this game? Check out \"[color:blue]DEVDINER[color:reset]\"!)",
             ["text6"] = "* (Do you have horrible internet? Visit \"[color:black]WIFIDOWN[color:reset]\" now to resolve all of your network troubles!)",
-            ["text7"] = "* (Squeak Squeak! All the Maus are in \"[color:maroon]MAUSHOLE[color:reset]\"!)",
-            ["text8"] = "* (Check out the Dark Place X \"[color:#5fcde4]GARRYMOD[color:reset]\" crossover!\nMods included!)",
-            ["text9"] = "* (Want to play some games? Check out the newly opened \"[color:blue]DARKCADE[color:white]\"!)"
+            ["text7"] = "* (Check out the Dark Place X \"[color:#5fcde4]GARRYMOD[color:reset]\" crossover!\nMods included!)",
+            ["text8"] = "* (Want to play some games? Check out the newly opened \"[color:blue]DARKCADE[color:white]\"!)"
           }
         },
         {
@@ -584,22 +570,6 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "warphub.spamgolor",
-            ["solid"] = true
-          }
-        },
-        {
-          id = 52,
-          name = "interactable",
-          class = "",
-          shape = "rectangle",
-          x = 220,
-          y = 80,
-          width = 80,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["cutscene"] = "warphub.pasta_shop",
             ["solid"] = true
           }
         },
@@ -652,20 +622,6 @@ return {
           properties = {}
         },
         {
-          id = 94,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 200,
-          y = 120,
-          width = 83.6,
-          height = 120.69,
-          rotation = 0,
-          gid = 488,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 97,
           name = "interactable",
           class = "",
@@ -713,6 +669,23 @@ return {
             ["actor"] = "you_plush",
             ["cutscene"] = "plushies.you_plush",
             ["flagcheck"] = "!you_plush"
+          }
+        },
+        {
+          id = 106,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 220,
+          y = 80,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solid"] = true,
+            ["text1"] = "* This room appears to be for rent.",
+            ["text2"] = "* But,[wait:10] you don't know how to rent it."
           }
         }
       }
