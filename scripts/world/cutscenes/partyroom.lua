@@ -181,17 +181,7 @@ return {
             elseif opinion == 3 then
                 cutscene:text("* Yeah I can talk about my friends.", "happy", "brandon")
                 
-                cutscene:text("* Alright well first off there's Velvet.", "neutral", "brandon")
-                cutscene:text("* She's pretty cool,[wait:5] and her art is really cute.", "happy", "brandon")
-                cutscene:text("* They're even helping me out with one of my AUs!", "happy_b", "brandon")
-                cutscene:text("* Hm?[wait:10] What's my AU about?", "neutral", "brandon")
-                cutscene:text("* Well it's my take on a Deltaswap AU.", "happy", "brandon")
-                cutscene:text("* It's mainly about swapping party members with secret bosses.", "happy_side", "brandon")
-                cutscene:text("* The swaps are based on the weapons they give.", "neutral", "brandon")
-                cutscene:text("* So for example Ralsei swaps with Spamton.", "happy", "brandon")
-                cutscene:text("* The name of the AU is Crystalseeker!", "happy_b", "brandon")
-
-                cutscene:text("* Next up is Bor.", "happy", "brandon")
+                cutscene:text("* Alright well first off there's Bor.", "neutral", "brandon")
                 cutscene:text("* He's,[wait:0.1s] um,[wait:0.1s] certainly someone interesting.", "happy_side", "brandon")
                 cutscene:text("* He runs a shop near the Banana Alley.[wait:0.1s] I help out there sometimes.", "happy_b", "brandon")
                 cutscene:text("* He's also helping out on Crystalseeker.[wait:0.1s] He made the OST cover, actually.", "happy_b", "brandon")

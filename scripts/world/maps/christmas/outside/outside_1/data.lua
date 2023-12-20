@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.1",
+  tiledversion = "1.9.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -26,6 +26,12 @@ return {
       firstgid = 1090,
       filename = "../../../../tilesets/city_alleyway.tsx",
       exportfilename = "../../../../tilesets/city_alleyway.lua"
+    },
+    {
+      name = "warp_bin",
+      firstgid = 1405,
+      filename = "../../../../tilesets/warp_bin.tsx",
+      exportfilename = "../../../../tilesets/warp_bin.tsx"
     }
   },
   layers = {
@@ -118,7 +124,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 272,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 305,
         0, 0, 0, 0, 0, 1311, 1312, 1313, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 338,
-        0, 0, 0, 0, 0, 1326, 1327, 1328, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 1405, 1406, 1407, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -142,7 +148,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -155,7 +161,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 280,
@@ -168,7 +174,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 320,
@@ -181,7 +187,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 360,
@@ -194,7 +200,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1800,
           y = 0,
@@ -207,7 +213,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1880,
           y = 280,
@@ -220,7 +226,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 440,
@@ -249,7 +255,7 @@ return {
         {
           id = 8,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 1740,
           y = 340,
@@ -262,7 +268,7 @@ return {
         {
           id = 10,
           name = "warp",
-          type = "",
+          class = "",
           shape = "point",
           x = 260,
           y = 360,
@@ -275,7 +281,7 @@ return {
         {
           id = 11,
           name = "out_2",
-          type = "",
+          class = "",
           shape = "point",
           x = 1740,
           y = 40,
@@ -304,7 +310,7 @@ return {
         {
           id = 9,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 207,
           y = 230,
@@ -320,7 +326,7 @@ return {
         {
           id = 13,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1640,
           y = -40,
@@ -336,7 +342,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 280,
@@ -351,7 +357,7 @@ return {
         {
           id = 15,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 320,

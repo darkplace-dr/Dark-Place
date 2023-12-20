@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="106">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="107">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -14,6 +14,7 @@
  <tileset firstgid="385" source="../../tilesets/space.tsx"/>
  <tileset firstgid="397" source="../../tilesets/warphub_doors.tsx"/>
  <tileset firstgid="457" source="../../tilesets/devroom-objects.tsx"/>
+ <tileset firstgid="508" source="../../tilesets/warp_bin.tsx"/>
  <objectgroup id="9" name="objects_bg">
   <object id="103" name="entry" x="845.455" y="-339.394">
    <point/>
@@ -52,10 +53,10 @@
  </layer>
  <layer id="2" name="decal" width="23" height="24">
   <data encoding="csv">
-0,0,0,0,0,17,17,17,0,0,0,0,439,440,441,439,440,441,0,0,0,0,0,
-0,0,0,0,0,17,17,17,0,0,0,0,445,446,447,445,446,447,0,0,0,0,0,
-0,0,0,0,0,17,17,17,0,0,0,456,451,452,453,451,452,453,0,0,0,0,0,
-0,0,0,0,0,385,386,386,0,0,0,0,298,298,298,298,298,298,0,0,0,0,0,
+0,0,0,0,0,439,440,441,0,0,0,0,439,440,441,439,440,441,0,0,0,0,0,
+0,0,0,0,0,445,446,447,0,0,0,0,445,446,447,445,446,447,0,0,0,0,0,
+0,0,0,0,0,451,452,453,0,0,0,456,451,452,453,451,452,453,0,0,0,0,0,
+0,0,0,0,0,298,298,298,0,0,0,0,298,298,298,298,298,298,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,439,440,441,0,
@@ -65,7 +66,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,291,292,293,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,306,307,308,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,508,509,510,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -103,9 +104,6 @@
   <object id="84" name="door1" x="120" y="400">
    <point/>
   </object>
-  <object id="88" name="door2" x="260.764" y="141.5">
-   <point/>
-  </object>
   <object id="104" name="entry" x="382" y="72">
    <point/>
   </object>
@@ -135,21 +133,14 @@
 Go to &quot;[color:yellow]BOSSRUSH[color:reset]&quot;!)</property>
     <property name="text5" value="* (Want to meet the devs of this game? Check out &quot;[color:blue]DEVDINER[color:reset]&quot;!)"/>
     <property name="text6" value="* (Do you have horrible internet? Visit &quot;[color:black]WIFIDOWN[color:reset]&quot; now to resolve all of your network troubles!)"/>
-    <property name="text7" value="* (Squeak Squeak! All the Maus are in &quot;[color:maroon]MAUSHOLE[color:reset]&quot;!)"/>
-    <property name="text8">* (Check out the Dark Place X &quot;[color:#5fcde4]GARRYMOD[color:reset]&quot; crossover!
+    <property name="text7">* (Check out the Dark Place X &quot;[color:#5fcde4]GARRYMOD[color:reset]&quot; crossover!
 Mods included!)</property>
-    <property name="text9" value="* (Want to play some games? Check out the newly opened &quot;[color:blue]DARKCADE[color:white]&quot;!)"/>
+    <property name="text8" value="* (Want to play some games? Check out the newly opened &quot;[color:blue]DARKCADE[color:white]&quot;!)"/>
    </properties>
   </object>
   <object id="46" name="interactable" x="80" y="320" width="80" height="40">
    <properties>
     <property name="cutscene" value="warphub.spamgolor"/>
-    <property name="solid" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="52" name="interactable" x="220" y="80" width="80" height="40">
-   <properties>
-    <property name="cutscene" value="warphub.pasta_shop"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>
@@ -168,7 +159,6 @@ Mods included!)</property>
    </properties>
   </object>
   <object id="92" gid="470" x="400" y="360" width="120" height="120"/>
-  <object id="94" gid="488" x="200" y="120" width="83.6" height="120.69"/>
   <object id="97" name="interactable" x="780" y="320" width="80" height="40">
    <properties>
     <property name="solid" type="bool" value="true"/>
@@ -187,6 +177,13 @@ Mods included!)</property>
     <property name="actor" value="you_plush"/>
     <property name="cutscene" value="plushies.you_plush"/>
     <property name="flagcheck" value="!you_plush"/>
+   </properties>
+  </object>
+  <object id="106" name="interactable" x="220" y="80" width="80" height="40">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* This room appears to be for rent."/>
+    <property name="text2" value="* But,[wait:10] you don't know how to rent it."/>
    </properties>
   </object>
  </objectgroup>

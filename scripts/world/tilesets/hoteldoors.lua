@@ -1,14 +1,17 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.0",
   name = "hoteldoors",
+  class = "",
   tilewidth = 32,
   tileheight = 50,
   spacing = 0,
   margin = 0,
   columns = 0,
   objectalignment = "unspecified",
+  tilerendersize = "tile",
+  fillmode = "stretch",
   tileoffset = {
     x = 0,
     y = 0
@@ -20,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 7,
+  tilecount = 6,
   tiles = {
     {
       id = 0,
@@ -31,12 +34,6 @@ return {
     {
       id = 1,
       image = "../../../assets/sprites/world/events/devroom/hoteldoors/001.png",
-      width = 32,
-      height = 50
-    },
-    {
-      id = 2,
-      image = "../../../assets/sprites/world/events/devroom/hoteldoors/002.png",
       width = 32,
       height = 50
     },

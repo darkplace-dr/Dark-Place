@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="18">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="18">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -10,6 +10,7 @@
  </properties>
  <tileset firstgid="1" source="../../../tilesets/forgotten_wood.tsx"/>
  <tileset firstgid="430" source="../../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="745" source="../../../tilesets/warp_bin.tsx"/>
  <layer id="2" name="Tile Layer 2" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,41,56,56,56,56,0,0,0,0,
@@ -48,7 +49,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,651,652,653,0,0,0,0,0,0,0,0,0,0,0,
-0,0,666,667,668,0,0,0,0,0,0,0,0,0,0,0,
+0,0,745,746,747,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

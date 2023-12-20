@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 48,
   tileheight = 48,
   nextlayerid = 8,
-  nextobjectid = 69,
+  nextobjectid = 70,
   properties = {
     ["music"] = "GM_Construct",
     ["name"] = "Missing"
@@ -890,6 +890,24 @@ return {
           properties = {
             ["actor"] = "tpose_mario",
             ["cutscene"] = "missing.tpose_mario",
+            ["turn"] = true
+          }
+        },
+        {
+          id = 69,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 48,
+          y = 816,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "pauling",
+            ["cutscene"] = "missing.pauling",
+            ["flagcheck"] = "!pauling_inparty",
             ["turn"] = true
           }
         }

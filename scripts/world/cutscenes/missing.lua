@@ -47,4 +47,51 @@ return {
         cutscene:hideNametag()
 	end,
     
+	pauling = function(cutscene, event)
+		cutscene:text("* The girl gives you a contract.\n* Sign it?")
+		
+		if cutscene:choicer({"Sign", "Do not"}) == 1 then
+			local contract = Sprite("ui/pauling_sign/_contract", -320, 240)
+			contract:setOrigin(0.5,0.5)
+			Game.stage:addChild(contract)
+			cutscene:wait(cutscene:slideTo(contract, 320, 240, 1))
+			
+			cutscene:wait(0.5)
+			
+			local player = Game.world.player
+			local id = player.actor.id
+			local signature = Sprite("ui/pauling_sign/" .. id, 319, 391)
+			signature:setOrigin(0.5,0.5)
+			Game.stage:addChild(signature)
+			
+			cutscene:wait(1)
+			
+			cutscene:slideTo(signature, 959, 391, 1)
+			cutscene:wait(cutscene:slideTo(contract, 960, 240, 1))
+			
+			cutscene:text("* Ms. Pauling joins you!")
+			
+			if #Game.party >= Game:getFlag("party_max") then
+				cutscene:hideNametag()
+				
+				cutscene:wait(cutscene:fadeOut(0.75))
+				event:remove()
+				cutscene:wait(cutscene:fadeIn(0.75))
+			
+				cutscene:attachFollowers()
+				cutscene:wait(2)
+			else
+				cutscene:hideNametag()
+				Game:addPartyMember("pauling")
+				Game:setFlag("pauling_party", true)
+				event:convertToFollower(#Game.party - 1)
+				cutscene:attachFollowers()
+				cutscene:wait(0.5)
+			end
+			Game:setFlag("pauling_inparty", true)
+			Mod:unlockPartyMember("pauling")
+		else
+			cutscene:text("* You signn't.")
+		end
+	end,
 }

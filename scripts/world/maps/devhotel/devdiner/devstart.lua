@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -27,6 +28,12 @@ return {
       firstgid = 316,
       filename = "../../../tilesets/devroom.tsx",
       exportfilename = "../../../tilesets/devroom.lua"
+    },
+    {
+      name = "warp_bin",
+      firstgid = 388,
+      filename = "../../../tilesets/warp_bin.tsx",
+      exportfilename = "../../../tilesets/warp_bin.tsx"
     }
   },
   layers = {
@@ -38,6 +45,7 @@ return {
       height = 12,
       id = 6,
       name = "Tile Layer 3",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -69,6 +77,7 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -100,6 +109,7 @@ return {
       height = 12,
       id = 3,
       name = "decal",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -113,7 +123,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 222, 223, 224, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 237, 238, 239, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 388, 389, 390, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -128,6 +138,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -139,7 +150,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 120,
@@ -152,7 +163,7 @@ return {
         {
           id = 19,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 120,
@@ -165,7 +176,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 200,
@@ -178,7 +189,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 160,
           y = 400,
@@ -191,7 +202,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 360,
@@ -204,7 +215,7 @@ return {
         {
           id = 7,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 320,
@@ -217,7 +228,7 @@ return {
         {
           id = 8,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 200,
@@ -230,7 +241,7 @@ return {
         {
           id = 9,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 120,
@@ -243,7 +254,7 @@ return {
         {
           id = 11,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 367,
           y = 155,
@@ -256,7 +267,7 @@ return {
         {
           id = 16,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 120,
@@ -269,7 +280,7 @@ return {
         {
           id = 17,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 360,
@@ -286,6 +297,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -297,7 +309,7 @@ return {
         {
           id = 10,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 640,
           y = 240,
@@ -313,7 +325,7 @@ return {
         {
           id = 14,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 366,
           y = 111,
@@ -329,7 +341,7 @@ return {
         {
           id = 18,
           name = "savepoint",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 280,
@@ -344,7 +356,7 @@ return {
         {
           id = 20,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 40,
@@ -364,6 +376,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -375,7 +388,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 420,
           y = 235,
@@ -388,7 +401,7 @@ return {
         {
           id = 13,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 600,
           y = 280,
@@ -401,7 +414,7 @@ return {
         {
           id = 22,
           name = "hall",
-          type = "",
+          class = "",
           shape = "point",
           x = 240,
           y = 160,

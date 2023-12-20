@@ -1,5 +1,19 @@
 local actor, super = Class(Actor, "YOU")
 
+function actor:onWorldUpdate(chara)
+    super.onWorldUpdate(self, chara)
+    local runner = Game.world:getCharacter("YOU")
+    if Game:getFlag("YOU_party", true) and Game.world.player.run_timer > 50 and Game:getFlag("running") == false then
+        self.default = "run"
+        Game:setFlag("running", true)
+        runner:resetSprite()
+    elseif Game:getFlag("YOU_party", true) and Game.world.player.run_timer == 0 and Game:getFlag("running", true) then
+        self.default = "walk"
+        Game:setFlag("running", false)
+        runner:resetSprite()
+    end
+end 
+
 function actor:init()
     super.init(self, chara)
 

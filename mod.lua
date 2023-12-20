@@ -315,6 +315,7 @@ function Mod:initializeImportantFlags(new_file)
 
     local berdly = Game:getPartyMember("berdly")
     local mario = Game:getPartyMember("mario")
+    local pauling = Game:getPartyMember("pauling")
     if berdly:getBaseStats("health") == 300 then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Berdly was added.")
@@ -352,7 +353,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "kris" then
@@ -372,7 +374,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "susie" then
@@ -392,7 +395,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "noelle" then
@@ -412,7 +416,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "dess" then
@@ -432,7 +437,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 60,
-					mario = 35
+					mario = 35,
+					pauling = 50
                 }
             end
             if v == "brandon" then
@@ -452,7 +458,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 70,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "dumbie" then
@@ -472,7 +479,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "ostarwalker" then
@@ -492,7 +500,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "berdly" then
@@ -512,7 +521,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "bor" then
@@ -532,7 +542,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "robo_susie" then
@@ -552,7 +563,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "nonyo" then
@@ -572,7 +584,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "iphone" then
@@ -592,7 +605,8 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "frisk2" then
@@ -612,7 +626,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     alseri = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "alseri" then
@@ -632,7 +647,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     jamm = 50,
-					mario = 50
+					mario = 50,
+					pauling = 50
                 }
             end
             if v == "jamm" then
@@ -652,7 +668,8 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-					mario = 65
+					mario = 65,
+					pauling = 50
                 }
             end
             if v == "mario" then
@@ -672,7 +689,29 @@ function Mod:initializeImportantFlags(new_file)
                     iphone = 50,
                     frisk2 = 50,
                     alseri = 50,
-					jamm = 65
+					jamm = 65,
+					pauling = 50
+                }
+            end
+            if v == "pauling" then
+                party.opinions = {
+                    kris = 40,
+                    YOU = 40,
+                    susie = 40,
+                    noelle = 40,
+                    dess = 40,
+                    brandon = 40,
+                    dumbie = 40,
+                    ostarwalker = 40,
+                    berdly = 40,
+                    bor = 40,
+                    robo_susie = 40,
+                    nonyo = 40,
+                    iphone = 40,
+                    frisk2 = 40,
+                    alseri = 40,
+                    jamm = 40,
+					mario = 40
                 }
             end
         end
@@ -691,7 +730,7 @@ function Mod:initializeImportantFlags(new_file)
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Mario was added.")
 
-        local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm"}
+        local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm", "mario"}
         for i, v in ipairs(party_members) do
             local party = Game:getPartyMember(v)
             if v == "YOU" then
@@ -792,6 +831,122 @@ function Mod:initializeImportantFlags(new_file)
                     frisk2 = 50,
                     alseri = 50,
 					jamm = 65
+                }
+            end
+        end
+    end
+	
+	if new_file or pauling.opinions == nil then
+        likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before Ms. Pauling was added.")
+
+        local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm", "mario", "pauling"}
+        for i, v in ipairs(party_members) do
+            local party = Game:getPartyMember(v)
+            if v == "YOU" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "kris" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "susie" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "noelle" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "dess" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "brandon" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "dumbie" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "ostarwalker" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "berdly" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "bor" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "robo_susie" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "nonyo" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "iphone" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "frisk2" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "alseri" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "jamm" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "mario" then
+                party.opinions = Utils.merge(party.opinions, {
+                    pauling = 50
+                })
+            end
+            if v == "pauling" then
+                party.opinions = {
+                    YOU = 40,
+                    kris = 40,
+                    susie = 40,
+                    noelle = 40,
+                    dess = 40,
+                    brandon = 40,
+                    dumbie = 40,
+                    ostarwalker = 40,
+                    berdly = 40,
+                    bor = 40,
+                    robo_susie = 40,
+                    nonyo = 40,
+                    iphone = 40,
+                    frisk2 = 40,
+                    alseri = 40,
+					jamm = 40,
+					mario = 40
                 }
             end
         end

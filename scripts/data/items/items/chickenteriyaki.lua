@@ -32,6 +32,7 @@ function item:init()
         ["brandon"] = 60,
 		["jamm"] = 999,
 		["mario"] = 10,
+        ["pauling"] = 60,
 	}
 
     -- Default shop price (sell price is halved)

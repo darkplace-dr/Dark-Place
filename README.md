@@ -75,7 +75,6 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * vitellary - Contributor
 * Dobby233Liu - Contributor
 * Willow with a W - Contributor
-* DeltaVelvet - Contributor
 * Kross - Contributor
 * Agent 7 - Contributor
 * Riverstar (Sumire) - Contributor
