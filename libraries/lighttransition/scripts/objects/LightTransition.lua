@@ -150,7 +150,6 @@ function LightTransition.cutscene(cutscene, self, player)
 	if p3 and not kris_only then
 		p3.visible = false
 		local fake_p3 = Sprite("party/"..p3.actor.id:lower().."/dark_transition/dark", p3.x, p3.y)
-		Log:print("party/"..p3.actor.id:lower().."/dark_transition/dark")
 		fake_p3.physics.speed_y = settings.fake_speed_y
 		fake_p3.physics.gravity = settings.fake_gravity
 		fake_p3:setAnimation{"party/"..p3.actor.id:lower().."/dark_transition/dark", 0.1, true}
@@ -165,7 +164,6 @@ function LightTransition.cutscene(cutscene, self, player)
 	if p4 and not kris_only then
 		p4.visible = false
 		local fake_p4 = Sprite("party/"..p4.actor.id:lower().."/dark_transition/dark", p4.x, p4.y)
-		Log:print("party/"..p4.actor.id:lower().."/dark_transition/dark")
 		fake_p4.physics.speed_y = settings.fake_speed_y
 		fake_p4.physics.gravity = settings.fake_gravity
 		fake_p4:setAnimation{"party/"..p4.actor.id:lower().."/dark_transition/dark", 0.1, true}

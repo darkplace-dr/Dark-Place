@@ -95,11 +95,7 @@ return {
     agent7 = function(cutscene, event)
         cutscene:text("* It's a door.")
         cutscene:text("* The sign reads \"THIS ROOM BELONGS TO: AGENT 7\"")
-        cutscene:text("* You can hear construction on the other side...[wait:10] and someone complaining about it.")
-        cutscene:showNametag("???")
-        cutscene:text("[voice:lucy]* Ugh, this has been going on for WEEKS![wait:5] Can I have my house back to normal already!?")
-        cutscene:hideNametag()
-        cutscene:text("* The door isn't locked, but it seems like something's blocking it.")
+        cutscene:text("* It appears to be locked.")
     end,
 
     hallwayrng = function (cutscene, event)

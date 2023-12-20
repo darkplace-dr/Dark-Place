@@ -11,10 +11,7 @@ function ColorSlash:onStart()
     self.time = -1
     self.user = self:getAttackers()[1]
     self.order = {}
-    for i = 1, self.user.difficulty+3 do
-        self.order[i] = Utils.pick{"Blue", "Orange"}
-        Log:print(self.order[i])
-    end
+    for i = 1, self.user.difficulty+3 do self.order[i] = Utils.pick{"Blue", "Orange"} end
     local currtell = 1
     local currslash = 1
 

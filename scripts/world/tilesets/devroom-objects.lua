@@ -1,17 +1,14 @@
 return {
-  version = "1.9",
+  version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.8.6",
   name = "devroom-objects",
-  class = "",
   tilewidth = 145,
   tileheight = 120,
   spacing = 0,
   margin = 0,
   columns = 0,
   objectalignment = "unspecified",
-  tilerendersize = "tile",
-  fillmode = "stretch",
   tileoffset = {
     x = 0,
     y = 0
@@ -148,6 +145,18 @@ return {
       image = "../../../assets/sprites/world/maps/devroom/exterior/lamppost.png",
       width = 54,
       height = 90
+    },
+    {
+      id = 51,
+      image = "../../../assets/sprites/world/maps/devroom/hotel/computer_desk.png",
+      width = 117,
+      height = 53
+    },
+    {
+      id = 52,
+      image = "../../../assets/sprites/world/maps/devroom/hotel/lucyplush.png",
+      width = 21,
+      height = 21
     }
   }
 }

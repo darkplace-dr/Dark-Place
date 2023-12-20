@@ -7,7 +7,7 @@ function item:init()
     self.name = "Blind Ignorance"
 
     -- Item type (item, key, weapon, armor)
-    self.type = "weapon"
+    self.type = "armor"
     -- Whether this item is for the light world
     self.light = true
 
@@ -26,7 +26,7 @@ function item:init()
     }
 
     -- Default dark item conversion for this item
-    --self.dark_item = "realshield"
+    self.dark_item = nil
 end
 
 return item

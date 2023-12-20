@@ -519,6 +519,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 66,
+          name = "door_005",
+          type = "",
+          shape = "point",
+          x = 720,
+          y = 306,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

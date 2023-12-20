@@ -65,4 +65,10 @@
  <tile id="50">
   <image width="54" height="90" source="../../../assets/sprites/world/maps/devroom/exterior/lamppost.png"/>
  </tile>
+ <tile id="51">
+  <image width="117" height="53" source="../../../assets/sprites/world/maps/devroom/hotel/computer_desk.png"/>
+ </tile>
+ <tile id="52">
+  <image width="21" height="21" source="../../../assets/sprites/world/maps/devroom/hotel/lucyplush.png"/>
+ </tile>
 </tileset>

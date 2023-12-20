@@ -111,5 +111,8 @@
   <object id="58" name="door_004" x="600" y="306">
    <point/>
   </object>
+  <object id="66" name="door_005" x="720" y="306">
+   <point/>
+  </object>
  </objectgroup>
 </map>

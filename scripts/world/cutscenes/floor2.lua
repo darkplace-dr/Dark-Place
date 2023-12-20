@@ -313,6 +313,9 @@ return {
         local leader = Mod:getLeader("chara")
         local susie = cutscene:getCharacter("susie")
         local lancer = cutscene:getCharacter("lancer")
+        if not lancer then -- Somehow this can happen?
+            lancer = Game.world:spawnNPC("lancer", 340, 200)
+        end
 
         cutscene:detachFollowers()
         lancer:setPosition(325, 236)
