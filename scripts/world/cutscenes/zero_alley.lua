@@ -115,7 +115,6 @@ return{
         zero.active = true
         if susie and Game.party[1].name ~= "Susie" then
             cutscene:wait(function () return zero.x <= susie.x+50 end)
-            Log:print(susie.layer .. ", " .. zero.layer)
             zero.x = susie.x + 50
             zero.y = susie.y
             Assets.playSound("zero/normal_slash_" .. math.ceil(Utils.random(3)))

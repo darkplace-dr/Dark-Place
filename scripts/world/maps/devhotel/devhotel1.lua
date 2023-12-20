@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 66,
+  nextobjectid = 67,
   properties = {
     ["border"] = "dev",
     ["music"] = "greenroom"
@@ -507,6 +507,19 @@ return {
           type = "",
           shape = "point",
           x = 600,
+          y = 306,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 66,
+          name = "door_005",
+          type = "",
+          shape = "point",
+          x = 720,
           y = 306,
           width = 0,
           height = 0,

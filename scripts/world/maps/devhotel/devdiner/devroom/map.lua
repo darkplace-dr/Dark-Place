@@ -5,7 +5,6 @@ function DevRoom:onEnter()
 
     self.month = tonumber(os.date("%m"))
     self.day = tonumber(os.date("%d"))
-    Log:print(self.month.."/"..self.day)
 
     if self.month == 10 and self.day == 17 then
         --Happy birthday, JARU!
