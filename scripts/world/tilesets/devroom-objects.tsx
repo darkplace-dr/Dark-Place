@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.6" name="devroom-objects" tilewidth="145" tileheight="120" tilecount="24" columns="0">
+<tileset version="1.9" tiledversion="1.9.0" name="devroom-objects" tilewidth="145" tileheight="120" tilecount="19" columns="0">
  <editorsettings>
   <export target="devroom-objects.lua" format="lua"/>
  </editorsettings>
@@ -37,9 +37,6 @@
  <tile id="28">
   <image width="59" height="83" source="../../../assets/sprites/world/events/example_area/pink_shop.png"/>
  </tile>
- <tile id="31">
-  <image width="62" height="93" source="../../../assets/sprites/world/events/devroom/warphub/pasta_shop_door.png"/>
- </tile>
  <tile id="37">
   <image width="80" height="60" source="../../../assets/sprites/world/events/devroom/doorway_double.png"/>
  </tile>
@@ -58,12 +55,6 @@
  </tile>
  <tile id="43">
   <image width="40" height="40" source="../../../assets/sprites/world/events/sign.png"/>
- </tile>
- <tile id="44">
-  <image width="34" height="34" source="../../../assets/sprites/world/events/example_area/blankie_wall_note.png"/>
- </tile>
- <tile id="45">
-  <image width="115" height="29" source="../../../assets/sprites/world/maps/devroom/hotel/addison_plushies.png"/>
  </tile>
  <tile id="48">
   <image width="40" height="40" source="../../../assets/sprites/world/events/devroom/tv.png"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="65">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="69">
  <editorsettings>
   <export target="dessend.lua" format="lua"/>
  </editorsettings>
@@ -12,6 +12,7 @@
  <tileset firstgid="61" source="../../tilesets/whitespace.tsx"/>
  <tileset firstgid="70" source="../../tilesets/city_alleyway.tsx"/>
  <tileset firstgid="385" source="../../tilesets/dumpter-objects.tsx"/>
+ <tileset firstgid="422" source="../../tilesets/warp_bin.tsx"/>
  <layer id="1" name="tiles" width="16" height="24">
   <data encoding="csv">
 65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,
@@ -143,6 +144,16 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
+  <object id="65" name="npc" x="120" y="80" width="40" height="40">
+   <properties>
+    <property name="actor" value="dess_plush"/>
+    <property name="cutscene" value="plushies.dess_plush"/>
+    <property name="flagcheck" value="!dess_plush"/>
+   </properties>
+  </object>
+  <object id="66" gid="424" x="316" y="160" width="40" height="40"/>
+  <object id="67" gid="423" x="276" y="160" width="40" height="40"/>
+  <object id="68" gid="422" x="236" y="160" width="40" height="40"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="20" name="entry" x="300" y="920">

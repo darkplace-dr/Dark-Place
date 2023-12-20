@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 18,
+  nextobjectid = 19,
   properties = {
     ["border"] = "deoxynn/deep_forest",
     ["music"] = "forgotten_wood"
@@ -30,6 +31,7 @@ return {
       height = 16,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -65,6 +67,7 @@ return {
       height = 16,
       id = 2,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -100,6 +103,7 @@ return {
       height = 16,
       id = 3,
       name = "Tile Layer 3",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -132,6 +136,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -143,7 +148,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -156,7 +161,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 720,
           y = 120,
@@ -169,7 +174,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 520,
@@ -182,7 +187,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 120,
@@ -199,6 +204,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -210,7 +216,7 @@ return {
         {
           id = 6,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 210,
           y = 170,
@@ -226,7 +232,7 @@ return {
         {
           id = 7,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 330,
           y = 90,
@@ -242,7 +248,7 @@ return {
         {
           id = 8,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 370,
           y = 330,
@@ -258,7 +264,7 @@ return {
         {
           id = 9,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 530,
           y = 90,
@@ -274,7 +280,7 @@ return {
         {
           id = 10,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 650,
           y = 290,
@@ -290,7 +296,7 @@ return {
         {
           id = 11,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 360,
           y = 200,
@@ -308,7 +314,7 @@ return {
         {
           id = 14,
           name = "script",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 640,
@@ -324,7 +330,7 @@ return {
         {
           id = 15,
           name = "beanspot",
-          type = "",
+          class = "",
           shape = "point",
           x = 560,
           y = 400,
@@ -340,7 +346,7 @@ return {
         {
           id = 16,
           name = "beanspot",
-          type = "",
+          class = "",
           shape = "point",
           x = 200,
           y = 480,
@@ -356,7 +362,7 @@ return {
         {
           id = 17,
           name = "beanspot",
-          type = "",
+          class = "",
           shape = "point",
           x = 440,
           y = 200,
@@ -368,6 +374,23 @@ return {
             ["inc_flag"] = "binaribeans",
             ["name"] = "Binaribean"
           }
+        },
+        {
+          id = 18,
+          name = "npc",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 120,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "jamm_plush",
+            ["cond"] = "not Game:getFlag(\"jamm_plush\", false) and Game:getFlag(\"jamm_closure\", true)",
+            ["cutscene"] = "plushies.jamm_plush"
+          }
         }
       }
     },
@@ -376,6 +399,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -387,7 +411,7 @@ return {
         {
           id = 12,
           name = "entry",
-          type = "",
+          class = "",
           shape = "point",
           x = 660,
           y = 600,

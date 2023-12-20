@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -26,6 +27,12 @@ return {
       firstgid = 430,
       filename = "../../../tilesets/city_alleyway.tsx",
       exportfilename = "../../../tilesets/city_alleyway.lua"
+    },
+    {
+      name = "warp_bin",
+      firstgid = 745,
+      filename = "../../../tilesets/warp_bin.tsx",
+      exportfilename = "../../../tilesets/warp_bin.lua"
     }
   },
   layers = {
@@ -37,6 +44,7 @@ return {
       height = 12,
       id = 2,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -68,6 +76,7 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -99,6 +108,7 @@ return {
       height = 12,
       id = 3,
       name = "Tile Layer 3",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -112,7 +122,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 651, 652, 653, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 666, 667, 668, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 745, 746, 747, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -127,6 +137,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -138,7 +149,7 @@ return {
         {
           id = 1,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -151,7 +162,7 @@ return {
         {
           id = 2,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 160,
@@ -164,7 +175,7 @@ return {
         {
           id = 3,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 200,
@@ -177,7 +188,7 @@ return {
         {
           id = 4,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 80,
           y = 360,
@@ -190,7 +201,7 @@ return {
         {
           id = 5,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 0,
@@ -203,7 +214,7 @@ return {
         {
           id = 6,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 600,
           y = 120,
@@ -220,6 +231,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -231,7 +243,7 @@ return {
         {
           id = 13,
           name = "savepoint",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 500,
           y = 220,
@@ -246,7 +258,7 @@ return {
         {
           id = 14,
           name = "script",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 320,
           y = -40,
@@ -262,7 +274,7 @@ return {
         {
           id = 15,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 84,
           y = 110,
@@ -278,7 +290,7 @@ return {
         {
           id = 16,
           name = "beanspot",
-          type = "",
+          class = "",
           shape = "point",
           x = 400,
           y = 320,
@@ -294,7 +306,7 @@ return {
         {
           id = 17,
           name = "beanspot",
-          type = "",
+          class = "",
           shape = "point",
           x = 240,
           y = 240,
@@ -314,6 +326,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -325,7 +338,7 @@ return {
         {
           id = 9,
           name = "warp",
-          type = "",
+          class = "",
           shape = "point",
           x = 140,
           y = 240,
@@ -338,7 +351,7 @@ return {
         {
           id = 10,
           name = "exit",
-          type = "",
+          class = "",
           shape = "point",
           x = 380,
           y = 40,
@@ -351,7 +364,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 460,
           y = 240,

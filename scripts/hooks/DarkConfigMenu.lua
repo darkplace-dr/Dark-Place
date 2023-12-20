@@ -149,15 +149,12 @@ function DarkConfigMenu:update()
                 if self.currently_selected == 1 then
                     Game.world:openMenu(AchievementsMenu())
                 elseif self.currently_selected == 2 then
-                    self.extras_substate = "ADDISON"
-                    Game:setFlag("AddiSwitchOn", not Game:getFlag("AddiSwitchOn", false))
-                elseif self.currently_selected == 3 then
                     self.extras_substate = "BORDER"
-                elseif self.currently_selected == 4 then
+                elseif self.currently_selected == 3 then
                     self.extras_substate = "BULBORBSCALE"
-                elseif self.currently_selected == 5 then
+                elseif self.currently_selected == 4 then
                     self.extras_substate = "BULBORBLOCATION"
-                elseif self.currently_selected == 6 then
+                elseif self.currently_selected == 5 then
                     self.state = "MAIN"
                     self.currently_selected = 1
                 end
@@ -232,46 +229,37 @@ function DarkConfigMenu:draw()
         love.graphics.print("EXTRAS", 188, -12)
 
         love.graphics.print("Achievements",     88, 38 + (0 * 32))
-        --[[
-        if self.extras_substate == "ADDISON" then
-            love.graphics.setColor(PALETTE["world_text_selected"])
-        end
-        ]]
-        love.graphics.print("Addison Style",       88, 38 + (1 * 32))
-        --love.graphics.setColor(PALETTE["world_text"])
         if self.extras_substate == "BORDER" then
             love.graphics.setColor(PALETTE["world_text_selected"])
         end
-        love.graphics.print("Border",           88, 38 + (2 * 32))
+        love.graphics.print("Border",           88, 38 + (1 * 32))
         love.graphics.setColor(PALETTE["world_text"])
         if self.extras_substate == "BULBORBSCALE" then
             love.graphics.setColor(PALETTE["world_text_selected"])
         end
-        love.graphics.print("Bulborb Scale",    88, 38 + (3 * 32))
+        love.graphics.print("Bulborb Scale",    88, 38 + (2 * 32))
         love.graphics.setColor(PALETTE["world_text"])
         if self.extras_substate == "BULBORBLOCATION" then
             love.graphics.setColor(PALETTE["world_text_selected"])
         end
-        love.graphics.print("Bulborb Location", 88, 38 + (4 * 32))
+        love.graphics.print("Bulborb Location", 88, 38 + (3 * 32))
         love.graphics.setColor(PALETTE["world_text"])
-        love.graphics.print("Back",             88, 38 + (5 * 32))
+        love.graphics.print("Back",             88, 38 + (4 * 32))
 
-
-        love.graphics.print(Mod:shouldUseVelvetAddisons() and "Velvet" or "Vanilla",        348, 38 + (1 * 32))
         if self.extras_substate == "BORDER" then
             love.graphics.setColor(PALETTE["world_text_selected"])
         end
-        love.graphics.print(Kristal.getBorderName(),                                        348, 38 + (2 * 32))
+        love.graphics.print(Kristal.getBorderName(),                                        348, 38 + (1 * 32))
         love.graphics.setColor(PALETTE["world_text"])
         if self.extras_substate == "BULBORBSCALE" then
             love.graphics.setColor(PALETTE["world_text_selected"])
         end
-        love.graphics.print(tostring(Mod.bulborb_reaction:getScale()),                      348, 38 + (3 * 32))
+        love.graphics.print(tostring(Mod.bulborb_reaction:getScale()),                      348, 38 + (2 * 32))
         love.graphics.setColor(PALETTE["world_text"])
         if self.extras_substate == "BULBORBLOCATION" then
             love.graphics.setColor(PALETTE["world_text_selected"])
         end
-        love.graphics.print(self.bulborb_positions[Game:getFlag("bulborb_position", 2)],    348, 38 + (4 * 32), 0, 0.9, 1)
+        love.graphics.print(self.bulborb_positions[Game:getFlag("bulborb_position", 2)],    348, 38 + (3 * 32), 0, 0.9, 1)
 
         love.graphics.setColor(Game:getSoulColor())
         love.graphics.draw(self.heart_sprite,  63, 48 + ((self.currently_selected - 1) * 32))

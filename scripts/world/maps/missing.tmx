@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="48" tileheight="48" infinite="0" nextlayerid="8" nextobjectid="69">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="48" tileheight="48" infinite="0" nextlayerid="8" nextobjectid="70">
  <editorsettings>
   <export target="missing.lua" format="lua"/>
  </editorsettings>
@@ -166,6 +166,15 @@
    <properties>
     <property name="actor" value="tpose_mario"/>
     <property name="cutscene" value="missing.tpose_mario"/>
+    <property name="turn" type="bool" value="true"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="69" name="npc" x="48" y="816">
+   <properties>
+    <property name="actor" value="pauling"/>
+    <property name="cutscene" value="missing.pauling"/>
+    <property name="flagcheck" value="!pauling_inparty"/>
     <property name="turn" type="bool" value="true"/>
    </properties>
    <point/>

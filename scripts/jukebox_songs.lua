@@ -233,13 +233,6 @@ return {
     origin = "Dark Place"
   },
   {
-    name = "Vs. Chevelour",
-    file = "vs_chevelour",
-    composer = "Kross (?)",
-    released = "2023",
-    origin = "Dark Place"
-  },
-  {
     name = "Exception",
     file = "exception",
     composer = "Simbel",

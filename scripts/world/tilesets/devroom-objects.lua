@@ -20,7 +20,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 24,
+  tilecount = 19,
   tiles = {
     {
       id = 10,
@@ -89,12 +89,6 @@ return {
       height = 83
     },
     {
-      id = 31,
-      image = "../../../assets/sprites/world/events/devroom/warphub/pasta_shop_door.png",
-      width = 62,
-      height = 93
-    },
-    {
       id = 37,
       image = "../../../assets/sprites/world/events/devroom/doorway_double.png",
       width = 80,
@@ -133,18 +127,6 @@ return {
       image = "../../../assets/sprites/world/events/sign.png",
       width = 40,
       height = 40
-    },
-    {
-      id = 44,
-      image = "../../../assets/sprites/world/events/example_area/blankie_wall_note.png",
-      width = 34,
-      height = 34
-    },
-    {
-      id = 45,
-      image = "../../../assets/sprites/world/maps/devroom/hotel/addison_plushies.png",
-      width = 115,
-      height = 29
     },
     {
       id = 48,

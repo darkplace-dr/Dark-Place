@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="15">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="15">
  <editorsettings>
   <export target="start.lua" format="lua"/>
  </editorsettings>
@@ -10,6 +10,7 @@
  <tileset firstgid="1" source="../../tilesets/castle_path.tsx"/>
  <tileset firstgid="25" source="../../tilesets/other-objects.tsx"/>
  <tileset firstgid="76" source="../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="391" source="../../tilesets/warp_bin.tsx"/>
  <layer id="1" name="tiles" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -58,7 +59,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,297,298,299,0,0,0,0,0,0,0,
-0,0,0,0,0,0,312,313,314,0,0,0,0,0,0,0,
+0,0,0,0,0,0,391,392,393,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
