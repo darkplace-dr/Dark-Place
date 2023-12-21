@@ -1,0 +1,176 @@
+{
+    "id": "magical-glass",
+    "authors": [
+        "Nyakorita",
+        "Sam Deluxe",
+        "Bor",
+        "Just Another Random User",
+        "FireRainV"
+    ],
+    "version": "v1.1.1-dev",
+    "engineVer": "v0.9.0-dev",
+
+    "config": {
+        ///// Default battle system
+        // If an encounter isn't forcing a battle system, use this system as a fallback.
+        ///// Values:
+        // "undertale"
+        // "deltarune"
+        /////
+        "default_battle_system": "undertale",
+
+        ///// Light Battle TP
+        // Whether the Tension Bar and grazing should be enabled in light battles.
+        /////
+        "light_battle_tp": false,
+        
+        ///// Light Battle Defend light battles (located at the mercy button).
+        /////
+        "light_battle_defend_btn": true,
+
+        ///// Force light mode in Light Battles
+        // Whether the game should enable light mode when entering a light battle in the dark world.
+        /////
+        "force_light_mode_in_light_battles": false,
+
+        ///// UNDERTALE text skipping
+        // Disables skipping text in ANY textbox when holding down confirm or menu.
+        /////
+        "undertale_text_skipping": false,
+        
+        ///// Light Battles HP Gauge Length Cap
+        // Limits the length of the HP bar in light battles.
+        ///// Values:
+        //
+        // boolean (If true, limits it to 99. If false, disables the length cap)
+        // number (If set a number, limits it to the amount set)
+        /////
+        "hp_gauge_length_cap": true,
+
+        ///// Key Items Conversion
+        // Whether you'll have in your light inventory items like Ball of Junk or Glass when needed.
+        /////
+        "key_items_conversion": true,
+
+        ///// Hide CELL option in the Light World menu
+        // Hides the CELL option in the Light World menu if the has_cell_phone flag is false.
+        /////
+        "hide_cell": true,
+
+        ///// Light World STAT menu style
+        // Determines the appearance of the Light World STAT menu when more than one character is
+        // in the party.
+        ///// Values:
+        //
+        // "magical_glass"
+        // Prints all 3 members' names without quotation marks at the top of the box with their portrait (if they have one)
+        // in the empty space across from LV and HP. A Soul is placed above their names to act
+        // as the cursor.
+        // (This option only supports up to 3 party members.)
+        //
+        // "deltatraveler"
+        // The Light World STAT menu from Deltatraveler. Only shows the currently selected member's
+        // name and portrait, with an indicator underneath the portrait showing you can press left
+        // or right to select a character.
+        // (This option supports any amount of party members.)
+        //
+        // "undertale"
+        // Prints the current member's name and portrait, and an indicator similar to the one from
+        // Deltatraveler on top of the portrait which functions the same way but has a different design choice.
+        // (This option supports any amount of party members.)
+        //
+        /////
+        "light_stat_menu_style": "undertale",
+
+        ///// UNDERTALE stat display
+        // Subtracts 10 from base AT and DF in the Light World's STAT menu.
+        /////
+        "undertale_stat_display": true,
+
+        ///// Always show magic
+        // Whether the MG stat should always be shown in the Light World STAT menu.
+        ///// Values:
+        //
+        // true
+        // Always shows the MG stat.
+        //
+        // false
+        // Only shows the MG stat if at least one party member has a magic stat of greater than 0.
+        //
+        /////
+        "always_show_magic": false,
+
+        ///// Item info
+        // Determines whether battle descriptions and TP costs should be displayed in the main
+        // window or should be displayed in a box under it similar to Deltatraveler.
+        ///// Values:
+        //
+        // "magical_glass"
+        // Battle descriptions are displayed in the main window.
+        // This style will overlap with the bottom row of menu options.
+        //
+        // "deltatraveler"
+        // Battle descriptions and TP costs are displayed in a small window underneath
+        // the main window.
+        //
+        /////
+        "item_info": "deltatraveler",
+
+        ///// Gauge style
+        // Determines the appearance of gauges drawn in ENEMYSELECT or PARTYSELECT in Light Battles.
+        ///// Values:
+        //
+        // "undertale"
+        // UNDERTALE-styled HP gauges.
+        // This style does not support mercy bars.
+        //
+        // "deltarune"
+        // deltarune-styled HP and Mercy gauges.
+        //
+        // The following options require Magical Glass: Deltatraveled, which isn't out yet!
+        //
+        // "deltatraveler_old"
+        // The gauge styles used in Deltatraveler before version 2.07.
+        //
+        // "deltatraveler_new"
+        // The gauge styles used in Deltatraveler after version 2.07.
+        //
+        /////
+        "gauge_style": "undertale",
+
+        ///// Mercy Bar
+        // Draws the Mercy Bar in Light Battles if gauge_style is set to deltarune.
+        // Works identically to the mercyBar mod config option.
+        /////
+        "mercy_bar": false,
+
+        ///// Mercy Messages
+        // Shows the amount of mercy added to an enemy when their mercy gauge increases in Light Battles.
+        /////
+        "mercy_messages": true,
+
+        ///// Enemy Bar Percentages
+        // Draws the HP and Mercy text and Percentages on the gauges in ENEMYSELECT if gauge_style is set to deltarune.
+        // Works identically to the enemyBarPercentages mod config option.
+        /////
+        "enemy_bar_percentages": false,
+
+        ///// Action Button flash
+        // Whether the Spell and Mercy buttons should flash in Light Battles if an enemy is pacifyable or sparable.
+        /////
+        "action_button_flash": false,
+        
+        ///// Action Button styles
+        // Determines the appearance of the action buttons in Light Battles.
+        ///// Values:
+        // "magical_glass"
+        // "deltatraveler"
+        /////
+        "action_button_style": "magical_glass",
+        
+        ///// Debug Mode
+        // Determines whether the library is in its debug mode state.
+        /////
+        "debug": "true"
+    }
+}

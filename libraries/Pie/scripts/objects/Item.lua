@@ -112,6 +112,21 @@ function Item:init()
     self.reflect_defend_bonus = 0
     self.reflect_damage_proprotion = 0
     self.reflect_sound = nil
+
+    --- Magical Glass 
+
+    -- Short name for the light battle item menu
+    self.short_name = "nil"
+    -- Serious name for the light battle item menu
+    self.serious_name = nil
+
+    self.tags = {}
+
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
+    -- How this item is used on other party members (eats, etc.)
+    self.use_method_other = nil
+
 end
 
 --- Gets the bonus healing added when consuming a HealItem.

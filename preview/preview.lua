@@ -65,7 +65,7 @@ function preview:update()
     end
 
     self.particle2_timer = self.particle2_timer + DT
-    local timeheart = Utils.random(1, 100000)
+    local timeheart = Utils.random(1, 200000)
     if self.particle2_timer >= timeheart then
         self.particle2_timer = 0
         local radius = 12

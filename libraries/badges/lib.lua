@@ -5,6 +5,22 @@ function lib:init()
     self.total_bp = 3
 end
 
+
+Utils.hook(Item, 'getTypeName', function(orig, self, ...)
+    if self.type == "item" then
+        return "ITEM"
+    elseif self.type == "key" then
+        return "KEYITEM"
+    elseif self.type == "weapon" then
+        return "WEAPON"
+    elseif self.type == "armor" then
+        return "ARMOR"
+    elseif self.type == "badge" then
+        return "BADGE"
+    end
+    return "UNKNOWN"
+end)
+
 function lib:load(data, is_new_file, index)
     if data.total_bp then
         self.total_bp = data.total_bp

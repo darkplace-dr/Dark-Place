@@ -1,0 +1,10 @@
+{
+    "auto": false,
+    "sprites": "ut_shock",
+    "text_bounds": {
+        "left": 50,
+        "top": 50,
+        "width": 230,
+        "height": 216
+    }
+}
