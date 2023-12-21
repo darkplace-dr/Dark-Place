@@ -7,10 +7,6 @@ function Spamton:init()
     self.path = "npcs/sneo"
     self.voice = "sneo"
     self.flip = "right"
-	
-    for _,part in ipairs(sprite.parts) do
-        sprite:setSwingSpeed(2)
-    end
 end
 
 function Spamton:createSprite()
