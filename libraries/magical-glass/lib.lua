@@ -82,6 +82,7 @@ function lib:load(data, new_file)
         lib.light_equip = {}
         lib.dark_equip = {}
     else
+		data.magical_glass = data.magical_glass or {}
         lib.kills = data.magical_glass["kills"] or 0
         lib.game_overs = lib.game_overs or data.magical_glass["game_overs"] or 0
         lib.serious_mode = data.magical_glass["serious_mode"] or false
