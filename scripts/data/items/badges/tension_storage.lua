@@ -15,7 +15,7 @@ function badge:init()
     self.badge_points = 1
 
     -- Default shop price (sell price is halved)
-    self.price = 20000
+    self.price = 730
 end
 
 function badge:update(equipped)

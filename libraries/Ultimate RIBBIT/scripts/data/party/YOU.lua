@@ -46,6 +46,19 @@ function character:init()
         health = 120
     }
 
+
+    -- Current health (saved to the save file)
+    self.lw_health = 3
+    self.lw_exp = 1
+
+    -- Base stats (saved to the save file)
+    self.lw_stats = {
+        health = 4,
+        attack = 2,
+        defense = 1,
+        magic = 0,
+    }
+
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/guitar"
 

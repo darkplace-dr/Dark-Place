@@ -6,6 +6,8 @@ function item:init()
     -- Display name
     self.name = "Guilt Tripping"
 
+    self.equip_display_name = "Guilt Tripping"
+
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
     -- Whether this item is for the light world

@@ -1,0 +1,15 @@
+{
+    "auto": true,
+    "sprites": {
+        "left": "ut_round_side",
+        "right": "ut_round_side",
+        "top": "ut_round_side",
+        "bottom": "ut_round_side",
+        "top_left": "ut_round_top_left",
+        "top_right": "ut_round_top_right",
+        "bottom_left": "ut_round_bottom_left",
+        "bottom_right": "ut_round_bottom_right",
+        "tail": "ut_round_tail",
+        "fill": "fill"
+    }
+}

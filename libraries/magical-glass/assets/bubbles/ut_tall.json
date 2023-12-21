@@ -1,0 +1,10 @@
+{
+    "auto": false,
+    "sprites": "ut_tall",
+    "text_bounds": {
+        "left": 1,
+        "top": 10,
+        "width": 80,
+        "height": 216
+    }
+}
