@@ -91,12 +91,13 @@ function HomingSoul:doMovement()
 			self:jumpEnd()
 		end
 		
-		if Input.down("confirm") and self.selected and self.jumped then
+		if Input.pressed("confirm") and self.selected and self.jumped then
 			self.mode = "HOMING"
 			Assets.playSound("whoosh", 1, 1)
 			Game.battle.timer:tween(0.05, self, {x = self.selected.x, y = self.selected.y}, "linear", function()
 				if self.collider:collidesWith(self.selected) then
 					self.selected:onHome()
+					self.selected = nil
 					self.gravity = -1
 				end
 				self.mode = "MOVE"
