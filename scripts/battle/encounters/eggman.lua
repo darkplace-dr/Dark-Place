@@ -113,4 +113,8 @@ function Dummy:update()
     end
 end
 
+function Dummy:createSoul(x, y, color)
+	return HomingSoul(x,y)
+end
+
 return Dummy
