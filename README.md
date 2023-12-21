@@ -88,6 +88,8 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * LancerGaming2 - Contributor
 * FireRainV - Contributor
 * Sad Diamond Man - Contributor
+* Bryan The Celestial - Contributor
+* YoshifanJordan - Contributor
 
 </details>
 
@@ -96,12 +98,13 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Kristal Team - Creating the Kristal engine
 * Toby Fox - Original author for Undertale and Deltarune
 * Lena Raine - Composer for "Hug for Ralsei" and "Lullaby for Lancer"
-* KateBulka#2611 - Shadowman Library, Light Transition Library, & more
+* KateBulka - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
 * Brylee - Original author for Deltarune: Ozymandias, dialogue portraits for Rook
 * Mr. Luwigi - Rook, DZ & NG sprites for Deltarune: Ozymandias
-* TrashcatYT#6658 - Blue Soul Library
+* TrashcatYT - Blue Soul Library
 * Glavvrach - Splitting effect for SNEO bullets
+* crouting pea - GM path system port.
 * TheMaxine - Original author for [Ribbit](https://gamejolt.com/games/ribbitmod/671888)
 * RhenaudTheLukark - Original author for [Unitale/Create Your Frisk/Create Your Kris](https://github.com/RhenaudTheLukark/CreateYourFrisk/releases)
 * STD Repaints - Original author for [Deltarune Repainted](https://gamejolt.com/games/nudealert/496504)
