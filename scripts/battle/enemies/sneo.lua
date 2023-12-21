@@ -15,10 +15,11 @@ function SpamtonNEO:init()
     self.waves = {
         "sneo/flyingheads",
         "sneo/firework_pipis",
+        "sneo/phoneshooter",
     }
 
 	self.boss = true
-    self.difficulty = 1
+    self.difficulty = 0
 
     self.dialogue_offset = {-45, -24}
     self.spare_points = 0
@@ -41,16 +42,69 @@ function SpamtonNEO:init()
 
     self:registerAct("Snap")
     self:registerAct("SnapAll", "", "all")
+	
+	
+    self.timer = 0
+    self.mode = "normal"
+
+    self.old_x = self.x
+    self.old_y = self.y
+
+    self.ease = false
+    self.ease_timer = 0
+end
+
+function SpamtonNEO:setMode(mode)
+    self.mode = mode
+    self.old_x = self.x
+    self.old_y = self.y
+    self.ease = true
+    self.ease_timer = 0
 end
 
 function SpamtonNEO:update()
-    super:update(self)
+    super.update(self)
+
+    -- movements
+    if not self.done_state and (Game.battle:getState() ~= "TRANSITION") then
+        self.timer = self.timer + (1 * DTMULT)
+
+        local wanted_x = self.old_x
+        local wanted_y = self.old_y
+
+        if self.mode == "normal" then
+            wanted_x = 518
+            wanted_y = 250
+        elseif self.mode == "move_back" then
+            wanted_x = 518 + 300
+            wanted_y = 250
+        elseif self.mode == "shoot" then
+            wanted_x = 518 + (math.cos(self.timer * 0.04) * 40)
+            wanted_y = 250 + (math.cos(self.timer * 0.2) * 10)
+        end
+
+        if not self.ease then
+            self.x = wanted_x
+            self.y = wanted_y
+        else
+            self.ease_timer = self.ease_timer + (0.05 * DTMULT)
+            self.x = Ease.inQuad(self.ease_timer, self.old_x, wanted_x - self.old_x, 1)
+            self.y = Ease.inQuad(self.ease_timer, self.old_y, wanted_y - self.old_y, 1)
+            if self.ease_timer >= 1 then
+                self.ease = false
+            end
+        end
+    end
+
+    for _,enemy in pairs(Game.battle.enemy_world_characters) do
+        enemy:remove()
+    end
 end
 
 function SpamtonNEO:onAct(battler, name)
 	if name == "Check" then
 	    if battler.chara.id == "YOU" then
-            Assets.playSound("check")
+            --Assets.playSound("check")
         end
 	    if self.check_count == 0 then
 		    self.check_count = self.check_count + 1

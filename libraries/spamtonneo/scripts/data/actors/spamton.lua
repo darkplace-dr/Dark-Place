@@ -7,6 +7,10 @@ function Spamton:init()
     self.path = "npcs/sneo"
     self.voice = "sneo"
     self.flip = "right"
+	
+    for _,part in ipairs(sprite.parts) do
+        sprite:setSwingSpeed(2)
+    end
 end
 
 function Spamton:createSprite()
@@ -17,6 +21,9 @@ function Spamton:onSetAnimation(sprite, anim, ...)
     local args = {...}
     if anim == "idle" then
         sprite:resetParts()
+        for _,part in ipairs(sprite.parts) do
+            sprite:setSwingSpeed(2)
+        end
     elseif anim == "down" then
         sprite:resetParts()
         sprite:setHeadFrame(1)

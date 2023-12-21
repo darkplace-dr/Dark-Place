@@ -4,6 +4,7 @@ function Basic:init()
 	super:init(self)
     self.time = 15
 
+    self.sneo = self:getAttackers()[1]
     self.type = 1
 	
     if self.type == 0 then
@@ -13,6 +14,8 @@ end
 
 function Basic:onStart()
 	Game.battle:swapSoul(YellowSoul())
+
+    self.sneo:setMode("move_back")
 
     if self.type == 0 then
         local phone = self:spawnBullet("sneo/phoneshooter", Game.battle.arena.right + 200, Game.battle.arena.y - 40)
@@ -29,6 +32,11 @@ function Basic:onStart()
             phone.side = 1
         end)
     end
+end
+
+function Basic:onEnd()
+    self.sneo:setMode("normal")
+    super.onEnd(self)
 end
 
 return Basic

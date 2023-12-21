@@ -3,6 +3,8 @@ local SNEORematch, super = Class(Encounter)
 function SNEORematch:init()
     super:init(self)
 
+    self.sneo = self:addEnemy("sneo")
+
     self.text = "* Time to be a BIG SHOT once more!"
 
     self.music = "deltarune/spamton_neo_mix_ex_wip"
@@ -10,8 +12,6 @@ function SNEORematch:init()
     self.background = true
 
 	self.default_xactions = false
-
-    self:addEnemy("sneo", 518, 250)
 	
 	self.flee = false
 
