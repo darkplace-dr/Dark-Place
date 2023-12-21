@@ -17,7 +17,7 @@
         // "undertale"
         // "deltarune"
         /////
-        "default_battle_system": "undertale",
+        "default_battle_system": "deltarune",
 
         ///// Light Battle TP
         // Whether the Tension Bar and grazing should be enabled in light battles.
