@@ -5,7 +5,7 @@ return {
 		
         if Game:getFlag("weird") then
             if Game:getFlag("weirdEnemiesKilled", 0) <= 19 then
-                if event.interact.count == 1 then
+                if event.interact_count == 1 then
                     cutscene:text("[voice:spamton]* LOOKING FOR [Irresistible Deals] THAT WILL [Blow Your Mind!?]")
                     cutscene:text("[voice:spamton]* WELL [Shut Your Mouth] BECAUSE YOU ARE [A Weakling!]")
                     cutscene:text("[voice:spamton]* TRY A LITTLE [Friday Night Work Out]...")
