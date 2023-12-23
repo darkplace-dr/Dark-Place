@@ -78,8 +78,8 @@ function character:init()
     end
 
     -- Default light world equipment item IDs (saves current equipment)
-    self.lw_weapon_default = "light/stick"
-    self.lw_armor_default = "light/bandage"
+    self.lw_weapon_default = "ut_weapons/stick"
+    self.lw_armor_default = "ut_armors/bandage"
 
 
 
