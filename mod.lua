@@ -177,6 +177,11 @@ function Mod:init()
 			end
 		end
 	end)
+
+    Utils.hook(Actor, "init", function(orig, self)
+        orig(self)
+        self.taunt_sprites = {}
+    end)
 end
 
 function Mod:postInit(new_file)
