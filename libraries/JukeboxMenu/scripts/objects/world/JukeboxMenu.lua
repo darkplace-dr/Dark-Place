@@ -92,16 +92,19 @@ function JukeboxMenu:draw()
     love.graphics.rectangle("line", 260, 20, 1, 356)
 
     local cur_song = cur_page[self.selected_index] or self.default_song
-    local info_w = 520
+    local info_font = self.font
+    local info_scale = 0.5
+    love.graphics.setFont(info_font)
+    local info_w = 260 / info_scale
     local info = string.format(
         "Composer: %s\nReleased: %s\nOrigin: %s",
         cur_song.composer or self.none_text,
         cur_song.released or self.none_text,
         cur_song.origin or self.none_text
     )
-    local _, info_lines = self.font:getWrap(info, info_w)
-    local info_yoff = self.font:getHeight() * #info_lines * 0.5
-    love.graphics.printf(info, 270, 372 - info_yoff, info_w, "left", 0, 0.5, 0.5)
+    local _, info_lines = info_font:getWrap(info, info_w)
+    local info_yoff = info_font:getHeight() * #info_lines * info_scale
+    love.graphics.printf(info, 270, 372 - info_yoff, info_w, "left", 0, info_scale, info_scale)
 
     love.graphics.setColor(1, 1, 1)
 end
