@@ -1,13 +1,12 @@
-modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/utils_general")
+modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/utils_lore")
+modRequire("scripts/main/minigames_glue")
 modRequire("scripts/main/warp_bin")
+Speen = modRequire("scripts/main/ow_speen")
 modRequire("scripts/main/ow_taunt")
 modRequire("scripts/main/battle_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
-Speen = modRequire("scripts/main/ow_speen")
-
--- PR 500 stolen by AcousticJamm :troll:
 
 function Mod:preInit()
     if Kristal.Version < SemVer(self.info.engineVer) then
@@ -254,7 +253,7 @@ function Mod:initializeImportantFlags(new_file)
         Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65, pauling = 50 }
         Game:getPartyMember("pauling").opinions = { kris = 40, YOU = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, nonyo = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
-	
+
 	if new_file or not Game:getFlag("darkess_beans") then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before the bean spots were added.")
@@ -263,27 +262,32 @@ function Mod:initializeImportantFlags(new_file)
 		Game:setFlag("spam_beans", 0)
 		Game:setFlag("binaribeans", 0)
 	end
-	
+
+    local function addOpinionsToParty(party, new_opinions)
+        local party_obj = Game:getPartyMember(party)
+        party_obj.opinions = Utils.merge(party_obj.opinions, new_opinions)
+    end
+
 	if new_file or mario.opinions == nil then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Mario was added.")
 
-        Game:getPartyMember("YOU").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("kris").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("susie").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("noelle").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("dess").opinions = Utils.merge(party.opinions, { mario = 35 })
-        Game:getPartyMember("brandon").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("dumbie").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("ostarwalker").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("berdly").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("bor").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("robo_susie").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("nonyo").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("iphone").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("frisk2").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("alseri").opinions = Utils.merge(party.opinions, { mario = 50 })
-        Game:getPartyMember("jamm").opinions = Utils.merge(party.opinions, { mario = 65 })
+        addOpinionsToParty("YOU", { mario = 50 })
+        addOpinionsToParty("kris", { mario = 50 })
+        addOpinionsToParty("susie", { mario = 50 })
+        addOpinionsToParty("noelle", { mario = 50 })
+        addOpinionsToParty("dess", { mario = 35 })
+        addOpinionsToParty("brandon", { mario = 50 })
+        addOpinionsToParty("dumbie", { mario = 50 })
+        addOpinionsToParty("ostarwalker", { mario = 50 })
+        addOpinionsToParty("berdly", { mario = 50 })
+        addOpinionsToParty("bor", { mario = 50 })
+        addOpinionsToParty("robo_susie", { mario = 50 })
+        addOpinionsToParty("nonyo", { mario = 50 })
+        addOpinionsToParty("iphone", { mario = 50 })
+        addOpinionsToParty("frisk2", { mario = 50 })
+        addOpinionsToParty("alseri", { mario = 50 })
+        addOpinionsToParty("jamm", { mario = 65 })
         Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65 }
     end
 	
@@ -291,23 +295,23 @@ function Mod:initializeImportantFlags(new_file)
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Ms. Pauling was added.")
 
-        Game:getPartyMember("YOU").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("kris").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("susie").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("noelle").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("dess").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("brandon").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("dumbie").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("ostarwalker").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("berdly").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("bor").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("robo_susie").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("nonyo").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("iphone").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("frisk2").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("alseri").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("jamm").opinions = Utils.merge(party.opinions, { pauling = 50 })
-        Game:getPartyMember("mario").opinions = Utils.merge(party.opinions, { pauling = 50 })
+        addOpinionsToParty("YOU", { pauling = 50 })
+        addOpinionsToParty("kris", { pauling = 50 })
+        addOpinionsToParty("susie", { pauling = 50 })
+        addOpinionsToParty("noelle", { pauling = 50 })
+        addOpinionsToParty("dess", { pauling = 50 })
+        addOpinionsToParty("brandon", { pauling = 50 })
+        addOpinionsToParty("dumbie", { pauling = 50 })
+        addOpinionsToParty("ostarwalker", { pauling = 50 })
+        addOpinionsToParty("berdly", { pauling = 50 })
+        addOpinionsToParty("bor", { pauling = 50 })
+        addOpinionsToParty("robo_susie", { pauling = 50 })
+        addOpinionsToParty("nonyo", { pauling = 50 })
+        addOpinionsToParty("iphone", { pauling = 50 })
+        addOpinionsToParty("frisk2", { pauling = 50 })
+        addOpinionsToParty("alseri", { pauling = 50 })
+        addOpinionsToParty("jamm", { pauling = 50 })
+        addOpinionsToParty("mario", { pauling = 50 })
         Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, nonyo = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
 
