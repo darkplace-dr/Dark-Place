@@ -71,6 +71,13 @@ function Mimic:init()
     self.killable = false
 
     self.current_actor = "ufoofdoom"
+
+    self:addFX(ShaderFX(Mod.shaders["wave"], {
+        ["wave_sine"] = function () return Kristal.getTime() * 100 end,
+        ["wave_mag"] = 2,
+        ["wave_height"] = 2,
+        ["texsize"] = { SCREEN_WIDTH, SCREEN_HEIGHT }
+    }), "funky_mode")
 end
 
 function Mimic:onAct(battler, name)
