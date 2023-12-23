@@ -16,10 +16,6 @@ function Mod:isNight()
     return hour < 8 or hour >= 21
 end
 
-function Mod:shouldUseVelvetAddisons()
-    return Game:getFlag("AddiSwitchOn", false)
-end
-
 -- Randomizes fun
 ---@param avoid_collide? boolean whether to ensure that the new value is different from the last one. defaults to true
 function Mod:rollFun(avoid_collide)
@@ -36,6 +32,8 @@ function Mod:rollFun(avoid_collide)
         end
         Game:setFlag("fun", new_fun)
     end
+
+    return Game:getFlag("fun")
 end
 
 -- Adds a party member for selection in the DarkPartyMenu

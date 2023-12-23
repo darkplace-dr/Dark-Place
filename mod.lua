@@ -17,17 +17,11 @@ end
 
 function Mod:init()
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
-
-    MUSIC_VOLUMES["cybercity"] = 0.8
-    MUSIC_PITCHES["cybercity"] = 0.97
-
-    MUSIC_VOLUMES["cybercity_alt"] = 0.8
-    MUSIC_PITCHES["cybercity_alt"] = 1.2
-
+    MUSIC_PITCHES["deltarune/cybercity"] = 0.97
+    MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-
     MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
 
     self.voice_timer = 0
@@ -252,15 +246,12 @@ function Mod:initializeImportantFlags(new_file)
 
         Game:setFlag("timesUsedWrongBorDoorCode", 0)
         Game:setFlag("BorDoorCodeUnlocked", false)
-        Game:setFlag("AddiSwitchOn", false)
 
         Game:setFlag("hasObtainedLancer", false)
         Game:setFlag("hasObtainedRouxls", false)
 
         Game:setFlag("cloudwebStoryFlag", 0)
         Game:setFlag("vaporland_sidestory", 0)
-
-        Game:setFlag("spookymonth", false)
     end
 
     -- Create save flags for costumes if they don't already exist
@@ -968,20 +959,7 @@ function Mod:initializeImportantFlags(new_file)
 end
 
 function Mod:initializeEvents()
-	local currentDate = os.date("*t")
-    
-	-- Christmas event
-	if currentDate.month == 12 or currentDate.month == 1 then
-		if (currentDate.month == 12 and currentDate.day >= 1) or
-		(currentDate.month == 1 and currentDate.day <= 6) then
-			
-		end
-	end
-    
-	-- Art Club
-	if currentDate.month == 10 and currentDate.day == 11 then
-		
-	end
+	local date = os.date("*t")
 end
 
 function Mod:onRegistered()
@@ -1003,9 +981,8 @@ function Mod:createMinigame(id, ...)
 end
 
 function Mod:startMinigame(game)
-
     if Game.minigame then
-        error("Attempt to enter card game while already in card game")
+        error("Attempt to enter minigame while already being in one")
     end
 
     Game.state = "MINIGAME"
