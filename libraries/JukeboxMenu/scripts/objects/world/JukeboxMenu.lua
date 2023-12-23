@@ -18,6 +18,7 @@ function JukeboxMenu:init()
     ---@type love.Font
     self.font = Assets.getFont("main")
     self.font_2 = Assets.getFont("plain")
+    self.font_cjk = Assets.getFont("simsun_small")
 
     self.heart = Sprite("player/heart_menu")
     self.heart:setOrigin(0.5, 0.5)
@@ -94,6 +95,10 @@ function JukeboxMenu:draw()
     local cur_song = cur_page[self.selected_index] or self.default_song
     local info_font = self.font
     local info_scale = 0.5
+    if cur_song.cjk_info then
+        info_font = self.font_cjk
+        info_scale = 1
+    end
     love.graphics.setFont(info_font)
     local info_w = 260 / info_scale
     local info = string.format(

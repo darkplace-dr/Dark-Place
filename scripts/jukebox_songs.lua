@@ -663,11 +663,12 @@ return {
     origin = "Angry Birds"
   },
   {
-    name = "Industrial Fields & Oil Rig",
-    file = "sbspss_ch5_1",
-    composer = "Matt Simmonds",
-    released = "2001",
-    origin = "SpongeBob SquarePants: SuperSponge (PS1)"
+    name = "Pot Calling The Kettle Black",
+    file = "hypocrisy",
+    composer = "D哥",
+    released = "June 26, 2022\nOriginal title: 五十步笑百步",
+    origin = "不停歇的脚步 (Unrelenting Footsteps)",
+    cjk_info = true
   },
   {
     name = "Cait's Theme",
@@ -681,7 +682,7 @@ return {
     file = "minigames/ball_jump/ball_jump",
     composer = "SiivaGunner",
     released = "Apr 22, 2016",
-    origin = "https://www.youtube.com/watch?v=rEcOzjg7vBU (edited for Dark Place)"
+    origin = "https://www.youtube.com/watch?v=rEcOzjg7vBU (trimmed for Dark Place)"
   },
   {
     name = "A TRUE AEON HERO",
