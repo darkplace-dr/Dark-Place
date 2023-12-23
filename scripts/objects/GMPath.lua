@@ -1,4 +1,5 @@
 ---@class GMPath
+---@overload fun(...) : GMPath
 local GMPath, super = Class()
 
 ---@class GMPath.Point
@@ -8,17 +9,29 @@ local GMPath, super = Class()
 
 --
 
-GMPath.LINEAR = 0
-GMPath.CURVED = 1
+---@enum (key) GMPath.Types
+-- Path connection kinds.
+GMPath.Types = {
+    -- Linear (straight line) connection; connects the points of a path in a linear basis, with angular changes at each point.
+    LINEAR = 0,
+    -- Curved (smooth) connection; takes an approximate line and creates nice curves using smooth interpolation.
+    CURVED = 1
+}
 
 --
 
+---@class GMPath.InitOptions
+---@field type GMPath.Types # The connection kind of the path.
+---@field closed boolean # Whether the last point on the path will be connected with the first.
+---@field precision number # For curved paths, the precision for the curves. Can be from 1 to 8, with 8 being the smoothest.
+
+---@param options GMPath.InitOptions
 function GMPath:init(options)
     super.init(self)
 
     options = options or {}
 
-    self.type = options["type"] or GMPath.LINEAR
+    self.type = options["type"] or GMPath.Types.LINEAR
     self.closed = options["closed"] or false
     self.precision = options["precision"] or 4
     self:reset()
@@ -90,6 +103,7 @@ function GMPath:createCurved()
         n = count - 3
     end
 
+    -- Chaikin's algorithm - https://www.bit-101.com/blog/2021/08/chaikins-algorithm-drawing-curves/
     local function handlePiece(depth, x1, y1, s1, x2, y2, s2, x3, y3, s3)
         if depth == 0 then return end
 
@@ -107,7 +121,6 @@ function GMPath:createCurved()
             handlePiece(depth - 1, mx, my, ms, (x3 + x2) / 2.0, (y3 + y2) / 2.0, (s3 + s2) / 2.0, x3, y3, s3)
         end
     end
-
     for i = 0, n do
         local point1 = self.points[(i % count) + 1]
         local point2 = self.points[((i + 1) % count) + 1]
@@ -132,7 +145,7 @@ function GMPath:processInternal()
     if #self.points == 0 then return end
     self._points_int = {}
 
-    if self.type == GMPath.CURVED then
+    if self.type == GMPath.Types.CURVED then
         self:createCurved()
     else
         self:createLinear()
