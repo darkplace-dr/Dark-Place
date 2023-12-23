@@ -1160,12 +1160,22 @@ function Mod:onKeyPressed(key)
 end
 
 function Mod:getUISkin()
+    if Game.world and Game.world.cutscene
+        and Game.world.cutscene.id == "cell_phone" and Game.world.cutscene.use_light_textbox
+    then
+        return "light"
+    end
     if self:isOmori() then
         return "omori"
     end
 end
 
 function Mod:getDefaultDialogTextStyle()
+    if Game.world and Game.world.cutscene
+        and Game.world.cutscene.id == "cell_phone" and Game.world.cutscene.use_light_textbox
+    then
+        return "none"
+    end
     if self:isOmori() then
         return "none"
     end
