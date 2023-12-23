@@ -1,7 +1,7 @@
 local actor, super = Class(Actor, "mother2portal")
 
 function actor:onSpriteInit(sprite)
-    sprite:addFX(ShaderFX(Mod.wave_shader, {
+    sprite:addFX(ShaderFX(Mod.shaders["wave"], {
         ["wave_sine"] = function () return Kristal.getTime() * 100 end,
         ["wave_mag"] = 4,
         ["wave_height"] = 4,

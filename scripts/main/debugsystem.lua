@@ -143,7 +143,7 @@ function Mod:registerDebugOptions(debug)
         if Game.stage:getFX("funky_mode") then
             Game.stage:removeFX("funky_mode")
         else
-            Game.stage:addFX(ShaderFX(Mod.wave_shader, {
+            Game.stage:addFX(ShaderFX(Mod.shaders["wave"], {
                 ["wave_sine"] = function() return Kristal.getTime() * 1200 end,
                 ["wave_mag"] = 10,
                 ["wave_height"] = 1,

@@ -125,7 +125,7 @@ end
 function Shadynn:onHurt(damage, battler)
 	super:onHurt(self, damage, battler)
 	self.shadow = true
-	self:addFX(ShaderFX(Mod.wave_shader, {
+	self:addFX(ShaderFX(Mod.shaders["wave"], {
         ["wave_sine"] = function() return Kristal.getTime() * 90 end,
         ["wave_mag"] = 2,
         ["wave_height"] = 2,
