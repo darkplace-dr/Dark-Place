@@ -1,8 +1,7 @@
 return {
     bootleg = function(cutscene, event)
 		local fade_rect = Rectangle(0, 0, Game.world.width, Game.world.height)
-		fade_rect:setColor(0, 0, 0)
-		fade_rect.alpha = 1
+		fade_rect:setColor(COLORS.black)
 		local oldborder = Game.world.map.border
 		Game:setBorder("none")
 		Game.world:spawnObject(fade_rect, "below_ui")
@@ -10,8 +9,7 @@ return {
 		local booty = Sprite("battle/enemies/booty/idle", SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 		booty:setOrigin(0.5,0.5)
 		booty:setScale(2,2)
-		Game.world:addChild(booty)
-		booty.layer = fade_rect.layer + 0.01
+		Game.world:spawnObject(booty, "ui")
 		
 		Game.world.music:pause()
 		
@@ -104,9 +102,9 @@ return {
 			cutscene:wait(1)
 			
 			cutscene:text("* (A star-shaped power awakens from your SOUL.)")
-			cutscene:text("* (To start aiming,[wait:5] press " .. Input.getText("confirm") .. ".)")
-			cutscene:text("* (You can press " .. Input.getText("cancel") .. " to back out and move,[wait:5] or...)")
-			cutscene:text("* (Hold a direction and press " .. Input.getText("confirm") .. " to throw a star.)")
+			cutscene:text("* (To start aiming,[wait:5] press [bind:confirm].)")
+			cutscene:text("* (You can press [bind:cancel] to back out and move,[wait:5] or...)")
+			cutscene:text("* (Hold a direction and press [bind:confirm] to throw a star.)")
 			
 			Game:setBorder("battle")
 			cutscene:startEncounter("big_booty")
@@ -116,7 +114,7 @@ return {
         
 		cutscene:hideNametag()
 		
-		Game.world.timer:tween(1, fade_rect, {alpha = 0}, "linear")
+		fade_rect:fadeOutAndRemove(1)
 		Game:setBorder(oldborder)
 		cutscene:wait(1)
 		
