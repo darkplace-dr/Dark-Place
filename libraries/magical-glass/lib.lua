@@ -331,6 +331,8 @@ function lib:init()
             return
         end
     
+        self.walk_speed_override = self.actor.walk_speed_override 
+
         local flip_dir
         for _,sprite in ipairs(self.sprite_options) do
             flip_dir = self.actor:getFlipDirection(sprite)
@@ -357,7 +359,7 @@ function lib:init()
         if not self.playing then
             local floored_frame = math.floor(self.walk_frame)
             if floored_frame ~= self.walk_frame or ((self.directional or self.walk_override) and self.walking) then
-                self.walk_frame = Utils.approach(self.walk_frame, floored_frame + 1, DT * (self.walk_speed > 0 and self.walk_speed or 1))
+                self.walk_frame = Utils.approach(self.walk_frame, floored_frame + 1, DT * ((self.walk_speed_override or self.walk_speed) > 0 and (self.walk_speed_override or self.walk_speed) or 1))
                 local last_frame = self.frame
                 self:setFrame(floored_frame)
                 if self.frame ~= last_frame and self.on_footstep and self.frame % 2 == 0 then
@@ -378,7 +380,7 @@ function lib:init()
             self.run_away_timer = self.run_away_timer + DTMULT
         end
     
-        ActorSprite.__super.update(self)
+        Sprite.update(self)
     
         self.actor:onSpriteUpdate(self)
     end)
