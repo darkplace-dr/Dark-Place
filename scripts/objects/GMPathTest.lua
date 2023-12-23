@@ -22,14 +22,14 @@ function GMPathTest:init()
     self.path:addPoint(200, 220, 1)
 
     self.progress = 0
-    self.progress_speed_base = 0.1
+    self.progress_speed = 0.1
 end
 
 function GMPathTest:update()
     local point = self.path:getPosition(self.progress)
     self.x = self.init_x + point.x
     self.y = self.init_y + point.y
-    self.progress = Utils.approach(self.progress, 1, DT * self.progress_speed_base * point.speed)
+    self.progress = Utils.approach(self.progress, 1, DT * self.progress_speed * point.speed)
 
     super.update(self)
 end
