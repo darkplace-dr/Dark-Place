@@ -1,7 +1,7 @@
 local LaserCircle, super = Class(Bullet, "werewire/laser_circle")
 
 function LaserCircle:init(x, y, length, speed, accel, angle, spin)
-    super:init(self, x, y, "bullets/werewire/laser_circle")
+    super.init(self, x, y, "bullets/werewire/laser_circle")
 
     self:setScale(0, 0)
 
@@ -63,7 +63,7 @@ function LaserCircle:update()
         end
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 return LaserCircle

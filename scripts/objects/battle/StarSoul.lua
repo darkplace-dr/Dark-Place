@@ -1,7 +1,7 @@
 local StarSoul, super = Class(Soul)
 
 function StarSoul:init(x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
     self.color = {1,1,0}
 	
 	self.mode = "MOVE" -- MOVE, AIM
@@ -13,7 +13,7 @@ function StarSoul:init(x, y)
 end
 
 function StarSoul:update()
-	super:update(self)
+	super.update(self)
 end
 
 function StarSoul:draw()
@@ -23,7 +23,7 @@ function StarSoul:draw()
 			love.graphics.line(0, 0, 700 * self.aim_x, 700 * self.aim_y)
 		end
 	end
-	super:draw(self)
+	super.draw(self)
 end
 
 function StarSoul:doMovement()

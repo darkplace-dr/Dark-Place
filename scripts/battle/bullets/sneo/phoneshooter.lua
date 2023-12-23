@@ -43,7 +43,7 @@ function PhoneShooter:update()
             if self.btimer > 10 then
                 Assets.playSound("wing")
                 for i = 1,3 do
-                    d = self.wave:spawnBullet("sneo/phonebullet", self.x - 12, self.y + 12)
+                    local d = self.wave:spawnBullet("sneo/phonebullet", self.x - 12, self.y + 12)
                     d.destroy_on_hit = true
                     d.physics.direction = ((math.rad(math.random(-20, 20)) + 59.5) + d.rotation)
                     d.physics.speed = 5
@@ -56,13 +56,13 @@ function PhoneShooter:update()
                 Assets.playSound("wing")
                 for i = 1,3 do
                     if self.side == 0 then
-                        d = self.wave:spawnBullet("sneo/phonebullet", self.x - 12, self.y + 12)
+                        local d = self.wave:spawnBullet("sneo/phonebullet", self.x - 12, self.y + 12)
                         d.destroy_on_hit = true
                         d.layer = self.layer - 1
                         d.physics.direction = ((math.rad(math.random(-20, 20)) + 59.5) + d.rotation)
                         d.physics.speed = 5
                     else
-                        d = self.wave:spawnBullet("sneo/phonebullet", self.x + 12, self.y + 12)
+                        local d = self.wave:spawnBullet("sneo/phonebullet", self.x + 12, self.y + 12)
                         d.destroy_on_hit = true
                         d.layer = self.layer - 1
                         d.physics.direction = ((math.rad(math.random(-20, 20))) + d.rotation)

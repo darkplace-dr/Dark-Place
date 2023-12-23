@@ -69,6 +69,7 @@ return function(cutscene, event_override)
         fade.alpha = 0
         Game.world:addChild(fade)
         fade:setScreenPos(0, 0)
+        ---@diagnostic disable-next-line: missing-fields
         fade:setGraphics({
             fade_to = 1,
             fade = 0.02

@@ -403,7 +403,7 @@ function lib:init()
             for i = 0, 120 do
                 local alph = a * 0.4
                 Draw.setColor(r,g,b, ((alph - (self.run_away_timer / 8)) + (i / 200)))
-                Draw.draw(self.texture, i * self.run_direction or 2, 0)
+                Draw.draw(self.texture, i * (self.run_direction or 2), 0)
             end
             return
         end

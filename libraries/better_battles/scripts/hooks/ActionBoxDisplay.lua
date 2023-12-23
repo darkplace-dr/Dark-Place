@@ -1,4 +1,4 @@
----@class ActionBoxDisplay : ActionBoxDisplay
+---@class ActionBoxDisplay
 ---@overload fun(...) : ActionBoxDisplay
 local ActionBoxDisplay, super = Class(ActionBoxDisplay)
 

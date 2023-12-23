@@ -1,7 +1,7 @@
 local BallJumpFakeBall, super = Class(Object)
 
 function BallJumpFakeBall:init(y)
-	super:init(self, SCREEN_WIDTH + 20, y)
+	super.init(self, SCREEN_WIDTH + 20, y)
 	
 	self.sprite = Sprite("minigames/ball_jump/fake_ball")
 	self.sprite:setOrigin(0.5, 0.5)
@@ -12,7 +12,7 @@ function BallJumpFakeBall:init(y)
 end
 
 function BallJumpFakeBall:update()
-	super:update(self)
+	super.update(self)
 	
 	if Game.minigame.state == "MAIN" then
 		self.x = self.x - DTMULT * 8
@@ -39,7 +39,7 @@ function BallJumpFakeBall:update()
 end
 
 function BallJumpFakeBall:draw()
-	super:draw(self)
+	super.draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(1,0,0,1)
 	end

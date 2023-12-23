@@ -1,7 +1,8 @@
+---@class DiscoBall : Object
 local DiscoBall, super = Class(Object)
 
 function DiscoBall:init()
-    super:init(self)
+    super.init(self)
     self.sprite = Sprite("battle/discoball")
     self.layer = BATTLE_LAYERS["below_battlers"]
     self.sprite:setScale(2)
@@ -21,8 +22,8 @@ function DiscoBall:init()
 
 end
 
-function DiscoBall:update(dt)
-    super:update(self, dt)
+function DiscoBall:update()
+    super.update(self)
         if self.tweendir == 1 and self.lasttween ~= 1 then
         self.timer:tween(1, self, {y = 0}, "out-expo")
         self.tweendir = 0
@@ -44,7 +45,7 @@ end
 function DiscoBall:draw()
     love.graphics.setColor(DiscoBall:HSV(self.hue, 1, 1))
     love.graphics.circle("fill", 0, 65, 55, 100)
-    super:draw(self)
+    super.draw(self)
 
 end
 

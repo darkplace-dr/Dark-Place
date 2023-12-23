@@ -1,7 +1,7 @@
 local CityScreen, super = Class(Event)
 
 function CityScreen:init(data)
-    super:init(self, data)
+    super.init(self, data)
 
     local pr            = data.properties or {}
 
@@ -47,7 +47,7 @@ function CityScreen:init(data)
 end
 
 function CityScreen:update()
-    super:update(self)
+    super.update(self)
     self.frame_timer = self.frame_timer + DTMULT
     self.frame_timer_threshold = 2
     if self.con == 2 then

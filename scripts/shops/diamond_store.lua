@@ -1,7 +1,7 @@
 local Diamond_Store, super = Class(Shop)
 
 function Diamond_Store:init()
-  super:init(self)
+  super.init(self)
   
   self.shop_music = "shop1"
   

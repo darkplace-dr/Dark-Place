@@ -2,7 +2,7 @@ local OrbBullet, super = Class(Bullet)
 
 function OrbBullet:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super:init(self, x, y, "battle/bullets/smallbullet")
+    super.init(self, x, y, "battle/bullets/smallbullet")
 
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
     self.physics.direction = dir
@@ -45,7 +45,7 @@ function OrbBullet:update()
 	
 	self.supertimer = self.supertimer + 1
 	
-    super:update(self)
+    super.update(self)
 end
 
 function OrbBullet:onCollide(soul)

@@ -1,7 +1,7 @@
 local Sneobomb2, super = Class(Bullet)
 
 function Sneobomb2:init(x, y, dir)
-    super:init(self, x, y, "battle/bullets/sneo/bomb/sneobomb2")
+    super.init(self, x, y, "battle/bullets/sneo/bomb/sneobomb2")
     self.sprite:play(0.02, false)
     self:setScale(1, 1)
     self.rotation = dir

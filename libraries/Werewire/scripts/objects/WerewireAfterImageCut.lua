@@ -1,7 +1,7 @@
 local WerewireAfterImageCut, super = Class(Object)
 
 function WerewireAfterImageCut:init(object)
-    super:init(self)
+    super.init(self)
 
     self.canvas = Draw.captureObject(object)
 
@@ -25,7 +25,7 @@ function WerewireAfterImageCut:update()
         return
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 function WerewireAfterImageCut:draw()
@@ -38,7 +38,7 @@ function WerewireAfterImageCut:draw()
     Draw.drawPart(self.canvas, -m, hh+m, 0, hh, hw, hh)
     Draw.drawPart(self.canvas, hw+m, hh+m, hw, hh, hw, hh)
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return WerewireAfterImageCut

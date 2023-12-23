@@ -1,11 +1,11 @@
----@class Pickup : Event
+---@class robo_susie_plush : Pickup
 ---@overload fun(...) : robo_susie_plush
 local robo_susie_plush, super = Class(Event, "robo_susie_plush")
 
 function robo_susie_plush:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
@@ -46,7 +46,7 @@ function robo_susie_plush:onInteract(player, dir)
 end
 
 function robo_susie_plush:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.held and Input.pressed("confirm") and self:canPlace(Game.world.player) then
 		Assets.playSound("sussurprise")

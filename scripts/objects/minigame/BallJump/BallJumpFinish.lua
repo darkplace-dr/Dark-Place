@@ -1,7 +1,7 @@
 local BallJumpFinish, super = Class(Object)
 
 function BallJumpFinish:init(y)
-	super:init(self, SCREEN_WIDTH + 20, 256)
+	super.init(self, SCREEN_WIDTH + 20, 256)
 	
 	self.sprite = Sprite("minigames/ball_jump/flag")
 	self.sprite:setScale(2,2)
@@ -12,7 +12,7 @@ function BallJumpFinish:init(y)
 end
 
 function BallJumpFinish:update()
-	super:update(self)
+	super.update(self)
 	
 	if Game.minigame.state == "MAIN" then
 		self.x = self.x - DTMULT * 6

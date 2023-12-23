@@ -1,7 +1,7 @@
 local Stage, super = Class("Stage", true)
 
 function Stage:draw()
-	super:draw(self)
+	super.draw(self)
 	
 	if Game.world and Game.world.map.slide_time then
 		love.graphics.setFont(Assets.getFont("sm64_hud", 32))

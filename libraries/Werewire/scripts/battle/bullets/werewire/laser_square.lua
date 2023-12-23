@@ -1,7 +1,7 @@
 local LaserSquare, super = Class(Bullet, "werewire/laser_square")
 
 function LaserSquare:init(x, y, speed, accel, angle, spin)
-    super:init(self, x, y, "bullets/werewire/laser_square")
+    super.init(self, x, y, "bullets/werewire/laser_square")
 
     self:setScale(2, 1)
 
@@ -22,7 +22,7 @@ function LaserSquare:update()
         self.scale_x = 2 + (self.physics.speed / 20)
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 return LaserSquare

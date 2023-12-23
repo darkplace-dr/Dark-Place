@@ -116,7 +116,8 @@ function Rolls:onEnd()
 
         end
     end)
-    super:onEnd()
+
+    super.onEnd(self)
 end
 
 return Rolls

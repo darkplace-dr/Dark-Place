@@ -37,7 +37,7 @@ local function createAchListImage()
     local ach_list_canvas = love.graphics.newCanvas(480, line_height * #achievements_sorted - 10)
     ach_list_canvas:setFilter("nearest", "nearest")
 
-    Draw.setCanvas(ach_list_canvas)
+    love.graphics.setCanvas(ach_list_canvas)
     love.graphics.clear(0, 0, 0, 1)
     love.graphics.setFont(Assets.getFont("plain"))
     for i, ach in ipairs(achievements_sorted) do
@@ -76,7 +76,7 @@ local function createAchListImage()
 
         love.graphics.setColor(1, 1, 1)
     end
-    Draw.setCanvas()
+    love.graphics.setCanvas()
 
     local ach_list_im = ach_list_canvas:newImageData()
     local ach_list_im_file = "saves/"..Mod.info.id.."/ach_list_"..os.date("%Y-%m-%d-%H%M%S")..".png"

@@ -1,7 +1,7 @@
 local CollideTest, super = Class(Wave)
 
 function CollideTest:init()
-    super:init(self)
+    super.init(self)
     self:setArenaSize(280, 140)
     self:setSoulPosition(240, 172)
     self.time = -1
@@ -52,7 +52,7 @@ function CollideTest:onStart()
 end
 
 function CollideTest:update()
-    super:update(self)
+    super.update(self)
 
     if Input.pressed("menu") then
         local burst

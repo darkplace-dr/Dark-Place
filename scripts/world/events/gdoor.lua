@@ -3,9 +3,9 @@
 local GDoor, super = Class(Event)
 
 function GDoor:init(data)
-    super:init(self, data.x, data.y, data.w, data.h)
+    super.init(self, data.x, data.y, data.w, data.h)
 	
-	properties = data.properties or {}
+	local properties = data.properties or {}
 	
 	self.map = properties["map"] or "room1"
 	

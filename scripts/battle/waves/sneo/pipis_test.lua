@@ -1,7 +1,7 @@
 local Basic, super = Class(Wave)
 
 function Basic:init()
-	super:init(self)
+	super.init(self)
     self.time = -1
 	
     self:setArenaPosition(240, 160)

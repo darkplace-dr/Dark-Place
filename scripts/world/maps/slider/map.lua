@@ -1,14 +1,14 @@
 local Slider, super = Class(Map)
 
 function Slider:init(world, data)
-	super:init(self, world, data)
+	super.init(self, world, data)
 	
 	self.slide_time = 0
 	self.slide_time_display = "00"
 end
 
 function Slider:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.sliding then
 		self.slide_time = self.slide_time + DT

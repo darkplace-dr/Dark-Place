@@ -1,7 +1,7 @@
 local WerewireSpareAnim, super = Class(Object)
 
 function WerewireSpareAnim:init(x, y, after)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.actor_sprite = ActorSprite("werewire")
     self.actor_sprite:setScale(2, 2)

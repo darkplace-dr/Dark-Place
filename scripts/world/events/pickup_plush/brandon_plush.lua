@@ -1,11 +1,11 @@
----@class Pickup : Event
+---@class brandon_plush : Pickup
 ---@overload fun(...) : brandon_plush
 local brandon_plush, super = Class(Event, "brandon_plush")
 
 function brandon_plush:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
@@ -46,7 +46,7 @@ function brandon_plush:onInteract(player, dir)
 end
 
 function brandon_plush:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.held and Input.pressed("confirm") and self:canPlace(Game.world.player) then
 		Assets.playSound("voice/brandon")

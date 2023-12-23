@@ -58,7 +58,7 @@ end
 function Player:interact()
 	if self.holding then return false end
 	
-    return super:interact(self)
+    return super.interact(self)
 end
 
 return Player

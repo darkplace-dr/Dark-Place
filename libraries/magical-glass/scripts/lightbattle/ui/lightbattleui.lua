@@ -560,7 +560,7 @@ function LightBattleUI:drawState()
         end
     elseif state == "FLEEING" or state == "TRANSITIONOUT" then
         local font = Assets.getFont("main_mono")
-        love.graphics.setFont(font, 32)
+        love.graphics.setFont(font)
         local message = Game.battle.encounter:getUsedFleeMessage() or ""
 
         Draw.setColor(1, 1, 1, 1)

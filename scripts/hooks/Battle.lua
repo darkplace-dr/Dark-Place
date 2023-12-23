@@ -1,4 +1,5 @@
 ---@class Battle
+---@field discoball DiscoBall
 local Battle, super = Class("Battle", true)
 
 function Battle:init()
@@ -87,7 +88,7 @@ function Battle:onStateChange(old,new)
             self:addChild(guitarspin)
             guitarspin.x = YOU.x
             guitarspin.y = YOU.y
-            guitarspin.oldlayer = guitarspin.layer
+            local oldlayer = guitarspin.layer
             guitarspin.layer = YOU.layer - 1
             guitarspin:setScale(2)
             guitarspin:setOrigin(0.5, 1)
@@ -95,10 +96,9 @@ function Battle:onStateChange(old,new)
             guitarspin.physics.speed = 20
             local bonkrr = love.math.random(27, 30)
             if bonkrr <= 27 then
-                guitarspin.bonkem = 1
                 Game.battle.timer:after(0.5, function ()
                     guitarspin.physics.gravity = 1
-                    guitarspin.layer = guitarspin.oldlayer
+                    guitarspin.layer = oldlayer
                     Game.battle.timer:after((1 + 20/30), function ()
                         Assets.playSound("bonk")
                         guitarspin.physics.direction = 0
@@ -724,6 +724,7 @@ function Battle:pierce(amount, exact, target)
     end
 
     if target == "ANY" then
+        ---@type PartyBattler
         target = self:randomTargetOld()
 
         local party_average_hp = 1

@@ -1,9 +1,9 @@
 local PushStone, super = Class(PushBlock, "stone")
 
 function PushStone:init(data)
-    super:init(self, data.x, data.y, data.w, data.h, data.properties, data.sprite, data.solved_sprite)
+    super.init(self, data.x, data.y, data.w, data.h, data.properties, data.sprite, data.solved_sprite)
 	
-	properties = properties or {}
+	local properties = properties or {}
 
     self.default_sprite = properties and properties["sprite"] or sprite or "world/events/push_stone"
     self.solved_sprite = properties and properties["solvedsprite"] or properties["sprite"] or solved_sprite or sprite or "world/events/push_stone_solved"

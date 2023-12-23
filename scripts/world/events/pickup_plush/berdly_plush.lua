@@ -1,11 +1,11 @@
----@class Pickup : Event
+---@class berdly_plush : Pickup
 ---@overload fun(...) : berdly_plush
 local berdly_plush, super = Class(Event, "berdly_plush")
 
 function berdly_plush:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
@@ -46,7 +46,7 @@ function berdly_plush:onInteract(player, dir)
 end
 
 function berdly_plush:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.held and Input.pressed("confirm") and self:canPlace(Game.world.player) then
 		Assets.playSound("voice/berdly")

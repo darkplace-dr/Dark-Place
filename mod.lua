@@ -29,21 +29,24 @@ function Mod:init()
     self:initBattleTaunt()
     Speen:init()
 
-	Utils.hook(Game, "getActiveMusic", function(orig, self)
-		if self.state == "OVERWORLD" then
-			return self.world.music
-		elseif self.state == "BATTLE" then
-			return self.battle.music
-		elseif self.state == "MINIGAME" then
-			return self.minigame.music
-		elseif self.state == "SHOP" then
-			return self.shop.music
-		elseif self.state == "GAMEOVER" then
-			return self.gameover.music
-		else
-			return self.music
-		end
-	end)
+	Utils.hook(Game, "getActiveMusic",
+        ---@overload fun(orig:function, self:Game) : Music
+        function(orig, self)
+            if self.state == "OVERWORLD" then
+                return self.world.music
+            elseif self.state == "BATTLE" then
+                return self.battle.music
+            elseif self.state == "MINIGAME" then
+                return self.minigame.music
+            elseif self.state == "SHOP" then
+                return self.shop.music
+            elseif self.state == "GAMEOVER" then
+                return self.gameover.music
+            else
+                return self.music
+            end
+        end
+    )
 
 	Utils.hook(Game, "onKeyPressed", function(orig, self, key, is_repeat)
 		if Kristal.callEvent("onKeyPressed", key, is_repeat) then
@@ -348,7 +351,7 @@ function Mod:save(data)
         Log:print("Attempting to get this save out of the mb map", "warn")
 
         data.room_id = Mod.world_dest_map_bak or Mod.lastMap or data.room_id
-        local the_map = Registry.createMap(data.room_id)
+        local the_map = Registry.createMap(data.room_id, Game.world)
         data.room_name = (the_map and the_map.name) or "???"
 
         if Mod.world_dest_mk_bak then

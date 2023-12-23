@@ -1,7 +1,7 @@
 local WerewireThrowAct, super = Class(Object)
 
 function WerewireThrowAct:init(werewires)
-    super:init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+    super.init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 
     self.werewires = werewires
     self.targets = {}
@@ -153,11 +153,11 @@ function WerewireThrowAct:update()
         end
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 function WerewireThrowAct:draw()
-    super:draw(self)
+    super.draw(self)
 
     if not self.updated_once then return end
 

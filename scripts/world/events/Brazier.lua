@@ -3,9 +3,9 @@
 local Brazier, super = Class(Event, "brazier")
 
 function Brazier:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
@@ -51,7 +51,7 @@ function Brazier:onInteract(player, dir)
 end
 
 function Brazier:update()
-	super:update(self)
+	super.update(self)
 	
 	-- TODO: Make brazier hot
 	if Game.world then

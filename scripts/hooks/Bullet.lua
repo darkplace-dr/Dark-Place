@@ -2,7 +2,7 @@
 local Bullet, super = Class("Bullet", true)
 
 function Bullet:init(x, y, texture)
-	super:init(self, x, y, texture)
+	super.init(self, x, y, texture)
 	
 	self.pierce = false
 end

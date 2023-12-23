@@ -1,7 +1,7 @@
 local DogShop, super = Class(Shop)
 
 function DogShop:init()
-  super:init(self)
+  super.init(self)
   
   self.shop_music = "investigation"
   

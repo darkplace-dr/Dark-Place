@@ -1,7 +1,7 @@
 local Werewire, super = Class(EnemyBattler, "werewire")
 
 function Werewire:init(id)
-    super:init(self)
+    super.init(self)
 
     -- Enemy name
     self.name = "Werewire"
@@ -68,7 +68,7 @@ function Werewire:onActStart(battler, name)
     if name == "JiggleJiggle" then
         battler:setActSprite("acts/werewire/wiggle/kris", -2, -7, 4/30, true)
     else
-        super:onActStart(self, battler, name)
+        super.onActStart(self, battler, name)
     end
 end
 
@@ -100,7 +100,7 @@ function Werewire:onAct(battler, name)
 
     -- If the act is none of the above, run the base onAct function
     -- (this handles the Check act)
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Werewire:isXActionShort(battler)
@@ -129,12 +129,12 @@ function Werewire:onShortAct(battler, name)
 
     end
 
-    return super:onShortAct(self, battler, name)
+    return super.onShortAct(self, battler, name)
 end
 
 function Werewire:getNextWaves()
     if self.wave_override then
-        return super:getNextWaves(self)
+        return super.getNextWaves(self)
     end
 
     if #Game.battle:getActiveEnemies() > 1 then

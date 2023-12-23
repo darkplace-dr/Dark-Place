@@ -1,7 +1,7 @@
 local BG, super = Class(Object)
 
 function BG:init(color, fill)
-    super:init(self)
+    super.init(self)
     self.color = color
     self.fill = fill or {0, 0, 0}
 	self.offset = 0
@@ -10,11 +10,10 @@ function BG:init(color, fill)
     self.layer = BATTLE_LAYERS["bottom"]
     Game.battle.discoball = Discoball()
     Game.battle:addChild(Game.battle.discoball)
-
 end
 
-function BG:update(dt)
-    super:update(self, dt)
+function BG:update()
+    super.update(self)
     self.fade = Game.battle.transition_timer / 10
     self.offset = self.offset + self.speed*DTMULT
 	
@@ -24,7 +23,7 @@ function BG:update(dt)
 end
 
 function BG:draw()
-    super:draw(self)
+    super.draw(self)
 
     local r,g,b,a = unpack(self.fill)
     love.graphics.setColor(r,g,b, a or self.fade)

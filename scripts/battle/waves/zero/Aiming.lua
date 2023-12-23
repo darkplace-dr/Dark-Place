@@ -76,7 +76,7 @@ function Aiming:onEnd()
     self.user.y = 216
     self.user.physics.speed = 0
     Game.battle.timer:tween(0.5, self.user, {x = 550}, "out-expo")
-    super:onEnd()
+    super.onEnd(self)
 end
 
 return Aiming

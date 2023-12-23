@@ -1,7 +1,7 @@
 local BallJumpChucc, super = Class(Object)
 
 function BallJumpChucc:init()
-	super:init(self, -30, 266, 16, 16)
+	super.init(self, -30, 266, 16, 16)
 	
 	self.sprite = Sprite("minigames/ball_jump/chuck_1")
 	self.sprite:setScale(2,2)
@@ -19,7 +19,7 @@ function BallJumpChucc:init()
 end
 
 function BallJumpChucc:update()
-	super:update(self)
+	super.update(self)
 	
 	if Game.minigame.state == "MAIN" then
 		self.x = self.x - DTMULT * self.move_speed
@@ -55,7 +55,7 @@ function BallJumpChucc:update()
 end
 
 function BallJumpChucc:draw()
-	super:draw(self)
+	super.draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(1,0,0,1)
 		self.stomp_collider:draw(0,1,0,1)

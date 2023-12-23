@@ -1,9 +1,9 @@
 local Machine, super = Class(Event, "darkcade_machine")
 
 function Machine:init(data)
-    super:init(self, data.x, data.y, data.w, data.h)
+    super.init(self, data.x, data.y, data.w, data.h)
 	
-	properties = data.properties or {}
+	local properties = data.properties or {}
 	
 	self.machine = properties["sprite"] or "ball_jump"
 	self.name = properties["name"] or ""

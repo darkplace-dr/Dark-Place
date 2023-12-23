@@ -1,4 +1,4 @@
----@class ActionButton : ActionButton
+---@class ActionButton
 ---@overload fun(...) : ActionButton
 local ActionButton, super = Class("ActionButton", true)
 

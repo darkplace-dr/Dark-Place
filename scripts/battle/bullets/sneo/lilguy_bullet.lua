@@ -1,7 +1,7 @@
 local LilGuyBullet, super = Class(Bullet)
 
 function LilGuyBullet:init(x, y, dir, speed)
-    super.init(self, x, y, dir, speed)
+    super.init(self, x, y)
 	
     self:setSprite("battle/bullets/sneo/lilguy_bullet")
 	self:setScale(1,1)

@@ -1,7 +1,7 @@
 local BreakEffect, super = Class(Object)
 
 function BreakEffect:init(texture, x, y, after)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     if type(texture) == "string" then
         texture = Assets.getTexture(texture) or (Assets.getFrames(texture)[1])
@@ -56,13 +56,12 @@ function BreakEffect:init(texture, x, y, after)
 end
 
 function BreakEffect:onAdd(parent)
-    super:onAdd(parent)
+    super.onAdd(self, parent)
 
     self.start_color = self.color
 end
 
 function BreakEffect:update()
-
     for i = 0, self.blocks_x do
         for j = 0, self.blocks_y do
             local block = self.blocks[i][j]
@@ -80,7 +79,7 @@ function BreakEffect:update()
         self:remove()
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 function BreakEffect:draw()
@@ -94,7 +93,7 @@ function BreakEffect:draw()
         end
     end
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return BreakEffect

@@ -1,7 +1,7 @@
 local BigShot, super = Class("YellowSoulShot")
 
 function BigShot:init(x, y, angle)
-    super:init(self, x, y, angle)
+    super.init(self, x, y, angle)
     self:setSprite("player/shot/bigshot")
     self.alpha = 0.5
     self:setScale(0.1, 2)
@@ -23,7 +23,7 @@ function BigShot:update()
     if self.alpha < 1 then
         self.alpha = Utils.approach(self.alpha, 1, 0.2*DTMULT)
     end
-    super:update(self)
+    super.update(self)
 end
 
 return BigShot

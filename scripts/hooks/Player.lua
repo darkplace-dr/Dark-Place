@@ -19,7 +19,8 @@ function Player:update()
     super.update(self)
 	
 	if Kristal.getLibConfig("pickup_lib", "disable_hold_run") and self.holding then
-		running = false
+        -- dobby: This would've'nt even work since running is a local variable of the parent function
+		--running = false
 		self.run_timer = 0
 	end
 
@@ -48,7 +49,7 @@ end
 function Player:interact()
 	if self.holding then return false end
 
-    return super:interact(self)
+    return super.interact(self)
 end
 
 function Player:updateWalk()

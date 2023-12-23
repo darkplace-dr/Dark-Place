@@ -44,7 +44,7 @@ function PartyBattler:hurt(amount, exact, color, options)
     end
 
     -- The actual hurting of the battler happens here.
-    super:hurt(self, _amount, exact, color, options)
+    super.hurt(self, _amount, exact, color, options)
 
     -- Once again, check whether to do the callback.
     if not options["ignore_callback"] then
@@ -69,7 +69,7 @@ function PartyBattler:down()
     end
     
     -- The battler is actually downed here.
-    super:down(self)
+    super.down(self)
 
     -- A new callback that fires on items when their holder is down.
     for _, item in ipairs(self.chara:getEquipment()) do

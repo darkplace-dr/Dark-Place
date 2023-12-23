@@ -1,7 +1,7 @@
 local Dokokashira, super = Class(Event)
 
 function Dokokashira:init(data)
-	super:init(self, data)
+	super.init(self, data)
 	self.solid = true
 
 	if not Game:getFlag("glitch_passed") then

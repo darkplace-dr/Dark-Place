@@ -1,11 +1,11 @@
----@class Pickup : Event
+---@class ralsei_plush : Pickup
 ---@overload fun(...) : ralsei_plush
 local ralsei_plush, super = Class(Event, "ralsei_plush")
 
 function ralsei_plush:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
@@ -46,7 +46,7 @@ function ralsei_plush:onInteract(player, dir)
 end
 
 function ralsei_plush:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.held and Input.pressed("confirm") and self:canPlace(Game.world.player) then
 		Assets.playSound("voice/ralsei")

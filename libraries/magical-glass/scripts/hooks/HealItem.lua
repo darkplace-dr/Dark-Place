@@ -118,6 +118,7 @@ function HealItem:getWorldUseText(target)
 end
 
 function HealItem:getLightBattleHealingText(user, target, amount)
+    local maxed
     if target then
         if self.target == "ally" then
             maxed = target.chara:getHealth() >= target.chara:getStat("health")

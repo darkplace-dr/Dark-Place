@@ -2,7 +2,7 @@
 local item, super = Class(HealItem, "light/gamerblood")
 
 function item:init()
-    super:init(self)
+    super.init(self)
 
     -- Display name
     self.name = "GamerBloodTM"

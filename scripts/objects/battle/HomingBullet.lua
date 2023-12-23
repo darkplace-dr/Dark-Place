@@ -1,7 +1,7 @@
 local HomingBullet, super = Class(Bullet)
 
 function HomingBullet:init(x, y, texture)
-    super:init(self, x, y, texture)
+    super.init(self, x, y, texture)
 
     self.can_home = true
 	self.homing_timer = 0
@@ -14,7 +14,7 @@ function HomingBullet:init(x, y, texture)
 end
 
 function HomingBullet:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.homing_timer > 0 then
 		self.homing_timer = self.homing_timer - DT
@@ -24,7 +24,7 @@ end
 function HomingBullet:onHome()
     self.home_health = self.home_health - 1
     if self.home_health <= 0 then
-        self:destroy(shot)
+        self:destroy()
     end
 end
 

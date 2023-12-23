@@ -1,11 +1,9 @@
----@class Bullet : Bullet
+---@class Bullet
 ---@overload fun(...) : Bullet
----@field attacker EnemyBattler
----@field wave Wave
 local Bullet, super = Class(Bullet)
 
 function Bullet:init(x, y, texture)
-	super:init(self, x, y, texture)
+	super.init(self, x, y, texture)
 	
 	self.pierce = false
 end

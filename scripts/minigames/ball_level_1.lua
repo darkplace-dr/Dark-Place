@@ -10,7 +10,7 @@ function BallTest:init()
 end
 
 function BallTest:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.state == "MAIN" and self.state_timer > 1 and self.entity_count < 1 then
 		self:addCountedEntity(BallJumpBall(200))

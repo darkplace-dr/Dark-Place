@@ -201,7 +201,7 @@ return {
 			gonerText("DO,[wait:20] RE,[wait:20] MI,[wait:20] FA,[wait:20]\n_,[wait:20] LA,[wait:20] TI/SI,[wait:20] DO.")
 			
 			local wbi_ok = false
-			local action = nil
+			local action
 			local wbi = WarpBinInputMenu(4)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -231,7 +231,6 @@ return {
 			gonerText("WHAT ARE THE\nNAMES OF THE\nSPACES IN THE\nTREBLE CLEF?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(4)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -256,7 +255,6 @@ return {
 			gonerText("PUT YOUR ANSWER\nIN THE PATTERN\n#/#.")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(3)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -290,7 +288,6 @@ return {
 			gonerText("HOW MANY BEATS\nARE IN A HALF\nNOTE?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(1)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -329,7 +326,6 @@ return {
 			gonerText("HOW MANY BEATS\nARE IN A DOTTED\nHALF NOTE?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(1)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -364,7 +360,6 @@ return {
 			gonerText("HOW MANY FLATS\nARE IN A FLAT\nMAJOR?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(1)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -399,7 +394,7 @@ return {
 			gonerText("QUESTION SEVEN.")
 			gonerText("TRUE OR FALSE?\nTHE WORDS TO A\nSONG ARE CALLED\nVERSES.")
 			
-			input = cutscene:choicer({"True", "False"})
+			local input = cutscene:choicer({"True", "False"})
 			
 			if input == 2 then
 				gonerText("EXCELLENT.")
@@ -428,7 +423,6 @@ return {
 			gonerText("HOW MANY BEATS\nARE IN A DOTTED\nHALF NOTE?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(1)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -464,7 +458,6 @@ return {
 			gonerText("TELL ME THE\nMUSICAL\nALPHABET IN\nORDER.")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(10)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -499,7 +492,6 @@ return {
 			gonerText("WHAT VOICE\nRANGE ARE\nYOU IN?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(10)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -770,8 +762,8 @@ return {
 			gonerText("WHAT IS THE CORRECT\nSPELLING OF THE\nMISSPELLED WORD?")
 			
 			local wbi_ok = false
-			local action = nil
-			wbi = WarpBinInputMenu(10)
+			local action
+			local wbi = WarpBinInputMenu(10)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -790,7 +782,6 @@ return {
 			gonerText("HOW MANY TALLY MARKS\nARE ON THE WALL\nNEXT TO KING?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(2)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -810,7 +801,6 @@ return {
 			gonerText("HOW MANY CELLS\nARE IN THE\nBASEMENT?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(2)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -830,7 +820,6 @@ return {
 			gonerText("HOW MANY TRIALS\nHAVE BONUSES?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(1)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
@@ -850,7 +839,6 @@ return {
 			gonerText("HOW MANY TALLY MARKS\nARE IN THE\nBASEMENT?")
 			
 			wbi_ok = false
-			action = nil
 			wbi = WarpBinInputMenu(2)
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true

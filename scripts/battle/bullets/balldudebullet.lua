@@ -2,7 +2,7 @@ local BallDudeBullet, super = Class(Bullet)
 
 function BallDudeBullet:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super:init(self, x, y, "battle/bullets/balldudebullet")
+    super.init(self, x, y, "battle/bullets/balldudebullet")
 
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
     self.physics.direction = dir
@@ -52,7 +52,7 @@ function BallDudeBullet:update()
 	
 	self.supertimer = self.supertimer + 1
 
-    super:update(self)
+    super.update(self)
 end
 
 return BallDudeBullet

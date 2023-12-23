@@ -6,8 +6,6 @@ function EnemySoul:init(x, y, dir, speed)
 
     self:setScale(1,1)
     self:setOrigin(0.5, 0.5)
-    -- FIXME: maybe something to be fixed in Kristal
-    ---@diagnostic disable-next-line: assign-type-mismatch
     self.collider = CircleCollider(self, 10, 10, 8)
     --self.color = {247/255, 143/255, 159/255}
 

@@ -1,9 +1,10 @@
 ---@class PartyMember
+---@field ribbit boolean
 ---@field opinions integer[]
 local PartyMember, super = Class("PartyMember", true)
 
 function PartyMember:init()
-    super:init(self)
+    super.init(self)
     
     self.flee_text = {}
     
@@ -40,12 +41,14 @@ function PartyMember:init()
 
     self.future_heals = {}
 
+    self.ribbit = false
+
     self.opinions = {}
     self.default_opinion = 50
 end
 
 function PartyMember:onSave(data)
-    super:onSave(self, data)
+    super.onSave(self, data)
 
     data.opinions = self.opinions
     
@@ -56,7 +59,7 @@ function PartyMember:onSave(data)
 end
 
 function PartyMember:onLoad(data)
-    super:onLoad(self, data)
+    super.onLoad(self, data)
     
     self.opinions = data.opinions or self.opinions
     

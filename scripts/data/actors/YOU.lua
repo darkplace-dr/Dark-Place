@@ -15,8 +15,8 @@ function actor:init()
     --]]
 end
 
-function actor:onWorldUpdate()
-    super.onWorldUpdate(self)
+function actor:onWorldUpdate(chara)
+    super.onWorldUpdate(self, chara)
 
     if self.cursed_song:isPlaying() and self.battle_music and not Game.battle then
         if Game.world.player and Game.world.player.walk_speed == 0 then

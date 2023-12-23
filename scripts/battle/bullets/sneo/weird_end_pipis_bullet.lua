@@ -1,7 +1,7 @@
 local WeirdEndPipisBullet, super = Class(YellowSoulBullet)
 
 function WeirdEndPipisBullet:init(x, y, dir, speed)
-    super:init(self, x, y)
+    super.init(self, x, y)
 	
 	self:setScale(1,1)
 	

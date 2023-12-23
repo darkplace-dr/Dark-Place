@@ -1,7 +1,7 @@
 local SpamtonNEO, super = Class(EnemyBattler)
 
 function SpamtonNEO:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Spamton NEO"
     self:setActor("spamtonneo")
@@ -39,7 +39,7 @@ function SpamtonNEO:init()
 end
 
 function SpamtonNEO:update()
-    super:update(self)
+    super.update(self)
 end
 
 function SpamtonNEO:onAct(battler, name)
@@ -88,7 +88,7 @@ function SpamtonNEO:onAct(battler, name)
 		"* Everyone snapped wires!"
 		}
 	end
-	return super:onAct(self, battler, name)
+	return super.onAct(self, battler, name)
 end
 
 function SpamtonNEO:getXAction(battler)

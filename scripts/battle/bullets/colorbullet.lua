@@ -27,11 +27,11 @@ end
 function ColorBullet:update()
     -- For more complicated bullet behaviours, code here gets called every update
 
-    super:update(self)
+    super.update(self)
 end
 
 function ColorBullet:getDebugInfo()
-    local info = super:getDebugInfo(self)
+    local info = super.getDebugInfo(self)
     table.insert(info, "Color: " .. self.mytype)
     return info
 end
@@ -42,13 +42,13 @@ function ColorBullet:onCollide(soul)
     -- Blue check
     if self.mytype:lower() == "blue" then
         if soul:isMoving() then
-            super:onCollide(self, soul)
+            super.onCollide(self, soul)
         end
 
     -- Orange check
     elseif self.mytype:lower() == "orange" then
         if not soul:isMoving() then
-            super:onCollide(self, soul)
+            super.onCollide(self, soul)
         end    
 
     -- Green check
@@ -57,7 +57,7 @@ function ColorBullet:onCollide(soul)
         self:remove()
     
     else
-        super:onCollide(self, soul)
+        super.onCollide(self, soul)
     end
 
 end

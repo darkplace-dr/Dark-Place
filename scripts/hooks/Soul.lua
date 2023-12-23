@@ -76,8 +76,8 @@ function Soul:init(x, y, color)
         elseif Game.party[_]:checkArmor("focus") then self.focus_holder = party
         end
     end
-    outlinefx = BattleOutlineFX()
-    outlinefx:setAlpha(0)
+    self.outlinefx = BattleOutlineFX()
+    self.outlinefx:setAlpha(0)
 
     if self.focus_holder then
         if self.focus_holder:getFX("outlinefx") then
@@ -89,10 +89,10 @@ function Soul:init(x, y, color)
     end
 
     -- Apply outlinefx to whoever has Focus equipped, or the leader if force_timeslow is true
-    if self.focus_holder then self.focus_holder:addFX(outlinefx, "outlinefx") end
-    vhsfx = Game.stage:addFX(VHSFilter(), "timeslowvhs")
-    vhsfx.timescale = 2 -- I dunno if this even works.
-	vhsfx.active = false
+    if self.focus_holder then self.focus_holder:addFX(self.outlinefx, "outlinefx") end
+    self.vhsfx = Game.stage:addFX(VHSFilter(), "timeslowvhs")
+    self.vhsfx.timescale = 2 -- I dunno if this even works.
+    self.vhsfx.active = false
     self.concentratebg = ConcentrateBG({1, 1, 1})
     self.concentratebg.alpha_fx = self.concentratebg:addFX(AlphaFX())
     self.concentratebg.alpha_fx.alpha = 0
@@ -108,6 +108,7 @@ end
 function Soul:update()
 	super.update(self)
 
+---@diagnostic disable-next-line: undefined-field
 	if Input.down("cancel") and not self.blue then -- Reduced hitbox size can get you stuck in collision with the blue soul, so it can't use this.
 		self.collider.radius = 4
 		self.sprite_focus.alpha = 1
@@ -205,7 +206,7 @@ function Soul:update()
 	if self.force_timeslow ~= false then
 	if focus_equipped or self.force_timeslow == true then
 	if not self.transitioning then
-        outlinefx.active = true
+        self.outlinefx.active = true
     end
     -- Cut timescale in half when holding A and not out of TP
     if not self.transitioning and Input.down("a") and Game:getTension() > 0 then
@@ -215,7 +216,7 @@ function Soul:update()
         end
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch/2, DTMULT / 4)
         self.timescale = Utils.approach(self.timescale, 2, DTMULT / 4)
-        vhsfx.active = true
+        self.vhsfx.active = true
         self.timeslow_sfx:play()
 	else
         -- Make sure the game pauses when object selection and selection slowdown is active.
@@ -224,7 +225,7 @@ function Soul:update()
         end
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch, DTMULT / 4)
         self.timescale = Utils.approach(self.timescale, 1, DTMULT / 4)
-        vhsfx.active = false
+        self.vhsfx.active = false
         self.timeslow_sfx:stop()
     end
 
@@ -259,7 +260,7 @@ function Soul:update()
     self.outline.alpha = Utils.approach(self.outline.alpha, 0, DTMULT / 4)
     self.concentratebg.alpha_fx.alpha = Utils.approach(self.concentratebg.alpha_fx.alpha, 0, DTMULT / 4)
     end
-    if self.focus_holder then outlinefx:setAlpha(self.outline.alpha - 0.2) end
+    if self.focus_holder then self.outlinefx:setAlpha(self.outline.alpha - 0.2) end
 	end
 	end
 
@@ -276,8 +277,8 @@ function Soul:remove()
     -- Timeslow
     Game.stage.timescale = 1
     Game.battle.music.pitch = Game.battle.music.basepitch
-    vhsfx.active = false
-    outlinefx.active = false
+    self.vhsfx.active = false
+    self.outlinefx.active = false
     self.concentratebg:remove()
     self.timeslow_sfx:stop()
     Input.clear("a")
@@ -325,11 +326,13 @@ function Soul:draw()
 
     -- Soul brightens when invincible
     if charge_timer > 0 then
+        ---@diagnostic disable-next-line: param-type-mismatch
         self.color = Utils.clampMap(self.parry_inv, 0, self.parry_cap / 2, {r,g,b},{1,1,1})
     end
 
     -- Soul darkens when on cooldown
     if self.cooldown_timer > 0 then
+        ---@diagnostic disable-next-line: param-type-mismatch
         self.color = Utils.clampMap(self.cooldown_timer, 0, self.cooldown / 2, {r,g,b},{(r * 0.5),(g * 0.5),(b * 0.5)})
     end
 
@@ -379,16 +382,14 @@ function Soul:onCollide(bullet)
         end
     end
 
-        super.onCollide(self, bullet)
+    super.onCollide(self, bullet)
 end
-
-
 
 function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effects staying around after a wave. for some reason, doing this when self.transitioning doesn't work.
 	Game.stage.timescale = 1
 	Game.battle.music.pitch = Game.battle.music.basepitch
-	vhsfx.active = false
-	outlinefx.active = false
+    self.vhsfx.active = false
+	self.outlinefx.active = false
     if should_destroy == true then
         self.concentratebg:remove()
         self.timeslow_sfx:stop()

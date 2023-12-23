@@ -1,7 +1,7 @@
 local Basic, super = Class(Wave)
 
 function Basic:init()
-	super:init(self)
+	super.init(self)
     self.time = 15
 
     self.sneo = self:getAttackers()[1]

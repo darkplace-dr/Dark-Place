@@ -6,7 +6,9 @@ function lib:init()
 end
 
 
-Utils.hook(Item, 'getTypeName', function(orig, self, ...)
+Utils.hook(Item, 'getTypeName',
+---@overload fun(orig:function, self:Item, ...) : string
+function(orig, self, ...)
     if self.type == "item" then
         return "ITEM"
     elseif self.type == "key" then

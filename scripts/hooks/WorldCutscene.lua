@@ -1,5 +1,5 @@
 ---@class WorldCutscene
----@field use_light_textbox boolean|nil
+---@field use_light_textbox boolean|nil # Changes UI style to light for `cell_phone` only
 local WorldCutscene, super = Class("WorldCutscene", true)
 
 function WorldCutscene:startMinigame(game)
