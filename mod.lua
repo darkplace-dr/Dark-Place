@@ -234,24 +234,24 @@ function Mod:initializeImportantFlags(new_file)
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before the relationship system was added.")
 
-        Game:getPartyMember("YOU").opinions = { kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("kris").opinions = { YOU = 50, susie = 120, noelle = 70, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 70, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("susie").opinions = { YOU = 50, kris = 120, noelle = 120, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 60, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("noelle").opinions = { YOU = 50, kris = 70, susie = 400, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 100, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("dess").opinions = { YOU = 50, kris = 70, susie = 50, noelle = 100, brandon = 60, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 60, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 60, mario = 35, pauling = 50 }
-        Game:getPartyMember("brandon").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 30, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 80, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 70, mario = 50, pauling = 50 }
-        Game:getPartyMember("dumbie").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("ostarwalker").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("berdly").opinions = { YOU = 50, kris = 80, susie = 150, noelle = 120, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("bor").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 80, dumbie = 50, ostarwalker = 50, berdly = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("robo_susie").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, nonyo = 120, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("nonyo").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 120, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("iphone").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("frisk2").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("alseri").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, jamm = 50, mario = 50, pauling = 50 }
-        Game:getPartyMember("jamm").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 15, brandon = 80, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, mario = 65, pauling = 50 }
-        Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65, pauling = 50 }
-        Game:getPartyMember("pauling").opinions = { kris = 40, YOU = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, nonyo = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
+        Game:getPartyMember("YOU").opinions = { kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("kris").opinions = { YOU = 50, susie = 120, noelle = 70, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 70, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("susie").opinions = { YOU = 50, kris = 120, noelle = 120, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 60, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("noelle").opinions = { YOU = 50, kris = 70, susie = 400, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 100, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("dess").opinions = { YOU = 50, kris = 70, susie = 50, noelle = 100, brandon = 60, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 60, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 60, mario = 35, pauling = 50 }
+        Game:getPartyMember("brandon").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 30, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 80, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 70, mario = 50, pauling = 50 }
+        Game:getPartyMember("dumbie").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("ostarwalker").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("berdly").opinions = { YOU = 50, kris = 80, susie = 150, noelle = 120, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("bor").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 80, dumbie = 50, ostarwalker = 50, berdly = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("robo_susie").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, noyno = 120, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("noyno").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 120, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("iphone").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("frisk2").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("alseri").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("jamm").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 15, brandon = 80, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, mario = 65, pauling = 50 }
+        Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65, pauling = 50 }
+        Game:getPartyMember("pauling").opinions = { kris = 40, YOU = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
 
 	if new_file or not Game:getFlag("darkess_beans") then
@@ -265,6 +265,8 @@ function Mod:initializeImportantFlags(new_file)
 
     local function addOpinionsToParty(party, new_opinions)
         local party_obj = Game:getPartyMember(party)
+        assert(party_obj, "unknown party member ID " .. party)
+        assert(party_obj.opinions)
         party_obj.opinions = Utils.merge(party_obj.opinions, new_opinions)
     end
 
@@ -283,12 +285,12 @@ function Mod:initializeImportantFlags(new_file)
         addOpinionsToParty("berdly", { mario = 50 })
         addOpinionsToParty("bor", { mario = 50 })
         addOpinionsToParty("robo_susie", { mario = 50 })
-        addOpinionsToParty("nonyo", { mario = 50 })
+        addOpinionsToParty("noyno", { mario = 50 })
         addOpinionsToParty("iphone", { mario = 50 })
         addOpinionsToParty("frisk2", { mario = 50 })
         addOpinionsToParty("alseri", { mario = 50 })
         addOpinionsToParty("jamm", { mario = 65 })
-        Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, nonyo = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65 }
+        Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65 }
     end
 	
 	if new_file or pauling.opinions == nil then
@@ -306,13 +308,13 @@ function Mod:initializeImportantFlags(new_file)
         addOpinionsToParty("berdly", { pauling = 50 })
         addOpinionsToParty("bor", { pauling = 50 })
         addOpinionsToParty("robo_susie", { pauling = 50 })
-        addOpinionsToParty("nonyo", { pauling = 50 })
+        addOpinionsToParty("noyno", { pauling = 50 })
         addOpinionsToParty("iphone", { pauling = 50 })
         addOpinionsToParty("frisk2", { pauling = 50 })
         addOpinionsToParty("alseri", { pauling = 50 })
         addOpinionsToParty("jamm", { pauling = 50 })
         addOpinionsToParty("mario", { pauling = 50 })
-        Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, nonyo = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
+        Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
 
     ----------

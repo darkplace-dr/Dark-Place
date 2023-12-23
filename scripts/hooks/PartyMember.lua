@@ -1,14 +1,15 @@
 ---@class PartyMember
+---@field opinions integer[]
 local PartyMember, super = Class("PartyMember", true)
 
 function PartyMember:init()
-	super:init(self)
-	
-	self.flee_text = {}
-	
-	self.has_command = false
-	
-	self.love = 1
+    super:init(self)
+    
+    self.flee_text = {}
+    
+    self.has_command = false
+    
+    self.love = 1
     self.exp = 0
     self.max_exp = 99999
 
@@ -38,13 +39,16 @@ function PartyMember:init()
     }
 
     self.future_heals = {}
+
+    self.opinions = {}
+    self.default_opinion = 50
 end
 
 function PartyMember:onSave(data)
-	super:onSave(self, data)
+    super:onSave(self, data)
 
     data.opinions = self.opinions
-	
+    
     if Kristal.getLibConfig("leveling", "global_love") then return end
 
     data.exp = self.exp
@@ -52,10 +56,10 @@ function PartyMember:onSave(data)
 end
 
 function PartyMember:onLoad(data)
-	super:onLoad(self, data)
-	
+    super:onLoad(self, data)
+    
     self.opinions = data.opinions or self.opinions
-	
+    
     if Kristal.getLibConfig("leveling", "global_love") then return end
 
     self.exp = data.exp or self.exp
@@ -63,11 +67,11 @@ function PartyMember:onLoad(data)
 end
 
 function PartyMember:getMaxShield()
-	return self:getStat("health") / 2
+    return self:getStat("health") / 2
 end
 
 function PartyMember:hasSkills()
-	return (self:hasAct() and self:hasSpells())
+    return (self:hasAct() and self:hasSpells())
 end
 
 function PartyMember:getSkills()
@@ -86,104 +90,104 @@ function PartyMember:getSkills()
             end
         end
     end
-	return {
-		{"ACT", "Do all\nsorts of\nthings", nil, function() Game.battle:setState("ENEMYSELECT", "ACT") end},
-		{(Kristal.getLibConfig("better_battles", "magic_name")) or "Magic", Kristal.getLibConfig("better_battles", "magic_description") or "Cast\nSpells", color, function()
-			Game.battle:clearMenuItems()
+    return {
+        {"ACT", "Do all\nsorts of\nthings", nil, function() Game.battle:setState("ENEMYSELECT", "ACT") end},
+        {(Kristal.getLibConfig("better_battles", "magic_name")) or "Magic", Kristal.getLibConfig("better_battles", "magic_description") or "Cast\nSpells", color, function()
+            Game.battle:clearMenuItems()
 
-			-- First, register X-Actions as menu items.
+            -- First, register X-Actions as menu items.
 
-			if Game.battle.encounter.default_xactions and self:hasXAct() then
-				local spell = {
-					["name"] = Game.battle.enemies[1]:getXAction(self.battler),
-					["target"] = "xact",
-					["id"] = 0,
-					["default"] = true,
-					["party"] = {},
-					["tp"] = 0
-				}
+            if Game.battle.encounter.default_xactions and self:hasXAct() then
+                local spell = {
+                    ["name"] = Game.battle.enemies[1]:getXAction(self.battler),
+                    ["target"] = "xact",
+                    ["id"] = 0,
+                    ["default"] = true,
+                    ["party"] = {},
+                    ["tp"] = 0
+                }
 
-				Game.battle:addMenuItem({
-					["name"] = self:getXActName() or "X-Action",
-					["tp"] = 0,
-					["color"] = {self:getXActColor()},
-					["data"] = spell,
-					["callback"] = function(menu_item)
-						Game.battle.selected_xaction = spell
-						Game.battle:setState("XACTENEMYSELECT", "SPELL")
-					end
-				})
-			end
+                Game.battle:addMenuItem({
+                    ["name"] = self:getXActName() or "X-Action",
+                    ["tp"] = 0,
+                    ["color"] = {self:getXActColor()},
+                    ["data"] = spell,
+                    ["callback"] = function(menu_item)
+                        Game.battle.selected_xaction = spell
+                        Game.battle:setState("XACTENEMYSELECT", "SPELL")
+                    end
+                })
+            end
 
-			for id, action in ipairs(Game.battle.xactions) do
-				if action.party == self.id then
-					local spell = {
-						["name"] = action.name,
-						["target"] = "xact",
-						["id"] = id,
-						["default"] = false,
-						["party"] = {},
-						["tp"] = action.tp or 0
-					}
+            for id, action in ipairs(Game.battle.xactions) do
+                if action.party == self.id then
+                    local spell = {
+                        ["name"] = action.name,
+                        ["target"] = "xact",
+                        ["id"] = id,
+                        ["default"] = false,
+                        ["party"] = {},
+                        ["tp"] = action.tp or 0
+                    }
 
-					Game.battle:addMenuItem({
-						["name"] = action.name,
-						["tp"] = action.tp or 0,
-						["description"] = action.description,
-						["color"] = action.color or {1, 1, 1, 1},
-						["data"] = spell,
-						["callback"] = function(menu_item)
-							Game.battle.selected_xaction = spell
-							Game.battle:setState("XACTENEMYSELECT", "SPELL")
-						end
-					})
-				end
-			end
+                    Game.battle:addMenuItem({
+                        ["name"] = action.name,
+                        ["tp"] = action.tp or 0,
+                        ["description"] = action.description,
+                        ["color"] = action.color or {1, 1, 1, 1},
+                        ["data"] = spell,
+                        ["callback"] = function(menu_item)
+                            Game.battle.selected_xaction = spell
+                            Game.battle:setState("XACTENEMYSELECT", "SPELL")
+                        end
+                    })
+                end
+            end
 
-			-- Now, register SPELLs as menu items.
-			for _,spell in ipairs(self:getSpells()) do
-				local color = spell.color or {1, 1, 1, 1}
-				if spell:hasTag("spare_tired") then
-					local has_tired = false
-					for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
-						if enemy.tired then
-							has_tired = true
-							break
-						end
-					end
-					if has_tired then
-						color = {0, 178/255, 1, 1}
-					end
-				end
-				Game.battle:addMenuItem({
-					["name"] = spell:getName(),
-					["tp"] = spell:getTPCost(self),
-					["unusable"] = not spell:isUsable(self),
-					["description"] = spell:getBattleDescription(),
-					["party"] = spell.party,
-					["color"] = color,
-					["data"] = spell,
-					["callback"] = function(menu_item)
-						Game.battle.selected_spell = menu_item
+            -- Now, register SPELLs as menu items.
+            for _,spell in ipairs(self:getSpells()) do
+                local color = spell.color or {1, 1, 1, 1}
+                if spell:hasTag("spare_tired") then
+                    local has_tired = false
+                    for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                        if enemy.tired then
+                            has_tired = true
+                            break
+                        end
+                    end
+                    if has_tired then
+                        color = {0, 178/255, 1, 1}
+                    end
+                end
+                Game.battle:addMenuItem({
+                    ["name"] = spell:getName(),
+                    ["tp"] = spell:getTPCost(self),
+                    ["unusable"] = not spell:isUsable(self),
+                    ["description"] = spell:getBattleDescription(),
+                    ["party"] = spell.party,
+                    ["color"] = color,
+                    ["data"] = spell,
+                    ["callback"] = function(menu_item)
+                        Game.battle.selected_spell = menu_item
 
-						if not spell.target or spell.target == "none" then
-							Game.battle:pushAction("SPELL", nil, menu_item)
-						elseif spell.target == "ally" then
-							Game.battle:setState("PARTYSELECT", "SPELL")
-						elseif spell.target == "enemy" then
-							Game.battle:setState("ENEMYSELECT", "SPELL")
-						elseif spell.target == "party" then
-							Game.battle:pushAction("SPELL", Game.battle.party, menu_item)
-						elseif spell.target == "enemies" then
-							Game.battle:pushAction("SPELL", Game.battle:getActiveEnemies(), menu_item)
-						end
-					end
-				})
-			end
+                        if not spell.target or spell.target == "none" then
+                            Game.battle:pushAction("SPELL", nil, menu_item)
+                        elseif spell.target == "ally" then
+                            Game.battle:setState("PARTYSELECT", "SPELL")
+                        elseif spell.target == "enemy" then
+                            Game.battle:setState("ENEMYSELECT", "SPELL")
+                        elseif spell.target == "party" then
+                            Game.battle:pushAction("SPELL", Game.battle.party, menu_item)
+                        elseif spell.target == "enemies" then
+                            Game.battle:pushAction("SPELL", Game.battle:getActiveEnemies(), menu_item)
+                        end
+                    end
+                })
+            end
 
-			Game.battle:setState("MENUSELECT", "SPELL")
-		end}
-	}
+            Game.battle:setState("MENUSELECT", "SPELL")
+        end}
+    }
 end
 
 -- Getters
@@ -230,7 +234,7 @@ function PartyMember:getNextLv()
 end
 
 function PartyMember:getCommandOptions()
-	return {"FIGHT", "ACT", "MAGIC"}, {"ITEM", "SPARE", "DEFEND"}
+    return {"FIGHT", "ACT", "MAGIC"}, {"ITEM", "SPARE", "DEFEND"}
 end
 
 --- Called whenever a HealItem is used. \
@@ -283,5 +287,32 @@ end
 ---@param amount integer The amount of HP restored by this heal.
 ---@param battler PartyBattler The PartyBattler associated with this character.
 function PartyMember:onFutureHeal(amount, battler) end
+
+---@param other_party string|PartyMember
+function PartyMember:getOpinion(other_party)
+    if type(other_party) == "table" and other_party:includes(PartyMember) then
+        other_party = other_party.id
+    end
+    if self.opinions[other_party] ~= nil then return self.opinions[other_party] end
+    return self.default_opinion
+end
+
+---@param other_party string|PartyMember
+function PartyMember:setOpinion(other_party, amount)
+    if type(other_party) == "table" and other_party:includes(PartyMember) then
+        other_party = other_party.id
+    end
+    self.opinions[other_party] = amount
+    return amount
+end
+
+---@param other_party string|PartyMember
+function PartyMember:addOpinion(other_party, amount)
+    if type(other_party) == "table" and other_party:includes(PartyMember) then
+        other_party = other_party.id
+    end
+    self.opinions[other_party] = self:getOpinion(other_party) + amount
+    return self.opinions[other_party]
+end
 
 return PartyMember

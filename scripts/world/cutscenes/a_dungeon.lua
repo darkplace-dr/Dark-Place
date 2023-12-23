@@ -1047,7 +1047,7 @@ return {
 		if Game:getFlag("dungeonkiller") then
 			cutscene:hideNametag()
 			cutscene:wait(cutscene:walkToSpeed("jamm", "jamm_spawn", 4, "up"))
-			Game:getPartyMember("jamm").opinions.dess = 0
+            Game:getPartyMember("jamm"):setOpinion("dess", 0)
 			Game:getPartyMember("jamm"):removeSpell("supersling")
 			Game:getPartyMember("jamm"):setActor("jamm_hurt")
 			Game:getPartyMember("jamm"):setLightActor("jamm_lw_hurt")
@@ -1086,8 +1086,8 @@ return {
 			cutscene:look(dess, "left")
 			cutscene:showNametag("Dess")
 			cutscene:text("* i got the stuff,[wait:5] let's bolt", "neutral", "dess")
-			Game:getPartyMember("jamm").opinions.dess = Game:getPartyMember("jamm").opinions.dess + 20
-			Game:getPartyMember("dess").opinions.jamm = Game:getPartyMember("dess").opinions.jamm + 20
+			Game:getPartyMember("jamm"):addOpinion("dess", 20)
+			Game:getPartyMember("dess"):addOpinion("jamm", 20)
 		end
 		cutscene:hideNametag()
 		Game:setFlag("jamm_closure", true)
