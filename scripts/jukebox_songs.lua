@@ -764,11 +764,11 @@ return {
     origin = "https://toby.fangamer.com/newsletters/autumn23/"
   },
   {
-    name = "Forgotten Wood", -- Creepy Forest slowed down
+    name = "Forgotten Wood",
     file = "forgotten_wood",
-    composer = "Saurdino420",
-    released = "Mar 26, 2023 / ---",
-    origin = "Deoxynn Act 1 / Dark Place"
+    composer = "Saurdino420 (\"arr.\" Dobby233Liu)",
+    released = "---",
+    origin = "Edit of Creepy Forest from Deoxynn Act 1"
   },
   {
     name = "Mysterious Dungeon",
