@@ -292,6 +292,23 @@ return {
     end,
 
     notypee = function(cutscene, event)
+        if event.actor.debt then
+            cutscene:showNametag("???")
+            cutscene:text("[voice:nil]* Nothing happened on December 23, 2023")
+            cutscene:hideNametag()
+            Game:setFlag("notypee_saw_debt", true)
+            event:remove()
+            Assets.playSound("mysterygo")
+            if cutscene:getCharacter("susie") then
+                cutscene:wait(2)
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...What?", "sus_nervous", "susie")
+                cutscene:hideNametag()
+            end
+            cutscene:endCutscene()
+            return
+        end
+
         if event:getFlag("can_rant", {false, false})[1] and love.math.random(0, 3)==1 then
             cutscene:showNametag(event:getFlag("can_rant", {false, false})[2] and "Notypee" or "???")
             Game.world.timer:after(3, function()
