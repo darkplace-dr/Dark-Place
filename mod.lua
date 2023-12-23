@@ -1173,7 +1173,7 @@ end
 
 function Mod:getDefaultDialogTextFont()
     if self:isOmori() then
-        return "OMORI"
+        return "omori"
     end
 end
 
