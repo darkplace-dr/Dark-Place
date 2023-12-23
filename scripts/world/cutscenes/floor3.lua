@@ -3,23 +3,29 @@ return {
         local flaurel = cutscene:getCharacter("flaurel")
         local player = Game.world.player
         local susie = cutscene:getCharacter("susie")
-	
+
+        Mod:rollFun()
+
         cutscene:showNametag("???????")
         cutscene:text("* FORGET ME NOT.")
         cutscene:hideNametag()
-        susie:setSprite("shock_right")
-        player:explode(0, 0, true)
-        flaurel:explode()
-        cutscene:wait(0.25)
-		
-        Assets.stopSound("badexplosion")
-        Game.world:remove()
 
-        Game.state = "GAMEOVER"
+        flaurel:explode()
+        player:explode(0, 0, true)
+        if susie then
+            susie:setSprite("shock_right")
+        end
+        cutscene:wait(0.25)
+
+        Assets.stopSound("badexplosion")
+
         Kristal.hideBorder(0)
-        Game.stage:addChild(GameOver(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "what the fuck"))
-        Mod:rollFun()
+        Game.state = "GAMEOVER"
+        Game.world:remove()
+        Game.gameover = GameOver(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "what the fuck")
+        Game.stage:addChild(Game.gameover)
     end,
+
     elevator_strange = function(cutscene)
         local leader = Mod:getLeader("chara")
         cutscene:after(function()

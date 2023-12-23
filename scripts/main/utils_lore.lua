@@ -21,7 +21,7 @@ function Mod:shouldUseVelvetAddisons()
 end
 
 -- Randomizes fun
----@param avoid_collide boolean whether to ensure that the new value is different from the last one. defaults to true
+---@param avoid_collide? boolean whether to ensure that the new value is different from the last one. defaults to true
 function Mod:rollFun(avoid_collide)
     if avoid_collide == nil then avoid_collide = true end
 
