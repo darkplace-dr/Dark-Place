@@ -6,6 +6,7 @@ function DogCheck:init()
     self.parallax_x = 0
     self.parallax_y = 0
 	self.layer = WORLD_LAYERS["top"]
+    self.debug_select = false
 
     ---@type ""|"IDLE"|"EXITING"
     self.state = ""

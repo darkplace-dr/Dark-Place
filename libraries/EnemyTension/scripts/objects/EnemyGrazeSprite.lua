@@ -4,7 +4,7 @@ local EnemyGrazeSprite, super = Class(Object)
 function EnemyGrazeSprite:init(x, y)
     self.texture = Assets.getTexture("battle/bullets/enemy_graze")
 
-    super:init(self, x, y, self.texture:getWidth(), self.texture:getHeight())
+    super.init(self, x, y, self.texture:getWidth(), self.texture:getHeight())
 
     self.graze_scale = 1
 

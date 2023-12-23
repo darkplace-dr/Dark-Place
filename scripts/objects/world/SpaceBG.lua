@@ -10,6 +10,7 @@ function SpaceBG:init()
     self.parallax_y = 0
 
     self.physics.speed_x = 0.3
+    self.debug_select = false
 end
 
 return SpaceBG

@@ -9,7 +9,7 @@ return {
         zero:setAnimation("headphones_end")
         cutscene:wait(0.3)
         Assets.playSound("zero/tv_thump_full")
-        Game.stage:addFX(ShaderFX(Mod.wave_shader, {
+        Game.stage:addFX(ShaderFX(Mod.shaders["wave"], {
             ["wave_sine"] = function() return Kristal.getTime() * 1200 end,
             ["wave_mag"] = 10,
             ["wave_height"] = 1,
@@ -26,7 +26,7 @@ return {
     killed = function(cutscene, battler, enemy)
         local zero = Game.battle:getEnemyBattler("zero")
         cutscene:wait(4)
-        Game.stage:addFX(ShaderFX(Mod.wave_shader, {
+        Game.stage:addFX(ShaderFX(Mod.shaders["wave"], {
             ["wave_sine"] = function() return Kristal.getTime() * 1200 end,
             ["wave_mag"] = 20,
             ["wave_height"] = 1,

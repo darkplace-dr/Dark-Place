@@ -128,7 +128,7 @@ return {
 
 		local susie_party = Game:getPartyMember("susie")
         if cutscene:getCharacter("susie") then
-            susie_party.opinions.dess = susie_party.opinions.dess - 20
+            susie_party:addOpinion("dess", -20)
         end
   end,
 
@@ -427,7 +427,7 @@ return {
 
 		local susie_party = Game:getPartyMember("susie")
         if susie then
-            susie_party.opinions.dess = susie_party.opinions.dess - 20
+            susie_party:addOpinion("dess", -20)
         end
 
 		cutscene:detachFollowers()

@@ -1,9 +1,9 @@
----@class ActorSprite : ActorSprite
+---@class ActorSprite
 ---@overload fun(...) : ActorSprite
 local ActorSprite, super = Class("ActorSprite", true)
 
 function ActorSprite:init(actor)
-	super:init(self, actor)
+	super.init(self, actor)
 
 
 	self.run_away_2 = false

@@ -1,13 +1,12 @@
-modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/utils_general")
+modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/utils_lore")
+modRequire("scripts/main/minigames_glue")
 modRequire("scripts/main/warp_bin")
+Speen = modRequire("scripts/main/ow_speen")
 modRequire("scripts/main/ow_taunt")
 modRequire("scripts/main/battle_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
-Speen = modRequire("scripts/main/ow_speen")
-
--- PR 500 stolen by AcousticJamm :troll:
 
 function Mod:preInit()
     if Kristal.Version < SemVer(self.info.engineVer) then
@@ -17,139 +16,38 @@ end
 
 function Mod:init()
     MUSIC_PITCHES["deltarune/THE_HOLY"] = 0.9
-
-    MUSIC_VOLUMES["cybercity"] = 0.8
-    MUSIC_PITCHES["cybercity"] = 0.97
-
-    MUSIC_VOLUMES["cybercity_alt"] = 0.8
-    MUSIC_PITCHES["cybercity_alt"] = 1.2
-
+    MUSIC_PITCHES["deltarune/cybercity"] = 0.97
+    MUSIC_PITCHES["deltarune/cybercity_alt"] = 1.2
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
-
     MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
 
     self.voice_timer = 0
-
-    self:registerShaders()
 
     self:initTaunt()
     self:initBattleTaunt()
     Speen:init()
 
---[[     Utils.hook(World, "setupMap", function(orig, self, map, ...)
-        for _,child in ipairs(self.children) do
-            if not child.persistent then
-                self:removeChild(child)
-            end
-        end
-        for _,child in ipairs(self.controller_parent.children) do
-            if not child.persistent then
-                self.controller_parent:removeChild(child)
-            end
-        end
-    
-        self:updateChildList()
-    
-        self.healthbar = nil
-        self.followers = {}
-    
-        self.camera:resetModifiers(true)
-        self.camera:setAttached(true)
-    
-        if isClass(map) then
-            self.map = map
-        elseif type(map) == "string" then
-            if not Registry.getMap(map) and not Registry.getMapData(map) then
-                error("fuck")
+	Utils.hook(Game, "getActiveMusic",
+        ---@overload fun(orig:function, self:Game) : Music
+        function(orig, self)
+            if self.state == "OVERWORLD" then
+                return self.world.music
+            elseif self.state == "BATTLE" then
+                return self.battle.music
+            elseif self.state == "MINIGAME" then
+                return self.minigame.music
+            elseif self.state == "SHOP" then
+                return self.shop.music
+            elseif self.state == "GAMEOVER" then
+                return self.gameover.music
             else
-                self.map = Registry.createMap(map, self, ...)
+                return self.music
             end
-        elseif type(map) == "table" then
-            self.map = Map(self, map, ...)
-        else
-            self.map = Map(self, nil, ...)
         end
-    
-        self.map:load()
-    
-        local dark_transitioned = self.map.light ~= Game:isLight()
-    
-        Game:setLight(self.map.light)
-    
-        self.width = self.map.width * self.map.tile_width
-        self.height = self.map.height * self.map.tile_height
-    
-        --self.camera:setBounds(0, 0, self.map.width * self.map.tile_width, self.map.height * self.map.tile_height)
-    
-        self.battle_fader = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
-        self.battle_fader:setParallax(0, 0)
-        self.battle_fader:setColor(0, 0, 0)
-        self.battle_fader.alpha = 0
-        self.battle_fader.layer = self.map.battle_fader_layer
-        self.battle_fader.debug_select = false
-        self:addChild(self.battle_fader)
-    
-        self.in_battle = false
-        self.in_battle_area = false
-        self.battle_alpha = 0
-    
-        local map_border = self.map:getBorder(dark_transitioned)
-        if map_border then
-            Game:setBorder(map_border)
-        end
-    
-        if not self.map.keep_music then
-            self:transitionMusic(Kristal.callEvent("onMapMusic", self.map, self.map.music) or self.map.music)
-        end
-    end)
+    )
 
-    Utils.hook(World, "mapTransition", function(orig, self, ...)
-        local args = {...}
-        local map = args[1]
-        if type(map) == "string" then
-            if not Registry.getMap(map) and not Registry.getMapData(map) then
-                local xp = XPWindow()
-                if Game.world.cutscene then
-                    Game.world:stopCutscene()
-                end
-                Game.lock_movement = false
-                Game.world:loadMap("warphub")
-                return
-            else
-                local map = Registry.createMap(map)
-                if not map.keep_music then
-                    self:transitionMusic(Kristal.callEvent("onMapMusic", self.map, self.map.music) or map.music, true)
-                end
-                local dark_transition = map.light ~= Game:isLight()
-                local map_border = map:getBorder(dark_transition)
-                if map_border then
-                    Game:setBorder(map_border, 1)
-                end
-            end
-        end
-        self:fadeInto(function()
-            self:loadMap(Utils.unpack(args))
-        end)
-    end) ]]
-	
-	Utils.hook(Game, "getActiveMusic", function(orig, self)
-		if self.state == "OVERWORLD" then
-			return self.world.music
-		elseif self.state == "BATTLE" then
-			return self.battle.music
-		elseif self.state == "MINIGAME" then
-			return self.minigame.music
-		elseif self.state == "SHOP" then
-			return self.shop.music
-		elseif self.state == "GAMEOVER" then
-			return self.gameover.music
-		else
-			return self.music
-		end
-	end)
-	
 	Utils.hook(Game, "onKeyPressed", function(orig, self, key, is_repeat)
 		if Kristal.callEvent("onKeyPressed", key, is_repeat) then
 			-- Mod:onKeyPressed returned true, cancel default behaviour
@@ -183,6 +81,11 @@ function Mod:init()
 			end
 		end
 	end)
+
+    Utils.hook(Actor, "init", function(orig, self)
+        orig(self)
+        self.taunt_sprites = {}
+    end)
 end
 
 function Mod:postInit(new_file)
@@ -223,6 +126,11 @@ function Mod:postInit(new_file)
 	self:initializeEvents()
 end
 
+function Mod:onRegistered()
+    self:registerShaders()
+	self:registerMinigames()
+end
+
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
     local old_save_issues = {}
@@ -252,19 +160,16 @@ function Mod:initializeImportantFlags(new_file)
 
         Game:setFlag("timesUsedWrongBorDoorCode", 0)
         Game:setFlag("BorDoorCodeUnlocked", false)
-        Game:setFlag("AddiSwitchOn", false)
 
         Game:setFlag("hasObtainedLancer", false)
         Game:setFlag("hasObtainedRouxls", false)
 
         Game:setFlag("cloudwebStoryFlag", 0)
         Game:setFlag("vaporland_sidestory", 0)
-
-        Game:setFlag("spookymonth", false)
     end
 
     -- Create save flags for costumes if they don't already exist
-    if new_file or Game:getFlag("YOU_costume") == nil then
+    if Game:getFlag("YOU_costume") == nil then
         Game:setFlag("YOU_costume", 0)
     end
     if Game:getFlag("susie_costume") == nil then
@@ -276,7 +181,6 @@ function Mod:initializeImportantFlags(new_file)
     if Game:getFlag("brandon_costume") == nil then
         Game:setFlag("brandon_costume", 0)
     end
-
 
     if new_file then
         -- FIXME: instead of using these flags in maps we should probably use
@@ -300,7 +204,7 @@ function Mod:initializeImportantFlags(new_file)
 
     if not new_file and not Game:getFlag("#room1:played_intro", false) then
         likely_old_save = true
-        table.insert(old_save_issues, "Save is probably from before the intro was added.")
+        table.insert(old_save_issues, "Save is probably from before the intro was added")
 
         Game:setFlag("#room1:played_intro", true)
     end
@@ -326,397 +230,33 @@ function Mod:initializeImportantFlags(new_file)
             attack = 8,
             defense = 4,
             magic = 2
-        }
+       }
     end
 
     if new_file or berdly.opinions == nil then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before the relationship system was added.")
 
-        local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm"}
-        for i, v in ipairs(party_members) do
-            local party = Game:getPartyMember(v)
-            if v == "YOU" then
-                party.opinions = {
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "kris" then
-                party.opinions = {
-                    YOU = 50,
-                    susie = 120,
-                    noelle = 70,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 70,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "susie" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 120,
-                    noelle = 120,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 60,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "noelle" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 70,
-                    susie = 400,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 100,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "dess" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 70,
-                    susie = 50,
-                    noelle = 100,
-                    brandon = 60,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 60,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 60,
-					mario = 35,
-					pauling = 50
-                }
-            end
-            if v == "brandon" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 30,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 80,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 70,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "dumbie" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "ostarwalker" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "berdly" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 80,
-                    susie = 150,
-                    noelle = 120,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "bor" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 80,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "robo_susie" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    nonyo = 120,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "nonyo" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 120,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "iphone" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "frisk2" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    alseri = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "alseri" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    jamm = 50,
-					mario = 50,
-					pauling = 50
-                }
-            end
-            if v == "jamm" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 15,
-                    brandon = 80,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-					mario = 65,
-					pauling = 50
-                }
-            end
-            if v == "mario" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-					jamm = 65,
-					pauling = 50
-                }
-            end
-            if v == "pauling" then
-                party.opinions = {
-                    kris = 40,
-                    YOU = 40,
-                    susie = 40,
-                    noelle = 40,
-                    dess = 40,
-                    brandon = 40,
-                    dumbie = 40,
-                    ostarwalker = 40,
-                    berdly = 40,
-                    bor = 40,
-                    robo_susie = 40,
-                    nonyo = 40,
-                    iphone = 40,
-                    frisk2 = 40,
-                    alseri = 40,
-                    jamm = 40,
-					mario = 40
-                }
-            end
-        end
+        Game:getPartyMember("YOU").opinions = { kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("kris").opinions = { YOU = 50, susie = 120, noelle = 70, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 70, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("susie").opinions = { YOU = 50, kris = 120, noelle = 120, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 60, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("noelle").opinions = { YOU = 50, kris = 70, susie = 400, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 100, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("dess").opinions = { YOU = 50, kris = 70, susie = 50, noelle = 100, brandon = 60, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 60, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 60, mario = 35, pauling = 50 }
+        Game:getPartyMember("brandon").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 30, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 80, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 70, mario = 50, pauling = 50 }
+        Game:getPartyMember("dumbie").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("ostarwalker").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("berdly").opinions = { YOU = 50, kris = 80, susie = 150, noelle = 120, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("bor").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 80, dumbie = 50, ostarwalker = 50, berdly = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("robo_susie").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, noyno = 120, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("noyno").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 120, iphone = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("iphone").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, frisk2 = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("frisk2").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, alseri = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("alseri").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, jamm = 50, mario = 50, pauling = 50 }
+        Game:getPartyMember("jamm").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 15, brandon = 80, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, mario = 65, pauling = 50 }
+        Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65, pauling = 50 }
+        Game:getPartyMember("pauling").opinions = { kris = 40, YOU = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
-	
+
 	if new_file or not Game:getFlag("darkess_beans") then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before the bean spots were added.")
@@ -725,231 +265,59 @@ function Mod:initializeImportantFlags(new_file)
 		Game:setFlag("spam_beans", 0)
 		Game:setFlag("binaribeans", 0)
 	end
-	
+
+    local function addOpinionsToParty(party, new_opinions)
+        local party_obj = Game:getPartyMember(party)
+        assert(party_obj, "unknown party member ID " .. party)
+        assert(party_obj.opinions)
+        party_obj.opinions = Utils.merge(party_obj.opinions, new_opinions)
+    end
+
 	if new_file or mario.opinions == nil then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Mario was added.")
 
-        local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm", "mario"}
-        for i, v in ipairs(party_members) do
-            local party = Game:getPartyMember(v)
-            if v == "YOU" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "kris" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "susie" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "noelle" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "dess" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 35
-                })
-            end
-            if v == "brandon" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "dumbie" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "ostarwalker" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "berdly" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "bor" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "robo_susie" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "nonyo" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "iphone" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "frisk2" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "alseri" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 50
-                })
-            end
-            if v == "jamm" then
-                party.opinions = Utils.merge(party.opinions, {
-                    mario = 65
-                })
-            end
-            if v == "mario" then
-                party.opinions = {
-                    YOU = 50,
-                    kris = 50,
-                    susie = 50,
-                    noelle = 50,
-                    dess = 50,
-                    brandon = 50,
-                    dumbie = 50,
-                    ostarwalker = 50,
-                    berdly = 50,
-                    bor = 50,
-                    robo_susie = 50,
-                    nonyo = 50,
-                    iphone = 50,
-                    frisk2 = 50,
-                    alseri = 50,
-					jamm = 65
-                }
-            end
-        end
+        addOpinionsToParty("YOU", { mario = 50 })
+        addOpinionsToParty("kris", { mario = 50 })
+        addOpinionsToParty("susie", { mario = 50 })
+        addOpinionsToParty("noelle", { mario = 50 })
+        addOpinionsToParty("dess", { mario = 35 })
+        addOpinionsToParty("brandon", { mario = 50 })
+        addOpinionsToParty("dumbie", { mario = 50 })
+        addOpinionsToParty("ostarwalker", { mario = 50 })
+        addOpinionsToParty("berdly", { mario = 50 })
+        addOpinionsToParty("bor", { mario = 50 })
+        addOpinionsToParty("robo_susie", { mario = 50 })
+        addOpinionsToParty("noyno", { mario = 50 })
+        addOpinionsToParty("iphone", { mario = 50 })
+        addOpinionsToParty("frisk2", { mario = 50 })
+        addOpinionsToParty("alseri", { mario = 50 })
+        addOpinionsToParty("jamm", { mario = 65 })
+        Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65 }
     end
 	
 	if new_file or pauling.opinions == nil then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Ms. Pauling was added.")
 
-        local party_members = {"YOU", "kris", "susie", "noelle", "dess", "brandon", "dumbie", "ostarwalker", "berdly", "bor", "robo_susie", "noyno", "iphone", "frisk2", "alseri", "jamm", "mario", "pauling"}
-        for i, v in ipairs(party_members) do
-            local party = Game:getPartyMember(v)
-            if v == "YOU" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "kris" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "susie" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "noelle" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "dess" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "brandon" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "dumbie" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "ostarwalker" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "berdly" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "bor" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "robo_susie" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "nonyo" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "iphone" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "frisk2" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "alseri" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "jamm" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "mario" then
-                party.opinions = Utils.merge(party.opinions, {
-                    pauling = 50
-                })
-            end
-            if v == "pauling" then
-                party.opinions = {
-                    YOU = 40,
-                    kris = 40,
-                    susie = 40,
-                    noelle = 40,
-                    dess = 40,
-                    brandon = 40,
-                    dumbie = 40,
-                    ostarwalker = 40,
-                    berdly = 40,
-                    bor = 40,
-                    robo_susie = 40,
-                    nonyo = 40,
-                    iphone = 40,
-                    frisk2 = 40,
-                    alseri = 40,
-					jamm = 40,
-					mario = 40
-                }
-            end
-        end
+        addOpinionsToParty("YOU", { pauling = 50 })
+        addOpinionsToParty("kris", { pauling = 50 })
+        addOpinionsToParty("susie", { pauling = 50 })
+        addOpinionsToParty("noelle", { pauling = 50 })
+        addOpinionsToParty("dess", { pauling = 50 })
+        addOpinionsToParty("brandon", { pauling = 50 })
+        addOpinionsToParty("dumbie", { pauling = 50 })
+        addOpinionsToParty("ostarwalker", { pauling = 50 })
+        addOpinionsToParty("berdly", { pauling = 50 })
+        addOpinionsToParty("bor", { pauling = 50 })
+        addOpinionsToParty("robo_susie", { pauling = 50 })
+        addOpinionsToParty("noyno", { pauling = 50 })
+        addOpinionsToParty("iphone", { pauling = 50 })
+        addOpinionsToParty("frisk2", { pauling = 50 })
+        addOpinionsToParty("alseri", { pauling = 50 })
+        addOpinionsToParty("jamm", { pauling = 50 })
+        addOpinionsToParty("mario", { pauling = 50 })
+        Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
 
     ----------
@@ -968,53 +336,7 @@ function Mod:initializeImportantFlags(new_file)
 end
 
 function Mod:initializeEvents()
-	local currentDate = os.date("*t")
-    
-	-- Christmas event
-	if currentDate.month == 12 or currentDate.month == 1 then
-		if (currentDate.month == 12 and currentDate.day >= 1) or
-		(currentDate.month == 1 and currentDate.day <= 6) then
-			
-		end
-	end
-    
-	-- Art Club
-	if currentDate.month == 10 and currentDate.day == 11 then
-		
-	end
-end
-
-function Mod:onRegistered()
-	self.minigames = { }
-	
-	for _,path,game in Registry.iterScripts("minigames") do
-		assert(game ~= nil, '"minigames/' .. path .. '.lua" does not return value')
-		game.id = game.id or path
-		self.minigames[game.id] = game
-	end
-end
-
-function Mod:createMinigame(id, ...)
-	if self.minigames[id] then
-		return self.minigames[id](...)
-	else
-		error("Attempt to create nonexistent minigame \"" .. tostring(id) .. "\"")
-	end
-end
-
-function Mod:startMinigame(game)
-
-    if Game.minigame then
-        error("Attempt to enter card game while already in card game")
-    end
-
-    Game.state = "MINIGAME"
-
-    Game.minigame = self:createMinigame(game)
-
-    Game.minigame:postInit()
-	
-    Game.stage:addChild(Game.minigame)
+	local date = os.date("*t")
 end
 
 function Mod:unload()
@@ -1029,7 +351,7 @@ function Mod:save(data)
         Log:print("Attempting to get this save out of the mb map", "warn")
 
         data.room_id = Mod.world_dest_map_bak or Mod.lastMap or data.room_id
-        local the_map = Registry.createMap(data.room_id)
+        local the_map = Registry.createMap(data.room_id, Game.world)
         data.room_name = (the_map and the_map.name) or "???"
 
         if Mod.world_dest_mk_bak then
@@ -1178,12 +500,22 @@ function Mod:onKeyPressed(key)
 end
 
 function Mod:getUISkin()
+    if Game.world and Game.world.cutscene
+        and Game.world.cutscene.id == "cell_phone" and Game.world.cutscene.use_light_textbox
+    then
+        return "light"
+    end
     if self:isOmori() then
         return "omori"
     end
 end
 
 function Mod:getDefaultDialogTextStyle()
+    if Game.world and Game.world.cutscene
+        and Game.world.cutscene.id == "cell_phone" and Game.world.cutscene.use_light_textbox
+    then
+        return "none"
+    end
     if self:isOmori() then
         return "none"
     end
@@ -1191,7 +523,7 @@ end
 
 function Mod:getDefaultDialogTextFont()
     if self:isOmori() then
-        return "OMORI"
+        return "omori"
     end
 end
 
@@ -1208,16 +540,3 @@ function Mod:loadObject(world, name, properties)
         return VaporBG(properties["mountains"])
     end
 end
-
-Mod.wave_shader = love.graphics.newShader([[
-    extern number wave_sine;
-    extern number wave_mag;
-    extern number wave_height;
-    extern vec2 texsize;
-    vec4 effect( vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords )
-    {
-        number i = texture_coords.y * texsize.y;
-        vec2 coords = vec2(max(0.0, min(1.0, texture_coords.x + (sin((i / wave_height) + (wave_sine / 30.0)) * wave_mag) / texsize.x)), max(0.0, min(1.0, texture_coords.y + 0.0)));
-        return Texel(texture, coords) * color;
-    }
-]])

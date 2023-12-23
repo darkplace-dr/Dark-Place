@@ -1,7 +1,7 @@
 local ShotBullet, super = Class(Bullet)
 
 function ShotBullet:init(x, y, texture)
-    super:init(self, x, y, texture)
+    super.init(self, x, y, texture)
 
     self.shot_health = 1
     self.shot_tp = 1

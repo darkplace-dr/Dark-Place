@@ -24,7 +24,7 @@ end
 function Bobberry2:update()
     -- Code here gets called every frame
 
-    super:update(self)
+    super.update(self)
 end
 
 return Bobberry2

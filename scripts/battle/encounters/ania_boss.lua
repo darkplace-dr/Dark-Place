@@ -43,7 +43,7 @@ function Dummy:onBattleStart()
 end
 
 function Dummy:update()
-	super:update(self)
+	super.update(self)
 	if not self.boss_rush then
 		local jamm = Game.battle.party[1]
 		if Game.battle.turn_count < 2 and not Game.battle.unstun then
@@ -59,7 +59,7 @@ function Dummy:getEncounterText()
 	if Game.battle.turn_count%5 == 3 then
 		return "* A lethal attack is coming!\n* Brace yourself!"
 	end
-	return super:getEncounterText(self)
+	return super.getEncounterText(self)
 end
 
 return Dummy

@@ -3,7 +3,7 @@ local KristalWare, super = Class("MinigameHandler")
 function KristalWare:init()
     super.init(self)
 	
-    self.state = "TRANSITION", -- "TRANSITION", "TITLE", "PREMICROGAME", "MICROGAME", "GAMEOVER", "EXIT"
+    self.state = "TRANSITION" -- "TRANSITION", "TITLE", "PREMICROGAME", "MICROGAME", "GAMEOVER", "EXIT"
 	Assets.playSound("kristal_intro")
 
     self.timer = Timer()

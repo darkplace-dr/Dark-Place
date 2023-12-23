@@ -1,7 +1,7 @@
 local BallJumpSCoin, super = Class(Object)
 
 function BallJumpSCoin:init(y, index)
-	super:init(self, SCREEN_WIDTH + 20, y)
+	super.init(self, SCREEN_WIDTH + 20, y)
 	
 	self.sprite = Sprite("minigames/ball_jump/starcoin")
 	self.sprite:setOrigin(0.5, 0.5)
@@ -14,7 +14,7 @@ function BallJumpSCoin:init(y, index)
 end
 
 function BallJumpSCoin:update()
-	super:update(self)
+	super.update(self)
 	
 	if Game.minigame.state == "MAIN" then
 		self.x = self.x - DTMULT * 6
@@ -33,7 +33,7 @@ function BallJumpSCoin:update()
 end
 
 function BallJumpSCoin:draw()
-	super:draw(self)
+	super.draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(1,1,0,1)
 	end

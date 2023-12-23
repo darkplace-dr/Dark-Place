@@ -1,7 +1,7 @@
 local BallJumpPlayer, super = Class(Object)
 
 function BallJumpPlayer:init()
-	super:init(self, -30, 284, 16, 20)
+	super.init(self, -30, 284, 16, 20)
 	
 	self.sprite = Sprite("minigames/ball_jump/player_idle_1")
 	self.sprite:setOrigin(0.25, 0.25)
@@ -31,7 +31,7 @@ function BallJumpPlayer:handleJump()
 end
 
 function BallJumpPlayer:update()
-	super:update(self)
+	super.update(self)
 	
 	if not self.on_ground then
 		self.y = self.y + self.velocity * DTMULT * 2
@@ -58,7 +58,7 @@ function BallJumpPlayer:didThatHurt()
 end
 
 function BallJumpPlayer:draw()
-	super:draw(self)
+	super.draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(0,1,0,1)
 	end

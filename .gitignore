@@ -9,3 +9,6 @@
 
 ## vgmstream
 *.txtp
+
+## bmfont
+*.bmfc

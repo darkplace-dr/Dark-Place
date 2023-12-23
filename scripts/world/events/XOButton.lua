@@ -1,7 +1,7 @@
 local XOButton, super = Class(TileButton, "xobutton")
 
 function XOButton:init(data)
-    super:init(self, data.x, data.y, data.width, data.height, data.properties)
+    super.init(self, data.x, data.y, data.width, data.height, data.properties)
 end
 
 function XOButton:onPressed()

@@ -1,7 +1,7 @@
 local BallJumpSpikeF, super = Class(Object)
 
 function BallJumpSpikeF:init()
-	super:init(self, SCREEN_WIDTH + 20, 304)
+	super.init(self, SCREEN_WIDTH + 20, 304)
 	
 	self.sprite = Sprite("minigames/ball_jump/floor_spike")
 	self.sprite:setScale(2,2)
@@ -11,7 +11,7 @@ function BallJumpSpikeF:init()
 end
 
 function BallJumpSpikeF:update()
-	super:update(self)
+	super.update(self)
 	
 	if Game.minigame.state == "MAIN" then
 		self.x = self.x - DTMULT * 6
@@ -36,7 +36,7 @@ function BallJumpSpikeF:update()
 end
 
 function BallJumpSpikeF:draw()
-	super:draw(self)
+	super.draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(1,0,0,1)
 	end

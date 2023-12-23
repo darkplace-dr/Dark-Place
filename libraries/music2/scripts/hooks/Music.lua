@@ -2,8 +2,6 @@
 ---@overload fun(...) : Music
 -- Some stuff that can play uhh music, I guess \
 -- Now with horrifying hacks to allow intro and loop segments
----@field fade_callback function
----@field source love.Source
 ---@field source_intro love.Source
 local Music = Class()
 

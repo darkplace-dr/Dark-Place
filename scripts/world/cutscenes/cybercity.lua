@@ -5,8 +5,7 @@ return {
 		
         if Game:getFlag("weird") then
             if Game:getFlag("weirdEnemiesKilled", 0) <= 19 then
-                -- FIXME: otherwise unset variable
-                if Game.talkedToSpamDumpsterInAlley2 == false then
+                if event.interact.count == 1 then
                     cutscene:text("[voice:spamton]* LOOKING FOR [Irresistible Deals] THAT WILL [Blow Your Mind!?]")
                     cutscene:text("[voice:spamton]* WELL [Shut Your Mouth] BECAUSE YOU ARE [A Weakling!]")
                     cutscene:text("[voice:spamton]* TRY A LITTLE [Friday Night Work Out]...")
@@ -31,8 +30,7 @@ return {
                                 cutscene:text("[voice:spamton]* PERFECT FOR [City Livin']")
                                 cutscene:text("[voice:spamton]* HOW CAN YOU [Afford] THIS!?!?!")
                                 cutscene:text("[voice:spamton]* ... YET THERE'S NO ROOM FOR A [Microwave]")
-                                if Game.lancerinventory then
-                                    -- For jaru's lancer library, once it's implemented
+                                if Game.inventory:hasItem("lancer") then
                                     cutscene:text("[voice:spamton]* THERE'S A [Boy], BUT THERE'S NO ROOM FOR A [Microwave.width/2]")
                                 else
                                     cutscene:text("[voice:spamton]* THERE'S A [Backful] OF [Consumable], BUT THERE'S NO ROOM FOR A [Microwave.width/2]")

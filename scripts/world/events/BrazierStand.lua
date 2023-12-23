@@ -3,9 +3,9 @@
 local BrazierStand, super = Class(Event, "brazierstand")
 
 function BrazierStand:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setScale(2)
 	
@@ -41,7 +41,7 @@ function BrazierStand:postLoad()
 end
 
 function BrazierStand:update()
-	super:update(self)
+	super.update(self)
 	
 	-- TODO: Make brazier hot
 	if Game.world then

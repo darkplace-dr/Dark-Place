@@ -3,7 +3,7 @@ local AngryBirds, super = Class("MinigameHandler")
 function AngryBirds:init()
     super.init(self)
 	
-    self.state = "TRANSITION", -- "TRANSITION", "LEVELSELECTION", "LEVEL", "PAUSE", "LEVELCLEAR", "LEVELFAIL"
+    self.state = "TRANSITION" -- "TRANSITION", "LEVELSELECTION", "LEVEL", "PAUSE", "LEVELCLEAR", "LEVELFAIL"
 	Assets.playSound("minigames/ab/misc/star_collect")
 
     self.timer = Timer()

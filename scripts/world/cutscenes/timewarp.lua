@@ -15,7 +15,7 @@ return function (cutscene, event, self)
     warpbg:setOrigin(0.5)
     Game.stage:addChild(warpbg)
 
-    local bg_wave = ShaderFX(Mod.wave_shader, {
+    local bg_wave = ShaderFX(Mod.shaders["wave"], {
         ["wave_sine"] = function() return Kristal.getTime() * 100 end,
         ["wave_mag"] = 20,
         ["wave_height"] = 30,

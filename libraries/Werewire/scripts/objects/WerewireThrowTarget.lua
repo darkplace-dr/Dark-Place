@@ -1,7 +1,7 @@
 local WerewireThrowTarget, super = Class(Sprite)
 
 function WerewireThrowTarget:init(x, y)
-    super:init(self, "acts/werewire/throw/target", x, y)
+    super.init(self, "acts/werewire/throw/target", x, y)
 
     self:setScale(2, 2)
     self:setOrigin(0.5, 0.5)
@@ -33,7 +33,7 @@ function WerewireThrowTarget:update()
     self.y = self.shift_y + self.shift
     self.x = (self.start_x - (self.y + 0.1) / 3.375) + 18 + (self.width/2 * self.scale_x)
 
-    super:update(self)
+    super.update(self)
 end
 
 function WerewireThrowTarget:slash(battler)

@@ -1,7 +1,7 @@
 local Pipis, super = Class(YellowSoulBullet)
 
 function Pipis:init(x, y, dir, speed)
-    super:init(self, x, y, "battle/bullets/sneo/pipis/normal/pipis")
+    super.init(self, x, y, "battle/bullets/sneo/pipis/normal/pipis")
     
     self.shot_health = 4
 
@@ -64,7 +64,7 @@ function Pipis:onYellowShot(shot, damage)
 end
 
 function Pipis:update()
-    super:update(self)
+    super.update(self)
 end
 
 function Pipis:destroy(shot)

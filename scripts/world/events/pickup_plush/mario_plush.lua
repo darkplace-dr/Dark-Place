@@ -1,11 +1,11 @@
----@class Pickup : Event
+---@class mario_plush : Pickup
 ---@overload fun(...) : mario_plush
 local mario_plush, super = Class(Event, "mario_plush")
 
 function mario_plush:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
@@ -46,7 +46,7 @@ function mario_plush:onInteract(player, dir)
 end
 
 function mario_plush:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.held and Input.pressed("confirm") and self:canPlace(Game.world.player) then
 		Assets.playSound("voice/mario")

@@ -1619,7 +1619,7 @@ function LightBattle:update()
         if self.arena:isNotTransitioning() then
 
             local soul_x, soul_y, soul_offset_x, soul_offset_y
-            local arena_x, arena_y, arena_h, arena_shape
+            local arena_x, arena_y, arena_w, arena_h, arena_shape
             local has_arena = true
             for _,wave in ipairs(self.waves) do
                 soul_x = wave.soul_start_x or soul_x
@@ -1799,7 +1799,7 @@ function LightBattle:draw()
         self.encounter:drawBackground()
     end
 
-    super:draw(self)
+    super.draw(self)
 
     self.encounter:draw()
 

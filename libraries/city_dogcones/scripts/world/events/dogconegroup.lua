@@ -1,7 +1,7 @@
 local DogConeGroup, super = Class(Event)
 
 function DogConeGroup:init(data)
-    super:init(self, data)
+    super.init(self, data)
 
     self:setOrigin(0, 0)
     self:setHitbox(0, self.height / 2, self.width, self.height / 2)

@@ -53,12 +53,12 @@ end
 
 function Dummy:onDefeat(...)
     if self.defeat_once then
-        super:onDefeat(self, ...)
+        super.onDefeat(self, ...)
     end
 end
 
 function Dummy:update()
-	super:update(self)
+	super.update(self)
 	self:setTired(false)
 end
 

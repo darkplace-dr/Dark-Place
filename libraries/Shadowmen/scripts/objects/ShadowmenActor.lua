@@ -1,7 +1,7 @@
 local MyObject, super = Class(ActorSprite)
 
 function MyObject:init(actor)
-    super:init(self, actor)
+    super.init(self, actor)
 	
 	self.draw_children_below = 0
 	self.draw_children_above = 1
@@ -17,7 +17,7 @@ function MyObject:init(actor)
 end
 
 -- function MyObject:update()
-	-- super:update(self)
+	-- super.update(self)
 	
 	-- self.socks.anim_routine = self.anim_routine
 -- end

@@ -11,7 +11,7 @@
 local HealItem, super = Class("HealItem")
 
 function HealItem:init()
-    super:init(self)
+    super.init(self)
 
     self.future_heal_amount = 0
     self.future_heal_turns = 0

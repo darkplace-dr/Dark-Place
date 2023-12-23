@@ -1,7 +1,7 @@
 local TwoBalldude, super = Class(Encounter)
 
 function TwoBalldude:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* Just a couple of dudes being balls."

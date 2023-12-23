@@ -1,9 +1,9 @@
----@class DamageNumber : DamageNumber
+---@class DamageNumber
 ---@overload fun(...) : DamageNumber
 local DamageNumber, super = Class(DamageNumber)
 
 function DamageNumber:init(type, arg, x, y, color)
-    super:init(self, type, arg, x, y, color)
+    super.init(self, type, arg, x, y, color)
 
     self:setOrigin(1, 0)
 

@@ -20,7 +20,7 @@ function EnemyTensionBar:init(x, y, dont_animate)
     self.tension_maxtext = {1, 1, 0}                     -- Color used by the MAX text when at Max TP, which I didn't even notice was different until I made this
 
 
-    super:init(self, x or 639, y or 40)
+    super.init(self, x or 639, y or 40)
 
     self.layer = BATTLE_LAYERS["ui"] - 1
 

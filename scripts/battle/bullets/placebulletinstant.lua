@@ -2,7 +2,7 @@ local ArenaHazard, super = Class(Bullet)
 
 function ArenaHazard:init(x, y, w, h)
     -- Last argument = sprite path
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     -- Top-center origin point (will be rotated around it)
     self:setOrigin(0.5, 0)
@@ -20,7 +20,7 @@ end
 function ArenaHazard:update()
     -- For more complicated bullet behaviours, code here gets called every update
 
-    super:update(self)
+    super.update(self)
 	
 	self.lifetime = self.lifetime + DTMULT
 	if self.lifetime >= 2 then

@@ -1,7 +1,7 @@
 local SneoBomb, super = Class(YellowSoulBullet)
 
 function SneoBomb:init(x, y)
-    super:init(self, x, y, "battle/bullets/sneo/bomb/sneobomb", dir, speed)
+    super.init(self, x, y, "battle/bullets/sneo/bomb/sneobomb", dir, speed)
     self.alpha = 0
     self.sprite:play(-1, true)
     self:setScale(1, 1)
@@ -43,7 +43,7 @@ function SneoBomb:onYellowShot(shot, damage)
 end
 
 function SneoBomb:update()
-    super:update(self)
+    super.update(self)
     if self.x < Game.battle.arena.x - 80 then
         self:fadeOutAndRemove(0.1)
 		self:destroy()

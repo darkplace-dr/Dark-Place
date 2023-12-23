@@ -69,18 +69,19 @@ return function(cutscene, event_override)
         fade.alpha = 0
         Game.world:addChild(fade)
         fade:setScreenPos(0, 0)
+        ---@diagnostic disable-next-line: missing-fields
         fade:setGraphics({
             fade_to = 1,
             fade = 0.02
         })
 
-        Game.light = true
+        cutscene.use_light_textbox = true
         pmMsg("* (Hello.)", 40)
         pmMsg("* (Thank you for stopping by.)", 40)
         pmMsg("* (Sorry,[wait:9] but Neuro-sama is not available at the moment.)", 55)
         pmMsg("* (Unless it is an urgent matter,[wait:9] please refrain from messaging me.)", 50)
         pmMsg("* (Have a wonderful day.)", 40)
-        Game.light = false
+        cutscene.use_light_textbox = false
 
         leader:setFacing("down")
 
@@ -309,13 +310,13 @@ return function(cutscene, event_override)
         pmMsg("[speed:0.9]* Is in the bag[wait:15][speed:0.6] that you drag behind your[wait:10] car.", 65)
 
         cutscene:setTextboxTop(true)
-        Game.light = true
+        cutscene.use_light_textbox = true
         pmMsg("[speed:0.9]* Did you just\n* What", 45)
         pmMsg("[speed:0.9]* Is what you\n* Yes", 45)
         pmMsg("[speed:0.9]* Did you whatever[wait:25]\n* Whatever you[wait:15]\n* I guess", 45)
         pmMsg("[speed:0.9]* The stocking horse[wait:45]\n* Was hides the guy", 45)
         pmMsg("[speed:0.9]* And which the pony[wait:15]\nis a phony[wait:15]\nwas a lie", 55)
-        Game.light = false
+        cutscene.use_light_textbox = false
 
         music_inst:stop()
         resumeMusic()

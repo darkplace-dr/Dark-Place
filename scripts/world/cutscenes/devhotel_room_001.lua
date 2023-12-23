@@ -339,7 +339,7 @@ return {
 				
 				cutscene:wait(2)
 				
-				jamm_in_party = true
+				local jamm_in_party = true
 				if not jamm then
 					jamm = NPC("fake_jamm")
 					jamm.x = 480

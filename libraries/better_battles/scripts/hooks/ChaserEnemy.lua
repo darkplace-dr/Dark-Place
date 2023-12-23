@@ -1,4 +1,4 @@
----@class ChaserEnemy : ChaserEnemy
+---@class ChaserEnemy
 ---@overload fun(...) : ChaserEnemy
 local ChaserEnemy, super = Class(ChaserEnemy)
 

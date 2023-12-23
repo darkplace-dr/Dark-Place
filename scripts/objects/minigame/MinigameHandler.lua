@@ -1,3 +1,5 @@
+---@class MinigameHandler : Object
+---@field music Music|nil
 local MinigameHandler, super = Class(Object)
 
 function MinigameHandler:init()

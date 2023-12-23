@@ -1,7 +1,7 @@
 local water, super = Class(Event, "watertile")
 
 function water:init(data)
-    super:init(self, data.x + 22, data.y + 14, data.width - 40, data.height - 24, data.properties)
+    super.init(self, data.x + 22, data.y + 14, data.width - 40, data.height - 24)
 
 	self.color = Utils.parseColorProperty(data.properties["color"] or "#00000180")
 	--self.depth = data.properties["depth"] or 5
@@ -58,7 +58,7 @@ function water:onExit(chara)
 end
 
 function water:getDebugInfo()
-	local info = super:getDebugInfo(self)
+	local info = super.getDebugInfo(self)
 	table.insert(info, "Depth: "    .. (self.depth or 5))
 	return info
 end

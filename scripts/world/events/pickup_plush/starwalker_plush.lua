@@ -1,11 +1,11 @@
----@class Pickup : Event
+---@class starwalker_plush : Pickup
 ---@overload fun(...) : starwalker_plush
 local starwalker_plush, super = Class(Event, "starwalker_plush")
 
 function starwalker_plush:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
@@ -46,7 +46,7 @@ function starwalker_plush:onInteract(player, dir)
 end
 
 function starwalker_plush:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.held and Input.pressed("confirm") and self:canPlace(Game.world.player) then
 		Assets.playSound("stardrop")

@@ -32,7 +32,7 @@ function Lightset:init(data)
 end
 
 function Lightset:getDebugInfo()
-    local info = super:getDebugInfo(self)
+    local info = super.getDebugInfo(self)
     for i, spr in pairs(self.sprites) do
         table.insert(info, "sprite ".. i .. " y_scale: " .. spr.scale_y)
     end

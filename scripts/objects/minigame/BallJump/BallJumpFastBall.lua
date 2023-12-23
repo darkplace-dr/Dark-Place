@@ -1,13 +1,13 @@
 local BallJumpBall, super = Class("BallJumpBall")
 
 function BallJumpBall:init(y)
-	super:init(self, y)
+	super.init(self, y)
 	
 	Assets.playSound("minigames/ball_jump/fastball")
 end
 
 function BallJumpBall:update()
-	super.super:update(self)
+	super.super.update(self)
 	
 	if Game.minigame.state == "MAIN" then
 		self.x = self.x - DTMULT * 12
@@ -26,7 +26,7 @@ function BallJumpBall:update()
 end
 
 function BallJumpBall:draw()
-	super:draw(self)
+	super.draw(self)
 end
 
 return BallJumpBall

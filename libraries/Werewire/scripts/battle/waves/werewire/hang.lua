@@ -1,7 +1,7 @@
 local Hang, super = Class(Wave, "werewire/hang")
 
 function Hang:init()
-    super:init(self)
+    super.init(self)
 
     self:setArenaPosition(321, 241)
     self:setArenaSize(142, 92)
@@ -109,7 +109,7 @@ function Hang:update()
         end
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 return Hang

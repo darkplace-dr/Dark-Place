@@ -1,7 +1,7 @@
 local QuestMenu, super = Class(Object)
 
 function QuestMenu:init()
-    super:init(self, 92, 112, 457, 240)
+    super.init(self, 92, 112, 457, 240)
 	
 	self.parallax_x = 0
     self.parallax_y = 0
@@ -36,7 +36,7 @@ function QuestMenu:onAdd()
 end
 
 function QuestMenu:update()
-    super:update(self)
+    super.update(self)
 	self.pages = math.ceil(#Game:getFlag("quest_name")/11)
 end
 
@@ -148,7 +148,7 @@ function QuestMenu:draw()
 		Draw.draw(self.up, 135, 230)
 	end
 
-    super:draw(self)
+    super.draw(self)
 end
 
 function QuestMenu:close()

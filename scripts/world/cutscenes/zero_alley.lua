@@ -42,7 +42,7 @@ return{
         zero.active = false
         --cutscene:text("* Timeslow FX will go here,[wait:5] press [UP] to continue.")
 
-        Game.stage:addFX(ShaderFX(Mod.wave_shader, {
+        Game.stage:addFX(ShaderFX(Mod.shaders["wave"], {
             ["wave_sine"] = function() return Kristal.getTime() * 400 end,
             ["wave_mag"] = 1,
             ["wave_height"] = 3,

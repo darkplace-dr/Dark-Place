@@ -1,11 +1,11 @@
----@class Pickup : Event
+---@class jamm_plush : Pickup
 ---@overload fun(...) : jamm_plush
 local jamm_plush, super = Class(Event, "jamm_plush")
 
 function jamm_plush:init(data)
-	super:init(self, data.x, data.y, data.w, data.h)
+	super.init(self, data.x, data.y, data.w, data.h)
 
-    properties = data.properties or {}
+    local properties = data.properties or {}
 
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
@@ -51,7 +51,7 @@ function jamm_plush:onInteract(player, dir)
 end
 
 function jamm_plush:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.held and Input.pressed("confirm") and self:canPlace(Game.world.player) then
 		Assets.playSound("voice/jamm")

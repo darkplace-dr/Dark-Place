@@ -60,7 +60,7 @@ end
 
 function ColorSlash:onEnd()
     self.user.sprite:set("idle")
-    super:onEnd()
+    super.onEnd(self)
 end
 
 function ColorSlash:update()

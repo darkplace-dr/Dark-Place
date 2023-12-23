@@ -1,4 +1,4 @@
----@class BattleUI : BattleUI
+---@class BattleUI
 ---@overload fun(...) : BattleUI
 local BattleUI, super = Class("BattleUI", true)
 

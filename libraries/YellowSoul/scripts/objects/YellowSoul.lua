@@ -1,7 +1,7 @@
 local YellowSoul, super = Class(Soul)
 
 function YellowSoul:init(x, y, angle)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.rotation = (angle or 0) - math.pi/2
     self.color = {1,1,0}
@@ -19,7 +19,7 @@ function YellowSoul:init(x, y, angle)
 end
 
 function YellowSoul:update()
-    super:update(self)
+    super.update(self)
     if self.transitioning then
         if self.charge_sfx then
             self.charge_sfx:stop()
@@ -118,12 +118,12 @@ function YellowSoul:draw()
     if charge_timer > 0 then
         self.color = {1,1,1}
     end
-    super:draw(self)
+    super.draw(self)
     self.color = {r,g,b}
 end
 
 function YellowSoul:onRemoveFromStage(stage)
-    super:onRemove(self, stage)
+    super.onRemove(self, stage)
     if self.charge_sfx then
         self.charge_sfx:stop()
         self.charge_sfx = nil

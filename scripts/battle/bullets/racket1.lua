@@ -2,7 +2,7 @@ local Racket1, super = Class(Bullet)
 
 function Racket1:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super:init(self, x, y, "battle/bullets/tennisracket")
+    super.init(self, x, y, "battle/bullets/tennisracket")
 
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
     self.physics.direction = dir
@@ -22,7 +22,7 @@ function Racket1:update()
 	self.x = Game.battle.soul.x + 16
 	self.y = Game.battle.soul.y - 24
 
-    super:update(self)
+    super.update(self)
 end
 
 function Racket1:onCollide(soul)

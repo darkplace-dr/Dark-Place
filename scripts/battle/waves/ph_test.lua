@@ -1,7 +1,7 @@
 local Test, super = Class(Wave)
 
 function Test:init()
-    super:init(self)
+    super.init(self)
 
     self.time = -1
 	self:setArenaSize(440, 160)

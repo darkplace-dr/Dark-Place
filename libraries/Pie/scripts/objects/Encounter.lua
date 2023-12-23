@@ -7,13 +7,13 @@
 local Encounter, super = Class("Encounter")
 
 function Encounter:init()
-    super:init(self)
+    super.init(self)
     
     self.turn = 1
 end
 
 function Encounter:onBattleInit()
-    super:onBattleInit(self)
+    super.onBattleInit(self)
 
     for _, battler in ipairs(Game.battle.party) do
         for _, item in ipairs(battler.chara:getEquipment()) do
@@ -29,7 +29,7 @@ function Encounter:onBattleInit()
 end
 
 function Encounter:onBattleStart()
-    super:onBattleStart(self)
+    super.onBattleStart(self)
 
     for _, battler in ipairs(Game.battle.party) do
         for _,item in ipairs(battler.chara:getEquipment()) do
@@ -41,7 +41,7 @@ function Encounter:onBattleStart()
 end
 
 function Encounter:onBattleEnd()
-    super:onBattleStart(self)
+    super.onBattleStart(self)
 
     for _, battler in ipairs(Game.battle.party) do
         for _,item in ipairs(battler.chara:getEquipment()) do
@@ -56,7 +56,7 @@ function Encounter:onBattleEnd()
 end
 
 function Encounter:onTurnStart()
-    super:onTurnStart(self)
+    super.onTurnStart(self)
     for _, battler in ipairs(Game.battle.party) do
         for _, item in ipairs(battler.chara:getEquipment()) do
             if item:includes(Item) then
@@ -67,7 +67,7 @@ function Encounter:onTurnStart()
 end
 
 function Encounter:onTurnEnd()
-    super:onTurnEnd()
+    super.onTurnEnd()
     local party = Game.battle.party
 
     for _,battler in ipairs(party) do
@@ -83,7 +83,7 @@ function Encounter:onTurnEnd()
 end
 
 function Encounter:onActionsStart()
-    super:onActionsStart(self)
+    super.onActionsStart(self)
     
     for _, battler in ipairs(Game.battle.party) do
         for _, item in ipairs(battler.chara:getEquipment()) do
@@ -95,7 +95,7 @@ function Encounter:onActionsStart()
 end
 
 function Encounter:onActionsEnd()
-    super:onActionsEnd(self)
+    super.onActionsEnd(self)
     
     for _, battler in ipairs(Game.battle.party) do
         for _, item in ipairs(battler.chara:getEquipment()) do
@@ -107,7 +107,7 @@ function Encounter:onActionsEnd()
 end
 
 function Encounter:beforeStateChange(old, new)
-    super:beforeStateChange(self, old, new)
+    super.beforeStateChange(self, old, new)
     
     for _, battler in ipairs(Game.battle.party) do
         for _, item in ipairs(battler.chara:getEquipment()) do
@@ -119,7 +119,7 @@ function Encounter:beforeStateChange(old, new)
 end
 
 function Encounter:onStateChange(old, new)
-    super:onStateChange(self, old, new)
+    super.onStateChange(self, old, new)
     
     for _, battler in ipairs(Game.battle.party) do
         for _, item in ipairs(battler.chara:getEquipment()) do
@@ -153,7 +153,7 @@ function Encounter:beforeGameOver()
 end
 
 function Encounter:onGameOver()
-    super:onGameOver(self)
+    super.onGameOver(self)
     -- Represents whether an item has saved the party from losing.
     local saved = false
 

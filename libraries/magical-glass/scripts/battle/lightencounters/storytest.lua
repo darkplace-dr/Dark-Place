@@ -1,7 +1,7 @@
 local encounter, super = Class(LightEncounter)
 
 function encounter:init()
-    super:init(self)
+    super.init(self)
 
     self.music = false
     

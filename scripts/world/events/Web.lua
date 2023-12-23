@@ -1,7 +1,7 @@
 local Web, super = Class(Event, "web")
 
 function Web:init(data)
-	super:init(self, data.properties.actor, data.x, data.y, data.properties)
+	super.init(self, data.properties.actor, data.x, data.y, data.properties)
 	
 	self.default_sprite = properties and properties["sprite"] or "world/events/web"
 	self:setSprite(self.default_sprite)

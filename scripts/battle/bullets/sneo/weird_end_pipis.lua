@@ -1,7 +1,7 @@
 local WeirdEndPipis, super = Class(YellowSoulBullet)
 
 function WeirdEndPipis:init(x, y)
-    super:init(self, x, y, "battle/bullets/sneo/pipis/normal/pipis")
+    super.init(self, x, y, "battle/bullets/sneo/pipis/normal/pipis")
 
     self.damage = 2
 	self.tp = 1
@@ -29,7 +29,7 @@ function WeirdEndPipis:update()
     if self.alpha >= 2 then
 		self:destroy()
     end
-    super:update(self)
+    super.update(self)
 end
 
 function WeirdEndPipis:destroy()

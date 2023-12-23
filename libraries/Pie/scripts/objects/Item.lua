@@ -71,7 +71,7 @@
 local Item, super = Class("Item")
 
 function Item:init()
-    super:init(self)
+    super.init(self)
 
     self.heal_bonus = 0
     self.heal_mult = 1
@@ -373,7 +373,7 @@ function Item:getReflectSound(chara) return self.reflect_sound end
 function Item:onBattleInit(battler) end
 
 --- A callback that runs at the start of every battle. \
---- By default, this controls the starting tension effect, so `super:onBattleEnd()` should be called in overrides.
+--- By default, this controls the starting tension effect, so `super.onBattleEnd()` should be called in overrides.
 ---@param battler   PartyBattler    The battler that is holding this item.
 function Item:onBattleStart(battler) 
     local amount = self:getStartingTensionAmount(battler.chara)
@@ -382,7 +382,7 @@ function Item:onBattleStart(battler)
 end
 
 --- A callback that runs at the end of battle, during the transition to the overworld. \
---- By default, this controls the victory healing effect, so `super:onBattleEnd()` should be called in overrides.
+--- By default, this controls the victory healing effect, so `super.onBattleEnd()` should be called in overrides.
 ---@param battler   PartyBattler    The battler that is holding this item.
 function Item:onBattleEnd(battler) 
     local amount = self:getVictoryHealAmount(battler.chara)
@@ -397,7 +397,7 @@ end
 function Item:onTurnStart(battler, turn) end
 
 --- A callback that runs at the end of every turn. \
---- By default, this is responsible for calling the passive item effects, so `super:onTurnEnd()` must be called in overrides.
+--- By default, this is responsible for calling the passive item effects, so `super.onTurnEnd()` must be called in overrides.
 ---@param battler   PartyBattler    The battler that is holding this item.
 ---@param turn      integer         The current turn of the battle.
 function Item:onTurnEnd(battler, turn)
@@ -447,7 +447,7 @@ function Item:onEnemyHit(battler, enemy, damage) end
 
 --- A callback that is run just before the wearer takes damage. \
 --- Returning `true` will cancel the holder being hurt. \
---- This callback handles the reflect effect, so `super:beforeHolderHurt()` should be called when overriding this function.
+--- This callback handles the reflect effect, so `super.beforeHolderHurt()` should be called when overriding this function.
 ---@param battler   PartyBattler    The battler that is holding this item.
 ---@param damage    integer         The amount of damage dealt in the attack.
 ---@param defending boolean         Whether the battler is defending.
@@ -499,7 +499,7 @@ function Item:beforeHolderHurt(battler, damage, defending)
 end
 
 --- A callback that is run whenever the wearer is hurt. \
---- This callback handles the thorns effect, so `super:onHolderHurt()` should be called when overriding this function.
+--- This callback handles the thorns effect, so `super.onHolderHurt()` should be called when overriding this function.
 ---@param battler   PartyBattler    The battler that is holding this item.
 ---@param damage    integer         The amount of damage dealt in the attack.
 ---@param defending boolean         Whether the battler is defending.

@@ -1,3 +1,4 @@
+-- dobby: what the fuck is this
 local function shootHearts(self, battler, timer, mark)
 	local heart = Sprite("player/shoot_heart", battler.x + 42, battler.y - 46)
 	

@@ -36,7 +36,7 @@ function VHSFilter:draw(texture, object)
     local canvas = love.graphics.getCanvas()
     local blend_mode, alpha_mode = love.graphics.getBlendMode()
 
-    Draw.setCanvas(texture)
+    love.graphics.setCanvas(texture)
 
     --[[staticnoise = scr_dark_marker(0, 0, spr_staticnoise)
     staticnoise.image_xscale = 8
@@ -52,7 +52,7 @@ function VHSFilter:draw(texture, object)
 
     love.graphics.draw(self.vhslines, self.vhslines_x, math.max(0, h - 17))
 
-    Draw.setCanvas(canvas)
+    love.graphics.setCanvas(canvas)
 
     local part_alpha = 0.8
     love.graphics.setBlendMode("alpha", "alphamultiply")

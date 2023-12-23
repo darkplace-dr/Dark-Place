@@ -1,7 +1,7 @@
 local ThreeBobberry, super = Class(Encounter)
 
 function ThreeBobberry:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* Holy shit.\n* ...That's a lot of Bobberry."

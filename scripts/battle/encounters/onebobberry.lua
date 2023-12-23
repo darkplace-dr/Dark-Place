@@ -1,7 +1,7 @@
 local OneBobberry, super = Class(Encounter)
 
 function OneBobberry:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* Bobberry is your first encounter."

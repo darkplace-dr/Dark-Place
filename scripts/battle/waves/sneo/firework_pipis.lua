@@ -1,7 +1,7 @@
 local FireworkPipis, super = Class(Wave)
 
 function FireworkPipis:init()
-	super:init(self)
+	super.init(self)
     self.time = 3
 	
     self:setArenaPosition(245, 172)
@@ -26,7 +26,7 @@ function FireworkPipis:onEnd()
 		attacker.sprite:setPartSine("head", 0)
 		attacker:slideTo(attacker.x - 200, attacker.y, 0.25)
 	end]]
-    super:onEnd(self)
+    super.onEnd(self)
 end
 
 return FireworkPipis

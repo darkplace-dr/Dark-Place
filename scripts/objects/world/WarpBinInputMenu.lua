@@ -3,11 +3,8 @@
 local WarpBinInputMenu, super = Class(Object)
 
 function WarpBinInputMenu:init(length)
-    if length then
-        super.init(self, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, (36 * length), 40)
-    else
-        super.init(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 288, 40)
-    end
+    length = length or 8
+    super.init(self, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 36 * length, 40)
 
     self:setParallax(0, 0)
     self:setOrigin(0.5, 0.5)
@@ -26,8 +23,9 @@ function WarpBinInputMenu:init(length)
 
     -- yes, a table of lines
     self.input = {""}
-    self.code_len = length or 8
+    self.code_len = length
 
+    -- affects whether we query the bincode list or not
     self.as_warp_bin_ui = true
     self.finish_cb = nil
 
@@ -35,8 +33,8 @@ function WarpBinInputMenu:init(length)
         multiline = false,
         enter_submits = true,
         text_restriction = function(c)
-            if utf8.len(self.input[1]) == self.code_len then return end
-            if c == " " then return end
+            if utf8.len(self.input[1]) == self.code_len then return false end
+            if c == " " then return false end
             return c:upper()
         end
     })

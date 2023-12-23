@@ -1,3 +1,6 @@
+---@class Game
+---@field minigame MinigameHandler
+
 Utils.hook(Game, "gameOver", function(orig, self, x, y, sf)
     if Game:getFlag("fun", 0) ~= 18 --[[0xE+0xA]] and not sf then
         orig(self, x, y)

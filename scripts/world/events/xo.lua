@@ -1,9 +1,9 @@
 local XO, super = Class(Event, "xo")
 
 function XO:init(data)
-    super:init(self, data.x, data.y, data.width, data.height)
+    super.init(self, data.x, data.y, data.width, data.height)
 	
-	properties = data.properties or {}
+	local properties = data.properties or {}
 	
 	self:setHitbox(0, 0, data.width, data.height)
 	

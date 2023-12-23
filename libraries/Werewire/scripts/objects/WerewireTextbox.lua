@@ -1,7 +1,7 @@
 local WerewireTextbox, super = Class(Sprite)
 
 function WerewireTextbox:init(x, y)
-    super:init(self, "bubbles/werewire/bubble", x, y)
+    super.init(self, "bubbles/werewire/bubble", x, y)
 
     self:setScale(2, 2)
     self:setOrigin(1, 0)
@@ -47,7 +47,7 @@ function WerewireTextbox:isDone()
 end
 
 function WerewireTextbox:onAddToStage(stage)
-    super:onAddToStage(self, stage)
+    super.onAddToStage(self, stage)
 
     Assets.playSound("electric_talk")
 end
@@ -66,7 +66,7 @@ function WerewireTextbox:update()
 end
 
 function WerewireTextbox:draw()
-    super:draw(self)
+    super.draw(self)
 
     local r,g,b,a = self:getDrawColor()
 

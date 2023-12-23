@@ -1,7 +1,7 @@
 local LightArena, super = Class(Object)
 
 function LightArena:init(x, y, shape)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.x = math.floor(self.x)
     self.y = math.floor(self.y)
@@ -180,7 +180,7 @@ function LightArena:update()
         self:setSize(self.width, self.height)
     end
 
-    super:update(self)
+    super.update(self)
 
     if NOCLIP then return end
 
@@ -226,7 +226,7 @@ function LightArena:drawMask()
 end
 
 function LightArena:draw()
-    super:draw(self)
+    super.draw(self)
 
     if DEBUG_RENDER and self.collider then
         self.collider:draw(0, 0, 1)

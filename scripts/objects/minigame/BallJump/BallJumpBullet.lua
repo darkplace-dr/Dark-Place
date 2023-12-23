@@ -1,7 +1,7 @@
 local BallJumpBullet, super = Class(Object)
 
 function BallJumpBullet:init(y)
-	super:init(self, SCREEN_WIDTH + 20, y, 16, 16)
+	super.init(self, SCREEN_WIDTH + 20, y, 16, 16)
 	
 	self.sprite = Sprite("minigames/ball_jump/bullet")
 	self.sprite:setScale(2,2)
@@ -14,7 +14,7 @@ function BallJumpBullet:init(y)
 end
 
 function BallJumpBullet:update()
-	super:update(self)
+	super.update(self)
 	
 	if Game.minigame.state == "MAIN" then
 		self.x = self.x - DTMULT * 12
@@ -49,7 +49,7 @@ function BallJumpBullet:update()
 end
 
 function BallJumpBullet:draw()
-	super:draw(self)
+	super.draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(1,0,0,1)
 		self.stomp_collider:draw(0,1,0,1)

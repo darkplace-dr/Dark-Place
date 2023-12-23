@@ -1,7 +1,7 @@
 local SNEORematch, super = Class(Encounter)
 
 function SNEORematch:init()
-    super:init(self)
+    super.init(self)
 
     self.sneo = self:addEnemy("sneo")
 
@@ -53,13 +53,13 @@ function SNEORematch:getPartyPosition(index)
 		elseif index == 4 then -- if it's the first party member (in this case, kris)
 		    return 97, 305 -- just an example please do not do this number
 	    else
-		    return super:getPartyPosition(self, index)
+		    return super.getPartyPosition(self, index)
 		end
 	else
 	    if index == 1 then -- if it's the first party member (in this case, kris)
 		    return 103, 136 -- just an example please do not do this number
 		else
-		    return super:getPartyPosition(self, index)
+		    return super.getPartyPosition(self, index)
 		end
 	end
 end

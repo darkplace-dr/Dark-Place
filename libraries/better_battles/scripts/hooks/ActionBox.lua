@@ -1,4 +1,4 @@
----@class ActionBox : ActionBox
+---@class ActionBox
 ---@overload fun(...) : ActionBox
 local ActionBox, super = Class(ActionBox)
 

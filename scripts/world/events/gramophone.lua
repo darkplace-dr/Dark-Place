@@ -11,8 +11,8 @@ function Gramophone:init(data)
     self.solid = true
 end
 
-function Gramophone:update(data)
-    super.update(self, data)
+function Gramophone:update()
+    super.update(self)
 
     if not Game.world.map.gramophone_music then return end
 
@@ -29,6 +29,14 @@ function Gramophone:update(data)
             Game.world.music:setVolume(1)
         end
     end
+    --[[if Game.world.music:isPlaying() ~= Game.world.map.gramophone_music:isPlaying() then
+        if not Game.world.music:isPlaying() and Game.world.map.gramophone_music:isPlaying() then
+            Game.world.map.gramophone_music:pause()
+        end
+        if Game.world.music:isPlaying() and not Game.world.map.gramophone_music:isPlaying() then
+            Game.world.map.gramophone_music:play()
+        end
+    end]]
 end
 
 return Gramophone

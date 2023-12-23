@@ -112,7 +112,7 @@ function Shadynn:getEnemyDialogue()
 end
 
 function Shadynn:update()
-	super:update(self)
+	super.update(self)
 	if self.shadow then
 		self.siner = self.siner + DT
 		self.alpha = 0.7 + 0.1 * math.sin(self.siner * 2)
@@ -122,7 +122,7 @@ function Shadynn:update()
 end
 
 function Shadynn:onTurnStart()
-	super:onTurnStart(self)
+	super.onTurnStart(self)
 	if self.shadow then
 		self.shadow = false
 		self.siner = 0
@@ -131,9 +131,9 @@ function Shadynn:onTurnStart()
 end
 
 function Shadynn:onHurt(damage, battler)
-	super:onHurt(self, damage, battler)
+	super.onHurt(self, damage, battler)
 	self.shadow = true
-	self:addFX(ShaderFX(Mod.wave_shader, {
+	self:addFX(ShaderFX(Mod.shaders["wave"], {
         ["wave_sine"] = function() return Kristal.getTime() * 90 end,
         ["wave_mag"] = 2,
         ["wave_height"] = 2,
@@ -143,7 +143,7 @@ end
 
 function Shadynn:hurt(amount, battler, on_defeat, color)
 	if not self.shadow then
-		super:hurt(self, amount, battler, on_defeat, color)
+		super.hurt(self, amount, battler, on_defeat, color)
 		self.shadow = true
 	else
 		self:statusMessage("msg", "miss")
@@ -151,7 +151,7 @@ function Shadynn:hurt(amount, battler, on_defeat, color)
 end
 
 function Shadynn:onSpared()
-	super:onSpared(self)
+	super.onSpared(self)
 	
 	Game:setFlag("dungeonkiller", false)
 end

@@ -1,7 +1,7 @@
 local Attack, super = Class(Wave, "werewire/attack")
 
 function Attack:init()
-    super:init(self)
+    super.init(self)
 
     self.time = 7
 end
@@ -140,7 +140,7 @@ function Attack:doAttack(attacker, type, after)
 end
 
 function Attack:update()
-    super:update(self)
+    super.update(self)
 
 
 end

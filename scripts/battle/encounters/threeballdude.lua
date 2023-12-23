@@ -1,7 +1,7 @@
 local ThreeBalldude, super = Class(Encounter)
 
 function ThreeBalldude:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* It must be Ballfest."

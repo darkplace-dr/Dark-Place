@@ -5,7 +5,7 @@
 local EnemyBattler, super = Class("EnemyBattler", true)
 
 function EnemyBattler:onHurt(damage, battler)
-    super:onHurt(self, damage, battler)
+    super.onHurt(self, damage, battler)
 
     if battler then
         for _, item in ipairs(battler.chara:getEquipment()) do

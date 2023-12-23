@@ -1,7 +1,7 @@
 local Werewire, super = Class(Encounter)
 
 function Werewire:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* Werewires swung in!"
@@ -47,7 +47,7 @@ function Werewire:getEncounterText()
     if self.check_for_miss and self.last_missed then
         return "* Try timing your attacks by\npressing [bind:confirm]!"
     else
-        return super:getEncounterText(self)
+        return super.getEncounterText(self)
     end
 end
 

@@ -3,7 +3,7 @@ local LightArenaBorder, super = Class(Object)
 -- yes, this IS stupid.
 
 function LightArenaBorder:init(arena, x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.arena = arena
 end

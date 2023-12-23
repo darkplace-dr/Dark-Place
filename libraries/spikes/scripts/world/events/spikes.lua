@@ -1,7 +1,7 @@
 local Spikes, super = Class(Event, "spikes")
 
 function Spikes:init(data)
-    super:init(self, data.x, data.y, data.properties)
+    super.init(self, data.x, data.y, data.properties)
 	
 	self.sprite_up = data.properties["sprite"] or "world/events/spikes_up"
 	self.sprite_down = data.properties["spritedown"] or "world/events/spikes_down"
@@ -52,11 +52,11 @@ function Spikes:update()
 			Game:gameOver(self.world.player.x, self.world.player.y)
 		end)
 	end
-	super:update(self)
+	super.update(self)
 end
 
 function Spikes:getDebugInfo()
-	local info = super:getDebugInfo(self)
+	local info = super.getDebugInfo(self)
 	if self.flag then
 		table.insert(info, "Flag: "    .. self.flag)
 	end

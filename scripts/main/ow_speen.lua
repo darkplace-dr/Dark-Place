@@ -26,10 +26,8 @@ function Speen:init()
 	self.beyblade_sound = love.audio.newSource(Assets.getMusicPath("full_beyblade_theme_song"), "stream")
 
 	Utils.hook(Player, "isMovementEnabled",
-        ---@return boolean
-        ---@diagnostic disable-next-line: redefined-local
+        ---@overload fun(orig:function, self:Player):boolean
         function(orig, g_self)
-            ---@diagnostic disable-next-line: redundant-return-value
             return orig(g_self)
                 and not self.is_spinning
         end

@@ -1,7 +1,7 @@
 local BallJumpSpikeF, super = Class(Object)
 
 function BallJumpSpikeF:init()
-	super:init(self, SCREEN_WIDTH + 20, 288, 26, 27)
+	super.init(self, SCREEN_WIDTH + 20, 288, 26, 27)
 	
 	self.sprite = Sprite("minigames/ball_jump/goomba_1")
 	self.sprite:setScale(2,2)
@@ -14,7 +14,7 @@ function BallJumpSpikeF:init()
 end
 
 function BallJumpSpikeF:update()
-	super:update(self)
+	super.update(self)
 	
 	if Game.minigame.state == "MAIN" then
 		self.x = self.x - DTMULT * 8
@@ -49,7 +49,7 @@ function BallJumpSpikeF:update()
 end
 
 function BallJumpSpikeF:draw()
-	super:draw(self)
+	super.draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(1,0,0,1)
 		self.stomp_collider:draw(0,1,0,1)

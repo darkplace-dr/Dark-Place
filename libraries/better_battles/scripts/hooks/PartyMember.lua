@@ -1,9 +1,9 @@
----@class PartyMember : PartyMember
+---@class PartyMember
 ---@overload fun(...) : PartyMember
 local PartyMember, super = Class("PartyMember", true)
 
 function PartyMember:init()
-	super:init(self)
+	super.init(self)
 	
 	self.flee_text = {}
 	

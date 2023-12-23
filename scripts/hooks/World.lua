@@ -80,7 +80,7 @@ function World:setupMap(...)
 end
 
 function World:spawnPlayer(...)
-    super:spawnPlayer(self, ...)
+    super.spawnPlayer(self, ...)
 	
 	if (BadgesLib:getBadgeEquipped("l_emblem") > 0) then
 		if (BadgesLib:getBadgeEquipped("w_emblem") > 0) then

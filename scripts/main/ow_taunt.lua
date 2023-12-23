@@ -2,10 +2,8 @@ function Mod:initTaunt()
     self.taunt_lock_movement = false
 
     Utils.hook(Player, "isMovementEnabled",
-        ---@return boolean
-        ---@diagnostic disable-next-line: redefined-local
+        ---@overload fun(orig:function, self:Player) : boolean
         function(orig, self)
-            ---@diagnostic disable-next-line: redundant-return-value
             return orig(self)
                 and not Mod.taunt_lock_movement
         end
