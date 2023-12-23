@@ -59,21 +59,6 @@ function Basic:onStart()
 			self.rect:remove()
 		end)
     end)
-	for var=1, Utils.random(1,4) do
-		if Game.battle.encounter.insane then
-			local x = Utils.random(0,620)
-			local y = 0
-			local bullet = self:spawnBullet("goldleaf", x, y, math.rad(90), 4)
-			bullet.remove_offscreen = false
-		end
-	end
-	if string.upper(Game.save_name) == "WATER" then
-		self.water = Rectangle(Game.battle.arena:getLeft(), Game.battle.arena:getBottom() - (Game.battle.arena.height/2), Game.battle.arena.width, Game.battle.arena.height/2)
-		self.water.layer = Game.battle.soul.layer + 1
-		self.water.color = {109/255,138/255,1}
-		self.water.alpha = 50/255
-		Game.battle:addChild(self.water)
-	end
 end
 
 function Basic:update()
@@ -85,9 +70,6 @@ end
 function Basic:onEnd(death)
 	if self.rect then
 		self.rect:remove()
-	end
-	if self.water then
-		self.water:remove()
 	end
 end
 
