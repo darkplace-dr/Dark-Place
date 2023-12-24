@@ -92,9 +92,9 @@ function DarkConfigMenu:update()
                 self.ui_move:play()
                 Kristal.Config["borders"] = BORDER_TYPES[border_index][1]
                 if BORDER_TYPES[border_index][1] == "off" then
-                    Mod:resetWindow()
+                    Kristal.resetWindow()
                 elseif BORDER_TYPES[old_index][1] == "off" then
-                    Mod:resetWindow()
+                    Kristal.resetWindow()
                 end
             end
         elseif self.extras_substate == "BULBORBSCALE" then
