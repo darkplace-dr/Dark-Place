@@ -1,9 +1,14 @@
 return {
     whitedoor = function(cutscene, event)
         cutscene:text("A white door casts a faint shadow...")
-        cutscene:text("Will you enter it?")
+        cutscene:text("Will you enter it?[func:choicer]", { functions = {
+            choicer = function ()
+                Game.world:openMenu(ChoicerBox({"YES", "NO"}, {cancel_option = 2}))
+            end
+        },
+        })
 
-        if cutscene:choicer({"Yes", "No"}) == 2 then
+        if cutscene.choice == 2 then
             cutscene:text("You doorn't.")
             return
         end
@@ -41,9 +46,14 @@ return {
 
     lightbulb = function(cutscene, event)
         cutscene:text("A lightbulb hangs from the ceiling,[wait:5] wherever it is.")
-        cutscene:text("Look into the lightbulb?")
+        cutscene:text("Look into the lightbulb?[func:choicer]", { functions = {
+            choicer = function ()
+                Game.world:openMenu(ChoicerBox({"YES", "NO"}, {cancel_option = 2}))
+            end
+        },
+        })
 
-        if cutscene:choicer({"Yes", "No"}) == 1 then
+        if cutscene.choice == 1 then
             cutscene:wait(0.2)
             cutscene:wait(cutscene:fadeOut(0.5))
 
