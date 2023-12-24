@@ -141,7 +141,7 @@ function actor:onWorldUpdate(chara)
 
     assert(chara)
     local player = chara.world.player
-    if chara == player or (chara:includes(Follower) and chara.target == player and chara.following) then
+    if chara == player or (chara:includes(Follower) and chara:getTarget() == player and chara.following) then
         if player:isMovementEnabled() and player.run_timer > 50 then
             if self.default ~= "run" then
                 self.default = "run"
