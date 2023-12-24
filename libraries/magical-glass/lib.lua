@@ -1381,6 +1381,7 @@ function lib:init()
         end
     end)
 
+    --[[
     Utils.hook(DialogueText, "update", function(orig, self)
         local speed = self.state.speed
 
@@ -1472,6 +1473,7 @@ function lib:init()
     
         self.last_talking = self.state.talk_anim and self.state.typing
     end)
+    --]]
 
     Utils.hook(Bullet, "init", function(orig, self, x, y, texture)
     

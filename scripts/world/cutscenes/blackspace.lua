@@ -1,10 +1,14 @@
 return {
     blackdoor = function(cutscene, event)
         cutscene:text("A black door casts a heavy shadow...")
-        cutscene:text("Will you enter it?")
+        cutscene:text("Will you enter it?[func:choicer]", { functions = {
+            choicer = function ()
+                Game.world:openMenu(ChoicerBox({"YES", "NO"}, {cancel_option = 2}))
+            end
+        },
+        })
 
-        local choice = cutscene:choicer({"Yes", "No"})
-        if choice == 2 then
+        if cutscene.choice == 2 then
             cutscene:text("You doorn't.")
             return
         end

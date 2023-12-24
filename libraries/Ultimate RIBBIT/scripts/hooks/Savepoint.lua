@@ -27,6 +27,7 @@ end
 
 function Savepoint:init(x, y, properties, sprite)
     super.init(self, x, y, properties, sprite)
+    self.siner = 0
 
     properties = properties or {}
 
@@ -36,11 +37,13 @@ function Savepoint:init(x, y, properties, sprite)
     self.heals = properties["heals"] ~= false
 
     self.solid = true
+    self.frog_mode = false
 
     self:setOrigin(0.5, 0.5)
 
     if Kristal.callEvent("isLeaderRibbit") then
-        self:setSprite("world/events/savefrog", 1/6)
+        self.frog_mode = true
+        self:setSprite("world/events/savefrog", 0.2)
         self:setOrigin(0.5, 0.5)
 
         -- I am an idot.
@@ -59,6 +62,32 @@ function Savepoint:init(x, y, properties, sprite)
     -- So divide by 2, round, then multiply by 2 to get the right size for 2x.
     local width, height = self:getSize()
     self:setHitbox(0, math.ceil(height / 4) * 2, width, math.floor(height / 4) * 2)
+end
+
+function Savepoint:draw()
+    if self.frog_mode then
+        self.siner = self.siner + 1 * DTMULT
+        love.graphics.setColor(1, 1, 0, (0.4 - (math.sin((self.siner / 9)) * 0.2)))
+        love.graphics.ellipse( "fill", 30, 30, 20 + math.sin(self.siner/16), 12, 16 )
+        love.graphics.ellipse( "fill", 30, 30, 25 + math.sin(self.siner/16), 12, 6  )
+        love.graphics.ellipse( "fill", 30, 30, 32 + math.sin(self.siner/16), 12, 6  )
+        love.graphics.ellipse( "fill", 30, 30, 35 + math.sin(self.siner/16), 12, 16 )
+        
+        -- The following is the code for this effect found in RIBBIT. If someone wants to make it more accurate, go for it. - Agent 7
+        --[[
+            draw_set_color(c_yellow)
+        for (i = 0; i < 4; i += 1)
+        {
+            draw_set_alpha((0.4 - (sin((siner / 9)) * 0.2)))
+            draw_ellipse(((x - 8) - ((sin((siner / 14)) * 2) - (i * 4))), (y + 22), ((x + 37) + ((sin((siner / 14)) * 2) + (i * 4))), (y + 42), 0)
+            draw_set_circle_precision((8 + (i * 3)))
+        }
+        ]]
+
+
+
+    end
+    super.draw(self)
 end
 
 --[[
