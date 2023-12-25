@@ -56,7 +56,7 @@ function Spamton:init(actor)
         self.wing_r,
     }
 
-    self.swing_speed = 1
+    self.swing_speed = 2
     self.swing_range = {math.rad(-10), math.rad(10)}
     for i,part in ipairs(self.parts) do
         if part ~= self.head then
@@ -295,7 +295,7 @@ function Spamton:resetPart(name, full)
 end
 
 function Spamton:resetParts(full)
-    self.swing_speed = 1
+    self.swing_speed = 2
     for i,part in ipairs(self.parts) do
         part:reset(full, i)
     end

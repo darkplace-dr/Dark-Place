@@ -17,9 +17,6 @@ function Spamton:onSetAnimation(sprite, anim, ...)
     local args = {...}
     if anim == "idle" then
         sprite:resetParts()
-        for _,part in ipairs(sprite.parts) do
-            sprite:setSwingSpeed(2)
-        end
     elseif anim == "down" then
         sprite:resetParts()
         sprite:setHeadFrame(1)
@@ -31,6 +28,7 @@ function Spamton:onSetAnimation(sprite, anim, ...)
             sprite:setSwingSpeed(0)
         end
     elseif anim == "walk" then
+        sprite:setSwingSpeed(1)
         sprite:setPartSine("arm_l", 0)
         sprite:setPartSine("leg_l", 0)
         sprite:setPartSine("arm_r", math.pi*27)
