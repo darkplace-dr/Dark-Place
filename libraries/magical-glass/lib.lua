@@ -1897,10 +1897,10 @@ function lib:init()
 
     Utils.hook(PartyMember, "onActionSelect", function(orig, self, battler, undo)
         if Game.battle.turn_count == 1 and not undo then
-            if self:getWeapon() then
+            if self:getWeapon() and self:getWeapon().onActionSelect then
                 self:getWeapon():onActionSelect(self)
             end
-            if self:getArmor(1) then
+            if self:getArmor(1) and self:getArmor(1).onActionSelect then
                 self:getArmor(1):onActionSelect(self)
             end
         end
