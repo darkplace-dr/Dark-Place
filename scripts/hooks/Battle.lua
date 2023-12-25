@@ -378,8 +378,8 @@ function Battle:swapSoul(object)
 
     Game.stage.timescale = 1
 	Game.battle.music.pitch = Game.battle.music.basepitch
-	vhsfx.active = false
-	outlinefx.active = false
+	Game.battle.soul.vhsfx.active = false
+	Game.battle.soul.outlinefx.active = false
 	Input.clear("a")
     
     
