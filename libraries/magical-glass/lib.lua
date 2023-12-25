@@ -987,7 +987,7 @@ function lib:init()
             self.arena_width = width
             self.arena_height = height or width
         else
-            orig(self, x, y)
+            orig(self, width, height)
         end
     end)
 
