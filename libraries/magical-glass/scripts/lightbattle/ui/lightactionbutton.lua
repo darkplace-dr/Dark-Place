@@ -263,6 +263,15 @@ function LightActionButton:select()
         Game.battle:setState("MENUSELECT", "SEND")
     elseif self.type == "defend" then
         Assets.playSound("scott_here")
+    elseif self.type == "croak" then
+        Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))
+
+        local bubble = Sprite("croak", nil, nil, nil, nil, "party/you")
+        bubble:setOriginExact(60, 23) -- center??
+        bubble:setPosition(Game.battle.soul.width/2 + 8.5, -20.5)
+        bubble.physics.speed_y = -0.8
+        bubble:fadeOutSpeedAndRemove(0.065)
+        self:addChild(bubble)
     end
 end
 

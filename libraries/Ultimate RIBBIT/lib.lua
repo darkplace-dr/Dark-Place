@@ -214,7 +214,7 @@ end
 function lib:getLightActionButtons(battler, buttons)
     if Game:getPartyMember(battler.chara.id).ribbit then
         if Game:getPartyMember(battler.chara.id).name == "YOU" then
-            return {"fight", "act", "item", "send", "defend"}
+            return {"fight", "act", "croak", "item", "send"}
         else
             return {"fight", "magic", "item", "send", "defend"}
         end
