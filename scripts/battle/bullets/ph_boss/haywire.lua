@@ -104,15 +104,15 @@ function PizzaheadHaywire:fire()
     self.pause = true
     self.attack_frame = self.attack_frame + 1*DTMULT
 
-    self:setSprite("battle/bullets/pizzahead/haywire/attack_"..self.attack_frame)
+    self:setSprite("battle/bullets/ph_boss/haywire/attack_"..self.attack_frame)
     
     if self.attack_frame == 7 then
-        local cog = self.wave:spawnBullet("pizzahead/cog", self.x, self.y + 38)
+        local cog = self.wave:spawnBullet("ph_boss/cog", self.x, self.y + 38)
         Assets.playSound("ph_boss/spit")
     end
     if self.attack_frame >= 14 then
         self.pause = false
-        self:setSprite("battle/bullets/pizzahead/haywire/idle")
+        self:setSprite("battle/bullets/ph_boss/haywire/idle")
         self.sprite:play(0.1)
         self.timer = 0
         self.attack_frame = 0
