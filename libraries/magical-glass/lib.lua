@@ -171,6 +171,9 @@ function lib:init()
             
             local has_shadowcrystal = self.inventory:getItemByID("shadowcrystal") and true or false
             local has_egg = self.inventory:getItemByID("egg") and true or false
+            if Kristal.getLibConfig("magical-glass", "key_items_conversion") then
+                Game:setFlag("has_cell_phone", Game.inventory:getItemByID("cell_phone") and true or false)
+            end
             
             self.inventory = LightInventory()
             if lib.light_inv_saved then
@@ -257,6 +260,15 @@ function lib:init()
                     end
                     for i = 1, self.inventory.storages.armors.max do
                         self.inventory.storages.armors[i] = nil
+                    end
+                end
+                if Game:getFlag("has_cell_phone", Kristal.getModOption("cell") ~= false) then
+                    if not Game.inventory:getItemByID("cell_phone") then
+                        Game.inventory:addItemTo("key_items", 1, Registry.createItem("cell_phone"))
+                    end
+                else
+                    while Game.inventory:getItemByID("cell_phone") do
+                        Game.inventory:removeItem(Game.inventory:getItemByID("cell_phone"))
                     end
                 end
             end
@@ -633,7 +645,7 @@ function lib:init()
             end
         
             if self.is_new_file then
-                Game:setFlag("has_cell_phone", Kristal.getModOption("cell"))
+                Game:setFlag("has_cell_phone", Kristal.getModOption("cell") ~= false)
         
                 for id,equipped in pairs(Kristal.getModOption("equipment") or {}) do
                     if equipped["weapon"] then
@@ -1341,7 +1353,7 @@ function lib:init()
         end)
     end)
 
-    Utils.hook(DialogueText, "init", function(orig, self, text, x, y, w, h, options)
+   Utils.hook(DialogueText, "init", function(orig, self, text, x, y, w, h, options)
         orig(self, text, x, y, w, h, options)
         options = options or {}
         self.default_sound = options["default_sound"] or "default"
@@ -1381,8 +1393,7 @@ function lib:init()
         end
     end)
 
-    --[[
-    Utils.hook(DialogueText, "update", function(orig, self)
+    --[[Utils.hook(DialogueText, "update", function(orig, self)
         local speed = self.state.speed
 
         if not OVERLAY_OPEN then
@@ -1472,8 +1483,7 @@ function lib:init()
         DialogueText.__super.update(self)
     
         self.last_talking = self.state.talk_anim and self.state.typing
-    end)
-    --]]
+    end)]]
 
     Utils.hook(Bullet, "init", function(orig, self, x, y, texture)
     
@@ -2796,17 +2806,6 @@ function lib:preUpdate()
     for _,party in pairs(Game.party_data) do -- Gets the party with the most Light EXP (might be used for shared exp at some point)
         if not Game.lw_xp or party:getLightEXP() > Game.lw_xp then  
             Game.lw_xp = party:getLightEXP()
-        end
-    end
-    if not Game:isLight() then
-        if Game:getFlag("has_cell_phone") then
-            if not Game.inventory:getItemByID("cell_phone") then
-                Game.inventory:addItemTo("key_items", 1, Registry.createItem("cell_phone"))
-            end
-        else
-            if Game.inventory:getItemByID("cell_phone") then
-                Game.inventory:removeItem(Game.inventory:getItemByID("cell_phone"))
-            end
         end
     end
 end
