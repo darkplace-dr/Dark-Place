@@ -37,9 +37,9 @@ function LightActionBoxSingle:createButtons()
     if not self.battler.chara:hasSpells() then Utils.removeFromTable(btn_types, "spell") end
 
     for lib_id,_ in pairs(Mod.libs) do
-        btn_types = Kristal.libCall(lib_id, "getActionButtons", self.battler, btn_types) or btn_types
+        btn_types = Kristal.libCall(lib_id, "getLightActionButtons", self.battler, btn_types) or btn_types
     end
-    btn_types = Kristal.modCall("getActionButtons", self.battler, btn_types) or btn_types
+    btn_types = Kristal.modCall("getLightActionButtons", self.battler, btn_types) or btn_types
 
     for i,btn in ipairs(btn_types) do
         if type(btn) == "string" then

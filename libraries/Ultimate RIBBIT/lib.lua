@@ -211,6 +211,17 @@ function lib:getActionButtons(battler, buttons)
     return buttons
 end
 
+function lib:getLightActionButtons(battler, buttons)
+    if Game:getPartyMember(battler.chara.id).ribbit then
+        if Game:getPartyMember(battler.chara.id).name == "YOU" then
+            return {"fight", "act", "item", "send", "defend"}
+        else
+            return {"fight", "magic", "item", "send", "defend"}
+        end
+    end
+    return buttons
+end
+
 function lib:isLeaderRibbit()
     return Game.party and Game.party[1] and Game.party[1].ribbit
 end
