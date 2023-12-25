@@ -35,6 +35,7 @@ function LancerGotchi:init(x, y)
         if self.sleeptimer >= 900 then
             self.movecon = 10
             self.lancer:setAnimation("sleep")
+            return false
         end
     end)
 end
