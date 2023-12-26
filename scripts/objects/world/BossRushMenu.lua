@@ -49,16 +49,6 @@ function BossRushMenu:init()
 				cf = "baby_rush",
 				reward = 500
 			},
-            {
-				name = "Jamm Rush",
-				requirements = {"sam_defeated","jamm_closure","booty_finished","pauling_inparty","mario_obtained"},
-				encounters = {{"sam","Sam"},{"ania_boss","Shade Ania"},{"big_booty","Booty"},{"eggman","???"}},
-				party = {"pauling","jamm","mario"},
-				grad_color = {92/255, 88/255, 188/255},
-				preview = {"battle/enemies/shade_ania/idle", 75, 50},
-				cf = "jamm_rush",
-				reward = "bigsling"
-			},
         },
     }
 	
