@@ -1,7 +1,7 @@
 local HomingSoul, super = Class(Soul)
 
 function HomingSoul:init(x, y)
-    super.init(self, x, y)
+    super:init(self, x, y)
     -- Do not modify these variables
 	self.color = {0, 0, 1}
     self.jumped = false
@@ -11,11 +11,23 @@ function HomingSoul:init(x, y)
 	self.blue = true -- Checking this to disable the reduced hitbox for it
 	self.mode = "MOVE" -- MOVE, HOMING
 	
+	self.dash_time = 0.05
+	if Game.battle.encounter.light_speed then
+		Game.battle.encounter.light_speed = false
+		self.dash_time = 0
+	end
+	
+	self.start_gravity = -5
+	if Game.battle.encounter.high_jump then
+		Game.battle.encounter.high_jump = false
+		self.start_gravity = -6.5
+	end
+	
 	self.homing_collider = CircleCollider(self, 0, 0, 50)
 end
 
 function HomingSoul:update()
-	super.update(self)
+	super:update(self)
 	
 	if self.mode == "MOVE" then
 		local connected = {}
@@ -59,7 +71,7 @@ function HomingSoul:update()
 end
 
 function HomingSoul:draw()
-	super.draw(self)
+	super:draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(0,1,0,1)
 		self.homing_collider:draw(0,0,1,1)
@@ -94,7 +106,19 @@ function HomingSoul:doMovement()
 		if Input.pressed("confirm") and self.selected and self.jumped then
 			self.mode = "HOMING"
 			Assets.playSound("whoosh", 1, 1)
-			Game.battle.timer:tween(0.05, self, {x = self.selected.x, y = self.selected.y}, "linear", function()
+			Game.battle.timer:tween(self.dash_time, self, {x = self.selected.x, y = self.selected.y}, "linear", function()
+				if self.x > Game.battle.arena:getRight() then
+					self.x = Game.battle.arena:getRight() - 10
+				end
+				if self.x < Game.battle.arena:getLeft() then
+					self.x = Game.battle.arena:getLeft() + 10
+				end
+				if self.y > Game.battle.arena:getBottom() then
+					self.y = Game.battle.arena:getBottom() - 10
+				end
+				if self.y < Game.battle.arena:getTop() then
+					self.y = Game.battle.arena:getTop() + 10
+				end
 				if self.collider:collidesWith(self.selected) then
 					self.selected:onHome()
 					self.selected = nil
@@ -132,7 +156,7 @@ end
 
 function HomingSoul:jumpStart()
 	if not self.jumped then
-		self.gravity = -5
+		self.gravity = self.start_gravity
 		self.jumped = true
 	end
 end
