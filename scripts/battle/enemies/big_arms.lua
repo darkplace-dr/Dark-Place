@@ -52,8 +52,9 @@ function Dummy:onAct(battler, name)
 	if name == "Light Speed" then -- Jamm
 		Game.battle.encounter.light_speed = true
 		return "Jamm boosted the SOUL's homing attack!"
-	elseif name == "UNDEFINED" then -- Mario [TODO: Figure out something for Mario (High jump maybe?)]
-		return "Define this X-Action"
+	elseif name == "High Jump" then -- Mario
+		Game.battle.encounter.high_jump = true
+		return "Mario gets in a few practice jumps..."
     elseif name == "Standard" then
 		return "* This shouldn't happen."
     end
@@ -65,7 +66,7 @@ end
 
 function Dummy:getXAction(battler)
 	if battler.chara.id == "mario" then
-        return "UNDEFINED"
+        return "High Jump"
     elseif battler.chara.id == "jamm" then
         return "Light Speed"
 	end
