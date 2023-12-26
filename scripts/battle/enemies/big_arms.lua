@@ -49,20 +49,27 @@ function Dummy:init()
 end
 
 function Dummy:onAct(battler, name)
-    if name == "Standard" then --X-Action
-        if battler.chara.id == "mario" then
-            return "* Ralsei bowed politely.\n* The dummy spiritually bowed\nin return."
-        elseif battler.chara.id == "jamm" then
-            return "* Ralsei bowed politely.\n* The dummy spiritually bowed\nin return."
-        else
-            -- Text for any other character
-            return "* This shouldn't happen."
-        end
+	if name == "Light Speed" then -- Jamm
+		Game.battle.encounter.light_speed = true
+		return "Jamm boosted the SOUL's homing attack!"
+	elseif name == "UNDEFINED" then -- Mario [TODO: Figure out something for Mario (High jump maybe?)]
+		return "Define this X-Action"
+    elseif name == "Standard" then
+		return "* This shouldn't happen."
     end
 
     -- If the act is none of the above, run the base onAct function
     -- (this handles the Check act)
     return super.onAct(self, battler, name)
+end
+
+function Dummy:getXAction(battler)
+	if battler.chara.id == "mario" then
+        return "UNDEFINED"
+    elseif battler.chara.id == "jamm" then
+        return "Light Speed"
+	end
+	return "Standard"
 end
 
 function Dummy:onDefeat(damage, battler)
