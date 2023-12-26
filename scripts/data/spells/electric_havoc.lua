@@ -27,6 +27,10 @@ end
 
 function spell:onCast(user, target)
 	local damage = 200
+	
+	if target.defense >= 99 then
+		damage = 0
+	end
 
 	local function shock(scale_x)
 		local cutAnim = Sprite("party/jamm/dark/special/shock")
