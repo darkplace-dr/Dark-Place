@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 53,
+  nextobjectid = 55,
   properties = {
     ["border"] = "city",
     ["music"] = "spamton_battle_eb"
@@ -689,6 +689,21 @@ return {
           properties = {
             ["actor"] = "muppet_kris",
             ["cutscene"] = "spamroom.muppet"
+          }
+        },
+        {
+          id = 53,
+          name = "npc",
+          class = "",
+          shape = "point",
+          x = 800,
+          y = 390,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "betaspam"
           }
         }
       }
