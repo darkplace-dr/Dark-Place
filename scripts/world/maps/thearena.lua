@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.1",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -44,6 +45,7 @@ return {
       height = 16,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -79,6 +81,7 @@ return {
       height = 16,
       id = 6,
       name = "decals",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -111,6 +114,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -204,6 +208,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -245,6 +250,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -295,8 +301,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "* It appears to be a Boss Rush board.",
-            ["text2"] = "* Unfortunatly,[wait:5] there doesn't seem to be any boss rushes at the moment."
+            ["cutscene"] = "thearena.bossrush"
           }
         },
         {
