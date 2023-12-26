@@ -102,7 +102,7 @@ return{
         zero.layer = 1.4
         if susie and Game.party[1].name ~= "Susie" then susie.layer = 1.3 end
         Assets.playSound("item")
-        cutscene:text("* (You got [color:yellow]FOCUS[color:reset].[wait:10]\nHold [color:yellow][A][color:reset] to slow time.)")
+        cutscene:text("* (You got [color:yellow]FOCUS[color:reset].[wait:10]\nHold [color:yellow]" .. "[F]" .."[color:reset] to slow time.)")
 
         casettenoise:stop()
         Assets.playSound("zero/casette_pause")

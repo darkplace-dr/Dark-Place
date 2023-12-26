@@ -14,6 +14,7 @@ end
 
 function Basic:onStart()
 	Game.battle:swapSoul(YellowSoul())
+    Game.battle.soul.can_rotate = true
 
     self.sneo:setMode("move_back")
 

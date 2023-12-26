@@ -18,7 +18,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "Hold [A] during battle to slow down time.\nTP bar determines amount of time you can use it."
+    self.description = "Hold [color:yellow]" .. "[F]" .. "[color:reset] during battle to slow down time.\nTP bar determines amount of time you can use it."
 
     -- Default shop price (sell price is halved)
     self.price = 0
