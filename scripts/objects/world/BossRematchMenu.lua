@@ -188,8 +188,8 @@ function BossRematchMenu:onKeyPressed(key, is_repeat)
             for i, v in ipairs(self.bosses) do
                 -- cutscene:text("* "..#self.bosses-(i-1).." left to go.[wait:10]\n* Up next:[wait:5] "..v[1]..".")
 				cutscene:text("* "..#self.bosses-(i-1).." left to go.[wait:10]\n* Up next:[wait:5]"..v.name..".")
-                Game:encounter(v.encounter, true)
-                cutscene:wait(1)
+                cutscene:startEncounter(v.encounter, true)
+				while Game.battle do end
             end
             cutscene:text("* Congratulations![wait:10] You win absolutely nothing!")
         end)
