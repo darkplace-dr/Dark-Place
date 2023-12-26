@@ -358,7 +358,6 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "devhotel.velvet",
             ["solid"] = true
           }
         },
@@ -523,7 +522,7 @@ return {
         {
           id = 66,
           name = "door_005",
-          type = "",
+          class = "",
           shape = "point",
           x = 720,
           y = 306,
