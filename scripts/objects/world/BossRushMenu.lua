@@ -287,6 +287,7 @@ function BossRushMenu:onKeyPressed(key, is_repeat)
 					end
 					Game.world.player:setActor(Game.party[1].actor)
 				end
+				Game.current_rush = nil
 			end)
         else
             self.ui_cant_select:stop()
