@@ -27,7 +27,11 @@ function Dummy:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "basic_homing"
+        "egg_swing",
+		"egg_burn",
+		"egg_spike",
+		"egg_labyrinth",
+		"egg_launch"
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
@@ -61,6 +65,14 @@ function Dummy:onAct(battler, name)
     -- If the act is none of the above, run the base onAct function
     -- (this handles the Check act)
     return super.onAct(self, battler, name)
+end
+
+function Dummy:selectWave()
+	local index = Game.battle.turn_count%5
+	if index == 0 then
+		index = 5
+	end
+    return self.waves[index]
 end
 
 function Dummy:onDefeat(damage, battler)
