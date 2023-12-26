@@ -152,6 +152,16 @@ function Mod:initializeImportantFlags(new_file)
         self:rollFun()
     end
 
+    if Game:getPartyMember("YOU").lw_stats.magic == nil then
+        likely_old_save = true
+        table.insert(old_save_issues, "Save is missing light world magic stats. Probably pre-Magical Glass.")
+        
+        -- I have no idea what everyone's lw magic stats should be, so uhhhhhhhhh I guess this'll be fine until somebody yells at me for it
+        Game:getPartyMember("YOU").lw_stats.magic = 0
+        Game:getPartyMember("susie").lw_stats.magic = 1
+        Game:getPartyMember("noelle").lw_stats.magic = 1
+    end
+
     if new_file then
         Game:setFlag("vesselChosen", 0)
 
