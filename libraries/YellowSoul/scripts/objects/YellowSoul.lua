@@ -1,10 +1,19 @@
 local YellowSoul, super = Class(Soul)
 
 function YellowSoul:init(x, y, angle)
-    super.init(self, x, y)
+    super:init(self, x, y)
 
-    self.rotation = (angle or 0) - math.pi/2
+    self.rotation = angle and math.rad(angle) or math.rad(270)
+    self.direction = "right"
     self.color = {1,1,0}
+
+
+    self.shooting_angles = {
+        ["up"] = math.rad(180),
+        ["down"] = math.rad(0),
+        ["left"] = math.rad(90),
+        ["right"] = math.rad(270)
+    }
 
     -- customizable variables
     self.can_use_bigshot = true -- whether the soul can use bigshots
@@ -12,20 +21,63 @@ function YellowSoul:init(x, y, angle)
     self.can_shoot = true -- whether the soul is allowed to shoot in general
     self.teaching = false -- whether big shots should charge slowly
     self.allow_cheat = Kristal.getLibConfig("yellowsoul", "allowcheat") -- whether the player is allowed to chain bigshots rapidly
+    self.can_rotate = false -- whether WASD can be used to fire in different directions.
 
     -- internal variables
     self.hold_timer = 0
     self.charge_sfx = nil
+
+    self.dpad = Sprite("player/dpad")
+    self.dpad:setOrigin(0.5, 0.5)
+    self:addChild(self.dpad)
+
+    self.dpad.debug_select = false
+
+    --[[
+    function self.dpad:getDebugInfo()
+        local info = super:getDebugInfo(self)
+        table.insert(info, "Rotation (DEG): " .. math.deg(Game.battle.soul.rotation))
+        table.insert(info, "Rotation (RAD): " .. Game.battle.soul.rotation)
+        return info
+    end
+    --]]
+
+
 end
 
 function YellowSoul:update()
-    super.update(self)
+    super:update(self)
+    self.dpad.visible = self.can_rotate
     if self.transitioning then
         if self.charge_sfx then
             self.charge_sfx:stop()
             self.charge_sfx = nil
         end
         return
+    end
+
+    if self.can_rotate then
+
+        if self.direction == "down" then self.rotation = Utils.approach(self.rotation, math.rad(0), DTMULT) end
+	    if self.direction == "up" then self.rotation = Utils.approach(self.rotation, math.rad(180), DTMULT) end
+	    if self.direction == "left" then self.rotation = Utils.approach(self.rotation, math.rad(90), DTMULT) end
+	    if self.direction == "right" then self.rotation = Utils.approach(self.rotation, math.rad(270), DTMULT) end
+
+        if Input.pressed("w") then self.direction = "up" end
+        if Input.pressed("a") then self.direction = "left" end
+        -- Check initial rotation for these two and adjust accordingly so it doesn't spin all the way around.
+        if Input.pressed("s") then 
+            if self.direction == "right" then
+                self.rotation = math.rad(-90)
+            end
+            self.direction = "down" 
+        end
+        if Input.pressed("d") then 
+            if self.direction == "down" then
+                self.rotation = math.rad(360)
+            end
+            self.direction = "right" 
+        end
     end
 
     if not self:canShoot() then return end
@@ -118,12 +170,12 @@ function YellowSoul:draw()
     if charge_timer > 0 then
         self.color = {1,1,1}
     end
-    super.draw(self)
+    super:draw(self)
     self.color = {r,g,b}
 end
 
 function YellowSoul:onRemoveFromStage(stage)
-    super.onRemove(self, stage)
+    super:onRemove(self, stage)
     if self.charge_sfx then
         self.charge_sfx:stop()
         self.charge_sfx = nil
@@ -147,11 +199,11 @@ function YellowSoul:isTeaching() return self.teaching end
 function YellowSoul:fireShot(big)
     local shot
     if big then
-        shot = Game.battle:addChild(YellowSoulBigShot(self.x, self.y, self.rotation + math.pi/2))
+        shot = Game.battle:addChild(YellowSoulBigShot(self.x, self.y, self.shooting_angles[self.direction] + math.pi/2))
         Assets.playSound("chargeshot_fire")
     else
         if #Game.stage:getObjects(YellowSoulShot) >= 3 then return end -- only allow 3 at once
-        shot = Game.battle:addChild(YellowSoulShot(self.x, self.y, self.rotation + math.pi/2))
+        shot = Game.battle:addChild(YellowSoulShot(self.x, self.y, self.shooting_angles[self.direction] + math.pi/2))
         Assets.playSound("heartshot")
     end
     Kristal.callEvent("onYellowShot", big, shot)
@@ -162,6 +214,13 @@ end
 
 function YellowSoul:onCheat()
     Game.battle.encounter.funnycheat = (Game.battle.encounter.funnycheat or 0) + 1
+end
+
+function YellowSoul:getDebugInfo()
+    local info = super:getDebugInfo(self)
+    table.insert(info, "Rotation (DEG): " .. math.deg(self.rotation))
+    table.insert(info, "Rotation (RAD): " .. self.rotation)
+    return info
 end
 
 return YellowSoul
