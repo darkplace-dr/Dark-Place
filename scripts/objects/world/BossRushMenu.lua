@@ -49,6 +49,16 @@ function BossRushMenu:init()
 				cf = "baby_rush",
 				reward = 500
 			},
+            {
+				name = "Jamm Rush",
+				requirements = {"sam_defeated","jamm_closure","booty_finished","pauling_inparty","mario_obtained"},
+				encounters = {{"sam","Sam"},{"ania_boss","Shade Ania"},{"big_booty","Booty"},{"eggman","???"}},
+				party = {"pauling","jamm","mario"},
+				grad_color = {92/255, 88/255, 188/255},
+				preview = {"battle/enemies/shade_ania/idle", 75, 50},
+				cf = "jamm_rush",
+				reward = "bigsling"
+			},
         },
     }
 	
@@ -104,14 +114,18 @@ function BossRushMenu:draw()
 	
 	love.graphics.setFont(self.font_2)
 	if entry["reward"] then
-		local reward_string = ""
-		if type(entry["reward"]) == "number" then
-			reward_string = entry["reward"] .. " D$"
-		elseif type(entry["reward"]) == "string" then
-			local item = Registry.createItem(entry["reward"])
-			reward_string = item.name
+		if Game:getFlag(entry["cf"]) then
+			love.graphics.printf("REWARD CLAIMED", 260, 318, 200, "left")
+		else
+			local reward_string = ""
+			if type(entry["reward"]) == "number" then
+				reward_string = entry["reward"] .. " D$"
+			elseif type(entry["reward"]) == "string" then
+				local item = Registry.createItem(entry["reward"])
+				reward_string = item.name
+			end
+			love.graphics.printf("REWARD: " .. reward_string, 260, 318, 200, "left")
 		end
-		love.graphics.printf("REWARD: " .. reward_string, 260, 318, 200, "left")
 	end
 
     if available and entry.preview then
