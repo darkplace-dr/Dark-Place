@@ -17,6 +17,12 @@ function HomingSoul:init(x, y)
 		self.dash_time = 0
 	end
 	
+	self.start_gravity = -5
+	if Game.battle.encounter.high_jump then
+		Game.battle.encounter.high_jump = false
+		self.start_gravity = -6.5
+	end
+	
 	self.homing_collider = CircleCollider(self, 0, 0, 50)
 end
 
@@ -150,7 +156,7 @@ end
 
 function HomingSoul:jumpStart()
 	if not self.jumped then
-		self.gravity = -5
+		self.gravity = self.start_gravity
 		self.jumped = true
 	end
 end
