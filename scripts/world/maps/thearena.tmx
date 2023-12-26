@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="24">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="24">
  <editorsettings>
   <export target="thearena.lua" format="lua"/>
  </editorsettings>
@@ -80,8 +80,7 @@
   </object>
   <object id="10" name="interactable" x="760" y="120" width="120" height="80">
    <properties>
-    <property name="text1" value="* It appears to be a Boss Rush board."/>
-    <property name="text2" value="* Unfortunatly,[wait:5] there doesn't seem to be any boss rushes at the moment."/>
+    <property name="cutscene" value="thearena.bossrush"/>
    </properties>
   </object>
   <object id="12" name="interactable" x="600" y="320" width="120" height="80">
