@@ -72,6 +72,7 @@ function Dummy:selectWave()
 	if index == 0 then
 		index = 5
 	end
+	self.selected_wave = self.waves[index]
     return self.waves[index]
 end
 
