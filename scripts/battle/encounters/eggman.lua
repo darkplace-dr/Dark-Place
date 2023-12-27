@@ -34,6 +34,17 @@ function Dummy:init()
 	self.flee = false
 end
 
+function Dummy:onBattleInit()
+    super.onBattleInit(self)
+	if Game.current_rush == "Jamm Rush" then
+		local bg = Sprite("battle/rush_bgs/jamm_rush")
+		Game.battle:addChild(bg)
+		bg.layer = BATTLE_LAYERS["bottom"]
+		bg.alpha = 0
+		Game.battle.timer:tween(0.4, bg, {alpha = 1}, "linear")
+    end
+end
+
 function Dummy:onActionsEnd()
     if not self.big_arms and (self.eggman.done_state == "VIOLENCE" or self.eggman.done_state == "KILLED") and not self.death_cine_played then
         self.death_cine_played = true

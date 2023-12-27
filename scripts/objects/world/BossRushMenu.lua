@@ -49,6 +49,16 @@ function BossRushMenu:init()
 				cf = "baby_rush",
 				reward = 500
 			},
+            {
+				name = "Jamm Rush",
+				requirements = {"sam_defeated","jamm_closure","booty_finished","pauling_inparty","mario_obtained"},
+				encounters = {{"sam","Sam"},{"ania_boss","Shade Ania"},{"big_booty","Booty"},{"eggman",Game:getFlag("jamm_rush") and "Eggman" or "???"}},
+				party = {"pauling","jamm","mario"},
+				grad_color = {92/255, 88/255, 188/255},
+				preview = {"battle/enemies/shade_ania/idle", 75, 50},
+				cf = "jamm_rush",
+				reward = "bigsling"
+			},
         },
     }
 	
@@ -298,20 +308,6 @@ function BossRushMenu:onKeyPressed(key, is_repeat)
             self.ui_cant_select:play()
         end
     end
-    -- if Input.pressed("r") then
-        -- self.ui_select:stop()
-        -- self.ui_select:play()
-        -- Game.world:closeMenu()
-        -- Game.world:startCutscene(function(cutscene)
-            -- for i, v in ipairs(self.rushes) do
-                -- -- cutscene:text("* "..#self.rushes-(i-1).." left to go.[wait:10]\n* Up next:[wait:5] "..v[1]..".")
-				-- cutscene:text("* "..#self.rushes-(i-1).." left to go.[wait:10]\n* Up next:[wait:5]"..v.name..".")
-                -- Game:encounter(v.encounter, true)
-                -- cutscene:wait(1)
-            -- end
-            -- cutscene:text("* Congratulations![wait:10] You win absolutely nothing!")
-        -- end)
-    -- end
 end
 
 function BossRushMenu:close()
