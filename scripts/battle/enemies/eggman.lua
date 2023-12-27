@@ -52,14 +52,7 @@ end
 
 function Dummy:onAct(battler, name)
     if name == "Standard" then --X-Action
-        if battler.chara.id == "mario" then
-            return "* Ralsei bowed politely.\n* The dummy spiritually bowed\nin return."
-        elseif battler.chara.id == "jamm" then
-            return "* Ralsei bowed politely.\n* The dummy spiritually bowed\nin return."
-        else
-            -- Text for any other character
-            return "* This shouldn't happen."
-        end
+        return "* " .. battler.chara.name .. " didn't know what to do."
     end
 
     -- If the act is none of the above, run the base onAct function
