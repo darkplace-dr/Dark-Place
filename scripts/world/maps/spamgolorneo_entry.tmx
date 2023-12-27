@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="20" height="14" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="26">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="20" height="14" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="30">
  <editorsettings>
-  <export target="../maps/spamgolorneo_entry.lua" format="lua"/>
+  <export target="spamgolorneo_entry.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="border" value="simple"/>
  </properties>
- <tileset firstgid="1" source="basement1.tsx"/>
- <tileset firstgid="53" source="basement2.tsx"/>
+ <tileset firstgid="1" source="../tilesets/basement1.tsx"/>
+ <tileset firstgid="53" source="../tilesets/basement2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="20" height="14">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -29,11 +29,12 @@
  <objectgroup id="2" name="collision">
   <object id="1" x="320" y="440" width="40" height="120"/>
   <object id="2" x="120" y="440" width="200" height="40"/>
-  <object id="4" x="120" y="200" width="560" height="40"/>
   <object id="6" x="480" y="440" width="200" height="40"/>
   <object id="7" x="440" y="440" width="40" height="120"/>
   <object id="23" x="80" y="240" width="40" height="200"/>
   <object id="24" x="680" y="240" width="40" height="200"/>
+  <object id="27" x="120" y="200" width="240" height="40"/>
+  <object id="28" x="440" y="200" width="240" height="40"/>
  </objectgroup>
  <objectgroup id="7" name="objects_bg">
   <object id="10" gid="61" x="360" y="240" width="40" height="40"/>
@@ -52,8 +53,10 @@
   <object id="8" name="interactable" x="360" y="160" width="80" height="80">
    <properties>
     <property name="cutscene" value="spamgolorneo.door"/>
+    <property name="solid" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="29" name="transition" x="360" y="200" width="80" height="30"/>
  </objectgroup>
  <objectgroup id="6" name="controllers">
   <object id="17" name="toggle" x="520" y="40">
@@ -95,6 +98,13 @@
    <properties>
     <property name="flag" value="spamgolorneo_door"/>
     <property name="target" type="object" value="15"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="toggle" x="760" y="40">
+   <properties>
+    <property name="flag" value="!spamgolorneo_door"/>
+    <property name="target" type="object" value="8"/>
    </properties>
    <point/>
   </object>

@@ -53,8 +53,8 @@ function DarkPowerMenu:drawExperience()
     love.graphics.print( "KILLS:",  348, 256)
 
     love.graphics.print(self:getLOVE(),   242+64, 224)
-    love.graphics.print(self:getExp(), 242+64, 256)
-    love.graphics.print(self:getNextLv(), 342+90, 224)
+    love.graphics.print(self:getExp(), 242+44, 256)
+    love.graphics.print(self:getNextLv(), 342+75, 224)
     love.graphics.print(Game:getFlag("library_kills"),  342+90, 256)
     
 end
