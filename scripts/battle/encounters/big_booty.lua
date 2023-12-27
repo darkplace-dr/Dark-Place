@@ -26,7 +26,13 @@ end
 
 function Dummy:onBattleInit()
     super.onBattleInit(self)
-    if self.boss_rush == true then
+	if Game.current_rush == "Jamm Rush" then
+		local bg = Sprite("battle/rush_bgs/jamm_rush")
+		Game.battle:addChild(bg)
+		bg.layer = BATTLE_LAYERS["bottom"]
+		bg.alpha = 0
+		Game.battle.timer:tween(0.4, bg, {alpha = 1}, "linear")
+    elseif self.boss_rush == true then
         Game.battle.dojo_bg = DojoBG({1, 1, 1})
         Game.battle:addChild(Game.battle.dojo_bg)
     end
