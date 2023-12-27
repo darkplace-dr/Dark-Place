@@ -107,18 +107,6 @@ function HomingSoul:doMovement()
 			self.mode = "HOMING"
 			Assets.playSound("whoosh", 1, 1)
 			Game.battle.timer:tween(self.dash_time, self, {x = self.selected.x, y = self.selected.y}, "linear", function()
-				if self.x > Game.battle.arena:getRight() then
-					self.x = Game.battle.arena:getRight() - 10
-				end
-				if self.x < Game.battle.arena:getLeft() then
-					self.x = Game.battle.arena:getLeft() + 10
-				end
-				if self.y > Game.battle.arena:getBottom() then
-					self.y = Game.battle.arena:getBottom() - 10
-				end
-				if self.y < Game.battle.arena:getTop() then
-					self.y = Game.battle.arena:getTop() + 10
-				end
 				if self.collider:collidesWith(self.selected) then
 					self.selected:onHome()
 					self.selected = nil

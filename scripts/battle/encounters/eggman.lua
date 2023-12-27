@@ -45,9 +45,6 @@ function Dummy:onActionsEnd()
 	elseif self.big_arms and (self.big_arms.done_state == "VIOLENCE" or self.big_arms.done_state == "KILLED") and not self.death_cine_played_2 then
         self.death_cine_played_2 = true
         local cutscene = Game.battle:startCutscene("eggman.ending", nil, self.big_arms)
-        cutscene:after(function ()
-            Game.battle:setState("ACTIONSELECT")
-        end)
         return true
     end
 end

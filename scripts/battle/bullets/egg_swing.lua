@@ -16,6 +16,7 @@ function WreckingBall:init(x, y)
 end
 
 function WreckingBall:update()
+	super.update(self)
     self.siner = self.siner + DT
     self.cosiner = self.cosiner + DT * 1.25
 	

@@ -10,6 +10,7 @@ function SmallBullet:init(x, y)
 end
 
 function SmallBullet:update()
+	super.update(self)
     self.x = self.x + self.dx * DT * 30
     self.y = self.y + self.dy * DT * 30
 	

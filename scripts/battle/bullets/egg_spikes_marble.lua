@@ -13,6 +13,7 @@ function MarbleSpikes:init(x, y)
 end
 
 function MarbleSpikes:update()
+	super.update(self)
 end
 
 return MarbleSpikes

@@ -27,9 +27,7 @@ function Dummy:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "basic",
-        "aiming",
-        "movingarena"
+        "egg2_swing"
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
