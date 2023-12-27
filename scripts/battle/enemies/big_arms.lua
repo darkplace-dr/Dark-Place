@@ -12,9 +12,9 @@ function Dummy:init()
     self.max_health = 1000
     self.health = 1000
     -- Enemy attack (determines bullet damage)
-    self.attack = 4
+    self.attack = 9
     -- Enemy defense (usually 0)
-    self.defense = 999
+    self.defense = math.huge
     -- Enemy reward
     self.money = 0
     self.experience = 0
@@ -27,11 +27,12 @@ function Dummy:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "egg2_fly"
+        "egg2_fly",
+		"egg2_swing"
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "AT 4 DF INF\n* Truly the final boss of all time."
+    self.check = "AT 9 DF INF\n* Truly the final boss of all time."
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
@@ -44,6 +45,8 @@ function Dummy:init()
 
     self.exit_on_defeat = false
     self.killable = false
+	
+	self:registerActFor("pauling", "Order", "Revive\nparty", {}, 75)
 end
 
 function Dummy:onAct(battler, name)
@@ -55,6 +58,15 @@ function Dummy:onAct(battler, name)
 		return "Mario gets in a few practice jumps..."
     elseif name == "Standard" then
 		return "* " .. battler.chara.name .. " didn't know what to do."
+    elseif name == "Order" then
+		for k,v in ipairs(Game.battle.party) do
+			if v.chara.id ~= "pauling" then
+				if v.is_down then
+					v:heal(100)
+				end
+			end
+		end
+		return "* Pauling orders everyone to get back up!"
     end
 
     -- If the act is none of the above, run the base onAct function
