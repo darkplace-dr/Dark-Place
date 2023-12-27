@@ -232,17 +232,6 @@
    </properties>
    <point/>
   </object>
-  <object id="48" name="npc" x="320" y="160">
-   <properties>
-    <property name="actor" value="spambass"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="50" name="interactable" x="280" y="160" width="80" height="40">
-   <properties>
-    <property name="cutscene" value="spamroom.spambass"/>
-   </properties>
-  </object>
   <object id="52" name="npc" x="900" y="200" width="40" height="40">
    <properties>
     <property name="actor" value="muppet_kris"/>
