@@ -27,7 +27,7 @@ function Dummy:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "egg2_swing"
+        "egg2_fly"
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
@@ -54,7 +54,7 @@ function Dummy:onAct(battler, name)
 		Game.battle.encounter.high_jump = true
 		return "Mario gets in a few practice jumps..."
     elseif name == "Standard" then
-		return "* This shouldn't happen."
+		return "* " .. battler.chara.name .. " didn't know what to do."
     end
 
     -- If the act is none of the above, run the base onAct function
