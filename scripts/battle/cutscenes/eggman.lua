@@ -85,21 +85,25 @@ return {
         local mario = cutscene:getCharacter("mario")
 
         cutscene:wait(1)
-        enemy:shake(5)
+        Game.battle.encounter.big_arms:shake(5)
         Assets.playSound("wing")
-        enemy:shake(5)
+        Game.battle.encounter.big_arms:shake(5)
         Assets.playSound("wing")
         cutscene:wait(1)
-        enemy:shake(5)
+        Game.battle.encounter.big_arms:shake(5)
         Assets.playSound("wing")
         cutscene:wait(1)
 
-        enemy:shake(5)
+        Game.battle.encounter.big_arms:shake(5)
         Assets.playSound("wing")
         cutscene:wait(2)
 		
-		cutscene:battlerText(enemy, "Not again!\nI hate you!", {})
+		cutscene:battlerText(Game.battle.encounter.big_arms, "Not again!\nI hate you!", {})
 		
-		enemy:explode(0, 0, false)
+		cutscene:after(function()
+			Game.battle:setState("VICTORY")
+		end)
+		
+		Game.battle.encounter.big_arms:explode(0, 0, false)
 	end,
 }
