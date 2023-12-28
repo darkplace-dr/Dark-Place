@@ -272,6 +272,21 @@ function LightActionButton:select()
         bubble.physics.speed_y = -0.8
         bubble:fadeOutSpeedAndRemove(0.065)
         self:addChild(bubble)
+    elseif self.type == "skill" then
+        Game.battle.current_menu_columns = 2
+        Game.battle.current_menu_rows = 2
+        Game.battle:clearMenuItems()
+
+        for id, action in ipairs(self.battler.chara:getLightSkills()) do
+            Game.battle:addMenuItem({
+                ["name"] = action[1],
+                ["description"] = action[2],
+                ["color"] = action[3],
+                ["callback"] = action[4]
+            })
+        end
+
+        Game.battle:setState("MENUSELECT", "SKILL")
     end
 end
 
