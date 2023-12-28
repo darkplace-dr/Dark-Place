@@ -17,12 +17,6 @@ function character:init()
     self.lw_weapon_default = "weapons/ring"
     self.lw_armor_default = "light/wristwatch"
     
-    self.weapon = "snowring"
-    self.armor[1] = "silver_watch"
-    if Game.chapter >= 2 then
-        self.armor[2] = "royalpin"
-    end
-    
     if Kristal.getLibConfig("magical-glass", "debug") then
         -- Whether the party member can act / use spells
         self.has_act = true
