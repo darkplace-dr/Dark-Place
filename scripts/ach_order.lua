@@ -4,6 +4,7 @@ return {
     "starwalker",
     "wallguardian",
     "squeaks",
+    "banana",
 	"codebreaker",
     "dummy",
     "takodownbad",

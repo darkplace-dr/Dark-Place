@@ -1,11 +1,11 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.2",
   name = "floor3_objects",
   class = "",
-  tilewidth = 60,
-  tileheight = 102,
+  tilewidth = 1437,
+  tileheight = 480,
   spacing = 0,
   margin = 0,
   columns = 0,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 10,
+  tilecount = 22,
   tiles = {
     {
       id = 0,
@@ -84,6 +84,78 @@ return {
       image = "../../../assets/sprites/world/maps/floor3/bkmike_memorial.png",
       width = 40,
       height = 40
+    },
+    {
+      id = 10,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_cactusleft.png",
+      width = 63,
+      height = 80
+    },
+    {
+      id = 11,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_cactusright.png",
+      width = 60,
+      height = 80
+    },
+    {
+      id = 12,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_door_1.png",
+      width = 41,
+      height = 102
+    },
+    {
+      id = 13,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_door_2.png",
+      width = 41,
+      height = 102
+    },
+    {
+      id = 14,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_door_3.png",
+      width = 41,
+      height = 102
+    },
+    {
+      id = 15,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_platter.png",
+      width = 120,
+      height = 72
+    },
+    {
+      id = 16,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_platter_a.png",
+      width = 120,
+      height = 72
+    },
+    {
+      id = 17,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_platter_b.png",
+      width = 120,
+      height = 72
+    },
+    {
+      id = 18,
+      image = "../../../assets/sprites/world/maps/floor3/greenroom_platter_c.png",
+      width = 120,
+      height = 72
+    },
+    {
+      id = 20,
+      image = "../../../assets/sprites/world/maps/greenroom.png",
+      width = 1437,
+      height = 480
+    },
+    {
+      id = 21,
+      image = "../../../assets/sprites/world/maps/floor3/gr_couch_l.png",
+      width = 280,
+      height = 100
+    },
+    {
+      id = 22,
+      image = "../../../assets/sprites/world/maps/floor3/gr_couch_r.png",
+      width = 140,
+      height = 50
     }
   }
 }
