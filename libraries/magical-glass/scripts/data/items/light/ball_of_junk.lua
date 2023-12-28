@@ -50,6 +50,7 @@ function item:onToss()
 
         if dropped then
             Game.inventory:removeItem(self)
+            Game:setFlag("tossed_ball_of_junk", true)
             Assets.playSound("bageldefeat")
             cutscene:text("* Hand shaking,[wait:5] you dropped the\nball of junk on the ground.")
             cutscene:text("* It broke into pieces.")
