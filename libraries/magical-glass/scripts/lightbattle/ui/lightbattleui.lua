@@ -132,6 +132,11 @@ function LightBattleUI:drawState()
             ["SKILL"] = {12, 16},
         }
 
+        for lib_id,_ in Kristal.iterLibraries() do
+            menu_offsets = Kristal.libCall(lib_id, "getLightBattleMenuOffsets", menu_offsets) or menu_offsets
+        end
+        menu_offsets = Kristal.modCall("getLightBattleMenuOffsets", menu_offsets) or menu_offsets
+
         local extra_offset
         for name, offset in pairs(menu_offsets) do
             if name == Game.battle.state_reason then
