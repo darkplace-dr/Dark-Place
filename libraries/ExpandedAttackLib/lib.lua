@@ -613,6 +613,10 @@ function Lib:init()
                         bolt.physics.gravity = accel
                         bolt.physics.gravity_direction = math.pi
                         bolt:move(-(self.battler:getBoltSpeed() - 8) * DTMULT, 0)
+                        if bolt.x <= 84 + self.weapon:getBoltTarget() and not bolt.target_magnet then
+                            bolt.x = 84 + self.weapon:getBoltTarget()
+                            bolt.target_magnet = true
+                        end
                     else
                         bolt:move(-(self.battler:getBoltSpeed()) * DTMULT, 0)
                     end

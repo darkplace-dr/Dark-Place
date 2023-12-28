@@ -1,4 +1,4 @@
----@class Battle
+---@class Battle : Battle
 ---@overload fun(...) : Battle
 local Battle, super = Class(Battle)
 
@@ -19,7 +19,7 @@ function Battle:updateIntro()
 end
 
 function Battle:onStateChange(old,new)
-	super.onStateChange(self, old, new)
+	super:onStateChange(self, old, new)
 	
 	if new == "ENEMYDIALOGUE" then
 		local had_started = self.started
@@ -35,9 +35,7 @@ function Battle:onStateChange(old,new)
             end
         end
 
-		if #Game.battle.enemies > 0 then
-			self:showUI()
-		end
+        self:showUI()
 	elseif new == "FLEE" then
         self.current_selecting = 0
 		local flee_complete = false

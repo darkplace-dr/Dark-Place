@@ -1,6 +1,6 @@
 {
     "id": "better_battles",
-    "version": "v6.0",
+    "version": "v7.0",
     "engineVer": "v0.8.1",
     "authors": [
         "AcousticJamm",
@@ -21,12 +21,14 @@
         "dynamic_battle_leader": false,
 		"down_flee": false,
 		"down_spare_all": false,
-		"minimum_spare_all": 4,
+        "minimum_spare_all": 4,
 		
 		// Skill button
 		"skill_button": true,
 		"magic_name": "Magic",
         "magic_description": "Cast\nSpells",
 		
+		// Command
+		"command_times": 1,
 	},
 }

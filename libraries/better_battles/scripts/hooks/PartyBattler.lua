@@ -1,9 +1,9 @@
----@class PartyBattler
+---@class PartyBattler : PartyBattler
 ---@overload fun(...) : PartyBattler
 local PartyBattler, super = Class("PartyBattler", true)
 
 function PartyBattler:init(chara, x, y)
-	super.init(self, chara, x, y)
+	super:init(self, chara, x, y)
 	
 	self.shield = 0
 	
@@ -105,7 +105,7 @@ function PartyBattler:hurt(amount, exact, color, options)
 		self:statusMessage("msg", "guard")
 		amount = math.ceil(amount * self.guard_mult)
 	end
-	super.hurt(self, amount, exact, color, options)
+	super:hurt(self, amount, exact, color, options)
 	
 	if (not self.defending) and (not self.is_down) then
 		self.sleeping = false
