@@ -11,7 +11,7 @@ function actor:init()
     self.height = 46
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {0, 25, 19, 14}
+    self.hitbox = {4, 34, 19, 14}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {0, 1, 1}

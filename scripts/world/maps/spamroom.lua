@@ -646,36 +646,6 @@ return {
           }
         },
         {
-          id = 48,
-          name = "npc",
-          class = "",
-          shape = "point",
-          x = 320,
-          y = 160,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["actor"] = "spambass"
-          }
-        },
-        {
-          id = 50,
-          name = "interactable",
-          class = "",
-          shape = "rectangle",
-          x = 280,
-          y = 160,
-          width = 80,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["cutscene"] = "spamroom.spambass"
-          }
-        },
-        {
           id = 52,
           name = "npc",
           class = "",
