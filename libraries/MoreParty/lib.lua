@@ -30,12 +30,12 @@ function Lib:init()
         love.graphics.rectangle("fill", 2, Game:getConfig("oldUIPositions") and 3 or 2, x - 3, Game:getConfig("oldUIPositions") and 34 or 35)
         
         if not Kristal.getLibConfig("moreparty", "classic_mode") then
-            love.graphics.setColor(PALETTE["action_health_bg"])
+            Draw.setColor(Mod.libs["better_battles"] and self.actbox.battler.chara.health_bg_color or PALETTE["action_health_bg"]) -- Compatibility with 'better_battles' Library.
             love.graphics.rectangle("fill", 118, 22 - self.actbox.data_offset, 39, 9)
             local health = (self.actbox.battler.chara:getHealth() / self.actbox.battler.chara:getStat("health")) * 39
 
             if health > 0 then
-                love.graphics.setColor(self.actbox.battler.chara:getColor())
+                Draw.setColor(self.actbox.battler.chara:getColor())
                 love.graphics.rectangle("fill", 118, 22 - self.actbox.data_offset, math.ceil(health), 9)
             end
             
@@ -56,17 +56,17 @@ function Lib:init()
             local health_offset = 0
             health_offset = (#tostring(self.actbox.battler.chara:getHealth()) - 1) * 8
             
-            love.graphics.setColor(color)
+            Draw.setColor(color)
             love.graphics.setFont(self.font)
             love.graphics.print(self.actbox.battler.chara:getHealth(), 113 - health_offset, 9 - self.actbox.data_offset)
-            love.graphics.setColor(PALETTE["action_health_text"])
+            Draw.setColor(PALETTE["action_health_text"])
             love.graphics.print("/", 121, 9 - self.actbox.data_offset)
-            love.graphics.setColor(color)
+            Draw.setColor(color)
             local string_width = self.font:getWidth(tostring(self.actbox.battler.chara:getStat("health")))
             love.graphics.print(self.actbox.battler.chara:getStat("health"), 159 - string_width, 9 - self.actbox.data_offset)
             love.graphics.translate(-10, 0)
         else
-            Draw.setColor(PALETTE["action_health_bg"])
+            Draw.setColor(Mod.libs["better_battles"] and self.actbox.battler.chara.health_bg_color or PALETTE["action_health_bg"]) -- Compatibility with 'better_battles' Library.
             love.graphics.rectangle("fill", 128, 22 - self.actbox.data_offset, 76, 9)
 
             local health = (self.actbox.battler.chara:getHealth() / self.actbox.battler.chara:getStat("health")) * 76
@@ -259,6 +259,10 @@ function Lib:init()
                         bolt.physics.gravity = accel
                         bolt.physics.gravity_direction = math.pi
                         bolt:move(-(self.battler:getBoltSpeed() - 8) * DTMULT, 0)
+                        if bolt.x <= 84 + self.weapon:getBoltTarget() and not bolt.target_magnet then
+                            bolt.x = 84 + self.weapon:getBoltTarget()
+                            bolt.target_magnet = true
+                        end
                     else
                         bolt:move(-(self.battler:getBoltSpeed()) * DTMULT, 0)
                     end
@@ -1012,7 +1016,7 @@ function Lib:init()
 
                         local party_member = Game.party[i]
                         local can_equip = party_member:canEquip(current_item.item)
-                        local head_path
+                        local head_path = ""
 
                         love.graphics.setFont(self.plain_font)
                         Draw.setColor(COLORS.white)
