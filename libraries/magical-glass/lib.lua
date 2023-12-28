@@ -343,177 +343,34 @@ function lib:init()
 
     Utils.hook(ActorSprite, "init", function(orig, self, actor)
         orig(self, actor)
+        
         self.run_away_light = false
     end)
 
     Utils.hook(ActorSprite, "update", function(orig, self)
-        if self.actor:preSpriteUpdate(self) then
-            return
-        end
+        orig(self)
     
-        self.walk_speed_override = self.actor.walk_speed_override 
-
-        local flip_dir
-        for _,sprite in ipairs(self.sprite_options) do
-            flip_dir = self.actor:getFlipDirection(sprite)
-            if flip_dir then break end
-        end
-    
-        if flip_dir then
-            if not self.directional then
-                local opposite = flip_dir == "right" and "left" or "right"
-                if self.facing == flip_dir then
-                    self.flip_x = true
-                elseif self.facing == opposite then
-                    self.flip_x = false
-                end
-            else
-                self.flip_x = false
-            end
-            self.last_flippable = true
-        elseif self.last_flippable then
-            self.last_flippable = false
-            self.flip_x = false
-        end
-    
-        if not self.playing then
-            local floored_frame = math.floor(self.walk_frame)
-            if floored_frame ~= self.walk_frame or ((self.directional or self.walk_override) and self.walking) then
-                self.walk_frame = Utils.approach(self.walk_frame, floored_frame + 1, DT * ((self.walk_speed_override or self.walk_speed) > 0 and (self.walk_speed_override or self.walk_speed) or 1))
-                local last_frame = self.frame
-                self:setFrame(floored_frame)
-                if self.frame ~= last_frame and self.on_footstep and self.frame % 2 == 0 then
-                    self.on_footstep(self, math.floor(self.frame/2))
-                end
-            elseif (self.directional or self.walk_override) and self.frames and not self.walking then
-                self:setFrame(1)
-            end
-    
-            self:updateDirection()
-        end
-    
-        if self.aura then
-            self.aura_siner = self.aura_siner + 0.25 * DTMULT
-        end
-    
-        if self.run_away or self.run_away_light then
+        if self.run_away_light then
             self.run_away_timer = self.run_away_timer + DTMULT
         end
-    
-        Sprite.update(self)
-    
-        self.actor:onSpriteUpdate(self)
     end)
     
     Utils.hook(ActorSprite, "draw", function(orig, self)
         if self.actor:preSpriteDraw(self) then
             return
         end
-    
-        if self.texture and self.run_away then
+        
+        if self.texture and self.run_away_light then
             local r,g,b,a = self:getDrawColor()
-            for i = 0, 80 do
+            for i = 0, 120 do
                 local alph = a * 0.4
                 Draw.setColor(r,g,b, ((alph - (self.run_away_timer / 8)) + (i / 200)))
                 Draw.draw(self.texture, i * 2, 0)
             end
             return
         end
-
-        if self.texture and self.run_away_light then
-            local r,g,b,a = self:getDrawColor()
-            for i = 0, 120 do
-                local alph = a * 0.4
-                Draw.setColor(r,g,b, ((alph - (self.run_away_timer / 8)) + (i / 200)))
-                Draw.draw(self.texture, i * (self.run_direction or 2), 0)
-            end
-            return
-        end
-    
-        if self.texture and self.aura then
-            -- Use additive blending if the enemy is not being drawn to a canvas
-            if love.graphics.getCanvas() == SCREEN_CANVAS then
-                love.graphics.setBlendMode("add")
-            end
-    
-            local sprite_width = self.texture:getWidth()
-            local sprite_height = self.texture:getHeight()
-    
-            for i = 1, 5 do
-                local aura = (i * 9) + ((self.aura_siner * 3) % 9)
-                local aurax = (aura * 0.75) + (math.sin(aura / 4) * 4)
-                --var auray = (45 * scr_ease_in((aura / 45), 1))
-                local auray = 45 * Ease.inSine(aura / 45, 0, 1, 1)
-                local aurayscale = math.min(1, 80 / sprite_height)
-    
-                Draw.setColor(1, 0, 0, (1 - (auray / 45)) * 0.5)
-                Draw.draw(self.texture, -((aurax / 180) * sprite_width), -((auray / 82) * sprite_height * aurayscale), 0, 1 + ((aurax/36) * 0.5), 1 + (((auray / 36) * aurayscale) * 0.5))
-            end
-    
-            love.graphics.setBlendMode("alpha")
-    
-            local xmult = math.min((70 / sprite_width) * 4, 4)
-            local ymult = math.min((80 / sprite_height) * 5, 5)
-            local ysmult = math.min((80 / sprite_height) * 0.2, 0.2)
-    
-            Draw.setColor(1, 0, 0, 0.2)
-            Draw.draw(self.texture, (sprite_width / 2) + (math.sin(self.aura_siner / 5) * xmult) / 2, (sprite_height / 2) + (math.cos(self.aura_siner / 5) * ymult) / 2, 0, 1, 1 + (math.sin(self.aura_siner / 5) * ysmult) / 2, sprite_width / 2, sprite_height / 2)
-            Draw.draw(self.texture, (sprite_width / 2) - (math.sin(self.aura_siner / 5) * xmult) / 2, (sprite_height / 2) - (math.cos(self.aura_siner / 5) * ymult) / 2, 0, 1, 1 - (math.sin(self.aura_siner / 5) * ysmult) / 2, sprite_width / 2, sprite_height / 2)
-    
-            local last_shader = love.graphics.getShader()
-            love.graphics.setShader(Kristal.Shaders["AddColor"])
-    
-            Kristal.Shaders["AddColor"]:send("inputcolor", {1, 0, 0})
-            Kristal.Shaders["AddColor"]:send("amount", 1)
-    
-            Draw.setColor(1, 1, 1, 0.3)
-            Draw.draw(self.texture,  1,  0)
-            Draw.draw(self.texture, -1,  0)
-            Draw.draw(self.texture,  0,  1)
-            Draw.draw(self.texture,  0, -1)
-    
-            love.graphics.setShader(last_shader)
-    
-            Draw.setColor(self:getDrawColor())
-        end
-    
-        Sprite.draw(self)
-    
-        if self.texture and self.frozen then
-            if self.freeze_progress < 1 then
-                Draw.pushScissor()
-                Draw.scissorPoints(nil, self.texture:getHeight() * (1 - self.freeze_progress), nil, nil)
-            end
-    
-            local last_shader = love.graphics.getShader()
-            local shader = Kristal.Shaders["AddColor"]
-            love.graphics.setShader(shader)
-            shader:send("inputcolor", {0.8, 0.8, 0.9})
-            shader:send("amount", 1)
-    
-            local r,g,b,a = self:getDrawColor()
-    
-            Draw.setColor(0, 0, 1, a * 0.8)
-            Draw.draw(self.texture, -1, -1)
-            Draw.setColor(0, 0, 1, a * 0.4)
-            Draw.draw(self.texture, 1, -1)
-            Draw.draw(self.texture, -1, 1)
-            Draw.setColor(0, 0, 1, a * 0.8)
-            Draw.draw(self.texture, 1, 1)
-    
-            love.graphics.setShader(last_shader)
-    
-            love.graphics.setBlendMode("add")
-            Draw.setColor(0.8, 0.8, 0.9, a * 0.4)
-            Draw.draw(self.texture)
-            love.graphics.setBlendMode("alpha")
-    
-            if self.freeze_progress < 1 then
-                Draw.popScissor()
-            end
-        end
-    
-        self.actor:onSpriteDraw(self)
+        
+        orig(self)
     end)
 
     Utils.hook(DebugSystem, "registerDefaults", function(orig, self)
