@@ -55,6 +55,10 @@ function Lib:init()
         if self.run_away then
             self.run_away_timer = self.run_away_timer + DTMULT
         end
+        
+        if self.run_away_2 then
+            self.run_away_timer_2 = self.run_away_timer_2 + DTMULT
+        end
     
         Sprite.update(self)
     
