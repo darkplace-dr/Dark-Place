@@ -129,6 +129,7 @@ function LightBattleUI:drawState()
             ["SPELL"] = {12, 16},
             ["MERCY"] = {0, 0}, --doesn't matter lmao
             ["SEND"] = {0, 0}, --doesn't matter lmao
+            ["SKILL"] = {12, 16},
         }
 
         local extra_offset
