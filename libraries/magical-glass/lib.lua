@@ -477,7 +477,7 @@ function lib:init()
             Draw.setColor(self:getDrawColor())
         end
     
-        ActorSprite.__super.draw(self)
+        Sprite.draw(self)
     
         if self.texture and self.frozen then
             if self.freeze_progress < 1 then
