@@ -2116,17 +2116,16 @@ function lib:init()
         end
 
         local offset = 0
-        local show_magic = {}
-        for i,party in pairs(Game.party) do
-            show_magic[i] = false
-            if party.lw_stats.magic and party.lw_stats.magic > 0 then
-                show_magic[i] = true
+        local show_magic = false
+        for _,party in pairs(Game.party) do
+            if party.lw_stats.magic > 0 then
+                show_magic = true
             end
         end
-        if self.always_show_magic or show_magic[self.party_selecting] then
+        if self.always_show_magic or show_magic then
             offset = 18
             love.graphics.print("MG  ", 4, 228 - offset)
-            love.graphics.print((chara:getBaseStats()["magic"])   .. " (".. chara:getEquipmentBonus("magic")   .. ")", 44, 228 - offset)
+            love.graphics.print(chara:getBaseStats()["magic"]   .. " ("..chara:getEquipmentBonus("magic")   .. ")", 44, 228 - offset)
         end
         love.graphics.print("LV  "..chara:getLightLV(), 4, 68 - offset)
         love.graphics.print("HP  "..chara:getHealth().." / "..chara:getStat("health"), 4, 100 - offset)
