@@ -1112,7 +1112,7 @@ return {
     end,
 
     hacker = function(cutscene)
-        local flag = Game:getGlobalFlag("r1.hacker.interactions", 0)
+        local flag = Game:getFlag("r1.hacker.interactions", 0)
         if flag == 0 then
             cutscene:text("* Aloha.[wait:5]\n* I'm [color:green]Hacker[color:reset].[wait:5]\n* [color:green]Hacker[color:reset] the [color:green]Hacker[color:reset].")
             cutscene:text("* Hello, Froglin. Would you like me to reset your achievements?")
@@ -1120,8 +1120,8 @@ return {
             local cc = cutscene:choicer({"Yes", "No"})
             if cc == 1 then
                 local hasachievements = false
-                for ach, v in pairs(achLib.achievements) do
-                    if v.earned == true then
+                for ach, v in pairs(AchLib.achievements) do
+                    if (v.earned == true) or (type(v.completion) == "number" and v.progress > 0) then
                         hasachievements = true
                     end
                 end
@@ -1130,22 +1130,31 @@ return {
                     cutscene:text("* Find me again once you have earned some.")
                 else
                     cutscene:text("* Understood. I shall begin.")
-                    for ach, v in pairs(achLib.achievements) do
-                        achLib:removeAchievement(ach)
+                    for ach, v in pairs(AchLib.achievements) do
+                        AchLib:removeAchievement(ach)
+                        if (type(v.completion) == "number" and v.progress > 0) then
+                            v.progress = 0
+                        end
                     end
+                    Game.world.music:pause()
+                    cutscene:wait(0.25)
+                    cutscene:wait(cutscene:playSound("pokemon_heal"))
+                    cutscene:wait(0.75)
+                    Game.world.music:resume()
+                    cutscene:text("* Voila")
                 end
             else
                 cutscene:text("* Goodbye.")
             end
-            Game:setGlobalFlag("r1.hacker.interactions", 1)
+            Game:setFlag("r1.hacker.interactions", 1)
         elseif flag == 1 then
             cutscene:text("* Hello, Froglin. Would you like me to reset your achievements?")
             cutscene:text("* [color:red]Warning: This will reset your progress on any achievements you have earned[color:reset].")
             local cc = cutscene:choicer({"Yes", "No"})
             if cc == 1 then
                 local hasachievements = false
-                for ach, v in pairs(achLib.achievements) do
-                    if v.earned == true then
+                for ach, v in pairs(AchLib.achievements) do
+                    if (v.earned == true) or (type(v.completion) == "number" and v.progress > 0) then
                         hasachievements = true
                     end
                 end
@@ -1154,10 +1163,17 @@ return {
                     cutscene:text("* Find me again once you have earned some.")
                 else
                     cutscene:text("* Understood. I shall begin.")
-                    for ach, v in pairs(achLib.achievements) do
-                        achLib:removeAchievement(ach)
+                    for ach, v in pairs(AchLib.achievements) do
+                        AchLib:removeAchievement(ach)
+                        if (type(v.completion) == "number" and v.progress > 0) then
+                            v.progress = 0
+                        end
                     end
+                    Game.world.music:pause()
+                    cutscene:wait(0.25)
                     cutscene:wait(cutscene:playSound("pokemon_heal"))
+                    cutscene:wait(0.75)
+                    Game.world.music:resume()
                     cutscene:text("* Voila")
                 end
             else

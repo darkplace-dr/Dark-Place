@@ -228,7 +228,11 @@ function lib:removeAchievement(achievement)
     end
 
     ach_obj.earned = false
-    ach_obj.progress = type(ach_obj.completion) == "number" and 0 or false
+    if ach_obj.completion == false or ach_obj.completion == true then
+        ach_obj.progress = false
+    else
+        ach_obj.progress = 0
+    end
 
     if self.global then
         self:writeGlobalAchievements()
