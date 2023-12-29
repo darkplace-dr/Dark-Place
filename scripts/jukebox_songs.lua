@@ -793,5 +793,26 @@ return {
     released = "December 25th, 2016",
     origin = "https://www.youtube.com/watch?v=BuKft9LpL_0"
   },
+  {
+    name = "Boss (Sonic 1)",
+    file = "egg_1",
+    composer = "Masato Nakamura",
+    released = "June 11, 1991",
+    origin = "Sonic the Hedgehog (Genesis)" -- with AMPS sound driver
+  },
+  {
+    name = "Boss (Sonic 2)",
+    file = "egg_s2",
+    composer = "Masato Nakamura",
+    released = "Nov 24, 1992",
+    origin = "(AMPS in) Sonic 2"
+  },
+  {
+    name = "Final Boss (Sonic 3)",
+    file = "egg_2",
+    composer = "Sega Sound Team",
+    released = "Feb 2, 1994",
+    origin = "Sonic 3 & Knuckles" -- technically dobby's "SOUND TEST PROGRAM"
+  },
   ]]
 }
