@@ -89,7 +89,7 @@ return function(cutscene, event_override)
 
         local cc = Text("thank you")
         cc:setColor(0.2, 0.2, 0.2, 0)
-        cc.layer = WORLD_LAYERS["above_textbox"]
+        cc.layer = WORLD_LAYERS["textbox"]
         Game.world:addChild(cc)
         cc:setScreenPos(110, 360)
         cc:fadeTo(0.1, 5)
