@@ -31,7 +31,8 @@ function Mod:getLeader(kind)
     return leader --[[ if kind == "partymember" or kind == "party" ]]
 end
 
--- Get the average LOVE for the whole party
+-- Get the average LOVE for the whole party \
+-- Note that the result absolutely can be a double. Round if necessary.
 --- @return number love # The LOVE of the party
 function Mod:getPartyLove()
     local sum_love = 0
