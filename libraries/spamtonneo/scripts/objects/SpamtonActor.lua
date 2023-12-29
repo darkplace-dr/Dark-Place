@@ -57,7 +57,7 @@ function Spamton:init(actor)
     }
 
     self.swing_speed = 2
-    self.swing_range = {math.rad(-10), math.rad(10)}
+    self.swing_range = {math.rad(-12), math.rad(12)}
     for i,part in ipairs(self.parts) do
         if part ~= self.head then
             part.swing_speed = 1 + (i-1)/5
