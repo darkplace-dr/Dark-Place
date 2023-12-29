@@ -595,6 +595,7 @@ function LightEnemyBattler:onHurt(damage, battler)
     if Game.battle.tension_bar.visible then
         Game:giveTension(battler.tp_gain or 0)
     end
+    battler.tp_gain = 0
     if self.actor.use_light_battler_sprite then
         if not self:getActiveSprite():setAnimation("lightbattle_hurt") then
             self:toggleOverlay(false)
