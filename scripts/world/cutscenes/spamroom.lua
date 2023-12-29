@@ -301,9 +301,10 @@ return {
         cutscene:text("* Batteries not included")
     end,
 
-    -- ┌───────────────────────┐ --
-    -- │     The Warp Bin      │ --
-    -- └───────────────────────┘ --
+    -- ┌───────────────────────┐ \
+    -- │     The Warp Bin      │ \
+    -- └───────────────────────┘ \
+    -- or: the feature creep bin    - dobby
     warpbin = function(cutscene, event)
         cutscene:text("* It's the warp bin.")
         cutscene:text("* Would you like to warp?[wait:10]\n* You only need the code.")
@@ -384,7 +385,7 @@ return {
         elseif not warpable then
             if action.on_fail then
                 action.on_fail(cutscene)
-            elseif silence_system_messages then
+            elseif not silence_system_messages then
                 cutscene:text("* That doesn't seem to work.")
             end
             return
@@ -395,13 +396,13 @@ return {
         local dest_map
         pcall(function() dest_map = Registry.createMap(result, Game.world) end)
         if not dest_map then
-            if silence_system_messages then
+            if not silence_system_messages then
                 cutscene:text("* Where are you warping to?")
             end
             return
         end
         if Game.world.map.id == dest_map.id then
-            if silence_system_messages then
+            if not silence_system_messages then
                 cutscene:text("* But you're already there.")
             end
             return
