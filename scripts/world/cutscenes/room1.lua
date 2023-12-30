@@ -405,9 +405,9 @@ return {
         else
             local kid = #Game.party > 1 and "kids" or "kid"
             cutscene:showNametag("Sans", {font = "sans"})
-            cutscene:text(string.format("* hey %s.[wait:5] sorry but you can't access this elevator yet.", kid), "neutral", "sans")
-            cutscene:text("* it's kinda..[wait:5] not finished.", "look_left", "sans")
-            cutscene:text("* so come back later,[wait:2] 'k?", "wink", "sans")
+            cutscene:text(string.format("[font:sans]* hey %s.[wait:5] sorry but you can't access this elevator yet.", kid), "neutral", "sans")
+            cutscene:text("[font:sans]* it's kinda..[wait:5] not finished.", "look_left", "sans")
+            cutscene:text("[font:sans]* so come back later,[wait:2] 'k?", "wink", "sans")
             cutscene:hideNametag()
         end
     end,
