@@ -217,7 +217,7 @@ function Soul:update()
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch/2, DTMULT / 4)
         self.timescale = Utils.approach(self.timescale, 2, DTMULT / 4)
         self.vhsfx.active = true
-        self.timeslow_sfx:play()
+        if self.timeslow_sfx then self.timeslow_sfx:play() end
 	else
         -- Make sure the game pauses when object selection and selection slowdown is active.
         if not (Kristal.DebugSystem.state == "SELECTION" and Kristal.Config["objectSelectionSlowdown"]) then
@@ -226,7 +226,7 @@ function Soul:update()
         Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch, DTMULT / 4)
         self.timescale = Utils.approach(self.timescale, 1, DTMULT / 4)
         self.vhsfx.active = false
-        self.timeslow_sfx:stop()
+        if self.timeslow_sfx then self.timeslow_sfx:stop() end
     end
 
     -- Remove 1 TP for every drain_rate frames of slowdown active
@@ -280,7 +280,7 @@ function Soul:remove()
     self.vhsfx.active = false
     self.outlinefx.active = false
     self.concentratebg:remove()
-    self.timeslow_sfx:stop()
+    if self.timeslow_sfx then self.timeslow_sfx:stop() end
     Input.clear("f")
     super.remove(self)
 end
