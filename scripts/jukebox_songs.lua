@@ -367,34 +367,6 @@ return {
     origin = "Crystalseeker"
   },
   {
-    name = "He is Lost",
-    file = "spamlament_lost",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "Find Him",
-    file = "spamlament_find",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "Tell Him He's Okay",
-    file = "spamlament_okay",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "He is Loved",
-    file = "spamlament_loved",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
     name = "No More Nuzzles",
     file = "no_more_nuzzles",
     composer = "Lunaxis",
