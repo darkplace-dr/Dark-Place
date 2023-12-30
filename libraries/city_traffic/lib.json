@@ -9,7 +9,7 @@
 
     "config": {
         // Unused
-        "allowInvalidCarDirection": false,
+        "allowInvalidCarDirection": true,
         // Whether Noelle should attach to the player in fear when crossing traffic
         "doNoelleScaredInTraffic": true,
         // Kris is supposed to spin when struck by a car! This functionality is restored when this option is set to true

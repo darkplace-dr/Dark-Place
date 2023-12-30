@@ -77,9 +77,17 @@ function TrafficCarGenerator:update()
     Kristal.callEvent("onTrafficCarGeneratorUpdate", self)
 end
 
+function TrafficCarGenerator:onRemoveFromStage(stage)
+    Game.world.cars = {}
+    super.onRemove(self, stage)
+end
+
 function TrafficCarGenerator:makeCar(x, y)
     if Kristal.callEvent("beforeTrafficCarGeneratorMakeCar") then
         return
+    end
+    if Game.world.cars == nil then
+        Game.world.cars = {}
     end
     local car = Registry.createEvent("traffic_car", {x = x, y = y})
     car.alwayswalking   = self.always_walking
@@ -91,6 +99,7 @@ function TrafficCarGenerator:makeCar(x, y)
     car.walking         = self.walking
     car:setDirection(self.car_type)
 
+    table.insert(Game.world.cars, car)
     Game.world:spawnObject(car)
     Kristal.callEvent("onTrafficCarGeneratorMakeCar", self, car)
 end

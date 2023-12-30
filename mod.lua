@@ -542,6 +542,8 @@ function Mod:onMapMusic(map, music)
         return ""
     elseif Game:getFlag("weird") and music == "deltarune/cybercity" then
         return "deltarune/cybercity_alt"
+    elseif map.name == "CONNECTION" and music == "greenroom" then
+        return {music, 1, 0.8}
     end
 end
 

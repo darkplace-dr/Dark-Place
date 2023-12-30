@@ -34,6 +34,27 @@
             "width": 640,
             "x": -320,
             "y": -1720
+        },
+        {
+            "fileName": "maps/floor3/corridors2.tmx",
+            "height": 800,
+            "width": 960,
+            "x": 680,
+            "y": -2520
+        },
+        {
+            "fileName": "maps/floor3/greydoor.tmx",
+            "height": 3200,
+            "width": 960,
+            "x": 560,
+            "y": -5800
+        },
+        {
+            "fileName": "maps/floor3/greydoor/greydoor.tmx",
+            "height": 4800,
+            "width": 4800,
+            "x": 560,
+            "y": -7360
         }
     ],
     "onlyShowAdjacentMaps": false,

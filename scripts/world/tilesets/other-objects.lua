@@ -1,11 +1,11 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.2",
   name = "other-objects",
   class = "",
-  tilewidth = 418,
-  tileheight = 240,
+  tilewidth = 1306,
+  tileheight = 480,
   spacing = 0,
   margin = 0,
   columns = 0,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 12,
+  tilecount = 13,
   tiles = {
     {
       id = 12,
@@ -96,6 +96,12 @@ return {
       image = "../../../assets/sprites/world/castle_sign.png",
       width = 32,
       height = 37
+    },
+    {
+      id = 51,
+      image = "../../../assets/sprites/world/maps/snowy_bg.png",
+      width = 1306,
+      height = 480
     }
   }
 }

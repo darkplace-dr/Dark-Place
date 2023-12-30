@@ -9,8 +9,8 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 18,
-  nextobjectid = 185,
+  nextlayerid = 19,
+  nextobjectid = 188,
   properties = {
     ["border"] = "undertale/dog",
     ["music"] = "greenroom",
@@ -25,7 +25,7 @@ return {
     },
     {
       name = "floor3_objects",
-      firstgid = 114,
+      firstgid = 36,
       filename = "../../../tilesets/floor3-objects.tsx",
       exportfilename = "../../../tilesets/floor3-objects.lua"
     }
@@ -55,7 +55,7 @@ return {
           width = 1437,
           height = 480,
           rotation = 0,
-          gid = 134,
+          gid = 56,
           visible = true,
           properties = {}
         }
@@ -337,7 +337,7 @@ return {
           width = 82,
           height = 204,
           rotation = 0,
-          gid = 126,
+          gid = 48,
           visible = true,
           properties = {}
         }
@@ -422,7 +422,7 @@ return {
           width = 280,
           height = 100,
           rotation = 0,
-          gid = 136,
+          gid = 58,
           visible = true,
           properties = {}
         },
@@ -436,7 +436,7 @@ return {
           width = 280,
           height = 100,
           rotation = 0,
-          gid = 135,
+          gid = 57,
           visible = true,
           properties = {}
         },
@@ -450,7 +450,7 @@ return {
           width = 116,
           height = 102,
           rotation = 0,
-          gid = 120,
+          gid = 42,
           visible = true,
           properties = {}
         },
@@ -464,7 +464,7 @@ return {
           width = 116,
           height = 102,
           rotation = 0,
-          gid = 120,
+          gid = 42,
           visible = true,
           properties = {}
         },
@@ -478,7 +478,7 @@ return {
           width = 60,
           height = 80,
           rotation = 0,
-          gid = 125,
+          gid = 47,
           visible = true,
           properties = {}
         },
@@ -492,7 +492,7 @@ return {
           width = 63,
           height = 80,
           rotation = 0,
-          gid = 124,
+          gid = 46,
           visible = true,
           properties = {}
         },
@@ -506,7 +506,7 @@ return {
           width = 120,
           height = 72,
           rotation = 0,
-          gid = 130,
+          gid = 52,
           visible = true,
           properties = {}
         },
@@ -520,7 +520,7 @@ return {
           width = 120,
           height = 72,
           rotation = 0,
-          gid = 131,
+          gid = 53,
           visible = true,
           properties = {}
         },
@@ -663,7 +663,7 @@ return {
           width = 62,
           height = 88,
           rotation = 0,
-          gid = 116,
+          gid = 38,
           visible = true,
           properties = {}
         },
@@ -713,6 +713,48 @@ return {
           properties = {
             ["actor"] = "ch3_platter"
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 18,
+      name = "objects_fg",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 185,
+          name = "greenroom_sparkles",
+          type = "",
+          shape = "rectangle",
+          x = 940,
+          y = 40,
+          width = 380,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 187,
+          name = "greenroom_sparkles",
+          type = "",
+          shape = "rectangle",
+          x = 120,
+          y = 40,
+          width = 430,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

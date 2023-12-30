@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="75">
+ <editorsettings>
+  <export target="corridors2.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="undertale/dog"/>
+  <property name="music" value="greenroom"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/greenroom.tsx"/>
+ <tileset firstgid="36" source="../../tilesets/floor3-objects.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="24" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+2,1,2,1,2,1,2,10,10,10,11,1,2,1,2,1,2,1,1,2,1,2,0,0,
+9,8,9,8,9,8,9,10,10,11,12,8,9,8,9,8,9,8,8,9,8,9,0,0,
+16,15,16,15,16,15,16,10,11,12,12,15,16,15,16,15,16,15,15,16,15,16,0,0,
+3,3,3,3,3,3,3,11,12,12,13,14,14,18,5,5,19,3,3,3,3,3,3,0,
+10,10,10,10,10,10,11,12,12,13,20,20,7,12,12,6,10,10,10,10,10,10,10,0,
+10,10,10,10,10,11,12,12,13,20,20,7,12,12,6,10,10,10,10,10,10,10,10,0,
+0,0,0,0,0,0,0,13,20,20,7,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,20,20,7,12,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,20,7,12,12,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,7,12,12,6,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,12,12,6,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,12,6,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,6,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="24" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,23,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,23,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,30,0,0,0,0,29,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="8" name="objects_bg">
+  <object id="39" gid="2147483689" x="838" y="440" width="82" height="204"/>
+  <object id="47" gid="39" x="440" y="280" width="70" height="40"/>
+  <object id="48" gid="39" x="504" y="280" width="70" height="40"/>
+  <object id="49" gid="39" x="568" y="280" width="70" height="40"/>
+  <object id="50" gid="39" x="632" y="280" width="70" height="40"/>
+  <object id="51" gid="39" x="696" y="280" width="70" height="40"/>
+  <object id="52" gid="39" x="760" y="280" width="70" height="40"/>
+  <object id="53" gid="39" x="824" y="280" width="70" height="40"/>
+  <object id="54" gid="39" x="-46" y="280" width="70" height="40"/>
+  <object id="55" gid="39" x="18" y="280" width="70" height="40"/>
+  <object id="56" gid="39" x="82" y="280" width="70" height="40"/>
+  <object id="57" gid="39" x="146" y="280" width="70" height="40"/>
+  <object id="58" gid="39" x="210" y="280" width="70" height="40"/>
+ </objectgroup>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="23" x="840" y="360">
+   <polygon points="0,0 80,80 80,0"/>
+  </object>
+  <object id="28" x="480" y="360" width="60" height="20"/>
+  <object id="37" x="920" y="360" width="40" height="120"/>
+  <object id="67" x="0" y="480" width="280" height="320"/>
+  <object id="68" x="440" y="480" width="520" height="320"/>
+  <object id="69" x="440" y="0" width="520" height="360"/>
+  <object id="70" x="0" y="0" width="280" height="360"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="18" name="transition" x="-30" y="360" width="40" height="120">
+   <properties>
+    <property name="map" value="floor3/pre_elevator"/>
+    <property name="marker" value="entry2"/>
+   </properties>
+  </object>
+  <object id="19" name="transition" x="280" y="790" width="160" height="40">
+   <properties>
+    <property name="map" value="floor3/corridors1"/>
+    <property name="marker" value="entry3"/>
+   </properties>
+  </object>
+  <object id="20" name="transition" x="280" y="-30" width="160" height="40">
+   <properties>
+    <property name="map" value="floor3/greydoor"/>
+    <property name="marker" value="entryup"/>
+   </properties>
+  </object>
+  <object id="27" gid="38" x="480" y="380" width="60" height="90"/>
+  <object id="59" name="transition" x="860" y="360" width="40" height="120">
+   <properties>
+    <property name="map" value="floor3/mike"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="61" name="dogconegroup" x="80" y="360" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66" name="dogconegroup" x="720" y="360" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="62" name="dogconegroup" x="80" y="400" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="65" name="dogconegroup" x="720" y="400" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="63" name="dogconegroup" x="80" y="440" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="64" name="dogconegroup" x="720" y="440" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="31" name="entry" x="40" y="440">
+   <point/>
+  </object>
+  <object id="32" name="entry2" x="820" y="440">
+   <point/>
+  </object>
+  <object id="33" name="entry4" x="360" y="760">
+   <point/>
+  </object>
+  <object id="34" name="entry3" x="360" y="80">
+   <point/>
+  </object>
+  <object id="35" name="spawn" x="360" y="440">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff0000" id="6" name="objects_fg">
+  <object id="5" name="greenroom_sparkles" x="0" y="240" width="280" height="40"/>
+  <object id="6" name="greenroom_sparkles" x="440" y="240" width="440" height="40"/>
+ </objectgroup>
+</map>

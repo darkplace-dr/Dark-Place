@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="50">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="50">
  <editorsettings>
   <export target="pre_elevator.lua" format="lua"/>
  </editorsettings>
@@ -50,6 +50,17 @@
   <object id="35" x="540" y="240" width="60" height="20"/>
   <object id="38" x="216" y="310" width="60" height="40"/>
  </objectgroup>
+ <objectgroup color="#7f00ff" id="4" name="markers">
+  <object id="6" name="entry" x="320" y="80">
+   <point/>
+  </object>
+  <object id="7" name="entry2" x="920" y="320">
+   <point/>
+  </object>
+  <object id="42" name="spawn" x="320" y="280">
+   <point/>
+  </object>
+ </objectgroup>
  <objectgroup color="#ff00ff" id="3" name="objects">
   <object id="5" name="transition" x="200" y="-30" width="240" height="40">
    <properties>
@@ -82,18 +93,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#7f00ff" id="4" name="markers">
-  <object id="6" name="entry" x="320" y="80">
-   <point/>
-  </object>
-  <object id="7" name="entry2" x="920" y="320">
-   <point/>
-  </object>
-  <object id="42" name="spawn" x="320" y="280">
-   <point/>
-  </object>
- </objectgroup>
- <objectgroup color="#ff0000" id="5" name="objects_fg" visible="0" locked="1">
+ <objectgroup color="#ff0000" id="5" name="objects_fg" locked="1">
   <object id="13" gid="39" x="440" y="160" width="70" height="40"/>
   <object id="14" gid="39" x="504" y="160" width="70" height="40"/>
   <object id="15" gid="39" x="568" y="160" width="70" height="40"/>

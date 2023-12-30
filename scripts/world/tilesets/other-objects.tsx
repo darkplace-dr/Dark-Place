@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.0" name="other-objects" tilewidth="418" tileheight="240" tilecount="12" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="other-objects" tilewidth="1306" tileheight="480" tilecount="13" columns="0">
  <editorsettings>
   <export target="other-objects.lua" format="lua"/>
  </editorsettings>
@@ -39,5 +39,8 @@
  </tile>
  <tile id="50">
   <image width="32" height="37" source="../../../assets/sprites/world/castle_sign.png"/>
+ </tile>
+ <tile id="51">
+  <image width="1306" height="480" source="../../../assets/sprites/world/maps/snowy_bg.png"/>
  </tile>
 </tileset>

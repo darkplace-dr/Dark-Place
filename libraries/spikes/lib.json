@@ -6,6 +6,6 @@
 		"AcousticJamm"
 	],
 	"config": {
-		"spikedeath": true
+		"spikedeath": false
 	},
 }

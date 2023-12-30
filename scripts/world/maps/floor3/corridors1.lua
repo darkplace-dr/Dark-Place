@@ -24,7 +24,7 @@ return {
     },
     {
       name = "floor3_objects",
-      firstgid = 114,
+      firstgid = 36,
       filename = "../../tilesets/floor3-objects.tsx",
       exportfilename = "../../tilesets/floor3-objects.lua"
     }
@@ -174,7 +174,7 @@ return {
           width = 82,
           height = 204,
           rotation = 0,
-          gid = 2147483767,
+          gid = 2147483689,
           visible = true,
           properties = {}
         },
@@ -188,7 +188,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -202,7 +202,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -216,7 +216,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -230,7 +230,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -244,7 +244,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -258,7 +258,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -272,7 +272,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -286,7 +286,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -300,7 +300,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -314,7 +314,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -328,7 +328,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         },
@@ -342,7 +342,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 117,
+          gid = 39,
           visible = true,
           properties = {}
         }
@@ -446,19 +446,6 @@ return {
           properties = {}
         },
         {
-          id = 30,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 280,
-          y = -40,
-          width = 160,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 37,
           name = "",
           type = "",
@@ -525,14 +512,14 @@ return {
           type = "",
           shape = "rectangle",
           x = 280,
-          y = -80,
+          y = -30,
           width = 160,
           height = 40,
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "",
-            ["marker"] = ""
+            ["map"] = "floor3/corridors2",
+            ["marker"] = "entry4"
           }
         },
         {
@@ -545,7 +532,7 @@ return {
           width = 60,
           height = 90,
           rotation = 0,
-          gid = 116,
+          gid = 38,
           visible = true,
           properties = {}
         },
