@@ -5,7 +5,7 @@ function Poseur:init()
 
     self.text = "* Poseur strikes a pose!"
 
-    self.music = "utbattle"
+    self.music = "battleut"
     self.background = true
 
     self:addEnemy("poseur")

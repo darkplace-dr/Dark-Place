@@ -135,7 +135,14 @@ return {
   },
   {
     name = "Enemy Approaching!",
-    file = "utbattle",
+    file = "battleut",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Stronger Monsters",
+    file = "battle2ut",
     composer = "Toby Fox",
     released = "2015",
     origin = "Undertale"
