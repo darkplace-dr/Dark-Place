@@ -1,6 +1,6 @@
 return {
 
-    spamdumpster = function(cutscene)
+    spamdumpster = function(cutscene, event)
         local jamm = cutscene:getCharacter("jamm")
 		
         if Game:getFlag("weird") then
