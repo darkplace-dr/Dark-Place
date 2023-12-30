@@ -1,21 +1,20 @@
----@class ActorSprite
+---@class ActorSprite : ActorSprite
 ---@overload fun(...) : ActorSprite
 local ActorSprite, super = Class("ActorSprite", true)
 
 function ActorSprite:init(actor)
-	super.init(self, actor)
-
-
+	super:init(self, actor)
+	
 	self.run_away_2 = false
     self.run_away_timer_2 = 0
 end
 
 function ActorSprite:update()
-    if self.run_away_2 then
+	super:update(self)
+	
+	if self.run_away_2 then
         self.run_away_timer_2 = self.run_away_timer_2 + DTMULT
     end
-
-    super.update(self)
 end
 
 function ActorSprite:draw()

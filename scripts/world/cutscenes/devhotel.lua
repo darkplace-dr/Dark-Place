@@ -128,9 +128,35 @@ return {
         cutscene:wait(0.7)
         event:setAnimation("interact")
         cutscene:wait(0.3)
-        event:setAnimation("blaster")
+        
+        local gb = Game.world:spawnBullet("gaster_blaster", event.x, event.y)
+        local dd = Utils.random(360)
+		
+        Assets.stopSound("gaster_blaster")
+
+        gb.rotation = math.rad(90)
+        gb.target_x = gb.x
+        gb.target_y = gb.y - 100
+
+        if gb.target_y > 440 then
+            gb.target_y = 440
+        end
+        if gb.target_y < 40 then
+            gb.target_y = 40
+        end
+        if gb.target_x < 50 then
+            gb.target_x = 50
+        end
+        if gb.target_x > 590 then
+            gb.target_x = 590
+        end
+		
+        gb.x = gb.x + math.sin(dd) * 400
+        gb.y = gb.y + math.cos(dd) * 300
+        gb.wait_time = 6.5
         cutscene:wait(0.77)
-        event:setAnimation("blasterfire")
+        Assets.stopSound("gaster_blast")
+        Assets.stopSound("gaster_blast2")
         cutscene:fadeOut(0.1, {color = {1, 1, 1}})
         cutscene:wait(0.9)
         cutscene:loadMap("devhotel/devhotel_lobby", "spawn", "down")

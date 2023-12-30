@@ -135,7 +135,14 @@ return {
   },
   {
     name = "Enemy Approaching!",
-    file = "utbattle",
+    file = "battleut",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Stronger Monsters",
+    file = "battle2ut",
     composer = "Toby Fox",
     released = "2015",
     origin = "Undertale"
@@ -358,34 +365,6 @@ return {
     composer = "BrendaK7200",
     released = "2023",
     origin = "Crystalseeker"
-  },
-  {
-    name = "He is Lost",
-    file = "spamlament_lost",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "Find Him",
-    file = "spamlament_find",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "Tell Him He's Okay",
-    file = "spamlament_okay",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
-  },
-  {
-    name = "He is Loved",
-    file = "spamlament_loved",
-    composer = "FireStar8903",
-    released = "2023",
-    origin = "A Salesman's Lament"
   },
   {
     name = "No More Nuzzles",
@@ -792,6 +771,27 @@ return {
     composer = "PilotRedSun",
     released = "December 25th, 2016",
     origin = "https://www.youtube.com/watch?v=BuKft9LpL_0"
+  },
+  {
+    name = "Boss (Sonic 1)",
+    file = "egg_1",
+    composer = "Masato Nakamura",
+    released = "June 11, 1991",
+    origin = "Sonic the Hedgehog (Genesis)" -- with AMPS sound driver
+  },
+  {
+    name = "Boss (Sonic 2)",
+    file = "egg_s2",
+    composer = "Masato Nakamura",
+    released = "Nov 24, 1992",
+    origin = "(AMPS in) Sonic 2"
+  },
+  {
+    name = "Final Boss (Sonic 3)",
+    file = "egg_2",
+    composer = "Sega Sound Team",
+    released = "Feb 2, 1994",
+    origin = "Sonic 3 & Knuckles" -- technically dobby's "SOUND TEST PROGRAM"
   },
   ]]
 }

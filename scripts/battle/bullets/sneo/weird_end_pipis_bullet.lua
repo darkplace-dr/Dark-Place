@@ -14,24 +14,24 @@ function WeirdEndPipisBullet:init(x, y, dir, speed)
 
     self.remove_offscreen = false
 	
-    self.yellow_siner = 0
+    self.blue_siner = 0
 end
 
 function WeirdEndPipisBullet:update()
     super.update(self)
 	
-    self.yellow_siner = self.yellow_siner + DTMULT
-    self:setColor(Utils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + math.sin(self.yellow_siner / 3)) * 0.25))
+    self.blue_siner = self.blue_siner + DTMULT
+    self:setColor(Utils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + math.sin(self.blue_siner / 3)) * 0.25))
 end
 
-function WeirdEndPipisBullet:destroy(shot)
+function WeirdEndPipisBullet:destroy()
     Assets.playSound("bomb", 0.5)
     self.physics = {
 	    speed = 0,
 	}
     self.collider.collidable = false
 	
-	local death = breakeffect(self.sprite:getTexture(), -22, -5, function() self:remove() end)
+	local death = breakeffect(self.sprite:getTexture(), 0, 0, function() self:remove() end)
 	death:setScale(self.sprite:getScale())
     death:setColor(self.color)
 	self:addChild(death)

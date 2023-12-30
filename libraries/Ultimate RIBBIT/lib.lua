@@ -98,7 +98,16 @@ function lib:postInit()
 
     Utils.hook(ActionButton, "select", function(orig, self)
         if self.type == "send" then
-            if self.battler == Game.battle.party[1] then
+            local battle_leader = 1
+            if Kristal.getLibConfig("better_battles", "dynamic_battle_leader") then
+                for i,battler in ipairs(Game.battle.party) do
+                    if not battler.is_down then
+                        battle_leader = i
+                        break
+                    end
+                end
+            end
+            if self.battler == Game.battle.party[battle_leader] and Kristal.getLibConfig("better_battles", "spare_tactics") then
     			Game.battle:clearMenuItems()
     			local sparable = false
     			for k,v in pairs(Game.battle:getActiveEnemies()) do
@@ -132,6 +141,7 @@ function lib:postInit()
     						Game.battle:setState("FLEE")
     					else
     						Game.battle:setState("ENEMYDIALOGUE", "FLEE")
+                            Game.battle.current_selecting = 0
     					end
                     end
                 })
@@ -144,15 +154,23 @@ function lib:postInit()
     					["tp"] = 16,
     					["party"] = party,
     					["callback"] = function(menu_item)
-    						Game:removeTension(16)
-    						for k,v in pairs(Game.battle:getActiveEnemies()) do
-    							if v:canSpare() then
-    								v:spare()
-    							else
-    								v:addMercy(v.spare_points * 1.5)
-    							end
-    						end
-    						Game.battle:setState("ENEMYDIALOGUE", "SPAREALL")
+                            Game:removeTension(16)
+                            Game.battle.current_selecting = 0
+                            for i,battler in pairs(Game.battle.party) do
+                                if not battler.is_down and i ~= battle_leader then
+                                    battler:setAnimation("battle/spare")
+                                elseif i == battle_leader then
+                                        battler:setAnimation("battle/spare", function()
+                                        for _,enemy in pairs(Game.battle:getActiveEnemies()) do
+                                            if not enemy:onMercy(battler, true) then enemy:mercyFlash() end
+                                        end
+                                    end)
+                                end
+                            end
+                            Game.battle:battleText("* You sent everyone!", function()
+                                Game.battle:setState("ENEMYDIALOGUE", "SPAREALL")
+                                return true
+                            end)
     					end
     				})
     			end

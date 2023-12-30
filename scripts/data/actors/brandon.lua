@@ -56,7 +56,7 @@ function actor:init()
         ["battle/item"]         = {"battle/item", 1/12, false, next="battle/idle"},
         ["battle/spare"]        = {"battle/act", 1/15, false, next="battle/idle"},
 
-        ["battle/attack_ready"] = {"battle/attackready", 0.2, true},
+        ["battle/attack_ready"] = {"battle/attackready", 0.1, false},
         ["battle/act_ready"]    = {"battle/actready", 0.2, true},
         ["battle/spell_ready"]  = {"battle/spellready", 0.2, true},
         ["battle/item_ready"]   = {"battle/itemready", 0.2, true},
@@ -67,8 +67,7 @@ function actor:init()
         ["battle/hurt"]         = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
         ["battle/defeat"]       = {"battle/defeat", 1/15, false},
 
-        --["battle/transition"]   = {"sword_jump_down", 0.2, true}, --until we get an animation for this, I commenting it out for now, just so it doesn't appear as an error in the console, lol. - J.A.R.U.
-        ["battle/intro"]        = {"battle/attack", 1/15, true},
+        ["battle/intro"]        = {"battle/attackready", 0.1, false},
         ["battle/victory"]      = {"battle/victory", 1/10, false}
     }
 
@@ -85,8 +84,8 @@ function actor:init()
         -- Battle offsets
         ["battle/idle"] = {-5, -1},
 
-        ["battle/attack"] = {-8, -6},
-        ["battle/attackready"] = {-8, -6},
+        ["battle/attack"] = {-5, -2},
+        ["battle/attackready"] = {-5, -2},
         ["battle/act"] = {-6, -6},
         ["battle/actend"] = {-6, -6},
         ["battle/actready"] = {-6, -6},

@@ -34,6 +34,10 @@ function PhoneBullet:update()
 end
 
 function PhoneBullet:onYellowShot(shot)
+    return "c", false
+end
+
+function PhoneBullet:destroy()
     self.collider.collidable = false
     self.physics = {direction = 0, speed = 0, gravity = 0, friction = 0}
     Assets.playSound("bomb", 0.7, 1.4 + Utils.random(0.2))
@@ -43,9 +47,6 @@ function PhoneBullet:onYellowShot(shot)
     death:setColor(self.color)
 	self:addChild(death)
 	self.sprite.alpha=0
-
-    self:destroy()
-    return "c", false
 end
 
 return PhoneBullet
