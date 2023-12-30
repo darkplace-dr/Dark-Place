@@ -344,7 +344,9 @@ return {
             cutscene:text("* Well I do have powerful healing and defensive magic...", "whoops", "sam")
             cutscene:text("* But I'm more of the peaceful type of guy,[wait:2] you know?", "unsure", "sam")
             local first_word = "But"
-            if Game:getFlag("library_kills", 0) > 0 and Game:getFlag("library_kills", 0) <= 2 then
+            if Game:getFlag("weird") then
+            	cutscene:text("* And you're not really set on a right path,[wait:2] am I wrong?", "neutral", "sam")
+            elseif Game:getFlag("library_kills", 0) > 0 and Game:getFlag("library_kills", 0) <= 2 then
                 cutscene:text("* And you don't seem to be the type to make peace, aren't you?", "talk_look_away", "sam")
             else
                 local love = Mod:getPartyLove()
