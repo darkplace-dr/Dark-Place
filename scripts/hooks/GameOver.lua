@@ -9,7 +9,18 @@ function GameOver:init(x, y, force_message)
     self.is_merg = Game.save_name:upper() == "MERG"
 
     -- Gameover is already initialized, hopefully it's safe to delete the soul here
-    if Game.battle and Game.battle.soul then Game.battle.soul:remove() end
+    if Game.battle and Game.battle.soul then
+        -- Apparently it was not. Need to remove some timeslow effects here too, just in case.
+        local soul = Game.battle.soul
+        if soul.timeslow_sfx then
+            soul.timeslow_sfx:stop()
+            soul.timeslow_sfx = nil
+        end
+        if Game.stage:getFX("timeslowvhs") then
+            Game.stage:removeFX("timeslowvhs")
+        end
+        soul:remove()
+    end
 end
 
 function GameOver:update()
