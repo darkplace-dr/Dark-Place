@@ -318,7 +318,7 @@ return {
             local e = event:explode()
             if not skipped then
                 Game.world.timer:during(math.huge, function()
-                    if not e or (e and not e.parent) then
+                    if (not e or (e and not e.parent)) and not Game.world.cutscene then
                         Kristal.callEvent("completeAchievement", "airant")
                         return false
                     end
@@ -336,7 +336,14 @@ return {
                 cutscene:showNametag("???")
                 cutscene:text("[color:red]* DO NOT APPROCH!![wait:5] FOR I AM THE MASTER OF HELL AND DEATH!!")
                 cutscene:text("[color:red]* I CAN HAVE YOUR SOUL IN A SECOND!!")
-                if cutscene:getCharacter("susie") then
+                if cutscene:getCharacter("kris") then
+                    cutscene:text("* ...")
+                    cutscene:text("* Wait,[wait:2] wait,[wait:2] wait...[wait:5] What do you mean I can just have it?")
+                    cutscene:text("* That's not right![wait:5] I'm supposed to steal it from you while doing an evil laugh!")
+                    cutscene:text("* It's not evil if you're okay with it!")
+                    cutscene:text("* So,[wait:2] uh...")
+                    cutscene:text("[color:red]* COME BACK WHEN YOU'LL CARE ABOUT YOUR SOUL, MORTAL!!")
+                elseif cutscene:getCharacter("susie") then
                     event.interacted_with = "susie"
                     cutscene:showNametag("Susie")
                     cutscene:text("* Dude,[wait:2] you're a flame in a gymbag.", "suspicious", "susie")
@@ -427,7 +434,7 @@ return {
                     cutscene:text("* Uhm...[wait:3] What?")
                     cutscene:hideNametag()
                     YOU:setSprite("walk/"..YOU.facing.."_2")
-                    local frog = Assets.playSound("frog")
+                    local frog = Assets.playSound("croak")
                     cutscene:wait(function()
                         if not frog:isPlaying() then
                             YOU:resetSprite()
@@ -450,7 +457,13 @@ return {
                     cutscene:text("* I should have asked for more instructions...")
                 end
             else
-                if event.interacted_with == "susie" then
+                if event.interacted_with == "kris" then
+                    cutscene:showNametag("???")
+                    cutscene:text("* Hey, you look like the kind of person that would eat moss.")
+                    cutscene:text("* Do you know my leader's sister,[wait:3] [color:pink]Neuro-sama[color:reset]?")
+                    cutscene:text("* She once said that she had a friend that ate moss.")
+                    cutscene:text("* Say, does it really taste like copper without the metallic part?")
+                elseif event.interacted_with == "susie" then
                     cutscene:showNametag("Susie")
                     cutscene:text("* So what the hell are you even doing?", "neutral_side", "susie")
                     cutscene:showNametag("Notypee")
@@ -482,7 +495,7 @@ return {
                     cutscene:showNametag("???")
                     cutscene:text("* When did you last check?")
                     cutscene:showNametag("Dess")
-                    cutscene:text("* I don't know man.[wait:3] I mean I don't really need a soul since the player's soul takes over ours anyway.", "condescending", "dess")
+                    cutscene:text("* I don't know man.[wait:3] I mean I don't really need a soul since the player's takes over ours anyway.", "condescending", "dess")
                     cutscene:showNametag("???")
                     cutscene:text("* ...What.")
                 elseif event.interacted_with == "brandon" then
@@ -514,7 +527,7 @@ return {
                     cutscene:hideNametag()
                     cutscene:wait(0.5)
                     YOU:setSprite("walk/"..YOU.facing.."_2")
-                    local frog = Assets.playSound("frog")
+                    local frog = Assets.playSound("croak")
                     cutscene:wait(function()
                         if not frog:isPlaying() then
                             YOU:resetSprite()
