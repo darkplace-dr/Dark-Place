@@ -26,11 +26,15 @@ function actor:init()
 
     -- Table of sprite animations
     self.animations = {
-        ["idle"]               = {"idle", 1/5, false},
+        ["idle"]               = {"blink_1", 6/1, false, next="blink"},
+        ["blink"]         = {"blink", 1/6, false, next="idle"},
+        ["talk"]         = {"talk", 1/6, true},
     }
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {
-        ["idle"] = {0, 50},
+        ["idle"] = {0, 130},
+        ["blink"] = {0, 130},
+        ["talk"] = {0, 130},
     }
 end
 return actor

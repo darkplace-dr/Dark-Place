@@ -13,12 +13,8 @@ return {
         end
     end,
 
-    pasta_shop = function(cutscene, event)
-        cutscene:text("* The Pasta Pack is open")
-        cutscene:text("* Will you go inside?")
-        if cutscene:choicer({"Yes", "No"}) == 1 then
-            Game.world:shopTransition("pastashop", { marker="door2", facing="down" })
-        end
+    diamond_store = function(cutscene, event)
+        Game.world:shopTransition("diamond_store")
     end,
 
     katana0 = function (cutscene, event)
