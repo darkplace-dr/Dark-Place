@@ -26,7 +26,7 @@ function actor:init()
 
     -- Table of sprite animations
     self.animations = {
-        ["idle"]               = {"blink_1", 6/1, false, next="blink"},
+        ["idle"]               = {"blink_1", 4/1, false, next="blink"},
         ["blink"]         = {"blink", 1/6, false, next="idle"},
         ["talk"]         = {"talk", 1/6, true},
     }
