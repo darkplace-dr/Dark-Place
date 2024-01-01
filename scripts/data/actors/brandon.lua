@@ -93,7 +93,7 @@ function actor:init()
         ["battle/spellready"] = {-6, -2},
         ["battle/item"] = {-6, -6},
         ["battle/itemready"] = {-6, -6},
-        ["battle/defend"] = {-5, -3},
+        ["battle/defend"] = {-13, -1},
 
         ["battle/defeat"] = {-8, -5},
         ["battle/hurt"] = {-5, -6},
