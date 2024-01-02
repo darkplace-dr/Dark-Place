@@ -99,7 +99,10 @@ function actor:init()
         ["battle/hurt"] = {-5, -2},
 
         ["battle/intro"] = {-8, -9},
-        ["battle/victory"] = {-3, 0}
+        ["battle/victory"] = {-3, 0},
+
+        -- Taunt offsets
+        ["catgirl"] = {-4, 0}
     }
 
     self.mirror_sprites = {
@@ -109,7 +112,7 @@ function actor:init()
         ["walk/right"] = "walk/right",
     }
 
-    self.taunt_sprites = {"box"}
+    self.taunt_sprites = {"box", "catgirl"}
 end
 
 return actor
