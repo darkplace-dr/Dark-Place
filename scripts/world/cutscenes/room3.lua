@@ -122,12 +122,24 @@ return {
 
     addisonshop = function(cutscene, event)
         local skp = cutscene:getCharacter("addisonshop")
+
         local teas = {
-            "kris_tea",
-            "susie_tea",
-            "noelle_tea",
+            ""..Game.party[1].id.."_tea",
         }
+
+        if Game.party[2] then
+            table.insert(teas, Game.party[2].id.."_tea")
+        end
+        if Game.party[3] then
+            table.insert(teas, Game.party[3].id.."_tea")
+        end
+        if Game.party[4] then
+            table.insert(teas, Game.party[4].id.."_tea")
+        end
+
         local tea_price = 100
+
+        --if 
 
         --------------------------------
 
@@ -160,7 +172,7 @@ return {
         local tea = nil
         local pos = 0
         while pos < #_teas do
-            local selection_max = 3
+            local selection_max = 4
             local selections_raw = {unpack(_teas, pos + 1, pos + selection_max)}
             local ended = (pos + selection_max) >= #_teas
 
@@ -168,7 +180,7 @@ return {
             for _,item in ipairs(selections_raw) do
                 table.insert(selections, item:getName())
             end
-            table.insert(selections, not ended and "More" or "None")
+            --table.insert(selections, not ended and "More" or "None")
 
             local choice = cutscene:choicer(selections)
             if choice < #selections then
@@ -181,14 +193,14 @@ return {
             pos = pos + selection_max
         end
 
-        if not tea then
-            cutscene:hideShop()
-            cutscene:showNametag("Pink Addison")
-            cutscene:text("* That's alright! Come back anytime!", "", skp)
-            cutscene:text("* I'll be here whenever you need a drink!", "", skp)
-            cutscene:hideNametag()
-            return
-        end
+        --if not tea then
+        --    cutscene:hideShop()
+        --    cutscene:showNametag("Pink Addison")
+        --    cutscene:text("* That's alright! Come back anytime!", "", skp)
+        --    cutscene:text("* I'll be here whenever you need a drink!", "", skp)
+        --    cutscene:hideNametag()
+         --   return
+        --end
 
         cutscene:showNametag("Pink Addison")
         cutscene:text(string.format("* Okay! That would cost ya %dD$...", tea_price), "", skp)
