@@ -121,4 +121,14 @@ return {
 		cutscene:text("[font:sans]* which is weird,[wait:5] since they're exclusive to here.", "neutral", "self")
 		cutscene:hideNametag()
 	end,
+    s_elf_3 = function(cutscene, event)
+		cutscene:showNametag("self", {font = "sans"})
+		cutscene:text("[font:sans]* did you see the puzzle about 2 rooms ago?", "neutral", "self")
+		cutscene:text("[font:sans]* yeah, my brother asked santa for that one year.", "neutral", "self")
+		cutscene:text("[font:sans]* it almost looks a little like him, i think.", "neutral", "self")
+		cutscene:text("[font:sans]* my brother's busy around this time of year, but he's cool.", "neutral", "self")
+		cutscene:text("[font:sans]* anyways, i decided i wanted a puzzle for myself.", "neutral", "self")
+		cutscene:text("[font:sans]* i'm no artist, but i think it looks good.", "neutral", "self")
+		cutscene:hideNametag()
+	end,
 }
