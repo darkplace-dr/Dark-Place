@@ -43,18 +43,60 @@
             "y": -2520
         },
         {
-            "fileName": "maps/floor3/greydoor.tmx",
-            "height": 3200,
-            "width": 960,
-            "x": 560,
-            "y": -5800
+            "fileName": "maps/floor3/connection_fake.tmx",
+            "height": 1120,
+            "width": 560,
+            "x": 640,
+            "y": -8520
         },
         {
-            "fileName": "maps/floor3/greydoor/greydoor.tmx",
+            "fileName": "maps/floor3/connection/connection.tmx",
             "height": 4800,
-            "width": 4800,
-            "x": 560,
+            "width": 4040,
+            "x": 640,
             "y": -7360
+        },
+        {
+            "fileName": "maps/floor3/connection_2/connection_2.tmx",
+            "height": 5600,
+            "width": 4160,
+            "x": 4840,
+            "y": -7360
+        },
+        {
+            "fileName": "maps/floor3/connection_3/connection_3.tmx",
+            "height": 3200,
+            "width": 3360,
+            "x": 9040,
+            "y": -7360
+        },
+        {
+            "fileName": "maps/floor3/connection_4/connection_4.tmx",
+            "height": 1160,
+            "width": 640,
+            "x": 12440,
+            "y": -7360
+        },
+        {
+            "fileName": "maps/floor3/connection_5/connection_5.tmx",
+            "height": 480,
+            "width": 1240,
+            "x": 12160,
+            "y": -7880
+        },
+        {
+            "fileName": "maps/floor3/connection_6/connection_6.tmx",
+            "height": 2920,
+            "width": 640,
+            "x": 12480,
+            "y": -10840
+        },
+        {
+            "fileName": "maps/floor3/connection_7/connection_7.tmx",
+            "height": 1200,
+            "width": 640,
+            "x": 12480,
+            "y": -12080
         }
     ],
     "onlyShowAdjacentMaps": false,

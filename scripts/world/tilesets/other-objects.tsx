@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="other-objects" tilewidth="1306" tileheight="480" tilecount="13" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="other-objects" tilewidth="1306" tileheight="1160" tilecount="19" columns="0">
  <editorsettings>
   <export target="other-objects.lua" format="lua"/>
  </editorsettings>
@@ -42,5 +42,23 @@
  </tile>
  <tile id="51">
   <image width="1306" height="480" source="../../../assets/sprites/world/maps/snowy_bg.png"/>
+ </tile>
+ <tile id="53">
+  <image width="78" height="76" source="../../../assets/sprites/world/core_door.png"/>
+ </tile>
+ <tile id="54">
+  <image width="640" height="1160" source="../../../assets/sprites/world/maps/darktown.png"/>
+ </tile>
+ <tile id="55">
+  <image width="114" height="48" source="../../../assets/sprites/world/events/key_and_note.png"/>
+ </tile>
+ <tile id="56">
+  <image width="15" height="13" source="../../../assets/sprites/world/events/smallkey.png"/>
+ </tile>
+ <tile id="57">
+  <image width="60" height="120" source="../../../assets/sprites/world/events/pillar.png"/>
+ </tile>
+ <tile id="58">
+  <image width="44" height="99" source="../../../assets/sprites/world/events/corridoor.png"/>
  </tile>
 </tileset>

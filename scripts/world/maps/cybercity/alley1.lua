@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 21,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 16,
-  nextobjectid = 130,
+  nextobjectid = 131,
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -55,6 +56,7 @@ return {
       height = 12,
       id = 1,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -83,6 +85,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -163,6 +166,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -209,6 +213,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 130,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 400,
+          y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -217,6 +234,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,

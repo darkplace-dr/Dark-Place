@@ -1,0 +1,15 @@
+{
+    "id": "background_cyber_lines",
+    "authors": ["Scarm"],
+
+    "version": "v1.1.0",
+    "engineVer": "v0.8.1",
+
+    "config": {
+        "line_color": "lime",
+        "background_color": "navy",
+
+        "glow_speed": 1,
+        "line_speed": 1
+    }
+}

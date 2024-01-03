@@ -5,7 +5,7 @@ return {
 		
         if Game:getFlag("weird") then
             if Game:getFlag("weirdEnemiesKilled", 0) <= 19 then
-                if event.interact.count == 1 then
+                if event.interact_count == 1 then
                     cutscene:text("[voice:spamton]* LOOKING FOR [Irresistible Deals] THAT WILL [Blow Your Mind!?]")
                     cutscene:text("[voice:spamton]* WELL [Shut Your Mouth] BECAUSE YOU ARE [A Weakling!]")
                     cutscene:text("[voice:spamton]* TRY A LITTLE [Friday Night Work Out]...")
@@ -414,7 +414,7 @@ return {
                     cutscene:hideNametag()
                     cutscene:wait(1)
                     YOU:setSprite("walk/"..YOU.facing.."_2")
-                    local frog = Assets.playSound("frog")
+                    local frog = Assets.playSound("croak")
                     cutscene:wait(function()
                         if not frog:isPlaying() then
                             YOU:resetSprite()
@@ -427,7 +427,7 @@ return {
                     cutscene:text("* Uhm...[wait:3] What?")
                     cutscene:hideNametag()
                     YOU:setSprite("walk/"..YOU.facing.."_2")
-                    local frog = Assets.playSound("frog")
+                    local frog = Assets.playSound("croak")
                     cutscene:wait(function()
                         if not frog:isPlaying() then
                             YOU:resetSprite()
@@ -514,7 +514,7 @@ return {
                     cutscene:hideNametag()
                     cutscene:wait(0.5)
                     YOU:setSprite("walk/"..YOU.facing.."_2")
-                    local frog = Assets.playSound("frog")
+                    local frog = Assets.playSound("croak")
                     cutscene:wait(function()
                         if not frog:isPlaying() then
                             YOU:resetSprite()

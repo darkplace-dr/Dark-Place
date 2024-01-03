@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="75">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="76">
  <editorsettings>
   <export target="corridors2.lua" format="lua"/>
  </editorsettings>
@@ -8,7 +8,7 @@
   <property name="music" value="greenroom"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/greenroom.tsx"/>
- <tileset firstgid="36" source="../../tilesets/floor3-objects.tsx"/>
+ <tileset firstgid="85" source="../../tilesets/floor3-objects.tsx"/>
  <layer id="1" name="Tile Layer 1" width="24" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -58,19 +58,19 @@
 </data>
  </layer>
  <objectgroup id="8" name="objects_bg">
-  <object id="39" gid="2147483689" x="838" y="440" width="82" height="204"/>
-  <object id="47" gid="39" x="440" y="280" width="70" height="40"/>
-  <object id="48" gid="39" x="504" y="280" width="70" height="40"/>
-  <object id="49" gid="39" x="568" y="280" width="70" height="40"/>
-  <object id="50" gid="39" x="632" y="280" width="70" height="40"/>
-  <object id="51" gid="39" x="696" y="280" width="70" height="40"/>
-  <object id="52" gid="39" x="760" y="280" width="70" height="40"/>
-  <object id="53" gid="39" x="824" y="280" width="70" height="40"/>
-  <object id="54" gid="39" x="-46" y="280" width="70" height="40"/>
-  <object id="55" gid="39" x="18" y="280" width="70" height="40"/>
-  <object id="56" gid="39" x="82" y="280" width="70" height="40"/>
-  <object id="57" gid="39" x="146" y="280" width="70" height="40"/>
-  <object id="58" gid="39" x="210" y="280" width="70" height="40"/>
+  <object id="39" gid="2147483738" x="838" y="440" width="82" height="204"/>
+  <object id="47" gid="88" x="440" y="280" width="70" height="40"/>
+  <object id="48" gid="88" x="504" y="280" width="70" height="40"/>
+  <object id="49" gid="88" x="568" y="280" width="70" height="40"/>
+  <object id="50" gid="88" x="632" y="280" width="70" height="40"/>
+  <object id="51" gid="88" x="696" y="280" width="70" height="40"/>
+  <object id="52" gid="88" x="760" y="280" width="70" height="40"/>
+  <object id="53" gid="88" x="824" y="280" width="70" height="40"/>
+  <object id="54" gid="88" x="-46" y="280" width="70" height="40"/>
+  <object id="55" gid="88" x="18" y="280" width="70" height="40"/>
+  <object id="56" gid="88" x="82" y="280" width="70" height="40"/>
+  <object id="57" gid="88" x="146" y="280" width="70" height="40"/>
+  <object id="58" gid="88" x="210" y="280" width="70" height="40"/>
  </objectgroup>
  <objectgroup color="#0000ff" id="3" name="collision">
   <object id="23" x="840" y="360">
@@ -96,13 +96,13 @@
     <property name="marker" value="entry3"/>
    </properties>
   </object>
-  <object id="20" name="transition" x="280" y="-30" width="160" height="40">
+  <object id="20" name="script" x="280" y="-30" width="160" height="40">
    <properties>
-    <property name="map" value="floor3/greydoor"/>
-    <property name="marker" value="entryup"/>
+    <property name="cutscene" value="connection.connectiontransition"/>
+    <property name="once" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="27" gid="38" x="480" y="380" width="60" height="90"/>
+  <object id="27" gid="87" x="480" y="380" width="60" height="90"/>
   <object id="59" name="transition" x="860" y="360" width="40" height="120">
    <properties>
     <property name="map" value="floor3/mike"/>

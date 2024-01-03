@@ -543,8 +543,32 @@ function Mod:onMapMusic(map, music)
         return ""
     elseif Game:getFlag("weird") and music == "deltarune/cybercity" then
         return "deltarune/cybercity_alt"
-    elseif map.name == "CONNECTION" and music == "greenroom" then
+    elseif map.name == "CONNECTION" and (music == "greenroom" or music == "waterfall") then
         return {music, 1, 0.8}
+    end
+end
+
+function Mod:onMapMusic(map, music)
+    if Game:getFlag("cloudwebStoryFlag") == 1 and music == "cloudwebs" and map.id == "cloudwebs/cloudwebs_entrance" then
+        return ""
+    elseif Game:getFlag("weird") and music == "deltarune/cybercity" then
+        return "deltarune/cybercity_alt"
+    elseif map.name == "CONNECTION" and (music == "greenroom" or music == "waterfall") then
+        return {music, 1, 0.8}
+    elseif map.name == "CONNECTION" and (music == "deltarune/cyber") then
+        if Game:getFlag("CONNECTION.beatcyber", false) == true then
+            return {"core", 1, 0.7}
+        end
+        return {music, 1, 0.8}
+    end
+end
+
+function Mod:onMapBorder(map, border)
+    if map.name == "CONNECTION" and (border == "cyber") then
+        if Game:getFlag("CONNECTION.beatcyber", false) == true then
+            return "undertale/fire"
+        end
+        return border
     end
 end
 

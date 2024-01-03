@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="28" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="115">
+ <editorsettings>
+  <export target="connection_fake.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="none"/>
+  <property name="music" value="none"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/greenroom.tsx"/>
+ <tileset firstgid="99" source="../../tilesets/floor3-objects.tsx"/>
+ <tileset firstgid="122" source="../../tilesets/bg_treetiles_new.tsx"/>
+ <tileset firstgid="126" source="../../tilesets/scarlet_forest.tsx"/>
+ <tileset firstgid="225" source="../../tilesets/bg_darkfield_tiles.tsx"/>
+ <layer id="2" name="Tile Layer 2" width="14" height="28">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,186,186,186,186,0,0,0,0,0,
+0,0,0,0,186,186,186,186,186,186,0,0,0,0,
+0,0,0,186,186,186,186,186,186,186,186,0,0,0,
+0,0,0,186,186,186,186,186,186,186,186,0,0,0,
+0,0,0,186,186,186,186,186,186,186,186,0,0,0,
+0,0,0,186,186,186,186,186,186,186,186,0,0,0,
+0,0,0,0,186,186,186,186,186,186,0,0,0,0,
+0,0,0,0,0,186,186,186,186,0,0,0,0,0,
+0,0,0,0,0,186,186,186,186,0,0,0,0,0,
+0,0,0,0,0,186,186,186,186,0,0,0,0,0,
+0,0,0,0,0,186,186,186,186,0,0,0,0,0,
+0,0,0,0,0,186,186,186,186,0,0,0,0,0,
+0,0,0,0,0,186,186,186,186,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="1" name="Tile Layer 1" width="14" height="28">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,44,0,0,0,0,0,0,0,0,
+0,0,0,0,0,10,44,0,0,0,0,0,0,0,
+0,0,0,0,0,10,10,0,44,0,0,0,0,0,
+0,0,0,0,0,10,10,44,11,0,0,0,0,0,
+0,0,0,0,0,10,10,11,12,0,0,0,0,0,
+0,0,0,0,0,10,11,12,12,0,0,0,0,0,
+0,0,0,0,0,11,12,12,13,0,0,0,0,0,
+0,0,0,0,0,12,12,13,20,0,0,0,0,0,
+0,0,0,0,0,12,13,20,20,0,0,0,0,0,
+0,0,0,0,0,13,20,20,7,0,0,0,0,0,
+0,0,0,0,0,20,20,7,12,0,0,0,0,0,
+0,0,0,0,0,20,7,12,12,0,0,0,0,0,
+0,0,0,0,0,7,12,12,6,0,0,0,0,0,
+0,0,0,0,0,12,12,6,10,0,0,0,0,0,
+0,0,0,0,0,12,6,10,10,0,0,0,0,0,
+0,0,0,0,0,6,10,10,10,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="75" x="160" y="480" width="40" height="640"/>
+  <object id="76" x="360" y="480" width="40" height="640"/>
+  <object id="102" x="200" y="480">
+   <polygon points="0,0 0,-80 -40,-80 -40,-120 -80,-120 -80,-280 -40,-280 -40,-320 0,-320 0,-360 160,-360 160,-320 200,-320 200,-280 240,-280 240,-120 200,-120 200,-80 160,-80 160,0 200,0 200,-40 240,-40 240,-80 280,-80 280,-320 240,-320 240,-360 200,-360 200,-400 -40,-400 -40,-360 -80,-360 -80,-320 -120,-320 -120,-80 -80,-80 -80,-40 -40,-40 -40,0"/>
+  </object>
+  <object id="105" x="240" y="310" width="80" height="20"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="104" name="interactable" x="330" y="290" width="40" height="40">
+   <properties>
+    <property name="text1" value="* &quot;WHEN THE PARTY CONSISTS OF JUST GREEN AND PINK,&quot;"/>
+    <property name="text2" value="* &quot;YOU SHALL REACH...&quot;"/>
+    <property name="text3" value="* &quot;A CONNECTION.&quot;"/>
+   </properties>
+  </object>
+  <object id="113" name="transition" x="200" y="1100" width="160" height="40">
+   <properties>
+    <property name="map" value="floor3/corridors2"/>
+    <property name="marker" value="entry3"/>
+   </properties>
+  </object>
+  <object id="108" gid="227" x="330" y="314" width="40" height="40"/>
+  <object id="101" gid="122" x="190" y="330" width="210" height="182"/>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="114" name="entryup" x="280" y="1080">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

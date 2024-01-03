@@ -57,7 +57,7 @@ end
 
 function WobblyThing:wobble()
     if self.evil then
-        self.world:setBattle(true)
+        --self.world:setBattle(true)
         Assets.playSound("wobbler", 1, 0.5 + Utils.random(0.2))
         Assets.playSound("wobbler", 1, 0.9 + Utils.random(0.2))
 
@@ -85,7 +85,7 @@ function WobblyThing:update()
             player_x, player_y = player:getRelativePos(0, player.height/2, Game.world)
         end
 
-        if (player_x > left) and (player_x < right) then
+        if (player_x > left) and (player_x < right) and (player_y > self.y) then
             self:wobble()
         end
     end
