@@ -1,7 +1,7 @@
 local TestBullet, super = Class(WorldBullet)
 
 function TestBullet:init(x, y, flip)
-    super.init(self, x, y, "worldbullets/diamond_bullet")
+    super.init(self, x, y, "world/bullets/diamond_bullet")
 
     --[[
     if flip then
