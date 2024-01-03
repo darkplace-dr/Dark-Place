@@ -11,10 +11,12 @@ function actor:init()
     self.height = 41
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {7, 30, 14, 12}
+    self.hitbox = {3, 28, 18, 14}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
-    self.color = {0, 1, 1}
+    self.color = {1, 0, 0}
+	
+    self.soul_offset = {12, 24}
 
     -- Path to this actor's sprites (defaults to "")
     self.path = "party/you/light"
