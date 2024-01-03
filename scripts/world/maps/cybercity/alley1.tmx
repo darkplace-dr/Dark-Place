@@ -47,7 +47,7 @@
   <object id="115" name="entry_right" x="800" y="300">
    <point/>
   </object>
-  <object id="130" name="spawn" x="400" y="320">
+  <object id="130" name="spawn" x="400" y="280">
    <point/>
   </object>
  </objectgroup>
@@ -95,6 +95,7 @@
    <properties>
     <property name="actor" value="notypee"/>
     <property name="cutscene" value="cybercity.notypee"/>
+    <property name="flagcheck" value="!weird"/>
    </properties>
   </object>
   <object id="128" name="beanspot" x="672" y="286">
@@ -110,6 +111,21 @@
     <property name="name" value="Spam Bean"/>
    </properties>
    <point/>
+  </object>
+  <object id="131" name="dogconegroup" x="0" y="280" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="132" name="dogconegroup" x="0" y="240" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="133" name="dogconegroup" x="0" y="320" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

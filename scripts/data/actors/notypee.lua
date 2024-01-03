@@ -11,7 +11,7 @@ function actor:init()
     self.height = 30
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {2, 17, 15, 12}
+    self.hitbox = {-2, 17, 24, 13}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {0.5, 0, 0}
@@ -23,6 +23,13 @@ function actor:init()
     self.path = "world/npcs/notypee"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "idle"
+
+    local date = os.date("*t")
+    print(date.day, date.month, Game:getFlag("notypee_saw_debt"))
+    if date.day == 23 and date.month == 12 and not Game:getFlag("notypee_saw_debt") then
+        self.debt = true
+        self.default = "debt"
+    end
 
     -- Sound to play when this actor speaks (optional)
     self.voice = nil

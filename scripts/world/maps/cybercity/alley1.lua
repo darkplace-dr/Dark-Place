@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 16,
-  nextobjectid = 131,
+  nextobjectid = 134,
   properties = {
     ["border"] = "city",
     ["light"] = false,
@@ -220,7 +220,7 @@ return {
           type = "",
           shape = "point",
           x = 400,
-          y = 320,
+          y = 280,
           width = 0,
           height = 0,
           rotation = 0,
@@ -367,7 +367,8 @@ return {
           visible = true,
           properties = {
             ["actor"] = "notypee",
-            ["cutscene"] = "cybercity.notypee"
+            ["cutscene"] = "cybercity.notypee",
+            ["flagcheck"] = "!weird"
           }
         },
         {
@@ -400,6 +401,51 @@ return {
           properties = {
             ["inc_flag"] = "spam_beans",
             ["name"] = "Spam Bean"
+          }
+        },
+        {
+          id = 131,
+          name = "dogconegroup",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 280,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 132,
+          name = "dogconegroup",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 240,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 133,
+          name = "dogconegroup",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 320,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
           }
         }
       }

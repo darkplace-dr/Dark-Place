@@ -282,20 +282,19 @@ return {
                 cutscene:text("[font:sans]* i'm keeping people away from this elevator.", "look_left", "sans")
 
                 cutscene:showNametag("Susie")
-                cutscene:text("* WHY??", "teeth", "susie")
+                cutscene:text("* You...[wait:3] don't seem to be doing that right now.", "suspicious", "susie")
 
                 cutscene:showNametag("Sans", {font = "sans"})
-                cutscene:text("[font:sans]* it's not finished yet.", "neutral", "sans")
+                cutscene:text("[font:sans]* yeah it's because it's finished now.", "neutral", "sans")
 
                 cutscene:showNametag("Susie")
-                cutscene:text("* ...[wait:3]It looks pretty finished to me.", "neutral", "susie")
+                cutscene:text("* ...[wait:3]Then why are you still keeping people away from it??", "sus_nervous", "susie")
 
                 cutscene:showNametag("Sans", {font = "sans"})
-                cutscene:text("[font:sans]* that's just how tilesets are.", "joking", "sans")
-                cutscene:text("[font:sans]* give them a while,[wait:1] figuring out how an elevator works take some time.", "wink", "sans")
+                cutscene:text("[font:sans]* contract obligations.", "joking", "sans")
 
                 cutscene:showNametag("Susie")
-                cutscene:text("* (What is he even talking about??)", "sus_nervous", "susie")
+                cutscene:text("* Right...", "sus_nervous", "susie")
                 cutscene:hideNametag()
             else
                 cutscene:showNametag("Susie")
@@ -406,9 +405,9 @@ return {
         else
             local kid = #Game.party > 1 and "kids" or "kid"
             cutscene:showNametag("Sans", {font = "sans"})
-            cutscene:text(string.format("* hey %s.[wait:5] sorry but you can't access this elevator yet.", kid), "neutral", "sans")
-            cutscene:text("* it's kinda..[wait:5] not finished.", "look_left", "sans")
-            cutscene:text("* so come back later,[wait:2] 'k?", "wink", "sans")
+            cutscene:text(string.format("[font:sans]* hey %s.[wait:5] sorry but you can't access this elevator yet.", kid), "neutral", "sans")
+            cutscene:text("[font:sans]* it's kinda..[wait:5] not finished.", "look_left", "sans")
+            cutscene:text("[font:sans]* so come back later,[wait:2] 'k?", "wink", "sans")
             cutscene:hideNametag()
         end
     end,
