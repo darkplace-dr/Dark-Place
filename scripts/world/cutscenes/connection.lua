@@ -121,6 +121,17 @@ return {
         cutscene:wait(1.25)
         cutscene:text("* yure welcome")
         cutscene:text("* TLDR; i am papyru the undertale and this whole thing was pointless kinda.")
-        cutscene:text("[font:wingdings][voice:wingding]")
+        cutscene:text("[font:wingdings][voice:wingding]* GO GO GADGET TELEPORTATION!")
+        cutscene:wait(0.2)
+        Game.world.music:stop()
+        for key,_ in pairs(Assets.sound_instances) do
+            Assets.stopSound(key, true)
+        end
+        cutscene:fadeOut(0)
+        cutscene:playSound("impact")
+
+        cutscene:wait(1)
+        cutscene:loadMap("warphub", "spawn", "down")
+        cutscene:fadeIn(0.25)
     end,
 }
