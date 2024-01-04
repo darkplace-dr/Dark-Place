@@ -11,10 +11,12 @@ function actor:init()
     self.height = 41
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {7, 30, 14, 12}
+    self.hitbox = {5, 28, 18, 14}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {1, 0, 0}
+	
+    self.soul_offset = {14, 24}
 
     -- Path to this actor's sprites (defaults to "")
     local costume = Game:getFlag("YOU_costume")
@@ -33,9 +35,7 @@ function actor:init()
     end
 
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-
     self.default = "walk"
-
 
     -- Sound to play when this actor speaks (optional)
     self.voice = nil
@@ -46,7 +46,6 @@ function actor:init()
 
     -- Whether this actor as a follower will blush when close to the player
     self.can_blush = false
-
 
     -- Table of sprite animations
     self.animations = {
@@ -96,6 +95,10 @@ function actor:init()
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {
         -- Movement offsets
+        ["run/left"] = {-2, 0},
+        ["run/right"] = {-2, 0},
+        ["run/up"] = {-2, 0},
+        ["run/down"] = {-2, 0},
 
         -- Battle offsets
         ["battle/idle"] = {-4, 3},

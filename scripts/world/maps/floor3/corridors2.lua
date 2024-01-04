@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 75,
+  nextobjectid = 76,
   properties = {
     ["border"] = "undertale/dog",
     ["music"] = "greenroom"
@@ -24,7 +24,7 @@ return {
     },
     {
       name = "floor3_objects",
-      firstgid = 36,
+      firstgid = 85,
       filename = "../../tilesets/floor3-objects.tsx",
       exportfilename = "../../tilesets/floor3-objects.lua"
     }
@@ -134,7 +134,7 @@ return {
           width = 82,
           height = 204,
           rotation = 0,
-          gid = 2147483689,
+          gid = 2147483738,
           visible = true,
           properties = {}
         },
@@ -148,7 +148,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -162,7 +162,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -176,7 +176,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -190,7 +190,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -204,7 +204,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -218,7 +218,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -232,7 +232,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -246,7 +246,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -260,7 +260,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -274,7 +274,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -288,7 +288,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         },
@@ -302,7 +302,7 @@ return {
           width = 70,
           height = 40,
           rotation = 0,
-          gid = 39,
+          gid = 88,
           visible = true,
           properties = {}
         }
@@ -468,7 +468,7 @@ return {
         },
         {
           id = 20,
-          name = "transition",
+          name = "script",
           type = "",
           shape = "rectangle",
           x = 280,
@@ -478,8 +478,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "floor3/greydoor",
-            ["marker"] = "entryup"
+            ["cutscene"] = "connection.connectiontransition",
+            ["once"] = false
           }
         },
         {
@@ -492,7 +492,7 @@ return {
           width = 60,
           height = 90,
           rotation = 0,
-          gid = 38,
+          gid = 87,
           visible = true,
           properties = {}
         },

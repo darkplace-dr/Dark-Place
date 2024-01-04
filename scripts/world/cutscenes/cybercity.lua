@@ -438,7 +438,7 @@ return {
                     cutscene:hideNametag()
                     cutscene:wait(1)
                     YOU:setSprite("walk/"..YOU.facing.."_2")
-                    local frog = Assets.playSound("frog")
+                    local frog = Assets.playSound("croak")
                     cutscene:wait(function()
                         if not frog:isPlaying() then
                             YOU:resetSprite()

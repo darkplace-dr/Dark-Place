@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="29" tilewidth="40" tileheight="40" infinite="0" nextlayerid="31" nextobjectid="836">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="monotonecastle"/>
+  <property name="music" value="deltarune/castletown"/>
+  <property name="name" value="New Town"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/greenroom.tsx"/>
+ <tileset firstgid="106" source="../../../tilesets/floor3-objects.tsx"/>
+ <tileset firstgid="129" source="../../../tilesets/ruins1.tsx"/>
+ <tileset firstgid="305" source="../../../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="620" source="../../../tilesets/alley_buildings_glitch.tsx"/>
+ <tileset firstgid="692" source="../../../tilesets/dw_city_alley.tsx"/>
+ <tileset firstgid="802" source="../../../tilesets/greenroom_b.tsx"/>
+ <tileset firstgid="1143" source="../../../tilesets/dw_city_street.tsx"/>
+ <tileset firstgid="1253" source="../../../tilesets/street_edges.tsx"/>
+ <tileset firstgid="1461" source="../../../tilesets/bg_dw_city.tsx"/>
+ <tileset firstgid="2073" source="../../../tilesets/city_sidewalk.tsx"/>
+ <tileset firstgid="2313" source="../../../tilesets/bg_darkfield_tiles.tsx"/>
+ <tileset firstgid="2505" source="../../../tilesets/bg_treetiles_new.tsx"/>
+ <tileset firstgid="2509" source="../../../tilesets/snowdin.tsx"/>
+ <tileset firstgid="3598" source="../../../tilesets/WaterfallTiles.tsx"/>
+ <tileset firstgid="3878" source="../../../tilesets/WaterfallTiles2.tsx"/>
+ <tileset firstgid="4238" source="../../../tilesets/watertiles.tsx"/>
+ <tileset firstgid="4462" source="../../../tilesets/other-objects.tsx"/>
+ <tileset firstgid="4519" source="../../../tilesets/WaterfallTiles3.tsx"/>
+ <tileset firstgid="4573" source="../../../tilesets/scarlet_forest.tsx"/>
+ <tileset firstgid="4672" source="../../../tilesets/objects_sf.tsx"/>
+ <tileset firstgid="4687" source="../../../tilesets/darktiles_ribbitmobdt.tsx"/>
+ <tileset firstgid="4927" source="../../../tilesets/hotland.tsx"/>
+ <tileset firstgid="5215" source="../../../tilesets/bg_dw_cyber.tsx"/>
+ <tileset firstgid="5462" source="../../../tilesets/bg_dw_cyber_destroyed.tsx"/>
+ <tileset firstgid="5537" source="../../../tilesets/coretiles_erase.tsx"/>
+ <tileset firstgid="5691" source="../../../tilesets/coretiles_wip.tsx"/>
+ <objectgroup id="20" name="objects_bg" locked="1">
+  <object id="773" gid="4516" x="0" y="1160" width="640" height="1160"/>
+ </objectgroup>
+ <layer id="21" name="TILES_DARK" width="16" height="29">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="1" name="Tile Layer 1" width="16" height="29">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="16" height="29">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="23" name="objects_bg3"/>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="802" x="0" y="1053" width="194" height="137"/>
+  <object id="803" x="446" y="1053" width="194" height="137"/>
+  <object id="804" x="0" y="832" width="192" height="128"/>
+  <object id="805" x="448" y="832" width="192" height="128"/>
+  <object id="806" x="530" y="372" width="40" height="460"/>
+  <object id="807" x="84" y="402" width="40" height="430"/>
+  <object id="808" x="520" y="480">
+   <polygon points="0,0 -40,-40 0,-40"/>
+  </object>
+  <object id="809" x="160" y="430">
+   <polygon points="0,0 -40,40 -40,0"/>
+  </object>
+  <object id="810" x="0" y="200" width="166" height="230"/>
+  <object id="811" x="166" y="286">
+   <polygon points="0,0 40,-40 0,-40"/>
+  </object>
+  <object id="812" x="182" y="204" width="40" height="40"/>
+  <object id="813" x="200" y="200" width="40" height="40"/>
+  <object id="814" x="236" y="196" width="40" height="40"/>
+  <object id="816" x="476" y="200" width="80" height="240"/>
+  <object id="817" x="476" y="286">
+   <polygon points="0,0 0,-40 -40,-40"/>
+  </object>
+  <object id="818" x="424" y="206" width="40" height="40"/>
+  <object id="819" x="414" y="202" width="40" height="40"/>
+  <object id="820" x="396" y="198" width="40" height="40"/>
+  <object id="821" x="362" y="194" width="40" height="40"/>
+  <object id="827" x="0" y="960" width="110" height="94"/>
+  <object id="828" x="530" y="960" width="110" height="94"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="829" name="transition" x="276" y="200" width="86" height="20">
+   <properties>
+    <property name="map" value="floor3/connection_5"/>
+    <property name="marker" value="entryup"/>
+   </properties>
+  </object>
+  <object id="833" name="transition" x="190" y="1140" width="260" height="40">
+   <properties>
+    <property name="map" value="floor3/connection_3"/>
+    <property name="marker" value="entrydown2"/>
+   </properties>
+  </object>
+  <object id="835" name="savepoint_connect" x="320" y="320">
+   <properties>
+    <property name="simple" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="830" name="entrydown" x="320" y="260">
+   <point/>
+  </object>
+  <object id="831" name="spawn" x="320" y="382">
+   <point/>
+  </object>
+  <object id="834" name="entryup" x="320" y="1120">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ffaaff" id="13" name="objects_fg"/>
+ <layer id="30" name="tiles" width="16" height="29">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#ff7fff" id="16" name="battleareas"/>
+</map>

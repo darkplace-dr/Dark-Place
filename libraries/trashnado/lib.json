@@ -1,0 +1,11 @@
+{
+    "id": "trashnado",
+
+    "version": "v1.0.0",
+    "engineVer": "v0.8.1",
+
+    "authors": [
+	    "J.A.R.U.",
+	    "Special thanks to crouting pea for some additional help.",
+    ],
+}

@@ -51,18 +51,16 @@ function actor:init()
         ["battle/idle"]         = {"battle/idle", 0.2, true},
 
         ["battle/attack"]       = {"battle/attack", 1/15, false},
-        ["battle/act"]          = {"battle/act", 1/15, false},
+        ["battle/act"]          = {"battle/act", 1/15, false, next="battle/idle"},
         ["battle/spell"]        = {"battle/spell", 0.15, false},
-        ["battle/item"]         = {"battle/item", 1/12, false, next="battle/idle"},
+        ["battle/item"]         = {"battle/item", 1/15, false, next="battle/idle"},
         ["battle/spare"]        = {"battle/act", 1/15, false, next="battle/idle"},
 
         ["battle/attack_ready"] = {"battle/attackready", 0.1, false},
         ["battle/act_ready"]    = {"battle/actready", 0.2, true},
         ["battle/spell_ready"]  = {"battle/spellready", 0.2, true},
-        ["battle/item_ready"]   = {"battle/itemready", 0.2, true},
+        ["battle/item_ready"]   = {"battle/itemready", 0.1, false},
         ["battle/defend_ready"] = {"battle/defend", 1/15, false},
-
-        ["battle/act_end"]      = {"battle/actend", 1/15, false, next="battle/idle"},
 
         ["battle/hurt"]         = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
         ["battle/defeat"]       = {"battle/defeat", 1/15, false},
@@ -86,20 +84,22 @@ function actor:init()
 
         ["battle/attack"] = {-5, -2},
         ["battle/attackready"] = {-5, -2},
-        ["battle/act"] = {-6, -6},
-        ["battle/actend"] = {-6, -6},
-        ["battle/actready"] = {-6, -6},
+        ["battle/act"] = {-4, -1},
+        ["battle/actready"] = {-4, -1},
         ["battle/spell"] = {-6, -2},
         ["battle/spellready"] = {-6, -2},
-        ["battle/item"] = {-6, -6},
-        ["battle/itemready"] = {-6, -6},
+        ["battle/item"] = {-5, -4},
+        ["battle/itemready"] = {-5, -4},
         ["battle/defend"] = {-13, -1},
 
-        ["battle/defeat"] = {-8, -5},
-        ["battle/hurt"] = {-5, -6},
+        ["battle/defeat"] = {-5, 5},
+        ["battle/hurt"] = {-5, -2},
 
         ["battle/intro"] = {-8, -9},
-        ["battle/victory"] = {-3, 0}
+        ["battle/victory"] = {-22, -3},
+
+        -- Taunt offsets
+        ["catgirl"] = {-4, 0}
     }
 
     self.mirror_sprites = {
@@ -109,7 +109,7 @@ function actor:init()
         ["walk/right"] = "walk/right",
     }
 
-    self.taunt_sprites = {"box"}
+    self.taunt_sprites = {"box", "catgirl"}
 end
 
 return actor

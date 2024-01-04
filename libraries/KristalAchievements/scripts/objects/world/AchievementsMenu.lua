@@ -64,12 +64,11 @@ function AchievementsMenu:draw()
 
         local frame = Assets.getTexture("achievements/frames/" .. ach.rarity)
         local hide = ach.hidden and not ach.earned
+        local hidname = ach.shownamewhenhidden
         local percent_color = hide and {0.5, 0.5, 0.5} or {1, 1, 1}
         local body_color = ach.earned and {1, 1, 1} or {0.5, 0.5, 0.5}
-        local name = hide and "???" or ach.name
+        local name = (i .. ". " .. (((hide and hidname and ach.name) or (hide and not hidname and "???")) or ach.name))
         local desc = (hide and ach.hint) and ach.hint or (ach.menudesc or ach.desc)
-
-        love.graphics.draw(frame, 0, rel_y, 0, 2, 2)
 
         love.graphics.setColor(body_color)
         if not hide and (ach.menuicon or ach.icon) then
@@ -78,6 +77,12 @@ function AchievementsMenu:draw()
             local icon_frame = Utils.clampWrap(math.floor(self.anim_timer / icon_anim_delay) + 1, #icon)
             love.graphics.draw(icon[icon_frame], 8, rel_y + 8, 0, 2, 2)
         end
+        if hide and (ach.hiddenicon) then
+            local icon = Assets.getTexture(ach.hiddenicon)
+            love.graphics.draw(icon, 8, rel_y + 8, 0, 2, 2)
+        end
+
+        love.graphics.draw(frame, 0, rel_y, 0, 2, 2)
         love.graphics.print(name, 90, rel_y + 5)
         love.graphics.print(desc, 90, rel_y + 25)
 
@@ -98,11 +103,27 @@ function AchievementsMenu:draw()
     end
 
 	if self.page > 1 then
-		love.graphics.draw(self.up_sprite, 470, 0, 0, 1, 1)
+        local arrow_x = math.floor((self.width-10) - (13 / 2))
+        local sine_off = math.sin((Kristal.getTime()*30)/6) * 3
+        if Input.down("up") then
+            Draw.setColor(1,1,0)
+        else
+            Draw.setColor(1,1,1)
+        end
+        Draw.draw(self.down_sprite, arrow_x, 16 - sine_off + 20, 0, 1, -1)
+        Draw.setColor(1,1,1)
 	end
     local rem = #self.achievements % self.items_per_page
 	if self.page < (#self.achievements - rem) then
-		love.graphics.draw(self.down_sprite, 470, 262, 0, 1, 1)
+        local arrow_x = math.floor((self.width-10) - (13 / 2))
+        local sine_off = math.sin((Kristal.getTime()*30)/6) * 3
+        if Input.down("down") then
+            Draw.setColor(1,1,0)
+        else
+            Draw.setColor(1,1,1)
+        end
+        Draw.draw(self.down_sprite, arrow_x, self.height + sine_off - 16 - 4)
+        Draw.setColor(1,1,1)
 	end
 
     super.draw(self)

@@ -54,7 +54,7 @@ function SimpleSaveMenu:draw()
         Draw.setColor(Game:getSoulColor())
         Draw.draw(self.heart_sprite, self.box.x + 2 + (self.selected_x - 1) * 180, self.box.y + 96)
     elseif self.state == "SAVED" then
-        if Kristal.callEvent("isLeaderRibbit") then
+        if Kristal.callEvent("isLeaderRibbit") and Game.world.map.name ~= "CONNECTION" then
             love.graphics.print("There we go.", self.box.x + 30, self.box.y + 90)
         else
             love.graphics.print("File saved.", self.box.x + 30, self.box.y + 90)

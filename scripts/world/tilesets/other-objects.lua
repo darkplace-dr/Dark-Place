@@ -5,7 +5,7 @@ return {
   name = "other-objects",
   class = "",
   tilewidth = 1306,
-  tileheight = 480,
+  tileheight = 1160,
   spacing = 0,
   margin = 0,
   columns = 0,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 13,
+  tilecount = 19,
   tiles = {
     {
       id = 12,
@@ -102,6 +102,42 @@ return {
       image = "../../../assets/sprites/world/maps/snowy_bg.png",
       width = 1306,
       height = 480
+    },
+    {
+      id = 53,
+      image = "../../../assets/sprites/world/core_door.png",
+      width = 78,
+      height = 76
+    },
+    {
+      id = 54,
+      image = "../../../assets/sprites/world/maps/darktown.png",
+      width = 640,
+      height = 1160
+    },
+    {
+      id = 55,
+      image = "../../../assets/sprites/world/events/key_and_note.png",
+      width = 114,
+      height = 48
+    },
+    {
+      id = 56,
+      image = "../../../assets/sprites/world/events/smallkey.png",
+      width = 15,
+      height = 13
+    },
+    {
+      id = 57,
+      image = "../../../assets/sprites/world/events/pillar.png",
+      width = 60,
+      height = 120
+    },
+    {
+      id = 58,
+      image = "../../../assets/sprites/world/events/corridoor.png",
+      width = 44,
+      height = 99
     }
   }
 }
