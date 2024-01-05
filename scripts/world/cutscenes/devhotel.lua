@@ -74,7 +74,6 @@ return {
         cutscene:text("* For some reason, this door doesn't follow the numerical order.")
         if not Game:getFlag("finished_sphere_quest", false) then
             cutscene:text("* It appears to be locked.")
-            cutscene:text("* Maybe the owner of the room will give you a spare key at some point.")
         else
             cutscene:text("* Will you enter?")
             if cutscene:choicer({"Yes", "No"})==1 then
