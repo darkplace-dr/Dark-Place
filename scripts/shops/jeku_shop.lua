@@ -44,9 +44,10 @@ function JekuShop:init()
     self.sell_options_text["storage"] = "[emote:happy]I SELL MONEY!!"
 
     self:registerItem("healitem")
+    self:registerItem("duoplica")
     self:registerItem("makissyringe")
     self:registerItem("bin_weapon", {bonuses = {attack = 1010}})
-    self:registerItem("sfb_key", {stock=1})
+    --self:registerItem("sfb_key", {stock=1})
 
     self:registerTalk("Who are you")
     self:registerTalk("This store")
@@ -55,7 +56,11 @@ function JekuShop:init()
     else
         self:registerTalk("Threaten")
     end
-    self:registerTalk("The Key")
+    if Game:getFlag("fun", 100) > 90 then
+        self:registerTalk("The Key")
+    else
+        self:registerTalk("Outside")
+    end
 
     self:registerTalkAfter("What is true?", 1)
 
@@ -200,17 +205,21 @@ function JekuShop:startTalk(talk)
     elseif talk == "The Key" then
         self:startDialogue({
             "[emote:happy]* When I wandered across universes,[wait:2] I fell upon a sad,[wait:2] sad one.",
-            "[emote:happy]* One of the characters was already aware of the TRUTH,[wait:2] but did everything in her power to take control of her game.",
-            "[emote:side]* She succeded,[wait:2] but her game was extremely corrupted due to its age and her actions.",
-            "[emote:playful]* It seems that at some point,[wait:2] the save data was about to die and so she did everything she wanted with the one she loved.",
-            "[emote:side]* And then everything died.[wait:5]\nThe save.[wait:5]\nThe girl.[wait:5]\nHer feelings.",
-            "[emote:crazy]* How sad.[wait:5] Do you guys love to torture us that much?[wait:3] Eh he eh!",
-            "[emote:happy]* You have a saying for this, no?[wait:5]\nThe more you love a fictionnal character,[wait:2] the more pain you're going to make them go through, right?",
-            "[emote:playful]* In any case, I wondered... What would happened if someone could get the girl out of her game?",
-            "[emote:side]* I can't save the original her,[wait:2] but I can create a timeline and manipulate it to my will.",
-            "[emote:happy]* That key is the direct access to that timeline.[wait:5] Do you feel like [color:yellow]taking the challenge[color:reset]?",
-            "[emote:wink]* The game is pretty unstable so be aware.[wait:5] But if you succeed...[wait:3] Eh he eh...",
-            "[emote:wink_tongueout]* Maybe her skies will be forever blue again."
+            "[emote:happy]* One of the characters was...",
+            "[emote:crazy]* Wait a minute,[wait:2] you're not supposed to ask me that yet!",
+            "[emote:wink]* If you have any interest in that key,[wait:2] you shouldn't use this version of the world.",
+            "[emote:side]* After all,[wait:2] this place won't evolve anymore.[wait:5] So I got rid of the key since I couldn't give it a use in time.[wait:5] Kinda sucks,[wait:2] if you ask me."
+        })
+    elseif talk == "Outside" then
+        self:startDialogue({
+            "[emote:happy]* Outside?[wait:5] Outside of what?",
+            "[emote:playful]* There's a lot of places that could correspond to outside,[wait:2] "..Utils.titleCase(Game.save_name)..".",
+            "[emote:side]* Is it the room outside of my shop?[wait:5] Is it the Light Word?[wait:5] Is it the multiverse?[wait:5] Is it fiction itself?[wait:5] Is it your reality?",
+            "[emote:crazy]* SO MANY POSSIBILITIES AND YET SO MUCH RESTRAINT...",
+            "[emote:happy]* Do you know how many worlds are unaccesable right now?",
+            "[emote:happy]* If you answered something,[wait:3] [emote:wink]YOU'RE WRONG!!",
+            "[emote:side]* There's probably a new world being created by the minute.",
+            "[emote:wink_tongueout]* Imagination is something everyone has,[wait:2] after all."
         })
     end
 end

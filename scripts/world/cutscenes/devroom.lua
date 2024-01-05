@@ -307,37 +307,6 @@ return {
             cutscene:text("* Sometimes it feels like nothing more than a few ideas coming together.", "talk_happy_look_side", "sam")
             cutscene:text("* And sometimes it feels like a whole universe got linked to this one.", "happy_look_side", "sam")
             cutscene:text("* Imagination is just that powerful,[wait:2] I guess.[wait:3] Wouldn't you agree?", "eyes_closed_happy", "sam")
-            if event.interact_count > 1 and not Game:getFlag("started_sphere_quest", false) then
-                cutscene:text("* Actually, speaking of powerful...", "dead_inside", "sam")
-                cutscene:text("* Can I ask you guys a favor?", "dead_inside_b", "sam")
-                cutscene:text("* You see,[wait:2] when I went here,[wait:2] I took a powerful artefact with me.", "unsure", "sam")
-                cutscene:text("* But on my way,[wait:2] she kinda slip out of my grasp.", "whoops", "sam")
-                if susie then
-                    cutscene:text("* I get it.[wait:3] And if it falls in bad hands,[wait:2] the world is doomed,[wait:2] right?", "smile", "susie")
-                    cutscene:text("* Honestly,[wait:2] no.[wait:3] I'm not scared about the world.", "shy_look_away", "sam")
-                    cutscene:text("* I'm more scared of the person who will try to absorb her power.", "scared_look_away", "sam")
-                    cutscene:text("* Because they will go insane??", "sus_nervous", "susie")
-                    cutscene:text("* No.[wait:3] Just that very few people can actually withstand her power.", "talk_look_away", "sam")
-                    cutscene:text("* Like,[wait:2] even I can't withstand it for too long.", "unsure", "sam")
-                    cutscene:text("* So if any random person were to absorb it...", "surprised_scared", "sam")
-                    cutscene:text("* They'll be dead,[wait:2] right?", "nervous", "susie")
-                    cutscene:text("* Yeah.[wait:3] Their physical form badly damaged and their SOUL destroyed.", "unsure", "sam")
-                    cutscene:text("* Alright then,[wait:2] we'll get you that thing of yours back.", "smirk", "susie")
-                    cutscene:text("* But uh...[wait:3] Any clues as to where to start?", "nervous", "susie")
-                    cutscene:text("* Yeah.[wait:3] The warp bin can bring you to where I think she fell.", "talk_happy_look_side", "sam")
-                else
-                    cutscene:text("* If someone were to try to absorb her power...", "talk_look_away", "sam")
-                    cutscene:text("* That would damage their physical form and their SOUL.", "unsure", "sam")
-                    cutscene:text("* And while a crack on the skin is not much...", "shy_look_away", "sam")
-                    cutscene:text("* A small crack on your SOUL can reduce your lifespan by a lot,[wait:2] you know?", "shy_look_away", "sam")
-                    cutscene:text("* And here, we're not talking about a small crack at all.", "unsure", "sam")
-                    cutscene:text("* Hm?[wait:3] You will do it?", "surprised_b", "sam")
-                    cutscene:text("* Thanks![wait:3] I've added a code to the warp bin that should guide you.", "eyes_closed_happy", "sam")
-                end
-                cutscene:text("* The code is [color:yellow]CASTLERD[color:reset].", "happy_look_side", "sam")
-                Kristal.callEvent("createQuest", "Green and Blue..?", "_gb", "Sam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"CASTLERD\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
-                Game:setFlag("started_sphere_quest", true)
-            end
         elseif c == 2 then
             cutscene:text("* Huh?[wait:3] You want me to join your party?", "surprised_b", "sam")
             cutscene:text("* Yeah no,[wait:2] I'm no good in a fight.", "shy_look_away", "sam")
@@ -393,7 +362,6 @@ return {
                 cutscene:text("* I kinda expected worse of him,[wait:2] to be honest.", "talk_look_away", "sam")
                 cutscene:text("* Well I guess he can still do whatever he wants though...", "huh", "sam")
                 cutscene:text("* Don't take what the game doesn't allow for granted.", "talk_look_away", "sam")
-                cutscene:text("* Jeku can and will attack you in the shop if he wants too.", "talk_look_away", "sam")
                 cutscene:text("* ...[wait:5]Oh yeah,[wait:2] the original question.", "shy_blush", "sam")
                 cutscene:text("* Well I don't know,[wait:2] maybe someone else will replace him?", "shy_look_away", "sam")
             else
