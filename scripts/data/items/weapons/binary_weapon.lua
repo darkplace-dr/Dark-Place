@@ -50,7 +50,9 @@ function item:init()
         noelle = true,
         dess = true,
         brandon = true,
-        jamm = true
+        jamm = true,
+		mario = true,
+		pauling = true,
     }
 
     -- Character reactions

@@ -43,6 +43,7 @@ function item:init()
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
         brandon = true,
+		pauling = true,
     }
 
     -- Character reactions
