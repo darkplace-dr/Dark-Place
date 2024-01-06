@@ -51,7 +51,7 @@ function DogCheck:start()
     end
 
 	local month = os.date("*t").month
-    local variant_choices = {"dance", "sleep", "maracas", "piano", "banned", "banned2"}
+    local variant_choices = {"dance", "sleep", "maracas", "piano", "banned", "banned2", "chapter2"}
     if month >= 3 and month <= 5 then
         table.insert(variant_choices, "spring")
     elseif month >= 6 and month <= 8 then
@@ -103,6 +103,13 @@ function DogCheck:start()
         Game.world.timer:after(1.25, function()
             Game.world.music:play("mutation", 0)
             Game.world.music:fade(0.85, 1.5)
+        end)
+    elseif self.variant == "chapter2" then
+        createDog("misc/dog_sleep", 0.8, -960, -580)
+        playSong("alarm_titlescreen", 1, 1)
+        self:dogcheck2()
+        Game.world.timer:every(17.5, function()
+            self:dogcheck2()
         end)
     end
 end
@@ -163,6 +170,74 @@ function DogCheck:draw()
         love.graphics.circle("fill", 420 + math.cos(self.summer_siner / 18) * 6, 40 + math.sin(self.summer_siner / 18) * 6, 28 + math.sin(self.summer_siner / 6) * 4, 100)
     end
     --]]
+end
+
+function DogCheck:dogcheck2()
+    local dog1 = Sprite("world/npcs/spr_dogcar", 0 - 40, 280)
+    dog1.flip_x = true
+    dog1:setOrigin(0.5, 0.5)
+    dog1:setScale(2)
+    dog1:play(0.25, true)
+    self:addChild(dog1)
+    dog1.physics.speed = 10
+    Game.world.timer:script(function(wait)
+        wait(2.75)
+        dog1:remove()
+        local dog2 = Sprite("world/npcs/spr_dogcar", SCREEN_WIDTH, 280)
+        dog2:setOrigin(0.5, 0.5)
+        dog2:setScale(2)
+        dog2:play(0.25, true)
+        self:addChild(dog2)
+        dog2.physics.speed = -10
+        wait(3)
+        dog2:remove()
+        local dog1 = Sprite("world/npcs/spr_dogcar", 0 - 40, 280)
+        dog1.flip_x = true
+        dog1:setOrigin(0.5, 0.5)
+        dog1:setScale(2)
+        dog1:play(0.25, true)
+        self:addChild(dog1)
+        dog1.physics.speed = 10
+        wait(2.75)
+        dog1:remove()
+        local dog2 = Sprite("world/npcs/spr_dogcar", SCREEN_WIDTH, 280)
+        dog2:setOrigin(0.5, 0.5)
+        dog2:setScale(2)
+        dog2:play(0.25, true)
+        self:addChild(dog2)
+        dog2.physics.speed = -10
+        wait(3)
+        local dognum = love.math.random(4, 8)
+        local i = 0
+        while (i < dognum) do
+            local newdog = Sprite("world/npcs/spr_dogcar", 0 - 40, 280 + love.math.random(-80, 80))
+            newdog.flip_x = true
+            newdog.physics.speed = love.math.random(10, 16)
+            newdog:setOrigin(0.5, 0.5)
+            if i == (dognum - 1) then
+                newdog:setScale(2)
+            end
+            newdog.physics.friction = love.math.random(0.01, -0.01)
+            newdog:play(((newdog.physics.speed / 4) * 0.25) + 0.25, true)
+            self:addChild(newdog)
+            i = i + 1
+        end
+        wait(2.4)
+        local dognum2 = love.math.random(5, 12)
+        local i2 = 0
+        while (i2 < dognum2) do
+            local newdog = Sprite("world/npcs/spr_dogcar", SCREEN_WIDTH, 280 + love.math.random(-80, 80))
+            newdog.physics.speed = love.math.random(-10, -16)
+            newdog:setOrigin(0.5, 0.5)
+            if i2 == (dognum2 - 1) then
+                newdog:setScale(2)
+            end
+            newdog.physics.friction = love.math.random(0.01, -0.01)
+            newdog:play(((newdog.physics.speed / 4) * 0.25) + 0.25, true)
+            self:addChild(newdog)
+            i2 = i2 + 1
+        end
+    end)
 end
 
 return DogCheck
