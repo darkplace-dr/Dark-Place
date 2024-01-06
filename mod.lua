@@ -25,6 +25,8 @@ function Mod:init()
 
     self.voice_timer = 0
 
+    Game._tempdogcheckresolution = false
+
     self:initTaunt()
     self:initBattleTaunt()
     Speen:init()
@@ -351,6 +353,9 @@ function Mod:initializeEvents()
 end
 
 function Mod:unload()
+    if Game._tempdogcheckresolution == true then
+        love.window.setMode((SCREEN_WIDTH*Kristal.Config["windowScale"]), (SCREEN_HEIGHT*Kristal.Config["windowScale"]))
+    end
     if TextInput.active and not Kristal.Console.is_open then
         Log:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()

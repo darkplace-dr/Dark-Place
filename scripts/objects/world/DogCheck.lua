@@ -51,7 +51,7 @@ function DogCheck:start()
     end
 
 	local month = os.date("*t").month
-    local variant_choices = {"dance", "sleep", "maracas", "piano", "banned"}
+    local variant_choices = {"dance", "sleep", "maracas", "piano", "banned", "banned2"}
     if month >= 3 and month <= 5 then
         table.insert(variant_choices, "spring")
     elseif month >= 6 and month <= 8 then
@@ -96,6 +96,14 @@ function DogCheck:start()
     elseif self.variant == "banned" then
         createDog(cust_sprites_base.."/banned", 1, 0, 0, 2)
         playSong("AUDIO_DEFEAT", 1.5)
+    elseif self.variant == "banned2" then
+        createDog(cust_sprites_base.."/banned_b", 1, 0, 0, 1)
+        Game._tempdogcheckresolution = true
+        love.window.setMode(1280, 960)
+        Game.world.timer:after(1.25, function()
+            Game.world.music:play("mutation", 0)
+            Game.world.music:fade(0.85, 1.5)
+        end)
     end
 end
 
