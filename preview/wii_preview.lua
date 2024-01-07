@@ -57,7 +57,7 @@ function wii_preview:iconDraw(data, timer)
         local alpha = (particle.radius / particle.max_radius)
 
         love.graphics.setColor(1, 1, 1, alpha)
-        love.graphics.draw(data.particle_tex, particle.x, particle.y, particle.radius/2, 1, 1, 5, 5)
+        love.graphics.draw(data.particle_tex, particle.x, particle.y, particle.radius/2, 0.5, 0.5, 5, 5)
     end
 	love.graphics.setColor(1, 1, 1, 1)
     love.graphics.draw(data.overlay, 69, 54, 0, 1, 1, 40.5, 34.5)
