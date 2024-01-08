@@ -58,7 +58,7 @@ function DogCheck:start()
         table.insert(variant_choices, "summer")
     elseif month >= 9 and month <= 11 then
         table.insert(variant_choices, "autumn")
-    elseif month >= 12 and month < 3 then
+    elseif month == 12 and month <= 2 then
         table.insert(variant_choices, "winter")
     end
     self.variant = Utils.pick(variant_choices)
