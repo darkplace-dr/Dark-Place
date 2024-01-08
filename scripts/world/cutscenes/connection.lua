@@ -77,6 +77,16 @@ return {
             end
         end
         sans:resetSprite()
+        Game.world.music:play("deltarune/muscle")
+
+        pitch_timer = Game.world.timer:every(0.2, function()
+            if Game.world.music and Game.world.music:isPlaying() then
+                Game.world.music.pitch = Utils.random(0.9, 1.1)
+            else
+                return false
+            end
+        end)
+
         cutscene:text("[func:1]","neutral","ausans",
         {top = false, functions = {
             function()
@@ -94,12 +104,15 @@ return {
         cutscene:text("* (You got Sans' phone number.)", {top = false})
         cutscene:wait(0.04)
         cutscene:text("* さようなら。", "wink", "ausans", {top = false})
+        Game.world.music:fade(0, 1)
         cutscene:wait(cutscene:setAnimation(sans, "transform"))
         cutscene:wait(1.5)
         cutscene:wait(cutscene:setAnimation(sans, "shrink"))
         cutscene:wait(0.1)
         sans:remove()
         Game:setFlag("CONNECTION.metsans", true)
+        cutscene:wait(cutscene:panToSpeed(Game.world.player, 5))
+        cutscene:attachCamera()
     end,
 
     ending = function(cutscene)
