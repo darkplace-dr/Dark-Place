@@ -44,6 +44,7 @@ function actor:init()
         ["pacifists"] = {0, 0},
         ["non_binary"] = {0, 0},
         ["forgor"] = {1, 0},
+        ["lich"] = {0, -4},
     }
 end
 
