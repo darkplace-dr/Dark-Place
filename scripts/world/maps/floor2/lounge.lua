@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 49,
+  nextobjectid = 60,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown",
@@ -51,7 +51,7 @@ return {
         28, 29, 30, 31, 32, 22, 18, 82, 66, 82, 82, 82, 82, 82, 3, 54, 28, 29, 30, 31, 32,
         54, 45, 46, 47, 38, 39, 5, 82, 82, 82, 82, 82, 82, 82, 3, 38, 39, 45, 46, 47, 4,
         20, 61, 62, 63, 20, 20, 21, 82, 82, 82, 82, 82, 82, 82, 19, 20, 36, 61, 62, 63, 20,
-        82, 82, 82, 82, 82, 50, 82, 82, 82, 82, 82, 66, 82, 82, 82, 82, 82, 82, 82, 82, 82,
+        73, 86, 82, 87, 73, 73, 74, 82, 82, 82, 82, 66, 82, 82, 72, 73, 73, 86, 82, 87, 73,
         82, 82, 68, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 52, 82, 82,
         82, 82, 82, 82, 82, 82, 82, 82, 66, 82, 82, 82, 82, 82, 82, 50, 82, 82, 82, 82, 82,
         3221225545, 3221225545, 3221225545, 3221225545, 3221225545, 3221225545, 3221225545, 3221225559, 82, 82, 82, 82, 52, 3221225558, 3221225545, 3221225545, 3221225545, 3221225545, 3221225545, 3221225545, 3221225545,
@@ -383,6 +383,171 @@ return {
           visible = true,
           properties = {
             ["cutscene"] = "lounge.rightsign"
+          }
+        },
+        {
+          id = 49,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 0,
+          y = 320,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 50,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 0,
+          y = 360,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 51,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 0,
+          y = 400,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 52,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 0,
+          y = 440,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 53,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 280,
+          y = 560,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 54,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 320,
+          y = 560,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 55,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 360,
+          y = 560,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 56,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 400,
+          y = 560,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 57,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 440,
+          y = 560,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 58,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 480,
+          y = 560,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 59,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 520,
+          y = 560,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
           }
         }
       }
