@@ -71,14 +71,15 @@ return function(cutscene, player_name_override)
 
     flowey:setSprite("nice")
 
-    if player_name == "YOU" 
-	or player_name == "BLUE" 
-	or player_name == "PLAGUEIS" 
-	or player_name == "DESS" 
-    or player_name == "BRANDON" 
-    or player_name == "BRENDA" 
-    or player_name == "LUCY" 
+    if player_name == "YOU"
+	or player_name == "BLUE"
+	or player_name == "PLAGUEIS"
+	or player_name == "DESS"
+    or player_name == "BRANDON"
+    or player_name == "BRENDA"
+    or player_name == "LUCY"
     or player_name == "BONER"
+    or player_name == "CLOVER"
 	then
         cutscene:wait(2)
 
@@ -210,6 +211,36 @@ return function(cutscene, player_name_override)
             showText("* THERE,[wait:5] I SAID IT![wait:10] ARE YOU HAPPY NOW?!", "enraged")
             showText("* Now leave me alone,[wait:5] asshole.", "pissed")
             cutscene:hideNametag()
+        elseif player_name == "CLOVER" then
+            cutscene:wait(1)
+            flowey:setSprite("side")
+            cutscene:wait(1)
+            cutscene:showNametag("Flowey")
+            showText("* Wait, wasn't it actually Gun-Hat?", "plain")
+            cutscene:hideNametag()
+            flowey:setSprite("side")
+            cutscene:wait(2)
+            cutscene:showNametag("Flowey")
+            showText("* Nah, I'm just kidding.", "wink")
+            showText("* But anyway,[wait:5] since we've found each other again...", "niceside")
+            showText("* There's something I've been wanting to show you!", "nice")
+            showText("* Are you ready?", "happyside")
+            cutscene:hideNametag()
+            flowey:setSprite("nice")
+            local white = flowey:addFX(ShaderFX(Kristal.Shaders["White"]))
+            white.vars["whiteAmount"] = 0
+            Game.world.timer:tween(0.5, white.vars, {whiteAmount = 1}, "linear")
+            Assets.playSound("boost")
+            cutscene:wait(1)
+            flowey:explode(0, 0, true)
+            cutscene:wait(0.5)
+            flowey:removeFX(white)
+            flowey:setSprite("cut")
+            cutscene:wait(3)
+            cutscene:showNametag("Flowey")
+            showText("* Hey Clover[wait:1s]\n* Check out my new cut")
+            cutscene:hideNametag()
+
         end
     end
 

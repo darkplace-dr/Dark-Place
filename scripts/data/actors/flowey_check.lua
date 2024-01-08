@@ -44,6 +44,7 @@ function actor:init()
         ["grin"] = 0.15,
         ["sassy"] = 0.15,
         ["pissed"] = 0.15,
+        ["cut"] = 0.15,
 	}
 
     -- Table of sprite offsets (indexed by sprite name)
