@@ -173,7 +173,7 @@ function DogCheck:draw()
 end
 
 function DogCheck:dogcheck2()
-    local dog1 = Sprite("world/npcs/spr_dogcar", 0 - 40, 280)
+    local dog1 = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280)
     dog1.flip_x = true
     dog1:setOrigin(0.5, 0.5)
     dog1:setScale(2)
@@ -183,7 +183,7 @@ function DogCheck:dogcheck2()
     Game.world.timer:script(function(wait)
         wait(2.75)
         dog1:remove()
-        local dog2 = Sprite("world/npcs/spr_dogcar", SCREEN_WIDTH, 280)
+        local dog2 = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280)
         dog2:setOrigin(0.5, 0.5)
         dog2:setScale(2)
         dog2:play(0.25, true)
@@ -191,7 +191,7 @@ function DogCheck:dogcheck2()
         dog2.physics.speed = -10
         wait(3)
         dog2:remove()
-        local dog1 = Sprite("world/npcs/spr_dogcar", 0 - 40, 280)
+        local dog1 = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280)
         dog1.flip_x = true
         dog1:setOrigin(0.5, 0.5)
         dog1:setScale(2)
@@ -200,7 +200,7 @@ function DogCheck:dogcheck2()
         dog1.physics.speed = 10
         wait(2.75)
         dog1:remove()
-        local dog2 = Sprite("world/npcs/spr_dogcar", SCREEN_WIDTH, 280)
+        local dog2 = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280)
         dog2:setOrigin(0.5, 0.5)
         dog2:setScale(2)
         dog2:play(0.25, true)
@@ -210,7 +210,7 @@ function DogCheck:dogcheck2()
         local dognum = love.math.random(4, 8)
         local i = 0
         while (i < dognum) do
-            local newdog = Sprite("world/npcs/spr_dogcar", 0 - 40, 280 + love.math.random(-80, 80))
+            local newdog = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280 + love.math.random(-80, 80))
             newdog.flip_x = true
             newdog.physics.speed = love.math.random(10, 16)
             newdog:setOrigin(0.5, 0.5)
@@ -226,7 +226,7 @@ function DogCheck:dogcheck2()
         local dognum2 = love.math.random(5, 12)
         local i2 = 0
         while (i2 < dognum2) do
-            local newdog = Sprite("world/npcs/spr_dogcar", SCREEN_WIDTH, 280 + love.math.random(-80, 80))
+            local newdog = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280 + love.math.random(-80, 80))
             newdog.physics.speed = love.math.random(-10, -16)
             newdog:setOrigin(0.5, 0.5)
             if i2 == (dognum2 - 1) then
