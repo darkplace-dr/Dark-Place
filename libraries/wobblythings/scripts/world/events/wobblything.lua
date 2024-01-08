@@ -85,8 +85,14 @@ function WobblyThing:update()
             player_x, player_y = player:getRelativePos(0, player.height/2, Game.world)
         end
 
-        if (player_x > left) and (player_x < right) and (player_y > self.y) then
-            self:wobble()
+        if Game.world.map.id == "floor3/connection_2" then
+            if (player_x > left) and (player_x < right) and (player_y > self.y) then
+                self:wobble()
+            end
+        else
+            if (player_x > left) and (player_x < right) then
+                self:wobble()
+            end
         end
     end
 

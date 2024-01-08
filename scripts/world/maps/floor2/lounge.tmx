@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="21" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="49">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="21" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="60">
  <editorsettings>
   <export target="lounge.lua" format="lua"/>
  </editorsettings>
@@ -19,7 +19,7 @@
 28,29,30,31,32,22,18,82,66,82,82,82,82,82,3,54,28,29,30,31,32,
 54,45,46,47,38,39,5,82,82,82,82,82,82,82,3,38,39,45,46,47,4,
 20,61,62,63,20,20,21,82,82,82,82,82,82,82,19,20,36,61,62,63,20,
-82,82,82,82,82,50,82,82,82,82,82,66,82,82,82,82,82,82,82,82,82,
+73,86,82,87,73,73,74,82,82,82,82,66,82,82,72,73,73,86,82,87,73,
 82,82,68,82,82,82,82,82,82,82,82,82,82,82,82,82,82,82,52,82,82,
 82,82,82,82,82,82,82,82,66,82,82,82,82,82,82,50,82,82,82,82,82,
 3221225545,3221225545,3221225545,3221225545,3221225545,3221225545,3221225545,3221225559,82,82,82,82,52,3221225558,3221225545,3221225545,3221225545,3221225545,3221225545,3221225545,3221225545,
@@ -102,6 +102,61 @@
   <object id="48" name="interactable" x="601.738" y="243.345" width="73.1361" height="76.6241">
    <properties>
     <property name="cutscene" value="lounge.rightsign"/>
+   </properties>
+  </object>
+  <object id="49" name="dogconegroup" x="0" y="320" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="50" name="dogconegroup" x="0" y="360" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="51" name="dogconegroup" x="0" y="400" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="52" name="dogconegroup" x="0" y="440" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="53" name="dogconegroup" x="280" y="560" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="54" name="dogconegroup" x="320" y="560" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="55" name="dogconegroup" x="360" y="560" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="56" name="dogconegroup" x="400" y="560" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="57" name="dogconegroup" x="440" y="560" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="58" name="dogconegroup" x="480" y="560" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="59" name="dogconegroup" x="520" y="560" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

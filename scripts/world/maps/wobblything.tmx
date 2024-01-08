@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="19">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="24">
  <editorsettings>
-  <export target="data.lua" format="lua"/>
+  <export target="wobblything.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="use_footstep_sounds" value="true"/>
@@ -9,21 +9,21 @@
  <tileset firstgid="1" source="../tilesets/castle_1f.tsx"/>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,51,82,82,53,0,0,0,0,0,
-0,0,0,0,0,0,51,82,82,82,82,53,0,0,0,0,
-82,82,82,82,82,82,82,82,82,82,82,82,0,0,0,0,
-82,82,82,82,82,82,82,82,82,82,82,82,0,0,0,0,
-0,0,0,0,0,0,67,82,82,82,82,69,0,0,0,0,
-0,0,0,0,0,0,0,67,82,82,69,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+89,89,89,89,89,90,90,89,89,89,89,88,88,89,90,0,
+54,54,54,54,54,5,18,54,54,4,54,2,3,54,5,0,
+54,54,54,6,54,5,5,20,36,20,20,3,3,4,5,0,
+54,54,54,54,54,18,21,70,73,73,71,19,3,54,5,0,
+20,36,20,20,20,37,70,82,82,52,82,71,3,54,5,0,
+73,73,73,73,73,74,82,68,82,82,82,82,3,54,18,0,
+1073741897,1073741897,1073741897,1073741897,1073741897,3221225544,82,82,82,82,82,82,2,54,5,0,
+89,89,89,89,89,90,1073741894,82,82,82,66,1073741895,3,54,5,0,
+54,54,54,54,6,5,90,1073741894,1073741897,1073741897,1073741895,88,3,54,5,0,
+54,54,4,54,54,18,5,89,89,89,89,2,3,54,5,0,
+54,54,54,54,22,5,5,6,54,54,54,3,3,54,18,0,
+34,54,54,54,54,5,5,54,54,54,22,3,3,54,5,0
 </data>
  </layer>
- <objectgroup color="#0000ff" id="2" name="collision">
+ <objectgroup color="#0000ff" id="2" name="collision" visible="0">
   <object id="5" x="440" y="320" width="40" height="40"/>
   <object id="7" x="240" y="120" width="40" height="40"/>
   <object id="8" x="280" y="80" width="160" height="40"/>
@@ -48,9 +48,34 @@
     <property name="once" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="19" name="transition" x="-40" y="200" width="40" height="80">
+   <properties>
+    <property name="map" value="floor2/east_wing"/>
+    <property name="marker" value="entry2"/>
+   </properties>
+  </object>
+  <object id="22" name="sprite" x="246" y="80" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="world/maps/chapter1/torch"/>
+   </properties>
+  </object>
+  <object id="23" name="sprite" x="448" y="80" width="25" height="40">
+   <properties>
+    <property name="scalex" type="float" value="2"/>
+    <property name="scaley" type="float" value="2"/>
+    <property name="speed" type="float" value="0.25"/>
+    <property name="texture" value="world/maps/chapter1/torch"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
-  <object id="13" name="spawn" x="0" y="240">
+  <object id="13" name="spawn" x="80" y="240">
+   <point/>
+  </object>
+  <object id="20" name="entry" x="40" y="240">
    <point/>
   </object>
  </objectgroup>

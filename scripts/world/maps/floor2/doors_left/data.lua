@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 23,
+  nextobjectid = 26,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown"
@@ -298,6 +298,51 @@ return {
           properties = {
             ["once"] = false,
             ["script"] = "lancer_enter"
+          }
+        },
+        {
+          id = 23,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 40,
+          y = 360,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 24,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 80,
+          y = 360,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
+          }
+        },
+        {
+          id = 25,
+          name = "dogconegroup",
+          class = "",
+          shape = "rectangle",
+          x = 120,
+          y = 360,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["default_state"] = true
           }
         }
       }

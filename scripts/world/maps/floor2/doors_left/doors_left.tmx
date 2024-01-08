@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="23">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="26">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -68,6 +68,21 @@
    <properties>
     <property name="once" type="bool" value="false"/>
     <property name="script" value="lancer_enter"/>
+   </properties>
+  </object>
+  <object id="23" name="dogconegroup" x="40" y="360" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="24" name="dogconegroup" x="80" y="360" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="25" name="dogconegroup" x="120" y="360" width="40" height="40">
+   <properties>
+    <property name="default_state" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
