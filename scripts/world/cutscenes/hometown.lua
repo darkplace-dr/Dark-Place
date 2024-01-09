@@ -7,7 +7,7 @@ return {
         if not Game.world.sanscheck then
             Game.world.sanscheck = 0
         end
-		
+
         local function flashScreen()
             local flash = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
             flash.layer = 100
@@ -20,7 +20,11 @@ return {
                 flash:remove()
             end)
         end
-		
+
+        local function shakeScreen()
+            cutscene:shakeCamera(10)
+        end
+
 		local function remembering()
             Game.world.music:pause()
             if Game.world.sanscheck == 1 then
@@ -31,6 +35,10 @@ return {
                 sans_meme:setSprite("non_binary")
             elseif Game.world.sanscheck == 4 then
                 sans_meme:setSprite("search_history")
+            elseif Game.world.sanscheck == 5 then
+                sans_meme:setSprite("depressed")
+            elseif Game.world.sanscheck == 7 then
+                sans_meme:setSprite("wtf")
             end
 		end
 
@@ -84,7 +92,42 @@ return {
             })
             cutscene:hideNametag()
             Game.world.music:resume()
-        elseif Game.world.sanscheck >= 5 then
+        elseif Game.world.sanscheck == 5 then
+            cutscene:showNametag("Sans?", {font = "sans"})
+            cutscene:text("[font:sans]* human[wait:10]\n* i am [wait:10][facec:sans/meme/depressed][func:1][func:2][sound:boowomp][style:GONER][instant][color:4782c9]depressed.[stopinstant][color:reset]", "serious", "sans", {
+                functions = {
+                    flashScreen,
+                    remembering,
+                }
+            })
+            cutscene:hideNametag()
+            Game.world.music:resume()
+        elseif Game.world.sanscheck == 6 then
+            Game.world.music:pause()
+            sans_meme:explode(0, 0, true)
+            cutscene:wait(0.2)
+            sans_meme:setSprite("bbg")
+            cutscene:wait(2)
+            cutscene:showNametag("Sans?", {font = "sans"})
+            cutscene:text("[noskip][voice:none][font:sans]*[sound:daddygirl] baby girl?[wait:50]\n* [sound:babyhome][sound:vineboom][func:1][style:GONER][color:red]daddy's[stopinstant][style:none][color:reset] home.", "meme/bbg", "sans", {
+                functions = {
+                    flashScreen,
+                }
+            })
+            cutscene:hideNametag()
+            Game.world.music:resume()
+        elseif Game.world.sanscheck == 7 then
+            Game.world.music:pause()
+            cutscene:showNametag("Sans?", {font = "sans"})
+            cutscene:text("[font:sans]* what[wait:20] the [wait:20][facec:sans/meme/wtf][func:1][func:2][sound:heavydamage][instant]FUCK.[stopinstant]", "serious", "sans", {
+                functions = {
+                    remembering,
+                    shakeScreen,
+                }
+            })
+            cutscene:hideNametag()
+            Game.world.music:resume()
+        elseif Game.world.sanscheck >= 8 then
             if Game:getFlag("fun") == 8 then
                 cutscene:showNametag("Sans?", {font = "sans"})
                 cutscene:text("[font:sans]* human...", "eyes_closed", "sans")
@@ -151,7 +194,7 @@ return {
         end
         sans_meme:resetSprite()
 		
-        if Game.world.sanscheck < 5 then
+        if Game.world.sanscheck < 8 then
             Game.world.sanscheck = Game.world.sanscheck + 1
         end
     end,
