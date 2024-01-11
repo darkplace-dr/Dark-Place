@@ -361,7 +361,73 @@ function Battle:onStateChange(old,new)
         self.music.basepitch = self.music.pitch
     end
 
+    if Game.world and Game.world.player2 then
+        local remove_arena = {"DEFENDINGEND", "TRANSITIONOUT", "ACTIONSELECT", "VICTORY", "INTRO", "ACTIONS", "ENEMYSELECT", "XACTENEMYSELECT", "PARTYSELECT", "MENUSELECT", "ATTACKING"}
+        local should_end = true
 
+        if Utils.containsValue(remove_arena, new) then
+            for _,wave in ipairs(self.waves) do
+                if wave:beforeEnd() then
+                    should_end = false
+                end
+            end
+            if should_end then
+                self:returnSoul2()
+            end
+        end
+    end
+
+
+    if Game.world.player2 then
+        if new == "DEFENDINGBEGIN" then
+        if self.arena then
+            self.arena:remove()
+            self.arena = nil
+        end
+
+        local soul_x, soul_y, soul_offset_x, soul_offset_y
+        local arena_x, arena_y, arena_w, arena_h, arena_shape
+        local has_arena = true
+        for _,wave in ipairs(self.waves) do
+            soul_x = wave.soul_start_x or soul_x
+            soul_y = wave.soul_start_y or soul_y
+            soul_offset_x = wave.soul_offset_x or soul_offset_x
+            soul_offset_y = wave.soul_offset_y or soul_offset_y
+            arena_x = wave.arena_x or arena_x
+            arena_y = wave.arena_y or arena_y
+            arena_w = wave.arena_width and math.max(wave.arena_width, arena_w or 0) or arena_w
+            arena_h = wave.arena_height and math.max(wave.arena_height, arena_h or 0) or arena_h
+            if wave.arena_shape then
+                arena_shape = wave.arena_shape
+            end
+            if not wave.has_arena then
+                has_arena = false
+            end
+        end
+        
+        local center_x, center_y
+        if has_arena then
+            if not arena_shape then
+                arena_w, arena_h = arena_w or 142, arena_h or 142
+                arena_shape = {{0, 0}, {arena_w, 0}, {arena_w, arena_h}, {0, arena_h}}
+            end
+        
+            local arena = Arena(arena_x or SCREEN_WIDTH/2, arena_y or (SCREEN_HEIGHT - 155)/2 + 10, arena_shape)
+            arena.layer = BATTLE_LAYERS["arena"]
+        
+            self.arena = arena
+            self:addChild(arena)
+            center_x, center_y = arena:getCenter()
+        else
+            center_x, center_y = SCREEN_WIDTH/2, (SCREEN_HEIGHT - 155)/2 + 10
+        end
+                
+        soul_x = soul_x or (soul_offset_x and center_x + soul_offset_x)
+        soul_y = soul_y or (soul_offset_y and center_y + soul_offset_y)
+
+        self:spawnSoul2(soul_x or center_x, soul_y or center_y)
+        end
+    end
 
     if self.discoball then
         -- For some reason this happens twice
