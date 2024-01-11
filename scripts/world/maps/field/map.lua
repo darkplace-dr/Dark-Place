@@ -7,13 +7,13 @@ function field:onEnter()
 	-- "There is always hope." \
 	-- This is what I believe in. \
 	-- \
-	-- Dedicated to Bor and Kumi. As of the time of writing this, I don't even know if either of them will be okay or not. \
-	-- Yet at the same time... I feel like I just know both will be fine in the end. I can always hope that these comments will age well.
+	-- Dedicated to Bor. As of the time of writing this, I don't even know if he will be okay or not. \
+	-- Yet at the same time... I feel like I just know he will be fine in the end. I can always hope that these comments will age well.
 	---@type string[]
 	self.hopes_and_dreams = {
-		"I hope Bor and Kumi are okay.", -- This deserves to show up twice as often.
-		"I hope Bor and Kumi are okay.", --[[ 6/60/2023 9:00 PM: NEVER TAKE BOR OR KUMI's NAME OFF OF THIS, even if they end up being fine.
-												Their names being here is a symbol of good luck. I wish the best of luck for Bor and Kumi both. ]]
+		"I hope Bor will be okay.", -- This deserves to show up twice as often.
+		"I hope Bor will be okay.", --[[ 6/60/2023 9:00 PM: NEVER TAKE BOR's NAME OFF OF THIS, even if he ends up being fine.
+												Their names being here is a symbol of good luck. I wish the best of luck for Bor. ]]
 		"I hope I can get more sleep soon.",
 		"I wish I was more consistant.",
 		"I wish I had more time, in general.",
