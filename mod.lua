@@ -207,6 +207,10 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("party_max", 4)
     end
 
+    if Game:getFlag("jekukilled") == nil and love.filesystem.read("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id) then
+        Game:setFlag("jekukilled", true)
+    end
+
     if new_file or not Game:getFlag("party") then
         likely_old_save = true
         table.insert(old_save_issues, "The party flag was not initialized")

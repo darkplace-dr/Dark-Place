@@ -298,6 +298,8 @@ return {
         local choices = {"Talk", "Party"}
         if Game:getFlag("meet_jeku", false) then
             table.insert(choices, "Jeku")
+        elseif Game:getFlag("meet_jeku_empt", false) then
+            table.insert(choices, "Empty shop")
         end
         table.insert(choices, "Nope")
         local c = cutscene:choicer(choices)
@@ -354,15 +356,15 @@ return {
                 if love >= 19 then
                     cutscene:text("* And I really don't like the way you're looking at me.", "scared_look_away", "sam")
                 elseif love >= 15 then
-                    cutscene:text("* And uh.. You look like you could stab me at any moment so...", "shy_look_away", "sam")
+                    cutscene:text("* And uh..[wait:3] You look like you could stab me at any moment so...", "shy_look_away", "sam")
                 elseif love >= 12 then
                     cutscene:text("* And if the blood and dust on your hand is any indication...", "unsure", "sam")
                 elseif love >= 10 then
-                    cutscene:text("* And you look too miserable for peace, to be honest...", "phone_moment", "sam")
+                    cutscene:text("* And you look too miserable for peace,[wait:2] to be honest...", "phone_moment", "sam")
                 elseif love >= 5 then
-                    cutscene:text("* And you're, uh... Pretty bad, actually, at peace, to be honest.", "huh", "sam")
+                    cutscene:text("* And you're, uh...[wait:3] Pretty bad, actually, at peace, to be honest.", "huh", "sam")
                 elseif love >= 2 then
-                    cutscene:text("* And uh.. You don't seem to consider peace as an option, do you?", "shy_look_away", "sam")
+                    cutscene:text("* And uh..[wait:3] You don't seem to consider peace as an option, do you?", "shy_look_away", "sam")
                 else
                     first_word = "Well"
                     cutscene:text("* Oh wait,[wait:2] you seems to be pretty peaceful too actually.", "shy_look_away", "sam")
@@ -372,30 +374,103 @@ return {
             cutscene:text("* You could say it's because of a skill issue.", "dead_inside_b", "sam")
         elseif c == 3 then
             if #choices == 4 then
-                cutscene:text("* Oh so you have met Jeku.", "talk_look_away", "sam")
-                cutscene:text("* He's uh...[wait:3] A pretty unstable guy,[wait:2] right?", "whoops", "sam")
-                cutscene:text("* He's kinda out of my control so just don't mess with him too much.", "unsure", "sam")
-                cutscene:text("* I think he's nice but he got powers that can change reality itself.", "talk_look_away", "sam")
-                cutscene:text("* Not the type of person you want to go against,[wait:2]you know?", "unsure", "sam")
-                if Game:getFlag("jekukilled", false) then
-                    cutscene:text("* Actually, you uh... Already found out by yourself, didn't you?", "whoops", "sam")
-                    cutscene:text("* Yeah, I can see it in the way you look at me.", "surprised_b", "sam")
-                    cutscene:text("* That look that screams \"No kidding?\".", "talk_look_away", "sam")
-                    cutscene:text("* Not sure what he did to you before, but [color:red]he can probably do worse now[color:reset].", "unsure", "sam")
-                    cutscene:text("* So you should let him alone.", "shy_look_away", "sam")
-                    Game:setFlag("allow_shop_fight", true)
+                if Game:getFlag("meet_jeku") and Game:getFlag("meet_jeku_empt") then
+                    if not Game:getFlag("meet_jeku_back") then
+                        cutscene:text("* Huh?[wait:3] Jeku's shop is empty?", "talk_look_away", "sam")
+                        cutscene:text("* Well he probably left somewhere else.[wait:3] It was bound to happen.", "shy_look_away", "sam")
+                        cutscene:text("* At least he left his shop behind,[wait:2] that's thoughtful of him.", "happy_look_side", "sam")
+                        cutscene:text("* Though I was expecting him to be replaced by someone else...", "huh", "sam")
+                        cutscene:text("* Guess he didn't want you to see his friends until the timing was right.", "talk_look_away", "sam")
+                        cutscene:text("* How do you even feel about MI-", "talk_look_away", "sam", {auto=true})
+                        cutscene:text("* Wait no,[wait:2] that's a weird question!", "shy_blush", "sam")
+                        cutscene:text("* ANYWAY...", "whoops", "sam")
+                        if cutscene:choicer({"Where is he?", "Right..."}) == 1 then
+                            cutscene:text("* So you want him to come back here?", "neutral", "sam")
+                            cutscene:text("* Does he have something you want or something?", "talk_look_away", "sam")
+                            cutscene:text("* Well he shouldn't be too far.", "happy_look_side", "sam")
+                            cutscene:text("* He can only go in the worlds I made or influenced.", "talk_happy_look_side", "sam")
+                            cutscene:showNametag("Simbel")
+                            cutscene:text("* Have you installed something I made lately?", "shy_blush", "sam")
+                            cutscene:showNametag("Sam")
+                            cutscene:text("* If you did,[wait:2] you should search there.", "shy_look_away", "sam")
+                            cutscene:text("* If not,[wait:2] then it's probably a bug.", "dead_inside_b", "sam")
+                            cutscene:text("* Anyway,[wait:2] you'll probably need to unlock the debug commands first.", "neutral", "sam")
+                            cutscene:text("* And then,[wait:2] I dunno...", "neutral", "sam")
+                            cutscene:text("* Search inside the [color:yellow]default Kristal mods[color:reset]?", "talk_look_away", "sam")
+                            cutscene:text("* But don't worry too much about finding him.", "shy_look_away", "sam")
+                            local timeDiff = (7*60*24*24) - (os.time() - Game:getFlag("shop#jeku_shop:jeku_left_time_left"))
+                            local days = Utils.round(timeDiff/(60*24*24))
+                            if days < 0 then
+                                cutscene:text("* He's probably back by now.", "happy_look_side", "sam")
+                            elseif days == 0 then
+                                cutscene:text("* I'm sure he'll be back soon.", "happy_look_side", "sam")
+                            else
+                                cutscene:text("* I'm sure he'll be back in like [color:yellow]"..days.." days[color:reset] or something.", "talk_happy_look_side", "sam")
+                            end
+                        else
+                            cutscene:text("* ...", "dead_inside", "sam")
+                        end
+                    else
+                        cutscene:text("* Oh he's back?", "surprised", "sam")
+                        cutscene:text("* That's great!", "eyes_closed_happy", "sam")
+                        cutscene:text("* I'm still not sure why you wanted him back but oh well.", "happy_look_side", "sam")
+                        cutscene:text("* He does bring some entertainement to be honest.", "whoops", "sam")
+                        cutscene:text("* So have fun with him I guess.", "shy_look_away", "sam")
+                        cutscene:text("* I'm sure he has a lot of fun with you.", "happy_look_side", "sam")
+                        Game:setFlag("meet_jeku_empt", false)
+                    end
+                elseif not Game:getFlag("meet_jeku") and Game:getFlag("meet_jeku_empt") then
+                    cutscene:text("* Huh?[wait:3] You found an empty shop...?", "talk_look_away", "sam")
+                    cutscene:text("* That's weird but,[wait:2] uh...[wait:3] What does it have to do with me?", "shy_look_away", "sam")
+                    cutscene:text("* Maybe the shop owner just left or something...", "shy_look_away", "sam")
+                    local timeDiff = (7*60*24*24) - (os.time() - Game:getFlag("shop#jeku_shop:jeku_left_time_left"))
+                    local days = Utils.round(timeDiff/(60*24*24))
+                    if days < 0 then
+                        cutscene:text("* Or maybe you're just messing with me, I dunno.", "talk_look_away", "sam")
+                    elseif days == 0 then
+                        cutscene:text("* Maybe you should just check back soon?", "talk_happy_look_side", "sam")
+                    else
+                        cutscene:text("* So I don't know,[wait:2] maybe you should check back in a few days or something?", "talk_happy_look_side", "sam")
+                        cutscene:text("* Maybe something like [color:yellow]"..days.." days[color:reset]?", "talk_happy", "sam")
+                    end
+                    if days >= 0 then
+                        cutscene:text("* But uh,[wait:2] if you want to,[wait:2] you could maybe look for that guy?", "whoops", "sam")
+                        cutscene:text("* Probably [color:yellow]not in this game[color:reset] though,[wait:2] you would have met him already.", "talk_look_away", "sam")
+                        cutscene:showNametag("Simbel")
+                        cutscene:text("* Have you installed [color:yellow]another game made on Kristal[color:reset] lately?", "talk_look_away", "sam")
+                        cutscene:showNametag("Sam")
+                        cutscene:text("* If you did,[wait:2] you should search there.", "happy_look_side", "sam")
+                        cutscene:text("* If not,[wait:2] then it's probably a bug.", "dead_inside_b", "sam")
+                        cutscene:text("* Anyway,[wait:2] you'll probably need to unlock the debug commands first.", "neutral", "sam")
+                        cutscene:text("* And then,[wait:2] I dunno...", "neutral", "sam")
+                        cutscene:text("* Search inside the [color:yellow]default Kristal mods[color:reset]?", "talk_look_away", "sam")
+                    end
                 else
-                    cutscene:text("* So just stay out of his reach,[wait:2] if it's even possible.", "shy_look_away", "sam")
+                    cutscene:text("* Oh so you have met Jeku.", "talk_look_away", "sam")
+                    cutscene:text("* He's uh...[wait:3] A pretty unstable guy,[wait:2] right?", "whoops", "sam")
+                    cutscene:text("* He's kinda out of my control so just don't mess with him too much.", "unsure", "sam")
+                    cutscene:text("* I think he's nice but he got powers that can change reality itself.", "talk_look_away", "sam")
+                    cutscene:text("* Not the type of person you want to go against,[wait:2]you know?", "unsure", "sam")
+                    if Game:getFlag("jekukilled", false) then
+                        cutscene:text("* Actually, you uh... Already found out by yourself, didn't you?", "whoops", "sam")
+                        cutscene:text("* Yeah, I can see it in the way you look at me.", "surprised_b", "sam")
+                        cutscene:text("* That look that screams \"No kidding?\".", "talk_look_away", "sam")
+                        cutscene:text("* Not sure what he did to you before, but [color:red]he can probably do worse now[color:reset].", "unsure", "sam")
+                        cutscene:text("* So you should let him alone.", "shy_look_away", "sam")
+                        Game:setFlag("allow_shop_fight", true)
+                    else
+                        cutscene:text("* So just stay out of his reach,[wait:2] if it's even possible.", "shy_look_away", "sam")
+                    end
+                    cutscene:text("* He'll probably just go one day to another one of my projects anyway.", "happy_look_side", "sam")
+                    cutscene:text("* Huh?[wait:4] What about his shop?", "surprised_b", "sam")
+                    cutscene:text("* Wait,[wait:2] he made a SHOP??[wait:5] Just that??", "surprised", "sam")
+                    cutscene:text("* I kinda expected worse of him,[wait:2] to be honest.", "talk_look_away", "sam")
+                    cutscene:text("* Well I guess he can still do whatever he wants though...", "huh", "sam")
+                    cutscene:text("* Don't take what the game doesn't allow for granted.", "talk_look_away", "sam")
+                    cutscene:text("* Jeku can and will attack you in the shop if he wants too.", "talk_look_away", "sam")
+                    cutscene:text("* ...[wait:5]Oh yeah,[wait:2] the original question.", "shy_blush", "sam")
+                    cutscene:text("* Well I don't know,[wait:2] maybe someone else will replace him?", "shy_look_away", "sam")
                 end
-                cutscene:text("* He'll probably just go one day to another one of my projects anyway.", "happy_look_side", "sam")
-                cutscene:text("* Huh?[wait:4] What about his shop?", "surprised_b", "sam")
-                cutscene:text("* Wait,[wait:2] he made a SHOP??[wait:5] Just that??", "surprised", "sam")
-                cutscene:text("* I kinda expected worse of him,[wait:2] to be honest.", "talk_look_away", "sam")
-                cutscene:text("* Well I guess he can still do whatever he wants though...", "huh", "sam")
-                cutscene:text("* Don't take what the game doesn't allow for granted.", "talk_look_away", "sam")
-                cutscene:text("* Jeku can and will attack you in the shop if he wants too.", "talk_look_away", "sam")
-                cutscene:text("* ...[wait:5]Oh yeah,[wait:2] the original question.", "shy_blush", "sam")
-                cutscene:text("* Well I don't know,[wait:2] maybe someone else will replace him?", "shy_look_away", "sam")
             else
                 cutscene:text("* Oh,[wait:2] okay.", "huh_b", "sam")
             end
