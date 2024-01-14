@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.0",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 26,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 89,
+  nextobjectid = 91,
   properties = {
     ["border"] = "dev",
     ["music"] = "devhotel"
@@ -49,6 +50,7 @@ return {
       height = 28,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -93,6 +95,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -342,6 +345,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects_props",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -413,6 +417,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -656,6 +661,38 @@ return {
             ["map"] = "devhotel/exterior",
             ["marker"] = "entry_diner"
           }
+        },
+        {
+          id = 89,
+          name = "sprite",
+          type = "",
+          shape = "point",
+          x = 664.25,
+          y = 385,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["speed"] = 0,
+            ["texture"] = "world/maps/devroom/pc_1"
+          }
+        },
+        {
+          id = 90,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 654.25,
+          y = 385,
+          width = 50,
+          height = 66.75,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "pc",
+            ["solid"] = true
+          }
         }
       }
     },
@@ -664,6 +701,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
