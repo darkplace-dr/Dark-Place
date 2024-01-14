@@ -207,6 +207,10 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("party_max", 4)
     end
 
+    if Game:getFlag("jekukilled") == nil and love.filesystem.read("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id) then
+        Game:setFlag("jekukilled", true)
+    end
+
     if new_file or not Game:getFlag("party") then
         likely_old_save = true
         table.insert(old_save_issues, "The party flag was not initialized")
@@ -331,6 +335,35 @@ function Mod:initializeImportantFlags(new_file)
         addOpinionsToParty("jamm", { pauling = 50 })
         addOpinionsToParty("mario", { pauling = 50 })
         Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
+    end
+
+
+    -- Add here as needed
+    local gifts_data = {
+        -- file to check for, got it or not, item id, path prefix
+        UNDERTALE = {
+            file = "/undertale.ini",
+            received = false,
+            item_id = "heart_locket",
+            prefix_os = {Windows = "Local/UNDERTALE", Linux = ".config/UNDERTALE", OS_X = "Application Support/com.tobyfox.undertale"}
+        },
+        DELTARUNE = {
+            file = "/dr.ini",
+            received = false,
+            item_id = "egg",
+            prefix_os = {Windows = "Local/DELTARUNE", Linux = ".config/DELTARUNE", OS_X = "Application Support/com.tobyfox.deltarune"}
+        },
+        -- Use "KR_" as a prefix to check for a Kristal Mod instead
+        KR_frozen_heart = {received = false, item_id = "angelring"}
+    }
+    if not Game:getFlag("pc_gifts_data") then
+        if not new_file then
+            likely_old_save = true
+            table.insert(old_save_issues, "Save is probably from before the PC was added.")
+        end
+        Game:setFlag("pc_gifts_data", gifts_data)
+    else
+        Game:setFlag("pc_gifts_data", Utils.merge(gifts_data, Game:getFlag("pc_gifts_data"), true))
     end
 
     ----------

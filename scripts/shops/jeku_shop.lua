@@ -2,8 +2,66 @@ local JekuShop, super = Class(Shop,  "jeku_shop")
 
 function JekuShop:init()
     super.init(self)
-    Game:setFlag("meet_jeku", true)
 
+    local function checkTimeLeft()
+        local time = self:getFlag("jeku_left_time_left")
+        if not time then return false end
+
+        local elapsedTime = os.time() - time
+        local sec_7days = 7 * (60 * 60 * 24)
+
+        return elapsedTime >= sec_7days
+    end
+
+    local prefix = "Roaming"
+    if love.system.getOS() == "Linux" then
+        prefix = "/.local/share"
+    elseif love.system.getOS() == "OS X" then
+        prefix = "Application Support"
+    end
+    if Mod:fileExists(prefix.."/frozen_heart/saves/frozen_heart/checkpass0") and (not checkTimeLeft() and not Mod:fileExists("Roaming/frozen_heart/saves/checkpass1")) then
+        Game:setFlag("meet_jeku_empt", true)
+        self:initEmpty()
+        self.empty = true
+        if not self:getFlag("jeku_left_time_left") then
+            self:setFlag("jeku_left_time_left", os.time())
+        end
+    else
+        Game:setFlag("meet_jeku", true)
+        if Game:getFlag("meet_jeku_empt") and not Game:getFlag("meet_jeku_back") then
+            Game:setFlag("meet_jeku_back", true)
+        end
+        self:initJeku()
+    end
+
+    self:registerItem("healitem")
+    self:registerItem("makissyringe")
+    self:registerItem("bin_weapon", {bonuses = {attack = 1010}})
+    self:registerItem("sfb_key", {stock=1})
+
+    self.background_asset = Assets.getTexture("shopkeepers/jeku/shop_bg")
+    self.background_shader = love.graphics.newShader([[
+        extern number bg_sine;
+        extern number bg_mag;
+        extern number wave_height;
+        extern number sine_mul;
+        extern vec2 texsize;
+        vec4 effect( vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords )
+        {
+            number i = texture_coords.y * texsize.y;
+            number bg_minus = ((bg_mag * (i / wave_height)) * 1.3);
+            number wave_mag = max(0.0, bg_mag - bg_minus);
+            vec2 coords = vec2(max(0.0, min(1.0, texture_coords.x + (sine_mul * sin((i / 8.0) + (bg_sine / 30.0)) * wave_mag) / texsize.x)), max(0.0, min(1.0, texture_coords.y + 0.0)));
+            return Texel(texture, coords) * color;
+        }
+    ]])
+    self.animation_sine = 0
+
+    self.background = ""
+    self.shop_music = "exception"
+end
+
+function JekuShop:initJeku()
     self.encounter_text = "[emote:happy]* HE EH EH!! A PLAYER HAS FINALLY COME TO ME!!"
     self.shop_text = "[emote:playful]* Eh he eh..."
     self.leaving_text = "[emote:wink_tongueout]* Back to play again, hah?\nEh he! Good luck, luck."
@@ -43,39 +101,24 @@ function JekuShop:init()
     self.sell_options_text["armors"]  = "[emote:happy]I SELL MONEY!!"
     self.sell_options_text["storage"] = "[emote:happy]I SELL MONEY!!"
 
-    self:registerItem("healitem")
-    self:registerItem("makissyringe")
-    self:registerItem("bin_weapon", {bonuses = {attack = 1010}})
-    self:registerItem("sfb_key", {stock=1})
-
-    self:registerTalk("Who are you")
+    if Game:getFlag("meet_jeku_empt") and not self:getFlag("talk_came_back") and not Mod:fileExists("Roaming/frozen_heart/saves/checkpass1") then
+        self:registerTalk("Where were you")
+    else
+        self:registerTalk("Who are you")
+    end
     self:registerTalk("This store")
     if love.math.random(1, 100) == 69 then
         self:registerTalk("Flirt") -- :D
     else
         self:registerTalk("Threaten")
     end
-    self:registerTalk("The Key")
+    if Game:getFlag("meet_jeku_empt") and not self:getFlag("talk_came_back") and Mod:fileExists("Roaming/frozen_heart/saves/checkpass1") then
+        self:registerTalk("The fight")
+    else
+        self:registerTalk("The Key")
+    end
 
     self:registerTalkAfter("What is true?", 1)
-
-    self.background_asset = Assets.getTexture("shopkeepers/jeku/shop_bg")
-    self.background_shader = love.graphics.newShader([[
-        extern number bg_sine;
-        extern number bg_mag;
-        extern number wave_height;
-        extern number sine_mul;
-        extern vec2 texsize;
-        vec4 effect( vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords )
-        {
-            number i = texture_coords.y * texsize.y;
-            number bg_minus = ((bg_mag * (i / wave_height)) * 1.3);
-            number wave_mag = max(0.0, bg_mag - bg_minus);
-            vec2 coords = vec2(max(0.0, min(1.0, texture_coords.x + (sine_mul * sin((i / 8.0) + (bg_sine / 30.0)) * wave_mag) / texsize.x)), max(0.0, min(1.0, texture_coords.y + 0.0)));
-            return Texel(texture, coords) * color;
-        }
-    ]])
-    self.animation_sine = 0
 
     self.shopkeeper:setActor("jeku")
     self.shopkeeper:setScale(0.5)
@@ -83,9 +126,79 @@ function JekuShop:init()
     self.shopkeeper.slide = true
 
     self.voice = "jeku"
+end
 
-    self.background = ""
-    self.shop_music = "exception"
+function JekuShop:initEmpty()
+    self.encounter_text = "* There's no one here."
+    self.shop_text = "* ..."
+    self.buy_menu_text = "You look\nat the bubbles..."
+    self.buy_refuse_text = self.buy_menu_text
+    self.buy_text = "You took the item."
+    self.buy_storage_text = self.buy_text
+
+    self.menu_options[2] = {"Look", "LOOKAROUND"}
+    self.menu_options[4] = {"Leave", "LEAVING"}
+
+    self.bubbles = {
+        Sprite("ui/shop/bubble_item", 35, 137),
+        Sprite("ui/shop/bubble_ouchie", 145, 44),
+        Sprite("ui/shop/bubble_binary", 399, 78),
+        Sprite("ui/shop/bubble_key", 522, 127)
+    }
+
+    self.bubbles_pos = {
+        MAINMENU = {
+            {35, 137},
+            {145, 44},
+            {399, 78},
+            {522, 127}
+        },
+        BUYMENU = {
+            {20, 142},
+            {100, 34},
+            {273, 32},
+            {336, 124}
+        }
+    }
+
+    self.bubbles_state = "MAINMENU"
+
+    self.bubbles_y = {
+        self.bubbles_pos[self.bubbles_state][1][2],
+        self.bubbles_pos[self.bubbles_state][2][2],
+        self.bubbles_pos[self.bubbles_state][3][2],
+        self.bubbles_pos[self.bubbles_state][4][2],
+    }
+end
+
+function JekuShop:onEnter()
+    super:onEnter(self)
+    if self.empty then
+        Game.shop.music:setPitch(0.03)
+
+        for i,b in ipairs(self.bubbles) do
+            Game.shop:addChild(b)
+            b:setScale(3)
+        end
+        if self.items[4].options["stock"] and self.items[4].options["stock"] <= 0 then
+            self.bubbles[4].visible = false
+        end
+    end
+end
+
+function JekuShop:update()
+    super:update(self)
+    if self.empty then
+        self.bubbles[1].y = self.bubbles_y[1] + math.sin(Kristal.getTime()*2)*10
+        self.bubbles[2].y = self.bubbles_y[2] + math.sin(Kristal.getTime()*4)*7
+        self.bubbles[3].y = self.bubbles_y[3] + math.sin(Kristal.getTime()*5)*3
+        self.bubbles[4].y = self.bubbles_y[4] + math.sin(Kristal.getTime()*3)*20
+
+        for i,bubble in ipairs(self.bubbles) do
+            bubble.x = Utils.approach(bubble.x, self.bubbles_pos[self.bubbles_state][i][1], 6 * DTMULT)
+            self.bubbles_y[i] = Utils.approach(self.bubbles_y[i], self.bubbles_pos[self.bubbles_state][i][2], 6 * DTMULT)
+        end
+    end
 end
 
 function JekuShop:drawBackground()
@@ -212,28 +325,151 @@ function JekuShop:startTalk(talk)
             "[emote:wink]* The game is pretty unstable so be aware.[wait:5] But if you succeed...[wait:3] Eh he eh...",
             "[emote:wink_tongueout]* Maybe her skies will be forever blue again."
         })
+    elseif talk == "The fight" then
+        self:replaceTalk("The Key", 4, COLORS.white)
+        self:setFlag("talk_came_back", true)
+        self:startDialogue({
+            "[emote:happy]* RIGHT!![wait:5] Right![wait:5] The fight!",
+            "[emote:happy]*[speed:0.1] ...[wait:10][speed:1][emote:playful]What fight?",
+            "[emote:wink_tongueout]* HE EH HE!![wait:5] Sorry, sorry![wait:5] How can I know about [color:yellow]something that doesn't exist yet[color:reset],[wait:2] right?",
+            "[emote:crazy]* Truly absurb!![wait:5] Way more than me knowing that you talked to the me in another world.",
+        })
+    elseif talk == "Where were you" then
+        self:replaceTalk("The Key", 4, COLORS.white)
+        self:setFlag("talk_came_back", true)
+        self:startDialogue({
+            "[emote:happy]* Who??[wait:5] Me??[wait:5]\n[emote:crazy]* I HAVE NO IDEA WHAT YOU ARE TALKING ABOUT!!",
+            "[emote:wink_tongueout]* Why should I tell you where I was when you didn't even find me!",
+            "[emote:side]* Hmm...[wait:5] Well perhaps I shouldn't have hid myself in a default mod...",
+            "[emote:happy]* Do you even know how to use a console?"
+        })
     end
 end
 
 function JekuShop:onStateChange(old, new)
     super.onStateChange(self, old, new)
-    if old == "DIALOGUE" and new == "TALKMENU" then
-        if self:getFlag("threaten_jeku") == 6 then
-            local succ, err = love.filesystem.write("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id, "1")
-            if not succ then
-                print("Writing error: "..err)
-            end
-            self:remove()
-            Game.world:remove()
-            Game.state = "GAMEOVER"
-            Kristal.hideBorder(0)
-            self:setFlag("threaten_jeku", 10)
-            Kristal.callEvent("completeAchievement", "jekukilled")
-            Game.stage:addChild(GameOver(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "EH HE EH HE!![wait:5]\nHAPPY NOW??"))
-            return
+    if self.empty then
+        if self.bubbles_pos[new] then
+            self.bubbles_state = new
         end
-        if not self.music:isPlaying() then
-            self.music:resume()
+
+        if new == "TALKMENU" then
+            message = love.math.random(1, 100)
+            if message >= 35 then
+                self:startDialogue("* Who are you talking to?", function() self:setState("MAINMENU") return true end)
+            elseif message >= 5 then
+                self:startDialogue("* Don't be so silly!", function() self:setState("MAINMENU") return true end)
+            else
+                self:startDialogue("* You are now talking with the\n\n             equator", function() self:setState("MAINMENU") return true end)
+            end
+        elseif new == "LOOKAROUND" then
+            self:startDialogue({
+            "* (You look around the place.)",
+            "* (You never realized that it never had any walls or ceilling...[wait:5] Neither a floor,[wait:2] for that matter.)",
+            "* (And whatever's in the background,[wait:2] you really don't feel like approaching it.)",
+            "* (But you see those weird bubbles around you,[wait:2] each containing an item.)",
+            Game:getFlag("meet_jeku") and "* (Those are the items Jeku used to sell.)" or "* (Maybe you can do something with them?)"
+            }, function() self:setState("MAINMENU") return true end)
+        end
+    else
+        if old == "DIALOGUE" and new == "TALKMENU" then
+            if self:getFlag("threaten_jeku") == 6 then
+                local succ, err = love.filesystem.write("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id, "1")
+                if not succ then
+                    print("Writing error: "..err)
+                end
+                self:remove()
+                Game.world:remove()
+                Game.state = "GAMEOVER"
+                Kristal.hideBorder(0)
+                self:setFlag("threaten_jeku", 10)
+                Kristal.callEvent("completeAchievement", "jekukilled")
+                Game.stage:addChild(GameOver(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, "EH HE EH HE!![wait:5]\nHAPPY NOW??"))
+                return
+            end
+            if not self.music:isPlaying() then
+                self.music:resume()
+            end
+        end
+    end
+end
+
+function JekuShop:buyItem(current_item)
+    if not self.empty or (self.empty and self:getFlag("empty_dial_buy")) then
+        super:buyItem(self, current_item)
+    else
+        if (current_item.options["price"] or 0) > self:getMoney() then
+            self:startDialogue({
+                "* (You raised you hand to the bubble and try to take the item inside of it.)",
+                "* (Unsurprisingly, your hand can't enter the bubble.)",
+                "* (You thought about taking the bubble with you but it wouldn't have any use at all.)"
+            }, function()
+                self:setState("BUYMENU", "DIALOGUE")
+                self:setRightText(self.buy_too_expensive_text)
+                return true
+            end)
+        else
+
+            local new_item = Registry.createItem(current_item.item.id)
+            new_item:load(current_item.item:save())
+
+            if Game.inventory:addItem(new_item) then
+                self:removeMoney(current_item.options["price"] or 0)
+
+                -- Decrement the stock
+                if current_item.options["stock"] then
+                    current_item.options["stock"] = current_item.options["stock"] - 1
+                    self:setFlag(current_item.options["flag"], current_item.options["stock"])
+                end
+
+                self:startDialogue({
+                    "* (You raised your hand to the bubble and try to take the item inside of it.)",
+                    "* (Unsurprisingly,[wait:2] your hand can't enter the bubble.)",
+                    "* (You decide to take "..(current_item.options["price"] or 0).." D$ out of your pocket and try again,[wait:2] this time with the money in your hand.",
+                    "* (Your hand succesfully enter the bubble.)",
+                    "* (You let go of the money and grab the item inside.[wait:5]\nThe money evaporates instantly as you take your hand out of the bubble.)",
+                    (current_item.options["stock"] and current_item.options["stock"] <= 0) and "* (You look at the bubble,[wait:2] but it seems that it has disappeared.)" or "* (You look at the bubble...[wait:3] It seems that a new item has appeared inside.)"
+                }, function()
+                    Assets.playSound("locker")
+                    self:setState("BUYMENU", "DIALOGUE")
+
+                    if self.items[4].options["stock"] and self.items[4].options["stock"] <= 0 then
+                        self.bubbles[4].visible = false
+                    end
+
+                    local name = current_item.options["name"]
+                    if name:find(" ") then
+                        name = {
+                            name:sub(1, name:find(" ")-1),
+                            name:sub(name:find(" ")+1),
+                        }
+                    end
+
+                    if type(name) == "string" then
+                        self:setRightText("You got\nthe "..name..".")
+                    else
+                        self:setRightText("You got\nthe "..name[1].."\n"..name[2]..".")
+                    end
+                    self:setFlag("empty_dial_buy", true)
+                    return true
+                end)
+            else
+                self:startDialogue({
+                    "* (You raised your hand to the bubble and try to take the item inside of it.)",
+                    "* (Unsurprisingly,[wait:2] your hand can't enter the bubble.)",
+                    "* (You decide to take "..(current_item.options["price"] or 0).." D$ out of your pocket and try again,[wait:2] this time with the money in your hand.",
+                    "* (Your hand succesfully enter the bubble.)",
+                    "* (You let go of the money and grab the item inside.[wait:5]\nThe money evaporates instantly as you take your hand out of the bubble.)",
+                    "* (But then,[wait:3] horror and damnation,[wait:2] you realize your inventory is full.)",
+                    "* (Feeling scammed,[wait:2] you throw the item in the void around you.)",
+                    "* [speed:0.1](...)",
+                    "* (And then you feel your money hole filling up.)"
+                }, function()
+                    self:setState("BUYMENU", "DIALOGUE")
+                    self:setRightText(self.buy_no_space_text)
+                    return true
+                end)
+            end
         end
     end
 end

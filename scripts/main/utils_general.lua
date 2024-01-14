@@ -41,3 +41,53 @@ function Mod:getPartyLove()
     end
     return sum_love/#Game.party
 end
+
+-- Check if a file exists in the AppData/Home folder.
+-- Can/Will be used to check if the player has played certain games like Undertale or Deltarune.
+--- @return boolean exists
+function Mod:fileExists(name)
+    local f
+    if love.system.getOS() == "Windows" then
+        f = io.open(string.gsub(os.getenv('UserProfile'), "\\", "/").."/AppData/"..name, "r")
+    elseif love.system.getOS() == "OS X" then
+        f = io.open(os.getenv('HOME').."/Library/"..name, "r")
+    elseif love.system.getOS() == "Linux" then
+        f = io.open(os.getenv('HOME')..name, "r")
+    end
+    return f ~= nil and io.close(f)
+end
+
+-- Directly check if a Kristal mod has any save files using Mod:fileExists()
+--- @return boolean exists
+function Mod:hasSaveFiles(id)
+    local paths = {
+        "LOVE/kristal/saves/", -- Source code version
+        "kristal/saves/",      -- Executable version
+        id.."/saves/",         -- Executable version but changed Kristal's id in conf.lua
+    }
+
+    for i,v in ipairs(paths) do
+        if love.system.getOS() == "Windows" then
+            paths[i] = "Roaming/"..v
+        elseif love.system.getOS() == "OS X" then
+            paths[i] = "Application Support/"..v
+        elseif love.system.getOS() == "Linux" then
+            paths[i] = "/.local/share/"..v
+        end
+    end
+
+    for i,path in ipairs(paths) do
+        for i=1,3 do
+            print(path..id.."/file_"..i..".json")
+            if Mod:fileExists(path..id.."/file_"..i..".json") then
+                return true
+            end
+        end
+
+        if Mod:fileExists(path..id.."/file_wii.json") then
+            return true
+        end
+    end
+
+    return false
+end
