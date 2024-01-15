@@ -361,6 +361,7 @@ function Mod:initializeImportantFlags(new_file)
         },
         -- Use "KR_" as a prefix to check for a Kristal Mod instead
         KR_frozen_heart = {received = false, item_id = "angelring"},
+        KR_wii_bios = {received = false, item_id = "wiimote"},
         ["KR_acj_deoxynn/act1"] = {name = "Deoxynn Act 1", received = false, item_id = "victory_bell"}
     }
     if not Game:getFlag("pc_gifts_data") then
