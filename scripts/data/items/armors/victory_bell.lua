@@ -16,7 +16,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "Heals you 5 HP after battle (for the most part)."
+    self.description = "Heals you 20 HP after battle (for the most part)."
 
     -- Shop buy price
     self.buy_price = 0
