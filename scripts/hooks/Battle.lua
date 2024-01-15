@@ -130,6 +130,9 @@ function Battle:onStateChange(old,new)
         for _,battler in ipairs(self.party) do
             for _,equipment in ipairs(battler.chara:getEquipment()) do
                 self.money = math.floor(equipment:applyMoneyBonus(self.money) or self.money)
+				if equipment.id == "victory_bell" then
+					battler:heal(20)
+				end
             end
         end
 
