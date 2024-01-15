@@ -49,7 +49,7 @@ return function(cutscene, event, chara)
 					for i,gift in ipairs(new_gifts) do
 						local kristal, start = gift:find("KR_")
 						local item = Registry.createItem(gifts[gift].item_id)
-						cutscene:text("[color:#000099]* [Seems like you have played [color:yellow]"..(kristal and Utils.titleCase(gift:sub(start+1):gsub("_", " ")) or gift).."[color:#000099]!]")
+						cutscene:text("[color:#000099]* [Seems like you have played [color:yellow]"..(gifts[gift].name and gifts[gift].name or (kristal and Utils.titleCase(gift:sub(start+1):gsub("_", " ")) or gift)).."[color:#000099]!]")
 						cutscene:text("[color:#000099]* [A gift is registered for playing this game![wait:3]\nHere's your [color:yellow]"..item:getName().."[color:#000099]!]")
 						if Game.inventory:addItem(item) then
 							if item.id == "egg" then

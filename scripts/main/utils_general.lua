@@ -46,7 +46,6 @@ end
 -- Can/Will be used to check if the player has played certain games like Undertale or Deltarune.
 --- @return boolean exists
 function Mod:fileExists(name)
-    local f
     local path = ""
     if love.system.getOS() == "Windows" then
         path = string.gsub(os.getenv('UserProfile'), "\\", "/").."/AppData/"..name
@@ -55,7 +54,7 @@ function Mod:fileExists(name)
     elseif love.system.getOS() == "Linux" then
         path = os.getenv('HOME').."/"..name
     end
-    f = io.open(path, "r")
+    local f = io.open(path, "r")
     return f ~= nil and io.close(f)
 end
 
