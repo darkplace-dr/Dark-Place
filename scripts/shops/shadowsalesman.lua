@@ -25,15 +25,15 @@ function ShadowShop:init()
     -- Shown when you're in the SELL menu
     self.sell_menu_text = "[emote:idle]Sure, you can sell me your crap."
     -- Shown when you try to sell an empty spot
-    self.sell_nothing_text = "[emote:idle]I don't have time for magic acts, kid."
+    self.sell_nothing_text = "[emote:annoyed]I don't have time for magic acts, kid."
     -- Shown when you're about to sell something.
-    self.sell_confirmation_text = "[emote:idle]I'll take that\noffa ya for \n%s ."
+    self.sell_confirmation_text = "I'll take that\noffa ya for \n%s ."
     -- Shown when you refuse to sell something
     self.sell_refuse_text = "[emote:annoyed]I don't want whatever the hell that is."
     -- Shown when you sell something
-    self.sell_text = "[emote:idle]Thanks...\nI guess."
+    self.sell_text = "[emote:idle]Much obliged, kiddo."
     -- Shown when you have nothing in a storage
-    self.sell_no_storage_text = "[emote:idle]."
+    self.sell_no_storage_text = "[emote:annoyed]I don't have time for magic acts, kid."
     -- Shown when you enter the talk menu.
     self.talk_text = "[emote:idle]Got nothin' better to do anyways..."
 
