@@ -33,8 +33,14 @@ return function(cutscene, event, chara)
 					local kristal, start = game:find("KR_")
 					if kristal then
 						if not data.received then
-							if Mod:hasSaveFiles(game:sub(start+1)) then
-								table.insert(new_gifts, game)
+							if game == "KR_wii_bios" then
+								if Mod:hasWiiBIOS() then
+									table.insert(new_gifts, game)
+								end
+							else
+								if Mod:hasSaveFiles(game:sub(start+1)) then
+									table.insert(new_gifts, game)
+								end
 							end
 						end
 					else
