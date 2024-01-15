@@ -39,8 +39,17 @@ return function(cutscene, event, chara)
 						end
 					else
 						if not data.received then
-							if Mod:fileExists((data.prefix_os[love.system.getOS():gsub(" ", "_")] or "")..data.file) then
-								table.insert(new_gifts, game)
+							if type(data.file) == "string" then
+								if Mod:fileExists((data.prefix_os[love.system.getOS():gsub(" ", "_")] or "")..data.file) then
+									table.insert(new_gifts, game)
+								end
+							elseif type(data.file) == "table" then
+								for i,file in ipairs(data.file) do
+									if Mod:fileExists((data.prefix_os[love.system.getOS():gsub(" ", "_")] or "")..file) then
+										table.insert(new_gifts, game)
+										break
+									end
+								end
 							end
 						end
 					end

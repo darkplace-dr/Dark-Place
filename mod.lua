@@ -354,8 +354,8 @@ function Mod:initializeImportantFlags(new_file)
         },
         UTY = {
             name = "UNDERTALE YELLOW",
-            file = "/Save.sav",
-            recieved = false,
+            file = {"/Save.sav", "/Save02.sav", "/Controls.sav", "/tempsave.sav"},
+            received = false,
             item_id = "wildrevolver",
             prefix_os = {Windows = "Local/Undertale_Yellow", Linux = ".config/Undertale_Yellow"}
         },
