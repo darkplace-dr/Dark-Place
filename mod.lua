@@ -360,7 +360,8 @@ function Mod:initializeImportantFlags(new_file)
             prefix_os = {Windows = "Local/Undertale_Yellow", Linux = ".config/Undertale_Yellow"}
         },
         -- Use "KR_" as a prefix to check for a Kristal Mod instead
-        KR_frozen_heart = {received = false, item_id = "angelring"}
+        KR_frozen_heart = {received = false, item_id = "angelring"},
+        ["KR_acj_deoxynn/act1"] = {name = "Deoxynn Act 1", received = false, item_id = "victory_bell"}
     }
     if not Game:getFlag("pc_gifts_data") then
         if not new_file then
