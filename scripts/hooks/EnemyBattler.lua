@@ -141,4 +141,10 @@ function EnemyBattler:defeat(reason, violent)
     Game.battle:removeEnemy(self, true)
 end
 
+function EnemyBattler:selectWave()
+    if not self.wii_grab then
+		return super:selectWave(self)
+	end
+end
+
 return EnemyBattler

@@ -363,8 +363,12 @@ function Battle:onStateChange(old,new)
     if old == "INTRO" then
         self.music.basepitch = self.music.pitch
     end
-
-
+	
+	if new == "ACTIONSELECT" then
+		for _,battler in ipairs(self.enemies) do
+			battler.wii_grab = false
+		end
+	end
 
     if self.discoball then
         -- For some reason this happens twice
