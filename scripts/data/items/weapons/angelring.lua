@@ -63,6 +63,7 @@ function item:init()
             kangel = "DON'T EAT THAT!!",
             dess = "lol",
         },
+        brandon = "A ring... for a ring?",
 
         noelle = "It's beautiful...!",
         kangel = "It goes with my outfit!"

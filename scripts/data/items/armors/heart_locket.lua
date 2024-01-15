@@ -46,7 +46,8 @@ function item:init()
             susie = "They look like Kris...",
             noelle = "And Asriel..."
         },
-        mario = "Bleh!"
+        mario = "Bleh!",
+        brandon = "Oh god why is it beating."
     }
 
     self.light_item = "ut_armors/heart_locket"

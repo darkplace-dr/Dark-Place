@@ -353,6 +353,12 @@ function Mod:initializeImportantFlags(new_file)
             item_id = "egg",
             prefix_os = {Windows = "Local/DELTARUNE", Linux = ".config/DELTARUNE", OS_X = "Application Support/com.tobyfox.deltarune"}
         },
+        UTY = {
+            file = "/Save.sav",
+            recieved = false,
+            item_id = "wildrevolver",
+            prefix_os = {Windows = "Local/Undertale_Yellow", Linux = ".config/Undertale_Yellow"}
+        },
         -- Use "KR_" as a prefix to check for a Kristal Mod instead
         KR_frozen_heart = {received = false, item_id = "angelring"}
     }
