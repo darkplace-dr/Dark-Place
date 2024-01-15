@@ -15,7 +15,7 @@ function JekuShop:init()
 
     local prefix = "Roaming"
     if love.system.getOS() == "Linux" then
-        prefix = "/.local/share"
+        prefix = ".local/share"
     elseif love.system.getOS() == "OS X" then
         prefix = "Application Support"
     end
