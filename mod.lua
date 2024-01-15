@@ -340,7 +340,6 @@ function Mod:initializeImportantFlags(new_file)
 
     -- Add here as needed
     local gifts_data = {
-        -- file to check for, got it or not, item id, path prefix
         UNDERTALE = {
             file = "/undertale.ini",
             received = false,
@@ -354,6 +353,7 @@ function Mod:initializeImportantFlags(new_file)
             prefix_os = {Windows = "Local/DELTARUNE", Linux = ".config/DELTARUNE", OS_X = "Application Support/com.tobyfox.deltarune"}
         },
         UTY = {
+            name = "UNDERTALE YELLOW",
             file = "/Save.sav",
             recieved = false,
             item_id = "wildrevolver",
