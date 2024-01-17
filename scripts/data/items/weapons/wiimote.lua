@@ -72,4 +72,9 @@ function item:onEquip(character, replacement)
     return true
 end
 
+function item:onUnequip(character, replacement)
+    character:removeSpell("grab")
+    return true
+end
+
 return item
