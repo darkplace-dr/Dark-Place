@@ -64,8 +64,7 @@ return function(cutscene)
 
     local v_susie = "[spacing:1.75][voice:susie]"
 
-    if not used_fountain_once then
-        local look_str = "[func:look,susie,right]"
+    if not used_fountain_once and susie then
         showDialog({
             v_susie.."So here's the fountain of this place...",
             v_susie.."It feels... so different from the previous ones.",
@@ -73,17 +72,19 @@ return function(cutscene)
             v_susie.."Is it what [color:blue]PURE DARKNESS[color:reset] is like?",
             v_susie.."...",
             v_susie.."Something tells me we might not be able to seal it.",
-            v_susie..look_str..
+            v_susie.."[func:look,susie,right]"..
                 (leader.id == "kris"
                     and "But I guess we can still try.\nRight, Kris?"
                     or string.format("Actually, %s... Can you even seal one?", leader.actor.name))
         })
     else
-        showDialog("[noskip:false][speed:1](Do you want to return to the Light World?)")
+        showDialog((used_fountain_once and "[noskip:false][speed:1]" or "[speed:0.8]").."(Do you want to return to the Light World?)")
     end
 
     local seal = cutscene:choicer({"Yes", "No"})
-    cutscene:look(susie, "up")
+    if susie then
+        cutscene:look(susie, "up")
+    end
 
     if seal == 1 then
         Game:setFlag("used_fountain_once", true)
@@ -162,10 +163,12 @@ return function(cutscene)
 
         if not used_fountain_once then
             cutscene:wait(10/30)
-            showDialog({
-                v_susie.."It may be better this way.",
-                v_susie.."After all, our adventures here aren't over yet."
-            })
+            if susie then
+                showDialog({
+                    v_susie.."It may be better this way.",
+                    v_susie.."After all, our adventures here aren't over yet."
+                })
+            end
         end
 
         local walk_down_wait
