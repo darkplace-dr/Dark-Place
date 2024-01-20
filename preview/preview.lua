@@ -1,26 +1,18 @@
 local preview = {}
 
 ---@class DPPreview.MiniSound : Class
----@field cond fun():boolean
 local MiniSound = Class()
-function MiniSound:init(file, cond)
-    self.file = file
+function MiniSound:init(file, path, cond)
+    self.file, self.cond = (path and path.."/" or "")..file, cond
     self.started = false
-    self.cond = cond
-end
-function MiniSound:initStream()
-    if self.stream then return end
-    self.stream = love.audio.newSource(self.file, "stream")
 end
 function MiniSound:play()
-    self:initStream()
+    if not self.stream then self.stream = love.audio.newSource(self.file, "stream") end
     self.stream:play()
     self.started = true
 end
 function MiniSound:stop()
-    if self.stream then
-        self.stream:stop()
-    end
+    if self.stream then self.stream:stop() end
     self.started = false
 end
 function MiniSound:setCondition(cond)
@@ -50,9 +42,10 @@ function preview:init(mod, button, menu)
     self.swellow = nil
     self.swellow_timer = 0
 
-    self.sounds = {}
-    self.sounds.paul = MiniSound(self.base_path.."/paul.ogg", function() return self:isNameChosen("PAUL") end)
-    self.sounds.croak = MiniSound(self.base_path.."/croakreverb.ogg", function() return self:isNameChosen("YOU") end)
+    self.sounds = {
+        paul = MiniSound("paul.ogg", self.base_path, function() return self:isNameChosen("PAUL") end),
+        croak = MiniSound("croakreverb.ogg", self.base_path, function() return self:isNameChosen("YOU") end)
+    }
 end
 
 function preview:update()
@@ -115,9 +108,6 @@ function preview:draw()
         love.graphics.draw(particle.type ~= "dess" and self.particle_tex or self.particle_tex_dess, particle.x, particle.y, particle.radius)
     end
 
-    --[[love.graphics.setColor(1, 1, 1, 0.1)
-    love.graphics.setFont(Assets.getFont("smallnumbers"))
-    love.graphics.print(tostring(math.floor(self.particle_timer_dess/60*100)/100), 10, 10)]]
     love.graphics.setColor(1, 1, 1)
 
     if self:isNameChosen("SWELLOW", true) and self.swellow then
