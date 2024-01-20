@@ -248,4 +248,10 @@ function DogCheck:dogcheck2()
     end)
 end
 
+function DogCheck:onRemove(_)
+    if self.variant == "banned2" then
+        Mod:resetScreenResolution()
+    end
+end
+
 return DogCheck
