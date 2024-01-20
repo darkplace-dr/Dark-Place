@@ -1,7 +1,10 @@
+---@class AngryBirds : MinigameHandler
 local AngryBirds, super = Class("MinigameHandler")
 
 function AngryBirds:init()
     super.init(self)
+
+    self.name = "Angry Birds"
 
     self.state = "TRANSITION" -- "TRANSITION", "SPLASHES", "MAINMENU", "LEVELSELECTION"
 	Assets.playSound("minigames/ab/misc/star_collect")
@@ -250,11 +253,11 @@ function AngryBirds:drawSplashes()
 end
 
 function AngryBirds:drawMenu()
-    local r = 255/255
-    local g = 238/255
-    local b = 159/255
-    love.graphics.setBackgroundColor(r, g, b)
+    love.graphics.setColor(255/255, 238/255, 159/255)
+    love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+    love.graphics.setColor(COLORS.white)
 
+    love.graphics.setBlendMode("alpha")
     Draw.draw(Assets.getTexture("minigames/ab/menu/bg_menu_top"), 0, 0, 0, 1, 1)
 
     love.graphics.setBlendMode("add")
@@ -271,11 +274,13 @@ function AngryBirds:drawMenu()
 
     Draw.draw(Assets.getTexture("minigames/ab/menu/bg_sun"), math.floor(SCREEN_WIDTH / 2), math.floor((SCREEN_HEIGHT - 50)), 0, 1, 1, 197, 229)
 	
+    love.graphics.setBlendMode("alpha", "premultiplied")
     Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_5"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 10) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 172)
     Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_4"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 15) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 158)
     Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_3"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 22) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 130)
     Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_2"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 33) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 130)
     Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_1"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 50) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 79)
+    love.graphics.setBlendMode("alpha")
 end
 
 function AngryBirds:draw()

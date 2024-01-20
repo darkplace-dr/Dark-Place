@@ -9,11 +9,10 @@ function preview:init(mod, button, menu)
     self.base_path = mod.path.."/preview"
 
     self.particles = {}
-    self.particles2 = {}
     self.particle_timer = 0
-    self.particle2_timer = 0
+    self.particle_timer_dess = Utils.random(1*2.2, 6.9*4*20*3, 0.25)
     self.particle_tex = love.graphics.newImage(self.base_path.."/star.png")
-    self.particle2_heart = love.graphics.newImage(self.base_path.."/dess.png")
+    self.particle_tex_dess = love.graphics.newImage(self.base_path.."/dess.png")
 
     self.swellow = nil
     self.swellow_timer = 0
@@ -29,7 +28,7 @@ function preview:update()
     local to_remove = {}
     for _,particle in ipairs(self.particles) do
         particle.radius = particle.radius - DT
-        particle.y = particle.y - particle.speed * (DTMULT * 2)
+        particle.y = particle.y - particle.speed * (DTMULT * (particle.type ~= "dess" and 2 or 6))
 
         if particle.radius <= 0 then
             table.insert(to_remove, particle)
@@ -45,33 +44,20 @@ function preview:update()
         self.particle_timer = 0
         local radius = Utils.random(12)
         table.insert(self.particles, {
+            type = "star",
             radius = radius, max_radius = radius,
             x = Utils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + radius,
             speed = Utils.random(0.5, 1)
         })
     end
 
-    for _,particle2 in ipairs(self.particles2) do
-        particle2.radius = particle2.radius - DT
-        particle2.y = particle2.y - particle2.speed * (DTMULT * 6)
-
-        if particle2.radius <= 0 then
-            table.insert(to_remove, particle2)
-        end
-    end
-
-    for _,particle2 in ipairs(to_remove) do
-        Utils.removeFromTable(self.particles2, particle2)
-    end
-
-    self.particle2_timer = self.particle2_timer + DT
-    local timeheart = Utils.random(1, 200000)
-    if self.particle2_timer >= timeheart then
-        self.particle2_timer = 0
-        local radius = 12
-        table.insert(self.particles2, {
-            radius = radius, max_radius = radius,
-            x = Utils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + radius,
+    self.particle_timer_dess = Utils.approach(self.particle_timer_dess, 0, DT)
+    if self.particle_timer_dess <= 0 then
+        self.particle_timer_dess = Utils.random(1*2.2, 6.9*4*20*3, 0.25)
+        table.insert(self.particles, {
+            type = "dess",
+            radius = 12, max_radius = 12,
+            x = Utils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + 12,
             speed = Utils.random(0.5, 1)
         })
     end
@@ -123,15 +109,12 @@ function preview:draw()
         local alpha = (particle.radius / particle.max_radius) * self.fade
 
         love.graphics.setColor(1, 1, 1, alpha)
-        love.graphics.draw(self.particle_tex, particle.x, particle.y, particle.radius)
+        love.graphics.draw(particle.type ~= "dess" and self.particle_tex or self.particle_tex_dess, particle.x, particle.y, particle.radius)
     end
 
-    for _,particle2 in ipairs(self.particles2) do
-        local alpha = (particle2.radius / particle2.max_radius) * self.fade
-
-        love.graphics.setColor(1, 1, 1, alpha)
-        love.graphics.draw(self.particle2_heart, particle2.x, particle2.y, particle2.radius)
-    end
+    --[[love.graphics.setColor(1, 1, 1, 0.1)
+    love.graphics.setFont(Assets.getFont("smallnumbers"))
+    love.graphics.print(tostring(math.floor(self.particle_timer_dess/60*100)/100), 10, 10)]]
     love.graphics.setColor(1, 1, 1)
 
     if self:isNameChosen("SWELLOW", true) and self.swellow then

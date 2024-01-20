@@ -25,69 +25,12 @@ function Mod:init()
 
     self.voice_timer = 0
 
-    Game._tempdogcheckresolution = false
+    self.dogcheck_banned2_window_hacks = false
 
     self:initTaunt()
     self:initBattleTaunt()
     Speen:init()
-
-	Utils.hook(Game, "getActiveMusic",
-        ---@overload fun(orig:function, self:Game) : Music
-        function(orig, self)
-            if self.state == "OVERWORLD" then
-                return self.world.music
-            elseif self.state == "BATTLE" then
-                return self.battle.music
-            elseif self.state == "MINIGAME" then
-                return self.minigame.music
-            elseif self.state == "SHOP" then
-                return self.shop.music
-            elseif self.state == "GAMEOVER" then
-                return self.gameover.music
-            else
-                return self.music
-            end
-        end
-    )
-
-	Utils.hook(Game, "onKeyPressed", function(orig, self, key, is_repeat)
-		if Kristal.callEvent("onKeyPressed", key, is_repeat) then
-			-- Mod:onKeyPressed returned true, cancel default behaviour
-			return
-		end
-
-		if is_repeat and not self.key_repeat then
-			-- Ignore key repeat unless enabled by a game state
-			return
-		end
-
-		if self.state == "BATTLE" then
-			if self.battle then
-				self.battle:onKeyPressed(key)
-			end
-		elseif self.state == "MINIGAME" then
-			if self.minigame then
-				self.minigame:onKeyPressed(key)
-			end
-		elseif self.state == "OVERWORLD" then
-			if self.world then
-				self.world:onKeyPressed(key)
-			end
-		elseif self.state == "SHOP" then
-			if self.shop then
-				self.shop:onKeyPressed(key, is_repeat)
-			end
-		elseif self.state == "GAMEOVER" then
-			if self.gameover then
-				self.gameover:onKeyPressed(key)
-			end
-		end
-	end)
-
-    Utils.hook(Actor, "init", function(orig, self)
-        orig(self)
-        self.taunt_sprites = {}
-    end)
+    self:initMinigameHooks()
 end
 
 function Mod:postInit(new_file)
@@ -394,12 +337,15 @@ function Mod:initializeEvents()
 end
 
 function Mod:unload()
-    if Game._tempdogcheckresolution == true then
-        love.window.setMode((SCREEN_WIDTH*Kristal.Config["windowScale"]), (SCREEN_HEIGHT*Kristal.Config["windowScale"]))
-    end
     if TextInput.active and not Kristal.Console.is_open then
         Log:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
+    end
+
+    if self.dogcheck_banned2_window_hacks then
+        self.dogcheck_banned2_window_hacks = false
+        Kristal.Config["borders"] = self.dogcheck_banned2_orig_banner
+        Kristal.resetWindow()
     end
 end
 

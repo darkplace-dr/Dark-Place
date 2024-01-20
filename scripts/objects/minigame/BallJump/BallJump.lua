@@ -1,8 +1,11 @@
+---@class BallJump : MinigameHandler
 local BallJump, super = Class("MinigameHandler")
 
 function BallJump:init()
     super.init(self)
-	
+
+	self.name = "Ball Jump"
+
 	self.state = "TRANSITION" -- TRANSITION, INTRO, MAIN, DEAD, WIN, TRANSITIONOUT1, TRANSITIONOUT2
 	Assets.playSound("minigames/ball_jump/transition")
 	
@@ -57,7 +60,7 @@ function BallJump:init()
 end
 
 function BallJump:postInit()
-	super.postInit(self)
+	self:pauseWorldMusic()
 end
 
 function BallJump:update()
@@ -119,12 +122,8 @@ function BallJump:update()
 		self.bg.width = SCREEN_WIDTH * (1 - self.state_timer)
 		self.bg.height = SCREEN_HEIGHT * (1 - self.state_timer)
 		if self.state_timer > 1 then
-			if self.resume_world_music then
-				Game.world.music:resume()
-			end
-			Game.state = "OVERWORLD"
-			self:remove()
-			Game.minigame = nil
+			self:endMinigame()
+			return
 		end
 	end
     super.update(self)
@@ -228,6 +227,7 @@ function BallJump:draw()
 end
 
 function BallJump:onKeyPressed(key)
+	super.onKeyPressed(self, key)
 	if self.state == "MAIN" then
 		if Input.pressed("confirm") then
 			self.player:handleJump()
@@ -253,6 +253,7 @@ end
 
 function BallJump:onStateChange(state)
 	if state == "INTRO" then
+		self:changeWindowTitle()
 		self.music:play("minigames/ball_jump/ball_jump")
 	elseif state == "WIN" then
 		self.player.on_ground = true
@@ -275,6 +276,8 @@ function BallJump:onStateChange(state)
 		self.player.sprite:setSprite("minigames/ball_jump/player_hurt")
 	elseif state == "TRANSITIONOUT1" or state == "TRANSITIONOUT3" then
 		self.music:fade(0,1)
+	elseif state == "TRANSITIONOUT2" then
+		self:preEndCleanup()
 	end
 end
 
@@ -290,17 +293,12 @@ function BallJump:addCountedEntity(entity)
 end
 
 function BallJump:endMinigame()
-	for k,v in pairs(self.entities) do
+	for _,v in pairs(self.entities) do
 		v:remove()
 	end
 	self.player:remove()
 	self.ground:remove()
-	if self.resume_world_music then
-		Game.world.music:resume()
-	end
-	Game.state = "OVERWORLD"
-	self:remove()
-	Game.minigame = nil
+	super.endMinigame(self)
 end
 
 return BallJump

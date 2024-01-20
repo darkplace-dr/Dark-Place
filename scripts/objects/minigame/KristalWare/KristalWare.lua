@@ -1,8 +1,11 @@
+---@class KristalWare : MinigameHandler
 local KristalWare, super = Class("MinigameHandler")
 
 function KristalWare:init()
     super.init(self)
-	
+
+    self.name = "KristalWare"
+
     self.state = "TRANSITION" -- "TRANSITION", "TITLE", "PREMICROGAME", "MICROGAME", "GAMEOVER", "EXIT"
 	Assets.playSound("kristal_intro")
 
@@ -49,12 +52,8 @@ function KristalWare:update()
     if self.state == "EXIT" then
         self.fade.alpha = self.state_timer/2
 		if self.state_timer > 5 then
-			if self.resume_world_music then
-				Game.world.music:resume()
-			end
-			Game.state = "OVERWORLD"
-			self:remove()
-			Game.minigame = nil
+			self:endMinigame()
+            return
 		end
     end
     super.update(self)
@@ -73,6 +72,7 @@ function KristalWare:onStateChange(state)
 end
 
 function KristalWare:onKeyPressed(key)
+	super.onKeyPressed(self, key)
     if self.state == "TITLE" then
         if key == "x" then
             Assets.stopAndPlaySound("ui_select")

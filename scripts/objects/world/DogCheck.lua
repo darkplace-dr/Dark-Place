@@ -1,6 +1,6 @@
 local DogCheck, super = Class(Rectangle) -- lmao
 
-function DogCheck:init()
+function DogCheck:init(variant)
     super.init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 	self.color = COLORS.black
     self.parallax_x = 0
@@ -11,18 +11,36 @@ function DogCheck:init()
     ---@type ""|"IDLE"|"EXITING"
     self.state = ""
 
+    if variant then self.variant = variant end
+
     self.dog = nil
     self.song = nil
     self.song_pitch = 1
 
     self.timer = Timer()
     self:addChild(self.timer)
-    -- Undertale does this
-    self.start_wait_handle = self.timer:after(5/30, function() self:start() end)
 
     self.summer_siner = 0
     self.stretch_ex_start = 0
     self.stretch_ex_timer = 0
+end
+
+function DogCheck:onAdd(parent)
+    if parent:includes(World) then
+        self.world = parent
+    elseif parent.world then
+        self.world = parent.world
+    end
+    if parent.music then
+        self.music = parent.music
+    elseif self.world and self.world.music then
+        self.music = self.world.music
+    elseif Game.music then
+        self.music = Game.music
+    end
+
+    -- Undertale does this
+    self.start_wait_handle = self.timer:after(5/30, function() self:start() end)
 end
 
 function DogCheck:start()
@@ -36,6 +54,10 @@ function DogCheck:start()
 
         self.dog = Sprite(sprite, self.width / 2 + x_off, self.height / 2 + y_off)
         self.dog:setOrigin(0.5, 0.5)
+        if scale == "fitscreen" then
+            scale = math.min(self.width / self.dog.width, self.height / self.dog.height)
+            scale = math.floor(scale * 100) / 100
+        end
         self.dog:setScale(scale)
         self.dog:play(anim_speed, true)
         self:addChild(self.dog)
@@ -47,21 +69,25 @@ function DogCheck:start()
 
         self.song = path
         self.song_pitch = Utils.random(pitch_rand_min, pitch_rand_max)
-        Game.world.music:play(path, nil, self.song_pitch)
+        if self.music then
+            self.music:play(path, nil, self.song_pitch)
+        end
     end
 
-	local month = os.date("*t").month
-    local variant_choices = {"dance", "sleep", "maracas", "piano", "banned", "banned2", "chapter2"}
-    if month >= 3 and month <= 5 then
-        table.insert(variant_choices, "spring")
-    elseif month >= 6 and month <= 8 then
-        table.insert(variant_choices, "summer")
-    elseif month >= 9 and month <= 11 then
-        table.insert(variant_choices, "autumn")
-    elseif month == 12 and month <= 2 then
-        table.insert(variant_choices, "winter")
+    if not self.variant then
+        local month = os.date("*t").month
+        local variant_choices = {"dance", "sleep", "maracas", "piano", "banned", "banned2", "chapter2"}
+        if month >= 3 and month <= 5 then
+            table.insert(variant_choices, "spring")
+        elseif month >= 6 and month <= 8 then
+            table.insert(variant_choices, "summer")
+        elseif month >= 9 and month <= 11 then
+            table.insert(variant_choices, "autumn")
+        elseif month == 12 and month <= 2 then
+            table.insert(variant_choices, "winter")
+        end
+        self.variant = Utils.pick(variant_choices)
     end
-    self.variant = Utils.pick(variant_choices)
 
     local cust_sprites_base = "world/cutscenes/dogcheck"
 
@@ -97,20 +123,32 @@ function DogCheck:start()
         createDog(cust_sprites_base.."/banned", 1, 0, 0, 2)
         playSong("AUDIO_DEFEAT", 1.5)
     elseif self.variant == "banned2" then
-        createDog(cust_sprites_base.."/banned_b", 1, 0, 0, 1)
-        Game._tempdogcheckresolution = true
-        love.window.setMode(1280, 960)
-        Game.world.timer:after(1.25, function()
-            Game.world.music:play("mutation", 0)
-            Game.world.music:fade(0.85, 1.5)
-        end)
+        local window_scale_orig = Kristal.Config["windowScale"]
+        if window_scale_orig < 2 then
+            Mod.dogcheck_banned2_window_hacks = true
+            Kristal.Config["windowScale"] = 2
+        end
+        if Kristal.Config["borders"] ~= "off" then
+            Mod.dogcheck_banned2_window_hacks = true
+            Mod.dogcheck_banned2_orig_banner = Kristal.Config["borders"]
+            Kristal.Config["borders"] = "off"
+        end
+        if Mod.dogcheck_banned2_window_hacks then
+            Kristal.resetWindow()
+            Kristal.Config["windowScale"] = window_scale_orig
+        end
+
+        createDog(cust_sprites_base.."/banned_b", 1, 0, 0, "fitscreen")
+        if self.music then
+            self.timer:after(1.25, function()
+                self.music:play("mutation", 0)
+                self.music:fade(0.85, 1.5)
+            end)
+        end
     elseif self.variant == "chapter2" then
         createDog("misc/dog_sleep", 0.8, -960, -580)
         playSong("alarm_titlescreen", 1, 1)
-        self:dogcheck2()
-        Game.world.timer:every(17.5, function()
-            self:dogcheck2()
-        end)
+        self.timer:script(function(...) self:chapter2Script(...) end)
     end
 end
 
@@ -122,18 +160,18 @@ function DogCheck:update()
 
     if self.state == "" then return end
 
-    if self.state == "IDLE" and not Game.world:hasCutscene() --[[for zero WIP]] and not OVERLAY_OPEN
+    if self.state == "IDLE" and not self.world:hasCutscene() --[[for zero WIP]] and not OVERLAY_OPEN
         and Input.pressed("confirm")
     then
         self.state = "EXITING"
         Game.fader:fadeOut(nil, { speed = 0.5 })
-        Game.world.music:fade(0, 20/30)
-        Game.world.timer:after(1, function ()
+        if self.music then self.music:fade(0, 20/30) end
+        self.timer:after(1, function ()
+            self:remove()
             Game:returnToMenu()
         end)
     end
 
-    -- Do this every other frame
     if self.variant == "summer" then
         self.stretch_ex_start = self.stretch_ex_start + DTMULT
         if self.stretch_ex_start >= 240 then
@@ -163,6 +201,7 @@ end
 
 function DogCheck:draw()
     super.draw(self)
+
     -- Ported the sun out of boredom, uncomment this if you want. - Agent 7
     --[[
     if self.variant == "summer" then
@@ -172,72 +211,79 @@ function DogCheck:draw()
     --]]
 end
 
-function DogCheck:dogcheck2()
-    local dog1 = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280)
-    dog1.flip_x = true
-    dog1:setOrigin(0.5, 0.5)
-    dog1:setScale(2)
-    dog1:play(0.25, true)
-    self:addChild(dog1)
-    dog1.physics.speed = 10
-    Game.world.timer:script(function(wait)
-        wait(2.75)
-        dog1:remove()
-        local dog2 = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280)
-        dog2:setOrigin(0.5, 0.5)
-        dog2:setScale(2)
-        dog2:play(0.25, true)
-        self:addChild(dog2)
-        dog2.physics.speed = -10
-        wait(3)
-        dog2:remove()
-        local dog1 = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280)
-        dog1.flip_x = true
-        dog1:setOrigin(0.5, 0.5)
-        dog1:setScale(2)
-        dog1:play(0.25, true)
-        self:addChild(dog1)
-        dog1.physics.speed = 10
-        wait(2.75)
-        dog1:remove()
-        local dog2 = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280)
-        dog2:setOrigin(0.5, 0.5)
-        dog2:setScale(2)
-        dog2:play(0.25, true)
-        self:addChild(dog2)
-        dog2.physics.speed = -10
-        wait(3)
-        local dognum = love.math.random(4, 8)
-        local i = 0
-        while (i < dognum) do
-            local newdog = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280 + love.math.random(-80, 80))
-            newdog.flip_x = true
-            newdog.physics.speed = love.math.random(10, 16)
-            newdog:setOrigin(0.5, 0.5)
-            if i == (dognum - 1) then
-                newdog:setScale(2)
+function DogCheck:chapter2Script(wait)
+    local sprite = "world/cutscenes/dogcheck/dog_car"
+
+    local dog = Sprite(sprite, -40, 240)
+    dog:setScale(2)
+    dog.layer = 1
+    self:addChild(dog)
+
+    local function animateMainDog(speed, dont_reset)
+        if not dont_reset then
+            if speed > 0 then
+                dog.x = -40
+            else
+                dog.x = SCREEN_WIDTH
             end
-            newdog.physics.friction = love.math.random(0.01, -0.01)
-            newdog:play(((newdog.physics.speed / 4) * 0.25) + 0.25, true)
-            self:addChild(newdog)
-            i = i + 1
         end
-        wait(2.4)
-        local dognum2 = love.math.random(5, 12)
-        local i2 = 0
-        while (i2 < dognum2) do
-            local newdog = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280 + love.math.random(-80, 80))
-            newdog.physics.speed = love.math.random(-10, -16)
-            newdog:setOrigin(0.5, 0.5)
-            if i2 == (dognum2 - 1) then
-                newdog:setScale(2)
+        dog.flip_x = speed > 0
+        dog.physics.speed = speed
+        if not dont_reset then
+            dog:play(0.25, true)
+        end
+    end
+    local function makeSmallDogHorde(axis, num)
+        for _ = 1, num do
+            local small_dog = Sprite(sprite, 0, 240 + love.math.random(-80, 80))
+            if axis > 0 then
+                small_dog.x = -40
+            else
+                small_dog.x = SCREEN_WIDTH
             end
-            newdog.physics.friction = love.math.random(0.01, -0.01)
-            newdog:play(((newdog.physics.speed / 4) * 0.25) + 0.25, true)
-            self:addChild(newdog)
-            i2 = i2 + 1
+            small_dog.flip_x = axis > 0
+            small_dog.physics.speed = axis * love.math.random(10, 16)
+            small_dog.physics.friction = Utils.random(0.01, -0.01)
+            local anim_speed = (1 + (small_dog.physics.speed / 4)) * 0.25
+            small_dog:play(anim_speed, true)
+            -- auto-cleanup
+            ---@diagnostic disable-next-line: redefined-local
+            Utils.hook(small_dog, "update", function(orig, self, ...)
+                orig(self, ...)
+                if math.abs(self.x) > SCREEN_WIDTH + 3*TILE_WIDTH then
+                    self:remove()
+                end
+            end)
+            self:addChild(small_dog)
         end
-    end)
+    end
+
+    while true do
+        for _ = 1, 2 do
+            if dog.x < 0 then animateMainDog(10) end
+            wait(2.75)
+            animateMainDog(-10)
+            wait(3)
+        end
+
+        makeSmallDogHorde(1, love.math.random(4, 8))
+        animateMainDog(12)
+        wait(2.5)
+        makeSmallDogHorde(-1, love.math.random(5, 12))
+        animateMainDog(-12)
+        wait(2.5)
+
+        animateMainDog(8)
+        wait(1.03)
+    end
+end
+
+function DogCheck:onRemove()
+    if Mod.dogcheck_banned2_window_hacks then
+        Mod.dogcheck_banned2_window_hacks = false
+        Kristal.Config["borders"] = Mod.dogcheck_banned2_orig_banner
+        Kristal.resetWindow()
+    end
 end
 
 return DogCheck
