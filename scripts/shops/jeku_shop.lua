@@ -172,7 +172,7 @@ function JekuShop:initEmpty()
 end
 
 function JekuShop:onEnter()
-    super:onEnter(self)
+    super.onEnter(self)
     if self.empty then
         Game.shop.music:setPitch(0.03)
 
@@ -187,7 +187,7 @@ function JekuShop:onEnter()
 end
 
 function JekuShop:update()
-    super:update(self)
+    super.update(self)
     if self.empty then
         self.bubbles[1].y = self.bubbles_y[1] + math.sin(Kristal.getTime()*2)*10
         self.bubbles[2].y = self.bubbles_y[2] + math.sin(Kristal.getTime()*4)*7
@@ -396,7 +396,7 @@ end
 
 function JekuShop:buyItem(current_item)
     if not self.empty or (self.empty and self:getFlag("empty_dial_buy")) then
-        super:buyItem(self, current_item)
+        super.buyItem(self, current_item)
     else
         if (current_item.options["price"] or 0) > self:getMoney() then
             self:startDialogue({

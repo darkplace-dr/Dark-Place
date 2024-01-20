@@ -1,7 +1,7 @@
 local HomingSoul, super = Class(Soul)
 
 function HomingSoul:init(x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
     -- Do not modify these variables
 	self.color = {0, 0, 1}
     self.jumped = false
@@ -27,7 +27,7 @@ function HomingSoul:init(x, y)
 end
 
 function HomingSoul:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.mode == "MOVE" then
 		local connected = {}
@@ -71,7 +71,7 @@ function HomingSoul:update()
 end
 
 function HomingSoul:draw()
-	super:draw(self)
+	super.draw(self)
 	if DEBUG_RENDER then
 		self.collider:draw(0,1,0,1)
 		self.homing_collider:draw(0,0,1,1)

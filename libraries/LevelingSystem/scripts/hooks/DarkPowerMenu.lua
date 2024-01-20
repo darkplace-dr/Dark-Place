@@ -41,7 +41,7 @@ function DarkPowerMenu:update()
             self.ui_select:stop()
             self.ui_select:play()
         else
-            super:update(self)
+            super.update(self)
         end
     elseif self.state == "CHOOSETAB" then
         if Input.pressed("cancel") then
@@ -86,10 +86,10 @@ function DarkPowerMenu:update()
             self:updateDescription()
             return
         else
-            super:update(self)
+            super.update(self)
         end
     else
-        super:update(self)
+        super.update(self)
     end
 end
 

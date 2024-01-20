@@ -1,7 +1,7 @@
 local Follower, super = Class(Follower)
 
 function Follower:init(...)
-    super:init(self, ...)
+    super.init(self, ...)
 
     self.state_manager:addState("HOP", {enter = self.beginHop, update = self.updateHop, leave = self.endHop})
 end

@@ -1,7 +1,7 @@
 local Shop, super = Class(Shop)
 
 function Shop:init()
-	super:init(self)
+	super.init(self)
 	
 	self.haggle_rate = self:getFlag("haggle_rate", 1)
 	self.haggle_marks = {} -- {position, rate}, calculated after discounts
@@ -101,7 +101,7 @@ function Shop:setState(state, reason)
 		return
 	end
 	
-	super:setState(self, state, reason)
+	super.setState(self, state, reason)
 end
 
 function Shop:doesDeny(state)
@@ -137,7 +137,7 @@ function Shop:replaceItem(index, item, options)
 end
 
 function Shop:onKeyPressed(key, is_repeat)
-	super:onKeyPressed(self, key, is_repeat)
+	super.onKeyPressed(self, key, is_repeat)
 	
 	if self.state == "BONUS" then
 		if not self.bonus_selected then
@@ -185,7 +185,7 @@ function Shop:onKeyPressed(key, is_repeat)
 end
 
 function Shop:onStateChange(old,new)
-	super:onStateChange(self, old, new)
+	super.onStateChange(self, old, new)
 	if old == "BUYMENU" and self.bonus_money > 0 and self.bonus_game then
 		self:setState("BONUSCONFIRM")
 	end
@@ -251,7 +251,7 @@ function Shop:buyItem(current_item)
 end
 
 function Shop:update()
-	super:update(self)
+	super.update(self)
 	
 	if self.state == "BONUS" then
 		if self.bonus_selected then

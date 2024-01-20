@@ -18,11 +18,11 @@ function MarbleSpikes:init(x, y)
 end
 
 function MarbleSpikes:update()
-	super:update(self)
+	super.update(self)
 end
 
 function MarbleSpikes:draw()
-	super:draw(self)
+	super.draw(self)
 	love.graphics.setColor(1,1,1)
 	love.graphics.rectangle("fill", 0, 20, 180, SCREEN_HEIGHT)
 end

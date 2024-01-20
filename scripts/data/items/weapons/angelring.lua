@@ -87,7 +87,7 @@ function item:getReaction(user_id, reactor_id)
             end
         end
     end
-    return super:getReaction(self, user_id, reactor_id)
+    return super.getReaction(self, user_id, reactor_id)
 end
 
 return item
