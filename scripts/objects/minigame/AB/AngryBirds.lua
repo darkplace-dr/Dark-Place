@@ -257,9 +257,9 @@ function AngryBirds:drawMenu()
 
     Draw.draw(Assets.getTexture("minigames/ab/menu/bg_menu_top"), 0, 0, 0, 1, 1)
 
-    local add_angle = 0
+    love.graphics.setBlendMode("add")
     for add_angle = 0, math.pi * 2, 0.6284 do
-        local final_angle = self.menu_sunset_angle + add_angle * DTMULT
+        local final_angle = self.menu_sunset_angle + add_angle
         if final_angle > math.pi then
             final_angle = final_angle - 2 * math.pi
         end
@@ -267,6 +267,7 @@ function AngryBirds:drawMenu()
             Draw.draw(Assets.getTexture("minigames/ab/menu/bg_sunray"), math.floor(SCREEN_WIDTH / 2), math.floor((SCREEN_HEIGHT - 50)), final_angle, 1, 1, 73, 734)
         end
     end
+    love.graphics.setBlendMode("alpha")
 
     Draw.draw(Assets.getTexture("minigames/ab/menu/bg_sun"), math.floor(SCREEN_WIDTH / 2), math.floor((SCREEN_HEIGHT - 50)), 0, 1, 1, 197, 229)
 	
