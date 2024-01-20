@@ -2,21 +2,16 @@ local preview = {}
 
 ---@class DPPreview.MiniSound : Class
 local MiniSound = Class()
-function MiniSound:init(file, path, cond)
-    self.file, self.cond = (path and path.."/" or "")..file, cond
-    self.started = false
+function MiniSound:init(path, cond, type)
+    self.source, self.cond = assert(love.audio.newSource(path, type or "stream")), cond
 end
 function MiniSound:play()
-    if not self.stream then self.stream = love.audio.newSource(self.file, "stream") end
-    self.stream:play()
+    self.source:play()
     self.started = true
 end
 function MiniSound:stop()
-    if self.stream then self.stream:stop() end
+    self.source:stop()
     self.started = false
-end
-function MiniSound:setCondition(cond)
-    self.cond = cond
 end
 function MiniSound:update()
     if not self.cond then return end
@@ -32,19 +27,21 @@ function preview:init(mod, button, menu)
     self.mod_id = mod.id
     self.menu = menu or MainMenu
     self.base_path = mod.path.."/preview"
+    local function p(f) return self.base_path .. "/" .. f end
 
     self.particles = {}
     self.particle_timer = 0
     self.particle_timer_dess = Utils.random(1*2.2, 6.9*4*20*3, 0.25)
-    self.particle_tex = love.graphics.newImage(self.base_path.."/star.png")
-    self.particle_tex_dess = love.graphics.newImage(self.base_path.."/dess.png")
+    self.particle_tex = love.graphics.newImage(p("star.png"))
+    self.particle_tex_dess = love.graphics.newImage(p("dess.png"))
 
     self.swellow = nil
     self.swellow_timer = 0
 
+    local function inc(n) return function() return self:isNameChosen(n) end end
     self.sounds = {
-        paul = MiniSound("paul.ogg", self.base_path, function() return self:isNameChosen("PAUL") end),
-        croak = MiniSound("croakreverb.ogg", self.base_path, function() return self:isNameChosen("YOU") end)
+        paul = MiniSound(p("paul.ogg"), inc("PAUL")),
+        croak = MiniSound(p("croakreverb.ogg"), inc("YOU"), "static")
     }
 end
 
