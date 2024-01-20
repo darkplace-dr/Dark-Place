@@ -201,19 +201,23 @@ function DogCheck:chapter2Script(wait)
     local sprite = "world/cutscenes/dogcheck/dog_car"
 
     local dog = Sprite(sprite, -40, 240)
+    dog:setScale(2)
     dog.layer = 1
     self:addChild(dog)
 
-    local function animateMainDog(speed)
-        if speed > 0 then
-            dog.x = -40
-        else
-            dog.x = SCREEN_WIDTH
+    local function animateMainDog(speed, dont_reset)
+        if not dont_reset then
+            if speed > 0 then
+                dog.x = -40
+            else
+                dog.x = SCREEN_WIDTH
+            end
         end
         dog.flip_x = speed > 0
-        dog:setScale(2)
         dog.physics.speed = speed
-        dog:play(0.25, true)
+        if not dont_reset then
+            dog:play(0.25, true)
+        end
     end
     local function makeSmallDogHorde(axis, num)
         for _ = 1, num do
@@ -248,7 +252,7 @@ function DogCheck:chapter2Script(wait)
         wait(2.5)
 
         animateMainDog(8)
-        wait(1.1)
+        wait(1.03)
     end
 end
 
