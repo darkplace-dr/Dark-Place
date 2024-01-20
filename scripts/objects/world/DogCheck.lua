@@ -236,7 +236,7 @@ function DogCheck:chapter2Script(wait)
             ---@diagnostic disable-next-line: redefined-local
             Utils.hook(small_dog, "update", function(orig, self, ...)
                 orig(self, ...)
-                if math.abs(self.x) > SCREEN_WIDTH + 3*40 then
+                if math.abs(self.x) > SCREEN_WIDTH + 3*TILE_WIDTH then
                     self:remove()
                 end
             end)
