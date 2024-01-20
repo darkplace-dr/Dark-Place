@@ -1,6 +1,7 @@
-local BallLv1, super = Class(BallJump)
+---@class BallJumpLv1 : BallJump
+local BallJumpLv1, super = Class(BallJump)
 
-function BallLv1:init()
+function BallJumpLv1:init()
     super.init(self)
 
     self.name = self.name .. ": Level 1"
@@ -11,7 +12,7 @@ function BallLv1:init()
     self.hs_flag = "ball_jump_1_hs"
 end
 
-function BallLv1:update()
+function BallJumpLv1:update()
     super.update(self)
 
     if self.state == "MAIN" and self.state_timer > 1 and self.entity_count < 1 then
@@ -116,4 +117,4 @@ function BallLv1:update()
     end
 end
 
-return BallLv1
+return BallJumpLv1
