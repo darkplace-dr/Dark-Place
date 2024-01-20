@@ -135,10 +135,7 @@ function DogCheck:start()
     elseif self.variant == "chapter2" then
         createDog("misc/dog_sleep", 0.8, -960, -580)
         playSong("alarm_titlescreen", 1, 1)
-        self:dogcheck2()
-        self.timer:every(17.5, function()
-            self:dogcheck2()
-        end)
+        self.timer:script(function(...) self:chapter2Script(...) end)
     end
 end
 
@@ -200,72 +197,59 @@ function DogCheck:draw()
     --]]
 end
 
-function DogCheck:dogcheck2()
-    local dog1 = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280)
-    dog1.flip_x = true
-    dog1:setOrigin(0.5, 0.5)
-    dog1:setScale(2)
-    dog1:play(0.25, true)
-    self:addChild(dog1)
-    dog1.physics.speed = 10
-    self.timer:script(function(wait)
-        wait(2.75)
-        dog1:remove()
-        local dog2 = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280)
-        dog2:setOrigin(0.5, 0.5)
-        dog2:setScale(2)
-        dog2:play(0.25, true)
-        self:addChild(dog2)
-        dog2.physics.speed = -10
-        wait(3)
-        dog2:remove()
-        local dog1 = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280)
-        dog1.flip_x = true
-        dog1:setOrigin(0.5, 0.5)
-        dog1:setScale(2)
-        dog1:play(0.25, true)
-        self:addChild(dog1)
-        dog1.physics.speed = 10
-        wait(2.75)
-        dog1:remove()
-        local dog2 = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280)
-        dog2:setOrigin(0.5, 0.5)
-        dog2:setScale(2)
-        dog2:play(0.25, true)
-        self:addChild(dog2)
-        dog2.physics.speed = -10
-        wait(3)
-        local dognum = love.math.random(4, 8)
-        local i = 0
-        while (i < dognum) do
-            local newdog = Sprite("world/cutscenes/dogcheck/dog_car", 0 - 40, 280 + love.math.random(-80, 80))
-            newdog.flip_x = true
-            newdog.physics.speed = love.math.random(10, 16)
-            newdog:setOrigin(0.5, 0.5)
-            if i == (dognum - 1) then
-                newdog:setScale(2)
-            end
-            newdog.physics.friction = love.math.random(0.01, -0.01)
-            newdog:play(((newdog.physics.speed / 4) * 0.25) + 0.25, true)
-            self:addChild(newdog)
-            i = i + 1
+function DogCheck:chapter2Script(wait)
+    local sprite = "world/cutscenes/dogcheck/dog_car"
+
+    local dog = Sprite(sprite, -40, 240)
+    dog.layer = 1
+    self:addChild(dog)
+
+    local function animateMainDog(speed)
+        if speed > 0 then
+            dog.x = -40
+        else
+            dog.x = SCREEN_WIDTH
         end
-        wait(2.4)
-        local dognum2 = love.math.random(5, 12)
-        local i2 = 0
-        while (i2 < dognum2) do
-            local newdog = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280 + love.math.random(-80, 80))
-            newdog.physics.speed = love.math.random(-10, -16)
-            newdog:setOrigin(0.5, 0.5)
-            if i2 == (dognum2 - 1) then
-                newdog:setScale(2)
+        dog.flip_x = speed > 0
+        dog:setScale(2)
+        dog.physics.speed = speed
+        dog:play(0.25, true)
+    end
+    local function makeSmallDogHorde(axis, num)
+        for _ = 1, num do
+            local small_dog = Sprite(sprite, 0, 240 + love.math.random(-80, 80))
+            if axis > 0 then
+                small_dog.x = -40
+            else
+                small_dog.x = SCREEN_WIDTH
             end
-            newdog.physics.friction = love.math.random(0.01, -0.01)
-            newdog:play(((newdog.physics.speed / 4) * 0.25) + 0.25, true)
-            self:addChild(newdog)
-            i2 = i2 + 1
+            small_dog.flip_x = axis > 0
+            small_dog.physics.speed = axis * love.math.random(10, 16)
+            small_dog.physics.friction = Utils.random(0.01, -0.01)
+            local anim_speed = (1 + (small_dog.physics.speed / 4)) * 0.25
+            small_dog:play(anim_speed, true)
+            self:addChild(small_dog)
         end
-    end)
+    end
+
+    while true do
+        for _ = 1, 2 do
+            if dog.x < 0 then animateMainDog(10) end
+            wait(2.75)
+            animateMainDog(-10)
+            wait(3)
+        end
+
+        makeSmallDogHorde(1, love.math.random(4, 8))
+        animateMainDog(12)
+        wait(2.5)
+        makeSmallDogHorde(-1, love.math.random(5, 12))
+        animateMainDog(-12)
+        wait(2.5)
+
+        animateMainDog(8)
+        wait(1.1)
+    end
 end
 
 function DogCheck:onRemove(_)
