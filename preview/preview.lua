@@ -1,32 +1,32 @@
 local preview = {}
 
----@class DPPreview.MiniAudio : Class
+---@class DPPreview.MiniSound : Class
 ---@field cond fun():boolean
-local MiniAudio = Class()
-function MiniAudio:init(file, cond)
+local MiniSound = Class()
+function MiniSound:init(file, cond)
     self.file = file
     self.started = false
     self.cond = cond
 end
-function MiniAudio:initStream()
+function MiniSound:initStream()
     if self.stream then return end
     self.stream = love.audio.newSource(self.file, "stream")
 end
-function MiniAudio:play()
+function MiniSound:play()
     self:initStream()
     self.stream:play()
     self.started = true
 end
-function MiniAudio:stop()
+function MiniSound:stop()
     if self.stream then
         self.stream:stop()
     end
     self.started = false
 end
-function MiniAudio:setCondition(cond)
+function MiniSound:setCondition(cond)
     self.cond = cond
 end
-function MiniAudio:update()
+function MiniSound:update()
     if not self.cond then return end
     local result = self:cond()
     if result and not self.started then self:play()
@@ -51,8 +51,8 @@ function preview:init(mod, button, menu)
     self.swellow_timer = 0
 
     self.sounds = {}
-    self.sounds.paul = MiniAudio(self.base_path.."/paul.ogg", function() return self:isNameChosen("PAUL") end)
-    self.sounds.croak = MiniAudio(self.base_path.."/croakreverb.ogg", function() return self:isNameChosen("YOU") end)
+    self.sounds.paul = MiniSound(self.base_path.."/paul.ogg", function() return self:isNameChosen("PAUL") end)
+    self.sounds.croak = MiniSound(self.base_path.."/croakreverb.ogg", function() return self:isNameChosen("YOU") end)
 end
 
 function preview:update()
