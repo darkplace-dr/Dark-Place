@@ -1,3 +1,4 @@
+---@class AngryBirds : MinigameHandler
 local AngryBirds, super = Class("MinigameHandler")
 
 function AngryBirds:init()

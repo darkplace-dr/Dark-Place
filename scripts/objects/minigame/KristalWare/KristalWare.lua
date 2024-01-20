@@ -1,3 +1,4 @@
+---@class KristalWare : MinigameHandler
 local KristalWare, super = Class("MinigameHandler")
 
 function KristalWare:init()

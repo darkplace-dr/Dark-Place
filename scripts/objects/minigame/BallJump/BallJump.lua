@@ -1,3 +1,4 @@
+---@class BallJump : MinigameHandler
 local BallJump, super = Class("MinigameHandler")
 
 function BallJump:init()
@@ -121,12 +122,8 @@ function BallJump:update()
 		self.bg.width = SCREEN_WIDTH * (1 - self.state_timer)
 		self.bg.height = SCREEN_HEIGHT * (1 - self.state_timer)
 		if self.state_timer > 1 then
-			if self.resume_world_music then
-				Game.world.music:resume()
-			end
-			Game.state = "OVERWORLD"
-			self:remove()
-			Game.minigame = nil
+			self:endMinigame()
+			return
 		end
 	end
     super.update(self)
