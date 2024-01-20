@@ -23,6 +23,8 @@ function DogCheck:init(variant)
     self.summer_siner = 0
     self.stretch_ex_start = 0
     self.stretch_ex_timer = 0
+
+    self.banned2_set_window_size = false
 end
 
 function DogCheck:onAdd(parent)
@@ -123,8 +125,14 @@ function DogCheck:start()
         createDog(cust_sprites_base.."/banned", 1, 0, 0, 2)
         playSong("AUDIO_DEFEAT", 1.5)
     elseif self.variant == "banned2" then
-        Mod:changeScreenResolution(1280, 960)
-        self.width, self.height = SCREEN_WIDTH, SCREEN_HEIGHT
+        local window_scale_orig = Kristal.Config["windowScale"]
+        if window_scale_orig < 2 then
+            Kristal.Config["windowScale"] = 2
+            Kristal.resetWindow()
+            Kristal.Config["windowScale"] = window_scale_orig
+            Mod.window_size_set = true
+        end
+
         createDog(cust_sprites_base.."/banned_b", 1, 0, 0, "fitscreen")
         if self.music then
             self.timer:after(1.25, function()
@@ -154,6 +162,7 @@ function DogCheck:update()
         Game.fader:fadeOut(nil, { speed = 0.5 })
         if self.music then self.music:fade(0, 20/30) end
         self.timer:after(1, function ()
+            self:remove()
             Game:returnToMenu()
         end)
     end
@@ -264,9 +273,10 @@ function DogCheck:chapter2Script(wait)
     end
 end
 
-function DogCheck:onRemove(_)
-    if self.variant == "banned2" then
-        Mod:resetScreenResolution()
+function DogCheck:onRemove()
+    if self.variant == "banned2" and Mod.window_size_set then
+        Kristal.resetWindow()
+        Mod.window_size_set = false
     end
 end
 

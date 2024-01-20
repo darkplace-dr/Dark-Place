@@ -25,15 +25,11 @@ function Mod:init()
 
     self.voice_timer = 0
 
+    self.window_size_set = false
+
     self:initTaunt()
     self:initBattleTaunt()
     Speen:init()
-
-    Utils.hook(Actor, "init", function(orig, self)
-        orig(self)
-        self.taunt_sprites = {}
-    end)
-
     self:initMinigameHooks()
 end
 
@@ -346,7 +342,9 @@ function Mod:unload()
         TextInput.endInput()
     end
 
-    self:resetScreenResolution()
+    if self.window_size_set then
+        Kristal.resetWindow()
+    end
 end
 
 function Mod:save(data)
