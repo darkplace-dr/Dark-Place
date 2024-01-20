@@ -293,17 +293,12 @@ function BallJump:addCountedEntity(entity)
 end
 
 function BallJump:endMinigame()
-	for k,v in pairs(self.entities) do
+	for _,v in pairs(self.entities) do
 		v:remove()
 	end
 	self.player:remove()
 	self.ground:remove()
-	if self.resume_world_music then
-		Game.world.music:resume()
-	end
-	Game.state = "OVERWORLD"
-	self:remove()
-	Game.minigame = nil
+	super.endMinigame(self)
 end
 
 return BallJump
