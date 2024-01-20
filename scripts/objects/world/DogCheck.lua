@@ -232,6 +232,14 @@ function DogCheck:chapter2Script(wait)
             small_dog.physics.friction = Utils.random(0.01, -0.01)
             local anim_speed = (1 + (small_dog.physics.speed / 4)) * 0.25
             small_dog:play(anim_speed, true)
+            -- auto-cleanup
+            ---@diagnostic disable-next-line: redefined-local
+            Utils.hook(small_dog, "update", function(orig, self, ...)
+                orig(self, ...)
+                if math.abs(self.x) > SCREEN_WIDTH + 3*40 then
+                    self:remove()
+                end
+            end)
             self:addChild(small_dog)
         end
     end
