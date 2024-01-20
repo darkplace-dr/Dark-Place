@@ -116,3 +116,14 @@ function Mod:hasWiiBIOS()
 
     return false
 end
+
+function Mod:changeScreenResolution(w, h)
+    -- This is so the engine recovers these to the original values
+    -- ...except we'd need to do it ourselves anyway
+    if w then Registry.registerGlobal("SCREEN_WIDTH", w, true) end
+    if h then Registry.registerGlobal("SCREEN_HEIGHT", h, true) end
+    SCREEN_CANVAS:release()
+    SCREEN_CANVAS = love.graphics.newCanvas(SCREEN_WIDTH, SCREEN_HEIGHT)
+    SCREEN_CANVAS:setFilter("nearest", "nearest")
+    Kristal.resetWindow()
+end

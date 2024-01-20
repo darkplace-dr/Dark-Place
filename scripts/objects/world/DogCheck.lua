@@ -98,8 +98,7 @@ function DogCheck:start()
         playSong("AUDIO_DEFEAT", 1.5)
     elseif self.variant == "banned2" then
         createDog(cust_sprites_base.."/banned_b", 1, 0, 0, 1)
-        Game._tempdogcheckresolution = true
-        love.window.setMode(1280, 960)
+        Mod:changeScreenResolution(1280, 960)
         Game.world.timer:after(1.25, function()
             Game.world.music:play("mutation", 0)
             Game.world.music:fade(0.85, 1.5)
