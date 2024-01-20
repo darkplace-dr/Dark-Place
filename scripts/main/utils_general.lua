@@ -117,6 +117,10 @@ function Mod:hasWiiBIOS()
     return false
 end
 
+-- Changes the screen's dimension as specified.
+--
+-- Note that this recreates SCREEN_CANVAS and may be expensive!
+-- It also doesn't account for the border.
 function Mod:changeScreenResolution(w, h)
     local res_changed = false
 
