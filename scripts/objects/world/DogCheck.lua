@@ -141,7 +141,6 @@ function DogCheck:update()
         end)
     end
 
-    -- Do this every other frame
     if self.variant == "summer" then
         self.stretch_ex_start = self.stretch_ex_start + DTMULT
         if self.stretch_ex_start >= 240 then
@@ -171,6 +170,7 @@ end
 
 function DogCheck:draw()
     super.draw(self)
+
     -- Ported the sun out of boredom, uncomment this if you want. - Agent 7
     --[[
     if self.variant == "summer" then
