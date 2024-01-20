@@ -23,8 +23,6 @@ function DogCheck:init(variant)
     self.summer_siner = 0
     self.stretch_ex_start = 0
     self.stretch_ex_timer = 0
-
-    self.banned2_set_window_size = false
 end
 
 function DogCheck:onAdd(parent)
@@ -127,10 +125,17 @@ function DogCheck:start()
     elseif self.variant == "banned2" then
         local window_scale_orig = Kristal.Config["windowScale"]
         if window_scale_orig < 2 then
+            Mod.dogcheck_banned2_window_hacks = true
             Kristal.Config["windowScale"] = 2
+        end
+        if Kristal.Config["borders"] ~= "off" then
+            Mod.dogcheck_banned2_window_hacks = true
+            Mod.dogcheck_banned2_orig_banner = Kristal.Config["borders"]
+            Kristal.Config["borders"] = "off"
+        end
+        if Mod.dogcheck_banned2_window_hacks then
             Kristal.resetWindow()
             Kristal.Config["windowScale"] = window_scale_orig
-            Mod.window_size_set = true
         end
 
         createDog(cust_sprites_base.."/banned_b", 1, 0, 0, "fitscreen")
@@ -274,9 +279,10 @@ function DogCheck:chapter2Script(wait)
 end
 
 function DogCheck:onRemove()
-    if self.variant == "banned2" and Mod.window_size_set then
+    if Mod.dogcheck_banned2_window_hacks then
+        Mod.dogcheck_banned2_window_hacks = false
+        Kristal.Config["borders"] = Mod.dogcheck_banned2_orig_banner
         Kristal.resetWindow()
-        Mod.window_size_set = false
     end
 end
 

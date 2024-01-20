@@ -25,7 +25,7 @@ function Mod:init()
 
     self.voice_timer = 0
 
-    self.window_size_set = false
+    self.dogcheck_banned2_window_hacks = false
 
     self:initTaunt()
     self:initBattleTaunt()
@@ -342,7 +342,9 @@ function Mod:unload()
         TextInput.endInput()
     end
 
-    if self.window_size_set then
+    if self.dogcheck_banned2_window_hacks then
+        self.dogcheck_banned2_window_hacks = false
+        Kristal.Config["borders"] = self.dogcheck_banned2_orig_banner
         Kristal.resetWindow()
     end
 end
