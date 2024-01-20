@@ -93,28 +93,7 @@ function Mod:hasSaveFiles(id)
 end
 
 function Mod:hasWiiBIOS()
-    local paths = {
-        "LOVE/kristal/", -- Source code version
-        "kristal/",      -- Executable version
-    }
-
-    for i,v in ipairs(paths) do
-        if love.system.getOS() == "Windows" then
-            paths[i] = "Roaming/"..v
-        elseif love.system.getOS() == "OS X" then
-            paths[i] = "Application Support/"..v
-        elseif love.system.getOS() == "Linux" then
-            paths[i] = ".local/share/"..v
-        end
-    end
-
-    for i,path in ipairs(paths) do
-        if Mod:fileExists(path.."wii_settings.json") then
-            return true
-        end
-    end
-
-    return false
+    return not not love.filesystem.getInfo("wii_settings.json")
 end
 
 -- Changes the screen's dimension as specified.
