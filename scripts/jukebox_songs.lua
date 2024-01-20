@@ -636,7 +636,7 @@ return {
   },
   {
     name = "Funky Theme",
-    file = "funky_theme",
+    file = "minigames/ab/funky_theme",
     composer = "AriTunes",
     released = "Dec 17, 2009",
     origin = "Angry Birds"
