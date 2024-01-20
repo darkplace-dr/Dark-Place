@@ -3,6 +3,8 @@ local AngryBirds, super = Class("MinigameHandler")
 function AngryBirds:init()
     super.init(self)
 
+    self.name = "Angry Birds"
+
     self.state = "TRANSITION" -- "TRANSITION", "SPLASHES", "MAINMENU", "LEVELSELECTION"
 	Assets.playSound("minigames/ab/misc/star_collect")
 

@@ -2,7 +2,9 @@ local BallJump, super = Class("MinigameHandler")
 
 function BallJump:init()
     super.init(self)
-	
+
+	self.name = "Ball Jump"
+
 	self.state = "TRANSITION" -- TRANSITION, INTRO, MAIN, DEAD, WIN, TRANSITIONOUT1, TRANSITIONOUT2
 	Assets.playSound("minigames/ball_jump/transition")
 	

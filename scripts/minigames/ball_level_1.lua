@@ -1,7 +1,9 @@
-local BallTest, super = Class(BallJump)
+local BallLv1, super = Class(BallJump)
 
-function BallTest:init()
+function BallLv1:init()
     super.init(self)
+
+	self.name = self.name .. ": Level 1"
 	
 	self.req_score = 5000
 	
@@ -9,7 +11,7 @@ function BallTest:init()
 	self.hs_flag = "ball_jump_1_hs"
 end
 
-function BallTest:update()
+function BallLv1:update()
 	super.update(self)
 	
 	if self.state == "MAIN" and self.state_timer > 1 and self.entity_count < 1 then
@@ -114,4 +116,4 @@ function BallTest:update()
 	end
 end
 
-return BallTest
+return BallLv1
