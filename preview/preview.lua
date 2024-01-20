@@ -1,5 +1,11 @@
 local preview = {}
 
+---@class DPPreview.ConditionalSFX
+---@field file string
+---@field cond fun():boolean
+---@field started? boolean
+---@field stream? love.Source
+
 function preview:init(mod, button, menu)
     button:setColor(1, 1, 1)
     button:setFavoritedColor(0.9, 0.8, 1)
@@ -17,11 +23,20 @@ function preview:init(mod, button, menu)
     self.swellow = nil
     self.swellow_timer = 0
 
-	self.paul_played = false
-    self.paul_stream = nil
-
-    self.croak_played = false
-    self.croak_stream = nil
+    ---@type DPPreview.ConditionalSFX[]
+    self.conditional_sfx = {}
+    self.conditional_sfx["paul"] = {
+        file = "paul.ogg",
+        cond = function()
+            return self:isNameChosen("PAUL")
+        end
+    }
+    self.conditional_sfx["croak"] = {
+        file = "croakreverb.ogg",
+        cond = function()
+            return self:isNameChosen("YOU")
+        end
+    }
 end
 
 function preview:update()
@@ -71,34 +86,21 @@ function preview:update()
         self.swellow_timer = 0
     end
 
-    if self:isNameChosen("PAUL") then
-        if not self.paul_played then
-            if not self.paul_stream then
-                self.paul_stream = love.audio.newSource(self.base_path.."/paul.ogg", "stream")
+    for _,sfx in pairs(self.conditional_sfx) do
+        if sfx.cond() then
+            if not sfx.stream then
+                sfx.stream = love.audio.newSource(self.base_path.."/"..sfx.file, "stream")
             end
-            self.paul_stream:play()
-            self.paul_played = true
-        end
-    else
-        if self.paul_played then
-            self.paul_stream:stop()
-        end
-        self.paul_played = false
-    end
-
-    if self:isNameChosen("YOU") then
-        if not self.croak_played then
-            if not self.croak_stream then
-                self.croak_stream = love.audio.newSource(self.base_path.."/croakreverb.ogg", "stream")
+            if not sfx.started then
+                sfx.stream:play()
+                sfx.started = true
             end
-            self.croak_stream:play()
-            self.croak_played = true
+        else
+            if sfx.started then
+                sfx.stream:stop()
+            end
+            sfx.started = false
         end
-    else
-        if self.croak_played then
-            self.croak_stream:stop()
-        end
-        self.croak_played = false
     end
 end
 
