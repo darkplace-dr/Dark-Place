@@ -9,17 +9,17 @@ function MinigameHandler:init()
 end
 
 function MinigameHandler:postInit()
-	self:pauseWorldMusic()
-	self:changeWindowTitle()
+    self:pauseWorldMusic()
+    self:changeWindowTitle()
 end
--- Part of postInit 1, don't use unless absolutely required
+-- Part of postInit 1, don't use unless you have to
 function MinigameHandler:pauseWorldMusic()
     if Game.world.music:isPlaying() and self.music then
         self.resume_world_music = true
         Game.world.music:pause()
     end
 end
--- Part of postInit 2, don't use unless absolutely required
+-- Part of postInit 2, don't use unless you have to
 function MinigameHandler:changeWindowTitle()
     if TARGET_MOD == Mod.info.id then -- temp behavior
         love.window.setTitle(string.format("%s - %s", Mod.info.name, self.name))
@@ -50,18 +50,18 @@ end
 -- as we transition to the overworld \
 -- You don't *have* to use this, though
 function MinigameHandler:preEndCleanup()
-	if self.resume_world_music then
-		Game.world.music:resume()
-		self.resume_world_music = false
-	end
+    if self.resume_world_music then
+        Game.world.music:resume()
+        self.resume_world_music = false
+    end
     love.window.setTitle(Kristal.getDesiredWindowTitle())
 end
 
 function MinigameHandler:endMinigame()
-	self:preEndCleanup()
-	if self.music then
+    self:preEndCleanup()
+    if self.music then
         self.music:remove()
-	end
+    end
     Game.state = "OVERWORLD"
     self:remove()
     Game.minigame = nil
