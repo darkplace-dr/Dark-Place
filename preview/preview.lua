@@ -1,5 +1,25 @@
 local preview = {}
 
+---@class DPPreview.MiniSound : Class
+local MiniSound = Class()
+function MiniSound:init(path, cond, type)
+    self.source, self.cond = assert(love.audio.newSource(path, type or "stream")), cond
+end
+function MiniSound:play()
+    self.source:play()
+    self.started = true
+end
+function MiniSound:stop()
+    self.source:stop()
+    self.started = false
+end
+function MiniSound:update()
+    if not self.cond then return end
+    local result = self:cond()
+    if result and not self.started then self:play()
+    elseif not result and self.started then self:stop() end
+end
+
 function preview:init(mod, button, menu)
     button:setColor(1, 1, 1)
     button:setFavoritedColor(0.9, 0.8, 1)
@@ -7,21 +27,22 @@ function preview:init(mod, button, menu)
     self.mod_id = mod.id
     self.menu = menu or MainMenu
     self.base_path = mod.path.."/preview"
+    local function p(f) return self.base_path .. "/" .. f end
 
     self.particles = {}
     self.particle_timer = 0
     self.particle_timer_dess = Utils.random(1*2.2, 6.9*4*20*3, 0.25)
-    self.particle_tex = love.graphics.newImage(self.base_path.."/star.png")
-    self.particle_tex_dess = love.graphics.newImage(self.base_path.."/dess.png")
+    self.particle_tex = love.graphics.newImage(p("star.png"))
+    self.particle_tex_dess = love.graphics.newImage(p("dess.png"))
 
     self.swellow = nil
     self.swellow_timer = 0
 
-	self.paul_played = false
-    self.paul_stream = nil
-
-    self.croak_played = false
-    self.croak_stream = nil
+    local function inc(n) return function() return self:isNameChosen(n) end end
+    self.sounds = {
+        paul = MiniSound(p("paul.ogg"), inc("PAUL")),
+        croak = MiniSound(p("croakreverb.ogg"), inc("YOU"), "static")
+    }
 end
 
 function preview:update()
@@ -71,35 +92,7 @@ function preview:update()
         self.swellow_timer = 0
     end
 
-    if self:isNameChosen("PAUL") then
-        if not self.paul_played then
-            if not self.paul_stream then
-                self.paul_stream = love.audio.newSource(self.base_path.."/paul.ogg", "stream")
-            end
-            self.paul_stream:play()
-            self.paul_played = true
-        end
-    else
-        if self.paul_played then
-            self.paul_stream:stop()
-        end
-        self.paul_played = false
-    end
-
-    if self:isNameChosen("YOU") then
-        if not self.croak_played then
-            if not self.croak_stream then
-                self.croak_stream = love.audio.newSource(self.base_path.."/croakreverb.ogg", "stream")
-            end
-            self.croak_stream:play()
-            self.croak_played = true
-        end
-    else
-        if self.croak_played then
-            self.croak_stream:stop()
-        end
-        self.croak_played = false
-    end
+    for _,sound in pairs(self.sounds) do sound:update() end
 end
 
 function preview:draw()
@@ -112,9 +105,6 @@ function preview:draw()
         love.graphics.draw(particle.type ~= "dess" and self.particle_tex or self.particle_tex_dess, particle.x, particle.y, particle.radius)
     end
 
-    --[[love.graphics.setColor(1, 1, 1, 0.1)
-    love.graphics.setFont(Assets.getFont("smallnumbers"))
-    love.graphics.print(tostring(math.floor(self.particle_timer_dess/60*100)/100), 10, 10)]]
     love.graphics.setColor(1, 1, 1)
 
     if self:isNameChosen("SWELLOW", true) and self.swellow then
