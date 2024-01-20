@@ -1,2 +1,1 @@
-local KristalWareMinigame, super = Class(KristalWare)
-return KristalWareMinigame
+return KristalWare

@@ -301,7 +301,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["level_1"] = "ball_level_1",
+            ["level_1"] = "ball_jump/level_1",
             ["name"] = "Ball Jump",
             ["sflag"] = "acj_game_win",
             ["sprite"] = "minigames/ball_jump"
