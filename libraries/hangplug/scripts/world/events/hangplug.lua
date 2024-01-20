@@ -1,7 +1,7 @@
 local HangPlug, super = Class(Event, "hangplug")
 
 function HangPlug:init(data)
-    super.init(self, data.x, data.y, 0, 0)
+    super:init(self, data.x, data.y, 0, 0)
 
     self.sprite = Sprite("idle", 0, 0, nil, nil, "world/events/hangplug")
     self.sprite:setScale(2, 2)
@@ -85,7 +85,7 @@ function HangPlug:update()
         end
     end
 
-    super.update(self)
+    super:update(self)
 end
 
 return HangPlug

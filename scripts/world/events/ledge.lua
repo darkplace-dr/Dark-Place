@@ -1,7 +1,7 @@
 local Ledge, super = Class(Event)
 
 function Ledge:init(data)
-    super.init(self, data.x, data.y)
+    super:init(self, data.x, data.y)
 
     data.properties = data.properties or {}
 

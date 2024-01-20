@@ -3,7 +3,7 @@
 local EnemyBattler, super = Class("EnemyBattler", true)
 
 function EnemyBattler:init(actor, use_overlay)
-    super.init(self, actor, use_overlay)
+    super:init(self, actor, use_overlay)
 	
 	self.tiredness = 0
 end

@@ -1,7 +1,7 @@
 local YellowSoul, super = Class(Soul)
 
 function YellowSoul:init(x, y, angle)
-    super.init(self, x, y)
+    super:init(self, x, y)
 
     self.rotation = angle and math.rad(angle) or math.rad(270)
     self.direction = "right"
@@ -35,7 +35,7 @@ function YellowSoul:init(x, y, angle)
 
     --[[
     function self.dpad:getDebugInfo()
-        local info = super.getDebugInfo(self)
+        local info = super:getDebugInfo(self)
         table.insert(info, "Rotation (DEG): " .. math.deg(Game.battle.soul.rotation))
         table.insert(info, "Rotation (RAD): " .. Game.battle.soul.rotation)
         return info
@@ -46,7 +46,7 @@ function YellowSoul:init(x, y, angle)
 end
 
 function YellowSoul:update()
-    super.update(self)
+    super:update(self)
     self.dpad.visible = self.can_rotate
     if self.transitioning then
         if self.charge_sfx then
@@ -170,12 +170,12 @@ function YellowSoul:draw()
     if charge_timer > 0 then
         self.color = {1,1,1}
     end
-    super.draw(self)
+    super:draw(self)
     self.color = {r,g,b}
 end
 
 function YellowSoul:onRemoveFromStage(stage)
-    super.onRemove(self, stage)
+    super:onRemove(self, stage)
     if self.charge_sfx then
         self.charge_sfx:stop()
         self.charge_sfx = nil
@@ -217,7 +217,7 @@ function YellowSoul:onCheat()
 end
 
 function YellowSoul:getDebugInfo()
-    local info = super.getDebugInfo(self)
+    local info = super:getDebugInfo(self)
     table.insert(info, "Rotation (DEG): " .. math.deg(self.rotation))
     table.insert(info, "Rotation (RAD): " .. self.rotation)
     return info

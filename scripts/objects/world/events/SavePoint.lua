@@ -3,7 +3,7 @@
 local SavePoint, super = Class("Savepoint", true)
 
 function SavePoint:init(x, y, properties)
-	super.init(self, x, y, properties)
+	super:init(self, x, y, properties)
 
 
 	if Game:getFlag("weird") and (self.text and #self.text > 0) then

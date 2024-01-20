@@ -2,7 +2,7 @@
 local Player, super = Class("Player", true)
 
 function Player:init(...)
-    super.init(self, ...)
+    super:init(self, ...)
 
     self.state_manager:addState("HOP", {enter = self.beginHop, update = self.updateHop, leave = self.endHop})
 end

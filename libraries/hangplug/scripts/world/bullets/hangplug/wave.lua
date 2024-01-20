@@ -1,7 +1,7 @@
 local PlugWave, super = Class(WorldBullet, "hangplug/wave")
 
 function PlugWave:init(x, y, dir, damage)
-    super.init(self, x, y, "world/bullets/hangplug/wave")
+    super:init(self, x, y, "world/bullets/hangplug/wave")
 
     self:setScale(dir == "left" and 2 or -2, 0.1)
     self:setOrigin(0.5, 1)
@@ -19,7 +19,7 @@ function PlugWave:init(x, y, dir, damage)
 end
 
 function PlugWave:onAdd(parent)
-    super.onAdd(self, parent)
+    super:onAdd(self, parent)
 
     self:setLayer(self.world.map.object_layer)
 end
@@ -65,7 +65,7 @@ function PlugWave:update()
         end
     end
 
-    super.update(self)
+    super:update(self)
 end
 
 return PlugWave

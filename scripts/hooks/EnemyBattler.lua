@@ -143,7 +143,7 @@ end
 
 function EnemyBattler:selectWave()
     if not self.wii_grab then
-		return super.selectWave(self)
+		return super:selectWave(self)
 	end
 end
 
