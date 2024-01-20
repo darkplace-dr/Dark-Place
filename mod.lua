@@ -346,10 +346,7 @@ function Mod:unload()
         TextInput.endInput()
     end
 
-    if Registry.last_globals["SCREEN_WIDTH"] or Registry.last_globals["SCREEN_HEIGHT"] then
-        SCREEN_WIDTH, SCREEN_HEIGHT = Registry.last_globals["SCREEN_WIDTH"], Registry.last_globals["SCREEN_HEIGHT"]
-        self:changeScreenResolution()
-    end
+    self:resetScreenResolution()
 end
 
 function Mod:save(data)

@@ -118,12 +118,52 @@ function Mod:hasWiiBIOS()
 end
 
 function Mod:changeScreenResolution(w, h)
-    -- This is so the engine recovers these to the original values
+    local res_changed = false
+
+    -- Uses Registry.registerGlobal so the engine recovers these to the original values
     -- ...except we'd need to do it ourselves anyway
-    if w then Registry.registerGlobal("SCREEN_WIDTH", w, true) end
-    if h then Registry.registerGlobal("SCREEN_HEIGHT", h, true) end
+    if w and w ~= SCREEN_WIDTH then
+        res_changed = true
+        Registry.registerGlobal("SCREEN_WIDTH", w, true)
+    end
+    if h and h ~= SCREEN_HEIGHT then
+        res_changed = true
+        Registry.registerGlobal("SCREEN_HEIGHT", h, true)
+    end
+    if not res_changed then return end
+
     SCREEN_CANVAS:release()
     SCREEN_CANVAS = love.graphics.newCanvas(SCREEN_WIDTH, SCREEN_HEIGHT)
     SCREEN_CANVAS:setFilter("nearest", "nearest")
+    if w then
+        Game.fader.width = w
+        if Game.world then
+            Game.world.fader.width = w
+            Game.world.battle_fader.width = w
+            Game.world.camera.width = w
+        end
+        if Game.battle then
+            Game.battle.camera.width = w
+        end
+    end
+    if h then
+        Game.fader.height = h
+        if Game.world then
+            Game.world.fader.height = h
+            Game.world.battle_fader.height = h
+            Game.world.camera.height = h
+        end
+        if Game.battle then
+            Game.battle.camera.height = h
+        end
+    end
+
     Kristal.resetWindow()
+end
+
+function Mod:resetScreenResolution()
+    if Registry.last_globals["SCREEN_WIDTH"] or Registry.last_globals["SCREEN_HEIGHT"] then
+        SCREEN_WIDTH, SCREEN_HEIGHT = Registry.last_globals["SCREEN_WIDTH"], Registry.last_globals["SCREEN_HEIGHT"]
+        self:changeScreenResolution()
+    end
 end

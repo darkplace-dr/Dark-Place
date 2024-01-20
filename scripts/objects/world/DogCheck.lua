@@ -1,6 +1,6 @@
 local DogCheck, super = Class(Rectangle) -- lmao
 
-function DogCheck:init()
+function DogCheck:init(variant)
     super.init(self, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 	self.color = COLORS.black
     self.parallax_x = 0
@@ -10,6 +10,8 @@ function DogCheck:init()
 
     ---@type ""|"IDLE"|"EXITING"
     self.state = ""
+
+    if variant then self.variant = variant end
 
     self.dog = nil
     self.song = nil
@@ -36,6 +38,10 @@ function DogCheck:start()
 
         self.dog = Sprite(sprite, self.width / 2 + x_off, self.height / 2 + y_off)
         self.dog:setOrigin(0.5, 0.5)
+        if scale == "fitscreen" then
+            scale = math.min(self.width / self.dog.width, self.height / self.dog.height)
+            scale = math.floor(scale * 100) / 100
+        end
         self.dog:setScale(scale)
         self.dog:play(anim_speed, true)
         self:addChild(self.dog)
@@ -50,18 +56,20 @@ function DogCheck:start()
         Game.world.music:play(path, nil, self.song_pitch)
     end
 
-	local month = os.date("*t").month
-    local variant_choices = {"dance", "sleep", "maracas", "piano", "banned", "banned2", "chapter2"}
-    if month >= 3 and month <= 5 then
-        table.insert(variant_choices, "spring")
-    elseif month >= 6 and month <= 8 then
-        table.insert(variant_choices, "summer")
-    elseif month >= 9 and month <= 11 then
-        table.insert(variant_choices, "autumn")
-    elseif month == 12 and month <= 2 then
-        table.insert(variant_choices, "winter")
+    if not self.variant then
+        local month = os.date("*t").month
+        local variant_choices = {"dance", "sleep", "maracas", "piano", "banned", "banned2", "chapter2"}
+        if month >= 3 and month <= 5 then
+            table.insert(variant_choices, "spring")
+        elseif month >= 6 and month <= 8 then
+            table.insert(variant_choices, "summer")
+        elseif month >= 9 and month <= 11 then
+            table.insert(variant_choices, "autumn")
+        elseif month == 12 and month <= 2 then
+            table.insert(variant_choices, "winter")
+        end
+        self.variant = Utils.pick(variant_choices)
     end
-    self.variant = Utils.pick(variant_choices)
 
     local cust_sprites_base = "world/cutscenes/dogcheck"
 
@@ -97,8 +105,9 @@ function DogCheck:start()
         createDog(cust_sprites_base.."/banned", 1, 0, 0, 2)
         playSong("AUDIO_DEFEAT", 1.5)
     elseif self.variant == "banned2" then
-        createDog(cust_sprites_base.."/banned_b", 1, 0, 0, 1)
         Mod:changeScreenResolution(1280, 960)
+        self.width, self.height = SCREEN_WIDTH, SCREEN_HEIGHT
+        createDog(cust_sprites_base.."/banned_b", 1, 0, 0, "fitscreen")
         Game.world.timer:after(1.25, function()
             Game.world.music:play("mutation", 0)
             Game.world.music:fade(0.85, 1.5)
