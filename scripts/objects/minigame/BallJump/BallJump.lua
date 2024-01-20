@@ -60,7 +60,7 @@ function BallJump:init()
 end
 
 function BallJump:postInit()
-	super.postInit(self)
+	self:pauseWorldMusic()
 end
 
 function BallJump:update()
@@ -253,6 +253,7 @@ end
 
 function BallJump:onStateChange(state)
 	if state == "INTRO" then
+		self:changeWindowTitle()
 		self.music:play("minigames/ball_jump/ball_jump")
 	elseif state == "WIN" then
 		self.player.on_ground = true
@@ -275,6 +276,8 @@ function BallJump:onStateChange(state)
 		self.player.sprite:setSprite("minigames/ball_jump/player_hurt")
 	elseif state == "TRANSITIONOUT1" or state == "TRANSITIONOUT3" then
 		self.music:fade(0,1)
+	elseif state == "TRANSITIONOUT2" then
+		self:preEndCleanup()
 	end
 end
 
