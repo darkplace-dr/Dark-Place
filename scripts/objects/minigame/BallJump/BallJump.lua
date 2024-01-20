@@ -228,6 +228,7 @@ function BallJump:draw()
 end
 
 function BallJump:onKeyPressed(key)
+	super.onKeyPressed(self, key)
 	if self.state == "MAIN" then
 		if Input.pressed("confirm") then
 			self.player:handleJump()

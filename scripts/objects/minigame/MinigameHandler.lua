@@ -22,7 +22,15 @@ function MinigameHandler:draw()
 end
 
 function MinigameHandler:onKeyPressed(key)
-	
+    if Kristal.Config["debug"] and Input.ctrl() then
+        if key == "m" and self.music then
+			if self.music:isPlaying() then
+				self.music:pause()
+			else
+				self.music:resume()
+			end
+        end
+	end
 end
 
 function MinigameHandler:endMinigame()

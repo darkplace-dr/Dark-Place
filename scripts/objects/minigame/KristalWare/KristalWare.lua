@@ -73,6 +73,7 @@ function KristalWare:onStateChange(state)
 end
 
 function KristalWare:onKeyPressed(key)
+	super.onKeyPressed(self, key)
     if self.state == "TITLE" then
         if key == "x" then
             Assets.stopAndPlaySound("ui_select")
