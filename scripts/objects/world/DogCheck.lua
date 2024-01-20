@@ -19,12 +19,28 @@ function DogCheck:init(variant)
 
     self.timer = Timer()
     self:addChild(self.timer)
-    -- Undertale does this
-    self.start_wait_handle = self.timer:after(5/30, function() self:start() end)
 
     self.summer_siner = 0
     self.stretch_ex_start = 0
     self.stretch_ex_timer = 0
+end
+
+function DogCheck:onAdd(parent)
+    if parent:includes(World) then
+        self.world = parent
+    elseif parent.world then
+        self.world = parent.world
+    end
+    if parent.music then
+        self.music = parent.music
+    elseif self.world and self.world.music then
+        self.music = self.world.music
+    elseif Game.music then
+        self.music = Game.music
+    end
+
+    -- Undertale does this
+    self.start_wait_handle = self.timer:after(5/30, function() self:start() end)
 end
 
 function DogCheck:start()
@@ -53,7 +69,9 @@ function DogCheck:start()
 
         self.song = path
         self.song_pitch = Utils.random(pitch_rand_min, pitch_rand_max)
-        Game.world.music:play(path, nil, self.song_pitch)
+        if self.music then
+            self.music:play(path, nil, self.song_pitch)
+        end
     end
 
     if not self.variant then
@@ -108,15 +126,17 @@ function DogCheck:start()
         Mod:changeScreenResolution(1280, 960)
         self.width, self.height = SCREEN_WIDTH, SCREEN_HEIGHT
         createDog(cust_sprites_base.."/banned_b", 1, 0, 0, "fitscreen")
-        Game.world.timer:after(1.25, function()
-            Game.world.music:play("mutation", 0)
-            Game.world.music:fade(0.85, 1.5)
-        end)
+        if self.music then
+            self.timer:after(1.25, function()
+                self.music:play("mutation", 0)
+                self.music:fade(0.85, 1.5)
+            end)
+        end
     elseif self.variant == "chapter2" then
         createDog("misc/dog_sleep", 0.8, -960, -580)
         playSong("alarm_titlescreen", 1, 1)
         self:dogcheck2()
-        Game.world.timer:every(17.5, function()
+        self.timer:every(17.5, function()
             self:dogcheck2()
         end)
     end
@@ -130,13 +150,13 @@ function DogCheck:update()
 
     if self.state == "" then return end
 
-    if self.state == "IDLE" and not Game.world:hasCutscene() --[[for zero WIP]] and not OVERLAY_OPEN
+    if self.state == "IDLE" and not self.world:hasCutscene() --[[for zero WIP]] and not OVERLAY_OPEN
         and Input.pressed("confirm")
     then
         self.state = "EXITING"
         Game.fader:fadeOut(nil, { speed = 0.5 })
-        Game.world.music:fade(0, 20/30)
-        Game.world.timer:after(1, function ()
+        if self.music then self.music:fade(0, 20/30) end
+        self.timer:after(1, function ()
             Game:returnToMenu()
         end)
     end
@@ -188,7 +208,7 @@ function DogCheck:dogcheck2()
     dog1:play(0.25, true)
     self:addChild(dog1)
     dog1.physics.speed = 10
-    Game.world.timer:script(function(wait)
+    self.timer:script(function(wait)
         wait(2.75)
         dog1:remove()
         local dog2 = Sprite("world/cutscenes/dogcheck/dog_car", SCREEN_WIDTH, 280)
