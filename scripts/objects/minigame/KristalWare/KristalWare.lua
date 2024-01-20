@@ -51,12 +51,8 @@ function KristalWare:update()
     if self.state == "EXIT" then
         self.fade.alpha = self.state_timer/2
 		if self.state_timer > 5 then
-			if self.resume_world_music then
-				Game.world.music:resume()
-			end
-			Game.state = "OVERWORLD"
-			self:remove()
-			Game.minigame = nil
+			self:endMinigame()
+            return
 		end
     end
     super.update(self)
