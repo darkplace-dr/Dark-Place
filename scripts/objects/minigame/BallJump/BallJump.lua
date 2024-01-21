@@ -251,14 +251,14 @@ function BallJump:onStateChange(old, new)
         self.player.on_ground = true
         self.player.velocity = 0
         self.player.y = 284
-        self.player.sprite:setSprite("minigames/ball_jump/player_pose")
+        self.player.sprite:setSprite("player_pose")
 
         self.all_coins = not Utils.containsValue(self.coins_gotten, false)
         self.total_score = self.score + (250 * self.lives) + (self.all_coins and 1000 or 0)
     elseif new == "DEAD" then
         self.player.on_ground = true
         self.player.velocity = 0
-        self.player.sprite:setSprite("minigames/ball_jump/player_hurt")
+        self.player.sprite:setSprite("player_hurt")
     elseif new == "TRANSITIONOUT1" or new == "TRANSITIONOUT3" then
         self.music:fade(0,1)
     elseif new == "TRANSITIONOUT2" then
