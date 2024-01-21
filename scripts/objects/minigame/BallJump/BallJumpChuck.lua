@@ -12,10 +12,12 @@ function BallJumpChucc:init(x, y, w, h)
 	self.stomp_collider = Hitbox(self, self.width/4, 0, self.width, 0)
 
 	self.move_speed = 12
+	self.stomp_grace_period = 0
 end
 
 function BallJumpChucc:updateMainCollision()
-    if self.stomp_collider and self.stomp_collider:collidesWith(Game.minigame.player.collider) then
+	self.stomp_grace_period = Utils.approach(self.stomp_grace_period, 0, DT)
+    if self.stomp_collider and self.stomp_grace_period <= 0 and self.stomp_collider:collidesWith(Game.minigame.player.collider) then
 		Game.minigame.score = Game.minigame.score + 300 + 150 * Game.minigame.player.stomp_combo
 		Game.minigame.player.stomp_combo = Game.minigame.player.stomp_combo + 1
 		if Game.minigame.player.stomp_combo >= 8 then
@@ -26,6 +28,7 @@ function BallJumpChucc:updateMainCollision()
 		Game.minigame.player.velocity = -12
 		self.move_speed = 6
 		self.sprite:setSprite("chuck_hurt")
+		self.stomp_grace_period = 5
 	else
 		super.updateMainCollision(self)
 	end
