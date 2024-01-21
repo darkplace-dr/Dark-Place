@@ -18,19 +18,19 @@ end
 function BallJumpChucc:updateMainCollision()
     self.stomp_grace_period = Utils.approach(self.stomp_grace_period, 0, DT)
     if self.stomp_collider and self.stomp_collider:collidesWith(Game.minigame.player.collider) then
-		if self.stomp_grace_period <= 0 then
-			Game.minigame.score = Game.minigame.score + 300 + 150 * Game.minigame.player.stomp_combo
-			Game.minigame.player.stomp_combo = Game.minigame.player.stomp_combo + 1
-			if Game.minigame.player.stomp_combo >= 8 then
-				Assets.playSound("minigames/ball_jump/1up")
-				Game.minigame.lives = Game.minigame.lives + 1
-			end
-			Assets.playSound("minigames/ball_jump/stomp")
-			Game.minigame.player.velocity = -12
-			self.move_speed = 6
-			self.sprite:setSprite("chuck_hurt")
-			self.stomp_grace_period = 5
-		end
+        if self.stomp_grace_period <= 0 then
+            Game.minigame.score = Game.minigame.score + 300 + 150 * Game.minigame.player.stomp_combo
+            Game.minigame.player.stomp_combo = Game.minigame.player.stomp_combo + 1
+            if Game.minigame.player.stomp_combo >= 8 then
+                Assets.playSound("minigames/ball_jump/1up")
+                Game.minigame.lives = Game.minigame.lives + 1
+            end
+            Assets.playSound("minigames/ball_jump/stomp")
+            Game.minigame.player.velocity = -12
+            self.move_speed = 6
+            self.sprite:setSprite("chuck_hurt")
+            self.stomp_grace_period = 5
+        end
     else
         super.updateMainCollision(self)
     end
