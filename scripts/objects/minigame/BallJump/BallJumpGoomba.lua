@@ -1,49 +1,16 @@
-local BallJumpSpikeF, super = Class(Object)
+---@class BallJumpGoomba : BallJumpEntity
+local BallJumpSpikeF, super = Class("BallJumpEntity")
 
 function BallJumpSpikeF:init()
 	super.init(self, SCREEN_WIDTH + 20, 288, 26, 27)
 	
-	self.sprite = Sprite("minigames/ball_jump/goomba_1")
-	self.sprite:setScale(2,2)
-	self:addChild(self.sprite)
-	self.sprite:setAnimation({"minigames/ball_jump/goomba", 1/5, true})
+	self.sprite:set("goomba")
+	self.sprite:play(1/5, true)
 	self.layer = Game.minigame.ground.layer + 0.001
 	
+	self.move_speed = 8
 	self.collider = Hitbox(self, self.width/2, self.height/2, self.width, self.height)
 	self.stomp_collider = Hitbox(self, self.width/2, 0, self.width, 0)
-end
-
-function BallJumpSpikeF:update()
-	super.update(self)
-	
-	if Game.minigame.state == "MAIN" then
-		self.x = self.x - DTMULT * 8
-		
-		if self.collider:collidesWith(Game.minigame.player.collider) then
-            Game.minigame.player:tryHurt()
-		elseif self.stomp_collider:collidesWith(Game.minigame.player.collider) then
-			Game.minigame.score = Game.minigame.score + 300 + 150 * Game.minigame.player.stomp_combo
-			Game.minigame.player.stomp_combo = Game.minigame.player.stomp_combo + 1
-			if Game.minigame.player.stomp_combo >= 8 then
-				Assets.playSound("minigames/ball_jump/1up")
-				Game.minigame.lives = Game.minigame.lives + 1
-			end
-			Assets.playSound("minigames/ball_jump/stomp")
-			Game.minigame.player.velocity = -12
-			self:remove()
-		end
-		if self.x < -50 then
-			self:remove()
-		end
-	end
-end
-
-function BallJumpSpikeF:draw()
-	super.draw(self)
-	if DEBUG_RENDER then
-		self.collider:draw(1,0,0,1)
-		self.stomp_collider:draw(0,1,0,1)
-	end
 end
 
 return BallJumpSpikeF

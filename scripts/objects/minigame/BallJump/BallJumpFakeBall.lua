@@ -1,31 +1,18 @@
-local BallJumpFakeBall, super = Class(Object)
+---@class BallJumpFakeBall : BallJumpBall
+local BallJumpFakeBall, super = Class("BallJumpBall")
 
 function BallJumpFakeBall:init(y)
-	super.init(self, SCREEN_WIDTH + 20, y)
+	super.init(self, y)
 	
-	self.sprite = Sprite("minigames/ball_jump/fake_ball")
-	self.sprite:setOrigin(0.5, 0.5)
-	self.sprite:setScale(2,2)
-	self:addChild(self.sprite)
+	self.sprite:set("fake_ball")
 	
+	self.hurtable = true
 	self.collider = CircleCollider(self, 0, 0, 8)
 end
 
-function BallJumpFakeBall:update()
-	super.update(self)
-	
-	if Game.minigame.state == "MAIN" then
-		self.x = self.x - DTMULT * 8
-		
-		if self.collider:collidesWith(Game.minigame.player.collider) then
-            Game.minigame.player:tryHurt()
-		end
-		
-		self.sprite.rotation = self.sprite.rotation - DTMULT/4
-		if self.x < -50 then
-			self:remove()
-		end
-	end
+function BallJumpFakeBall:updateMainCollision()
+	super.super.updateMainCollision(self)
+    self.sprite.rotation = self.sprite.rotation - DTMULT/4
 end
 
 function BallJumpFakeBall:draw()

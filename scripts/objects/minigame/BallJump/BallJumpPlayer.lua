@@ -13,11 +13,9 @@ function BallJumpPlayer:init()
 	self.collider = Hitbox(self, self.width/4 - 5, self.height/4, self.width/2 + 10, self.height + 3)
 	
 	self.on_ground = true
-	
 	self.velocity = 0
 	
 	self.iframes = 0
-	
 	self.stomp_combo = 0
 end
 
@@ -50,12 +48,8 @@ function BallJumpPlayer:update()
 	self.iframes = self.iframes - DT
 end
 
-function BallJumpPlayer:didThatHurt()
-	return self.iframes <= 0
-end
-
 function BallJumpPlayer:tryHurt()
-	if not self:didThatHurt() then return end
+	if self.iframes > 0 then return false end
 	Game.minigame.score = Game.minigame.score - 150
 	Game.minigame.lives = Game.minigame.lives - 1
 	Assets.playSound("minigames/ball_jump/hurt")
@@ -65,6 +59,7 @@ function BallJumpPlayer:tryHurt()
 		self.iframes = 1.5
 		self.sprite.alpha = 0.5
 	end
+	return true
 end
 
 function BallJumpPlayer:draw()
