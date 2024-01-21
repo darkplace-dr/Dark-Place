@@ -51,10 +51,20 @@ function BallJumpPlayer:update()
 end
 
 function BallJumpPlayer:didThatHurt()
-	if self.iframes > 0 then
-		return false
+	return self.iframes <= 0
+end
+
+function BallJumpPlayer:tryHurt()
+	if not self:didThatHurt() then return end
+	Game.minigame.score = Game.minigame.score - 150
+	Game.minigame.lives = Game.minigame.lives - 1
+	Assets.playSound("minigames/ball_jump/hurt")
+	if Game.minigame.lives == 0 then
+		Game.minigame:setState("DEAD")
+	else
+		self.iframes = 1.5
+		self.sprite.alpha = 0.5
 	end
-	return true
 end
 
 function BallJumpPlayer:draw()

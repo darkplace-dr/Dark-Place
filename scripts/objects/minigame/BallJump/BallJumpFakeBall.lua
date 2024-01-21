@@ -18,17 +18,7 @@ function BallJumpFakeBall:update()
 		self.x = self.x - DTMULT * 8
 		
 		if self.collider:collidesWith(Game.minigame.player.collider) then
-			if Game.minigame.player:didThatHurt() then
-				Game.minigame.score = Game.minigame.score - 150
-				Game.minigame.lives = Game.minigame.lives - 1
-				Assets.playSound("minigames/ball_jump/hurt")
-				if Game.minigame.lives == 0 then
-					Game.minigame:setState("DEAD")
-				else
-					Game.minigame.player.iframes = 1.5
-					Game.minigame.player.sprite.alpha = 0.5
-				end
-			end
+            Game.minigame.player:tryHurt()
 		end
 		
 		self.sprite.rotation = self.sprite.rotation - DTMULT/4
