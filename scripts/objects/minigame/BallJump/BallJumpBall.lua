@@ -18,7 +18,7 @@ function BallJumpBall:updateMainCollision()
         Game.minigame.score = Game.minigame.score + 200
         Assets.playSound("minigames/ball_jump/correct")
         self:remove()
-		return
+        return
     end
 
     self.sprite.rotation = self.sprite.rotation - DTMULT/4

@@ -49,15 +49,15 @@ function BallJumpEntity:updateMainCollision()
 end
 
 function BallJumpEntity:draw()
-	super.draw(self)
-	if DEBUG_RENDER then
+    super.draw(self)
+    if DEBUG_RENDER then
         if self.collider then
-		    self.collider:draw(1,0,0,1)
+            self.collider:draw(1,0,0,1)
         end
         if self.stomp_collider then
-		    self.stomp_collider:draw(0,1,0,1)
+            self.stomp_collider:draw(0,1,0,1)
         end
-	end
+    end
 end
 
 return BallJumpEntity
