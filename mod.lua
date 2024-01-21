@@ -34,7 +34,6 @@ function Mod:init()
 end
 
 function Mod:postInit(new_file)
-    print(new_file)
     if self.legacy_kristal then
         Game.world.music:stop()
         Game.world:startCutscene("flowey_check")
@@ -44,47 +43,47 @@ function Mod:postInit(new_file)
     self:initializeImportantFlags(new_file)
 
     if new_file then
-		if Game.save_name == "SUPER" then
-			Game.inventory:addItem("chaos_emeralds")
-		end
+        if Game.save_name == "SUPER" then
+            Game.inventory:addItem("chaos_emeralds")
+        end
 
         if Game.save_name == "WOODS" then
-			Game:setPartyMembers("kris")
+            Game:setPartyMembers("kris")
             Game.world:loadMap("woods/spawn")
         else
             Game.world:startCutscene("_main.introcutscene")
-		end
+        end
     end
-	
-	if not Game:getFlag("booty_time") then
-		Game:addFlag("booty_cd", 1)
-		if Game:getFlag("booty_cd") >= 5 then
-			if love.math.random(1,5) > 4 then
-				Game:setFlag("booty_time", true)
-			end
-		end
-	elseif not Game:getFlag("booty_finished") then
-		Game.world:startCutscene("booty.bootleg")
-	end
+    
+    if not Game:getFlag("booty_time") then
+        Game:addFlag("booty_cd", 1)
+        if Game:getFlag("booty_cd") >= 5 then
+            if love.math.random(1,5) > 4 then
+                Game:setFlag("booty_time", true)
+            end
+        end
+    elseif not Game:getFlag("booty_finished") then
+        Game.world:startCutscene("booty.bootleg")
+    end
 
     self:initBulborb()
-	
-	self:initializeEvents()
+    
+    self:initializeEvents()
 end
 
 function Mod:onRegistered()
     self:registerShaders()
-	self:registerMinigames()
+    self:registerMinigames()
 end
 
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
     local old_save_issues = {}
-	
-	if Game:getFlag("quest_desc")[1] == "This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description." then
-		likely_old_save = true
+    
+    if Game:getFlag("quest_desc")[1] == "This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description." then
+        likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Questline was added.")
-	end
+    end
 
     if new_file or likely_old_save then
         Kristal.callEvent("setDesc", "mainline",
@@ -218,14 +217,14 @@ function Mod:initializeImportantFlags(new_file)
         Game:getPartyMember("pauling").opinions = { kris = 40, YOU = 40, susie = 40, noelle = 40, dess = 40, brandon = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
 
-	if new_file or not Game:getFlag("darkess_beans") then
+    if new_file or not Game:getFlag("darkess_beans") then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before the bean spots were added.")
-		Game:setFlag("darkess_beans", 0)
-		Game:setFlag("fountain_beans", 0)
-		Game:setFlag("spam_beans", 0)
-		Game:setFlag("binaribeans", 0)
-	end
+        Game:setFlag("darkess_beans", 0)
+        Game:setFlag("fountain_beans", 0)
+        Game:setFlag("spam_beans", 0)
+        Game:setFlag("binaribeans", 0)
+    end
 
     local function addOpinionsToParty(party, new_opinions)
         local party_obj = Game:getPartyMember(party)
@@ -234,7 +233,7 @@ function Mod:initializeImportantFlags(new_file)
         party_obj.opinions = Utils.merge(party_obj.opinions, new_opinions)
     end
 
-	if new_file or mario.opinions == nil then
+    if new_file or mario.opinions == nil then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Mario was added.")
 
@@ -256,8 +255,8 @@ function Mod:initializeImportantFlags(new_file)
         addOpinionsToParty("jamm", { mario = 65 })
         Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65 }
     end
-	
-	if new_file or pauling.opinions == nil then
+    
+    if new_file or pauling.opinions == nil then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Ms. Pauling was added.")
 
@@ -334,7 +333,7 @@ function Mod:initializeImportantFlags(new_file)
 end
 
 function Mod:initializeEvents()
-	local date = os.date("*t")
+    local date = os.date("*t")
 end
 
 function Mod:unload()
@@ -399,10 +398,10 @@ function Mod:getActionButtons(battler, buttons)
             return {"fight", "magic", "item", "send", "defend"}
         end
     end
-	
-	if battler.chara.id == "mario" and Game:getFlag("acj_mario_fightless") then
-		table.remove(buttons,1)
-	end
+    
+    if battler.chara.id == "mario" and Game:getFlag("acj_mario_fightless") then
+        table.remove(buttons,1)
+    end
     return buttons
 end
 
@@ -458,15 +457,15 @@ function Mod:onTextSound(sound, node)
         if self.voice_timer == 0 then
             local snd = Assets.playSound(Utils.pick{"voice/mago1", "voice/mago2", "voice/mago3", "voice/mago4", "voice/mago5", "voice/mago6", "voice/mago7"})
             self.voice_timer = 2
-		end
-		return true
+        end
+        return true
     end
     if sound == "rx1" then
         if self.voice_timer == 0 then
             local snd = Assets.playSound(Utils.pick{"voice/rx1", "voice/rx2", "voice/rx3"})
             self.voice_timer = 2
-		end
-		return true
+        end
+        return true
     end
     if sound == "hat_badge" then
         -- Sounds are taken from the badge seller in A Hat in Time.
@@ -481,8 +480,8 @@ function Mod:onTextSound(sound, node)
             "voice/hat_badge7",
             "voice/hat_badge8"})
             self.voice_timer = 5
-		end
-		return true
+        end
+        return true
     end
 end
 
