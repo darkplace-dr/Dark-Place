@@ -12,109 +12,106 @@ function BallJumpLv1:init()
     self.hs_flag = "ball_jump_1_hs"
 end
 
-function BallJumpLv1:update()
-    super.update(self)
+function BallJumpLv1:levelScript(wait)
+    wait(1)
+    self:addEntity(BallJumpBall(200))
 
-    if self.state == "MAIN" and self.state_timer > 1 and self.entity_count < 1 then
-        self:addCountedEntity(BallJumpBall(200))
-    end
-    if self.state == "MAIN" and self.state_timer > 2 and self.entity_count < 2 then
-        self:addCountedEntity(BallJumpSpikeF())
-    end
-    if self.state == "MAIN" and self.state_timer > 3 and self.entity_count < 3 then
-        self:addCountedEntity(BallJumpSpikeF())
-    end
-    if self.state == "MAIN" and self.state_timer > 4 and self.entity_count < 4 then
-        self:addCountedEntity(BallJumpBall(200))
-        self:addCountedEntity(BallJumpSpikeF())
-    end
-    if self.state == "MAIN" and self.state_timer > 4.7 and self.entity_count < 6 then
-        self:addCountedEntity(BallJumpSpikeF())
-    end
-    if self.state == "MAIN" and self.state_timer > 5.4 and self.entity_count < 7 then
-        self:addCountedEntity(BallJumpSpikeF())
-        self:addCountedEntity(BallJumpFastBall(285))
-    end
-    if self.state == "MAIN" and self.state_timer > 7 and self.entity_count < 9 then
-        self:addCountedEntity(BallJumpBall(200))
-        self:addCountedEntity(BallJumpFakeBall(285))
-    end
-    if self.state == "MAIN" and self.state_timer > 7.6 and self.entity_count < 11 then
-        self:addCountedEntity(BallJumpBall(285))
-        self:addCountedEntity(BallJumpFakeBall(200))
-    end
-    if self.state == "MAIN" and self.state_timer > 8.2 and self.entity_count < 13 then
-        self:addCountedEntity(BallJumpBall(200))
-        self:addCountedEntity(BallJumpFakeBall(285))
-    end
-    if self.state == "MAIN" and self.state_timer > 9.2 and self.entity_count < 15 then
-        self:addCountedEntity(BallJumpGoomba())
-    end
-    if self.state == "MAIN" and self.state_timer > 10 and self.entity_count < 16 then
-        self:addCountedEntity(BallJumpGoomba())
-    end
-    if self.state == "MAIN" and self.state_timer > 10.7 and self.entity_count < 17 then
-        self:addCountedEntity(BallJumpSCoin(140, 1))
-    end
-    if self.state == "MAIN" and self.state_timer > 10.8 and self.entity_count < 18 then
-        self:addCountedEntity(BallJumpGoomba())
-    end
-    if self.state == "MAIN" and self.state_timer > 13 and self.entity_count < 19 then
-        self:addCountedEntity(BallJumpBullet(240))
-    end
-    if self.state == "MAIN" and self.state_timer > 14 and self.entity_count < 20 then
-        self:addCountedEntity(BallJumpBullet(253))
-        self:addCountedEntity(BallJumpBullet(285))
-    end
-    if self.state == "MAIN" and self.state_timer > 14.5 and self.entity_count < 22 then
-        self:addCountedEntity(BallJumpBullet(221))
-        self:addCountedEntity(BallJumpBullet(189))
-        self:addCountedEntity(BallJumpBullet(157))
-        self:addCountedEntity(BallJumpBullet(125))
-        self:addCountedEntity(BallJumpBullet(93))
-        self:addCountedEntity(BallJumpBullet(61))
-        self:addCountedEntity(BallJumpSCoin(140, 2))
-    end
-    if self.state == "MAIN" and self.state_timer > 15 and self.entity_count < 29 then
-        self:addCountedEntity(BallJumpBullet(253))
-        self:addCountedEntity(BallJumpBullet(285))
-    end
-    if self.state == "MAIN" and self.state_timer > 15.2 and self.entity_count < 31 then
-        self:addCountedEntity(BallJumpBullet(253))
-    end
-    if self.state == "MAIN" and self.state_timer > 16.5 and self.entity_count < 32 then
-        self:addCountedEntity(BallJumpSpiny())
-    end
-    if self.state == "MAIN" and self.state_timer > 17.3 and self.entity_count < 33 then
-        self:addCountedEntity(BallJumpSpikeF())
-    end
-    if self.state == "MAIN" and self.state_timer > 18.9 and self.entity_count < 34 then
-        self:addCountedEntity(BallJumpChuck())
-        self:addCountedEntity(BallJumpSpikeF())
-    end
-    if self.state == "MAIN" and self.state_timer > 22 and self.entity_count < 36 then
-        self:addCountedEntity(BallJumpBackChuck())
-        self:addCountedEntity(BallJumpBall(180))
-    end
-    if self.state == "MAIN" and self.state_timer > 23.7 and self.entity_count < 38 then
-        self:addCountedEntity(BallJumpBullet(253))
-        self:addCountedEntity(BallJumpSpikeF())
-    end
-    if self.state == "MAIN" and self.state_timer > 24 and self.entity_count < 40 then
-        self:addCountedEntity(BallJumpSCoin(30, 3))
-    end
-    if self.state == "MAIN" and self.state_timer > 24.5 and self.entity_count < 41 then
-        self:addCountedEntity(BallJumpBullet(221))
-    end
-    if self.state == "MAIN" and self.state_timer > 25.25 and self.entity_count < 42 then
-        self:addCountedEntity(BallJumpBullet(189))
-    end
-    if self.state == "MAIN" and self.state_timer > 26 and self.entity_count < 43 then
-        self:addCountedEntity(BallJumpSpikeF())
-    end
-    if self.state == "MAIN" and self.state_timer > 26.5 and self.entity_count < 44 then
-        self:addCountedEntity(BallJumpFinish())
-    end
+    wait(1)
+    self:addEntity(BallJumpSpikeF())
+
+    wait(1)
+    self:addEntity(BallJumpSpikeF())
+
+    wait(1)
+    self:addEntity(BallJumpBall(200))
+    self:addEntity(BallJumpSpikeF())
+
+    wait(0.7)
+    self:addEntity(BallJumpSpikeF())
+
+    wait(0.7)
+    self:addEntity(BallJumpSpikeF())
+    self:addEntity(BallJumpFastBall(285))
+
+    wait(1.6)
+    self:addEntity(BallJumpBall(200))
+    self:addEntity(BallJumpFakeBall(285))
+
+    wait(0.6)
+    self:addEntity(BallJumpBall(285))
+    self:addEntity(BallJumpFakeBall(200))
+
+    wait(0.6)
+    self:addEntity(BallJumpBall(200))
+    self:addEntity(BallJumpFakeBall(285))
+
+    wait(1)
+    self:addEntity(BallJumpGoomba())
+
+    wait(0.8)
+    self:addEntity(BallJumpGoomba())
+
+    wait(0.7)
+    self:addEntity(BallJumpSCoin(140, 1))
+
+    wait(0.1)
+    self:addEntity(BallJumpGoomba())
+
+    wait(2.2)
+    self:addEntity(BallJumpBullet(240))
+
+    wait(1)
+    self:addEntity(BallJumpBullet(253))
+    self:addEntity(BallJumpBullet(285))
+
+    wait(0.5)
+    self:addEntity(BallJumpBullet(221))
+    self:addEntity(BallJumpBullet(189))
+    self:addEntity(BallJumpBullet(157))
+    self:addEntity(BallJumpBullet(125))
+    self:addEntity(BallJumpBullet(93))
+    self:addEntity(BallJumpBullet(61))
+    self:addEntity(BallJumpSCoin(140, 2))
+
+    wait(0.5)
+    self:addEntity(BallJumpBullet(253))
+    self:addEntity(BallJumpBullet(285))
+
+    wait(0.2)
+    self:addEntity(BallJumpBullet(253))
+
+    wait(1.3)
+    self:addEntity(BallJumpSpiny())
+
+    wait(0.8)
+    self:addEntity(BallJumpSpikeF())
+
+    wait(1.6)
+    self:addEntity(BallJumpChuck())
+    self:addEntity(BallJumpSpikeF())
+
+    wait(3.1)
+    self:addEntity(BallJumpBackChuck())
+    self:addEntity(BallJumpBall(180))
+
+    wait(1.7)
+    self:addEntity(BallJumpBullet(253))
+    self:addEntity(BallJumpSpikeF())
+
+    wait(0.3)
+    self:addEntity(BallJumpSCoin(30, 3))
+
+    wait(0.5)
+    self:addEntity(BallJumpBullet(221))
+
+    wait(0.75)
+    self:addEntity(BallJumpBullet(189))
+
+    wait(0.75)
+    self:addEntity(BallJumpSpikeF())
+
+    wait(0.5)
+    self:addEntity(BallJumpFinish())
 end
 
 return BallJumpLv1

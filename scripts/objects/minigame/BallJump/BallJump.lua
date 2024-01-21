@@ -1,4 +1,5 @@
 ---@class BallJump : MinigameHandler
+---@field levelScript? fun(self:BallJump, wait:fun(time:number))
 local BallJump, super = Class("MinigameHandler")
 
 function BallJump:init()
@@ -10,6 +11,7 @@ function BallJump:init()
 	Assets.playSound("minigames/ball_jump/transition")
 	
 	self.timer = Timer()
+	self:addChild(self.timer)
 	
 	self.music = Music()
 	
@@ -45,7 +47,9 @@ function BallJump:init()
 	self.req_score = 0
 	
 	self.procedurally = false
-	
+
+	self.level_script_handle = nil
+
 	self.entities = {}
 	self.entity_count = 0
 	
@@ -246,16 +250,28 @@ function BallJump:onKeyPressed(key)
 end
 
 function BallJump:setState(state)
+	local last_state = self.state
 	self.state = state
 	self.state_timer = 0
-	self:onStateChange(state)
+	self:onStateChange(last_state, state)
 end
 
-function BallJump:onStateChange(state)
-	if state == "INTRO" then
+function BallJump:onStateChange(old, new)
+	if old == "MAIN" then
+		if self.level_script_handle then
+			self.timer:cancel(self.level_script_handle)
+		end
+	end
+	if new == "INTRO" then
 		self:changeWindowTitle()
 		self.music:play("minigames/ball_jump/ball_jump")
-	elseif state == "WIN" then
+	elseif new == "MAIN" then
+		if self.levelScript then
+			self.level_script_handle = self.timer:script(function(...)
+				self:levelScript(...)
+			end)
+		end
+	elseif new == "WIN" then
 		self.player.on_ground = true
 		self.player.velocity = 0
 		self.player.y = 284
@@ -270,13 +286,13 @@ function BallJump:onStateChange(state)
 		end
 		
 		self.total_score = self.score + (250 * self.lives) + (self.all_coins and 1000 or 0)
-	elseif state == "DEAD" then
+	elseif new == "DEAD" then
 		self.player.on_ground = true
 		self.player.velocity = 0
 		self.player.sprite:setSprite("minigames/ball_jump/player_hurt")
-	elseif state == "TRANSITIONOUT1" or state == "TRANSITIONOUT3" then
+	elseif new == "TRANSITIONOUT1" or new == "TRANSITIONOUT3" then
 		self.music:fade(0,1)
-	elseif state == "TRANSITIONOUT2" then
+	elseif new == "TRANSITIONOUT2" then
 		self:preEndCleanup()
 	end
 end

@@ -34,6 +34,7 @@ function Mod:init()
 end
 
 function Mod:postInit(new_file)
+    print(new_file)
     if self.legacy_kristal then
         Game.world.music:stop()
         Game.world:startCutscene("flowey_check")
