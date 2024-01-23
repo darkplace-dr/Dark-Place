@@ -379,7 +379,7 @@ end
 
 function AngryBirds:getAudioName(name)
 	if self.audio_groups[name] ~= nil then
-		local index = math.random(1, #self.audio_groups[name])
+		local index = love.math.random(1, #self.audio_groups[name])
 		return self.audio_groups[name][index]
 	end
 	return name
@@ -399,21 +399,21 @@ function AngryBirds:animateBirds()
     local items_per_category = 3
     local items_in_total = #self.bird_sprites * items_per_category
 	
-    if #self.bird_animations < items_in_total and math.random(1,5) == 1 then
-        local layer = math.random(1, 5)
-        local tx = math.random(-SCREEN_WIDTH * 0.75, SCREEN_WIDTH * 0.75)
+    if #self.bird_animations < items_in_total and love.math.random(1,5) == 1 then
+        local layer = love.math.random(1, 5)
+        local tx = love.math.random(-SCREEN_WIDTH * 0.75, SCREEN_WIDTH * 0.75)
         local ty = SCREEN_HEIGHT + 50 * SCREEN_HEIGHT / 320
 
         local scale = layer * 0.2
-        local tx_vel = math.random(100, 350) * scale * (SCREEN_WIDTH / 480 + 1) / 2
-        local ty_vel = math.random(-400, -150) * scale * (SCREEN_HEIGHT / 320 + 1) / 2
+        local tx_vel = love.math.random(100, 350) * scale * (SCREEN_WIDTH / 480 + 1) / 2
+        local ty_vel = love.math.random(-400, -150) * scale * (SCREEN_HEIGHT / 320 + 1) / 2
 		
         if layer == 1 then
             ty_vel = ty_vel * 1.75
-            tx_vel = tx_vel * 1.75 
-        end		
+            tx_vel = tx_vel * 1.75
+        end
 		
-        local temp_bird_sprite = self.bird_sprites[math.random(#self.bird_sprites)]
+        local temp_bird_sprite = self.bird_sprites[love.math.random(#self.bird_sprites)]
         local sprite = temp_bird_sprite.sprite
         local reward = temp_bird_sprite.reward
 
@@ -421,10 +421,10 @@ function AngryBirds:animateBirds()
 
         -- used for the rewards you get after completing an episode.
         if reward == 1 then
-            angle_speed = math.random() * math.pi * 1.5
+            angle_speed = love.math.random() * math.pi * 1.5
         elseif reward == 2 then
-            tx = math.random(SCREEN_WIDTH * 0.1, SCREEN_WIDTH * 0.9)
-            ty_vel = math.random(-250, -150) * scale * (SCREEN_HEIGHT / 320 + 1) * 0.175
+            tx = love.math.random(SCREEN_WIDTH * 0.1, SCREEN_WIDTH * 0.9)
+            ty_vel = love.math.random(-250, -150) * scale * (SCREEN_HEIGHT / 320 + 1) * 0.175
             tx_vel = 0
         end
 
