@@ -22,12 +22,13 @@ function AngryBirds:init()
 	self.state_timer = 0
 
     self.menu_sunset_angle = 0
+    self.goldeneggs_stareffect_angle = 0
     self:menuInit()
 
     self.particles = {}
 	
     self.audio_groups = {
-        bird_misc = Utils.pick{
+        bird_misc = {
             "minigames/ab/birds/talk_a",
             "minigames/ab/birds/talk_b",
             "minigames/ab/birds/talk_c",
@@ -41,34 +42,34 @@ function AngryBirds:init()
             "minigames/ab/birds/talk_k",
             "minigames/ab/birds/talk_l"
         },
-        bird_next_military = Utils.pick{
+        bird_next_military = {
             "minigames/ab/birds/next_military_a",
             "minigames/ab/birds/next_military_b",
             "minigames/ab/birds/next_military_c"
         },
-        bird_shot = Utils.pick{
+        bird_shot = {
             "minigames/ab/misc/launched_a",
             "minigames/ab/misc/launched_b",
             "minigames/ab/misc/launched_c"
         },
-        red_special = Utils.pick{
+        red_special = {
             "minigames/ab/birds/red/special_a",
             "minigames/ab/birds/red/special_b",
             "minigames/ab/birds/red/special_c"
         },
-        level_clear_military = Utils.pick{
+        level_clear_military = {
             "minigames/ab/birds/level_clear_military_a",
             "minigames/ab/birds/level_clear_military_b"
         },
-        level_failed_piglets = Utils.pick{
+        level_failed_piglets = {
             "minigames/ab/birds/level_failed_pigs_a",
             "minigames/ab/birds/level_failed_pigs_b"
         },
-        level_start_military = Utils.pick{
+        level_start_military = {
             "minigames/ab/birds/level_start_military_a",
             "minigames/ab/birds/level_start_military_b"
         },
-        light_collision = Utils.pick{
+        light_collision = {
             "light collision a1",
             "light collision a2",
             "light collision a3",
@@ -78,12 +79,12 @@ function AngryBirds:init()
             "light collision a7",
             "light collision a8"
         },
-        light_damage = Utils.pick{
+        light_damage = {
             "light damage a1",
             "light damage a2",
             "light damage a3"
         },
-        light_destroyed = Utils.pick{
+        light_destroyed = {
             "light destroyed a1",
             "light destroyed a2",
             "light destroyed a3"
@@ -95,17 +96,17 @@ function AngryBirds:init()
             "rock collision a4",
             "rock collision a5"
         },
-        rock_damage = Utils.pick{
+        rock_damage = {
             "rock damage a1",
             "rock damage a2",
             "rock damage a3"
         },
-        rock_destroyed = Utils.pick{
+        rock_destroyed = {
             "rock destroyed a1",
             "rock destroyed a2",
             "rock destroyed a3"
         },
-        wood_collision = Utils.pick{
+        wood_collision = {
             "wood collision a1",
             "wood collision a2",
             "wood collision a3",
@@ -113,17 +114,17 @@ function AngryBirds:init()
             "wood collision a5",
             "wood collision a6"
         },
-        wood_damage = Utils.pick{
+        wood_damage = {
             "wood damage a1",
             "wood damage a2",
             "wood damage a3"
         },
-        wood_destroyed = Utils.pick{
+        wood_destroyed = {
             "wood destroyed a1",
             "wood destroyed a2",
             "wood destroyed a3"
         },
-        piglette = Utils.pick{
+        piglette = {
             "minigames/ab/birds/pigs/talk_a",
             "minigames/ab/birds/pigs/talk_b",
             "minigames/ab/birds/pigs/talk_c",
@@ -137,7 +138,7 @@ function AngryBirds:init()
             "minigames/ab/birds/pigs/talk_k",
             "minigames/ab/birds/pigs/talk_l"
         },
-        piglette_collision = Utils.pick{
+        piglette_collision = {
             "minigames/ab/birds/pigs/collision_a",
             "minigames/ab/birds/pigs/collision_b",
             "minigames/ab/birds/pigs/collision_c",
@@ -147,7 +148,7 @@ function AngryBirds:init()
             "minigames/ab/birds/pigs/collision_g",
             "minigames/ab/birds/pigs/collision_h"
         },
-        piglette_damage = Utils.pick{
+        piglette_damage = {
             "minigames/ab/birds/pigs/damage_a",
             "minigames/ab/birds/pigs/damage_b",
             "minigames/ab/birds/pigs/damage_c",
@@ -176,8 +177,8 @@ function AngryBirds:postInit()
     --data and settings for the minigame
     if not love.filesystem.getInfo("saves/"..Mod.info.id.."/ab_settings.json") then
         self.birds_data = {
-            ["current_title_theme"] = 3,
-            --["tutorials"] = {},
+            ["current_title_theme"] = 1,
+            ["tutorials"] = {},
         }
         love.filesystem.write("saves/"..Mod.info.id.."/ab_settings.json", JSON.encode(self.birds_data))
     else
@@ -219,11 +220,13 @@ function AngryBirds:update()
     end
 	
     if self.state == "MENU" then
-        self.menu_sunset_angle = self.menu_sunset_angle + 0.0125 * DTMULT
-        if self.menu_sunset_angle > math.pi then
-            self.menu_sunset_angle = self.menu_sunset_angle - 2 * math.pi
-        end
-        self:animateBirds()
+        if self.current_menu_page == self.main_menu then
+            self.menu_sunset_angle = self.menu_sunset_angle + 0.125 * (DTMULT / 30)
+            if self.menu_sunset_angle > math.pi then
+                self.menu_sunset_angle = self.menu_sunset_angle - 2 * math.pi
+            end
+            self:animateBirds()
+		end
     end
 
     super.update(self)
@@ -399,21 +402,16 @@ function AngryBirds:animateBirds()
     local items_per_category = 3
     local items_in_total = #self.bird_sprites * items_per_category
 	
-    if #self.bird_animations < items_in_total and math.random(1,5) == 1 then
-        local layer = math.random(1, 5)
-        local tx = math.random(-SCREEN_WIDTH * 0.75, SCREEN_WIDTH * 0.75)
-        local ty = SCREEN_HEIGHT + 50 * SCREEN_HEIGHT / 320
+    if #self.bird_animations < items_in_total and love.math.random(1,3) == 1 then
+        local layer = love.math.random(1, 5)
+        local tx = love.math.random(-SCREEN_WIDTH * 0.75, SCREEN_WIDTH * 0.75)
+        local ty = SCREEN_HEIGHT - 30
 
         local scale = layer * 0.2
-        local tx_vel = math.random(100, 350) * scale * (SCREEN_WIDTH / 480 + 1) / 2
-        local ty_vel = math.random(-400, -150) * scale * (SCREEN_HEIGHT / 320 + 1) / 2
+        local tx_vel = love.math.random(100, 350) * scale * 1.75
+        local ty_vel = love.math.random(-400, -150) * scale * 1.75
 		
-        if layer == 1 then
-            ty_vel = ty_vel * 1.75
-            tx_vel = tx_vel * 1.75 
-        end		
-		
-        local temp_bird_sprite = self.bird_sprites[math.random(#self.bird_sprites)]
+        local temp_bird_sprite = self.bird_sprites[love.math.random(#self.bird_sprites)]
         local sprite = temp_bird_sprite.sprite
         local reward = temp_bird_sprite.reward
 
@@ -421,10 +419,10 @@ function AngryBirds:animateBirds()
 
         -- used for the rewards you get after completing an episode.
         if reward == 1 then
-            angle_speed = math.random() * math.pi * 1.5
+            angle_speed = love.math.random() * math.pi * 1.5
         elseif reward == 2 then
-            tx = math.random(SCREEN_WIDTH * 0.1, SCREEN_WIDTH * 0.9)
-            ty_vel = math.random(-250, -150) * scale * (SCREEN_HEIGHT / 320 + 1) * 0.175
+            tx = love.math.random(SCREEN_WIDTH * 0.1, SCREEN_WIDTH * 0.9)
+            ty_vel = love.math.random(-250, -150) * scale * (SCREEN_HEIGHT / 320 + 1) * 0.175
             tx_vel = 0
         end
 
@@ -435,21 +433,21 @@ function AngryBirds:animateBirds()
         local v = self.bird_animations[i]
         if v.reward == 2 then -- danger above movement
             v.angle = math.sin(v.angle_speed) * 0.15
-            v.angle_speed = (v.angle_speed + DTMULT * 2) % (math.pi * 2)
+            v.angle_speed = (v.angle_speed + (DTMULT / 30) * 2) % (math.pi * 2)
             v.x = v.x - v.angle * v.layer / 2
         else
-            v.y_vel = v.y_vel + 150 * DTMULT
-            v.angle = v.angle + v.angle_speed * DTMULT
+            v.y_vel = v.y_vel + 150 * (DTMULT / 30)
+            v.angle = v.angle + v.angle_speed * (DTMULT / 30)
         end
-        v.x = v.x + v.x_vel / 2 * DTMULT
-        v.y = v.y + v.y_vel / 2 * DTMULT
+        v.x = v.x + v.x_vel / 2 * (DTMULT / 30)
+        v.y = v.y + v.y_vel / 2 * (DTMULT / 30)
 		
-        if v.y > SCREEN_HEIGHT + 50 * SCREEN_HEIGHT / 320 --[[or ((v.reward == 2 or v.reward == 2) and v.y < -v.spriteHeight)]] then
+        if v.y > SCREEN_HEIGHT + 50 * SCREEN_HEIGHT / 320 --[[or ((v.reward == 2 or v.reward == 2) and v.y < -v.sprite.height)]] then
             table.remove(self.bird_animations, i)
         end
     end
 	
-    -- easter egg that occurs when a bird on layer 5 is clicked on.
+    -- easter egg that occurs when a bird on layer 5 is clicked on. probably gonna need help with getting this one working lol.
 
 	--[[if keyPressed["LBUTTON"] and currentMenuPage ~= about then
 		for i = 1, #self.bird_animations do
@@ -568,7 +566,7 @@ function AngryBirds:drawMenu()
     for k, v in ipairs(self.bird_animations) do
         local scale_x,scale_y = v.scale * 0.65
         if v.layer == 4 then
-            Draw.draw(Assets.getTexture(v.sprite), math.floor(v.x / (v.scale * 0.5)), math.floor(v.y / (v.scale * 0.5) - SCREEN_HEIGHT * 0.125 / v.scale), v.angle, scale_x, scale_y)
+            Draw.draw(Assets.getTexture(v.sprite), math.floor(v.x / (v.scale * 0.5)), math.floor(v.y / (v.scale * 0.5) - SCREEN_HEIGHT * 0.125 / v.scale), v.angle,  scale_x,  scale_y)
         end
     end
 
