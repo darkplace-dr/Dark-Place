@@ -8,10 +8,11 @@
 
 An open source Kristal mod that anyone can contribute to.
 
-> **Note** Under construction.
+> README under construction.
 
 [Discord Server](https://discord.gg/dYFchbRTES)
-**IMPORTANT NOTE** Due to recent harassment that's been going on, any accounts that have been recently made within the last few days that join will be instantly banned, please keep this in mind if you want to join this server.
+> [!WARNING]
+> Due to recent harassment that's been going on, any accounts that have been recently made within the last few days that join will be instantly banned, please keep this in mind if you want to join this server.
 
 [Official Website](https://darkplace-dr.github.io/)
 
@@ -30,7 +31,7 @@ Simply install [the latest build](https://nightly.link/KristalTeam/Kristal/workf
 
 If you are on Windows, you can simply extract the content of `kristal-0.8.1-dev-win.zip` in a folder anywhere you want on your computer and run the exe.
 
-If you are on Linux or Mac, you'll have to install [LÖVE2D](https://love2d.org/) beforehand. After that, you can extract `kristal-0.8.1-dev.love` and run the love file.
+If you are on Linux or Mac, you'll have to install [LÖVE](https://love2d.org/) beforehand. After that, you can extract `kristal-0.8.1-dev.love` and run the love file.
 
 </details>
 
@@ -105,15 +106,14 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Mr. Luwigi - Rook, DZ & NG sprites for Deltarune: Ozymandias
 * TrashcatYT - Blue Soul Library
 * Glavvrach - Splitting effect for SNEO bullets
-* crouting pea - GM path system port.
+* Scram - GM path system and Gaster Blaster port.
 * TheMaxine - Original author for [Ribbit](https://gamejolt.com/games/ribbitmod/671888)
-* RhenaudTheLukark - Original author for [Unitale/Create Your Frisk/Create Your Kris](https://github.com/RhenaudTheLukark/CreateYourFrisk/releases)
+* lvk, RhenaudTheLukark - Original authors for [Unitale](https://github.com/lvk/Unitale) and [Create Your Frisk](https://github.com/RhenaudTheLukark/CreateYourFrisk)/[Create Your Kris](https://github.com/RhenaudTheLukark/CreateYourKris)
 * STD Repaints - Original author for [Deltarune Repainted](https://gamejolt.com/games/nudealert/496504)
 * RynoGG - Original author for [Deltatraveler](https://gamejolt.com/games/deltatraveler/661464)
 * Team Inundation - Original authors for MOBDT
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 * MrkySpices - Deltarune-styled Backrooms tileset
-* FireStar8903 - Made music for the Pasta Pack Shop and A Salesman's Lament
 * OMOCAT, LLC - Original author for OMORI
 * Ninomae Ina'nis - Creator and designer of the Takodachis
 * Nintendo - Original authors for Pikmin
@@ -128,7 +128,6 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Findus - Creator of Croustibat
 * Scott Cawthon - Creator of the Five Nights at Freddy's franchise
 * MoviesMovies1 - [U.N Owen Was Her? 8 Bit Remix](https://www.youtube.com/watch?v=YJ3LH6u8G1M)
-* Nin★ - [audio_loop_sound](https://github.com/ninstar/yyProjects/tree/main/Resources/audio_loop_sound)
 * The Caretaker - Creator of the [Everywhere at the End of Time](https://thecaretaker.bandcamp.com/album/everywhere-at-the-end-of-time) album
 * SEGA & Sonic Team - Original creators of Sonic.
 * Rovio Entertainment Ltd. - Original creators of Angry Birds.
