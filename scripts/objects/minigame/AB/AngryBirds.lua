@@ -325,7 +325,17 @@ function AngryBirds:createMenuPages()
                 scale_y = 0.8,
                 origin_x = 53,
                 origin_y = 48,
-            }
+            },
+            {
+                sprite = "minigames/ab/menu/buttons/editor",
+                x = SCREEN_WIDTH / 2,
+                y = SCREEN_HEIGHT - 48,
+                updateFunction = self:gotoSettingsMenu(),
+                scale_x = 0.8, 
+                scale_y = 0.8,
+                origin_x = 53,
+                origin_y = 48,
+            },
         }
     }
     self.settings_page = {
