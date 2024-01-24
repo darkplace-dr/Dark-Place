@@ -14,7 +14,7 @@ function Froggit:init()
     -- Enemy attack (determines bullet damage)
     self.attack = 4
     -- Enemy defense (usually 0)
-    self.defense = 5
+    self.defense = 4
     -- Enemy reward
     self.money = 2
     self.experience = 3

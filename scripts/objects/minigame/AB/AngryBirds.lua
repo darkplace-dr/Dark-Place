@@ -291,13 +291,13 @@ function AngryBirds:createMenuPages()
         name = "main_menu",
         back = nil,
         title = {
-            sprite = "minigames/ab/menu/logo",
+            sprite = "minigames/ab/ui/menu/bg/logo",
             x = SCREEN_WIDTH / 2,
             y = 7
         },
         items = {
             {
-                sprite = "minigames/ab/menu/buttons/play",
+                sprite = "minigames/ab/ui/buttons/play",
                 x = SCREEN_WIDTH / 2,
                 y = SCREEN_HEIGHT / 2 + 20,
                 updateFunction = self:gotoLevelSelection(),
@@ -307,7 +307,7 @@ function AngryBirds:createMenuPages()
                 origin_y = 24,
             },
             {
-                sprite = "minigames/ab/menu/buttons/back",
+                sprite = "minigames/ab/ui/buttons/back",
                 x = 58,
                 y = SCREEN_HEIGHT - 45,
                 updateFunction = self:gotoExitPopup(),
@@ -317,7 +317,7 @@ function AngryBirds:createMenuPages()
                 origin_y = 45,
             },
             {
-                sprite = "minigames/ab/menu/buttons/settings",
+                sprite = "minigames/ab/ui/buttons/settings",
                 x = SCREEN_WIDTH - 53,
                 y = SCREEN_HEIGHT - 48,
                 updateFunction = self:gotoSettingsMenu(),
@@ -327,7 +327,7 @@ function AngryBirds:createMenuPages()
                 origin_y = 48,
             },
             {
-                sprite = "minigames/ab/menu/buttons/editor",
+                sprite = "minigames/ab/ui/buttons/editor",
                 x = SCREEN_WIDTH / 2,
                 y = SCREEN_HEIGHT - 48,
                 updateFunction = self:gotoSettingsMenu(),
@@ -483,11 +483,11 @@ function AngryBirds:drawSplashes()
         self.current = 1
         self.splashes = {
             {
-                sprite = "minigames/ab/splash_disclaimer",
+                sprite = "minigames/ab/splashes/disclaimer",
                 splash_time = 2
             },
             {
-                sprite = "minigames/ab/splash_logo",
+                sprite = "minigames/ab/splashes/logo",
                 splash_time = 4 -- it's 1 in the original Angry Birds code, but it felt too short when I ported it over, so it's 4 here lol.
             }
         }
@@ -502,7 +502,7 @@ function AngryBirds:drawSplashes()
 	
     Draw.draw(Assets.getTexture(self.splashes[self.current].sprite), 0, 0)
     if self.current == 2 then
-        Draw.draw(Assets.getTexture("minigames/ab/splash_loading"), SCREEN_WIDTH - 112, SCREEN_HEIGHT - 27)
+        Draw.draw(Assets.getTexture("minigames/ab/splashes/loading"), SCREEN_WIDTH - 112, SCREEN_HEIGHT - 27)
     end
 
     -- changes splash screen if showed long enough
@@ -521,7 +521,7 @@ function AngryBirds:drawMenu()
     love.graphics.setColor(COLORS.white)
 
     love.graphics.setBlendMode("alpha")
-    Draw.draw(Assets.getTexture("minigames/ab/menu/bg_menu_top"), 0, 0, 0, 1, 1)
+    Draw.draw(Assets.getTexture("minigames/ab/ui/menu/bg/menu_top"), 0, 0, 0, 1, 1)
 
     love.graphics.setBlendMode("add")
     for add_angle = 0, math.pi * 2, 0.6284 do
@@ -530,16 +530,16 @@ function AngryBirds:drawMenu()
             final_angle = final_angle - 2 * math.pi
         end
         if final_angle > -math.pi * 0.5 and final_angle < math.pi * 0.5 then
-            Draw.draw(Assets.getTexture("minigames/ab/menu/bg_sunray"), math.floor(SCREEN_WIDTH / 2), math.floor((SCREEN_HEIGHT - 50)), final_angle, 1, 1, 73, 734)
+            Draw.draw(Assets.getTexture("minigames/ab/ui/menu/bg/sunray"), math.floor(SCREEN_WIDTH / 2), math.floor((SCREEN_HEIGHT - 50)), final_angle, 1, 1, 73, 734)
         end
     end
     love.graphics.setBlendMode("alpha")
 
-    Draw.draw(Assets.getTexture("minigames/ab/menu/bg_sun"), math.floor(SCREEN_WIDTH / 2), math.floor((SCREEN_HEIGHT - 50)), 0, 1, 1, 197, 229)
+    Draw.draw(Assets.getTexture("minigames/ab/ui/menu/bg/sun"), math.floor(SCREEN_WIDTH / 2), math.floor((SCREEN_HEIGHT - 50)), 0, 1, 1, 197, 229)
 
    -- hill backgrounds and birds/rewards
     love.graphics.setBlendMode("alpha", "premultiplied")	
-    Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_5"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 10) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 172)
+    Draw.drawWrapped(Assets.getTexture("minigames/ab/ui/menu/bg/hills_5"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 10) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 172)
     love.graphics.setBlendMode("alpha")
 	
     for k, v in ipairs(self.bird_animations) do
@@ -548,7 +548,7 @@ function AngryBirds:drawMenu()
     end
 
     love.graphics.setBlendMode("alpha", "premultiplied")
-    Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_4"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 15) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 158)
+    Draw.drawWrapped(Assets.getTexture("minigames/ab/ui/menu/bg/hills_4"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 15) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 158)
     love.graphics.setBlendMode("alpha")
 
     for k, v in ipairs(self.bird_animations) do
@@ -559,7 +559,7 @@ function AngryBirds:drawMenu()
     end
 
     love.graphics.setBlendMode("alpha", "premultiplied")
-    Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_3"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 22) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 130)
+    Draw.drawWrapped(Assets.getTexture("minigames/ab/ui/menu/bg/hills_3"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 22) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 130)
     love.graphics.setBlendMode("alpha")
 
     for k, v in ipairs(self.bird_animations) do
@@ -570,7 +570,7 @@ function AngryBirds:drawMenu()
     end
 
     love.graphics.setBlendMode("alpha", "premultiplied")
-    Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_2"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 33) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 130)
+    Draw.drawWrapped(Assets.getTexture("minigames/ab/ui/menu/bg/hills_2"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 33) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 130)
     love.graphics.setBlendMode("alpha")
 
     for k, v in ipairs(self.bird_animations) do
@@ -581,7 +581,7 @@ function AngryBirds:drawMenu()
     end
 
     love.graphics.setBlendMode("alpha", "premultiplied")
-    Draw.drawWrapped(Assets.getTexture("minigames/ab/menu/bg_hills_1"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 50) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 79)
+    Draw.drawWrapped(Assets.getTexture("minigames/ab/ui/menu/bg/hills_1"), true, false, (SCREEN_WIDTH / 2) - (Kristal.getTime() * 50) % (800 - 0.5), math.floor(SCREEN_HEIGHT), 0, 1, 1, 400, 79)
     love.graphics.setBlendMode("alpha")
 
     for k, v in ipairs(self.bird_animations) do
@@ -713,9 +713,9 @@ function AngryBirds:draw()
         love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 
         love.graphics.setColor(1, 1, 1)
-        Draw.draw(Assets.getTexture("minigames/ab/menu/levelselect/bg"), 0, 0)
-        Draw.draw(Assets.getTexture("minigames/ab/menu/levelselect/left"), 0, 293)
-        Draw.draw(Assets.getTexture("minigames/ab/menu/levelselect/right"), 427, 286)
+        Draw.draw(Assets.getTexture("minigames/ab/ui/menu/levelselect/bg"), 0, 0)
+        Draw.draw(Assets.getTexture("minigames/ab/ui/menu/levelselect/left"), 0, 293)
+        Draw.draw(Assets.getTexture("minigames/ab/ui/menu/levelselect/right"), 427, 286)
     end
 end
 
