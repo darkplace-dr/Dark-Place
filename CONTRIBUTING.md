@@ -31,7 +31,9 @@ When you're done, it's time to make a Pull Request to our repo. If you have GitH
 
 You'll be brought to the page shown above. Write helpful text in the textboxs, then click `Create pull request`. Patiently wait for a maintainer to notice, review and merge your PR, and you're done!
 
-Finally, for assistance on various matters in the contribution process, you may join our [Discord server](https://discord.gg/B2scNCB2). Happy contributing!
+Finally, for assistance on various matters in the contribution process, you may join our Discord server. Happy contributing!
+> [!WARNING]
+> Due to recent harassment that's been going on, the Discord server invite has been temporarily taken down until further notice. When things have eventually calmed down, we will add it back.
 
 ## Dark Place's Official Wiki
 Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place_Wiki) and check out some stuff that's been implemented or WILL be implemented.
