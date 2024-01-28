@@ -620,7 +620,7 @@ return {
 			cutscene:text("* That sounds simple enough.", "smug", "jamm")
 			cutscene:hideNametag()
 			
-			cutscene:wait(cutscene:startMinigame("ball_level_1"))
+			cutscene:wait(cutscene:startMinigame("ball_jump/level_1"))
 			
 			if not Game:getFlag("acj_game_win") then
 				cutscene:showNametag("Dess")
