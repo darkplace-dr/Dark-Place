@@ -1046,6 +1046,64 @@ return {
 			Game.world.map:getEvent(2):remove()
 			Game.inventory:addItem("oblitersling")
 			Game:getPartyMember("jamm").title = "Slingshotter\nNot so sure of\nhimself anymore"
+			Kristal.callEvent("messageBoard",
+			[[
+In shadows cast by the waning moon,
+A tale unfolds, a mournful tune.
+A quest so dear, bestowed with grace,
+Yet tarnished by a fool's embrace.
+
+Once he, a lover, bright and true,
+Bound by vows that time once knew.
+His late wife's plea, a quest profound,
+Yet twisted fate would soon confound.
+
+Beneath the eaves of destiny's might,
+A friend emerged, disguised in light.
+Whispers of deceit, a venomous kiss,
+Leading astray to abyss abyss.
+
+The quest, a beacon from the past,
+A thread that bound them, unsurpassed.
+Yet in the hands of the misguided friend,
+It twisted, turned, a bitter end.
+
+Through fields of roses, tainted red,
+He trod with scorn, his heart misled.
+Disrespect etched in every stride,
+A dance with shadows, nowhere to hide.
+
+He laughed at echoes of sacred lore,
+His friend's deceit, a toxic lore.
+Manipulated, puppet on a string,
+He danced on ruins of a sacred spring.
+
+At last, the quest in shards lay broken,
+His soul, a vessel, words unspoken.
+Through mists of guilt, he saw the cost,
+A quest defiled, a love now lost.
+
+In silent chambers of the night,
+He knelt and wept, devoid of light.
+An apology, a tear-stained plea,
+Echoed through the tapestry.
+
+"Oh, dearest love, I've faltered deep,
+My promises, in shadows, sleep.
+A puppet, danced upon deceit,
+In sorrow's sea, my heart does fleet."
+
+He sought forgiveness, yet silence reigned,
+His love, entangled, shackled, chained.
+The winds whispered, a chilling breeze,
+Yet no response, no sweet release.
+
+In the tapestry of regret and pain,
+A quest dishonored, love in vain.
+He weeps alone, his soul a gale,
+A requiem for a love grown pale.
+]],
+			"Shadows of Regret: A Quest Unraveled")
 		else
 			cutscene:text("* ...I'm fine.", "shaded_neutral", "jamm")
 			cutscene:showNametag("Dess")
@@ -1074,6 +1132,59 @@ return {
 			cutscene:look(dess, "left")
 			cutscene:showNametag("Dess")
 			cutscene:text("* i got the stuff,[wait:5] let's bolt", "neutral", "dess")
+			Kristal.callEvent("messageBoard",
+			[[
+In shadows deep, where secrets weave,
+A sorceress of shadows, dark and eve.
+A realm of spells, forbidden art,
+In solitude, she'd play her part.
+
+With shades of night, she'd cast her spell,
+In whispered tones, where shadows dwell.
+A dance with darkness, veiled and wide,
+The power surged, a secret tide.
+
+Within the dungeons, where shadows grow,
+She summoned creatures in the undertow.
+Entities of twilight, pure and free,
+In the abyss, a dance with mystery.
+
+Yet little did she grasp, in her endeavor,
+The shades she conjured would bloom forever.
+Minds of shadow, silent cries,
+A haunting truth, behind their eyes.
+
+Haunted by the things she'd spun,
+A web of night, her fears outrun.
+The shades, like children, found their voice,
+She grappled with the shadows' choice.
+
+She lingers now, within the gloom,
+A prisoner of her creation's bloom.
+The dungeon incomplete, a warning sign,
+To sever ties with what's not benign.
+
+To husband dear and child so sweet,
+She clings to them, her heartbeat.
+Apologies whispered on the breeze,
+A mother's heart, caught in unease.
+
+"I sought the shadows, a dangerous lore,
+Forgive me, love, forevermore.
+In the realm of dusk, I strayed too far,
+Lost in shadows, like a distant star."
+
+To her family, she turns her gaze,
+Regret and sorrow in the maze.
+The dungeon door remains ajar,
+A tale of shadows, near and far.
+
+For love untold, she pays the price,
+In shadows deep, where shadows entice.
+A sorceress, repentant, free,
+Learning to live with shades, yet be.
+]],
+			"Shadows' Lament: A Sorceress' Tale")
 			Game:getPartyMember("jamm"):addOpinion("dess", 20)
 			Game:getPartyMember("dess"):addOpinion("jamm", 20)
 		end
