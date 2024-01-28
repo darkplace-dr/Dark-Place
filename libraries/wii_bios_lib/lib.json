@@ -1,0 +1,15 @@
+{
+    "id": "wii_bios_library",
+    "version": "1.0.0",
+    "engineVersion": "0.8.0",
+	"authors": [
+		"AcousticJamm",
+		"J.A.R.U.",
+		"Simbel",
+		"Dobby223Liu",
+		"skarph"
+	],
+	"config": {
+		"virtual": true
+	},
+}
