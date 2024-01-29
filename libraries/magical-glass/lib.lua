@@ -4,8 +4,6 @@ LightPartyBattler        = libRequire("magical-glass", "scripts/lightbattle/ligh
 LightEnemyBattler        = libRequire("magical-glass", "scripts/lightbattle/lightenemybattler")
 LightEnemySprite         = libRequire("magical-glass", "scripts/lightbattle/lightenemysprite")
 LightArena               = libRequire("magical-glass", "scripts/lightbattle/lightarena")
-LightArenaSprite         = libRequire("magical-glass", "scripts/lightbattle/lightarenasprite")
-LightArenaBackground     = libRequire("magical-glass", "scripts/lightbattle/lightarenabackground")
 LightEncounter           = libRequire("magical-glass", "scripts/lightbattle/lightencounter")
 LightSoul                = libRequire("magical-glass", "scripts/lightbattle/lightsoul")
 LightBattleUI            = libRequire("magical-glass", "scripts/lightbattle/ui/lightbattleui")
@@ -32,8 +30,6 @@ function lib:unload()
     LightEnemyBattler        = nil
     LightEnemySprite         = nil
     LightArena               = nil
-    LightArenaSprite         = nil
-    LightArenaBackground     = nil
     LightEncounter           = nil
     LightSoul                = nil
     LightBattleUI            = nil
@@ -132,7 +128,7 @@ end
 
 function lib:init()
 
-    print(self.info.id .. " version " .. self.info.version .. ": Getting ready...")
+    print("Loaded Magical Glass " .. self.info.version .. "!")
 
     self.encounters_enabled = false
     self.steps_until_encounter = nil

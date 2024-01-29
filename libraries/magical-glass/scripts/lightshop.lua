@@ -55,7 +55,7 @@ function LightShop:init()
 
     -- SELLMENU
     self.sold_text = "(Thank you!)"
-    -- Rotates the name of the items in the sell menu (in degrees)
+    -- Rotates the name of the items in the sell menu (in degrees, about the left side)
     self.sell_item_rotation = 0
 
     -- STATES: MAINMENU, BUYMENU, SELLMENU, SELLING, TALKMENU, LEAVE, LEAVING, DIALOGUE
