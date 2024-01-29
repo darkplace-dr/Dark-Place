@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.9.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 43,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 14,
-  nextobjectid = 81,
+  nextobjectid = 82,
   properties = {
     ["border"] = "deoxynn/forest",
     ["music"] = "deoxynn_forest",
@@ -37,6 +38,7 @@ return {
       height = 36,
       id = 2,
       name = "tiles",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -92,6 +94,7 @@ return {
       height = 36,
       id = 6,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -147,6 +150,7 @@ return {
       height = 36,
       id = 7,
       name = "Tile Layer 3",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -202,6 +206,7 @@ return {
       height = 36,
       id = 9,
       name = "Copy of Tile Layer 4",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -257,6 +262,7 @@ return {
       height = 36,
       id = 13,
       name = "Tile Layer 6",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -309,6 +315,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 0.5,
       offsetx = 0,
@@ -320,7 +327,7 @@ return {
         {
           id = 47,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -333,7 +340,7 @@ return {
         {
           id = 76,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 0,
@@ -346,7 +353,7 @@ return {
         {
           id = 48,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 640,
           y = 160,
@@ -359,7 +366,7 @@ return {
         {
           id = 49,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1500,
           y = 160,
@@ -372,7 +379,7 @@ return {
         {
           id = 50,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 160,
@@ -385,7 +392,7 @@ return {
         {
           id = 51,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 480,
@@ -398,7 +405,7 @@ return {
         {
           id = 52,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 200,
           y = 520,
@@ -411,7 +418,7 @@ return {
         {
           id = 53,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 520,
@@ -424,7 +431,7 @@ return {
         {
           id = 54,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 1280,
@@ -437,7 +444,7 @@ return {
         {
           id = 55,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1160,
           y = 1320,
@@ -450,7 +457,7 @@ return {
         {
           id = 56,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1580,
           y = 800,
@@ -463,7 +470,7 @@ return {
         {
           id = 57,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1080,
           y = 880,
@@ -476,7 +483,7 @@ return {
         {
           id = 58,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 880,
           y = 1000,
@@ -489,7 +496,7 @@ return {
         {
           id = 59,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1160,
           y = 1000,
@@ -502,7 +509,7 @@ return {
         {
           id = 60,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 860,
           y = 640,
@@ -515,7 +522,7 @@ return {
         {
           id = 61,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 560,
           y = 520,
@@ -528,7 +535,7 @@ return {
         {
           id = 62,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 620,
           y = 360,
@@ -541,7 +548,7 @@ return {
         {
           id = 63,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 480,
           y = 520,
@@ -554,7 +561,7 @@ return {
         {
           id = 64,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 460,
           y = 520,
@@ -571,6 +578,7 @@ return {
       draworder = "topdown",
       id = 10,
       name = "objects_lower",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -582,7 +590,7 @@ return {
         {
           id = 43,
           name = "web",
-          type = "",
+          class = "",
           shape = "point",
           x = 280,
           y = 880,
@@ -595,7 +603,7 @@ return {
         {
           id = 44,
           name = "web",
-          type = "",
+          class = "",
           shape = "point",
           x = 560,
           y = 1080,
@@ -608,7 +616,7 @@ return {
         {
           id = 45,
           name = "web",
-          type = "",
+          class = "",
           shape = "point",
           x = 720,
           y = 920,
@@ -621,7 +629,7 @@ return {
         {
           id = 46,
           name = "web",
-          type = "",
+          class = "",
           shape = "point",
           x = 360,
           y = 1160,
@@ -638,6 +646,7 @@ return {
       draworder = "topdown",
       id = 5,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -649,7 +658,7 @@ return {
         {
           id = 42,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 360,
           y = 360,
@@ -662,7 +671,7 @@ return {
         {
           id = 79,
           name = "entry_elevator",
-          type = "",
+          class = "",
           shape = "point",
           x = 500,
           y = 190,
@@ -679,6 +688,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -690,7 +700,7 @@ return {
         {
           id = 41,
           name = "enemy",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1360,
           y = 1160,
@@ -706,7 +716,7 @@ return {
         {
           id = 65,
           name = "savepoint",
-          type = "",
+          class = "",
           shape = "point",
           x = 360,
           y = 280,
@@ -722,7 +732,7 @@ return {
         {
           id = 66,
           name = "pushblock",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1080,
           y = 200,
@@ -739,7 +749,7 @@ return {
         {
           id = 67,
           name = "stone",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1240,
           y = 240,
@@ -756,7 +766,7 @@ return {
         {
           id = 80,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 440,
           y = 147,
@@ -768,6 +778,22 @@ return {
             ["map"] = "elevator",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 81,
+          name = "npc",
+          class = "",
+          shape = "rectangle",
+          x = 640,
+          y = 280,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "test_master",
+            ["cutscene"] = "master.test"
+          }
         }
       }
     },
@@ -776,6 +802,7 @@ return {
       draworder = "topdown",
       id = 11,
       name = "blockcollision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -787,7 +814,7 @@ return {
         {
           id = 68,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1080,
           y = 200,
@@ -800,7 +827,7 @@ return {
         {
           id = 69,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1440,
           y = 200,
@@ -813,7 +840,7 @@ return {
         {
           id = 70,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1080,
           y = 240,
@@ -826,7 +853,7 @@ return {
         {
           id = 71,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1080,
           y = 200,
@@ -843,6 +870,7 @@ return {
       draworder = "topdown",
       id = 12,
       name = "stonecollision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -854,7 +882,7 @@ return {
         {
           id = 72,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1240,
           y = 200,
@@ -867,7 +895,7 @@ return {
         {
           id = 73,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1240,
           y = 200,
@@ -880,7 +908,7 @@ return {
         {
           id = 74,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1280,
           y = 200,
@@ -893,7 +921,7 @@ return {
         {
           id = 75,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1240,
           y = 280,
@@ -913,6 +941,7 @@ return {
       height = 36,
       id = 8,
       name = "Tile Layer 4",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
