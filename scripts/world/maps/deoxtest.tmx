@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="43" height="36" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="81">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="43" height="36" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="82">
  <editorsettings>
   <export target="deoxtest.lua" format="lua"/>
  </editorsettings>
@@ -285,6 +285,12 @@
    <properties>
     <property name="map" value="elevator"/>
     <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="81" name="npc" x="640" y="280" width="40" height="40">
+   <properties>
+    <property name="actor" value="test_master"/>
+    <property name="cutscene" value="master.test"/>
    </properties>
   </object>
  </objectgroup>
