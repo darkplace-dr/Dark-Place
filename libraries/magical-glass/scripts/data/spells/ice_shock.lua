@@ -9,8 +9,7 @@ function spell:getDamage(user, target)
         local min_magic = Utils.clamp(user.chara:getStat("magic") - 2, 1, 999)
         return math.ceil((min_magic * 15) + 20 + Utils.random(5))
     else
-        local min_magic = Utils.clamp(user.chara:getStat("magic") - 10, 1, 999)
-        return math.ceil((min_magic * 30) + 90 + Utils.random(10))
+        return super.getDamage(self, user, target)
     end
 end
 
