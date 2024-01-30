@@ -302,6 +302,13 @@ function Mod:initializeImportantFlags(new_file)
             item_id = "wildrevolver",
             prefix_os = {Windows = "Local/Undertale_Yellow", Linux = ".config/Undertale_Yellow"}
         },
+        PT = {
+            name = "PIZZA TOWER",
+            file = {"/saves/saveData1.ini", "/saves/saveData2.ini", "/saves/saveData3.ini"},
+            received = false,
+            item_id = "pizza_toque",
+            prefix_os = {Windows = "Roaming/PizzaTower_GM2"} -- Not sure what the Mac OS_X or Linux directories for PT are. If anyone else knows tho, feel free to add them in here lol.
+        },
         -- Use "KR_" as a prefix to check for a Kristal Mod instead
         KR_frozen_heart = {received = false, item_id = "angelring"},
         KR_wii_bios = {received = false, item_id = "wiimote"},

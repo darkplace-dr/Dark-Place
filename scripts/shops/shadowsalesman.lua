@@ -43,10 +43,10 @@ function ShadowShop:init()
     self.sell_options_text["storage"] = "Sure, you can sell me your crap."
 
 	-- Base Items
-    self:registerItem("pizza_toque", {stock = 1, color = {1, 1, 1, 1}})
     self:registerItem("everybodyweapon", {description = "WEAPON\nA weapon for\neveryone."})
     self:registerItem("favwich")
     self:registerItem("synthsoda")
+    self:registerItem("synthsoda") -- placeholder for now. gonna replace with a new healing item at some point
 
 	
 	-- MistCard Items
