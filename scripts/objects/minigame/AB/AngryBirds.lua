@@ -1,5 +1,7 @@
 local AngryBirds, super = Class("MinigameHandler")
 
+-- TO-DO: move most of the Main Menu stuff to its own separate object to keep things clean in here (apparently later versions of the OG game do this too lol).
+
 function AngryBirds:init()
     super.init(self)
 	
@@ -22,11 +24,11 @@ function AngryBirds:init()
 	self.state_timer = 0
 
     self.menu_sunset_angle = 0
-    self.goldeneggs_stareffect_angle = 0
     self:menuInit()
 
     self.particles = {}
 	
+    -- TO-DO: move audio-related tables to its own separate thing as well maybe? Something similar the "jukebox_songs" table for example
     self.audio_groups = {
         bird_misc = {
             "minigames/ab/birds/talk_a",
@@ -162,13 +164,15 @@ function AngryBirds:init()
     self.ambience = {
         "minigames/ab/ambient/white_dryforest",
         "minigames/ab/ambient/greenish_jungle",
-        "minigames/ab/ambient/red_savannah"
+        "minigames/ab/ambient/red_savannah",
     }
     self.title_theme = {
         "minigames/ab/title_theme",
-        "minigames/ab/title_theme_trilogy",
+        --"minigames/ab/title_theme_trilogy",
         "minigames/ab/funky_theme",
     }
+
+    self.show_editor = true
 end
 
 function AngryBirds:postInit()
@@ -326,16 +330,6 @@ function AngryBirds:createMenuPages()
                 origin_x = 53,
                 origin_y = 48,
             },
-            {
-                sprite = "minigames/ab/ui/buttons/editor",
-                x = SCREEN_WIDTH / 2,
-                y = SCREEN_HEIGHT - 48,
-                updateFunction = self:gotoSettingsMenu(),
-                scale_x = 0.8, 
-                scale_y = 0.8,
-                origin_x = 53,
-                origin_y = 48,
-            },
         }
     }
     self.settings_page = {
@@ -346,6 +340,10 @@ function AngryBirds:createMenuPages()
         popup = true,
         items = {}
     }
+
+    if self.show_editor == true then
+        table.insert(self.main_menu, { sprite = "minigames/ab/ui/buttons/editor", x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT - 48, updateFunction = self:gotoSettingsMenu(), scale_x = 0.8, scale_y = 0.8, origin_x = 53, origin_y = 48 })
+    end
 	
     --[[if self.birds_data["tutorials"] == nil then
         self.birds_data["tutorials"] = {}
@@ -376,14 +374,14 @@ function AngryBirds:prepareMenuPage(page)
     if page == self.main_menu then
         self.bird_sprites = {}
 		
-        -- adds a bird to the menu after unlocking its tutorial screen
+        -- adds a bird to the menu after unlocking its tutorial screen. TBA
         --[[if self.birds_data["tutorials"] ~= nil then
             for k, v in ipairs(self.birds_data["tutorials"]) do
                 table.insert(self.bird_sprites, {sprite = k, reward = 0 })
             end
         end]]
 
-        -- for testing the birds and rewards that appear on the menu
+        -- red bird appears on the main menu by default if you haven't unlocked any birds yet
         if #self.bird_sprites == 0 then
             table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/red/idle", reward = 0 })
         end
