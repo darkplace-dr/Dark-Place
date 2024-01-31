@@ -173,6 +173,8 @@ function AngryBirds:init()
     }
 
     self.show_editor = true
+
+    Game:setBorder("minigames/angrybirds")
 end
 
 function AngryBirds:postInit()
