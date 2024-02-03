@@ -24,9 +24,9 @@ return {
     },
     {
       name = "warp_bin",
-      firstgid = 52,
+      firstgid = 54,
       filename = "../../../tilesets/warp_bin.tsx",
-      exportfilename = "../../../tilesets/warp_bin.lua"
+      exportfilename = "../../../tilesets/warp_bin.tsx"
     }
   },
   layers = {
@@ -257,7 +257,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 52,
+          gid = 54,
           visible = true,
           properties = {}
         },
@@ -271,7 +271,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 54,
+          gid = 56,
           visible = true,
           properties = {}
         },
@@ -285,7 +285,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 53,
+          gid = 55,
           visible = true,
           properties = {}
         }
@@ -336,8 +336,8 @@ return {
           name = "warp",
           class = "",
           shape = "point",
-          x = 174,
-          y = 242,
+          x = 160,
+          y = 320,
           width = 0,
           height = 0,
           rotation = 0,

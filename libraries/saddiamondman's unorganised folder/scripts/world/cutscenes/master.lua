@@ -90,6 +90,8 @@ return {
         master:setAnimation({"idle", 0.25, true})
     end,
     kris = function(cutscene)
+        local master = cutscene:getCharacter("kris_master")
+        master:setAnimation({"bop", 0.25, true})
         cutscene:text("* I'm Kris Master.\n[wait:5]* Ask me about KRIS's.")
 
         local choices = {"Reviving", "Acting", "Fact"}
@@ -113,9 +115,11 @@ return {
         elseif c == 4 then
             cutscene:text("* Later,[wait:5] kid.")
         end
-
+        master:setAnimation({"idle", 0.25, true})
     end,
     susie = function(cutscene)
+        local master = cutscene:getCharacter("susie_master")
+        master:setAnimation({"bop", 0.25, true})
         cutscene:text("* I'm Susie Master.\n[wait:5]* Ask me about SUSIE's.")
 
         local choices = {"Healing", "Attack", "Fact"}
@@ -135,9 +139,11 @@ return {
         elseif c == 4 then
             cutscene:text("* Later,[wait:5] kid.")
         end
-
+        master:setAnimation({"idle", 0.25, true})
     end,
     YOU = function(cutscene)
+        local master = cutscene:getCharacter("YOU_master")
+        master:setAnimation({"bop", 0.25, true})
         cutscene:text("* I'm You Master.\n[wait:5]* Ask me about YOU's.")
 
         local choices = {"Ribbit", "Sending", "Fact"}
@@ -162,17 +168,22 @@ return {
         elseif c == 4 then
             cutscene:text("* Later,[wait:5] kid.")
         end
-
+        master:setAnimation({"idle", 0.25, true})
     end,
     dess = function(cutscene)
+        local master = cutscene:getCharacter("dess_master")
+        master:setAnimation({"bop", 0.25, true})
         cutscene:text("* I'm Dess Master.\n[wait:5]* Don't ask me about DESS's.")
 
         local choices = {"1", "2", "Fact"}
         table.insert(choices, "Bye")
         local c = cutscene:choicer(choices)
         if c == 1 then
-            cutscene:text("* Dess's power of the STARS.")
-            cutscene:text("* Will[wait:5] HOPEFULLY[wait:5] get her run over by CARS.")
+            cutscene:text("* BING BING BING ONE.")
+
+            --cutscene:text("* Dess's power of the STARS.")
+            --cutscene:text("* Will[wait:5] HOPEFULLY[wait:5] get her run over by CARS.")
+            -- this feels too mean to actually put into the game
         elseif c == 2 then
             cutscene:text("* BING BING BING TWO.")
         elseif c == 3 then
@@ -182,6 +193,122 @@ return {
         elseif c == 4 then
             cutscene:text("* Later,[wait:5] Chum.")
         end
-
+        master:setAnimation({"idle", 0.25, true})
     end,
+
+    berdly = function(cutscene, actor)
+        local master = cutscene:getCharacter("berdly_master")
+        master:setAnimation({"bop", 0.25, true})
+        cutscene:text("* I'm Berdly Master.\n[wait:5]* Ask me about BERDLY's.")
+
+        local choices = {"1", "2", "3"}
+        table.insert(choices, "Bye")
+        local c = cutscene:choicer(choices)
+        if c == 1 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING ONE.")
+        elseif c == 2 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING TWO.")
+        elseif c == 3 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING THREE.")
+        elseif c == 4 then
+            cutscene:text("* Later,[wait:5] kid.")
+        end
+        master:setAnimation({"idle", 0.25, true})
+    end,
+
+    brandon = function(cutscene, actor)
+        local master = cutscene:getCharacter("brandon_master")
+        master:setAnimation({"bop", 0.25, true})
+        cutscene:text("* I'm Brandon Master.\n[wait:5]* Ask me about BRANDON's.")
+
+        local choices = {"1", "2", "3"}
+        table.insert(choices, "Bye")
+        local c = cutscene:choicer(choices)
+        if c == 1 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING ONE.")
+        elseif c == 2 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING TWO.")
+        elseif c == 3 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING THREE.")
+        elseif c == 4 then
+            cutscene:text("* Later,[wait:5] kid.")
+        end
+        master:setAnimation({"idle", 0.25, true})
+    end,
+
+    jamm = function(cutscene, actor)
+        local master = cutscene:getCharacter("jamm_master")
+        master:setAnimation({"bop", 0.25, true})
+        cutscene:text("* I'm Jamm Master.\n[wait:5]* Ask me about JAMM's.")
+
+        local choices = {"Healing", "2", "3"}
+        table.insert(choices, "Bye")
+        local c = cutscene:choicer(choices)
+        if c == 1 then
+            cutscene:text("* Jamm's HealSling [wait:5]does cool thing.")
+            cutscene:text("* jamm please do the rest\n-sad diamond man")
+        elseif c == 2 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING TWO.")
+        elseif c == 3 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING THREE.")
+        elseif c == 4 then
+            cutscene:text("* Later,[wait:5] kid.")
+        end
+        master:setAnimation({"idle", 0.25, true})
+    end,
+
+    mario = function(cutscene, actor)
+        local master = cutscene:getCharacter("mario_master")
+        master:setAnimation({"bop", 0.25, true})
+        cutscene:text("* I'ma Mario Master.\n[wait:5]* Ask me abouta MARIO's.")
+
+        local choices = {"1", "2", "3"}
+        table.insert(choices, "Bye")
+        local c = cutscene:choicer(choices)
+        if c == 1 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING ONE.")
+        elseif c == 2 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING TWO.")
+        elseif c == 3 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING THREE.")
+        elseif c == 4 then
+            cutscene:text("* Buh-Bye!")
+        end
+        master:setAnimation({"idle", 0.25, true})
+    end,
+
+    pauling = function(cutscene, actor)
+        local master = cutscene:getCharacter("pauling_master")
+        master:setAnimation({"bop", 0.25, true})
+        cutscene:text("* I'm Pauling Master.\n[wait:5]* Ask me about PAULING's.")
+
+        local choices = {"1", "2", "3"}
+        table.insert(choices, "Bye")
+        local c = cutscene:choicer(choices)
+        if c == 1 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING ONE.")
+        elseif c == 2 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING TWO.")
+        elseif c == 3 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING THREE.")
+        elseif c == 4 then
+            cutscene:text("* Later,[wait:5] kid.")
+        end
+        master:setAnimation({"idle", 0.25, true})
+    end,
+
 }

@@ -1,14 +1,14 @@
-local actor, super = Class(Actor, "susie_master")
+local actor, super = Class(Actor, "mario_master")
 
 
 function actor:init(chara)
     super.init(self)
-    self.name = "susie_master"
+    self.name = "mario_master"
     self.width = 34
     self.height = 34
     self.hitbox = {0, 24.5, 34, 9.5}
     self.color = {1, 1, 1}
-    self.path = "tutorial_masters/susie_master"
+    self.path = "tutorial_masters/mario_master"
     self.default = "idle"
     self.voice = nil
 
