@@ -288,20 +288,49 @@ return {
     mario = function(cutscene, actor)
         local master = cutscene:getCharacter("mario_master")
         master:setAnimation({"bop", 0.25, true})
-        cutscene:text("* I'ma Mario Master.\n[wait:5]* Ask me abouta MARIO's.")
+        cutscene:text("* I'm-a Mario Master.\n[wait:5]* Ask me about-a MARIO's.")
 
-        local choices = {"1", "2", "3"}
+        local choices = {"Hammer", "World", "Fact"}
         table.insert(choices, "Bye")
         local c = cutscene:choicer(choices)
         if c == 1 then
-            master:setAnimation({"shocked", 0.25, true})
-            cutscene:text("* BING BING BING ONE.")
+            cutscene:text("* Mario's hammer [wait:5] is his weapon to thump.")
+            cutscene:text("* Since in top-down 2D,[wait:5] you can't really jump.")
+            cutscene:text("* In Alpha Dream's games,[wait:5] he's a hammer king.")
+            cutscene:text("* So don't be on the wrong side of his swing!")
         elseif c == 2 then
-            master:setAnimation({"shocked", 0.25, true})
-            cutscene:text("* BING BING BING TWO.")
+            cutscene:text("* Mario comes from another domestication...")
+            cutscene:text("* But even then, there were some altercations.")
+            cutscene:text("* He comes from SMG4,[wait:5] but with some accomodations...")
+            cutscene:text("* The brand new tales,[wait:5] but same foundation.")
         elseif c == 3 then
-            master:setAnimation({"shocked", 0.25, true})
-            cutscene:text("* BING BING BING THREE.")
+            cutscene:text("* Mario loves it when you give us your money...")
+            cutscene:text("* For that means he gets lotsa spaghetti!")
+			cutscene:showNametag("Mario")
+			cutscene:text("* Oooooohhh...!", "main", "mario")
+			cutscene:showShop()
+			if Game.money < 200 then
+				cutscene:text("* But Mario doesn't have much-a money...", "main", "mario")
+			else
+				cutscene:text("* Mario has lotsa money!", "main", "mario")
+				cutscene:hideNametag()
+				cutscene:text("* (Buy spaghetti for D$200?)")
+				if cutscene:choicer({"Yes", "No"}) == 1 then
+					if Game.inventory:addItem("spaghetti") then
+						Game.money = Game.money - 200
+						cutscene:showNametag("Mario")
+						cutscene:text("* That's-a so nice!", "main", "mario")
+					else
+						cutscene:showNametag("Mario")
+						cutscene:text("* Oh,[wait:5] no![wait:5] No room!", "main", "mario")
+					end
+				else
+					cutscene:showNametag("Mario")
+					cutscene:text("* Oh,[wait:5] mamaf**ker!", "main", "mario")
+				end
+			end
+			cutscene:hideNametag()
+			cutscene:hideShop()
         elseif c == 4 then
             cutscene:text("* Buh-Bye!")
         end
