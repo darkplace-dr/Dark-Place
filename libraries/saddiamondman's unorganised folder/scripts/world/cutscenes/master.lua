@@ -247,18 +247,38 @@ return {
         master:setAnimation({"bop", 0.25, true})
         cutscene:text("* I'm Jamm Master.\n[wait:5]* Ask me about JAMM's.")
 
-        local choices = {"Healing", "2", "3"}
+        local choices = {"Healing", "Dark", "Fact"}
         table.insert(choices, "Bye")
         local c = cutscene:choicer(choices)
         if c == 1 then
-            cutscene:text("* Jamm's HealSling [wait:5]does cool thing.")
-            cutscene:text("* jamm please do the rest\n-sad diamond man")
+            cutscene:text("* Jamm's HealSling [wait:5]does a cool thing,[wait:5] you'll see...")
+            cutscene:text("* It heals the opponent and increases their MERCY.")
+            cutscene:text("* But cast it after the foe's been hit...")
+            cutscene:text("* And it'll raise it further,[wait:5] even if by a bit!")
+			if Game:getFlag("dungeonkiller") then
+				cutscene:text("* But too bad,[wait:5] kid,[wait:5] you missed your chance.")
+				cutscene:text("* Jamm lost this skill,[wait:5] it's if it were a trance.")
+			end
         elseif c == 2 then
-            master:setAnimation({"shocked", 0.25, true})
-            cutscene:text("* BING BING BING TWO.")
+            cutscene:text("* Jamm's DarkSling [wait:5]is pretty tricky to cast.")
+            cutscene:text("* When he's calm,[wait:5] the problem's in the past.")
+            cutscene:text("* But say he's against someone strong,[wait:5] like a BOSS...")
+            cutscene:text("* His spell won't do well,[wait:5] consider it a loss.")
         elseif c == 3 then
-            master:setAnimation({"shocked", 0.25, true})
-            cutscene:text("* BING BING BING THREE.")
+            cutscene:text("* Jamm loves it when you give us your cash...")
+			if Game:getFlag("dungeonkiller") then
+				cutscene:text("* He'll show you a smile and twirl his mustache.")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* I think I lost the ability to smile earlier.", "shaded_pissed", "jamm")
+				cutscene:text("* Also,[wait:5] I don't have a mustache in Dark Place.", "shaded_neutral", "jamm")
+				cutscene:hideNametag()
+			else
+				cutscene:showNametag("Jamm")
+				cutscene:text("* If you continue this,[wait:5] I'm calling my lawyer.", "stern", "jamm")
+				cutscene:hideNametag()
+				master:setAnimation({"shocked", 0.25, true})
+				cutscene:text("* NO![wait:5] PLEASE![wait:5]\n* JUST GIVE ME A PASS!")
+			end
         elseif c == 4 then
             cutscene:text("* Later,[wait:5] kid.")
         end
