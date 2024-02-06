@@ -1,7 +1,7 @@
 return {
   version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.9.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -231,7 +231,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "warphub",
+            ["map"] = "light/outdoors/shelter/shelter",
             ["mapFacing"] = "down",
             ["mapX"] = "0",
             ["mapY"] = "0"

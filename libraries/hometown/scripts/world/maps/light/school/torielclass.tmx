@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="28">
+ <editorsettings>
+  <export target="torielclass.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="light" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/school_props.tsx"/>
+ <objectgroup id="2" name="objects" locked="1">
+  <object id="1" gid="7" x="0" y="480" width="640" height="480"/>
+ </objectgroup>
+ <layer id="1" name="tiles" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="markers">
+  <object id="9" name="entry" x="136" y="182">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="19" gid="9" x="252" y="216" width="188" height="90"/>
+  <object id="20" gid="8" x="214" y="284" width="70" height="52"/>
+  <object id="21" gid="8" x="214" y="342" width="70" height="52"/>
+  <object id="22" gid="8" x="316" y="284" width="70" height="52"/>
+  <object id="23" gid="8" x="316" y="342" width="70" height="52"/>
+  <object id="24" gid="8" x="416" y="284" width="70" height="52"/>
+  <object id="25" gid="8" x="416" y="342" width="70" height="52"/>
+  <object id="26" gid="10" x="522" y="430" width="34" height="82"/>
+  <object id="27" name="transition" x="80" y="94" width="120" height="40">
+   <properties>
+    <property name="map" value="light/school/schoollobby"/>
+    <property name="marker" value="entry4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#0000ff" id="4" name="collision">
+  <object id="2" x="168" y="96" width="300" height="40"/>
+  <object id="3" x="452" y="102" width="120" height="40"/>
+  <object id="4" x="564" y="120" width="40" height="320"/>
+  <object id="5" x="48" y="436" width="520" height="40"/>
+  <object id="6" x="520" y="400" width="40" height="40"/>
+  <object id="7" x="32" y="40" width="40" height="400"/>
+  <object id="8" x="62" y="96" width="40" height="40"/>
+  <object id="11" x="416" y="248" width="68" height="34"/>
+  <object id="12" x="416" y="308" width="68" height="32"/>
+  <object id="13" x="318" y="248" width="68" height="34"/>
+  <object id="14" x="316" y="308" width="68" height="32"/>
+  <object id="15" x="216" y="248" width="64" height="34"/>
+  <object id="16" x="216" y="308" width="64" height="32"/>
+  <object id="18" x="252" y="172" width="184" height="42"/>
+ </objectgroup>
+</map>
