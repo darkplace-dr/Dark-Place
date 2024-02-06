@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="14">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="14">
  <editorsettings>
   <export target="room_lighttransition.lua" format="lua"/>
  </editorsettings>
@@ -44,7 +44,7 @@
   </object>
   <object id="13" name="dwexit" x="320" y="280">
    <properties>
-    <property name="map" value="warphub"/>
+    <property name="map" value="light/outdoors/shelter/shelter"/>
     <property name="mapFacing" value="down"/>
     <property name="mapX" value="0"/>
     <property name="mapY" value="0"/>

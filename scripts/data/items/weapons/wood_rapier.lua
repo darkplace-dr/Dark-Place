@@ -54,7 +54,7 @@ function item:init()
 end
 
 function item:convertToLightEquip(chara)
-    return "light/stick"
+    return "ut_weapons/stick"
 end
 
 return item

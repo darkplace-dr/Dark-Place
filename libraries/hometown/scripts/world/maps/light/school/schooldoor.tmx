@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="31" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="21">
+ <editorsettings>
+  <export target="schooldoor.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="light" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/bg_schooltiles.tsx"/>
+ <layer id="1" name="tiles" width="31" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,46,47,47,47,47,47,47,47,47,47,48,0,0,0,46,47,47,47,47,47,47,47,47,47,48,0,0,0,
+0,0,0,46,47,47,47,47,47,47,47,47,47,48,0,0,0,46,47,47,47,47,47,47,47,47,47,48,0,0,0,
+0,0,0,55,56,56,56,56,56,56,56,56,56,57,0,0,0,55,56,56,56,56,56,56,56,56,56,57,0,0,0,
+0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,
+0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="decal" width="31" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,0,0,0,0,
+0,0,0,0,13,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,0,0,0,0,
+0,0,0,0,22,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22,23,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="6" x="120" y="320" width="440" height="40"/>
+  <object id="7" x="520" y="360" width="40" height="120"/>
+  <object id="8" x="680" y="360" width="40" height="120"/>
+  <object id="9" x="680" y="320" width="440" height="40"/>
+  <object id="10" x="1120" y="240" width="40" height="80"/>
+  <object id="11" x="1080" y="200" width="40" height="40"/>
+  <object id="12" x="680" y="200" width="320" height="40"/>
+  <object id="13" x="240" y="200" width="320" height="40"/>
+  <object id="14" x="120" y="200" width="40" height="40"/>
+  <object id="15" x="80" y="240" width="40" height="80"/>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="16" name="entry1" x="620" y="400">
+   <point/>
+  </object>
+  <object id="17" name="entry2" x="619" y="280">
+   <point/>
+  </object>
+  <object id="18" name="entry3" x="1040" y="280">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="19" name="transition" x="560" y="480" width="120" height="40">
+   <properties>
+    <property name="map" value="light/school/schoollobby"/>
+    <property name="marker" value="entry3"/>
+   </properties>
+  </object>
+  <object id="20" name="transition" x="1000" y="194" width="80" height="40">
+   <properties>
+    <property name="map" value="light/school/unusedroom"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
