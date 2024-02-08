@@ -23,7 +23,7 @@ function actor:init()
     }
 
     self:addLightBattlerPart("legs", {
-        ["sprite"] = function()
+        ["create_sprite"] = function()
             local sprite = Sprite(self.path.."/lightbattle/legs")
             sprite:play(1, true)
             return sprite
@@ -31,7 +31,7 @@ function actor:init()
     })
     
     self:addLightBattlerPart("head", {
-        ["sprite"] = function()
+        ["create_sprite"] = function()
             local sprite = Sprite(self.path.."/lightbattle/head", -2, 3)
             sprite.layer = 500
             sprite:play(2, true)
