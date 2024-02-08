@@ -11,32 +11,8 @@ function LightEnemySprite:init(actor)
     self.parts = self.actor.light_battler_parts
     
     for _,part in pairs(self.parts) do
-        if part.sprite then
-            local sprite
-            if type(part.sprite) == "string" then
-                sprite = Sprite(part.sprite)
-            elseif type(part.sprite) == "function" then
-                if type(part.sprite()) == "string" then
-                    sprite = Sprite(part.sprite())
-                elseif part.sprite():includes(Sprite) then
-                    sprite = part:sprite()
-                end
-            end
-            self:addChild(sprite)
-        else
-            local sprite
-            if self.actor:getDefaultAnim() then
-                sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefaultAnim())
-            elseif self.actor:getDefaultSprite() then
-                sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefaultSprite())
-            else
-                sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefault())
-            end
-            self:addChild(sprite)
-        end
-
         if part.init then
-            part:init()
+            part:init(part)
         end
     end
 
@@ -82,28 +58,32 @@ function LightEnemySprite:resetSprite(ignore_actor_callback)
     end
 
     for _,part in pairs(self.parts) do
-        if part.sprite then
-            local sprite
-            if type(part.sprite) == "string" then
-                sprite = Sprite(part.sprite)
-            elseif type(part.sprite) == "function" then
-                if type(part.sprite()) == "string" then
-                    sprite = Sprite(part.sprite())
-                elseif part.sprite():includes(Sprite) then
-                    sprite = part:sprite()
+        print(part.sprite, part.sprite and type(part.sprite) == "function")
+        if part.sprite and type(part.sprite) == "function" then
+            error("LightEnemyBattler sprite parts are now created in \"create_sprite\" instead of \"sprite.\"")
+        end
+        part.sprite = nil
+
+        if part.create_sprite then
+            if type(part.create_sprite) == "string" then
+                part.sprite = Sprite(part.create_sprite)
+            elseif type(part.create_sprite) == "function" then
+                if type(part.create_sprite()) == "string" then
+                    part.sprite = Sprite(part.create_sprite())
+                elseif part.create_sprite():includes(Sprite) then
+                    part.sprite = part:create_sprite()
                 end
             end
-            self:addChild(sprite)
+            self:addChild(part.sprite)
         else
-            local sprite
             if self.actor:getDefaultAnim() then
-                sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefaultAnim())
+                part.sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefaultAnim())
             elseif self.actor:getDefaultSprite() then
-                sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefaultSprite())
+                part.sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefaultSprite())
             else
-                sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefault())
+                part.sprite = Sprite(self.actor.path .. "/" .. self.actor:getDefault())
             end
-            self:addChild(sprite)
+            self:addChild(part.sprite)
         end
     end
 
@@ -113,7 +93,7 @@ end
 function LightEnemySprite:update()
     for _,part in pairs(self.parts) do
         if part.update then
-            part:update(part.sprite)
+            part:update(part)
         end
     end
 

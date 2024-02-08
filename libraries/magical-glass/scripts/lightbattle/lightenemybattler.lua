@@ -28,7 +28,7 @@ function LightEnemyBattler:init(actor, use_overlay)
     self.auto_spare = false
 
     -- Whether this enemy can be frozen or die, and whether it's the Undertale death or Deltarune death
-    self.can_freeze = false
+    self.can_freeze = true
     self.can_die = true
     self.ut_death = true
 
@@ -53,8 +53,8 @@ function LightEnemyBattler:init(actor, use_overlay)
     self.spareable_text = nil
 
     self.tired_percentage = 0
-    self.spare_percentage = 0.2
-    self.low_health_percentage = 0.2
+    self.spare_percentage = 1/3
+    self.low_health_percentage = 1/3
     
     -- Play the "damage" sound even when you deal 0 damage
     self.always_play_damage_sound = false
@@ -132,14 +132,6 @@ function LightEnemyBattler:setTired(bool)
     end
 end
 
-function LightEnemyBattler:removeAct(name)
-    for _,act in ipairs(self.acts) do
-        if act.name == name then
-            act = nil
-        end
-    end
-end
-
 function LightEnemyBattler:registerAct(name, description, party, tp, highlight, icons)
     if type(party) == "string" then
         if party == "all" then
@@ -213,6 +205,7 @@ function LightEnemyBattler:registerActFor(char, name, description, party, tp, hi
     }
     table.insert(self.acts, act)
 end
+
 function LightEnemyBattler:registerShortActFor(char, name, description, party, tp, highlight, icons)
     if type(party) == "string" then
         if party == "all" then
@@ -235,6 +228,15 @@ function LightEnemyBattler:registerShortActFor(char, name, description, party, t
         ["icons"] = icons
     }
     table.insert(self.acts, act)
+end
+
+function LightEnemyBattler:removeAct(name)
+    for i,act in ipairs(self.acts) do
+        if act.name == name then
+            table.remove(self.acts, i)
+            break
+        end
+    end
 end
 
 function LightEnemyBattler:spare(pacify)
@@ -317,12 +319,12 @@ function LightEnemyBattler:onSpareable() end
 function LightEnemyBattler:addMercy(amount)
     
     if self.mercy >= 100 then
-        -- We're already at full mercy; who cares
+        -- We're already at full mercy; do nothing.
         return
     end
     
-    if Kristal.getLibConfig("magical-glass", "mercy_messages") then
-        if amount > 0 and self.mercy < 100 then
+    if Kristal.getLibConfig("magical-glass", "mercy_messages") and self:getMercyVisibility() then
+        if amount > 0 then
             local pitch = 0.8
             if amount < 99 then pitch = 1 end
             if amount <= 50 then pitch = 1.2 end
@@ -332,7 +334,7 @@ function LightEnemyBattler:addMercy(amount)
             src:setPitch(pitch)
 
             self:lightStatusMessage("mercy", amount)
-        elseif self.mercy == 0 then
+        else
             local message = self:lightStatusMessage("msg", "miss", {192/255, 192/255, 192/255})
             message:resetPhysics()
         end
@@ -370,7 +372,7 @@ end
 
 function LightEnemyBattler:getNameColors()
     local result = {}
-    if self:canSpare() and self:getMercyVisibility() then
+    if self:canSpare() then
         table.insert(result, MagicalGlassLib.name_color)
     end
     if self.tired then
@@ -490,9 +492,9 @@ function LightEnemyBattler:isXActionShort(battler)
 end
 
 function LightEnemyBattler:hurt(amount, battler, on_defeat, color, anim)
-    if amount == 0 then
+    if amount <= 0 then
         local message = self:lightStatusMessage("msg", "miss", color or (battler and {battler.chara:getLightMissColor()}))
-        if message and anim == false then
+        if message and (anim and anim ~= nil) then
             message:resetPhysics()
         else
             self.hurt_timer = 1
@@ -544,19 +546,23 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
             return damage
         end
 
-        total_damage = (lane.battler.chara:getStat("attack") - self.defense)
-        total_damage = total_damage * ((points / 160) * (4 / lane.weapon:getBoltCount()))
+        if Game:isLight() then
+            total_damage = (lane.battler.chara:getStat("attack") - self.defense)
+        else
+            total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.37)
+        end
+        total_damage = total_damage * ((points / 160) * (4 / lane.weapon:getLightBoltCount()))
         total_damage = Utils.round(total_damage) + Utils.random(0, 2, 1)
 
-        if points > (400 * (lane.weapon:getBoltCount() / 4)) then
+        if points > (400 * (lane.weapon:getLightBoltCount() / 4)) then
             crit = true
         end
         
         if crit then
             lane.battler.tp_gain = 6
-        elseif points > (350 * (lane.weapon:getBoltCount() / 4)) then
+        elseif points > (350 * (lane.weapon:getLightBoltCount() / 4)) then
             lane.battler.tp_gain = 5
-        elseif points > (300 * (lane.weapon:getBoltCount() / 4)) then
+        elseif points > (300 * (lane.weapon:getLightBoltCount() / 4)) then
             lane.battler.tp_gain = 4
         else
             lane.battler.tp_gain = 3
@@ -566,7 +572,11 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
             return damage
         end
 
-        total_damage = (lane.battler.chara:getStat("attack") - self.defense) + Utils.random(0, 2, 1)
+        if Game:isLight() then
+            total_damage = (lane.battler.chara:getStat("attack") - self.defense) + Utils.random(0, 2, 1)
+        else
+            total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.37) + Utils.random(0, 2, 1)
+        end
         if points <= 12 then
             total_damage = Utils.round(total_damage * 2.2)
         else
@@ -667,7 +677,6 @@ function LightEnemyBattler:onDefeatRun(damage, battler)
     Game.battle.timer:after(15/30, function()
         sweat:remove()
         self:getActiveSprite().run_away_light = true
-        self:getActiveSprite().run_direction = 2
 
         Game.battle.timer:after(15/30, function()
             self:remove()
@@ -718,7 +727,7 @@ end
 
 function LightEnemyBattler:heal(amount)
     Assets.stopAndPlaySound("power")
-    self:lightStatusMessage("heal", "+" .. amount, {0, 1, 0})
+    self:lightStatusMessage("damage", "+" .. amount, {0, 1, 0})
 
     self.health = self.health + amount
 
@@ -756,7 +765,11 @@ function LightEnemyBattler:freeze()
 
     Game.battle.timer:tween(20/30, sprite, {freeze_progress = 1})
 
-    Game.battle.money = Game.battle.money + 8
+    if Game:isLight() then
+        Game.battle.money = Game.battle.money + 2
+    else
+        Game.battle.money = Game.battle.money + 24
+    end
     self:defeat("FROZEN", true)
 end
 
@@ -864,6 +877,10 @@ function LightEnemyBattler:setSprite(sprite, speed, loop, after)
 end
 
 function LightEnemyBattler:update()
+    if self.actor then
+        self.actor:onBattleUpdate(self)
+    end
+
     if self.hurt_timer > 0 then
         self.hurt_timer = Utils.approach(self.hurt_timer, 0, DT)
 
@@ -873,6 +890,14 @@ function LightEnemyBattler:update()
     end
 
     super.update(self)
+end
+
+function LightEnemyBattler:draw()
+    if self.actor then
+        self.actor:onBattleDraw(self)
+    end
+
+    super.draw(self)
 end
 
 function LightEnemyBattler:canDeepCopy()
