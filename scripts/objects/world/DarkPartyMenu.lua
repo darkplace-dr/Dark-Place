@@ -130,11 +130,20 @@ function DarkPartyMenu:onKeyPressed(key)
                 follower:remove()
             end
 			Game.world.player:setActor(Game.party[1].actor)
-			for k,v in pairs(Game.party) do
-				if k > 1 then
-					Game.world:spawnFollower(Game:isLight() and v.lw_actor or v.actor)
-				end
-			end
+                        if Game.world.player2 then
+                            Game.world.player2:setActor(Game.party[2].actor)
+			    for k,v in pairs(Game.party) do
+			    	    if k > 2 then
+					    Game.world:spawnFollower(Game:isLight() and v.lw_actor or v.actor)
+				    end
+			    end
+                        else
+			    for k,v in pairs(Game.party) do
+			    	    if k > 1 then
+					    Game.world:spawnFollower(Game:isLight() and v.lw_actor or v.actor)
+				    end
+			    end
+                        end
 			Game.world.player:alignFollowers()
 			Game.world:attachFollowersImmediate()
 		end
@@ -153,17 +162,32 @@ function DarkPartyMenu:onKeyPressed(key)
 				--[[for k,v in pairs(Game.world.healthbar.action_boxes) do
 					v:remove()
 				end]]
-				if self.selected_party > 1 then
-					if Game.world.followers[self.selected_party-1] then
-						Game.world.followers[self.selected_party-1]:setActor(Game:isLight() and Game.party[self.selected_party].lw_actor or Game.party[self.selected_party].actor)
-					else
-						local follower = Game.world:spawnFollower(self.list[self.selected_y][self.selected_x])
-						follower:setActor(Game:isLight() and Game.party[self.selected_party].lw_actor or Game.party[self.selected_party].actor)
-						follower:setFacing("down")
-					end
-				else
-					Game.world.player:setActor(Game:isLight() and Game.party[1].lw_actor or Game.party[1].actor)
-				end
+                                if Game.world.player2 then
+				    if self.selected_party > 2 then
+					    if Game.world.followers[self.selected_party-1] then
+					    	    Game.world.followers[self.selected_party-1]:setActor(Game:isLight() and Game.party[self.selected_party].lw_actor or Game.party[self.selected_party].actor)
+					    else
+						    local follower = Game.world:spawnFollower(self.list[self.selected_y][self.selected_x])
+						    follower:setActor(Game:isLight() and Game.party[self.selected_party].lw_actor or Game.party[self.selected_party].actor)
+						    follower:setFacing("down")
+					    end
+				    else
+					    Game.world.player:setActor(Game:isLight() and Game.party[1].lw_actor or Game.party[1].actor)
+					    Game.world.player2:setActor(Game:isLight() and Game.party[2].lw_actor or Game.party[2].actor)
+				    end
+                                else
+				    if self.selected_party > 1 then
+					    if Game.world.followers[self.selected_party-1] then
+					    	    Game.world.followers[self.selected_party-1]:setActor(Game:isLight() and Game.party[self.selected_party].lw_actor or Game.party[self.selected_party].actor)
+					    else
+						    local follower = Game.world:spawnFollower(self.list[self.selected_y][self.selected_x])
+						    follower:setActor(Game:isLight() and Game.party[self.selected_party].lw_actor or Game.party[self.selected_party].actor)
+						    follower:setFacing("down")
+					    end
+				    else
+					    Game.world.player:setActor(Game:isLight() and Game.party[1].lw_actor or Game.party[1].actor)
+				    end
+                                end
                 self.ui_select:stop()
                 self.ui_select:play()
 				--Game.world.menu:updateSelectedBoxes()

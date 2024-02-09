@@ -214,8 +214,8 @@ function LightTransition:update()
 		self.particletimer = 0
 	end
 	
-	if self.collider:collidesWith(Game.world.player) and not Game.world.cutscene then
-		local continue = self:touchCallback(Game.world.player)
+	if self.collider:collidesWith(Game.world.player) and not Game.world.cutscene or self.collider:collidesWith(Game.world.player2) and not Game.world.cutscene then
+		local continue = self:touchCallback(Game.world.player2 or Game.world.player)
 		
 		if continue then
 			Game.world:startCutscene(self.cutscene, self, Game.world.player)

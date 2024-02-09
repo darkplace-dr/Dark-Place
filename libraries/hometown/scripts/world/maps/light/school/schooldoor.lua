@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 21,
+  nextobjectid = 24,
   properties = {
     ["light"] = true
   },
@@ -229,6 +229,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 23,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 560,
+          y = 200,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -332,6 +345,34 @@ return {
             ["map"] = "light/school/unusedroom",
             ["marker"] = "entry"
           }
+        },
+        {
+          id = 21,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 560,
+          y = 200,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "enterdark"
+          }
+        },
+        {
+          id = 22,
+          name = "darkdoor",
+          class = "",
+          shape = "rectangle",
+          x = 576,
+          y = 124,
+          width = 88,
+          height = 112,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

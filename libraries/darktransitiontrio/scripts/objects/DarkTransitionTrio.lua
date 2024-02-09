@@ -32,9 +32,9 @@ function DarkTransitionTrio:init(final_y, options)
 	
     self.kris_x = options["kris_x"] or 134
     self.kris_y = options["kris_y"] or 94
+
     self.susie_x = options["susie_x"] or 162
     self.susie_y = options["susie_y"] or 86
-
 
     self.maptotp = options["map"] or "room1"
 	
@@ -174,7 +174,7 @@ function DarkTransitionTrio:init(final_y, options)
 
 	-- added
 	local thirdName = options["thirdName"] or "kris"
-	local path = "party/" .. thirdName .. "/"
+	local path = "party/" .. thirdName:lower() .. "/"
 	
     self.spr_thirdu = Assets.getFrames(path .. "light/walk/up")
     self.spr_thirdu_fall_lw = Assets.getFrames(path .. "dark_transition/forward")
@@ -187,8 +187,13 @@ function DarkTransitionTrio:init(final_y, options)
     self.spr_third_fall_ball = Assets.getFrames(path .. "dark_transition/ball")
     self.spr_third_dw_landed = Assets.getFrames(path .. "dark_transition/landed")
 
-    self.third_width = self.spr_third_fall_d_dw[1]:getWidth()
-    self.third_height = self.spr_third_fall_d_dw[1]:getHeight()
+    if self.spr_third_fall_d_dw then
+        self.third_width = self.spr_third_fall_d_dw[1]:getWidth()
+        self.third_height = self.spr_third_fall_d_dw[1]:getHeight()
+    else
+        self.third_width = 0 or self.spr_third_fall_d_dw[1]:getWidth()
+        self.third_height = 0 or self.spr_third_fall_d_dw[1]:getHeight()
+    end
 	--
 	
     -- Some nice hacks for deltatime support, since toby is very weird with cutscenes.
@@ -434,7 +439,7 @@ function DarkTransitionTrio:draw()
             end
 			
 			-- added
-			self.third_sprite:setFrames(self.spr_krisu_run)
+			self.third_sprite:setFrames(self.spr_thirdu_run)
 			--
         end
         if (math.floor(self.timer) >= 60) and not self.do_once2 then
@@ -448,7 +453,7 @@ function DarkTransitionTrio:draw()
             end
 			
 			-- added
-			self.kris_sprite:setFrames(self.spr_thirdu_run)
+			self.third_sprite:setFrames(self.spr_thirdu_run)
 			--
         end
         if (self.timer > 60 and self.timer < 68) then
