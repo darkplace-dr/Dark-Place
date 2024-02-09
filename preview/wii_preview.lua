@@ -4,7 +4,7 @@ local wii_preview = {}
 wii_preview.icon_speed = 1/5
 wii_preview.virtual = true
 
-function wii_preview:iconInit(mod_id)
+function wii_preview:iconInit(mod_id, is_maintenance)
     -- Code here gets called when the channels are loaded
 	-- Don't forget to return your data table; this will be used for draw and update!
 	local mod_data = Kristal.Mods.getMod(mod_id)
@@ -16,7 +16,7 @@ function wii_preview:iconInit(mod_id)
 	return data
 end
 
-function wii_preview:iconUpdate(data, timer)
+function wii_preview:iconUpdate(data, timer, is_maintenance)
     -- Code here gets called every frame, before any draws
     -- (0,0) is at the top left of the channel, so the bottom right is (125, 96)
 	-- Don't forget to return your data table!
@@ -48,19 +48,21 @@ function wii_preview:iconUpdate(data, timer)
 	return data
 end
 
-function wii_preview:iconDraw(data, timer)
+function wii_preview:iconDraw(data, timer, is_maintenance)
     -- Code here gets drawn to the icon every frame
     -- (0,0) is at the top left of the channel, so the bottom right is (125, 96)
 	-- You don't need to return your data table this time!
+	
+	if not is_maintenance then
+		for _,particle in ipairs(data.particles) do
+			local alpha = (particle.radius / particle.max_radius)
 
-    for _,particle in ipairs(data.particles) do
-        local alpha = (particle.radius / particle.max_radius)
-
-        love.graphics.setColor(1, 1, 1, alpha)
-        love.graphics.draw(data.particle_tex, particle.x, particle.y, particle.radius/2, 0.5, 0.5, 5, 5)
-    end
-	love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.draw(data.overlay, 69, 54, 0, 1, 1, 40.5, 34.5)
+			love.graphics.setColor(1, 1, 1, alpha)
+			love.graphics.draw(data.particle_tex, particle.x, particle.y, particle.radius/2, 0.5, 0.5, 5, 5)
+		end
+		love.graphics.setColor(1, 1, 1, 1)
+		love.graphics.draw(data.overlay, 69, 54, 0, 1, 1, 40.5, 34.5)
+	end
 end
 
 return wii_preview
