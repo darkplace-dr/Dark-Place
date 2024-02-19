@@ -14,3 +14,11 @@
 
 ## bmfont
 *.bmfc
+
+## Windows File Explorer
+desktop.ini
+# Because Windows decided that the folder doesn't contain music.
+# In correspendence to DiamondBor spirit
+# https://discord.com/channels/1090810260886921407/1104134226330267819/1187118224979001494
+# check this in to fix it for everybody
+!assets/music/desktop.ini
