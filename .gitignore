@@ -1,5 +1,7 @@
 ## Visual Studio Code
-.vscode
+.vscode/*
+# Check in this so we can suggest proper dev tools
+!.vscode/extensions.json
 
 ## Tiled
 *.tiled-session

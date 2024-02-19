@@ -1,3 +1,4 @@
+- Install LÖVE to PATH
 - Install this *specifically patched* version of [Local Lua Debugger](https://github.com/Dobby233Liu/local-lua-debugger-vscode/releases/tag/latest) (`tomblind.local-lua-debugger-vscode`) in VS Code
 - Have your `.vscode/launch.json` set up like this:
     ```jsonc
