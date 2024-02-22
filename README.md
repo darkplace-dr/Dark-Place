@@ -10,9 +10,7 @@ An open source Kristal mod that anyone can contribute to.
 
 > README under construction.
 
-Discord Server
-> [!WARNING]
-> Due to recent harassment that's been going on, the Discord server invite has been temporarily taken down until further notice. When things have eventually calmed down, we will add it back.
+[Discord Server](https://discord.gg/RhqPCA6eFN)
 
 [Official Website](https://darkplace-dr.github.io/)
 
