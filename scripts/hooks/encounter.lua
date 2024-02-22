@@ -4,7 +4,10 @@ local Encounter, super = Class("Encounter", true)
 
 function Encounter:init()
 	super.init(self)
-	
+
+	-- Can this be played in MULTIPLAYER?
+        self.multiplayer = false
+
 	-- Can the player flee the battle?
 	self.flee = true
 	-- Chance out of 100 that the player can flee this battle (x/100)
