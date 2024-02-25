@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="other-objects" tilewidth="1306" tileheight="1160" tilecount="19" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="other-objects" tilewidth="1306" tileheight="1160" tilecount="27" columns="0">
  <editorsettings>
   <export target="other-objects.lua" format="lua"/>
  </editorsettings>
@@ -60,5 +60,39 @@
  </tile>
  <tile id="58">
   <image width="44" height="99" source="../../../assets/sprites/world/events/corridoor.png"/>
+ </tile>
+ <tile id="59">
+  <image width="52" height="74" source="../../../assets/sprites/world/aurum_pillar.png"/>
+ </tile>
+ <tile id="60">
+  <image width="52" height="74" source="../../../assets/sprites/world/aurum_pillar_c.png"/>
+ </tile>
+ <tile id="61">
+  <image width="69" height="166" source="../../../assets/sprites/world/maps/_gildedgrove/dark_beam_1.png"/>
+  <animation>
+   <frame tileid="61" duration="250"/>
+   <frame tileid="62" duration="250"/>
+   <frame tileid="63" duration="250"/>
+  </animation>
+ </tile>
+ <tile id="62">
+  <image width="69" height="166" source="../../../assets/sprites/world/maps/_gildedgrove/dark_beam_2.png"/>
+ </tile>
+ <tile id="63">
+  <image width="69" height="166" source="../../../assets/sprites/world/maps/_gildedgrove/dark_beam_3.png"/>
+ </tile>
+ <tile id="64">
+  <image width="69" height="166" source="../../../assets/sprites/world/maps/_gildedgrove/light_beam_1.png"/>
+  <animation>
+   <frame tileid="64" duration="250"/>
+   <frame tileid="65" duration="250"/>
+   <frame tileid="66" duration="250"/>
+  </animation>
+ </tile>
+ <tile id="65">
+  <image width="69" height="166" source="../../../assets/sprites/world/maps/_gildedgrove/light_beam_2.png"/>
+ </tile>
+ <tile id="66">
+  <image width="69" height="166" source="../../../assets/sprites/world/maps/_gildedgrove/light_beam_3.png"/>
  </tile>
 </tileset>

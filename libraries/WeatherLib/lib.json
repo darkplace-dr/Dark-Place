@@ -1,0 +1,15 @@
+{
+    "id": "weatherlib",
+    "authors": [
+        "crocokuo"
+    ],
+    "version": "v1.0.0-darkplace",
+    "engineVer": "v0.9.0-dev",
+
+    "config": {
+        "extraWeathers": [
+            "flipped_rain",
+            "gilded_grove_ambient",
+        ]
+    }
+}

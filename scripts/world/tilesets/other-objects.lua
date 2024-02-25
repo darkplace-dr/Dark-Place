@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 19,
+  tilecount = 27,
   tiles = {
     {
       id = 12,
@@ -138,6 +138,82 @@ return {
       image = "../../../assets/sprites/world/events/corridoor.png",
       width = 44,
       height = 99
+    },
+    {
+      id = 59,
+      image = "../../../assets/sprites/world/aurum_pillar.png",
+      width = 52,
+      height = 74
+    },
+    {
+      id = 60,
+      image = "../../../assets/sprites/world/aurum_pillar_c.png",
+      width = 52,
+      height = 74
+    },
+    {
+      id = 61,
+      image = "../../../assets/sprites/world/maps/_gildedgrove/dark_beam_1.png",
+      width = 69,
+      height = 166,
+      animation = {
+        {
+          tileid = 61,
+          duration = 250
+        },
+        {
+          tileid = 62,
+          duration = 250
+        },
+        {
+          tileid = 63,
+          duration = 250
+        }
+      }
+    },
+    {
+      id = 62,
+      image = "../../../assets/sprites/world/maps/_gildedgrove/dark_beam_2.png",
+      width = 69,
+      height = 166
+    },
+    {
+      id = 63,
+      image = "../../../assets/sprites/world/maps/_gildedgrove/dark_beam_3.png",
+      width = 69,
+      height = 166
+    },
+    {
+      id = 64,
+      image = "../../../assets/sprites/world/maps/_gildedgrove/light_beam_1.png",
+      width = 69,
+      height = 166,
+      animation = {
+        {
+          tileid = 64,
+          duration = 250
+        },
+        {
+          tileid = 65,
+          duration = 250
+        },
+        {
+          tileid = 66,
+          duration = 250
+        }
+      }
+    },
+    {
+      id = 65,
+      image = "../../../assets/sprites/world/maps/_gildedgrove/light_beam_2.png",
+      width = 69,
+      height = 166
+    },
+    {
+      id = 66,
+      image = "../../../assets/sprites/world/maps/_gildedgrove/light_beam_3.png",
+      width = 69,
+      height = 166
     }
   }
 }
