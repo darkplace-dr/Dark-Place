@@ -6,6 +6,8 @@ function GildedGroveAmbient:init(sfx, child, intensity, overlay)
 
     self.goldwindtimer = 30 --120
     self.goldwindtimerreset = true
+    self.goldwindsoundtimer = 120
+    self.goldwindsoundtimerreset = true
     
 end
 
@@ -20,13 +22,28 @@ function GildedGroveAmbient:update()
         
                 self.goldwindtimer = 30 * math.random(2 - self.intensity, 6 - self.intensity)
             end
+
+            if self.goldwindsoundtimerreset == true then
+                self.goldwindsoundtimerreset = false
+
+                if self.intensity == 1 then 
+                    self.goldwindsoundtimer = 30 * math.random(6, 14)
+                else
+                    self.goldwindsoundtimer = 30 * math.random(6 - self.intensity, 14 - self.intensity)
+                end
+            end
         
-            if self.goldwindtimer <= 0 then
-                self.goldwindtimerreset = true
-                --print("WOO OHOOO WIND YESS!! IM SO HAPPY")
+            if self.goldwindsoundtimer <= 0 then
+                self.goldwindsoundtimerreset = true
                 local ammount = math.random(1, 7)
                 for i = ammount, 1, -1 do
                     Assets.stopAndPlaySound("wind", 0.8, 1.2)
+                end
+            end
+            if self.goldwindtimer <= 0 then
+                self.goldwindtimerreset = true
+                local ammount = math.random(1, 7)
+                for i = ammount, 1, -1 do
                     Game.stage.timer:script(function(wait)
                         wait(1.5)
                         local speed = Utils.random(6, 10)

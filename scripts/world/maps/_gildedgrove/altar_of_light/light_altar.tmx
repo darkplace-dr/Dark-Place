@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="32" height="44" tilewidth="40" tileheight="40" infinite="0" nextlayerid="13" nextobjectid="161">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="32" height="44" tilewidth="40" tileheight="40" infinite="0" nextlayerid="13" nextobjectid="167">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -180,10 +180,8 @@
   <object id="151" x="760" y="1320" width="40" height="40"/>
   <object id="152" x="720" y="1440" width="80" height="40"/>
   <object id="153" x="480" y="1440" width="80" height="40"/>
-  <object id="155" x="512" y="800" width="40" height="40"/>
-  <object id="156" x="728" y="800" width="40" height="40"/>
-  <object id="157" x="480" y="800" width="40" height="40"/>
-  <object id="158" x="760" y="800" width="40" height="40"/>
+  <object id="155" x="492" y="800" width="40" height="40"/>
+  <object id="156" x="748" y="800" width="40" height="40"/>
   <object id="159" x="880" y="1080" width="40" height="40"/>
   <object id="160" x="360" y="1080" width="40" height="40"/>
  </objectgroup>
@@ -196,12 +194,48 @@
   <object id="116" gid="620" x="288" y="680" width="104" height="148"/>
   <object id="117" gid="620" x="888" y="680" width="104" height="148"/>
   <object id="118" gid="620" x="968" y="960" width="104" height="148"/>
-  <object id="113" gid="621" x="480" y="840" width="104" height="148"/>
-  <object id="114" gid="621" x="696" y="840" width="104" height="148"/>
+  <object id="113" gid="621" x="460" y="840" width="104" height="148"/>
+  <object id="114" gid="621" x="716" y="840" width="104" height="148"/>
   <object id="119" gid="622" x="496" y="520" width="276" height="664"/>
+  <object id="161" name="npc" x="580" y="840">
+   <properties>
+    <property name="actor" value="gerome"/>
+    <property name="facing" value="up"/>
+    <property name="text">* A group of three people.[wait:10]
+* Better not disturb them.</property>
+   </properties>
+   <point/>
+  </object>
+  <object id="162" name="npc" x="640" y="840">
+   <properties>
+    <property name="actor" value="asriel"/>
+    <property name="facing" value="up"/>
+    <property name="text">* A group of three people.[wait:10]
+* Better not disturb them.</property>
+   </properties>
+   <point/>
+  </object>
+  <object id="163" name="npc" x="700" y="840">
+   <properties>
+    <property name="actor" value="synthlave"/>
+    <property name="facing" value="up"/>
+    <property name="text">* A group of three people.[wait:10]
+* Better not disturb them.</property>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="4" name="markers">
   <object id="122" name="spawn" x="640" y="1710">
+   <point/>
+  </object>
+  <object id="164" name="camp_1" x="640" y="460">
+   <point/>
+  </object>
+  <object id="165" name="camp_2" x="640" y="650">
+   <point/>
+  </object>
+  <object id="166" name="camp_3" x="640" y="1600">
    <point/>
   </object>
  </objectgroup>
