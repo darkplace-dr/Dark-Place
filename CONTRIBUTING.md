@@ -35,8 +35,6 @@ When you're done, it's time to make a Pull Request to our repo. If you have GitH
 You'll be brought to the page shown above. Write helpful text in the textboxs, then click `Create pull request`. Patiently wait for a maintainer to notice, review and merge your PR, and you're done!
 
 Finally, for assistance on various matters in the contribution process, you may join our Discord server. Happy contributing!
-> [!WARNING]
-> Due to recent harassment that's been going on, the Discord server invite has been temporarily taken down until further notice. When things have eventually calmed down, we will add it back.
 
 ## Recommended Extensions for VS Code
 This repo suggests installing sumneko's [Lua Language Server](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) and the accompanying [Kristal extension](https://marketplace.visualstudio.com/items?itemName=kristal.kristal-vscode), for more complete syntax highlighting and suggestions during coding. Afterwards, you will need to accept Lua Language Server "configuring your work environment as Kristal".
