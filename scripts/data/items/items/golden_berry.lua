@@ -20,7 +20,7 @@ function item:init()
     self.description = "An extremely rare berry you can't buy anywhere."
 
     -- Amount healed (HealItem variable)
-    self.heal_amount = 200
+    self.heal_amount = 999999
 
     -- Shop buy price
     self.buy_price = 500
@@ -28,7 +28,7 @@ function item:init()
     self.sell_price = 150
 
     -- Consumable target mode (Should be party)
-    self.target = "party"
+    self.target = "ally"
     -- Where this item can be used (world, battle, all, or none/nil)
     self.usable_in = "all"
     -- Item this item will get turned into when consumed
