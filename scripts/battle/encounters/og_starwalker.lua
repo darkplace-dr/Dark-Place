@@ -7,7 +7,7 @@ function OGStarwalker:init()
 
     self.starwalker = self:addEnemy("og_starwalker", 530, 238)
 
-    self.music = "pissedmeoff"
+    self.music = "battle2ut"
 
     self.background = true
 
