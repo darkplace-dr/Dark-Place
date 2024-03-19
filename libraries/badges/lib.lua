@@ -75,4 +75,23 @@ function lib:getBadgeEquipped(badge, ignore_light)
     return total_count
 end
 
+function lib:getDarkMenuButtons(buttons, menu)
+    local badge_button = {
+        ["state"]          = "BADGEMENU",
+        ["sprite"]         = Assets.getTexture("ui/menu/btn/badge"),
+        ["hovered_sprite"] = Assets.getTexture("ui/menu/btn/badge_h"),
+        ["desc_sprite"]    = Assets.getTexture("ui/menu/desc/badge"),
+        ["callback"]       = function()
+            menu.box = DarkBadgeMenu()
+            menu.box.layer = 1
+            menu:addChild(menu.box)
+    
+            menu.ui_select:stop()
+            menu.ui_select:play()
+        end
+    }
+    table.insert(buttons, badge_button)
+    return buttons
+end
+
 return lib
