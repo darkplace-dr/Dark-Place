@@ -20,9 +20,9 @@ function character:onLevelUpLVLib()
 end
 
 function character:getActor(light)
-    local is_in_flipside, _ = Utils.startsWith(Game.world.map.id, "flipside/")
-    if Game.world and Game.world.map and is_in_flipside then
-        return self.special_actors.flipside
+    if Game.world and Game.world.map then
+        local is_in_flipside, _ = Utils.startsWith(Game.world.map.id, "flipside/")
+        if is_in_flipside then return self.special_actors.flipside end
     end
 
     return super.getActor(self, light)
