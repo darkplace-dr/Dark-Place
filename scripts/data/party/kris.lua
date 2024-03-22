@@ -8,15 +8,17 @@ function character:init()
     self.has_xact = false
 
     self:addSpell("xslash")
+
+    self.special_actors = { flipside = Registry.createActor("flipside/kris") }
 end
 
--- This function could be very useful for costumes
 function character:getActor(light)
-    if (Game.world and Game.world.map) and Game.world.map.id:find("flipside/") then
-        return "flipside/kris"
-    else
-        return super.getActor(self, light)
+    local is_in_flipside, _ = Utils.startsWith(Game.world.map.id, "flipside/")
+    if Game.world and Game.world.map and is_in_flipside then
+        return self.special_actors.flipside
     end
+
+    return super.getActor(self, light)
 end
 
 return character
