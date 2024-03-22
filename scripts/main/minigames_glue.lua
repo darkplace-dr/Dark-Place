@@ -59,11 +59,9 @@ function Mod:initMinigameHooks()
                 Kristal.loadMod(mod_id, nil, nil, function ()
                     -- Pre-initialize the current mod
                     if Kristal.preInitMod(mod_id) then
-                        -- Switch to Game and load the temp save
-                        Gamestate.switch(Game)
                         if save then
-                            Game:load(save, save_id)
-    
+                            -- Switch to Game and load the temp save
+                            Gamestate.switch(Game, save, save_id, false)
                             -- If we had an encounter, restart the encounter
                             if encounter then
                                 Game:encounter(encounter, false)
@@ -72,7 +70,9 @@ function Mod:initMinigameHooks()
                             elseif minigame then -- If we were in a minigame, restart it
                                 Mod:startMinigame(minigame)
                             end
-                            
+                        else
+                            -- Switch to Game
+                            Gamestate.switch(Game)
                         end
                     end
                 end)

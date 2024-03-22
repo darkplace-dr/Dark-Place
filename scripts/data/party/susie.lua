@@ -5,13 +5,11 @@ function character:init()
 
     self:addSpell("pacify")
 
-    if Game:getFlag("susie_canact") then
-        self.has_act = true
-    else
-        self.has_act = false
-    end
+    self.has_act = Game:getFlag("susie_canact")
 
     self.max_stats = {}
+
+    self.special_actors = { flipside = Registry.createActor("flipside/susie") }
 end
 
 function character:onLevelUpLVLib()
@@ -21,13 +19,13 @@ function character:onLevelUpLVLib()
     self:increaseStat("defense", 1)
 end
 
--- This function could be very useful for costumes
 function character:getActor(light)
-    if (Game.world and Game.world.map) and Game.world.map.id:find("flipside/") then
-        return "flipside/susie"
-    else
-        return super.getActor(self, light)
+    local is_in_flipside, _ = Utils.startsWith(Game.world.map.id, "flipside/")
+    if Game.world and Game.world.map and is_in_flipside then
+        return self.special_actors.flipside
     end
+
+    return super.getActor(self, light)
 end
 
 return character
