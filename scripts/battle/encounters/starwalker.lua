@@ -7,7 +7,7 @@ function Starwalker:init()
 
     self.starwalker = self:addEnemy("starwalker", 530, 238)
 
-    self.music = "pissedmeoff"
+    self.music = "battle2ut"
 
     self.background = true
 

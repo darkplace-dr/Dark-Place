@@ -21,7 +21,7 @@ function MinigameHandler:pauseWorldMusic()
 end
 -- Part of postInit 2, don't use unless you have to
 function MinigameHandler:changeWindowTitle()
-    if TARGET_MOD == Mod.info.id then -- temp behavior
+    if TARGET_MOD == Mod.info.id then -- FIXME: temp behavior
         love.window.setTitle(string.format("%s - %s", Mod.info.name, self.name))
     end
 end

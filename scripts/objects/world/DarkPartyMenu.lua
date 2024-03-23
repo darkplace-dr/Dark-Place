@@ -132,7 +132,7 @@ function DarkPartyMenu:onKeyPressed(key)
 			Game.world.player:setActor(Game.party[1].actor)
 			for k,v in pairs(Game.party) do
 				if k > 1 then
-					Game.world:spawnFollower(Game:isLight() and v.lw_actor or v.actor)
+					Game.world:spawnFollower(v:getActor())
 				end
 			end
 			Game.world.player:alignFollowers()
@@ -155,14 +155,14 @@ function DarkPartyMenu:onKeyPressed(key)
 				end]]
 				if self.selected_party > 1 then
 					if Game.world.followers[self.selected_party-1] then
-						Game.world.followers[self.selected_party-1]:setActor(Game:isLight() and Game.party[self.selected_party].lw_actor or Game.party[self.selected_party].actor)
+						Game.world.followers[self.selected_party-1]:setActor(Game.party[self.selected_party]:getActor())
 					else
 						local follower = Game.world:spawnFollower(self.list[self.selected_y][self.selected_x])
-						follower:setActor(Game:isLight() and Game.party[self.selected_party].lw_actor or Game.party[self.selected_party].actor)
+						follower:setActor(Game.party[self.selected_party]:getActor())
 						follower:setFacing("down")
 					end
 				else
-					Game.world.player:setActor(Game:isLight() and Game.party[1].lw_actor or Game.party[1].actor)
+					Game.world.player:setActor(Game.party[1]:getActor())
 				end
                 self.ui_select:stop()
                 self.ui_select:play()
