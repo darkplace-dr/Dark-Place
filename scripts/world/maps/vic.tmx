@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="15">
+ <editorsettings>
+  <export target="vic.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="vic"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="316" source="../tilesets/devroom-objects.tsx"/>
+ <imagelayer id="2" name="Image Layer 1" offsetx="0" offsety="-20">
+  <image source="../../../assets/sprites/world/maps/vic.png" width="640" height="520"/>
+ </imagelayer>
+ <layer id="6" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,222,223,224,
+0,0,0,0,0,0,0,0,0,0,0,0,0,237,238,239,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="collision">
+  <object id="2" x="0" y="0" width="640"/>
+  <object id="3" x="640" y="0" height="480"/>
+  <object id="4" x="0" y="480" width="640"/>
+  <object id="5" x="0" y="0" height="480"/>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="6" name="spawn" x="560" y="160">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="1" name="interactable" x="520" y="0" width="116" height="80">
+   <properties>
+    <property name="cutscene" value="spamroom.warpbin"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="8" name="chest" x="80" y="80" width="40" height="40">
+   <properties>
+    <property name="item" value="hornet_gun"/>
+   </properties>
+  </object>
+  <object id="9" name="chest" x="240" y="120" width="40" height="40">
+   <properties>
+    <property name="item" value="golden_berry"/>
+   </properties>
+  </object>
+  <object id="10" name="chest" x="400" y="80" width="40" height="40">
+   <properties>
+    <property name="item" value="devil_bow"/>
+   </properties>
+  </object>
+  <object id="11" gid="359" x="320" y="320" width="40" height="40"/>
+  <object id="12" name="interactable" x="320" y="280" width="40" height="40">
+   <properties>
+    <property name="cutscene" value="dxyn.sign"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="13" name="npc" x="160" y="280">
+   <properties>
+    <property name="actor" value="pk"/>
+    <property name="cutscene" value="dxyn.pk"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" name="npc" x="480" y="400">
+   <properties>
+    <property name="actor" value="katy"/>
+    <property name="cutscene" value="dxyn.katy"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>

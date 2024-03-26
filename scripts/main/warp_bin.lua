@@ -70,6 +70,8 @@ Mod.warp_bin_codes = {
         end
     },
     ["WWC1YEAR"] = { result = "dinder" },
+    ["#1YRDXYN"] = { result = "vic" },	-- If you find this before the announcement, please keep quiet about this.
+										-- Otherwise, I'll have no choice but to put you in Europa rain.
     ["SLIDER"] = { result = "slider_start" },
     ["PIKNF404"] = {
         result = function(cutscene)
