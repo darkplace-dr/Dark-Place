@@ -35,6 +35,18 @@ function preview:init(mod, button, menu)
     self.particle_tex = love.graphics.newImage(p("star.png"))
     self.particle_tex_dess = love.graphics.newImage(p("dess.png"))
 
+    local month = tonumber(os.date("%m"))
+    local day = tonumber(os.date("%d"))
+
+    if month == 4 and day == 1 then
+        --self.base_path = mod.path.."/preview/april_1"
+        local function p(f) return self.base_path .. "/april_1/" .. f end
+        self.particle_tex = love.graphics.newImage(p("star.png"))
+        self.bg = love.graphics.newImage(p("bg.png"))
+    end
+
+
+
     self.swellow = nil
     self.swellow_timer = 0
 
@@ -96,6 +108,18 @@ function preview:update()
 end
 
 function preview:draw()
+
+    local month = tonumber(os.date("%m"))
+    local day = tonumber(os.date("%d"))
+
+    if preview:areWeSelected() == true and month == 4 and day == 1 then
+        love.graphics.draw(self.bg,
+            SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0,
+            2, 2,
+            self.bg:getWidth()/2, self.bg:getHeight()/2
+        )
+    end
+
     if self.fade <= 0 then return end
 
     for _,particle in ipairs(self.particles) do
