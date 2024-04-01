@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="21">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="22">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -8,6 +8,7 @@
   <property name="music" value="deltarune/castletown_empty"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/castle.tsx"/>
+ <tileset firstgid="61" source="../../tilesets/devroom-objects.tsx"/>
  <layer id="1" name="tiles" width="16" height="12">
   <data encoding="csv">
 0,0,0,22,9,23,23,9,23,23,9,24,0,0,0,0,
@@ -28,7 +29,7 @@
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,104,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,30,31,32,0,0,0,0,0,0,0,
@@ -54,6 +55,11 @@
    <properties>
     <property name="map" value="room1"/>
     <property name="marker" value="entry_t"/>
+   </properties>
+  </object>
+  <object id="21" name="interactable" x="280" y="80" width="40" height="40">
+   <properties>
+    <property name="cutscene" value="fun_fax.fun_fax"/>
    </properties>
   </object>
  </objectgroup>
