@@ -5,7 +5,7 @@ function Mod:get_random_text()
         "* [speed:0.5]I wrote a book recently...",
         "* [speed:0.5]Mama always said life was like a box-o-chocolates...",
         "* [speed:0.5]Have you heard of the woody theory...",
-        "* [speed:0.5]Acoustic Jamm once said...",
+        "* [speed:0.5]AcousticJamm once said...",
         "* [speed:0.5]Did you know sans is Ness...",
         "* [speed:0.5]Did you know Dess is Ness...",
         "* [speed:0.5]I can see your FUN value...",
