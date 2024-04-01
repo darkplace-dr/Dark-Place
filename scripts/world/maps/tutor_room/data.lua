@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 21,
+  nextobjectid = 22,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown_empty"
@@ -21,6 +21,12 @@ return {
       firstgid = 1,
       filename = "../../tilesets/castle.tsx",
       exportfilename = "../../tilesets/castle.lua"
+    },
+    {
+      name = "devroom-objects",
+      firstgid = 61,
+      filename = "../../tilesets/devroom-objects.tsx",
+      exportfilename = "../../tilesets/devroom-objects.lua"
     }
   },
   layers = {
@@ -76,7 +82,7 @@ return {
       data = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 104, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 30, 31, 32, 0, 0, 0, 0, 0, 0, 0,
@@ -223,6 +229,21 @@ return {
           properties = {
             ["map"] = "room1",
             ["marker"] = "entry_t"
+          }
+        },
+        {
+          id = 21,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 280,
+          y = 80,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "fun_fax.fun_fax"
           }
         }
       }
