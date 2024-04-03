@@ -107,11 +107,6 @@ function LightShop:init()
 
     self.fade_alpha = 0
     self.fading_out = false
-    self.box_ease_timer = 0
-    self.box_ease_beginning = -8
-    self.box_ease_top = 220 - 53
-    self.box_ease_method = "outExpo"
-    self.box_ease_multiplier = 1
 
     self.draw_divider = true
 
@@ -152,7 +147,7 @@ function LightShop:postInit()
     -- find a more elegant way to do this...
     self.info_box.y = SCREEN_HEIGHT - top - self.large_box.height - (1 * 2) + 16 + 1
     self.info_box.width = 174
-    self.info_box.height = 180
+    self.info_box.height = -8
     self.info_box:setLayer(SHOP_LAYERS["info_box"])
 
     self.info_box.visible = false
@@ -253,16 +248,6 @@ function LightShop:onStateChange(old,new)
         self:setDialogueText("")
         self:setRightText(self.buy_menu_text)
         self.info_box.visible = true
-        self.info_box.height = -8
-        self.box_ease_timer = 0
-        self.box_ease_beginning = -8
-        if #self.items > 0 then
-            self.box_ease_top = 220 - 53
-        else
-            self.box_ease_top = -8
-        end
-        self.box_ease_method = "outExpo"
-        self.box_ease_multiplier = 1
         self.current_selecting = 1
     elseif new == "SELLMENU" then
         self:setDialogueText("")
@@ -316,6 +301,7 @@ end
 function LightShop:leaveImmediate()
     self:remove()
     Game.shop = nil
+    MagicalGlassLib.in_light_shop = false
     Game.state = "OVERWORLD"
     Game.fader.alpha = 1
     Game.fader:fadeIn()
@@ -377,12 +363,13 @@ function LightShop:replaceItem(index, item, options)
     end
     if item then
         options = options or {}
-        options["name"]        = options["name"]        or item:getName()
-        options["description"] = options["description"] or item:getLightShopDescription()
-        options["price"]       = options["price"]       or item:getBuyPrice()
-        options["bonuses"]     = options["bonuses"]     or item:getStatBonuses()
-        options["color"]       = options["color"]       or {1, 1, 1, 1}
-        options["flag"]        = options["flag"]        or ("stock_" .. tostring(index) .. "_" .. item.id)
+        options["name"]             = options["name"]             or item:getName()
+        options["description"]      = options["description"]      or item:getLightShopDescription()
+        options["dont_show_change"] = options["dont_show_change"] or item:getLightShopDontShowChange()
+        options["price"]            = options["price"]            or item:getBuyPrice()
+        options["bonuses"]          = options["bonuses"]          or item:getStatBonuses()
+        options["color"]            = options["color"]            or {1, 1, 1, 1}
+        options["flag"]             = options["flag"]             or ("stock_" .. tostring(index) .. "_" .. item.id)
 
         options["stock"] = self:getFlag(options["flag"], options["stock"])
 
@@ -435,10 +422,26 @@ function LightShop:update()
 
     super.update(self)
 
-    self.box_ease_timer = math.min(1, self.box_ease_timer + (DT * self.box_ease_multiplier))
-
     if self.state == "BUYMENU" then
-        self.info_box.height = Utils.ease(self.box_ease_beginning, self.box_ease_top, self.box_ease_timer, self.box_ease_method)
+        if self.current_selecting >= #self.items + 1 then
+            self.info_box.height = -8
+        else
+            if self.info_box.height < 55 then
+                self.info_box.height = self.info_box.height + 2 * DTMULT
+            end
+            if self.info_box.height < 80 then
+                self.info_box.height = self.info_box.height + 3 * DTMULT
+            end
+            if self.info_box.height < 100 then
+                self.info_box.height = self.info_box.height + 4 * DTMULT
+            end
+            if self.info_box.height < 220 - 48 then
+                self.info_box.height = self.info_box.height + (5 + 3) * DTMULT
+            end
+            if self.info_box.height > 220 - 48 then
+                self.info_box.height = 220 - 48
+            end
+        end
 
         if self.shopkeeper.slide then
             local target_x = SCREEN_WIDTH/2 - 80
@@ -571,26 +574,73 @@ function LightShop:draw()
             Draw.scissor(left, top, width, height)
 
             Draw.setColor(COLORS.white)
-            if not current_item.options["dont_show_change"] == true and (current_item.item.type == "weapon" or current_item.item.type == "armor") then
+            if not current_item.options["dont_show_change"] and (current_item.item.type == "weapon" or current_item.item.type == "armor") then
+                local stats_diff = {}
                 local equip
                 local difference = ""
                 local stat = ""
-                if current_item.item.type == "weapon" then
-                    equip = Game.party[1]:getWeapon()
-                    difference = current_item.item:getStatBonus("attack") - equip:getStatBonus("attack")
-                    stat = "AT"
-                elseif current_item.item.type == "armor" then
-                    equip = Game.party[1]:getArmor(1)
-                    difference = current_item.item:getStatBonus("defense") - equip:getStatBonus("defense")
-                    stat = "DF"
-                end
+                for i,party in ipairs(Game.party) do
+                    if current_item.item.type == "weapon" then
+                        equip = party:getWeapon()
+                        if current_item.item:getLightShopShowMagic() then
+                            difference = current_item.item:getStatBonus("magic") - equip:getStatBonus("magic")
+                            stat = "MG"
+                        else
+                            difference = current_item.item:getStatBonus("attack") - equip:getStatBonus("attack")
+                            stat = "AT"
+                        end
+                    elseif current_item.item.type == "armor" then
+                        equip = party:getArmor(1)
+                        if current_item.item:getLightShopShowMagic() then
+                            difference = current_item.item:getStatBonus("magic") - equip:getStatBonus("magic")
+                            stat = "MG"
+                        else
+                            difference = current_item.item:getStatBonus("defense") - equip:getStatBonus("defense")
+                            stat = "DF"
+                        end
+                    end
 
-                if difference >= 0 then
-                    difference = "+" .. difference
+                    if difference >= 0 then
+                        difference = "+" .. difference
+                    end
+                    
+                    table.insert(stats_diff, difference .. " ")
                 end
-
-                local desc = current_item.options["description"] .. "("..difference.." "..stat..")"
-                love.graphics.print(desc, left + 28, top + 28)
+                love.graphics.print(current_item.item:getLightTypeName(), left + 28, top + 28)
+                if #Game.party == 2 then
+                    love.graphics.print({"(",{Game.party[1]:getLightColor()},stats_diff[1],{Game.party[2]:getLightColor()},stats_diff[2],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight())
+                elseif #Game.party == 3 then
+                    love.graphics.print({"(",{Game.party[1]:getLightColor()},stats_diff[1],{Game.party[2]:getLightColor()},stats_diff[2],{Game.party[3]:getLightColor()},stats_diff[3],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight())
+                elseif Mod.libs["moreparty"] and #Game.party > 3 then
+                    if not Kristal.getLibConfig("moreparty", "classic_mode") then
+                        if #Game.party == 4 then
+                            love.graphics.print({"(",{Game.party[1]:getLightColor()},stats_diff[1],{Game.party[2]:getLightColor()},stats_diff[2],{Game.party[3]:getLightColor()},stats_diff[3],{Game.party[4]:getLightColor()},stats_diff[4],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight())
+                        else
+                            love.graphics.print({"(",{Game.party[1]:getLightColor()},stats_diff[1],{Game.party[2]:getLightColor()},stats_diff[2],{Game.party[3]:getLightColor()},stats_diff[3],{Game.party[4]:getLightColor()},stats_diff[4],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() - 10)
+                        end
+                        if #Game.party == 5 then
+                            love.graphics.print({"(",{Game.party[5]:getLightColor()},stats_diff[5],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() + 10)
+                        elseif #Game.party == 6 then
+                            love.graphics.print({"(",{Game.party[5]:getLightColor()},stats_diff[5],{Game.party[6]:getLightColor()},stats_diff[6],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() + 10)
+                        elseif #Game.party == 7 then
+                            love.graphics.print({"(",{Game.party[5]:getLightColor()},stats_diff[5],{Game.party[6]:getLightColor()},stats_diff[6],{Game.party[7]:getLightColor()},stats_diff[7],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() + 10)
+                        elseif #Game.party >= 8 then
+                            love.graphics.print({"(",{Game.party[5]:getLightColor()},stats_diff[5],{Game.party[6]:getLightColor()},stats_diff[6],{Game.party[7]:getLightColor()},stats_diff[7],{Game.party[8]:getLightColor()},stats_diff[8],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() + 10)
+                        end
+                    else
+                        love.graphics.print({"(",{Game.party[1]:getLightColor()},stats_diff[1],{Game.party[2]:getLightColor()},stats_diff[2],{Game.party[3]:getLightColor()},stats_diff[3],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() - 10)
+                        if #Game.party == 4 then
+                            love.graphics.print({"(",{Game.party[4]:getLightColor()},stats_diff[4],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() + 10)
+                        elseif #Game.party == 5 then
+                            love.graphics.print({"(",{Game.party[4]:getLightColor()},stats_diff[4],{Game.party[5]:getLightColor()},stats_diff[5],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() + 10)
+                        elseif #Game.party >= 6 then
+                            love.graphics.print({"(",{Game.party[4]:getLightColor()},stats_diff[4],{Game.party[5]:getLightColor()},stats_diff[5],{Game.party[6]:getLightColor()},stats_diff[6],{1,1,1},stat ..")"}, left + 28, top + 28 + self.font:getHeight() + 10)
+                        end
+                    end
+                else
+                    love.graphics.print("(" .. stats_diff[1] .. stat ..")", left + 28, top + 28 + self.font:getHeight())
+                end
+                love.graphics.print(current_item.options["description"], left + 28, top + 28 + self.font:getHeight() * 2)
             else
                 love.graphics.print(current_item.options["description"], left + 28, top + 28)
             end
@@ -631,9 +681,9 @@ function LightShop:draw()
 
                     if item then
                         local display_item
+                        Draw.setColor(COLORS.white)
                         if item:isSellable() then
-                            Draw.setColor(COLORS.white)
-                            display_item = string.format(self.currency_text, item:getSellPrice() or 0) .. " - " .. item:getShortName()
+                            display_item = string.format(self.currency_text, item:getSellPrice()) .. " - " .. item:getShortName()
                             if item:getSellPrice() < 10 then
                                 display_item = "  " .. display_item
                             end
@@ -641,8 +691,7 @@ function LightShop:draw()
                                 display_item = "  " .. display_item
                             end
                         else
-                            Draw.setColor(COLORS.gray)
-                            display_item = item:getShortName()
+                            display_item = "  NO! - " .. item:getShortName()
                         end
                         love.graphics.print(display_item, 60 + ((i % 2) == 0 and 282 or 0), 240 + ((i - ((i-1) % 2)) * 20), math.rad(self.sell_item_rotation))
                     end
@@ -784,21 +833,6 @@ function LightShop:onKeyPressed(key, is_repeat)
                     self.current_selecting = 1
                 end
             end
-            if Input.is("up", key) or Input.is("down", key) then
-                if self.current_selecting >= #self.items + 1 then
-                    self.box_ease_timer = 0
-                    self.box_ease_beginning = self.info_box.height
-                    self.box_ease_top = -8
-                    self.box_ease_method = "linear"
-                    self.box_ease_multiplier = 8
-                elseif (old_selecting >= #self.items + 1) and (self.current_selecting <= #self.items) then
-                    self.box_ease_timer = 0
-                    self.box_ease_beginning = self.info_box.height
-                    self.box_ease_top = 220 - 53
-                    self.box_ease_method = "outExpo"
-                    self.box_ease_multiplier = 1
-                end
-            end
         end
     elseif self.state == "SELLING" then
         local inventory = Game.inventory:getStorage(self.state_reason[2])
@@ -843,6 +877,8 @@ function LightShop:onKeyPressed(key, is_repeat)
                             Game.key_repeat = false
                             self.current_selecting_choice = 1
                             self:setRightText("")
+                        else
+                            Assets.playSound("nosell")
                         end
                     else
                         self:setState("MAINMENU")

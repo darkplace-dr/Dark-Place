@@ -58,6 +58,8 @@ function LightEnemyBattler:init(actor, use_overlay)
     
     -- Play the "damage" sound even when you deal 0 damage
     self.always_play_damage_sound = false
+    -- Display 0 instead of miss
+    self.display_damage_on_miss = false
 
     -- Speech bubble style - defaults to "round" or "cyber", depending on chapter
     -- This is set to nil in `battler.lua` as well, but it's here for completion's sake.
@@ -318,25 +320,27 @@ function LightEnemyBattler:onSpareable() end
 
 function LightEnemyBattler:addMercy(amount)
     
-    if self.mercy >= 100 then
-        -- We're already at full mercy; do nothing.
+    if (amount >= 0 and self.mercy >= 100) or (amount < 0 and self.mercy <= 0) then
+        -- We're already at full mercy and trying to add more; do nothing.
+        -- Also do nothing if trying to remove from an empty mercy bar.
         return
     end
     
     if Kristal.getLibConfig("magical-glass", "mercy_messages") and self:getMercyVisibility() then
-        if amount > 0 then
-            local pitch = 0.8
-            if amount < 99 then pitch = 1 end
-            if amount <= 50 then pitch = 1.2 end
-            if amount <= 25 then pitch = 1.4 end
+        if amount == 0 then
+            self:lightStatusMessage("msg", "miss", {192/255, 192/255, 192/255})
+        else
+            if amount > 0 then
+                local pitch = 0.8
+                if amount < 99 then pitch = 1 end
+                if amount <= 50 then pitch = 1.2 end
+                if amount <= 25 then pitch = 1.4 end
 
-            local src = Assets.playSound("mercyadd", 0.8)
-            src:setPitch(pitch)
+                local src = Assets.playSound("mercyadd", 0.8)
+                src:setPitch(pitch)
+            end
 
             self:lightStatusMessage("mercy", amount)
-        else
-            local message = self:lightStatusMessage("msg", "miss", {192/255, 192/255, 192/255})
-            message:resetPhysics()
         end
     end
 
@@ -363,7 +367,7 @@ function LightEnemyBattler:onMercy(battler)
         self:spare()
         return true
     else
-        if self.spare_points ~= 0 then
+        if self.spare_points ~= 0 or Kristal.getLibConfig("magical-glass", "multi_deltarune_spare") and Game.battle.multi_mode then
             self:addMercy(self.spare_points)
         end
         return false
@@ -491,37 +495,50 @@ function LightEnemyBattler:isXActionShort(battler)
     return false
 end
 
-function LightEnemyBattler:hurt(amount, battler, on_defeat, color, anim)
+function LightEnemyBattler:hurt(amount, battler, on_defeat, color, anim, attacked)
+    if attacked ~= false then
+        attacked = true
+    end
+    local message
     if amount <= 0 then
-        local message = self:lightStatusMessage("msg", "miss", color or (battler and {battler.chara:getLightMissColor()}))
+        if not self.display_damage_on_miss or not attacked then
+            message = self:lightStatusMessage("msg", "miss", color or (battler and {battler.chara:getLightMissColor()}))
+        else
+            message = self:lightStatusMessage("damage", 0, color or (battler and {battler.chara:getLightDamageColor()}))
+        end
         if message and (anim and anim ~= nil) then
             message:resetPhysics()
-        else
+        end
+        if attacked then
             self.hurt_timer = 1
         end
 
-        self:onDodge(battler)
+        self:onDodge(battler, attacked)
         return
     end
 
-    self:lightStatusMessage("damage", amount, color or (battler and {battler.chara:getLightDamageColor()}))
+    message = self:lightStatusMessage("damage", amount, color or (battler and {battler.chara:getLightDamageColor()}))
+    if message and (anim and anim ~= nil) then
+        message:resetPhysics()
+    end
     self.health = self.health - amount
 
-    if amount > 0 then
-        self.hurt_timer = 1
-        self:onHurt(amount, battler)
-    end
+    self.hurt_timer = 1
+    self:onHurt(amount, battler)
 
     self:checkHealth(on_defeat, amount, battler)
 
 end
 
-function LightEnemyBattler:onDodge(battler) end
+function LightEnemyBattler:onDodge(battler, attacked) end
 
 function LightEnemyBattler:checkHealth(on_defeat, amount, battler)
     -- on_defeat is optional
     if self.health <= 0 then
         self.health = 0
+        if self.exit_on_defeat then
+            self.done_state = "PRE-DEATH"
+        end
 
         if not self.defeated then
             if on_defeat then
@@ -549,7 +566,7 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
         if Game:isLight() then
             total_damage = (lane.battler.chara:getStat("attack") - self.defense)
         else
-            total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.37)
+            total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.363)
         end
         total_damage = total_damage * ((points / 160) * (4 / lane.weapon:getLightBoltCount()))
         total_damage = Utils.round(total_damage) + Utils.random(0, 2, 1)
@@ -575,7 +592,7 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
         if Game:isLight() then
             total_damage = (lane.battler.chara:getStat("attack") - self.defense) + Utils.random(0, 2, 1)
         else
-            total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.37) + Utils.random(0, 2, 1)
+            total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.363) + Utils.random(0, 2, 1)
         end
         if points <= 12 then
             total_damage = Utils.round(total_damage * 2.2)
@@ -593,7 +610,13 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
             lane.battler.tp_gain = 3
         end
     end
-    
+    if not self.post_health then
+        self.post_health = self.health
+    end
+    self.post_health = self.post_health - total_damage
+    if self.post_health <= 0 and self.exit_on_defeat then
+        self.done_state = "PRE-DEATH"
+    end
     return total_damage, crit
 end
 
@@ -647,6 +670,9 @@ function LightEnemyBattler:onDefeat(damage, battler)
             self:toggleOverlay(true)
         end
         Game.battle.timer:after(self.hurt_timer, function()
+            if self.actor.use_light_battler_sprite then
+                self:toggleOverlay(true)
+            end
             if self.can_die then
                 if self.ut_death then
                     self:onDefeatVaporized(damage, battler)
@@ -754,8 +780,8 @@ function LightEnemyBattler:freeze()
     sprite:stopShake()
 
     -- self:recruitMessage("frozen")
-    local message = self:lightStatusMessage("msg", "frozen", {58/255, 147/255, 254/255})
-    message.y = message.y + 72
+    local message = self:lightStatusMessage("msg", "frozen", {58/255, 147/255, 254/255}, true)
+    message.y = message.y + 60
     message:resetPhysics()
 
     self.hurt_timer = -1
@@ -855,11 +881,11 @@ function LightEnemyBattler:setActor(actor, use_overlay)
     end
 
     if self.sprite then
-        self.sprite.facing = "left"
+        self.sprite.facing = "down"
         self.sprite.inherit_color = true
     end
     if self.overlay_sprite then
-        self.overlay_sprite.facing = "left"
+        self.overlay_sprite.facing = "down"
         self.overlay_sprite.inherit_color = true
     end
 end
@@ -874,6 +900,10 @@ function LightEnemyBattler:setSprite(sprite, speed, loop, after)
     if not self.sprite.directional and speed then
         self.sprite:play(speed, loop, after)
     end
+end
+
+function LightEnemyBattler:getSpritePart(part_id)
+    return self.sprite:getPart(part_id)
 end
 
 function LightEnemyBattler:update()
