@@ -230,32 +230,7 @@ function GameOver:update()
             self.current_stage = 11
 
             -- I, SAD DIAMOND MAN, DIDDY THE FUNNY
-            local funnytitle_rand = love.math.random(1, 20)
-            local funnytitle = ({
-                "Deltarune",
-                "Half-Life",
-                "* GOD damnit KRIS where the HELL are WE!?",
-                "* GOD damn YOU where the HELL are WE!?",
-                "* SO, I have no fucking clue where we are.",
-                "* z...z.....z.....z.......Z.........Z",
-                "Kristale",
-                "* WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT?",
-                "Kris Tea",
-                "* REDDIT GOLD POG!!",
-                "LOOK ITS BrACON and MEGALORE!!!",
-                "...",
-                "Kristal",
-                "Spamton Sweepstakes",
-                "Includes Darkness!",
-                "It's raining somewhere else...",
-                "Minecraft",
-                "Counter Strike Source Not Found()",
-                "Grian Is Watching You.",
-                "PLAY THE RIBBIT MOD, NOW!!!"
-            })[funnytitle_rand]  -- fallback: "Depa Runts"
-            local funnyicon = Assets.getTextureData("ui/funny_window_icons/icon_"..tostring(funnytitle_rand))
-            love.window.setTitle(funnytitle)
-            love.window.setIcon(funnyicon)
+            Mod:funnytitle()
 
             Game:loadQuick()
         end
