@@ -35,17 +35,18 @@ function preview:init(mod, button, menu)
     self.particle_tex = love.graphics.newImage(p("star.png"))
     self.particle_tex_dess = love.graphics.newImage(p("dess.png"))
 
-    local month = tonumber(os.date("%m"))
-    local day = tonumber(os.date("%d"))
+    self.month = tonumber(os.date("%m"))
+    self.day = tonumber(os.date("%d"))
 
-    if month == 4 and day == 1 then
-        --self.base_path = mod.path.."/preview/april_1"
+    if self.month == 4 and self.day == 1 then
         local function p(f) return self.base_path .. "/april_1/" .. f end
         self.particle_tex = love.graphics.newImage(p("star.png"))
-        self.bg = love.graphics.newImage(p("bg.png"))
     end
 
-
+    -- gradient background variables ported over from Asgore's fight in UT.
+    self.gradient_siner = 0
+    self.gradient_amt = 1
+    self.gradient_fade = 0
 
     self.swellow = nil
     self.swellow_timer = 0
@@ -108,19 +109,35 @@ function preview:update()
 end
 
 function preview:draw()
-
-    local month = tonumber(os.date("%m"))
-    local day = tonumber(os.date("%d"))
-
-    if preview:areWeSelected() == true and month == 4 and day == 1 then
-        love.graphics.draw(self.bg,
-            SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0,
-            2, 2,
-            self.bg:getWidth()/2, self.bg:getHeight()/2
-        )
-    end
-
     if self.fade <= 0 then return end
+
+    if self.month == 4 and self.day == 1 then
+        love.graphics.setColor(1, 1, 1, self.fade)
+        love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+    else
+        love.graphics.setColor(0, 0, 0, self.fade)
+        love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+    end
+	
+    --purple gradient
+    local ac = (1.5 + math.sin((self.gradient_siner / 20)))
+    self.gradient_siner = self.gradient_siner + 0.2 * DTMULT
+    
+    for i = 0, 10 do
+        local gradient_alpha = ((0.8 - (i / 16)) * self.gradient_amt) * self.fade
+        if self.month == 4 and self.day == 1 then
+            love.graphics.setColor(186/255, 186/255, 97/255, gradient_alpha)
+        else
+            love.graphics.setColor(69/255, 69/255, 158/255, gradient_alpha)
+        end
+        love.graphics.rectangle("fill", -10, (SCREEN_HEIGHT - ((i * i) * ac)), (SCREEN_WIDTH + 10), (SCREEN_HEIGHT - (((i + 1) * (i + 1)) * ac)))
+    end
+    if self.gradient_fade == 1 then
+        self.gradient_amt = self.gradient_amt - 0.03 * DTMULT
+        if self.gradient_amt < 0.05 then
+            --instance_destroy()
+        end
+    end
 
     for _,particle in ipairs(self.particles) do
         local alpha = (particle.radius / particle.max_radius) * self.fade
