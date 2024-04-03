@@ -22,7 +22,7 @@ end
 
 function preview:init(mod, button, menu)
     button:setColor(1, 1, 1)
-    button:setFavoritedColor(0.9, 0.8, 1)
+    button:setFavoritedColor(138/255, 138/255, 207/255)
 
     self.mod_id = mod.id
     self.menu = menu or MainMenu
