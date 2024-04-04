@@ -137,8 +137,7 @@ function preview:update()
         end
     end
     if self.video then
-        self.video:getSource():setVolume(self.video_fade_timer/100)
-        self.menu.mod_list.music[self.mod_id]:setVolume(1 - (self.video_fade_timer/100 * 0.25))
+        self.video:getSource():setVolume(math.min(self.video_fade_timer/20, 1) * 0.6)
         -- loop video
         if not self.video:isPlaying() then
             self.video:rewind()
@@ -147,9 +146,7 @@ function preview:update()
     else
         self.video_fade_phase = -1
         self.video_fade_timer = 0
-        self.menu.mod_list.music[self.mod_id]:setVolume(1)
     end
-
 
     for _,sound in pairs(self.sounds) do sound:update() end
 end
