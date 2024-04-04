@@ -678,22 +678,6 @@ return {
     origin = "??? - https://youtu.be/5rA2UmeD2x4"
   },
   {
-    -- khinsiders S6 gamerip: Cookie Trials - Currant Cream Cookie
-    --   - d2l
-    name = "Currant Cream Cookie's Trial",
-    file = "Currant_Cream_Trial",
-    composer = "Devsisters",
-    released = "2023",
-    origin = "Cookie Run: Ovenbreak"
-  },
-  {
-    name = "Transfigure (Instrumental)",
-    file = "Transfigure",
-    composer = "Devsisters, Ft. Kim Doyeong",
-    released = "2023",
-    origin = "Cookie Run: Kingdom"
-  },
-  {
     name = "Beware the Nintendo's Pikmin Games (Cover)",
     file = "pikminonthefuckinggamecube",
     composer = "Yoko Shimomura (Music), Seaslux (Lyrics), BrendaK7200 (Vocals)",
