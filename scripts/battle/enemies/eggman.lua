@@ -18,6 +18,7 @@ function Dummy:init()
     -- Enemy reward
     self.money = 0
     self.experience = 0
+	self.service_mercy = 0
 
     self.boss = true
 

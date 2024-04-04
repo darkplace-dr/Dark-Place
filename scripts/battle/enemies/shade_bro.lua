@@ -16,6 +16,7 @@ function Shadynn:init()
     self.money = 30
 
     self.spare_points = 25
+	self.service_mercy = 15
 
     self.waves = {
         "lob_hammer"
