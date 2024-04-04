@@ -822,7 +822,8 @@ return {
                     brandon = "dude or gal",
                     dumbie = "dummy",
                     bor = "ball",
-                    osw = "unoriginal"
+                    osw = "unoriginal",
+                    jamm = "thunder guy"
                 }
                 cutscene:text("* But you,[wait:5] the "..(leader_surnames[Game.world.player.actor.id] or "leader")..",[wait:5] take our number!")
                 cutscene:hideNametag()
