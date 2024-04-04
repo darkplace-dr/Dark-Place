@@ -207,12 +207,6 @@ function preview:draw()
         love.graphics.draw(self.video, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0, scale_x, scale_y, self.video:getWidth()/2, self.video:getHeight()/2)
 	end
 
-    love.graphics.setColor(1, 0, 1, self.fade)
-    love.graphics.setFont(Assets.getFont("main_mono"))
-    love.graphics.printf("video is " .. (self.video and "playing" or "paused"), 0, SCREEN_HEIGHT-(16*3), SCREEN_WIDTH*2, "right", 0, 0.5, 0.5)
-    love.graphics.printf("video fade " .. self.video_fade_phase .. " " .. self.video_fade_timer, 0, SCREEN_HEIGHT-(16*2), SCREEN_WIDTH*2, "right", 0, 0.5, 0.5)
-    love.graphics.printf("preview music volume " .. self.menu.mod_list.music[self.mod_id]:getVolume(), 0, SCREEN_HEIGHT-(16*1), SCREEN_WIDTH*2, "right", 0, 0.5, 0.5)
-
     love.graphics.setColor(1, 1, 1, self.fade)
 end
 
