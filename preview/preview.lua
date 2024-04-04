@@ -207,15 +207,16 @@ function preview:draw()
 end
 
 function preview:areWeSelected()
-    return self.menu.selected_mod and self.menu.selected_mod.id == self.mod_id
+    return self.menu.selected_mod and self.menu.selected_mod.id == self.mod_id or TARGET_MOD == self.mod_id
 end
 
 ---@return FileNamer?
 function preview:getNamingScreen()
     if not self:areWeSelected() then return nil end
     return
-        self.menu.naming_screen
-        or (self.menu.file_name_screen and self.menu.file_name_screen.file_namer)
+        (self.menu.file_name_screen and self.menu.file_name_screen.file_namer)
+        or (self.menu.default_name_screen and self.menu.default_name_screen.file_namer)
+        or self.menu.naming_screen
 end
 
 function preview:isNameChosen(name, include_fadeout)
