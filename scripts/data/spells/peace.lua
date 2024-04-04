@@ -14,7 +14,7 @@ function spell:init()
     self.description = "Increases an enemy's SPARE bar\nby a varying amount."
 
     -- TP cost
-    self.cost = 0
+    self.cost = 32
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "enemy"

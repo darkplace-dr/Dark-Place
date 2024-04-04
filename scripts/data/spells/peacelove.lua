@@ -1,4 +1,4 @@
-local spell, super = Class(Spell, "peace&love")
+local spell, super = Class(Spell, "peacelove")
 
 function spell:init()
     super.init(self)
@@ -14,7 +14,7 @@ function spell:init()
     self.description = "Increases every enemy's SPARE bar\nby a varying amount."
 
     -- TP cost
-    self.cost = 0
+    self.cost = 64
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "enemies"
@@ -31,7 +31,7 @@ end
 function spell:onCast(user, target)
 	
 	Assets.playSound("spare_spell_weak")
-	local peaceAnim = Sprite("effects/spells/dess/peace", target.x, target.y)
+	local peaceAnim = Sprite("effects/spells/dess/peace", battler.x, battler.y)
 	peaceAnim.alpha = 0.7
 	peaceAnim:setOrigin(0.5, 0.5)
 	peaceAnim:setScale(2)
@@ -40,10 +40,12 @@ function spell:onCast(user, target)
 	peaceAnim:play(1/17, false)
 	
 	Game.battle.timer:after(1, function()
-		if target.service_mercy then
-			target:addMercy(math.ceil(target.service_mercy))
-			Assets.playSound("spare_spell_hit")
-			target:flash()
+		for _,battler in ipairs(target) do
+			if battler.service_mercy then
+				battler:addMercy(math.ceil(battler.service_mercy))
+				Assets.playSound("spare_spell_hit")
+				battler:flash()
+			end
 		end
 		Game.battle:finishActionBy(user)
 	end)
