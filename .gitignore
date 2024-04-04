@@ -8,6 +8,7 @@
 
 ## Aseprite
 *.ase
+*.aseprite
 
 ## vgmstream
 *.txtp
