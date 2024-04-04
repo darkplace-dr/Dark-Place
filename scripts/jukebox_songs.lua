@@ -261,13 +261,6 @@ return {
     origin = "Dark Place"
   },
   {
-    name = "Cloudwebs",
-    file = "cloudwebs",
-    composer = "???",
-    released = "2023",
-    origin = "Dark Place"
-  },
-  {
     name = "Forgotten Ruins",
     file = "ruins_beta",
     composer = "Just another random user.",
@@ -467,7 +460,7 @@ return {
   {
     name = "Snick",
     file = "snick",
-    composer = "ClassyJitto",
+    composer = "ClascyJitto",
     released = "2019",
     origin = "Pizza Tower SAGE Demo"
   },
