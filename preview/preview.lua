@@ -112,6 +112,7 @@ function preview:update()
     local function setVideo(file)
         if not self.video then
             self.video = love.graphics.newVideo(self.base_path.."/"..file..".ogv", {audio = true})
+            self.video:setFilter("linear", "linear")
             self.video:play()
         end
     end
@@ -128,7 +129,7 @@ function preview:update()
         if self.video_fade_phase == 0 then
             self.video_fade_timer = Utils.approach(self.video_fade_timer, 100, 2*DTMULT)
         else
-            self.video_fade_timer = Utils.approach(self.video_fade_timer, 0, 4*DTMULT)
+            self.video_fade_timer = Utils.approach(self.video_fade_timer, 0, 6*DTMULT)
             if self.video_fade_timer == 0 then
                 self.video:pause()
                 self.video = nil
@@ -137,7 +138,7 @@ function preview:update()
     end
     if self.video then
         self.video:getSource():setVolume(self.video_fade_timer/100)
-        self.menu.mod_list.music[self.mod_id]:setVolume(1 - (self.video_fade_timer/100 * 0.2))
+        self.menu.mod_list.music[self.mod_id]:setVolume(1 - (self.video_fade_timer/100 * 0.25))
         -- loop video
         if not self.video:isPlaying() then
             self.video:rewind()
@@ -203,7 +204,7 @@ function preview:draw()
 
     if self.video then
         local scale_x, scale_y = math.min(SCREEN_WIDTH / self.video:getWidth(), SCREEN_HEIGHT / self.video:getHeight())
-        love.graphics.setColor(1, 1, 1, Utils.approach(0, 0.5, self.video_fade_timer/100) * self.fade)
+        love.graphics.setColor(1, 1, 1, Utils.approach(0, 0.6, self.video_fade_timer/100) * self.fade)
         love.graphics.draw(self.video, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0, scale_x, scale_y, self.video:getWidth()/2, self.video:getHeight()/2)
 	end
 
