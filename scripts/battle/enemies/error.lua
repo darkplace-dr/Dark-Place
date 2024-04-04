@@ -17,6 +17,7 @@ function Error:init()
     self.defense = 4
     -- Enemy reward
     self.money = 200
+	self.service_mercy = 5
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 10

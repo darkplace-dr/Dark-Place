@@ -17,6 +17,7 @@ function Zero:init()
     self.defense = 4
     -- Enemy reward
     self.money = 450
+	self.service_mercy = 0
 
     self.boss = true
 

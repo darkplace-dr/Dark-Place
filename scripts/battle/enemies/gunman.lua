@@ -14,6 +14,7 @@ function Gunman:init()
         self.money = 60
     end
     self.spare_points = 100
+	self.service_mercy = 0
     self.waves = {
         "gun"
     }

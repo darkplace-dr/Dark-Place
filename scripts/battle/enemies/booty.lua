@@ -18,6 +18,7 @@ function Dummy:init()
     -- Enemy reward
     self.money = Game:getFlag("booty_finished") and 0 or 100
     self.experience = Game:getFlag("booty_finished") and 0 or 50
+	self.service_mercy = 0
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
     self.spare_points = 0
