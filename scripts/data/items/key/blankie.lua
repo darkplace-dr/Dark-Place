@@ -5,17 +5,11 @@ function item:init()
 
     self.name = "Fleece Blanket"
     self.type = "key"
-    self.description = "A light blue fleece blanket with a sun and cloud pattern"
-    self.can_sell = false
-end
+    self.description = "A light blue fleece blanket with a sun and cloud pattern. What was this for again?"
 
+    self.usable_in = "none"
 
-function item:onWorldUse()
-    if Game.world.map.id == "spamroom" then
-        Game.world:startCutscene("blankie_ach.blankie")
-    else
-        Assets.playSound("ui_cant_select")
-    end
+    self.price = 50
 end
 
 return item
