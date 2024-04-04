@@ -12,4 +12,8 @@ function item:init()
     self.price = 50
 end
 
+function item:onWorldUse()
+    Assets.playSound("mysterygo")
+end
+
 return item
