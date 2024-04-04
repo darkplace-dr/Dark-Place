@@ -137,7 +137,7 @@ function preview:update()
         end
     end
     if self.video then
-        self.video:getSource():setVolume(math.min(self.video_fade_timer/20, 1) * 0.6)
+        self.video:getSource():setVolume(math.min(self.video_fade_timer/20, 1) * 0.5)
         -- loop video
         if not self.video:isPlaying() then
             self.video:rewind()
@@ -178,14 +178,20 @@ function preview:draw()
         self.gradient_amt = self.gradient_amt - 0.03 * DTMULT
     end
 
+    love.graphics.setColor(1, 1, 1, self.fade)
+
+    if self.video then
+        local scale_x, scale_y = math.min(SCREEN_WIDTH / self.video:getWidth(), SCREEN_HEIGHT / self.video:getHeight())
+        love.graphics.setColor(1, 1, 1, Utils.approach(0, 0.5, self.video_fade_timer/100) * self.fade)
+        love.graphics.draw(self.video, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0, scale_x, scale_y, self.video:getWidth()/2, self.video:getHeight()/2)
+	end
+
     for _,particle in ipairs(self.particles) do
         local alpha = (particle.radius / particle.max_radius)
 
         love.graphics.setColor(1, 1, 1, alpha * self.fade)
         love.graphics.draw(particle.type ~= "dess" and self.particle_tex or self.particle_tex_dess, particle.x, particle.y, particle.radius)
     end
-
-    love.graphics.setColor(1, 1, 1)
 
     if self:isNameChosen("SWELLOW", true) and self.swellow then
         local alpha = math.min((self.swellow_timer - 1.8) * 0.2, 0.8)
@@ -198,14 +204,6 @@ function preview:draw()
             self.swellow:getWidth()/2, self.swellow:getHeight()/2
         )
     end
-
-    if self.video then
-        local scale_x, scale_y = math.min(SCREEN_WIDTH / self.video:getWidth(), SCREEN_HEIGHT / self.video:getHeight())
-        love.graphics.setColor(1, 1, 1, Utils.approach(0, 0.6, self.video_fade_timer/100) * self.fade)
-        love.graphics.draw(self.video, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0, scale_x, scale_y, self.video:getWidth()/2, self.video:getHeight()/2)
-	end
-
-    love.graphics.setColor(1, 1, 1, self.fade)
 end
 
 function preview:areWeSelected()
