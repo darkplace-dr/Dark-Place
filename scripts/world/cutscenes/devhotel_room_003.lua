@@ -260,13 +260,21 @@ return {
 					if not Game:getFlag("acj_dess_pacifist") then
 						Game:setFlag("acj_dess_pacifist", true)
 						Game:getPartyMember("dess"):removeSpell("starshot")
-						-- TODO: Add Dess's pacifist spells to her spells list.
+						Game:getPartyMember("dess"):addSpell("peace")
+						if Game:getPartyMember("dess"):hasSpell("starstorm") then
+							Game:getPartyMember("dess"):removeSpell("starstorm")
+							Game:getPartyMember("dess"):addSpell("peacelove")
+						end
 					end
 				else
 					if Game:getFlag("acj_dess_pacifist") then
 						Game:setFlag("acj_dess_pacifist", false)
-						-- TODO: Add Dess's pacifist spells to her spells list.
 						Game:getPartyMember("dess"):addSpell("starshot")
+						Game:getPartyMember("dess"):removeSpell("peace")
+						if Game:getPartyMember("dess"):hasSpell("peacelove") then
+							Game:getPartyMember("dess"):removeSpell("peacelove")
+							Game:getPartyMember("dess"):addSpell("starstorm")
+						end
 					end
 				end
             elseif id == "dumbie" then
@@ -278,6 +286,10 @@ return {
             elseif id == "ralsei" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "brandon" then
+				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
+            elseif id == "berdly" then
+				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
+            elseif id == "pauling" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "jamm" then
 				cutscene:text("[speed:0.3]* ...", "stern", "jamm")

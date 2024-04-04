@@ -116,7 +116,11 @@ function character:onLevelUpLVLib(level)
 	self:increaseStat("magic", 1)
 
     if level == 2 then
-        self:addSpell("starstorm")
+		if not Game:getFlag("acj_dess_pacifist") then
+			self:addSpell("starstorm")
+		else
+			self:addSpell("peacelove")
+		end
     end
 end
 
