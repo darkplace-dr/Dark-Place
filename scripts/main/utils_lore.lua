@@ -40,3 +40,41 @@ end
 function Mod:unlockPartyMember(id)
     table.insert(Game:getFlag("party"), id)
 end
+
+-- Sets a random title and icon to the game window.
+function Mod:funnytitle()
+    love.window.setIcon(Kristal.icon)
+    love.window.setTitle(Kristal.getDesiredWindowTitle())
+    if Utils.random() < 0.5 then return end
+    local funnytitles = {
+        "Deltarune",
+        "Half-Life",
+        "* GOD damnit KRIS where the HELL are WE!?",
+        "* GOD damn YOU where the HELL are WE!?",
+        "* SO, I have no fucking clue where we are.",
+        "* z...z.....z.....z.......Z.........Z",
+        "Kristale",
+        "* \z
+        WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? \z
+        WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? \z
+        WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT?",
+        "Kris Tea",
+        "* REDDIT GOLD POG!!",
+        "LOOK ITS BrACON and MEGALORE!!!",
+        "...",
+        "Kristal",
+        "Spamton Sweepstakes",
+        "Includes Darkness!",
+        "It's raining somewhere else...",
+        "Minecraft",
+        "Counter Strike Source Not Found()",
+        "Grian Is Watching You.",
+        "PLAY THE RIBBIT MOD, NOW!!!",
+        Mod.info.name
+    }
+    local funnytitle_rand = love.math.random(#funnytitles)
+    local funnytitle = funnytitles[funnytitle_rand] or "Depa Runts"
+    local funnyicon = Assets.getTextureData("ui/funny_window_icons/icon_"..tostring(funnytitle_rand)) or Kristal.icon
+    love.window.setTitle(funnytitle)
+    love.window.setIcon(funnyicon)
+end

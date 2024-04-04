@@ -577,32 +577,3 @@ function Mod:loadObject(world, name, properties)
         return VaporBG(properties["mountains"])
     end
 end
-
-function Mod:funnytitle()
-    local funnytitle_rand = love.math.random(1, 20)
-    local funnytitle = ({
-        "Deltarune",
-        "Half-Life",
-        "* GOD damnit KRIS where the HELL are WE!?",
-        "* GOD damn YOU where the HELL are WE!?",
-        "* SO, I have no fucking clue where we are.",
-        "* z...z.....z.....z.......Z.........Z",
-        "Kristale",
-        "* WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT? WHAT?",
-        "Kris Tea",
-        "* REDDIT GOLD POG!!",
-        "LOOK ITS BrACON and MEGALORE!!!",
-        "...",
-        "Kristal",
-        "Spamton Sweepstakes",
-        "Includes Darkness!",
-        "It's raining somewhere else...",
-        "Minecraft",
-        "Counter Strike Source Not Found()",
-        "Grian Is Watching You.",
-        "PLAY THE RIBBIT MOD, NOW!!!"
-    })[funnytitle_rand]  -- fallback: "Depa Runts"
-    local funnyicon = Assets.getTextureData("ui/funny_window_icons/icon_"..tostring(funnytitle_rand))
-    love.window.setTitle(funnytitle)
-    love.window.setIcon(funnyicon)
-end

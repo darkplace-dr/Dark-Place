@@ -8,6 +8,11 @@
 
 ## Aseprite
 *.ase
+*.aseprite
+
+## paint.net
+*.pdn
+*.psd
 
 ## vgmstream
 *.txtp
