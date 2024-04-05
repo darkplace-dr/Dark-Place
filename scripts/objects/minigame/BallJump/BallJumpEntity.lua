@@ -33,9 +33,7 @@ function BallJumpEntity:updateMain()
     self.x = self.x - DTMULT * self.move_speed
 end
 function BallJumpEntity:updateMainCollision()
-    if self.hurtable ~= false and self.collider and self.collider:collidesWith(Game.minigame.player.collider) then
-        Game.minigame.player:tryHurt()
-    elseif self.stomp_collider and self.stomp_collider:collidesWith(Game.minigame.player.collider) then
+    if self.stomp_collider and self.stomp_collider:collidesWith(Game.minigame.player.collider) then
         Game.minigame.score = Game.minigame.score + 300 + 150 * Game.minigame.player.stomp_combo
         Game.minigame.player.stomp_combo = Game.minigame.player.stomp_combo + 1
         if Game.minigame.player.stomp_combo >= 8 then
@@ -45,6 +43,8 @@ function BallJumpEntity:updateMainCollision()
         Assets.playSound("minigames/ball_jump/stomp")
         Game.minigame.player.velocity = -12
         self:remove()
+    elseif self.hurtable ~= false and self.collider and self.collider:collidesWith(Game.minigame.player.collider) then
+        Game.minigame.player:tryHurt()
     end
 end
 
