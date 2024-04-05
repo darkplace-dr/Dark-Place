@@ -80,7 +80,7 @@ function Shadynn:onAct(battler, name)
 		else
 			self:setTired(true)
 			self.text_override = "I didn't do\nanything\nyet..."
-			return {"* Jamm complimented Shade Bro on its hammer throwing skills.", "Shade Bro, having done nothing yet, became [color:blue]TIRED[color:reset] from confusion."}
+			return {"* Jamm complimented Shade Bro on its hammer throwing skills.", "* Shade Bro, having done nothing yet, became [color:blue]TIRED[color:reset] from confusion."}
 		end
     elseif name == "Standard" then
         self:addMercy(50)

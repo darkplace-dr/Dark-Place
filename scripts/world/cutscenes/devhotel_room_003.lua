@@ -366,7 +366,7 @@ return {
 			cutscene:showNametag("Jamm")
 			cutscene:text("* Enzio,[wait:5] right...", "shaded_frown", "jamm")
 			cutscene:text("* He's kinda the whole reason I'm in this condition.", "shaded_frown", "jamm")
-			cutscene:text("* Let's just say...[wait:5] I have nothing but resentment for him.", "shaded_pisses", "jamm")
+			cutscene:text("* Let's just say...[wait:5] I have nothing but resentment for him.", "shaded_pissed", "jamm")
 			if not Game:getFlag("video_jamm") then
 				cutscene:text("* This should give you all the answers you need.", "shaded_frown", "jamm")
 				cutscene:hideNametag()
