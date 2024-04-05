@@ -57,6 +57,12 @@ function Dummy:update()
 		end
 		if jamm.chara.stun then
 			jamm:setSprite("battle/hurt_1")
+			if Game.battle.character_actions[1] then
+				print(Game.battle.character_actions[1]["action"])
+			end
+			if not (Game.battle.character_actions[1] and Game.battle.character_actions[1]["action"] == "SKIP" and Game.battle.current_action_index > 1) then
+				Game.battle:pushForcedAction(jamm, "SKIP")
+			end
 		end
 	end
 end
