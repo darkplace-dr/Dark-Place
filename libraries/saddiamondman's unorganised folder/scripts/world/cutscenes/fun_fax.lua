@@ -98,12 +98,12 @@ return {
             "tickroom", "gimmieyourwalletmiss", "batterup", "threestrikesyoureout",
             "beasts", "room_003", "battle_repainted", "morpho_boss",
             "mirati_bk70cover", "mari_neo",
-        },0.8, 1)
+        }, 0.8, 1)
         cutscene:wait(0.4)
         fun_fax:setSprite("watching")
         cutscene:wait(2)
 
-        local dialogue_pair = Utils.pick{
+        local dialogue_pairs = {
             {"* I wrote a book recently...", "* It had a few quotes..."},
             {"* Mama always said life was like a box-o-chocolates...", "* Ya never know what ya might get..."},
             {"* Have you heard of the woody theory...", "* It means there is a friend inside you..."},
@@ -134,16 +134,16 @@ return {
             {"* Gender is odd to me...", "* It keeps being updated..."},
             {"* The end is never...", "* Or so I was told..."},
             {"* The line between fact and fiction can be blurred...", "* Until it isn't there anymore..."}
-        } or {"* Code broke D:", "* ..."}
+        }
 
-        cutscene:text("[speed:0.5]" .. dialogue_pair[1])
+        cutscene:text("[speed:0.5]" .. Utils.pick(dialogue_pairs)[1])
 
         fun_fax:setSprite("searching")
         cutscene:wait(1.5)
         fun_fax:setSprite("watching")
         cutscene:wait(1.5)
 
-        cutscene:text("[speed:0.5]" .. dialogue_pair[2])
+        cutscene:text("[speed:0.5]" .. Utils.pick(dialogue_pairs)[2])
 
         cutscene:wait(3)
         fun_fax:setSprite("searching")
