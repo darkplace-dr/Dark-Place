@@ -100,6 +100,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Lena Raine - Composer for "Hug for Ralsei" and "Lullaby for Lancer"
 * KateBulka - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
+* Team UTY - Original authors of Undertale Yellow.
 * Brylee - Original author for Deltarune: Ozymandias, dialogue portraits for Rook
 * Mr. Luwigi - Rook, DZ & NG sprites for Deltarune: Ozymandias
 * TrashcatYT - Blue Soul Library
