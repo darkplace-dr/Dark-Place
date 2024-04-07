@@ -27,7 +27,8 @@ function Dummy:init()
     self.waves = {
         "basic",
         "aiming",
-        "movingarena"
+        "movingarena",
+        "movingaim"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
