@@ -1,5 +1,5 @@
 local Lib = {}
-
+-- Turns out, we do all the processing here. How useful is that?
 function Lib:init()
 	print("Dashing functionality loaded. Made by REFUNDINSTRUCTION Corp.")
 	Utils.hook(Soul, "init", function(orig, self, x,y)
@@ -9,11 +9,14 @@ function Lib:init()
 		self.dash_duration = self._dash_outof/self._dash_divider  -- Adjust dash duration as needed
 		self.dash_timer = 0
 		self.dash_speed = self.speed * 2
+		self.move_x = 0
+		self.move_y = 0
 	end)
 	Utils.hook(Soul, "doMovement", function(orig, self)
 		local speed = self.speed
 		local color = self.color
 		local dash_speed = self.dash_speed
+		local move_x, move_y = self.move_x, self.move_y
 		local isleft = Input.down("left")
 		local isright = Input.down("right")
 		local isup = Input.down("up")
