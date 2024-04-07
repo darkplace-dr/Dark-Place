@@ -89,25 +89,10 @@ function character:init()
     self.menu_icon_offset = nil
 
     -- Message shown on gameover (optional)
-    self.gameover_message = { "You aren't done, buddy.[wait:10]\nGive em' hell!" }
+    self.gameover_message = { "You aren't done,\nbuddy.[wait:10] Give em'\nhell!" }
 	
 	self.frost_resist = true
 end
-
---function character:onLevelUp(level)
---    self:increaseStat("health", 2)
---    if level % 10 == 0 then
---        self:increaseStat("attack", 1)
---    end
---end
-
---function character:onPowerSelect(menu)
-    --if Utils.random() < ((Game.chapter == 1) and 0.02 or 0.04) then
-    --    menu.kris_dog = true
-    --else
-    --    menu.kris_dog = false
-    --end
---end
 
 function character:onLevelUpLVLib(level)
     self:increaseStat("health", 10)
@@ -116,7 +101,11 @@ function character:onLevelUpLVLib(level)
 	self:increaseStat("magic", 1)
 
     if level == 2 then
-        self:addSpell("starstorm")
+		if not Game:getFlag("acj_dess_pacifist") then
+			self:addSpell("starstorm")
+		else
+			self:addSpell("peacelove")
+		end
     end
 end
 

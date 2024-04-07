@@ -260,13 +260,21 @@ return {
 					if not Game:getFlag("acj_dess_pacifist") then
 						Game:setFlag("acj_dess_pacifist", true)
 						Game:getPartyMember("dess"):removeSpell("starshot")
-						-- TODO: Add Dess's pacifist spells to her spells list.
+						Game:getPartyMember("dess"):addSpell("peace")
+						if Game:getPartyMember("dess"):hasSpell("starstorm") then
+							Game:getPartyMember("dess"):removeSpell("starstorm")
+							Game:getPartyMember("dess"):addSpell("peacelove")
+						end
 					end
 				else
 					if Game:getFlag("acj_dess_pacifist") then
 						Game:setFlag("acj_dess_pacifist", false)
-						-- TODO: Add Dess's pacifist spells to her spells list.
 						Game:getPartyMember("dess"):addSpell("starshot")
+						Game:getPartyMember("dess"):removeSpell("peace")
+						if Game:getPartyMember("dess"):hasSpell("peacelove") then
+							Game:getPartyMember("dess"):removeSpell("peacelove")
+							Game:getPartyMember("dess"):addSpell("starstorm")
+						end
 					end
 				end
             elseif id == "dumbie" then
@@ -278,6 +286,10 @@ return {
             elseif id == "ralsei" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "brandon" then
+				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
+            elseif id == "berdly" then
+				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
+            elseif id == "pauling" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "jamm" then
 				cutscene:text("[speed:0.3]* ...", "stern", "jamm")
@@ -354,7 +366,7 @@ return {
 			cutscene:showNametag("Jamm")
 			cutscene:text("* Enzio,[wait:5] right...", "shaded_frown", "jamm")
 			cutscene:text("* He's kinda the whole reason I'm in this condition.", "shaded_frown", "jamm")
-			cutscene:text("* Let's just say...[wait:5] I have nothing but resentment for him.", "shaded_pisses", "jamm")
+			cutscene:text("* Let's just say...[wait:5] I have nothing but resentment for him.", "shaded_pissed", "jamm")
 			if not Game:getFlag("video_jamm") then
 				cutscene:text("* This should give you all the answers you need.", "shaded_frown", "jamm")
 				cutscene:hideNametag()

@@ -5,7 +5,7 @@ function Jukebox:init(data)
 
 	self.solid = true
 
-    self:setSprite("world/events/juke")
+    self:setSprite("world/events/jukebox")
     self:setOrigin(0.3, 0.5)
 
 	self.simple = data.properties["simple"]

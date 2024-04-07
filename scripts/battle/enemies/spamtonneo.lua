@@ -19,6 +19,7 @@ function SpamtonNEO:init()
     self.spare_points = 0
     self.tired_percentage = 0
     self.check_count = 0
+	self.service_mercy = 2
 
     self.text = {
         "* Spamton turns to the audience and laughs.",

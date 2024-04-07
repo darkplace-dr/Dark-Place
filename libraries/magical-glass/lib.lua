@@ -132,6 +132,20 @@ function lib:init()
 
     self.encounters_enabled = false
     self.steps_until_encounter = nil
+
+    Utils.hook(Game, "enterShop", function(orig, self, shop, options)
+        if lib.in_light_shop then
+            MagicalGlassLib:enterLightShop(shop, options)
+        else
+            orig(self, shop, options)
+        end
+    end)
+
+    Utils.hook(World, "lightShopTransition", function(orig, self, shop, options)
+        self:fadeInto(function()
+            MagicalGlassLib:enterLightShop(shop, options)
+        end)
+    end)
     
     Utils.hook(Battle, "init", function(orig, self)
         orig(self)

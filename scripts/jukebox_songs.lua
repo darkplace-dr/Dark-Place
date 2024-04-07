@@ -261,13 +261,6 @@ return {
     origin = "Dark Place"
   },
   {
-    name = "Cloudwebs",
-    file = "cloudwebs",
-    composer = "???",
-    released = "2023",
-    origin = "Dark Place"
-  },
-  {
     name = "Forgotten Ruins",
     file = "ruins_beta",
     composer = "Just another random user.",
@@ -467,7 +460,7 @@ return {
   {
     name = "Snick",
     file = "snick",
-    composer = "ClassyJitto",
+    composer = "ClascyJitto",
     released = "2019",
     origin = "Pizza Tower SAGE Demo"
   },
@@ -683,22 +676,6 @@ return {
     composer = "BrendaK7200",
     released = "2023",
     origin = "??? - https://youtu.be/5rA2UmeD2x4"
-  },
-  {
-    -- khinsiders S6 gamerip: Cookie Trials - Currant Cream Cookie
-    --   - d2l
-    name = "Currant Cream Cookie's Trial",
-    file = "Currant_Cream_Trial",
-    composer = "Devsisters",
-    released = "2023",
-    origin = "Cookie Run: Ovenbreak"
-  },
-  {
-    name = "Transfigure (Instrumental)",
-    file = "Transfigure",
-    composer = "Devsisters, Ft. Kim Doyeong",
-    released = "2023",
-    origin = "Cookie Run: Kingdom"
   },
   {
     name = "Beware the Nintendo's Pikmin Games (Cover)",

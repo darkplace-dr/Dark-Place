@@ -16,6 +16,7 @@ function Dummy:init()
 
     self.spare_points = math.floor(20/#Game.battle.party)
     self.tired_percentage = 0.25
+	self.service_mercy = 15
 
     self.waves = {
         "basic",

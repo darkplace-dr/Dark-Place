@@ -185,7 +185,6 @@ function lib:registerDebugOptions(debug)
 		"leaves",
 		"mansion",
 		"simple",
-        "vaporwave",
 
         "undertale/anime",
         "undertale/casino",
@@ -225,7 +224,20 @@ function lib:registerDebugOptions(debug)
         "ai_upscaled_concepts/world_b",
         "ai_upscaled_concepts/world_c",
 
-        "stars"
+        "deoxynn/deep_forest",
+        "deoxynn/forest",
+        
+        "minigames/angrybirds",
+
+        "cloudwebs",
+        "dev",
+        "everhall_end",
+        "everhall",
+        "gildedgrove",
+        "monotonecastle",
+        "stars",
+        "starwalkervalley",
+        "vaporwave",
     }
 
     for _,border in ipairs(borders) do

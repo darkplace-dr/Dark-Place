@@ -123,87 +123,94 @@ return {
     addisonshop = function(cutscene, event)
         local skp = cutscene:getCharacter("addisonshop")
 
-        local teas = {
-            ""..Game.party[1].id.."_tea",
-        }
-
-        if Game.party[2] then
-            table.insert(teas, Game.party[2].id.."_tea")
-        end
-        if Game.party[3] then
-            table.insert(teas, Game.party[3].id.."_tea")
-        end
-        if Game.party[4] then
-            table.insert(teas, Game.party[4].id.."_tea")
+        local teas = {}
+        for _,member in ipairs(Game.party) do
+            if member then
+                local tea = Registry.createItem(member.id .. "_tea")
+                assert(tea, string.format("Tea for %s (anticipated ID %s) doesn't exist", member.actor:getName(), tea_id))
+                table.insert(teas, tea)
+            end
         end
 
         local tea_price = 100
 
-        --if 
-
-        --------------------------------
-
-        ---@type Item[]
-        local _teas = {}
-        for i,tea_id in ipairs(teas) do
-            local tea = Registry.createItem(tea_id)
-            assert(tea, string.format("Tea %s does not exist", tea_id))
-            _teas[i] = tea
-        end
+        local multi_page = #Game.party > 4
+        -- See https://discord.com/channels/1090810260886921407/1104134226330267819/1226540615194509485
+        local mp_final_option_loops = true
 
         cutscene:showNametag("Pink Addison")
-        cutscene:text("* Hi there! Welcome!", "", skp)
-        cutscene:text("* Would you care for some tea?", "", skp)
+        cutscene:text("* Hi there! Welcome!", nil, skp)
+        cutscene:text("* Would you care for some tea?", nil, skp)
         cutscene:hideNametag()
 
         if cutscene:choicer({ "Buy", "Don't Buy" }) == 2 then
             cutscene:showNametag("Pink Addison")
-            cutscene:text("* That's alright! Come back anytime!", "", skp)
-            cutscene:text("* I'll be here whenever you need a drink!", "", skp)
+            cutscene:text("* That's alright! Come back anytime!", nil, skp)
+            cutscene:text("* I'll be here whenever you need a drink!", nil, skp)
             cutscene:hideNametag()
             return
         end
 
         cutscene:showShop()
         cutscene:showNametag("Pink Addison")
-        cutscene:text("* Alright what can I get you?", "", skp)
+        cutscene:text("* Alright what can I get you?", nil, skp)
         cutscene:hideNametag()
 
-        local tea = nil
-        local pos = 0
-        while pos < #_teas do
-            local selection_max = 4
-            local selections_raw = {unpack(_teas, pos + 1, pos + selection_max)}
-            local ended = (pos + selection_max) >= #_teas
-
-            local selections = {}
-            for _,item in ipairs(selections_raw) do
-                table.insert(selections, item:getName())
+        local tea
+        if not multi_page then
+            local candidate_names = {}
+            for _,candidate in ipairs(teas) do
+                table.insert(candidate_names, candidate:getName())
             end
-            --table.insert(selections, not ended and "More" or "None")
+            tea = teas[cutscene:choicer(candidate_names)]
+        else
+            local candidate_num = 4 - 1 -- to make the More/None option fit
 
-            local choice = cutscene:choicer(selections)
-            if choice < #selections then
-                tea = selections_raw[choice]
-                break
-            elseif not ended and pos == 0 then
-                cutscene:text("* I got some more here! What would you like?", "", skp)
+            local candidate_pos = 0
+            local new_page_prompt_seen = false
+            while candidate_pos < #teas do
+                local cur_candidates = {unpack(teas, candidate_pos + 1, candidate_pos + candidate_num)}
+                local last_page = (candidate_pos + candidate_num) >= #teas
+
+                local cur_candidate_names = {}
+                for _,candidate in ipairs(cur_candidates) do
+                    table.insert(cur_candidate_names, candidate:getName())
+                end
+                table.insert(cur_candidate_names, not last_page
+                    and "More"
+                    or (mp_final_option_loops and "Go Back" or "None")
+                )
+
+                local choice = cutscene:choicer(cur_candidate_names)
+                if choice < #cur_candidate_names then -- a tea, not More/None
+                    tea = cur_candidates[choice]
+                    break
+                elseif mp_final_option_loops and last_page then
+                    candidate_pos = 0
+                    goto continue
+                elseif candidate_pos == 0 and not new_page_prompt_seen then
+                    cutscene:showNametag("Pink Addison")
+                    cutscene:text("* I got some more here! What would you like?", nil, skp)
+                    cutscene:hideNametag()
+                    new_page_prompt_seen = true
+                end
+
+                candidate_pos = candidate_pos + candidate_num
+                ::continue::
             end
-
-            pos = pos + selection_max
         end
 
-        --if not tea then
-        --    cutscene:hideShop()
-        --    cutscene:showNametag("Pink Addison")
-        --    cutscene:text("* That's alright! Come back anytime!", "", skp)
-        --    cutscene:text("* I'll be here whenever you need a drink!", "", skp)
-        --    cutscene:hideNametag()
-         --   return
-        --end
+        if not tea then
+            cutscene:hideShop()
+            cutscene:showNametag("Pink Addison")
+            cutscene:text("* That's alright! Come back anytime!", nil, skp)
+            cutscene:text("* I'll be here whenever you need a drink!", nil, skp)
+            cutscene:hideNametag()
+            return
+        end
 
         cutscene:showNametag("Pink Addison")
-        cutscene:text(string.format("* Okay! That would cost ya %dD$...", tea_price), "", skp)
+        cutscene:text(string.format("* Okay! That would cost ya %dD$...", tea_price), nil, skp)
         cutscene:hideNametag()
 
         local buying = cutscene:choicer({"Yes", "No"}) == 1
@@ -211,25 +218,25 @@ return {
 
         if not buying then
             cutscene:showNametag("Pink Addison")
-            cutscene:text("* That's alright! Come back anytime!", "", skp)
-            cutscene:text("* I'll be here whenever you need a drink!", "", skp)
+            cutscene:text("* That's alright! Come back anytime!", nil, skp)
+            cutscene:text("* I'll be here whenever you need a drink!", nil, skp)
             cutscene:hideNametag()
         elseif Game.money < tea_price then
             cutscene:showNametag("Pink Addison")
-            cutscene:text("* Sorry, we don't serve barterers", "pissed", skp)
-            cutscene:text("* Please come back when you can afford this...", "", skp)
+            cutscene:text("* Sorry, we don't serve barterers", nil, skp)
+            cutscene:text("* Please come back when you can afford this...", nil, skp)
             cutscene:hideNametag()
-        elseif not Game.inventory:addItem(tea) then
+        elseif not Game.inventory:tryGiveItem(tea) then
             cutscene:showNametag("Pink Addison")
-            cutscene:text("* Oh dear, looks like you don't have space in your pockets...", "", skp)
+            cutscene:text("* Oh dear, looks like you don't have space in your pockets...", nil, skp)
             cutscene:hideNametag()
         else
             Game.money = Game.money - tea_price
             cutscene:playSound("locker")
 
             cutscene:showNametag("Pink Addison")
-            cutscene:text("* Okay! Here's your tea!", "", skp)
-            cutscene:text("* Thank you and come again", "", skp)
+            cutscene:text("* Okay! Here's your tea!", nil, skp)
+            cutscene:text("* Thank you and come again", nil, skp)
             cutscene:hideNametag()
         end
     end,
