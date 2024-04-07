@@ -1,5 +1,17 @@
 local Lib = {}
-function Lib:Dashinit()
+-- Turns out, we do all the processing here. How useful is that?
+function Lib:init()
+	print("Dashing functionality loaded. Made by REFUNDINSTRUCTION Corp.")
+	Utils.hook(Soul, "init", function(orig, self, x,y)
+		orig(self,x,y)
+		self._dash_divider = 1
+		self._dash_outof = 1
+		self.dash_duration = self._dash_outof/self._dash_divider  -- Adjust dash duration as needed
+		self.dash_timer = 0
+		self.dash_speed = self.speed * 2
+		self.move_x = 0
+		self.move_y = 0
+	end)
 	Utils.hook(Soul, "doMovement", function(orig, self)
 		local speed = self.speed
 		local color = self.color
@@ -31,11 +43,6 @@ function Lib:Dashinit()
 		end
 		orig(self)
 	end)
-end
--- Turns out, we do all the processing here. How useful is that?
-function Lib:init()
-	print("Dashing functionality loaded. Made by REFUNDINSTRUCTION Corp.")
-	Lib:Dashinit()
 end
 
 return Lib
