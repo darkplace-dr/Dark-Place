@@ -68,6 +68,7 @@ function spell:onCast(user, target)
                     target:shake(6, 0, 0.5)
                 end
                 wait(0.1)
+                if target.health <= 0 then break end
             end
             Game.battle:finishActionBy(user)
         end)
