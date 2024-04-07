@@ -2,8 +2,8 @@ local Lib = {}
 
 function Lib:init()
 	print("Dashing functionality loaded. Made by REFUNDINSTRUCTION Corp.")
-	Utils.hook(Soul, "init", function(orig, self, x,y,color)
-		orig(self,x,y,color)
+	Utils.hook(Soul, "init", function(orig, self, x,y)
+		orig(self,x,y)
 		self._dash_divider = 1
 		self._dash_outof = 1
 		self.dash_duration = self._dash_outof/self._dash_divider  -- Adjust dash duration as needed
@@ -20,11 +20,9 @@ function Lib:init()
 		local isdown = Input.down("down")
 		local isdash = Input.down("confirm")
 		-- Do speed calculations here if required.
-		local move_x, move_y = 0, 0
 		if self.allow_focus then
 			if Input.down("cancel") then speed = speed / 2; dash_speed = dash_speed / 2 end -- Focus mode.
 		end
-		color = {1,0,0}
 		if self.dash_timer > 0 then color = {1-(self.dash_timer*self._dash_divider), self.dash_timer*self._dash_divider, self.dash_timer*self._dash_divider} end -- make the soul color approach red as the ability to dash comes closer in time
 	
 		if isdash and self.dash_timer <= 0 then
