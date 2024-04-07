@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="80">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="86">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -120,10 +120,11 @@
   <object id="50" x="0" y="500" width="200" height="40"/>
   <object id="51" x="0" y="580" width="200" height="40"/>
   <object id="49" x="360" y="920" width="200" height="40"/>
-  <object id="53" x="40" y="80" width="219.996" height="40"/>
+  <object id="53" x="42.6667" y="80" width="110" height="40"/>
   <object id="54" x="339.997" y="80" width="220.003" height="40"/>
   <object id="76" x="0" y="320" width="40" height="40"/>
   <object id="77" x="0" y="120" width="40" height="120"/>
+  <object id="83" x="200" y="80" width="60" height="40"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="4" name="objects">
   <object id="19" name="npc" x="480" y="840" width="40" height="40">
@@ -299,6 +300,12 @@
    <properties>
     <property name="map" value="tutor_room"/>
     <property name="marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="81" name="transition" x="154" y="71" width="50" height="50">
+   <properties>
+    <property name="map" value="room2"/>
+    <property name="point" value="entry"/>
    </properties>
   </object>
  </objectgroup>
