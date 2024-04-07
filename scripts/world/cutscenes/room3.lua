@@ -122,8 +122,10 @@ return {
 
     addisonshop = function(cutscene, event)
         local skp = cutscene:getCharacter("addisonshop")
-        -- for party-independent selection that Velvet originally envisioned
+        -- For party-independent selections that Velvet originally envisioned
         local free_selection_mode = false
+        -- See https://discord.com/channels/1090810260886921407/1104134226330267819/1226540615194509485
+        local fsm_firerainv_final_option_loops = false
 
         local teas = {}
         if not free_selection_mode then
@@ -140,10 +142,10 @@ return {
         else
             local tea_ids = {
                 "kris_tea",
-                "kris_tea",
-                "kris_tea",
-                "kris_tea",
-                "kris_tea",
+                "susie_tea",
+                "noelle_tea",
+                "ralsei_tea",
+                "brandon_tea",
             }
 
             for i,tea_id in ipairs(tea_ids) do
@@ -181,9 +183,10 @@ return {
             end
             tea = teas[cutscene:choicer(candidate_names)]
         else
-            local candidate_num = 4 - 1 -- to fit in the "More/None" option
+            local candidate_num = 4 - 1 -- to make the More/None option fit
 
             local candidate_pos = 0
+            local new_page_prompt_seen = false
             while candidate_pos < #teas do
                 local cur_candidates = {unpack(teas, candidate_pos + 1, candidate_pos + candidate_num)}
                 local last_page = (candidate_pos + candidate_num) >= #teas
@@ -192,19 +195,27 @@ return {
                 for _,candidate in ipairs(cur_candidates) do
                     table.insert(cur_candidate_names, candidate:getName())
                 end
-                table.insert(cur_candidate_names, not last_page and "More" or "None")
+                table.insert(cur_candidate_names, not last_page
+                    and "More"
+                    or (fsm_firerainv_final_option_loops and "Go Back" or "None")
+                )
 
                 local choice = cutscene:choicer(cur_candidate_names)
-                if choice < #cur_candidate_names then
+                if choice < #cur_candidate_names then -- a tea, not More/None
                     tea = cur_candidates[choice]
                     break
-                elseif not last_page and candidate_pos == 0 then
+                elseif fsm_firerainv_final_option_loops and last_page then
+                    candidate_pos = 0
+                    goto continue
+                elseif candidate_pos == 0 and not new_page_prompt_seen then
                     cutscene:showNametag("Pink Addison")
                     cutscene:text("* I got some more here! What would you like?", nil, skp)
                     cutscene:hideNametag()
+                    new_page_prompt_seen = true
                 end
 
                 candidate_pos = candidate_pos + candidate_num
+                ::continue::
             end
         end
 
