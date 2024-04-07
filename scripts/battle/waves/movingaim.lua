@@ -1,13 +1,13 @@
-local MovingArena, super = Class(Wave)
+local movingaim, super = Class(Wave)
 
-function MovingArena:init()
+function movingaim:init()
     super.init(self)
     self.time = 60*2
     -- Initialize timer
     self.siner = 0
 end
 
-function MovingArena:onStart()
+function movingaim:onStart()
     -- Get the arena object
     local arena = Game.battle.arena
 
@@ -36,7 +36,7 @@ function MovingArena:onStart()
     end)
 end
 
-function MovingArena:update()
+function movingaim:update()
     -- Increment timer for arena movement
     self.siner = self.siner + DT
 
@@ -49,4 +49,4 @@ function MovingArena:update()
     super.update(self)
 end
 
-return MovingArena
+return movingaim
