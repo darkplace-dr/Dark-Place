@@ -302,7 +302,7 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="81" name="transition" x="154" y="71" width="50" height="50">
+  <object id="81" name="transition" x="153.5" y="77" width="50" height="50">
    <properties>
     <property name="map" value="room2"/>
     <property name="point" value="entry"/>
