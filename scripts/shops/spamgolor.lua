@@ -42,10 +42,10 @@ function SpamgolorShop:init()
     self.sell_options_text["armors"]  = "[emote:grin]I'LL TAKE YOUR [[Junk]]!"
     self.sell_options_text["storage"] = "[emote:grin]I'LL TAKE YOUR [[Junk]]!"
 
-    self:registerItem("strangekey", {color = {1, 1, 1, 1}, price = 0, description = "FOR OPENING A\n[[Specil]] DOOR", name="[[Key Item]]"})
+    self:registerItem("strangekey", {stock = 1, color = {1, 1, 1, 1}, price = 500, description = "FOR OPENING A\n[[Specil]] DOOR", name="[[Key Item]]"})
     self:registerItem("gemapple", {description = "YOU NEED THIS!"})
-    self:registerItem("discarded_robe", {price = 0, description = "LIMITED STOCK\nBUY NOW!", name = "POWER CLOAK", bonuses = {defense = math.huge}})
-    self:registerItem("old_tome", {price = 0, description = "THE     BOOK OF\nALL TIME!", name = "POWER BOOK", bonuses = {attack = math.huge, magic = math.huge}})
+    self:registerItem("discarded_robe", {stock = 1, price = 700, description = "LIMITED STOCK\nBUY NOW!", name = "POWER CLOAK", bonuses = {defense = math.huge}})
+    self:registerItem("old_tome", {price = 500, description = "THE     BOOK OF\nALL TIME!", name = "POWER BOOK", bonuses = {attack = math.huge, magic = math.huge}})
 
     self:registerTalk("Spamton")
     self:registerTalk("Key")
