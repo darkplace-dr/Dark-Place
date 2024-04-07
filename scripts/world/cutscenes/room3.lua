@@ -122,40 +122,21 @@ return {
 
     addisonshop = function(cutscene, event)
         local skp = cutscene:getCharacter("addisonshop")
-        -- For party-independent selections that Velvet originally envisioned
-        local free_selection_mode = false
-        -- See https://discord.com/channels/1090810260886921407/1104134226330267819/1226540615194509485
-        local fsm_firerainv_final_option_loops = false
 
         local teas = {}
-        if not free_selection_mode then
-            for i = 1, 4 do
-                local member = Game.party[i]
-                if not member then
-                    goto continue
-                end
+        for _,member in ipairs(Game.party) do
+            if member then
                 local tea = Registry.createItem(member.id .. "_tea")
                 assert(tea, string.format("Tea for %s (anticipated ID %s) doesn't exist", member.actor:getName(), tea_id))
                 table.insert(teas, tea)
-                ::continue::
-            end
-        else
-            local tea_ids = {
-                "kris_tea",
-                "susie_tea",
-                "noelle_tea",
-                "ralsei_tea",
-                "brandon_tea",
-            }
-
-            for i,tea_id in ipairs(tea_ids) do
-                local tea = Registry.createItem(tea_id)
-                assert(tea, string.format("Tea %s does not exist", tea_id))
-                teas[i] = tea
             end
         end
 
         local tea_price = 100
+
+        local multi_page = #Game.party > 4
+        -- See https://discord.com/channels/1090810260886921407/1104134226330267819/1226540615194509485
+        local mp_final_option_loops = true
 
         cutscene:showNametag("Pink Addison")
         cutscene:text("* Hi there! Welcome!", nil, skp)
@@ -176,7 +157,7 @@ return {
         cutscene:hideNametag()
 
         local tea
-        if not free_selection_mode then
+        if not multi_page then
             local candidate_names = {}
             for _,candidate in ipairs(teas) do
                 table.insert(candidate_names, candidate:getName())
@@ -197,14 +178,14 @@ return {
                 end
                 table.insert(cur_candidate_names, not last_page
                     and "More"
-                    or (fsm_firerainv_final_option_loops and "Go Back" or "None")
+                    or (mp_final_option_loops and "Go Back" or "None")
                 )
 
                 local choice = cutscene:choicer(cur_candidate_names)
                 if choice < #cur_candidate_names then -- a tea, not More/None
                     tea = cur_candidates[choice]
                     break
-                elseif fsm_firerainv_final_option_loops and last_page then
+                elseif mp_final_option_loops and last_page then
                     candidate_pos = 0
                     goto continue
                 elseif candidate_pos == 0 and not new_page_prompt_seen then
