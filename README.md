@@ -90,6 +90,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 * Sad Diamond Man - Contributor
 * Bryan The Celestial - Contributor
 * YoshifanJordan - Contributor
+* NelleMonelle - Contributor
 
 </details>
 
