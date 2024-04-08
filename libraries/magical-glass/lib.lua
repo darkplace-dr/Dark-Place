@@ -62,6 +62,7 @@ function lib:save(data)
     end
     data.magical_glass["light_equip"] = lib.light_equip
     data.magical_glass["dark_equip"] = lib.dark_equip
+    data.magical_glass["in_light_shop"] = lib.in_light_shop
 end
 
 function lib:load(data, new_file)
@@ -77,6 +78,7 @@ function lib:load(data, new_file)
         lib.lw_save_lv = 0
         lib.light_equip = {}
         lib.dark_equip = {}
+        lib.in_light_shop = false
     else
 		data.magical_glass = data.magical_glass or {}
         lib.kills = data.magical_glass["kills"] or 0
@@ -90,6 +92,7 @@ function lib:load(data, new_file)
         lib.dark_inv_saved = data.magical_glass["dark_inv_saved"]
         lib.light_equip = data.magical_glass["light_equip"] or {}
         lib.dark_equip = data.magical_glass["dark_equip"] or {}
+        lib.in_light_shop = data.magical_glass["in_light_shop"] or false
     end
 end
 
@@ -2643,6 +2646,7 @@ function lib:setupLightShop(shop)
     end
 
     Game.shop = shop
+    lib.in_light_shop = true
     Game.shop:postInit()
 end
 
