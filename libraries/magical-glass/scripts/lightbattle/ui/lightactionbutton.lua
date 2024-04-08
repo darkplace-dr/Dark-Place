@@ -61,7 +61,7 @@ function LightActionButton:select()
                 ["data"] = spell,
                 ["callback"] = function(menu_item)
                     Game.battle.selected_xaction = spell
-                    Game.battle:setState("XACTENEMYSELECT", "SPELL")
+                    Game.battle:setState("ENEMYSELECT", "SPELL")
                 end
             })
         end
@@ -85,7 +85,7 @@ function LightActionButton:select()
                     ["data"] = spell,
                     ["callback"] = function(menu_item)
                         Game.battle.selected_xaction = spell
-                        Game.battle:setState("XACTENEMYSELECT", "SPELL")
+                        Game.battle:setState("ENEMYSELECT", "SPELL")
                     end
                 })
             end
