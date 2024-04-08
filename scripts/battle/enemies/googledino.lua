@@ -66,6 +66,8 @@ function GoogleDino:onShortAct(battler, name)
             return "* Mario jumped expertly!"
         elseif battler.chara.id == "ostarwalker" then
             return "* Starwalker did    something!"
+        elseif battler.chara.id == "ceroba" then
+            return "* Ceroba twirls her staff."
 		else
 			return "* "..battler.chara:getName().." did something!"
         end
@@ -125,6 +127,10 @@ function GoogleDino:onAct(battler, name)
             --S-Action text
             self:addMercy(5)
             return "* Mario showed off his excellent jumping skills.\n* The Dino is impressed!"
+        elseif battler.chara.id == "ceroba" then
+            --C-Action text
+            self:addMercy(5)
+            return "* Ceroba shows her epic magic skills.\n* The Dino is intimidated."
         else
             -- Text for any other character (like Noelle)
             self:addMercy(5)

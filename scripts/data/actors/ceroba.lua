@@ -10,6 +10,8 @@ function actor:init()
 
     self.hitbox = {3.5, 42, 20, 13}
 
+    self.soul_offset = {13.5, 28}
+
     self.color = {1, 1, 0}
 
     self.path = "party/ceroba/dark"
@@ -51,8 +53,8 @@ function actor:init()
     self.offsets = {
         -- Movement offsets
         ["walk/down"] = {1, 2},
-        ["walk/right"] = {0, 0},
-        ["walk/left"] = {0, 0},
+        ["walk/right"] = {-2, 0},
+        ["walk/left"] = {3, 0},
         ["walk/up"] = {0, 2},
 
         ["run/down"] = {1, 2},

@@ -56,6 +56,7 @@ function item:init()
         noelle = "I u-um, don't think I should have that.",
 		dess = "yee haw",
         brandon = "Time to enact some justice!",
+        ceroba = "Is that...",
     }
 end
 

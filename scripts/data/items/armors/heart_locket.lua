@@ -47,7 +47,8 @@ function item:init()
             noelle = "And Asriel..."
         },
         mario = "Bleh!",
-        brandon = "Oh god why is it beating."
+        brandon = "Oh god why is it beating.",
+        ceroba = "Reminds me of Kanako..."
     }
 
     self.light_item = "ut_armors/heart_locket"
