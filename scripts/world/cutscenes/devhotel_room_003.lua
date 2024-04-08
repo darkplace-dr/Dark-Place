@@ -291,6 +291,19 @@ return {
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "pauling" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
+            elseif id == "ceroba" then
+				cutscene:text("* Ah.[wait:5]\n* Ceroba.", "worried", "jamm")
+				cutscene:text("* The last one left in her family,[wait:5] perhaps bloodline.", "worried", "jamm")
+				cutscene:text("* Now that I think about it,[wait:5] we're pretty similar.", "worried", "jamm")
+				cutscene:text("* Losing the ones we love,[wait:5] finding secrets from them...", "worried", "jamm")
+				cutscene:text("* With the obvious exception that Marcy is alive.", "worried", "jamm")
+				cutscene:text("* What are you trying to say?", "neutral", "ceroba")
+				cutscene:text("* What,[wait:5] you actually thought I meant something by that?", "nervous", "jamm")
+				cutscene:text("* All I'm saying is I understand you.", "neutral", "jamm")
+				cutscene:text("* I understand what you did and why you did it.", "neutral", "jamm")
+				cutscene:text("* Now,[wait:5] normally,[wait:5] I'd have some big gameplay twist ready.", "smile", "jamm")
+				cutscene:text("* I can't really think of any twists for you at the moment...", "neutral", "jamm")
+				cutscene:text("* But keep in contact,[wait:5] because I might think of something.", "side_smile", "jamm")
             elseif id == "jamm" then
 				cutscene:text("[speed:0.3]* ...", "stern", "jamm")
 				cutscene:text("* Okay,[wait:5] why?", "stern", "jamm")
