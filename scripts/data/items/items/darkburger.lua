@@ -11,7 +11,8 @@ function item:init()
     self.reactions = Utils.merge(self.reactions, {
         dess = "Sorry man I only eat lettuce",
         brandon = "I love burgers!",
-		jamm = "I get these for free at Mcbangbang's."
+		jamm = "I get these for free at Mcbangbang's.",
+        ceroba = "It's not that bad, I guess.",
     })
 end
 

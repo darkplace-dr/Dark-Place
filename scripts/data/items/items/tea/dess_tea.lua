@@ -142,7 +142,13 @@ function item:init()
 	    brandon = "Wow, really??",
 	    noyno = "Same diets, I suppose.",
 	    dess = "Dang, finally",
-        }
+    },
+	ceroba = {
+		ceroba = "It's... Uh...",
+	    susie = "Terrible?",
+	    brandon = "Disgusting?",
+	    dess = "Literally perfect?",
+	},
     }
 end
 
