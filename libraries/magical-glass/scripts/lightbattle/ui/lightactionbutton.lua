@@ -268,6 +268,7 @@ function LightActionButton:select()
         bubble:setPosition(Game.battle.soul.width/2 + 8.5, -20.5)
         bubble.physics.speed_y = -0.8
         bubble:fadeOutSpeedAndRemove(0.065)
+		bubble.layer = 9999
         self:addChild(bubble)
     elseif self.type == "skill" then
         Game.battle.current_menu_columns = 2
