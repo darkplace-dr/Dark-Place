@@ -444,4 +444,12 @@ return {
             cutscene:hideNametag()
         end
     end,
+
+    ceroba = function(cutscene, event)
+        cutscene:showNametag("Ceroba")
+        cutscene:text("* Need something?", "neutral", "ceroba")
+        cutscene:text("* ...", "dissapproving", "ceroba")
+        cutscene:text("* Sorry,[wait:5] I have nothing to say for now.", "alt", "ceroba")
+        cutscene:hideNametag()
+    end,
 }

@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 24,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 60,
+  nextobjectid = 62,
   properties = {
     ["border"] = "dev",
     ["music"] = "greenroom"
@@ -34,6 +35,7 @@ return {
       draworder = "topdown",
       id = 7,
       name = "objects_bg",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -51,6 +53,7 @@ return {
       height = 18,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -85,6 +88,7 @@ return {
       draworder = "topdown",
       id = 2,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -308,6 +312,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -406,6 +411,24 @@ return {
             ["actor"] = "dess",
             ["cutscene"] = "partyroom.dess",
             ["flagcheck"] = "dess_obtained"
+          }
+        },
+        {
+          id = 60,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 112,
+          y = 260,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "ceroba",
+            ["cutscene"] = "partyroom.ceroba",
+            ["flagcheck"] = "ceroba_inparty",
+            ["sprite"] = "cool"
           }
         },
         {
@@ -613,6 +636,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -654,6 +678,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "controllers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -788,6 +813,22 @@ return {
           properties = {
             ["flag"] = "!berdly_party",
             ["target"] = { id = 56 }
+          }
+        },
+        {
+          id = 61,
+          name = "toggle",
+          type = "",
+          shape = "point",
+          x = 156,
+          y = 286,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!ceroba_party",
+            ["target"] = { id = 60 }
           }
         }
       }
