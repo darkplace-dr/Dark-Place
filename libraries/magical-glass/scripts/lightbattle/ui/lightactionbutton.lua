@@ -57,7 +57,7 @@ function LightActionButton:select()
             Game.battle:addMenuItem({
                 ["name"] = self.battler.chara:getXActName() or "X-Action",
                 ["tp"] = 0,
-                ["color"] = { self.battler.chara:getXActColor() },
+                ["color"] = { self.battler.chara:getLightXActColor() },
                 ["data"] = spell,
                 ["callback"] = function(menu_item)
                     Game.battle.selected_xaction = spell
