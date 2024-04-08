@@ -19,6 +19,12 @@ function mb_map:load()
 	super.load(self)
 end
 
+function mb_map:onEnter()
+	for i,follower in ipairs(Game.world.followers) do
+    	follower.visible = false
+    end
+end
+
 function mb_map:update()
 	super.update(self)
 	if self.back then
@@ -82,6 +88,9 @@ end
 function mb_map:onExit()
 	if Game:getFlag("mb_partySet", nil) then
 		Game:setPartyMembers(Utils.dump(self.old_party))
+		for i,follower in ipairs(Game.world.followers) do
+	    	follower.visible = true
+	    end
 		Game:setFlag("mb_partySet", nil)
 	end
 	Game.world.camera.keep_in_bounds = true
