@@ -8,6 +8,8 @@ function item:init(inventory)
     self.short_name = "ButtsPie"
     self.serious_name = "Pie"
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
@@ -17,6 +19,9 @@ function item:init(inventory)
     self.sell_price = 180
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Butterscotch-cinnamon pie, one slice."
 
     -- Light world check text
     self.check = "All HP\n* Butterscotch-cinnamon\npie,[wait:10] one slice."
@@ -46,6 +51,11 @@ function item:onLightBattleUse(user, target)
         target:heal(target.max_health)
     end
     Game.battle:battleText(self:getLightBattleText(user, target).."\n"..self:getLightBattleHealingText(user, target))
+    return true
+end
+
+function item:onBattleUse(user, target)
+    target:heal(math.huge)
     return true
 end
 

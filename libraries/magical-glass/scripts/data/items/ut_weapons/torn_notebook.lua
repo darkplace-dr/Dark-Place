@@ -13,12 +13,17 @@ function item:init()
     -- Whether this item is for the light world
     self.light = true
 
+    -- Shop description
+    self.shop = "Invincible\nlonger"
     -- Default shop price (sell price is halved)
     self.price = 55
     -- Default shop sell price
     self.sell_price = 50
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Contains illegible scrawls."
 
     -- Light world check text
     self.check = {
@@ -35,13 +40,13 @@ function item:init()
         attack = 2
     }
 
-    self.bolt_count = 2
-    self.bolt_speed = 10
-    self.bolt_speed_variance = nil
-    self.bolt_start = {-50, -25} 
-    self.bolt_miss_threshold = 2
-    self.bolt_direction = "left"
-    self.multibolt_variance = {{0, 25, 50}}
+    self.light_bolt_count = 2
+    self.light_bolt_speed = 10
+    self.light_bolt_speed_variance = nil
+    self.light_bolt_start = {-50, -25} 
+    self.light_bolt_miss_threshold = 2
+    self.light_bolt_direction = "left"
+    self.light_multibolt_variance = {{0, 25, 50}}
     self.inv_bonus = 15/30
 
     self.attack_sound = "bookspin"
@@ -60,9 +65,9 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
     local hit = false
     sprite:setOrigin(0.5, 0.5)
     sprite:setScale(2, 2)
-    sprite:setPosition(enemy:getRelativePos((enemy.width / 2), (enemy.height / 2)))
+    sprite:setPosition(enemy:getRelativePos((enemy.width / 2) - (#Game.battle.attackers - 1) * 5 / 2 + (Utils.getIndex(Game.battle.attackers, battler) - 1) * 5, (enemy.height / 2)))
     sprite.layer = BATTLE_LAYERS["above_ui"] + 5
-    sprite.color = battler.chara:getLightMultiboltAttackColor()
+    sprite.color = {battler.chara:getLightMultiboltAttackColor()}
     enemy.parent:addChild(sprite)
 
     if crit then
@@ -109,8 +114,9 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
 
         battler.chara:onLightAttackHit(enemy, damage)
 
-        Game.battle:endAttack()
+        Game.battle:finishActionBy(battler)
     end)
+    return false
 end
 
 return item

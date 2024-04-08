@@ -18,6 +18,9 @@ function item:init()
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "These used shoes make you feel extra dangerous."
+
     -- Light world check text
     self.check = "Weapon AT 7\n* These used shoes make you feel\nextra dangerous."
 
@@ -30,11 +33,13 @@ function item:init()
         attack = 7
     }
 
-    self.bolt_count = 3
-    self.bolt_speed = 10
-    self.bolt_speed_variance = nil
-    self.bolt_start = -90
-    self.bolt_miss_threshold = 2
+    self.light_bolt_count = 3
+    self.light_bolt_speed = 10
+    self.light_bolt_speed_variance = nil
+    self.light_bolt_start = -90
+    self.light_bolt_miss_threshold = 2
+    self.light_bolt_direction = "right"
+    self.light_multibolt_variance = {{0, 25, 50}, {100, 125, 150}}
 
     self.attack_sound = "punchstrong"
 end
@@ -44,7 +49,12 @@ function item:showEquipText(target)
 end
 
 function item:getLightBattleText(user, target)
-    return "* "..target.chara:getNameOrYou().." equipped Ballet Shoes."
+    -- if user == target then
+        -- return "* ".. user.chara:getNameOrYou() .. " equipped " .. self:getUseName() .. "."
+    -- else
+        -- return "* "..user.chara:getNameOrYou().." gave "..self:getUseName().." to "..target.chara:getNameOrYou(true).." and ".. target.chara:getNameOrYou(true) .. " equipped it."
+    -- end
+    return "* ".. target.chara:getNameOrYou() .. " equipped " .. self:getUseName() .. "."
 end
 
 function item:onLightAttack(battler, enemy, damage, stretch, crit)
@@ -53,9 +63,9 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
 
     local sprite = Sprite("effects/attack/hyperfoot")
     sprite:setOrigin(0.5, 0.5)
-    sprite:setPosition(enemy:getRelativePos((enemy.width / 2), (enemy.height / 2)))
+    sprite:setPosition(enemy:getRelativePos((enemy.width / 2) - (#Game.battle.attackers - 1) * 5 / 2 + (Utils.getIndex(Game.battle.attackers, battler) - 1) * 5, (enemy.height / 2)))
     sprite.layer = BATTLE_LAYERS["above_ui"] + 5
-    sprite.color = battler.chara:getLightMultiboltAttackColor()
+    sprite.color = {battler.chara:getLightMultiboltAttackColor()}
     enemy.parent:addChild(sprite)
     Game.battle:shakeCamera(3, 3, 2)
 
@@ -81,10 +91,10 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
         battler.chara:onLightAttackHit(enemy, damage)
         this:remove()
 
-        Game.battle:endAttack()
-
+        Game.battle:finishActionBy(battler)
     end)
 
+    return false
 end
 
 return item

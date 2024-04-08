@@ -8,16 +8,23 @@ function item:init()
     self.short_name = "Temmie AR"
     self.serious_name = "Tem.Armor"
     self.equip_display_name = "Temmie Armor"
+    self.use_name = "Temmie Armor"
 
     -- Item type (item, key, weapon, armor)
     self.type = "armor"
     -- Whether this item is for the light world
     self.light = true
 
+    -- Shop description
+    self.shop = "ARMOR 20DF\nmakes\nbattles\ntoo easy"
+    self.shop_dont_show_change = true
     -- Default shop sell price
     self.sell_price = 500
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "The things you can do with a college education!"
 
     -- Light world check text
     self.check = {
@@ -44,31 +51,36 @@ function item:showEquipText(target)
 end
 
 function item:getLightBattleText(user, target)
-    return "* "..target.chara:getNameOrYou().." donned the Temmie Armor."
+    -- if user == target then
+        -- return "* "..user.chara:getNameOrYou().." donned the "..self:getUseName().."."
+    -- else
+        -- return "* "..user.chara:getNameOrYou().." gave the "..self:getUseName().." to "..target.chara:getNameOrYou(true).." and "..user.chara:getNameOrYou(true).." donned it."
+    -- end
+    return "* "..target.chara:getNameOrYou().." donned the "..self:getUseName().."."
 end
 
 function item:getPrice()
-    local gm = MagicalGlassLib.game_overs
     local price = 9999
-    for i = 0, math.min(gm, 30) do
-        if i ~= 0 then
-            if i == 1 then
-                price = price - 999
-            elseif i <= 5 then
-                price = price - 1000
-            elseif i <= 9 then
-                price = price - 500
-            elseif i <= 17 then
-                price = price - 200
-            elseif i <= 19 then
-                price = price - 150
-            elseif i <= 20 then
-                price = 1000
-            elseif i <= 24 then
-                price = 750
-            elseif i == 30 then
-                price = 500
-            end
+    for i = 1, math.min(MagicalGlassLib.game_overs, 30) do
+        if i == 1 then
+            price = price - 999
+        elseif i <= 5 then
+            price = price - 1000
+        elseif i <= 9 then
+            price = price - 500
+        elseif i <= 17 then
+            price = price - 200
+        elseif i <= 19 then
+            price = price - 150
+        end
+        if i >= 20 then
+            price = 1000
+        end
+        if i >= 25 then
+            price = 750
+        end
+        if i >= 30 then
+            price = 500
         end
     end
     return price
@@ -77,7 +89,9 @@ end
 function item:onTurnEnd(battler)
     if Game.battle.turn_count % 2 == 0 then
         battler:heal(1)
-        Assets.stopAndPlaySound("power")
+        if Game.battle.light then
+            Assets.stopAndPlaySound("power")
+        end
     end
 end
 

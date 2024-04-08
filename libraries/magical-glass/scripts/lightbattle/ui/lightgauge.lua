@@ -21,46 +21,42 @@ function LightGauge:init(type, amount, x, y, enemy, color)
     self.enemy = enemy
     self.width, self.height = Utils.unpack(self.enemy:getGaugeSize())
 
-    self.amount = amount
+    self.amount = math.abs(tonumber(amount))
 
     if self.type == "damage" then
         self.value = self.enemy.health
         self.real_value = self.enemy.health
         self.max_value = self.enemy.max_health
         self.extra_width = (self.width / self.max_value)
+        self.reversed = (string.sub(tostring(amount), 1, 1) == "+" or amount < 0) and true or false -- heal
     elseif self.type == "mercy" then
         self.value = self.enemy.mercy
         self.real_value = self.enemy.mercy
         self.max_value = 100
         self.extra_width = (self.width / self.max_value)
+        self.reversed = amount >= 0 and true or false -- allows for mercy reduction
     end
 
 end
 
 function LightGauge:update()
     super.update(self)
-
-    if self.type == "damage" then
-        if self.value > (self.real_value - self.amount) then
-            self.value = self.value - (self.amount / 15) * DTMULT / 2
-        else
-            self.value = (self.real_value - self.amount)
-        end
-
-        if self.value < 0 then
-            self.value = 0
-        end
-    elseif self.type == "mercy" then
+    
+    if self.reversed then
         if self.value < (self.real_value + self.amount) then
             self.value = self.value + (self.amount / 15) * DTMULT / 2
         else
             self.value = (self.real_value + self.amount)
         end
-
-        if self.value > 100 then
-            self.value = 100
+    else
+        if self.value > (self.real_value - self.amount) then
+            self.value = self.value - (self.amount / 15) * DTMULT / 2
+        else
+            self.value = (self.real_value - self.amount)
         end
     end
+
+    self.value = Utils.clamp(self.value, 0, self.max_value)
 end
 
 function LightGauge:draw()

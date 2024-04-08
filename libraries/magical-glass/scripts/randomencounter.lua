@@ -12,6 +12,8 @@ function RandomEncounter:init()
     
     -- Table with the encounters that can be triggered by this random encounter
     self.encounters = {}
+    
+    self.light = true
 end
 
 function RandomEncounter:resetSteps()
@@ -31,21 +33,13 @@ function RandomEncounter:nobodyCame()
 end
 
 function RandomEncounter:start()
-    Game.world:startCutscene(function(cutscene)
-        if self.bubble then
-            Assets.stopAndPlaySound("alert")
-            local sprite = Sprite(self.bubble, Game.world.player.width/2)
-            sprite:setScale(1,1)
-            sprite:setOrigin(0.5, 1)
-            Game.world.player:addChild(sprite)
-            sprite.layer = WORLD_LAYERS["above_events"]
-            cutscene:wait(15/30 + Utils.random(5/30))
-            sprite:remove()
-            Game:encounter(self:getNextEncounter(), true)
-        else
-            Game:encounter(self:getNextEncounter(), true)
-        end
-    end)
+    if self.bubble then
+        Game.lock_movement = true
+        MagicalGlassLib.initiating_random_encounter = true
+        Game.world.player:alert(15/30 + Utils.random(5/30), {layer = WORLD_LAYERS["above_events"], sprite = self.bubble, callback = function() Game:encounter(self:getNextEncounter(), true, nil, nil, self.light);Game.lock_movement = false;MagicalGlassLib.initiating_random_encounter = nil end})
+    else
+        Game:encounter(self:getNextEncounter(), true, nil, nil, self.light)
+    end
 end
 
 return RandomEncounter

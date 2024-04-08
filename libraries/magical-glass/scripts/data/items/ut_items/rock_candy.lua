@@ -7,6 +7,8 @@ function item:init(inventory)
     self.name = "Rock Candy"
     self.short_name = "RockCandy"
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
@@ -18,6 +20,9 @@ function item:init(inventory)
     self.sell_price = 3
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Here is a recipe to make this at home:\n1. Find a rock"
 
     -- Light world check text
     self.check = {

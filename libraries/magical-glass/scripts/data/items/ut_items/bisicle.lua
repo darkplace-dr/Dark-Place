@@ -13,12 +13,17 @@ function item:init(inventory)
 
     self.heal_amount = 11
 
+    -- Shop description
+    self.shop = "Heals 11HP x 2\nEat it twice!"
     -- Default shop price (sell price is halved)
     self.price = 15
     -- Default shop sell price
     self.sell_price = 5
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "It's a two-pronged popsicle, so you can eat it twice."
 
     -- Light world check text
     self.check = "Heals 11 HP\n* It's a two-pronged popsicle,[wait:10]\nso you can eat it twice."
@@ -31,7 +36,6 @@ function item:init(inventory)
     self.result_item = "ut_items/unisicle"
     -- Will this item be instantly consumed in battles?
     self.instant = false
-        
 end
 
 function item:getWorldUseText(target)

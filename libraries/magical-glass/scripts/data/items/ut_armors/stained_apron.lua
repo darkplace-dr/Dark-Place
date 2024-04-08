@@ -7,6 +7,7 @@ function item:init()
     self.name = "Stained Apron"
     self.short_name = "StainApro"
     self.serious_name = "Apron"
+    self.use_name = "apron"
 
     -- Item type (item, key, weapon, armor)
     self.type = "armor"
@@ -17,6 +18,9 @@ function item:init()
     self.sell_price = 100
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Heals 1 HP every other turn."
 
     -- Light world check text
     self.check = "Armor DF 11\n* Heals 1 HP every other\nturn."
@@ -35,16 +39,14 @@ end
 function item:onTurnEnd(battler)
     if Game.battle.turn_count % 2 == 0 then
         battler:heal(1)
-        Assets.stopAndPlaySound("power")
+        if Game.battle.light then
+            Assets.stopAndPlaySound("power")
+        end
     end
 end
 
 function item:showEquipText(target)
     Game.world:showText("* "..target:getNameOrYou().." equipped the apron.")
-end
-
-function item:getLightBattleText(user, target)
-    return "* "..target.chara:getNameOrYou().." equipped the apron."
 end
 
 return item

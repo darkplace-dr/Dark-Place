@@ -8,7 +8,7 @@ local LightDamageNumber, super = Class(Object)
 --    "msg": message sprite name ("mercy", "miss")
 --    (use "_special" for the amalgamate damage popup)
 
-function LightDamageNumber:init(type, arg, x, y, color)
+function LightDamageNumber:init(type, arg, x, y, color, enemy)
     super.init(self, x, y)
 
     self:setOrigin(0.5, 0.5)
@@ -18,6 +18,8 @@ function LightDamageNumber:init(type, arg, x, y, color)
     self.physics.speed_y = -4
     self.physics.gravity = 0.5
     self.physics.gravity_direction = math.rad(90)
+    
+    self.enemy = enemy
 
     -- Halfway between UI and the layer above it
     self.layer = BATTLE_LAYERS["damage_numbers"]
@@ -26,6 +28,9 @@ function LightDamageNumber:init(type, arg, x, y, color)
 
     if self.type == "msg" then
         self.message = arg or "miss"
+    elseif self.type == "damage" and string.sub(tostring(arg or 0), 1, 1) == "+" and self.enemy.health + tonumber(arg) >= self.enemy.max_health then
+        self.type = "msg"
+        self.message = "max"
     else
         self.font = Assets.getFont("lwdmg")
         self.amount = arg or 0
@@ -35,7 +40,11 @@ function LightDamageNumber:init(type, arg, x, y, color)
             else
                 self.color = COLORS["yellow"]
             end
-            self.text = "+"..self.amount.."%"
+            if self.amount >= 0 then
+                self.text = "+"..self.amount.."%"
+            else
+                self.text = self.amount.."%"
+            end
         elseif self.type == "miss" then
             self.color = {1, 1, 1}
         else
@@ -109,6 +118,7 @@ function LightDamageNumber:update()
                 end
             end
             self:remove()
+            self.enemy.active_msg = self.enemy.active_msg - 1
             return
         end
 

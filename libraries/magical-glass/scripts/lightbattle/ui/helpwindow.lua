@@ -38,9 +38,9 @@ end
 
 function HelpWindow:update()
     local battle = Game.battle
-    if (battle.state == "MENUSELECT" and #battle.menu_items > 0) or battle.state == "PARTYSELECT" then
+    if (battle.state == "MENUSELECT" and #battle.menu_items > 0) then
         local item = battle.state == "MENUSELECT" and Game.battle.menu_items[Game.battle:getItemIndex()]
-        if battle.state == "PARTYSELECT" or (#item.description > 0 or (item.tp and item.tp > 0)) then
+        if (#item.description > 0 or (item.tp and item.tp > 0)) then
             if not self.showing then
                 self.showing = true
                 TweenManager.tween(self, {y = 237}, 6, "outCubic")

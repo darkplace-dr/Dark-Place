@@ -14,7 +14,6 @@ function LightActionButton:init(type, battler, x, y)
         self.tex = Assets.getTexture("ui/lightbattle/btn/" .. type)
         self.hover_tex = Assets.getTexture("ui/lightbattle/btn/" .. type .. "_h")
         self.special_tex = Assets.getTexture("ui/lightbattle/btn/" .. type .. "_a")
-        print("Loaded "..type.." Button")
     end
 
     self.width = self.tex:getWidth()
@@ -23,9 +22,7 @@ function LightActionButton:init(type, battler, x, y)
     self:setOriginExact(self.width / 2, 13)
 
     self.hovered = false
-    
     self.selectable = true
-    
 
     self.highlight = Kristal.getLibConfig("magical-glass", "action_button_flash")
 end

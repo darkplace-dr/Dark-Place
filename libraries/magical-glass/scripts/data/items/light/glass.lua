@@ -4,7 +4,10 @@ function item:init()
     super.init(self)
 
     self.can_sell = false
-    self.result_item = "light/glass"
+end
+
+function item:onBattleSelect(user, target)
+    return false
 end
 
 return item

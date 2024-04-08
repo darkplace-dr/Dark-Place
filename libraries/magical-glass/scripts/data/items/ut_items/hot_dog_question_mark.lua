@@ -26,6 +26,9 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "The \"meat\" is made of something called a \"water sausage.\""
+
     -- Light world check text
     self.check = "Heals 20 HP\n* The \"meat\" is made of something\ncalled a \"water sausage.\""
 
@@ -62,6 +65,14 @@ function item:worldUseSound(target)
             Assets.stopAndPlaySound("power")
         end
     end)
+end
+
+function item:onBattleUse(user, target)
+    if not MagicalGlassLib.serious_mode then
+        Assets.stopAndPlaySound("dogsalad")
+    end
+    target:heal(self:getHealAmount())
+    return true
 end
 
 

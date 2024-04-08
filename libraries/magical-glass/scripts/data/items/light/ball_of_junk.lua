@@ -14,6 +14,9 @@ function item:init(inventory)
     self.light = true
     
     self.can_sell = false
+    
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "A small ball of accumulated things in your pocket."
 
     -- Light world check text
     self.check = "A small ball\nof accumulated things in your\npocket."
@@ -21,12 +24,16 @@ function item:init(inventory)
     -- Where this item can be used (world, battle, all, or none)
     self.usable_in = "all"
     -- Item this item will get turned into when consumed
-    self.result_item = "light/ball_of_junk"
+    self.result_item = nil
 
 end
 
 function item:onWorldUse()
     Game.world:showText("* You looked at the junk ball in\nadmiration.[wait:5]\n* Nothing happened.")
+    return false
+end
+
+function item:onBattleSelect(user, target)
     return false
 end
 

@@ -20,6 +20,9 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "It's a SINGLE-pronged popsicle.\nWait, that's just normal..."
+
     -- Light world check text
     self.check = "Heals 11 HP\n* It's a SINGLE-pronged popsicle.[wait:10]\nWait,[wait:10] that's just normal..."
 

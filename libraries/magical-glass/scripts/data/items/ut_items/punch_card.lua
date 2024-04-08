@@ -17,6 +17,9 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Used to make punching attacks stronger for one battle."
+
     -- Light world check text
     self.check = {
         "Battle Item\n* Used to make punching attacks\nstronger for one battle.",
@@ -84,12 +87,24 @@ function item:getLightBattleText(user, target)
     end
 end
 
+function item:getBattleText(user, target)
+    return item:getLightBattleText(user, target)
+end
+
 function item:onLightBattleUse(user, target)
     if Utils.containsValue(target.chara:getWeapon().tags, "punch") then
         Assets.playSound("tearcard")
         target.chara:addStatBuff("attack", self:getATIncrease(target))
     end
     Game.battle:battleText(self:getLightBattleText(user, target))
+    return true
+end
+
+function item:onBattleUse(user, target)
+    if Utils.containsValue(target.chara:getWeapon().tags, "punch") then
+        Assets.playSound("tearcard")
+        target.chara:addStatBuff("attack", self:getATIncrease(target))
+    end
     return true
 end
 

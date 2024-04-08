@@ -18,6 +18,9 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Dog-shaped husk shed from a dog's carapace."
+
     -- Light world check text
     self.check = "Dog Item\n* Dog-shaped husk shed\nfrom a dog's carapace."
 
@@ -109,6 +112,24 @@ function item:onLightBattleUse(user, target)
         Game.inventory:addItem(Utils.pick(items))
     end
     Game.battle:battleText(self:getLightBattleText(user, target))
+    return true
+end
+
+function item:onBattleUse(user, target)
+    Assets.playSound("dogresidue")
+
+    while #Game.inventory:getStorage("items") < Game.inventory:getStorage("items").max do
+        local items = {
+            "ut_items/dog_salad",
+            "ut_items/dog_residue_1",
+            "ut_items/dog_residue_2",
+            "ut_items/dog_residue_3",
+            "ut_items/dog_residue_4",
+            "ut_items/dog_residue_5",
+            "ut_items/dog_residue_6",
+        }
+        Game.inventory:addItem(Utils.pick(items))
+    end
     return true
 end
 

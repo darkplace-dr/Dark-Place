@@ -11,6 +11,9 @@ function item:init()
     -- Whether this item is for the light world
     self.light = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Damage is rather consistent.\nConsumable items heal 4 more HP."
+
     -- Light world check text
     self.check = "Weapon AT 10\n* Damage is rather consistent.\n* Consumable items heal 4 more HP."
 
@@ -30,13 +33,13 @@ function item:init()
 
     self.heal_bonus = 4
 
-    self.bolt_count = 4
-    self.bolt_speed = 10
-    self.bolt_speed_variance = nil
-    self.bolt_start = -80
-    self.bolt_miss_threshold = 2
-    self.multibolt_variance = {{0, 25, 50}, {100, 125, 150}, {200}}
-    self.bolt_direction = "left"
+    self.light_bolt_count = 4
+    self.light_bolt_speed = 10
+    self.light_bolt_speed_variance = nil
+    self.light_bolt_start = -80
+    self.light_bolt_miss_threshold = 2
+    self.light_multibolt_variance = {{0, 25, 50}, {100, 125, 150}, {200}}
+    self.light_bolt_direction = "left"
 
     self.attack_sound = "frypan"
     
@@ -53,9 +56,9 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
     local size = 2
     sprite:setScale(2, 2)
     sprite:setOrigin(0.5, 0.5)
-    sprite:setPosition(enemy:getRelativePos((enemy.width / 2), (enemy.height / 2)))
+    sprite:setPosition(enemy:getRelativePos((enemy.width / 2) - (#Game.battle.attackers - 1) * 5 / 2 + (Utils.getIndex(Game.battle.attackers, battler) - 1) * 5, (enemy.height / 2)))
     sprite.layer = BATTLE_LAYERS["above_ui"] + 5
-    sprite.color = battler.chara:getLightMultiboltAttackColor()
+    sprite.color = {battler.chara:getLightMultiboltAttackColor()}
     enemy.parent:addChild(sprite)
     sprite:play(1/30, true)
 
@@ -67,13 +70,13 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
     for i = 0, 8 do
         local star = Sprite("effects/attack/frypan_star")
         star:setOrigin(0.5, 0.5)
-        star:setPosition(enemy:getRelativePos((enemy.width / 2), (enemy.height / 2)))
+        star:setPosition(enemy:getRelativePos((enemy.width / 2) - (#Game.battle.attackers - 1) * 5 / 2 + (Utils.getIndex(Game.battle.attackers, battler) - 1) * 5, (enemy.height / 2)))
         star.layer = BATTLE_LAYERS["above_ui"] + 4
         star.physics.direction = math.rad(360 * i) / 8
         star.physics.friction = 0.34
         star.physics.speed = 8
         star.ang = 12.25
-        star.color = battler.chara.light_color
+        star.color = {battler.chara:getLightMultiboltAttackColor()}
         if crit then
             star:setColor(1, 1, 130/255)
         end
@@ -82,7 +85,6 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
     end
 
     Game.battle.timer:during(25/30, function()
-
         sprite.rotation = sprite.rotation + math.rad(angle) * DTMULT
         if form == 0 then
             size = size + 0.3 * DTMULT
@@ -126,9 +128,10 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
             star:remove()
         end
 
-        Game.battle:endAttack()
+        Game.battle:finishActionBy(battler)
     end)
 
+    return false
 end
 
 return item

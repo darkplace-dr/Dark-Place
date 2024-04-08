@@ -7,6 +7,8 @@ function item:init(inventory)
     self.name = "Nice Cream"
     self.short_name = "NiceCream"
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
@@ -21,8 +23,11 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Instead of a joke, the wrapper says something nice."
+
     -- Light world check text
-    self.check = "Heals 15 HP\n* Instead of a joke,[wait:10], the\nwrapper says something nice."
+    self.check = "Heals 15 HP\n* Instead of a joke,[wait:10] the\nwrapper says something nice."
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"

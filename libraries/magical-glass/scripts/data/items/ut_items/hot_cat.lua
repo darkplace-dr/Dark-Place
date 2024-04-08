@@ -26,6 +26,9 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Like a hot dog, but with little cat ears on the end."
+
     -- Light world check text
     self.check = "Heals 21 HP\n* Like a hot dog,[wait:10] but with\nlittle cat ears on the end."
 
@@ -62,6 +65,14 @@ function item:worldUseSound(target)
             Assets.stopAndPlaySound("power")
         end
     end)
+end
+
+function item:onBattleUse(user, target)
+    if not MagicalGlassLib.serious_mode then
+        Assets.stopAndPlaySound("catsalad")
+    end
+    target:heal(self:getHealAmount())
+    return true
 end
 
 

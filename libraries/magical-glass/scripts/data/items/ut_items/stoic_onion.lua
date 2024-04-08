@@ -8,6 +8,8 @@ function item:init(inventory)
     self.short_name = "StocOnion"
     self.serious_name = "Onion"
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
@@ -19,6 +21,9 @@ function item:init(inventory)
     self.sell_price = 10
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Even eating it raw, the tears just won't come."
 
     -- Light world check text
     self.check = "Heals 5 HP\n* Even eating it raw,[wait:10] the\ntears just won't come."

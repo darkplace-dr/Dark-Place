@@ -8,6 +8,8 @@ function LightBattle:init()
 
     self.light = true
     self.forced_victory = false
+    self.debug_wave = false
+    self.ended = false
 
     self.party = {}
 
@@ -19,7 +21,7 @@ function LightBattle:init()
 
     self.post_battletext_state = "ACTIONSELECT"
 
-    self.tension = Kristal.getLibConfig("magical-glass", "light_battle_tp")
+    self.tension = false
 
     self.fader = Fader()
     self.fader.layer = 1000
@@ -120,8 +122,6 @@ function LightBattle:init()
     self.menu_items = {}
     self.pager_menus = {"ITEM"}
 
-    self.actions_done_timer = 0
-
     self.xactions = {}
 
     self.selected_enemy = 1
@@ -155,22 +155,19 @@ function LightBattle:isPagerMenu()
 end
 
 function LightBattle:playSelectSound()
-    if not self.ui_select:isPlaying() then
-        self.ui_select:stop()
-        self.ui_select:play()
-    end
+    self.ui_select:stop()
+    self.ui_select:play()
 end
 
 function LightBattle:playMoveSound()
+    self.ui_move:stop()
     self.ui_move:play()
 end
 
-function LightBattle:playVaporizedSound()
-    self.vaporized:stop()
-    self.vaporized:play()
-end
-
 function LightBattle:toggleSoul(soul)
+    if not self.soul then
+        self:spawnSoul(self.arena:getCenter())
+    end
     if soul then
         self.soul.collidable = true
         self.soul.visible = true
@@ -181,7 +178,7 @@ function LightBattle:toggleSoul(soul)
 end
 
 function LightBattle:createPartyBattlers()
-    for i = 1, 1 do
+    for i = 1, math.min(3, #Game.party) do
         local party_member = Game.party[i]
 
         local battler = LightPartyBattler(party_member)
@@ -224,6 +221,8 @@ function LightBattle:postInit(state, encounter)
 
     if self.encounter.story then
         self.story_wave = self.encounter:storyWave()
+    else
+        self.tension = Kristal.getLibConfig("magical-glass", "light_battle_tp") or not Game:isLight()
     end
 
     self.arena = LightArena(SCREEN_WIDTH/2, 385)
@@ -233,6 +232,8 @@ function LightBattle:postInit(state, encounter)
     self.battle_ui = LightBattleUI()
     self:addChild(self.battle_ui)
 
+    self.multi_mode = Kristal.getLibConfig("magical-glass", "multi_always_on") or #self.party > 1
+
     self.tension_bar = LightTensionBar(29, 53, true)
     if self.tension then
         self.tension_bar.visible = false
@@ -240,13 +241,18 @@ function LightBattle:postInit(state, encounter)
     self:addChild(self.tension_bar)
 
     if Game.encounter_enemies then
-        for _,enemy in ipairs(Game.encounter_enemies) do
-            if not isClass(enemy) then
-                local battler = self:parseEnemyIdentifier(enemy[1])
-                enemy[2].battler = battler
-                self.enemy_world_characters[battler] = enemy[2]
-                if state == "TRANSITION" then
-                    battler:setPosition(enemy[2]:getScreenPos())
+        for _,from in ipairs(Game.encounter_enemies) do
+            if not isClass(from) then
+                local enemy = self:parseEnemyIdentifier(from[1])
+                from[2].battler = enemy
+                self.enemy_world_characters[enemy] = from[2]
+            else
+                for _,enemy in ipairs(self.enemies) do
+                    if enemy.actor and from.actor and enemy.actor.name == from.actor.name then
+                        from.battler = enemy
+                        self.enemy_world_characters[enemy] = from
+                        break
+                    end
                 end
             end
         end
@@ -260,7 +266,7 @@ function LightBattle:postInit(state, encounter)
 
     if not self.encounter:onBattleInit() then
         self:setState(state)
-    end   
+    end
 end
 
 function LightBattle:onRemove(parent)
@@ -302,7 +308,7 @@ function LightBattle:getSoulLocation(always_player)
     if self.soul and (not always_player) then
         return self.soul:getPosition()
     else
-        return -9, -9
+        return 49, 455
     end
 end
 
@@ -331,7 +337,7 @@ function LightBattle:registerXAction(party, name, description, tp)
         ["name"] = name,
         ["description"] = description,
         ["party"] = party,
-        ["color"] = {self.party[self:getPartyIndex(party)].chara:getXActColor()},
+        ["color"] = {self.party[self:getPartyIndex(party)].chara:getLightXActColor()},
         ["tp"] = tp or 0,
         ["short"] = false
     }
@@ -457,25 +463,11 @@ function LightBattle:retargetEnemy()
             return other
         end
     end
+    return true
 end
 
-function LightBattle:endAttack()
-    self:finishAction(action)
-
-    Utils.removeFromTable(self.normal_attackers, battler)
-    Utils.removeFromTable(self.auto_attackers, battler)
-
-    if not self:retargetEnemy() then
-        self.cancel_attack = true
-    elseif #self.normal_attackers == 0 and #self.auto_attackers > 0 then
-        local next_attacker = self.auto_attackers[1]
-
-        local next_action = self:getActionBy(next_attacker)
-        if next_action then
-            self:beginAction(next_action)
-            self:processAction(next_action)
-        end
-    end
+function LightBattle:enemyExist(enemy)
+    return enemy ~= nil and type(enemy) ~= "boolean"
 end
 
 function LightBattle:processAction(action)
@@ -485,10 +477,10 @@ function LightBattle:processAction(action)
 
     self.current_processing_action = action
 
-    if enemy and enemy.done_state then
+    if self:enemyExist(enemy) and enemy.done_state then
         enemy = self:retargetEnemy()
         action.target = enemy
-        if not enemy then
+        if not self:enemyExist(enemy) then
             return true
         end
     end
@@ -510,14 +502,22 @@ function LightBattle:processAction(action)
 
     if action.action == "SPARE" then
 
-        self:toggleSoul(false)
+        if Kristal.getLibConfig("magical-glass", "multi_deltarune_spare") and Game.battle.multi_mode then
+            enemy:onMercy(battler)
+            self:finishAction(action)
 
-        for _,act_enemy in ipairs(self:getActiveEnemies()) do
-            local worked = act_enemy:canSpare()
-            act_enemy:onMercy(battler)
+            self:battleText("* " .. battler.chara:getNameOrYou() .. " spared " .. enemy.name .. ".")
+        else
+            self:toggleSoul(false)
+
+            for _,act_enemy in ipairs(self:getActiveEnemies()) do
+                act_enemy:onMercy(battler)
+            end
+
+            self:finishAction(action)
         end
-
-        self:finishAction(action)
+        
+        return false
 
     elseif action.action == "ATTACK" or action.action == "AUTOATTACK" then
 
@@ -533,31 +533,39 @@ function LightBattle:processAction(action)
 
         if lane.attacked then
 
-            if action.target and action.target.done_state then
+            if self:enemyExist(action.target) and action.target.done_state then
                 enemy = self:retargetEnemy()
                 action.target = enemy
-                if not enemy then
+                if not self:enemyExist(enemy) then
                     self.cancel_attack = true
                     self:finishAction(action)
                     return
                 end
             end
 
-            local weapon = battler.chara:getWeapon()
+            local weapon = battler.chara:getWeapon() or Registry.createItem("ut_weapons/stick") -- placeholder to allow attacking without a weapon
             local damage = 0
             local crit
 
-            if not action.force_miss and action.points > 0 then
-                damage, crit = enemy:getAttackDamage(action.damage or 0, lane, action.points or 0, action.stretch)
-                damage = Utils.round(damage)
+            if self:enemyExist(enemy) then
+                if not action.force_miss and action.points > 0 then
+                    damage, crit = enemy:getAttackDamage(action.damage or 0, lane, action.points or 0, action.stretch)
+                    damage = Utils.round(damage)
 
-                if damage < 0 then
-                    damage = 0
+                    if damage < 0 then
+                        damage = 0
+                    end
+
+                    local result = weapon:onLightAttack(battler, enemy, damage, action.stretch, crit)
+                    if result or result == nil then
+                        self:finishAction(action)
+                    end
+                else
+                    local result = weapon:onLightMiss(battler, enemy, true, false)
+                    if result or result == nil then
+                        self:finishAction(action)
+                    end
                 end
-
-                weapon:onLightAttack(battler, enemy, damage, action.stretch, crit)
-            else
-                weapon:onLightMiss(battler, enemy, true, false)
             end
 
         end
@@ -620,6 +628,7 @@ function LightBattle:processAction(action)
     elseif action.action == "ITEM" then
         local item = action.data
         if item.instant then
+            self:toggleSoul(false)
             self:finishAction(action)
         else
             local result = item:onLightBattleUse(battler, action.target)
@@ -690,74 +699,76 @@ function LightBattle:finishAction(action, keep_animation)
 
     local battler = self.party[action.character_id]
 
-    self.processed_action[action] = true
+    Game.battle.timer:after(battler.delay_turn_end and 43/30 or 0, function()
+        self.processed_action[action] = true
 
-    if self.processing_action == action then
-        self.processing_action = nil
-    end
+        if self.processing_action == action then
+            self.processing_action = nil
+        end
 
-    local all_processed = self:allActionsDone()
+        local all_processed = self:allActionsDone()
 
-    if all_processed then
-        for _,iaction in ipairs(Utils.copy(self.current_actions)) do
-            local ibattler = self.party[iaction.character_id]
+        if all_processed then
+            for _,iaction in ipairs(Utils.copy(self.current_actions)) do
+                local ibattler = self.party[iaction.character_id]
 
-            local party_num = 1
-            local callback = function()
-                party_num = party_num - 1
-                if party_num == 0 then
-                    Utils.removeFromTable(self.current_actions, iaction)
-                    self:tryProcessNextAction()
+                local party_num = 1
+                local callback = function()
+                    party_num = party_num - 1
+                    if party_num == 0 then
+                        Utils.removeFromTable(self.current_actions, iaction)
+                        self:tryProcessNextAction()
+                    end
                 end
-            end
 
-            if iaction.party then
-                for _,party in ipairs(iaction.party) do
-                    local jbattler = self.party[self:getPartyIndex(party)]
+                if iaction.party then
+                    for _,party in ipairs(iaction.party) do
+                        local jbattler = self.party[self:getPartyIndex(party)]
 
-                    if jbattler ~= ibattler then
-                        party_num = party_num + 1
+                        if jbattler ~= ibattler then
+                            party_num = party_num + 1
 
-                        local dont_end = false
-                        if (keep_animation) then
-                            if Utils.containsValue(keep_animation, party) then
-                                dont_end = true
+                            local dont_end = false
+                            if (keep_animation) then
+                                if Utils.containsValue(keep_animation, party) then
+                                    dont_end = true
+                                end
                             end
-                        end
 
-                        if not dont_end then
-                            self:endActionAnimation(jbattler, iaction, callback)
-                        else
-                            callback()
+                            if not dont_end then
+                                self:endActionAnimation(jbattler, iaction, callback)
+                            else
+                                callback()
+                            end
                         end
                     end
                 end
-            end
 
 
-            local dont_end = false
-            if (keep_animation) then
-                if Utils.containsValue(keep_animation, ibattler.chara.id) then
-                    dont_end = true
+                local dont_end = false
+                if (keep_animation) then
+                    if Utils.containsValue(keep_animation, ibattler.chara.id) then
+                        dont_end = true
+                    end
                 end
-            end
 
-            if not dont_end then
-                self:endActionAnimation(ibattler, iaction, callback)
-            else
-                callback()
-            end
+                if not dont_end then
+                    self:endActionAnimation(ibattler, iaction, callback)
+                else
+                    callback()
+                end
 
-            if iaction.action == "DEFEND" then
-                ibattler.defending = false
-            end
+                if iaction.action == "DEFEND" then
+                    ibattler.defending = false
+                end
 
-            Kristal.callEvent("onBattleActionEnd", iaction, iaction.action, ibattler, iaction.target, dont_end)
+                Kristal.callEvent("onBattleActionEnd", iaction, iaction.action, ibattler, iaction.target, dont_end)
+            end
+        else
+            -- Process actions if we can
+            self:tryProcessNextAction()
         end
-    else
-        -- Process actions if we can
-        self:tryProcessNextAction()
-    end
+    end)
 end
 
 function LightBattle:onStateChange(old,new)
@@ -803,14 +814,9 @@ function LightBattle:onStateChange(old,new)
             end
         end
 
-        if not had_started then
-            for _,party in ipairs(self.party) do
-                party.chara:onTurnStart()
-            end
-            local party = self.party[self.current_selecting]
-            party.chara:onActionSelect(party, false)
-            self.encounter:onCharacterTurn(party, false)
-        end
+        local party = self.party[self.current_selecting]
+        party.chara:onActionSelect(party, false)
+        self.encounter:onCharacterTurn(party, false)
 
         if self.battle_ui.help_window then
             self.battle_ui.help_window:toggleVisibility(true)
@@ -878,13 +884,12 @@ function LightBattle:onStateChange(old,new)
             self.current_menu_y = 1
         end
 
-        if not self:isValidMenuLocation() then
+        if not self:isValidMenuLocation() and #self:getActiveEnemies() > 0 then
             repeat
+                self.current_menu_y = self.current_menu_y + 1
                 if not self.enemies[self.current_menu_y] then
                     self.current_menu_y = 1
-                    break
                 end
-                self.current_menu_y = self.current_menu_y + 1
             until(self:isValidMenuLocation())
         end
 
@@ -933,6 +938,7 @@ function LightBattle:onStateChange(old,new)
         end
 
         self.current_selecting = 0
+        self:toggleSoul(false)
         self.battle_ui:clearEncounterText()
         self.textbox_timer = 3 * 30
         self.use_textbox_timer = true
@@ -1016,7 +1022,9 @@ function LightBattle:onStateChange(old,new)
                 enemy.current_target = enemy:getTarget()
             end
             local cutscene_args = {self.encounter:getDialogueCutscene()}
-            if #cutscene_args > 0 then
+            if self.debug_wave then
+                self:setState("DIALOGUEEND")
+            elseif #cutscene_args > 0 then
                 self:startCutscene(unpack(cutscene_args)):after(function()
                     self:setState("DIALOGUEEND")
                 end)
@@ -1069,11 +1077,15 @@ function LightBattle:onStateChange(old,new)
     elseif new == "VICTORY" then
         self.music:stop()
         self.current_selecting = 0
+        self.forced_victory = true
 
         for _,battler in ipairs(self.party) do
             battler:setSleeping(false)
             battler.defending = false
             battler.action = nil
+            
+            battler.chara:setHealth(battler.chara:getHealth() - battler.karma)
+            battler.karma = 0
 
             battler.chara:resetBuffs()
 
@@ -1083,42 +1095,97 @@ function LightBattle:onStateChange(old,new)
             end
 
         end
+        
+        local win_text = ""
+        
+        if Game:isLight() then
 
-        self.money = self.encounter:getVictoryMoney(self.money) or self.money
+            self.money = self.encounter:getVictoryMoney(self.money) or self.money
 
-        if self.tension_bar.visible then
-            self.money = self.money + (math.floor((Game:getTension() * 2.5) / 20))
-        end
-
-        for _,battler in ipairs(self.party) do
-            for _,equipment in ipairs(battler.chara:getEquipment()) do
-                self.money = math.floor(equipment:applyMoneyBonus(self.money) or self.money)
+            if self.tension_bar.visible then
+                self.money = self.money + (math.floor((Game:getTension() * 2.5) / 30))
             end
-        end
 
-        self.money = math.floor(self.money)
-
-        self.xp = self.encounter:getVictoryXP(self.xp) or self.xp
-
-        local win_text = "[noskip]* YOU WON!\n* You earned " .. self.xp .. " EXP and " .. self.money .. " " .. Game:getConfig("lightCurrency"):lower() .. "."
-
-        Game.lw_money = Game.lw_money + self.money
-
-        if (Game.lw_money < 0) then
-            Game.lw_money = 0
-        end
-
-        for _,member in ipairs(self.party) do
-            local lv = member.chara:getLightLV()
-            member.chara:gainLightEXP(self.xp, true)
-
-            if lv ~= member.chara:getLightLV() then
-                win_text = "[noskip]* YOU WON!\n* You earned " .. self.xp .. " EXP and " .. self.money .. " " .. Game:getConfig("lightCurrency") .. ".\n* Your LOVE increased."
+            for _,battler in ipairs(self.party) do
+                for _,equipment in ipairs(battler.chara:getEquipment()) do
+                    self.money = math.floor(equipment:applyMoneyBonus(self.money) or self.money)
+                end
             end
+
+            self.money = math.floor(self.money)
+
+            self.money = self.encounter:getVictoryMoney(self.money) or self.money
+            self.xp = self.encounter:getVictoryXP(self.xp) or self.xp
+
+            win_text = "[noskip]* YOU WON!\n* You earned " .. self.xp .. " EXP and " .. self.money .. " " .. Game:getConfig("lightCurrency"):lower() .. "."
+
+            Game.lw_money = Game.lw_money + self.money
+
+            if (Game.lw_money < 0) then
+                Game.lw_money = 0
+            end
+
+            for _,member in ipairs(self.party) do
+                local lv = member.chara:getLightLV()
+                member.chara:gainLightEXP(self.xp, true)
+
+                if lv ~= member.chara:getLightLV() then
+                    win_text = "[noskip]* YOU WON!\n* You earned " .. self.xp .. " EXP and " .. self.money .. " " .. Game:getConfig("lightCurrency"):lower() .. ".\n* Your LOVE increased."
+                end
+            end
+
+            win_text = self.encounter:getVictoryText(win_text, self.money, self.xp) or win_text
+        else
+            if self.tension_bar.visible then
+                self.money = self.money + (math.floor(((Game:getTension() * 2.5) / 10)) * Game.chapter)
+            end
+
+            for _,battler in ipairs(self.party) do
+                for _,equipment in ipairs(battler.chara:getEquipment()) do
+                    self.money = math.floor(equipment:applyMoneyBonus(self.money) or self.money)
+                end
+            end
+
+            self.money = math.floor(self.money)
+
+            self.money = self.encounter:getVictoryMoney(self.money) or self.money
+            self.xp = self.encounter:getVictoryXP(self.xp) or self.xp
+            -- if (in_dojo) then
+            --     self.money = 0
+            -- end
+
+            Game.money = Game.money + self.money
+            Game.xp = Game.xp + self.xp
+
+            if (Game.money < 0) then
+                Game.money = 0
+            end
+
+            win_text = "[noskip]* YOU WON!\n* You earned " .. self.xp .. " EXP and " .. self.money .. " " .. Game:getConfig("darkCurrencyShort") .. "."
+            -- if (in_dojo) then
+            --     win_text == "* You won the battle!"
+            -- end
+            if self.used_violence and Game:getConfig("growStronger") then
+                local stronger = "You"
+
+                for _,battler in ipairs(self.party) do
+                    Game.level_up_count = Game.level_up_count + 1
+                    battler.chara:onLevelUp(Game.level_up_count)
+
+                    if battler.chara.id == Game:getConfig("growStrongerChara") then
+                        stronger = battler.chara:getName()
+                    end
+                end
+
+                win_text = "[noskip]* YOU WON!\n* You earned " .. self.money .. " " .. Game:getConfig("darkCurrencyShort") .. ".\n* "..stronger.." became stronger."
+
+                Assets.playSound("dtrans_lw", 0.7, 2)
+                --scr_levelup()
+            end
+
+            win_text = self.encounter:getVictoryText(win_text, self.money, self.xp) or win_text
         end
-
-        win_text = self.encounter:getVictoryText(win_text, self.money, self.xp) or win_text
-
+        
         if self.encounter.no_end_message then
             self:setState("TRANSITIONOUT")
             self.encounter:onBattleEnd()
@@ -1131,8 +1198,13 @@ function LightBattle:onStateChange(old,new)
         end
 
     elseif new == "TRANSITIONOUT" then
+        self.ended = true
         self.current_selecting = 0
-
+        if self.encounter_context and self.encounter_context:includes(ChaserEnemy) then
+            for _,enemy in ipairs(self.encounter_context:getGroupedEnemies(true)) do
+                enemy:onEncounterTransitionOut(enemy == self.encounter_context, self.encounter)
+            end
+        end
         Game.fader:transition(function() self:returnToWorld() end, nil, {speed = 10/30})
 
     elseif new == "DEFENDINGBEGIN" then
@@ -1239,6 +1311,8 @@ end
 function LightBattle:nextTurn()
   
     self.turn_count = self.turn_count + 1
+    
+    self.debug_wave = false
     if self.turn_count > 1 then
         if self.encounter:onTurnEnd() then
             return
@@ -1264,10 +1338,14 @@ function LightBattle:nextTurn()
     for _,enemy in ipairs(self.enemies) do
         enemy.selected_wave = nil
         enemy.hit_count = 0
+        enemy.active_msg = 0
+        enemy.x_number_offset = 0
+        enemy.post_health = nil
     end
 
     for _,battler in ipairs(self.party) do
         battler.hit_count = 0
+        battler.delay_turn_end = false
         if (battler.chara:getHealth() <= 0) and battler.chara:canAutoHeal() then
             battler:heal(battler.chara:autoHealAmount(), nil, true)
         end
@@ -1321,7 +1399,7 @@ function LightBattle:nextTurn()
         end
     end
 
-    if self.current_selecting ~= 0 then
+    if self.current_selecting ~= 0 and self.state ~= "ACTIONSELECT" then
         self:setState("ACTIONSELECT")
     end
 
@@ -1376,9 +1454,6 @@ function LightBattle:returnToWorld()
     end
 
     self.encounter:setFlag("done", true)
-    local all_enemies = {}
-    Utils.merge(all_enemies, self.defeated_enemies)
-    Utils.merge(all_enemies, self.enemies)
 
     self.music:stop()
     if self.resume_world_music then
@@ -1390,12 +1465,6 @@ function LightBattle:returnToWorld()
     Game.state = "OVERWORLD"
 
     Game:setFlag("current_battle_system#", nil)
-
-    if Game:getFlag("temporary_world_value#") == "dark" then
-        Game:setLight(false)
-        MagicalGlassLib:loadStorageAndEquips()
-        Game:setFlag("temporary_world_value#", nil)
-    end
 end
 
 function LightBattle:setActText(text, dont_finish)
@@ -1416,28 +1485,12 @@ end
 
 function LightBattle:shortActText(text)
     self:toggleSoul(false)
-    local advances = 3 --initial override so we can run it
-    local function recurseiveSHAT()
-        advances = advances + 1
-        if(advances >= 3) then
-            self.battle_ui:clearEncounterText()
-            advances = 0
-        
-            local t1, t2, t3 = table.remove(text,1), table.remove(text,1), table.remove(text,1)
-            local text_exhausted = not (t1 and t2 and t3) or #text == 0
-            local opt_shat = (not text_exhausted) and recurseiveSHAT
-            self.battle_ui.short_act_text_1:setText(t1 or "",  opt_shat)
-            self.battle_ui.short_act_text_2:setText(t2 or "",  opt_shat)
-            self.battle_ui.short_act_text_3:setText(t3 or "",  opt_shat)
+    self:setState("SHORTACTTEXT")
+    self.battle_ui:clearEncounterText()
 
-            if(text_exhausted) then
-                --this controls wheter or not we can advance to the next line?
-                self:setState("SHORTACTTEXT")
-            end
-        end
-    end
-    
-    recurseiveSHAT()
+    self.battle_ui.short_act_text_1:setText(text[1] or "")
+    self.battle_ui.short_act_text_2:setText(text[2] or "")
+    self.battle_ui.short_act_text_3:setText(text[3] or "")
 end
 
 function LightBattle:hurt(amount, exact)
@@ -1462,7 +1515,9 @@ function LightBattle:checkGameOver()
     if self.encounter:onGameOver() then
         return
     end
-    Game:gameOver(self:getSoulLocation())
+    Game.battle.timer:after(1/15, function()
+        Game:gameOver(self:getSoulLocation())
+    end)
 end
 
 function LightBattle:battleText(text,post_func)
@@ -1555,7 +1610,6 @@ function LightBattle:update()
     if self.state == "ATTACKING" then
         self:updateAttacking()
     elseif self.state == "ACTIONSDONE" then
-        self.actions_done_timer = Utils.approach(self.actions_done_timer, 0, DT)
         local any_hurt = false
         for _,enemy in ipairs(self.enemies) do
             if enemy.hurt_timer > 0 then
@@ -1573,7 +1627,7 @@ function LightBattle:update()
             if not self.encounter:onActionsEnd() then
                 self:setState("ENEMYDIALOGUE")
             end
-        elseif self.actions_done_timer == 0 and not any_hurt then
+        elseif not any_hurt then
             self.attackers = {}
             self.normal_attackers = {}
             self.auto_attackers = {}
@@ -1619,7 +1673,7 @@ function LightBattle:update()
         if self.arena:isNotTransitioning() then
 
             local soul_x, soul_y, soul_offset_x, soul_offset_y
-            local arena_x, arena_y, arena_w, arena_h, arena_shape
+            local arena_x, arena_y, arena_h, arena_shape
             local has_arena = true
             for _,wave in ipairs(self.waves) do
                 soul_x = wave.soul_start_x or soul_x
@@ -1685,6 +1739,7 @@ function LightBattle:update()
         self.waves = {}
 
         if self.state_reason == "WAVEENDED" and #self.arena.target_position == 0 and #self.arena.target_shape == 0 and not self.forced_victory then
+            Input.clear("cancel", true)
             self:nextTurn()
         end
     end
@@ -1799,7 +1854,7 @@ function LightBattle:draw()
         self.encounter:drawBackground()
     end
 
-    super.draw(self)
+    super:draw(self)
 
     self.encounter:draw()
 
@@ -1818,11 +1873,14 @@ function LightBattle:isValidMenuLocation()
         if self:getItemIndex() > #self.menu_items then
             return false
         end
-        if (self.current_menu_y > self.current_menu_rows) or (self.current_menu_y < 1) then
-            return false
-        end
-        if not self:isPagerMenu() and (self.current_menu_x > self.current_menu_columns) then
-            return false
+        if self:isPagerMenu() then
+            if (self.current_menu_y > self.current_menu_rows) or (self.current_menu_y < 1) then
+                return false
+            end
+        else
+            if (self.current_menu_x > Game.battle.current_menu_columns) or self.current_menu_x < 1 then
+                return false
+            end
         end
     elseif self.state == "ENEMYSELECT" then
         if self.current_menu_y > #self.enemies then
@@ -2083,8 +2141,6 @@ function LightBattle:removeSingleAction(action)
         return
     end
 
-    battler:resetSprite()
-
     if action.tp then
         if action.tp < 0 then
             Game:giveTension(-action.tp)
@@ -2162,6 +2218,11 @@ function LightBattle:getActiveParty()
 end
 
 function LightBattle:getActiveEnemies()
+    for _,enemy in pairs(self.enemies) do
+        if enemy.done_state == "PRE-DEATH" and enemy.health > 0 then
+            enemy.done_state = nil
+        end
+    end
     return Utils.filter(self.enemies, function(enemy) return not enemy.done_state end)
 end
 
@@ -2190,8 +2251,6 @@ function LightBattle:randomTargetOld()
         end
     end
 
-    target.should_darken = false
-    target.darken_timer = 0
     target.targeted = true
     return target
 end
@@ -2305,8 +2364,7 @@ function LightBattle:hurt(amount, exact, target)
         if (target == self.party[1]) and ((target.chara:getHealth() / target.chara:getStat("health")) < 0.35) then
             target = self:randomTargetOld()
         end
-
-        target.should_darken = false
+        
         target.targeted = true
     end
 
@@ -2570,8 +2628,9 @@ function LightBattle:onKeyPressed(key)
         if self.state == "DEFENDING" and key == "f" then
             self.encounter:onWavesDone()
         end
-        if self.soul and key == "j" then
+        if self.soul and self.soul.visible and self.state == "DEFENDING" and key == "j" then
             self.soul:shatter(6)
+            self:toggleSoul(false)
             self:getPartyBattler(Game:getSoulPartyMember().id):hurt(math.huge)
         end
         if key == "b" then
@@ -2585,23 +2644,16 @@ function LightBattle:onKeyPressed(key)
         if key == "n" then
             NOCLIP = not NOCLIP
         end
-        if key == "delete" then
-            for _,party in ipairs(self.party) do
-                party.chara:setHealth(999)
-            end
-        end
     end
 
     if self.state == "MENUSELECT" then
+        local menu_width = self.current_menu_columns
+        local menu_height = math.ceil(#self.menu_items / self.current_menu_columns)
         if Input.isConfirm(key) then
-
-            if self.battle_ui.help_window then
-                self.battle_ui.help_window:setTension(0)
-            end
 
             local menu_item = self.menu_items[self:getItemIndex()]
             local can_select = self:canSelectMenuItem(menu_item)
-            if Game.battle.encounter:onMenuSelect(self.state_reason, menu_item, can_select) then return end
+            if self.encounter:onMenuSelect(self.state_reason, menu_item, can_select) then return end
             if Kristal.callEvent("onBattleMenuSelect", self.state_reason, menu_item, can_select) then return end
 
             if not self:isPagerMenu() then
@@ -2616,6 +2668,8 @@ function LightBattle:onKeyPressed(key)
                 return
             end
         elseif Input.isCancel(key) then
+            if self.encounter:onMenuCancel(self.state_reason, menu_item) then return end
+            if Kristal.callEvent("onBattleMenuCancel", self.state_reason, menu_item, can_select) then return end
             Game:setTensionPreview(0)
 
             if not self:isPagerMenu() then
@@ -2629,21 +2683,20 @@ function LightBattle:onKeyPressed(key)
             else
                 self:setState("ACTIONSELECT", "CANCEL")
             end
+            Input.clear(key, true)
             return
         elseif Input.is("left", key) then
             local page = math.ceil(self.current_menu_x / self.current_menu_columns) - 1
             local max_page = math.ceil(#self.menu_items / (self.current_menu_columns * self.current_menu_rows))
-            local old = self.current_menu_x
+            local old_position = self.current_menu_x
 
             self.current_menu_x = self.current_menu_x - 1
-
             if self.current_menu_x < 1 then -- vomit
                 self.current_menu_x = self.current_menu_columns * (max_page - self.current_menu_x)
                 while not self:isValidMenuLocation() do
                     self.current_menu_x = self.current_menu_x - 1
                 end
-
-                if not self:isPagerMenu() and self.current_menu_columns > 1 and self.current_menu_x % 2 ~= 0 then
+                if not self:isPagerMenu() and self.current_menu_x % 2 ~= 0 and menu_width > 1 and #self.menu_items > 1 then
                     self.current_menu_y = self.current_menu_y - 1
                     self.current_menu_x = self.current_menu_columns
 
@@ -2652,17 +2705,13 @@ function LightBattle:onKeyPressed(key)
                     end
                 end
             end
-
-            if self.current_menu_x ~= old then
+            if self.current_menu_x ~= old_position then
                 self:playMoveSound()
             end
-
         elseif Input.is("right", key) then
-            if self.current_menu_columns > 1 then
-                self:playMoveSound()
-            end
+            local old_position = self.current_menu_x
             self.current_menu_x = self.current_menu_x + 1
-            if not self:isPagerMenu() and not self:isValidMenuLocation() and self.current_menu_columns > 1 then
+            if not self:isPagerMenu() and not self:isValidMenuLocation() and menu_width > 1 and #self.menu_items > 1 then
                 if self.current_menu_x % 2 == 0 then
                     self.current_menu_y = self.current_menu_y - 1
                     if not self:isValidMenuLocation() then
@@ -2672,23 +2721,37 @@ function LightBattle:onKeyPressed(key)
                             self.current_menu_x = 1
                         end
                     end
-                elseif not self:isValidMenuLocation() then
+                end
+                if not self:isValidMenuLocation() then
                     self.current_menu_x = 1
                 end
             elseif not self:isValidMenuLocation() then
                 self.current_menu_x = 1  
             end
-            
+            if self:isPagerMenu() or self.current_menu_x ~= old_position then
+                self:playMoveSound()
+            end
         end
         if Input.is("up", key) then
             local old_position = self.current_menu_y
             self.current_menu_y = self.current_menu_y - 1
             if (self.current_menu_y < 1) or (not self:isValidMenuLocation()) then
-                self.current_menu_y = self.current_menu_rows
-                if not self:isValidMenuLocation() then
-                    self.current_menu_y = self.current_menu_rows - 1
+                if self:isPagerMenu() then
+                    self.current_menu_y = self.current_menu_rows
                     if not self:isValidMenuLocation() then
-                        self.current_menu_y = self.current_menu_rows - 2
+                        self.current_menu_y = self.current_menu_rows - 1
+                        if not self:isValidMenuLocation() then
+                            self.current_menu_y = self.current_menu_rows - 2
+                        end
+                    end
+                else
+                    self.current_menu_y = menu_height
+                    if not self:isValidMenuLocation() then
+                        if #self.menu_items <= 6 then
+                            self.current_menu_y = self.current_menu_y - 1
+                        else
+                            self.current_menu_x = self.current_menu_x - 1
+                        end
                     end
                 end
             end
@@ -2697,15 +2760,24 @@ function LightBattle:onKeyPressed(key)
             end
         elseif Input.is("down", key) then
             local old_position = self.current_menu_y
-            self.current_menu_y = self.current_menu_y + 1
-            if (self.current_menu_y > self.current_menu_rows) or (not self:isValidMenuLocation()) then
-                self.current_menu_y = 1
+            if self:isPagerMenu() then 
+                self.current_menu_y = self.current_menu_y + 1
+                if (self.current_menu_y > self.current_menu_rows) or (not self:isValidMenuLocation()) then
+                    self.current_menu_y = 1
+                end
+            else
+                if self:getItemIndex() % 6 == 0 and #self.menu_items % 6 == 1 and self.current_menu_y == menu_height - 1 and menu_width == 2 then
+                    self.current_menu_x = self.current_menu_x - 1
+                end
+                self.current_menu_y = self.current_menu_y + 1
+                if self.current_menu_y > menu_height or not self:isValidMenuLocation() then
+                    self.current_menu_y = 1
+                end
             end
             if self:isPagerMenu() or self.current_menu_y ~= old_position then
                 self:playMoveSound()
             end
         end
-
     elseif self.state == "BUTNOBODYCAME" then
         if Input.isConfirm(key) then
             self.music:stop()
@@ -2726,20 +2798,24 @@ function LightBattle:onKeyPressed(key)
             self.encounter:onBattleEnd()
         end
 
-    elseif self.state == "ENEMYSELECT" or self.state == "XACTENEMYSELECT" then
+    elseif self.state == "ENEMYSELECT" then
 
         if Input.isConfirm(key) then
+            if self.encounter:onEnemySelect(self.state_reason, self.current_menu_y) then return end
+            if Kristal.callEvent("onBattleEnemySelect", self.state_reason, self.current_menu_y) then return end
             self.enemyselect_cursor_memory[self.state_reason] = self.current_menu_y
 
             self:playSelectSound()
             if #self.enemies == 0 then return end
             self.selected_enemy = self.current_menu_y
-            if self.state == "XACTENEMYSELECT" then
+            if self.state_reason == "XACT" then
                 local xaction = Utils.copy(self.selected_xaction)
                 if xaction.default then
                     xaction.name = self.enemies[self.selected_enemy]:getXAction(self.party[self.current_selecting])
                 end
                 self:pushAction("XACT", self.enemies[self.selected_enemy], xaction)
+            elseif self.state_reason == "SPARE" then
+                self:pushAction("SPARE", self.enemies[self.selected_enemy])
             elseif self.state_reason == "ACT" then
                 self:clearMenuItems()
                 local enemy = self.enemies[self.selected_enemy]
@@ -2784,24 +2860,24 @@ function LightBattle:onKeyPressed(key)
             return
         end
         if Input.isCancel(key) then
+            if self.encounter:onEnemyCancel(self.state_reason, self.current_menu_y) then return end
+            if Kristal.callEvent("onBattleEnemyCancel", self.state_reason, self.current_menu_y) then return end
             self.enemyselect_cursor_memory[self.state_reason] = self.current_menu_y
 
-            if self.state_reason == "SPELL" then
+            if self.state_reason == "SPELL" or self.state_reason == "XACT" then
                 self:setState("MENUSELECT", "SPELL")
             elseif self.state_reason == "ITEM" then
                 self:setState("MENUSELECT", "ITEM")
             else
                 self:setState("ACTIONSELECT", "CANCEL")
             end
+            Input.clear(key, true)
             return
         end
         if Input.is("up", key) then
             if #self.enemies == 0 then return end
             local old_location = self.current_menu_y
-            local give_up = 0
             repeat
-                give_up = give_up + 1
-                if give_up > 100 then return end
                 self.current_menu_y = self.current_menu_y - 1
                 if self.current_menu_y < 1 then
                     self.current_menu_y = #self.enemies
@@ -2814,10 +2890,7 @@ function LightBattle:onKeyPressed(key)
         elseif Input.is("down", key) then
             local old_location = self.current_menu_y
             if #self.enemies == 0 then return end
-            local give_up = 0
             repeat
-                give_up = give_up + 1
-                if give_up > 100 then return end
                 self.current_menu_y = self.current_menu_y + 1
                 if self.current_menu_y > #self.enemies then
                     self.current_menu_y = 1
@@ -2830,6 +2903,8 @@ function LightBattle:onKeyPressed(key)
         end
     elseif self.state == "PARTYSELECT" then
         if Input.isConfirm(key) then
+            if self.encounter:onPartySelect(self.state_reason, self.current_menu_y) then return end
+            if Kristal.callEvent("onBattlePartySelect", self.state_reason, self.current_menu_y) then return end
             self.partyselect_cursor_memory[self.state_reason] = self.current_menu_y
 
             self:playSelectSound()
@@ -2843,6 +2918,8 @@ function LightBattle:onKeyPressed(key)
             return
         end
         if Input.isCancel(key) then
+            if self.encounter:onPartyCancel(self.state_reason, self.current_menu_y) then return end
+            if Kristal.callEvent("onBattlePartyCancel", self.state_reason, self.current_menu_y) then return end
             self.partyselect_cursor_memory[self.state_reason] = self.current_menu_y
             
             if self.state_reason == "SPELL" then
@@ -2852,6 +2929,7 @@ function LightBattle:onKeyPressed(key)
             else
                 self:setState("ACTIONSELECT", "CANCEL")
             end
+            Input.clear(key, true)
             return
         end
         if Input.is("up", key) then
@@ -2900,23 +2978,28 @@ function LightBattle:handleActionSelectInput(key)
         if Input.isConfirm(key) then
             actbox:select()
             self:playSelectSound()
+            self:toggleSoul(true)
             return
         elseif Input.isCancel(key) then
             local old_selecting = self.current_selecting
 
-            --self:previousParty()
+            self:previousParty()
 
+            if self.current_selecting ~= old_selecting then
+                self:playMoveSound()
+                self.battle_ui.action_boxes[self.current_selecting]:unselect()
+            end
             if self.current_selecting ~= old_selecting then
                 self:playMoveSound()
             end
             return
-        elseif Input.is("left", key) then
+        elseif Input.is("left", key) and #self.battle_ui.action_boxes[1].buttons > 1 then
             actbox.selected_button = actbox.selected_button - 1
             self:playMoveSound()
             if actbox then
                 actbox:snapSoulToButton()
             end
-        elseif Input.is("right", key) then
+        elseif Input.is("right", key) and #self.battle_ui.action_boxes[1].buttons > 1 then
             actbox.selected_button = actbox.selected_button + 1
             self:playMoveSound()
             if actbox then
@@ -2936,7 +3019,7 @@ function LightBattle:handleAttackingInput(key)
 
             for _,attack in ipairs(self.battle_ui.attack_box.lanes) do
                 if not attack.attacked then
-                    close = self.battle_ui.attack_box:getClose(attack)
+                    close = self.battle_ui.attack_box:getFirstBolt(attack)
                     if not closest then
                         closest = close
                         table.insert(closest_attacks, attack)
@@ -2949,7 +3032,7 @@ function LightBattle:handleAttackingInput(key)
                 end
             end
 
-            if closest then
+            if closest and (closest <= 280 or not Game.battle.multi_mode) then
                 for _,attack in ipairs(closest_attacks) do
                     local points, stretch = self.battle_ui.attack_box:hit(attack)
 

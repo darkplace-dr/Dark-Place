@@ -19,12 +19,17 @@ function item:init(inventory)
 
     self.heal_amount = 18
 
+    -- Shop description
+    self.shop = "Heals 18HP\n(Looks\nlike a\ncrab.)"
     -- Default shop price (sell price is halved)
     self.price = 25
     -- Default shop sell price
     self.sell_price = 5
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "An aquatic fruit that resembles a crustacean."
 
     -- Light world check text
     self.check = "Heals 18 HP\n* An aquatic fruit that\nresembles a crustacean."

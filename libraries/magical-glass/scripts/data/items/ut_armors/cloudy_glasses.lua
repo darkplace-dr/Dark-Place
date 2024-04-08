@@ -7,18 +7,24 @@ function item:init()
     self.name = "Cloudy Glasses"
     self.short_name = "ClodGlass"
     self.serious_name = "Glasses"
+    self.use_name = "glasses"
 
     -- Item type (item, key, weapon, armor)
     self.type = "armor"
     -- Whether this item is for the light world
     self.light = true
 
+    -- Shop description
+    self.shop = "Invincible\nlonger"
     -- Default shop price (sell price is halved)
     self.price = 35
     -- Default shop sell price
     self.sell_price = 50
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Glasses marred with wear."
 
     -- Light world check text
     self.check = {
@@ -39,10 +45,6 @@ end
 
 function item:showEquipText(target)
     Game.world:showText("* "..target:getNameOrYou().." equipped the glasses.")
-end
-
-function item:getLightBattleText(user, target)
-    return "* "..target.chara:getNameOrYou().." equipped the glasses."
 end
 
 return item

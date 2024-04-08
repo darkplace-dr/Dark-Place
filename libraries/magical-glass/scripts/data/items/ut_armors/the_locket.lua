@@ -17,6 +17,9 @@ function item:init()
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "You can feel it beating."
+
     -- Light world check text
     self.check = "Armor DF 99\n* You can feel it beating."
 
@@ -36,7 +39,20 @@ function item:showEquipText()
 end
 
 function item:getLightBattleText(user, target)
+    -- if user == target then
+        -- return "* Right where it belongs."
+    -- else
+        -- return "* "..user.chara:getNameOrYou().." gave the "..self:getUseName().." to "..target.chara:getNameOrYou(true)..".\n* Right where it belongs."
+    -- end
     return "* Right where it belongs."
+end
+
+function item:getBattleText(user, target)
+    if user == target then
+        return "* Right where it belongs."
+    else
+        return "* "..user.chara:getName().." gave the "..self:getUseName().." to "..target.chara:getName()..".\n* Right where it belongs."
+    end
 end
 
 return item

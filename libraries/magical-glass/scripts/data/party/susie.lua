@@ -3,8 +3,10 @@ local character, super = Class("susie", true)
 function character:init()
     super.init(self)
     
-    self.lw_portrait = Game:getConfig("ralseiStyle") == 1 and "face/susie/bangs_smile" or "face/susie/smile"
+    -- Light world portrait in the menu (saved to the save file)
+    self.lw_portrait = Game:getConfig("susieStyle") == 1 and "face/susie/bangs_smile" or "face/susie/smile"
 
+    self.lw_health = 30
     -- Light world base stats (saved to the save file)
     self.lw_stats = {
         health = 30,
@@ -14,7 +16,7 @@ function character:init()
     }
 
     -- Default light world equipment item IDs (saves current equipment)
-    self.lw_weapon_default = "weapons/toothbrush"
+    self.lw_weapon_default = "light/toothbrush"
     self.lw_armor_default = "light/bandage"
 
 end

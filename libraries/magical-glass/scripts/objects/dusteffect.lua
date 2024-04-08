@@ -2,16 +2,13 @@
 ---@overload fun(...) : DustEffect
 local DustEffect, super = Class(Object, "DustEffect") -- made by nyako. thank you! -sam
 
-function DustEffect:init(texture, x, y, after)
+function DustEffect:init(texture, x, y)
     super.init(self, x, y)
 
     if type(texture) == "string" then
         texture = Assets.getTexture(texture) or (Assets.getFrames(texture)[1])
     end
     self.texture = texture
-
-    self.done = false
-    self.after_func = after
 
     self.width, self.height = texture:getWidth(), texture:getHeight()
 

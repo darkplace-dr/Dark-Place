@@ -16,6 +16,9 @@ function item:init()
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Made of plastic.\nA rarity nowadays."
+
     -- Light world check text
     self.check = "Weapon AT 3\n* Made of plastic.\n* A rarity nowadays."
 
@@ -29,8 +32,8 @@ function item:init()
         attack = 3
     }
 
-    self.bolt_speed = self.bolt_speed * 1.25
-    self.bolt_direction = "random"
+    self.light_bolt_speed = self.light_bolt_speed * 1.25
+    self.light_bolt_direction = "random"
 
 end
 
@@ -39,7 +42,12 @@ function item:showEquipText(target)
 end
 
 function item:getLightBattleText(user, target)
-    return "* "..target.chara:getNameOrYou().." equipped Toy Knife."
+    -- if user == target then
+        -- return "* ".. user.chara:getNameOrYou() .. " equipped " .. self:getUseName() .. "."
+    -- else
+        -- return "* "..user.chara:getNameOrYou().." gave "..self:getUseName().." to "..target.chara:getNameOrYou(true).." and ".. target.chara:getNameOrYou(true) .. " equipped it."
+    -- end
+    return "* ".. target.chara:getNameOrYou() .. " equipped " .. self:getUseName() .. "."
 end
 
 

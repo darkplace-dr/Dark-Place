@@ -7,6 +7,8 @@ function item:init(inventory)
     self.name = "Monster Candy"
     self.short_name = "MnstrCndy"
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
@@ -19,6 +21,9 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Has a distinct, non licorice flavor."
+
     -- Light world check text
     self.check = "Heals 10 HP\n* Has a distinct,[wait:10]\nnon licorice flavor."
 
@@ -30,9 +35,6 @@ function item:init(inventory)
     self.result_item = nil
     -- Will this item be instantly consumed in battles?
     self.instant = false
-    
-    -- Default dark item conversion for this item
-    self.dark_item = "dark_candy"
 end
 
 function item:getWorldUseText(target)

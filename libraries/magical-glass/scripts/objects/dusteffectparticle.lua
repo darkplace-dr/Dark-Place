@@ -1,6 +1,6 @@
 local DustEffectParticle, super = Class(Object, "DustEffectParticle")
 
-function DustEffectParticle:init(color, x, y, after)
+function DustEffectParticle:init(color, x, y)
     super.init(self, x, y)
 
     self.color = Utils.unpackColor({color})

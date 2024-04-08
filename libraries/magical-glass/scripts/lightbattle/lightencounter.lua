@@ -15,7 +15,7 @@ function LightEncounter:init()
 
     -- Whether the default grid background is drawn
     self.background = true
-    self.background_image = "ui/lightbattle/backgrounds/battle"
+    self.background_image = Game:isLight() and "ui/lightbattle/backgrounds/battle" or "ui/lightbattle/backgrounds/battle_dark"
 
     -- The music used for this encounter
     self.music = "battleut"
@@ -31,6 +31,9 @@ function LightEncounter:init()
 
     -- A copy of battle.defeated_enemies, used to determine how an enemy has been defeated.
     self.defeated_enemies = nil
+    
+    -- Whether Karma (KR) UI changes will appear.
+    self.karma_mode = false
 
     self.can_flee = true
 
@@ -46,7 +49,8 @@ function LightEncounter:init()
 end
 
 function LightEncounter:onSoulTransition()
-    Game.battle.fake_player = Game.battle:addChild(FakeClone(Game.world.player, Game.world.player:getScreenPos()))
+    local soul_char = Game.world:getPartyCharacterInParty(Game:getSoulPartyMember())
+    Game.battle.fake_player = Game.battle:addChild(FakeClone(soul_char, soul_char:getScreenPos()))
     Game.battle.fake_player.layer = Game.battle.fader.layer + 1
 
     Game.battle.timer:script(function(wait)
@@ -108,6 +112,8 @@ end
 
 function LightEncounter:onNoTransition()
     Game.battle.timer:after(1/30, function()
+        Game.battle.fader:fadeIn(nil, {speed=5/30})
+        Game.battle.transitioned = true
         self:setBattleState()
     end)
 end
@@ -148,27 +154,67 @@ function LightEncounter:onFlee()
 
     Assets.playSound("escaped")
     
+    for _,battler in ipairs(Game.battle.party) do
+        battler.chara:setHealth(battler.chara:getHealth() - battler.karma)
+        battler.karma = 0
+    end
+    
     local money = self:getVictoryMoney(Game.battle.money) or Game.battle.money
     local xp = self:getVictoryXP(Game.battle.xp) or Game.battle.xp
 
-    if money ~= 0 or xp ~= 0 then
-        for _,battler in ipairs(Game.battle.party) do
-            for _,equipment in ipairs(battler.chara:getEquipment()) do
-                money = math.floor(equipment:applyMoneyBonus(money) or money)
+    if money ~= 0 or xp ~= 0 or Game.battle.used_violence and Game:getConfig("growStronger") and not Game:isLight() then
+        if Game:isLight() then
+            for _,battler in ipairs(Game.battle.party) do
+                for _,equipment in ipairs(battler.chara:getEquipment()) do
+                    money = math.floor(equipment:applyMoneyBonus(money) or money)
+                end
             end
-        end
 
-        Game.lw_money = Game.lw_money + math.floor(money)
+            Game.lw_money = Game.lw_money + math.floor(money)
 
-        if (Game.lw_money < 0) then
-            Game.lw_money = 0
-        end
+            if (Game.lw_money < 0) then
+                Game.lw_money = 0
+            end
 
-        self.used_flee_message = "* Ran away with " .. xp .. " EXP\n  and " .. money .. " " .. Game:getConfig("lightCurrency"):upper() .. "."
+            self.used_flee_message = "* Ran away with " .. xp .. " EXP\n  and " .. money .. " " .. Game:getConfig("lightCurrency"):upper() .. "."
 
-        for _,member in ipairs(Game.battle.party) do
-            local lv = member.chara:getLightLV()
-            member.chara:gainLightEXP(xp, true)
+            for _,member in ipairs(Game.battle.party) do
+                local lv = member.chara:getLightLV()
+                member.chara:gainLightEXP(xp, true)
+            end
+        else
+            for _,battler in ipairs(Game.battle.party) do
+                for _,equipment in ipairs(battler.chara:getEquipment()) do
+                    money = math.floor(equipment:applyMoneyBonus(money) or money)
+                end
+            end
+
+            Game.money = Game.money + math.floor(money)
+            Game.xp = Game.xp + xp
+
+            if (Game.money < 0) then
+                Game.money = 0
+            end
+            
+            if Game.battle.used_violence and Game:getConfig("growStronger") then
+                local stronger = "You"
+
+                for _,battler in ipairs(Game.battle.party) do
+                    Game.level_up_count = Game.level_up_count + 1
+                    battler.chara:onLevelUp(Game.level_up_count)
+
+                    if battler.chara.id == Game:getConfig("growStrongerChara") then
+                        stronger = battler.chara:getName()
+                    end
+                end
+
+                self.used_flee_message = "* Ran away with " .. money .. " " .. Game:getConfig("darkCurrencyShort") .. ".\n* "..stronger.." became stronger."
+
+                Assets.playSound("dtrans_lw", 0.7, 2)
+                --scr_levelup()
+            else
+                self.used_flee_message = "* Ran away with " .. xp .. " EXP\n  and " .. money .. " " .. Game:getConfig("darkCurrencyShort") .. "."
+            end
         end
     else
         self.used_flee_message = self:getFleeMessage()
@@ -192,7 +238,15 @@ function LightEncounter:beforeStateChange(old, new) end
 function LightEncounter:onStateChange(old, new) end
 
 function LightEncounter:onActionSelect(battler, button) end
-function LightEncounter:onMenuSelect(state, item, can_select) end
+
+function LightEncounter:onMenuSelect(state_reason, item, can_select) end
+function LightEncounter:onMenuCancel(state_reason, item) end
+
+function LightEncounter:onEnemySelect(state_reason, enemy_index) end
+function LightEncounter:onEnemyCancel(state_reason, enemy_index) end
+
+function LightEncounter:onPartySelect(state_reason, party_index) end
+function LightEncounter:onPartyCancel(state_reason, party_index) end
 
 function LightEncounter:onGameOver() end
 function LightEncounter:onReturnToWorld(events) end
@@ -229,7 +283,7 @@ function LightEncounter:addEnemy(enemy, x, y, ...)
     if x and y then
         enemy_obj:setPosition(x, y)
     else
-        local x, y = SCREEN_WIDTH/2 + math.floor((#enemies + 1) / 2) * 120 * ((#enemies % 2 == 0) and -1 or 1) - 3, 240
+        local x, y = SCREEN_WIDTH/2 + math.floor((#enemies + 1) / 2) * 120 * ((#enemies % 2 == 0) and -1 or 1), 240
         enemy_obj:setPosition(x, y)
     end
 

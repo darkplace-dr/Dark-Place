@@ -4,6 +4,8 @@ function item:init(inventory)
     -- this guy's probably pretty happy he got moved to an entirely different game
     super.init(self)
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Display name
     self.name = "Snowman Piece"
     self.short_name = "SnowPiece"
@@ -19,6 +21,9 @@ function item:init(inventory)
     self.sell_price = 40
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Please take this to the ends of the earth."
 
     -- Light world check text
     self.check = "Heals 45 HP\n* Please take this to the\nends of the earth."

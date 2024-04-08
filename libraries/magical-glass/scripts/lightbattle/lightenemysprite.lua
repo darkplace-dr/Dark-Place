@@ -58,7 +58,6 @@ function LightEnemySprite:resetSprite(ignore_actor_callback)
     end
 
     for _,part in pairs(self.parts) do
-        print(part.sprite, part.sprite and type(part.sprite) == "function")
         if part.sprite and type(part.sprite) == "function" then
             error("LightEnemyBattler sprite parts are now created in \"create_sprite\" instead of \"sprite.\"")
         end
@@ -88,6 +87,10 @@ function LightEnemySprite:resetSprite(ignore_actor_callback)
     end
 
     self.actor:onResetSprite(self)
+end
+
+function LightEnemySprite:getPart(part_id)
+    return self.parts[part_id]
 end
 
 function LightEnemySprite:update()

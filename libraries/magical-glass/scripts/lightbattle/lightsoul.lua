@@ -390,7 +390,7 @@ function LightSoul:update()
             -- to avoid issues with cacheing inside onCollide
             table.insert(collided_bullets, bullet)
         end
-        if self.inv_timer == 0 then
+        if self.inv_timer == 0 and Game.battle:getState() == "DEFENDING" then
             if bullet.tp ~= 0 and bullet:collidesWith(self.graze_collider) then
                 if bullet.grazed then
                     Game:giveTension(bullet.tp * DT * self.graze_tp_factor)

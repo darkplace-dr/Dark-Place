@@ -22,6 +22,9 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "?????"
+
     -- Light world check text
     self.check = "Hurts 1 HP\n* ?????"
 
@@ -73,6 +76,16 @@ function item:onLightBattleUse(user, target)
         target.chara:setHealth(target.chara:getHealth() - 1)
         self:battleUseSound(user, target, true)
         Game.battle:battleText(self:getLightBattleText(user, target, true))
+    end
+    return true
+end
+
+function item:onBattleUse(user, target)
+    if target.chara:getHealth() <= 2 then
+        target:heal(math.huge)
+    else
+        target.chara:setHealth(target.chara:getHealth() - 1)
+        Assets.stopAndPlaySound("hurt")
     end
     return true
 end

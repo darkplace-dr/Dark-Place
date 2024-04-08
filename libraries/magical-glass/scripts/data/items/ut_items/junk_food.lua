@@ -18,12 +18,17 @@ function item:init(inventory)
 
     self.heal_amount = 17
 
+    -- Shop description
+    self.shop = "Heals 17HP\nHas a big\nbite out of\nit."
     -- Default shop price (sell price is halved)
     self.price = 25
     -- Default shop sell price
     self.sell_price = 1
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Food that was probably once thrown away."
 
     -- Light world check text
     self.check = "Heals 17 HP\n* Food that was probably\nonce thrown away."

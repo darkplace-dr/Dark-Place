@@ -1,37 +1,45 @@
 local LightAttackBar, super = Class(Object)
 
-function LightAttackBar:init(x, y, battler)
+function LightAttackBar:init(x, y, battler, scale_y)
     super.init(self, x, y)
 
     self.battler = battler
+    
+    self.scale_y = scale_y or 1
+
+    self.hit = false
 
     self.sprite = Sprite("ui/lightbattle/targetchoice")
     self.active_sprite = "ui/lightbattle/targetchoice_1"
     self.inactive_sprite = "ui/lightbattle/targetchoice_2"
     self.fade_sprite = "ui/lightbattle/targetchoice_fade"
+
     self.sprite:setOrigin(0.5, 0.5)
-    self.sprite.color = self.battler.chara:getLightAttackBarColor() or {1, 1, 1, 1}
+    self.sprite.color = {self.battler.chara:getLightAttackBarColor()}
     self:addChild(self.sprite)
 
     self.perfect = false
     self.perfect_counter = 2
     self.bursting = false
+    self.flashing = false
 
     self.fading = false
     self.fade_speed = nil
 
     self.flash_speed = 1/15
     self.burst_speed = 0.1
-    
 end
 
 function LightAttackBar:flash(flash_speed)
     self.sprite:play(self.flash_speed, true)
+    self.hit = true
+    self.flashing = true
 end
 
 function LightAttackBar:burst()
     self.sprite:setSprite(self.fade_sprite)
     self.bursting = true
+    self.hit = true
 end
 
 function LightAttackBar:fade(speed, direction)

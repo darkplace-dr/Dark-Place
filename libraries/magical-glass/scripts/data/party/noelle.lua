@@ -3,8 +3,10 @@ local character, super = Class("noelle", true)
 function character:init()
     super.init(self)
 
+    -- Light world portrait in the menu (saved to the save file)
     self.lw_portrait = "face/noelle/smile"
 
+    self.lw_health = 20
     -- Light world base stats (saved to the save file)
     self.lw_stats = {
         health = 20,
@@ -14,7 +16,7 @@ function character:init()
     }
 
     -- Default light world equipment item IDs (saves current equipment)
-    self.lw_weapon_default = "weapons/ring"
+    self.lw_weapon_default = "light/ring"
     self.lw_armor_default = "light/wristwatch"
     
     if Kristal.getLibConfig("magical-glass", "debug") then
@@ -24,6 +26,12 @@ function character:init()
 
         self:addSpell("snowgrave")
         self:addSpell("rude_buster")
+        self:addSpell("red_buster")
+        self:addSpell("pacify")
+        self:addSpell("dual_heal")
+        self:addSpell("ultimate_heal")
+        
+        self.undertale_movement = true
     end
 
 end

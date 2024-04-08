@@ -6,6 +6,8 @@ function item:init(inventory)
     -- Display name
     self.name = "Snail Pie"
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
@@ -15,6 +17,9 @@ function item:init(inventory)
     self.sell_price = 350
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "An acquired taste."
 
     -- Light world check text
     self.check = "Heals Some HP\n* An acquired taste."
@@ -57,6 +62,20 @@ function item:onLightBattleUse(user, target)
         Game.battle:battleText(self:getLightBattleText(user, target).."\n* Your HP was maxed out.")
     else
         Game.battle:battleText(self:getLightBattleText(user, target).."\n* "..target.chara:getName().."'s HP was maxed out.")
+    end
+
+    return true
+end
+
+function item:onBattleUse(user, target)
+    if self.target == "ally" then
+        local old_health = target.chara:getHealth()
+        target:heal(math.huge)
+        if old_health < target.chara:getStat("health") then
+            target.chara:setHealth(target.chara:getStat("health") - 1)
+        end
+    elseif self.target == "enemy" then
+        target:heal(math.huge)
     end
 
     return true

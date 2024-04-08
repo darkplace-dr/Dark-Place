@@ -18,12 +18,17 @@ function item:init(inventory)
 
     self.heal_amount = 10
 
+    -- Shop description
+    self.shop = "Heals 10HP\nSPEED\nup in\nbattle."
     -- Default shop price (sell price is halved)
     self.price = 18
     -- Default shop sell price
     self.sell_price = 5
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Made from glowing marshwater."
 
     -- Light world check text
     self.check = "Heals 10 HP\n* Made from glowing marshwater.\n* Increases SPEED for one battle."
@@ -55,6 +60,20 @@ function item:onLightBattleUse(user, target)
     end
     target:heal(amount)
     Game.battle:battleText(self:getLightBattleText(user, target).."\n"..self:getLightBattleHealingText(user, target, amount))
+    return true
+end
+
+function item:onBattleUse(user, target)
+    if Game.battle.soul_speed_bonus < 4 then
+        Game.battle.soul_speed_bonus = Game.battle.soul_speed_bonus + 1
+    end
+    Assets.stopAndPlaySound("speedup")
+
+    local amount = self:getBattleHealAmount(target.chara.id)
+    for _,equip in ipairs(user.chara:getEquipment()) do
+        amount = equip:applyHealBonus(amount)
+    end
+    target:heal(amount)
     return true
 end
 

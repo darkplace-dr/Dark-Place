@@ -1,14 +1,22 @@
-local item, super = Class("light/egg", trye)
+local item, super = Class("light/egg", true)
 
 function item:init()
     super.init(self)
 
-    -- Item this item will get turned into when consumed
-    self.result_item = "light/egg"
+    self.can_sell = false
+end
+
+function item:onBattleSelect(user, target)
+    return false
 end
 
 function item:battleUseSound(user, target)
     Assets.playSound("egg")
+end
+
+function item:onBattleUse(user, target)
+    Assets.playSound("egg")
+    return true
 end
 
 return item

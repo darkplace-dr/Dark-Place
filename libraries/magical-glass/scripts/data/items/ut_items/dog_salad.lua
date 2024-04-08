@@ -21,6 +21,9 @@ function item:init(inventory)
     -- Whether the item can be sold
     self.can_sell = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "(Hit Poodles.)"
+
     -- Light world check text
     self.check = "Heals ?? HP\n* Recovers HP.\n* (Hit Poodles.)"
 
@@ -77,18 +80,18 @@ function item:onWorldUse(target)
         amount = 2
     end
     if dogsad == 3 then
-        self.heal_amount = 999
+        self.heal_amount = math.huge
     end
 
     if self.target == "ally" then
         self:worldUseSound(target)
-        amount = amount + bonus
+        amount = amount
         Game.world:heal(target, amount, text, self)
         return true
     elseif self.target == "party" then
         self:worldUseSound(target)
         for _,party_member in ipairs(target) do
-            amount = amount + bonus
+            amount = amount
             Game.world:heal(party_member, amount, text, self)
         end
         return true
@@ -147,14 +150,37 @@ function item:onLightBattleUse(user, target)
         self.heal_amount = 2
     end
     if dogsad == 3 then
-        self.heal_amount = 999
+        self.heal_amount = math.huge
     end
 
-    local text = self:getLightBattleText(user, target, dogsad).."\n"..self:getLightBattleHealingText(user, target, self.heal_amount)
-
     self:battleUseSound(user, target)
-    target:heal(self.heal_amount + bonus)
-    Game.battle:battleText(text)
+    target:heal(self:getHealAmount())
+    Game.battle:battleText(self:getLightBattleText(user, target, dogsad).."\n"..self:getLightBattleHealingText(user, target, self:getHealAmount()))
+    return true
+end
+
+function item:onBattleUse(user, target)
+    local dogsad = math.floor(Utils.random(4))
+
+    self.heal_amount = 1
+
+    if dogsad == 0 then
+        self.heal_amount = 30
+    end
+    if dogsad == 1 then
+        self.heal_amount = 10
+    end
+    if dogsad == 2 then
+        self.heal_amount = 2
+    end
+    if dogsad == 3 then
+        self.heal_amount = math.huge
+    end
+
+    if not MagicalGlassLib.serious_mode then
+        Assets.stopAndPlaySound("dogresidue")
+    end
+    target:heal(self:getHealAmount())
     return true
 end
 

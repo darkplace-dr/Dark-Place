@@ -12,6 +12,9 @@ function item:init()
     -- Whether this item is for the light world
     self.light = true
 
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Here we are!"
+
     -- Light world check text
     self.check = "Weapon AT 99\n* Here we are!"
 
@@ -30,7 +33,7 @@ function item:init()
         attack = 99
     }
 
-    self.attack_direction = "random"
+    self.light_bolt_direction = "random"
 end
 
 function item:showEquipText()
@@ -38,7 +41,20 @@ function item:showEquipText()
 end
 
 function item:getLightBattleText(user, target)
+    -- if user == target then
+        -- return "* About time."
+    -- else
+        -- return "* "..user.chara:getNameOrYou().." gave the "..self:getUseName().." to "..target.chara:getNameOrYou(true)..".\n* About time."
+    -- end
     return "* About time."
+end
+
+function item:getBattleText(user, target)
+    if user == target then
+        return "* About time."
+    else
+        return "* "..user.chara:getName().." gave the "..self:getUseName().." to "..target.chara:getName()..".\n* About time."
+    end
 end
 
 return item

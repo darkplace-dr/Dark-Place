@@ -8,6 +8,8 @@ function item:init(inventory)
     self.short_name = "PDIceCram"
     self.serious_name = "Ice Cream"
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
@@ -19,6 +21,9 @@ function item:init(inventory)
     self.sell_price = 2
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "Made by young pups."
 
     -- Light world check text
     self.check = "Heals 28 HP\n* Made by young pups."

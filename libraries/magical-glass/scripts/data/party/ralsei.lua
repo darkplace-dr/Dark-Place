@@ -3,8 +3,10 @@ local character, super = Class("ralsei", true)
 function character:init()
     super.init(self)
     
+    -- Light world portrait in the menu (saved to the save file)
     self.lw_portrait = Game:getConfig("ralseiStyle") == 1 and "face/ralsei_hat/smile" or "face/ralsei/smile"
     
+    self.lw_health = 20
     -- Light world base stats (saved to the save file)
     self.lw_stats = {
         health = 20,
@@ -12,6 +14,10 @@ function character:init()
         defense = 10,
         magic = 1
     }
+    
+    -- Default light world equipment item IDs (saves current equipment)
+    self.lw_weapon_default = "light/scarf"
+    self.lw_armor_default = "light/red_horns"
     
 end
 

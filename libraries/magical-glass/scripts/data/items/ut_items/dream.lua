@@ -3,6 +3,8 @@ local item, super = Class(HealItem, "ut_items/dream")
 function item:init(inventory)
     super.init(self)
 
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "ate"
     -- Display name
     self.name = "Dream"
     self.short_name = "LastDream"
@@ -18,6 +20,9 @@ function item:init(inventory)
     self.sell_price = 250
     -- Whether the item can be sold
     self.can_sell = true
+
+    -- Item description text (unused by light items outside of debug menu)
+    self.description = "The goal of \"Determination.\""
 
     -- Light world check text
     self.check = "Heals 12 HP\n* The goal of \"Determination.\""
