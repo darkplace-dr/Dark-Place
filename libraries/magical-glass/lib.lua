@@ -1522,7 +1522,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(DialogueText, "update", function(orig, self)
+    --[[Utils.hook(DialogueText, "update", function(orig, self)
         local speed = self.state.speed
 
         if not OVERLAY_OPEN then
@@ -1612,7 +1612,7 @@ function lib:init()
         DialogueText.__super.update(self)
     
         self.last_talking = self.state.talk_anim and self.state.typing
-    end)
+    end)]]
 
     Utils.hook(Bullet, "init", function(orig, self, x, y, texture)
     
