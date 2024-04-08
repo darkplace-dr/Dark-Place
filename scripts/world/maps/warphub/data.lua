@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -54,7 +54,7 @@ return {
     },
     {
       name = "warp_bin",
-      firstgid = 508,
+      firstgid = 510,
       filename = "../../tilesets/warp_bin.tsx",
       exportfilename = "../../tilesets/warp_bin.tsx"
     }
@@ -77,7 +77,7 @@ return {
         {
           id = 103,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 845.455,
           y = -339.394,
@@ -106,7 +106,7 @@ return {
         {
           id = 93,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 70,
           y = 360,
@@ -194,7 +194,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 291, 292, 293, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 508, 509, 510, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 510, 511, 512, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -224,7 +224,7 @@ return {
         {
           id = 58,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 120,
@@ -237,7 +237,7 @@ return {
         {
           id = 61,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 260,
@@ -250,7 +250,7 @@ return {
         {
           id = 63,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 20,
@@ -263,7 +263,7 @@ return {
         {
           id = 64,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 260,
@@ -276,7 +276,7 @@ return {
         {
           id = 70,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 0,
@@ -289,7 +289,7 @@ return {
         {
           id = 72,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 280,
@@ -302,7 +302,7 @@ return {
         {
           id = 73,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 520,
@@ -315,7 +315,7 @@ return {
         {
           id = 74,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 560,
@@ -328,7 +328,7 @@ return {
         {
           id = 75,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 800,
@@ -341,7 +341,7 @@ return {
         {
           id = 76,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 720,
           y = 520,
@@ -354,7 +354,7 @@ return {
         {
           id = 77,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 520,
@@ -367,7 +367,7 @@ return {
         {
           id = 79,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 880,
           y = 320,
@@ -380,7 +380,7 @@ return {
         {
           id = 80,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 720,
           y = 0,
@@ -393,7 +393,7 @@ return {
         {
           id = 81,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 0,
@@ -406,7 +406,7 @@ return {
         {
           id = 98,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 360,
@@ -419,7 +419,7 @@ return {
         {
           id = 99,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 200,
           y = 0,
@@ -448,7 +448,7 @@ return {
         {
           id = 20,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 460,
           y = 600,
@@ -461,7 +461,7 @@ return {
         {
           id = 84,
           name = "door1",
-          class = "",
+          type = "",
           shape = "point",
           x = 120,
           y = 400,
@@ -474,7 +474,7 @@ return {
         {
           id = 104,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 382,
           y = 72,
@@ -503,7 +503,7 @@ return {
         {
           id = 27,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 560,
@@ -519,7 +519,7 @@ return {
         {
           id = 43,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 410,
           y = 480,
@@ -535,7 +535,7 @@ return {
         {
           id = 45,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 390,
           y = 280,
@@ -554,13 +554,14 @@ return {
             ["text5"] = "* (Want to meet the devs of this game? Check out \"[color:blue]DEVDINER[color:reset]\"!)",
             ["text6"] = "* (Do you have horrible internet? Visit \"[color:black]WIFIDOWN[color:reset]\" now to resolve all of your network troubles!)",
             ["text7"] = "* (Check out the Dark Place X \"[color:#5fcde4]GARRYMOD[color:reset]\" crossover!\nMods included!)",
-            ["text8"] = "* (Want to play some games? Check out the newly opened \"[color:blue]DARKCADE[color:white]\"!)"
+            ["text8"] = "* (Want to play some games? Check out the newly opened \"[color:blue]DARKCADE[color:white]\"!)",
+            ["text9"] = "* Visit the Wild East Saloon in WESALOON!"
           }
         },
         {
           id = 46,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 320,
@@ -576,7 +577,7 @@ return {
         {
           id = 54,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 500,
           y = 80,
@@ -593,7 +594,7 @@ return {
         {
           id = 55,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 620,
           y = 80,
@@ -610,7 +611,7 @@ return {
         {
           id = 92,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 360,
@@ -624,7 +625,7 @@ return {
         {
           id = 97,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 780,
           y = 320,
@@ -641,7 +642,7 @@ return {
         {
           id = 102,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = -40,
@@ -657,7 +658,7 @@ return {
         {
           id = 105,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 760,
@@ -674,7 +675,7 @@ return {
         {
           id = 106,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 220,
           y = 80,
