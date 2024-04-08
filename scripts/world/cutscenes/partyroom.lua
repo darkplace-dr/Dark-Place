@@ -402,6 +402,21 @@ return {
                 cutscene:text("* \n\n                     Spamton.")
                 cutscene:showNametag("Dess")
                 cutscene:text("* Ah alr.", "neutral", "dess")
+            elseif Game.party[1].id == "ceroba" then
+                cutscene:text("* Holy shit is that The Roba from Undertale Jaundice", "wtf_b", "dess")
+                cutscene:showNametag("Ceroba")
+                cutscene:text("* Uh,[wait:5] what?", "surprised", "ceroba")
+                cutscene:showNametag("Dess")
+                cutscene:text("* Hey can you do the thing", "heckyeah", "dess")
+                cutscene:showNametag("Ceroba")
+                cutscene:text("* What \"thing\"?", "neutral", "ceroba")
+                cutscene:showNametag("Dess")
+                cutscene:text("* Oh you know that one", "heckyeah", "dess")
+                cutscene:showNametag("Ceroba")
+                cutscene:text("* Oh.[wait:5] THAT one.", "unamused", "ceroba")
+                cutscene:text("* No.", "irked", "ceroba")
+                cutscene:showNametag("Dess")
+                cutscene:text("* Damn", "neutral", "dess")
             else
                 cutscene:text("* Alan please add dialogue", "neutral", "dess")
             end
