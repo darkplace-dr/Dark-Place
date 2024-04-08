@@ -142,12 +142,12 @@
         ///// Mercy Messages
         // Shows the amount of mercy added to an enemy when their mercy gauge increases in Light Battles.
         /////
-        "mercy_messages": false,
+        "mercy_messages": true,
 
         ///// Enemy Bar Percentages
         // Draws the HP and Mercy text and Percentages on the gauges.
         /////
-        "enemy_bar_percentages": false,
+        "enemy_bar_percentages": true,
 
         ///// Light Enemy Chaser Auras
         // Whether enemies in the light world will also have auras.
@@ -157,7 +157,7 @@
         ///// Action Button Flash
         // Whether the Spell and Mercy buttons should flash in Light Battles if an enemy is pacifyable or sparable.
         /////
-        "action_button_flash": false,
+        "action_button_flash": true,
         
         ///// Action Button Styles
         // Determines the appearance of the action buttons in Light Battles.
