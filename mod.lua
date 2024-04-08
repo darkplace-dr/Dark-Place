@@ -27,6 +27,11 @@ function Mod:init()
 
     self.dogcheck_banned2_window_hacks = false
 
+    self.MB_room_blacklist = {
+        "fwood/",
+        "​"
+    }
+
     self:initTaunt()
     self:initBattleTaunt()
     Speen:init()
