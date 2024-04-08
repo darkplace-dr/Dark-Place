@@ -31,8 +31,8 @@ function item:init()
         defense = 3
     }
     
-    self.bolt_speed = self.bolt_speed * 1.25
-    self.bolt_direction = "random"
+    self.light_bolt_speed = self.light_bolt_speed * 1.25
+    self.light_bolt_direction = "random"
 
     self.attack_style = "deltarune"
 
