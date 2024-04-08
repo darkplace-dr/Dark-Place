@@ -94,7 +94,7 @@ return {
             "options_summer", "options_winter", "mus_star", "dogcheck_anniversary",
             "Hugs_for_Ralsei", "Lullaby_for_Lancer", "spamgolor", "spamgolor_battle",
             "spamgolor_shop", "spamgolor_neo", "exception", "warphub",
-            "checkpoint", "cloudwebs", "ruins_beta", "cursedcathedral_cover",
+            "checkpoint", "gildedgrove", "ruins_beta", "cursedcathedral_cover",
             "tickroom", "gimmieyourwalletmiss", "batterup", "threestrikesyoureout",
             "beasts", "room_003", "battle_repainted", "morpho_boss",
             "mirati_bk70cover", "mari_neo",

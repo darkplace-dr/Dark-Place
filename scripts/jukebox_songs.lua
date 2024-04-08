@@ -360,6 +360,20 @@ return {
     origin = "Crystalseeker"
   },
   {
+    name = "Gilded Grove",
+    file = "gildedgrove",
+    composer = "DiamondBor",
+    released = "2023",
+    origin = "Deltacrack"
+  },
+  {
+    name = "Happy Hour",
+    file = "happy_hour",
+    composer = "NoteBlock, MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow"
+  },
+  {
     name = "No More Nuzzles",
     file = "no_more_nuzzles",
     composer = "Lunaxis",
