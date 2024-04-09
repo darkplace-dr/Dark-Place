@@ -57,6 +57,104 @@ return {
         --cutscene:fadeOut()
         --YOU:resetSprite()
     end,
+	
+    winggaster = function(cutscene)
+	    local wing = cutscene:getCharacter("wing_gaster")
+	    local YOU = cutscene:getCharacter("YOU")
+	    local susie = cutscene:getCharacter("susie")
+		
+		if not Game:getFlag("dess_obtained") == true then
+		    wing:setFacing("right")
+			cutscene:showNametag("Wing Gaster")
+            cutscene:text("[face:wing, 0, 10]* I'm Wing Gaster! The\nroyal scientist.", nil, "wing_gaster")
+			cutscene:showNametag("Susie")
+            cutscene:text("* ...okay???", "sus_nervous", "susie")
+			cutscene:hideNametag()
+		    wing:setFacing("left")
+        else
+            cutscene:detachCamera()
+			cutscene:detachFollowers()
+
+		    wing:setFacing("right")
+            cutscene:showNametag("Wing Gaster")
+            cutscene:text("[face:wing, 0, 10]* I'm Wing Gaster! The\nroyal scientist.", nil, "wing_gaster", { auto = true })
+            cutscene:hideNametag()
+			
+	        local dess = cutscene:spawnNPC("dess")
+            dess.x = YOU.x + 500
+			dess.y = YOU.y
+
+			Assets.playSound("escaped")
+            cutscene:walkToSpeed(dess, wing.x+50, wing.y - 8, 20)
+
+            YOU:setFacing("right")
+            susie:setFacing("right")
+			
+            cutscene:wait(0.5)
+            YOU:setSprite("uhoh")
+            susie:setSprite("shock_right")
+            Assets.playSound("sussurprise")
+			
+            cutscene:wait(0.2)
+            YOU:setSprite("walk")
+            susie:setSprite("walk")
+			
+            YOU:setFacing("up")
+            susie:setFacing("up")
+			
+            cutscene:slideToSpeed(YOU, YOU.x + 50, YOU.y + 40, 10)
+            cutscene:slideToSpeed(susie, susie.x + 40, susie.y + 40, 10)
+			
+            cutscene:wait(0.2)
+			Assets.playSound("laz_c")
+		    dess:setAnimation("battle/attack")
+		    dess.flip_x = true
+			
+		    cutscene:wait(0.2)
+			Assets.playSound("impact")
+			Assets.playSound("damage")
+			cutscene:shakeCamera(4)
+
+            wing.y = wing.y - 48
+            wing.physics.speed_x = -5
+            wing.physics.speed_y = -8
+            wing:setOrigin(0.5)
+            wing.physics.gravity = 0.6
+            wing.graphics.spin = 0.2
+			
+            cutscene:wait(1)
+			Assets.playSound("vaporized")
+			wing:fadeOutAndRemove(0.25)
+			
+		    cutscene:wait(1)
+		    dess.flip_x = false
+            Assets.playSound("equip")
+		    dess:setSprite("walk")
+			dess:setFacing("left")
+            cutscene:wait(1)
+			dess:setFacing("down")
+            cutscene:wait(2)
+            cutscene:showNametag("Dess")
+			cutscene:text("* RIP bozo lmao.", "challenging", "dess")
+            cutscene:hideNametag()
+			
+            Assets.playSound("mysterygo")
+            dess:remove()
+
+            cutscene:wait(2)
+			
+			cutscene:showNametag("Susie")
+			cutscene:text("* [speed:0.5]...", "shock", "susie")
+			cutscene:text("* [speed:0.5]...", "shock_nervous", "susie")
+			cutscene:text("* [speed:0.5]Uhhhh,[speed:1][wait:5] let's just keep moving, YOU.", "shy", "susie")
+            cutscene:hideNametag()
+
+            cutscene:attachCamera()
+            cutscene:attachFollowers()
+			
+            Game:setFlag("wing_gaster_killed", true)
+		end
+    end,
 
     fellsans = function(cutscene)
         local sans = cutscene:getCharacter("ausans")
