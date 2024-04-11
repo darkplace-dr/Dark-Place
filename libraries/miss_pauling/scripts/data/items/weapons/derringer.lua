@@ -53,4 +53,8 @@ function item:init()
     }
 end
 
+function item:convertToLightEquip(inventory)
+    return "light/rb_gun"
+end
+
 return item

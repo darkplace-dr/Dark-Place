@@ -51,4 +51,8 @@ function item:init()
     }
 end
 
+function item:convertToLightEquip(inventory)
+    return "light/whip_sling"
+end
+
 return item

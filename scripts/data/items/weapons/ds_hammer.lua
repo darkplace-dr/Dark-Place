@@ -54,4 +54,8 @@ function item:init()
     }
 end
 
+function item:convertToLightEquip(inventory)
+    return "light/dsi"
+end
+
 return item

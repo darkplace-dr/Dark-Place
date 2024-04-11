@@ -51,4 +51,8 @@ function item:init()
     }
 end
 
+function item:convertToLightEquip(inventory)
+    return "light/band_sling"
+end
+
 return item

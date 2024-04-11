@@ -56,4 +56,8 @@ function item:init()
     }
 end
 
+function item:convertToLightEquip(inventory)
+    return "light/pellet_gun"
+end
+
 return item
