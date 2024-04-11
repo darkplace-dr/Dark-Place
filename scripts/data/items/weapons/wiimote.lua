@@ -67,6 +67,10 @@ function item:init()
 	}
 end
 
+function item:convertToLight(inventory)
+    return "light/gamecube_controller"
+end
+
 function item:onEquip(character, replacement)
     character:addSpell("grab")
     return true

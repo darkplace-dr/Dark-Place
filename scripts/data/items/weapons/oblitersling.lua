@@ -53,4 +53,8 @@ function item:init()
     }
 end
 
+function item:convertToLight(inventory)
+    return "light/chain_sling"
+end
+
 return item

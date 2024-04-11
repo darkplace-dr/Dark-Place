@@ -54,4 +54,8 @@ function item:init()
     }
 end
 
+function item:convertToLight(inventory)
+    return "light/rope_sling"
+end
+
 return item

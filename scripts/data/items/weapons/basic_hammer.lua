@@ -51,4 +51,8 @@ function item:init()
     }
 end
 
+function item:convertToLight(inventory)
+    return "light/old_mallet"
+end
+
 return item
