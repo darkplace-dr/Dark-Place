@@ -197,7 +197,7 @@ return {
                 cutscene:text("* She's helping me with sprites for my fangame.", "happy_b", "brandon")
                 cutscene:text("* She's even working on her own game!", "grin", "brandon")
                 cutscene:text("* It's an RPG inspired by games like OneShot.", "happy", "brandon")
-                cutscene:text("* I \"hope\" you end up enjoying it when it comes out,[wait] heh.", "wink", "brandon")
+                cutscene:text("* I \"hope\" you end up enjoying it when it comes out,[wait:5] heh.", "wink", "brandon")
 
                 cutscene:text("* Then there's Sci.", "neutral", "brandon")
                 cutscene:text("* She's the cook for the diner.", "happy", "brandon")
