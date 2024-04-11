@@ -73,7 +73,11 @@ return {
                             cutscene:text("* Then I do not think you're gonna properly raise Marcy.", "mad", "brandon")
                             cutscene:text("* Now kindly,[wait:5] please change and grow as a person.", "miffed", "brandon")
                             cutscene:showNametag("Jamm")
-                            cutscene:text("* ...", "shaded_neutral", "jamm")
+                            cutscene:text("* ...Tch.", "shaded_neutral", "jamm")
+                            cutscene:text("* You've always been one to make assumptions, huh?", "shaded_neutral", "jamm")
+                            cutscene:text("* Don't assume you know everything.", "shaded_neutral", "jamm")
+                            cutscene:showNametag("Brandon")
+                            cutscene:text("* (Jamm...)", "frown_side", "brandon")
                             Game:setFlag("b_dialogue_jamm", true)
                             Game.world.music:fade(1, 0.5)
                         else
