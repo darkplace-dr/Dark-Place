@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="80">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="80">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -288,7 +288,7 @@
    </properties>
    <point/>
   </object>
-  <object id="69" name="npc" x="520" y="160">
+  <object id="69" name="npc" x="180" y="130">
    <properties>
     <property name="actor" value="hacker"/>
     <property name="cutscene" value="room1.hacker"/>
