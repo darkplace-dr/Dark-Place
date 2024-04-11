@@ -67,7 +67,7 @@ function item:init()
 	}
 end
 
-function item:convertToLight(inventory)
+function item:convertToLightEquip(inventory)
     return "light/gamecube_controller"
 end
 
