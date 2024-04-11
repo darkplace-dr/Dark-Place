@@ -40,6 +40,15 @@ function Mod:init()
 end
 
 function Mod:postInit(new_file)
+    local items_list = {
+        {
+            result = "soulmantle",
+            item1 = "flarewings",
+            item2 = "discarded_robe"
+        },
+    }
+    Kristal.callEvent("setItemsList", items_list)
+
     if self.legacy_kristal then
         Game.world.music:stop()
         Game.world:startCutscene("flowey_check")
