@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 50,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 22,
+  nextobjectid = 23,
   properties = {
     ["border"] = "castle",
     ["music"] = "jamm_dungeon",
@@ -31,6 +32,7 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -62,6 +64,7 @@ return {
       height = 12,
       id = 4,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -90,6 +93,7 @@ return {
       draworder = "topdown",
       id = 6,
       name = "collision",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -170,6 +174,7 @@ return {
       draworder = "topdown",
       id = 7,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -224,6 +229,7 @@ return {
       draworder = "topdown",
       id = 8,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -394,8 +400,8 @@ return {
           properties = {}
         },
         {
-          id = 21,
-          name = "script",
+          id = 22,
+          name = "transition",
           type = "",
           shape = "rectangle",
           x = 1760,
@@ -405,7 +411,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "a_dungeon.boss"
+            ["map"] = "fwood/dungeon_inside/boss"
           }
         }
       }

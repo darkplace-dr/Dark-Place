@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="10">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="12">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -49,12 +49,20 @@
    </properties>
    <point/>
   </object>
+  <object id="11" name="script" x="-200" y="200" width="120" height="80">
+   <properties>
+    <property name="cutscene" value="a_dungeon.boss"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="4" name="markers">
   <object id="5" name="jamm_spawn" x="-40" y="200">
    <point/>
   </object>
   <object id="6" name="dess_spawn" x="-80" y="360">
+   <point/>
+  </object>
+  <object id="10" name="spawn" x="-140" y="240">
    <point/>
   </object>
  </objectgroup>

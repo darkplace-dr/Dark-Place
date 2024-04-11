@@ -1,7 +1,8 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.2",
+  class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -9,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 10,
+  nextobjectid = 12,
   properties = {
     ["border"] = "castle"
   },
@@ -29,6 +30,7 @@ return {
       height = 12,
       id = 1,
       name = "Tile Layer 1",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -60,6 +62,7 @@ return {
       height = 12,
       id = 2,
       name = "Tile Layer 2",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -88,6 +91,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "objects",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -123,6 +127,21 @@ return {
           properties = {
             ["actor"] = "shade_ania"
           }
+        },
+        {
+          id = 11,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = -200,
+          y = 200,
+          width = 120,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "a_dungeon.boss"
+          }
         }
       }
     },
@@ -131,6 +150,7 @@ return {
       draworder = "topdown",
       id = 4,
       name = "markers",
+      class = "",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -159,6 +179,19 @@ return {
           shape = "point",
           x = -80,
           y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = -140,
+          y = 240,
           width = 0,
           height = 0,
           rotation = 0,

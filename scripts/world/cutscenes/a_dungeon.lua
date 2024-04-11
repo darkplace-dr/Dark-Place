@@ -968,7 +968,6 @@ return {
 		cutscene:hideNametag()
     end,
     boss = function(cutscene, event)
-		cutscene:wait(cutscene:mapTransition("fwood/dungeon_inside/boss", "jamm_spawn", "right"))
 		local jamm = cutscene:getCharacter("jamm")
 		local dess = cutscene:getCharacter("dess")
 		local sa = cutscene:getCharacter("shade_ania")
@@ -1190,9 +1189,9 @@ Learning to live with shades, yet be.
 		end
 		cutscene:hideNametag()
 		Game:setFlag("jamm_closure", true)
-		cutscene:wait(cutscene:mapTransition("fwood/entry", "exit", "down"))
 		Kristal.callEvent("completeQuest", "acj2")
         Game:getPartyMember("jamm").has_act = false
         Game:setFlag("jamm_canact", false)
+		cutscene:mapTransition("fwood/entry", "exit", "down")
     end,
 }
