@@ -73,10 +73,10 @@ function lib:load(data, new_file)
     Game.light = Kristal.getLibConfig("magical-glass", "default_battle_system")[2] or false
     
     if new_file then
-        lib.kills = 0        
+        lib.kills = 0
         lib.game_overs = lib.game_overs or 0
-        lib.serious_mode = false -- makes items use their serious name in battle, if they have one
-        lib.name_color = COLORS.yellow -- use MagicalGlassLib:changeSpareColor() to change this
+        lib.serious_mode = false
+        lib.name_color = COLORS.yellow
         lib.lw_save_lv = 0
         lib.light_equip = {}
         lib.dark_equip = {}
@@ -101,10 +101,6 @@ function lib:load(data, new_file)
 end
 
 function lib:preInit()
-
-    --[[if Kristal.Version < SemVer("v0.9.0-dev") then
-        error("You must use Kristal 0.9.0-dev or a newer version to run Magical Glass.")
-    end]]
     
     self.random_encounters = {}
     self.light_encounters = {}
@@ -1367,7 +1363,7 @@ function lib:init()
     end)
 
     Utils.hook(Textbox, "init", function(orig, self, x, y, width, height, default_font, default_font_size, battle_box)
-        Textbox.__super.init(self, x, y, width, height)
+        Object.init(self, x, y, width, height)
 
         self.box = UIBox(0, 0, width, height)
         self.box.layer = -1
@@ -1811,7 +1807,7 @@ function lib:init()
             end
         end
 
-        LightItemMenu.__super.draw(self)
+        Object.draw(self)
 
     end)
 
@@ -2258,7 +2254,7 @@ function lib:init()
     end)
 
     Utils.hook(LightMenu, "init", function(orig, self)
-        LightMenu.__super.init(self, 0, 0)
+        Object.init(self, 0, 0)
 
         self.layer = 1 -- TODO
 
@@ -2334,7 +2330,7 @@ function lib:init()
     end)
 
     Utils.hook(LightMenu, "draw", function(orig, self)
-        LightMenu.__super.draw(self)
+        Object.draw(self)
         
         love.graphics.setFont(self.font)
         if Game.inventory:getItemCount(self.storage, false) <= 0 then
@@ -2449,7 +2445,7 @@ function lib:init()
             return
         end
 
-        LightStatMenu.__super.update(self)
+        Object.update(self)
 
     end)
 
@@ -2737,7 +2733,7 @@ function lib:init()
             orig(self)
         end
 
-        SpeechBubble.__super.draw(self)
+        Object.draw(self)
     end)
 
     Utils.hook(Game, "gameOver", function(orig, self, x, y)

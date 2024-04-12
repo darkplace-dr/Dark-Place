@@ -1,4 +1,5 @@
 local Lib = {}
+Lib.warned = {}
 
 function Lib:init()
 
@@ -151,7 +152,7 @@ function Lib:init()
     Utils.hook(BattleUI, "drawActionStrip", function(orig, self)
         orig(self)
         
-        if #Game.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then return end
+        if #Game.battle.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then return end
         
         -- Draw the top line of the action strip
         Draw.setColor(PALETTE["action_strip"])
@@ -177,7 +178,7 @@ function Lib:init()
     end)
 
       
-    Utils.hook(AttackBox, "draw", function(orig, self, ...)
+    Utils.hook(AttackBox, "draw", function(orig, self)
 
         local target_color = {self.battler.chara:getAttackBarColor()}
         local box_color = {self.battler.chara:getAttackBoxColor()}
@@ -189,7 +190,7 @@ function Lib:init()
         love.graphics.setLineWidth(2)
         love.graphics.setLineStyle("rough")
 
-        local ch1_offset = Game:getConfig("oldUIPositions")
+        local ch1_offset = Game:getConfig("oldUIPositions") and #Game.battle.party <= 4
 
         Draw.setColor(box_color)
         local height = #Game.battle.party > 3 and math.floor(104 / #Game.battle.party) or 36
@@ -207,9 +208,9 @@ function Lib:init()
         Object.draw(self)
     end)
       
-    Utils.hook(BattleUI, "beginAttack", function(orig, self, ...)
+    Utils.hook(BattleUI, "beginAttack", function(orig, self)
 
-        if #Game.battle.party <= 3 then orig(self, ...) return end
+        if #Game.battle.party <= 3 then orig(self) return end
 
         local attack_order = Utils.pickMultiple(Game.battle.normal_attackers, #Game.battle.normal_attackers)
 
@@ -240,7 +241,7 @@ function Lib:init()
         self.attacking = true
     end)
       
-    Utils.hook(AttackBox, "update", function(orig, self, ...)
+    Utils.hook(AttackBox, "update", function(orig, self)
 
         if self.removing or Game.battle.cancel_attack then
             self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
@@ -301,8 +302,8 @@ function Lib:init()
     end)
     
     if not Mod.libs["ExpandedAttackLib"] then -- Compatibility with 'ExpandedAttackLib' Library.
-        Utils.hook(AttackBox, "init", function(orig, self, ...)
-            orig(self, ...)
+        Utils.hook(AttackBox, "init", function(orig, self, battler, offset, index, x, y)
+            orig(self, battler, offset, index, x, y)
             if #Game.battle.party <= 3 then return end
             
             self.bolt.height = math.floor(112 / #Game.battle.party)
@@ -417,8 +418,8 @@ function Lib:init()
         end)
     end
    
-    Utils.hook(BattleUI, "drawState", function(orig, self, ...)
-        if #Game.party <= 3 then orig(self, ...) return end
+    Utils.hook(BattleUI, "drawState", function(orig, self)
+        if #Game.battle.party <= 3 then orig(self) return end
         
         if Game.battle.state == "ATTACKING" or self.attacking then
             local y = 40
@@ -565,14 +566,88 @@ function Lib:init()
             end
 
         else
-            orig(self, ...) return
+            orig(self)
         end
     end)
     
-    Utils.hook(BattleUI, "init", function(orig, self, ...)
-        orig(self, ...)
+    Utils.hook(BattleUI, "init", function(orig, self)
+        if #Game.battle.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then
+            orig(self)
+        else
+            Object.init(self, 0, 480 + (Game:getConfig("oldUIPositions") and 36 or 37))
+
+            self.layer = BATTLE_LAYERS["ui"]
+
+            self.current_encounter_text = Game.battle.encounter.text
+
+            self.encounter_text = Textbox(30, 53, SCREEN_WIDTH - 30, SCREEN_HEIGHT - 53, "main_mono", nil, true)
+            self.encounter_text.text.line_offset = 0
+            self.encounter_text:setText("")
+            self.encounter_text.debug_rect = {-30, -12, SCREEN_WIDTH+1, 124}
+            self:addChild(self.encounter_text)
+
+            self.choice_box = Choicebox(56, 49, 529, 103, true)
+            self.choice_box.active = false
+            self.choice_box.visible = false
+            self:addChild(self.choice_box)
+
+            self.short_act_text_1 = DialogueText("", 30, 51, SCREEN_WIDTH - 30, SCREEN_HEIGHT - 53, {wrap = false, line_offset = 0})
+            self.short_act_text_2 = DialogueText("", 30, 51 + 30, SCREEN_WIDTH - 30, SCREEN_HEIGHT - 53, {wrap = false, line_offset = 0})
+            self.short_act_text_3 = DialogueText("", 30, 51 + 30 + 30, SCREEN_WIDTH - 30, SCREEN_HEIGHT - 53, {wrap = false, line_offset = 0})
+            self:addChild(self.short_act_text_1)
+            self:addChild(self.short_act_text_2)
+            self:addChild(self.short_act_text_3)
+
+            self.action_boxes = {}
+            self.attack_boxes = {}
+
+            self.attacking = false
+
+            local size_offset = 0
+            local box_gap = 0
+            
+            if #Game.battle.party == 3 then
+                size_offset = 0
+                box_gap = 0
+            elseif #Game.battle.party == 2 then
+                size_offset = 108
+                box_gap = 1
+                if Game:getConfig("oldUIPositions") then
+                    size_offset = 106
+                    box_gap = 7
+                end
+            elseif #Game.battle.party == 1 then
+                size_offset = 213
+                box_gap = 0
+            end
+
+            for index,battler in ipairs(Game.battle.party) do
+                local action_box = ActionBox(size_offset+ (index - 1) * (213 + box_gap), 0, index, battler)
+                self:addChild(action_box)
+                table.insert(self.action_boxes, action_box)
+                battler.chara:onActionBox(action_box, false)
+            end
+
+            self.parallax_x = 0
+            self.parallax_y = 0
+
+            self.animation_done = true
+            self.animation_timer = 0
+            self.animate_out = false
+
+            self.animation_y = 0
+            self.animation_y_lag = 0
+
+            self.shown = false
+
+            self.heart_sprite = Assets.getTexture("player/heart")
+            self.arrow_sprite = Assets.getTexture("ui/page_arrow_down")
+
+            self.sparestar = Assets.getTexture("ui/battle/sparestar")
+            self.tiredmark = Assets.getTexture("ui/battle/tiredmark")
+        end
         
-        if #Game.party <= 3 then return end
+        if #Game.battle.party <= 3 then return end
         
         local x = 0
         local realW = ((SCREEN_WIDTH - 1) / (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4))
@@ -601,32 +676,25 @@ function Lib:init()
         end
     end)
     
-    Utils.hook(BattleUI, "init", function(orig, self, ...)
-        orig(self, ...)
+    Utils.hook(BattleUI, "update", function(orig, self)
+        orig(self)
         
-        if #Game.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then return end
-        
-        self.visible = false
-
-    end)
-    
-    Utils.hook(BattleUI, "update", function(orig, self, ...)
-        orig(self, ...)
-        
-        if #Game.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then return end
-        
-        if Game.battle.current_selecting > 0 then
-            self.visible = true
-        end
+        if #Game.battle.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then return end
         
         for k,v in ipairs(self.action_boxes) do
             if k == Game.battle.current_selecting then
-                v:setLayer(100)
+                v:setLayer(BATTLE_LAYERS["ui"] + 0.5)
             else
-                v:setLayer(-100)
+                v:setLayer(BATTLE_LAYERS["ui"])
             end
         end
 
+    end)
+    
+    Utils.hook(BattleUI, "getTransitionBounds", function(orig, self)
+        if #Game.battle.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then return orig(self) end
+        
+        return 480 + (Game:getConfig("oldUIPositions") and 36 or 37), 325
     end)
     
     Utils.hook(Encounter, "getPartyPosition", function(orig, self, index)
@@ -700,7 +768,7 @@ function Lib:init()
         end
     end)
     
-    Utils.hook(Battle, "shortActText", function(orig, self, text) 
+    Utils.hook(Battle, "shortActText", function(orig, self, text)
         local advances = 3 --initial override so we can run it
         local function recurseiveSHAT()
             advances = advances + 1
@@ -725,8 +793,8 @@ function Lib:init()
         recurseiveSHAT()
     end)
     
-   Utils.hook(DarkEquipMenu, "init", function(orig, self, ...)
-        orig(self, ...)
+    Utils.hook(DarkEquipMenu, "init", function(orig, self)
+        orig(self)
         if #Game.party <= 3 then return end
       
         if not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.party >= 4 or #Game.party == 4 then
@@ -736,10 +804,10 @@ function Lib:init()
         if #Game.party > 4 then
             self.party:setScale(0.5)
         end
-   end)
+    end)
    
-   Utils.hook(DarkPowerMenu, "init", function(orig, self, ...)
-        orig(self, ...)
+    Utils.hook(DarkPowerMenu, "init", function(orig, self)
+        orig(self)
         if #Game.party <= 3 then return end
       
         if not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.party >= 4 or #Game.party == 4 then
@@ -749,7 +817,27 @@ function Lib:init()
         if #Game.party > 4 then
             self.party:setScale(0.5)
         end
-   end)
+    end)
+   
+    Utils.hook(DarkMenuPartySelect, "draw", function(orig, self)
+        if #Game.party <= 4 then orig(self) return end 
+        
+        for i,party in ipairs(Game.party) do
+            if self.selected_party ~= i then
+                Draw.setColor(1, 1, 1, 0.4)
+            else
+                Draw.setColor(1, 1, 1, 1)
+            end
+            local ox, oy = party:getMenuIconOffset()
+            Draw.draw(Assets.getTexture(party:getMenuIcon()), (i-1)*50 + (ox*2), oy*2, 0, 2, 2)
+        end
+        if self.focused then
+            local frames = Assets.getFrames("player/heart_harrows")
+            Draw.setColor(Game:getSoulColor())
+            Draw.draw(frames[(math.floor(self.heart_siner/20)-1)%#frames+1], ((self.selected_party-1)*50 - 5), -36, 0 , 2)
+        end
+        Object.draw(self)
+    end)
    
    Utils.hook(OverworldActionBox, "draw", function(orig, self)
         if #Game.party <= 3 then orig(self) return end
@@ -915,6 +1003,66 @@ function Lib:init()
         Object.draw(self)
    end)
    
+    Utils.hook(HealthBar, "init", function(orig, self)
+        orig(self)
+        
+        if #Game.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then return end
+        self.animation_y = -126
+    end)
+    
+    Utils.hook(HealthBar, "update", function(orig, self)
+        if #Game.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then orig(self) return end
+        
+        self.animation_timer = self.animation_timer + DTMULT
+        self.auto_hide_timer = self.auto_hide_timer + DTMULT
+        if Game.world.menu or Game.world:inBattle() then
+            -- If we're in an overworld battle, or the menu is open, we don't want the health bar to disappear
+            self.auto_hide_timer = 0
+        end
+
+        if self.auto_hide_timer > 60 then -- After two seconds outside of a battle, we hide the health bar
+            self:transitionOut()
+        end
+
+        local max_time = self.animate_out and 3 or 8
+
+        if self.animation_timer > max_time + 1 then
+            self.animation_done = true
+            self.animation_timer = max_time + 1
+            if self.animate_out then
+                Game.world.healthbar = nil
+                self:remove()
+                return
+            end
+        end
+
+        if not self.animate_out then
+            if self.animation_y < 0 then
+                if self.animation_y > -103 then
+                    self.animation_y = self.animation_y + math.ceil(-self.animation_y / 2.5) * DTMULT
+                else
+                    self.animation_y = self.animation_y + 30 * DTMULT
+                end
+            else
+                self.animation_y = 0
+            end
+        else
+            if self.animation_y > -126 then
+                if self.animation_y > 0 then
+                    self.animation_y = self.animation_y - math.floor(self.animation_y / 2.5) * DTMULT
+                else
+                    self.animation_y = self.animation_y - 30 * DTMULT
+                end
+            else
+                self.animation_y = -126
+            end
+        end
+
+        self.y = 480 - (self.animation_y + 63)
+
+        Object.update(self)
+    end)
+   
    Utils.hook(Shop, "draw", function(orig, self)
    
         if #Game.party <= 4 then orig(self) return end
@@ -1077,17 +1225,641 @@ function Lib:init()
         Draw.setColor(0, 0, 0, self.fade_alpha)
         love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
    end)
+   
+   if not Mod.libs["better_battles"] then -- Compatibility with 'better_battles' Library.
+       Utils.hook(ActionButton, "select", function(orig, self)
+            if Game.battle.encounter:onActionSelect(self.battler, self) then return end
+            if Kristal.callEvent("onActionSelect", self.battler, self) then return end
+            if self.type == "act" and not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.battle.party > 3 and self.battler.chara:hasSpells() then
+                Game.battle:clearMenuItems()
+                Game.battle:addMenuItem({
+                    ["name"] = Kristal.getLibConfig("moreparty", "custom_act_name")[1],
+                    ["description"] = Kristal.getLibConfig("moreparty", "custom_act_name")[2],
+                    ["color"] = {1,1,1,1},
+                    ["callback"] = function() Game.battle:setState("ENEMYSELECT", "ACT") end
+                })
+                local magic_color = {1,1,1,1}
+                if self.battler then
+                    local has_tired = false
+                    for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                        if enemy.tired then
+                            has_tired = true
+                            break
+                        end
+                    end
+                    if has_tired then
+                        local has_pacify = false
+                        for _,spell in ipairs(self.battler.chara:getSpells()) do
+                            if spell and spell:hasTag("spare_tired") then
+                                if spell:isUsable(self.battler.chara) and spell:getTPCost(self.battler.chara) <= Game:getTension() then
+                                    has_pacify = true
+                                    break
+                                end
+                            end
+                        end
+                        if has_pacify then
+                            magic_color = {0, 178/255, 1, 1}
+                        end
+                    end
+                end
+                Game.battle:addMenuItem({
+                    ["name"] = Kristal.getLibConfig("moreparty", "custom_magic_name")[1],
+                    ["description"] = Kristal.getLibConfig("moreparty", "custom_magic_name")[2],
+                    ["color"] = magic_color,
+                    ["callback"] = function() 
+                        Game.battle:clearMenuItems()
+
+                        -- First, register X-Actions as menu items.
+
+                        if Game.battle.encounter.default_xactions and self.battler.chara:hasXAct() then
+                            local spell = {
+                                ["name"] = Game.battle.enemies[1]:getXAction(self.battler),
+                                ["target"] = "xact",
+                                ["id"] = 0,
+                                ["default"] = true,
+                                ["party"] = {},
+                                ["tp"] = 0
+                            }
+
+                            Game.battle:addMenuItem({
+                                ["name"] = self.battler.chara:getXActName() or "X-Action",
+                                ["tp"] = 0,
+                                ["color"] = {self.battler.chara:getXActColor()},
+                                ["data"] = spell,
+                                ["callback"] = function(menu_item)
+                                    Game.battle.selected_xaction = spell
+                                    Game.battle:setState("XACTENEMYSELECT", "SPELL")
+                                end
+                            })
+                        end
+
+                        for id, action in ipairs(Game.battle.xactions) do
+                            if action.party == self.battler.chara.id then
+                                local spell = {
+                                    ["name"] = action.name,
+                                    ["target"] = "xact",
+                                    ["id"] = id,
+                                    ["default"] = false,
+                                    ["party"] = {},
+                                    ["tp"] = action.tp or 0
+                                }
+
+                                Game.battle:addMenuItem({
+                                    ["name"] = action.name,
+                                    ["tp"] = action.tp or 0,
+                                    ["description"] = action.description,
+                                    ["color"] = action.color or {1, 1, 1, 1},
+                                    ["data"] = spell,
+                                    ["callback"] = function(menu_item)
+                                        Game.battle.selected_xaction = spell
+                                        Game.battle:setState("XACTENEMYSELECT", "SPELL")
+                                    end
+                                })
+                            end
+                        end
+
+                        -- Now, register SPELLs as menu items.
+                        for _,spell in ipairs(self.battler.chara:getSpells()) do
+                            local color = spell.color or {1, 1, 1, 1}
+                            if spell:hasTag("spare_tired") then
+                                local has_tired = false
+                                for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                                    if enemy.tired then
+                                        has_tired = true
+                                        break
+                                    end
+                                end
+                                if has_tired then
+                                    color = {0, 178/255, 1, 1}
+                                end
+                            end
+                            Game.battle:addMenuItem({
+                                ["name"] = spell:getName(),
+                                ["tp"] = spell:getTPCost(self.battler.chara),
+                                ["unusable"] = not spell:isUsable(self.battler.chara),
+                                ["description"] = spell:getBattleDescription(),
+                                ["party"] = spell.party,
+                                ["color"] = color,
+                                ["data"] = spell,
+                                ["callback"] = function(menu_item)
+                                    Game.battle.selected_spell = menu_item
+
+                                    if not spell.target or spell.target == "none" then
+                                        Game.battle:pushAction("SPELL", nil, menu_item)
+                                    elseif spell.target == "ally" then
+                                        Game.battle:setState("PARTYSELECT", "SPELL")
+                                    elseif spell.target == "enemy" then
+                                        Game.battle:setState("ENEMYSELECT", "SPELL")
+                                    elseif spell.target == "party" then
+                                        Game.battle:pushAction("SPELL", Game.battle.party, menu_item)
+                                    elseif spell.target == "enemies" then
+                                        Game.battle:pushAction("SPELL", Game.battle:getActiveEnemies(), menu_item)
+                                    end
+                                end
+                            })
+                        end
+
+                        Game.battle:setState("MENUSELECT", "SPELL")
+                    end
+                })
+                Game.battle:setState("MENUSELECT", "ACT+")
+            else
+                orig(self)
+            end
+        end)
+        
+        Utils.hook(ActionButton, "hasSpecial", function(orig, self)
+            if self.type == "act" and not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.battle.party > 3 and self.battler.chara:hasSpells() then
+                if self.battler then
+                    local has_tired = false
+                    for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                        if enemy.tired then
+                            has_tired = true
+                            break
+                        end
+                    end
+                    if has_tired then
+                        local has_pacify = false
+                        for _,spell in ipairs(self.battler.chara:getSpells()) do
+                            if spell and spell:hasTag("spare_tired") then
+                                if spell:isUsable(self.battler.chara) and spell:getTPCost(self.battler.chara) <= Game:getTension() then
+                                    has_pacify = true
+                                    break
+                                end
+                            end
+                        end
+                        return has_pacify
+                    end
+                end
+            else
+                return orig(self)
+            end
+        end)
+        
+        Utils.hook(ActionBox, "createButtons", function(orig, self)
+            for _,button in ipairs(self.buttons or {}) do
+                button:remove()
+            end
+
+            self.buttons = {}
+
+            local btn_types = {"fight", "act", "magic", "item", "spare", "defend"}
+
+            if not self.battler.chara:hasAct() then Utils.removeFromTable(btn_types, "act") end
+            if not self.battler.chara:hasSpells() or self.battler.chara:hasAct() and not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.battle.party > 3 and self.battler.chara:hasSpells() then Utils.removeFromTable(btn_types, "magic") end
+
+            for lib_id,_ in Kristal.iterLibraries() do
+                btn_types = Kristal.libCall(lib_id, "getActionButtons", self.battler, btn_types) or btn_types
+            end
+            btn_types = Kristal.modCall("getActionButtons", self.battler, btn_types) or btn_types
+
+            local start_x = (213 / 2) - ((#btn_types-1) * 35 / 2) - 1
+
+            if (#btn_types <= 6) and Game:getConfig("oldUIPositions") then
+                start_x = 30
+            end
+
+            for i,btn in ipairs(btn_types) do
+                if type(btn) == "string" then
+                    local button = ActionButton(btn, self.battler, math.floor(start_x + ((i - 1) * 35)) + 0.5, 21)
+                    button.actbox = self
+                    table.insert(self.buttons, button)
+                    self:addChild(button)
+                else
+                    btn:setPosition(math.floor(start_x + ((i - 1) * 35)) + 0.5, 21)
+                    btn.battler = self.battler
+                    btn.actbox = self
+                    table.insert(self.buttons, btn)
+                    self:addChild(btn)
+                end
+            end
+
+            self.selected_button = Utils.clamp(self.selected_button, 1, #self.buttons)
+        end)
+    end
+    
+    if Mod.libs["magical-glass"] then -- Compatibility with 'magical-glass' Library.
+    
+        Utils.hook(LightBattle, "shortActText", function(orig, self, text)
+            local advances = 3 --initial override so we can run it
+            local function recurseiveSHAT()
+                advances = advances + 1
+                if(advances >= 3) then
+                    self.battle_ui:clearEncounterText()
+                    advances = 0
+                
+                    local t1, t2, t3 = table.remove(text,1), table.remove(text,1), table.remove(text,1)
+                    local text_exhausted = not (t1 and t2 and t3) or #text == 0
+                    local opt_shat = (not text_exhausted) and recurseiveSHAT
+                    self.battle_ui.short_act_text_1:setText(t1 or "",  opt_shat)
+                    self.battle_ui.short_act_text_2:setText(t2 or "",  opt_shat)
+                    self.battle_ui.short_act_text_3:setText(t3 or "",  opt_shat)
+
+                    if(text_exhausted) then
+                        --this controls wheter or not we can advance to the next line?
+                        self:setState("SHORTACTTEXT")
+                    end
+                end
+            end
+            
+            recurseiveSHAT()
+        end)
+        
+        Utils.hook(LightBattle, "createPartyBattlers", function(orig, self)
+            for i = 1, #Game.party do
+                local party_member = Game.party[i]
+
+                local battler = LightPartyBattler(party_member)
+                battler.visible = false
+                self:addChild(battler)
+                table.insert(self.party, battler)
+            end
+        end)
+        
+        Utils.hook(LightBattleUI, "drawState", function(orig, self)
+            if Game.battle.state == "MENUSELECT" then
+                local page = Game.battle:isPagerMenu() and math.ceil(Game.battle.current_menu_x / Game.battle.current_menu_columns) - 1 or math.ceil(Game.battle.current_menu_y / Game.battle.current_menu_rows) - 1
+                local max_page = math.ceil(#Game.battle.menu_items / (Game.battle.current_menu_columns * Game.battle.current_menu_rows)) - 1
+
+                local x = 0
+                local y = 0
+
+                local menu_offsets = { -- {soul, text}
+                    ["ACT"] = {12, 16},
+                    ["ITEM"] = {0, 0},
+                    ["SPELL"] = {12, 16},
+                    ["MERCY"] = {0, 0}, --doesn't matter lmao
+                }
+
+                for lib_id,_ in Kristal.iterLibraries() do
+                    menu_offsets = Kristal.libCall(lib_id, "getLightBattleMenuOffsets", menu_offsets) or menu_offsets
+                end
+                menu_offsets = Kristal.modCall("getLightBattleMenuOffsets", menu_offsets) or menu_offsets
+
+                local extra_offset
+                for name, offset in pairs(menu_offsets) do
+                    if name == Game.battle.state_reason then
+                        extra_offset = offset
+                    end
+                end
+
+                if Game.battle:isPagerMenu() then
+                    Game.battle.soul:setPosition(72 + ((Game.battle.current_menu_x - 1 - (page * 2)) * (248 + extra_offset[1])), 255 + ((Game.battle.current_menu_y) * 31.5))
+                else
+                    Game.battle.soul:setPosition(72 + ((Game.battle.current_menu_x - 1) * (248 + extra_offset[1])), 255 + ((Game.battle.current_menu_y - (page * Game.battle.current_menu_rows)) * 31.5))
+                end
+
+                local font = Assets.getFont("main_mono")
+                love.graphics.setFont(font, 32)
+
+                local col = Game.battle.current_menu_columns
+                local row = Game.battle.current_menu_rows
+                local draw_amount = col * row
+
+                local page_offset = page * draw_amount
+                
+                for i = page_offset + 1, math.min(page_offset + draw_amount, #Game.battle.menu_items) do
+                    local item = Game.battle.menu_items[i]
+
+                    Draw.setColor(1, 1, 1, 1)
+                    local text_offset = 0
+                    local able = Game.battle:canSelectMenuItem(item)
+                    
+                    -- Head counter
+                    local heads = 0
+                    if item.party then
+                        for index, party_id in ipairs(item.party) do
+                            local chara = Game:getPartyMember(party_id)
+                            if Game.battle:getPartyIndex(party_id) ~= Game.battle.current_selecting then
+                                heads = heads + 1
+                            end
+                        end
+                        if not able then
+                            Draw.setColor(COLORS.gray)
+                        end
+
+                        if heads <= 1 then
+                            for index, party_id in ipairs(item.party) do
+                                local chara = Game:getPartyMember(party_id)
+
+                                if Game.battle:getPartyIndex(party_id) ~= Game.battle.current_selecting then
+                                    local ox, oy = chara:getHeadIconOffset()
+                                    Draw.draw(Assets.getTexture(chara:getHeadIcons() .. "/head"), text_offset + 92 + (x * (240 + extra_offset[2])) + ox, 5 + (y * 32) + oy)
+                                    text_offset = text_offset + 37
+                                end
+                            end
+                        else
+                            for index, party_id in ipairs(item.party) do
+                                local chara = Game:getPartyMember(party_id)
+                                -- Draw head only if it isn't the currently selected character
+                                if Game.battle:getPartyIndex(party_id) ~= Game.battle.current_selecting then
+                                    local ox, oy = chara:getHeadIconOffset()
+                                    local party = 0
+                                    if heads > 2 then
+                                        party = heads - 2
+                                    end
+                                    Draw.draw(Assets.getTexture(chara:getHeadIcons() .. "/head"), text_offset + 92 + (x * (240 + extra_offset[2])) + ox, 5 + (y * 32) + oy + (party ~= 0 and (0 + party * 1.9) or 0), 0, 1 / (1 + party * 0.35))
+                                    text_offset = text_offset + (30 / (1 + party * 0.5))
+                                end
+                            end
+                        end
+                    end
+
+                    if item.icons then
+                        if not able then
+                            Draw.setColor(COLORS.gray)
+                        end
+
+                        for _, icon in ipairs(item.icons) do
+                            if type(icon) == "string" then
+                                icon = {icon, false, 0, 0, nil}
+                            end
+                            if not icon[2] then
+                                local texture = Assets.getTexture(icon[1])
+                                Draw.draw(texture, text_offset + 102 + (x * (240 + extra_offset[2])) + (icon[3] or 0), 50 + (y * 32) + (icon[4] or 0))
+                                text_offset = text_offset + (icon[5] or texture:getWidth())
+                            end
+                        end
+                    end
+
+                    if able then
+                        Draw.setColor(item.color or {1, 1, 1, 1})
+                    else
+                        Draw.setColor(COLORS.gray)
+                    end
+
+                    for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                        if enemy.mercy >= 100 and item.special == "spare" then
+                            love.graphics.setColor(MagicalGlassLib.name_color)
+                        end
+                    end
+
+                    local name = item.name
+                    if item.seriousname and MagicalGlassLib.serious_mode then
+                        name = item.seriousname
+                    elseif item.shortname then
+                        name = item.shortname
+                    end
+
+                    if heads > 0 then
+        --[[                 self.menuselect_options[i]:setText(name)
+                        self.menuselect_options[i]:setPosition(text_offset + 67 + (x * (240 + extra_offset[2])), 15 + (y * 32)) ]]
+                        love.graphics.print(name, text_offset + 95 + (x * (240 + extra_offset[2])), (y * 32))
+                    else
+        --[[                 self.menuselect_options[i]:setText("* " .. name)
+                        self.menuselect_options[i]:setPosition(text_offset + 62 + (x * (240 + extra_offset[2])), 15 + (y * 32)) ]]
+                        love.graphics.print("* " .. name, text_offset + 100 + (x * (240 + extra_offset[2])), (y * 32))
+                    end
+
+                    text_offset = text_offset + font:getWidth(item.name)
+
+                    if item.icons then
+                        if able then
+                            Draw.setColor(1, 1, 1)
+                        end
+
+                        for _, icon in ipairs(item.icons) do
+                            if type(icon) == "string" then
+                                icon = {icon, false, 0, 0, nil}
+                            end
+                            if icon[2] then
+                                local texture = Assets.getTexture(icon[1])
+                                Draw.draw(texture, text_offset + 30 + (x * 230) + (icon[3] or 0), 50 + (y * 30) + (icon[4] or 0))
+                                text_offset = text_offset + (icon[5] or texture:getWidth())
+                            end
+                        end
+                    end
+
+                    if Game.battle.current_menu_columns == 1 then
+                        if x == 0 then
+                            y = y + 1
+                        end
+                    else
+                        if x == 0 then
+                            x = 1
+                        else
+                            x = 0
+                            y = y + 1
+                        end
+                    end
+
+                end
+
+                local tp_offset = 0
+                local current_item = Game.battle.menu_items[Game.battle:getItemIndex()] or Game.battle.menu_items[1] -- crash prevention in case of an invalid option
+                if current_item.description then
+                    if self.help_window then
+                        self.help_window:setDescription(current_item.description)
+                    elseif Kristal.getLibConfig("magical-glass", "item_info") == "magical_glass" then
+                        Draw.setColor(COLORS.gray)
+                        local str = current_item.description:gsub('\n', ' ')
+                        love.graphics.print(str, 100 - 16, 64)
+                    end
+                end
+
+                if current_item.tp and current_item.tp ~= 0 then
+                    if self.help_window then
+                        self.help_window:setTension(current_item.tp)
+                        Game:setTensionPreview(current_item.tp)
+                    elseif Kristal.getLibConfig("magical-glass", "item_info") == "magical_glass" then
+                        Draw.setColor(PALETTE["tension_desc"])
+                        love.graphics.print(math.floor((current_item.tp / Game:getMaxTension()) * 100) .. "% "..Game:getConfig("tpName"), 260 + 208, 64)
+                        Game:setTensionPreview(current_item.tp)
+                    end
+                else
+                    Game:setTensionPreview(0)
+                end
+
+                Draw.setColor(1, 1, 1, 1)
+
+                if Game.battle:isPagerMenu() then
+                    love.graphics.print("PAGE " .. page + 1, 388, 64)
+                else
+                    if page < max_page then
+                        Draw.draw(self.arrow_sprite, 45, 90 + (math.sin(Kristal.getTime()*6) * 2))
+                    end
+                    if page > 0 then
+                        Draw.draw(self.arrow_sprite, 45, 10 - (math.sin(Kristal.getTime()*6) * 2), 0, 1, -1)
+                    end
+                end
+            else
+                orig(self)
+            end
+        end)
+        
+        Utils.hook(LightActionBox, "drawStatusStrip", function(orig, self)
+            if not Game.battle.multi_mode or #Game.battle.party <= 3 then
+                orig(self)
+            else
+                if #Game.battle.party == 4 and not Kristal.getLibConfig("moreparty", "classic_mode") then
+                    local x, y = 64 + (3 - #Game.battle.party) * 80 + (self.index - 1) * 80 * 2, 130
+                    
+                    local name = self.battler.chara:getShortName()
+                    local level = Game:isLight() and self.battler.chara:getLightLV() or self.battler.chara:getLevel()
+                    
+                    local current = self.battler.chara:getHealth()
+                    local max = self.battler.chara:getStat("health")
+                    local karma = self.battler.karma
+                    
+                    love.graphics.setFont(Assets.getFont("namelv", 16))
+                    love.graphics.setColor(COLORS["white"])
+                    love.graphics.print(name, x, y - 2)
+                    love.graphics.setFont(Assets.getFont("namelv", 8))
+                    love.graphics.print("LV " .. level, x, y + 13)
+                    
+                    if not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
+                        love.graphics.draw(Assets.getTexture("ui/lightbattle/hp"), x + 47, y + 14, 0, 0.5)
+                    end
+                    
+                    local small = false
+                    for _,party in ipairs(Game.battle.party) do
+                        if party.chara:getStat("health") >= 100 then
+                            small = true
+                        end
+                    end
+                    
+                    local karma_mode = Game.battle.encounter.karma_mode
+                    if karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
+                        love.graphics.draw(Assets.getTexture("ui/lightbattle/kr"), x + 63 + (small and 14 or 26) * 1.25, y + 14, 0, 0.5)
+                    end
+                    
+                    love.graphics.setColor(karma_mode and {192/255, 0, 0} or COLORS["red"])
+                    love.graphics.rectangle("fill", x + 60, y, (small and 14 or 26) * 1.25, 21)
+                    love.graphics.setColor({1,0,1})
+                    love.graphics.rectangle("fill", x + 60, y, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 14 or 26)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
+                    love.graphics.setColor(COLORS["yellow"])
+                    love.graphics.rectangle("fill", x + 60, y, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 14 or 26)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
+                    
+                    love.graphics.setFont(Assets.getFont("namelv", 16))
+                    if max < 10 and max >= 0 then
+                        max = "0" .. tostring(max)
+                    end
+
+                    if current < 10 and current >= 0 then
+                        current = "0" .. tostring(current)
+                    end
+                    
+                    local color = COLORS.white
+                    if not Game.battle.forced_victory then
+                        if self.battler.is_down then
+                            color = {1,0,0}
+                        elseif self.battler.sleeping then
+                            color = {0,0,1}
+                        elseif Game.battle:getActionBy(self.battler) and Game.battle:getActionBy(self.battler).action == "DEFEND" then
+                            color = COLORS.aqua
+                        elseif Game.battle:getActionBy(self.battler) and Utils.containsValue({"ACTIONSELECT", "MENUSELECT", "ENEMYSELECT", "PARTYSELECT"}, Game.battle:getState()) then
+                            color = COLORS.yellow
+                        elseif karma > 0 then
+                            color = {1,0,1}
+                        end
+                    end
+                    love.graphics.setColor(color)
+                    love.graphics.printf(current .. "/" .. max, x + 154 - 500, y + 3 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 5 or 0), 500, "right")
+                    
+                    if Game.battle.current_selecting == self.index or DEBUG_RENDER and Input.alt() then
+                        love.graphics.setColor(self.battler.chara:getLightColor())
+                        love.graphics.setLineWidth(2)
+                        love.graphics.line(x - 3, y - 7, x - 3, y + 28)
+                        love.graphics.line(x - 3 - 1, y - 7, x + 155 + 1, y - 7)
+                        love.graphics.line(x + 155, y - 7, x + 155, y + 28)
+                        love.graphics.line(x - 3 - 1, y + 28, x + 155 + 1, y + 28)
+                    end
+                else
+                    local x, y = 0, 0
+                    local z = Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4
+                    if self.index <= z then
+                        x, y = 64 + (3 - math.min(#Game.battle.party,z)) * 80 + (self.index - 1) * 80 * 2, 128
+                    else
+                        x, y = 64 + (3 - math.min(#Game.battle.party - z,z)) * 80 + (self.index - 1 - z) * 80 * 2, 148
+                    end
+                    
+                    local name = self.battler.chara:getShortName()
+                    local level = Game:isLight() and self.battler.chara:getLightLV() or self.battler.chara:getLevel()
+                    
+                    local current = self.battler.chara:getHealth()
+                    local max = self.battler.chara:getStat("health")
+                    local karma = self.battler.karma
+                    
+                    love.graphics.setFont(Assets.getFont("namelv", 16))
+                    love.graphics.setColor(COLORS["white"])
+                    love.graphics.print(name, x, y - 7)
+                    love.graphics.setFont(Assets.getFont("namelv", 8))
+                    love.graphics.print("LV " .. level, x, y + 5)
+                    
+                    if not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
+                        love.graphics.draw(Assets.getTexture("ui/lightbattle/hp"), x + 47, y + 6, 0, 0.5)
+                    end
+                    
+                    local small = false
+                    for _,party in ipairs(Game.battle.party) do
+                        if party.chara:getStat("health") >= 100 then
+                            small = true
+                        end
+                    end
+                    
+                    local karma_mode = Game.battle.encounter.karma_mode
+                    if karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
+                        love.graphics.draw(Assets.getTexture("ui/lightbattle/kr"), x + 63 + (small and 14 or 26) * 1.25, y + 6, 0, 0.5)
+                    end
+                    
+                    love.graphics.setColor(karma_mode and {192/255, 0, 0} or COLORS["red"])
+                    love.graphics.rectangle("fill", x + 60, y - 2, (small and 14 or 26) * 1.25, 10)
+                    love.graphics.setColor({1,0,1})
+                    love.graphics.rectangle("fill", x + 60, y - 2, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 14 or 26)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 10)
+                    love.graphics.setColor(COLORS["yellow"])
+                    love.graphics.rectangle("fill", x + 60, y - 2, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 14 or 26)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 10)
+                    
+                    love.graphics.setFont(Assets.getFont("namelv", 16))
+                    if max < 10 and max >= 0 then
+                        max = "0" .. tostring(max)
+                    end
+
+                    if current < 10 and current >= 0 then
+                        current = "0" .. tostring(current)
+                    end
+                    
+                    local color = COLORS.white
+                    if not Game.battle.forced_victory then
+                        if self.battler.is_down then
+                            color = {1,0,0}
+                        elseif self.battler.sleeping then
+                            color = {0,0,1}
+                        elseif Game.battle:getActionBy(self.battler) and Game.battle:getActionBy(self.battler).action == "DEFEND" then
+                            color = COLORS.aqua
+                        elseif Game.battle:getActionBy(self.battler) and Utils.containsValue({"ACTIONSELECT", "MENUSELECT", "ENEMYSELECT", "PARTYSELECT"}, Game.battle:getState()) then
+                            color = COLORS.yellow
+                        elseif karma > 0 then
+                            color = {1,0,1}
+                        end
+                    end
+                    love.graphics.setColor(color)
+                    love.graphics.printf(current .. "/" .. max, x + 154 - 500, y - 4 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 3 or 0), 500, "right")
+                    
+                    if Game.battle.current_selecting == self.index or DEBUG_RENDER and Input.alt() then
+                        love.graphics.setColor(self.battler.chara:getLightColor())
+                        love.graphics.setLineWidth(2)
+                        love.graphics.line(x - 3, y - 7, x - 3, y + 13)
+                        love.graphics.line(x - 3 - 1, y - 7, x + 155 + 1, y - 7)
+                        love.graphics.line(x + 155, y - 7, x + 155, y + 13)
+                        love.graphics.line(x - 3 - 1, y + 13, x + 155 + 1, y + 13)
+                    end
+                end
+            end
+        end)
+        
+    end
     
     print("Loaded MoreParty Library")
 end
 
 function Lib:postUpdate()
-    if #Game.party > (Kristal.getLibConfig("moreparty", "classic_mode") and 6 or 8) then -- Prevents the library from running where they're more party members than supported
-        local add = ""
+    local max_members = (Kristal.getLibConfig("moreparty", "classic_mode") and 6 or 8)
+    if #Game.party > max_members and not Lib.warned["too_many_pm"] then
+        Kristal.Console:warn("too many party members than MoreParty can support. (MAX: ".. max_members ..")")
         if Kristal.getLibConfig("moreparty", "classic_mode") then
-            add = " Try disabling 'classic_mode' in lib.json."
+            Kristal.Console:warn("try disabling the library's 'classic_mode' to allow up to 8.")
         end
-        error("Too many party members than the MoreParty library can support." .. add)
+        Lib.warned["too_many_pm"] = true
     end
 end
 
