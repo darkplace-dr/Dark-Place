@@ -91,6 +91,13 @@ return {
     origin = "Deltarune"
   },
   {
+    name = "Alarm Titlescreen",
+    file = "alarm_titlescreen",
+    composer = "Toby Fox",
+    released = "2021",
+    origin = "Deltarune"
+  },
+  {
     name = "My Funky Town",
     file = "castle_funk",
     composer = "Toby Fox",
@@ -134,8 +141,43 @@ return {
     origin = "soundcloud.com/speedwaystardst"
   },
   {
+    name = "Ruins",
+    file = "ruins",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
     name = "Enemy Approaching!",
     file = "battleut",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Snowy",
+    file = "snowy",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Waterfall",
+    file = "waterfall",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "Another Medium",
+    file = "anothermedium",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale"
+  },
+  {
+    name = "CORE",
+    file = "core",
     composer = "Toby Fox",
     released = "2015",
     origin = "Undertale"
@@ -369,6 +411,27 @@ return {
   {
     name = "Happy Hour",
     file = "happy_hour",
+    composer = "NoteBlock, MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow"
+  },
+  {
+    name = "Meltdown",
+    file = "steamworks_overworld",
+    composer = "MyNewSoundtrack, MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow"
+  },
+  {
+    name = "Treading Lightly",
+    file = "treading_lightly",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow"
+  },
+  {
+    name = "Enter Axis",
+    file = "enter_axis",
     composer = "NoteBlock, MasterSwordRemix",
     released = "2023",
     origin = "Undertale Yellow"
@@ -699,6 +762,13 @@ return {
     origin = "Pikmin on the fucking Gamecube"
   },
   --[[
+  {
+    name = "Archives",
+    file = "archives",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale II: Revenge of the Robots"
+  },
   {
     name = "The Road Leading to the Secret",
     file = "road_secret",
