@@ -245,35 +245,36 @@ function LightEnemyBattler:removeAct(name)
 end
 
 function LightEnemyBattler:spare(pacify)
+    if not self.done_state then
+        if self.exit_on_defeat then
+            self:toggleOverlay(true)
+            self.alpha = 0.5
+            Game.battle.spare_sound:stop()
+            Game.battle.spare_sound:play()
 
-    if self.exit_on_defeat then
-        self:toggleOverlay(true)
-        self.alpha = 0.5
-        Game.battle.spare_sound:stop()
-        Game.battle.spare_sound:play()
+            for i = 0, 15 do
+                local x = ((Utils.random((self.width / 2)) + (self.width / 4))) - 8
+                local y = ((Utils.random((self.height / 2)) + (self.height / 4))) - 8
 
-        for i = 0, 15 do
-            local x = ((Utils.random((self.width / 2)) + (self.width / 4))) - 8
-            local y = ((Utils.random((self.height / 2)) + (self.height / 4))) - 8
+                local sx, sy = self:getRelativePos(x, y)
 
-            local sx, sy = self:getRelativePos(x, y)
+                local dust = SpareDust(sx, sy)
+                self.parent:addChild(dust)
 
-            local dust = SpareDust(sx, sy)
-            self.parent:addChild(dust)
+                dust.rightside = ((8 + x)) / (self.width / 2)
+                dust.topside = ((8 + y)) / (self.height / 2)
 
-            dust.rightside = ((8 + x)) / (self.width / 2)
-            dust.topside = ((8 + y)) / (self.height / 2)
+                Game.battle.timer:after(1/30, function()
+                    dust:spread()
+                end)
 
-            Game.battle.timer:after(1/30, function()
-                dust:spread()
-            end)
-
-            dust.layer = BATTLE_LAYERS["above_ui"] + 3
+                dust.layer = BATTLE_LAYERS["above_ui"] + 3
+            end
         end
-    end
 
-    self:defeat(pacify and "PACIFIED" or "SPARED", false)
-    self:onSpared()
+        self:defeat(pacify and "PACIFIED" or "SPARED", false)
+        self:onSpared()
+    end
 end
 
 function LightEnemyBattler:getSpareText(battler, success)
@@ -366,14 +367,16 @@ function LightEnemyBattler:addMercy(amount)
 end
 
 function LightEnemyBattler:onMercy(battler)
-    if self:canSpare() then
-        self:spare()
-        return true
-    else
-        if self.spare_points ~= 0 or Kristal.getLibConfig("magical-glass", "multi_deltarune_spare") and Game.battle.multi_mode then
-            self:addMercy(self.spare_points)
+    if not self.done_state then
+        if self:canSpare() then
+            self:spare()
+            return true
+        else
+            if self.spare_points ~= 0 or Kristal.getLibConfig("magical-glass", "multi_deltarune_spare") and Game.battle.multi_mode then
+                self:addMercy(self.spare_points)
+            end
+            return false
         end
-        return false
     end
 end
 
@@ -499,38 +502,39 @@ function LightEnemyBattler:isXActionShort(battler)
 end
 
 function LightEnemyBattler:hurt(amount, battler, on_defeat, color, anim, attacked)
-    if attacked ~= false then
-        attacked = true
-    end
-    local message
-    if amount <= 0 then
-        if not self.display_damage_on_miss or not attacked then
-            message = self:lightStatusMessage("msg", "miss", color or (battler and {battler.chara:getLightMissColor()}))
-        else
-            message = self:lightStatusMessage("damage", 0, color or (battler and {battler.chara:getLightDamageColor()}))
+    if not self.done_state or self.done_state == "PRE-DEATH" then
+        if attacked ~= false then
+            attacked = true
         end
+        local message
+        if amount <= 0 then
+            if not self.display_damage_on_miss or not attacked then
+                message = self:lightStatusMessage("msg", "miss", color or (battler and {battler.chara:getLightMissColor()}))
+            else
+                message = self:lightStatusMessage("damage", 0, color or (battler and {battler.chara:getLightDamageColor()}))
+            end
+            if message and (anim and anim ~= nil) then
+                message:resetPhysics()
+            end
+            if attacked then
+                self.hurt_timer = 1
+            end
+
+            self:onDodge(battler, attacked)
+            return
+        end
+
+        message = self:lightStatusMessage("damage", amount, color or (battler and {battler.chara:getLightDamageColor()}))
         if message and (anim and anim ~= nil) then
             message:resetPhysics()
         end
-        if attacked then
-            self.hurt_timer = 1
-        end
+        self.health = self.health - amount
 
-        self:onDodge(battler, attacked)
-        return
+        self.hurt_timer = 1
+        self:onHurt(amount, battler)
+
+        self:checkHealth(on_defeat, amount, battler)
     end
-
-    message = self:lightStatusMessage("damage", amount, color or (battler and {battler.chara:getLightDamageColor()}))
-    if message and (anim and anim ~= nil) then
-        message:resetPhysics()
-    end
-    self.health = self.health - amount
-
-    self.hurt_timer = 1
-    self:onHurt(amount, battler)
-
-    self:checkHealth(on_defeat, amount, battler)
-
 end
 
 function LightEnemyBattler:onDodge(battler, attacked) end

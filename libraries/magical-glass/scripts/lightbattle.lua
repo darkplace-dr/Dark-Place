@@ -466,7 +466,7 @@ function LightBattle:retargetEnemy()
     return true
 end
 
-function LightBattle:enemyExist(enemy)
+function LightBattle:enemyExists(enemy)
     return enemy ~= nil and type(enemy) ~= "boolean"
 end
 
@@ -477,10 +477,10 @@ function LightBattle:processAction(action)
 
     self.current_processing_action = action
 
-    if self:enemyExist(enemy) and enemy.done_state then
+    if self:enemyExists(enemy) and enemy.done_state then
         enemy = self:retargetEnemy()
         action.target = enemy
-        if not self:enemyExist(enemy) then
+        if not self:enemyExists(enemy) then
             return true
         end
     end
@@ -533,10 +533,10 @@ function LightBattle:processAction(action)
 
         if lane.attacked then
 
-            if self:enemyExist(action.target) and action.target.done_state then
+            if self:enemyExists(action.target) and action.target.done_state then
                 enemy = self:retargetEnemy()
                 action.target = enemy
-                if not self:enemyExist(enemy) then
+                if not self:enemyExists(enemy) then
                     self.cancel_attack = true
                     self:finishAction(action)
                     return
@@ -547,7 +547,7 @@ function LightBattle:processAction(action)
             local damage = 0
             local crit
 
-            if self:enemyExist(enemy) then
+            if self:enemyExists(enemy) then
                 if not action.force_miss and action.points > 0 then
                     damage, crit = enemy:getAttackDamage(action.damage or 0, lane, action.points or 0, action.stretch)
                     damage = Utils.round(damage)

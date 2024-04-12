@@ -36,7 +36,7 @@
         ///// Light Battle Defend Command
         // Adds the Defend command to the mercy action button in Light Battles.
         /////
-        "light_battle_defend_btn": true,
+        "light_battle_defend_btn": false,
 
         ///// UNDERTALE Text Skipping
         // Disables skipping text in ANY textbox when holding down confirm or menu.
@@ -142,12 +142,12 @@
         ///// Mercy Messages
         // Shows the amount of mercy added to an enemy when their mercy gauge increases in Light Battles.
         /////
-        "mercy_messages": true,
+        "mercy_messages": false,
 
         ///// Enemy Bar Percentages
         // Draws the HP and Mercy text and Percentages on the gauges.
         /////
-        "enemy_bar_percentages": true,
+        "enemy_bar_percentages": false,
 
         ///// Light Enemy Chaser Auras
         // Whether enemies in the light world will also have auras.
@@ -157,7 +157,7 @@
         ///// Action Button Flash
         // Whether the Spell and Mercy buttons should flash in Light Battles if an enemy is pacifyable or sparable.
         /////
-        "action_button_flash": true,
+        "action_button_flash": false,
         
         ///// Action Button Styles
         // Determines the appearance of the action buttons in Light Battles.

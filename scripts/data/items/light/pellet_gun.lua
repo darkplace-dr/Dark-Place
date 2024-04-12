@@ -48,6 +48,10 @@ function item:init()
     self.attack_sound = "gunshot"
 end
 
+function item:convertToDarkEquip(chara)
+    return "hornet_gun"
+end
+
 function item:onLightAttack(battler, enemy, damage, stretch, crit)
     local src = Assets.stopAndPlaySound(self:getLightAttackSound() or "laz_c")
     src:setPitch(self:getLightAttackPitch() or 1)

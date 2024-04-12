@@ -42,7 +42,7 @@ function LightActionButton:select()
     elseif self.type == "spell" then
         Game.battle:clearMenuItems()
         Game.battle.current_menu_columns = 2
-        Game.battle.current_menu_rows = 3
+        Game.battle.current_menu_rows = Kristal.getLibConfig("magical-glass", "item_info") == "magical_glass" and 2 or 3
 
         if Game.battle.encounter.default_xactions and self.battler.chara:hasXAct() then
             local spell = {
@@ -119,7 +119,7 @@ function LightActionButton:select()
 
                     if not spell.target or spell.target == "none" then
                         Game.battle:pushAction("SPELL", nil, menu_item)
-                    elseif spell.target == "ally" and #Game.battle.party == 1 then
+                    elseif spell.target == "ally" and not Game.battle.multi_mode then
                         Game.battle:pushAction("SPELL", Game.battle.party[1], menu_item)
                     elseif spell.target == "ally" then
                         Game.battle:setState("PARTYSELECT", "SPELL")
@@ -142,8 +142,8 @@ function LightActionButton:select()
         for i, item in ipairs(Game.inventory:getStorage("items")) do
             Game.battle:addMenuItem({
                 ["name"] = item:getName(),
-                ["shortname"] = item.short_name,
-                ["seriousname"] = item.serious_name,
+                ["shortname"] = item:getShortName(),
+                ["seriousname"] = item:getSeriousName(),
                 ["unusable"] = item.usable_in ~= "all" and item.usable_in ~= "battle",
                 ["description"] = item:getBattleDescription(),
                 ["data"] = item,
@@ -152,7 +152,7 @@ function LightActionButton:select()
 
                     if not item.target or item.target == "none" then
                         Game.battle:pushAction("ITEM", nil, menu_item)
-                    elseif item.target == "ally" and #Game.battle.party == 1 then
+                    elseif item.target == "ally" and not Game.battle.multi_mode then
                         Game.battle:pushAction("ITEM", Game.battle.party[1], menu_item)
                     elseif item.target == "ally" then
                         Game.battle:setState("PARTYSELECT", "ITEM")
@@ -177,10 +177,18 @@ function LightActionButton:select()
             ["name"] = "Spare",
             ["special"] = "spare",
             ["callback"] = function(menu_item)
-                Game.battle:pushAction("SPARE", Game.battle:getActiveEnemies())
+                if Kristal.getLibConfig("magical-glass", "multi_deltarune_spare") and Game.battle.multi_mode then
+                    Game.battle:setState("ENEMYSELECT", "SPARE")
+                else
+                    Game.battle:pushAction("SPARE", Game.battle:getActiveEnemies())
+                end
             end
         })
-        if Kristal.getLibConfig("magical-glass", "light_battle_defend_btn") then
+        local battler_can_defend = Kristal.getLibConfig("magical-glass", "light_battle_defend_btn") or not Game:isLight()
+        if self.battler.chara.light_can_defend ~= nil then
+            battler_can_defend = self.battler.chara.light_can_defend
+        end
+        if battler_can_defend then
             Game.battle:addMenuItem({
                 ["name"] = "Defend",
                 ["special"] = "defend",
@@ -191,15 +199,23 @@ function LightActionButton:select()
             })
         end
         if Game.battle.encounter.can_flee then
+            local battle_leader
+            for i,battler in ipairs(Game.battle.party) do
+                if not battler.is_down then
+                    battle_leader = battler.chara.id
+                    break
+                end
+            end
             Game.battle:addMenuItem({
                 ["name"] = "Flee",
                 ["special"] = "flee",
+                ["unusable"] = Game.battle:getPartyIndex(battle_leader) ~= Game.battle.current_selecting,
                 ["callback"] = function(menu, item)
                     local chance = Game.battle.encounter.flee_chance
 
                     for _,party in ipairs(Game.battle.party) do
                         for _,equip in ipairs(party.chara:getEquipment()) do
-                            chance = chance + (equip.getFleeBonus and equip:getFleeBonus() or 0)
+                            chance = chance + (equip.getFleeBonus and equip:getFleeBonus() / #Game.battle.party or 0)
                         end
                     end
 
@@ -213,7 +229,9 @@ function LightActionButton:select()
             })
         end
         Game.battle:setState("MENUSELECT", "MERCY")
-    -- this is meant to be Send
+
+    -- Custom buttons start here.
+
     elseif self.type == "send" then
         Game.battle.current_menu_columns = 1
         Game.battle.current_menu_rows = 3
@@ -258,7 +276,7 @@ function LightActionButton:select()
             })
         end
         Game.battle:setState("MENUSELECT", "SEND")
-    elseif self.type == "defend" then
+    elseif self.type == "scott" then
         Assets.playSound("scott_here")
     elseif self.type == "croak" then
         Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))

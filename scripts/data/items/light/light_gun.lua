@@ -36,7 +36,7 @@ function item:init()
     self.result_item = nil
 end
 
-function item:convertToDark(inventory)
+function item:convertToDarkEquip(chara)
     return "superscope"
 end
 

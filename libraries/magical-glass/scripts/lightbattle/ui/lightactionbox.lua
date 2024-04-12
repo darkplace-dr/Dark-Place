@@ -35,7 +35,7 @@ function LightActionBox:createButtons()
 
     if not self.battler.chara:hasAct() then Utils.removeFromTable(btn_types, "act") end
     if not self.battler.chara:hasSpells() then Utils.removeFromTable(btn_types, "spell") end
-	
+
 
 	if self.battler.chara:hasSkills() then
 		btn_types = {"fight", "skill", "item", "mercy"}
