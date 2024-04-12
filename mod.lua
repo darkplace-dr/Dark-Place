@@ -47,7 +47,7 @@ function Mod:init()
             return 0, 0
         end)
     end
-    -- v0.9.0 string add tweak (yuck)
+    -- v0.9.0 string add tweak HACK (yuck) for MG
     local string_metatable = getmetatable(" ")
     if not string_metatable.__add then
         string_metatable.__add = function (a, b) return a .. tostring(b) end

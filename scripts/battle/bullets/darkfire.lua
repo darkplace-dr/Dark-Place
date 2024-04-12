@@ -17,14 +17,15 @@ function SmallBullet:init(x, y, dir, speed)
 end
 
 function SmallBullet:update()
-    Object.startCache()
 	if not self.stopped then
+		Object.startCache()
 		for _,bullet in ipairs(self.wave.bullets) do
 			if bullet:collidesWith(self) and bullet ~= self then
 				self.collided_with_another = true
 				break
 			end
 		end
+		Object.endCache()
 
 		if self.y > Game.battle.arena:getBottom() - 7 or self.collided_with_another then
 			self.physics.speed = 0
@@ -34,7 +35,6 @@ function SmallBullet:update()
 			self.stopped = true
 		end
 	end
-    Object.endCache()
 
 	super.update(self)
 end
