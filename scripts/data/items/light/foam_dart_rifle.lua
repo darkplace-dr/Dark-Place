@@ -40,7 +40,7 @@ function item:showEquipText()
     Game.world:showText("* Finally,[wait:5] an actual gun.")
 end
 
-function item:convertToDark(inventory)
+function item:convertToDarkEquip(chara)
     return "basic_rifle"
 end
 
