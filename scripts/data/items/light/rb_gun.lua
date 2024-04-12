@@ -44,7 +44,7 @@ function item:init()
     self.attack_sound = "gunshot"
 end
 
-function item:convertToDark(inventory)
+function item:convertToDarkEquip(chara)
     return "derringer"
 end
 
