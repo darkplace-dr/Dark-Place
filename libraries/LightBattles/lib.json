@@ -1,7 +1,8 @@
 {
-    "id": "froggit-lib",
+    "id": "light_battles-lib",
     "authors": [
-        "Sam Deluxe"
+        "Sam Deluxe",
+        "EVERYONE"
     ],
     "dependencies": ["magical-glass"],
     "version": "v1.0.0",
