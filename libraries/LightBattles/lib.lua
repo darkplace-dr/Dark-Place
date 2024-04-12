@@ -1,3 +1,0 @@
-local lib = {}
-
-return lib
