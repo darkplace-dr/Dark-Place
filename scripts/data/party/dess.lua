@@ -28,6 +28,8 @@ function character:init()
     self.has_xact = true
     -- X-Action name (displayed in this character's spell menu)
     self.xact_name = "D-Action"
+
+    self.lw_portrait = "face/dess/condescending"
 	
 	-- Spells
 	

@@ -19,6 +19,7 @@ function character:init()
 
     self.has_xact = true
     self.xact_name = "U-Action"
+    self.lw_portrait = "face/dumbie/normal"
 	self:addSpell("hyper_slash")
 
     self.health = 130

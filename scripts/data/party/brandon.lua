@@ -20,6 +20,8 @@ function character:init()
     self.has_xact = true
     self.xact_name = "B-Action"
 
+    self.lw_portrait = "face/brandon/neutral"
+
     self:addSpell("gammabeam")
 
     self.health = 100
