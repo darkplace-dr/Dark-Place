@@ -30,57 +30,60 @@ function Mod:initMinigameHooks()
         end
     end)
 
-    -- This is so quick reload puts you in the last game
-    Utils.hook(Kristal, "quickReload", function(orig, mode)
-        -- Temporarily save game variables
-        local save, save_id, encounter, shop, minigame
-        if mode == "temp" then
-            save = Game:save()
-            save_id = Game.save_id
-            encounter = Game.battle and Game.battle.encounter and Game.battle.encounter.id
-            shop = Game.shop and Game.shop.id
-            minigame = Game.minigame and Game.minigame.id
-        elseif mode == "save" then
-            save_id = Game.save_id
-        end
-    
-        -- Temporarily save the current mod id
-        local mod_id = Mod.info.id
-    
-        -- Go to empty state
-        Gamestate.switch({})
-        -- Clear the mod
-        Kristal.clearModState()
-        -- Reload mods
-        Kristal.loadAssets("", "mods", "", function ()
-            love.window.setTitle(Kristal.getDesiredWindowTitle())
-            -- Reload the current mod directly
-            if mode ~= "save" then
-                Kristal.loadMod(mod_id, nil, nil, function ()
-                    -- Pre-initialize the current mod
-                    if Kristal.preInitMod(mod_id) then
-                        if save then
-                            -- Switch to Game and load the temp save
-                            Gamestate.switch(Game, save, save_id, false)
-                            -- If we had an encounter, restart the encounter
-                            if encounter then
-                                Game:encounter(encounter, false)
-                            elseif shop then -- If we were in a shop, re-enter it
-                                Game:enterShop(shop)
-                            elseif minigame then -- If we were in a minigame, restart it
-                                Mod:startMinigame(minigame)
-                            end
-                        else
-                            -- Switch to Game
-                            Gamestate.switch(Game)
-                        end
-                    end
-                end)
-            else
-                Kristal.loadMod(mod_id, save_id)
+    -- There's no way to detect unfixed versions afaik, so...
+    if not self.legacy_kristal then
+        -- This is so quick reload puts you in the last game
+        Utils.hook(Kristal, "quickReload", function(orig, mode)
+            -- Temporarily save game variables
+            local save, save_id, encounter, shop, minigame
+            if mode == "temp" then
+                save = Game:save()
+                save_id = Game.save_id
+                encounter = Game.battle and Game.battle.encounter and Game.battle.encounter.id
+                shop = Game.shop and Game.shop.id
+                minigame = Game.minigame and Game.minigame.id
+            elseif mode == "save" then
+                save_id = Game.save_id
             end
+
+            -- Temporarily save the current mod id
+            local mod_id = Mod.info.id
+
+            -- Go to empty state
+            Gamestate.switch({})
+            -- Clear the mod
+            Kristal.clearModState()
+            -- Reload mods
+            Kristal.loadAssets("", "mods", "", function ()
+                love.window.setTitle(Kristal.getDesiredWindowTitle())
+                -- Reload the current mod directly
+                if mode ~= "save" then
+                    Kristal.loadMod(mod_id, nil, nil, function ()
+                        -- Pre-initialize the current mod
+                        if Kristal.preInitMod(mod_id) then
+                            if save then
+                                -- Switch to Game and load the temp save
+                                Gamestate.switch(Game, save, save_id, false)
+                                -- If we had an encounter, restart the encounter
+                                if encounter then
+                                    Game:encounter(encounter, false)
+                                elseif shop then -- If we were in a shop, re-enter it
+                                    Game:enterShop(shop)
+                                elseif minigame then -- If we were in a minigame, restart it
+                                    Mod:startMinigame(minigame)
+                                end
+                            else
+                                -- Switch to Game
+                                Gamestate.switch(Game)
+                            end
+                        end
+                    end)
+                else
+                    Kristal.loadMod(mod_id, save_id)
+                end
+            end)
         end)
-    end)
+    end
 end
 
 function Mod:registerMinigames()

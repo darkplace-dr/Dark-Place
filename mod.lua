@@ -36,10 +36,31 @@ function Mod:init()
     self:initBattleTaunt()
     Speen:init()
     self:initMinigameHooks()
-    Mod:funnytitle()
+
+    -- v0.8.1 getSoulOffset absence HACK
+    if not Actor["getSoulOffset"] then
+        Utils.hook(Actor, "getSoulOffset",
+        ---@overload fun(orig:function, self:Actor) : x:number, y:number
+        ---@diagnostic disable-next-line: redefined-local
+        function(_, self)
+            if self.soul_offset then return unpack(self.soul_offset) end
+            return 0, 0
+        end)
+    end
+    -- v0.9.0 string add tweak (yuck)
+    local string_metatable = getmetatable(" ")
+    if not string_metatable.__add then
+        string_metatable.__add = function (a, b) return a .. tostring(b) end
+    end
 end
 
 function Mod:postInit(new_file)
+    if self.legacy_kristal then
+        Game.world.music:stop()
+        Game.world:startCutscene("flowey_check")
+        return
+    end
+
     local items_list = {
         {
             result = "soulmantle",
@@ -49,11 +70,7 @@ function Mod:postInit(new_file)
     }
     Kristal.callEvent("setItemsList", items_list)
 
-    if self.legacy_kristal then
-        Game.world.music:stop()
-        Game.world:startCutscene("flowey_check")
-        return
-    end
+    Mod:funnytitle()
 
     self:initializeImportantFlags(new_file)
 
@@ -94,7 +111,7 @@ end
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
     local old_save_issues = {}
-    
+
     if Game:getFlag("quest_desc")[1] == "This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description." then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Questline was added.")
@@ -111,7 +128,7 @@ function Mod:initializeImportantFlags(new_file)
     if new_file then
         self:rollFun()
     end
-    
+
     for _,party in pairs(Game.party_data) do
         if not party.lw_stats.magic then
             likely_old_save = true
@@ -160,7 +177,7 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("YOU_party", true)
         Game:setFlag("susie_party", true)
     end
-    
+
     if new_file or Game:getFlag("party_max") == nil then
         Game:setFlag("party_max", 4)
     end
@@ -270,7 +287,7 @@ function Mod:initializeImportantFlags(new_file)
         addOpinionsToParty("jamm", { mario = 65 })
         Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65 }
     end
-    
+
     if new_file or pauling.opinions == nil then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Ms. Pauling was added.")
@@ -420,18 +437,26 @@ function Mod:getActionButtons(battler, buttons)
             return {"fight", "magic", "item", "send", "defend"}
         end
     end
-    
+
     if battler.chara.id == "mario" and Game:getFlag("acj_mario_fightless") then
-        table.remove(buttons,1)
+        Utils.removeFromTable(buttons, "fight")
     end
     return buttons
 end
 
 function Mod:preUpdate()
+    if self.legacy_kristal then
+        return
+    end
+
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
 end
 
 function Mod:postUpdate()
+    if self.legacy_kristal then
+        return
+    end
+
     self:updateTaunt()
     self:updateBattleTaunt()
     self:updateBulborb()
@@ -518,6 +543,10 @@ function Mod:onFootstep(char, num)
 end
 
 function Mod:onKeyPressed(key)
+    if self.legacy_kristal then
+        return
+    end
+
     if Game.world and Game.world.state == "GAMEPLAY" and key == "r" then
         Assets.stopAndPlaySound("ui_select")
         Game.world:openMenu(DarkRelationshipsMenu())
@@ -587,6 +616,10 @@ function Mod:onMapBorder(map, border)
 end
 
 function Mod:loadObject(world, name, properties)
+    if self.legacy_kristal then
+        return
+    end
+
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
     end

@@ -3,11 +3,9 @@ return function(cutscene, player_name_override)
     local player_name = (player_name_override or Game.save_name):upper()
     local required_version = SemVer(Mod.info.engineVer)
     local pre = required_version.prerelease
-    local windows = love.system.getOS() == "Windows"
-    local repo = "https://github.com/KristalTeam/Kristal"
     local dl_url = not pre
-        and (repo .. "/releases/tag/" .. "v" .. tostring(required_version))
-        or (repo .. "/wiki/Playing-Kristal#source-code")
+        and ("https://github.com/KristalTeam/Kristal" .. "/releases/tag/" .. "v" .. tostring(required_version))
+        or ("https://kristal.cc/wiki/downloading#nightly-releases")
 
     Game.world.music:stop()
     cutscene:setTextboxTop(false)
@@ -45,24 +43,37 @@ return function(cutscene, player_name_override)
     cutscene:showNametag("Flowey")
     showText("* So, uh...", "side")
     showText("* I just thought I'd let you know...", "plain")
-    showText("* You're using an outdated version of Kristal to play this mod.")
-    showText("* You'll need version "..tostring(required_version).." in order to play it.")
+    showText("* You're trying to play this mod with an outdated version of Kristal.")
+    showText("* The mod actually requires version "..tostring(required_version).." of the engine.")
     if pre then
         showText("* With said version,[wait:5] being an in-dev version of the engine.", "side")
     end
     showText("* But don't worry!", "nice")
     showText("* It's VERY easy to set up!", "nicesideum")
-    showText("* All you need to do is go to Kristal's GitHub page...", "niceside")
-    if pre then
-        showText("* Then click the green button to download the engine!", "nice")
-        if windows then
-            showText("* And, of course,[wait:5] you'll also have to download LÖVE...", "niceside")
-        end
+    if false--[[GitFinder and GitFinder.is_git_repo]] then
+        showText("* Just open a terminal in the folder your engine's in...", "niceside")
+        showText("* Then put in \"git pull\" and press enter!", "nice")
+        showText("* Quick,[wait:5] isn't it?", "nicesideum")
+        showText("* Technology is amazing.", "sassy")
     else
-        showText("* Click the \"Releases\" link on the right,[wait:2] find the right version,[wait:5] and then download it!", "nice")
+        if pre then
+            showText("* All you need to do is go to Kristal's Wiki...", "niceside")
+            showText("* Head for the Downloading Kristal page...", "niceside")
+            showText("* And click the link under the \"nightly releases\" section to download it!", "nice")
+            local get = "get"
+            local game_src = love.filesystem.getSource()
+            local game_src_is_arc, _ = Utils.endsWith(game_src, ".love")
+            if not (love.filesystem.isFused() or game_src_is_arc) then
+                get = "redownload"
+            end
+            showText("* Of course you can "..get.." the source code too,[wait:5] if you prefer that.", "niceside")
+        else
+            showText("* All you need to do is go to Kristal's GitHub page...", "niceside")
+            showText("* Click the \"Releases\" link on the right,[wait:5] find the right version,[wait:5] and download it!", "nice")
+        end
+        showText("* Then unzip the file containing Kristal...\n[wait:5]* Blah, blah, blah...", "nicesideum")
+        showText("* I'm SURE you can figure out the rest.", "sassy")
     end
-    showText("* And unzip the file containing Kristal...\n[wait:5]* Blah, blah, blah...", "nicesideum")
-    showText("* I'm SURE you can figure out the rest.", "sassy")
     showText("* Welp.[wait:5]\n* That's all that your old pal Flowey has to say!", "nice")
     showText("* In the meantime though...", "nicesideum")
     showText("* I'll just leave you with the dog.", "sassy")
@@ -240,7 +251,6 @@ return function(cutscene, player_name_override)
             cutscene:showNametag("Flowey")
             showText("* Hey Clover[wait:1s]\n* Check out my new cut")
             cutscene:hideNametag()
-
         end
     end
 
