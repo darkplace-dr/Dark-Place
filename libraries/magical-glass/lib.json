@@ -1,0 +1,190 @@
+{
+    "id": "magical-glass",
+    "authors": [
+        "Nyakorita",                    // original author
+        "Sam Deluxe",                   // current author and lead programmer
+        "Bor",                          // contributor
+        "Just Another Random User",     // contributor
+        "FireRainV"                     // contributor
+    ],
+    "version": "v1.2.0-dev",
+    "engineVer": "v0.9.0-dev",
+
+    "config": {
+        
+        ///// Default Battle System
+        // If an encounter isn't forcing a battle system, the system set here will be used
+        // as a fallback.
+        //
+        // Second value sets the default world type if no map is present.
+        // Used when playing using just an encounter without a map.
+        ///// First Value:
+        // "undertale"
+        // "deltarune"
+        //
+        ///// Second Value:
+        // true = Light
+        // false = Dark
+        /////
+        "default_battle_system": ["deltarune", false],
+
+        ///// Light Battle TP
+        // Enables tension and grazing in Light Battles.
+        /////
+        "light_battle_tp": false,
+        
+        ///// Light Battle Defend Command
+        // Adds the Defend command to the mercy action button in Light Battles.
+        /////
+        "light_battle_defend_btn": false,
+
+        ///// UNDERTALE Text Skipping
+        // Disables skipping text in ANY textbox when holding down confirm or menu.
+        /////
+        "undertale_text_skipping": false,
+        
+        ///// UNDERTALE Movement Can Run
+        // Enables the ability to run when using the Undertale player movement.
+        /////
+        "undertale_movement_can_run": false,
+        
+        ///// Light Battles HP Gauge Length Cap
+        // Limits the length of the HP bar in light battles.
+        ///// Values:
+        //
+        // true
+        // Limits the gauge at 99. 
+        // false
+        // Doesn't limit the gauge.
+        //
+        // number
+        // Limits the gauge to the number specified.
+        //
+        /////
+        "hp_gauge_length_cap": true,
+
+        ///// Key Item Conversion
+        // Converts the Dark World inventory to the Ball of Junk and Shadow Crystals to Glass
+        // when traveling to the Light World.
+        /////
+        "key_item_conversion": true,
+
+        ///// Hide CELL in The Light World Menu
+        // Hides the CELL option in the Light World menu if the has_cell_phone flag is false.
+        /////
+        "hide_cell": true,
+
+        ///// Light World STAT Menu Style
+        // Determines the appearance of the Light World STAT menu when more than one character is
+        // in the party.
+        ///// Values:
+        //
+        // "magical_glass"
+        // Prints the current member's name and portrait, and an indicator similar to the one from
+        // Deltatraveler on top of the portrait which functions the same way but has a different design choice.
+        //
+        // "deltatraveler"
+        // The Light World STAT menu from Deltatraveler. Only shows the currently selected member's
+        // name and portrait, with an indicator underneath the portrait showing you can press left
+        // or right to select a character.
+        //
+        /////
+        "light_stat_menu_style": "magical_glass",
+
+        ///// UNDERTALE Stat Display
+        // Subtracts 10 from base AT and DF in the Light World's STAT menu.
+        /////
+        "undertale_stat_display": true,
+        
+        ///// Always Show Magic
+        // Displays the MAGIC stat in the Light World STAT menu even if there's no
+        // Member in the current party who has more than 0 MAGIC.
+        /////
+        "always_show_magic": false,
+
+        ///// Item Info
+        // Determines whether battle descriptions and TP costs should be displayed in the main
+        // window or should be displayed in a box under it similar to Deltatraveler.
+        ///// Values:
+        //
+        // "magical_glass"
+        // Battle descriptions are displayed in the main window.
+        // This style will overlap with the bottom row of menu options. (doesn't apply to spells since it limits them to 2 rows.)
+        //
+        // "deltatraveler"
+        // Battle descriptions and TP costs are displayed in a small window above
+        // the main window.
+        //
+        /////
+        "item_info": "deltatraveler",
+
+        ///// Gauge Style
+        // Determines the appearance of gauges drawn in ENEMYSELECT or PARTYSELECT in Light Battles.
+        ///// Values:
+        //
+        // "undertale"
+        // UNDERTALE-styled HP gauge. (Also supports Mercy gauge)
+        //
+        // "deltarune"
+        // deltarune-styled HP and Mercy gauges.
+        //
+        // "deltatraveler"
+        // The gauge styles used in Deltatraveler.
+        //
+        /////
+        "gauge_style": "undertale",
+
+        ///// Mercy Bar
+        // Draws the Mercy Bar in Light Battles.
+        /////
+        "mercy_bar": false,
+
+        ///// Mercy Messages
+        // Shows the amount of mercy added to an enemy when their mercy gauge increases in Light Battles.
+        /////
+        "mercy_messages": false,
+
+        ///// Enemy Bar Percentages
+        // Draws the HP and Mercy text and Percentages on the gauges.
+        /////
+        "enemy_bar_percentages": false,
+
+        ///// Light Enemy Chaser Auras
+        // Whether enemies in the light world will also have auras.
+        /////
+        "light_enemy_auras": false,
+
+        ///// Action Button Flash
+        // Whether the Spell and Mercy buttons should flash in Light Battles if an enemy is pacifyable or sparable.
+        /////
+        "action_button_flash": false,
+        
+        ///// Action Button Styles
+        // Determines the appearance of the action buttons in Light Battles.
+        ///// Values:
+        // "magical_glass"
+        // "deltatraveler"
+        /////
+        "action_button_style": "magical_glass",
+        
+        ///// Multi-Party Neat UI
+        // Whether certain unimportant light battle UI objects in multi-party battles like the HP and KR sprites are visible.
+        /////
+        "multi_neat_ui": true,
+        
+        ///// Multi-Party Mode in Solo-Party
+        // Whether Multi-Party light battle style will also be enabled when playing with just a single party member.
+        /////
+        "multi_always_on": false,
+        
+        ///// Multi-Party Deltarune Spare Style
+        // Whether you can only spare a single enemy per battler in Multi-Party light battles.
+        /////
+        "multi_deltarune_spare": false,
+        
+        ///// Debug Mode
+        // Determines whether the library is in its debug mode state.
+        /////
+        "debug": false,
+    }
+}

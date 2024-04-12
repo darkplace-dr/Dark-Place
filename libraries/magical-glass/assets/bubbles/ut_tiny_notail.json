@@ -1,0 +1,10 @@
+{
+    "auto": false,
+    "sprites": "ut_tiny_notail",
+    "text_bounds": {
+        "left": 0,
+        "top": 8,
+        "width": 60,
+        "height": 35
+    }
+}
