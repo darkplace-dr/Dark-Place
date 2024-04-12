@@ -102,9 +102,9 @@ end
 
 function lib:preInit()
 
-    if Kristal.Version < SemVer("v0.9.0-dev") then
+    --[[if Kristal.Version < SemVer("v0.9.0-dev") then
         error("You must use Kristal 0.9.0-dev or a newer version to run Magical Glass.")
-    end
+    end]]
     
     self.random_encounters = {}
     self.light_encounters = {}
