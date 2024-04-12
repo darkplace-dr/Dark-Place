@@ -25,6 +25,12 @@ function character:init()
     self.has_xact = true
     self.xact_name = "J-Action"
 
+    if Game:getFlag("dungeonkiller") then
+        self.lw_portrait = "face/jamm/shaded_neutral"
+    else
+        self.lw_portrait = "face/jamm/neutral"
+    end
+
     self:addSpell("supersling")
     self:addSpell("darksling")
 

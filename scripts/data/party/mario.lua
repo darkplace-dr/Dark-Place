@@ -18,6 +18,8 @@ function character:init()
 
     self.has_xact = true
     self.xact_name = "M-Action"
+
+    self.lw_portrait = "face/mario/main"
 	
     self:addSpell("fireball")
 
