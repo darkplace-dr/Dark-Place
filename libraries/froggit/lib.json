@@ -1,7 +1,7 @@
 {
     "id": "froggit-lib",
     "authors": [
-        "Sam Deluxe for the original Froggit library.",
+        "Sam Deluxe"
     ],
     "dependencies": ["magical-glass"],
     "version": "v1.0.0",

@@ -1,18 +1,24 @@
 {
     "id": "moreparty",
     
-    "version": "v1.4.5b",
-    "engineVer": "v0.8.1",
+    "version": "v1.6.0b",
+    "engineVer": "v0.9.0-dev",
     
     "authors": [
         "FireRainV",
-        "Core (MoreBattle)",
-        "skarph (Help with ShortAct hook)"
+        "Core", // MoreBattle
+        "skarph" // Help with ShortAct hook
     ],
 	
     "config": {
 		// This option will only allow up to 6 party members.
 		// It will only show 3 party members in a row.
-		"classic_mode": false
+		"classic_mode": false,
+        
+        // When the battle action box gets smaller and a battler can both ACT and cast spells,
+        // they'll be combined into the ACT button as a menu.
+        // You can modify their name and description with these configs.
+        "custom_act_name": ["ACT", "You can\ndo many\nthings"],
+        "custom_magic_name": ["Magic", "Cast\nspells"]
 	}
 }
