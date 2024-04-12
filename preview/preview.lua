@@ -22,21 +22,20 @@ function preview:init(mod, button, menu)
         self.particle_tex = love.graphics.newImage(p_a("star.png"))
     end
 
-    -- for gradient background ported over from Asgore's fight in UT
-    self.gradient_siner = 0
+    self.bg_gradient_siner = 0
 
-    self.swellow = nil
-    self.swellow_timer = 0
+    self.naming_swellow = nil
+    self.naming_swellow_timer = 0
 
-    self.sound = nil
+    self.naming_sound = nil
 
-    self.video = nil
-    self.video_fade_phase = -1
-    self.video_fade_timer = 0
+    self.naming_video = nil
+    self.naming_video_fade_phase = -1
+    self.naming_video_fade_timer = 0
 end
 
 function preview:update()
-    self.gradient_siner = self.gradient_siner + 0.2 * DTMULT
+    self.bg_gradient_siner = self.bg_gradient_siner + 0.2 * DTMULT
 
     local particle_to_remove = {}
     for _,particle in ipairs(self.particles) do
@@ -75,65 +74,65 @@ function preview:update()
     end
 
     if self:isNameChosen("SWELLOW", true) then
-        if not self.swellow then
-            self.swellow = love.graphics.newImage(self.base_path.."/swellow.png")
+        if not self.naming_swellow then
+            self.naming_swellow = love.graphics.newImage(self.base_path.."/swellow.png")
         end
-        self.swellow_timer = self.swellow_timer + DT
+        self.naming_swellow_timer = self.naming_swellow_timer + DT
     else
-        self.swellow_timer = 0
+        self.naming_swellow_timer = 0
     end
 
     local function setSound(file, type)
-        if not self.sound then
-            self.sound = love.audio.newSource(self.base_path.."/"..file, type or "stream")
-            self.sound:play()
+        if not self.naming_sound then
+            self.naming_sound = love.audio.newSource(self.base_path.."/"..file, type or "stream")
+            self.naming_sound:play()
         end
     end
     if self:isNameChosen("PAUL", false) then
         setSound("paul.ogg")
     elseif self:isNameChosen("YOU", false) then
         setSound("croakreverb.ogg", "static")
-    elseif self.sound then
-        self.sound:stop()
-        self.sound = nil
+    elseif self.naming_sound then
+        self.naming_sound:stop()
+        self.naming_sound = nil
     end
 
     local function setVideo(file)
-        if not self.video then
-            self.video = love.graphics.newVideo(self.base_path.."/"..file..".ogv", {audio = true})
-            self.video:setFilter("linear", "linear")
-            self.video:play()
-            self.video_fade_phase = 0
+        if not self.naming_video then
+            self.naming_video = love.graphics.newVideo(self.base_path.."/"..file..".ogv", {audio = true})
+            self.naming_video:setFilter("linear", "linear")
+            self.naming_video:play()
+            self.naming_video_fade_phase = 0
         end
     end
     if self:isNameChosen("RICK", false) then
         setVideo(love.math.random(50) <= 12 and "the_new_rick_rolld" or "rickroll")
     elseif self:isNameChosen("ASRIEL", false) then
         setVideo("piles")
-    elseif self.video then
-        self.video_fade_phase = 1
+    elseif self.naming_video then
+        self.naming_video_fade_phase = 1
     end
-    if self.video then
-        if self.video_fade_phase == 0 then
-            self.video_fade_timer = Utils.approach(self.video_fade_timer, 100, 2*DTMULT)
+    if self.naming_video then
+        if self.naming_video_fade_phase == 0 then
+            self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 100, 2*DTMULT)
         else
-            self.video_fade_timer = Utils.approach(self.video_fade_timer, 0, 6*DTMULT)
-            if self.video_fade_timer == 0 then
-                self.video:pause()
-                self.video = nil
+            self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 0, 6*DTMULT)
+            if self.naming_video_fade_timer == 0 then
+                self.naming_video:pause()
+                self.naming_video = nil
             end
         end
     end
-    if self.video then
-        self.video:getSource():setVolume(math.min(self.video_fade_timer/20, 1) * 0.5)
+    if self.naming_video then
+        self.naming_video:getSource():setVolume(math.min(self.naming_video_fade_timer/20, 1) * 0.5)
         -- loop video
-        if not self.video:isPlaying() then
-            self.video:rewind()
-            self.video:play()
+        if not self.naming_video:isPlaying() then
+            self.naming_video:rewind()
+            self.naming_video:play()
         end
     else
-        self.video_fade_phase = -1
-        self.video_fade_timer = 0
+        self.naming_video_fade_phase = -1
+        self.naming_video_fade_timer = 0
     end
 end
 
@@ -147,7 +146,8 @@ function preview:draw()
     end
     love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 
-    local gradient_weave = 1.5 + math.sin(self.gradient_siner / 20)
+    -- gradient background ported over from Asgore's fight in UT
+    local gradient_weave = 1.5 + math.sin(self.bg_gradient_siner / 20)
     for i = 0, 10 do
         local gradient_alpha = 0.8 - i / 16
         if self.april_fools then
@@ -163,16 +163,16 @@ function preview:draw()
 
     love.graphics.setColor(1, 1, 1, self.fade)
 
-    if self.video then
-        local vid_alpha = Utils.approach(0, 0.5, self.video_fade_timer/100)
+    if self.naming_video then
+        local vid_alpha = Utils.approach(0, 0.5, self.naming_video_fade_timer/100)
 
         love.graphics.setColor(0, 0, 0, vid_alpha * 0.8 * self.fade)
         love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 
         love.graphics.setColor(1, 1, 1, vid_alpha * self.fade)
-        local vid_w, vid_h = self.video:getWidth(), self.video:getHeight()
+        local vid_w, vid_h = self.naming_video:getWidth(), self.naming_video:getHeight()
         local vid_scale = math.min(SCREEN_WIDTH/vid_w, SCREEN_HEIGHT/vid_h)
-        love.graphics.draw(self.video, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0, vid_scale, vid_scale, vid_w/2, vid_h/2)
+        love.graphics.draw(self.naming_video, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0, vid_scale, vid_scale, vid_w/2, vid_h/2)
 	end
 
     for _,particle in ipairs(self.particles) do
@@ -186,14 +186,14 @@ function preview:draw()
         love.graphics.draw(particle_tex, particle.x, particle.y, particle.radius, 1, 1, particle_ox, particle_oy)
     end
 
-    if self:isNameChosen("SWELLOW", true) and self.swellow then
-        local alpha = math.min((self.swellow_timer - 1.8) * 0.2 + self:getNamingScreen().whiten, 0.8)
-        local xs_inc = math.max(0, (self.swellow_timer - 3) * 0.02 + self:getNamingScreen().whiten)
+    if self:isNameChosen("SWELLOW", true) and self.naming_swellow then
+        local alpha = math.min((self.naming_swellow_timer - 1.8) * 0.2 + self:getNamingScreen().whiten, 0.8)
+        local xs_inc = math.max(0, (self.naming_swellow_timer - 3) * 0.02 + self:getNamingScreen().whiten)
         love.graphics.setColor(1, 1, 1, alpha * self.fade)
-        love.graphics.draw(self.swellow,
+        love.graphics.draw(self.naming_swellow,
             SCREEN_WIDTH/2, SCREEN_HEIGHT/2-30, 0,
             2 + xs_inc, 2,
-            self.swellow:getWidth()/2, self.swellow:getHeight()/2
+            self.naming_swellow:getWidth()/2, self.naming_swellow:getHeight()/2
         )
     end
 
@@ -215,12 +215,12 @@ function preview:draw()
             video=%s(p=%d t=%.2f)]],
             self.fade, self.menu.selected_mod and self.menu.selected_mod.id, TARGET_MOD and string.format("(%s)", TARGET_MOD) or "",
             self.april_fools and "y" or "n",
-            self.gradient_siner,
+            self.bg_gradient_siner,
             self.particle_interval, self.particle_interval_dess,
             namer and namer.state or "", namer and string.upper(namer.name) or "",
-            self.swellow and "y" or "n", self.swellow_timer, namer and namer.whiten or 0,
-            self.sound and "y" or "n",
-            self.video and "y" or "n", self.video_fade_phase, self.video_fade_timer
+            self.naming_swellow and "y" or "n", self.naming_swellow_timer, namer and namer.whiten or 0,
+            self.naming_sound and "y" or "n",
+            self.naming_video and "y" or "n", self.naming_video_fade_phase, self.naming_video_fade_timer
         )
         love.graphics.printf(dbg, 0, 0, SCREEN_WIDTH*2, "right", 0, 0.5, 0.5)
     end
