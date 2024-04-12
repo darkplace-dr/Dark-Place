@@ -1,52 +1,47 @@
-local item, super = Class(LightEquipItem, "ut_weapons/empty_gun")
+local item, super = Class(LightEquipItem, "light/light_gun")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Empty Gun"
+    self.name = "Light Gun"
 
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
     -- Whether this item is for the light world
     self.light = true
 
-    -- Shop description
-    self.shop = "Bullets NOT\nincluded."
     -- Default shop price (sell price is halved)
-    self.price = 350
+    self.price = 200
     -- Default shop sell price
     self.sell_price = 100
     -- Whether the item can be sold
     self.can_sell = true
 
     -- Item description text (unused by light items outside of debug menu)
-    self.description = "An antique revolver.\nIt has no ammo."
+    self.description = "A retro light gun. Not a good weapon."
 
     -- Light world check text
     self.check = {
-        "Weapon AT 12\n* An antique revolver.[wait:10]\n* It has no ammo.",
-        "* Must be used precisely, or\ndamage will be low."
+        "Weapon AT -3\n* A retro light gun.\n* Not a good weapon."
+    }
+
+    self.bonuses = {
+        attack = -3
     }
 
     -- Where this item can be used (world, battle, all, or none)
     self.usable_in = "all"
     -- Item this item will get turned into when consumed
     self.result_item = nil
+end
 
-    self.bonuses = {
-        attack = 12
-    }
+function item:convertToDark(inventory)
+    return "superscope"
+end
 
-    self.light_bolt_count = 4
-    self.light_bolt_speed = 15
-    self.light_bolt_speed_variance = nil
-    self.light_bolt_start = 120
-    self.light_bolt_miss_threshold = 3
-    self.light_multibolt_variance = {{180, 210, 240}, {300, 330, 360}, {400, 430, 460}}
-    self.light_bolt_direction = "right"
-
-    self.attack_sound = "gunshot_ut"
+function item:getLightAttackSound()
+    return "gunshot_ut"
 end
 
 function item:onLightAttack(battler, enemy, damage, stretch, crit)
