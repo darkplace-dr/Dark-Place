@@ -50,7 +50,7 @@ return function(cutscene, player_name_override)
     end
     showText("* But don't worry!", "nice")
     showText("* It's VERY easy to set up!", "nicesideum")
-    if false--[[GitFinder and GitFinder.is_git_repo]] then
+    if GitFinder and GitFinder.is_git_repo then
         showText("* Just open a terminal in the folder your engine's in...", "niceside")
         showText("* Then put in \"git pull\" and press enter!", "nice")
         showText("* Quick,[wait:5] isn't it?", "nicesideum")
