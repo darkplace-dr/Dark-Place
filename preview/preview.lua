@@ -114,9 +114,9 @@ function preview:update()
     end
     if self.naming_video then
         if self.naming_video_fade_phase == 0 then
-            self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 100, 2*DTMULT)
+            self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 1, 0.02*DTMULT)
         else
-            self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 0, 6*DTMULT)
+            self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 0, 0.06*DTMULT)
             if self.naming_video_fade_timer == 0 then
                 self.naming_video:pause()
                 self.naming_video = nil
@@ -124,7 +124,7 @@ function preview:update()
         end
     end
     if self.naming_video then
-        self.naming_video:getSource():setVolume(math.min(self.naming_video_fade_timer/20, 1) * 0.5)
+        self.naming_video:getSource():setVolume(math.min(self.naming_video_fade_timer/0.2, 1) * 0.6)
         -- loop video
         if not self.naming_video:isPlaying() then
             self.naming_video:rewind()
@@ -164,7 +164,7 @@ function preview:draw()
     love.graphics.setColor(1, 1, 1, self.fade)
 
     if self.naming_video then
-        local vid_alpha = Utils.approach(0, 0.5, self.naming_video_fade_timer/100)
+        local vid_alpha = Utils.approach(0, 0.5, self.naming_video_fade_timer)
 
         love.graphics.setColor(0, 0, 0, vid_alpha * 0.8 * self.fade)
         love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -209,10 +209,10 @@ function preview:draw()
             gra_s=%.2f
             p_int=%.2f dess=%.2f
 
-            namer=%s name=%s
-            swellow=%s(t=%.2f fo=%.2f)
+            namer : %s name=%s
+            swellow=%s(t=%.2f nam_f=%.2f)
             sound=%s
-            video=%s(p=%d t=%.2f)]],
+            video=%s(p=%d f=%.2f)]],
             self.fade, self.menu.selected_mod and self.menu.selected_mod.id, TARGET_MOD and string.format("(%s)", TARGET_MOD) or "",
             self.april_fools and "y" or "n",
             self.bg_gradient_siner,
