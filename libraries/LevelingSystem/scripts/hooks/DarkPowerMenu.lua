@@ -9,13 +9,13 @@ function DarkPowerMenu:init()
     self.data_shown = "spells"
 
     self.caption_sprites["experience"] = Assets.getTexture("ui/menu/caption_exp")
-    self.caption_sprites["arrow_l"] = Assets.getTexture("ui/menu/arrow_left")
-    self.caption_sprites["arrow_r"] = Assets.getTexture("ui/menu/arrow_right")
+    self.caption_sprites["arrow_l"] = Assets.getTexture("ui/flat_arrow_left_opaque")
+    self.caption_sprites["arrow_r"] = Assets.getTexture("ui/flat_arrow_right_opaque")
 end
 
---function DarkPowerMenu:getSpellLimit()
---    return 3
---end
+--[[function DarkPowerMenu:getSpellLimit()
+    return 3
+end]]
 
 --[[function DarkPowerMenu:draw()
     love.graphics.setFont(self.font)
@@ -41,7 +41,7 @@ function DarkPowerMenu:update()
             self.ui_select:stop()
             self.ui_select:play()
         else
-            super:update(self)
+            super.update(self)
         end
     elseif self.state == "CHOOSETAB" then
         if Input.pressed("cancel") then
@@ -86,10 +86,10 @@ function DarkPowerMenu:update()
             self:updateDescription()
             return
         else
-            super:update(self)
+            super.update(self)
         end
     else
-        super:update(self)
+        super.update(self)
     end
 end
 
@@ -118,11 +118,14 @@ function DarkPowerMenu:draw()
         y = 218-14
         offset = 91+95
     end
+
+    local arrow_weave = 0
     if self.state == "CHOOSETAB" then
+        arrow_weave = Utils.round(math.sin(Kristal.getTime() * 5)) * 2
         Draw.setColor(1, 1, 0, 1)
     end
-    Draw.draw(self.caption_sprites["arrow_l"], x-19, 96, 0, 2, 2)
-    Draw.draw(self.caption_sprites["arrow_r"], x+offset, 96, 0, 2, 2)
+    Draw.draw(self.caption_sprites["arrow_l"], x-19-arrow_weave, 95, 0, 2, 2)
+    Draw.draw(self.caption_sprites["arrow_r"], x+offset+arrow_weave, 95, 0, 2, 2)
     if self.state == "CHOOSETAB" then
         Draw.setColor(1, 1, 1, 1)
     end
@@ -160,16 +163,15 @@ end
 
 function DarkPowerMenu:drawExperience()
     Draw.setColor(1, 1, 1, 1)
-    love.graphics.print( "LOVE:",   242-6, 122)
-    love.graphics.print( "EXP:",    242-6, 156)
-    love.graphics.print( "NEXT:",   242-6, 190)
-    love.graphics.print( "KILLS:",  242-6, 224)
+    love.graphics.print( "LOVE:",   242-6,  122)
+    love.graphics.print(  "EXP:",   242-6,  156)
+    love.graphics.print( "NEXT:",   242-6,  190)
+    love.graphics.print("KILLS:",   242-6,  224)
 
-    love.graphics.print(self:getLOVE(),   242+64, 122)
-    love.graphics.print(self:getExp(), 242+49, 156)
-    love.graphics.print(self:getNextLv(), 242+62, 190)
+    love.graphics.print(               self:getLOVE(),  242+64, 122)
+    love.graphics.print(                self:getExp(),  242+49, 156)
+    love.graphics.print(             self:getNextLv(),  242+62, 190)
     love.graphics.print(Game:getFlag("library_kills"),  242+76, 224)
-    
 end
 
 
@@ -177,7 +179,7 @@ function DarkPowerMenu:canCast(spell)
     if not Game:getFlag("tension_storage") then return false end
     if Game:getTension() < spell:getTPCost(self.party:getSelected()) then return false end
 
-    return (spell:hasWorldUsage(self.party:getSelected()))
+    return spell:hasWorldUsage(self.party:getSelected())
 end
 
 function DarkPowerMenu:updateDescription()
@@ -188,6 +190,5 @@ function DarkPowerMenu:updateDescription()
         Game.world.menu:setDescription("", false)
     end
 end
-
 
 return DarkPowerMenu

@@ -1,3 +1,4 @@
+---@class AchievementPopUp : Object
 local AchievementPopUp, super = Class(Object)
 
 function AchievementPopUp:init(achievement)
@@ -10,39 +11,27 @@ function AchievementPopUp:init(achievement)
 	self.name = self.achievement.name
 	self.desc = self.achievement.description
 
-	self.raritysprite = Sprite("achievements/frames/"..self.rarity, 0, 0)
-	self.iconsprite = Sprite(self.icon, 8, 8)
-	self.raritysprite:setScale(2, 2)
-	self.iconsprite:setScale(2, 2)
-	self.iconsprite:play(self.achievement.icon_anim_delay)
-	self:addChild(self.raritysprite)
-	self:addChild(self.iconsprite)
-
-	self.phase = 1
-	self.timer = 0
-
-	Assets.playSound("achievement")
+	self.rarity_sprite = Sprite("achievements/frames/"..self.rarity, 0, 0)
+	self.icon_sprite = Sprite(self.icon, 8, 8)
+	self.rarity_sprite:setScale(2, 2)
+	self.icon_sprite:setScale(2, 2)
+	self.icon_sprite:play(self.achievement.icon_anim_delay)
+	self:addChild(self.rarity_sprite)
+	self:addChild(self.icon_sprite)
 end
 
-function AchievementPopUp:update()
-	super.update(self)
+function AchievementPopUp:onAdd()
+	Assets.playSound("achievement")
 
-	if self.phase == 1 then
-		self.x = Utils.approach(self.x, SCREEN_WIDTH - 80, 4 * DTMULT)
-		if self.x == SCREEN_WIDTH - 80 then
-			self.phase = 2
-		end
-	elseif self.phase == 2 then
-		self.timer = Utils.approach(self.timer, 4, 1 * DT)
-		if self.timer == 4 then
-			self.phase = 3
-		end
-	else
-		self.x = Utils.approach(self.x, SCREEN_WIDTH, 4 * DTMULT)
-		if self.x == SCREEN_WIDTH then
-			self:remove()
-		end
-	end
+	---@type Timer
+	local timer = self.stage.timer
+	timer:tween(0.25, self, { x = SCREEN_WIDTH - 80 }, "linear", function()
+		timer:after(4, function()
+			timer:tween(0.25, self, { x = SCREEN_WIDTH }, "linear", function()
+				self:remove()
+			end)
+		end)
+	end)
 end
 
 return AchievementPopUp
