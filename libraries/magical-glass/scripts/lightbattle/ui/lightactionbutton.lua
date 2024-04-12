@@ -229,6 +229,80 @@ function LightActionButton:select()
             })
         end
         Game.battle:setState("MENUSELECT", "MERCY")
+
+    -- Custom buttons start here.
+
+    elseif self.type == "send" then
+        Game.battle.current_menu_columns = 1
+        Game.battle.current_menu_rows = 3
+        Game.battle:clearMenuItems()
+        Game.battle:addMenuItem({
+            ["name"] = "Send",
+            ["special"] = "spare",
+            ["callback"] = function(menu_item)
+                Game.battle:pushAction("SPARE", Game.battle:getActiveEnemies())
+            end
+        })
+        if Kristal.getLibConfig("magical-glass", "light_battle_defend_btn") then
+            Game.battle:addMenuItem({
+                ["name"] = "Defend",
+                ["special"] = "defend",
+                ["callback"] = function(menu_item)
+                    Game.battle:toggleSoul(false)
+                    Game.battle:pushAction("DEFEND", nil, {tp = Game.battle.tension_bar.visible and -16 or 0})
+                end
+            })
+        end
+        if Game.battle.encounter.can_flee then
+            Game.battle:addMenuItem({
+                ["name"] = "Fly",
+                ["special"] = "flee",
+                ["callback"] = function(menu, item)
+                    local chance = Game.battle.encounter.flee_chance
+
+                    for _,party in ipairs(Game.battle.party) do
+                        for _,equip in ipairs(party.chara:getEquipment()) do
+                            chance = chance + (equip.getFleeBonus and equip:getFleeBonus() or 0)
+                        end
+                    end
+
+                    if chance > 50 then
+                        Game.battle:setState("FLEEING")
+                    else
+                        Game.battle:playSelectSound()
+                        Game.battle:setState("FLEEFAIL")
+                    end
+                end
+            })
+        end
+        Game.battle:setState("MENUSELECT", "SEND")
+    elseif self.type == "scott" then
+        Assets.playSound("scott_here")
+    elseif self.type == "croak" then
+        Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))
+
+        local bubble = Sprite("croak", nil, nil, nil, nil, "party/you")
+        bubble:setOriginExact(60, 23) -- center??
+        bubble:setPosition(Game.battle.soul.width/2 + 8.5, -20.5)
+        bubble.physics.speed_y = -0.8
+        bubble:fadeOutSpeedAndRemove(0.065)
+		bubble.layer = 9999
+        self:addChild(bubble)
+    elseif self.type == "skill" then
+        Game.battle.current_menu_columns = 2
+        Game.battle.current_menu_rows = 2
+        Game.battle:clearMenuItems()
+
+        for id, action in ipairs(self.battler.chara:getLightSkills()) do
+            Game.battle:addMenuItem({
+                ["name"] = action[1],
+                ["description"] = action[2],
+                ["color"] = action[3],
+                ["callback"] = action[4]
+            })
+        end
+
+        Game.battle:setState("MENUSELECT", "SKILL")
     end
 end
 
