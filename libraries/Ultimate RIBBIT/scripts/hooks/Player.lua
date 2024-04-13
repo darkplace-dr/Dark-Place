@@ -5,7 +5,7 @@ end
 ---@class Player
 local Player, super = Class("Player", true)
 
-function Player:updateWalk()
+--[[function Player:updateWalk()
     super.updateWalk(self)
 
     if not self:isMovementEnabled() then return end
@@ -13,7 +13,7 @@ function Player:updateWalk()
     if Input.pressed("a") and (self.actor.id == "YOU" or self.actor.id == "YOU_lw") and Mod.can_croak ~= false then
         self:croak()
     end
-end
+end]]
 
 function Player:croak()
     Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))
