@@ -57,9 +57,9 @@ function actor:init()
         ["walk/left"] = {3, 0},
         ["walk/up"] = {0, 2},
 
-        ["run/down"] = {1, 2},
-        ["run/right"] = {-7, -5},
-        ["run/left"] = {-7, -5},
+        ["run/down"] = {0, 2},
+        ["run/right"] = {-13, -5},
+        ["run/left"] = {-8, -5},
         ["run/up"] = {0, 2},
 
         -- Battle offsets
