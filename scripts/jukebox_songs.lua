@@ -535,6 +535,13 @@ return {
     origin = "Pizza Tower"
   },
   {
+    name = "Impasta Syndrome", -- apparently it's original name is "Doise at the Door" according to PT's music files.
+    file = "doise_boss",
+    composer = "Mr. Sauceman",
+    released = "2024",
+    origin = "Pizza Tower"
+  },
+  {
     name = "Snick",
     file = "snick",
     composer = "ClascyJitto",
