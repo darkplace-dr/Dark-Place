@@ -1,6 +1,7 @@
 local Player, super = Class("Player", true)
 
-function Player:handleMovement()
+-- dobby: there is a bit for disable_hold_run in the base hook
+--[[function Player:handleMovement()
     local walk_x = 0
     local walk_y = 0
 
@@ -54,6 +55,7 @@ function Player:handleMovement()
         end
     end
 end
+]]
 
 function Player:interact()
 	if self.holding then return false end

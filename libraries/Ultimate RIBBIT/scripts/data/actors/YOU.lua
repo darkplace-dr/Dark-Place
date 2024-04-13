@@ -139,26 +139,4 @@ function actor:init()
     }
 end
 
-function actor:onWorldUpdate(chara)
-    super.onWorldUpdate(self, chara)
-
-    assert(chara)
-    local player = chara.world.player
-    if chara == player or (chara:includes(Follower) and chara:getTarget() == player and chara.following) then
-        if player:isMovementEnabled() and player.run_timer > 50 then
-            if self.default ~= "run" then
-                self.default = "run"
-                if chara.sprite.sprite == "walk" then
-                    chara:resetSprite()
-                end
-            end
-        elseif self.default == "run" then
-            self.default = "walk"
-            if chara.sprite.sprite == "run" then
-                chara:resetSprite()
-            end
-        end
-    end
-end
-
 return actor
