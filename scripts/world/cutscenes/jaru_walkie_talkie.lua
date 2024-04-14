@@ -57,7 +57,7 @@ return function(cutscene, event_override)
             cutscene:text("* It strectched on for miles and miles just like this one...", "default", "shadowsalesman")
             cutscene:text("* But instead of tally marks, there was Bible-\nsized lore on the walls.", "default", "shadowsalesman")
             cutscene:text("* Strange stuff,[wait:5] dontcha think?", "annoyed", "shadowsalesman")
-			if Game:hasPartyMember("dess") then
+			if Game:hasPartyMember("jamm") then
                 cutscene:showNametag("Jamm")
                 cutscene:text("* I think it's called the \"Everhall\" because of Everhood?", "neutral", "jamm")
                 cutscene:text("* Green has a hall just like this in their basement, so...", "neutral", "jamm")
