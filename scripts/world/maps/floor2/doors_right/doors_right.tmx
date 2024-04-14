@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="32">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="33">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -89,6 +89,9 @@
    <point/>
   </object>
   <object id="31" name="exit_tick" x="710" y="280">
+   <point/>
+  </object>
+  <object id="32" name="exit_justadoor" x="1198.72" y="280.575">
    <point/>
   </object>
  </objectgroup>
