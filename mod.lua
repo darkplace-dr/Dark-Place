@@ -202,6 +202,150 @@ function Mod:init()
             end
         end)
     end
+    
+    --- The chance for this party member to dodge incoming damage. \
+    --- Ranges from `0` (No chance) to `1` (100% chance), defaulting to `0`.
+    ---@field dodge_chance                 number
+    ---@field dodge_defend_bonus           number      When defending, this is added to `dodge_chance` to get the final dodge chance. Defaults to `0`.
+    --- The sound file to play when this item's dodge effect is triggered. \
+    --- Defaults to `nil`, which will play the sword pullback sound from Asriel in UNDERTALE. \
+    --- When set to `"none"`, no sound will be played.
+    ---@field dodge_sound                  string|nil
+    ---@field dodge_text_color             table       An `{r, g, b}` table of the color to use for the MISS text when dodging. Defaults to white.
+    ---
+    --- The chance for this party member to strike a random enemy when taking damage. \
+    --- Ranges from `0` (No chance) to `1` (100% chance), defaulting to `0`.
+    ---@field thorns_chance                number
+    ---@field thorns_defend_bonus          number      When defending, this is added to `thorns_chance` to get the final chance for thorns to activate. Defaults to `0`.
+    --- The amount of damage dealt to an enemy, as a proportion of damage taken. \
+    --- Ranges from `0` (0% of damage) to `1` (100% of damage).
+    ---@field thorns_damage_proportion     number
+    --- The sound file to play when this item's thorns effect is triggered. \
+    --- Defaults to `nil`, which will play the `"screenshake"` sound. \
+    --- When set to `"none"`, no sound will be played.
+    ---@field thorns_sound                 string|nil  
+    
+    Utils.hook(PartyBattler, "hurt", function(orig, self, amount, exact, color, options)
+        local dodge_item
+        local dodge_chance = 0
+        local thorns_item
+        local thorns_chance = 0
+        for _,equip in ipairs(self.chara:getEquipment()) do
+            if equip.dodge_chance then
+                if not dodge_item then
+                    dodge_item = equip
+                end
+                dodge_chance = dodge_chance + equip.dodge_chance
+                if equip.dodge_defend_bonus and self.defending then
+                    dodge_chance = dodge_chance + equip.dodge_defend_bonus
+                end
+            end
+            if equip.thorns_chance then
+                if not thorns_item then
+                    thorns_item = equip
+                end
+                thorns_chance = thorns_chance + equip.thorns_chance
+                if equip.thorns_defend_bonus and self.defending then
+                    thorns_chance = thorns_chance + equip.thorns_defend_bonus
+                end
+            end
+        end
+        
+        if love.math.random(1,100) <= dodge_chance * 100 then
+            -- Retrieve sound and color
+            local snd = dodge_item.dodge_sound or "mus_sfx_a_pullback"  -- This sound is asriel's sword pullback from UNDERTALE.
+            local color = dodge_item.dodge_text_color or {1,1,1}
+
+            -- Make a "miss" status message and play sound cue.
+            self:statusMessage("msg", "miss", color)
+            -- If the sound is none then don't play anything.
+            if snd ~= "none" then
+                Assets.playSound(snd)
+            end
+        else
+            ----- orig(self, amount, exact, color, options)
+            options = options or {}
+
+            if not options["all"] then
+                Assets.playSound("hurt")
+                if not exact then
+                    amount = self:calculateDamage(amount)
+                    if self.defending then
+                        amount = math.ceil((2 * amount) / 3)
+                    end
+                    -- we don't have elements right now
+                    local element = 0
+                    amount = math.ceil((amount * self:getElementReduction(element)))
+                end
+
+                self:removeHealth(amount)
+            else
+                -- We're targeting everyone.
+                if not exact then
+                    amount = self:calculateDamage(amount)
+                    -- we don't have elements right now
+                    local element = 0
+                    amount = math.ceil((amount * self:getElementReduction(element)))
+
+                    if self.defending then
+                        amount = math.ceil((3 * amount) / 4) -- Slightly different than the above
+                    end
+
+                    self:removeHealthBroken(amount) -- Use a separate function for cleanliness
+                end
+            end
+
+            if (self.chara:getHealth() <= 0) then
+                self:statusMessage("msg", "down", color, true)
+            else
+                self:statusMessage("damage", amount, color, true)
+            end
+
+            self.hurt_timer = 0
+            Game.battle:shakeCamera(4)
+
+            if (not self.defending) and (not self.is_down) then
+                self.sleeping = false
+                self.hurting = true
+                self:toggleOverlay(true)
+                self.overlay_sprite:setAnimation("battle/hurt", function()
+                    if self.hurting then
+                        self.hurting = false
+                        self:toggleOverlay(false)
+                    end
+                end)
+                if not self.overlay_sprite.anim_frames then -- backup if the ID doesn't animate, so it doesn't get stuck with the hurt animation
+                    Game.battle.timer:after(0.5, function()
+                        if self.hurting then
+                            self.hurting = false
+                            self:toggleOverlay(false)
+                        end
+                    end)
+                end
+            end
+            -----
+            
+            if love.math.random(1,100) <= thorns_chance * 100 then
+                local snd = thorns_item.thorns_sound or "screenshake"
+                local enemies = {}
+
+                for _,enemy in pairs(Game.battle.enemies) do
+                    if enemy.health > 1 then
+                        table.insert(enemies, enemy)
+                    end
+                end
+                
+                local enemy = Utils.pick(enemies)
+                if enemy then
+                    enemy:hurt(math.min(Utils.round(amount * thorns_item.thorns_damage_proportion), enemy.health - 1))
+                    -- If the sound is none then don't play anything.
+                    if snd ~= "none" then
+                        Assets.playSound(snd)
+                    end
+                end
+            end
+        end
+    end)
 end
 
 function Mod:getLightBattleMenuOffsets()
