@@ -355,7 +355,14 @@ return {
 		end
 		cutscene:hideNametag()
 		
-		local choice = cutscene:choicer({"Wife", "Marcy", "Enzio", "Party"})
+		local list = {"Wife", "Marcy", "Enzio", "Party"}
+		local colors = {{1,1,1},{1,1,1},{1,1,1},{1,1,1}}
+		if Game:getFlag("jaruHasTalkedAboutAlexa") and not Game:getFlag("jammHasTalkedAboutAlexa") then
+			list = {"Wife", "Marcy", "Enzio", "Alexa"}
+			colors = {{1,1,1},{1,1,1},{1,1,1},{1,1,0}}
+		end
+		
+		local choice = cutscene:choicer(list, {color=colors})
 		if choice == 1 then
 			cutscene:showNametag("Jamm")
 			cutscene:text("* You want to know about my wife?", "neutral", "jamm")
@@ -388,18 +395,54 @@ return {
 				Game:setFlag("video_jamm", true)
 			end
 		else
-			cutscene:showNametag("Jamm")
-			cutscene:text("* Alright,[wait:5] let's see what I have to say about your party.", "side_smile", "jamm")
-			cutscene:text("* And who knows?[wait:5] Maybe your attitude will change from this.", "smile", "jamm")
-			cutscene:text("* ...That is,[wait:5] if you want it to.", "neutral", "jamm")
-			cutscene:text("* Anyone in specific you want to discuss?", "smile", "jamm")
-            local partyOptions = {}
-            for _, party in ipairs(Game.party) do
-                table.insert(partyOptions, party.name)
-            end
-            cutscene:hideNametag()
-            local number = cutscene:choicer(partyOptions)
-            checkMember(number)
+			if list[4] == "Alexa" then
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Huh?[wait:5]\n* You want to know more about Alexa?", "neutral", "jamm")
+				cutscene:text("* Where she came from?[wait:5]\n* Yeah, I can tell you.", "neutral", "jamm")
+				cutscene:text("* It all started when I found this [color:yellow]time machine[color:white]...", "neutral", "jamm")
+				cutscene:text("* Actually,[wait:5] it was more like a time-and-place machine.", "neutral", "jamm")
+				cutscene:text("* I noticed there was already a destination set,[wait:5] so I pressed it.", "neutral", "jamm")
+				cutscene:text("* Yes,[wait:5] I know![wait:5] It was irresponsible!", "nervous", "jamm")
+				cutscene:text("* However,[wait:5] keep in mind this was before I married Ania,[wait:5] okay?", "nervous_left", "jamm")
+				cutscene:text("* A-anyways,[wait:5] I ended up on this world called \"Europa\".", "look_left", "jamm")
+				cutscene:text("* In this town called Frivatown,[wait:5] actually.", "neutral", "jamm")
+				cutscene:text("* Alexa was one of the first people I met while I was there.", "look_left", "jamm")
+				cutscene:text("* I stayed on Europa for a few days,[wait:5] trading stories and such...", "side_smile", "jamm")
+				cutscene:text("* I even went to the 158th Frivatown festival.", "smile", "jamm")
+				cutscene:text("* Alexa and a few of her friends became curious about the Dark...", "neutral", "jamm")
+				cutscene:text("* So,[wait:5] I brought them back. Let them do what they wanted to.", "side_smile", "jamm")
+				cutscene:showNametag("J.A.R.U.")
+				cutscene:text("* And so I gave Alexa that job,[wait:5] right?", "default", "shadowsalesman")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Well,[wait:5] yeah,[wait:5] it was right about that time.", "neutral", "jamm")
+				cutscene:text("* Let me guess;[wait:5] we butt dialed you?", "stern", "jamm")
+				cutscene:showNametag("J.A.R.U.")
+				cutscene:text("* Yeah,[wait:5] but your story does put things into perspective.", "eye_closed", "shadowsalesman")
+				cutscene:text("* However, let me ask;[wait:5] why are they still here?", "default", "shadowsalesman")
+				cutscene:text("* Why didn't you bring them back using your time machine?", "default", "shadowsalesman")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* I intended to,[wait:5] J.A.R.U.", "nervous", "jamm")
+				cutscene:text("* However,[wait:5] the time machine broke when I used it the second time,[wait:5] so...", "neutral", "jamm")
+				cutscene:text("* They became stuck,[wait:5] you know?", "worried", "jamm")
+				cutscene:showNametag("J.A.R.U.")
+				cutscene:text("* Right,[wait:5] that makes sense.", "oh", "shadowsalesman")
+				cutscene:hideNametag()
+				cutscene:text("* (Click.)")
+				Game:setFlag("jammHasTalkedAboutAlexa", true)
+			else
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Alright,[wait:5] let's see what I have to say about your party.", "side_smile", "jamm")
+				cutscene:text("* And who knows?[wait:5] Maybe your attitude will change from this.", "smile", "jamm")
+				cutscene:text("* ...That is,[wait:5] if you want it to.", "neutral", "jamm")
+				cutscene:text("* Anyone in specific you want to discuss?", "smile", "jamm")
+				local partyOptions = {}
+				for _, party in ipairs(Game.party) do
+					table.insert(partyOptions, party.name)
+				end
+				cutscene:hideNametag()
+				local number = cutscene:choicer(partyOptions)
+				checkMember(number)
+			end
 		end
 		cutscene:hideNametag()
     end,
