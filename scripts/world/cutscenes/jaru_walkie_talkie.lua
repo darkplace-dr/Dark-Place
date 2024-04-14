@@ -35,7 +35,7 @@ return function(cutscene, event_override)
             cutscene:text("* Cause you gotta keep your eyes peeled for any trouble.", "suspicious", "shadowsalesman")
             cutscene:text("* Especially when a certain deer tries to wreak havoc here.", "annoyed", "shadowsalesman")
             cutscene:text("* ...", "default", "shadowsalesman")
-            cutscene:text("* Just so we're on the same page here,[wait:5][facec:annoyed] I'm referring to Dess.", "default", "shadowsalesman")
+            cutscene:text("* Just so we're on the same page here,[wait:5][face:annoyed] I'm referring to Dess.", "default", "shadowsalesman")
 			if Game:hasPartyMember("dess") then
                 cutscene:showNametag("Dess")
                 cutscene:text("* Still waiting on my lifetime supply of soda, purple man.", "condescending", "dess")
@@ -68,7 +68,7 @@ return function(cutscene, event_override)
 			end
 	        cutscene:hideNametag()
         elseif Game.world.map.id == "everhall" then
-		    local everhall_count = Game:getFlag("hallways") -- having trouble getting the value of the flag to display properly.
+		    local everhall_count = Game:getFlag("hallways") or 0 -- having trouble getting the value of the flag to display properly.
 	        
             cutscene:showNametag("J.A.R.U.")
             cutscene:text("* So you're going through the whole hallway,[wait:5] eh?", "annoyed", "shadowsalesman")
@@ -221,6 +221,20 @@ return function(cutscene, event_override)
                     end
                 end
             end
+        elseif Game.world.map.id == "devhotel/rooms/room_001/entrance" then
+            cutscene:showNametag("J.A.R.U.")
+            cutscene:text("* Yeah,[wait:5] that's Brandon's room.", "default", "shadowsalesman")
+            cutscene:text("* Why are you askin' ME about it?[wait:10] It ain't my room.", "annoyed", "shadowsalesman")
+            cutscene:hideNametag()
+        elseif Game.world.map.id == "devhotel/rooms/room_001/bedroom" then
+            cutscene:showNametag("J.A.R.U.")
+            cutscene:text("* ...", "annoyed", "shadowsalesman")
+            cutscene:text("* Why the HELL are you asking me about Brandon's bedroom?", "annoyed", "shadowsalesman")
+            cutscene:text("* Listen pal,[wait:5] it's a bedroom,[wait:5] ain't anything special about it.", "default", "shadowsalesman")
+            cutscene:text("* Well I suppose it IS one of the only rooms in this hotel...", "default", "shadowsalesman")
+            cutscene:text("* ... that has a seperate bedroom.", "default", "shadowsalesman")
+            cutscene:text("* But other than that,[wait:5] I dunno what else you want from me.", "annoyed", "shadowsalesman")
+            cutscene:hideNametag()
 		else
             -- Default message when a room doesn't have any specific dialogue for it.
 	        cutscene:showNametag("J.A.R.U.")
