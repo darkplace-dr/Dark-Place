@@ -25,11 +25,11 @@ function actor:init()
     self.default = "idle"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = nil
+    self.voice = "shadowsalesman"
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = nil
+    self.portrait_path = "face/jaru"
     -- Offset position for this actor's portrait (optional)
-    self.portrait_offset = {0, 0}
+    self.portrait_offset = {-18, 0}
 
     -- Whether this actor as a follower will blush when close to the player
     self.can_blush = false
