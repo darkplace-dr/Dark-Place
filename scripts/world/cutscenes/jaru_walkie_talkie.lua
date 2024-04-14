@@ -57,6 +57,15 @@ return function(cutscene, event_override)
             cutscene:text("* It strectched on for miles and miles just like this one...", "default", "shadowsalesman")
             cutscene:text("* But instead of tally marks, there was Bible-\nsized lore on the walls.", "default", "shadowsalesman")
             cutscene:text("* Strange stuff,[wait:5] dontcha think?", "annoyed", "shadowsalesman")
+			if Game:hasPartyMember("dess") then
+                cutscene:showNametag("Jamm")
+                cutscene:text("* I think it's called the \"Everhall\" because of Everhood?", "neutral", "jamm")
+                cutscene:text("* Green has a hall just like this in their basement, so...", "neutral", "jamm")
+                cutscene:text("* And it has all these tally marks on there too.", "neutral", "jamm")
+                cutscene:text("* Plus,[wait:5] the signifigance of the tally marks is that--", "neutral", "jamm")
+				cutscene:showNametag("J.A.R.U.")
+				cutscene:text("* We get it,[wait:5] Jamm.[wait:5]\n* You play Everhood.", "annoyed", "shadowsalesman")
+			end
 	        cutscene:hideNametag()
         elseif Game.world.map.id == "everhall" then
 		    local everhall_count = Game:getFlag("hallways") -- having trouble getting the value of the flag to display properly.
