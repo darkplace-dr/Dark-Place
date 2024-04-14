@@ -130,8 +130,6 @@ function LightBattleUI:drawState()
             ["ITEM"] = {0, 0},
             ["SPELL"] = {12, 16},
             ["MERCY"] = {0, 0}, --doesn't matter lmao
-            ["SEND"] = {0, 0}, --doesn't matter lmao
-            ["SKILL"] = {12, 16},
         }
 
         for lib_id,_ in Kristal.iterLibraries() do

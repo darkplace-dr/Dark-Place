@@ -36,10 +36,192 @@ function Mod:init()
     self:initBattleTaunt()
     Speen:init()
     self:initMinigameHooks()
-    Mod:funnytitle()
+
+    -- v0.8.1 getSoulOffset absence HACK
+    if not Actor["getSoulOffset"] then
+        Utils.hook(Actor, "getSoulOffset",
+        ---@overload fun(orig:function, self:Actor) : x:number, y:number
+        ---@diagnostic disable-next-line: redefined-local
+        function(_, self)
+            if self.soul_offset then return unpack(self.soul_offset) end
+            return 0, 0
+        end)
+    end
+    -- v0.9.0 string add tweak HACK (yuck) for MG
+    local string_metatable = getmetatable(" ")
+    if not string_metatable.__add then
+        string_metatable.__add = function (a, b) return a .. tostring(b) end
+    end
+    
+    if Mod.libs["magical-glass"] then
+        Utils.hook(LightActionBox, "createButtons", function(orig, self)
+            for _,button in ipairs(self.buttons or {}) do
+                button:remove()
+            end
+
+            self.buttons = {}
+
+            local btn_types = {"fight", "act", "spell", "item", "mercy"}
+
+            if not self.battler.chara:hasAct() then Utils.removeFromTable(btn_types, "act") end
+            if not self.battler.chara:hasSpells() then Utils.removeFromTable(btn_types, "spell") end
+            
+            if self.battler.chara:hasSkills() then
+                btn_types = {"fight", "skill", "item", "mercy"}
+            end
+
+            for lib_id,_ in Kristal.iterLibraries() do
+                btn_types = Kristal.libCall(lib_id, "getLightActionButtons", self.battler, btn_types) or btn_types
+            end
+            btn_types = Kristal.modCall("getLightActionButtons", self.battler, btn_types) or btn_types
+
+            for i,btn in ipairs(btn_types) do
+                if type(btn) == "string" then
+                    local x
+                    if #btn_types <= 4 then
+                        x = math.floor(67 + ((i - 1) * 156))
+                        if i == 2 then
+                            x = x - 3
+                        elseif i == 3 then
+                            x = x + 1
+                        end
+                    else
+                        x = math.floor(67 + ((i - 1) * 117))
+                    end
+                    
+                    local button = LightActionButton(btn, self.battler, x, 175)
+                    button.actbox = self
+                    table.insert(self.buttons, button)
+                    self:addChild(button)
+                elseif type(btn) == "boolean" then
+                    -- nothing, used to create an empty space
+                else
+                    btn:setPosition(math.floor(66 + ((i - 1) * 156)) + 0.5, 183)
+                    btn.battler = self.battler
+                    btn.actbox = self
+                    table.insert(self.buttons, btn)
+                    self:addChild(btn)
+                end
+            end
+
+            self.selected_button = Utils.clamp(self.selected_button, 1, #self.buttons)
+
+        end)
+        
+        Utils.hook(LightActionButton, "select", function(orig, self)
+            orig(self)
+            -- Custom buttons start here.
+
+            if self.type == "send" then
+                Game.battle.current_menu_columns = 1
+                Game.battle.current_menu_rows = 3
+                Game.battle:clearMenuItems()
+                Game.battle:addMenuItem({
+                    ["name"] = "Send",
+                    ["special"] = "spare",
+                    ["callback"] = function(menu_item)
+                        if Kristal.getLibConfig("magical-glass", "multi_deltarune_spare") and Game.battle.multi_mode then
+                            Game.battle:setState("ENEMYSELECT", "SPARE")
+                        else
+                            Game.battle:pushAction("SPARE", Game.battle:getActiveEnemies())
+                        end
+                    end
+                })
+                local battler_can_defend = Kristal.getLibConfig("magical-glass", "light_battle_defend_btn") or not Game:isLight()
+                if self.battler.chara.light_can_defend ~= nil then
+                    battler_can_defend = self.battler.chara.light_can_defend
+                end
+                if battler_can_defend then
+                    Game.battle:addMenuItem({
+                        ["name"] = "Defend",
+                        ["special"] = "defend",
+                        ["callback"] = function(menu_item)
+                            Game.battle:toggleSoul(false)
+                            Game.battle:pushAction("DEFEND", nil, {tp = Game.battle.tension_bar.visible and -16 or 0})
+                        end
+                    })
+                end
+                if Game.battle.encounter.can_flee then
+                    local battle_leader
+                    for i,battler in ipairs(Game.battle.party) do
+                        if not battler.is_down then
+                            battle_leader = battler.chara.id
+                            break
+                        end
+                    end
+                    Game.battle:addMenuItem({
+                        ["name"] = "Fly",
+                        ["special"] = "flee",
+                        ["unusable"] = Game.battle:getPartyIndex(battle_leader) ~= Game.battle.current_selecting,
+                        ["callback"] = function(menu, item)
+                            local chance = Game.battle.encounter.flee_chance
+
+                            for _,party in ipairs(Game.battle.party) do
+                                for _,equip in ipairs(party.chara:getEquipment()) do
+                                    chance = chance + (equip.getFleeBonus and equip:getFleeBonus() / #Game.battle.party or 0)
+                                end
+                            end
+
+                            if chance > 50 then
+                                Game.battle:setState("FLEEING")
+                            else
+                                Game.battle:playSelectSound()
+                                Game.battle:setState("FLEEFAIL")
+                            end
+                        end
+                    })
+                end
+                Game.battle:setState("MENUSELECT", "SEND")
+            elseif self.type == "scott" then
+                Assets.playSound("scott_here")
+            elseif self.type == "croak" then
+                Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))
+
+                local bubble = Sprite("croak", nil, nil, nil, nil, "party/you")
+                bubble:setOriginExact(60, 23) -- center??
+                bubble:setPosition(Game.battle.soul.width/2 + 8.5, -20.5)
+                bubble.physics.speed_y = -0.8
+                bubble:fadeOutSpeedAndRemove(0.065)
+                bubble.layer = 9999
+                self:addChild(bubble)
+            elseif self.type == "skill" then
+                Game.battle.current_menu_columns = 2
+                Game.battle.current_menu_rows = 3
+                Game.battle:clearMenuItems()
+
+                for id, action in ipairs(self.battler.chara:getLightSkills()) do
+                    Game.battle:addMenuItem({
+                        ["name"] = action[1],
+                        ["description"] = action[2],
+                        ["color"] = action[3],
+                        ["callback"] = action[4]
+                    })
+                end
+
+                Game.battle:setState("MENUSELECT", "SKILL")
+            end
+        end)
+    end
+end
+
+function Mod:getLightBattleMenuOffsets()
+    return { -- {soul, text}
+            ["ACT"] = {12, 16},
+            ["ITEM"] = {0, 0},
+            ["SPELL"] = {12, 16},
+            ["MERCY"] = {0, 0}, --doesn't matter lmao
+            ["SEND"] = {0, 0},
+            ["SKILL"] = {12, 16},
+        }
 end
 
 function Mod:postInit(new_file)
+    if self.legacy_kristal then
+        Game.world.music:stop()
+        Game.world:startCutscene("flowey_check")
+        return
+    end
+
     local items_list = {
         {
             result = "soulmantle",
@@ -49,11 +231,7 @@ function Mod:postInit(new_file)
     }
     Kristal.callEvent("setItemsList", items_list)
 
-    if self.legacy_kristal then
-        Game.world.music:stop()
-        Game.world:startCutscene("flowey_check")
-        return
-    end
+    Mod:funnytitle()
 
     self:initializeImportantFlags(new_file)
 
@@ -94,7 +272,7 @@ end
 function Mod:initializeImportantFlags(new_file)
     local likely_old_save = false
     local old_save_issues = {}
-    
+
     if Game:getFlag("quest_desc")[1] == "This is the Mainline quest. This is hardcoded into the library for the main story of your mod. The ID for this quest is 'mainline', so you can change the description." then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Questline was added.")
@@ -111,7 +289,7 @@ function Mod:initializeImportantFlags(new_file)
     if new_file then
         self:rollFun()
     end
-    
+
     for _,party in pairs(Game.party_data) do
         if not party.lw_stats.magic then
             likely_old_save = true
@@ -160,7 +338,7 @@ function Mod:initializeImportantFlags(new_file)
         Game:setFlag("YOU_party", true)
         Game:setFlag("susie_party", true)
     end
-    
+
     if new_file or Game:getFlag("party_max") == nil then
         Game:setFlag("party_max", 4)
     end
@@ -270,7 +448,7 @@ function Mod:initializeImportantFlags(new_file)
         addOpinionsToParty("jamm", { mario = 65 })
         Game:getPartyMember("mario").opinions = { YOU = 50, kris = 50, susie = 50, noelle = 50, dess = 50, brandon = 50, dumbie = 50, ostarwalker = 50, berdly = 50, bor = 50, robo_susie = 50, noyno = 50, iphone = 50, frisk2 = 50, alseri = 50, jamm = 65 }
     end
-    
+
     if new_file or pauling.opinions == nil then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Ms. Pauling was added.")
@@ -420,18 +598,26 @@ function Mod:getActionButtons(battler, buttons)
             return {"fight", "magic", "item", "send", "defend"}
         end
     end
-    
+
     if battler.chara.id == "mario" and Game:getFlag("acj_mario_fightless") then
-        table.remove(buttons,1)
+        Utils.removeFromTable(buttons, "fight")
     end
     return buttons
 end
 
 function Mod:preUpdate()
+    if self.legacy_kristal then
+        return
+    end
+
     self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
 end
 
 function Mod:postUpdate()
+    if self.legacy_kristal then
+        return
+    end
+
     self:updateTaunt()
     self:updateBattleTaunt()
     self:updateBulborb()
@@ -518,6 +704,10 @@ function Mod:onFootstep(char, num)
 end
 
 function Mod:onKeyPressed(key)
+    if self.legacy_kristal then
+        return
+    end
+
     if Game.world and Game.world.state == "GAMEPLAY" and key == "r" then
         Assets.stopAndPlaySound("ui_select")
         Game.world:openMenu(DarkRelationshipsMenu())
@@ -587,6 +777,10 @@ function Mod:onMapBorder(map, border)
 end
 
 function Mod:loadObject(world, name, properties)
+    if self.legacy_kristal then
+        return
+    end
+
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
     end

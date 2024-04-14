@@ -17,6 +17,9 @@ function LightEncounter:init()
     self.background = true
     self.background_image = Game:isLight() and "ui/lightbattle/backgrounds/battle" or "ui/lightbattle/backgrounds/battle_dark"
 
+    -- The music used for this encounter
+    self.music = "battleut"
+
     -- Whether characters have the X-Action option in their spell menu
     self.default_xactions = Game:getConfig("partyActions")
 

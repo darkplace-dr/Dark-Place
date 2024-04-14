@@ -17,22 +17,26 @@ function SmallBullet:init(x, y, dir, speed)
 end
 
 function SmallBullet:update()
-	-- For more complicated bullet behaviours, code here gets called every update
-	super.update(self)
-	
-	for _,bullet in ipairs(self.wave.bullets) do
-		if bullet:collidesWith(self) and bullet ~= self then
-			self.collided_with_another = true
+	if not self.stopped then
+		Object.startCache()
+		for _,bullet in ipairs(self.wave.bullets) do
+			if bullet:collidesWith(self) and bullet ~= self then
+				self.collided_with_another = true
+				break
+			end
+		end
+		Object.endCache()
+
+		if self.y > Game.battle.arena:getBottom() - 7 or self.collided_with_another then
+			self.physics.speed = 0
+			if not self.stopped then
+				Assets.playSound("noise")
+			end
+			self.stopped = true
 		end
 	end
 
-	if self.y > Game.battle.arena:getBottom() - 7 or self.collided_with_another then
-		self.physics.speed = 0
-		if not self.stopped then
-			self.stopped = true
-			Assets.playSound("noise")
-		end
-	end
+	super.update(self)
 end
 
 return SmallBullet

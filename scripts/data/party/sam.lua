@@ -35,6 +35,8 @@ function character:init()
     --self:setArmor(1, "bshot_glasses")
     --self:setArmor(2, "syrup_jar")
 
+    self.lw_portrait = "face/sam/neutral"
+
     self:addSpell("kindness_healing")
     self:addSpell("master_sheild")
 

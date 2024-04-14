@@ -3,6 +3,8 @@ local character, super = Class("robo_susie", true)
 function character:init()
     super.init(self)
 
+    self.lw_portrait = "face/robo_susie/smile"
+
     self.max_stats = {}
 end
 

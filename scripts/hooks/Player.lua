@@ -2,9 +2,26 @@
 local Player, super = Class("Player", true)
 
 function Player:init(...)
-    super:init(self, ...)
+    super.init(self, ...)
 
-    self.state_manager:addState("HOP", {enter = self.beginHop, update = self.updateHop, leave = self.endHop})
+    self.state_manager:addState("RUN", { update = self.updateRun })
+    self.running = false
+    self.has_run = false
+    local has_run, _ = self.sprite:isDirectional(self.sprite:getPath("run"))
+    self.has_run = has_run
+
+    self.old_xv = 0
+    self.old_yv = 0
+    self.stay_grace = 0
+
+    self.state_manager:addState("HOP", { enter = self.beginHop, update = self.updateHop, leave = self.endHop })
+end
+
+function Player:setActor(...)
+    super.setActor(self, ...)
+
+    local has_run, _ = self.sprite:isDirectional(self.sprite:getPath("run"))
+    self.has_run = has_run
 end
 
 function Player:update()
@@ -23,7 +40,7 @@ function Player:update()
     end
 
     super.update(self)
-	
+
 	if Kristal.getLibConfig("pickup_lib", "disable_hold_run") and self.holding then
         -- dobby: This would've'nt even work since running is a local variable of the parent function
 		--running = false
@@ -59,8 +76,137 @@ function Player:interact()
     return super.interact(self)
 end
 
+-- from run_anims
+function Player:handleMovement()
+    local walk_x = 0
+    local walk_y = 0
+
+    if     Input.down("left")  then walk_x = walk_x - 1
+    elseif Input.down("right") then walk_x = walk_x + 1 end
+    if     Input.down("up")    then walk_y = walk_y - 1
+    elseif Input.down("down")  then walk_y = walk_y + 1 end
+
+    self.moving_x = walk_x
+    self.moving_y = walk_y
+
+    local running = (Input.down("cancel") or self.force_run) and not self.force_walk
+    if Kristal.Config["autoRun"] and not self.force_run and not self.force_walk then
+        running = not running
+    end
+
+    if self.force_run and not self.force_walk then
+        self.run_timer = 200
+    end
+
+    local speed = self.walk_speed
+    if running then
+        if self.run_timer > 60 then
+            speed = speed * 2.25
+        elseif self.run_timer > 10 then
+            speed = speed * 2
+        else
+            speed = speed * 1.5
+        end
+    end
+
+    self:move(walk_x, walk_y, speed * DTMULT)
+
+    local members = Utils.merge({Game.world.player}, Game.world.followers)
+    local walkers = 0
+    for _, member in ipairs(members) do
+        if member.state == "WALK" then walkers = walkers + 1 end
+    end
+
+    if self.old_xv == self.x and self.old_yv == self.y and walkers ~= #members then
+        self.stay_grace = self.stay_grace + 1
+    end
+    self.old_xv = self.x
+    self.old_yv = self.y
+
+    local function returnToWalk()
+        if self.state ~= "WALK" then self:setState("WALK") end
+        for _, follower in ipairs(Game.world.followers) do
+            if follower.state ~= "WALK" then follower.state_manager:setState("WALK") end
+        end
+        self:resetFollowerHistory()
+    end
+
+    if self.stay_grace == 2 then
+        returnToWalk()
+        self.stay_grace = 0
+    end
+
+    if not running or self.last_collided_x or self.last_collided_y then
+        self.run_timer = 0
+        if self.state ~= "WALK" then self:setState("WALK") end
+        if walk_x == 0 and walk_y == 0 then
+            returnToWalk()
+        end
+    elseif running then
+        if walk_x ~= 0 or walk_y ~= 0 then
+            self.run_timer = self.run_timer + DTMULT
+            self.run_timer_grace = 0
+
+            if self.state ~= "RUN" then
+                self:setState("RUN")
+            end
+            for _, follower in ipairs(Game.world.followers) do
+                if follower.state ~= "RUN" then
+                    follower.state_manager:setState("RUN")
+                end
+            end
+        else
+            -- Dont reset running until 2 frames after you release the movement keys
+            if self.run_timer_grace >= 2 then
+                self.run_timer = 0
+                if walk_x ~= 0 and walk_y ~= 0 then
+                    returnToWalk()
+                end
+            end
+            self.run_timer_grace = self.run_timer_grace + DTMULT
+        end
+    end
+end
+
+function Player:updateRun()
+    if not self.running then
+        self.running = true
+    end
+
+    if self.has_run and self.sprite.sprite ~= "run" then
+        self:setWalkSprite("run")
+    end
+
+    if self:isMovementEnabled() then
+        self:handleMovement()
+    end
+
+    if Game.world:hasCutscene() or Game.world.menu or Game.battle then
+        if self.state ~= "WALK" then self:setState("WALK") end
+        for _, follower in ipairs(Game.world.followers) do
+            if follower.state ~= "WALK" then
+                follower.state_manager:setState("WALK")
+            end
+        end
+        self:resetFollowerHistory()
+    end
+end
+
 function Player:updateWalk()
+    if self.running then
+        self.running = false
+        self:resetSprite()
+    end
+
     super.updateWalk(self)
+
+    if Game.world:hasCutscene() or Game.world.menu or Game.battle then
+        if self.state ~= "WALK" then self:setState("WALK") end
+        for _, follower in ipairs(Game.world.followers) do
+            if follower.state ~= "WALK" then follower.state_manager:setState("WALK") end
+        end
+        self:resetFollowerHistory()
+    end
 
     if not self:isMovementEnabled() then return end
 

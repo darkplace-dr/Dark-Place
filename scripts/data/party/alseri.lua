@@ -28,6 +28,8 @@ function character:init()
     -- X-Action name (displayed in this character's spell menu)
     self.xact_name = "A-Action"
 
+    self.lw_portrait = "face/alseri/neutral"
+
     -- Spells
     self:addSpell("healing_bless")
 
