@@ -126,6 +126,101 @@ return function(cutscene, event_override)
             cutscene:text("* (Kid, I suggest you should probably get outta there.)", "annoyed", "shadowsalesman")
             cutscene:text("* (Before you loose your sanity or something.)", "suspicious", "shadowsalesman")
 	        cutscene:hideNametag()
+        elseif Game.world.map.id == "spamgolorneo_save" then
+            if not Game:hasPartyMember("susie") then
+                if not Game:getFlag("jaruSpamgolorNeoRooms") then
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Uh,[wait:5] so me and Susie may or may not be currently trapped...", "frown", "brandon")
+                    cutscene:text("* ... in an area that's like that basement in Queen's mansion.", "frown_side", "brandon")
+                    cutscene:showNametag("J.A.R.U.")
+                    cutscene:text("* ...[wait:10]\n* Oh,[wait:5] that ain't good.", "oh", "shadowsalesman")
+                    cutscene:text("* Listen,[wait:5] just try and find a way outta there.", "default", "shadowsalesman")
+                    cutscene:text("* And for God's sake,[wait:5] whatever you do...", "annoyed", "shadowsalesman")
+                    cutscene:text("* Do [color:red]NOT[color:white] touch any weird body-shaped junk you might find.", "annoyed", "shadowsalesman")
+                    cutscene:text("* I'm sure you're well aware of what happens when you do that.", "suspicious", "shadowsalesman")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Uh,[wait:5] got it,[wait:5] yeah.", "neutral_side", "brandon")
+                    Game:setFlag("jaruSpamgolorNeoRooms", true)
+                    cutscene:hideNametag()
+                else
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* There's like an electric barrier blocking the way out.", "neutral_side", "brandon")
+                    cutscene:showNametag("J.A.R.U.")
+                    cutscene:text("* Hmm...", "eye_closed", "shadowsalesman")
+                    cutscene:text("* I'm sure there's a way to turn it off somewhere.", "default", "shadowsalesman")
+                    cutscene:hideNametag()
+                end
+            end
+        elseif Game.world.map.id == "spamgolorneo_hallway" then
+            if not Game:hasPartyMember("susie") then
+                if not Game:getFlag("jaruSpamgolorNeoRooms") then
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Uh,[wait:5] so me and Susie may or may not be currently trapped...", "frown", "brandon")
+                    cutscene:text("* ... in an area that's like that basement in Queen's mansion.", "frown_side", "brandon")
+                    cutscene:showNametag("J.A.R.U.")
+                    cutscene:text("* ...[wait:10]\n* Oh,[wait:5] that ain't good.", "oh", "shadowsalesman")
+                    cutscene:text("* Listen,[wait:5] just try and find a way outta there.", "default", "shadowsalesman")
+                    cutscene:text("* And for God's sake,[wait:5] whatever you do...", "annoyed", "shadowsalesman")
+                    cutscene:text("* Do [color:red]NOT[color:white] touch any weird body-shaped junk you might find.", "annoyed", "shadowsalesman")
+                    cutscene:text("* I'm sure you're well aware of what happens when you do that.", "suspicious", "shadowsalesman")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Uh,[wait:5] got it,[wait:5] yeah.", "neutral_side", "brandon")
+                    Game:setFlag("jaruSpamgolorNeoRooms", true)
+                    cutscene:hideNametag()
+                else
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Okay so now I'm in a hallway.", "neutral", "brandon")
+                    cutscene:text("* There's two doors,[wait:5] one of them's closed...", "neutral_side", "brandon")
+                    cutscene:text("* I'm fairly certain that's where Susie is.", "neutral", "brandon")
+                    cutscene:text("* So I'm gonna go into the door that's open.", "neutral_side", "brandon")
+                    cutscene:showNametag("J.A.R.U.")
+                    cutscene:text("* Alright then.[wait:10]\n* Stay safe in there,[wait:5] got it, Brandon?", "default", "shadowsalesman")
+                    cutscene:hideNametag()
+                end
+            end
+        elseif Game.world.map.id == "spamgolorneo_body" then
+            if not Game:hasPartyMember("susie") then
+                if not Game:getFlag("jaruSpamgolorNeoRooms") then
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Uh,[wait:5] so me and Susie may or may not be currently trapped...", "frown", "brandon")
+                    cutscene:text("* ... in an area that's like that basement in Queen's mansion.", "frown_side", "brandon")
+                    cutscene:showNametag("J.A.R.U.")
+                    cutscene:text("* ...[wait:10]\n* Oh,[wait:5] that ain't good.", "oh", "shadowsalesman")
+                    cutscene:text("* Listen,[wait:5] just try and find a way outta there.", "default", "shadowsalesman")
+                    cutscene:text("* And for God's sake,[wait:5] whatever you do...", "annoyed", "shadowsalesman")
+                    cutscene:text("* Do [color:red]NOT[color:white] touch any weird body-shaped junk you might find.", "annoyed", "shadowsalesman")
+                    cutscene:text("* I'm sure you're well aware of what happens when you do that.", "suspicious", "shadowsalesman")
+                    cutscene:showNametag("Brandon")
+                    cutscene:text("* Uh,[wait:5] got it,[wait:5] yeah.", "neutral_side", "brandon")
+                    Game:setFlag("jaruSpamgolorNeoRooms", true)
+                    cutscene:hideNametag()
+                else
+                    if not Game:getFlag("spamgolorneo_activate") then
+                        cutscene:showNametag("Brandon")
+                        cutscene:text("* Okay so I think this room's a dead-end.", "suspicious", "brandon")
+                        cutscene:text("* However,[wait:5] I'm pretty sure there's something at the end of it.", "happy", "brandon")
+                        cutscene:text("* So Imma see what's up.", "neutral_side", "brandon")
+                        cutscene:showNametag("J.A.R.U.")
+                        cutscene:text("* Alright,[wait:5] just...[wait:10] don't do anything stupid.", "annoyed", "shadowsalesman")
+                        cutscene:text("* I've got a bad feeling about this...", "default", "shadowsalesman")
+                        cutscene:hideNametag()
+                    else
+                        cutscene:showNametag("Brandon")
+                        cutscene:text("* So uh,[wait:5] found the thing Spamgolor told us to find.", "neutral_side", "brandon")
+                        cutscene:text("* And I have absolutely ZERO clue what I'm supposed to do with it.", "suspicious", "brandon")
+                        cutscene:text("[noskip]* So I think I'm gonna go find Susie and", "neutral", "brandon", {auto = true})
+                        cutscene:showNametag("J.A.R.U.")
+                        cutscene:text("* Hold on,[wait:5] did you just say \"Spamgolor\"?", "annoyed", "shadowsalesman")
+                        cutscene:text("* HE told you to go here?", "visible_confusion", "shadowsalesman")
+                        cutscene:showNametag("Brandon")
+                        cutscene:text("* I mean,[wait:5] yeah I guess.", "neutral_side", "brandon")
+                        cutscene:showNametag("J.A.R.U.")
+                        cutscene:text("* Brandon,[wait:5] go find Susie and find a way out as fast as you can.", "annoyed", "shadowsalesman")
+                        cutscene:text("* I've got a really bad feeling about this.", "eye_closed", "shadowsalesman")
+                        cutscene:hideNametag()
+                    end
+                end
+            end
 		else
             -- Default message when a room doesn't have any specific dialogue for it.
 	        cutscene:showNametag("J.A.R.U.")
