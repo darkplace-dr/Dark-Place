@@ -62,7 +62,7 @@ return function(cutscene, event_override)
                 cutscene:text("* I think it's called the \"Everhall\" because of Everhood?", "neutral", "jamm")
                 cutscene:text("* Green has a hall just like this in their basement, so...", "neutral", "jamm")
                 cutscene:text("* And it has all these tally marks on there too.", "neutral", "jamm")
-                cutscene:text("* Plus,[wait:5] the signifigance of the tally marks is that--", "neutral", "jamm")
+                cutscene:text("* Plus,[wait:5] the signifigance of the tally marks is that--", "neutral", "jamm", {auto=true})
 				cutscene:showNametag("J.A.R.U.")
 				cutscene:text("* We get it,[wait:5] Jamm.[wait:5]\n* You play Everhood.", "annoyed", "shadowsalesman")
 			end
