@@ -83,15 +83,21 @@ return function(cutscene, event_override)
             cutscene:text("* Be careful, kid.", "default", "shadowsalesman")
 	        cutscene:hideNametag()
         elseif Game.world.map.id == "starbeans" then
-	        cutscene:showNametag("J.A.R.U.")
-            cutscene:text("* This is the Starbeans section of the Diner.", "default", "shadowsalesman")
-            cutscene:text("* And at the counter over there is Alexa, who works as our barista.", "default", "shadowsalesman")
-            cutscene:text("* Jamm brought her here one day and told me she needed a job.", "default", "shadowsalesman")
-            cutscene:text("* So I offered her one, and she happily accepted it!", "default", "shadowsalesman")
-            cutscene:text("* Now to be honest, I don't know much about where she came from.", "default", "shadowsalesman")
-            cutscene:text("* (Jamm would actually know more about that than I would, heh.)", "default", "shadowsalesman")
-            cutscene:text("* Maybe you could try asking him about it, whenever you can.", "default", "shadowsalesman")
-	        cutscene:hideNametag()
+            local jaru_alexa_discussion = Game:getFlag("jaruHasTalkedAboutAlexa")
+			if jaru_alexa_discussion == false then
+	            cutscene:showNametag("J.A.R.U.")
+	            cutscene:text("* This is the Starbeans section of the Diner.", "default", "shadowsalesman")
+	            cutscene:text("* And at the counter over there is Alexa, who works as our barista.", "default", "shadowsalesman")
+	            cutscene:text("* Jamm brought her here one day and told me she needed a job.", "default", "shadowsalesman")
+	            cutscene:text("* So I offered her one, and she happily accepted it!", "default", "shadowsalesman")
+	            cutscene:text("* Now to be honest, I don't know much about where she came from.", "default", "shadowsalesman")
+	            cutscene:text("* (Jamm would actually know more about that than I would, heh.)", "default", "shadowsalesman")
+	            cutscene:text("* Maybe you could try asking him about it, whenever you can.", "default", "shadowsalesman")
+	            cutscene:hideNametag()
+				Game:getFlag("jaruHasTalkedAboutAlexa", true)
+			else
+			    cutscene:text("* Insert Text Here.")
+			end
         elseif Game.world.map.id == "spamroom" then
             -- WIP
 	        cutscene:showNametag("J.A.R.U.")
