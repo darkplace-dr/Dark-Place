@@ -199,7 +199,9 @@ end
 
 function AngryBirds:onStateChange(state)
     if state == "MENU" then
-        self:addChild(AngryBirdsMainMenu())
+        self.mainMenu = AngryBirdsMainMenu()
+		self:addChild(self.mainMenu)
+
         if self.music:isPlaying(self.title_theme[self.current_title_theme]) == false then
             self.music:play(self.title_theme[self.current_title_theme])
         end
@@ -326,7 +328,7 @@ function AngryBirds:draw()
         self:drawSplashes()
     end
 
-    if self.state == "LEVELSELECTION" then
+    if self.state == "LEVELSELECTION" then -- Move this to a new object too lmao.
         love.graphics.setColor(143/255, 116/255, 185/255)
         love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 

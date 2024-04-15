@@ -30,6 +30,8 @@ function AngryBirdsMainMenu:init()
     self.minigame = Game.minigame ---@type AngryBirds
 	
     self:buildBirdList()
+	
+    self.popup = false
 end
 
 function AngryBirdsMainMenu:setState(state)
@@ -39,7 +41,7 @@ function AngryBirdsMainMenu:setState(state)
 end
 
 function AngryBirdsMainMenu:onStateChange(state)
-    if self.menu_state == "POPUP" or not self.minigame.state == "MENU" then
+    if self.menu_state == "POPUP" then
         self.playButton.enabled = false
         self.backButton.enabled = false
         self.settingsButton.enabled = false
@@ -60,6 +62,10 @@ function AngryBirdsMainMenu:update()
         self.menu_sunset_angle = self.menu_sunset_angle - 2 * math.pi
     end
 	
+    if self.minigame.state ~= "MENU" then
+	    self:setState("POPUP")
+	end
+	
     self:animateBirds()
 	
 	if self.playButton.pressed == true then
@@ -69,10 +75,13 @@ function AngryBirdsMainMenu:update()
         self.minigame:setState("EDITORMENU")
 	end]]
 	
-    if self.backButton.pressed == true then
+    if self.backButton.pressed == true and self.popup == false then
+        self.minigame:addChild(AngryBirdsPopup())
         self:setState("POPUP")
-    elseif self.settingsButton.pressed == true then
+		self.popup = true
+    elseif self.settingsButton.pressed == true and self.popup == false then
         self:setState("POPUP")
+		self.popup = true
     end
 end
 
@@ -119,24 +128,38 @@ function AngryBirdsMainMenu:animateBirds()
             ty_vel = love.math.random(-250, -150) * scale * (SCREEN_HEIGHT / 320 + 1) * 0.175
             tx_vel = 0
         end
+		
+        local yell_sprite = sprite .. "/yell" or sprite
 
-        table.insert(self.bird_animations, { sprite = sprite, angle = 0, angle_speed = angle_speed, x = tx, y = ty, x_vel = tx_vel, y_vel = ty_vel, scale = scale, layer = layer, reward = reward} )
+        table.insert(self.bird_animations, { 
+		    sprite = sprite,
+            yell_sprite = yell_sprite,
+			angle = 0, 
+			angle_speed = angle_speed, 
+			x = tx, 
+			y = ty, 
+			x_vel = tx_vel, 
+			y_vel = ty_vel, 
+			scale = scale, 
+			layer = layer, 
+			reward = reward
+		} )
     end
 
     for i = #self.bird_animations, 1, -1 do
         local v = self.bird_animations[i]
         if v.reward == 2 then -- danger above movement
             v.angle = math.sin(v.angle_speed) * 0.15
-            v.angle_speed = (v.angle_speed + (DTMULT / 30) * 2) % (math.pi * 2)
+            v.angle_speed = (v.angle_speed + DT * 2) % (math.pi * 2)
             v.x = v.x - v.angle * v.layer / 2
         else
-            v.y_vel = v.y_vel + 150 * (DTMULT / 30)
-            v.angle = v.angle + v.angle_speed * (DTMULT / 30)
+            v.y_vel = v.y_vel + 150 * DT
+            v.angle = v.angle + v.angle_speed * DT
         end
-        v.x = v.x + v.x_vel / 2 * (DTMULT / 30)
-        v.y = v.y + v.y_vel / 2 * (DTMULT / 30)
+        v.x = v.x + v.x_vel / 2 * DT
+        v.y = v.y + v.y_vel / 2 * DT
 		
-        if v.y > SCREEN_HEIGHT + 50 * SCREEN_HEIGHT / 320 --[[or ((v.reward == 2 or v.reward == 2) and v.y < -v.getSpriteHeight())]] then
+        if v.y > SCREEN_HEIGHT + 50 * SCREEN_HEIGHT / 320 --[[or ((v.reward == 2 or v.reward == 2) and v.y < -v:spriteHeight)]] then
             table.remove(self.bird_animations, i)
         end
     end
@@ -145,14 +168,15 @@ function AngryBirdsMainMenu:animateBirds()
 
 	--[[if keyPressed["LBUTTON"] and currentMenuPage ~= about then
 		for i = 1, #self.bird_animations do
-			if self.bird_animations[i].layer == 5 then
-				self.bird_animations[i].renderState = true
-				if SpriteItem.checkBounds(self.bird_animations[i], cursor.x, cursor.y) 
-				   and self.bird_animations[i].yelling ~= true 
-				   and _G.string.sub(self.bird_animations[i].sprite, 1, 4) == "BIRD" then
-					self.bird_animations[i].yelling = true
-					Assets.playSound(self:birdSpriteSoundMapping[self.bird_animations[i].sprite])
-					self.bird_animations[i].sprite = self.bird_animations[i].sprite .. "/yell"
+            local v = self.bird_animations[i]
+			if v.layer == 5 then
+				v.renderState = true
+				if SpriteItem.checkBounds(v, cursor.x, cursor.y) 
+				   and v.yelling ~= true 
+				   and _G.string.sub(v.sprite, 1, 4) == "BIRD" then
+					v.yelling = true
+					Assets.playSound(self:birdSpriteSoundMapping[v.sprite])
+					v.sprite = v.yell_sprite
 				end
 			end
 		end

@@ -52,6 +52,9 @@ function AngryBirdsButton:update()
 				self.pressed = true
 				self:onClick()
 			end
+			if not love.mouse.isDown(1) then
+				self.pressed = false
+			end
 		end
 	else
 		if self.scale_x > self.scale_begin then
