@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 30,
+  nextobjectid = 31,
   properties = {
     ["border"] = "simple",
     ["music"] = "deltarune/wind_highplace"
@@ -292,6 +292,22 @@ return {
           properties = {
             ["flag"] = "!galacta_defeated",
             ["target"] = { id = 28 }
+          }
+        },
+        {
+          id = 30,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 504,
+          y = 160,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!galacta_defeated",
+            ["target"] = { id = 26 }
           }
         }
       }

@@ -1,7 +1,7 @@
 return {
   version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 15,
+  nextobjectid = 16,
   properties = {
     ["music"] = "greenroom"
   },
@@ -309,6 +309,21 @@ return {
             ["actor"] = "brandon_plush",
             ["cutscene"] = "plushies.brandon_plush",
             ["flagcheck"] = "!brandon_plush"
+          }
+        },
+        {
+          id = 15,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 360,
+          y = 80,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "devhotel_room_001.window"
           }
         }
       }

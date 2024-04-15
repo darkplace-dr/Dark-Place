@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="18" height="15" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="15">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="18" height="15" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="16">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -92,6 +92,11 @@
     <property name="actor" value="brandon_plush"/>
     <property name="cutscene" value="plushies.brandon_plush"/>
     <property name="flagcheck" value="!brandon_plush"/>
+   </properties>
+  </object>
+  <object id="15" name="interactable" x="360" y="80" width="120" height="40">
+   <properties>
+    <property name="cutscene" value="devhotel_room_001.window"/>
    </properties>
   </object>
  </objectgroup>

@@ -157,5 +157,23 @@ return {
         cutscene:hideNametag()
 
         Game:setFlag("thoughts", "true")
-    end
+    end,
+
+    entrance = function(cutscene, event)
+        local x,y = event.x + event.width/2, event.y + event.height/2
+        cutscene:detachCamera()
+        cutscene:wait(cutscene:panTo(x, y-30))
+        cutscene:showNametag("Susie")
+        cutscene:text("* Hey,[wait:5] isn't that Brandon?", "surprise", "susie")
+        cutscene:hideNametag()
+        local brandon = cutscene:getCharacter("brandon")
+        brandon:walkTo(x, -60, 2, "up")
+        cutscene:wait(1.5)
+        cutscene:showNametag("Susie")
+        cutscene:text("* Hey![wait:10] Brandon,[wait:5] wait up!", "surprise_frown", "susie")
+        cutscene:hideNametag()
+        local susie = cutscene:getCharacter("susie")
+        cutscene:wait(cutscene:attachCamera())
+        Game:setFlag("b_entrance", true)
+    end,
 }
