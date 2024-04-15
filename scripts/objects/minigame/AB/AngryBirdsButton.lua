@@ -16,15 +16,27 @@ function AngryBirdsButton:init(x, y, sx, sy, s_begin, s_end, image, sound)
 		
 		self.width = self.sprite.width
 		self.height = self.sprite.height
+	else
+		self.image_path = "minigames/ab/ui/buttons/template"
+		
+		self.sprite = Sprite(self.image_path)
+		self:addChild(self.sprite)
+		self:setOrigin(0.5,0.5)
+		
+		self.width = self.sprite.width
+		self.height = self.sprite.height
 	end
     if sound then
         self.sound_path = "minigames/ab/" .. sound
 		self.sound = self.sound_path
 	end
+	
+    self.enabled = true
 end
 
 function AngryBirdsButton:update() 
 	super.update(self)
+    local minigame = Game.minigame ---@type AngryBirds
 
 	local mx, my = love.mouse.getPosition()
 	local screen_x, screen_y = self:getScreenPos()
@@ -57,7 +69,7 @@ function AngryBirdsButton:onClick()
 	Assets.playSound(self.sound)
 end
 
-function AngryBirdsButton:canClick() return true end
-function AngryBirdsButton:canHover() return true end
+function AngryBirdsButton:canClick() return self.enabled end
+function AngryBirdsButton:canHover() return self.enabled end
 
 return AngryBirdsButton
