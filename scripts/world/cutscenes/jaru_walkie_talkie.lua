@@ -235,6 +235,17 @@ return function(cutscene, event_override)
             cutscene:text("* ... that has a seperate bedroom.", "default", "shadowsalesman")
             cutscene:text("* But other than that,[wait:5] I dunno what else you want from me.", "annoyed", "shadowsalesman")
             cutscene:hideNametag()
+        elseif Game.world.map.id == "floor2/lounge" then
+            cutscene:showNametag("J.A.R.U.")
+            cutscene:text("* Oh you're in the lounge on Floor 2,[wait:5] eh?", "default", "shadowsalesman")
+            cutscene:text("* On your left and right, you can find a bunch of doors.", "default", "shadowsalesman")
+            cutscene:text("* Some of these are rooms for a few specific people...", "default", "shadowsalesman")
+            cutscene:text("* While others will take you different areas in this Dark World.", "default", "shadowsalesman")
+            cutscene:text("* Have a look around.[wait:5]\n* You may find some familiar faces here!", "default", "shadowsalesman")
+            cutscene:text("* (Oh,[wait:5] and uh,[wait:5] one more thing...)", "suspicious", "shadowsalesman")
+            cutscene:text("* (I strongly recommend NOT reading the sign on the right.)", "annoyed", "shadowsalesman")
+            cutscene:text("* (Trust me,[wait:5] you won't like what'll happen next.)", "suspicious", "shadowsalesman")
+            cutscene:hideNametag()
 		else
             -- Default message when a room doesn't have any specific dialogue for it.
 	        cutscene:showNametag("J.A.R.U.")
