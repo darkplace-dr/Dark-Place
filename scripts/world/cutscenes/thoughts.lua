@@ -877,7 +877,7 @@ return {
             cutscene:text("* Neither have I.", "nervous", "susie")
             cutscene:showNametag("Jamm")
             cutscene:text("* I remember taking a class on this kind of stuff.", "side_smile", "jamm")
-            cutscene:text("* We had to memorize these flags and all, though...", "neutral", "jamm")
+            cutscene:text("* We had to memorize these flags and all,[wait:5] though...", "neutral", "jamm")
             cutscene:text("* I can't put my finger on which flag it is...", "nervous", "jamm")
             cutscene:showNametag("Dess")
             cutscene:text("* skill issue lol", "neutral", "dess", {reactions = { 
