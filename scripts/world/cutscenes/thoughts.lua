@@ -331,6 +331,7 @@ return {
                     cutscene:text("* ...", "neutral_c", "dess")
                 end
                 cutscene:hideNametag()
+                Game:setFlag("thoughts_kills", Game:getFlag("library_kills"))
             else
                 cutscene:showNametag("Susie")
                 cutscene:text("* FINALLY!", "teeth_b", "susie")
@@ -365,6 +366,198 @@ return {
                 cutscene:hideNametag()
             end
             Game:setFlag("thoughts_leftend", true)
+        end
+    end,
+
+    quizhistory = function(cutscene, event)
+        if not Game:getFlag("thoughts_quizhistory") then
+            local susie = cutscene:getCharacter("susie")
+            local dess = cutscene:getCharacter("dess")
+            local jamm = cutscene:getCharacter("jamm")
+            local x,y = event.x + event.width/2, event.y + event.height/2
+            cutscene:detachCamera()
+            cutscene:detachFollowers()
+            cutscene:panTo(x,y)
+            susie:walkTo(x, y + 50, 1, "up")
+            dess:walkTo(x - 30, y + 80, 1, "up")
+            jamm:walkTo(x + 30, y + 80, 1, "up")
+            cutscene:wait(1)
+
+            cutscene:text("* Greetings,[wait:5] welcome to the Path of Wits.")
+            cutscene:text("* In order to reach the end,[wait:5] you must pass 4 quizes")
+            cutscene:text("* I hope you've been paying attention in History Class.")
+            cutscene:text("* There are 5 questions,[wait:5] and you must answer at least 3 correctly.")
+            if not Game:getFlag("dungeonkiller") then
+                local correct = 0
+
+                cutscene:showNametag("Dess")
+                cutscene:text("* hey if quizes are quizical,[wait:5] then what are tests?", "condescending", "dess")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Shush![wait:10]\n* I'm trying to concentrate!", "teeth", "susie")
+                cutscene:hideNametag()
+                cutscene:text("[noskip]* Question 1:[wait:10] What year was the Declaration of Independace for the USA signed?")
+                cutscene:showNametag("Dess")
+                cutscene:text("[noskip]* ooo ooo ooo i know this one it's", "challenging", "dess", {auto = true})
+                cutscene:showNametag("Susie")
+                cutscene:text("* I SAID SHUSH!!!", "teeth_b", "susie")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Huh,[wait:5] I guess it's starting out easy.", "look_left", "jamm")
+                cutscene:hideNametag()
+                
+			    local wbi_ok = false
+			    local action
+			    local wbi = WarpBinInputMenu(4)
+			    wbi.finish_cb = function(_action, input)
+				    wbi_ok = true
+				    action = input
+			    end
+			    Game.world:spawnObject(wbi, "ui")
+			    cutscene:wait(function() return wbi_ok end)
+
+                if string.upper(action) == "1776" then
+                    cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                    correct = correct + 1
+                else
+                    cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+                end
+                cutscene:text("[noskip]* Question 2:[wait:10] What year was the Articles of Confederation signed?")
+                cutscene:text("[noskip]* This is the event that Canada Day celebrates,[wait:5] in case you were wondering.")
+                
+                cutscene:showNametag("Dess")
+                cutscene:text("* ewwwww i hate canada", "neutral", "dess")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* I mean,[wait:5] they make good maple syrup.", "look_left", "jamm")
+                cutscene:hideNametag()
+
+                wbi_ok = false
+			    wbi = WarpBinInputMenu(4)
+			    wbi.finish_cb = function(_action, input)
+				    wbi_ok = true
+				    action = input
+			    end
+			    Game.world:spawnObject(wbi, "ui")
+			    cutscene:wait(function() return wbi_ok end)
+
+                if string.upper(action) == "1867" then
+                    cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                    correct = correct + 1
+                else
+                    cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+                end
+                cutscene:text("[noskip]* Question 3:[wait:10] Durring WWI,[wait:5] the three major members of the Entente were Britain,[wait:5] Russia...[wait:5]")
+                cutscene:text("[noskip]* ... and what other country?")
+                
+                cutscene:showNametag("Susie")
+                cutscene:text("* WWI?[wait:10]\n* The hell does that mean?", "nervous", "susie")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* It means \"World War One\".", "neutral", "jamm")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Ohhhh.", "surprise_smile", "susie")
+                cutscene:text("* I still have no idea what that means.", "nervous", "susie")
+                cutscene:hideNametag()
+
+                wbi_ok = false
+			    wbi = WarpBinInputMenu(10)
+			    wbi.finish_cb = function(_action, input)
+				    wbi_ok = true
+				    action = input
+			    end
+			    Game.world:spawnObject(wbi, "ui")
+			    cutscene:wait(function() return wbi_ok end)
+
+                if string.upper(action) == "FRANCE" then
+                    cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* ewwwww i hate france too", "neutral", "dess")
+                    cutscene:hideNametag()
+                    correct = correct + 1
+                else
+                    cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+                end
+                cutscene:text("[noskip]* Question 4:[wait:10] What nation of the German Confederation was the one to form Germany?")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Okay this I have no clue on.", "stern", "jamm")
+                cutscene:text("* It's like this quiz was tailor made for a history nerd.", "determined", "jamm")
+                cutscene:hideNametag()
+
+                wbi_ok = false
+			    wbi = WarpBinInputMenu(10)
+			    wbi.finish_cb = function(_action, input)
+				    wbi_ok = true
+				    action = input
+			    end
+			    Game.world:spawnObject(wbi, "ui")
+			    cutscene:wait(function() return wbi_ok end)
+
+                if string.upper(action) == "PRUSSIA" then
+                    cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                    correct = correct + 1
+                else
+                    cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+                end
+
+                cutscene:text("[noskip]* Final Question:[wait:10] Which South American country is the only one to have had an emperor?")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Who the hell came up with these questions?!", "determined", "jamm")
+                cutscene:showNametag("Dess")
+                cutscene:text("* idk but i have no idea what half of what it just said was", "heckyeah", "dess")
+                cutscene:hideNametag()
+
+                wbi_ok = false
+			    wbi = WarpBinInputMenu(10)
+			    wbi.finish_cb = function(_action, input)
+				    wbi_ok = true
+				    action = input
+			    end
+			    Game.world:spawnObject(wbi, "ui")
+			    cutscene:wait(function() return wbi_ok end)
+
+                if string.upper(action) == "BRAZIL" or string.upper(action) == "BRASIL" then
+                    cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                    correct = correct + 1
+                else
+                    cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+                end
+
+                cutscene:text("* Let's see your final score...")
+                cutscene:text("* You scored "..correct.." out of 5.")
+                if correct >= 3 then
+                    cutscene:text("* Congrats![wait:10]\n* You won!")
+                    cutscene:text("* You may now move on to the next quiz.")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Hell yeah!", "smile", "susie")
+                    cutscene:hideNametag()
+                    Assets.stopAndPlaySound("screenshake")
+                    Game:setFlag("thoughts_quizhistory", true)
+                else
+                    cutscene:text("* Unfortunately,[wait:5] that is not enough to pass.")
+                    cutscene:text("* Please try again.")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Ugh,[wait:5] damnit!", "angry", "susie")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* hey you can always look the answers up", "condescending", "dess")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* I mean,[wait:5] that would ruin the challenge.", "stern", "jamm")
+                    cutscene:text("* But if you're stuggling,[wait:5] I guess you could do that.", "smirk", "jamm")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Uhhh,[wait:5] I don't have a phone.", "annoyed", "susie")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* the voice in your head can look it up", "heckyeah", "dess")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* ...", "shock", "susie")
+                    cutscene:text("* What?", "sad_frown", "susie")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Ignore her.", "stern", "jamm")
+                    cutscene:hideNametag()
+                end
+            else
+                cutscene:showNametag("Dess")
+                cutscene:text("* oh my GOD", "", "dess")
+                cutscene:text("* we are not doing this shit again", "", "dess")
+                --WIP
+            end
+            cutscene:attachCamera()
+            cutscene:wait(cutscene:attachFollowers())
         end
     end,
 }
