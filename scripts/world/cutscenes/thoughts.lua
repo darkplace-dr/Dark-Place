@@ -848,7 +848,7 @@ return {
             cutscene:showNametag("Dess")
             cutscene:text("* nevermind it's no longer easy", "neutral", "dess")
             cutscene:showNametag("Jamm")
-            cutscene:text("* That's because the only country you care about it the US.", "stern", "jamm")
+            cutscene:text("* That's because the only country you care about is the US.", "stern", "jamm")
             cutscene:showNametag("Dess")
             cutscene:text("* uh yeah because it's awesome", "heckyeah", "dess")
             cutscene:hideNametag()
