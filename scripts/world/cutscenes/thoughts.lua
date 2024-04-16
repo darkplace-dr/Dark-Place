@@ -362,6 +362,7 @@ return {
                     cutscene:text("* Hopefully that forcefield should be open now.", "neutral_side", "susie")
                     cutscene:text("* I just really hope Brandon's okay...", "shy_down", "susie")
                 end
+                cutscene:hideNametag()
             end
         end
     end,
