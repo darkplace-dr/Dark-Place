@@ -86,7 +86,11 @@ function actor:init()
 
         -- Cutscene offsets
         ["fall"] = {0, 0},
+        ["super_move"] = {-24, 0},
+        ["the_roba"] = {0, 0},
     }
+
+    self.taunt_sprites = {"super_move", "the_roba"}
 end
 
 return actor
