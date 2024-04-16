@@ -74,7 +74,11 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="27" name="forcefield" x="320" y="80" width="160" height="40"/>
+  <object id="27" name="forcefield" x="320" y="80" width="160" height="40">
+   <properties>
+    <property name="cond" value="not Game:getFlag(&quot;thoughts_leftend&quot;) or not Game:getFlag(&quot;thoughts_rightend&quot;)"/>
+   </properties>
+  </object>
   <object id="28" name="interactable" x="240" y="80" width="40" height="40">
    <properties>
     <property name="text1" value="* In order to pass,[wait:5] one must prove both their strength and their wits."/>

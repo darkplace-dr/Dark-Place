@@ -407,7 +407,9 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["cond"] = "not Game:getFlag(\"thoughts_leftend\") or not Game:getFlag(\"thoughts_rightend\")"
+          }
         },
         {
           id = 28,

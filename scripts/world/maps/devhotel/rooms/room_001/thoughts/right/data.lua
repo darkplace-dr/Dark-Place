@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 17,
+  nextobjectid = 20,
   properties = {
     ["border"] = "simple",
     ["music"] = "deltarune/wind_highplace"
@@ -280,7 +280,9 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["cutscene"] = "thoughts.quizgeography"
+          }
         },
         {
           id = 11,
@@ -293,7 +295,9 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["cutscene"] = "thoughts.quizflags"
+          }
         },
         {
           id = 12,
@@ -306,7 +310,9 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["cutscene"] = "thoughts.quizgaming"
+          }
         },
         {
           id = 13,
@@ -319,7 +325,9 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["cutscene"] = "thoughts.rightend"
+          }
         }
       }
     },
@@ -393,6 +401,54 @@ return {
           properties = {
             ["flag"] = "!thoughts_quizhistory",
             ["target"] = { id = 5 }
+          }
+        },
+        {
+          id = 17,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 840,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!thoughts_quizgeography",
+            ["target"] = { id = 6 }
+          }
+        },
+        {
+          id = 18,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 1120,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!thoughts_quizflags",
+            ["target"] = { id = 7 }
+          }
+        },
+        {
+          id = 19,
+          name = "toggle",
+          class = "",
+          shape = "point",
+          x = 1400,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "!thoughts_quizgaming",
+            ["target"] = { id = 8 }
           }
         }
       }

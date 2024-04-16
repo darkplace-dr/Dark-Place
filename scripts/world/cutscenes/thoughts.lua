@@ -329,6 +329,7 @@ return {
                     cutscene:text("* ...", "shaded_pissed", "jamm")
                     cutscene:showNametag("Dess")
                     cutscene:text("* ...", "neutral_c", "dess")
+                    Assets.stopAndPlaySound("ominous")
                 end
                 cutscene:hideNametag()
             else
@@ -552,12 +553,639 @@ return {
                 end
             else
                 cutscene:showNametag("Dess")
-                cutscene:text("* oh my GOD", "", "dess")
-                cutscene:text("* we are not doing this shit again", "", "dess")
-                --WIP
+                cutscene:text("* oh my GOD", "angry", "dess")
+                cutscene:text("* we are not doing this shit again", "neutral", "dess")
+                cutscene:hideNametag()
+                dess:walkTo(x, y + 50, 0.5, "up")
+                susie:setSprite("shock_down")
+                susie:walkTo(x - 40, y + 50, 0.5, "right")
+                cutscene:wait(1)
+                cutscene:wait(cutscene:walkTo(dess, x, y + 70, 0.5, "up", true))
+                cutscene:wait(cutscene:walkTo(dess, x, y + 50, 0.2))
+                dess:shake(5)
+                Assets.playSound("screenshake")
+                cutscene:wait(1)
+                susie:setSprite("shock_right")
+                cutscene:text("* WARNING![wait:10] VIOLENCE TOWARDS QUIZ DETECTED!")
+                cutscene:text("* DEPLOYING SECURITY PROTOCALLS!")
+                cutscene:startEncounter("3voidwanderer", true)
+                cutscene:wait(1)
+                susie:resetSprite()
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...", "suspicious", "susie")
+                susie:setSprite("exasperated_right")
+                cutscene:text("* WHAT THE HELL WAS THAT FOR?!", "teeth_b", "susie")
+                susie:resetSprite()
+                cutscene:hideNametag()
+                dess:setFacing("right")
+                Assets.stopAndPlaySound("screenshake")
+                Game:setFlag("thoughts_quizhistory", true)
+                cutscene:wait(1)
+                dess:setFacing("left")
+                cutscene:showNametag("Dess")
+                cutscene:text("* oh hey that actually worked", "wtf", "dess")
+                cutscene:text("* all according to keikaku[react:1]", "condescending", "dess", {reactions = { 
+				    {"*keikaku means plan", 302, 50, "condescending", "dess"}
+			    }})
+                cutscene:showNametag("Susie")
+                cutscene:text("* I-", "shock_nervous", "susie")
+                cutscene:text("* I guess if it works,[wait:5] it works?", "surprise_smile", "susie")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Typical.[wait:10]\n* Using force to get your way again,[wait:5] are we, Dess?", "shaded_pissed", "jamm")
+                dess:setFacing("down")
+                cutscene:showNametag("Dess")
+                cutscene:text("* hey like susie said if it works it works", "neutral", "dess")
+                dess:setFacing("left")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Hey,[wait:5] let's get going,[wait:5] we still have three left.", "neutral_side", "susie")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* ...", "shaded_neutral", "jamm")
+                cutscene:hideNametag()
             end
             cutscene:attachCamera()
             cutscene:wait(cutscene:attachFollowers())
+        end
+    end,
+
+    quizgeography = function(cutscene, event)
+        local susie = cutscene:getCharacter("susie")
+        local dess = cutscene:getCharacter("dess")
+        local jamm = cutscene:getCharacter("jamm")
+        local x,y = event.x + event.width/2, event.y + event.height/2
+        cutscene:detachCamera()
+        cutscene:detachFollowers()
+        cutscene:panTo(x,y)
+        susie:walkTo(x, y + 50, 1, "up")
+        dess:walkTo(x - 30, y + 80, 1, "up")
+        jamm:walkTo(x + 30, y + 80, 1, "up")
+        cutscene:wait(1)
+
+        cutscene:text("* On the topic of countries,[wait:5] here are some geography questions.")
+        cutscene:text("* There are 5 questions,[wait:5] and you must answer at least 3 correctly.")
+        if not Game:getFlag("dungeonkiller") then
+            local correct = 0
+            cutscene:text("[noskip]* Question 1:[wait:10] The United States shares a border with Canada and what other country?")
+
+            cutscene:showNametag("Dess")
+            cutscene:text("* ewwwww i hate canada", "neutral", "dess")
+            cutscene:showNametag("Susie")
+            cutscene:text("* CAN YOU NOT SAY THAT EVERY TIME CANADA IS BROUGHT UP?!", "teeth_b", "susie")
+            cutscene:showNametag("Dess")
+            cutscene:text("* ...[wait:10] alright", "neutral_c", "dess")
+            cutscene:hideNametag()
+
+            local wbi_ok = false
+			local action
+			local wbi = WarpBinInputMenu(10)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "MEXICO" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+            cutscene:text("[noskip]* Question 2:[wait:10] Sicily is a Mediterranean island owned by which country?")
+
+            cutscene:showNametag("Jamm")
+            cutscene:text("* I think that's in Europe?", "look_left", "jamm")
+            cutscene:hideNametag()
+
+            wbi_ok = false
+            wbi = WarpBinInputMenu(10)
+            wbi.finish_cb = function(_action, input)
+                wbi_ok = true
+                action = input
+            end
+            Game.world:spawnObject(wbi, "ui")
+            cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "ITALY" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+            cutscene:text("[noskip]* Question 3:[wait:10] France shares its largest land border with what country?")
+
+            cutscene:showNametag("Jamm")
+            cutscene:text("* I think I've heard of this one before.", "", "jamm")
+            cutscene:text("* And I'm pretty sure the answer isn't what you think it is.", "", "jamm")
+            cutscene:showNametag("Susie")
+            cutscene:text("* Good to know.", "", "susie")
+            cutscene:hideNametag()
+
+            wbi_ok = false
+            wbi = WarpBinInputMenu(10)
+            wbi.finish_cb = function(_action, input)
+                wbi_ok = true
+                action = input
+            end
+            Game.world:spawnObject(wbi, "ui")
+            cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "BRAZIL" or string.upper(action) == "BRASIL" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+            cutscene:text("[noskip]* Question 4:[wait:10] What is the smallest country in the world by land area?")
+            
+            cutscene:showNametag("Dess")
+            cutscene:text("* not america", "condescending", "dess")
+            cutscene:showNametag("Susie")
+            cutscene:text("* ...[wait:10] I think that's obvious.", "suspicious", "susie")
+            cutscene:hideNametag()
+
+            wbi_ok = false
+            wbi = WarpBinInputMenu(10)
+            wbi.finish_cb = function(_action, input)
+                wbi_ok = true
+                action = input
+            end
+            Game.world:spawnObject(wbi, "ui")
+            cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "VATICAN" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+            cutscene:text("[noskip]* Final Question:[wait:10] How many UN recognized countries are there in Europe?")
+
+            cutscene:showNametag("Dess")
+            cutscene:text("* ", "wtf_b", "dess")
+            cutscene:showNametag("Jamm")
+            cutscene:text("* Uh,[wait:5] good luck.", "nervous_left", "jamm")
+            cutscene:hideNametag()
+
+            wbi_ok = false
+			wbi = WarpBinInputMenu(3)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "44" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+
+            cutscene:text("* Let's see your final score...")
+            cutscene:text("* You scored "..correct.." out of 5.")
+            if correct >= 3 then
+                cutscene:text("* Congrats![wait:10]\n* You won!")
+                cutscene:text("* You may now move on to the next quiz.")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Hell yeah!", "smile", "susie")
+                cutscene:hideNametag()
+                Assets.stopAndPlaySound("screenshake")
+                Game:setFlag("thoughts_quizgeography", true)
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is not enough to pass.")
+                cutscene:text("* Please try again.")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Ugh,[wait:5] damnit!", "angry", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* hey you can always look the answers up", "condescending", "dess")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* I mean,[wait:5] that would ruin the challenge.", "stern", "jamm")
+                cutscene:text("* But if you're stuggling,[wait:5] I guess you could do that.", "smirk", "jamm")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Uhhh,[wait:5] I don't have a phone.", "annoyed", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* the voice in your head can look it up", "heckyeah", "dess")
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...", "shock", "susie")
+                cutscene:text("* What?", "sad_frown", "susie")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Ignore her.", "stern", "jamm")
+                cutscene:hideNametag()
+            end
+        else
+            cutscene:showNametag("Dess")
+            cutscene:text("* step aside,[wait:5] i'll handle this", "condescending", "dess")
+            cutscene:hideNametag()
+            dess:walkTo(x, y + 50, 0.5, "up")
+            susie:walkTo(x - 40, y + 50, 0.5, "right", "right")
+            cutscene:wait(1)
+            cutscene:wait(cutscene:walkTo(dess, x, y + 70, 0.5, "up", true))
+            cutscene:wait(cutscene:walkTo(dess, x, y + 50, 0.2))
+            dess:shake(5)
+            Assets.playSound("screenshake")
+            cutscene:wait(1)
+            cutscene:text("* WARNING![wait:10] VIOLENCE TOWARDS QUIZ DETECTED!")
+            cutscene:text("* DEPLOYING SECURITY PROTOCALLS!")
+            cutscene:startEncounter("3voidwanderer", true)
+            cutscene:wait(1)
+            Assets.stopAndPlaySound("screenshake")
+            Game:setFlag("thoughts_quizgeography", true)
+            cutscene:wait(1)
+            cutscene:showNametag("Dess")
+            cutscene:text("* 2 left to go guys", "heckyeah", "dess")
+            cutscene:showNametag("Jamm")
+            cutscene:text("* ...", "shaded_neutral", "jamm")
+            cutscene:showNametag("Susie")
+            cutscene:text("* (... Is Jamm doing okay...?)", "neutral_side", "susie")
+            cutscene:hideNametag()
+        end
+        cutscene:attachCamera()
+        cutscene:wait(cutscene:attachFollowers())
+    end,
+
+    quizflags = function(cutscene, event)
+        local susie = cutscene:getCharacter("susie")
+        local dess = cutscene:getCharacter("dess")
+        local jamm = cutscene:getCharacter("jamm")
+        local x,y = event.x + event.width/2, event.y + event.height/2
+        cutscene:detachCamera()
+        cutscene:detachFollowers()
+        cutscene:panTo(x,y)
+        susie:walkTo(x, y + 50, 1, "up")
+        dess:walkTo(x - 30, y + 80, 1, "up")
+        jamm:walkTo(x + 30, y + 80, 1, "up")
+        cutscene:wait(1)
+
+        cutscene:text("* Last country-related quiz,[wait:5] this time it's all about flags.")
+        cutscene:text("* There are 5 questions,[wait:5] and you must answer at least 3 correctly.")
+        if not Game:getFlag("dungeonkiller") then
+            local correct = 0
+            cutscene:text("[noskip]* Question 1:[wait:10] The flag of the United States has how many stars on it?")
+            
+            cutscene:showNametag("Dess")
+            cutscene:text("* oh this is so easy", "heckyeah", "dess")
+            cutscene:hideNametag()
+
+            local wbi_ok = false
+			local action
+			local wbi = WarpBinInputMenu(3)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "50" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+            cutscene:text("[noskip]* Question 2:[wait:10] The flag of Germany contains black,[wait:5] red,[wait:5] and what other color?")
+            
+            cutscene:showNametag("Dess")
+            cutscene:text("* nevermind it's no longer easy", "neutral", "dess")
+            cutscene:showNametag("Jamm")
+            cutscene:text("* That's because the only country you care about it the US.", "stern", "jamm")
+            cutscene:showNametag("Dess")
+            cutscene:text("* uh yeah because it's awesome", "heckyeah", "dess")
+            cutscene:hideNametag()
+
+            wbi_ok = false
+			wbi = WarpBinInputMenu(10)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "YELLOW" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+            cutscene:text("[noskip]* Question 3:[wait:10] Poland,[wait:5] Monaco,[wait:5] Indonesia,[wait:5] and Singapore all have similar flags.")
+            cutscene:text("[noskip]* Which one of these have the red half on the bottom?")
+            
+            cutscene:showNametag("Dess")
+            cutscene:text("* i have literally never heard of any of these countries", "neutral", "dess")
+            cutscene:showNametag("Susie")
+            cutscene:text("* Neither have I.", "nervous", "susie")
+            cutscene:hideNametag()
+
+            local opinion = cutscene:choicer({"Poland", "Monaco", "Indonesia", "Singapore"})
+            if opinion == 1 then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+            cutscene:text("[noskip]* Question 4:[wait:10] What is the only country flag to not have a shade of red,[wait:5] white,[wait:5] or blue?")
+            
+            cutscene:showNametag("Susie")
+            cutscene:text("* Well it can't be Germany.", "neutral_side", "susie")
+            cutscene:text("* Because it already meantioned its flag having red in it.", "neutral", "susie")
+            cutscene:showNametag("Jamm")
+            cutscene:text("* That still leaves over 100 options though.", "stern", "jamm")
+            cutscene:showNametag("Dess")
+            cutscene:text("* man i hate this", "neutral_b", "dess")
+            cutscene:hideNametag()
+            
+            wbi_ok = false
+			wbi = WarpBinInputMenu(10)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "JAMAICA" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+            cutscene:text("[noskip]* Final Question:[wait:10] What is the only country to have a square flag?")
+            
+            cutscene:showNametag("Jamm")
+            cutscene:text("* I think this one is easier than the last one.", "stern", "jamm")
+            cutscene:text("* Because that's a more noticable trait for a flag to have.", "look_left", "jamm")
+            cutscene:hideNametag()
+
+            wbi_ok = false
+			wbi = WarpBinInputMenu(11)
+			wbi.finish_cb = function(_action, input)
+				wbi_ok = true
+				action = input
+			end
+			Game.world:spawnObject(wbi, "ui")
+			cutscene:wait(function() return wbi_ok end)
+
+            if string.upper(action) == "SWITZERLAND" then
+                cutscene:text("* That is correct![wait:10]\n* Congrats!")
+                correct = correct + 1
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is wrong.")
+            end
+
+            cutscene:text("* Let's see your final score...")
+            cutscene:text("* You scored "..correct.." out of 5.")
+            if correct >= 3 then
+                cutscene:text("* Congrats![wait:10]\n* You won!")
+                cutscene:text("* You may now move on to the next quiz.")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Hell yeah!", "smile", "susie")
+                cutscene:hideNametag()
+                Assets.stopAndPlaySound("screenshake")
+                Game:setFlag("thoughts_quizflags", true)
+            else
+                cutscene:text("* Unfortunately,[wait:5] that is not enough to pass.")
+                cutscene:text("* Please try again.")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Ugh,[wait:5] damnit!", "angry", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* hey you can always look the answers up", "condescending", "dess")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* I mean,[wait:5] that would ruin the challenge.", "stern", "jamm")
+                cutscene:text("* But if you're stuggling,[wait:5] I guess you could do that.", "smirk", "jamm")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Uhhh,[wait:5] I don't have a phone.", "annoyed", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* the voice in your head can look it up", "heckyeah", "dess")
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...", "shock", "susie")
+                cutscene:text("* What?", "sad_frown", "susie")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Ignore her.", "stern", "jamm")
+                cutscene:hideNametag()
+            end
+        else
+            cutscene:showNametag("Dess")
+            cutscene:text("* flags?[wait:10] that's nerd shit lmao", "condescending", "dess")
+            cutscene:hideNametag()
+            dess:walkTo(x, y + 50, 0.5, "up")
+            susie:walkTo(x - 40, y + 50, 0.5, "right", "right")
+            cutscene:wait(1)
+            cutscene:wait(cutscene:walkTo(dess, x, y + 70, 0.5, "up", true))
+            cutscene:wait(cutscene:walkTo(dess, x, y + 50, 0.2))
+            dess:shake(5)
+            Assets.playSound("screenshake")
+            cutscene:wait(1)
+            cutscene:text("* WARNING![wait:10] VIOLENCE TOWARDS QUIZ DETECTED!")
+            cutscene:text("* DEPLOYING SECURITY PROTOCALLS!")
+            cutscene:startEncounter("3voidwanderer", true)
+            cutscene:wait(1)
+            Assets.stopAndPlaySound("screenshake")
+            Game:setFlag("thoughts_quizflags", true)
+            cutscene:wait(1)
+            cutscene:showNametag("Dess")
+            cutscene:text("* one left to go guys", "heckyeah", "dess")
+            cutscene:text("* this is actually pretty fun ngl", "condescending", "dess")
+            cutscene:showNametag("Jamm")
+            cutscene:text("* Of course you think it is...", "shaded_pissed", "jamm")
+            cutscene:showNametag("Susie")
+            cutscene:text("* ...", "sus_nervous", "susie")
+            cutscene:hideNametag()
+        end
+        cutscene:attachCamera()
+        cutscene:wait(cutscene:attachFollowers())
+    end,
+
+    quizgaming = function(cutscene, event)
+        local susie = cutscene:getCharacter("susie")
+        local dess = cutscene:getCharacter("dess")
+        local jamm = cutscene:getCharacter("jamm")
+        local x,y = event.x + event.width/2, event.y + event.height/2
+        cutscene:detachCamera()
+        cutscene:detachFollowers()
+        cutscene:panTo(x,y)
+        susie:walkTo(x, y + 50, 1, "up")
+        dess:walkTo(x - 30, y + 80, 1, "up")
+        jamm:walkTo(x + 30, y + 80, 1, "up")
+        cutscene:wait(1)
+
+        cutscene:text("* Final quiz,[wait:5] this is all about gaming.")
+        cutscene:text("* There are 10 questions,[wait:5] and you must answer at least 7 correctly.")
+        if not Game:getFlag("dungeonkiller") then
+            cutscene:showNametag("Dess")
+            cutscene:text("* hold on guys,[wait:5] i think i can handle this", "challenging", "dess")
+            cutscene:hideNametag()
+            dess:walkTo(x, y + 50, 0.5, "up")
+            susie:walkTo(x - 40, y + 50, 0.5, "right", "right")
+            cutscene:wait(1)
+            cutscene:showNametag("Susie")
+            cutscene:text("* Are you sure about this?", "nervous_side", "susie")
+            cutscene:showNametag("Jamm")
+            cutscene:text("[noskip]* Oh come on,[wait:5] you are SO gonna screw this up-", "determined", "jamm", {auto = true})
+            cutscene:showNametag("Dess")
+            cutscene:text("* shut", "angry", "dess")
+            cutscene:text("* lemme focus", "calm", "dess")
+            cutscene:text("* ...", "neutral", "dess")
+            cutscene:text("* well that's obvious.", "condescending", "dess")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Dess")
+            cutscene:text("* ez", "heckyeah", "dess")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Susie")
+            cutscene:text("* Is she...", "sad", "susie")
+            cutscene:showNametag("Jamm")
+            cutscene:text("* Solving it?[wait:10]\n* Looks like it.", "nervous_left", "jamm")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Dess")
+            cutscene:text("* hm...", "neutral_b", "dess")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Susie")
+            cutscene:text("* Looks like she's stuck...", "neutral_side", "susie")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Dess")
+            cutscene:text("* oh wait i know this one", "genuine_b", "dess")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Jamm")
+            cutscene:text("* Guess not...?", "look_left", "jamm")
+            cutscene:hideNametag()
+            cutscene:wait(2)
+            cutscene:showNametag("Dess")
+            cutscene:text("* hmmm this one's a toughie...", "neutral", "dess")
+            cutscene:text("* oh wait no nvm i got it", "heckyeah", "dess")
+            cutscene:hideNametag()
+            cutscene:wait(4)
+            cutscene:showNametag("Dess")
+            cutscene:text("* aaaand that's the last one", "heckyeah", "dess")
+            cutscene:text("* man these things are really easy", "condescending", "dess")
+            cutscene:hideNametag()
+            cutscene:text("* Let's see your final score...")
+            cutscene:text("* You scored 10 out of 10.")
+            cutscene:text("* Congrats![wait:10]\n* You won!")
+            cutscene:text("* You have completed all the quizes!")
+            cutscene:showNametag("Susie")
+            cutscene:text("* ", "shock", "susie")
+            cutscene:showNametag("Jamm")
+            cutscene:text("* ", "nervous", "jamm")
+            Assets.stopAndPlaySound("screenshake")
+            Game:setFlag("thoughts_quizgaming", true)
+            dess:setFacing("down")
+            cutscene:showNametag("Dess")
+            cutscene:text("* ez pz lemon squeezie", "condescending", "dess")
+            cutscene:text("* ...", "heckyeah", "dess")
+            cutscene:text("* hey why are you guys looking at me like that", "neutral", "dess")
+            cutscene:showNametag("Susie")
+            cutscene:text("* Uh...[wait:10] Let's just continue.", "shock_nervous", "susie")
+            cutscene:showNametag("Dess")
+            cutscene:text("* sounds good to me.", "challenging", "dess")
+            cutscene:hideNametag()
+        else
+            cutscene:showNametag("Dess")
+            cutscene:text("* we are gonna save so much time by skipping this", "heckyeah", "dess")
+            cutscene:hideNametag()
+            dess:walkTo(x, y + 50, 0.5, "up")
+            susie:walkTo(x - 40, y + 50, 0.5, "right", "right")
+            cutscene:wait(1)
+            cutscene:wait(cutscene:walkTo(dess, x, y + 70, 0.5, "up", true))
+            cutscene:wait(cutscene:walkTo(dess, x, y + 50, 0.2))
+            dess:shake(5)
+            Assets.playSound("screenshake")
+            cutscene:wait(1)
+            cutscene:text("* WARNING![wait:10] VIOLENCE TOWARDS QUIZ DETECTED!")
+            cutscene:text("* DEPLOYING SECURITY PROTOCALLS!")
+            cutscene:startEncounter("3voidwanderer", true)
+            cutscene:wait(1)
+            Assets.stopAndPlaySound("screenshake")
+            Game:setFlag("thoughts_quizgaming", true)
+            cutscene:wait(1)
+            cutscene:showNametag("Dess")
+            cutscene:text("* well that's all of them", "condescending", "dess")
+            cutscene:text("* guys i think we got the world record", "heckyeah", "dess")
+            cutscene:showNametag("Susie")
+            cutscene:text("* Uh...[wait:10] yeah,[wait:5] sure.", "nervous_side", "susie")
+            cutscene:hideNametag()
+        end
+        cutscene:attachCamera()
+        cutscene:wait(cutscene:attachFollowers())
+    end,
+
+    rightend = function(cutscene, event)
+        cutscene:text("* Congratulations on making it this far.")
+        cutscene:text("* You have conquered the Path of Wits.")
+        if not Game:getFlag("thoughts_rightend") then
+            if Game:getFlag("dungeonkiller") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* Y'know, Dess,[wait:5] as much time as that might have saved...", "annoyed", "susie")
+                cutscene:text("* I really don't feel good about this.", "annoyed_down", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* aw c'mon,[wait:5] we're getting stronger,[wait:5] aren't we?", "condescending", "dess")
+                cutscene:text("* look those orb thingies probably have the mental capacity of a jellyfish", "calm", "dess")
+                cutscene:text("[noskip]* i don't think we're doing anything wrong by-", "neutral", "dess", {auto = true})
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Dess,[wait:5] you really need to shut up.", "shaded_pissed", "jamm")
+                cutscene:showNametag("Dess")
+                cutscene:text("* ...", "wtf", "dess")
+                cutscene:text("* well excuse me princess", "angry", "dess")
+                cutscene:text("* it's working,[wait:5] therefore what we're doing is perfectly fine", "neutral", "dess")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Violence will only take you so far,[wait:5] Dess.", "shaded_frown", "jamm")
+                cutscene:showNametag("Dess")
+                cutscene:text("[noskip]* well it's gotten us this far,[wait:5] so i think that-", "angry", "dess", {auto = true})
+                cutscene:showNametag("Susie")
+                cutscene:text("* Will the both of you just shut up already?!", "angry", "susie")
+                cutscene:text("* You two are driving me up the goddamn wall!", "angry_c", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* ", "wtf_b", "dess")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* ...", "shaded_pissed", "jamm")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Thank you...", "annoyed", "susie")
+                if not Game:getFlag("thoughts_leftend") then
+                    cutscene:text("* Let's just go back and do the other path.", "annoyed", "susie")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* ...", "shaded_neutral", "jamm")
+                else
+                    cutscene:text("* Look,[wait:5] Jamm,[wait:5] your attitude is REALLY starting to piss me off.", "annoyed_down", "susie")
+                    cutscene:text("* I want you to cut the crap by the time we meet up with Brandon,[wait:5] okay?", "annoyed", "susie")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* Oooo,[wait:5] you're in troubleeee", "condescending", "dess")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Dess,[wait:5] you're not off the hook either.", "annoyed", "susie")
+                    cutscene:text("* The both of you guys need to stop acting like...", "annoyed_down", "susie")
+                    cutscene:text("* ... this place personally insulted you or something.", "annoyed_down", "susie")
+                    cutscene:text("* I do NOT want to have to be the team mom here.", "nervous_side", "susie")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* ...", "shaded_pissed", "jamm")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* ...", "neutral_c", "dess")
+                    Assets.stopAndPlaySound("ominous")
+                end
+                cutscene:hideNametag()
+            else
+                cutscene:showNametag("Susie")
+                cutscene:text("* Y'know, Dess,[wait:5] I'm surprised you aced that last one.", "nervous", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* hey what can i say,[wait:5] im an alpha gamer", "condescending", "dess")
+                cutscene:showNametag("Jamm")
+                cutscene:text("* ...[wait:10] Sure.", "nervous_left", "jamm")
+                if not Game:getFlag("thoughts_leftend") then
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Anyways,[wait:5] let's go do the other path now.", "small_smile", "susie")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Sounds good to me.", "happy", "jamm")
+                else
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Hopefully that forcefield should be open now.", "neutral_side", "susie")
+                    cutscene:text("* I just really hope Brandon's okay...", "shy_down", "susie")
+                end
+                cutscene:hideNametag()
+            end
+            Game:setFlag("thoughts_rightend", true)
         end
     end,
 }
