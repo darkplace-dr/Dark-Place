@@ -364,6 +364,7 @@ return {
                 end
                 cutscene:hideNametag()
             end
+            Game:setFlag("thoughts_leftend", true)
         end
     end,
 }
