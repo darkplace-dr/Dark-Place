@@ -41,7 +41,7 @@ return {
         event:setSprite("smile")
         cutscene:text("* Hey everybody![wait:10]\n* It's me!", "", "cungaderospamton")
         event:setSprite("wink")
-        cutscene:text("* Everybody's favorite salseman,[wait:5] Spamton G. Spamton!", "", "cungaderospamton")
+        cutscene:text("* Everybody's favorite salesman,[wait:5] Spamton G. Spamton!", "", "cungaderospamton")
         event:setSprite("neutral")
         if cutscene:getCharacter("jamm") then
             cutscene:showNametag("Jamm")
