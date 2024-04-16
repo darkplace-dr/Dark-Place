@@ -331,7 +331,6 @@ return {
                     cutscene:text("* ...", "neutral_c", "dess")
                 end
                 cutscene:hideNametag()
-                Game:setFlag("thoughts_kills", Game:getFlag("library_kills"))
             else
                 cutscene:showNametag("Susie")
                 cutscene:text("* FINALLY!", "teeth_b", "susie")
@@ -345,13 +344,12 @@ return {
                     cutscene:text("* i am at my fucking limit right now", "genuine", "dess")
                 end
                 if Game:getFlag("library_kills") - 8 == Game:getFlag("thoughts_kills") then
-                    cutscene:showNametag("Dess")
                     cutscene:text("* it's a good thing we killed them all", "condescending", "dess")
                     cutscene:showNametag("Susie")
                     cutscene:text("* Uh...[wait:10] yeah,[wait:5] sure...", "nervous_side", "susie")
                     cutscene:text("* ...", "shy_down", "susie")
                 end
-                if not Game:getFlag("thoughts_right") then
+                if not Game:getFlag("thoughts_rightend") then
                     cutscene:showNametag("Susie")
                     cutscene:text("* Anyways,[wait:5] let's go do the other path now.", "small_smile", "susie")
                     if not Game:getFlag("dungeonkiller") then
@@ -395,7 +393,7 @@ return {
                 cutscene:showNametag("Susie")
                 cutscene:text("* Shush![wait:10]\n* I'm trying to concentrate!", "teeth", "susie")
                 cutscene:hideNametag()
-                cutscene:text("[noskip]* Question 1:[wait:10] What year was the Declaration of Independace for the USA signed?")
+                cutscene:text("[noskip]* Question 1:[wait:10] What year was the Declaration of Independance for the USA signed?")
                 cutscene:showNametag("Dess")
                 cutscene:text("[noskip]* ooo ooo ooo i know this one it's", "challenging", "dess", {auto = true})
                 cutscene:showNametag("Susie")
