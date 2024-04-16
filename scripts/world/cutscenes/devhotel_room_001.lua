@@ -501,8 +501,9 @@ return {
     					cutscene:text("* ", "wtf", "dess")
     					cutscene:showNametag("Susie")
     					cutscene:text("* ", "shock", "dess")
+					    jamm:setFacing("down")
     					cutscene:showNametag("Jamm")
-    					cutscene:text("* You lead.", "shaded_neutral", "jamm")
+    					cutscene:text("* You lead, Susie.", "shaded_neutral", "jamm")
     					cutscene:showNametag("Susie")
     					cutscene:text("* Uh, okay???", "shock", "dess")
                     else
