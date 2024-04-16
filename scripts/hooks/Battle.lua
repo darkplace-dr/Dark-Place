@@ -35,7 +35,10 @@ function Battle:init()
 	    skeledance.layer = BATTLE_LAYERS["bottom"]
     end
 
-
+    self.phasearmor = 0
+    if BadgesLib:getBadgeEquipped("phasebadge") >= 1 then
+        self.phasearmor = BadgesLib:getBadgeEquipped("phasebadge")
+    end
 end
 
 -- FIXME: \/ copied from libraries/EnemyTension/scripts/hooks/Battle.lua

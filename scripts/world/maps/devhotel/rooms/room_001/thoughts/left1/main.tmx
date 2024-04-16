@@ -57,7 +57,12 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="16" name="transition" x="-40" y="240" width="40" height="160"/>
+  <object id="16" name="transition" x="-40" y="240" width="40" height="160">
+   <properties>
+    <property name="map" value="devhotel/rooms/room_001/thoughts/left3"/>
+    <property name="marker" value="east"/>
+   </properties>
+  </object>
   <object id="21" name="enemy" x="440" y="320">
    <properties>
     <property name="actor" value="voidwanderer"/>

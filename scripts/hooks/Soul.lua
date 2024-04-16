@@ -103,6 +103,7 @@ function Soul:init(x, y, color)
 
 	-- Timeslow ("Focus" Placebo) variables end here
 
+    self.phaseoutline = false
 end
 
 function Soul:update()
@@ -263,8 +264,6 @@ function Soul:update()
     if self.focus_holder then self.outlinefx:setAlpha(self.outline.alpha - 0.2) end
 	end
 	end
-
-
 end
 
 function Soul:remove()
@@ -335,10 +334,15 @@ function Soul:draw()
         ---@diagnostic disable-next-line: param-type-mismatch
         self.color = Utils.clampMap(self.cooldown_timer, 0, self.cooldown / 2, {r,g,b},{(r * 0.5),(g * 0.5),(b * 0.5)})
     end
+    if Game.battle.phasearmor >= 1 then
+        if self.phaseoutline ~= true then
+            self:addFX(OutlineFX({1,1,1,1}, {thickness = 2}), "phaseoutline")
+            self.phaseoutline = true
+        end
+    end
 
     super.draw(self)
     self.color = {r,g,b}
-
 end
 
 function Soul:isParrying()
@@ -370,7 +374,20 @@ function Soul:onCollide(bullet)
 
     end
     if bullet.damage then
-        if bullet.damage ~= 0 then bullet.parrydmg_old = bullet.damage end
+        if Game.battle.phasearmor >= 1 then
+            local burst = HeartBurst(-9, -9, {Game.battle.encounter:getSoulColor()})
+            self:addChild(burst)
+            Assets.stopAndPlaySound("celestialhit") -- Doesn't work for some reason???
+            -- Also I have no idea how to make the bullet not do any damage
+            Game.battle.phasearmor = Game.battle.phasearmor - 1
+            if Game.battle.phasearmor <= 0 then
+                self:removeFX("phaseoutline")
+                self.phaseoutline = false
+            end
+        elseif bullet.damage ~= 0 then
+            bullet.parrydmg_old = bullet.damage
+        end
+        
     end
     if self.parry_inv > 0 then
         bullet.damage = 0

@@ -1036,8 +1036,6 @@ return {
 			cutscene:wait(cutscene:walkToSpeed("jamm", "jamm_spawn", 4, "up"))
             Game:getPartyMember("jamm"):setOpinion("dess", 0)
 			Game:getPartyMember("jamm"):removeSpell("supersling")
-			Game:getPartyMember("jamm"):setActor("jamm_hurt")
-			Game:getPartyMember("jamm"):setLightActor("jamm_lw_hurt")
 			cutscene:showNametag("Dess")
 			cutscene:text("* (What have I done to him...)", "genuine", "dess")
 			cutscene:hideNametag()

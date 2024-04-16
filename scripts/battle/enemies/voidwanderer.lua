@@ -48,27 +48,15 @@ end
 function VoidWanderer:onAct(battler, name)
     if name == "Entrance" then
         self:addTired(20)
-        return {
-            "* You spun your weapon around.",
-            "* Void Wanderer got more tired."
-        }
+        return "* You spun your weapon around.\n* Void Wanderer got more tired."
     elseif name == "Standard" then --X-Action
         self:addTired(20)
         if battler.chara.id == "dess" then
-            return {
-                "* Dess spun her bat around.",
-                "* Void Wanderer got more tired."
-            }
+            return "* Dess spun her bat around.\n* Void Wanderer got more tired."
 		elseif battler.chara.id == "jamm" then
-            return {
-                "* Jamm spun his sling around.",
-                "* Void Wanderer got more tired."
-            }
+            return "* Jam spun his sling around.\n* Void Wanderer got more tired."
         else
-            return {
-                "* "..battler.chara:getName().." spun their weapon around.",
-                "* Void Wanderer got more tired."
-            }
+            return "* "..battler.chara:getName().." spun their weapon around.\n* Void Wanderer got more tired."
         end
     end
 
