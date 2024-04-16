@@ -284,8 +284,85 @@ return {
             cutscene:showNametag("Susie")
             cutscene:text("* Oh, okay...!", "surprise_smile", "susie")
             cutscene:text("* (When did Jamm get so...)", "sus_nervous", "susie")
+            cutscene:hideNametag()
         end
         cutscene:attachCamera()
         cutscene:wait(cutscene:attachFollowers())
+    end,
+
+    leftend = function(cutscene, event)
+        cutscene:text("* Congratulations on making it this far.")
+        cutscene:text("* You have conquered the Path of Strength.")
+        if not Game:getFlag("thoughts_leftend") then
+            if Game:getFlag("dungeonkiller") and Game:getFlag("library_kills") - 8 == Game:getFlag("thoughts_kills") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* ...", "sus_nervous", "susie")
+                cutscene:text("* Something about this feels...[wait:10] so wrong.", "annoyed_down", "susie")
+                cutscene:text("* Like,[wait:5] I know those orbs don't seem too sentient,[wait:5] but...", "sus_nervous", "susie")
+                cutscene:text("* I still feel bad for killing them...", "shy_down", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* hey don't sweat it they tried to kill us first", "heckyeah", "dess")
+                cutscene:text("[noskip]* I know we've been sort of on a killing spree as of late but", "neutral_b", "dess", {auto = true})
+                cutscene:showNametag("Jamm")
+                cutscene:text("* Shut up.", "shaded_pissed", "jamm")
+                cutscene:showNametag("Dess")
+                cutscene:text("* ...", "wtf_b", "dess")
+                cutscene:showNametag("Susie")
+                cutscene:text("* Hey,[wait:5] Jamm,[wait:5] chill out.", "annoyed", "susie")
+                cutscene:text("* Uh,[wait:5] as much as I hate to admit this...", "nervous", "susie")
+                cutscene:text("* ... Dess DOES bring up a good point about them attacking us first.", "annoyed_down", "susie")
+                if not Game:getFlag("thoughts_rightend") then
+                    cutscene:text("* Let's just go back and do the other path.", "annoyed", "susie")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* ...", "shaded_neutral", "jamm")
+                else
+                    cutscene:text("* Look,[wait:5] Jamm,[wait:5] your attitude is REALLY starting to piss me off.", "annoyed_down", "susie")
+                    cutscene:text("* I want you to cut the crap by the time we meet up with Brandon,[wait:5] okay?", "annoyed", "susie")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* Oooo,[wait:5] you're in troubleeee", "condescending", "dess")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Dess,[wait:5] you're not off the hook either.", "annoyed", "susie")
+                    cutscene:text("* The both of you guys need to stop acting like...", "annoyed_down", "susie")
+                    cutscene:text("* ... this place personally insulted you or something.", "annoyed_down", "susie")
+                    cutscene:text("* I do NOT want to have to be the team mom here.", "nervous_side", "susie")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* ...", "shaded_pissed", "jamm")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* ...", "neutral_c", "dess")
+                end
+                cutscene:hideNametag()
+            else
+                cutscene:showNametag("Susie")
+                cutscene:text("* FINALLY!", "teeth_b", "susie")
+                cutscene:text("* Ugh,[wait:5] those things were RELENTLESS I tell you!", "teeth", "susie")
+                cutscene:showNametag("Dess")
+                cutscene:text("* those fucking orbs that i hate", "angry", "dess")
+                if not Game:getFlag("dungeonkiller") and Game:getFlag("library_kills") - 8 ~= Game:getFlag("thoughts_kills") then
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* And now we have to walk all the way back and fight even more of them.", "stern", "jamm")
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* i am at my fucking limit right now", "genuine", "dess")
+                end
+                if Game:getFlag("library_kills") - 8 == Game:getFlag("thoughts_kills") then
+                    cutscene:showNametag("Dess")
+                    cutscene:text("* it's a good thing we killed them all", "condescending", "dess")
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Uh...[wait:10] yeah,[wait:5] sure...", "nervous_side", "susie")
+                    cutscene:text("* ...", "shy_down", "susie")
+                end
+                if not Game:getFlag("thoughts_right") then
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Anyways,[wait:5] let's go do the other path now.", "small_smile", "susie")
+                    if not Game:getFlag("dungeonkiller") then
+                        cutscene:showNametag("Jamm")
+                        cutscene:text("* Sounds good to me.", "happy", "jamm")
+                    end
+                else
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Hopefully that forcefield should be open now.", "neutral_side", "susie")
+                    cutscene:text("* I just really hope Brandon's okay...", "shy_down", "susie")
+                end
+            end
+        end
     end,
 }

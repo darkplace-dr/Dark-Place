@@ -36,7 +36,7 @@
 </data>
  </layer>
  <objectgroup id="3" name="objects_glass">
-  <object id="23" name="magicalglass" x="520" y="600" width="120" height="80"/>
+  <object id="23" name="magicglass" x="520" y="600" width="120" height="80"/>
  </objectgroup>
  <objectgroup id="2" name="collision">
   <object id="1" x="200" y="0" width="40" height="80"/>
@@ -58,14 +58,24 @@
   <object id="21" x="400" y="0" width="40" height="80"/>
  </objectgroup>
  <objectgroup id="4" name="objects">
-  <object id="24" name="transition" x="-40" y="560" width="40" height="160"/>
+  <object id="24" name="transition" x="-40" y="560" width="40" height="160">
+   <properties>
+    <property name="map" value="devhotel/rooms/room_001/thoughts/left6"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
   <object id="25" name="transition" x="240" y="-40" width="160" height="40">
    <properties>
     <property name="map" value="devhotel/rooms/room_001/thoughts/left3"/>
-    <property name="marker" value="north"/>
+    <property name="marker" value="south"/>
    </properties>
   </object>
-  <object id="26" name="transition" x="640" y="600" width="40" height="80"/>
+  <object id="26" name="transition" x="640" y="600" width="40" height="80">
+   <properties>
+    <property name="map" value="devhotel/rooms/room_001/thoughts/left5"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
   <object id="32" name="enemy" x="320" y="520">
    <properties>
     <property name="actor" value="voidwanderer"/>

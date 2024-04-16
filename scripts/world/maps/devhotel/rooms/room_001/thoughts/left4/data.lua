@@ -97,7 +97,7 @@ return {
       objects = {
         {
           id = 23,
-          name = "magicalglass",
+          name = "magicglass",
           class = "",
           shape = "rectangle",
           x = 520,
@@ -372,7 +372,10 @@ return {
           height = 160,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["map"] = "devhotel/rooms/room_001/thoughts/left6",
+            ["marker"] = "entry"
+          }
         },
         {
           id = 25,
@@ -387,7 +390,7 @@ return {
           visible = true,
           properties = {
             ["map"] = "devhotel/rooms/room_001/thoughts/left3",
-            ["marker"] = "north"
+            ["marker"] = "south"
           }
         },
         {
@@ -401,7 +404,10 @@ return {
           height = 80,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["map"] = "devhotel/rooms/room_001/thoughts/left5",
+            ["marker"] = "entry"
+          }
         },
         {
           id = 32,

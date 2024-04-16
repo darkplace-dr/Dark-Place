@@ -7,8 +7,10 @@ function VoidGoopSpray:init()
 end
 
 function VoidGoopSpray:onStart()
-    local attackers = self:getAttackers()
-    self.timer:every(1.5*#attackers, function()
+    local battlers = Game.battle:getActiveEnemies()
+    self.timer:every(1.5*#battlers, function()
+        local attackers = self:getAttackers()
+
         for _, attacker in ipairs(attackers) do
             local x, y = attacker:getRelativePos(attacker.width/2, attacker.height/2)
 

@@ -579,6 +579,7 @@ return {
         			susie_party.has_act = true
         			Game:setFlag("susie_canact", true)
         			cutscene:text("* Susie can now use ACTs![wait:20]\n\n* ... Again!")
+					Game:setFlag("thoughts_kills", Game:getFlag("library_kills"))
 				end
 			else
 				cutscene:text("* You decide not to.")

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="16">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="simple"/>
+  <property name="music" value="deltarune/wind_highplace"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../../../tilesets/thoughts.tsx"/>
+ <tileset firstgid="10" source="../../../../../../tilesets/devroom.tsx"/>
+ <objectgroup id="2" name="objects_bg"/>
+ <layer id="1" name="Tile Layer 1" width="20" height="16">
+  <data encoding="csv">
+0,1,2,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,7,8,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,4,5,5,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,4,5,5,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,1,2,2,2,2,2,2,2,2,2,2,2,2,3,0,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,2,2,2,2,2,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,8,8,8,8,8,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,6,5,5,5,5,5,
+0,7,8,8,8,8,8,8,8,8,8,8,8,8,9,5,5,5,5,5,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,6,5,5,5,5,5,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,6,5,5,5,5,5,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,6,5,5,5,5,5
+</data>
+ </layer>
+ <layer id="5" name="Tile Layer 2" width="20" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="collision">
+  <object id="1" x="600" y="240" width="200" height="40"/>
+  <object id="2" x="600" y="440" width="200" height="40"/>
+  <object id="3" x="600" y="480" width="40" height="40"/>
+  <object id="4" x="40" y="520" width="560" height="40"/>
+  <object id="5" x="0" y="160" width="40" height="360"/>
+  <object id="6" x="40" y="120" width="560" height="40"/>
+  <object id="7" x="600" y="160" width="40" height="80"/>
+ </objectgroup>
+ <objectgroup id="4" name="objects">
+  <object id="8" name="transition" x="800" y="280" width="40" height="160">
+   <properties>
+    <property name="map" value="devhotel/rooms/room_001/thoughts/left4"/>
+    <property name="marker" value="west"/>
+   </properties>
+  </object>
+  <object id="9" name="interactable" x="120" y="120" width="40" height="40">
+   <properties>
+    <property name="cutscene" value="thoughts.leftend"/>
+   </properties>
+  </object>
+  <object id="13" name="enemy" x="400" y="200">
+   <properties>
+    <property name="actor" value="voidwanderer"/>
+    <property name="chase" type="bool" value="true"/>
+    <property name="encounter" value="3voidwanderer"/>
+    <property name="group" value="1"/>
+    <property name="path" value="1"/>
+    <property name="progress" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" name="enemy" x="280" y="440">
+   <properties>
+    <property name="actor" value="voidwanderer"/>
+    <property name="chase" type="bool" value="true"/>
+    <property name="encounter" value="3voidwanderer"/>
+    <property name="group" value="1"/>
+    <property name="path" value="1"/>
+    <property name="progress" value="0.33"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="15" name="enemy" x="520" y="440">
+   <properties>
+    <property name="actor" value="voidwanderer"/>
+    <property name="chase" type="bool" value="true"/>
+    <property name="encounter" value="3voidwanderer"/>
+    <property name="group" value="1"/>
+    <property name="path" value="1"/>
+    <property name="progress" value="0.67"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="markers">
+  <object id="10" name="entry" x="760" y="360">
+   <point/>
+  </object>
+  <object id="11" name="spawn" x="680" y="360">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="paths">
+  <object id="12" name="1" x="120" y="200" width="320" height="280">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

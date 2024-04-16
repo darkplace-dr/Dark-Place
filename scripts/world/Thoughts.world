@@ -1,5 +1,61 @@
 {
     "maps": [
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/entrance/main.tmx",
+            "height": 720,
+            "width": 800,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/crossroads/main.tmx",
+            "height": 720,
+            "width": 800,
+            "x": 0,
+            "y": -800
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/left1/main.tmx",
+            "height": 640,
+            "width": 1200,
+            "x": -1280,
+            "y": -840
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/left2/main.tmx",
+            "height": 560,
+            "width": 800,
+            "x": -1080,
+            "y": -120
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/left3/main.tmx",
+            "height": 720,
+            "width": 800,
+            "x": -2160,
+            "y": -800
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/left4/main.tmx",
+            "height": 880,
+            "width": 640,
+            "x": -2240,
+            "y": 0
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/left5/main.tmx",
+            "height": 720,
+            "width": 640,
+            "x": -1520,
+            "y": 280
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/left6/main.tmx",
+            "height": 640,
+            "width": 800,
+            "x": -3120,
+            "y": 280
+        }
     ],
     "onlyShowAdjacentMaps": false,
     "type": "world"
