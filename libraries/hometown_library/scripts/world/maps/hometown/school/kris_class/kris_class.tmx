@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="34">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="leaves"/>
+  <property name="light" type="bool" value="true"/>
+  <property name="music" value="school"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../tilesets/hometownobjects.tsx"/>
+ <imagelayer id="2" name="room">
+  <image source="../../../../../../assets/sprites/world/maps/hometown/school/kris_class.png" width="640" height="480"/>
+ </imagelayer>
+ <objectgroup color="#5500ff" id="3" name="collision">
+  <object id="1" x="76" y="436" width="494" height="44"/>
+  <object id="2" x="570" y="104" width="40" height="376"/>
+  <object id="3" x="36" y="104" width="40" height="376"/>
+  <object id="4" x="76" y="104" width="398" height="40"/>
+  <object id="5" x="536" y="104" width="34" height="40"/>
+  <object id="18" x="278" y="246" width="74" height="30"/>
+  <object id="19" x="138" y="246" width="74" height="30"/>
+  <object id="20" x="138" y="308" width="74" height="30"/>
+  <object id="21" x="138" y="372" width="74" height="30"/>
+  <object id="22" x="278" y="372" width="74" height="30"/>
+  <object id="23" x="278" y="308" width="74" height="30"/>
+  <object id="24" x="414" y="246" width="74" height="30"/>
+  <object id="25" x="414" y="308" width="74" height="30"/>
+  <object id="26" x="414" y="372" width="74" height="30"/>
+  <object id="27" x="200" y="178" width="188" height="32"/>
+ </objectgroup>
+ <objectgroup color="#55ffff" id="6" name="objects_deco">
+  <object id="16" gid="24" x="472" y="170" width="101" height="118"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="6" gid="23" x="136" y="412" width="78" height="56"/>
+  <object id="7" gid="23" x="136" y="348" width="78" height="56"/>
+  <object id="8" gid="23" x="136" y="286" width="78" height="56"/>
+  <object id="9" gid="23" x="276" y="286" width="78" height="56"/>
+  <object id="10" gid="23" x="276" y="348" width="78" height="56"/>
+  <object id="11" gid="23" x="276" y="412" width="78" height="56"/>
+  <object id="12" gid="23" x="412" y="412" width="78" height="56"/>
+  <object id="13" gid="23" x="412" y="348" width="78" height="56"/>
+  <object id="14" gid="23" x="412" y="286" width="78" height="56"/>
+  <object id="17" gid="26" x="200" y="214" width="188" height="88"/>
+  <object id="28" name="interactable" x="426" y="104" width="40" height="40">
+   <properties>
+    <property name="text1" value="* (You checked the time...)"/>
+    <property name="text2" value="* (It's an enigma.)"/>
+   </properties>
+  </object>
+  <object id="29" name="interactable" x="76" y="104" width="82" height="40">
+   <properties>
+    <property name="text1" value="* (Looks like motivational quotes from various literature.)"/>
+    <property name="text2">* &quot;Try your best,[wait:5] Astral Wolf!&quot;
+[wait:5]* &quot;Even in your darkest hour...!&quot;</property>
+    <property name="text3" value="* (... that one seems to be from a video game.)"/>
+   </properties>
+  </object>
+  <object id="30" name="interactable" x="330" y="170" width="42" height="40">
+   <properties>
+    <property name="text1" value="* (The computer wallpaper is updated.)"/>
+    <property name="text2" value="* (... it's from the newely released season of Mew Mew Kissy Cutie.)"/>
+    <property name="text3" value="* (You decide to keep a safe distance.)"/>
+   </properties>
+  </object>
+  <object id="31" name="interactable" x="206" y="146" width="40" height="64">
+   <properties>
+    <property name="text" value="* (It's a bunch of roses.)"/>
+   </properties>
+  </object>
+  <object id="32" name="transition" x="474" y="102" width="62" height="40">
+   <properties>
+    <property name="exit_delay" type="int" value="1"/>
+    <property name="exit_sound" value="doorclose"/>
+    <property name="facing" value="down"/>
+    <property name="map" value="hometown/school/school_lobby"/>
+    <property name="marker" value="entrykris"/>
+    <property name="sound" value="dooropen"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="5" name="markers">
+  <object id="33" name="spawn" x="506" y="174">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

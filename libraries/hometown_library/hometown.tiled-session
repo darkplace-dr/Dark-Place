@@ -1,0 +1,395 @@
+{
+    "activeFile": "scripts/world/maps/hometown/town_beach/town_beach.tmx",
+    "expandedProjectPaths": [
+        "scripts/world/maps/hometown/interior/flower_shop",
+        "scripts/world/maps/hometown/torielhouse/toriel_bathroom",
+        "scripts/world/maps/hometown/torielhouse/tor_house",
+        "scripts/world/maps/hometown/interior/town_hall",
+        "scripts/world/maps/hometown/interior/sans_store",
+        "scripts/world/maps",
+        "scripts/world/maps/hometown/interior/police_station",
+        "scripts/world/maps/hometown/interior/icee_room",
+        ".",
+        "scripts/world/maps/hometown/interior/hospital_lobby",
+        "scripts/world/maps/hometown/interior/asgore_house",
+        "scripts/world",
+        "scripts/world/maps/hometown/school/unused_class",
+        "scripts/world/maps/hometown/interior/hospital_room2",
+        "scripts/world/maps/hometown/school/kris_class",
+        "scripts",
+        "scripts/world/maps/hometown/interior",
+        "scripts/world/maps/hometown/school/school_door",
+        "scripts/world/maps/hometown/interior/hospital_rudy",
+        "scripts/world/maps/hometown/school/toriel_class",
+        "scripts/world/maps/hometown/interior/library_computer",
+        "scripts/world/maps/hometown",
+        "scripts/world/maps/hometown/torielhouse/toriel_hallway",
+        "scripts/world/maps/hometown/interior/qc_diner",
+        "scripts/world/maps/hometown/interior/library_lobby",
+        "scripts/world/maps/hometown/school/school_lobby",
+        "scripts/world/maps/hometown/interior/library_library",
+        "scripts/world/maps/hometown/interior/hospital_hallway"
+    ],
+    "file.lastUsedOpenFilter": "Todos os Ficheiros (*)",
+    "fileStates": {
+        "scripts/world/maps/hometown/apartments/apartments.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 200,
+                "y": 244
+            }
+        },
+        "scripts/world/maps/hometown/interior/asgore_house/asgore_house.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 317.078410311493,
+                "y": 378.08807733619767
+            }
+        },
+        "scripts/world/maps/hometown/interior/flower_shop/flower_shop.tmx": {
+            "expandedObjectLayers": [
+                3,
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 429.64554242749733,
+                "y": 237.16433941997852
+            }
+        },
+        "scripts/world/maps/hometown/interior/hospital_hallway/hospital_hallway.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 431.3641245972073,
+                "y": 239.74221267454348
+            }
+        },
+        "scripts/world/maps/hometown/interior/hospital_lobby/hospital_lobby.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 432.22341568206224,
+                "y": 239.74221267454348
+            }
+        },
+        "scripts/world/maps/hometown/interior/hospital_room2/hospital_room2.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 431.3641245972073,
+                "y": 381.5252416756176
+            }
+        },
+        "scripts/world/maps/hometown/interior/hospital_rudy/hospital_rudy.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 430.50483351235226,
+                "y": 308.4854994629431
+            }
+        },
+        "scripts/world/maps/hometown/interior/icee_room/icee_room.tmx": {
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 318.3673469387755,
+                "y": 311.06337271750806
+            }
+        },
+        "scripts/world/maps/hometown/interior/library_computer/library_computer.tmx": {
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 318.3673469387755,
+                "y": 311.06337271750806
+            }
+        },
+        "scripts/world/maps/hometown/interior/library_library/library_library.tmx": {
+            "scale": 0.895078125,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 466.9983416252074,
+                "y": 240.20249629047748
+            }
+        },
+        "scripts/world/maps/hometown/interior/library_lobby/library_lobby.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 431.3641245972073,
+                "y": 309.3447905477981
+            }
+        },
+        "scripts/world/maps/hometown/interior/police_station/police_station.tmx": {
+            "scale": 0.895078125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.08379156847343,
+                "y": 240.20249629047748
+            }
+        },
+        "scripts/world/maps/hometown/interior/qc_diner/qc_diner.tmx": {
+            "scale": 0.895078125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.08379156847343,
+                "y": 240.20249629047748
+            }
+        },
+        "scripts/world/maps/hometown/interior/sans_store/sans_store.tmx": {
+            "scale": 0.8983695652173912,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 459.1651542649729,
+                "y": 239.3224440411374
+            }
+        },
+        "scripts/world/maps/hometown/interior/town_hall/town_hall.tmx": {
+            "scale": 0.895078125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.08379156847343,
+                "y": 240.20249629047748
+            }
+        },
+        "scripts/world/maps/hometown/krisyard/krisyard.tmx": {
+            "scale": 0.09,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 327.7777777777778,
+                "y": 416.6666666666665
+            }
+        },
+        "scripts/world/maps/hometown/school/kris_class/kris_class.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 318.3673469387755,
+                "y": 239.74221267454348
+            }
+        },
+        "scripts/world/maps/hometown/school/school_door/school_door.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 0.6665322580645161,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 617.3744706594073,
+                "y": 240.04839685420444
+            }
+        },
+        "scripts/world/maps/hometown/school/school_lobby/school_lobby.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 1.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 295.66666666666663,
+                "y": 432
+            }
+        },
+        "scripts/world/maps/hometown/school/toriel_class/toriel_class.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 318.3673469387755,
+                "y": 240.60150375939853
+            }
+        },
+        "scripts/world/maps/hometown/school/unused_class/unused_class.tmx": {
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 318.3673469387755,
+                "y": 240.60150375939853
+            }
+        },
+        "scripts/world/maps/hometown/torielhouse/kris_room/kris_room.tmx": {
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 319.22663802363047,
+                "y": 384.10311493018264
+            }
+        },
+        "scripts/world/maps/hometown/torielhouse/tor_house/tor_house.tmx": {
+            "expandedObjectLayers": [
+                3,
+                4
+            ],
+            "scale": 0.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 1012,
+                "y": 224
+            }
+        },
+        "scripts/world/maps/hometown/torielhouse/toriel_bathroom/toriel_bathroom.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.16375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 429.64554242749733,
+                "y": 238.0236305048335
+            }
+        },
+        "scripts/world/maps/hometown/torielhouse/toriel_hallway/toriel_hallway.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 0.7652777777777777,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 709.546279491833,
+                "y": 235.20871143375683
+            }
+        },
+        "scripts/world/maps/hometown/town_beach/town_beach.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 787,
+                "y": 363
+            }
+        },
+        "scripts/world/maps/hometown/town_church/town_church.tmx": {
+            "scale": 0.0625,
+            "selectedLayer": 10,
+            "viewCenter": {
+                "x": 768,
+                "y": 648
+            }
+        },
+        "scripts/world/maps/hometown/town_graveyard/town_graveyard.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 9,
+            "viewCenter": {
+                "x": 600,
+                "y": 229.99999999999997
+            }
+        },
+        "scripts/world/maps/hometown/town_mid/town_mid.tmx": {
+            "expandedObjectLayers": [
+                20
+            ],
+            "scale": 0.0625,
+            "selectedLayer": 9,
+            "viewCenter": {
+                "x": 2048,
+                "y": 360
+            }
+        },
+        "scripts/world/maps/hometown/town_north/town_north.tmx": {
+            "expandedObjectLayers": [
+                45,
+                25,
+                16
+            ],
+            "scale": 1,
+            "selectedLayer": 22,
+            "viewCenter": {
+                "x": 3094,
+                "y": 219
+            }
+        },
+        "scripts/world/maps/hometown/town_school/town_school.tmx": {
+            "expandedObjectLayers": [
+                12
+            ],
+            "scale": 0.0625,
+            "selectedLayer": 12,
+            "viewCenter": {
+                "x": 592,
+                "y": 264
+            }
+        },
+        "scripts/world/maps/hometown/town_shelter/town_shelter.tmx": {
+            "scale": 0.09,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 322.2222222222222,
+                "y": 1250
+            }
+        },
+        "scripts/world/maps/hometown/town_south/town_south.tmx": {
+            "expandedObjectLayers": [
+                11
+            ],
+            "scale": 0.125,
+            "selectedLayer": 10,
+            "viewCenter": {
+                "x": 1336,
+                "y": 244
+            }
+        },
+        "scripts/world/tilesets/hometown.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
+        },
+        "scripts/world/tilesets/hometownobjects.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "scripts/world/tilesets/school.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        }
+    },
+    "openFiles": [
+        "scripts/world/maps/hometown/town_beach/town_beach.tmx",
+        "scripts/world/maps/hometown/town_north/town_north.tmx"
+    ],
+    "project": "",
+    "property.type": "bool",
+    "recentFiles": [
+        "scripts/world/maps/hometown/town_north/town_north.tmx",
+        "scripts/world/maps/hometown/town_beach/town_beach.tmx",
+        "scripts/world/maps/hometown/krisyard/krisyard.tmx",
+        "scripts/world/maps/hometown/town_graveyard/town_graveyard.tmx",
+        "scripts/world/maps/hometown/town_shelter/town_shelter.tmx",
+        "scripts/world/maps/hometown/town_church/town_church.tmx",
+        "scripts/world/maps/hometown/apartments/apartments.tmx",
+        "scripts/world/maps/hometown/town_school/town_school.tmx",
+        "scripts/world/maps/hometown/town_south/town_south.tmx",
+        "scripts/world/maps/hometown/town_mid/town_mid.tmx",
+        "scripts/world/maps/hometown/interior/hospital_room2/hospital_room2.tmx",
+        "scripts/world/maps/hometown/interior/hospital_rudy/hospital_rudy.tmx"
+    ]
+}
