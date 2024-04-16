@@ -450,7 +450,9 @@ return {
                 cutscene:showNametag("Susie")
                 cutscene:text("* WWI?[wait:10]\n* The hell does that mean?", "nervous", "susie")
                 cutscene:showNametag("Jamm")
-                cutscene:text("* It means \"World War One\".", "neutral", "jamm")
+                cutscene:text("* It means \"World War One\".[react:1]", "neutral", "jamm", {reactions = { 
+				    {"Also, did it say double-you\ndouble-you eye???", 302, 50, "nervous", "jamm"}
+			    }})
                 cutscene:showNametag("Susie")
                 cutscene:text("* Ohhhh.", "surprise_smile", "susie")
                 cutscene:text("* I still have no idea what that means.", "nervous", "susie")
