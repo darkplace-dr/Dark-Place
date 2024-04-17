@@ -11,7 +11,25 @@ function character:init()
 
     self.max_stats = {}
 
+    self.lw_health = 30
+
+    self.lw_stats = {
+        health = 30,
+        attack = 12,
+        defense = 10,
+        magic = 1
+    }
+
     self.special_actors = { flipside = Registry.createActor("flipside/susie") }
+end
+
+function character:lightLVStats()
+    self.lw_stats = {
+        health = self:getLightLV() <= 20 and math.min(25 + self:getLightLV() * 5,99) or 25 + self:getLightLV() * 5,
+        attack = 10 + self:getLightLV() * 2 + math.floor(self:getLightLV() / 4),
+        defense = 9 + math.ceil(self:getLightLV() / 4),
+        magic = math.ceil(self:getLightLV() / 4)
+    }
 end
 
 function character:onLevelUpLVLib()
