@@ -1,0 +1,237 @@
+{
+    "maps": [
+        {
+            "fileName": "krisyard/krisyard.tmx",
+            "height": 840,
+            "width": 640,
+            "x": 0,
+            "y": 80
+        },
+        {
+            "fileName": "town_north/town_north.tmx",
+            "height": 480,
+            "width": 3600,
+            "x": -520,
+            "y": 920
+        },
+        {
+            "fileName": "town_mid/town_mid.tmx",
+            "height": 480,
+            "width": 4080,
+            "x": -840,
+            "y": 1880
+        },
+        {
+            "fileName": "town_south/town_south.tmx",
+            "height": 480,
+            "width": 2640,
+            "x": -880,
+            "y": 2560
+        },
+        {
+            "fileName": "apartments/apartments.tmx",
+            "height": 480,
+            "width": 160,
+            "x": 2400,
+            "y": 1400
+        },
+        {
+            "fileName": "town_church/town_church.tmx",
+            "height": 1280,
+            "width": 1520,
+            "x": -40,
+            "y": 3040
+        },
+        {
+            "fileName": "town_school/town_school.tmx",
+            "height": 640,
+            "width": 1160,
+            "x": 1760,
+            "y": 2400
+        },
+        {
+            "fileName": "town_graveyard/town_graveyard.tmx",
+            "height": 480,
+            "width": 1200,
+            "x": -1240,
+            "y": 3480
+        },
+        {
+            "fileName": "town_shelter/town_shelter.tmx",
+            "height": 2480,
+            "width": 640,
+            "x": 520,
+            "y": 4320
+        },
+        {
+            "fileName": "town_beach/town_beach.tmx",
+            "height": 480,
+            "width": 1200,
+            "x": 3080,
+            "y": 920
+        },
+        {
+            "fileName": "torielhouse/tor_house/tor_house.tmx",
+            "height": 480,
+            "width": 1400,
+            "x": -760,
+            "y": -480
+        },
+        {
+            "fileName": "torielhouse/kris_room/kris_room.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -1080,
+            "y": -1320
+        },
+        {
+            "fileName": "torielhouse/toriel_bathroom/toriel_bathroom.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -1400,
+            "y": -400
+        },
+        {
+            "fileName": "torielhouse/toriel_hallway/toriel_hallway.tmx",
+            "height": 480,
+            "width": 1080,
+            "x": -1360,
+            "y": -960
+        },
+        {
+            "fileName": "school/school_lobby/school_lobby.tmx",
+            "height": 840,
+            "width": 1880,
+            "x": 4080,
+            "y": 2440
+        },
+        {
+            "fileName": "school/school_door/school_door.tmx",
+            "height": 480,
+            "width": 1240,
+            "x": 4400,
+            "y": 1960
+        },
+        {
+            "fileName": "school/kris_class/kris_class.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 3800,
+            "y": 2240
+        },
+        {
+            "fileName": "school/toriel_class/toriel_class.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 5600,
+            "y": 2240
+        },
+        {
+            "fileName": "school/unused_class/unused_class.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 5120,
+            "y": 1480
+        },
+        {
+            "fileName": "interior/asgore_house/asgore_house.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 1720,
+            "y": -160
+        },
+        {
+            "fileName": "interior/flower_shop/flower_shop.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 1720,
+            "y": 320
+        },
+        {
+            "fileName": "interior/hospital_hallway/hospital_hallway.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -3320,
+            "y": 2120
+        },
+        {
+            "fileName": "interior/hospital_lobby/hospital_lobby.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -3160,
+            "y": 2520
+        },
+        {
+            "fileName": "interior/hospital_room2/hospital_room2.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -3200,
+            "y": 1720
+        },
+        {
+            "fileName": "interior/hospital_rudy/hospital_rudy.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -3640,
+            "y": 1720
+        },
+        {
+            "fileName": "interior/icee_room/icee_room.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -4280,
+            "y": 1160
+        },
+        {
+            "fileName": "interior/qc_diner/qc_diner.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -3640,
+            "y": 1160
+        },
+        {
+            "fileName": "interior/sans_store/sans_store.tmx",
+            "height": 480,
+            "width": 920,
+            "x": -3000,
+            "y": 1160
+        },
+        {
+            "fileName": "interior/police_station/police_station.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -3840,
+            "y": 2520
+        },
+        {
+            "fileName": "interior/library_computer/library_computer.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -2560,
+            "y": 2520
+        },
+        {
+            "fileName": "interior/library_library/library_library.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -1920,
+            "y": 2520
+        },
+        {
+            "fileName": "interior/library_lobby/library_lobby.tmx",
+            "height": 480,
+            "width": 640,
+            "x": -2160,
+            "y": 3040
+        },
+        {
+            "fileName": "interior/town_hall/town_hall.tmx",
+            "height": 480,
+            "width": 640,
+            "x": 1520,
+            "y": 3120
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}
