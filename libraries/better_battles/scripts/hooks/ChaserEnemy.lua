@@ -2,7 +2,7 @@
 ---@overload fun(...) : ChaserEnemy
 local ChaserEnemy, super = Class(ChaserEnemy)
 
-function ChaserEnemy:onCollide(player)
+--[[function ChaserEnemy:onCollide(player)
     if self:isActive() and player:includes(Player) then
         self.encountered = true
         local encounter = self.encounter
@@ -45,7 +45,7 @@ function ChaserEnemy:onCollide(player)
             end)
         end
     end
-end
+end]]
 
 function ChaserEnemy:getBackFace()
 	local player = Game.world.player
