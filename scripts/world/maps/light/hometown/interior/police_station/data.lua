@@ -321,7 +321,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "up",
-            ["map"] = "hometown/town_south",
+            ["map"] = "light/hometown/town_south",
             ["marker"] = "entrypolice"
           }
         },

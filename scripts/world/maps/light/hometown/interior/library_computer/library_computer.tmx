@@ -63,7 +63,7 @@
   <object id="25" name="transition" x="280" y="480" width="80" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/interior/library_lobby"/>
+    <property name="map" value="light/hometown/interior/library_lobby"/>
     <property name="marker" value="entrycyber"/>
    </properties>
   </object>

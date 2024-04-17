@@ -87,7 +87,7 @@
   <object id="20" name="transition" x="290" y="480" width="80" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/torielhouse/toriel_hallway"/>
+    <property name="map" value="light/hometown/torielhouse/toriel_hallway"/>
     <property name="marker" value="spawn"/>
    </properties>
   </object>

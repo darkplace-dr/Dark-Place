@@ -260,7 +260,7 @@ return {
           properties = {
             ["exit_delay"] = 0.3,
             ["facing"] = "up",
-            ["map"] = "hometown/interior/library_library",
+            ["map"] = "light/hometown/interior/library_library",
             ["marker"] = "spawn",
             ["sound"] = "escaped"
           }
@@ -280,7 +280,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/library_computer",
+            ["map"] = "light/hometown/interior/library_computer",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -298,7 +298,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_south",
+            ["map"] = "light/hometown/town_south",
             ["marker"] = "entrylibrary"
           }
         },

@@ -50,7 +50,7 @@
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="left"/>
-    <property name="map" value="hometown/torielhouse/toriel_bathroom"/>
+    <property name="map" value="light/hometown/torielhouse/toriel_bathroom"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="dooropen"/>
    </properties>
@@ -60,7 +60,7 @@
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/krisyard"/>
+    <property name="map" value="light/hometown/krisyard"/>
     <property name="marker" value="entryhouse"/>
     <property name="sound" value="dooropen"/>
    </properties>
@@ -69,7 +69,7 @@
    <properties>
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/torielhouse/toriel_hallway"/>
+    <property name="map" value="light/hometown/torielhouse/toriel_hallway"/>
     <property name="marker" value="entryeast"/>
     <property name="sound" value="escaped"/>
    </properties>

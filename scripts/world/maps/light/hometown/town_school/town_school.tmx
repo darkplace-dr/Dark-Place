@@ -193,14 +193,14 @@
   <object id="12" name="transition" x="-40" y="380" width="40" height="220">
    <properties>
     <property name="facing" value="left"/>
-    <property name="map" value="hometown/town_south"/>
+    <property name="map" value="light/hometown/town_south"/>
     <property name="marker" value="entryeast"/>
    </properties>
   </object>
   <object id="15" name="transition" x="722" y="260" width="80" height="40">
    <properties>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/school/school_lobby"/>
+    <property name="map" value="light/hometown/school/school_lobby"/>
     <property name="marker" value="spawn"/>
    </properties>
   </object>

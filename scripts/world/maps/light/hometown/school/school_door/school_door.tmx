@@ -55,7 +55,7 @@
   <object id="18" name="transition" x="560" y="480" width="120" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/school/school_lobby"/>
+    <property name="map" value="light/hometown/school/school_lobby"/>
     <property name="marker" value="entrydark"/>
    </properties>
   </object>
@@ -70,7 +70,7 @@
     <property name="exit_delay" type="int" value="1"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/school/unused_class"/>
+    <property name="map" value="light/hometown/school/unused_class"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="dooropen"/>
    </properties>

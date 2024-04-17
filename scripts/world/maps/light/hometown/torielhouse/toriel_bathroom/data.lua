@@ -197,7 +197,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "right",
-            ["map"] = "hometown/torielhouse/tor_house",
+            ["map"] = "light/hometown/torielhouse/tor_house",
             ["marker"] = "entrybathroom",
             ["sound"] = "dooropen"
           }

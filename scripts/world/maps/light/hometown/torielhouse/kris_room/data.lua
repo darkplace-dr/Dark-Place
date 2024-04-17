@@ -352,7 +352,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/torielhouse/toriel_hallway",
+            ["map"] = "light/hometown/torielhouse/toriel_hallway",
             ["marker"] = "spawn"
           }
         }

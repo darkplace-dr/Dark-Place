@@ -381,7 +381,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_north",
+            ["map"] = "light/hometown/town_north",
             ["marker"] = "spawn"
           }
         },
@@ -400,7 +400,7 @@ return {
             ["exit_delay"] = 1,
             ["exit_sound"] = "doorclose",
             ["facing"] = "left",
-            ["map"] = "hometown/torielhouse/tor_house",
+            ["map"] = "light/hometown/torielhouse/tor_house",
             ["marker"] = "entryeast",
             ["sound"] = "dooropen"
           }

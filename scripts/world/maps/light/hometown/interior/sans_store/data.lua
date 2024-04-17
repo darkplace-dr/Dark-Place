@@ -461,7 +461,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_mid",
+            ["map"] = "light/hometown/town_mid",
             ["marker"] = "entrysans"
           }
         }

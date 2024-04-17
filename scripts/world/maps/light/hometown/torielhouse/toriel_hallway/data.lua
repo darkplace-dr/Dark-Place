@@ -265,7 +265,7 @@ return {
           properties = {
             ["exit_delay"] = 0.3,
             ["facing"] = "down",
-            ["map"] = "hometown/torielhouse/tor_house",
+            ["map"] = "light/hometown/torielhouse/tor_house",
             ["marker"] = "spawn",
             ["sound"] = "escaped"
           }
@@ -285,7 +285,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/torielhouse/kris_room",
+            ["map"] = "light/hometown/torielhouse/kris_room",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }

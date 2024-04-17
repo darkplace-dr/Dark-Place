@@ -297,7 +297,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "down",
-            ["map"] = "hometown/interior/hospital_hallway",
+            ["map"] = "light/hometown/interior/hospital_hallway",
             ["marker"] = "entryrudy",
             ["sound"] = "dooropen"
           }

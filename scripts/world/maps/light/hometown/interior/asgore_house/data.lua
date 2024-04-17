@@ -485,7 +485,7 @@ return {
           properties = {
             ["exit_delay"] = 0.3,
             ["facing"] = "down",
-            ["map"] = "hometown/interior/flower_shop",
+            ["map"] = "light/hometown/interior/flower_shop",
             ["marker"] = "entrywest",
             ["sound"] = "escaped"
           }
@@ -504,7 +504,7 @@ return {
           properties = {
             ["exit_delay"] = 0.3,
             ["facing"] = "down",
-            ["map"] = "hometown/interior/flower_shop",
+            ["map"] = "light/hometown/interior/flower_shop",
             ["marker"] = "entryeast",
             ["sound"] = "escaped"
           }

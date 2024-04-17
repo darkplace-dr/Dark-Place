@@ -265,7 +265,7 @@
   <object id="21" name="transition" x="240" y="-40" width="160" height="40">
    <properties>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/town_church"/>
+    <property name="map" value="light/hometown/town_church"/>
     <property name="marker" value="entrysouth"/>
    </properties>
   </object>

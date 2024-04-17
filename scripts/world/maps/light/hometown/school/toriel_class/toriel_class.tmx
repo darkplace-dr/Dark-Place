@@ -40,7 +40,7 @@
     <property name="exit_delay" type="int" value="1"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/school/school_lobby"/>
+    <property name="map" value="light/hometown/school/school_lobby"/>
     <property name="marker" value="entrytoriel"/>
     <property name="sound" value="dooropen"/>
    </properties>

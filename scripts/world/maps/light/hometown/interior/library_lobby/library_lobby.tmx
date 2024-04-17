@@ -32,7 +32,7 @@
    <properties>
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/interior/library_library"/>
+    <property name="map" value="light/hometown/interior/library_library"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="escaped"/>
    </properties>
@@ -42,7 +42,7 @@
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/interior/library_computer"/>
+    <property name="map" value="light/hometown/interior/library_computer"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="dooropen"/>
    </properties>
@@ -50,7 +50,7 @@
   <object id="21" name="transition" x="280" y="480" width="80" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/town_south"/>
+    <property name="map" value="light/hometown/town_south"/>
     <property name="marker" value="entrylibrary"/>
    </properties>
   </object>

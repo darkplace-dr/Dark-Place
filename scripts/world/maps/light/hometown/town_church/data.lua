@@ -689,7 +689,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "left",
-            ["map"] = "hometown/town_graveyard",
+            ["map"] = "light/hometown/town_graveyard",
             ["marker"] = "spawn"
           }
         },
@@ -706,7 +706,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "up",
-            ["map"] = "hometown/town_south",
+            ["map"] = "light/hometown/town_south",
             ["marker"] = "entrysouth"
           }
         },
@@ -723,7 +723,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_shelter",
+            ["map"] = "light/hometown/town_shelter",
             ["marker"] = "spawn"
           }
         },
@@ -741,7 +741,7 @@ return {
           properties = {
             ["exit_delay"] = 1,
             ["facing"] = "up",
-            ["map"] = "hometown/interior/town_hall",
+            ["map"] = "light/hometown/interior/town_hall",
             ["marker"] = "spawn",
             ["sound"] = "escaped"
           }

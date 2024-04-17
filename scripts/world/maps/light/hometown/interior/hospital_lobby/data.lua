@@ -261,7 +261,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/hospital_hallway",
+            ["map"] = "light/hometown/interior/hospital_hallway",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -296,7 +296,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_south",
+            ["map"] = "light/hometown/town_south",
             ["marker"] = "entryhospital",
             ["sound"] = "dooropen"
           }

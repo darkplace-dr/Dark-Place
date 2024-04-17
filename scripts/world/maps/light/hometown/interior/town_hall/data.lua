@@ -271,7 +271,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_church",
+            ["map"] = "light/hometown/town_church",
             ["marker"] = "entryhall",
             ["sound"] = "escaped"
           }

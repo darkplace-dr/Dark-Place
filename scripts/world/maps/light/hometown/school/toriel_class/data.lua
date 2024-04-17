@@ -354,7 +354,7 @@ return {
             ["exit_delay"] = 1,
             ["exit_sound"] = "doorclose",
             ["facing"] = "down",
-            ["map"] = "hometown/school/school_lobby",
+            ["map"] = "light/hometown/school/school_lobby",
             ["marker"] = "entrytoriel",
             ["sound"] = "dooropen"
           }

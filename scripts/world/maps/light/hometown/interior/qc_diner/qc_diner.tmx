@@ -33,7 +33,7 @@
   <object id="15" name="transition" x="278" y="480" width="82" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/town_mid"/>
+    <property name="map" value="light/hometown/town_mid"/>
     <property name="marker" value="entrydiner"/>
    </properties>
   </object>

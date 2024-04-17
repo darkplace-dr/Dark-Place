@@ -199,7 +199,7 @@ return {
           properties = {
             ["exit_delay"] = 0.3,
             ["facing"] = "down",
-            ["map"] = "hometown/interior/library_lobby",
+            ["map"] = "light/hometown/interior/library_lobby",
             ["marker"] = "entrylibrary",
             ["sound"] = "escaped"
           }

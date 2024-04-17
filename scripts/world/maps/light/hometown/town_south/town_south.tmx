@@ -154,21 +154,21 @@
   <object id="16" name="transition" x="1600" y="-40" width="200" height="40">
    <properties>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/town_mid"/>
+    <property name="map" value="light/hometown/town_mid"/>
     <property name="marker" value="entrysouth"/>
    </properties>
   </object>
   <object id="17" name="transition" x="1600" y="480" width="200" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/town_church"/>
+    <property name="map" value="light/hometown/town_church"/>
     <property name="marker" value="spawn"/>
    </properties>
   </object>
   <object id="19" name="transition" x="2640" y="220" width="40" height="220">
    <properties>
     <property name="facing" value="right"/>
-    <property name="map" value="hometown/town_school"/>
+    <property name="map" value="light/hometown/town_school"/>
     <property name="marker" value="spawn"/>
    </properties>
   </object>
@@ -177,7 +177,7 @@
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/interior/hospital_lobby"/>
+    <property name="map" value="light/hometown/interior/hospital_lobby"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="dooropen"/>
    </properties>
@@ -187,7 +187,7 @@
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/interior/police_station"/>
+    <property name="map" value="light/hometown/interior/police_station"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="dooropen"/>
    </properties>
@@ -197,7 +197,7 @@
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/interior/library_lobby"/>
+    <property name="map" value="light/hometown/interior/library_lobby"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="dooropen"/>
    </properties>

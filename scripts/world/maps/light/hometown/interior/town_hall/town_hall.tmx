@@ -46,7 +46,7 @@
   <object id="17" name="transition" x="280" y="460" width="80" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/town_church"/>
+    <property name="map" value="light/hometown/town_church"/>
     <property name="marker" value="entryhall"/>
     <property name="sound" value="escaped"/>
    </properties>

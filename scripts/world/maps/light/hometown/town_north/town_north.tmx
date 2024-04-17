@@ -332,21 +332,21 @@
   <object id="32" name="transition" x="1240" y="480" width="200" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/town_mid"/>
+    <property name="map" value="light/hometown/town_mid"/>
     <property name="marker" value="spawn"/>
    </properties>
   </object>
   <object id="33" name="transition" x="3600" y="200" width="40" height="200">
    <properties>
     <property name="facing" value="right"/>
-    <property name="map" value="hometown/town_beach"/>
+    <property name="map" value="light/hometown/town_beach"/>
     <property name="marker" value="spawn"/>
    </properties>
   </object>
   <object id="35" name="transition" x="760" y="-40" width="200" height="40">
    <properties>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/krisyard"/>
+    <property name="map" value="light/hometown/krisyard"/>
     <property name="marker" value="spawn"/>
    </properties>
   </object>
@@ -391,7 +391,7 @@
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/interior/flower_shop"/>
+    <property name="map" value="light/hometown/interior/flower_shop"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="dooropen"/>
    </properties>

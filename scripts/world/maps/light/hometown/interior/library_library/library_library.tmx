@@ -35,7 +35,7 @@
    <properties>
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/interior/library_lobby"/>
+    <property name="map" value="light/hometown/interior/library_lobby"/>
     <property name="marker" value="entrylibrary"/>
     <property name="sound" value="escaped"/>
    </properties>

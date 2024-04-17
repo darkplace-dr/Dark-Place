@@ -45,7 +45,7 @@
   <object id="13" name="transition" x="280" y="360" width="80" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/school/school_door"/>
+    <property name="map" value="light/hometown/school/school_door"/>
     <property name="marker" value="entryunused"/>
    </properties>
   </object>

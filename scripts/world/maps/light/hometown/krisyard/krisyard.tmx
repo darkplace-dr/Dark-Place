@@ -108,7 +108,7 @@
   <object id="10" name="transition" x="240" y="840" width="200" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/town_north"/>
+    <property name="map" value="light/hometown/town_north"/>
     <property name="marker" value="spawn"/>
    </properties>
   </object>
@@ -117,7 +117,7 @@
     <property name="exit_delay" type="int" value="1"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="left"/>
-    <property name="map" value="hometown/torielhouse/tor_house"/>
+    <property name="map" value="light/hometown/torielhouse/tor_house"/>
     <property name="marker" value="entryeast"/>
     <property name="sound" value="dooropen"/>
    </properties>

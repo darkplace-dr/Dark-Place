@@ -528,7 +528,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "left",
-            ["map"] = "hometown/town_south",
+            ["map"] = "light/hometown/town_south",
             ["marker"] = "entryeast"
           }
         },
@@ -545,7 +545,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "up",
-            ["map"] = "hometown/school/school_lobby",
+            ["map"] = "light/hometown/school/school_lobby",
             ["marker"] = "spawn"
           }
         }

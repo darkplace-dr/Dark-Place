@@ -62,7 +62,7 @@
    <properties>
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/interior/asgore_house"/>
+    <property name="map" value="light/hometown/interior/asgore_house"/>
     <property name="marker" value="spawn"/>
     <property name="sound" value="escaped"/>
    </properties>
@@ -71,7 +71,7 @@
    <properties>
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="facing" value="up"/>
-    <property name="map" value="hometown/interior/asgore_house"/>
+    <property name="map" value="light/hometown/interior/asgore_house"/>
     <property name="marker" value="entryeast"/>
     <property name="sound" value="escaped"/>
    </properties>
@@ -81,7 +81,7 @@
   <object id="28" gid="3" x="40" y="320" width="244" height="114"/>
   <object id="29" name="transition" x="280" y="480" width="80" height="40">
    <properties>
-    <property name="map" value="hometown/town_north"/>
+    <property name="map" value="light/hometown/town_north"/>
     <property name="marker" value="entryflower"/>
    </properties>
   </object>

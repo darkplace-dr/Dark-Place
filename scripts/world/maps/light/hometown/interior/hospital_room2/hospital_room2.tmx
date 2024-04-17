@@ -59,7 +59,7 @@
     <property name="exit_delay" type="float" value="0.3"/>
     <property name="exit_sound" value="doorclose"/>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/interior/hospital_hallway"/>
+    <property name="map" value="light/hometown/interior/hospital_hallway"/>
     <property name="marker" value="entryroom2"/>
     <property name="sound" value="dooropen"/>
    </properties>

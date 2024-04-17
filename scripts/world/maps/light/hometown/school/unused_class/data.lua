@@ -237,7 +237,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/school/school_door",
+            ["map"] = "light/hometown/school/school_door",
             ["marker"] = "entryunused"
           }
         }

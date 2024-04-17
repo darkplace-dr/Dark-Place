@@ -1037,7 +1037,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_mid",
+            ["map"] = "light/hometown/town_mid",
             ["marker"] = "spawn"
           }
         },
@@ -1054,7 +1054,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "right",
-            ["map"] = "hometown/town_beach",
+            ["map"] = "light/hometown/town_beach",
             ["marker"] = "spawn"
           }
         },
@@ -1071,7 +1071,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "up",
-            ["map"] = "hometown/krisyard",
+            ["map"] = "light/hometown/krisyard",
             ["marker"] = "spawn"
           }
         },
@@ -1185,7 +1185,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/flower_shop",
+            ["map"] = "light/hometown/interior/flower_shop",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }

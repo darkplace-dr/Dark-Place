@@ -235,7 +235,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/school/school_lobby",
+            ["map"] = "light/hometown/school/school_lobby",
             ["marker"] = "entrydark"
           }
         },
@@ -282,7 +282,7 @@ return {
             ["exit_delay"] = 1,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/school/unused_class",
+            ["map"] = "light/hometown/school/unused_class",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }

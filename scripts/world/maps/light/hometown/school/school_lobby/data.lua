@@ -368,7 +368,7 @@ return {
             ["exit_delay"] = 1,
             ["exit_sound"] = "doorclose",
             ["facing"] = "down",
-            ["map"] = "hometown/school/kris_class",
+            ["map"] = "light/hometown/school/kris_class",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -388,7 +388,7 @@ return {
             ["exit_delay"] = 1,
             ["exit_sound"] = "doorclose",
             ["facing"] = "down",
-            ["map"] = "hometown/school/toriel_class",
+            ["map"] = "light/hometown/school/toriel_class",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -406,7 +406,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_school",
+            ["map"] = "light/hometown/town_school",
             ["marker"] = "entryschool"
           }
         },
@@ -423,7 +423,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "up",
-            ["map"] = "hometown/school/school_door",
+            ["map"] = "light/hometown/school/school_door",
             ["marker"] = "spawn"
           }
         },

@@ -331,7 +331,7 @@ return {
           properties = {
             ["exit_delay"] = 0.3,
             ["facing"] = "up",
-            ["map"] = "hometown/interior/asgore_house",
+            ["map"] = "light/hometown/interior/asgore_house",
             ["marker"] = "spawn",
             ["sound"] = "escaped"
           }
@@ -350,7 +350,7 @@ return {
           properties = {
             ["exit_delay"] = 0.3,
             ["facing"] = "up",
-            ["map"] = "hometown/interior/asgore_house",
+            ["map"] = "light/hometown/interior/asgore_house",
             ["marker"] = "entryeast",
             ["sound"] = "escaped"
           }
@@ -409,7 +409,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "hometown/town_north",
+            ["map"] = "light/hometown/town_north",
             ["marker"] = "entryflower"
           }
         }

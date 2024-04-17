@@ -668,7 +668,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "up",
-            ["map"] = "hometown/town_north",
+            ["map"] = "light/hometown/town_north",
             ["marker"] = "entrysouth"
           }
         },
@@ -685,7 +685,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_south",
+            ["map"] = "light/hometown/town_south",
             ["marker"] = "spawn"
           }
         },
@@ -702,7 +702,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "up",
-            ["map"] = "hometown/apartments",
+            ["map"] = "light/hometown/apartments",
             ["marker"] = "spawn"
           }
         },
@@ -721,7 +721,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/qc_diner",
+            ["map"] = "light/hometown/interior/qc_diner",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -757,7 +757,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/sans_store",
+            ["map"] = "light/hometown/interior/sans_store",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -777,7 +777,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/icee_room",
+            ["map"] = "light/hometown/interior/icee_room",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }

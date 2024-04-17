@@ -219,7 +219,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "left",
-            ["map"] = "hometown/town_north",
+            ["map"] = "light/hometown/town_north",
             ["marker"] = "entryeast"
           }
         },

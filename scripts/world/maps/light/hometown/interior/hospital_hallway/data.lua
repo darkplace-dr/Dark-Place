@@ -196,7 +196,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/hospital_rudy",
+            ["map"] = "light/hometown/interior/hospital_rudy",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -216,7 +216,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/hospital_room2",
+            ["map"] = "light/hometown/interior/hospital_room2",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -236,7 +236,7 @@ return {
             ["exit_delay"] = 1,
             ["exit_sound"] = "doorclose",
             ["facing"] = "down",
-            ["map"] = "hometown/interior/hospital_lobby",
+            ["map"] = "light/hometown/interior/hospital_lobby",
             ["marker"] = "entryhallway",
             ["sound"] = "dooropen"
           }

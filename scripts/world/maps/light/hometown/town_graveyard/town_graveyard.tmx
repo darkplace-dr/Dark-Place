@@ -151,7 +151,7 @@
   <object id="18" name="transition" x="1200" y="240" width="40" height="200">
    <properties>
     <property name="facing" value="right"/>
-    <property name="map" value="hometown/town_church"/>
+    <property name="map" value="light/hometown/town_church"/>
     <property name="marker" value="entrywest"/>
    </properties>
   </object>

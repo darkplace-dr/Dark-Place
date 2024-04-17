@@ -601,7 +601,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "up",
-            ["map"] = "hometown/town_mid",
+            ["map"] = "light/hometown/town_mid",
             ["marker"] = "entrysouth"
           }
         },
@@ -618,7 +618,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "down",
-            ["map"] = "hometown/town_church",
+            ["map"] = "light/hometown/town_church",
             ["marker"] = "spawn"
           }
         },
@@ -635,7 +635,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "right",
-            ["map"] = "hometown/town_school",
+            ["map"] = "light/hometown/town_school",
             ["marker"] = "spawn"
           }
         },
@@ -654,7 +654,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/hospital_lobby",
+            ["map"] = "light/hometown/interior/hospital_lobby",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -674,7 +674,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/police_station",
+            ["map"] = "light/hometown/interior/police_station",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -694,7 +694,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "up",
-            ["map"] = "hometown/interior/library_lobby",
+            ["map"] = "light/hometown/interior/library_lobby",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }

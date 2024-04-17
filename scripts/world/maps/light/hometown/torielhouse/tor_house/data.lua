@@ -342,7 +342,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "left",
-            ["map"] = "hometown/torielhouse/toriel_bathroom",
+            ["map"] = "light/hometown/torielhouse/toriel_bathroom",
             ["marker"] = "spawn",
             ["sound"] = "dooropen"
           }
@@ -362,7 +362,7 @@ return {
             ["exit_delay"] = 0.3,
             ["exit_sound"] = "doorclose",
             ["facing"] = "down",
-            ["map"] = "hometown/krisyard",
+            ["map"] = "light/hometown/krisyard",
             ["marker"] = "entryhouse",
             ["sound"] = "dooropen"
           }
@@ -381,7 +381,7 @@ return {
           properties = {
             ["exit_delay"] = 0.3,
             ["facing"] = "down",
-            ["map"] = "hometown/torielhouse/toriel_hallway",
+            ["map"] = "light/hometown/torielhouse/toriel_hallway",
             ["marker"] = "entryeast",
             ["sound"] = "escaped"
           }

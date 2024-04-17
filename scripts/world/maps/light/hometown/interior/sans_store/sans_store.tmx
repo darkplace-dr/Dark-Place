@@ -107,7 +107,7 @@
   <object id="29" name="transition" x="560" y="480" width="80" height="40">
    <properties>
     <property name="facing" value="down"/>
-    <property name="map" value="hometown/town_mid"/>
+    <property name="map" value="light/hometown/town_mid"/>
     <property name="marker" value="entrysans"/>
    </properties>
   </object>
