@@ -14,7 +14,7 @@ return {
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
-    ["music"] = "school"
+    ["music"] = "deltarune/mus_school"
   },
   tilesets = {
     {

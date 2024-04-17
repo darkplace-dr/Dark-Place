@@ -6,7 +6,7 @@
  <properties>
   <property name="border" value="leaves"/>
   <property name="light" type="bool" value="true"/>
-  <property name="music" value="school"/>
+  <property name="music" value="deltarune/mus_school"/>
  </properties>
  <imagelayer id="2" name="room">
   <image source="../../../../../../../assets/sprites/world/maps/hometown/school/abandoned_class.png" width="640" height="480"/>

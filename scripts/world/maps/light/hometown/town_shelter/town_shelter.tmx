@@ -6,7 +6,7 @@
  <properties>
   <property name="border" value="leaves"/>
   <property name="light" type="bool" value="true"/>
-  <property name="music" value="birdnoise"/>
+  <property name="music" value="deltarune/mus_birdnoise"/>
  </properties>
  <tileset firstgid="1" source="../../../../tilesets/hometown.tsx"/>
  <group id="6" name="main">

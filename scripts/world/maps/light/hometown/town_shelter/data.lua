@@ -14,7 +14,7 @@ return {
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
-    ["music"] = "birdnoise"
+    ["music"] = "deltarune/mus_birdnoise"
   },
   tilesets = {
     {
