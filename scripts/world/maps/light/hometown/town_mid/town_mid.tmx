@@ -265,10 +265,10 @@
  </layer>
  <group id="26" name="apartments">
   <imagelayer id="27" name="apartment1" offsetx="3440" offsety="334">
-   <image source="../../../../../assets/sprites/world/maps/hometown/apartment.png"/>
+   <image source="../../../../../../assets/sprites/world/maps/hometown/apartment.png" width="280" height="372"/>
   </imagelayer>
   <imagelayer id="28" name="aparment2" offsetx="3720" offsety="334">
-   <image source="../../../../../assets/sprites/world/maps/hometown/apartment.png"/>
+   <image source="../../../../../../assets/sprites/world/maps/hometown/apartment.png" width="280" height="372"/>
   </imagelayer>
  </group>
 </map>

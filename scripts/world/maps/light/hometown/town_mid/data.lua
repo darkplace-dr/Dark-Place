@@ -1003,7 +1003,7 @@ return {
       layers = {
         {
           type = "imagelayer",
-          image = "../../../../../assets/sprites/world/maps/hometown/apartment.png",
+          image = "../../../../../../assets/sprites/world/maps/hometown/apartment.png",
           id = 27,
           name = "apartment1",
           class = "",
@@ -1019,7 +1019,7 @@ return {
         },
         {
           type = "imagelayer",
-          image = "../../../../../assets/sprites/world/maps/hometown/apartment.png",
+          image = "../../../../../../assets/sprites/world/maps/hometown/apartment.png",
           id = 28,
           name = "aparment2",
           class = "",
