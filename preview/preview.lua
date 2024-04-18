@@ -22,6 +22,10 @@ function preview:init(mod, button, menu)
         self.particle_tex = love.graphics.newImage(p_a("star.png"))
     end
 
+    if date.month == 4 and date.day == 20 then
+        self.particle_tex = love.graphics.newImage(p("doobie.png"))
+    end
+
     self.bg_gradient_siner = 0
 
     self.naming_swellow = nil
