@@ -61,7 +61,12 @@
     <property name="marker" value="east"/>
    </properties>
   </object>
-  <object id="19" name="transition" x="320" y="-40" width="160" height="40"/>
+  <object id="19" name="transition" x="320" y="-40" width="160" height="40">
+   <properties>
+    <property name="map" value="devhotel/rooms/room_001/thoughts/corridor"/>
+    <property name="marker" value="south"/>
+   </properties>
+  </object>
   <object id="20" name="transition" x="800" y="200" width="40" height="160">
    <properties>
     <property name="map" value="devhotel/rooms/room_001/thoughts/right"/>

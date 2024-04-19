@@ -55,6 +55,27 @@
             "width": 800,
             "x": -3120,
             "y": 280
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/right/main.tmx",
+            "height": 640,
+            "width": 1600,
+            "x": 880,
+            "y": -880
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/corridor/main.tmx",
+            "height": 1000,
+            "width": 640,
+            "x": 80,
+            "y": -1880
+        },
+        {
+            "fileName": "maps/devhotel/rooms/room_001/thoughts/final/main.tmx",
+            "height": 640,
+            "width": 1200,
+            "x": 160,
+            "y": -2600
         }
     ],
     "onlyShowAdjacentMaps": false,

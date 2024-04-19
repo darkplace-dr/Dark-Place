@@ -362,7 +362,10 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["map"] = "devhotel/rooms/room_001/thoughts/corridor",
+            ["marker"] = "south"
+          }
         },
         {
           id = 20,

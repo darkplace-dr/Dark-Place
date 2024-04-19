@@ -818,6 +818,20 @@ function Mod:getActionButtons(battler, buttons)
     if battler.chara.id == "mario" and Game:getFlag("acj_mario_fightless") then
         Utils.removeFromTable(buttons, "fight")
     end
+
+    if battler.chara.id == "susie" and Game.battle.encounter.id == "brandon" then
+        Utils.removeFromTable(buttons, "fight")
+    end
+    if battler.chara.id == "dess" and Game.battle.encounter.id == "brandon" then
+        if Game:getFlag("dungeonkiller") and not Game:getFlag("b_fight_dess") then
+            -- do nothing
+        else
+            Utils.removeFromTable(buttons, "fight")
+        end
+    end
+    if battler.chara.id == "jamm" and Game.battle.encounter.id == "brandon" and not Game:getFlag("dungeonkiller") then
+        Utils.removeFromTable(buttons, "fight")
+    end
     return buttons
 end
 

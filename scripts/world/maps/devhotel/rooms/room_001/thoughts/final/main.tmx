@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="16">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="simple"/>
+  <property name="music" value="deltarune/wind_highplace"/>
+  <property name="name" value="??? - End"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../../../tilesets/thoughts.tsx"/>
+ <objectgroup id="2" name="objects_bg"/>
+ <layer id="1" name="Tile Layer 1" width="30" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,7,8,8,5,5,5,5,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,0,0,0,0,
+0,4,5,5,4,5,5,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,4,5,5,4,5,5,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,4,5,5,4,5,5,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,
+0,4,5,5,4,5,5,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="collision">
+  <object id="3" x="120" y="480" width="40" height="160"/>
+  <object id="4" x="40" y="480" width="80" height="40"/>
+  <object id="5" x="0" y="160" width="40" height="320"/>
+  <object id="6" x="40" y="120" width="1000" height="40"/>
+  <object id="7" x="1040" y="160" width="40" height="320"/>
+  <object id="8" x="360" y="480" width="680" height="40"/>
+  <object id="9" x="320" y="480" width="40" height="160"/>
+ </objectgroup>
+ <objectgroup id="4" name="objects">
+  <object id="10" name="transition" x="160" y="640" width="160" height="40">
+   <properties>
+    <property name="map" value="devhotel/rooms/room_001/thoughts/corridor"/>
+    <property name="marker" value="north"/>
+   </properties>
+  </object>
+  <object id="11" name="savepoint" x="120" y="320">
+   <point/>
+  </object>
+  <object id="12" name="script" x="400" y="160" width="40" height="320">
+   <properties>
+    <property name="cutscene" value="thoughts.boss"/>
+    <property name="once" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="13" name="npc" x="840" y="320">
+   <properties>
+    <property name="actor" value="brandon_dreamscape"/>
+    <property name="facing" value="right"/>
+    <property name="flagcheck" value="!b_fight"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="markers">
+  <object id="14" name="entry" x="240" y="600">
+   <point/>
+  </object>
+  <object id="15" name="spawn" x="240" y="320">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
