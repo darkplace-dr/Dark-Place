@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="20">
  <editorsettings>
   <export target="sign.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="music" value="road_secret"/>
+ </properties>
  <tileset firstgid="1" source="../../tilesets/castle_path.tsx"/>
  <tileset firstgid="25" source="../../tilesets/other-objects.tsx"/>
  <layer id="1" name="Calque de Tuiles 1" width="16" height="12">
@@ -54,7 +57,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="3" name="objects">
+ <objectgroup color="#ff00ff" id="3" name="objects">
   <object id="1" gid="75" x="245" y="110" width="32" height="37"/>
   <object id="2" name="interactable" x="238.333" y="72.3333" width="42" height="24.3333">
    <properties>
@@ -69,8 +72,24 @@
     <property name="marker" value="entry_up"/>
    </properties>
   </object>
+  <object id="17" name="npc" x="560" y="200" width="40" height="40">
+   <properties>
+    <property name="actor" value="smb_goomba"/>
+   </properties>
+  </object>
+  <object id="18" name="npc" x="560" y="280" width="40" height="40">
+   <properties>
+    <property name="actor" value="smb_goomba"/>
+   </properties>
+  </object>
+  <object id="19" name="script" x="587" y="200" width="12.5027" height="120">
+   <properties>
+    <property name="cutscene" value="castle_path.unfinished"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="4" name="markers">
+ <objectgroup color="#aa00ff" id="4" name="markers">
   <object id="13" name="entry_down" x="340" y="425">
    <point/>
   </object>

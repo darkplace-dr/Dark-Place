@@ -289,7 +289,6 @@ return {
             elseif leader.facing == "up" then
                 s_facing = "down"
             end
-            print(leader.facing, s_facing)
 
             simbel:setFacing(s_facing)
             cutscene:text("* What's up?", "talk_look_away", "sam")
@@ -331,13 +330,14 @@ return {
                     cutscene:text("* If someone were to try to absorb her power...", "talk_look_away", "sam")
                     cutscene:text("* That would damage their physical form and their SOUL.", "unsure", "sam")
                     cutscene:text("* And while a crack on the skin is not much...", "shy_look_away", "sam")
-                    cutscene:text("* A small crack on your SOUL can reduce your lifespan by a lot,[wait:2] you know?", "shy_look_away", "sam")
+                    cutscene:text("* A small crack on your SOUL can reduce your lifespan by a lot.", "shy_look_away", "sam")
                     cutscene:text("* And here, we're not talking about a small crack at all.", "unsure", "sam")
                     cutscene:text("* Hm?[wait:3] You will do it?", "surprised_b", "sam")
-                    cutscene:text("* Thanks![wait:3] I've added a code to the warp bin that should guide you.", "eyes_closed_happy", "sam")
+                    cutscene:text("* Thanks![wait:3] I have an idea of where she could have fell.", "eyes_closed_happy", "sam")
+                    cutscene:text("* You should be able to access it with the warp bin.", "eyes_closed_happy", "sam")
                 end
                 cutscene:text("* The code is [color:yellow]CASTLERD[color:reset].", "happy_look_side", "sam")
-                Kristal.callEvent("createQuest", "Green and Blue..?", "_gb", "Sam, Simbel's self-insert, have lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"CASTLERD\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
+                Kristal.callEvent("createQuest", "Green and Blue..?", "_gb", "Sam lost a powerful artefact of his when coming to the Dev Diner. Because someone might die from trying to use its power, it must be found as fast as possible! You could start by using this \"CASTLERD\" code he gave you?\n[QUEST UNFINISHED: CAN'T BE COMPLETED]")
                 Game:setFlag("started_sphere_quest", true)
             end
         elseif c == 2 then
