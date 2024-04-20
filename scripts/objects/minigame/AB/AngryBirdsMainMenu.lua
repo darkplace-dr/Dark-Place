@@ -3,7 +3,7 @@ local AngryBirdsMainMenu, super = Class(Object)
 function AngryBirdsMainMenu:init()
 	super.init(self)
 
-    self.main_menu_state = "MAINMENU" -- "MAINMENU", "POPUP" 
+    self.main_menu_state = "MAINMENU" -- "MAINMENU", "POPUP", "CREDITS"
 	
     self.backgroundColour = {
         r = 11,
@@ -41,7 +41,7 @@ function AngryBirdsMainMenu:setState(state)
 end
 
 function AngryBirdsMainMenu:onStateChange(state)
-    if self.menu_state == "POPUP" then
+    if self.menu_state == "POPUP" or self.menu_state == "CREDITS" then
         self.playButton.enabled = false
         self.backButton.enabled = false
         self.settingsButton.enabled = false
@@ -51,6 +51,18 @@ function AngryBirdsMainMenu:onStateChange(state)
         self.backButton.enabled = true
         self.settingsButton.enabled = true
         self.editorButton.enabled = true
+    end
+	
+    if self.menu_state == "CREDITS" then
+        self.playButton.visible = false
+        self.backButton.visible = false
+        self.settingsButton.visible = false
+        self.editorButton.visible = false
+    else
+        self.playButton.visible = true
+        self.backButton.visible = true
+        self.settingsButton.visible = true
+        self.editorButton.visible = true
     end
 end
 
@@ -80,7 +92,8 @@ function AngryBirdsMainMenu:update()
         self:setState("POPUP")
 		self.popup = true
     elseif self.settingsButton.pressed == true and self.popup == false then
-        self:setState("POPUP")
+        self.minigame:addChild(AngryBirdsCredits())
+        self:setState("CREDITS")
 		self.popup = true
     end
 end
@@ -98,6 +111,13 @@ function AngryBirdsMainMenu:buildBirdList()
 
     if #self.bird_sprites == 0 then
         table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/red/idle", reward = 0 })
+        table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/blue/idle", reward = 0 })
+        table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/yellow/idle", reward = 0 })
+        table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/bomb/idle", reward = 0 })
+        table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/white/idle", reward = 0 })
+        table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/white/idle", reward = 0 })
+        table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/boomerang/idle", reward = 0 })
+        table.insert(self.bird_sprites, {sprite = "minigames/ab/birds/bigbrother/idle", reward = 0 })
     end
 end
 
@@ -264,7 +284,9 @@ end
 function AngryBirdsMainMenu:draw()
     self:drawMenu()
 	
-    Draw.draw(Assets.getTexture("minigames/ab/ui/menu/bg/logo"), SCREEN_WIDTH / 2, 327, 0, 1, 1, 249, 285)
+	if self.menu_state ~= "CREDITS" then
+        Draw.draw(Assets.getTexture("minigames/ab/ui/menu/bg/logo"), SCREEN_WIDTH / 2, 327, 0, 1, 1, 249, 285)
+	end
 	
     super.draw(self)
 	

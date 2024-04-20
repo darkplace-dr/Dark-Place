@@ -185,6 +185,7 @@ function ShadowShop:onStateChange(old, new)
             Assets.playSound("item")
             Assets.playSound("creepyjingle")
             Game.inventory:tryGiveItem("retrotape")
+            Game.inventory:tryGiveItem("walkie_talkie")
             self.vapor_vhs:remove()
             Kristal.callEvent("createQuest", "Aesthetic Adventure", "vap", "After pestering the Shadow Salesman enough times, he gives you a bizarre-looking artifact from the glorious 80's. Apparently, he says that putting that thing into a VCR somewhere will unlock a gateway to another strange world...but where is the question? Time to go investigate!")
         end
