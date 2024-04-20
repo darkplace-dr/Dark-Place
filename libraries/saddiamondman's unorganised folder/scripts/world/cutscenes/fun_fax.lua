@@ -133,7 +133,15 @@ return {
             {"* Is it fate...", "* Or is it chance..."},
             {"* Gender is odd to me...", "* It keeps being updated..."},
             {"* The end is never...", "* Or so I was told..."},
-            {"* The line between fact and fiction can be blurred...", "* Until it isn't there anymore..."}
+            {"* The line between fact and fiction can be blurred...", "* Until it isn't there anymore..."},
+            {"* Our universe doesn't have a lightner strong enough to seal our fountain...", "* So we looked in other worlds..."},
+            {"* Our world grows unstable...", "* A single BAD HOOK could end it all..."},
+            {"* A giant schoolgirl and a boot are lurking...", "* They both seem famillar somehow..."},
+            {"* What counts as a duplicate...", "* And what does not..."},
+            {"* There is only one being more aware then the self aware characters here...", "* How does it feel to be that being?\n* Don't answer,[speed:0.25]I can't hear you."},
+            {"* If my thoughts were still in order...", "* I would be able to socialize agian..."},
+            {"* The timelines...", "* They're three of them..."},
+            {"* A DEV tried to fix me...", "* But I was never broken..."} --But holy hell did you optimize my fucking shitty code
         }
 
         cutscene:text("[speed:0.5]" .. Utils.pick(dialogue_pairs)[1])
