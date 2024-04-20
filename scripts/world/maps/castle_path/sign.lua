@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,8 +10,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 17,
-  properties = {},
+  nextobjectid = 20,
+  properties = {
+    ["music"] = "road_secret"
+  },
   tilesets = {
     {
       name = "castle_path",
@@ -311,6 +313,52 @@ return {
           properties = {
             ["map"] = "castle_path/in_between",
             ["marker"] = "entry_up"
+          }
+        },
+        {
+          id = 17,
+          name = "npc",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 200,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "smb_goomba"
+          }
+        },
+        {
+          id = 18,
+          name = "npc",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 280,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "smb_goomba"
+          }
+        },
+        {
+          id = 19,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 587,
+          y = 200,
+          width = 12.5027,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "castle_path.unfinished",
+            ["once"] = false
           }
         }
       }
