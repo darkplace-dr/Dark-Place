@@ -1,72 +1,4 @@
 return {
-    wall = function(cutscene)
-        -- Open textbox and wait for completion
-        cutscene:text("* The wall seems cracked.")
-
-        -- If we have Susie, play a cutscene
-        local susie = cutscene:getCharacter("susie")
-        if susie then
-            -- Detach camera and followers (since characters will be moved)
-            cutscene:detachCamera()
-            cutscene:detachFollowers()
-
-            -- All text from now is spoken by Susie
-            cutscene:setSpeaker(susie)
-            cutscene:text("* Hey,[wait:5] think I can break\nthis wall?", "smile")
-
-            -- Get the bottom-center of the broken wall
-            local x = event.x + event.width/2
-            local y = event.y + event.height/2
-
-            -- Move Susie up to the wall over 0.75 seconds
-            cutscene:walkTo(susie, x, y + 40, 0.75, "up")
-            -- Move other party members behind Susie
-            cutscene:walkTo(Game.world.player, x, y + 100, 0.75, "up")
-            if cutscene:getCharacter("ralsei") then
-                cutscene:walkTo("ralsei", x + 60, y + 100, 0.75, "up")
-            end
-            if cutscene:getCharacter("noelle") then
-                cutscene:walkTo("noelle", x - 60, y + 100, 0.75, "up")
-            end
-
-            -- Wait 1.5 seconds
-            cutscene:wait(1.5)
-
-            -- Walk back,
-            cutscene:wait(cutscene:walkTo(susie, x, y + 60, 0.5, "up", true))
-            -- and run forward!
-            cutscene:wait(cutscene:walkTo(susie, x, y + 20, 0.2))
-
-            -- Slam!!
-            Assets.playSound("impact")
-            susie:shake(4)
-            susie:setSprite("shock_up")
-
-            -- Slide back a bit
-            cutscene:slideTo(susie, x, y + 40, 0.1)
-            cutscene:wait(1.5)
-
-            -- owie
-            susie:setAnimation({"away_scratch", 0.25, true})
-            susie:shake(4)
-            Assets.playSound("wing")
-
-            cutscene:wait(1)
-            cutscene:text("* Guess not.", "nervous")
-
-            -- Reset Susie's sprite
-            susie:resetSprite()
-
-            -- Reattach the camera
-            cutscene:attachCamera()
-
-            -- Align the follower positions behind Kris's current position
-            cutscene:alignFollowers()
-            -- And reattach them, making them return to their target positions
-            cutscene:attachFollowers()
-            Game:setFlag("wall_hit", true)
-        end
-    end,
     test = function(cutscene, actor)
         local master = cutscene:getCharacter("test_master")
         master:setAnimation({"bop", 0.25, true})
@@ -175,21 +107,45 @@ return {
         master:setAnimation({"bop", 0.25, true})
         cutscene:text("* I'm Dess Master.\n[wait:5]* Don't ask me about DESS's.")
 
-        local choices = {"1", "2", "Fact"}
+        local choices = {"Stars", "2", "Fact"}
         table.insert(choices, "Bye")
         local c = cutscene:choicer(choices)
         if c == 1 then
-            cutscene:text("* BING BING BING ONE.")
-
-            --cutscene:text("* Dess's power of the STARS.")
-            --cutscene:text("* Will[wait:5] HOPEFULLY[wait:5] get her run over by CARS.")
-            -- this feels too mean to actually put into the game
+            --cutscene:text("* BING BING BING ONE.")
+	    if Game:getFlag("sorry_dess") then
+                cutscene:text("* Last I checked STAR isn't an actual type...")
+                cutscene:text("* But my thing says your type is STAR so...[wait:5] screw it.")
+                cutscene:text("* You are a BALL of FIRE Dess.\n[wait:5]* A giant ball OF fire.")
+                cutscene:text("* I think that's what that means anyWAY.")
+                if Game:getFlag("dungeonkiller") then
+                    cutscene:text("* That phone over there is[wait:5] odd...")
+                    cutscene:text("* They keep saying things that don't make sense.")
+                    cutscene:text("* (Sometimes I feel like I'm the only one who can see them.)")
+                    cutscene:text("* (I still have no idea who "..Game.save.name.." is and what they have to do with you Dess...)")
+                end
+            else
+                cutscene:text("* Dess's power of the STARS.")
+                cutscene:text("* Will[wait:5] HOPEFULLY[wait:5] get her run over by CARS.")
+                cutscene:text("*[speed:0.3] ...")
+                cutscene:text("*[speed:0.3] ...")
+                cutscene:text("* Great,\n[wait:5]now I feel like a piece of sh[wait:5]-tupid[speed:0.3]...")
+                cutscene:text("* Sorry for being mean...[wait:5]  There's no excuse for my actions...[wait:5] I'll try being nicer from now on.")
+                Game:setFlag("sorry_dess", "1")
+                if Game:getFlag("dungeonkiller") then
+                    cutscene:text("* Someone told me someone else made some other person do something.")
+                    cutscene:text("* Say...[wait:5] any of you know of a "..Game.save.name.."?")
+                end
+            end
+                -- this feels too mean to actually put into the game  UPDATE:(OKAY, this SHOULD be better.)
         elseif c == 2 then
             cutscene:text("* BING BING BING TWO.")
         elseif c == 3 then
             cutscene:text("* Dess will stop being annoying,[wait:5] if you give me money to buy cigarettes.")
             cutscene:text("* Sorry,[wait:5] that was a lie.")
             cutscene:text("* Give me money,[wait:5] to buy cigarettes.")
+	    if Game:getFlag("sorry_dess") then
+                cutscene:text("* Sorry for calling you annoying by the way.")
+            end
         elseif c == 4 then
             cutscene:text("* Later,[wait:5] Chum.")
         end
@@ -333,6 +289,37 @@ return {
 			cutscene:hideShop()
         elseif c == 4 then
             cutscene:text("* Buh-Bye!")
+        end
+        master:setAnimation({"idle", 0.25, true})
+    end,
+
+    ceroba = function(cutscene, actor)
+        local master = cutscene:getCharacter("ceroba_master")
+        master:setAnimation({"bop", 0.25, true})
+        cutscene:text("* I'm Ceroba Master.\n[wait:5]* Ask me about CEROBA's.")
+
+        local choices = {"1", "2", "Fact"}
+        table.insert(choices, "Bye")
+        local c = cutscene:choicer(choices)
+        if c == 1 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING ONE.")
+        elseif c == 2 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* BING BING BING TWO.")
+        elseif c == 3 then
+            master:setAnimation({"shocked", 0.25, true})
+            cutscene:text("* Ceroba hearts to give funds.")
+            cutscene:text("* Make feel very hearts rotund?")
+
+            cutscene:showNametag("Ceroba")
+            cutscene:text("*[speed:0.3] ...", "wat", "ceroba")
+            cutscene:text("* What are you even saying???", "suprised", "ceroba")
+            cutscene:hideNametag()
+
+            cutscene:text("* I don't know, help me.")
+        elseif c == 4 then
+            cutscene:text("* Later,[wait:5] kid.")
         end
         master:setAnimation({"idle", 0.25, true})
     end,
