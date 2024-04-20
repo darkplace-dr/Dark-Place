@@ -42,8 +42,10 @@ function Brandon:init()
 
     self:registerAct("Console")
     self:registerAct("D-Console", "", {"dess"})
-    self:registerAct("J-Console", "", {"jamm"})
-    self:registerAct("X-Console", "", {"dess", "jamm"})
+    if not Game:getFlag("dungeonkiller") then
+        self:registerAct("J-Console", "", {"jamm"})
+        self:registerAct("X-Console", "", {"dess", "jamm"})
+    end
 end
 
 function Brandon:onAct(battler, name)
