@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 26,
+  nextobjectid = 27,
   properties = {
     ["border"] = "castle",
     ["music"] = "deltarune/castletown"
@@ -73,7 +73,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 360,
@@ -86,7 +86,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1880,
           y = 240,
@@ -99,7 +99,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1400,
           y = 200,
@@ -112,7 +112,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 240,
@@ -125,7 +125,7 @@ return {
         {
           id = 18,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 200,
@@ -154,7 +154,7 @@ return {
         {
           id = 22,
           name = "bordoor",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1518,
           y = 94.0107,
@@ -167,7 +167,7 @@ return {
         {
           id = 23,
           name = "lancerdoor",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1292,
           y = 88,
@@ -196,7 +196,7 @@ return {
         {
           id = 5,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1760,
           y = 480,
@@ -212,7 +212,7 @@ return {
         {
           id = 6,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1760,
           y = 160,
@@ -228,7 +228,7 @@ return {
         {
           id = 9,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 480,
@@ -241,7 +241,7 @@ return {
         {
           id = 13,
           name = "bordoor",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1518,
           y = 94.0107,
@@ -254,7 +254,7 @@ return {
         {
           id = 15,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1518,
           y = 95,
@@ -271,7 +271,7 @@ return {
         {
           id = 19,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1313,
           y = 214,
@@ -287,12 +287,12 @@ return {
         {
           id = 20,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1313,
-          y = 205,
+          y = 214,
           width = 93,
-          height = 35,
+          height = 26.67,
           rotation = 0,
           visible = true,
           properties = {
@@ -303,7 +303,7 @@ return {
         {
           id = 23,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 360,
@@ -318,7 +318,7 @@ return {
         {
           id = 24,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 360,
@@ -333,7 +333,7 @@ return {
         {
           id = 25,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 120,
           y = 360,
@@ -364,7 +364,7 @@ return {
         {
           id = 7,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 1820,
           y = 440,
@@ -377,7 +377,7 @@ return {
         {
           id = 8,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 960,
           y = 320,
@@ -390,7 +390,7 @@ return {
         {
           id = 14,
           name = "exit_bor",
-          class = "",
+          type = "",
           shape = "point",
           x = 1600,
           y = 280,
@@ -403,7 +403,7 @@ return {
         {
           id = 22,
           name = "entry_lancer",
-          class = "",
+          type = "",
           shape = "point",
           x = 1360,
           y = 290,

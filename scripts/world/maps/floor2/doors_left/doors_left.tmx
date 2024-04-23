@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="26">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="27">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -64,7 +64,7 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="20" name="script" x="1313" y="205" width="93" height="35">
+  <object id="20" name="script" x="1313" y="214" width="93" height="26.67">
    <properties>
     <property name="once" type="bool" value="false"/>
     <property name="script" value="lancer_enter"/>
