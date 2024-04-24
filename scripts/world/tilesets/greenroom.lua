@@ -11,7 +11,7 @@ return {
   columns = 7,
   image = "../../../assets/sprites/tilesets/greenroom.png",
   imagewidth = 280,
-  imageheight = 680,
+  imageheight = 720,
   objectalignment = "unspecified",
   tilerendersize = "tile",
   fillmode = "stretch",
@@ -26,7 +26,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 119,
+  tilecount = 126,
   tiles = {
     {
       id = 25,
