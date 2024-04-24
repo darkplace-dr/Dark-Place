@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.9.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 19,
-  nextobjectid = 188,
+  nextobjectid = 190,
   properties = {
     ["border"] = "undertale/dog",
     ["music"] = "greenroom",
@@ -25,7 +25,7 @@ return {
     },
     {
       name = "floor3_objects",
-      firstgid = 36,
+      firstgid = 120,
       filename = "../../../tilesets/floor3-objects.tsx",
       exportfilename = "../../../tilesets/floor3-objects.lua"
     }
@@ -48,14 +48,14 @@ return {
         {
           id = 68,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 0,
           y = 480,
           width = 1437,
           height = 480,
           rotation = 0,
-          gid = 56,
+          gid = 140,
           visible = true,
           properties = {}
         }
@@ -110,7 +110,7 @@ return {
         {
           id = 105,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1080,
           y = 120,
@@ -123,7 +123,7 @@ return {
         {
           id = 108,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 80,
           y = 200,
@@ -141,7 +141,7 @@ return {
         {
           id = 110,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 120,
           y = 160,
@@ -159,7 +159,7 @@ return {
         {
           id = 111,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 1400,
           y = 240,
@@ -177,7 +177,7 @@ return {
         {
           id = 112,
           name = "",
-          type = "",
+          class = "",
           shape = "polygon",
           x = 1360,
           y = 200,
@@ -195,7 +195,7 @@ return {
         {
           id = 114,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 240,
@@ -208,7 +208,7 @@ return {
         {
           id = 115,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 280,
@@ -221,7 +221,7 @@ return {
         {
           id = 116,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1160,
           y = 240,
@@ -234,7 +234,7 @@ return {
         {
           id = 118,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 240,
           y = 440,
@@ -247,7 +247,7 @@ return {
         {
           id = 119,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1160,
           y = 280,
@@ -260,7 +260,7 @@ return {
         {
           id = 120,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 940,
           y = 120,
@@ -273,7 +273,7 @@ return {
         {
           id = 121,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 120,
@@ -286,7 +286,7 @@ return {
         {
           id = 123,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 550,
           y = 120,
@@ -330,14 +330,14 @@ return {
         {
           id = 161,
           name = "hiddendoor",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 40,
           y = 240,
           width = 82,
           height = 204,
           rotation = 0,
-          gid = 48,
+          gid = 132,
           visible = true,
           properties = {}
         }
@@ -360,7 +360,7 @@ return {
         {
           id = 168,
           name = "spawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 720,
           y = 200,
@@ -373,7 +373,7 @@ return {
         {
           id = 169,
           name = "fakespawn",
-          type = "",
+          class = "",
           shape = "point",
           x = 1280,
           y = 200,
@@ -386,9 +386,22 @@ return {
         {
           id = 170,
           name = "entrydown",
-          type = "",
+          class = "",
           shape = "point",
           x = 1040,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 189,
+          name = "entry_left",
+          class = "",
+          shape = "point",
+          x = 160,
           y = 200,
           width = 0,
           height = 0,
@@ -415,119 +428,119 @@ return {
         {
           id = 69,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 340,
           width = 280,
           height = 100,
           rotation = 0,
-          gid = 58,
+          gid = 142,
           visible = true,
           properties = {}
         },
         {
           id = 70,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 340,
           width = 280,
           height = 100,
           rotation = 0,
-          gid = 57,
+          gid = 141,
           visible = true,
           properties = {}
         },
         {
           id = 71,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 800,
           y = 440,
           width = 116,
           height = 102,
           rotation = 0,
-          gid = 42,
+          gid = 126,
           visible = true,
           properties = {}
         },
         {
           id = 72,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 440,
           width = 116,
           height = 102,
           rotation = 0,
-          gid = 42,
+          gid = 126,
           visible = true,
           properties = {}
         },
         {
           id = 73,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1100,
           y = 440,
           width = 60,
           height = 80,
           rotation = 0,
-          gid = 47,
+          gid = 131,
           visible = true,
           properties = {}
         },
         {
           id = 74,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 280,
           y = 440,
           width = 63,
           height = 80,
           rotation = 0,
-          gid = 46,
+          gid = 130,
           visible = true,
           properties = {}
         },
         {
           id = 75,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 660,
           y = 440,
           width = 120,
           height = 72,
           rotation = 0,
-          gid = 52,
+          gid = 136,
           visible = true,
           properties = {}
         },
         {
           id = 76,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 660,
           y = 440,
           width = 120,
           height = 72,
           rotation = 0,
-          gid = 53,
+          gid = 137,
           visible = true,
           properties = {}
         },
         {
           id = 175,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 584,
           y = 110,
@@ -543,7 +556,7 @@ return {
         {
           id = 125,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 272,
@@ -559,7 +572,7 @@ return {
         {
           id = 126,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 480,
           y = 272,
@@ -575,7 +588,7 @@ return {
         {
           id = 129,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 960,
           y = 272,
@@ -591,7 +604,7 @@ return {
         {
           id = 127,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 760,
           y = 272,
@@ -607,7 +620,7 @@ return {
         {
           id = 130,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 520,
           y = 400,
@@ -623,7 +636,7 @@ return {
         {
           id = 131,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 800,
           y = 400,
@@ -639,7 +652,7 @@ return {
         {
           id = 132,
           name = "interactable",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 660,
           y = 400,
@@ -656,21 +669,21 @@ return {
         {
           id = 180,
           name = "",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 400,
           y = 170,
           width = 62,
           height = 88,
           rotation = 0,
-          gid = 38,
+          gid = 122,
           visible = true,
           properties = {}
         },
         {
           id = 182,
           name = "transition",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 1000,
           y = 138,
@@ -681,6 +694,22 @@ return {
           properties = {
             ["map"] = "floor3/corridors1",
             ["marker"] = "entry4"
+          }
+        },
+        {
+          id = 188,
+          name = "transition",
+          class = "",
+          shape = "rectangle",
+          x = 80,
+          y = 160,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "floor3/corridors3",
+            ["marker"] = "entry_greenroom"
           }
         }
       }
@@ -702,7 +731,7 @@ return {
         {
           id = 177,
           name = "npc",
-          type = "",
+          class = "",
           shape = "point",
           x = 720,
           y = 440,
@@ -733,7 +762,7 @@ return {
         {
           id = 185,
           name = "greenroom_sparkles",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 940,
           y = 40,
@@ -746,7 +775,7 @@ return {
         {
           id = 187,
           name = "greenroom_sparkles",
-          type = "",
+          class = "",
           shape = "rectangle",
           x = 120,
           y = 40,

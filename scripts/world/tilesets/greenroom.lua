@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.9",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.9.0",
   name = "greenroom",
   class = "",
   tilewidth = 40,
@@ -11,7 +11,7 @@ return {
   columns = 7,
   image = "../../../assets/sprites/tilesets/greenroom.png",
   imagewidth = 280,
-  imageheight = 600,
+  imageheight = 680,
   objectalignment = "unspecified",
   tilerendersize = "tile",
   fillmode = "stretch",
@@ -26,7 +26,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 105,
+  tilecount = 119,
   tiles = {
     {
       id = 25,
