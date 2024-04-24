@@ -4,8 +4,8 @@
             "fileName": "maps/floor3/greenroom/greenroom.tmx",
             "height": 480,
             "width": 1440,
-            "x": 0,
-            "y": 0
+            "x": 1440,
+            "y": 960
         },
         {
             "fileName": "maps/floor3/corridors1.tmx",
@@ -97,6 +97,13 @@
             "width": 640,
             "x": 12480,
             "y": -12080
+        },
+        {
+            "fileName": "maps/floor3/corridors3.tmx",
+            "height": 1280,
+            "width": 960,
+            "x": 480,
+            "y": 0
         }
     ],
     "onlyShowAdjacentMaps": false,
