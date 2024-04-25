@@ -32,12 +32,15 @@ function JukeboxMenu:init()
 
     self.songs = modRequire("scripts.jukebox_songs")
     self.none_text = "---"
+	self.none_album = Assets.getTexture("albums/default")
     self.default_song = {
         name = self.none_text,
         file = nil,
         composer = self.none_text,
         released = self.none_text,
-        origin = self.none_text
+        origin = self.none_text,
+		locked = nil,
+		album = self.none_album
     }
 
     self.selected_index = 1
@@ -74,9 +77,25 @@ function JukeboxMenu:draw()
     local cur_page = self:getPage(self.page)
     for i = 1, self.songs_per_page do
         local cur_song = cur_page[i] or self.default_song
-        local name = cur_song.name or self.none_text
-        local scale_x = math.min(196 / self.font:getWidth(name), 1)
-        love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
+		if not cur_song.locked then
+            local name = cur_song.name or self.none_text
+		    love.graphics.setColor(1, 1, 1)
+		    local scale_x = math.min(196 / self.font:getWidth(name), 1)
+		    love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
+		else
+		    local name = "Locked" or self.none_text
+		    love.graphics.setColor(0.5, 0.5, 0.5)
+		    local scale_x = math.min(196 / self.font:getWidth(name), 1)
+		    love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
+		end
+        love.graphics.setColor(1, 1, 1)
+		if cur_song.album then
+	        local album_art = Assets.getTexture("albums/"..cur_song.album) or self.none_album
+	        love.graphics.draw(album_art, 0, 0, 0, 1, 1, 125, 125)
+		elseif cur_song.locked or not cur_song.album then
+	        local album_art = self.none_album
+	        love.graphics.draw(album_art, 410, 170, 0, 1, 1, 125, 125)
+		end
     end
 
     love.graphics.setColor(0.4, 0.4, 0.4)
@@ -118,8 +137,12 @@ function JukeboxMenu:update()
     --play song
     if Input.pressed("confirm", false) then
         local cur_song = self:getPage(self.page)[self.selected_index] or self.default_song
-        if cur_song.file then
+        if cur_song.file and not cur_song.locked == true then
             Game.world.music:play(cur_song.file, 1)
+		end
+
+		if cur_song.locked == true then
+            Assets.playSound("error")
         end
     end
 
