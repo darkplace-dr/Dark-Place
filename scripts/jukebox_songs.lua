@@ -486,35 +486,40 @@ return {
     file = "whitespace",
     composer = "Jami Lynne",
     released = "2020",
-    origin = "Omori"
+    origin = "Omori",
+    album = "omori"
   },
   {
     name = "MERRY CD",
     file = "jb_toby",
     composer = "Toby Fox",
     released = "Dec 25, 2020",
-    origin = "Omori"
+    origin = "Omori",
+    album = "omori"
   },
   {
     name = "Welcome Again",
     file = "bs_entrance",
     composer = "Pedro Silva",
     released = "2020",
-    origin = "Omori"
+    origin = "Omori",
+    album = "omori"
   },
   {
     name = "August/Water",
     file = "august_water",
     composer = "Pedro Silva",
     released = "2020",
-    origin = "Omori"
+    origin = "Omori",
+    album = "omori"
   },
   {
     name = "My Time",
     file = "My_Time_Full(SpedUp)",
     composer = "bo en",
     released = "Sept 6, 2013 / Dec 25, 2020",
-    origin = "pale machine (modified for Omori)"
+    origin = "pale machine (modified for Omori)",
+    album = "pale machine"
   },
   {
     name = "Cold Spaghetti",
