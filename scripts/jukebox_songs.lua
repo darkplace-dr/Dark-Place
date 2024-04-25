@@ -4,98 +4,112 @@ return {
     file = "deltarune/castletown_empty",
     composer = "Toby Fox",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch1"
   },
   {
     name = "Field of Hopes and Dreams",
     file = "deltarune/field_of_hopes",
     composer = "Toby Fox",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch1"
   },
   {
     name = "I'm The Bad Guy!", --name in the sound test of SCC's shop in Chapter 2
     file = "deltarune/lancer",
     composer = "Toby Fox",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch1"
   },
   {
     name = "Rude Buster",
     file = "battle",
     composer = "Toby Fox",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch1"
   },
   {
     name = "Scarlet Forest",
     file = "deltarune/forest",
     composer = "Toby Fox",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch1"
   },
   {
     name = "THE HOLY",
     file = "deltarune/THE_HOLY",
     composer = "Toby Fox",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch1"
   },
   {
     name = "A Town Called Hometown",
     file = "deltarune/town",
     composer = "Toby Fox",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch1"
   },
   {
     name = "My Castle Town",
     file = "deltarune/castletown",
     composer = "Toby Fox",
     released = "2021",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch2"
   },
   {
     name = "Berdly",
     file = "deltarune/berdly_theme",
     composer = "Toby Fox",
     released = "2021",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch2"
   },
   {
     name = "WELCOME TO THE CITY",
     file = "deltarune/cybercity",
     composer = "Toby Fox",
     released = "2021",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch2"
   },
   {
     name = "WELCOME TO THE CITY (Weird Route)",
     file = "deltarune/cybercity_alt",
     composer = "Toby Fox",
     released = "2021",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch2"
   },
   {
     name = "Cool Mixtape",
     file = "deltarune/queen_car_radio",
     composer = "Toby Fox",
     released = "2021",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch2"
   },
   {
     name = "Song That Emerges From A Sleeping Dog",
     file = "deltarune/dogcheck",
     composer = "Toby Fox",
     released = "2018",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch1"
   },
   {
     name = "Alarm Titlescreen",
     file = "alarm_titlescreen",
     composer = "Toby Fox",
     released = "2021",
-    origin = "Deltarune"
+    origin = "Deltarune",
+	  album = "dr_ch2"
   },
   {
     name = "My Funky Town",
@@ -145,91 +159,104 @@ return {
     file = "ruins",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Enemy Approaching!",
     file = "battleut",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Snowy",
     file = "snowy",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Waterfall",
     file = "waterfall",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Another Medium",
     file = "anothermedium",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "CORE",
     file = "core",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Stronger Monsters",
     file = "battle2ut",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Dance of Dog",
     file = "dance_of_dog",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Sigh of Dog",
     file = "sigh_of_dog",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Uwa!! So Temperate",
     file = "options_fall",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Uwa!! So HEATS!!",
     file = "options_summer",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Uwa!! So Holiday",
     file = "options_winter",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale"
+    origin = "Undertale",
+	  album = "undertale"
   },
   {
     name = "Star",
     file = "mus_star",
     composer = "Toby Fox",
     released = "2015",
-    origin = "Undertale (Unused)"
+    origin = "Undertale (Unused)",
+	  album = "undertale"
   },
   {
     name = "Dogcheck (Anniversary Mix)",
@@ -413,28 +440,32 @@ return {
     file = "happy_hour",
     composer = "NoteBlock, MasterSwordRemix",
     released = "2023",
-    origin = "Undertale Yellow"
+    origin = "Undertale Yellow",
+	  album = "uty"
   },
   {
     name = "Meltdown",
     file = "steamworks_overworld",
     composer = "MyNewSoundtrack, MasterSwordRemix",
     released = "2023",
-    origin = "Undertale Yellow"
+    origin = "Undertale Yellow",
+	  album = "uty"
   },
   {
     name = "Treading Lightly",
     file = "treading_lightly",
     composer = "MasterSwordRemix",
     released = "2023",
-    origin = "Undertale Yellow"
+    origin = "Undertale Yellow",
+	  album = "uty"
   },
   {
     name = "Enter Axis",
     file = "enter_axis",
     composer = "NoteBlock, MasterSwordRemix",
     released = "2023",
-    origin = "Undertale Yellow"
+    origin = "Undertale Yellow",
+	  album = "uty"
   },
   {
     name = "No More Nuzzles",
@@ -491,7 +522,7 @@ return {
     composer = "Mr. Sauceman",
     released = "2023",
     origin = "Pizza Tower",
-	album = "pizza_tower"
+	  album = "pizza_tower"
   },
   {
     name = "Wednesdays",
@@ -499,7 +530,7 @@ return {
     composer = "ClascyJitto",
     released = "2023",
     origin = "Pizza Tower",
-	album = "pizza_tower"
+	  album = "pizza_tower"
   },
   {
     name = "Tropical Crust",
@@ -507,7 +538,7 @@ return {
     composer = "Mr. Sauceman",
     released = "2023",
     origin = "Pizza Tower",
-	album = "pizza_tower"
+	  album = "pizza_tower"
   },
   {
     name = "mmm yes put the tree on my pizza",
@@ -515,7 +546,7 @@ return {
     composer = "ClascyJitto",
     released = "2023",
     origin = "Pizza Tower",
-	album = "pizza_tower"
+	  album = "pizza_tower"
   },
   {
     name = "Pumpin' Hot Stuff",
@@ -523,7 +554,7 @@ return {
     composer = "Mr. Sauceman",
     released = "2023",
     origin = "Pizza Tower",
-	album = "pizza_tower"
+	  album = "pizza_tower"
   },
   {
     name = "The Death That I Deservioli",
@@ -531,7 +562,7 @@ return {
     composer = "Mr. Sauceman",
     released = "2023",
     origin = "Pizza Tower",
-	album = "pizza_tower"
+	  album = "pizza_tower"
   },
   {
     name = "A Grain of Bread in a Grain of Sand",
@@ -539,7 +570,7 @@ return {
     composer = "ClascyJitto",
     released = "2023",
     origin = "Pizza Tower",
-	album = "pizza_tower"
+	  album = "pizza_tower"
   },
   {
     name = "Impasta Syndrome", -- apparently it's original name is "Doise at the Door" according to PT's music files.
@@ -547,7 +578,7 @@ return {
     composer = "Mr. Sauceman",
     released = "2024",
     origin = "Pizza Tower",
-	album = "pizza_tower"
+	  album = "pizza_tower"
   },
   {
     name = "Snick",
