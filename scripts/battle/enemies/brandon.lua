@@ -50,13 +50,63 @@ end
 
 function Brandon:onAct(battler, name)
     if name == "Console" then
-        return "* But you didn't know what to say..."
+        if Game:getFlag("dungeonkiller") then
+            if self.comfort == 0 then
+                Game.battle:startActCutscene("brandon", "comfort1")
+                return
+            elseif self.comfort == 4 then
+                Game.battle:startActCutscene("brandon", "dk_comfort3")
+                return
+            else
+                return "* But you didn't know what to say..."
+            end
+        else
+            if self.comfort == 0 then
+                Game.battle:startActutscene("brandon", "comfort1")
+                return
+            else
+                return "* But you didn't know what to say..."
+            end
+        end
     elseif name == "D-Console" then
-        return "* But you didn't know what to say..."
+        if Game:getFlag("dungeonkiller") then
+            if self.comfort == 1 then
+                Game.battle:startActCutscene("brandon", "comfort2")
+                return
+            elseif self.comfort == 2 then
+                Game.battle:startActCutscene("brandon", "dk_comfort1")
+                return
+            elseif self.comfort == 3 then
+                Game.battle:startActCutscene("brandon", "dk_comfort2")
+                return
+            elseif self.comfort == 5 then
+                Game.battle:startActCutscene("brandon", "dk_comfort4")
+                return
+            else
+                return "* But you didn't know what to say..."
+            end
+        else
+            if self.comfort == 1 then
+                Game.battle:startActCutscene("brandon", "comfort2")
+                return
+            else
+                return "* But you didn't know what to say..."
+            end
+        end
     elseif name == "J-Console" then
-        return "* But you didn't know what to say..."
+        if self.comfort == 2 then
+            
+            return
+        else
+            return "* But you didn't know what to say..."
+        end
     elseif name == "X-Console" then
-        return "* But you didn't know what to say..."
+        if self.comfort == 3 then
+            
+            return
+        else
+            return "* But you didn't know what to say..."
+        end
     elseif name == "Standard" then
         return "* But "..battler.chara:getName().." didn't know what to say..."
     end
