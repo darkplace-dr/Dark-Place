@@ -607,7 +607,8 @@ return {
     -- https://web.archive.org/web/20100203221856/http://8bitcollective.com/music/surasshu/the+penis+(eek!)
     released = "April 10th, 2009",
     -- the recording in DP is based on https://modarchive.org/index.php?request=view_by_moduleid&query=186901
-    origin = "8bitcollective.com/members/surasshu (deadlink)"
+    origin = "8bitcollective.com/members/surasshu (deadlink)",
+    album = "surasshu"
   },
   {
     name = "Life Is",
@@ -753,7 +754,8 @@ return {
     file = "zero_boss",
     composer = "LudoWic",
     released = "2019",
-    origin = "Katana Zero"
+    origin = "Katana Zero",
+    album = "katana_zero"
   },
   {
     name = "Funky Theme",
@@ -810,7 +812,8 @@ return {
     file = "pikminonthefuckinggamecube",
     composer = "Yoko Shimomura (Music), Seaslux (Lyrics), BrendaK7200 (Vocals)",
     released = "2023",
-    origin = "Pikmin on the fucking Gamecube"
+    origin = "Pikmin on the fucking Gamecube",
+    album = "pikmins_nintendo"
   },
   --[[
   {
