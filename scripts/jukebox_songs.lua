@@ -490,56 +490,64 @@ return {
     file = "Cold_Spaghetti",
     composer = "Mr. Sauceman",
     released = "2023",
-    origin = "Pizza Tower"
+    origin = "Pizza Tower",
+	album = "pizza_tower"
   },
   {
     name = "Wednesdays",
     file = "Wednesdays",
     composer = "ClascyJitto",
     released = "2023",
-    origin = "Pizza Tower"
+    origin = "Pizza Tower",
+	album = "pizza_tower"
   },
   {
     name = "Tropical Crust",
     file = "Tropical_Crust",
     composer = "Mr. Sauceman",
     released = "2023",
-    origin = "Pizza Tower"
+    origin = "Pizza Tower",
+	album = "pizza_tower"
   },
   {
     name = "mmm yes put the tree on my pizza",
     file = "mmm_yess_put_the_tree_on_my_pizza",
     composer = "ClascyJitto",
     released = "2023",
-    origin = "Pizza Tower"
+    origin = "Pizza Tower",
+	album = "pizza_tower"
   },
   {
     name = "Pumpin' Hot Stuff",
     file = "Pumpin_Hot_Stuff",
     composer = "Mr. Sauceman",
     released = "2023",
-    origin = "Pizza Tower"
+    origin = "Pizza Tower",
+	album = "pizza_tower"
   },
   {
     name = "The Death That I Deservioli",
     file = "The_Death_That_I_Deservioli",
     composer = "Mr. Sauceman",
     released = "2023",
-    origin = "Pizza Tower"
+    origin = "Pizza Tower",
+	album = "pizza_tower"
   },
   {
     name = "A Grain of Bread in a Grain of Sand",
     file = "oregano_desert_secret",
     composer = "ClascyJitto",
     released = "2023",
-    origin = "Pizza Tower"
+    origin = "Pizza Tower",
+	album = "pizza_tower"
   },
   {
     name = "Impasta Syndrome", -- apparently it's original name is "Doise at the Door" according to PT's music files.
     file = "doise_boss",
     composer = "Mr. Sauceman",
     released = "2024",
-    origin = "Pizza Tower"
+    origin = "Pizza Tower",
+	album = "pizza_tower"
   },
   {
     name = "Snick",

@@ -88,14 +88,6 @@ function JukeboxMenu:draw()
 		    local scale_x = math.min(196 / self.font:getWidth(name), 1)
 		    love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
 		end
-        love.graphics.setColor(1, 1, 1)
-		if cur_song.album then
-	        local album_art = Assets.getTexture("albums/"..cur_song.album) or self.none_album
-	        love.graphics.draw(album_art, 0, 0, 0, 1, 1, 125, 125)
-		elseif cur_song.locked or not cur_song.album then
-	        local album_art = self.none_album
-	        love.graphics.draw(album_art, 410, 170, 0, 1, 1, 125, 125)
-		end
     end
 
     love.graphics.setColor(0.4, 0.4, 0.4)
@@ -112,6 +104,16 @@ function JukeboxMenu:draw()
     love.graphics.rectangle("line", 260, 20, 1, 356)
 
     local cur_song = cur_page[self.selected_index] or self.default_song
+	
+    love.graphics.setColor(1, 1, 1)
+    if not cur_song.album or cur_song.locked then
+        local album_art = self.none_album
+        love.graphics.draw(album_art, 410, 170, 0, 1, 1, 125, 125)
+    else
+        local album_art = Assets.getTexture("albums/"..cur_song.album) or self.none_album
+        love.graphics.draw(album_art, 410, 170, 0, 1, 1, 125, 125)
+    end
+
     local info_font = self.font
     local info_scale = 0.5
     if cur_song.cjk_info then
