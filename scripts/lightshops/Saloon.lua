@@ -3,7 +3,7 @@ local Saloon, super = Class(LightShop,  "saloon")
 function Saloon:init()
     super.init(self)
 
-    self.shop_music = "happy_hour"
+    self.shop_music = nil
     self.encounter_text = "* Howdy howdy!\nTake a gander at my\nwares."
     self.shop_text = "* Howdy howdy!\nTake a gander at my\nwares."
     self.leaving_text = "* Have fun out there!"
