@@ -555,7 +555,7 @@ return {
             ["text6"] = "* (Do you have horrible internet? Visit \"[color:black]WIFIDOWN[color:reset]\" now to resolve all of your network troubles!)",
             ["text7"] = "* (Check out the Dark Place X \"[color:#5fcde4]GARRYMOD[color:reset]\" crossover!\nMods included!)",
             ["text8"] = "* (Want to play some games? Check out the newly opened \"[color:blue]DARKCADE[color:white]\"!)",
-            ["text9"] = "* Visit the Wild East Saloon in WESALOON!"
+            ["text9"] = "* (Visit the Wild East Saloon in \"[color:ff7800]WESALOON[color:reset]\"!)"
           }
         },
         {

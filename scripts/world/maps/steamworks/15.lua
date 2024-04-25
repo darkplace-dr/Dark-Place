@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 13,
+  nextobjectid = 15,
   properties = {
     ["light"] = true,
     ["music"] = "steamworks_overworld",
@@ -20,8 +20,7 @@ return {
     {
       name = "steamworks",
       firstgid = 1,
-      filename = "../../tilesets/steamworks.tsx",
-      exportfilename = "../../tilesets/steamworks.lua"
+      filename = "../../tilesets/steamworks.tsx"
     },
     {
       name = "steamworks",
@@ -288,6 +287,22 @@ return {
           }
         },
         {
+          id = 13,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 0.833667,
+          y = 400,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "steamworks/16",
+            ["marker"] = "right"
+          }
+        },
+        {
           id = 12,
           name = "transition",
           type = "",
@@ -339,6 +354,19 @@ return {
           shape = "point",
           x = 470,
           y = 450,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "left",
+          type = "",
+          shape = "point",
+          x = 80,
+          y = 440,
           width = 0,
           height = 0,
           rotation = 0,
