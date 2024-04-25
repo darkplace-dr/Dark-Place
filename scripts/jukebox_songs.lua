@@ -519,7 +519,7 @@ return {
     composer = "bo en",
     released = "Sept 6, 2013 / Dec 25, 2020",
     origin = "pale machine (modified for Omori)",
-    album = "pale machine"
+    album = "pale_machine"
   },
   {
     name = "Cold Spaghetti",
