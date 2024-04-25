@@ -62,7 +62,7 @@ function Brandon:onAct(battler, name)
             end
         else
             if self.comfort == 0 then
-                Game.battle:startActutscene("brandon", "comfort1")
+                Game.battle:startActCutscene("brandon", "comfort1")
                 return
             else
                 return "* But you didn't know what to say..."
