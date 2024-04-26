@@ -356,21 +356,24 @@ return {
     file = "gimmieyourwalletmiss",
     composer = "Charbomber",
     released = "TBA",
-    origin = "Deltarune: The Stars"
+    origin = "Deltarune: The Stars",
+    album = "dr_ts"
   },
   {
     name = "Batter Up!",
     file = "batterup",
     composer = "Charbomber",
     released = "TBA",
-    origin = "Deltarune: The Stars"
+    origin = "Deltarune: The Stars",
+    album = "dr_ts"
   },
   {
     name = "Three Strikes, You're Out!",
     file = "threestrikesyoureout",
     composer = "Charbomber",
     released = "TBA",
-    origin = "Deltarune: The Stars"
+    origin = "Deltarune: The Stars",
+    album = "dr_ts"
   },
   {
     name = "Beasts",
@@ -762,7 +765,8 @@ return {
     file = "minigames/ab/funky_theme",
     composer = "AriTunes",
     released = "Dec 17, 2009",
-    origin = "Angry Birds"
+    origin = "Angry Birds",
+    album = "angry_birds"
   },
   {
     name = "Pot Calling The Kettle Black",
