@@ -35,7 +35,7 @@ end
 function WeirdEndPipis:destroy()
     self:remove()
 	
-	Assets.playSound("explosion_8bit", 0.8, 1)
+	Assets.playSound("minigames/punch_out/explosion_8bit", 0.8, 1)
 
     local initangle = math.random(80)
     local initspeed = 4
