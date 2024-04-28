@@ -471,6 +471,30 @@ return {
 	  album = "uty"
   },
   {
+    name = "Detainment 014",
+    file = "detainment",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
+  },
+  {
+    name = "Heatwave Approaching",
+    file = "heatwave_approaching",
+    composer = "Toby Fox, MyNewSoundtrack",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
+  },
+  {
+    name = "The Corner of a Circle",
+    file = "corner_of_a_circle",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
+  },
+  {
     name = "No More Nuzzles",
     file = "no_more_nuzzles",
     composer = "Lunaxis",
