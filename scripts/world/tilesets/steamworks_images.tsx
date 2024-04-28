@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="steamworks" tilewidth="1024" tileheight="1200" tilecount="6" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="steamworks" tilewidth="2800" tileheight="1200" tilecount="13" columns="0">
  <editorsettings>
   <export target="steamworks_images.lua" format="lua"/>
  </editorsettings>
@@ -27,5 +27,26 @@
  </tile>
  <tile id="7">
   <image width="624" height="520" source="../../../assets/sprites/world/maps/steamworks/15_building_4.png"/>
+ </tile>
+ <tile id="8">
+  <image width="624" height="728" source="../../../assets/sprites/world/maps/steamworks/23_office_exit.png"/>
+ </tile>
+ <tile id="9">
+  <image width="424" height="480" source="../../../assets/sprites/world/maps/steamworks/34_furnace_entrance.png"/>
+ </tile>
+ <tile id="10">
+  <image width="424" height="480" source="../../../assets/sprites/world/maps/steamworks/36_furnace_exit.png"/>
+ </tile>
+ <tile id="11">
+  <image width="2800" height="480" source="../../../assets/sprites/world/maps/steamworks/35_bg.png"/>
+ </tile>
+ <tile id="12">
+  <image width="2000" height="840" source="../../../assets/sprites/world/maps/steamworks/32_bg.png"/>
+ </tile>
+ <tile id="13">
+  <image width="1200" height="800" source="../../../assets/sprites/world/maps/steamworks/33_bg.png"/>
+ </tile>
+ <tile id="14">
+  <image width="360" height="84" source="../../../assets/sprites/world/maps/steamworks/33_bridge.png"/>
  </tile>
 </tileset>

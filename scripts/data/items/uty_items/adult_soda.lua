@@ -53,19 +53,27 @@ function item:onLightBattleUse(target)
 end
 
 function item:getWorldUseText(target)
-    return {
-        "* (You take a sip out of\nthe adult soda.)",
-        "* (...)",
-        "* (Tastes like water.)"
-    }
+    if target.id == Game.party[1].id then
+        return {
+            "* (You take a sip out of\nthe adult soda.)",
+            "* (...)",
+            "* (Tastes like water.)"
+        }
+    else
+        return "* ("..target:getName().." takes a sip out of\nthe adult soda.)"
+    end
 end
 
 function item:getLightBattleText(user, target)
-    return {
-        "* (You take a sip out of\nthe adult soda.)",
-        "* (...)",
-        "* (Tastes like water.)"
-    }
+    if target.chara.id == Game.battle.party[1].chara.id then
+        return {
+            "* (You take a sip out of\nthe adult soda.)",
+            "* (...)",
+            "* (Tastes like water.)"
+        }
+    else
+        return "* ("..target.chara:getName().." takes a sip out of\nthe adult soda.)"
+    end
 end
 
 return item

@@ -53,11 +53,19 @@ function item:onLightBattleUse(target)
 end
 
 function item:getWorldUseText(target)
-    return "* (You eat the Feisty Slider.\nMuch like the team, its flavor\nis... ambitious.)"
+    if target.id == Game.party[1].id then
+        return "* (You eat the Feisty Slider.[wait:5]\nMuch like the team,[wait:5] its flavor\nis...[wait:10] ambitious.)"
+    else
+        return "* ("..target:getName().." eats the Feisty Slider.)"
+    end
 end
 
 function item:getLightBattleText(user, target)
-    return "* (You eat the Feisty Slider.\nMuch like the team, its flavor\nis... ambitious.)"
+    if target.chara.id == Game.battle.party[1].chara.id then
+        return return "* (You eat the Feisty Slider.[wait:5]\nMuch like the team,[wait:5] its flavor\nis...[wait:10] ambitious.)"
+    else
+        return "* ("..target.chara:getName().." eats the Feisty Slider.)"
+    end
 end
 
 return item
