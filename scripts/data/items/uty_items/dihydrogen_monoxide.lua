@@ -6,8 +6,7 @@ function item:init(inventory)
     -- How this item is used on you (ate, drank, eat, etc.)
     self.use_method = "drink"
     -- Display name
-    self.name = "Dihydrogen Monoxide"
-    self.short_name = "H2O"
+    self.name = "H2O"
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
@@ -26,7 +25,7 @@ function item:init(inventory)
     self.description = "(Chemically inclined liquid.)"
 
     -- Light world check text
-    self.check = "Heals 20 HP\"#* (Chemically inclined liquid.)"
+    self.check = "Heals 20 HP\"\n* (Chemically inclined liquid.)"
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"
