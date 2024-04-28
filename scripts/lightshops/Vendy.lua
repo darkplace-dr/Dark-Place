@@ -31,7 +31,7 @@ function Vendy:init()
     self.sell_no_selling_text = {"* Oh yes![wait:5] I will gladly dispense\nyour garbage![wait:5] Hand it over!", "* Please stop."}
 
     self:registerItem("uty_items/gravity_granola", {description = "Heals 30HP\nThis will\nkill you."})
-    self:registerItem("uty_items/dihydrogen_monoxide", {description = "Heals 20HP\nUnfiltered.\nDirt. Bad."})
+    self:registerItem("uty_items/dihydrogen_monoxide", {name = "Dihydrogen Monoxide", description = "Heals 20HP\nUnfiltered.\nDirt. Bad."})
 	self:registerItem("uty_items/popato_chisps", {description = "Heals 13HP\nTastes like\nplastic."})
     self:registerItem("uty_items/safety_goggles", {description = "Armor: 9DF\nWill blind\nyou.", dont_show_change = true})
 

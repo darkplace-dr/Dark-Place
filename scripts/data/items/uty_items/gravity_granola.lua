@@ -26,7 +26,7 @@ function item:init(inventory)
     self.description = "(\"The taste is out of this world!\" ...Uh huh.)"
 
     -- Light world check text
-    self.check = "Heals 30 HP\"\n* (\"The taste is out of this\nworld!\" ...Uh huh.)"
+    self.check = "Heals 30 HP\"\n* (\"The taste is out of this\nworld!\"[wait:5] ...Uh huh.)"
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"
