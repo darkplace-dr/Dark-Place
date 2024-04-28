@@ -18,6 +18,7 @@ return {
 
         local function showMorshuAnim(sprite, speed)
             local m_anim = Sprite(sprite, 0, 0, nil, nil, "world/cutscenes/room3_morshu/morshu")
+            FRAMERATE = 30
             m_anim:play(speed, true)
             m_anim.layer = WORLD_LAYERS["ui"]
             m_anim.parallax_x = 0
@@ -29,6 +30,7 @@ return {
                     cutscene:wait(not disallow_cancel and waitForTimeOrUserCancellation(time) or time)
                 end
                 m_anim:remove()
+                FRAMERATE = Kristal.Config["fps"]
             end
         end
         local music_inst = Music()
