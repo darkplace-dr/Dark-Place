@@ -345,7 +345,7 @@ return {
                 cutscene:text("* Woah did you just say the fuck word?!", "wtf_b", "dess")
                 cutscene:text("* Man I'm so cool to have made you do that.", "heckyeah", "dess")
             elseif Game.party[1].id == "brenda" then
-                cutscene:text("* Oh wow it's Brandish", "condescending", "dess")
+                cutscene:text("* Oh wow it's Breloom", "condescending", "dess")
                 cutscene:showNametag("Brenda")
                 cutscene:text("* Are you going to do this every time?", "miffed", "brenda")
                 cutscene:showNametag("Dess")

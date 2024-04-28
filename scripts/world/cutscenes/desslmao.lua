@@ -50,16 +50,16 @@ return {
             cutscene:text("* Now that you're finally here, we can party!", "condescending", "dess")
         end
 		if cutscene:getCharacter("brenda") then
-			cutscene:text("* Oh hey is that the dude?", "kind", "dess")
+			cutscene:text("* Oh hey is that the gal?", "kind", "dess")
 
 			cutscene:showNametag("Brenda")
 			cutscene:text("[noskip][speed:0.3]* ...", "miffed", "brenda")
 
 			cutscene:showNametag("Dess")
-			cutscene:text("* uhhhh Brandish was it?", "neutral", "dess")
+			cutscene:text("* uhhhh Breloom was it?", "neutral", "dess")
 
 			cutscene:showNametag("Brenda")
-			cutscene:text("* ... Brenda.[wait:10]\n* Or Brenda if you prefer.", "miffed", "brenda")
+			cutscene:text("* ... Brenda.", "miffed", "brenda")
 
 			cutscene:showNametag("Dess")
 			cutscene:text("* yeah I knew that", "condescending", "dess")
