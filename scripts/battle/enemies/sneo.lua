@@ -78,6 +78,9 @@ function SpamtonNEO:update()
         elseif self.mode == "move_back" then
             wanted_x = 518 + 300
             wanted_y = 250
+        elseif self.mode == "move_up" then
+            wanted_x = 518
+            wanted_y = 250 - 300
         elseif self.mode == "shoot" then
             wanted_x = 518 + (math.cos(self.timer * 0.04) * 40)
             wanted_y = 250 + (math.cos(self.timer * 0.2) * 10)

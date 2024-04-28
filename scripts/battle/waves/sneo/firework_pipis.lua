@@ -5,6 +5,7 @@ function FireworkPipis:init()
     self.time = 3
 	
     self:setArenaPosition(245, 172)
+	self.sneo = Game.battle:getEnemyBattler("sneo")
 	
 	--[[local attackers = self:getAttackers()
 	for _,attacker in ipairs(attackers) do
@@ -15,17 +16,16 @@ end
 
 function FireworkPipis:onStart()
     Game.battle:swapSoul(YellowSoul())
+
+    self.sneo:setMode("move_back")
+
     self:spawnBullet("sneo/weird_end_pipis", 530, 100)
     self:spawnBullet("sneo/weird_end_pipis", 448, 168)
     self:spawnBullet("sneo/weird_end_pipis", 510, 250)
 end
 
 function FireworkPipis:onEnd()
-	--[[local attackers = self:getAttackers()
-	for _,attacker in ipairs(attackers) do
-		attacker.sprite:setPartSine("head", 0)
-		attacker:slideTo(attacker.x - 200, attacker.y, 0.25)
-	end]]
+    self.sneo:setMode("normal")
     super.onEnd(self)
 end
 

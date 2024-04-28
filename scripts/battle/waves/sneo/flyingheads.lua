@@ -7,7 +7,7 @@ function FlyingHeads:init()
 	self:setArenaSize(240, 110)
 	self:setArenaPosition(300, 175)
 
-    self.sneo = self:getAttackers()[1]
+    self.sneo = Game.battle:getEnemyBattler("sneo")
 	self.sneo.sprite:setPartSine("head", 2)
     self.type = 2
 end

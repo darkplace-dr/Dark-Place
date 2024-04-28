@@ -4,7 +4,7 @@ function Basic:init()
 	super.init(self)
     self.time = 15
 
-    self.sneo = self:getAttackers()[1]
+    self.sneo = Game.battle:getEnemyBattler("sneo")
     self.type = 1
 	
     if self.type == 0 then
