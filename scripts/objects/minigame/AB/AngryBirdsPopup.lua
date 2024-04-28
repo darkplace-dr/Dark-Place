@@ -16,11 +16,11 @@ function AngryBirdsPopup:init(x, y, width, height, default_font, default_font_si
     self.text = Text("Are you sure you want to quit?", 135, 205, SCREEN_WIDTH, SCREEN_HEIGHT)
     self:addChild(self.text)
 	
-    self.yes_button = AngryBirdsButton(self.box.x + 360, self.box.y + (self.box.height + 20), 0.8, 0.8, 0.8, 0.95, "MENU_YES", "ui_button_select")
+    self.yes_button = AngryBirdsButton(self.box.x + 360, self.box.y + (self.box.height + 20), 0.8, 0.8, 0.8, 0.95, "yes", "ui_button_select")
     self.yes_button.layer = self.box.layer + 1
 	self:addChild(self.yes_button)
 	
-    self.no_button = AngryBirdsButton(self.box.x + 120, self.box.y + (self.box.height + 20), 0.8, 0.8, 0.8, 0.95, "MENU_NO", "ui_button_back")
+    self.no_button = AngryBirdsButton(self.box.x + 120, self.box.y + (self.box.height + 20), 0.8, 0.8, 0.8, 0.95, "no", "ui_button_back")
     self.no_button.layer = self.box.layer + 1
 	self:addChild(self.no_button)
 	
