@@ -112,6 +112,13 @@ return {
 	  album = "dr_ch2"
   },
   {
+    name = "Hometown Day",
+    file = "hometown",
+    composer = "Toby Fox",
+    released = "2022",
+    origin = "deltarune.com"
+  },
+  {
     name = "My Funky Town",
     file = "castle_funk",
     composer = "Toby Fox",
@@ -165,6 +172,14 @@ return {
   {
     name = "Enemy Approaching!",
     file = "battleut",
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale",
+	  album = "undertale"
+  },
+  {
+    name = "sans.",
+    file = "deltarune/muscle",
     composer = "Toby Fox",
     released = "2015",
     origin = "Undertale",
@@ -374,6 +389,13 @@ return {
     released = "TBA",
     origin = "Deltarune: The Stars",
     album = "dr_ts"
+  },
+  {
+    name = "Fear and Insanity",
+    file = "vic",
+    composer = "Saurdino420",
+    released = "2023",
+    origin = "Deoxynn Act 1"
   },
   {
     name = "Beasts",
@@ -617,7 +639,8 @@ return {
     file = "snick",
     composer = "ClascyJitto",
     released = "2019",
-    origin = "Pizza Tower SAGE Demo"
+    origin = "snick's album",
+    album = "snicks_album"
   },
   {
     name = "Title Theme",
@@ -791,6 +814,14 @@ return {
     released = "Dec 17, 2009",
     origin = "Angry Birds",
     album = "angry_birds"
+  },
+  {
+    name = "Mutation",
+    file = "mutation",
+    composer = "C418",
+    released = "2013",
+    origin = "Minecraft",
+    album = "minecraft_vol_beta"
   },
   {
     name = "Pot Calling The Kettle Black",
