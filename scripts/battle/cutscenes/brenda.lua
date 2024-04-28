@@ -90,10 +90,10 @@ return {
             brenda.hits = 2
             cutscene:text("* Guys,[wait:5] what the hell was that for?!", "angry_c", "susie")
             cutscene:text("* hey im just practicing my second amendment rights here", "neutral_b", "dess")
-            cutscene:text("* he literally tried to shoot me", "angry", "dess")
-            cutscene:text("* I know but,[wait:5] he's also our friend!", "angry", "susie")
-            cutscene:text("* Look,[wait:5] something seriously wrong is going on with him.", "annoyed_down", "susie")
-            cutscene:text("* We need to help him out,[wait:5] not attack him!", "annoyed", "susie")
+            cutscene:text("* she literally tried to shoot me", "angry", "dess")
+            cutscene:text("* I know but,[wait:5] she's also our friend!", "angry", "susie")
+            cutscene:text("* Look,[wait:5] something seriously wrong is going on with her.", "annoyed_down", "susie")
+            cutscene:text("* We need to help her out,[wait:5] not attack her!", "annoyed", "susie")
             cutscene:text("* i...", "neutral", "dess")
             cutscene:text("* ...", "neutral_b", "dess")
             cutscene:text("* got it", "neutral", "dess")
@@ -120,7 +120,7 @@ return {
         end
         if brenda.hits == 4 and brenda.hurt_progress < 3 then
             cutscene:text("* Please,[wait:5] stop attacking Brenda!", "angry_b", "susie")
-            cutscene:text("* I know he attacked us first,[wait:5] but...", "sad_frown", "susie")
+            cutscene:text("* I know she attacked us first,[wait:5] but...", "sad_frown", "susie")
             cutscene:text("* Don't I deserve this,[wait:5] Susie?", "shaded_b", "brenda")
             cutscene:text("* Brenda...", "sad_frown", "susie")
             brenda.health = 4000
