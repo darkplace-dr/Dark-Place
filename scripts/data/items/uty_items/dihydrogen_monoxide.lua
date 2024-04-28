@@ -1,4 +1,4 @@
-local item, super = Class(HealItem, "uty_items/root_beer")
+local item, super = Class(HealItem, "uty_items/dihydrogen_monoxide")
 
 function item:init(inventory)
     super.init(self)
@@ -6,27 +6,27 @@ function item:init(inventory)
     -- How this item is used on you (ate, drank, eat, etc.)
     self.use_method = "drink"
     -- Display name
-    self.name = "Root Beer"
-    self.short_name = "RootBeer"
+    self.name = "Dihydrogen Monoxide"
+    self.short_name = "H2O"
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
     self.light = true
 
-    self.heal_amount = 18
+    self.heal_amount = 20
 
-    self.price = 22
+    self.price = 32
     -- Default shop sell price
     self.sell_price = 15
     -- Whether the item can be sold
     self.can_sell = true
 
     -- Item description text (unused by light items outside of debug menu)
-    self.description = "(It's family friendly!)"
+    self.description = "(Chemically inclined liquid.)"
 
     -- Light world check text
-    self.check = "Heals 18 HP\"\n* (It's family friendly!)"
+    self.check = "Heals 20 HP\"#* (Chemically inclined liquid.)"
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"
@@ -54,17 +54,17 @@ end
 
 function item:getWorldUseText(target)
     if target.id == Game.party[1].id then
-        return "* (You down the Root Beer.[wait:5] The\ncarbonation tingles!)"
+        return "* (You drink the H2O.[wait:5] Kinda\ntastes like window cleaner...)"
     else
-        return "* ("..target:getName().." downs the Root Beer.)"
+        return "* ("..target:getName().." drinks the H2O.)"
     end
 end
 
 function item:getLightBattleText(user, target)
     if target.chara.id == Game.battle.party[1].chara.id then
-        return "* (You down the Root Beer.[wait:5] The\ncarbonation tingles!)"
+        return "* (You drink the H2O.[wait:5] Kinda\ntastes like window cleaner...)"
     else
-        return "* ("..target.chara:getName().." downs the Root Beer.)"
+        return "* ("..target.chara:getName().." drinks the H2O.)"
     end
 end
 

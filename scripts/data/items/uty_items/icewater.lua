@@ -52,11 +52,19 @@ function item:onLightBattleUse(target)
 end
 
 function item:getWorldUseText(target)
-    return "* (You drink the Icewater.\nDefinitely has a taste but you\ncan't describe it.)"
+    if target.id == Game.party[1].id then
+        return "* (You drink the Icewater.[wait:5]\nDefinitely has a taste but you\ncan't describe it.)"
+    else
+        return "* ("..target:getName().." drinks the Icewater.)"
+    end
 end
 
 function item:getLightBattleText(user, target)
-    return "* (You drink the Icewater.\nDefinitely has a taste but you\ncan't describe it.)"
+    if target.chara.id == Game.battle.party[1].chara.id then
+        return "* (You drink the Icewater.[wait:5]\nDefinitely has a taste but you\ncan't describe it.)"
+    else
+        return "* ("..target.chara:getName().." drinks the Icewater.)"
+    end
 end
 
 return item

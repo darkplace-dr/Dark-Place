@@ -1,32 +1,37 @@
-local item, super = Class(HealItem, "uty_items/root_beer")
+local item, super = Class(HealItem, "uty_items/popato_chisps")
 
 function item:init(inventory)
     super.init(self)
 
-    -- How this item is used on you (ate, drank, eat, etc.)
-    self.use_method = "drink"
     -- Display name
-    self.name = "Root Beer"
-    self.short_name = "RootBeer"
+    self.name = "Popato Chisps"
+    self.short_name = "PT Chisps"
+    self.serious_name = "Chips"
+
+    -- How this item is used on you (ate, drank, eat, etc.)
+    self.use_method = "eat"
+    -- How this item is used on other party members (eats, etc.)
+    self.use_method_other = "eats"
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
     self.light = true
 
-    self.heal_amount = 18
+    self.heal_amount = 13
 
-    self.price = 22
+    -- Default shop price (sell price is halved)
+    self.price = 24
     -- Default shop sell price
     self.sell_price = 15
     -- Whether the item can be sold
     self.can_sell = true
 
     -- Item description text (unused by light items outside of debug menu)
-    self.description = "(It's family friendly!)"
+    self.description = "(Regular old popato chisps.)"
 
     -- Light world check text
-    self.check = "Heals 18 HP\"\n* (It's family friendly!)"
+    self.check = "Heals 13HP\"\n* (Regular old popato chisps.)"
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"
@@ -54,17 +59,17 @@ end
 
 function item:getWorldUseText(target)
     if target.id == Game.party[1].id then
-        return "* (You down the Root Beer.[wait:5] The\ncarbonation tingles!)"
+        return "* (You eat the Popato Chisps.[wait:5]\nThe crunch is deafening.)"
     else
-        return "* ("..target:getName().." downs the Root Beer.)"
+        return "* ("..target:getName().." eats the Popato Chisps.[wait:5]\nThe crunch is deafening.)"
     end
 end
 
 function item:getLightBattleText(user, target)
     if target.chara.id == Game.battle.party[1].chara.id then
-        return "* (You down the Root Beer.[wait:5] The\ncarbonation tingles!)"
+        return "* (You eat the Popato Chisps.[wait:5]\nThe crunch is deafening.)"
     else
-        return "* ("..target.chara:getName().." downs the Root Beer.)"
+        return "* ("..target.chara:getName().." eats the Popato Chisps.[wait:5]\nThe crunch is deafening.)"
     end
 end
 

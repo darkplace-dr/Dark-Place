@@ -1,32 +1,32 @@
-local item, super = Class(HealItem, "uty_items/root_beer")
+local item, super = Class(HealItem, "uty_items/gravity_granola")
 
 function item:init(inventory)
     super.init(self)
 
     -- How this item is used on you (ate, drank, eat, etc.)
-    self.use_method = "drink"
+    self.use_method = "eat"
     -- Display name
-    self.name = "Root Beer"
-    self.short_name = "RootBeer"
+    self.name = "Gravity Granola"
+    self.short_name = "G. Granola"
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Whether this item is for the light world
     self.light = true
 
-    self.heal_amount = 18
+    self.heal_amount = 30
 
-    self.price = 22
+    self.price = 36
     -- Default shop sell price
     self.sell_price = 15
     -- Whether the item can be sold
     self.can_sell = true
 
     -- Item description text (unused by light items outside of debug menu)
-    self.description = "(It's family friendly!)"
+    self.description = "(\"The taste is out of this world!\" ...Uh huh.)"
 
     -- Light world check text
-    self.check = "Heals 18 HP\"\n* (It's family friendly!)"
+    self.check = "Heals 30 HP\"\n* (\"The taste is out of this\nworld!\" ...Uh huh.)"
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"
@@ -54,17 +54,23 @@ end
 
 function item:getWorldUseText(target)
     if target.id == Game.party[1].id then
-        return "* (You down the Root Beer.[wait:5] The\ncarbonation tingles!)"
+        return {
+            "* (You snack on the Gravity\nGranola.)",
+            "* (You can really taste all 9.8\nmeters!)"
+        }
     else
-        return "* ("..target:getName().." downs the Root Beer.)"
+        return "* ("..target:getName().." snacks on the Gravity\nGranola.)"
     end
 end
 
 function item:getLightBattleText(user, target)
     if target.chara.id == Game.battle.party[1].chara.id then
-        return "* (You down the Root Beer.[wait:5] The\ncarbonation tingles!)"
+        return {
+            "* (You snack on the Gravity\nGranola.)",
+            "* (You can really taste all 9.8\nmeters!)"
+        }
     else
-        return "* ("..target.chara:getName().." downs the Root Beer.)"
+        return "* ("..target.chara:getName().." snacks on the Gravity\nGranola.)"
     end
 end
 
