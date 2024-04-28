@@ -106,7 +106,7 @@ function JukeboxMenu:draw()
     local cur_song = cur_page[self.selected_index] or self.default_song
 	
     love.graphics.setColor(1, 1, 1)
-    if not cur_song.album or cur_song.locked then
+    if not cur_song.album or cur_song.locked or cur_song.name == self.none_text then
         local album_art = self.none_album
         love.graphics.draw(album_art, 410, 170, 0, 1, 1, 125, 125)
     else
