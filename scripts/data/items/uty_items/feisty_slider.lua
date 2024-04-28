@@ -62,7 +62,7 @@ end
 
 function item:getLightBattleText(user, target)
     if target.chara.id == Game.battle.party[1].chara.id then
-        return return "* (You eat the Feisty Slider.[wait:5]\nMuch like the team,[wait:5] its flavor\nis...[wait:10] ambitious.)"
+        return "* (You eat the Feisty Slider.[wait:5]\nMuch like the team,[wait:5] its flavor\nis...[wait:10] ambitious.)"
     else
         return "* ("..target.chara:getName().." eats the Feisty Slider.)"
     end
