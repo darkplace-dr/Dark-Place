@@ -42,7 +42,7 @@ function item:init()
 
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
-        brandon = true,
+        brenda = true,
         pauling = true,
     }
 
@@ -51,7 +51,7 @@ function item:init()
         susie = "What is this, a toy?",
         ralsei = "Seems illegal...",
         noelle = "(Too dangerous...)",
-        brandon = "Shot over a game of cards...",
+        brenda = "Shot over a game of cards...",
 		jamm = "Why, Hornet...?",
     }
 end

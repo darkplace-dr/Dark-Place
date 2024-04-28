@@ -52,7 +52,7 @@ function item:init()
 		ralsei = "OH MY GOD",
 		susie = "PLEASE PUT THAT BACK",
 		noelle = "*Screaming*",
-        brandon = "OH GOODNESS",
+        brenda = "OH GOODNESS",
 		frisk2 = "Back where it belongs.",
     }
 end

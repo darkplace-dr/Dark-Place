@@ -52,7 +52,7 @@ function item:init()
         ralsei = "Are you sure that's magic?",
         noelle = "It's... powerful?",
 		dess = "NOOO, MY PRECIOUS POWER RING, GONE FOREVER, AUGHHHHHHHHH",
-        brandon = "I'm taken, sorry.",
+        brenda = "I'm taken, sorry.",
 		jamm = "My wife wouldn't like that... Oh, right..."
     }
 end

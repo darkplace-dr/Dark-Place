@@ -65,7 +65,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 </a>
 
 * Racckoon - Mod idea, Contributor
-* BrandonK7200 - Making the GitHub page, Contributor
+* BrendaK7200 - Making the GitHub page, Contributor
 * AcousticJamm - Name idea, Contributor
 * Anonymously_Present - Contributor
 * Simbel - Contributor

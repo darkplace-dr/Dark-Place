@@ -10,9 +10,9 @@ return {
             cutscene:text("* The complete destruction of reality?", "nervous_side", "susie")
             cutscene:text("* The hell does this person mean by that?", "nervous", "susie")
         end
-        if cutscene:getCharacter("brandon") then
-            cutscene:showNametag("Brandon")
-            cutscene:text("* ...", "shaded_b", "brandon")
+        if cutscene:getCharacter("brenda") then
+            cutscene:showNametag("Brenda")
+            cutscene:text("* ...", "shaded_b", "brenda")
         end
         cutscene:hideNametag()
     end,

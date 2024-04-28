@@ -53,7 +53,7 @@ function item:init()
         ralsei = "I'm so sweaty...",
         noelle = "J-Jeez, they're kind of hot...", -- Not in THAT way you pervert >:[
         dess = "wouldn't it be funny if i conquered the universe with these?",
-        brandon = "Thankfully the crown isn't included."
+        brenda = "Thankfully the crown isn't included."
     }
 end
 

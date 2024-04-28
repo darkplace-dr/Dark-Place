@@ -43,7 +43,7 @@ return {
 	
     marcy = function(cutscene, event)
 		local susie = cutscene:getCharacter("susie")
-		local brandon = cutscene:getCharacter("brandon")
+		local brenda = cutscene:getCharacter("brenda")
 		local dess = cutscene:getCharacter("dess")
 	
 		cutscene:showNametag("Marcy")
@@ -60,15 +60,15 @@ return {
 			cutscene:text("[voice:marcy]* Marcy is still a simple child,[wait:5] as you can see.", "neutral", "marcy")
 			cutscene:text("[voice:marcy]* But.[wait:5].[wait:5]. Marcy has been to the light,[wait:5] but hasn't seen much of it.", "frown", "marcy")
 			
-			if brandon then
-				cutscene:showNametag("Brandon")
-				cutscene:text("* Huh?[wait:5]\nBut I thought you were a lightner?", "shock", "brandon")
+			if brenda then
+				cutscene:showNametag("Brenda")
+				cutscene:text("* Huh?[wait:5]\nBut I thought you were a lightner?", "shock", "brenda")
 			elseif susie then
 				cutscene:showNametag("Susie")
 				cutscene:text("[voice:susie]* You don't look like a darkner.", "nervous", "susie")
 			end
 			
-			if brandon or susie then
+			if brenda or susie then
 				cutscene:showNametag("Marcy")
 				cutscene:text("[voice:marcy]* Papa and mama are both lightners,[wait:5] but...", "frown", "marcy")
 				cutscene:text("[voice:marcy]* But Marcy gets really sick in the light world.", "frown", "marcy")
@@ -82,10 +82,10 @@ return {
 					cutscene:text("[voice:susie]* We all have things we want to achieve,[wait:5] and...", "sincere", "susie")
 					cutscene:text("[voice:susie]* Well,[wait:5] you just have to keep trying.", "sincere_smile", "susie")
 					
-					if brandon then
-						cutscene:showNametag("Brandon")
-						cutscene:text("* Susie is right,[wait:5] Marcy.", "happy", "brandon")
-						cutscene:text("* Nothing good is worth waiting for.[wait:5] You have to make it happen.", "happy_b", "brandon")
+					if brenda then
+						cutscene:showNametag("Brenda")
+						cutscene:text("* Susie is right,[wait:5] Marcy.", "happy", "brenda")
+						cutscene:text("* Nothing good is worth waiting for.[wait:5] You have to make it happen.", "happy_b", "brenda")
 					end
 					
 					cutscene:showNametag("Marcy")
@@ -110,18 +110,18 @@ return {
 						cutscene:showNametag("Susie")
 						cutscene:text("[voice:susie]* (Who's she talking to?)", "nervous_side", "susie")
 						
-						if brandon then
-							cutscene:showNametag("Brandon")
-							cutscene:text("* (I have no idea.)", "shock", "brandon")
+						if brenda then
+							cutscene:showNametag("Brenda")
+							cutscene:text("* (I have no idea.)", "shock", "brenda")
 						end
 					end
 				end
 			end
 		elseif choice == 2 then
 			if not Game:getFlag("fake_jamm", false) then
-				if brandon then
-					cutscene:showNametag("Brandon")
-					cutscene:text("* So where is Acoustic,[wait:5] by the way?", "neutral", "brandon")
+				if brenda then
+					cutscene:showNametag("Brenda")
+					cutscene:text("* So where is Acoustic,[wait:5] by the way?", "neutral", "brenda")
 				else
 					cutscene:showNametag("Marcy")
 					cutscene:text("[voice:marcy]* Huh?[wait:5]\n* Where is papa?", "confused", "marcy")
@@ -285,7 +285,7 @@ return {
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "ralsei" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
-            elseif id == "brandon" then
+            elseif id == "brenda" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
             elseif id == "berdly" then
 				cutscene:text("* (WIP, check back in a future update)", "neutral", "jamm")
@@ -342,7 +342,7 @@ return {
             jammPartyOpinion(id)
         end
 		local susie = cutscene:getCharacter("susie")
-		local brandon = cutscene:getCharacter("brandon")
+		local brenda = cutscene:getCharacter("brenda")
 		local dess = cutscene:getCharacter("dess")
 		
 		cutscene:showNametag("Jamm")

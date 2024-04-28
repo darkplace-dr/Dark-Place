@@ -1,14 +1,14 @@
-local actor, super = Class(Actor, "brandon_master")
+local actor, super = Class(Actor, "brenda_master")
 
 
 function actor:init(chara)
     super.init(self)
-    self.name = "brandon_master"
+    self.name = "brenda_master"
     self.width = 34
     self.height = 34
     self.hitbox = {0, 24.5, 34, 9.5}
     self.color = {1, 1, 1}
-    self.path = "tutorial_masters/brandon_master"
+    self.path = "tutorial_masters/brenda_master"
     self.default = "idle"
     self.voice = nil
 

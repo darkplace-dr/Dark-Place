@@ -76,9 +76,9 @@ return {
                     cutscene:text("* If God wanted him to live He would not have created me", "condescending", "dess")
                 end
 
-                if cutscene:getCharacter("brandon") then
-                    cutscene:showNametag("Brandon")
-                    cutscene:text("* Um...[wait:5] alright then.", "frown", "brandon")
+                if cutscene:getCharacter("brenda") then
+                    cutscene:showNametag("Brenda")
+                    cutscene:text("* Um...[wait:5] alright then.", "frown", "brenda")
                 end
 
                 cutscene:hideNametag()

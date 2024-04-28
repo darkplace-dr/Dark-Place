@@ -1,12 +1,12 @@
-local character, super = Class(PartyMember, "brandon")
+local character, super = Class(PartyMember, "brenda")
 
 function character:init()
     super.init(self)
 
-    self.name = "Brandon"
+    self.name = "Brenda"
 
-    self:setActor("brandon")
-    self:setLightActor("brandon_lw")
+    self:setActor("brenda")
+    self:setLightActor("brenda_lw")
 
     self.level = 1
     self.title = "Marksman\nTakes aim with\na rifle."
@@ -20,7 +20,7 @@ function character:init()
     self.has_xact = true
     self.xact_name = "B-Action"
 
-    self.lw_portrait = "face/brandon/neutral"
+    self.lw_portrait = "face/brenda/neutral"
 
     self:addSpell("gammabeam")
 
@@ -48,9 +48,9 @@ function character:init()
     self.attack_box_color = {0, 0, 0.5}
     self.xact_color = nil
 
-    self.menu_icon = "party/brandon/head"
-    self.head_icons = "party/brandon/icon"
-    self.name_sprite = "party/brandon/name"
+    self.menu_icon = "party/brenda/head"
+    self.head_icons = "party/brenda/icon"
+    self.name_sprite = "party/brenda/name"
 
     self.attack_sprite = "effects/attack/shoot"
     self.attack_sound = "bigcut"

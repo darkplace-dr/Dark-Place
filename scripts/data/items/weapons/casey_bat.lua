@@ -53,7 +53,7 @@ function item:init()
 		ralsei = "I'm not good enough!",
 		susie = "You know what? Sure.",
 		noelle = "I'm not good at baseball!!",
-		brandon = "I don't play sports.",
+		brenda = "I don't play sports.",
 		jamm = "Don't want to hit a crotch again!"
     }
 end

@@ -73,14 +73,14 @@ return {
         cutscene:text("* But nothing of use happened...")
     end,
 
-    brandon_insult = function(cutscene, battler, enemy)
-        cutscene:text("* Brandon tried to insult Spamgolor...")
+    brenda_insult = function(cutscene, battler, enemy)
+        cutscene:text("* Brenda tried to insult Spamgolor...")
 
-        cutscene:text("* Your Jordans are completely fake!", "miffed", "brandon")
+        cutscene:text("* Your Jordans are completely fake!", "miffed", "brenda")
 
         cutscene:text("* ... WHAT...", "", "spamgolor")
 
-        cutscene:text("* Wait I forgot you don't even have feet.", "shock", "brandon")
+        cutscene:text("* Wait I forgot you don't even have feet.", "shock", "brenda")
 
         cutscene:text("* But nothing of use happened...")
     end,

@@ -408,14 +408,14 @@ return {
     file = "mirati_bk7200cover",
     composer = "BrendaK7200",
     released = "2022",
-    origin = "soundcloud.com/brandonk7200"
+    origin = "soundcloud.com/brendak7200"
   },
   {
     name = "YOUR LOVE",
     file = "mari_neo",
     composer = "BrendaK7200",
     released = "2022",
-    origin = "soundcloud.com/brandonk7200"
+    origin = "soundcloud.com/brendak7200"
   },
   {
     name = "THE DARK",

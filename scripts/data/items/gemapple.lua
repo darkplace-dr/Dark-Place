@@ -52,7 +52,7 @@ function item:init()
         ralsei = "Um, I don't think I can eat this...",
         noelle = "Did we get scammed?",
         dess = "fucking microtransactions",
-        brandon = "The hell am I supposed to do with this?!",
+        brenda = "The hell am I supposed to do with this?!",
 		jamm = "Why don't we just cut our losses and sell it next time?"
     }
 end

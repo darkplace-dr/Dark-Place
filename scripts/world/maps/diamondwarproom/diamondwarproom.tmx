@@ -142,9 +142,9 @@
     <property name="flagcheck" value="berdly_plush"/>
    </properties>
   </object>
-  <object id="40" name="brandon_plush" x="760" y="160" width="40" height="40">
+  <object id="40" name="brenda_plush" x="760" y="160" width="40" height="40">
    <properties>
-    <property name="flagcheck" value="brandon_plush"/>
+    <property name="flagcheck" value="brenda_plush"/>
    </properties>
   </object>
   <object id="41" name="kris_plush" x="640" y="120" width="40" height="40">

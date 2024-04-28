@@ -31,7 +31,7 @@ function item:init()
         ["susie"] = Game:getPartyMember("susie"):getOpinion(Game:getPartyMember(tea_self)),
         ["noelle"] = Game:getPartyMember("noelle"):getOpinion(Game:getPartyMember(tea_self)),
         ["dess"] = Game:getPartyMember("dess"):getOpinion(Game:getPartyMember(tea_self)),
-        ["brandon"] = Game:getPartyMember("brandon"):getOpinion(Game:getPartyMember(tea_self)),
+        ["brenda"] = Game:getPartyMember("brenda"):getOpinion(Game:getPartyMember(tea_self)),
         ["dumbie"] = Game:getPartyMember("dumbie"):getOpinion(Game:getPartyMember(tea_self)),
         ["ostarwalker"] = Game:getPartyMember("ostarwalker"):getOpinion(Game:getPartyMember(tea_self)),
         ["berdly"] = 10,

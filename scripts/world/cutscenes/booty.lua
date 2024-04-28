@@ -34,18 +34,18 @@ return {
 			cutscene:text("* Ripoff?[wait:5] Wow![wait:5]\n* You must be so confused!")
 		end
 		
-		if Game:hasPartyMember("brandon") then
-			cutscene:showNametag("Brandon")
+		if Game:hasPartyMember("brenda") then
+			cutscene:showNametag("Brenda")
 			if Game:hasPartyMember("jamm") then
-				cutscene:text("* Wow,[wait:5] Jamm...[wait:5]\n* You were right about this guy.", "frown", "brandon")
-				cutscene:text("* He's really...[wait:5]\n* Uh...", "frown", "brandon")
+				cutscene:text("* Wow,[wait:5] Jamm...[wait:5]\n* You were right about this guy.", "frown", "brenda")
+				cutscene:text("* He's really...[wait:5]\n* Uh...", "frown", "brenda")
 				
 				cutscene:showNametag("Jamm")
 				cutscene:text("* Weird?[wait:5]\n* Yeah,[wait:5] I know.", "stern", "jamm")
 			else
-				cutscene:text("* Wow,[wait:5] Jamm was right about this guy.", "frown", "brandon")
-				cutscene:text("* He's really...[wait:5]\n* Uh...", "frown", "brandon")
-				cutscene:text("* Weird...", "frown_side", "brandon")
+				cutscene:text("* Wow,[wait:5] Jamm was right about this guy.", "frown", "brenda")
+				cutscene:text("* He's really...[wait:5]\n* Uh...", "frown", "brenda")
+				cutscene:text("* Weird...", "frown_side", "brenda")
 			end
 			cutscene:showNametag("Booty")
 		end

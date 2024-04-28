@@ -86,7 +86,7 @@ return function(cutscene, player_name_override)
 	or player_name == "BLUE"
 	or player_name == "PLAGUEIS"
 	or player_name == "DESS"
-    or player_name == "BRANDON"
+    or player_name == "BELLA"
     or player_name == "BRENDA"
     or player_name == "LUCY"
     or player_name == "BONER"
@@ -165,7 +165,7 @@ return function(cutscene, player_name_override)
             showText("[voice:flowey2]* She's like a tumor...", "evil")
             showText("[voice:flowey2]* Once she clings on,[wait:5] she'll NEVER come off.", "evil")
             cutscene:hideNametag()
-        elseif player_name == "BRANDON" or player_name == "BRENDA" then
+        elseif player_name == "BELLA" or player_name == "BRENDA" then
             cutscene:showNametag("Flowey")
             showText("* Y'know,[wait:5] I've always wondered what it's like to visit other worlds.", "side")
             showText("* To see what endless possibilites lie outside your reach.", "nice")

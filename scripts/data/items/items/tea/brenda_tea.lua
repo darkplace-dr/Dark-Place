@@ -1,10 +1,10 @@
-local item, super = Class(HealItem, "brandon_tea")
+local item, super = Class(HealItem, "brenda_tea")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Brandon Tea"
+    self.name = "Brenda Tea"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
@@ -23,7 +23,7 @@ function item:init()
     self.heal_amount = 50
     -- Amount this item heals for specific characters
     -- Party member this tea is from
-    local tea_self = "brandon"
+    local tea_self = "brenda"
 
     self.heal_amounts = {
         ["YOU"] = Game:getPartyMember("YOU"):getOpinion(Game:getPartyMember(tea_self)),
@@ -31,7 +31,7 @@ function item:init()
         ["susie"] = Game:getPartyMember("susie"):getOpinion(Game:getPartyMember(tea_self)),
         ["noelle"] = Game:getPartyMember("noelle"):getOpinion(Game:getPartyMember(tea_self)),
         ["dess"] = Game:getPartyMember("dess"):getOpinion(Game:getPartyMember(tea_self)),
-        ["brandon"] = 10,
+        ["brenda"] = 10,
         ["dumbie"] = Game:getPartyMember("dumbie"):getOpinion(Game:getPartyMember(tea_self)),
         ["ostarwalker"] = Game:getPartyMember("ostarwalker"):getOpinion(Game:getPartyMember(tea_self)),
         ["berdly"] = Game:getPartyMember("berdly"):getOpinion(Game:getPartyMember(tea_self)),

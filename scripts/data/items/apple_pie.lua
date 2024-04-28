@@ -28,7 +28,7 @@ function item:init()
         ["ralsei"] = 20,
         ["noelle"] = 40,
 		["dess"] = 250,
-        ["brandon"] = 60,
+        ["brenda"] = 60,
 		["jamm"] = 99999
 	}
 
@@ -61,7 +61,7 @@ function item:init()
         ralsei = "It's... sweet!",
         noelle = "I've never been a fan. Sorry!",
 		dess = "YEAH WOO AMERICA BABY YEAH",
-        brandon = "Eh, pumpkin's better.",
+        brenda = "Eh, pumpkin's better.",
 		jamm = "I'm lovin' it!"
     }
 end

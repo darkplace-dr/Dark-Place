@@ -29,7 +29,7 @@ function item:init()
         ["noelle"] = 10,
         ["YOU"] = 60,
         ["dess"] = 60,
-        ["brandon"] = 60,
+        ["brenda"] = 60,
 		["jamm"] = 999,
 		["mario"] = 10,
         ["pauling"] = 60,

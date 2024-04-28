@@ -43,7 +43,7 @@ function item:init()
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
         dess = true,
-        brandon = true,
+        brenda = true,
         bor = true,
     }
 
@@ -52,7 +52,7 @@ function item:init()
         bor = "It's morbin' time!",
         berdly = "A gun?! Haha, no. Gamers have STANDARS, you know?",
         dess = "HELL FUCKING YUEHAH GIMME",
-        brandon = "I- Uh... Well... Sure??",
+        brenda = "I- Uh... Well... Sure??",
         susie = "(HOW DID YOU GET A GUN???)",
         ralsei = "Ummm... I'd rather not use this...",
         noelle = "(I- I don't think it's legal to have this-)",

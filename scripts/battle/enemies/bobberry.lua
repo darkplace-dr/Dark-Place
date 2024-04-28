@@ -101,9 +101,9 @@ function Bobberry:onAct(battler, name)
     elseif name == "Standard" then --X-Action
         -- Give the enemy 50% mercy
         self:addMercy(25)
-        if battler.chara.id == "brandon" then
+        if battler.chara.id == "brenda" then
             -- R-Action text
-            return "* Brandon offered Bobberry some food.\n* Bobberry politely declined."
+            return "* Brenda offered Bobberry some food.\n* Bobberry politely declined."
         elseif battler.chara.id == "susie" then
             -- S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
             return "* Susie shook a tree really hard and a bunch of berries came down."

@@ -49,7 +49,7 @@ function item:init()
         ralsei = false,
         noelle = true,
         dess = true,
-        brandon = true,
+        brenda = true,
         jamm = true,
 		mario = true,
 		pauling = true,
@@ -61,7 +61,7 @@ function item:init()
         ralsei = "How is it supposed to work...?",
         noelle = "Oh it's just like that movie!",
         dess = "LMAO wtf is that?",
-        brandon = "Does it say something?",
+        brenda = "Does it say something?",
 		jamm = "What did you say about Ania!?"
     }
 end

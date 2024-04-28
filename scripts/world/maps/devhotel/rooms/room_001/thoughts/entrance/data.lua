@@ -232,7 +232,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "brandon_dreamscape",
+            ["actor"] = "brenda_dreamscape",
             ["facing"] = "up",
             ["flagcheck"] = "!b_entrance"
           }

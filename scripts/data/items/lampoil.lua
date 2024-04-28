@@ -27,7 +27,7 @@ function item:init()
         ["ralsei"] = -50,
         ["noelle"] = nil,
 		["dess"] = 90,
-        ["brandon"] = nil,
+        ["brenda"] = nil,
 		["jamm"] = -50
 	}
 
@@ -52,7 +52,7 @@ function item:init()
         ralsei = "Cough! Cough! How is this edible?!",
         noelle = "Isn't this poisonous!?",
 		dess = "yummy",
-        brandon = "No.",
+        brenda = "No.",
 		jamm = "Not the first time I drank oil. Ow, though..."
 	}
 end

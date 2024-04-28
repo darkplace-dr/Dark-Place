@@ -32,7 +32,7 @@ function lib:init()
     end
 
     if Kristal.getLibConfig("achievements", "print_console_intro") ~= false then
-        print("Achievement library loaded - courtesy of SciSpace, BrandonK7200, AcousticJamm, and Dobby233Liu")
+        print("Achievement library loaded - courtesy of SciSpace, BrendaK7200, AcousticJamm, and Dobby233Liu")
     end
 end
 

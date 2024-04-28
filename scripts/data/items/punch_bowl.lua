@@ -31,7 +31,7 @@ function item:init()
         ["ralsei"] = 100,
         ["noelle"] = 80,
 		["dess"] = 20,
-        ["brandon"] = 40,
+        ["brenda"] = 40,
 		["jamm"] = 0
 	}
 
@@ -64,7 +64,7 @@ function item:init()
         ralsei = "I love punch!",
         noelle = 'Why is it called "punch?"',
 		dess = "I don't trust it",
-        brandon = "Never really been a fan.",
+        brenda = "Never really been a fan.",
 		jamm = "Alright. I punched it. What next?"
     }
 end

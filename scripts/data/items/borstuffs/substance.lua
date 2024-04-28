@@ -52,7 +52,7 @@ function item:init()
         ralsei = "I've already had my fair share of this, haha.",
         noelle = "(WHERE THE FUCK DID YOU GET COCAINE)",
         kris = "yummy",
-        brandon = "So... This IS legal here, right?",
+        brenda = "So... This IS legal here, right?",
         bor = "What? You want more o' that?",
         dess = "AYYYYY LETST GET FUCJKKED BABY!!!! WOSAAAAAAAAHSDFHGSDJFHK",
         berdly = "I-W-What?! I'm sorry, my friend. But even a GAMER has STANDARS.",

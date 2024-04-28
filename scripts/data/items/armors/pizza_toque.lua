@@ -51,7 +51,7 @@ function item:init()
         ralsei = "Hello there!",
         noelle = "Wh-why do I feel paranoid all of a sudden?",
         dess = "i cooka da pizza",
-        brandon = "Y'all ready to get funky?",
+        brenda = "Y'all ready to get funky?",
 		jamm = "Pizza, pasta, put it in my box! Deliver it to my house and put it on my--"
     }
 end

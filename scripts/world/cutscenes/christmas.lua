@@ -45,16 +45,16 @@ return {
 				cutscene:text("[font:sans]* you must be imagining things.", "neutral", "self")
 			end
 			
-			if cutscene:getCharacter("brandon") then
-				cutscene:showNametag("Brandon", {right = false})
-				cutscene:text("* Wait,[wait:5] uh,[wait:5] Self...", "neutral", "brandon")
-				cutscene:text("* Are these hot dogs...[wait:5]\n* Legal?", "neutral", "brandon")
+			if cutscene:getCharacter("brenda") then
+				cutscene:showNametag("Brenda", {right = false})
+				cutscene:text("* Wait,[wait:5] uh,[wait:5] Self...", "neutral", "brenda")
+				cutscene:text("* Are these hot dogs...[wait:5]\n* Legal?", "neutral", "brenda")
 			
 				cutscene:showNametag("self", {font = "sans", right = false})
 				cutscene:text("[font:sans]* will you buy them if i said they weren't?", "neutral", "self")
 				
-				cutscene:showNametag("Brandon", {right = false})
-				cutscene:text("* I don't think so???", "shock", "brandon")
+				cutscene:showNametag("Brenda", {right = false})
+				cutscene:text("* I don't think so???", "shock", "brenda")
 			
 				cutscene:showNametag("self", {font = "sans", right = false})
 				cutscene:text("[font:sans]* well that's good,[wait:5] because they are legal.", "neutral", "self")

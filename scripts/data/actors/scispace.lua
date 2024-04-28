@@ -34,7 +34,7 @@ function actor:init()
     -- Offset position for this actor's portrait (optional)
     self.portrait_offset = {-30, -15}
 
-    -- Whether this actor as a follower will blush when close to the (brandon willer or tsu?) - find way to do this -Sci
+    -- Whether this actor as a follower will blush when close to the (brenda willer or tsu?) - find way to do this -Sci
     self.can_blush = false
 
 

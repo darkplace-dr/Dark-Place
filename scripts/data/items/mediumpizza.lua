@@ -28,7 +28,7 @@ function item:init()
         ["noelle"] = 30,
         ["YOU"] = 30,
         ["dess"] = 25,
-        ["brandon"] = 30,
+        ["brenda"] = 30,
 		["jamm"] = nil,
 	}
 
@@ -52,7 +52,7 @@ function item:init()
         ralsei = "Isn't this just plastic?",
         noelle = "Not the best, but it's fine.",
 		dess = "ew fnaf",
-        brandon = "WAS THAT THE BITE OF 87?!",
+        brenda = "WAS THAT THE BITE OF 87?!",
 		jamm = "Hold on. There are mushrooms."
 	}
 end

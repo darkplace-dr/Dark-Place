@@ -116,9 +116,9 @@ function HHaunt:onAct(battler, name)
 		elseif battler.chara.id == "dess" then
             -- D-Action text
             return "* Dess was spooky... somehow."
-		elseif battler.chara.id == "brandon" then
+		elseif battler.chara.id == "brenda" then
             -- B-Action text
-            return "* Brandon mirrored the enemy."
+            return "* Brenda mirrored the enemy."
 		elseif battler.chara.id == "robo_susie" then
             -- RS-Action text
             return "* (Other?) Susie talked fondly of their time as an axe murderer."

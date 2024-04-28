@@ -50,7 +50,7 @@ function item:init()
         ralsei = "What language is this in?",
         noelle = "It feels... magical...",
 		dess = "I'm REALLY not a fucking nerd",
-        brandon = "Ooo, I love books!",
+        brenda = "Ooo, I love books!",
 		jamm = "They don't pay me enough for this!"
     }
 end

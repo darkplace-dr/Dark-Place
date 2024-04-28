@@ -56,7 +56,7 @@ function item:init()
         ralsei = "Um, I think that would set my fur on fire...",
         noelle = "N-no, I would MELT in that thing, fahaha...",
         dess = "i feel a sudden urge to sell microtransactions",
-        brandon = "Uhh... This isn't gonna kill me, is it?",
+        brenda = "Uhh... This isn't gonna kill me, is it?",
     }
 end
 

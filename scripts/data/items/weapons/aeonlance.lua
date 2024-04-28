@@ -53,7 +53,7 @@ function item:init()
         noelle = "It feels... magical?",
 		jamm = {
             jamm = "I never was a swords guy.",
-            brandon = "Grah, lances aren't swords !! /lh"
+            brenda = "Grah, lances aren't swords !! /lh"
         },
     }
 end

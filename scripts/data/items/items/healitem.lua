@@ -53,7 +53,7 @@ function item:init()
         ralsei = "It's, uh... good for invisible food!",
         noelle = "(What is it supposed to be??)",
         dess = "bro its unfinished",
-        brandon = "Is this a mime sandwich?",
+        brenda = "Is this a mime sandwich?",
 		jamm = "I feel the glitches inside me.",
 		mario = "Sonic"
     }

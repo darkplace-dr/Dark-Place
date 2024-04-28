@@ -57,7 +57,7 @@ return {
 					else
 						cutscene:text("* Do you know any of those songs, "..Mod:getLeader().name.."?", "neutral", "susie")
 					end
-					local real_world_member = cutscene:getCharacter("brandon") or cutscene:getCharacter("jamm") or nil
+					local real_world_member = cutscene:getCharacter("brenda") or cutscene:getCharacter("jamm") or nil
 					if real_world_member then
 						cutscene:text("* It's probably songs from where we come from.", "neutral", real_world_member)
 						cutscene:text("* Oh.", "neutral_side", "susie")

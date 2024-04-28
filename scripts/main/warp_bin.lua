@@ -76,7 +76,7 @@ Mod.warp_bin_codes = {
     ["SLIDER"] = { result = "slider_start" },
     ["PIKNF404"] = {
         result = function(cutscene)
-            cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrandonK7200")
+            cutscene:text("* Area not complete yet,[wait:5] check back in a later commit.[wait:10] -BrendaK7200")
         end
     },
     ["CASTLERD"] = {result = "castle_path/start"},

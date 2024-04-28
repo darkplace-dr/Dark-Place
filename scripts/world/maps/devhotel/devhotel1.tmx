@@ -57,7 +57,7 @@
   </object>
   <object id="41" name="interactable" x="200" y="240" width="80" height="40">
    <properties>
-    <property name="cutscene" value="devhotel.brandon"/>
+    <property name="cutscene" value="devhotel.brenda"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>

@@ -41,7 +41,7 @@ function item:init()
         jamm = "HAPPY 1 YEAR, DEOXYNN!",
         dess = "ew fruit",
         mario = "Blech! That tastes like shit!",
-        brandon = "Is that gold paint?",
+        brenda = "Is that gold paint?",
     }
 end
 

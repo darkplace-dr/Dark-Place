@@ -52,7 +52,7 @@ function item:init()
             noelle = "I-I'll um, p-protect you, Susie!",
             susie = "Uh, thanks I guess?"
         },
-        brandon = "So I can just say \"no\" to damage sometimes with this?",
+        brenda = "So I can just say \"no\" to damage sometimes with this?",
 		jamm = "Oof! It's heavy...",
 		mario = "Mario feels like a gladiator again."
     }

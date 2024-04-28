@@ -342,7 +342,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "devhotel.brandon",
+            ["cutscene"] = "devhotel.brenda",
             ["solid"] = true
           }
         },
