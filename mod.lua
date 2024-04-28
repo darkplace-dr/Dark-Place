@@ -753,6 +753,7 @@ function Mod:initializeEvents()
 end
 
 function Mod:unload()
+    FRAMERATE = Kristal.Config["fps"]
     if TextInput.active and not Kristal.Console.is_open then
         Log:print("Warp Bin was open, ending text input to be safe", "warn")
         TextInput.endInput()
