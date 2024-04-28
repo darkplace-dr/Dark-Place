@@ -20,7 +20,7 @@ function spell:getCastMessage(user, target)
 end
 
 function spell:onCast(user, target)
-	local damage = math.floor((((user.chara:getStat("magic") * 150) / 20) - 3 * (target.defense)) * 1.3)
+	local damage = self:getDamage(user, target)
 
 	local function generateSlash(scale_x)
 		local cutAnim = Sprite("effects/spells/ceroba/diamond")
@@ -44,7 +44,7 @@ function spell:onCast(user, target)
 end
 
 function spell:onLightCast(user, target)
-	local damage = math.floor((((user.chara:getStat("magic") * 150) / 20) - 3 * (target.defense)) * 1.3)
+	local damage = self:getDamage(user, target)
 
 	local function generateSlash(scale_x)
 		local cutAnim = Sprite("effects/spells/ceroba/diamond")
@@ -64,6 +64,16 @@ function spell:onLightCast(user, target)
 
 	generateSlash(1)
 	return false
+end
+
+function spell:getDamage(user, target)
+    if Game:isLight() then
+        local min_magic = Utils.clamp(user.chara:getStat("magic") - 3, 1, 999)
+        return math.ceil((min_magic * 8) + 45 + Utils.random(10))
+    else
+		local min_magic = Utils.clamp(user.chara:getStat("magic") - 10, 1, 999)
+		return math.ceil((min_magic * 12) + 90 + Utils.random(10))
+    end
 end
 
 return spell
