@@ -49,7 +49,7 @@ function item:init()
     self.reactions = {
         mario = {
 			mario = "Who beat-a my high score!?",
-			brandon = "(Please don't hurt me, but...)"
+			brenda = "(Please don't hurt me, but...)"
 		}
     }
 end

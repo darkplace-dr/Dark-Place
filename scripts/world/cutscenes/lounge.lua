@@ -18,9 +18,9 @@ return {
 			cutscene:showNametag("Jamm")
             cutscene:text("* How would a sign have a gun?", "neutral", "jamm")
 		end
-        if cutscene:getCharacter("brandon") then
-            cutscene:showNametag("Brandon")
-            cutscene:text("* I don't think it means anything.", "frown_side", "brandon")
+        if cutscene:getCharacter("brenda") then
+            cutscene:showNametag("Brenda")
+            cutscene:text("* I don't think it means anything.", "frown_side", "brenda")
         end
         if cutscene:getCharacter("dess") then
             cutscene:showNametag("Dess")
@@ -29,9 +29,9 @@ return {
             cutscene:startEncounter("gunman", true)
             return
         end
-        if cutscene:getCharacter("brandon") then
-            cutscene:showNametag("Brandon")
-            cutscene:text("* TURN AROUND", "shock", "brandon")
+        if cutscene:getCharacter("brenda") then
+            cutscene:showNametag("Brenda")
+            cutscene:text("* TURN AROUND", "shock", "brenda")
         end
         cutscene:hideNametag()
         cutscene:startEncounter("gunman", true)

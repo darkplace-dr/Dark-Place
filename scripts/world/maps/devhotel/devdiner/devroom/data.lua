@@ -538,9 +538,9 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "brandon",
-            ["cutscene"] = "devroom.brandon",
-            ["flagcheck"] = "!brandon_inparty"
+            ["actor"] = "brenda",
+            ["cutscene"] = "devroom.brenda",
+            ["flagcheck"] = "!brenda_inparty"
           }
         },
         {
@@ -555,9 +555,9 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "brandon",
-            ["cond"] = "Game:getFlag(\"brandon_inparty\") and not Game:hasPartyMember(\"brandon\")",
-            ["cutscene"] = "partyroom.brandon"
+            ["actor"] = "brenda",
+            ["cond"] = "Game:getFlag(\"brenda_inparty\") and not Game:hasPartyMember(\"brenda\")",
+            ["cutscene"] = "partyroom.brenda"
           }
         },
         {

@@ -46,7 +46,7 @@ function item:init()
         jamm = true,
 		
 		-- Gun
-        brandon = true,
+        brenda = true,
         pauling = true,
 		
 		-- Sword

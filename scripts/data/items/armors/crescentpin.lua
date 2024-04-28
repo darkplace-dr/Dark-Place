@@ -51,13 +51,13 @@ function item:init()
         ralsei = "Aw, it's cute!",
         noelle = "(I wonder if I should give Susie a gift...)",
 		dess = "I'm allergic to love",
-        brandon = "Thank you Willow...",
+        brenda = "Thank you Willow...",
 		jamm = "No use for me."
     }
 end
 
 function item:onEquip(character, replacement)
-    if character.id == "brandon" then
+    if character.id == "brenda" then
         character:increaseStat("defense", 2)
         character:increaseStat("magic", 5)
         character:increaseStat("health", 50)
@@ -69,7 +69,7 @@ function item:onEquip(character, replacement)
 end
 
 function item:onUnequip(character, replacement)
-    if character.id == "brandon" then
+    if character.id == "brenda" then
         character:increaseStat("defense", -2)
         character:increaseStat("magic", -5)
         character:increaseStat("health", -50)

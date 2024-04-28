@@ -1,8 +1,8 @@
----@class brandon_plush : Pickup
----@overload fun(...) : brandon_plush
-local brandon_plush, super = Class(Event, "brandon_plush")
+---@class brenda_plush : Pickup
+---@overload fun(...) : brenda_plush
+local brenda_plush, super = Class(Event, "brenda_plush")
 
-function brandon_plush:init(data)
+function brenda_plush:init(data)
 	super.init(self, data.x, data.y, data.w, data.h)
 
     local properties = data.properties or {}
@@ -10,7 +10,7 @@ function brandon_plush:init(data)
     self:setOrigin(0.5, 0.5)
     self:setScale(2)
 	
-    self.sprite = Sprite("world/events/pickup_plush/brandon_plush")
+    self.sprite = Sprite("world/events/pickup_plush/brenda_plush")
     self:addChild(self.sprite)
 
     self:setSize(self.sprite:getSize())
@@ -28,12 +28,12 @@ function brandon_plush:init(data)
 	}
 end
 
-function brandon_plush:postLoad()
+function brenda_plush:postLoad()
 	self.old_parent = self.parent
 end
 
-function brandon_plush:onInteract(player, dir)
-	Assets.playSound("voice/brandon")
+function brenda_plush:onInteract(player, dir)
+	Assets.playSound("voice/brenda")
     self:setParent(player)
 	self.x = player.width/2
 	self.y = -6
@@ -45,11 +45,11 @@ function brandon_plush:onInteract(player, dir)
     return true
 end
 
-function brandon_plush:update()
+function brenda_plush:update()
 	super.update(self)
 	
 	if self.held and Input.pressed("confirm") and self:canPlace(Game.world.player) then
-		Assets.playSound("voice/brandon")
+		Assets.playSound("voice/brenda")
 		self:setParent(Game.world)
 		self.held = false
 		Game.world.player.holding = nil
@@ -59,15 +59,15 @@ function brandon_plush:update()
 	end
 end
 
-function brandon_plush:canPlace(player)
+function brenda_plush:canPlace(player)
 	return not Game.world:checkCollision(player.interact_collider[player.facing])
 end
 
-function brandon_plush:onRemove(parent)
+function brenda_plush:onRemove(parent)
 	self.data = nil
     if parent:includes(World) or parent.world then
         self.world = nil
     end
 end
 
-return brandon_plush
+return brenda_plush

@@ -46,7 +46,7 @@ function item:init()
     self.can_equip = {
 		susie = false,
 		noelle = false,
-        brandon = false,
+        brenda = false,
         mario = false,
 	}
 
@@ -55,7 +55,7 @@ function item:init()
         susie = "Looks dumb, feels dumb. I don't want it.",
         ralsei = "Look at all the colors!",
         noelle = "(It doesn't fit...?)",
-        brandon = "This uh... isn't mine.",
+        brenda = "This uh... isn't mine.",
 		jamm = "Thank you, Ania. I won't forget this.",
 		mario = {
 				mario = "Blech! That tastes like shit!",

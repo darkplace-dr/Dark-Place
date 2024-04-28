@@ -53,7 +53,7 @@ function item:init()
         ralsei = "I feel great!",
         noelle = "Wow, did that fully heal?",
 		dess = "One, Two, Ooaatmeaaal",
-        brandon = "Wow, that tasted good!",
+        brenda = "Wow, that tasted good!",
 		jamm = "Overheal. I like it!"
     }
 end

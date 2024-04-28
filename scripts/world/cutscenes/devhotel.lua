@@ -7,16 +7,16 @@ return {
     end,
 
 
-    brandon = function(cutscene, event)
+    brenda = function(cutscene, event)
         cutscene:text("* It's a door.")
         cutscene:text("* The sign reads \"THIS ROOM BELONGS TO: BRENDAK7200\"")
-        if not cutscene:getCharacter("brandon") then
+        if not cutscene:getCharacter("brenda") then
             cutscene:text("* It appears to be locked.")
         else
-            cutscene:showNametag("Brandon")
-            cutscene:text("* Hold on guys,[wait:5] I got this.", "happy_side", "brandon")
+            cutscene:showNametag("Brenda")
+            cutscene:text("* Hold on guys,[wait:5] I got this.", "happy_side", "brenda")
             cutscene:hideNametag()
-            cutscene:text("* Brandon took a key out from his pocket and unlocked the door.")
+            cutscene:text("* Brenda took a key out from her pocket and unlocked the door.")
             cutscene:text("* Will you go inside?")
             local opinion = cutscene:choicer({"Yes", "No"})
             if opinion == 1 then
@@ -25,10 +25,10 @@ return {
                 Game.world:mapTransition("devhotel/rooms/room_001/entrance", "spawn")
                 Assets.playSound("doorclose")
             else
-                cutscene:showNametag("Brandon")
-                cutscene:text("* Uh,[wait:5] okay then?", "suspicious", "brandon")
+                cutscene:showNametag("Brenda")
+                cutscene:text("* Uh,[wait:5] okay then?", "suspicious", "brenda")
                 cutscene:hideNametag()
-                cutscene:text("* Brandon relocked the door.")
+                cutscene:text("* Brenda relocked the door.")
             end
         end
     end,

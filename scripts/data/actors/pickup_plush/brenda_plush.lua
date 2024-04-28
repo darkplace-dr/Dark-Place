@@ -1,4 +1,4 @@
-local actor, super = Class("Actor", "brandon_plush")
+local actor, super = Class("Actor", "brenda_plush")
 
 function actor:init()
     super.init(self)
@@ -10,7 +10,7 @@ function actor:init()
 
     self.path = "world/events/pickup_plush"
 	
-    self.default = "brandon_plush"
+    self.default = "brenda_plush"
 
     self.animations = {}
 end

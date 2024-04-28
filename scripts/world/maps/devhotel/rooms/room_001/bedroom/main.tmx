@@ -89,9 +89,9 @@
   </object>
   <object id="14" name="npc" x="80" y="480" width="40" height="40">
    <properties>
-    <property name="actor" value="brandon_plush"/>
-    <property name="cutscene" value="plushies.brandon_plush"/>
-    <property name="flagcheck" value="!brandon_plush"/>
+    <property name="actor" value="brenda_plush"/>
+    <property name="cutscene" value="plushies.brenda_plush"/>
+    <property name="flagcheck" value="!brenda_plush"/>
    </properties>
   </object>
   <object id="15" name="interactable" x="360" y="80" width="120" height="40">

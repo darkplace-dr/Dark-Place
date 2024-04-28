@@ -2,7 +2,7 @@ return {
 
     table_1 = function(cutscene)
 		local susie = cutscene:getCharacter("susie")
-		local brandon = cutscene:getCharacter("brandon")
+		local brenda = cutscene:getCharacter("brenda")
 		local jamm = cutscene:getCharacter("jamm")
 		local dess = cutscene:getCharacter("dess")
 		
@@ -21,10 +21,10 @@ return {
 				cutscene:showNametag("Dess")
 				cutscene:text("* the coulors are different lmao", "condescending", "dess")
 				
-				if brandon then
+				if brenda then
 					cutscene:showNametag("Susie")
 					cutscene:text("[voice:susie]* They're the same color![react:1]", "annoyed", "susie", {reactions = { 
-						{"Also that's not\nwhere the \"u\"\ngoes?", 372, 50, "frown_side", "brandon"}
+						{"Also that's not\nwhere the \"u\"\ngoes?", 372, 50, "frown_side", "brenda"}
 					}})
 				else
 					cutscene:showNametag("Susie")

@@ -1,10 +1,10 @@
-local Brandon, super = Class(EnemyBattler)
+local Brenda, super = Class(EnemyBattler)
 
-function Brandon:init()
+function Brenda:init()
     super.init(self)
 
-    self.name = "Brandon"
-    self:setActor("brandon_dreamscape")
+    self.name = "Brenda"
+    self:setActor("brenda_dreamscape")
 
     self.path = "battle/enemies/b_dreamscape/battle"
     self.default = "idle"
@@ -48,21 +48,21 @@ function Brandon:init()
     end
 end
 
-function Brandon:onAct(battler, name)
+function Brenda:onAct(battler, name)
     if name == "Console" then
         if Game:getFlag("dungeonkiller") then
             if self.comfort == 0 then
-                Game.battle:startActCutscene("brandon", "comfort1")
+                Game.battle:startActCutscene("brenda", "comfort1")
                 return
             elseif self.comfort == 4 then
-                Game.battle:startActCutscene("brandon", "dk_comfort3")
+                Game.battle:startActCutscene("brenda", "dk_comfort3")
                 return
             else
                 return "* But you didn't know what to say..."
             end
         else
             if self.comfort == 0 then
-                Game.battle:startActCutscene("brandon", "comfort1")
+                Game.battle:startActCutscene("brenda", "comfort1")
                 return
             else
                 return "* But you didn't know what to say..."
@@ -71,23 +71,23 @@ function Brandon:onAct(battler, name)
     elseif name == "D-Console" then
         if Game:getFlag("dungeonkiller") then
             if self.comfort == 1 then
-                Game.battle:startActCutscene("brandon", "comfort2")
+                Game.battle:startActCutscene("brenda", "comfort2")
                 return
             elseif self.comfort == 2 then
-                Game.battle:startActCutscene("brandon", "dk_comfort1")
+                Game.battle:startActCutscene("brenda", "dk_comfort1")
                 return
             elseif self.comfort == 3 then
-                Game.battle:startActCutscene("brandon", "dk_comfort2")
+                Game.battle:startActCutscene("brenda", "dk_comfort2")
                 return
             elseif self.comfort == 5 then
-                Game.battle:startActCutscene("brandon", "dk_comfort4")
+                Game.battle:startActCutscene("brenda", "dk_comfort4")
                 return
             else
                 return "* But you didn't know what to say..."
             end
         else
             if self.comfort == 1 then
-                Game.battle:startActCutscene("brandon", "comfort2")
+                Game.battle:startActCutscene("brenda", "comfort2")
                 return
             else
                 return "* But you didn't know what to say..."
@@ -116,13 +116,13 @@ function Brandon:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
-function Brandon:onHurt(damage, battler)
+function Brenda:onHurt(damage, battler)
     super.onHurt(self)
 
     self.hits = self.hits + 1
 end
 
-function Brandon:hurt(amount, battler, on_defeat, color, show_status_msg)
+function Brenda:hurt(amount, battler, on_defeat, color, show_status_msg)
     -- This sucks ass but idk how to remove Dess's attack button mid-battle
     if battler.chara.id == "dess" and Game:getFlag("b_fight_dess") then
         amount = 0
@@ -144,4 +144,4 @@ function Brandon:hurt(amount, battler, on_defeat, color, show_status_msg)
     self:checkHealth(on_defeat, amount, battler)
 end
 
-return Brandon
+return Brenda

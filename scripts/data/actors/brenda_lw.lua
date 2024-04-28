@@ -1,10 +1,10 @@
-local actor, super = Class(Actor, "brandon_lw")
+local actor, super = Class(Actor, "brenda_lw")
 
 function actor:init()
     super.init(self)
 
     -- Display name (optional)
-    self.name = "Brandon"
+    self.name = "Brenda"
 
     -- Width and height for this actor, used to determine its center
     self.width = 26
@@ -17,14 +17,14 @@ function actor:init()
     self.color = {0, 1, 1}
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "party/brandon/light"
+    self.path = "party/brenda/light"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "brandon"
+    self.voice = "brenda"
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = "face/brandon"
+    self.portrait_path = "face/brenda"
     -- Offset position for this actor's portrait (optional)
     self.portrait_offset = {-30, -15}
 

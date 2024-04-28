@@ -19,15 +19,15 @@ return {
 	
 	fake_jamm = function(cutscene,event)
 		local jamm = cutscene:getCharacter("fake_jamm")
-		local brandon = cutscene:getCharacter("brandon")
+		local brenda = cutscene:getCharacter("brenda")
 		
 		cutscene:showNametag("Jamm")
 		cutscene:text("* Oh, hey.", "shaded_neutral", "jamm")
 		
-		if brandon then
-			cutscene:showNametag("Brandon")
-			cutscene:text("* Jamm, is that you?", "shock", "brandon")
-			cutscene:text("* You don't look to good.\n* Are you alright?", "neutral", "brandon")
+		if brenda then
+			cutscene:showNametag("Brenda")
+			cutscene:text("* Jamm, is that you?", "shock", "brenda")
+			cutscene:text("* You don't look to good.\n* Are you alright?", "neutral", "brenda")
 			cutscene:showNametag("Jamm")
 			cutscene:text("* As alright as I can be, I guess.", "shaded_neutral", "jamm")
 			cutscene:text("* It's just that I'm visiting my wife.", "shaded_frown", "jamm")
@@ -38,9 +38,9 @@ return {
 		
 		cutscene:text("* I miss her.", "shaded_frown", "jamm")
 		
-		if brandon then
-			cutscene:showNametag("Brandon")
-			cutscene:text("* Looks like you need to get your mind off of it.", "neutral_side", "brandon")
+		if brenda then
+			cutscene:showNametag("Brenda")
+			cutscene:text("* Looks like you need to get your mind off of it.", "neutral_side", "brenda")
 		else
 			cutscene:hideNametag()
 			cutscene:text("* You tell Jamm to try to get his mind off of it.")
@@ -56,9 +56,9 @@ return {
 		
 		Game:setFlag("fake_jamm", true)
 		
-		if brandon then
-			cutscene:showNametag("Brandon")
-			cutscene:text("* (Why does something feel off?)", "frown_side", "brandon")
+		if brenda then
+			cutscene:showNametag("Brenda")
+			cutscene:text("* (Why does something feel off?)", "frown_side", "brenda")
 		end
 		cutscene:hideNametag()
 		
@@ -171,7 +171,7 @@ return {
 		local fake_jamm = cutscene:getCharacter("fake_jamm"):convertToNPC()
 		Game:removeFollower(fake_jamm)
 		local jamm = cutscene:getCharacter("jamm")
-		local brandon = cutscene:getCharacter("brandon")
+		local brenda = cutscene:getCharacter("brenda")
 		local susie = cutscene:getCharacter("susie")
 		
 		local members = {}
@@ -289,9 +289,9 @@ return {
 			cutscene:wait(0.75)
 		end
 		
-		if brandon then
-			cutscene:showNametag("Brandon")
-			cutscene:text("* Yeah, I think we're good now.", "neutral", "brandon")
+		if brenda then
+			cutscene:showNametag("Brenda")
+			cutscene:text("* Yeah, I think we're good now.", "neutral", "brenda")
 		end
 		
 		if susie then

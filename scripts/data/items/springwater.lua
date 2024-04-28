@@ -61,7 +61,7 @@ function item:init()
         susie = "Stay Hydrated!",
         ralsei = "Stay Hydrated!",
         noelle = "Stay Hydrated!",
-        brandon = "(I should probably drink more water...)",
+        brenda = "(I should probably drink more water...)",
 		jamm = "r/hydrohomies",
     }
 	

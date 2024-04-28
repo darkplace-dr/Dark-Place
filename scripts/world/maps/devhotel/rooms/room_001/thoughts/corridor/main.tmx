@@ -63,7 +63,7 @@
   </object>
   <object id="9" name="npc" x="320" y="520">
    <properties>
-    <property name="actor" value="brandon_dreamscape"/>
+    <property name="actor" value="brenda_dreamscape"/>
     <property name="facing" value="up"/>
     <property name="flagcheck" value="!b_corridor"/>
    </properties>

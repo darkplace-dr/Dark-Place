@@ -50,7 +50,7 @@
   </object>
   <object id="11" name="npc" x="400" y="120">
    <properties>
-    <property name="actor" value="brandon_dreamscape"/>
+    <property name="actor" value="brenda_dreamscape"/>
     <property name="facing" value="up"/>
     <property name="flagcheck" value="!b_entrance"/>
    </properties>

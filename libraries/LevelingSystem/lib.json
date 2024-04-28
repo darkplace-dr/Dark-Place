@@ -3,7 +3,7 @@
   "version": "1.2.0+darkplace",
   "engineVersion": "0.8.0",
   "authors": [
-    "BrandonK7200"
+    "BrendaK7200"
   ],
   "config": {
     //If LOVE will be shared throughout the entire party (true), or if it's gained individually (false)

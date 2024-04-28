@@ -53,7 +53,7 @@ function item:init()
         ralsei = "I don't feel so well...",
         noelle = "(I feel like I'm gonna puke...)",
 		dess= "yummy cyanide",
-        brandon = "Why did I eat that?",
+        brenda = "Why did I eat that?",
 		jamm = "I could've used those for my sling..."
     }
 end

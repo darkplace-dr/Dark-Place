@@ -58,8 +58,8 @@ function GoogleDino:onShortAct(battler, name)
             return "* * Ralsei jumped as high as he could!"
         elseif battler.chara.id == "dess" then
             return "* Dess did absolutely nothing."
-        elseif battler.chara.id == "brandon" then
-            return "* Brandon did an epic noscope!"
+        elseif battler.chara.id == "brenda" then
+            return "* Brenda did an epic noscope!"
         elseif battler.chara.id == "jamm" then
             return "* Jamm slinged a rock at a cactus!"
         elseif battler.chara.id == "mario" then
@@ -116,9 +116,9 @@ function GoogleDino:onAct(battler, name)
 		elseif battler.chara.id == "dess" then
             -- D-Action text
             return "* Dess did absolutely nothing. The Dino got bored and started feeling [color:blue]TIRED[color:reset]."
-		elseif battler.chara.id == "brandon" then
+		elseif battler.chara.id == "brenda" then
             -- B-Action text
-            return "* Brandon got up and did the dinosaur. The Dino wasn't sure what to make of this."
+            return "* Brenda got up and did the dinosaur. The Dino wasn't sure what to make of this."
         elseif battler.chara.id == "jamm" then
             --S-Action text
             self:addMercy(5)

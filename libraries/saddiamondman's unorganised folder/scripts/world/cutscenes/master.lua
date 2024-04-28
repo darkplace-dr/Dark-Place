@@ -175,10 +175,10 @@ return {
         master:setAnimation({"idle", 0.25, true})
     end,
 
-    brandon = function(cutscene, actor)
-        local master = cutscene:getCharacter("brandon_master")
+    brenda = function(cutscene, actor)
+        local master = cutscene:getCharacter("brenda_master")
         master:setAnimation({"bop", 0.25, true})
-        cutscene:text("* I'm Brandon Master.\n[wait:5]* Ask me about BRANDON's.")
+        cutscene:text("* I'm Brenda Master.\n[wait:5]* Ask me about BREANDA's.")
 
         local choices = {"1", "2", "3"}
         table.insert(choices, "Bye")

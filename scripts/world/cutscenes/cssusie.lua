@@ -2,7 +2,7 @@ return {
 	jail = function(cutscene, event)
         local susie = cutscene:getCharacter("susie")
         local dess = cutscene:getCharacter("dess")
-        local brandon = cutscene:getCharacter("brandon")
+        local brenda = cutscene:getCharacter("brenda")
         local jamm = cutscene:getCharacter("jamm")
         if not Game:getFlag("cssusie_quest") then
 
@@ -70,10 +70,10 @@ return {
 
             cutscene:text("[voice:cssusie]* HELL IF I KNOW WHERE THEY ARE.", "", nil)
 
-            if brandon then
-                cutscene:showNametag("Brandon")
-                cutscene:text("* Well that's just great.", "miffed", "brandon")
-                cutscene:text("* C'mon guys,[wait:5] let's go find those key pieces.", "neutral", "brandon")
+            if brenda then
+                cutscene:showNametag("Brenda")
+                cutscene:text("* Well that's just great.", "miffed", "brenda")
+                cutscene:text("* C'mon guys,[wait:5] let's go find those key pieces.", "neutral", "brenda")
             end
 
             cutscene:hideNametag()

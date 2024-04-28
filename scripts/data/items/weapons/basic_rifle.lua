@@ -42,7 +42,7 @@ function item:init()
 
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
-        brandon = true,
+        brenda = true,
     }
 
     -- Character reactions
@@ -51,7 +51,7 @@ function item:init()
         ralsei = "U-um... No thanks.",
         noelle = "I-it's not deer season, is it?",
 		dess = "pew pew",
-        brandon = "Uh, okay then?",
+        brenda = "Uh, okay then?",
 		jamm = "But I'm not an NRA member!",
     }
 end

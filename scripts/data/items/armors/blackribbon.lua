@@ -30,7 +30,7 @@ function item:init()
 
     self.can_equip = {
         susie = false,
-        brandon = false
+        brenda = false
     }
 
     -- Character reactions
@@ -39,7 +39,7 @@ function item:init()
         ralsei = "This goes good with my robe!",
         noelle = "Feels like something Catti would wear...",
         dess = "i am goth now",
-        brandon = "Black isn't really my style.",
+        brenda = "Black isn't really my style.",
     }
 end
 

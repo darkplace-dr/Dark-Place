@@ -57,7 +57,7 @@ function item:init()
         },
         ralsei = "Big hugs for everyone!",
         noelle = "(Will Susie like me more?)",
-        brandon = "Mario.",
+        brenda = "Mario.",
         dess = "Fuck yea!",
         YOU = {
             susie = "Heh, looking good YOU."

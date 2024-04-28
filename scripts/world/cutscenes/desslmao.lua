@@ -2,9 +2,9 @@ return {
 	dessbegin = function(cutscene)
 		local dess = cutscene:getCharacter("dess")
 
-		if cutscene:getCharacter("brandon") then
-			cutscene:showNametag("Brandon")
-			cutscene:text("* (Oh god...[wait:5] it's HER.)", "miffed", "brandon")
+		if cutscene:getCharacter("brenda") then
+			cutscene:showNametag("Brenda")
+			cutscene:text("* (Oh god...[wait:5] it's HER.)", "miffed", "brenda")
 		end
 
 		if cutscene:getCharacter("dumbie") then
@@ -49,17 +49,17 @@ return {
             cutscene:text("* Sup fuckers, DessHere!", "condescending", "dess")
             cutscene:text("* Now that you're finally here, we can party!", "condescending", "dess")
         end
-		if cutscene:getCharacter("brandon") then
+		if cutscene:getCharacter("brenda") then
 			cutscene:text("* Oh hey is that the dude?", "kind", "dess")
 
-			cutscene:showNametag("Brandon")
-			cutscene:text("[noskip][speed:0.3]* ...", "miffed", "brandon")
+			cutscene:showNametag("Brenda")
+			cutscene:text("[noskip][speed:0.3]* ...", "miffed", "brenda")
 
 			cutscene:showNametag("Dess")
 			cutscene:text("* uhhhh Brandish was it?", "neutral", "dess")
 
-			cutscene:showNametag("Brandon")
-			cutscene:text("* ... Brandon.[wait:10]\n* Or Brenda if you prefer.", "miffed", "brandon")
+			cutscene:showNametag("Brenda")
+			cutscene:text("* ... Brenda.[wait:10]\n* Or Brenda if you prefer.", "miffed", "brenda")
 
 			cutscene:showNametag("Dess")
 			cutscene:text("* yeah I knew that", "condescending", "dess")
@@ -142,9 +142,9 @@ return {
                 cutscene:showNametag("Susie")
                 cutscene:text("* ...", "annoyed", "susie")
                 cutscene:text("* (We need to get rid of her as fast as possible.)", "annoyed", "susie")
-                if cutscene:getCharacter("brandon") then
-                    cutscene:showNametag("Brandon")
-                    cutscene:text("* (Agreed.)", "miffed", "brandon")
+                if cutscene:getCharacter("brenda") then
+                    cutscene:showNametag("Brenda")
+                    cutscene:text("* (Agreed.)", "miffed", "brenda")
                 end
                 if cutscene:getCharacter("jamm") then
                     cutscene:showNametag("Jamm")
@@ -175,7 +175,7 @@ return {
 		local susie = cutscene:getCharacter("susie")
 		local leader = Game.world.player
 		local dess = cutscene:getCharacter("dess")
-		local brandon = cutscene:getCharacter("brandon")
+		local brenda = cutscene:getCharacter("brenda")
 		local jamm = cutscene:getCharacter("jamm")
 
 		cutscene:detachFollowers()
@@ -339,9 +339,9 @@ return {
             cutscene:text("* Whatever,[wait:5]I wanna smash you already", "neutral", "dess")
         end
 
-		if brandon then
-			cutscene:showNametag("Brandon")
-			cutscene:text("* Let's do this.", "happy", "brandon")
+		if brenda then
+			cutscene:showNametag("Brenda")
+			cutscene:text("* Let's do this.", "happy", "brenda")
 		end
 		
 		if jamm then
@@ -381,9 +381,9 @@ return {
             cutscene:text("* I just want you to know right now...", "suspicious", "susie")
             cutscene:text("* You are the absolute worst person I've ever met.", "suspicious", "susie")
 
-            if brandon then
-                cutscene:showNametag("Brandon")
-                cutscene:text("* Now you know how I feel.", "miffed", "brandon")
+            if brenda then
+                cutscene:showNametag("Brenda")
+                cutscene:text("* Now you know how I feel.", "miffed", "brenda")
             end
 
             cutscene:showNametag("Dess")
@@ -415,9 +415,9 @@ return {
             cutscene:text("* We all smoke a ciggie outside of a 7/11?", "kind", "dess")
         end
         
-		if brandon then
-			cutscene:showNametag("Brandon")
-			cutscene:text("* (God damnit.)", "miffed", "brandon")
+		if brenda then
+			cutscene:showNametag("Brenda")
+			cutscene:text("* (God damnit.)", "miffed", "brenda")
 		end
 		if jamm then
 			cutscene:showNametag("Jamm")
@@ -447,9 +447,9 @@ return {
                 cutscene:text("* ...", "neutral_side", "susie")
                 cutscene:text("* Oooookay then...", "neutral", "susie")
             end
-			if brandon then
-				cutscene:showNametag("Brandon")
-				cutscene:text("[speed:0.3]* ...", "frown", "brandon")
+			if brenda then
+				cutscene:showNametag("Brenda")
+				cutscene:text("[speed:0.3]* ...", "frown", "brenda")
 			end
 			Assets.playSound("ominous")
 			Game:setFlag("can_kill", true)

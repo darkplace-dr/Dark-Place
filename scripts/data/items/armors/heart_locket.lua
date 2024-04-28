@@ -47,7 +47,7 @@ function item:init()
             noelle = "And Asriel..."
         },
         mario = "Bleh!",
-        brandon = "Oh god why is it beating.",
+        brenda = "Oh god why is it beating.",
         ceroba = "Reminds me of Kanako..."
     }
 

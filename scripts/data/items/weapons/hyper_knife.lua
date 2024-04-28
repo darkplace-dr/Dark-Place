@@ -49,7 +49,7 @@ function item:init()
     -- Character reactions
     self.reactions = {
         dumbie = "THE POWER OF SUN, IN THE PALM OF MY HAND!!!!!",
-        brandon = "I... don't really like knives.",
+        brenda = "I... don't really like knives.",
 		jamm = "Not my weapon. I said no!"
     }
 end

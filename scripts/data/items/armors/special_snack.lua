@@ -58,7 +58,7 @@ function item:init()
         ralsei = "Potassium!",
         noelle = "It's a healthy snack!",
 		dess = "Play Undertale 2 Revenge of the Robots",
-        brandon = "Don't mind if I do.",
+        brenda = "Don't mind if I do.",
 		jamm = "Wait. I'm *not* supposed to eat it? Okay then."
     }
 end

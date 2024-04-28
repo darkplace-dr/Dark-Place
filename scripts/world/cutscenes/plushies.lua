@@ -60,13 +60,13 @@ return {
         YOU:remove()
         Game:setFlag("you_plush", true)
     end,
-    brandon_plush = function(cutscene)
-        local brandon_plush = cutscene:getCharacter("brandon_plush")
+    brenda_plush = function(cutscene)
+        local brenda_plush = cutscene:getCharacter("brenda_plush")
         Assets.playSound("achievement")
-        cutscene:text("* You found the Brandon Plush!")
+        cutscene:text("* You found the Brenda Plush!")
         Assets.playSound("item")
-        brandon_plush:remove()
-        Game:setFlag("brandon_plush", true)
+        brenda_plush:remove()
+        Game:setFlag("brenda_plush", true)
     end,
     jamm_plush = function(cutscene)
         local plush = cutscene:getCharacter("jamm_plush")

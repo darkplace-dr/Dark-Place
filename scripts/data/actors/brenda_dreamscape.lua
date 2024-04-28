@@ -1,10 +1,10 @@
-local actor, super = Class(Actor, "brandon_dreamscape")
+local actor, super = Class(Actor, "brenda_dreamscape")
 
 function actor:init()
     super.init(self)
 
     -- Display name (optional)
-    self.name = "Brandon"
+    self.name = "Brenda"
 
     -- Width and height for this actor, used to determine its center
     self.width = 26
@@ -22,9 +22,9 @@ function actor:init()
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "brandon"
+    self.voice = "brenda"
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = "face/brandon"
+    self.portrait_path = "face/brenda"
     -- Offset position for this actor's portrait (optional)
     self.portrait_offset = {-10, -15}
 

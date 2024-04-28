@@ -604,7 +604,7 @@ return {
         },
         {
           id = 40,
-          name = "brandon_plush",
+          name = "brenda_plush",
           class = "",
           shape = "rectangle",
           x = 760,
@@ -614,7 +614,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["flagcheck"] = "brandon_plush"
+            ["flagcheck"] = "brenda_plush"
           }
         },
         {

@@ -306,9 +306,9 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "brandon_plush",
-            ["cutscene"] = "plushies.brandon_plush",
-            ["flagcheck"] = "!brandon_plush"
+            ["actor"] = "brenda_plush",
+            ["cutscene"] = "plushies.brenda_plush",
+            ["flagcheck"] = "!brenda_plush"
           }
         },
         {

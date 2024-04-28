@@ -42,7 +42,7 @@ function item:init()
 
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
-        brandon = true,
+        brenda = true,
 		pauling = true,
     }
 
@@ -52,7 +52,7 @@ function item:init()
         ralsei = "This looks really retro!",
         noelle = "I think I have one of these at home.",
 		dess = "so retro",
-        brandon = "Let's-a go!",
+        brenda = "Let's-a go!",
 		jamm = "Never thought I'd see one of these again..."
     }
 end

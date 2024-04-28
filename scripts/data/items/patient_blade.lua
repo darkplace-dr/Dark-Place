@@ -51,7 +51,7 @@ function item:init()
         susie = "Wow, this is awful.", --someone would yell at me if I kept the original reaction for Susie
         ralsei = "I can't handle the anticipation!",
         noelle = "... ... ...",
-        brandon = "This was NOT worth it.",
+        brenda = "This was NOT worth it.",
 		jamm = "What? I'm not a patient guy."
     }
 	

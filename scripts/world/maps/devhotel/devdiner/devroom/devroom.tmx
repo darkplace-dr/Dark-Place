@@ -80,17 +80,17 @@
   </object>
   <object id="63" name="npc" x="810" y="180">
    <properties>
-    <property name="actor" value="brandon"/>
-    <property name="cutscene" value="devroom.brandon"/>
-    <property name="flagcheck" value="!brandon_inparty"/>
+    <property name="actor" value="brenda"/>
+    <property name="cutscene" value="devroom.brenda"/>
+    <property name="flagcheck" value="!brenda_inparty"/>
    </properties>
    <point/>
   </object>
   <object id="67" name="npc" x="810" y="240">
    <properties>
-    <property name="actor" value="brandon"/>
-    <property name="cond" value="Game:getFlag(&quot;brandon_inparty&quot;) and not Game:hasPartyMember(&quot;brandon&quot;)"/>
-    <property name="cutscene" value="partyroom.brandon"/>
+    <property name="actor" value="brenda"/>
+    <property name="cond" value="Game:getFlag(&quot;brenda_inparty&quot;) and not Game:hasPartyMember(&quot;brenda&quot;)"/>
+    <property name="cutscene" value="partyroom.brenda"/>
    </properties>
    <point/>
   </object>

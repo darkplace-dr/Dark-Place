@@ -3,15 +3,15 @@ return {
     dresser = function(cutscene, event)
         cutscene:text("* It looks like a dresser,[wait:5] will you peek inside?")
         if cutscene:choicer({"Yes", "No"}) == 1 then
-            if Game.party[1].id ~= "brandon" then
+            if Game.party[1].id ~= "brenda" then
                 cutscene:text("[noskip]* You open the dr", nil, nil, {auto = true})
-                cutscene:showNametag("Brandon")
-                cutscene:text("* Hey,[wait:5] no!", "miffed", "brandon")
-                cutscene:text("* Don't look at my stuff without my permission,[wait:5] okay?", "frown", "brandon")
+                cutscene:showNametag("Brenda")
+                cutscene:text("* Hey,[wait:5] no!", "miffed", "brenda")
+                cutscene:text("* Don't look at my stuff without my permission,[wait:5] okay?", "frown", "brenda")
                 cutscene:hideNametag()
-                cutscene:text("* Brandon closed the dresser.")
+                cutscene:text("* Brenda closed the dresser.")
             else
-                cutscene:text("* Brandon opened the dresser.")
+                cutscene:text("* Brenda opened the dresser.")
                 cutscene:text("* It's a drawer filled with socks.")
                 cutscene:text("* Scandelous!")
             end
@@ -24,34 +24,34 @@ return {
         cutscene:text("* It's a bowl for putting pet food in.")
         cutscene:text("* The name on it is \"Breadulous\".")
         if not Game:getFlag("pikpik_quest") then
-            cutscene:showNametag("Brandon")
-            cutscene:text("* Ah crap,[wait:5] I gotta get more Pikpik carrots.", "shock", "brandon")
-            cutscene:text("* Breadulous can eat other things,[wait:5] but...", "neutral_side", "brandon")
-            cutscene:text("* He really,[wait:5] really likes Pikpik carrots!", "happy_b", "brandon")
-            cutscene:text("* I don't blame him either,[wait:5] I like 'em too.", "happy", "brandon")
+            cutscene:showNametag("Brenda")
+            cutscene:text("* Ah crap,[wait:5] I gotta get more Pikpik carrots.", "shock", "brenda")
+            cutscene:text("* Breadulous can eat other things,[wait:5] but...", "neutral_side", "brenda")
+            cutscene:text("* He really,[wait:5] really likes Pikpik carrots!", "happy_b", "brenda")
+            cutscene:text("* I don't blame him either,[wait:5] I like 'em too.", "happy", "brenda")
             if cutscene:getCharacter("susie") then
                 cutscene:showNametag("Susie")
                 cutscene:text("* Where the hell do you get those?", "nervous_side", "susie")
-                cutscene:showNametag("Brandon")
+                cutscene:showNametag("Brenda")
             else
-                cutscene:text("* Hm?[wait:5] Where do I get them from?", "neutral_side", "brandon")
+                cutscene:text("* Hm?[wait:5] Where do I get them from?", "neutral_side", "brenda")
             end
-            cutscene:text("* Well,[wait:5] they're normally pretty expensive.", "neutral", "brandon")
-            cutscene:text("* Interstellar shipping is NOT cheap.", "dissapointed", "brandon")
-            cutscene:text("* But,[wait:5] I know of a place where they naturally grow.", "grin", "brandon")
-            cutscene:text("* The downside is,[wait:5] that place is SUPER dangerous.", "frown_side", "brandon")
-            cutscene:text("* That is,[wait:5] if you're going alone.", "happy", "brandon")
-            cutscene:text("* What do I mean by that?", "neutral_side", "brandon")
-            cutscene:text("* Well,[wait:5] you'll see eventually.", "happy", "brandon")
-            cutscene:text("* I actually know the Warp Bin code to that place.", "happy_side", "brandon")
-            cutscene:text("* It's \"PIKNF404\".", "happy", "brandon")
-            cutscene:text("* Man,[wait:5] hopefully Breadulous doesn't get mad at me...", "suspicious", "brandon")
+            cutscene:text("* Well,[wait:5] they're normally pretty expensive.", "neutral", "brenda")
+            cutscene:text("* Interstellar shipping is NOT cheap.", "dissapointed", "brenda")
+            cutscene:text("* But,[wait:5] I know of a place where they naturally grow.", "grin", "brenda")
+            cutscene:text("* The downside is,[wait:5] that place is SUPER dangerous.", "frown_side", "brenda")
+            cutscene:text("* That is,[wait:5] if you're going alone.", "happy", "brenda")
+            cutscene:text("* What do I mean by that?", "neutral_side", "brenda")
+            cutscene:text("* Well,[wait:5] you'll see eventually.", "happy", "brenda")
+            cutscene:text("* I actually know the Warp Bin code to that place.", "happy_side", "brenda")
+            cutscene:text("* It's \"PIKNF404\".", "happy", "brenda")
+            cutscene:text("* Man,[wait:5] hopefully Breadulous doesn't get mad at me...", "suspicious", "brenda")
             cutscene:hideNametag()
             Game:setFlag("pikpik_quest", true)
-            Kristal.callEvent("createQuest", "Pikpik Dandori", "pikpik", "Brandon is out of Pikpik carrots to feed Breadulous with. Buying them outright is too expensive, so you're going to have to find naturally grown carrots instead. Brandon said the code to where they grow is \"PIKNF404\", but be warned, the place is dangerous even with a full party!")
+            Kristal.callEvent("createQuest", "Pikpik Dandori", "pikpik", "Brenda is out of Pikpik carrots to feed Breadulous with. Buying them outright is too expensive, so you're going to have to find naturally grown carrots instead. Brenda said the code to where they grow is \"PIKNF404\", but be warned, the place is dangerous even with a full party!")
         else
-            cutscene:showNametag("Brandon")
-            cutscene:text("* Good luck getting those carrots.", "happy_b", "brandon")
+            cutscene:showNametag("Brenda")
+            cutscene:text("* Good luck getting those carrots.", "happy_b", "brenda")
             cutscene:hideNametag()
         end
     end,
@@ -69,24 +69,24 @@ return {
         cutscene:text("* It's a bed for two people.")
         cutscene:text("* It looks very comfortable.")
         if Mod:isNight() and #Game.party >= 4 then
-            cutscene:showNametag("Brandon")
-            cutscene:text("* Actually...[wait:10] It's getting pretty late,[wait:5] isn't it?", "happy_side", "brandon")
-            cutscene:text("* You guys can spend the night here if you'd like!", "happy_b", "brandon")
+            cutscene:showNametag("Brenda")
+            cutscene:text("* Actually...[wait:10] It's getting pretty late,[wait:5] isn't it?", "happy_side", "brenda")
+            cutscene:text("* You guys can spend the night here if you'd like!", "happy_b", "brenda")
             cutscene:hideNametag()
             if cutscene:choicer({"Yes", "No"}) == 1 then
-                cutscene:showNametag("Brandon")
-                cutscene:text("* Great!", "happy_b", "brandon")
-                cutscene:text("* You guys can sleep in the living room.", "happy", "brandon")
-                cutscene:text("* I'd let one of you guys sleep with me,[wait:5] but...", "neutral", "brandon")
-                cutscene:text("* That just feels a bit weird,[wait:5] since well...", "neutral_side", "brandon")
-                cutscene:text("* None of you guys are really super close with me.", "frown_side", "brandon")
-                cutscene:text("* But uh anyways...", "neutral", "brandon")
-                cutscene:text("* Goodnight guys,[wait:5] sweet dreams!", "joy", "brandon")
+                cutscene:showNametag("Brenda")
+                cutscene:text("* Great!", "happy_b", "brenda")
+                cutscene:text("* You guys can sleep in the living room.", "happy", "brenda")
+                cutscene:text("* I'd let one of you guys sleep with me,[wait:5] but...", "neutral", "brenda")
+                cutscene:text("* That just feels a bit weird,[wait:5] since well...", "neutral_side", "brenda")
+                cutscene:text("* None of you guys are really super close with me.", "frown_side", "brenda")
+                cutscene:text("* But uh anyways...", "neutral", "brenda")
+                cutscene:text("* Goodnight guys,[wait:5] sweet dreams!", "joy", "brenda")
                 cutscene:hideNametag()
                 cutscene:wait(cutscene:fadeOut(2, {color = {0, 0, 0}, music = true}))
 				--[[
                 if Game:hasPartyMember("YOU") and Game:hasPartyMember("susie") and Game:hasPartyMember("dess") then
-					Game:removePartyMember("brandon")
+					Game:removePartyMember("brenda")
                 	local x,y = 300,260
                 	Game.world:mapTransition("devhotel/rooms/room_001/entrance", "sleepover")
                     cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}, music = true}))
@@ -95,8 +95,8 @@ return {
                 cutscene:text("* Everyone had a good night's rest.")
                 cutscene:wait(cutscene:fadeIn(2, {color = {0, 0, 0}, music = true}))
             else
-                cutscene:showNametag("Brandon")
-                cutscene:text("* Alright then,[wait:5] suit yourselves.", "neutral_side", "brandon")
+                cutscene:showNametag("Brenda")
+                cutscene:text("* Alright then,[wait:5] suit yourselves.", "neutral_side", "brenda")
                 cutscene:hideNametag()
             end
         else
@@ -106,7 +106,7 @@ return {
 
     tv = function(cutscene, event)
 		local susie = cutscene:getCharacter("susie")
-		local brandon = cutscene:getCharacter("brandon")
+		local brenda = cutscene:getCharacter("brenda")
 		local dess = cutscene:getCharacter("dess")
 		local jamm = Game:hasPartyMember("jamm")
 	
@@ -119,9 +119,9 @@ return {
 				cutscene:text("* You insert the VHS into the TV.")
 				cutscene:text("* Suddenly, the TV comes to life.")
 				
-				if brandon then
-					cutscene:showNametag("Brandon")
-					cutscene:text("* Huh?\n* I thought the TV wasn't working?", "shock", "brandon")
+				if brenda then
+					cutscene:showNametag("Brenda")
+					cutscene:text("* Huh?\n* I thought the TV wasn't working?", "shock", "brenda")
 					
 					if jamm then
 						cutscene:showNametag("Jamm")
@@ -153,10 +153,10 @@ return {
 				
 				local party_talk = false
 				
-				if brandon then
+				if brenda then
 					party_talk = true
-					cutscene:showNametag("Brandon")
-					cutscene:text("* Is...\n* Is that when they met?", "shock", "brandon")
+					cutscene:showNametag("Brenda")
+					cutscene:text("* Is...\n* Is that when they met?", "shock", "brenda")
 					
 					if susie then
 						cutscene:showNametag("Susie")
@@ -179,24 +179,24 @@ return {
 						cutscene:showNametag("Dess")
 						cutscene:text("* then i'm gonna get popcorn.", "heckyeah", "dess")
 						
-						if brandon then
-							cutscene:showNametag("Brandon")
-							cutscene:text("* Now, Dess???\n* For this???", "shock", "brandon")
+						if brenda then
+							cutscene:showNametag("Brenda")
+							cutscene:text("* Now, Dess???\n* For this???", "shock", "brenda")
 						end
 					end
 				else
-					if brandon then
+					if brenda then
 						party_talk = true
-						cutscene:showNametag("Brandon")
-						cutscene:text("* Wait, there's more to this tape...", "neutral", "brandon")
+						cutscene:showNametag("Brenda")
+						cutscene:text("* Wait, there's more to this tape...", "neutral", "brenda")
 						
 						if dess then
 							cutscene:showNametag("Dess")
 							cutscene:text("* then i'm gonna get popcorn.", "heckyeah", "dess")
 							
-							if brandon then
-								cutscene:showNametag("Brandon")
-								cutscene:text("* Now, Dess???\n* For this???", "shock", "brandon")
+							if brenda then
+								cutscene:showNametag("Brenda")
+								cutscene:text("* Now, Dess???\n* For this???", "shock", "brenda")
 							end
 						end
 					end
@@ -217,12 +217,12 @@ return {
 				
 				party_talk = false
 				
-				if brandon then
+				if brenda then
 					party_talk = true
-					cutscene:showNametag("Brandon")
-					cutscene:text("* Oh, I remember that day!", "grin", "brandon")
-					cutscene:text("* Jamm had invited me to be his best man!", "joy", "brandon")
-					cutscene:text("* Wow, time really flies!", "happy", "brandon")
+					cutscene:showNametag("Brenda")
+					cutscene:text("* Oh, I remember that day!", "grin", "brenda")
+					cutscene:text("* Jamm had invited me to be his best man!", "joy", "brenda")
+					cutscene:text("* Wow, time really flies!", "happy", "brenda")
 					
 					if jamm then
 						cutscene:showNametag("Jamm")
@@ -237,9 +237,9 @@ return {
 					cutscene:text("* I could be wrong, but we haven't seen her at all.", "nervous_side", "susie")
 					cutscene:text("* Why is that...?", "nervous", "susie")
 					
-					if brandon then
-						cutscene:showNametag("Brandon")
-						cutscene:text("* Susie--", "frown_side", "brandon", {auto = true})
+					if brenda then
+						cutscene:showNametag("Brenda")
+						cutscene:text("* Susie--", "frown_side", "brenda", {auto = true})
 					end
 					
 					if jamm then
@@ -253,9 +253,9 @@ return {
 					cutscene:showNametag("Dess")
 					cutscene:text("* i got the popcorn", "heckyeah", "dess")
 					
-					if brandon then
-						cutscene:showNametag("Brandon")
-						cutscene:text("* I don't think that's appropriate...", "frown_side", "brandon")
+					if brenda then
+						cutscene:showNametag("Brenda")
+						cutscene:text("* I don't think that's appropriate...", "frown_side", "brenda")
 						
 						cutscene:showNametag("Dess")
 						cutscene:text("* but it's a movie lmao", "heckyeah", "dess")
@@ -290,9 +290,9 @@ return {
 					cutscene:showNametag("Dess")
 					cutscene:text("* thank you for skipping the gross part, Jamm.", "neutral", "dess")
 					
-					if brandon then
-						cutscene:showNametag("Brandon")
-						cutscene:text("* Yeah, that would've raised the age rating of this mod.", "frown_side", "brandon")
+					if brenda then
+						cutscene:showNametag("Brenda")
+						cutscene:text("* Yeah, that would've raised the age rating of this mod.", "frown_side", "brenda")
 					end
 					
 					if jamm then
@@ -301,14 +301,14 @@ return {
 					end
 				end
 				
-				if brandon and jamm then
+				if brenda and jamm then
 					party_talk = true
 					
-					cutscene:showNametag("Brandon")
-					cutscene:text("* You know what, though?", "frown_side", "brandon")
-					cutscene:text("* I never got to say this, but I'm proud of you, Jamm.", "frown_side", "brandon")
-					cutscene:text("* You raised Marcy to be a great girl up to this point.", "frown_side", "brandon")
-					cutscene:text("* I know what's coming up might not be too good, but...", "frown_side", "brandon")
+					cutscene:showNametag("Brenda")
+					cutscene:text("* You know what, though?", "frown_side", "brenda")
+					cutscene:text("* I never got to say this, but I'm proud of you, Jamm.", "frown_side", "brenda")
+					cutscene:text("* You raised Marcy to be a great girl up to this point.", "frown_side", "brenda")
+					cutscene:text("* I know what's coming up might not be too good, but...", "frown_side", "brenda")
 				end
 				cutscene:hideNametag()
 				
@@ -352,9 +352,9 @@ return {
 				
 				cutscene:wait(cutscene:fadeIn(1))
 				
-				if brandon then
-					cutscene:showNametag("Brandon")
-					cutscene:text("* ...", "shock", "brandon")
+				if brenda then
+					cutscene:showNametag("Brenda")
+					cutscene:text("* ...", "shock", "brenda")
 				end
 				
 				if susie then
@@ -365,10 +365,10 @@ return {
 				cutscene:showNametag("Jamm")
 				cutscene:text("* And now, you know why I hate Enzio so much.", "shaded_frown", "jamm")
 				
-				if brandon then
-					cutscene:showNametag("Brandon")
-					cutscene:text("* J-Jamm, I...\n* I had no idea...", "sad", "brandon")
-					cutscene:text("* That's...\n* That's really how she...", "sad", "brandon")
+				if brenda then
+					cutscene:showNametag("Brenda")
+					cutscene:text("* J-Jamm, I...\n* I had no idea...", "sad", "brenda")
+					cutscene:text("* That's...\n* That's really how she...", "sad", "brenda")
 				end
 				
 				if susie then

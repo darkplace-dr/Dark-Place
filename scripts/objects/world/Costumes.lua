@@ -90,10 +90,10 @@ function Costumes:init()
             }
         },
         {
-            name = "Brandon",
-            icon = Assets.getTexture("ui/partyselect/brandon"),
+            name = "Brenda",
+            icon = Assets.getTexture("ui/partyselect/brenda"),
             gradient_color = {0, 0, 1},
-            sprite_base_path = "party/brandon",
+            sprite_base_path = "party/brenda",
             skins = {
                 {"DEFAULT", "dark", {-4, -5}},
                 {"BRENDA", "dark", {-4, -5}},

@@ -78,14 +78,14 @@ return {
             cutscene:text("[noskip][speed:0.3]* ...", "", "cungaderospamton")
             event:setSprite("neutral")
         end
-        if cutscene:getCharacter("brandon") then
-            cutscene:showNametag("Brandon")
-            cutscene:text("* Woah,[wait:5] it's sureal seeing you before you lost your marbles.", "neutral", "brandon")
+        if cutscene:getCharacter("brenda") then
+            cutscene:showNametag("Brenda")
+            cutscene:text("* Woah,[wait:5] it's sureal seeing you before you lost your marbles.", "neutral", "brenda")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("shock")
             cutscene:text("* Uh...[wait:10] what?", "", "cungaderospamton")
-            cutscene:showNametag("Brandon")
-            cutscene:text("* Oh,[wait:5] nothing,[wait:5] nothing!", "blush", "brandon")
+            cutscene:showNametag("Brenda")
+            cutscene:text("* Oh,[wait:5] nothing,[wait:5] nothing!", "blush", "brenda")
             event:setSprite("neutral")
         end
         event:setSprite("happy")
@@ -202,15 +202,15 @@ return {
                     cutscene:text("* ...Pass.", "neutral", "jamm")
                 end
             end
-            if cutscene:getCharacter("brandon") then
-                cutscene:showNametag("Brandon")
-                cutscene:text("[noskip]* O-oh,[wait:5] well I-", "owo_blush", "brandon", {auto = true})
-                cutscene:text("* WAIT SHIT RIGHT,[wait:5] RULE ONE!", "blush", "brandon")
+            if cutscene:getCharacter("brenda") then
+                cutscene:showNametag("Brenda")
+                cutscene:text("[noskip]* O-oh,[wait:5] well I-", "owo_blush", "brenda", {auto = true})
+                cutscene:text("* WAIT SHIT RIGHT,[wait:5] RULE ONE!", "blush", "brenda")
                 if cutscene:getCharacter("susie") then
                     cutscene:showNametag("Susie")
                     cutscene:text("* The hell is rule one???", "suspicious", "susie")
-                    cutscene:showNametag("Brandon")
-                    cutscene:text("* There can't be any NSFW in this mod.", "neutral_side", "brandon")
+                    cutscene:showNametag("Brenda")
+                    cutscene:text("* There can't be any NSFW in this mod.", "neutral_side", "brenda")
                     if cutscene:getCharacter("dess") then
                         cutscene:showNametag("Dess")
                         cutscene:text("* aw man...", "neutral_b", "dess")
@@ -277,9 +277,9 @@ return {
                 cutscene:showNametag("Dess")
                 cutscene:text("* Damn guys you're missing out.", "neutral", "dess")
                 cutscene:text("* He even has cool merchandise.", "neutral_b", "dess")
-                if cutscene:getCharacter("brandon") then
-                    cutscene:showNametag("Brandon")
-                    cutscene:text("* WHAT THE [color:red][shake:1]FUCK[shake:0][color:reset]?![wait:10]\n* IS THAT SPAMTON'S [color:red][shake:1]D-[shake:0][color:reset]?!", "shock", "brandon", {auto = true})
+                if cutscene:getCharacter("brenda") then
+                    cutscene:showNametag("Brenda")
+                    cutscene:text("* WHAT THE [color:red][shake:1]FUCK[shake:0][color:reset]?![wait:10]\n* IS THAT SPAMTON'S [color:red][shake:1]D-[shake:0][color:reset]?!", "shock", "brenda", {auto = true})
                 end
                 cutscene:showNametag("Bikini Spamton")
                 event:setSprite("arms_up")

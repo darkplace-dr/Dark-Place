@@ -1,10 +1,10 @@
-local actor, super = Class(Actor, "brandon")
+local actor, super = Class(Actor, "brenda")
 
 function actor:init()
     super.init(self)
 
     -- Display name (optional)
-    self.name = "Brandon"
+    self.name = "Brenda"
 
     -- Width and height for this actor, used to determine its center
     self.width = 26
@@ -17,25 +17,25 @@ function actor:init()
     self.color = {0, 1, 1}
 
     -- Path to this actor's sprites (defaults to "")
-    local costume = Game:getFlag("brandon_costume")
+    local costume = Game:getFlag("brenda_costume")
     if costume ~= nil then
         if costume == 0 or costume > 2 then
-            self.path = "party/brandon/dark"
+            self.path = "party/brenda/dark"
         elseif costume == 1 then
-            self.path = "party/brandon/dark"
+            self.path = "party/brenda/dark"
         elseif costume == 2 then
-            self.path = "party/brandon/light"
+            self.path = "party/brenda/light"
         end
     else
-        self.path = "party/brandon/dark"
+        self.path = "party/brenda/dark"
     end
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "brandon"
+    self.voice = "brenda"
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = "face/brandon"
+    self.portrait_path = "face/brenda"
     -- Offset position for this actor's portrait (optional)
     self.portrait_offset = {-10, -15}
 

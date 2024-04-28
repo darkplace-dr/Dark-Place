@@ -34,7 +34,7 @@ function spell:onCast(user, target)
     local userX, userY = user:getRelativePos(user.width, user.height / 2, Game.battle)
     local angle = Utils.angle(userX, userY, targetX, targetY)
 
-    local beam_start = Sprite("effects/spells/brandon/gammabeam_start", userX + 32, userY)
+    local beam_start = Sprite("effects/spells/brenda/gammabeam_start", userX + 32, userY)
     beam_start:setOrigin(0, 0.5)
     beam_start:setScale(2)
     beam_start.rotation = angle
@@ -47,7 +47,7 @@ function spell:onCast(user, target)
     local newX = beam_start.x + 60
     local newY = beam_start.y + angle * 60
     Game.battle.timer:every(1 / 20, function()
-        local beam_section = Sprite("effects/spells/brandon/gammabeam_section", newX, newY)
+        local beam_section = Sprite("effects/spells/brenda/gammabeam_section", newX, newY)
         beam_section:setOrigin(0, 0.5)
         beam_section:setScale(2)
         beam_section.rotation = angle

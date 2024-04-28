@@ -88,9 +88,9 @@ return {
         cutscene:showNametag("Susie")
         cutscene:text("* ...", "neutral_side", "susie")
         cutscene:text("* That was weird.", "annoyed", "susie")
-        if cutscene:getCharacter("brandon") then
-            cutscene:showNametag("Brandon")
-            cutscene:text("* Uh,[wait:5] yeah,[wait:5] you can say that again.", "neutral", "brandon")
+        if cutscene:getCharacter("brenda") then
+            cutscene:showNametag("Brenda")
+            cutscene:text("* Uh,[wait:5] yeah,[wait:5] you can say that again.", "neutral", "brenda")
         end
 		if cutscene:getCharacter("jamm") then
 			cutscene:showNametag("Jamm")

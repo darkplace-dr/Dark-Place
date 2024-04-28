@@ -53,7 +53,7 @@ function item:init()
         ralsei = "Goes good on pancakes!",
         noelle = "I love syrup!",
         dess = "im racist against canadians",
-        brandon = "O Canada!",
+        brenda = "O Canada!",
 		jamm = "No, seriously, try it. It's, like, maple syrup and bacon. Yeah, I know it's weird, TRUST ME, IT'S GOOD."
     }
 end

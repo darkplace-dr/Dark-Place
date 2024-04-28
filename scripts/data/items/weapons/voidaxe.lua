@@ -36,7 +36,7 @@ function item:init()
         ralsei = "I know I'm the prince of darkness, but...",
         noelle = "It feels... cold?",
 		dess = "no way jose",
-        brandon = "... No.",
+        brenda = "... No.",
     }
 end
 
