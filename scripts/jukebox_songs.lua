@@ -226,6 +226,14 @@ return {
 	  album = "undertale"
   },
   {
+    name = "ASGORE",
+    file = "vsasgoreut", -- File name has "ut" at the end just incase we wanna add an Asgore fight that uses unique music
+    composer = "Toby Fox",
+    released = "2015",
+    origin = "Undertale",
+	  album = "undertale"
+  },
+  {
     name = "Dance of Dog",
     file = "dance_of_dog",
     composer = "Toby Fox",
@@ -873,6 +881,13 @@ return {
     released = "2023",
     origin = "Pikmin on the fucking Gamecube",
     album = "pikmins_nintendo"
+  },
+  {
+    name = "COMIC SANSATION",
+    file = "comic_sansation",
+    composer = "BrendaK7200",
+    released = "2024",
+    origin = "???" -- Dunno what I wanna call this AU yet
   },
   --[[
   {
