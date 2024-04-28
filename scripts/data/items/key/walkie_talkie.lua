@@ -4,7 +4,7 @@ function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Retro Tape"
+    self.name = "WalkieTalkie"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
@@ -28,7 +28,7 @@ function item:init()
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "none"
     -- Where this item can be used (world, battle, all, or none)
-    self.usable_in = "none"
+    self.usable_in = "world"
     -- Item this item will get turned into when consumed
     self.result_item = nil
     -- Will this item be instantly consumed in battles?
