@@ -819,7 +819,7 @@ return {
                     noelle = "nice deer",
                     berdly = "twitter bird",
                     dess = "dumb deer",
-                    brenda = "dude or gal",
+                    brenda = "gunslingin' gal",
                     dumbie = "dummy",
                     bor = "ball",
                     osw = "unoriginal",
