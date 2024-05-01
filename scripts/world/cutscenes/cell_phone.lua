@@ -42,6 +42,7 @@ return function(cutscene, event_override)
     --[[local function textForTime(text, time, portrait, actor)
         cutscene:text("[noskip][voice:nil]" .. text, portrait, actor, { advance = false })
         cutscene:wait(time)
+        cutscene:closeText()
     end]]
 
     Assets.playSound("phone", 0.7)
