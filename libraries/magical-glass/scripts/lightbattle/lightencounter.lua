@@ -276,8 +276,10 @@ function LightEncounter:addEnemy(enemy, x, y, ...)
     end
 
     local enemies = self.queued_enemy_spawns
+    local enemies_index = enemies
     if Game.battle and Game.state == "BATTLE" then
         enemies = Game.battle.enemies
+        enemies_index = Game.battle.enemies_index
     end
 
     if x and y then
@@ -289,6 +291,7 @@ function LightEncounter:addEnemy(enemy, x, y, ...)
 
     enemy_obj.encounter = self
     table.insert(enemies, enemy_obj)
+    table.insert(enemies_index, enemy_obj)
     if Game.battle and Game.state == "BATTLE" then
         Game.battle:addChild(enemy_obj)
     end

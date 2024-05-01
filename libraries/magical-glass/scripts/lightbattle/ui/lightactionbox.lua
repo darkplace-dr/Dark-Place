@@ -246,7 +246,7 @@ function LightActionBox:drawStatusStrip()
         love.graphics.setColor(color)
         love.graphics.print(current .. " / " .. max, x + 245 + size * 1.25 + 14 + (karma_mode and Assets.getTexture("ui/lightbattle/kr"):getWidth() + 12 or 0) - karma_mode_offset, y)
     else
-        local x, y = 2 + (3 - #Game.battle.party - (#Game.battle.party == 2 and 0.4 or 0)) * 101 + (self.index - 1) * 101 * 2 * (#Game.battle.party == 2 and 1.4 or 1), 130
+        local x, y = 2 + (3 - #Game.battle.party - (#Game.battle.party == 2 and 0.4 or 0)) * 102 + (self.index - 1) * 102 * 2 * (#Game.battle.party == 2 and (1 + 0.4) or 1), 130
         
         local name = self.battler.chara:getShortName()
         local level = Game:isLight() and self.battler.chara:getLightLV() or self.battler.chara:getLevel()
@@ -262,7 +262,7 @@ function LightActionBox:drawStatusStrip()
         love.graphics.print("LV " .. level, x, y + 13)
         
         if not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
-            love.graphics.draw(Assets.getTexture("ui/lightbattle/hp"), x + 64, y + 15)
+            love.graphics.draw(Assets.getTexture("ui/lightbattle/hp"), x + 66, y + 15)
         end
         
         local small = false
@@ -274,15 +274,15 @@ function LightActionBox:drawStatusStrip()
         
         local karma_mode = Game.battle.encounter.karma_mode
         if karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
-            love.graphics.draw(Assets.getTexture("ui/lightbattle/kr"), x + 94 + (small and 20 or 32) * 1.25, y + 15)
+            love.graphics.draw(Assets.getTexture("ui/lightbattle/kr"), x + 95 + (small and 20 or 32) * 1.25, y + 15)
         end
         
         love.graphics.setColor(karma_mode and {192/255, 0, 0} or COLORS["red"])
-        love.graphics.rectangle("fill", x + 90, y, (small and 20 or 32) * 1.25, 21)
+        love.graphics.rectangle("fill", x + 92, y, (small and 20 or 32) * 1.25, 21)
         love.graphics.setColor({1,0,1})
-        love.graphics.rectangle("fill", x + 90, y, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 20 or 32)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
+        love.graphics.rectangle("fill", x + 92, y, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 20 or 32)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
         love.graphics.setColor(COLORS["yellow"])
-        love.graphics.rectangle("fill", x + 90, y, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 20 or 32)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
+        love.graphics.rectangle("fill", x + 92, y, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 20 or 32)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
         
         love.graphics.setFont(Assets.getFont("namelv", 16))
         if max < 10 and max >= 0 then
@@ -308,16 +308,15 @@ function LightActionBox:drawStatusStrip()
             end
         end
         love.graphics.setColor(color)
-        -- love.graphics.print(current .. "/" .. max, x + (small and 117 or 137), y + 3 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 4 or 0))
-        love.graphics.printf(current .. "/" .. max, x + 195 - 500, y + 3 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 4 or 0), 500, "right")
+        love.graphics.printf(current .. "/" .. max, x + 197 - 500, y + 3 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 2 or 0), 500, "right")
         
         if Game.battle.current_selecting == self.index or DEBUG_RENDER and Input.alt() then
             love.graphics.setColor(self.battler.chara:getLightColor())
             love.graphics.setLineWidth(2)
             love.graphics.line(x - 3, y - 7, x - 3, y + 28)
-            love.graphics.line(x - 3 - 1, y - 7, x + 196 + 1, y - 7)
-            love.graphics.line(x + 196, y - 7, x + 196, y + 28)
-            love.graphics.line(x - 3 - 1, y + 28, x + 196 + 1, y + 28)
+            love.graphics.line(x - 3 - 1, y - 7, x + 198 + 1, y - 7)
+            love.graphics.line(x + 198, y - 7, x + 198, y + 28)
+            love.graphics.line(x - 3 - 1, y + 28, x + 198 + 1, y + 28)
         end
     end
 end

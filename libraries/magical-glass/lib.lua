@@ -502,7 +502,7 @@ function lib:init()
             item = Registry.createItem(item)
         end
         if ignore_dark or item.light then
-            return LightInventory.__super.tryGiveItem(self, item, ignore_dark)
+            return Inventory.tryGiveItem(self, item, ignore_dark)
         else
             local dark_inv = self:getDarkInventory()
             local result = dark_inv:addItem(item)
@@ -1486,7 +1486,7 @@ function lib:init()
     end)
 
     Utils.hook(DialogueText, "resetState", function(orig, self)
-        DialogueText.__super.resetState(self)
+        Text.resetState(self)
         self.state["typing_sound"] = self.default_sound
     end)
 
@@ -1616,7 +1616,23 @@ function lib:init()
         if Game:isLight() then
             self.inv_timer = 1
         end
+        self.remove_outside_of_arena = false
 
+    end)
+
+    Utils.hook(Bullet, "update", function(orig, self)
+        orig(self)
+        if self.remove_outside_of_arena then
+            if self.x < Game.battle.arena.left then
+                self:remove()
+            elseif self.x > Game.battle.arena.right then
+                self:remove()
+            elseif self.y > Game.battle.arena.bottom then
+                self:remove()
+            elseif self.y < Game.battle.arena.top then
+                self:remove()
+            end
+        end
     end)
 
     Utils.hook(LightItemMenu, "init", function(orig, self)
