@@ -41,29 +41,7 @@ return function(cutscene, event)
         end
     end
 
-    local warpable = true
-    if action.cond then
-        warpable = action.cond()
-    elseif action.flagcheck then
-        local inverted, flag = Utils.startsWith(action.flagcheck, "!")
-
-        local result = Game.flags[flag]
-        local value = action.flagvalue
-        local is_true
-        if value ~= nil then
-            is_true = result == value
-        elseif type(result) == "number" then
-            is_true = result > 0
-        else
-            is_true = result
-        end
-
-        if is_true then
-            warpable = not inverted
-        else
-            warpable = inverted
-        end
-    end
+    local warpable = Mod:evaluateCond(action)
 
     local result = action.result or action[1]
     local marker = action.marker or action[2]

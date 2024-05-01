@@ -95,3 +95,32 @@ end
 function Mod:hasWiiBIOS()
     return not not love.filesystem.getInfo("wii_settings.json")
 end
+
+function Mod:evaluateCond(data)
+    local result = true
+
+    if data.cond then
+        result = data.cond()
+    elseif data.flagcheck then
+        local inverted, flag = Utils.startsWith(data.flagcheck, "!")
+
+        local flag_value = Game.flags[flag]
+        local expected_value = data.flagvalue
+        local is_true
+        if expected_value ~= nil then
+            is_true = flag_value == expected_value
+        elseif type(result) == "number" then
+            is_true = flag_value > 0
+        else
+            is_true = flag_value
+        end
+
+        if is_true then
+            result = not inverted
+        else
+            result = inverted
+        end
+    end
+
+    return result
+end
