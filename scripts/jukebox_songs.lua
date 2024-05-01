@@ -330,7 +330,7 @@ return {
     album = "dark_place"
   },
   {
-    name = "Incomming Signal",
+    name = "Incoming Signal",
     file = "spamgolor_shop",
     composer = "BrendaK7200",
     released = "2023",
