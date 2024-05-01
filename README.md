@@ -1,14 +1,12 @@
-# Dark Place
-
 <p align="center" width="100%">
-<img src="logo.png" alt="Logo: Dark Place - An open-source KRISTAL mod" width="50%" />
+<img src="logo.png" alt="Dark Place: An open-source Kristal mod" width="50%" />
 <br>
 <i>Logo by Just another random user. (@JustAnotherRandomGithubUser)</i>
 </p>
 
 > [Discord Server](https://discord.gg/RhqPCA6eFN) | [Official Website](https://darkplace-dr.github.io/)
 
-An open source Kristal mod that anyone can contribute to.
+Dark Place is an open source Kristal mod that anyone can contribute to.
 
 Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, they just get weirder the more you make. Susie has been making them left right and center, and she is now on her 1000th fountain. Go and explore the world, there's lots to discover!
 
