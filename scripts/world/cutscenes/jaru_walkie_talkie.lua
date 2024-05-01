@@ -13,10 +13,10 @@ return function(cutscene, event_override)
         cutscene:text("* Ah, I see.[wait:5]\n* Sorry 'bout my outburst then.", "default", "shadowsalesman")
         cutscene:text("* Well, since we're both talkin' right now,[wait:5] whaddya wanna know?", "default", "shadowsalesman")
 		Game:setFlag("jaruCommunicationTest", true)
-        Game:getFlag("jaruHasUsedWalkieTalkie", true)
+        Game:setFlag("jaruHasUsedWalkieTalkie", true)
 	    cutscene:hideNametag()
 	else
-        Game:getFlag("jaruHasUsedWalkieTalkie", true)
+        Game:setFlag("jaruHasUsedWalkieTalkie", true)
 	    cutscene:showNametag("J.A.R.U.")
         cutscene:text("* Hey kid, whaddya wanna know?", "default", "shadowsalesman")
 	    cutscene:hideNametag()
@@ -73,7 +73,7 @@ return function(cutscene, event_override)
             cutscene:showNametag("J.A.R.U.")
             cutscene:text("* So you're going through the whole hallway,[wait:5] eh?", "annoyed", "shadowsalesman")
             cutscene:text("* How many rooms have you gone through?", "default", "shadowsalesman")
-            cutscene:text("* ...[wait:5][color:yellow]"..everhall_count.."[color:reset]?", "eye_closed", "shadowsalesman")
+            cutscene:text("* ...[wait:5][color:yellow]"..tostring(everhall_count).."[color:reset]?", "eye_closed", "shadowsalesman")
             cutscene:text("* Well good frickin' luck,[wait:5] pal.", "annoyed", "shadowsalesman")
             cutscene:text("* I heard this hallway's like a [color:red]MILLION ROOMS[color:reset] long.", "annoyed", "shadowsalesman")
             cutscene:text("* So it's gonna take you a LOOONG time to reach the end.", "default", "shadowsalesman")
@@ -105,7 +105,7 @@ return function(cutscene, event_override)
             cutscene:hideNametag()
 
             if jaru_alexa_discussion == false then
-                Game:getFlag("jaruHasTalkedAboutAlexa", true)
+                Game:setFlag("jaruHasTalkedAboutAlexa", true)
 			end
         elseif Game.world.map.id == "spamroom" then
             -- WIP
