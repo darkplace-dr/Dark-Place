@@ -417,6 +417,12 @@ function Mod:init()
             end
         end
     end)
+
+    Utils.hook(Textbox, "init", function(orig, self, x, y, width, height, default_font, default_font_size, battle_box)
+        default_font = default_font
+            or Kristal.callEvent("getDefaultDialogTextFont")
+        orig(self, x, y, width, height, default_font, default_font_size, battle_box)
+    end)
 end
 
 function Mod:getLightBattleMenuOffsets()

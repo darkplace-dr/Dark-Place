@@ -1605,7 +1605,7 @@ function lib:init()
     
         self:updateTalkSprite(self.state.talk_anim and self.state.typing)
     
-        Object.update(self)
+        Text.update(self)
     
         self.last_talking = self.state.talk_anim and self.state.typing
     end)

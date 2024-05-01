@@ -1,5 +1,5 @@
 ---@class DialogueText
-local DialogueText, super = Class("DialogueText", true)
+local DialogueText, super = Class("DialogueText")
 
 function DialogueText:init(text, x, y, w, h, options)
     if type(w) == "table" then
