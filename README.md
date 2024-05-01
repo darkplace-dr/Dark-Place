@@ -2,9 +2,9 @@
 <img src="logo.png" alt="Dark Place: An open-source Kristal mod" width="50%" />
 <br>
 <i>Logo by Just another random user. (@JustAnotherRandomGithubUser)</i>
+<br>
+<a href="https://discord.gg/RhqPCA6eFN">Discord Server</a> | <a href="https://darkplace-dr.github.io/">Official Website</a> | <a href="https://dark-place.fandom.com/wiki/Dark_Place_Wiki">Official Wiki</a>
 </p>
-
-> [Discord Server](https://discord.gg/RhqPCA6eFN) | [Official Website](https://darkplace-dr.github.io/)
 
 Dark Place is an open source Kristal mod that anyone can contribute to.
 
@@ -48,9 +48,6 @@ After that, you can start the mod as you would start any other Kristal mod by ch
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforementioned document before contributing,** as it contains the very important contribution rouxls (pronounced "rules").
-
-## Official Wiki
-Go to Dark Place's [official wiki](https://dark-place.fandom.com/wiki/Dark_Place_Wiki) and check out the cool contents of the mod.
 
 ## Credits
 
