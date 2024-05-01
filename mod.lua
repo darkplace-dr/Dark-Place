@@ -31,6 +31,8 @@ function Mod:init()
         "​"
     }
 
+    self.rpc_state = nil
+
     self:initTaunt()
     self:initBattleTaunt()
     Speen:init()
@@ -1016,4 +1018,13 @@ function Mod:loadObject(world, name, properties)
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
     end
+end
+
+-- this is so that "playing ..." is the first line and "in a minigame: ..." is the second
+
+function Mod:getPresenceDetails()
+    return "Playing "..Kristal.getModOption("name")
+end
+function Mod:getPresenceState()
+    return self.rpc_state
 end

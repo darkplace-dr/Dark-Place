@@ -181,3 +181,14 @@ function Mod:evaluateCond(data, ...)
 
     return result
 end
+
+function Mod:setPresenceState(details)
+    self.rpc_state = details
+
+    -- talk about some half-baked support :bangbang:
+    local presence = Kristal.getPresence()
+    if presence then
+        presence.state = Kristal.callEvent("getPresenceState")
+        Kristal.setPresence(presence)
+    end
+end

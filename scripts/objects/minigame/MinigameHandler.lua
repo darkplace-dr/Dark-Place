@@ -21,9 +21,9 @@ function MinigameHandler:pauseWorldMusic()
 end
 -- Part of postInit 2, don't use unless you have to
 function MinigameHandler:changeWindowTitle()
-    if TARGET_MOD == Mod.info.id then -- FIXME: temp behavior
-        love.window.setTitle(string.format("%s - %s", Mod.info.name, self.name))
-    end
+    love.window.setIcon(Kristal.icon)
+    love.window.setTitle(string.format("%s - %s", Mod.info.name, self.name))
+    Mod:setPresenceState(string.format("In a minigame: %s", self.name))
 end
 
 function MinigameHandler:update()
@@ -54,7 +54,8 @@ function MinigameHandler:preEndCleanup()
         Game.world.music:resume()
         self.resume_world_music = false
     end
-    love.window.setTitle(Kristal.getDesiredWindowTitle())
+    Mod:funnytitle()
+    Mod:setPresenceState(nil)
 end
 
 function MinigameHandler:endMinigame()
