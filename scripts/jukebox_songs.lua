@@ -563,7 +563,8 @@ return {
     file = "deadringer",
     composer = "Jamangar",
     released = "Apr 3, 2022",
-    origin = "soundcloud.com/jamangar"
+    origin = "soundcloud.com/jamangar",
+    album = "deadringer"
   },
   {
     name = "WHITE SPACE",
