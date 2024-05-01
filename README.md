@@ -1,6 +1,6 @@
 # Dark Place
 
-<p align="center" width="100%">
+<p align="center">
 <img src="logo.png" alt="Dark Place - An open-source KRISTAL mod (logo)" width="50%" />
 
 <i>Logo by Just another random user. (@JustAnotherRandomGithubUser)</i>
@@ -8,11 +8,9 @@
 
 An open source Kristal mod that anyone can contribute to.
 
+[Discord Server](https://discord.gg/RhqPCA6eFN) | [Official Website](https://darkplace-dr.github.io/)
+
 > README under construction.
-
-[Discord Server](https://discord.gg/RhqPCA6eFN)
-
-[Official Website](https://darkplace-dr.github.io/)
 
 ## Installation
 Those instructions are intended to those who only want to play Dark Place. If you want to contribute, see **Contributing** below.
