@@ -2,9 +2,9 @@
 
 <p align="center" width="100%">
 <img src="logo.png" alt="Dark Place - An open-source KRISTAL mod (logo)" width="50%" />
-</p>
 
-*Logo by Just Another Random User (@JustAnotherRandomGithubUser)*
+<i>Logo by Just another random user. (@JustAnotherRandomGithubUser)</i>
+</p>
 
 An open source Kristal mod that anyone can contribute to.
 
