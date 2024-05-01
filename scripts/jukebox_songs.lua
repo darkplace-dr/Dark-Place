@@ -290,7 +290,8 @@ return {
   {
     name = "Dogcheck (Anniversary Mix)",
     file = "dogcheck_anniversary",
-    composer = "Toby Fox",
+    -- no pastebin link btw
+    composer = "Toby Fox (clean version by ASmolBoy)",
     released = "Sept 15, 2023",
     origin = "https://youtu.be/b623zT7eMXo",
     album = "deltarunedotcom"
