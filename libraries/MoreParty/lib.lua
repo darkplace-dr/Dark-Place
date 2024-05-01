@@ -1692,7 +1692,7 @@ function Lib:init()
                 orig(self)
             else
                 if #Game.battle.party == 4 and not Kristal.getLibConfig("moreparty", "classic_mode") then
-                    local x, y = 64 + (3 - #Game.battle.party) * 80 + (self.index - 1) * 80 * 2, 130
+                    local x, y = 63 + (3 - #Game.battle.party) * 80 + (self.index - 1) * 80 * 2, 130
                     
                     local name = self.battler.chara:getShortName()
                     local level = Game:isLight() and self.battler.chara:getLightLV() or self.battler.chara:getLevel()
@@ -1708,7 +1708,7 @@ function Lib:init()
                     love.graphics.print("LV " .. level, x, y + 13)
                     
                     if not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
-                        love.graphics.draw(Assets.getTexture("ui/lightbattle/hp"), x + 47, y + 14, 0, 0.5)
+                        love.graphics.draw(Assets.getTexture("ui/lightbattle/hp"), x + 49, y + 14, 0, 0.5)
                     end
                     
                     local small = false
@@ -1720,15 +1720,15 @@ function Lib:init()
                     
                     local karma_mode = Game.battle.encounter.karma_mode
                     if karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
-                        love.graphics.draw(Assets.getTexture("ui/lightbattle/kr"), x + 63 + (small and 14 or 26) * 1.25, y + 14, 0, 0.5)
+                        love.graphics.draw(Assets.getTexture("ui/lightbattle/kr"), x + 64 + (small and 14 or 26) * 1.25, y + 14, 0, 0.5)
                     end
                     
                     love.graphics.setColor(karma_mode and {192/255, 0, 0} or COLORS["red"])
-                    love.graphics.rectangle("fill", x + 60, y, (small and 14 or 26) * 1.25, 21)
+                    love.graphics.rectangle("fill", x + 62, y, (small and 14 or 26) * 1.25, 21)
                     love.graphics.setColor({1,0,1})
-                    love.graphics.rectangle("fill", x + 60, y, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 14 or 26)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
+                    love.graphics.rectangle("fill", x + 62, y, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 14 or 26)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
                     love.graphics.setColor(COLORS["yellow"])
-                    love.graphics.rectangle("fill", x + 60, y, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 14 or 26)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
+                    love.graphics.rectangle("fill", x + 62, y, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 14 or 26)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
                     
                     love.graphics.setFont(Assets.getFont("namelv", 16))
                     if max < 10 and max >= 0 then
@@ -1754,23 +1754,23 @@ function Lib:init()
                         end
                     end
                     love.graphics.setColor(color)
-                    love.graphics.printf(current .. "/" .. max, x + 154 - 500, y + 3 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 5 or 0), 500, "right")
+                    love.graphics.printf(current .. "/" .. max, x + 156 - 500, y + 3 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 3 or 0), 500, "right")
                     
                     if Game.battle.current_selecting == self.index or DEBUG_RENDER and Input.alt() then
                         love.graphics.setColor(self.battler.chara:getLightColor())
                         love.graphics.setLineWidth(2)
-                        love.graphics.line(x - 3, y - 7, x - 3, y + 28)
-                        love.graphics.line(x - 3 - 1, y - 7, x + 155 + 1, y - 7)
-                        love.graphics.line(x + 155, y - 7, x + 155, y + 28)
-                        love.graphics.line(x - 3 - 1, y + 28, x + 155 + 1, y + 28)
+                        love.graphics.line(x - 2, y - 7, x - 2, y + 28)
+                        love.graphics.line(x - 2 - 1, y - 7, x + 156 + 1, y - 7)
+                        love.graphics.line(x + 156, y - 7, x + 156, y + 28)
+                        love.graphics.line(x - 2 - 1, y + 28, x + 156 + 1, y + 28)
                     end
                 else
                     local x, y = 0, 0
                     local z = Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4
                     if self.index <= z then
-                        x, y = 64 + (3 - math.min(#Game.battle.party,z)) * 80 + (self.index - 1) * 80 * 2, 128
+                        x, y = 63 + (3 - math.min(#Game.battle.party,z)) * 80 + (self.index - 1) * 80 * 2, 128
                     else
-                        x, y = 64 + (3 - math.min(#Game.battle.party - z,z)) * 80 + (self.index - 1 - z) * 80 * 2, 148
+                        x, y = 63 + (3 - math.min(#Game.battle.party - z,z)) * 80 + (self.index - 1 - z) * 80 * 2, 148
                     end
                     
                     local name = self.battler.chara:getShortName()
@@ -1787,7 +1787,7 @@ function Lib:init()
                     love.graphics.print("LV " .. level, x, y + 5)
                     
                     if not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
-                        love.graphics.draw(Assets.getTexture("ui/lightbattle/hp"), x + 47, y + 6, 0, 0.5)
+                        love.graphics.draw(Assets.getTexture("ui/lightbattle/hp"), x + 49, y + 6, 0, 0.5)
                     end
                     
                     local small = false
@@ -1799,15 +1799,15 @@ function Lib:init()
                     
                     local karma_mode = Game.battle.encounter.karma_mode
                     if karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") then
-                        love.graphics.draw(Assets.getTexture("ui/lightbattle/kr"), x + 63 + (small and 14 or 26) * 1.25, y + 6, 0, 0.5)
+                        love.graphics.draw(Assets.getTexture("ui/lightbattle/kr"), x + 64 + (small and 14 or 26) * 1.25, y + 6, 0, 0.5)
                     end
                     
                     love.graphics.setColor(karma_mode and {192/255, 0, 0} or COLORS["red"])
-                    love.graphics.rectangle("fill", x + 60, y - 2, (small and 14 or 26) * 1.25, 10)
+                    love.graphics.rectangle("fill", x + 62, y - 2, (small and 14 or 26) * 1.25, 10)
                     love.graphics.setColor({1,0,1})
-                    love.graphics.rectangle("fill", x + 60, y - 2, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 14 or 26)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 10)
+                    love.graphics.rectangle("fill", x + 62, y - 2, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 14 or 26)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 10)
                     love.graphics.setColor(COLORS["yellow"])
-                    love.graphics.rectangle("fill", x + 60, y - 2, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 14 or 26)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 10)
+                    love.graphics.rectangle("fill", x + 62, y - 2, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 14 or 26)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 10)
                     
                     love.graphics.setFont(Assets.getFont("namelv", 16))
                     if max < 10 and max >= 0 then
@@ -1833,15 +1833,15 @@ function Lib:init()
                         end
                     end
                     love.graphics.setColor(color)
-                    love.graphics.printf(current .. "/" .. max, x + 154 - 500, y - 4 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 3 or 0), 500, "right")
+                    love.graphics.printf(current .. "/" .. max, x + 156 - 500, y - 4 - (karma_mode and not Kristal.getLibConfig("magical-glass", "multi_neat_ui") and 3 or 0), 500, "right")
                     
                     if Game.battle.current_selecting == self.index or DEBUG_RENDER and Input.alt() then
                         love.graphics.setColor(self.battler.chara:getLightColor())
                         love.graphics.setLineWidth(2)
-                        love.graphics.line(x - 3, y - 7, x - 3, y + 13)
-                        love.graphics.line(x - 3 - 1, y - 7, x + 155 + 1, y - 7)
-                        love.graphics.line(x + 155, y - 7, x + 155, y + 13)
-                        love.graphics.line(x - 3 - 1, y + 13, x + 155 + 1, y + 13)
+                        love.graphics.line(x - 2, y - 7, x - 2, y + 13)
+                        love.graphics.line(x - 2 - 1, y - 7, x + 156 + 1, y - 7)
+                        love.graphics.line(x + 156, y - 7, x + 156, y + 13)
+                        love.graphics.line(x - 2 - 1, y + 13, x + 156 + 1, y + 13)
                     end
                 end
             end

@@ -1,4 +1,4 @@
-local UnderPlayer, super = Class("Player", "UnderPlayer")
+local UnderPlayer, super = Class(Player, "UnderPlayer")
 
 function UnderPlayer:init(chara, x, y)
     super.init(self, chara, x, y)

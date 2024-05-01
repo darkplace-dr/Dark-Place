@@ -105,7 +105,9 @@ function LightBattle:init()
     self.partyselect_cursor_memory = {}
 
     self.enemies = {}
+    self.enemies_index = {}
     self.enemy_dialogue = {}
+    self.enemies_to_remove = {}
     self.defeated_enemies = {}
 
     self.seen_encounter_text = false
@@ -209,6 +211,7 @@ function LightBattle:postInit(state, encounter)
     if self.encounter.queued_enemy_spawns then
         for _,enemy in ipairs(self.encounter.queued_enemy_spawns) do
             table.insert(self.enemies, enemy)
+            table.insert(self.enemies_index, enemy)
             self:addChild(enemy)
         end
     end
@@ -884,13 +887,17 @@ function LightBattle:onStateChange(old,new)
             self.current_menu_y = 1
         end
 
-        if not self:isValidMenuLocation() and #self:getActiveEnemies() > 0 then
+        if not (self.enemies_index[self.current_menu_y] and self.enemies_index[self.current_menu_y].selectable) and #self.enemies_index > 0 then
+            local give_up = 0
             repeat
+                give_up = give_up + 1
+                if give_up > 100 then return end
+                -- Keep decrementing until there's a selectable enemy.
                 self.current_menu_y = self.current_menu_y + 1
-                if not self.enemies[self.current_menu_y] then
+                if self.current_menu_y > #self.enemies_index then
                     self.current_menu_y = 1
                 end
-            until(self:isValidMenuLocation())
+            until (self.enemies_index[self.current_menu_y] and self.enemies_index[self.current_menu_y].selectable)
         end
 
     elseif new == "PARTYSELECT" then
@@ -1596,6 +1603,12 @@ function LightBattle:sortChildren()
 end
 
 function LightBattle:update()
+    for _,enemy in ipairs(self.enemies_to_remove) do
+        Utils.removeFromTable(self.enemies, enemy)
+        self.enemies_index[Utils.getKey(self.enemies_index, enemy)] = false
+    end
+    self.enemies_to_remove = {}
+
     self.tension_bar.visible = self.tension
 
     if self.cutscene then
@@ -1869,23 +1882,15 @@ function LightBattle:getItemIndex()
 end
 
 function LightBattle:isValidMenuLocation()
-    if self.state == "MENUSELECT" then
-        if self:getItemIndex() > #self.menu_items then
+    if self:getItemIndex() > #self.menu_items then
+        return false
+    end
+    if self:isPagerMenu() then
+        if (self.current_menu_y > self.current_menu_rows) or (self.current_menu_y < 1) then
             return false
         end
-        if self:isPagerMenu() then
-            if (self.current_menu_y > self.current_menu_rows) or (self.current_menu_y < 1) then
-                return false
-            end
-        else
-            if (self.current_menu_x > Game.battle.current_menu_columns) or self.current_menu_x < 1 then
-                return false
-            end
-        end
-    elseif self.state == "ENEMYSELECT" then
-        if self.current_menu_y > #self.enemies then
-            return false
-        elseif self.enemies[self.current_menu_y].done_state then
+    else
+        if (self.current_menu_x > Game.battle.current_menu_columns) or self.current_menu_x < 1 then
             return false
         end
     end
@@ -2550,7 +2555,7 @@ function LightBattle:checkSolidCollision(collider)
 end
 
 function LightBattle:removeEnemy(enemy, defeated)
-    enemy.selectable = false
+    table.insert(self.enemies_to_remove, enemy)
     if defeated then
         table.insert(self.defeated_enemies, enemy)
     end
@@ -2799,26 +2804,25 @@ function LightBattle:onKeyPressed(key)
         end
 
     elseif self.state == "ENEMYSELECT" then
-
         if Input.isConfirm(key) then
             if self.encounter:onEnemySelect(self.state_reason, self.current_menu_y) then return end
             if Kristal.callEvent("onBattleEnemySelect", self.state_reason, self.current_menu_y) then return end
             self.enemyselect_cursor_memory[self.state_reason] = self.current_menu_y
 
             self:playSelectSound()
-            if #self.enemies == 0 then return end
+            if #self.enemies_index == 0 then return end
             self.selected_enemy = self.current_menu_y
             if self.state_reason == "XACT" then
                 local xaction = Utils.copy(self.selected_xaction)
                 if xaction.default then
-                    xaction.name = self.enemies[self.selected_enemy]:getXAction(self.party[self.current_selecting])
+                    xaction.name = self.enemies_index[self.selected_enemy]:getXAction(self.party[self.current_selecting])
                 end
-                self:pushAction("XACT", self.enemies[self.selected_enemy], xaction)
+                self:pushAction("XACT", self.enemies_index[self.selected_enemy], xaction)
             elseif self.state_reason == "SPARE" then
-                self:pushAction("SPARE", self.enemies[self.selected_enemy])
+                self:pushAction("SPARE", self.enemies_index[self.selected_enemy])
             elseif self.state_reason == "ACT" then
                 self:clearMenuItems()
-                local enemy = self.enemies[self.selected_enemy]
+                local enemy = self.enemies_index[self.selected_enemy]
                 for _,v in ipairs(enemy.acts) do
                     local insert = not v.hidden
                     if v.character and self.party[self.current_selecting].chara.id ~= v.character then
@@ -2849,11 +2853,11 @@ function LightBattle:onKeyPressed(key)
                 end
                 self:setState("MENUSELECT", "ACT")
             elseif self.state_reason == "ATTACK" then
-                self:pushAction("ATTACK", self.enemies[self.selected_enemy])
+                self:pushAction("ATTACK", self.enemies_index[self.selected_enemy])
             elseif self.state_reason == "SPELL" then
-                self:pushAction("SPELL", self.enemies[self.selected_enemy], self.selected_spell)
+                self:pushAction("SPELL", self.enemies_index[self.selected_enemy], self.selected_spell)
             elseif self.state_reason == "ITEM" then
-                self:pushAction("ITEM", self.enemies[self.selected_enemy], self.selected_item)
+                self:pushAction("ITEM", self.enemies_index[self.selected_enemy], self.selected_item)
             else
                 self:nextParty()
             end
@@ -2875,27 +2879,35 @@ function LightBattle:onKeyPressed(key)
             return
         end
         if Input.is("up", key) then
-            if #self.enemies == 0 then return end
+            if #self.enemies_index == 0 then return end
             local old_location = self.current_menu_y
+            local give_up = 0
             repeat
+                give_up = give_up + 1
+                if give_up > 100 then return end
+                -- Keep decrementing until there's a selectable enemy.
                 self.current_menu_y = self.current_menu_y - 1
                 if self.current_menu_y < 1 then
-                    self.current_menu_y = #self.enemies
+                    self.current_menu_y = #self.enemies_index
                 end
-            until (self.enemies[self.current_menu_y].selectable)
+            until (self.enemies_index[self.current_menu_y] and self.enemies_index[self.current_menu_y].selectable)
 
             if self.current_menu_y ~= old_location then
                 self:playMoveSound()
             end
         elseif Input.is("down", key) then
+            if #self.enemies_index == 0 then return end
             local old_location = self.current_menu_y
-            if #self.enemies == 0 then return end
+            local give_up = 0
             repeat
+                give_up = give_up + 1
+                if give_up > 100 then return end
+                -- Keep decrementing until there's a selectable enemy.
                 self.current_menu_y = self.current_menu_y + 1
-                if self.current_menu_y > #self.enemies then
+                if self.current_menu_y > #self.enemies_index then
                     self.current_menu_y = 1
                 end
-            until (self.enemies[self.current_menu_y].selectable)
+            until (self.enemies_index[self.current_menu_y] and self.enemies_index[self.current_menu_y].selectable)
 
             if self.current_menu_y ~= old_location then
                 self:playMoveSound()
