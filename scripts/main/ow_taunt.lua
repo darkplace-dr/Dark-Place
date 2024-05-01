@@ -16,17 +16,23 @@ function Mod:initTaunt()
 end
 
 function Mod:updateTaunt()
-    local toque_equipped = false
-    for _,party in ipairs(Game.party) do
-        if party:checkArmor("pizza_toque") then toque_equipped = true end
-    end
-    if
-        (toque_equipped or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
+    if not (OVERLAY_OPEN or TextInput.active)
+        and self:isTauntingAvaliable()
         and Input.pressed("v", false)
         and not self.taunt_lock_movement
-        and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene() and not Game.lock_movement)
-        and not (OVERLAY_OPEN or TextInput.active)
+        and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY"
+            and not Game.world:hasCutscene() and not Game.lock_movement)
     then
+        -- awesome workaround for run_anims
+        Game.world.player:setState("WALK")
+        Game.world.player.running = false
+        for _, follower in ipairs(Game.world.followers) do
+            if follower:getTarget() == self and follower.state == "RUN" then
+                follower.state_manager:setState("WALK")
+                follower.running = false
+            end
+        end
+        Game.world.player:resetFollowerHistory()
         self.taunt_lock_movement = true
 
         Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
@@ -34,7 +40,7 @@ function Mod:updateTaunt()
         for _,chara in ipairs(Game.stage:getObjects(Character)) do
             if not chara.actor or not chara.visible then goto continue end
 
-            -- workaround due of actors being loaded first by registry
+            -- workaround due to actors being loaded first by registry
             local sprites = chara.actor.getTauntSprites
                 and chara.actor:getTauntSprites()
                 or chara.actor.taunt_sprites

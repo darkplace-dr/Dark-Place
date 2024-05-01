@@ -37,14 +37,10 @@ function Player:update()
         self:resetFollowerHistory()
 	end
 
-    -- Holding run with the Pizza Toque equipped (or if the file name is "PEPPINO") will cause a gradual increase in speed.
-    local toque_equipped = false
-    for _,party in ipairs(Game.party) do
-        if party:checkArmor("pizza_toque") then toque_equipped = true end
-    end
-    local player_name = Game.save_name:upper()
-    if (self.world.map.id ~= "everhall" and self.world.map.id ~= "everhall_entry")
-        and (toque_equipped == true or player_name == "PEPPINO") then
+    -- Holding run with the Pizza Toque equipped (or if the file name is "PEPPINO")
+    -- will cause a gradual increase in speed.
+    if Mod:isTauntingAvaliable()
+        and (self.world.map.id ~= "everhall" and self.world.map.id ~= "everhall_entry") then
         if self.run_timer > 60 then
             self.walk_speed = self.walk_speed + DT
         elseif self.walk_speed > 4 then
@@ -55,7 +51,7 @@ function Player:update()
     super.update(self)
 
     -- Hitting a wall at a speed of 10 or higher will do a small collision effect
-    if toque_equipped or player_name == "PEPPINO" then
+    if Mod:isTauntingAvaliable() then
         if self.last_collided_x or self.last_collided_y then
             if self.walk_speed >= 10 then
                 self.world.player:shake(4, 0)

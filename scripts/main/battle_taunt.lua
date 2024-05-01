@@ -15,12 +15,8 @@ function Mod:initBattleTaunt()
 end
 
 function Mod:updateBattleTaunt()
-    local toque_equipped = false
-    for _,party in ipairs(Game.party) do
-        if party:checkArmor("pizza_toque") then toque_equipped = true end
-    end
     if
-        (toque_equipped or Game.save_name:upper() == "PEPPINO" or self.let_me_taunt)
+        self:isTauntingAvaliable()
         and Input.pressed("v", false)
         and self.taunt_cooldown == 0
         and (Game.state == "BATTLE" and not Game.battle:hasCutscene())

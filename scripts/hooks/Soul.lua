@@ -32,8 +32,7 @@ function Soul:init(x, y, color)
     -- hi -sam
     self.parry_lock_movement = 0
 
-	local player_name = (player_name_override or Game.save_name):upper()
-    if player_name == "PEPPINO" then
+    if Game.save_name:upper() == "PEPPINO" then
         self.parry_sfx = Assets.getSound("sugarcoat")
     else
         self.parry_sfx = Assets.getSound("taunt")
@@ -118,17 +117,13 @@ function Soul:update()
 		self.sprite_focus.alpha = 0
 	end
 
-	local player = Game.party[1]
-	local player_name = Game.save_name:upper()
-    local toque_equipped = false
     local focus_equipped = false
 	for _,party in ipairs(Game.party) do
-        if party:checkArmor("pizza_toque") then toque_equipped = true end
         if party:checkArmor("focus") then focus_equipped = true end
     end
 	-- Taunt code starts here
 	if self.force_taunt ~= false then
-	if toque_equipped or player_name == "PEPPINO" or self.force_taunt == true then
+	if Mod:isTauntingAvaliable() or self.force_taunt == true then
 	if self.transitioning then
         if self.parried_loop_sfx then
             self.parried_loop_sfx:stop()
