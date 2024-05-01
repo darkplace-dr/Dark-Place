@@ -18,6 +18,7 @@ function Elevator:onInteract(chara, dir)
         cutscene:wait(cutscene:walkTo(Game.world.player, self.x, self.y, 0.25, "up"))
         --cutscene:mapTransition("hotland/elevator")
     end)
+    return true
 end
 
 return Elevator

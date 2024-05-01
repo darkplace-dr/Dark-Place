@@ -16,6 +16,7 @@ function Jukebox:onInteract(chara, dir)
     Game.world:startCutscene(function(cutscene)
         cutscene:text("* A non-working jukebox, unfortunately.")
     end)
+    return true
 end
 
 return Jukebox

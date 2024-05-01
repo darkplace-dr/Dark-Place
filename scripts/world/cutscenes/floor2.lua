@@ -160,6 +160,7 @@ return {
         local entered_correct_code = false
         local wbi = WarpBinInputMenu()
         wbi.as_warp_bin_ui = false
+        wbi.cancellable = false
         wbi.finish_cb = function(action, raw_input)
             wbi_ok = true
             entered_correct_code = raw_input:lower() == "isuckass"

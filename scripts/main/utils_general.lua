@@ -44,18 +44,73 @@ end
 
 -- Check if a file exists in the AppData/Home folder.
 -- Can/Will be used to check if the player has played certain games like Undertale or Deltarune.
+---@param try_wine_route? boolean # If true, an attempt to check wineprefixs for the file will be made on Linux. In this case name should be a path for Windows.
+---@param wine_steam_appid? number # The Steam AppID of the game to check for; if specified, wine route will also check the wineprefix corresponding to that AppID.
 --- @return boolean exists
-function Mod:fileExists(name)
+function Mod:fileExists(name, try_wine_route, wine_steam_appid)
     local path = ""
-    if love.system.getOS() == "Windows" then
-        path = string.gsub(os.getenv('UserProfile'), "\\", "/").."/AppData/"..name
-    elseif love.system.getOS() == "OS X" then
-        path = os.getenv('HOME').."/Library/"..name
-    elseif love.system.getOS() == "Linux" then
-        path = os.getenv('HOME').."/"..name
+    local function check(path)
+        local f = io.open(path, "r")
+        return f ~= nil and io.close(f)
     end
-    local f = io.open(path, "r")
-    return f ~= nil and io.close(f)
+    local function checkDir(file)
+        local ok, err, code = os.rename(file, file)
+        if not ok then
+            if code == 13 then
+                -- Permission denied, but it exists
+                return true
+            end
+        end
+        return ok, err
+    end
+    if love.system.getOS() == "Windows" then
+        local function unixizePathSep(path)
+            return string.gsub(os.getenv("USERPROFILE"), "\\", "/")
+        end
+        local appdata = (
+            os.getenv("APPDATA") and unixizePathSep(os.getenv("APPDATA")).."/../"
+            or (unixizePathSep(os.getenv("USERPROFILE")).."/AppData/")
+        )
+        path = appdata..name
+    elseif love.system.getOS() == "OS X" then
+        if try_wine_route then return false end -- UNIMPLEMENTED
+
+        path = os.getenv("HOME").."/Library/Application Support/"..name
+    elseif love.system.getOS() == "Linux" then
+        if try_wine_route then -- assuming that a Windows path is passed
+            local wineprefix = os.getenv("WINEPREFIX") or os.getenv("HOME").."/.wine"
+            local user_wineprefix = wineprefix.."/drive_c/users/"..os.getenv("USER")
+            local appdata_wineprefix = user_wineprefix.."/Local Settings/Application Data/" -- 2k3
+            if not checkDir(appdata_wineprefix) then
+                appdata_wineprefix = user_wineprefix.."/AppData/" -- vista
+            end
+            local path_wineprefix = appdata_wineprefix..name
+            if check(path_wineprefix) then return true end
+
+            if wine_steam_appid then
+                local steamroot = os.getenv("STEAMROOT") or os.getenv("HOME").."/.steam"
+                local steampfx = steamroot.."/steam/steamapps/compatdata/"..tostring(wine_steam_appid).."/pfx"
+                local user_steampfx = steampfx.."/drive_c/users/steamuser"
+                local appdata_steampfx = user_steampfx.."/Local Settings/Application Data/" -- 2k3
+                if not checkDir(appdata_steampfx) then
+                    appdata_steampfx = user_steampfx.."/AppData/" -- vista
+                end
+                local path_steampfx = appdata_steampfx..name
+                if check(path_steampfx) then return true end
+            end
+            return false
+        else
+            -- don't ask why %
+            name = string.gsub(name, "%XDG_CONFIG_HOME%", os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config")
+            local starts_at_root, _ = Utils.startsWith(name, "/")
+            if not starts_at_root then
+                path = os.getenv("HOME").."/"..name
+            else
+                path = name
+            end
+        end
+    end
+    return check(path)
 end
 
 -- Directly check if a Kristal mod has any save files using Mod:fileExists()
@@ -71,9 +126,10 @@ function Mod:hasSaveFiles(id)
         if love.system.getOS() == "Windows" then
             paths[i] = "Roaming/"..v
         elseif love.system.getOS() == "OS X" then
-            paths[i] = "Application Support/"..v
+            paths[i] = v
         elseif love.system.getOS() == "Linux" then
-            paths[i] = ".local/share/"..v
+            local data_home = os.getenv("XDG_DATA_HOME") or os.getenv("HOME").."/.local/share"
+            paths[i] = data_home..v
         end
     end
 
@@ -94,4 +150,45 @@ end
 
 function Mod:hasWiiBIOS()
     return not not love.filesystem.getInfo("wii_settings.json")
+end
+
+---@param ... any # Extra parameters to cond()
+function Mod:evaluateCond(data, ...)
+    local result = true
+
+    if data.cond then
+        result = data.cond(...)
+    elseif data.flagcheck then
+        local inverted, flag = Utils.startsWith(data.flagcheck, "!")
+
+        local flag_value = Game.flags[flag]
+        local expected_value = data.flagvalue
+        local is_true
+        if expected_value ~= nil then
+            is_true = flag_value == expected_value
+        elseif type(result) == "number" then
+            is_true = flag_value > 0
+        else
+            is_true = flag_value
+        end
+
+        if is_true then
+            result = not inverted
+        else
+            result = inverted
+        end
+    end
+
+    return result
+end
+
+function Mod:setPresenceState(details)
+    self.rpc_state = details
+
+    -- talk about some half-baked support :bangbang:
+    local presence = Kristal.getPresence()
+    if presence then
+        presence.state = Kristal.callEvent("getPresenceState")
+        Kristal.setPresence(presence)
+    end
 end

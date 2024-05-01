@@ -13,6 +13,7 @@ end
 
 function BlackDoor:onInteract(player, dir)
     Game.world:startCutscene("room3", "blackdoor", self)
+    return true
 end
 
 return BlackDoor

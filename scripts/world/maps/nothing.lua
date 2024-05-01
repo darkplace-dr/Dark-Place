@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -9,10 +9,20 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 5,
-  nextobjectid = 11,
-  properties = {},
-  tilesets = {},
+  nextlayerid = 6,
+  nextobjectid = 14,
+  backgroundcolor = { 0, 0, 0 },
+  properties = {
+    ["name"] = "THE BEGINNING"
+  },
+  tilesets = {
+    {
+      name = "other-objects",
+      firstgid = 1,
+      filename = "../tilesets/other-objects.tsx",
+      exportfilename = "../tilesets/other-objects.lua"
+    }
+  },
   layers = {
     {
       type = "objectgroup",
@@ -31,7 +41,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -56,7 +66,25 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 13,
+          name = "nothing_initialize_reload",
+          type = "",
+          shape = "rectangle",
+          x = 237,
+          y = 202,
+          width = 128.99,
+          height = 92.99,
+          rotation = 27.61,
+          gid = 68,
+          visible = true,
+          properties = {
+            ["once"] = false,
+            ["usetile"] = true
+          }
+        }
+      }
     },
     {
       type = "objectgroup",
@@ -73,9 +101,9 @@ return {
       properties = {},
       objects = {
         {
-          id = 5,
+          id = 11,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 320,
           y = 240,

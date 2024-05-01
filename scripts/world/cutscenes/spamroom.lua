@@ -9,7 +9,7 @@ return {
     end,
     mandela = function(cutscene, event)
         cutscene:showNametag("Alternate Spamton")
-        cutscene:text("* REMEMB3R TO FOLLOW THE [T.H.I.N.K] PRINCIPLE, YOU [Little Sponge]!!", "", "alternatespam")
+        cutscene:text("* REMEMB3R TO FOLLOW THE [T.H.I.N.K] PRINCIPLE, YOU [Little Sponge]!!", nil, "alternatespam")
         cutscene:hideNametag()
     end,
     soapton = function(cutscene, event)
@@ -23,25 +23,25 @@ return {
     end,
     mari = function(cutscene, event)
         cutscene:showNametag("Mariton")
-        cutscene:text("* HEY [wait:5][wave]EVERY~", "", "marispam")
-        cutscene:text("* WAITING FOR [wave]SOMETHING[wave:0] TO HAPPEN?", "", "marispam")
+        cutscene:text("* HEY [wait:5][wave]EVERY~", nil, "marispam")
+        cutscene:text("* WAITING FOR [wave]SOMETHING[wave:0] TO HAPPEN?", nil, "marispam")
         cutscene:hideNametag()
     end,
     mosquito = function(cutscene, event)
         cutscene:showNametag("Spamton Mosquito")
-        cutscene:text("* EVER WANTED TO JUST RELAX FOR THE [[Hot Summer Deals]]?", "", "spam_mosquito")
-        cutscene:text("* BUT ALL THE DAMN [bugs] ARE IN THE WAY?", "", "spam_mosquito")
-        cutscene:text("* WE GOT YOU COVERED WITH THE NEW [[Hyperlink Blocked]]!", "", "spam_mosquito")
-        cutscene:text("* [currently not in stock].", "", "spam_mosquito")
+        cutscene:text("* EVER WANTED TO JUST RELAX FOR THE [[Hot Summer Deals]]?", nil, "spam_mosquito")
+        cutscene:text("* BUT ALL THE DAMN [bugs] ARE IN THE WAY?", nil, "spam_mosquito")
+        cutscene:text("* WE GOT YOU COVERED WITH THE NEW [[Hyperlink Blocked]]!", nil, "spam_mosquito")
+        cutscene:text("* [currently not in stock].", nil, "spam_mosquito")
         cutscene:hideNametag()
     end,
     cungadero = function(cutscene, event)
         cutscene:showNametag("Cungadero Spamton")
-        cutscene:text("* Take a ride around town on our special Cungadero!", "", "cungaderospamton")
+        cutscene:text("* Take a ride around town on our special Cungadero!", nil, "cungaderospamton")
         event:setSprite("smile")
-        cutscene:text("* Hey everybody![wait:10]\n* It's me!", "", "cungaderospamton")
+        cutscene:text("* Hey everybody![wait:10]\n* It's me!", nil, "cungaderospamton")
         event:setSprite("wink")
-        cutscene:text("* Everybody's favorite salesman,[wait:5] Spamton G. Spamton!", "", "cungaderospamton")
+        cutscene:text("* Everybody's favorite salesman,[wait:5] Spamton G. Spamton!", nil, "cungaderospamton")
         event:setSprite("neutral")
         if cutscene:getCharacter("jamm") then
             cutscene:showNametag("Jamm")
@@ -52,17 +52,17 @@ return {
             cutscene:text("* Uh,[wait:5] why is your car parked on the sidewalk?", "neutral", "susie")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("wink")
-            cutscene:text("* Why,[wait:5] to show it off,[wait:5] of course!", "", "cungaderospamton")
+            cutscene:text("* Why,[wait:5] to show it off,[wait:5] of course!", nil, "cungaderospamton")
             event:setSprite("neutral")
-            cutscene:text("* I would of gotten here sooner if I hadn't got into traffic.", "", "cungaderospamton")
+            cutscene:text("* I would of gotten here sooner if I hadn't got into traffic.", nil, "cungaderospamton")
             event:setSprite("angry")
-            cutscene:text("* WHY WAS I STUCK IN TRAFFIC?![wait:10]\n* DON'T THEY KNOW?[wait:10]\n* DON'T THEY KNOW WHO I AM?!", "", "cungaderospamton")
+            cutscene:text("* WHY WAS I STUCK IN TRAFFIC?![wait:10]\n* DON'T THEY KNOW?[wait:10]\n* DON'T THEY KNOW WHO I AM?!", nil, "cungaderospamton")
             event:setSprite("sideeye")
-            cutscene:text("[noskip][speed:0.3]* ...", "", "cungaderospamton")
+            cutscene:text("[noskip][speed:0.3]* ...", nil, "cungaderospamton")
             event:setSprite("wink")
-            cutscene:text("* Spamton G. Spamton,[wait:5] that's who I am!", "", "cungaderospamton")
+            cutscene:text("* Spamton G. Spamton,[wait:5] that's who I am!", nil, "cungaderospamton")
             event:setSprite("rage")
-            cutscene:text("* AAAAAAAAAARGH!!!", "", "cungaderospamton")
+            cutscene:text("* AAAAAAAAAARGH!!!", nil, "cungaderospamton")
             event:setSprite("neutral")
         end
         if cutscene:getCharacter("dess") then
@@ -70,12 +70,12 @@ return {
             cutscene:text("* yooooo is that the uhhhhh big shot guy????", "neutral", "dess")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("wink")
-            cutscene:text("* Ah,[wait:5] a loyal fan I see.", "", "cungaderospamton")
+            cutscene:text("* Ah,[wait:5] a loyal fan I see.", nil, "cungaderospamton")
             cutscene:showNametag("Dess")
             cutscene:text("* who said I actually liked you lmfao", "condescending", "dess")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("shock")
-            cutscene:text("[noskip][speed:0.3]* ...", "", "cungaderospamton")
+            cutscene:text("[noskip][speed:0.3]* ...", nil, "cungaderospamton")
             event:setSprite("neutral")
         end
         if cutscene:getCharacter("brenda") then
@@ -83,7 +83,7 @@ return {
             cutscene:text("* Woah,[wait:5] it's sureal seeing you before you lost your marbles.", "neutral", "brenda")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("shock")
-            cutscene:text("* Uh...[wait:10] what?", "", "cungaderospamton")
+            cutscene:text("* Uh...[wait:10] what?", nil, "cungaderospamton")
             cutscene:showNametag("Brenda")
             cutscene:text("* Oh,[wait:5] nothing,[wait:5] nothing!", "blush", "brenda")
             event:setSprite("neutral")
@@ -99,7 +99,7 @@ return {
         end
         cutscene:showNametag("Spamton")
         event:setSprite("hold_cards")
-        cutscene:text("* PICK A CARD,[wait:5]\nANY [Kaard].", "", "cungaderospamton")
+        cutscene:text("* PICK A CARD,[wait:5]\nANY [Kaard].", nil, "cungaderospamton")
 
         cutscene:hideNametag()
         cutscene:choicer({"1", "3", "2"})
@@ -121,7 +121,7 @@ return {
             end
         end
         cutscene:showNametag("Spamton")
-        cutscene:text("[style:GONER][voice:silent][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD",  "", "cungaderospamton", {
+        cutscene:text("[style:GONER][voice:silent][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD", nil, "cungaderospamton", {
             functions = {
                 gigatalk = function ()
                     event:setSprite("laugh_1")
@@ -301,127 +301,6 @@ return {
         cutscene:text("* Batteries not included")
     end,
 
-    -- ┌───────────────────────┐ \
-    -- │     The Warp Bin      │ \
-    -- └───────────────────────┘ \
-    -- or: the feature creep bin    - dobby
-    warpbin = function(cutscene, event)
-        cutscene:text("* It's the warp bin.")
-        cutscene:text("* Would you like to warp?[wait:10]\n* You only need the code.")
-
-        if cutscene:choicer({"Sure", "Nope"}) == 2 then
-            return
-        end
-
-        local wbi_ok = false
-        ---@type WarpBinCodeInfo
-        local action
-        local action_raw
-        local wbi = WarpBinInputMenu()
-        wbi.finish_cb = function(_action, _action_raw)
-            wbi_ok = true
-            action = _action
-            action_raw = _action_raw
-        end
-        Game.world:spawnObject(wbi, "ui")
-        cutscene:wait(function() return wbi_ok end)
-
-        if not action then
-            if event.foolproof_counter == nil then event.foolproof_counter = 0 end
-            event.foolproof_counter = event.foolproof_counter + 1
-            if event.foolproof_counter == 10 then
-                cutscene:text("* For some reason,[wait:5] the lid opened...")
-                action = { result = "backrooms/gramophone" }
-            else
-                cutscene:text("* That doesn't seem to work.")
-                if event.foolproof_counter >= 3 and event.foolproof_counter < 10 then
-                    cutscene:text("* You're reminded of the fact that you can put in \"00000000\" when you're stuck.")
-                    if event.foolproof_counter >= 5 then
-                        cutscene:text("* Seriously, you're not getting anywhere with this.")
-                    end
-                end
-                return
-            end
-        end
-
-        local warpable = true
-        if action.cond then
-            warpable = action.cond()
-        elseif action.flagcheck then
-            local inverted, flag = Utils.startsWith(action.flagcheck, "!")
-
-            local result = Game.flags[flag]
-            local value = action.flagvalue
-            local is_true
-            if value ~= nil then
-                is_true = result == value
-            elseif type(result) == "number" then
-                is_true = result > 0
-            else
-                is_true = result
-            end
-
-            if is_true then
-                warpable = not inverted
-            else
-                warpable = inverted
-            end
-        end
-
-        local result = action.result or action[1]
-        local marker = action.marker or action[2]
-        local silence_system_messages = action.silence_system_messages
-        if silence_system_messages == nil then
-            silence_system_messages = false
-        end
-
-        if type(result) == "function" then
-            result = result(cutscene)
-            if not result then return end
-            if type(result) == "table" then
-                marker = result.marker or result[2]
-                result = result.result or result[1]
-            end
-        elseif not warpable then
-            if action.on_fail then
-                action.on_fail(cutscene)
-            elseif not silence_system_messages then
-                cutscene:text("* That doesn't seem to work.")
-            end
-            return
-        end
-
-        assert(type(result) == "string", "result should be the id of a map or a function (got a "..type(result)..")")
-
-        local dest_map
-        pcall(function() dest_map = Registry.createMap(result, Game.world) end)
-        if not dest_map then
-            if not silence_system_messages then
-                cutscene:text("* Where are you warping to?")
-            end
-            return
-        end
-        if Game.world.map.id == dest_map.id then
-            if not silence_system_messages then
-                cutscene:text("* But you're already there.")
-            end
-            return
-        end
-
-        cutscene:wait(0.2)
-
-        Game.world.music:stop()
-        -- Hell naw is this the only way to stop all sounds?
-        for key,_ in pairs(Assets.sound_instances) do
-            Assets.stopSound(key, true)
-        end
-        cutscene:fadeOut(0)
-        cutscene:playSound("impact")
-
-        cutscene:wait(1)
-        cutscene:loadMap(dest_map, marker, "down")
-        cutscene:fadeIn(0.25)
-    end,
     muppet = function(cutscene, event)
         cutscene:showNametag("Other Kris")
         event:setAnimation("talk")

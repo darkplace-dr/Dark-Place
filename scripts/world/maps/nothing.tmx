@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="11">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#000000" nextlayerid="6" nextobjectid="14">
  <editorsettings>
   <export target="nothing.lua" format="lua"/>
  </editorsettings>
- <objectgroup id="3" name="collision">
+ <properties>
+  <property name="name" value="THE BEGINNING"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/other-objects.tsx"/>
+ <objectgroup color="#0000ff" id="3" name="collision">
   <object id="4" x="0" y="0" width="640" height="480"/>
  </objectgroup>
- <objectgroup id="2" name="objects"/>
- <objectgroup id="4" name="markers">
-  <object id="5" name="spawn" x="320" y="240">
+ <objectgroup id="2" name="objects">
+  <object id="13" name="nothing_initialize_reload" gid="68" x="237" y="202" width="128.99" height="92.99" rotation="27.61">
+   <properties>
+    <property name="once" type="bool" value="false"/>
+    <property name="usetile" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="markers">
+  <object id="11" name="spawn" x="320" y="240">
    <point/>
   </object>
  </objectgroup>

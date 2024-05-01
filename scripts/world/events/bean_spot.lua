@@ -12,8 +12,6 @@ function BeanSpot:init(data)
     Game.world.timer:after(1/30, function ()
         self.layer = 0.2 -- I don't know why, but the layer gets reset back to 0.4 somewhere after the init, so setting it to 0.2 is done a frame later
     end)
-
-
 end
 
 function BeanSpot:getDebugInfo()
@@ -24,6 +22,7 @@ end
 
 function BeanSpot:onInteract(chara, dir)
 	Game.world:startCutscene("_main.bean_spot", self)
+    return true
 end
 
 return BeanSpot

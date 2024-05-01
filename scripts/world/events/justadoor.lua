@@ -15,11 +15,11 @@ function justadoor:onInteract(player, dir)
         cutscene:text("* You have a big feeling you shouldn't enter this place.")
         cutscene:text("* Still enter?")
 		local enter = cutscene:choicer({"Enter", "Do not"})
-		print(enter)
 		if enter == 1 then
 			Game.world:mapTransition("floor2/hell")
 		end
     end)
+    return true
 end
 
 return justadoor

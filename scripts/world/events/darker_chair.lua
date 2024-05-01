@@ -28,6 +28,7 @@ function Chair:onInteract(player, dir)
             end
         end)
     end
+    return true
 end
 
 function Chair:setDarker(bool, music)

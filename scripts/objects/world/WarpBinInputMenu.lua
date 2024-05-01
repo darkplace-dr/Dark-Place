@@ -1,6 +1,6 @@
 ---@class WarpBinInputMenu : Object
----@field finish_cb? fun(action?: WarpBinCodeInfo, raw_input: string)
-local WarpBinInputMenu, super = Class(Object)
+---@field finish_cb? fun(action?: WarpBinCodeInfo, raw_input?: string)
+local WarpBinInputMenu, super = Class("Object")
 
 function WarpBinInputMenu:init(length)
     length = length or 8
@@ -21,13 +21,20 @@ function WarpBinInputMenu:init(length)
     self.char_h = self.char_w
     self.char_spacing = 5
 
-    -- yes, a table of lines
+    -- yes, a table of lines. that's what the TextInput API
+    -- asks for
     self.input = {""}
     self.code_len = length
+
+    self.cancellable = true
 
     -- affects whether we query the bincode list or not
     self.as_warp_bin_ui = true
     self.finish_cb = nil
+end
+
+function WarpBinInputMenu:onAdd(...)
+    super.onAdd(...)
 
     TextInput.attachInput(self.input, {
         multiline = false,
@@ -74,11 +81,28 @@ function WarpBinInputMenu:draw()
     super.draw(self)
 end
 
+function WarpBinInputMenu:update()
+    if not OVERLAY_OPEN then
+        if self.cancellable
+            -- FIXME
+            and (Input.pressed("shift") or Input.pressed("gamepad:b")) then
+            if self.finish_cb then
+                self.finish_cb(nil, nil)
+            end
+            self:remove()
+        end
+    end
+
+    super.update(self)
+end
+
 function WarpBinInputMenu:endInput()
     TextInput.endInput()
 end
 
-function WarpBinInputMenu:onRemove()
+function WarpBinInputMenu:onRemove(parent)
+    super.onRemove(self, parent)
+
     self:endInput()
 end
 

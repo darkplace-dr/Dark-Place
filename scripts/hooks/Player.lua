@@ -25,13 +25,22 @@ function Player:setActor(...)
 end
 
 function Player:update()
-    -- Holding run with the Pizza Toque equipped (or if the file name is "PEPPINO") will cause a gradual increase in speed.
-    local toque_equipped = false
-    for _,party in ipairs(Game.party) do
-        if party:checkArmor("pizza_toque") then toque_equipped = true end
-    end
-    local player_name = Game.save_name:upper()
-    if Game.world.map.id ~= "everhall" and Game.world.map.id ~= "everhall_entry" and toque_equipped == true or player_name == "PEPPINO" then
+	if Kristal.getLibConfig("pickup_lib", "disable_hold_run") and self.holding then
+        -- dobby: This would've'nt even work since running is a local variable of the parent function
+		self.run_timer = 0
+        if self.state == "RUN" then self:setState("WALK") end
+        for _, follower in ipairs(self.world.followers) do
+            if follower:getTarget() == self and follower.state == "RUN" then
+                follower.state_manager:setState("WALK")
+            end
+        end
+        self:resetFollowerHistory()
+	end
+
+    -- Holding run with the Pizza Toque equipped (or if the file name is "PEPPINO")
+    -- will cause a gradual increase in speed.
+    if Mod:isTauntingAvaliable()
+        and (self.world.map.id ~= "everhall" and self.world.map.id ~= "everhall_entry") then
         if self.run_timer > 60 then
             self.walk_speed = self.walk_speed + DT
         elseif self.walk_speed > 4 then
@@ -41,31 +50,25 @@ function Player:update()
 
     super.update(self)
 
-	if Kristal.getLibConfig("pickup_lib", "disable_hold_run") and self.holding then
-        -- dobby: This would've'nt even work since running is a local variable of the parent function
-		--running = false
-		self.run_timer = 0
-	end
-
     -- Hitting a wall at a speed of 10 or higher will do a small collision effect
-    if toque_equipped or player_name == "PEPPINO" then
+    if Mod:isTauntingAvaliable() then
         if self.last_collided_x or self.last_collided_y then
             if self.walk_speed >= 10 then
-                Game.world.player:shake(4, 0)
+                self.world.player:shake(4, 0)
                 Assets.playSound("wing")
             end
         end
     end
 
     --haha backroom go brrrrrrr
-    if Game.world.map.id == "whitespace" or Game.world.map.id == "blackspace" then
+    if self.world.map.id == "whitespace" or self.world.map.id == "blackspace" then
         if self.walk_speed >= 60 then
-    	    Game.world:mapTransition("greyarea", "entry")
+    	    self.world:mapTransition("greyarea", "entry")
         end
     end
-    if Game.world.map.id == "greyarea" then
+    if self.world.map.id == "greyarea" then
         if self.walk_speed >= 60 then
-    	    Game.world:mapTransition("room1", "spawn")
+    	    self.world:mapTransition("room1", "spawn")
         end
     end
 end
@@ -111,25 +114,30 @@ function Player:handleMovement()
 
     self:move(walk_x, walk_y, speed * DTMULT)
 
-    local members = Utils.merge({Game.world.player}, Game.world.followers)
+    local followers = Utils.filter(self.world.followers, function(member)
+        return member:getTarget() == self
+    end)
+    local members = Utils.merge({self}, followers)
     local walkers = 0
     for _, member in ipairs(members) do
         if member.state == "WALK" then walkers = walkers + 1 end
     end
 
-    if self.old_xv == self.x and self.old_yv == self.y and walkers ~= #members then
-        self.stay_grace = self.stay_grace + 1
-    end
-    self.old_xv = self.x
-    self.old_yv = self.y
-
     local function returnToWalk()
-        if self.state ~= "WALK" then self:setState("WALK") end
-        for _, follower in ipairs(Game.world.followers) do
-            if follower.state ~= "WALK" then follower.state_manager:setState("WALK") end
+        if self.state == "RUN" then self:setState("WALK") end
+        for _, follower in ipairs(followers) do
+            if follower.state == "RUN" then
+                follower.state_manager:setState("WALK")
+            end
         end
         self:resetFollowerHistory()
     end
+
+    if self.old_xv == self.x and self.old_yv == self.y and walkers ~= #members then
+        self.stay_grace = Utils.approach(self.stay_grace, 2, DTMULT)
+    end
+    self.old_xv = self.x
+    self.old_yv = self.y
 
     if self.stay_grace == 2 then
         returnToWalk()
@@ -138,20 +146,17 @@ function Player:handleMovement()
 
     if not running or self.last_collided_x or self.last_collided_y then
         self.run_timer = 0
-        if self.state ~= "WALK" then self:setState("WALK") end
-        if walk_x == 0 and walk_y == 0 then
-            returnToWalk()
-        end
+        returnToWalk()
     elseif running then
         if walk_x ~= 0 or walk_y ~= 0 then
             self.run_timer = self.run_timer + DTMULT
             self.run_timer_grace = 0
 
-            if self.state ~= "RUN" then
+            if self.state == "WALK" then
                 self:setState("RUN")
             end
-            for _, follower in ipairs(Game.world.followers) do
-                if follower.state ~= "RUN" then
+            for _, follower in ipairs(followers) do
+                if follower.state == "WALK" then
                     follower.state_manager:setState("RUN")
                 end
             end
@@ -159,36 +164,10 @@ function Player:handleMovement()
             -- Dont reset running until 2 frames after you release the movement keys
             if self.run_timer_grace >= 2 then
                 self.run_timer = 0
-                if walk_x ~= 0 and walk_y ~= 0 then
-                    returnToWalk()
-                end
+                returnToWalk()
             end
             self.run_timer_grace = self.run_timer_grace + DTMULT
         end
-    end
-end
-
-function Player:updateRun()
-    if not self.running then
-        self.running = true
-    end
-
-    if self.has_run and self.sprite.sprite ~= "run" then
-        self:setWalkSprite("run")
-    end
-
-    if self:isMovementEnabled() then
-        self:handleMovement()
-    end
-
-    if Game.world:hasCutscene() or Game.world.menu or Game.battle then
-        if self.state ~= "WALK" then self:setState("WALK") end
-        for _, follower in ipairs(Game.world.followers) do
-            if follower.state ~= "WALK" then
-                follower.state_manager:setState("WALK")
-            end
-        end
-        self:resetFollowerHistory()
     end
 end
 
@@ -200,18 +179,35 @@ function Player:updateWalk()
 
     super.updateWalk(self)
 
-    if Game.world:hasCutscene() or Game.world.menu or Game.battle then
-        if self.state ~= "WALK" then self:setState("WALK") end
-        for _, follower in ipairs(Game.world.followers) do
-            if follower.state ~= "WALK" then follower.state_manager:setState("WALK") end
-        end
-        self:resetFollowerHistory()
-    end
-
     if not self:isMovementEnabled() then return end
 
     if Input.pressed("a") and (self.actor.id == "YOU" or self.actor.id == "YOU_lw") and Mod.can_croak ~= false then
         self:croak()
+    end
+end
+
+function Player:updateRun()
+    if self.world:hasCutscene() or self.world.menu or Game.battle then
+        self:setState("WALK")
+        for _, follower in ipairs(self.world.followers) do
+            if follower:getTarget() == self and follower.state == "RUN" then
+                follower.state_manager:setState("WALK")
+            end
+        end
+        self:resetFollowerHistory()
+        return
+    end
+
+    if not self.running then
+        self.running = true
+    end
+
+    if self.has_run and self.sprite.sprite ~= "run" then
+        self:setWalkSprite("run")
+    end
+
+    if self:isMovementEnabled() then
+        self:handleMovement()
     end
 end
 

@@ -78,3 +78,13 @@ function Mod:funnytitle()
     love.window.setTitle(funnytitle)
     love.window.setIcon(funnyicon)
 end
+
+function Mod:isTauntingAvaliable()
+    if self.let_me_taunt then return true end
+    if Game.save_name:upper() == "PEPPINO" then return true end
+
+    for _,party in ipairs(Game.party) do
+        if party:checkArmor("pizza_toque") then return true end
+    end
+    return false
+end

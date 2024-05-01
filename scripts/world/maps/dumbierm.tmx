@@ -65,7 +65,7 @@
  <objectgroup color="#ff00ff" id="5" name="objects">
   <object id="13" name="interactable" x="684.667" y="440" width="115.333" height="80">
    <properties>
-    <property name="cutscene" value="spamroom.warpbin"/>
+    <property name="cutscene" value="warp_bin"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>

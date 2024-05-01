@@ -13,6 +13,7 @@ end
 
 function WhiteDoor_b:onInteract(player, dir)
     Game.world:startCutscene("whitespace", "whitedoor", self)
+    return true
 end
 
 return WhiteDoor_b

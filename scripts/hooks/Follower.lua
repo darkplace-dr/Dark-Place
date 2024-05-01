@@ -5,7 +5,7 @@ function Follower:init(...)
     super.init(self, ...)
 
     self.state_manager.state_events["update"] = self.state_manager.state_events["update"] or {}
-    self.state_manager:addEvent("update", { ["WALK"] = self.updateWalk })
+    self.state_manager:addEvent("update", { ["WALK"] = self.updateWalk, ["SLIDE"] = self.updateSlide })
     self.state_manager:addState("RUN", { update = self.updateRun })
 
     self.has_run = false
@@ -27,6 +27,12 @@ function Follower:updateWalk()
     if self.running then
         self.running = false
         self:resetSprite()
+    end
+end
+
+function Follower:updateSlide()
+    if self.running then
+        self.running = false
     end
 end
 

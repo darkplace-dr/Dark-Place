@@ -5,13 +5,10 @@ function character:init()
 
     self.name = "Jamm"
 
-    if Game:getFlag("jamm_closure") and Game:getFlag("dungeonkiller") then
-        self:setActor("jamm_hurt")
-        self:setLightActor("jamm_lw_hurt")
-    else
-        self:setActor("jamm")
-        self:setLightActor("jamm_lw")
-    end
+    self:setActor("jamm")
+    self:setLightActor("jamm_lw")
+    self.actor_hurt = Registry.createActor("jamm_hurt")
+    self.lw_actor_hurt = Registry.createActor("jamm_lw_hurt")
 
     self.level = 1
     self.title = "Slingshotter\nTakes aim, then\nfires"
@@ -80,6 +77,16 @@ function character:init()
     self.menu_icon_offset = nil
 
     self.gameover_message = nil
+end
+
+function character:getActor(light)
+    if light == nil then
+        light = Game.light
+    end
+    if Game:getFlag("jamm_closure") and Game:getFlag("dungeonkiller") then
+        return light and self.lw_actor_hurt or self.actor_hurt
+    end
+    return super.getActor(self, light)
 end
 
 function character:onTurnStart(battler)

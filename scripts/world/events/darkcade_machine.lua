@@ -43,6 +43,7 @@ function Machine:onInteract(player, dir)
 			end
 		end
 	end)
+	return true
 end
 
 return Machine

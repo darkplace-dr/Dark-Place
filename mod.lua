@@ -3,7 +3,6 @@ modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/minigames_glue")
 modRequire("scripts/main/warp_bin")
-Speen = modRequire("scripts/main/ow_speen")
 modRequire("scripts/main/ow_taunt")
 modRequire("scripts/main/battle_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
@@ -31,6 +30,8 @@ function Mod:init()
         "fwood/",
         "​"
     }
+
+    self.rpc_state = nil
 
     self:initTaunt()
     self:initBattleTaunt()
@@ -418,22 +419,27 @@ function Mod:init()
             end
         end
     end)
+
+    Utils.hook(Textbox, "init", function(orig, self, x, y, width, height, default_font, default_font_size, battle_box)
+        default_font = default_font
+            or Kristal.callEvent("getDefaultDialogTextFont")
+        orig(self, x, y, width, height, default_font, default_font_size, battle_box)
+    end)
 end
 
 function Mod:getLightBattleMenuOffsets()
     return { -- {soul, text}
-            ["ACT"] = {12, 16},
-            ["ITEM"] = {0, 0},
-            ["SPELL"] = {12, 16},
-            ["MERCY"] = {0, 0}, --doesn't matter lmao
-            ["SEND"] = {0, 0},
-            ["SKILL"] = {12, 16},
-        }
+        ["ACT"] = {12, 16},
+        ["ITEM"] = {0, 0},
+        ["SPELL"] = {12, 16},
+        ["MERCY"] = {0, 0}, --doesn't matter lmao
+        ["SEND"] = {0, 0},
+        ["SKILL"] = {12, 16},
+    }
 end
 
 function Mod:postInit(new_file)
     if self.legacy_kristal then
-        Game.world.music:stop()
         Game.world:startCutscene("flowey_check")
         return
     end
@@ -447,7 +453,7 @@ function Mod:postInit(new_file)
     }
     Kristal.callEvent("setItemsList", items_list)
 
-    Mod:funnytitle()
+    self:funnytitle()
 
     self:initializeImportantFlags(new_file)
 
@@ -463,7 +469,7 @@ function Mod:postInit(new_file)
             Game.world:startCutscene("_main.introcutscene")
         end
     end
-    
+
     if not Game:getFlag("booty_time") then
         Game:addFlag("booty_cd", 1)
         if Game:getFlag("booty_cd") >= 5 then
@@ -476,7 +482,7 @@ function Mod:postInit(new_file)
     end
 
     self:initBulborb()
-    
+
     self:initializeEvents()
 end
 
@@ -534,17 +540,11 @@ function Mod:initializeImportantFlags(new_file)
     end
 
     -- Create save flags for costumes if they don't already exist
-    if Game:getFlag("YOU_costume") == nil then
-        Game:setFlag("YOU_costume", 0)
-    end
-    if Game:getFlag("susie_costume") == nil then
-        Game:setFlag("susie_costume", 0)
-    end
-    if Game:getFlag("kris_costume") == nil then
-        Game:setFlag("kris_costume", 0)
-    end
-    if Game:getFlag("brenda_costume") == nil then
-        Game:setFlag("brenda_costume", 0)
+    for _,char in ipairs({"YOU", "susie", "kris", "brenda"}) do
+        local cos_flag = char.."_costume"
+        if Game:getFlag(cos_flag) == nil then
+            Game:setFlag(cos_flag, 0)
+        end
     end
 
     if new_file then
@@ -689,48 +689,62 @@ function Mod:initializeImportantFlags(new_file)
         Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brenda = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
 
-
-    -- Add here as needed
-    local gifts_data = {
+    self.pc_gifts_data = {
         UNDERTALE = {
-            file = "/undertale.ini",
-            received = false,
+            file = "undertale.ini",
             item_id = "heart_locket",
-            prefix_os = {Windows = "Local/UNDERTALE", Linux = ".config/UNDERTALE", OS_X = "Application Support/com.tobyfox.undertale"}
+            prefix_os = {Windows = "Local/UNDERTALE", Linux = "%XDG_CONFIG_HOME%/UNDERTALE", OS_X = "com.tobyfox.undertale"},
+            wine_steam_appid = 391540
         },
         DELTARUNE = {
-            file = "/dr.ini",
-            received = false,
+            file = "dr.ini",
             item_id = "egg",
-            prefix_os = {Windows = "Local/DELTARUNE", Linux = ".config/DELTARUNE", OS_X = "Application Support/com.tobyfox.deltarune"}
+            prefix_os = {Windows = "Local/DELTARUNE", Linux = "%XDG_CONFIG_HOME%/DELTARUNE", OS_X = "com.tobyfox.deltarune"},
+            wine_steam_appid = 1690940
         },
         UTY = {
             name = "UNDERTALE YELLOW",
-            file = {"/Save.sav", "/Save02.sav", "/Controls.sav", "/tempsave.sav"},
-            received = false,
+            file = {"Save.sav", "Save02.sav", "Controls.sav", "tempsave.sav"},
             item_id = "wildrevolver",
-            prefix_os = {Windows = "Local/Undertale_Yellow", Linux = ".config/Undertale_Yellow"}
+            prefix_os = {Windows = "Local/Undertale_Yellow", Linux = "%XDG_CONFIG_HOME%/Undertale_Yellow"}
         },
         PT = {
             name = "PIZZA TOWER",
-            file = {"/saves/saveData1.ini", "/saves/saveData2.ini", "/saves/saveData3.ini"},
-            received = false,
+            file = {"saves/saveData1.ini", "saves/saveData2.ini", "saves/saveData3.ini"},
             item_id = "pizza_toque",
-            prefix_os = {Windows = "Roaming/PizzaTower_GM2"} -- Not sure what the Mac OS_X or Linux directories for PT are. If anyone else knows tho, feel free to add them in here lol.
+            -- Not sure what the Mac OS_X or Linux directories for PT are.
+            -- If anyone else knows tho, feel free to add them in here lol.
+            prefix_os = {Windows = "Roaming/PizzaTower_GM2"},
+            wine_steam_appid = 2231450
         },
+
         -- Use "KR_" as a prefix to check for a Kristal Mod instead
-        KR_frozen_heart = {received = false, item_id = "angelring"},
-        KR_wii_bios = {received = false, item_id = "wiimote"},
-        ["KR_acj_deoxynn/act1"] = {name = "Deoxynn Act 1", received = false, item_id = "victory_bell"}
+        KR_frozen_heart = {item_id = "angelring"},
+        KR_wii_bios = {item_id = "wiimote"},
+        ["KR_acj_deoxynn/act1"] = {name = "Deoxynn Act 1", item_id = "victory_bell"}
     }
-    if not Game:getFlag("pc_gifts_data") then
+    local function generateStatusTable(data)
+        local status = {}
+        for game, info in pairs(data) do
+            status[game] = info.received or false
+        end
+        return status
+    end
+    if Game:getFlag("pc_gifts_data") then
+        assert(not new_file)
+        likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before the PC gift data saving behavior was reworked.")
+        Game:setFlag("pc_gifts_status", generateStatusTable(Game:getFlag("pc_gifts_data")))
+        Game:setFlag("pc_gifts_data", nil)
+    end
+    if not Game:getFlag("pc_gifts_status") then
         if not new_file then
             likely_old_save = true
             table.insert(old_save_issues, "Save is probably from before the PC was added.")
         end
-        Game:setFlag("pc_gifts_data", gifts_data)
+        Game:setFlag("pc_gifts_status", generateStatusTable(self.pc_gifts_data))
     else
-        Game:setFlag("pc_gifts_data", Utils.merge(gifts_data, Game:getFlag("pc_gifts_data"), true))
+        Game:setFlag("pc_gifts_status", Utils.merge(generateStatusTable(self.pc_gifts_data), Game:getFlag("pc_gifts_status")))
     end
 
     ----------
@@ -1004,4 +1018,13 @@ function Mod:loadObject(world, name, properties)
     if name:lower() == "vapor_bg" then
         return VaporBG(properties["mountains"])
     end
+end
+
+-- this is so that "playing ..." is the first line and "in a minigame: ..." is the second
+
+function Mod:getPresenceDetails()
+    return "Playing "..Kristal.getModOption("name")
+end
+function Mod:getPresenceState()
+    return self.rpc_state
 end

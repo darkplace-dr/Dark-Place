@@ -21,8 +21,7 @@ function TauntSoul:init(x, y)
     self.parry_inv = 0
     self.taunt_timer = 0
 
-    local player_name = (player_name_override or Game.save_name):upper()
-    if player_name == "PEPPINO" then
+    if Game.save_name:upper() == "PEPPINO" then
         self.parry_sfx = Assets.getSound("sugarcoat")
     else
         self.parry_sfx = Assets.getSound("taunt")

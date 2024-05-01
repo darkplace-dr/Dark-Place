@@ -31,6 +31,7 @@ end
 function ScissorDancer:onInteract(player, dir)
 	super:onInteract(self, player, dir)
 	Assets.playSound("scissorbell", 1, Utils.random(0.7, 1))
+	return true
 end
 
 function ScissorDancer:postLoad()
