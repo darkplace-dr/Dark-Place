@@ -687,48 +687,57 @@ function Mod:initializeImportantFlags(new_file)
         Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brenda = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
     end
 
-
-    -- Add here as needed
-    local gifts_data = {
+    self.pc_gifts_data = {
         UNDERTALE = {
             file = "/undertale.ini",
-            received = false,
             item_id = "heart_locket",
             prefix_os = {Windows = "Local/UNDERTALE", Linux = ".config/UNDERTALE", OS_X = "Application Support/com.tobyfox.undertale"}
         },
         DELTARUNE = {
             file = "/dr.ini",
-            received = false,
             item_id = "egg",
             prefix_os = {Windows = "Local/DELTARUNE", Linux = ".config/DELTARUNE", OS_X = "Application Support/com.tobyfox.deltarune"}
         },
         UTY = {
             name = "UNDERTALE YELLOW",
             file = {"/Save.sav", "/Save02.sav", "/Controls.sav", "/tempsave.sav"},
-            received = false,
             item_id = "wildrevolver",
             prefix_os = {Windows = "Local/Undertale_Yellow", Linux = ".config/Undertale_Yellow"}
         },
         PT = {
             name = "PIZZA TOWER",
             file = {"/saves/saveData1.ini", "/saves/saveData2.ini", "/saves/saveData3.ini"},
-            received = false,
             item_id = "pizza_toque",
             prefix_os = {Windows = "Roaming/PizzaTower_GM2"} -- Not sure what the Mac OS_X or Linux directories for PT are. If anyone else knows tho, feel free to add them in here lol.
         },
+
         -- Use "KR_" as a prefix to check for a Kristal Mod instead
-        KR_frozen_heart = {received = false, item_id = "angelring"},
-        KR_wii_bios = {received = false, item_id = "wiimote"},
-        ["KR_acj_deoxynn/act1"] = {name = "Deoxynn Act 1", received = false, item_id = "victory_bell"}
+        KR_frozen_heart = {item_id = "angelring"},
+        KR_wii_bios = {item_id = "wiimote"},
+        ["KR_acj_deoxynn/act1"] = {name = "Deoxynn Act 1", item_id = "victory_bell"}
     }
-    if not Game:getFlag("pc_gifts_data") then
+    local function generateStatusTable(data)
+        local status = {}
+        for game, info in pairs(data) do
+            status[game] = info.received or false
+        end
+        return status
+    end
+    if Game:getFlag("pc_gifts_data") then
+        assert(not new_file)
+        likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before the PC gift data saving behavior was reworked.")
+        Game:setFlag("pc_gifts_status", generateStatusTable(Game:getFlag("pc_gifts_data")))
+        Game:setFlag("pc_gifts_data", nil)
+    end
+    if not Game:getFlag("pc_gifts_status") then
         if not new_file then
             likely_old_save = true
             table.insert(old_save_issues, "Save is probably from before the PC was added.")
         end
-        Game:setFlag("pc_gifts_data", gifts_data)
+        Game:setFlag("pc_gifts_status", generateStatusTable(self.pc_gifts_data))
     else
-        Game:setFlag("pc_gifts_data", Utils.merge(gifts_data, Game:getFlag("pc_gifts_data"), true))
+        Game:setFlag("pc_gifts_status", Utils.merge(generateStatusTable(self.pc_gifts_data), Game:getFlag("pc_gifts_status")))
     end
 
     ----------

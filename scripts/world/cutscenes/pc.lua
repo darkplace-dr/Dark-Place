@@ -22,17 +22,18 @@ return function(cutscene, event, chara)
 	cutscene:text("[color:#000099]* [What do you want to do?]")
 	local c
 	while true do
-		c = cutscene:choicer({"Get Gifs", "What's that?", "Turn off"})
+		c = cutscene:choicer({"Get Gifts", "What's that?", "Turn off"})
 		if c == 1 then
 			cutscene:text("[color:#000099]* [Alright,[wait:2] let's see what we have for you today...]")
 			cutscene:text("[color:#000099]* [speed:0.1][...]")
 			if not (love.system.getOS() == "Android" or love.system.getOS() == "iOS") then
-				local gifts = Game:getFlag("pc_gifts_data", {})
+				local gifts = Mod.pc_gifts_data
+				local gift_status = Game:getFlag("pc_gifts_status")
 				local new_gifts = {}
 				for game,data in pairs(gifts) do
 					local kristal, start = game:find("KR_")
 					if kristal then
-						if not data.received then
+						if not gift_status[game] then
 							if game == "KR_wii_bios" then
 								if Mod:hasWiiBIOS() then
 									table.insert(new_gifts, game)
@@ -44,7 +45,7 @@ return function(cutscene, event, chara)
 							end
 						end
 					else
-						if not data.received then
+						if not gift_status[game] then
 							if type(data.file) == "string" then
 								if Mod:fileExists((data.prefix_os[love.system.getOS():gsub(" ", "_")] or "")..data.file) then
 									table.insert(new_gifts, game)
@@ -72,7 +73,7 @@ return function(cutscene, event, chara)
 							else
 								Assets.stopAndPlaySound("item")
 							end
-							gifts[gift].received = true
+							gift_status[gift] = true
 							cutscene:text("* You got the "..item:getName()..".")
 							if i < #new_gifts then
 								cutscene:text("[color:#000099]* [And we're not done yet!]")
