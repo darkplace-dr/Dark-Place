@@ -17,6 +17,7 @@ function Jukebox:onInteract(chara, dir)
 	else
         Game.world:startCutscene("jukebox.simple")
     end
+    return true
 end
 
 return Jukebox

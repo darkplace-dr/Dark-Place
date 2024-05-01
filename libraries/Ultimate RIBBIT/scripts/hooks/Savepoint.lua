@@ -10,6 +10,9 @@ function Savepoint:onInteract(player, dir)
     end
 
     if self.text_once and self.used then
+        if Kristal.callEvent("isLeaderRibbit") then
+            Assets.stopSound("powerfrog")
+        end
         self:onTextEnd()
         return
     end
@@ -18,11 +21,11 @@ function Savepoint:onInteract(player, dir)
         self.used = true
     end
 
-    super.super.onInteract(self, player, dir)
+    local ok = super.super.onInteract(self, player, dir)
     if Kristal.callEvent("isLeaderRibbit") then
-        Assets.stopSound("power")
+        Assets.stopSound("powerfrog")
     end
-    return true
+    return ok
 end
 
 function Savepoint:init(x, y, properties, sprite)
@@ -92,9 +95,11 @@ end
 
 --[[
 function Savepoint:onTextEnd()
-    super.onTextEnd(self)
+    if Kristal.callEvent("isLeaderRibbit") then
+        Assets.stopSound("powerfrog")
+    end
 
-    Assets.stopSound("powerfrog")
+    super.onTextEnd(self)
 end
 --]]
 

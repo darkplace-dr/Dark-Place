@@ -17,6 +17,7 @@ function PatateDoor:onInteract(player, dir)
         cutscene:text("* (There is also a smaller note on the door.)")
         cutscene:text("* I always come back!\n[wait:10]- Spring-[wait:5], um...[wait:5] Patate")
     end)
+    return true
 end
 
 return PatateDoor

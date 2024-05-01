@@ -12,6 +12,7 @@ end
 
 function soda:onInteract(player, dir)
     Assets.stopAndPlaySound("bigshot")
+    return true
 end
 
 return soda

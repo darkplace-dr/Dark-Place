@@ -17,6 +17,7 @@ end
 function GDoor:onInteract(player, dir)
 	self:setSprite("world/events/gdoor_2")
 	Game.world:mapTransition(self.map, "entry", "up")
+	return true
 end
 
 return GDoor

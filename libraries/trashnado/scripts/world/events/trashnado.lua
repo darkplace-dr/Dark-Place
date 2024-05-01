@@ -122,6 +122,7 @@ function Trashnado:onInteract(player, dir)
     Game.world:startCutscene(function(cutscene)
         cutscene:text("* (It appears to be a self-\nsustaining tornado made of\ntrash.)")
     end)
+    return true
 end
 
 return Trashnado

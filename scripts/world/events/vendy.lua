@@ -10,6 +10,7 @@ end
 
 function Vendy:onInteract(chara, dir)
     Game.world:lightShopTransition("vendy")
+    return true
 end
 
 return Vendy

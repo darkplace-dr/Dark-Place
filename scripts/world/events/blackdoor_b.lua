@@ -13,6 +13,7 @@ end
 
 function BlackDoor_b:onInteract(player, dir)
     Game.world:startCutscene("blackspace", "blackdoor", self)
+    return true
 end
 
 return BlackDoor_b

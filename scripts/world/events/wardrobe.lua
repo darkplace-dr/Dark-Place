@@ -14,6 +14,7 @@ end
 
 function Wardrobe:onInteract(chara, dir)
     Game.world:startCutscene("devroom", "wardrobe", self)
+    return true
 end
 
 return Wardrobe
