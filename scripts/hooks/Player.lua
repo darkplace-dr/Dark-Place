@@ -118,8 +118,10 @@ function Player:handleMovement()
 
     self:move(walk_x, walk_y, speed * DTMULT)
 
-    local members = Utils.merge({self}, self.world.followers)
-    members = Utils.filter(members, function(member) return member:getTarget() == self end)
+    local followers = Utils.filter(self.world.followers, function(member)
+        return member:getTarget() == self
+    end)
+    local members = Utils.merge({self}, followers)
     local walkers = 0
     for _, member in ipairs(members) do
         if member.state == "WALK" then walkers = walkers + 1 end
@@ -127,8 +129,8 @@ function Player:handleMovement()
 
     local function returnToWalk()
         if self.state == "RUN" then self:setState("WALK") end
-        for _, follower in ipairs(self.world.followers) do
-            if follower:getTarget() == self and follower.state == "RUN" then
+        for _, follower in ipairs(followers) do
+            if follower.state == "RUN" then
                 follower.state_manager:setState("WALK")
             end
         end
@@ -157,8 +159,8 @@ function Player:handleMovement()
             if self.state == "WALK" then
                 self:setState("RUN")
             end
-            for _, follower in ipairs(self.world.followers) do
-                if follower:getTarget() == self and follower.state == "WALK" then
+            for _, follower in ipairs(followers) do
+                if follower.state == "WALK" then
                     follower.state_manager:setState("RUN")
                 end
             end
