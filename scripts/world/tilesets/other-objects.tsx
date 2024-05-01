@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="other-objects" tilewidth="1306" tileheight="1160" tilecount="27" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="other-objects" tilewidth="1306" tileheight="1160" tilecount="28" columns="0">
  <editorsettings>
   <export target="other-objects.lua" format="lua"/>
  </editorsettings>
@@ -94,5 +94,8 @@
  </tile>
  <tile id="66">
   <image width="69" height="166" source="../../../assets/sprites/world/maps/_gildedgrove/light_beam_3.png"/>
+ </tile>
+ <tile id="67">
+  <image width="49" height="13" source="../../../assets/sprites/world/maps/nothing/face_tbody.png"/>
  </tile>
 </tileset>

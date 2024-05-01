@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 27,
+  tilecount = 28,
   tiles = {
     {
       id = 12,
@@ -214,6 +214,12 @@ return {
       image = "../../../assets/sprites/world/maps/_gildedgrove/light_beam_3.png",
       width = 69,
       height = 166
+    },
+    {
+      id = 67,
+      image = "../../../assets/sprites/world/maps/nothing/face_tbody.png",
+      width = 49,
+      height = 13
     }
   }
 }
