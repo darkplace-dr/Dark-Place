@@ -117,8 +117,7 @@ function JukeboxMenu:draw()
         album_art_path = self.none_album
     end
     local album_art = Assets.getTexture("albums/"..album_art_path)
-    love.graphics.draw(album_art, 410, 162, 0, 1, 1, 125, 125)
-    love.graphics.draw(album_art, 0, 0, 0, 1, 1)
+    love.graphics.draw(album_art, 410, 162, 0, 1, 1, album_art:getWidth()/2, album_art:getHeight()/2)
 
     local info_font = self.font
     local info_scale = 0.5
