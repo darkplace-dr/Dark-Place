@@ -108,7 +108,7 @@
   </object>
   <object id="13" name="interactable" x="1150" y="140" width="110" height="90">
    <properties>
-    <property name="cutscene" value="spamroom.warpbin"/>
+    <property name="cutscene" value="warp_bin"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>

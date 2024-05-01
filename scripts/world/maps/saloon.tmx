@@ -92,7 +92,7 @@
  <objectgroup id="3" name="objects">
   <object id="29" name="interactable" x="342" y="144" width="116" height="80">
    <properties>
-    <property name="cutscene" value="spamroom.warpbin"/>
+    <property name="cutscene" value="warp_bin"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>

@@ -80,7 +80,7 @@
  <objectgroup id="8" name="objects">
   <object id="9" name="interactable" x="207" y="230" width="110" height="90">
    <properties>
-    <property name="cutscene" value="spamroom.warpbin"/>
+    <property name="cutscene" value="warp_bin"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>

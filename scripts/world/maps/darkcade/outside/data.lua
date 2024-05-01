@@ -166,7 +166,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "spamroom.warpbin",
+            ["cutscene"] = "warp_bin",
             ["solid"] = true
           }
         },

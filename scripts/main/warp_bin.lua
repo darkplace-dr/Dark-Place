@@ -109,4 +109,4 @@ end
 
 -- if you were looking for addBinCode... just tamper with the table on your own
 
--- the actual logic is implemented in scripts/world/cutscenes/spamroom.lua -> warpbin
+-- the actual logic is implemented in scripts/world/cutscenes/warp_bin.lua
