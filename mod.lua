@@ -689,26 +689,31 @@ function Mod:initializeImportantFlags(new_file)
 
     self.pc_gifts_data = {
         UNDERTALE = {
-            file = "/undertale.ini",
+            file = "undertale.ini",
             item_id = "heart_locket",
-            prefix_os = {Windows = "Local/UNDERTALE", Linux = ".config/UNDERTALE", OS_X = "Application Support/com.tobyfox.undertale"}
+            prefix_os = {Windows = "Local/UNDERTALE", Linux = "%XDG_CONFIG_HOME%/UNDERTALE", OS_X = "com.tobyfox.undertale"},
+            wine_steam_appid = 391540
         },
         DELTARUNE = {
-            file = "/dr.ini",
+            file = "dr.ini",
             item_id = "egg",
-            prefix_os = {Windows = "Local/DELTARUNE", Linux = ".config/DELTARUNE", OS_X = "Application Support/com.tobyfox.deltarune"}
+            prefix_os = {Windows = "Local/DELTARUNE", Linux = "%XDG_CONFIG_HOME%/DELTARUNE", OS_X = "com.tobyfox.deltarune"},
+            wine_steam_appid = 1690940
         },
         UTY = {
             name = "UNDERTALE YELLOW",
-            file = {"/Save.sav", "/Save02.sav", "/Controls.sav", "/tempsave.sav"},
+            file = {"Save.sav", "Save02.sav", "Controls.sav", "tempsave.sav"},
             item_id = "wildrevolver",
-            prefix_os = {Windows = "Local/Undertale_Yellow", Linux = ".config/Undertale_Yellow"}
+            prefix_os = {Windows = "Local/Undertale_Yellow", Linux = "%XDG_CONFIG_HOME%/Undertale_Yellow"}
         },
         PT = {
             name = "PIZZA TOWER",
-            file = {"/saves/saveData1.ini", "/saves/saveData2.ini", "/saves/saveData3.ini"},
+            file = {"saves/saveData1.ini", "saves/saveData2.ini", "saves/saveData3.ini"},
             item_id = "pizza_toque",
-            prefix_os = {Windows = "Roaming/PizzaTower_GM2"} -- Not sure what the Mac OS_X or Linux directories for PT are. If anyone else knows tho, feel free to add them in here lol.
+            -- Not sure what the Mac OS_X or Linux directories for PT are.
+            -- If anyone else knows tho, feel free to add them in here lol.
+            prefix_os = {Windows = "Roaming/PizzaTower_GM2"},
+            wine_steam_appid = 2231450
         },
 
         -- Use "KR_" as a prefix to check for a Kristal Mod instead

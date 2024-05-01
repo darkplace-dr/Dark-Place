@@ -47,14 +47,22 @@ return function(cutscene, event, chara)
 					else
 						if not gift_status[game] then
 							if type(data.file) == "string" then
-								if Mod:fileExists((data.prefix_os[love.system.getOS():gsub(" ", "_")] or "")..data.file) then
+								if Mod:fileExists((data.prefix_os[love.system.getOS():gsub(" ", "_")] or "").."/"..data.file) then
 									table.insert(new_gifts, game)
+								elseif love.system.getOS() == "Linux" and data.prefix_os["Windows"] then
+									if Mod:fileExists(data.prefix_os["Windows"].."/"..data.file, true, data.wine_steam_appid) then
+										table.insert(new_gifts, game)
+									end
 								end
 							elseif type(data.file) == "table" then
 								for i,file in ipairs(data.file) do
-									if Mod:fileExists((data.prefix_os[love.system.getOS():gsub(" ", "_")] or "")..file) then
+									if Mod:fileExists((data.prefix_os[love.system.getOS():gsub(" ", "_")] or "").."/"..file) then
 										table.insert(new_gifts, game)
 										break
+									elseif love.system.getOS() == "Linux" and data.prefix_os["Windows"] then
+										if Mod:fileExists(data.prefix_os["Windows"].."/"..file, true, data.wine_steam_appid) then
+											table.insert(new_gifts, game)
+										end
 									end
 								end
 							end
