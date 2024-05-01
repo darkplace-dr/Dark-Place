@@ -14,7 +14,7 @@ function AngryBirdsCredits:init()
 	
 	local about_credits = ( -- I have all the text stuff formatted this way, so it can be read easily instead of it just being on one line lmao.
 	[[
-	Angry Birds Kristal\n
+	[font:font_basic_n900]Angry Birds Kristal\n
 	A Dark Place minigame by J.A.R.U.\n
 	v.0.9.0-dev\n
 
@@ -39,7 +39,7 @@ function AngryBirdsCredits:init()
 	
 	local main_credits = (
 	[[
-    MINIGAME TEAM\n
+	[font:font_basic_n900]MINIGAME TEAM\n
 	\n
 	- PROGRAMMERS -\n
 	J.A.R.U.\n
