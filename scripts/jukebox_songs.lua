@@ -782,14 +782,16 @@ return {
     file = "almighty",
     composer = "Shoji Meguro",
     released = "2012",
-    origin = "Persona 4 Golden"
+    origin = "Persona 4 Golden",
+    locked = true
   },
   {
     name = "Undefeatable",
     file = "undefeatable",
     composer = "Tomoya Ohtani",
     released = "2022",
-    origin = "Sonic Frontiers"
+    origin = "Sonic Frontiers",
+    flagcheck = "dungeonkiller"
   },
   {
     name = "Burned Tower",
@@ -797,7 +799,11 @@ return {
     composer = "Junichi Masuda",
     released = "2000",
     -- recorded in Polished Crystal, though there seems to be no changes made
-    origin = "Pokémon Gold/Silver"
+    origin = "Pokémon Gold/Silver",
+    cond = function(jb)
+      Log:trace(Utils.dump(jb))
+      return false
+    end
   },
   {
     name = "Burned Tower ~ HGSS Version",

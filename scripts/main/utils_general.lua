@@ -96,11 +96,12 @@ function Mod:hasWiiBIOS()
     return not not love.filesystem.getInfo("wii_settings.json")
 end
 
-function Mod:evaluateCond(data)
+---@param ... any # Extra parameters to cond()
+function Mod:evaluateCond(data, ...)
     local result = true
 
     if data.cond then
-        result = data.cond()
+        result = data.cond(...)
     elseif data.flagcheck then
         local inverted, flag = Utils.startsWith(data.flagcheck, "!")
 

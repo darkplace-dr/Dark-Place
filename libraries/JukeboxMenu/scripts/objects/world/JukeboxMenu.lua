@@ -31,24 +31,31 @@ function JukeboxMenu:init()
     self:addChild(self.heart)
 
     self.songs = modRequire("scripts.jukebox_songs")
+    for _,song in ipairs(self.songs) do
+        if song.locked == nil then
+            song.locked = not Mod:evaluateCond(song, self)
+        else
+            song._locked_explicit = true
+        end
+    end
+
     self.none_text = "---"
-	self.none_album = Assets.getTexture("albums/default")
+	self.none_album = "default"
     self.default_song = {
-        name = self.none_text,
+        name = nil,
         file = nil,
-        composer = self.none_text,
-        released = self.none_text,
-        origin = self.none_text,
+        composer = nil,
+        released = nil,
+        origin = nil,
 		locked = nil,
-		album = self.none_album
+		album = nil
     }
 
     self.selected_index = 1
+    self.selected_index_memory = {}
     self.page = 1
     self.max_pages = math.ceil(#self.songs / 6)
     self.songs_per_page = 6
-
-    self.selected_index_memory = {}
 end
 
 function JukeboxMenu:getPage(page)
@@ -76,23 +83,20 @@ function JukeboxMenu:draw()
 
     local cur_page = self:getPage(self.page)
     for i = 1, self.songs_per_page do
-        local cur_song = cur_page[i] or self.default_song
-		if not cur_song.locked then
-            local name = cur_song.name or self.none_text
-		    love.graphics.setColor(1, 1, 1)
-		    local scale_x = math.min(196 / self.font:getWidth(name), 1)
-		    love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
-		else
-		    local name = "Locked" or self.none_text
+        local song = cur_page[i] or self.default_song
+        local name = song.name or self.none_text
+		if song.locked then name = "Locked" end
+		love.graphics.setColor(1, 1, 1)
+		if not song.file or song.locked then
 		    love.graphics.setColor(0.5, 0.5, 0.5)
-		    local scale_x = math.min(196 / self.font:getWidth(name), 1)
-		    love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
 		end
+        local scale_x = math.min(196 / self.font:getWidth(name), 1)
+        love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
     end
 
     love.graphics.setColor(0.4, 0.4, 0.4)
     love.graphics.setFont(self.font_2)
-    love.graphics.printf("Page "..self.page.."/"..self.max_pages.."", -16, 295, 276, "center")
+    love.graphics.printf("Page "..self.page.."/"..self.max_pages, -16, 295, 276, "center")
     love.graphics.setColor(1, 1, 1)
     love.graphics.setFont(self.font)
 
@@ -104,15 +108,13 @@ function JukeboxMenu:draw()
     love.graphics.rectangle("line", 260, 20, 1, 356)
 
     local cur_song = cur_page[self.selected_index] or self.default_song
-	
+
     love.graphics.setColor(1, 1, 1)
-    if not cur_song.album or cur_song.locked or cur_song.name == self.none_text then
-        local album_art = self.none_album
-        love.graphics.draw(album_art, 410, 170, 0, 1, 1, 125, 125)
-    else
-        local album_art = Assets.getTexture("albums/"..cur_song.album) or self.none_album
-        love.graphics.draw(album_art, 410, 170, 0, 1, 1, 125, 125)
+    local album_art = cur_song.album or self.none_album
+    if not cur_song.file or cur_song.locked then
+        album_art = self.none_album
     end
+    love.graphics.draw(Assets.getTexture("albums/"..album_art), 410, 170, 0, 1, 1, 125, 125)
 
     local info_font = self.font
     local info_scale = 0.5
@@ -136,51 +138,70 @@ function JukeboxMenu:draw()
 end
 
 function JukeboxMenu:update()
-    --play song
-    if Input.pressed("confirm", false) then
-        local cur_song = self:getPage(self.page)[self.selected_index] or self.default_song
-        if cur_song.file and not cur_song.locked == true then
-            Game.world.music:play(cur_song.file, 1)
-		end
+    local function warpIndex(index)
+        return Utils.clampWrap(index, 1, self.songs_per_page)
+    end
 
-		if cur_song.locked == true then
-            Assets.playSound("error")
+    if not OVERLAY_OPEN then
+        --play song
+        if Input.pressed("confirm", false) then
+            local song = self:getPage(self.page)[self.selected_index] or self.default_song
+
+            if not song._locked_explicit then
+                song.locked = not Mod:evaluateCond(song, self)
+            end
+
+            if not song.locked and song.file then
+                Game.world.music:play(song.file, 1)
+            else
+                Assets.playSound("error")
+            end
+        end
+
+        --close menu
+        if Input.pressed("cancel", false) then
+            Assets.playSound("ui_cancel_small")
+            Game.world:closeMenu()
+        end
+
+        local page_bak = self.page
+        --page left
+        if Input.pressed("left", true) then
+            Assets.playSound("ui_move")
+            self.page = self.page - 1
+        end
+        --page right
+        if Input.pressed("right", true) then
+            Assets.playSound("ui_move")
+            self.page = self.page + 1
+        end
+        self.page = Utils.clampWrap(self.page, 1, self.max_pages)
+        if self.page ~= page_bak then
+            self.selected_index = self.selected_index_memory[self.page] or 1
+        end
+
+        local page_ndx = self:getPage(self.page)
+        --move up
+        if Input.pressed("up", true) then
+            Assets.playSound("ui_move")
+            if page_ndx[warpIndex(self.selected_index - 1)] then
+                self.selected_index = self.selected_index - 1
+            else
+                self.selected_index = #page_ndx
+            end
+        end
+        --move down
+        if Input.pressed("down", true) then
+            Assets.playSound("ui_move")
+            if page_ndx[warpIndex(self.selected_index + 1)] then
+                self.selected_index = self.selected_index + 1
+            else
+                self.selected_index = 1
+            end
         end
     end
 
-    --close menu
-    if Input.pressed("cancel", false) then
-        Assets.playSound("ui_cancel_small")
-        Game.world:closeMenu()
-    end
-
-    local page_bak = self.page
-    --page left
-    if Input.pressed("left", true) then
-        Assets.playSound("ui_move")
-        self.page = self.page - 1
-    end
-    --page right
-    if Input.pressed("right", true) then
-        Assets.playSound("ui_move")
-        self.page = self.page + 1
-    end
-    self.page = Utils.clampWrap(self.page, 1, self.max_pages)
-    if self.page ~= page_bak then
-        self.selected_index = self.selected_index_memory[self.page] or 1
-    end
-
-    --move up
-    if Input.pressed("up", true) then
-        Assets.playSound("ui_move")
-        self.selected_index = self.selected_index - 1
-    end
-    --move down
-    if Input.pressed("down", true) then
-        Assets.playSound("ui_move")
-        self.selected_index = self.selected_index + 1
-    end
-    self.selected_index = Utils.clampWrap(self.selected_index, 1, self.songs_per_page)
+    self.selected_index = warpIndex(self.selected_index)
     self.selected_index_memory[self.page] = self.selected_index
 
     --soul positions
