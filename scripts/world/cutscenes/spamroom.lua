@@ -9,7 +9,7 @@ return {
     end,
     mandela = function(cutscene, event)
         cutscene:showNametag("Alternate Spamton")
-        cutscene:text("* REMEMB3R TO FOLLOW THE [T.H.I.N.K] PRINCIPLE, YOU [Little Sponge]!!", "", "alternatespam")
+        cutscene:text("* REMEMB3R TO FOLLOW THE [T.H.I.N.K] PRINCIPLE, YOU [Little Sponge]!!", nil, "alternatespam")
         cutscene:hideNametag()
     end,
     soapton = function(cutscene, event)
@@ -23,25 +23,25 @@ return {
     end,
     mari = function(cutscene, event)
         cutscene:showNametag("Mariton")
-        cutscene:text("* HEY [wait:5][wave]EVERY~", "", "marispam")
-        cutscene:text("* WAITING FOR [wave]SOMETHING[wave:0] TO HAPPEN?", "", "marispam")
+        cutscene:text("* HEY [wait:5][wave]EVERY~", nil, "marispam")
+        cutscene:text("* WAITING FOR [wave]SOMETHING[wave:0] TO HAPPEN?", nil, "marispam")
         cutscene:hideNametag()
     end,
     mosquito = function(cutscene, event)
         cutscene:showNametag("Spamton Mosquito")
-        cutscene:text("* EVER WANTED TO JUST RELAX FOR THE [[Hot Summer Deals]]?", "", "spam_mosquito")
-        cutscene:text("* BUT ALL THE DAMN [bugs] ARE IN THE WAY?", "", "spam_mosquito")
-        cutscene:text("* WE GOT YOU COVERED WITH THE NEW [[Hyperlink Blocked]]!", "", "spam_mosquito")
-        cutscene:text("* [currently not in stock].", "", "spam_mosquito")
+        cutscene:text("* EVER WANTED TO JUST RELAX FOR THE [[Hot Summer Deals]]?", nil, "spam_mosquito")
+        cutscene:text("* BUT ALL THE DAMN [bugs] ARE IN THE WAY?", nil, "spam_mosquito")
+        cutscene:text("* WE GOT YOU COVERED WITH THE NEW [[Hyperlink Blocked]]!", nil, "spam_mosquito")
+        cutscene:text("* [currently not in stock].", nil, "spam_mosquito")
         cutscene:hideNametag()
     end,
     cungadero = function(cutscene, event)
         cutscene:showNametag("Cungadero Spamton")
-        cutscene:text("* Take a ride around town on our special Cungadero!", "", "cungaderospamton")
+        cutscene:text("* Take a ride around town on our special Cungadero!", nil, "cungaderospamton")
         event:setSprite("smile")
-        cutscene:text("* Hey everybody![wait:10]\n* It's me!", "", "cungaderospamton")
+        cutscene:text("* Hey everybody![wait:10]\n* It's me!", nil, "cungaderospamton")
         event:setSprite("wink")
-        cutscene:text("* Everybody's favorite salesman,[wait:5] Spamton G. Spamton!", "", "cungaderospamton")
+        cutscene:text("* Everybody's favorite salesman,[wait:5] Spamton G. Spamton!", nil, "cungaderospamton")
         event:setSprite("neutral")
         if cutscene:getCharacter("jamm") then
             cutscene:showNametag("Jamm")
@@ -52,17 +52,17 @@ return {
             cutscene:text("* Uh,[wait:5] why is your car parked on the sidewalk?", "neutral", "susie")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("wink")
-            cutscene:text("* Why,[wait:5] to show it off,[wait:5] of course!", "", "cungaderospamton")
+            cutscene:text("* Why,[wait:5] to show it off,[wait:5] of course!", nil, "cungaderospamton")
             event:setSprite("neutral")
-            cutscene:text("* I would of gotten here sooner if I hadn't got into traffic.", "", "cungaderospamton")
+            cutscene:text("* I would of gotten here sooner if I hadn't got into traffic.", nil, "cungaderospamton")
             event:setSprite("angry")
-            cutscene:text("* WHY WAS I STUCK IN TRAFFIC?![wait:10]\n* DON'T THEY KNOW?[wait:10]\n* DON'T THEY KNOW WHO I AM?!", "", "cungaderospamton")
+            cutscene:text("* WHY WAS I STUCK IN TRAFFIC?![wait:10]\n* DON'T THEY KNOW?[wait:10]\n* DON'T THEY KNOW WHO I AM?!", nil, "cungaderospamton")
             event:setSprite("sideeye")
-            cutscene:text("[noskip][speed:0.3]* ...", "", "cungaderospamton")
+            cutscene:text("[noskip][speed:0.3]* ...", nil, "cungaderospamton")
             event:setSprite("wink")
-            cutscene:text("* Spamton G. Spamton,[wait:5] that's who I am!", "", "cungaderospamton")
+            cutscene:text("* Spamton G. Spamton,[wait:5] that's who I am!", nil, "cungaderospamton")
             event:setSprite("rage")
-            cutscene:text("* AAAAAAAAAARGH!!!", "", "cungaderospamton")
+            cutscene:text("* AAAAAAAAAARGH!!!", nil, "cungaderospamton")
             event:setSprite("neutral")
         end
         if cutscene:getCharacter("dess") then
@@ -70,12 +70,12 @@ return {
             cutscene:text("* yooooo is that the uhhhhh big shot guy????", "neutral", "dess")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("wink")
-            cutscene:text("* Ah,[wait:5] a loyal fan I see.", "", "cungaderospamton")
+            cutscene:text("* Ah,[wait:5] a loyal fan I see.", nil, "cungaderospamton")
             cutscene:showNametag("Dess")
             cutscene:text("* who said I actually liked you lmfao", "condescending", "dess")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("shock")
-            cutscene:text("[noskip][speed:0.3]* ...", "", "cungaderospamton")
+            cutscene:text("[noskip][speed:0.3]* ...", nil, "cungaderospamton")
             event:setSprite("neutral")
         end
         if cutscene:getCharacter("brenda") then
@@ -83,7 +83,7 @@ return {
             cutscene:text("* Woah,[wait:5] it's sureal seeing you before you lost your marbles.", "neutral", "brenda")
             cutscene:showNametag("Cungadero Spamton")
             event:setSprite("shock")
-            cutscene:text("* Uh...[wait:10] what?", "", "cungaderospamton")
+            cutscene:text("* Uh...[wait:10] what?", nil, "cungaderospamton")
             cutscene:showNametag("Brenda")
             cutscene:text("* Oh,[wait:5] nothing,[wait:5] nothing!", "blush", "brenda")
             event:setSprite("neutral")
@@ -99,7 +99,7 @@ return {
         end
         cutscene:showNametag("Spamton")
         event:setSprite("hold_cards")
-        cutscene:text("* PICK A CARD,[wait:5]\nANY [Kaard].", "", "cungaderospamton")
+        cutscene:text("* PICK A CARD,[wait:5]\nANY [Kaard].", nil, "cungaderospamton")
 
         cutscene:hideNametag()
         cutscene:choicer({"1", "3", "2"})
@@ -121,7 +121,7 @@ return {
             end
         end
         cutscene:showNametag("Spamton")
-        cutscene:text("[style:GONER][voice:silent][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD",  "", "cungaderospamton", {
+        cutscene:text("[style:GONER][voice:silent][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD", nil, "cungaderospamton", {
             functions = {
                 gigatalk = function ()
                     event:setSprite("laugh_1")
