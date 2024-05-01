@@ -71,16 +71,13 @@ function JukeboxMenu:draw()
     love.graphics.setLineWidth(4)
     love.graphics.rectangle("line", -16, 20, self.width+32, 1)
 
-    love.graphics.setLineWidth(1)
-    love.graphics.setColor(0, 0.4, 0)
-    for i = 1, self.songs_per_page + 1 do
-        love.graphics.rectangle("line", 2, 40 + 40 * (i - 1), 240, 1)
-    end
-    love.graphics.setLineWidth(4)
-    love.graphics.setColor(1, 1, 1)
-
     local page = self.pages[self.page_index]
+
+    love.graphics.setLineWidth(1)
     for i = 1, self.songs_per_page do
+        love.graphics.setColor(0, 0.4, 0)
+        love.graphics.rectangle("line", 2, 40 + 40 * (i - 1), 240, 1)
+
         local song = page[i] or self.default_song
         local name = song.name or self.none_text
         if song.locked then name = "Locked" end
@@ -91,6 +88,11 @@ function JukeboxMenu:draw()
         local scale_x = math.min(math.floor(196 / self.font:getWidth(name) * 100) / 100, 1)
         love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
     end
+
+    love.graphics.setColor(0, 0.4, 0)
+    love.graphics.rectangle("line", 2, 40 + 40 * self.songs_per_page, 240, 1)
+    love.graphics.setLineWidth(4)
+    love.graphics.setColor(1, 1, 1)
 
     love.graphics.setColor(0.4, 0.4, 0.4)
     love.graphics.setFont(self.font_2)
@@ -115,7 +117,7 @@ function JukeboxMenu:draw()
         album_art_path = self.none_album
     end
     local album_art = Assets.getTexture("albums/"..album_art_path)
-    love.graphics.draw(album_art, 410, 170, 0, 1, 1, album_art:getWidth()/2, album_art:getHeight()/2)
+    love.graphics.draw(album_art, 411, 162, 0, 1, 1, album_art:getWidth()/2, album_art:getHeight()/2)
 
     local info_font = self.font
     local info_scale = 0.5
