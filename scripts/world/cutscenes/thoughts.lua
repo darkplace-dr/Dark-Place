@@ -405,6 +405,8 @@ return {
 			    local wbi_ok = false
 			    local action
 			    local wbi = WarpBinInputMenu(4)
+                wbi.as_warp_bin_ui = false
+                wbi.cancellable = false
 			    wbi.finish_cb = function(_action, input)
 				    wbi_ok = true
 				    action = input
@@ -429,6 +431,8 @@ return {
 
                 wbi_ok = false
 			    wbi = WarpBinInputMenu(4)
+                wbi.as_warp_bin_ui = false
+                wbi.cancellable = false
 			    wbi.finish_cb = function(_action, input)
 				    wbi_ok = true
 				    action = input
@@ -458,6 +462,8 @@ return {
 
                 wbi_ok = false
 			    wbi = WarpBinInputMenu(10)
+                wbi.as_warp_bin_ui = false
+                wbi.cancellable = false
 			    wbi.finish_cb = function(_action, input)
 				    wbi_ok = true
 				    action = input
@@ -482,6 +488,8 @@ return {
 
                 wbi_ok = false
 			    wbi = WarpBinInputMenu(10)
+                wbi.as_warp_bin_ui = false
+                wbi.cancellable = false
 			    wbi.finish_cb = function(_action, input)
 				    wbi_ok = true
 				    action = input
@@ -505,6 +513,8 @@ return {
 
                 wbi_ok = false
 			    wbi = WarpBinInputMenu(10)
+                wbi.as_warp_bin_ui = false
+                wbi.cancellable = false
 			    wbi.finish_cb = function(_action, input)
 				    wbi_ok = true
 				    action = input
@@ -636,6 +646,8 @@ return {
             local wbi_ok = false
 			local action
 			local wbi = WarpBinInputMenu(10)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -657,6 +669,8 @@ return {
 
             wbi_ok = false
             wbi = WarpBinInputMenu(10)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
             wbi.finish_cb = function(_action, input)
                 wbi_ok = true
                 action = input
@@ -681,6 +695,8 @@ return {
 
             wbi_ok = false
             wbi = WarpBinInputMenu(10)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
             wbi.finish_cb = function(_action, input)
                 wbi_ok = true
                 action = input
@@ -704,6 +720,8 @@ return {
 
             wbi_ok = false
             wbi = WarpBinInputMenu(10)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
             wbi.finish_cb = function(_action, input)
                 wbi_ok = true
                 action = input
@@ -727,6 +745,8 @@ return {
 
             wbi_ok = false
 			wbi = WarpBinInputMenu(3)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -829,6 +849,8 @@ return {
             local wbi_ok = false
 			local action
 			local wbi = WarpBinInputMenu(3)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -854,6 +876,8 @@ return {
 
             wbi_ok = false
 			wbi = WarpBinInputMenu(10)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -904,6 +928,8 @@ return {
             
             wbi_ok = false
 			wbi = WarpBinInputMenu(10)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -926,6 +952,8 @@ return {
 
             wbi_ok = false
 			wbi = WarpBinInputMenu(11)
+			wbi.as_warp_bin_ui = false
+			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input

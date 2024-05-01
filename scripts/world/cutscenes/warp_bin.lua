@@ -23,7 +23,10 @@ return function(cutscene, event)
     Game.world:spawnObject(wbi, "ui")
     cutscene:wait(function() return wbi_ok end)
 
-    if not action then
+    if not action_raw then
+        -- user changed their mind
+        return
+    elseif not action then
         if event.foolproof_counter == nil then event.foolproof_counter = 0 end
         event.foolproof_counter = event.foolproof_counter + 1
         if event.foolproof_counter == 10 then
