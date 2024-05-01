@@ -422,18 +422,17 @@ end
 
 function Mod:getLightBattleMenuOffsets()
     return { -- {soul, text}
-            ["ACT"] = {12, 16},
-            ["ITEM"] = {0, 0},
-            ["SPELL"] = {12, 16},
-            ["MERCY"] = {0, 0}, --doesn't matter lmao
-            ["SEND"] = {0, 0},
-            ["SKILL"] = {12, 16},
-        }
+        ["ACT"] = {12, 16},
+        ["ITEM"] = {0, 0},
+        ["SPELL"] = {12, 16},
+        ["MERCY"] = {0, 0}, --doesn't matter lmao
+        ["SEND"] = {0, 0},
+        ["SKILL"] = {12, 16},
+    }
 end
 
 function Mod:postInit(new_file)
     if self.legacy_kristal then
-        Game.world.music:stop()
         Game.world:startCutscene("flowey_check")
         return
     end
@@ -447,7 +446,7 @@ function Mod:postInit(new_file)
     }
     Kristal.callEvent("setItemsList", items_list)
 
-    Mod:funnytitle()
+    self:funnytitle()
 
     self:initializeImportantFlags(new_file)
 
@@ -463,7 +462,7 @@ function Mod:postInit(new_file)
             Game.world:startCutscene("_main.introcutscene")
         end
     end
-    
+
     if not Game:getFlag("booty_time") then
         Game:addFlag("booty_cd", 1)
         if Game:getFlag("booty_cd") >= 5 then
@@ -476,7 +475,7 @@ function Mod:postInit(new_file)
     end
 
     self:initBulborb()
-    
+
     self:initializeEvents()
 end
 
