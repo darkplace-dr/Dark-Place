@@ -66,10 +66,9 @@ function JukeboxMenu:draw()
     super.draw(self)
 
     love.graphics.setColor(1, 1, 1)
-    love.graphics.setLineWidth(4)
-
     love.graphics.setFont(self.font)
     love.graphics.printf("JUKEBOX", 0, -17, self.width, "center")
+    love.graphics.setLineWidth(4)
     love.graphics.rectangle("line", -16, 20, self.width+32, 1)
 
     love.graphics.setLineWidth(1)
@@ -89,7 +88,7 @@ function JukeboxMenu:draw()
         if not song.file or song.locked then
             love.graphics.setColor(0.5, 0.5, 0.5)
         end
-        local scale_x = math.min(math.floor(196 / self.font:getWidth(name)), 1)
+        local scale_x = math.min(math.floor(196 / self.font:getWidth(name) * 100) / 100, 1)
         love.graphics.print(name, 40, 43 + 40 * (i - 1), 0, scale_x, 1)
     end
 
