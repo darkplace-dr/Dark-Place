@@ -3,7 +3,6 @@ modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/utils_lore")
 modRequire("scripts/main/minigames_glue")
 modRequire("scripts/main/warp_bin")
-Speen = modRequire("scripts/main/ow_speen")
 modRequire("scripts/main/ow_taunt")
 modRequire("scripts/main/battle_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
@@ -533,17 +532,11 @@ function Mod:initializeImportantFlags(new_file)
     end
 
     -- Create save flags for costumes if they don't already exist
-    if Game:getFlag("YOU_costume") == nil then
-        Game:setFlag("YOU_costume", 0)
-    end
-    if Game:getFlag("susie_costume") == nil then
-        Game:setFlag("susie_costume", 0)
-    end
-    if Game:getFlag("kris_costume") == nil then
-        Game:setFlag("kris_costume", 0)
-    end
-    if Game:getFlag("brenda_costume") == nil then
-        Game:setFlag("brenda_costume", 0)
+    for _,char in ipairs({"YOU", "susie", "kris", "brenda"}) do
+        local cos_flag = char.."_costume"
+        if Game:getFlag(cos_flag) == nil then
+            Game:setFlag(cos_flag, 0)
+        end
     end
 
     if new_file then
