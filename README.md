@@ -3,6 +3,7 @@
 <br>
 <i>Logo by Just another random user. (@JustAnotherRandomGithubUser)</i>
 <br>
+<br>
 <a href="https://discord.gg/RhqPCA6eFN">Discord Server</a> | <a href="https://darkplace-dr.github.io/">Official Website</a> | <a href="https://dark-place.fandom.com/wiki/Dark_Place_Wiki">Official Wiki</a>
 </p>
 
