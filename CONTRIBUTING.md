@@ -9,8 +9,8 @@
 6. Always remember to test your commits before making a pull request. We would like to keep this mod as a bug-free experience.
 7. Please don't make us add more rules like Rule 5 please.
 
-## Dark Place's Official Wiki
-Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place_Wiki) and check out some stuff that's been implemented or WILL be implemented.
+## Official Wiki
+Go to Dark Place's [official wiki](https://dark-place.fandom.com/wiki/Dark_Place_Wiki) and check out some stuff that has been implemented or WILL be implemented.
 
 ## Getting Started
 ![The Fork button](guides/contributing/fork_button.png)

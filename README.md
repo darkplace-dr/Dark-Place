@@ -1,19 +1,19 @@
 # Dark Place
 
 <p align="center" width="100%">
-<img src="logo.png" alt="Dark Place - An open-source KRISTAL mod (logo)" width="50%" />
+<img src="logo.png" alt="Logo: Dark Place - An open-source KRISTAL mod" width="50%" />
 <br>
 <i>Logo by Just another random user. (@JustAnotherRandomGithubUser)</i>
 </p>
 
+> [Discord Server](https://discord.gg/RhqPCA6eFN) | [Official Website](https://darkplace-dr.github.io/)
+
 An open source Kristal mod that anyone can contribute to.
 
-[Discord Server](https://discord.gg/RhqPCA6eFN) | [Official Website](https://darkplace-dr.github.io/)
-
-> README under construction.
+Well as it turns out Ralsei was wrong when he said that making Dark Fountains causes The Roaring, they just get weirder the more you make. Susie has been making them left right and center, and she is now on her 1000th fountain. Go and explore the world, there's lots to discover!
 
 ## Installation
-Those instructions are intended to those who only want to play Dark Place. If you want to contribute, see **Contributing** below.
+Those instructions are intended to those who only want to play Dark Place. If you want to contribute, see **[Contributing](#contributing)**.
 
 <details><summary>Installing Kristal's dev version</summary>
 
@@ -49,10 +49,10 @@ After that, you can start the mod as you would start any other Kristal mod by ch
 </details>
 
 ## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforementioned document before contributing** as it contains the very important contribution rouxls (pronounced "rules").
+See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforementioned document before contributing,** as it contains the very important contribution rouxls (pronounced "rules").
 
-## Dark Place's Official Wiki
-Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place_Wiki) and check out cool contents of the mod.
+## Official Wiki
+Go to Dark Place's [official wiki](https://dark-place.fandom.com/wiki/Dark_Place_Wiki) and check out the cool contents of the mod.
 
 ## Credits
 
@@ -92,7 +92,7 @@ Go to Dark Place's official [wiki](https://dark-place.fandom.com/wiki/Dark_Place
 
 </details>
 
-<details><summary>For used assets (warning: long)</summary>
+<details><summary>For used assets</summary>
 
 * Kristal Team - Creating the Kristal engine
 * Toby Fox - Original author for Undertale and Deltarune
