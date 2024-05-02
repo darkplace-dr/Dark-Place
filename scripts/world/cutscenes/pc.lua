@@ -62,6 +62,7 @@ return function(cutscene, event, chara)
 									elseif love.system.getOS() == "Linux" and data.prefix_os["Windows"] then
 										if Mod:fileExists(data.prefix_os["Windows"].."/"..file, true, data.wine_steam_appid) then
 											table.insert(new_gifts, game)
+											break
 										end
 									end
 								end
