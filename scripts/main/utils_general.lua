@@ -72,7 +72,6 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
             or (unixizePathSep(os.getenv("USERPROFILE")).."/AppData/")
         )
         path = appdata..name
-        Log:trace(path)
     elseif love.system.getOS() == "OS X" then
         if try_wine_route then return false end -- UNIMPLEMENTED
 
