@@ -126,7 +126,8 @@ return {
         local teas = {}
         for _,member in ipairs(Game.party) do
             if member then
-                local tea = Registry.createItem(member.id .. "_tea")
+                local tea_id = member.id .. "_tea"
+                local tea = Registry.createItem(tea_id)
                 assert(tea, string.format("Tea for %s (anticipated ID %s) doesn't exist", member.actor:getName(), tea_id))
                 table.insert(teas, tea)
             end

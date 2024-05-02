@@ -65,10 +65,10 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
     end
     if love.system.getOS() == "Windows" then
         local function unixizePathSep(path)
-            return string.gsub(os.getenv("USERPROFILE"), "\\", "/")
+            return string.gsub(path, "\\", "/")
         end
         local appdata = (
-            os.getenv("APPDATA") and unixizePathSep(os.getenv("APPDATA")).."/../"
+            os.getenv("APPDATA") and (unixizePathSep(os.getenv("APPDATA")).."/../")
             or (unixizePathSep(os.getenv("USERPROFILE")).."/AppData/")
         )
         path = appdata..name
@@ -77,7 +77,16 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
 
         path = os.getenv("HOME").."/Library/Application Support/"..name
     elseif love.system.getOS() == "Linux" then
-        if try_wine_route then -- assuming that a Windows path is passed
+        if not try_wine_route then
+            -- don't ask why %
+            name = string.gsub(name, "%XDG_CONFIG_HOME%", os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config")
+            local starts_at_root, _ = Utils.startsWith(name, "/")
+            if not starts_at_root then
+                path = os.getenv("HOME").."/"..name
+            else
+                path = name
+            end
+        else -- assuming that a Windows path is passed
             local wineprefix = os.getenv("WINEPREFIX") or os.getenv("HOME").."/.wine"
             local user_wineprefix = wineprefix.."/drive_c/users/"..os.getenv("USER")
             local appdata_wineprefix = user_wineprefix.."/Local Settings/Application Data/" -- 2k3
@@ -99,15 +108,6 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
                 if check(path_steampfx) then return true end
             end
             return false
-        else
-            -- don't ask why %
-            name = string.gsub(name, "%XDG_CONFIG_HOME%", os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config")
-            local starts_at_root, _ = Utils.startsWith(name, "/")
-            if not starts_at_root then
-                path = os.getenv("HOME").."/"..name
-            else
-                path = name
-            end
         end
     end
     return check(path)
