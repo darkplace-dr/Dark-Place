@@ -77,7 +77,7 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
 
         path = os.getenv("HOME").."/Library/Application Support/"..name
     elseif love.system.getOS() == "Linux" then
-        if try_wine_route then
+        if not try_wine_route then
             -- don't ask why %
             name = string.gsub(name, "%XDG_CONFIG_HOME%", os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config")
             local starts_at_root, _ = Utils.startsWith(name, "/")
