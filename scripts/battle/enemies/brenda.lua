@@ -16,6 +16,7 @@ function Brenda:init()
     self.defense = 3
     self.money = 0
     self.experience = 0
+    self.tired_percentage = 0
 
     self.boss = true
     self.spare_points = 0
