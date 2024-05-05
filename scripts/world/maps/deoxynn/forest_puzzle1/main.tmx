@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="31">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="deoxynn/forest"/>
+  <property name="light" type="bool" value="true"/>
+  <property name="music" value="deoxynn_forest"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/woods.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+56,56,56,56,56,56,56,56,56,56,56,56,56,0,0,0,
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,0,
+56,56,38,56,56,56,56,39,56,56,56,41,56,56,56,0,
+56,56,56,40,56,56,56,56,56,56,56,56,56,56,56,0,
+47,56,11,56,56,56,56,56,37,56,56,56,38,56,56,0,
+56,38,56,56,40,56,56,56,56,41,56,56,56,56,56,0,
+56,41,56,56,56,56,56,56,56,56,56,56,40,56,56,0,
+56,56,56,38,56,56,56,56,40,56,56,11,56,56,56,0,
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="Block Tile Layer" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,287,324,321,321,293,0,0,0,0,0,
+0,0,0,0,0,320,336,311,0,0,301,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,301,0,0,0,0,0,
+0,0,0,0,0,0,320,321,321,321,315,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="16" height="12">
+  <data encoding="csv">
+134,135,134,135,134,135,134,135,134,135,134,135,134,91,0,0,
+145,146,145,146,145,146,145,146,145,146,145,146,145,192,193,194,
+156,157,156,157,156,157,156,157,156,157,156,157,156,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+134,135,134,135,134,135,134,135,134,135,134,135,189,190,94,95,
+145,146,145,146,145,146,145,146,145,146,145,146,200,146,105,106,
+156,157,156,157,156,157,156,157,156,157,156,157,211,157,116,117
+</data>
+ </layer>
+ <objectgroup id="4" name="collision">
+  <object id="1" x="0" y="0" width="640" height="120"/>
+  <object id="2" x="540" y="120" width="100" height="360"/>
+  <object id="3" x="0" y="400" width="540" height="80"/>
+ </objectgroup>
+ <objectgroup id="5" name="blockcollision">
+  <object id="5" x="440" y="160" height="160"/>
+  <object id="6" x="240" y="320" width="200"/>
+  <object id="7" x="240" y="280" height="40"/>
+  <object id="8" x="240" y="280" width="160"/>
+  <object id="9" x="400" y="200" height="80"/>
+  <object id="10" x="320" y="200" width="80"/>
+  <object id="11" x="320" y="200" height="40"/>
+  <object id="12" x="200" y="240" width="120"/>
+  <object id="23" x="200" y="200" height="40"/>
+  <object id="24" x="200" y="200" width="40"/>
+  <object id="25" x="240" y="160" height="40"/>
+  <object id="26" x="240" y="160" width="200"/>
+ </objectgroup>
+ <objectgroup id="6" name="objects_buttons">
+  <object id="16" name="tilebutton" x="240" y="280" width="40" height="40">
+   <properties>
+    <property name="blocks" type="bool" value="true"/>
+    <property name="cutscene" value="deoxynn.bonus1"/>
+    <property name="group" value="buton"/>
+    <property name="once" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="28" name="tilebutton" x="120" y="280" width="40" height="40">
+   <properties>
+    <property name="blocks" type="bool" value="false"/>
+    <property name="cutscene" value="pushblocks.pushblockreset"/>
+    <property name="pressedsprite" value="world/events/woodtile/pressed"/>
+    <property name="sprite" value="world/events/woodtile/idle"/>
+   </properties>
+  </object>
+  <object id="29" name="transition" x="0" y="120" width="20" height="280">
+   <properties>
+    <property name="map" value="deoxynn/forest_1"/>
+    <property name="marker" value="puz1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="markers">
+  <object id="30" name="forest" x="40" y="240">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="objects">
+  <object id="17" name="pushblock" x="240" y="160" width="40" height="40">
+   <properties>
+    <property name="input_lock" type="bool" value="false"/>
+    <property name="inputlock" type="bool" value="false"/>
+    <property name="lock" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="20" name="pushblock" x="280" y="280" width="40" height="40">
+   <properties>
+    <property name="input_lock" type="bool" value="false"/>
+    <property name="inputlock" type="bool" value="false"/>
+    <property name="lock" type="bool" value="false"/>
+    <property name="pressbuttons" type="bool" value="false"/>
+    <property name="sprite" value="world/events/push_blocker"/>
+   </properties>
+  </object>
+  <object id="21" name="pushblock" x="400" y="240" width="40" height="40">
+   <properties>
+    <property name="input_lock" type="bool" value="false"/>
+    <property name="inputlock" type="bool" value="false"/>
+    <property name="lock" type="bool" value="false"/>
+    <property name="pressbuttons" type="bool" value="false"/>
+    <property name="sprite" value="world/events/push_blocker"/>
+   </properties>
+  </object>
+  <object id="22" name="pushblock" x="360" y="160" width="40" height="40">
+   <properties>
+    <property name="input_lock" type="bool" value="false"/>
+    <property name="inputlock" type="bool" value="false"/>
+    <property name="lock" type="bool" value="false"/>
+    <property name="pressbuttons" type="bool" value="false"/>
+    <property name="sprite" value="world/events/push_blocker"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="9" name="Tile Layer 3" width="16" height="12">
+  <data encoding="csv">
+134,135,134,135,134,135,134,135,134,135,134,135,134,91,0,0,
+145,146,145,146,145,146,145,146,145,146,145,146,145,192,193,194,
+114,157,114,157,114,157,114,157,114,157,114,157,114,123,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+0,0,0,0,0,0,0,0,0,0,0,0,0,93,94,95,
+134,135,134,135,134,135,134,135,134,135,134,135,189,190,94,95,
+145,146,145,146,145,146,145,146,145,146,145,146,200,146,105,106,
+156,157,156,157,156,157,156,157,156,157,156,157,211,157,116,117
+</data>
+ </layer>
+</map>

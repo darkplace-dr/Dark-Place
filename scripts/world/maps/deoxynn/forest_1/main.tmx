@@ -107,13 +107,13 @@
   </object>
   <object id="21" name="transition" x="1260" y="560" width="20" height="160">
    <properties>
-    <property name="map" value="forest_puzzle1"/>
+    <property name="map" value="deoxynn/forest_puzzle1"/>
     <property name="marker" value="forest"/>
    </properties>
   </object>
   <object id="25" name="transition" x="0" y="560" width="20" height="200">
    <properties>
-    <property name="map" value="forest_2"/>
+    <property name="map" value="deoxynn/forest_2"/>
     <property name="marker" value="for1"/>
    </properties>
   </object>

@@ -389,7 +389,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "forest_puzzle1",
+            ["map"] = "deoxynn/forest_puzzle1",
             ["marker"] = "forest"
           }
         },
@@ -405,7 +405,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "forest_2",
+            ["map"] = "deoxynn/forest_2",
             ["marker"] = "for1"
           }
         }
