@@ -297,6 +297,15 @@ return {
     album = "deltarunedotcom"
   },
   {
+    name = "Checkerboard Memories",
+    file = "checkerboard_memories",
+    composer = "Toby Fox",
+    released = "January 1, 2012",
+    -- https://sleepytimejesse.bandcamp.com/album/i-miss-you-earthbound-2012
+    origin = "I Miss You - EarthBound 2012",
+    album = "i_miss_you"
+  },
+  {
     name = "Hugs for Ralsei",
     file = "Hugs_for_Ralsei",
     composer = "Lena Raine",
