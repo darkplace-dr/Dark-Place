@@ -1,0 +1,15 @@
+{
+    "id": "hotland-pack",
+    "authors": [
+        "Agent 7",
+        "Bor" // FireBG
+    ],
+    "version": "v1.0.0",
+    "engineVer": "v0.9.0",
+
+    "config": {
+        // Should vents animate like in UT? (Spinning rather than a jump animation)
+        // This also makes the vents slightly faster due to the lack of an animation
+        "legacy_vents": false
+    }
+}

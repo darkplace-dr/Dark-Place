@@ -96,6 +96,30 @@ return {
     album = "dr_ch2"
   },
   {
+    name = "Lost Girl",
+    file = "deltarune/noelle_normal",
+    composer = "Toby Fox",
+    released = "2021",
+    origin = "Deltarune",
+    album = "dr_ch2"
+  },
+  {
+    name = "Digital Roots",
+    file = "deltarune/spamton_basement",
+    composer = "Toby Fox",
+    released = "2021",
+    origin = "Deltarune",
+    album = "dr_ch2"
+  },
+  {
+    name = "BIG SHOT",
+    file = "deltarune/spamton_neo_mix_ex_wip",
+    composer = "Toby Fox",
+    released = "2021",
+    origin = "Deltarune",
+    album = "dr_ch2"
+  },
+  {
     name = "Song That Emerges From A Sleeping Dog",
     file = "deltarune/dogcheck",
     composer = "Toby Fox",
@@ -297,6 +321,22 @@ return {
     album = "deltarunedotcom"
   },
   {
+    name = "Sneaking",
+    file = "sneaking",
+    composer = "Toby Fox",
+    released = "Sept 15, 2023",
+    origin = "https://toby.fangamer.com/newsletters/autumn23/"
+  },
+  {
+    name = "Checkerboard Memories",
+    file = "checkerboard_memories",
+    composer = "Toby Fox",
+    released = "January 1, 2012",
+    -- https://sleepytimejesse.bandcamp.com/album/i-miss-you-earthbound-2012
+    origin = "I Miss You - EarthBound 2012",
+    album = "i_miss_you"
+  },
+  {
     name = "Hugs for Ralsei",
     file = "Hugs_for_Ralsei",
     composer = "Lena Raine",
@@ -442,33 +482,12 @@ return {
     album = "deoxynn_act_1"
   },
   {
-    name = "Rude Buster (Repaint Mix)",
-    file = "battle_repainted",
-    composer = "Cvaxx",
-    released = "2019",
-    origin = "Deltarune: Repainted",
-    album = "dr_repainted_ch1"
-  },
-  {
-    name = "BUTTERFLY OF JUDGEMENT",
-    file = "morpho_boss",
-    composer = "BrendaK7200",
-    released = "2022",
-    origin = "Deltarune: New Connections"
-  },
-  {
-    name = "Elegy for Hope (Cover)",
-    file = "mirati_bk7200cover",
-    composer = "BrendaK7200",
-    released = "2022",
-    origin = "soundcloud.com/brendak7200"
-  },
-  {
-    name = "YOUR LOVE",
-    file = "mari_neo",
-    composer = "BrendaK7200",
-    released = "2022",
-    origin = "soundcloud.com/brendak7200"
+    name = "Forgotten Wood", -- Creepy Forest slowed down
+    file = "forgotten_wood",
+    composer = "Saurdino420",
+    released = "Mar 26, 2023 / ---",
+    origin = "Deoxynn Act 1 / Dark Place",
+    album = "deoxynn_act_1"
   },
   {
     name = "THE DARK",
@@ -557,6 +576,21 @@ return {
     released = "June 14, 2020",
     origin = "Undertale: Halloween Hack",
     album = "ut_hh"
+  },
+  {
+    name = "Rude Buster (Repaint Mix)",
+    file = "battle_repainted",
+    composer = "Cvaxx",
+    released = "2019",
+    origin = "Deltarune: Repainted",
+    album = "dr_repainted_ch1"
+  },
+  {
+    name = "Archives",
+    file = "archives",
+    composer = "Zizou",
+    released = "2015",
+    origin = "Undertale II: Revenge of the Robots"
   },
   {
     name = "DEADRINGER",
@@ -702,14 +736,15 @@ return {
     file = "orphanage",
     composer = "Cosimo Fogg (201)",
     released = "2017",
-    origin = "https://youtu.be/RaPCf9msKIQ"
+    origin = "https://youtu.be/RaPCf9msKIQ (trimmed for Ribbit)"
   },
   {
     name = "Enchanted Lady",
     file = "jazzylandscape",
     composer = "Milt Jackson & Ray Brown",
     released = "1970",
-    origin = "https://youtu.be/bQOGfwBOykE"
+    origin = "https://youtu.be/bQOGfwBOykE (trimmed for Ribbit)",
+    album = "memphis_jackson"
   },
   {
     name = "Marble 大理石 (ft. Ultra)",
@@ -725,7 +760,8 @@ return {
     composer = "Android Apartment",
     released = "2016",
     -- https://android-apartment.bandcamp.com/track/c-i-t-y-p-o-p
-    origin = "SoundCloud (original upload was removed)" -- "Soundcloud Edits Part II"
+    origin = "SoundCloud (original upload was removed)", -- "Soundcloud Edits Part II",
+    album = "sc_edits_part_ii"
   },
   {
     name = "I hope it will be fine tomorrow", -- 明日も晴れるといいね
@@ -827,6 +863,29 @@ return {
     album = "persona_4_golden"
   },
   {
+    name = "Boss (Sonic 1)",
+    file = "egg_1",
+    composer = "Masato Nakamura",
+    released = "June 11, 1991",
+    origin = "Sonic the Hedgehog (Genesis)", -- with AMPS sound driver
+    album = "sonic_1_2"
+  },
+  {
+    name = "Boss (Sonic 2)",
+    file = "egg_s2",
+    composer = "Masato Nakamura",
+    released = "Nov 24, 1992",
+    origin = "(AMPS in) Sonic 2",
+    album = "sonic_1_2"
+  },
+  {
+    name = "Final Boss (Sonic 3)",
+    file = "egg_2",
+    composer = "Sega Sound Team",
+    released = "Feb 2, 1994",
+    origin = "Sonic 3 & Knuckles" -- technically dobby's "SOUND TEST PROGRAM"
+  },
+  {
     name = "Undefeatable",
     file = "undefeatable",
     composer = "Tomoya Ohtani",
@@ -902,6 +961,57 @@ return {
     album = "super_mario_world"
   },
   {
+    name = "The Road Leading to the Secret",
+    file = "road_secret",
+    composer = "Yoko Shimomura",
+    released = "2009",
+    origin = "Mario & Luigi: Bowser's Inside Story (NDS)"
+  },
+  {
+    name = "Mysterious Dungeon",
+    file = "jamm_dungeon",
+    composer = "xDeviruchi",
+    released = "Mar 30, 2021",
+    origin = "8-Bit Fantasy & Adventure Music Pack",
+    album = "8bit_fantasy_n_adventure"
+  },
+  {
+    -- this has weird loop points in the og game
+    name = "The Other One",
+    file = "jamm_boss",
+    composer = "Tristan Alric",
+    released = "November 21, 2019",
+    origin = "Bug Fables"
+  },
+  {
+    name = "Grinch's Ultimatum",
+    file = "ultimatum",
+    composer = "PilotRedSun",
+    released = "December 25th, 2016",
+    origin = "https://youtu.be/BuKft9LpL_0"
+  },
+  {
+    name = "BUTTERFLY OF JUDGEMENT",
+    file = "morpho_boss",
+    composer = "BrendaK7200",
+    released = "2022",
+    origin = "Deltarune: New Connections"
+  },
+  {
+    name = "Elegy for Hope (Cover)",
+    file = "mirati_bk7200cover",
+    composer = "BrendaK7200",
+    released = "2022",
+    origin = "soundcloud.com/brendak7200"
+  },
+  {
+    name = "YOUR LOVE",
+    file = "mari_neo",
+    composer = "BrendaK7200",
+    released = "2022",
+    origin = "soundcloud.com/brendak7200"
+  },
+  {
     name = "A TRUE AEON HERO",
     file = "wwcgalacta",
     composer = "BrendaK7200",
@@ -937,102 +1047,6 @@ return {
     file = "comic_sansation",
     composer = "BrendaK7200",
     released = "2024",
-    origin = "???" -- Dunno what I wanna call this AU yet
+    origin = "Thetaseal"
   },
-  --[[
-  {
-    name = "Archives",
-    file = "archives",
-    composer = "Toby Fox",
-    released = "2015",
-    origin = "Undertale II: Revenge of the Robots"
-  },
-  {
-    name = "The Road Leading to the Secret",
-    file = "road_secret",
-    composer = "Yoko Shimomura",
-    released = "2009",
-    origin = "Mario & Luigi: Bowser's Inside Story (NDS)"
-  },
-  {
-    name = "Lost Girl",
-    file = "deltarune/noelle_normal",
-    composer = "Toby Fox",
-    released = "2021",
-    origin = "Deltarune"
-  },
-  {
-    name = "Digital Roots",
-    file = "deltarune/spamton_basement",
-    composer = "Toby Fox",
-    released = "2021",
-    origin = "Deltarune"
-  },
-  {
-    name = "BIG SHOT",
-    file = "deltarune/spamton_neo_mix_ex_wip",
-    composer = "Toby Fox",
-    released = "2021",
-    origin = "Deltarune"
-  },
-  {
-    name = "Sneaking",
-    file = "sneaking",
-    composer = "Toby Fox",
-    released = "Sept 15, 2023",
-    origin = "https://toby.fangamer.com/newsletters/autumn23/"
-  },
-  {
-    name = "Forgotten Wood", -- Creepy Forest slowed down
-    file = "forgotten_wood",
-    composer = "Saurdino420",
-    released = "Mar 26, 2023 / ---",
-    origin = "Deoxynn Act 1 / Dark Place",
-    album = "deoxynn_act_1"
-  },
-  {
-    name = "Mysterious Dungeon",
-    file = "jamm_dungeon",
-    composer = "xDeviruchi",
-    released = "Mar 30, 2021",
-    origin = "8-Bit Fantasy & Adventure Music Pack",
-    album = "8bit_fantasy_n_adventure"
-  },
-  {
-    -- this has weird loop points in the og game
-    name = "The Other One",
-    file = "jamm_boss",
-    composer = "Tristan Alric",
-    released = "November 21, 2019",
-    origin = "Bug Fables"
-  },
-  {
-    name = "Grinch's Ultimatum",
-    file = "ultimatum",
-    composer = "PilotRedSun",
-    released = "December 25th, 2016",
-    origin = "https://youtu.be/BuKft9LpL_0"
-  },
-  {
-    name = "Boss (Sonic 1)",
-    file = "egg_1",
-    composer = "Masato Nakamura",
-    released = "June 11, 1991",
-    origin = "Sonic the Hedgehog (Genesis)" -- with AMPS sound driver
-  },
-  {
-    name = "Boss (Sonic 2)",
-    file = "egg_s2",
-    composer = "Masato Nakamura",
-    released = "Nov 24, 1992",
-    origin = "(AMPS in) Sonic 2"
-  },
-  {
-    name = "Final Boss (Sonic 3)",
-    file = "egg_2",
-    composer = "Sega Sound Team",
-    released = "Feb 2, 1994",
-    origin = "Sonic 3 & Knuckles" -- technically dobby's "SOUND TEST PROGRAM"
-  },
-  ]]
 }
