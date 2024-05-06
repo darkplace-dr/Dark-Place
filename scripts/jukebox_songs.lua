@@ -1047,6 +1047,6 @@ return {
     file = "comic_sansation",
     composer = "BrendaK7200",
     released = "2024",
-    origin = "???" -- Dunno what I wanna call this AU yet
+    origin = "Thetaseal"
   },
 }
