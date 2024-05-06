@@ -867,14 +867,16 @@ return {
     file = "egg_1",
     composer = "Masato Nakamura",
     released = "June 11, 1991",
-    origin = "Sonic the Hedgehog (Genesis)" -- with AMPS sound driver
+    origin = "Sonic the Hedgehog (Genesis)", -- with AMPS sound driver
+    album = "sonic_1_2"
   },
   {
     name = "Boss (Sonic 2)",
     file = "egg_s2",
     composer = "Masato Nakamura",
     released = "Nov 24, 1992",
-    origin = "(AMPS in) Sonic 2"
+    origin = "(AMPS in) Sonic 2",
+    album = "sonic_1_2"
   },
   {
     name = "Final Boss (Sonic 3)",
