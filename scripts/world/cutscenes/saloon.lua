@@ -26,7 +26,6 @@ return {
                 end
             end
         else
-            Game:setFlag("ceroba_talkedto", true)
             if Game:getFlag("know_ceroba_name") == true then
                 cutscene:showNametag("Ceroba")
             else
@@ -35,6 +34,7 @@ return {
 
             cutscene:text("* ...", "dissapproving", "ceroba")
             if susie then
+                Game:setFlag("ceroba_talkedto", true)
                 cutscene:showNametag("Susie")
                 cutscene:text("* Um,[wait:5] hello?", "nervous", "susie")
 

@@ -23,12 +23,15 @@ return{
         local zero = cutscene:getEvent(5) -- ID for the Zero NPC.
         local player = Game.world.player
         local susie = cutscene:getCharacter("susie")
+        local ceroba = cutscene:getCharacter("ceroba")
         cutscene:detachFollowers()
 
-        -- Zero charges at the player (or Susie if she's in the party), wait until he reaches them
+        -- Zero charges at the player (or Susie and Ceroba if any of them in the party), wait until he reaches them
         zero:setAnimation("run")
         if susie then
             cutscene:slideToSpeed(zero, susie.x+50, player.y, 20)
+        elseif ceroba then
+            cutscene:slideToSpeed(zero, ceroba.x+50, ceroba.y, 20)
         else
             cutscene:slideToSpeed(zero, player.x+60, player.y, 20)
         end
@@ -171,8 +174,49 @@ return{
             zero:setAnimation("threaten")
             cutscene:wait(0.5)
         
-
-        -- If Susie is NOT in the party...
+            -- Else, if Susie is not in party, but Ceroba is...
+        elseif ceroba and Game.party[1].name ~= "Ceroba" then
+            cutscene:wait(function () return zero.x <= ceroba.x+50 end)
+            -- Ceroba knocks Zero away.
+            zero:setAnimation("hurt_fly")
+            zero.physics.speed = 20
+            zero.physics.direction = math.rad(-70)
+            zero.physics.gravity = 1
+            ceroba.alpha = 0
+            cutscene.battleanims = Sprite("party/ceroba/dark/battle/attack")
+            cutscene.battleanims.x = -14
+            cutscene.battleanims.y = -6
+            cutscene.battleanims:play(1/15, false)
+            ceroba:addChild(cutscene.battleanims)
+            Assets.playSound("laz_c")
+            Assets.playSound("bigcut")
+            cutscene:wait(1/30)
+    
+            -- After a moment, Zero hits the ground.
+            cutscene:wait(function () return zero.y >= 310 end)
+            zero.physics.speed = 0
+            zero.physics.direction = 0
+            zero.physics.gravity = 0
+            zero.y = 310
+            zero:setAnimation("hurt_ground")
+            Assets.playSound("impact")
+    
+            --Ceroba steps forward, in attackready pose
+            cutscene:text("* ...", "angry", "ceroba")
+            cutscene:wait(0.5)
+            Assets.playSound("weaponpull_fast")
+            ceroba.physics.speed = 5
+            ceroba.physics.friction = 0.5
+            cutscene.battleanims:setSprite("party/ceroba/dark/battle/attackready")
+            
+            -- Zero gets up and draws his sword, beginning the fight.
+            zero:setAnimation("hurt_recover")
+            cutscene:wait(1)
+            Assets.playSound("sword_draw")
+            zero:setAnimation("threaten")
+            cutscene:wait(0.5)
+            
+            -- If Susie AND Ceroba is NOT in the party...
         else
             -- Zero attacks and slides forward a bit.
             zero:setAnimation("attack")
@@ -211,6 +255,11 @@ return{
             susie.alpha = 1
             susie:resetSprite()
             susie.layer = 0.4
+        elseif ceroba and Game.party[1].name ~= "Ceroba" then
+            cutscene.battleanims:remove()
+            ceroba.alpha = 1
+            ceroba:resetSprite()
+            ceroba.layer = 0.4
         end
 
         cutscene:startEncounter("zero", true, {{"zero", zero}})
@@ -223,18 +272,26 @@ return{
         local zero = cutscene:getEvent(5) -- ID for the Zero NPC.
         local player = Game.world.player
         local susie = cutscene:getCharacter("susie")
+        local ceroba = cutscene:getCharacter("ceroba")
 
-        -- Zero charges at the player (or Susie if she's in the party), wait until he reaches them
+        -- Zero charges at the player (or Susie and Ceroba if any of them in the party), wait until he reaches them
 
         zero:setAnimation("run")
         if susie then
             cutscene:slideToSpeed(zero, susie.x+50, player.y, 20)
             susie.layer_old = susie.layer
+        elseif ceroba then
+            cutscene:slideToSpeed(zero, ceroba.x+50, player.y, 20)
+            ceroba.layer_old = ceroba.layer
         else
             cutscene:slideToSpeed(zero, player.x+60, player.y, 20)
         end
         zero.layer = 1.4
-        if susie then susie.layer = 1.3 end
+        if susie then
+            susie.layer = 1.3
+        elseif ceroba then
+            ceroba.layer = 1.3
+        end
         Assets.playSound("escaped")
 
 
@@ -287,7 +344,44 @@ return{
             zero:setAnimation("threaten")
             cutscene:wait(0.5)
 
-        -- If Susie is NOT in the party...
+        elseif ceroba and Game.party[1].name ~= "Ceroba" then
+            cutscene:wait(function () return zero.x <= ceroba.x+50 end)
+            cutscene:detachFollowers()
+
+            zero:setAnimation("hurt_fly")
+            zero.physics.speed = 20
+            zero.physics.direction = math.rad(-70)
+            zero.physics.gravity = 1
+            ceroba.alpha = 0
+            cutscene.battleanims = Sprite("party/ceroba/dark/battle/attack")
+            cutscene.battleanims.x = -14
+            cutscene.battleanims.y = -6
+            cutscene.battleanims:play(1/15, false)
+            ceroba:addChild(cutscene.battleanims)
+            Assets.playSound("laz_c")
+            Assets.playSound("bigcut")
+            cutscene:wait(1/30)
+
+            zero.physics.speed = 0
+            zero.physics.direction = 0
+            zero.physics.gravity = 0
+            zero:setAnimation("hurt_ground")
+            Assets.playSound("impact")
+
+            cutscene:wait(0.5)
+            Assets.playSound("weaponpull_fast")
+            ceroba.physics.speed = -10
+            ceroba.physics.friction = 0.5
+            cutscene.battleanims:setSprite("party/ceroba/dark/battle/attackready")
+
+            -- Zero gets up and draws his sword, beginning the fight.
+            zero:setAnimation("hurt_recover")
+            cutscene:wait(1)
+            Assets.playSound("sword_draw")
+            zero:setAnimation("threaten")
+            cutscene:wait(0.5)
+    
+        -- If Ceroba is ALSO NOT in the party...
         else
             -- Zero attacks and slides forward a bit.
             zero:setAnimation("attack")
@@ -326,6 +420,11 @@ return{
             susie.alpha = 1
             susie:resetSprite()
             susie.layer = 0.4
+        elseif ceroba and Game.party[1].name ~= "Ceroba" then
+            cutscene.battleanims:remove()
+            ceroba.alpha = 1
+            ceroba:resetSprite()
+            ceroba.layer = 0.4
         end
 
         cutscene:startEncounter("zero", true, {{"zero", zero}})

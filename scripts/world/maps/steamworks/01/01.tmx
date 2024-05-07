@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="28" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="8">
+ <editorsettings>
+  <export target="../01.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="light" type="bool" value="true"/>
+  <property name="music" value="undertale_yellow/abandoned"/>
+ </properties>
+ <tileset firstgid="1" source="../../../tilesets/steamworks.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="28" offsetx="20" offsety="0">
+  <data encoding="csv">
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,440,0,94,95,96,0,440,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,407,0,94,95,96,0,407,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,407,0,94,95,96,0,407,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,407,0,94,95,96,0,407,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,440,0,94,95,96,0,440,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,94,95,96,0,0,0,0,0,0,0,
+0,0,0,0,0,0,128,129,130,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="2" x="380" y="0" width="40" height="1120"/>
+  <object id="3" x="220" y="0" width="40" height="1120"/>
+  <object id="4" x="220" y="1120" width="200" height="40"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="6" name="transition" x="260" y="0" width="120" height="40">
+   <properties>
+    <property name="map" value="steamworks/02"/>
+    <property name="marker" value="down"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="5" name="spawn" x="320" y="1040">
+   <point/>
+  </object>
+  <object id="7" name="up" x="320" y="80">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
