@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 35,
+  nextobjectid = 37,
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/happy_hour",
@@ -20,8 +20,7 @@ return {
     {
       name = "we_saloon",
       firstgid = 1,
-      filename = "../tilesets/we_saloon.tsx",
-      exportfilename = "../tilesets/we_saloon.lua"
+      filename = "../tilesets/we_saloon.tsx"
     },
     {
       name = "warp_bin",
@@ -192,9 +191,22 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
+          x = 478,
+          y = 820,
+          width = 216,
+          height = 20,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 35,
+          name = "",
+          type = "",
+          shape = "rectangle",
           x = 112,
           y = 820,
-          width = 582,
+          width = 206,
           height = 20,
           rotation = 0,
           visible = true,
@@ -538,6 +550,22 @@ return {
             ["cutscene"] = "saloon.ceroba",
             ["flagcheck"] = "!ceroba_party",
             ["sprite"] = "lean"
+          }
+        },
+        {
+          id = 36,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 318,
+          y = 820,
+          width = 160,
+          height = 20,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "saloon.exit",
+            ["once"] = false
           }
         }
       }

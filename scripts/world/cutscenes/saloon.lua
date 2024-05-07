@@ -10,6 +10,7 @@ return {
             else
                 cutscene:showNametag("Ceroba")
                 cutscene:text("* Is this offer about walking still valid?", "neutral", "ceroba")
+                cutscene:hideNametag()
                 local opinion = cutscene:choicer({"Yes", "No"})
                 if opinion == 1 then
                     cutscene:hideNametag()
@@ -21,6 +22,7 @@ return {
                     Game:setFlag("ceroba_inparty", true)
                     Mod:unlockPartyMember("ceroba")
                 else
+                    cutscene:showNametag("Ceroba")
                     cutscene:text("* Okay then.", "closed_eyes", "ceroba")
                     cutscene:hideNametag()
                 end
@@ -99,6 +101,27 @@ return {
                 cutscene:text("* You decided not to disturb her.")
             end
         end
+    end,
+    exit = function(cutscene, event)
+        ceroba = cutscene:getCharacter("ceroba")
+
+        if Game:getFlag("ceroba_gavequest")==true and ceroba then
+            cutscene:showNametag("Ceroba")
+            cutscene:text("* You ready to leave?", "neutral", "ceroba")
+            cutscene:text("* Just remember that we [color:red]won't be able to come back for a while[color:reset].", "closed_eyes", "ceroba")
+            cutscene:hideNametag()
+            local opinion = cutscene:choicer({"Yes", "No"})
+            if opinion == 1 then
+                cutscene:text("* Apologies, but this area isn't ready yet.\n-Nelle")
+            else
+                cutscene:showNametag("Ceroba")
+                cutscene:text("* Just don't take too long,[wait:5] alright?", "neutral", "ceroba")
+                cutscene:hideNametag()
+            end
+        else
+            cutscene:text("* Shouldn't leave now.")
+        end
+        cutscene:walkTo(Game.world.player, Game.world.player.x, Game.world.player.y - 40, 0.5)
     end,
     saloonshop = function(cutscene, event)
         Game.world:lightShopTransition("saloon")
