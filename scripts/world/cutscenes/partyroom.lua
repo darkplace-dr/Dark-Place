@@ -475,8 +475,46 @@ return {
     ceroba = function(cutscene, event)
         cutscene:showNametag("Ceroba")
         cutscene:text("* Need something?", "neutral", "ceroba")
-        cutscene:text("* ...", "dissapproving", "ceroba")
-        cutscene:text("* Sorry,[wait:5] I have nothing to say for now.", "alt", "ceroba")
+        cutscene:hideNametag()
+        local opinion = cutscene:choicer({"You", "Your\nFamily", "No"})
+        cutscene:showNametag("Ceroba")
+        if opinion == 1 then
+            cutscene:text("* Me?", "neutral", "ceroba")
+            cutscene:text("* Honestly,[wait:5] there's not much to say about me.", "dissapproving", "ceroba")
+            cutscene:text("* I grew up in the Underground.[wait:5] In the Dunes.", "closed_eyes", "ceroba")
+            cutscene:text("* I had a family.[wait:5] A loving husband and a beautiful daughter.", "dissapproving", "ceroba")
+            cutscene:text("* But then...[wait:10] At one moment...", "mourning", "ceroba")
+            cutscene:text("* I just lost them both.", "sorrowful", "ceroba")
+        elseif opinion == 2 then
+            if Game:getFlag("ceroba_gavequest")==true then
+                cutscene:text("* Sorry, I'm not really comfortable talking about that.", "closed_eyes", "ceroba")
+            else
+                cutscene:text("* My family...", "dissapproving", "ceroba")
+                cutscene:text("* Well,[wait:5] my husband...[wait:10] Chujin.", "closed_eyes", "ceroba")
+                cutscene:text("* He passed away.", "dissapproving", "ceroba")
+                cutscene:text("* And my daughter...[wait:10] Kanako...", "closed_eyes", "ceroba")
+                cutscene:text("* She has fallen down.", "dissapproving", "ceroba")
+                cutscene:text("* After an...[wait:10] Accident.", "mourning", "ceroba")
+                cutscene:text("* And,[wait:5] some time after that...", "dissapproving", "ceroba")
+                cutscene:text("* \"Royal Science Division\" started to gather fallen monsters.", "closed_eyes", "ceroba")
+                cutscene:text("* I had hopes that they could do something...", "closed_eyes", "ceroba")
+                cutscene:text("* But after some time,[wait:5] they just...[wait:10] Stopped answering.", "dissapproving", "ceroba")
+                cutscene:text("* And I lost any hope of getting my daughter back.", "sorrowful", "ceroba")
+
+                cutscene:text("* However...[wait:10] Now that I think about it...", "closed_eyes", "ceroba")
+                cutscene:text("* I could just go right there and ask them in the face.", "alt", "ceroba")
+                cutscene:text("* But that would require some help.", "neutral", "ceroba")
+                cutscene:text("* Because the only way to get to the Hotland...", "closed_eyes", "ceroba")
+                cutscene:text("* Is through the Steamworks.[wait:5] And that is not a safe place.", "alt", "ceroba")
+                cutscene:text("* So...[wait:10] Whenever you're ready...", "neutral", "ceroba")
+                cutscene:text("* Just take us to the Wild East Saloon's exit.", "closed_eyes", "ceroba")
+
+                Game:setFlag("ceroba_gavequest", true)
+                Kristal.callEvent("createQuest", "A Missing Daughter", "cerobafamily", "Some time ago, Ceroba sent her daughter in the lab with other fallen monsters. But recently, Royal Sciensist stopped answering to her mail about the daughter's condition. She needs your assistance to get there safely and confront the Royal Sciensist about that. When you're ready, you'll have to go to the Wild East Saloon's exit.")
+            end
+        else
+            cutscene:text("* Alright then.", "alt", "ceroba")
+        end
         cutscene:hideNametag()
     end,
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="35">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="37">
  <editorsettings>
   <export target="saloon.lua" format="lua"/>
  </editorsettings>
@@ -68,7 +68,8 @@
   <object id="4" x="260" y="102" width="18" height="176"/>
   <object id="5" x="260" y="100" width="286" height="92"/>
   <object id="6" x="112" y="42" width="582" height="20"/>
-  <object id="7" x="112" y="820" width="582" height="20"/>
+  <object id="7" x="478" y="820" width="216" height="20"/>
+  <object id="35" x="112" y="820" width="206" height="20"/>
   <object id="8" x="294" y="640" width="216" height="44"/>
   <object id="26" x="294" y="392" width="216" height="64"/>
   <object id="9" x="114" y="748" width="48" height="58"/>
@@ -116,6 +117,12 @@
     <property name="sprite" value="lean"/>
    </properties>
    <point/>
+  </object>
+  <object id="36" name="script" x="318" y="820" width="160" height="20">
+   <properties>
+    <property name="cutscene" value="saloon.exit"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="4" name="markers">
