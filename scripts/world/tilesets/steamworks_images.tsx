@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="steamworks" tilewidth="2800" tileheight="1200" tilecount="13" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="steamworks" tilewidth="2800" tileheight="1200" tilecount="14" columns="0">
  <editorsettings>
   <export target="steamworks_images.lua" format="lua"/>
  </editorsettings>
@@ -48,5 +48,8 @@
  </tile>
  <tile id="14">
   <image width="360" height="84" source="../../../assets/sprites/world/maps/steamworks/33_bridge.png"/>
+ </tile>
+ <tile id="15">
+  <image width="234" height="460" source="../../../assets/sprites/world/maps/steamworks/03_door.png"/>
  </tile>
 </tileset>

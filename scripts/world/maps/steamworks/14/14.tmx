@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="light" type="bool" value="true"/>
-  <property name="music" value="treading_lightly"/>
+  <property name="music" value="undertale_yellow/treading_lightly"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/steamworks.tsx"/>
  <layer id="1" name="Tile Layer 1" width="24" height="12">

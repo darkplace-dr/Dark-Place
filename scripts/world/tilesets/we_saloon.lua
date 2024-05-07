@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 3,
+  tilecount = 2,
   tiles = {
     {
       id = 0,
@@ -32,13 +32,7 @@ return {
       height = 880
     },
     {
-      id = 1,
-      image = "../../../assets/sprites/tilesets/we_saloon_table_overlay.png",
-      width = 800,
-      height = 880
-    },
-    {
-      id = 2,
+      id = 3,
       image = "../../../assets/sprites/tilesets/we_saloon2.png",
       width = 800,
       height = 880

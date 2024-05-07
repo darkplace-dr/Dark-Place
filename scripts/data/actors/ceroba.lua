@@ -19,7 +19,7 @@ function actor:init()
 
     self.voice = "ceroba"
     self.portrait_path = "face/ceroba"
-    self.portrait_offset = {-24, -10}
+    self.portrait_offset = {-18, -10}
 
     self.can_blush = false
 

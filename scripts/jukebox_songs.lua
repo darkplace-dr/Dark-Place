@@ -515,15 +515,23 @@ return {
   },
   {
     name = "Happy Hour",
-    file = "happy_hour",
+    file = "undertale_yellow/happy_hour",
     composer = "NoteBlock, MasterSwordRemix",
     released = "2023",
     origin = "Undertale Yellow",
     album = "uty"
   },
   {
+    name = "Tomorrow Means The Surface",
+    file = "undertale_yellow/abandoned",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
+  },
+  {
     name = "Meltdown",
-    file = "steamworks_overworld",
+    file = "undertale_yellow/steamworks_overworld",
     composer = "MyNewSoundtrack, MasterSwordRemix",
     released = "2023",
     origin = "Undertale Yellow",
@@ -531,7 +539,7 @@ return {
   },
   {
     name = "Treading Lightly",
-    file = "treading_lightly",
+    file = "undertale_yellow/treading_lightly",
     composer = "MasterSwordRemix",
     released = "2023",
     origin = "Undertale Yellow",
@@ -539,7 +547,7 @@ return {
   },
   {
     name = "Enter Axis",
-    file = "enter_axis",
+    file = "undertale_yellow/enter_axis",
     composer = "NoteBlock, MasterSwordRemix",
     released = "2023",
     origin = "Undertale Yellow",
@@ -547,7 +555,7 @@ return {
   },
   {
     name = "Detainment 014",
-    file = "detainment",
+    file = "undertale_yellow/detainment",
     composer = "MasterSwordRemix",
     released = "2023",
     origin = "Undertale Yellow",
@@ -555,7 +563,7 @@ return {
   },
   {
     name = "Heatwave Approaching",
-    file = "heatwave_approaching",
+    file = "undertale_yellow/heatwave_approaching",
     composer = "Toby Fox, MyNewSoundtrack",
     released = "2023",
     origin = "Undertale Yellow",
@@ -563,11 +571,43 @@ return {
   },
   {
     name = "The Corner of a Circle",
-    file = "corner_of_a_circle",
+    file = "undertale_yellow/corner_of_a_circle",
     composer = "MasterSwordRemix",
     released = "2023",
     origin = "Undertale Yellow",
     album = "uty"
+  },
+  {
+    name = "Greenhouse",
+    file = "undertale_yellow/greenhouse",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
+  },
+  {
+    name = "Guns Blazing",
+    file = "undertale_yellow/guns_blazing",
+    composer = "MyNewSoundtrack, MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
+  },
+  {
+    name = "Trial By Fury",
+    file = "undertale_yellow/trial_by_fury",
+    composer = "MasterSwordRemix, emBer",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
+  },
+  {
+    name = "END OF THE LINE_",
+    file = "undertale_yellow/END_OF_THE_LINE_",
+    composer = "Figburn, MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
   },
   {
     name = "No More Nuzzles",

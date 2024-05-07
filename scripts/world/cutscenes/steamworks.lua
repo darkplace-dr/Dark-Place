@@ -3,7 +3,7 @@ return {
         local leader = Game.world.player
         local axis = cutscene:getCharacter("axis")
         local ceroba = cutscene:getCharacter("ceroba")
-        local dess = cutscene:getCharacter("dess")
+        local jamm = cutscene:getCharacter("jamm")
 
         Game.world.music:stop()
         cutscene:detachCamera()
@@ -22,21 +22,21 @@ return {
         cutscene:wait(0.1)
         cutscene:setAnimation(axis, "right")
         cutscene:wait(cutscene:slideTo(axis, axis.x + 100, leader.y, 0.2))
-        Game.world.music:play("enter_axis")
+        Game.world.music:play("undertale_yellow/enter_axis")
         cutscene:showNametag("Robot")
         cutscene:text("* INTRUDERS SPOTTED.[wait:5]\nSTEAMWORKS: EASTERN BRANCH.", "normal", "axis")
-        --if dess and Game:getFlag("dungeonkiller") then
-        if dess and Game:getFlag("dungeonkiller") then
+        if jamm and Game:getFlag("dungeonkiller") then
             -- WIP
-            cutscene:showNametag("Dess")
-            cutscene:text("* I'll handle it.", "condescending", "dess")
+            cutscene:showNametag("Jamm")
+            cutscene:text("* ...", "shaded_neutral", "jamm")
             cutscene:hideNametag()
-            cutscene:wait(cutscene:walkToSpeed(dess, axis.x+50, axis.y - 8, 20))
+            --cutscene:wait(cutscene:walkToSpeed(jamm, axis.x+50, axis.y - 8, 20))
+            Assets.playSound("sling")
             cutscene:wait(0.2)
+            Assets.playSound("damage")
             Game.world.music:stop()
-			Assets.playSound("laz_c")
-		    dess:setAnimation("battle/attack")
-		    dess.flip_x = true
+		    jamm:setAnimation("battle/attack")
+		    jamm.flip_x = true
             cutscene:wait(0.1)
             --axis:explode(0, 0, true)
             Assets.playSound("impact")
@@ -48,11 +48,17 @@ return {
             cutscene:text("* AH.. .", "damaged", "axis")
             axis:setAnimation("redeyes_shot_end")
             cutscene:wait(1)
+            jamm.flip_x = false
+            jamm:resetSprite()
             axis:setAnimation("damaged_right")
             cutscene:text("* ...", "damaged", "axis")
-        elseif ceroba then
-            if Game.party[1].id == "ceroba" then
-            else
+
+            axis:remove()
+            cutscene:attachCamera()
+            cutscene:attachFollowers()
+            Game:setFlag("axis_damaged", true)
+        else
+            if Game.party[1].id ~= "ceroba" then
                 cutscene:hideNametag()
                 cutscene:wait(cutscene:walkTo(ceroba, leader.x - 80, axis.y, 0.6, "left"))
             end
@@ -68,69 +74,112 @@ return {
             cutscene:text("* NO.", "normal", "axis")
             cutscene:text("* PROTOCOL IS PROTOCOL,[wait:5] AND IT IS CLEAR:", "normal", "axis")
             cutscene:text("* I MUST CAPTURE ANY TRESPASSERS.", "normal", "axis")
-        end
-        cutscene:hideNametag()
+            cutscene:hideNametag()
         
-        Game.world.music:stop()
-        local trapdoor = Sprite("world/cutscenes/steamworks/steamworks_trapdoor")
-        trapdoor:setOrigin(0.5, 0.5)
-        trapdoor:play(1/15, false)
-        --leader:addChild(trapdoor)
-        trapdoor:setPosition(leader:getRelativePos(leader.width/2, leader.height/2)) -- why tf it doesn't appear
-        trapdoor.layer = leader.layer - 1
-        cutscene:wait(0.2)
-        Assets.playSound("trapdoor_open")
+            Game.world.music:stop()
+            local trapdoor = Sprite("world/cutscenes/steamworks/steamworks_trapdoor")
+            trapdoor:setOrigin(0.5, 0.5)
+            trapdoor:play(1/15, false)
+            --leader:addChild(trapdoor)
+            trapdoor:setPosition(leader:getRelativePos(leader.width/2, leader.height/2)) -- why tf it doesn't appear
+            trapdoor.layer = leader.layer - 1
+            cutscene:wait(0.2)
+            Assets.playSound("trapdoor_open")
 
-        cutscene:wait(1)
-        if ceroba then
+            cutscene:wait(1)
             cutscene:showNametag("Ceroba")
             cutscene:text("* Oh no.", "surprised", "ceroba")
             cutscene:hideNametag()
-        end
 
-        for _,member in ipairs(Game.party) do
-            local chara = Game.world:getCharacter(member.id)
-            if chara then
-                chara.sprite:setFacing("down")
+            for _,member in ipairs(Game.party) do
+                local chara = Game.world:getCharacter(member.id)
+                if chara then
+                    chara.sprite:setFacing("down")
+                end
             end
-        end
         
-        cutscene:wait(0.1)
-        if ceroba then
+            cutscene:wait(0.1)
             ceroba:setFacing("right")
-        end
-        cutscene:attachCamera()
-        cutscene:wait(1)
-        Assets.playSound("fall_trapdoor")
+            cutscene:attachCamera()
+            cutscene:wait(1)
+            Assets.playSound("fall_trapdoor")
 
-        if cutscene:getCharacter("susie") then
-            cutscene:getCharacter("susie"):setSprite("fall")
-            Assets.playSound("sussurprise")
-        end
+            if cutscene:getCharacter("susie") then
+                cutscene:getCharacter("susie"):setSprite("fall")
+                Assets.playSound("sussurprise")
+            end
 
-        for _,member in ipairs(Game.party) do
-            local chara = Game.world:getCharacter(member.id)
-            if chara then
-                if chara.actor.id == "ceroba" then
-                else
-                    cutscene:slideTo(chara, chara.x, chara.y + 800, 1)
+            for _,member in ipairs(Game.party) do
+                local chara = Game.world:getCharacter(member.id)
+                if chara then
+                    if chara.actor.id ~= "ceroba" then
+                        cutscene:slideTo(chara, chara.x, chara.y + 800, 1)
+                    end
                 end
             end
-        end
-        cutscene:wait(2)
-        for _,member in ipairs(Game.party) do
-            local chara = Game.world:getCharacter(member.id)
-            if chara then
-                if chara.actor.id == "ceroba" then
-                else
-                    cutscene:slideTo(chara, chara.x, chara.y + 800, 1)
+            cutscene:wait(2)
+            for _,member in ipairs(Game.party) do
+                local chara = Game.world:getCharacter(member.id)
+                if chara then
+                    if chara.actor.id ~= "ceroba" then
+                        cutscene:slideTo(chara, chara.x, chara.y + 800, 1)
+                    end
                 end
             end
-        end
-        if ceroba then
             Game:removePartyMember("ceroba")
+            cutscene:mapTransition("steamworks/13")
         end
-        cutscene:mapTransition("steamworks/13")
         Game:setFlag("axis_met", true)
     end,
+    first_robokill = function(cutscene, event)
+        cutscene:text("* What are you thinking!?", "angry", "ceroba")
+        cutscene:text("* I know they started the fight but we don't know the situation!", "irked", "ceroba")
+        cutscene:text("* What if it was a glitch in their programming?", "irked", "ceroba")
+        cutscene:text("* ...", "dissapproving", "ceroba")
+        cutscene:text("* These bots are antiques.", "closed_eyes", "ceroba")
+        cutscene:text("* We have no right to destroy them, got that?", "neutral", "ceroba")
+        cutscene:text("* ...Sigh.", "closed_eyes", "ceroba")
+        cutscene:text("* Just... don't do anything stupid.", "irked", "ceroba")
+    end,
+    ceroba_kanako_talk = function(cutscene, event)
+        local ceroba = cutscene:getCharacter("ceroba")
+        cutscene:detachFollowers()
+
+        cutscene:text("* Hey. How about we make a little stop here?", "neutral", "ceroba")
+
+        if Game.party[1].id == "ceroba" then
+            cutscene:walkTo(ceroba, "ceroba_1")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), "party1_1")
+            if Game.party[3] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), "party2_1")
+            end
+            if Game.party[4] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), "party3_1")
+            end
+        elseif Game.party[2].id == "ceroba" then
+            cutscene:walkTo(ceroba, "ceroba_1")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), "party1_1")
+            if Game.party[3] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), "party2_1")
+            end
+            if Game.party[4] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), "party3_1")
+            end
+        elseif Game.party[3].id == "ceroba" then
+            cutscene:walkTo(ceroba, "ceroba_1")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), "party1_1")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), "party2_1")
+            if Game.party[4] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), "party3_1")
+            end
+        elseif Game.party[4].id == "ceroba" then
+            cutscene:walkTo(ceroba, "ceroba_1")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), "party1_1")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), "party2_1")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), "party3_1")
+        end
+
+        cutscene:wait(2)
+        cutscene:attachFollowers()
+    end
 }

@@ -13,7 +13,7 @@ return {
   nextobjectid = 13,
   properties = {
     ["light"] = true,
-    ["music"] = "treading_lightly"
+    ["music"] = "undertale_yellow/treading_lightly"
   },
   tilesets = {
     {
