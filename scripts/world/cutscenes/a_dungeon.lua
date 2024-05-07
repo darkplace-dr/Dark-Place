@@ -203,8 +203,6 @@ return {
 			local wbi_ok = false
 			local action
 			local wbi = WarpBinInputMenu(4)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -234,8 +232,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(4)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -260,8 +256,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(3)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -295,8 +289,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(1)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -335,8 +327,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(1)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -371,8 +361,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(1)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -436,8 +424,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(1)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -473,8 +459,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(10)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -509,8 +493,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(10)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -782,8 +764,6 @@ return {
 			local wbi_ok = false
 			local action
 			local wbi = WarpBinInputMenu(10)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -803,8 +783,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(2)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -824,8 +802,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(2)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -845,8 +821,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(1)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -866,8 +840,6 @@ return {
 			
 			wbi_ok = false
 			wbi = WarpBinInputMenu(2)
-			wbi.as_warp_bin_ui = false
-			wbi.cancellable = false
 			wbi.finish_cb = function(_action, input)
 				wbi_ok = true
 				action = input
@@ -1219,5 +1191,8 @@ Learning to live with shades, yet be.
         Game:getPartyMember("jamm").has_act = false
         Game:setFlag("jamm_canact", false)
 		cutscene:mapTransition("fwood/entry", "exit", "down")
+		if Game:getFlag("cancel_kill_shade") then
+			cutscene:text('* (Because you spared Shade Ania, [color:yellow]you can no longer kill enemies[color:white].)', "neutral", "jamm")
+		end
     end,
 }
