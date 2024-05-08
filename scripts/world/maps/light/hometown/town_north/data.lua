@@ -1176,7 +1176,7 @@ return {
           class = "",
           shape = "rectangle",
           x = 2508,
-          y = 194,
+          y = 204,
           width = 58,
           height = 40,
           rotation = 0,
