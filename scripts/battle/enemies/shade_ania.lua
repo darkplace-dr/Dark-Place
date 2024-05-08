@@ -138,10 +138,6 @@ function Shadynn:onSpared()
 	
 	if not Game:getFlag("jamm_closure") then
 		Game:setFlag("dungeonkiller", false)
-		if Game:getFlag("can_kill") then
-			Game:setFlag("can_kill", false)
-			Game:setFlag("cancel_kill_shade", true)
-		end
 	end
 end
 
