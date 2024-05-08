@@ -44,7 +44,7 @@
   </object>
   <object id="13" name="dwexit" x="320" y="280">
    <properties>
-    <property name="map" value="light/outdoors/shelter/shelter"/>
+    <property name="map" value="light/hometown/town_shelter"/>
     <property name="mapFacing" value="down"/>
     <property name="mapX" value="0"/>
     <property name="mapY" value="0"/>
