@@ -231,7 +231,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "light/outdoors/shelter/shelter",
+            ["map"] = "light/hometown/town_shelter",
             ["mapFacing"] = "down",
             ["mapX"] = "0",
             ["mapY"] = "0"

@@ -14,15 +14,15 @@ function Rodenteer:init()
     self.cheese_count = 0
 end
 
-function Rodenteer:onReturnToWorld(events) -- Doesn't fuckin work for a reason only God Himself knows
-    if self.xp > 0 then -- HOW TF DO I MAKE THIS SHIT WORK
+function Rodenteer:onReturnToWorld(events)
+    if Game.battle.xp > 0 then
         for _,event in ipairs(events) do
             for _,event in ipairs(event:getGroupedEnemies(true)) do
-                if not event:getFlag("killed_count") then
-                    event:setFlag("killed_count", 0)
-                end
-                event:addFlag("killed_count", 1)
-                if event:getFlag("killed_count") >= 3 then
+                if event:getFlag("killed_count") == nil then
+                    event:setFlag("killed_count", 1)
+                elseif event:getFlag("killed_count") == 1 then
+                    event:setFlag("killed_count", 2)
+                elseif event:getFlag("killed_count") == 2 then
                     event:setFlag("dont_load", true)
                     Assets.stopAndPlaySound("ominous")
                 end
