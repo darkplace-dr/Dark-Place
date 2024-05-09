@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="20">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="21">
  <editorsettings>
   <export target="rm_darkruins_08.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="light" value="true"/>
+  <property name="name" value="Dark Ruins - Entrance"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/dark_ruins.tsx"/>
  <tileset firstgid="153" source="../../../tilesets/dark_ruins2.tsx"/>
@@ -159,10 +160,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="7" name="markers">
-  <object id="2" name="savepoint" x="919.957" y="459.957">
-   <point/>
-  </object>
+ <objectgroup id="7" name="markers"/>
+ <objectgroup color="#ff00ff" id="9" name="objects">
+  <object id="20" name="savepoint" x="900" y="440" width="40" height="40"/>
  </objectgroup>
  <objectgroup color="#0000ff" id="8" name="collision">
   <object id="3" x="0" y="560" width="280" height="40"/>
