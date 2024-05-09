@@ -24,8 +24,7 @@ return {
     {
       name = "fade_shadow_yellow",
       firstgid = 1497,
-      filename = "../../../tilesets/fade_shadow_yellow.tsx",
-      exportfilename = "../../../tilesets/fade_shadow_yellow.lua"
+      filename = "../../../tilesets/fade_shadow_yellow.tsx"
     }
   },
   layers = {
@@ -303,7 +302,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "steamworks/04_c",
+            ["map"] = "steamworks/04c",
             ["marker"] = "left"
           }
         },
