@@ -12,4 +12,10 @@ function RoomTwelve:onFootstep(chara, num)
   end
 end
 
+function RoomTwelve:onEnter()
+  if Game:getFlag("axis_met")==true then
+		Game.world.map:getTileLayer("closed_door").visible = false
+  end
+end
+
 return RoomTwelve
