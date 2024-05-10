@@ -85,6 +85,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Bryan The Celestial - Contributor
 * YoshifanJordan - Contributor
 * NelleMonelle - Contributor
+* french fry - Contributor
 
 </details>
 
