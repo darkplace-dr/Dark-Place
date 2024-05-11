@@ -36,6 +36,7 @@ function Mod:init()
     self:initTaunt()
     self:initBattleTaunt()
     Speen:init()
+    Gangnam:init()
     self:initMinigameHooks()
 
     -- v0.8.1 getSoulOffset absence HACK
@@ -866,6 +867,7 @@ function Mod:postUpdate()
     self:updateBattleTaunt()
     self:updateBulborb()
     Speen:update()
+    Gangnam:update()
 
     if Game.save_name == "MERG" then
         for _, party in ipairs(Game.party) do
