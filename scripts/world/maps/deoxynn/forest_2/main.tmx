@@ -94,13 +94,13 @@
   </object>
   <object id="21" name="transition" x="240" y="600" width="40" height="40">
    <properties>
-    <property name="map" value="forest_secret_1"/>
+    <property name="map" value="deoxynn/forest_secret_1"/>
     <property name="marker" value="for2"/>
    </properties>
   </object>
   <object id="23" name="transition" x="720" y="940" width="200" height="20">
    <properties>
-    <property name="map" value="forest_3"/>
+    <property name="map" value="deoxynn/forest_3"/>
     <property name="marker" value="for2"/>
    </properties>
   </object>

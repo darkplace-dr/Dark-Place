@@ -404,7 +404,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "forest_secret_1",
+            ["map"] = "deoxynn/forest_secret_1",
             ["marker"] = "for2"
           }
         },
@@ -420,7 +420,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "forest_3",
+            ["map"] = "deoxynn/forest_3",
             ["marker"] = "for2"
           }
         },
