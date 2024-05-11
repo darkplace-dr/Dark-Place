@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 18,
+  nextobjectid = 19,
   properties = {
     ["border"] = "deoxynn/deep_forest",
     ["music"] = "forgotten_wood",
@@ -32,7 +32,7 @@ return {
       name = "warp_bin",
       firstgid = 745,
       filename = "../../../tilesets/warp_bin.tsx",
-      exportfilename = "../../../tilesets/warp_bin.lua"
+      exportfilename = "../../../tilesets/warp_bin.tsx"
     }
   },
   layers = {
@@ -89,7 +89,7 @@ return {
         152, 151, 152, 151, 152, 151, 152, 95, 0, 0, 0, 93, 94, 151, 152, 151,
         152, 151, 152, 151, 152, 151, 152, 95, 0, 0, 0, 104, 145, 146, 145, 151,
         152, 151, 145, 146, 145, 146, 105, 106, 0, 0, 0, 115, 156, 157, 156, 123,
-        94, 122, 156, 157, 156, 157, 116, 117, 0, 0, 0, 0, 0, 0, 0, 93,
+        94, 122, 156, 157, 156, 157, 116, 306, 0, 0, 0, 0, 0, 0, 0, 93,
         94, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 93,
         94, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 93,
         94, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 93,
@@ -121,7 +121,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 651, 652, 653, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 651, 652, 653, 0, 0, 216, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 745, 746, 747, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -149,7 +149,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -162,7 +162,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 160,
@@ -175,7 +175,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 200,
@@ -188,7 +188,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 80,
           y = 360,
@@ -201,7 +201,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 0,
@@ -214,7 +214,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 120,
@@ -243,7 +243,7 @@ return {
         {
           id = 13,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 500,
           y = 220,
@@ -258,7 +258,7 @@ return {
         {
           id = 14,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = -40,
@@ -274,7 +274,7 @@ return {
         {
           id = 15,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 84,
           y = 110,
@@ -290,7 +290,7 @@ return {
         {
           id = 16,
           name = "beanspot",
-          class = "",
+          type = "",
           shape = "point",
           x = 400,
           y = 320,
@@ -306,7 +306,7 @@ return {
         {
           id = 17,
           name = "beanspot",
-          class = "",
+          type = "",
           shape = "point",
           x = 240,
           y = 240,
@@ -317,6 +317,24 @@ return {
           properties = {
             ["inc_flag"] = "binaribeans",
             ["name"] = "Binaribean"
+          }
+        },
+        {
+          id = 18,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 280,
+          y = 120,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text1"] = "* DEVELOPER NOTE",
+            ["text2"] = "* Forgotten Wood is planned to phase out into its own area in Frivatown's dark worlds.",
+            ["text3"] = "* Please be quick,[wait:5] whatever you do.",
+            ["text4"] = "* (Signed,[wait:5] AcousticJamm)"
           }
         }
       }
@@ -338,7 +356,7 @@ return {
         {
           id = 9,
           name = "warp",
-          class = "",
+          type = "",
           shape = "point",
           x = 140,
           y = 240,
@@ -351,7 +369,7 @@ return {
         {
           id = 10,
           name = "exit",
-          class = "",
+          type = "",
           shape = "point",
           x = 380,
           y = 40,
@@ -364,7 +382,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 460,
           y = 240,
