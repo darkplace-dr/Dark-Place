@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="18">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="19">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -32,7 +32,7 @@
 152,151,152,151,152,151,152,95,0,0,0,93,94,151,152,151,
 152,151,152,151,152,151,152,95,0,0,0,104,145,146,145,151,
 152,151,145,146,145,146,105,106,0,0,0,115,156,157,156,123,
-94,122,156,157,156,157,116,117,0,0,0,0,0,0,0,93,
+94,122,156,157,156,157,116,306,0,0,0,0,0,0,0,93,
 94,95,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
 94,95,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
 94,95,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
@@ -48,7 +48,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,651,652,653,0,0,0,0,0,0,0,0,0,0,0,
+0,0,651,652,653,0,0,216,0,0,0,0,0,0,0,0,
 0,0,745,746,747,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -98,6 +98,14 @@
     <property name="name" value="Binaribean"/>
    </properties>
    <point/>
+  </object>
+  <object id="18" name="interactable" x="280" y="120" width="40" height="40">
+   <properties>
+    <property name="text1" value="* DEVELOPER NOTE"/>
+    <property name="text2" value="* Forgotten Wood is planned to phase out into its own area in Frivatown's dark worlds."/>
+    <property name="text3" value="* Please be quick,[wait:5] whatever you do."/>
+    <property name="text4" value="* (Signed,[wait:5] AcousticJamm)"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="6" name="markers">
