@@ -7,7 +7,7 @@ function Gangnam:init()
 	self.last_music_play_status = true
 	self.music_unpausing = false
 
-	self.gangnam_sound = love.audio.newSource(Assets.getMusicPath("cutawayofundertale"), "stream")
+	self.gangnam_sound = love.audio.newSource(Assets.getMusicPath("gangnam"), "stream")
 
 	Utils.hook(Player, "isMovementEnabled",
         ---@overload fun(orig:function, self:Player):boolean
