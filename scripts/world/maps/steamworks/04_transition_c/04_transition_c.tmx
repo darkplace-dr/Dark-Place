@@ -86,7 +86,7 @@
  <objectgroup id="4" name="objects">
   <object id="9" name="transition" x="600" y="240" width="40" height="80">
    <properties>
-    <property name="map" value="steamworks/04_c"/>
+    <property name="map" value="steamworks/04c"/>
     <property name="marker" value="left"/>
    </properties>
   </object>

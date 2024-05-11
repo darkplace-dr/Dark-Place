@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 14,
+  tilecount = 23,
   tiles = {
     {
       id = 2,
@@ -44,20 +44,20 @@ return {
       height = 520,
       animation = {
         {
+          tileid = 4,
+          duration = 200
+        },
+        {
           tileid = 5,
-          duration = 500
+          duration = 200
         },
         {
           tileid = 6,
-          duration = 500
+          duration = 200
         },
         {
           tileid = 7,
-          duration = 500
-        },
-        {
-          tileid = 4,
-          duration = 500
+          duration = 200
         }
       }
     },
@@ -126,6 +126,86 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/03_door.png",
       width = 234,
       height = 460
+    },
+    {
+      id = 17,
+      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_pink.png",
+      width = 880,
+      height = 342
+    },
+    {
+      id = 18,
+      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_top_pink_1.png",
+      width = 874,
+      height = 256,
+      animation = {
+        {
+          tileid = 18,
+          duration = 1000
+        },
+        {
+          tileid = 19,
+          duration = 1000
+        },
+        {
+          tileid = 20,
+          duration = 1000
+        },
+        {
+          tileid = 21,
+          duration = 1000
+        },
+        {
+          tileid = 22,
+          duration = 1000
+        },
+        {
+          tileid = 23,
+          duration = 1000
+        }
+      }
+    },
+    {
+      id = 19,
+      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_top_pink_2.png",
+      width = 874,
+      height = 256
+    },
+    {
+      id = 20,
+      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_top_pink_3.png",
+      width = 874,
+      height = 256
+    },
+    {
+      id = 21,
+      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_top_pink_4.png",
+      width = 874,
+      height = 256
+    },
+    {
+      id = 22,
+      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_top_pink_5.png",
+      width = 874,
+      height = 256
+    },
+    {
+      id = 23,
+      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_top_pink_6.png",
+      width = 874,
+      height = 256
+    },
+    {
+      id = 24,
+      image = "../../../assets/sprites/world/maps/steamworks/04_bg.png",
+      width = 880,
+      height = 1040
+    },
+    {
+      id = 25,
+      image = "../../../assets/sprites/world/maps/steamworks/04_light_overlay.png",
+      width = 880,
+      height = 1040
     }
   }
 }

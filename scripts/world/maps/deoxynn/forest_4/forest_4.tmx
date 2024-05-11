@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="13">
+ <editorsettings>
+  <export target="../forest_4.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="forest"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/woods.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,
+56,3,56,56,41,56,45,47,56,56,56,45,56,56,56,56,
+56,56,56,2,56,56,56,56,41,56,39,56,56,56,56,40,
+11,56,41,56,56,39,56,56,3,56,10,56,38,56,56,56,
+56,40,56,56,11,56,56,41,56,56,56,39,56,56,11,56,
+56,56,39,56,38,56,56,56,40,56,56,56,56,41,56,56,
+56,3,56,56,56,56,56,2,56,39,56,56,56,2,56,56,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="16" height="12">
+  <data encoding="csv">
+145,146,145,146,145,146,145,146,145,146,145,146,145,146,145,146,
+156,157,156,157,156,157,156,157,156,157,156,157,156,157,156,157,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+134,135,134,135,134,135,134,135,134,135,134,135,134,135,134,135,
+145,146,145,146,145,146,145,146,145,146,145,146,145,146,145,146,
+156,157,156,157,156,157,156,157,156,157,156,157,156,157,156,157,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="4" name="collision">
+  <object id="1" x="0" y="0" width="640" height="40"/>
+  <object id="2" x="0" y="280" width="640" height="200"/>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="5" name="transition" x="0" y="40" width="20" height="240">
+   <properties>
+    <property name="map" value="forest_3"/>
+    <property name="marker" value="for4"/>
+   </properties>
+  </object>
+  <object id="6" name="script" x="280" y="40" height="240">
+   <properties>
+    <property name="cutscene" value="forest.meet_up1"/>
+   </properties>
+  </object>
+  <object id="7" name="npc" x="440" y="160">
+   <properties>
+    <property name="actor" value="stacy"/>
+    <property name="facing" value="right"/>
+    <property name="flagcheck" value="!Stacy1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="8" name="transition" x="625" y="40" width="20" height="240">
+   <properties>
+    <property name="map" value="forest_5"/>
+    <property name="marker" value="for4"/>
+   </properties>
+  </object>
+  <object id="10" name="script" x="360" y="40" height="240">
+   <properties>
+    <property name="cutscene" value="secret.pocketwatch"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="11" name="shine" x="200" y="160">
+   <properties>
+    <property name="cond" value="secret_flowers and not secret_shine"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="markers">
+  <object id="3" name="for3" x="40" y="160">
+   <point/>
+  </object>
+  <object id="9" name="for5" x="600" y="160">
+   <point/>
+  </object>
+  <object id="12" name="alexa_goto" x="240" y="160">
+   <point/>
+  </object>
+ </objectgroup>
+ <layer id="3" name="Tile Layer 3" width="16" height="12">
+  <data encoding="csv">
+145,146,145,146,145,146,145,146,145,146,145,146,145,146,145,146,
+114,157,114,157,114,157,114,157,114,157,114,157,114,157,114,157,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+134,135,134,135,134,135,134,135,134,135,134,135,134,135,134,135,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

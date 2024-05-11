@@ -104,13 +104,18 @@ function Jandroid:onAct(battler, name)
             return "* You look Jandroid over and\ntell them they need a shower."
         end
     elseif name == "Standard" then
-        local rnd = math.random(1, 3)
-        if rnd == 1 then
-            self.dialogue_override = "NO YOU!!"
+        if self.low_health == true then
+            self.dialogue_override = "St_amwrrks\nNeed_/ scruBbed\n0"
+            return "* Cleaning Jandroid wouldn't\ndo any good at this point."
         else
-            self.dialogue_override = "You are RUDE!\nTake THIS!!"
+            local rnd = math.random(1, 3)
+            if rnd == 1 then
+                self.dialogue_override = "NO YOU!!"
+            else
+                self.dialogue_override = "You are RUDE!\nTake THIS!!"
+            end
+            return "* "..battler.chara:getName().." offers to give Jandroid\na scrub. They seem offended."
         end
-        return "* You offer to give Jandroid\na scrub. They seem offended."
     end
 
     return super:onAct(self, battler, name)
@@ -121,7 +126,7 @@ function Jandroid:onDefeat(damage, battler)
     local sprite = self:getActiveSprite()
     sprite:stopShake()
     self:defeat("KILLED", true)
-    Game.battle.timer:after(15/30, function()
+    Game.battle.timer:after(0.8, function()
         Assets.playSound("ut_explosion")
         self:remove()
     end)

@@ -7,7 +7,7 @@ function Jandroid:init()
     self.text = "* Jandroid strolls up, whistling\na pitchy tune."
 
     -- Battle music ("battleut" is undertale)
-    self.music = "heatwave_approaching"
+    self.music = "undertale_yellow/heatwave_approaching"
 
     -- Add the dummy enemy to the encounter
     self:addEnemy("jandroid")
