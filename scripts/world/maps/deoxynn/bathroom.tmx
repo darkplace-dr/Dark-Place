@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="18">
+ <editorsettings>
+  <export target="bathroom.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="light" type="bool" value="true"/>
+  <property name="music" value="room_003"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/frivatown/home.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+1401,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1412,1413,1414,1415,1416,
+1426,1427,1428,1429,1430,1431,1432,1433,1434,1435,1436,1437,1438,1439,1440,1441,
+1451,1452,1453,1454,1455,1456,1457,1458,1459,1460,1461,1462,1463,1464,1465,1466,
+1476,1477,1478,1479,1480,1481,1482,1483,1484,1485,1486,1487,1488,1489,1490,1491,
+1501,1502,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1516,
+1526,1527,1528,1529,1530,1531,1532,1533,1534,1535,1536,1537,1538,1539,1540,1541,
+1551,1552,1553,1554,1555,1556,1557,1558,1559,1560,1561,1562,1563,1564,1565,1566,
+1576,1577,1578,1579,1580,1581,1582,1583,1584,1585,1586,1587,1588,1589,1590,1591,
+1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1611,1612,1613,1614,1615,1616,
+1626,1627,1628,1629,1630,1631,1632,1633,1634,1635,1636,1637,1638,1639,1640,1641,
+1651,1652,1653,1654,1655,1656,1657,1658,1659,1660,1661,1662,1663,1664,1665,1666,
+1676,1677,1678,1679,1680,1681,1682,1683,1684,1685,1686,1687,1688,1689,1690,1691
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="1" x="480" y="280">
+   <polygon points="0,0 -18,-17.9961 -18,-83.2727 0,-80.9091"/>
+  </object>
+  <object id="2" x="0" y="0" width="640" height="264"/>
+  <object id="3" x="82" y="360">
+   <polygon points="0,0 120,-120 0,-120 0,0"/>
+  </object>
+  <object id="4" x="0" y="342" width="640" height="138"/>
+  <object id="7" x="186" y="240" width="138" height="56"/>
+  <object id="8" x="324" y="264" width="20" height="42"/>
+  <object id="9" x="354" y="240" width="32" height="40"/>
+  <object id="10" x="396" y="234" width="62" height="40"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="5" name="transition" x="486" y="264" width="80" height="78">
+   <properties>
+    <property name="map" value="deoxynn/kitchen"/>
+    <property name="marker" value="bat"/>
+   </properties>
+  </object>
+  <object id="14" name="interactable" x="396" y="234" width="62" height="40">
+   <properties>
+    <property name="cutscene" value="frivatown.bsink"/>
+   </properties>
+  </object>
+  <object id="15" name="interactable" x="354" y="240" width="32" height="40">
+   <properties>
+    <property name="cutscene" value="frivatown.turlet"/>
+   </properties>
+  </object>
+  <object id="17" name="interactable" x="186" y="240" width="138" height="56">
+   <properties>
+    <property name="cutscene" value="frivatown.bathtub"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="6" name="kit" x="458" y="306">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
