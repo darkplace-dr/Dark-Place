@@ -71,6 +71,58 @@ return {
 		cutscene:hideNametag()
 	end,
 	
+	house_2 = function(cutscene, event)
+		if not Game:getFlag("battlecards_world_started") then
+			cutscene:wait(cutscene:playSound("knock"))
+			cutscene:text("* (No response.)")
+			if Game:hasPartyMember("jamm") then
+				local jamm = cutscene:getCharacter("jamm")
+				cutscene:detachFollowers()
+				cutscene:detachCamera()
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Wait a minute...", "stern", "jamm")
+				cutscene:hideNametag()
+				cutscene:wait(cutscene:walkToSpeed(jamm, "jamm_to", 4, "up"))
+				cutscene:wait(1)
+				cutscene:look(jamm, "left")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* This house isn't usually this dark inside.", "stern", "jamm")
+				cutscene:text("* Even if the lights are off,[wait:5] you can still see something.", "stern", "jamm")
+				
+				if Game:hasPartyMember("mario") then
+					cutscene:showNametag("Mario")
+					cutscene:text("* Mario doesn't like dark rooms so much...", "main", "mario")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* Then what were you doing in the Slider,[wait:5] Mario?", "stern", "jamm")
+					cutscene:showNametag("Mario")
+					cutscene:text("* Pingas", "main", "mario")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* ...Knowing you,[wait:5] Mario,[wait:5] that makes sense.", "stern", "jamm")
+				end
+				
+				cutscene:text("* Frivatown gave me a 'master key' of sorts.[wait:5]\n* I can unlock the door.", "stern", "jamm")
+				cutscene:text("* I have my doubts,[wait:5] though...", "stern", "jamm")
+				cutscene:hideNametag()
+				
+				local choice = cutscene:choicer({"Unlock", "Not yet"})
+				
+				if choice == 1 then
+					cutscene:wait(cutscene:walkToSpeed(jamm, "jamm_to", 4, "up"))
+					cutscene:showNametag("Jamm")
+					cutscene:text("* It's for the best,[wait:5] right?", "stern", "jamm")
+				else
+					cutscene:showNametag("Jamm")
+					cutscene:text("* Probably best that we get prepared first.", "stern", "jamm")
+					cutscene:text("* Who knows what lies beyond this door?", "stern", "jamm")
+					cutscene:hideNametag()
+					cutscene:attachFollowers(8)
+					cutscene:wait(cutscene:attachCamera(1))
+				end
+			end
+		end
+		cutscene:hideNametag()
+	end,
+	
 	truck = function(cutscene, event)
 		cutscene:text("* The truck seems old...")
 	end,

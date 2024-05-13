@@ -9,8 +9,8 @@ return {
   height = 17,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 12,
-  nextobjectid = 34,
+  nextlayerid = 13,
+  nextobjectid = 37,
   properties = {
     ["light"] = true,
     ["music"] = "frivatown"
@@ -176,6 +176,22 @@ return {
       opacity = 1,
       offsetx = 160,
       offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      repeatx = false,
+      repeaty = false,
+      properties = {}
+    },
+    {
+      type = "imagelayer",
+      image = "../../../../assets/sprites/map_objects/card_door.png",
+      id = 12,
+      name = "card_door_remove",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 1144,
+      offsety = 136,
       parallaxx = 1,
       parallaxy = 1,
       repeatx = false,
@@ -445,7 +461,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "frivatown.apartment"
+            ["cutscene"] = "frivatown.house_2"
           }
         }
       }
@@ -497,6 +513,32 @@ return {
           shape = "point",
           x = 780,
           y = 640,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 35,
+          name = "jamm_to",
+          type = "",
+          shape = "point",
+          x = 1320,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 36,
+          name = "lockpick",
+          type = "",
+          shape = "point",
+          x = 1176,
+          y = 240,
           width = 0,
           height = 0,
           rotation = 0,
