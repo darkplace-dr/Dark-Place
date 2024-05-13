@@ -1,6 +1,6 @@
 local Pipis, super = Class(YellowSoulBullet)
 
-function Pipis:init(x, y, dir, speed)
+function Pipis:init(x, y)
     super.init(self, x, y, "battle/bullets/sneo/pipis/normal/pipis")
     
     self.shot_health = 4
@@ -8,21 +8,20 @@ function Pipis:init(x, y, dir, speed)
     self.damage = 40 
 
     self.timer = 0
-    self.fader_alpha = 0
-    
-    self.physics.speed = speed
-    self.dir = dir
 
     self.remove_offscreen = false
 
     self.type = 1
+
+    self.drawlabel = false
+    self.boom = false
 end
 
 function Pipis:onYellowShot(shot, damage)
     --self.physics = {}
     --self.collidable = false
 	
-	Assets.playSound("damage", 0.3)
+	Assets.playSound("damage")
 
     self.shot_health = self.shot_health - damage
 	
@@ -65,6 +64,23 @@ end
 
 function Pipis:update()
     super.update(self)
+	
+    if self.type == 2 then
+        self.rotation = self.rotation + math.rad(45) * DTMULT
+        if self.y > (Game.battle.arena.y - 81) + Game.battle.arena.height then
+            Assets.playSound("bump")
+            self.physics.gravity = 0.24
+            self.physics.speed_y = (-5 - Utils.random(3))
+        end
+    end
+	
+    if self.x < (Game.battle.arena.x + (Game.battle.arena.width / 2) + 20) and self.y > (Game.battle.arena.y - (Game.battle.arena.height / 2) + 20) and self.boom == false then
+        Assets.playSound("damage")
+        self.physics.gravity = 0
+        self.physics.speed = 0
+        self.boom = true
+        self:destroy()
+    end
 end
 
 function Pipis:destroy(shot)
