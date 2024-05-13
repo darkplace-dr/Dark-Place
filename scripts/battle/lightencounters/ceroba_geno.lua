@@ -7,7 +7,7 @@ function Ceroba:init()
 
     self.music = "undertale_yellow/trial_by_fury"
 
-    self.ceroba = self:addEnemy("ceroba_geno")
+    self:addEnemy("ceroba_geno")
 
     self.background = true
 

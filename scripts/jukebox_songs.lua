@@ -594,6 +594,14 @@ return {
 	  album = "uty"
   },
   {
+    name = "Enemy Retreating",
+    file = "undertale_yellow/genobattle_yellow",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+	  album = "uty"
+  },
+  {
     name = "Trial By Fury",
     file = "undertale_yellow/trial_by_fury",
     composer = "MasterSwordRemix, emBer",

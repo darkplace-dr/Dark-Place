@@ -1,10 +1,10 @@
-local Jandroid, super = Class(LightEncounter)
+local Goosic, super = Class(LightEncounter)
 
-function Jandroid:init()
+function Goosic:init()
     super:init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
-    self.text = "* Jandroid strolls up, whistling\na pitchy tune."
+    self.text = "* Goosic has come to share some\nsounds."
 
     if Game:getFlag("steamworks_kills") == nil then
         Game:setFlag("steamworks_kills", 0)
@@ -15,9 +15,9 @@ function Jandroid:init()
     else
         self.music = "undertale_yellow/heatwave_approaching"
     end
-    
+
     -- Add the dummy enemy to the encounter
-    self:addEnemy("jandroid")
+    self:addEnemy("goosic")
 
     self.background_image = "ui/lightbattle/backgrounds/battle_steamworks"
 
@@ -27,4 +27,4 @@ function Jandroid:init()
 
 end
 
-return Jandroid
+return Goosic
