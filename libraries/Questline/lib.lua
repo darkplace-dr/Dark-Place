@@ -7,7 +7,7 @@ function Lib:init()
 end
 
 function Lib:onKeyPressed(key)
-    if Game.world and Game.world.state == "GAMEPLAY" and key == "q" then
+    if Game.world and Game.world.state == "GAMEPLAY" and key == "q" and not Game.battle then
 		Game.world:openMenu(QuestMenu())
 	end
 end
