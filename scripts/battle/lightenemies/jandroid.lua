@@ -126,6 +126,13 @@ function Jandroid:onDefeat(damage, battler)
     local sprite = self:getActiveSprite()
     sprite:stopShake()
     self:defeat("KILLED", true)
+
+    if Game:getFlag("steamworks_kills") == nil then
+        Game:setFlag("steamworks_kills", 1)
+    else
+        Game:setFlag("steamworks_kills", Game:getFlag("steamworks_kills") + 1)
+    end
+
     Game.battle.timer:after(0.8, function()
         Assets.playSound("ut_explosion")
         self:remove()
