@@ -43,6 +43,7 @@ function actor:init()
         ["neutrals"] = {0, 0},
         ["pacifists"] = {0, 0},
         ["non_binary"] = {0, 0},
+        ["transgender"] = {0, 0},
         ["forgor"] = {1, 0},
         ["lich"] = {0, -4},
     }

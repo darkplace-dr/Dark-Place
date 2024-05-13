@@ -33,6 +33,8 @@ return {
                 sans_meme:setSprite("pacifists")
             elseif Game.world.sanscheck == 3 then
                 sans_meme:setSprite("non_binary")
+            elseif Game.world.sanscheck == "3alt" then
+                sans_meme:setSprite("transgender")
             elseif Game.world.sanscheck == 4 then
                 sans_meme:setSprite("search_history")
             elseif Game.world.sanscheck == 5 then
@@ -80,6 +82,21 @@ return {
                     remembering,
                 }
             })
+            if Game.world:getCharacter("brenda_lw") then
+                cutscene:showNametag("Brenda")
+                cutscene:text("* Uh,[wait:5] I'm trans,[wait:5] not non-binary.", "suspicious", "brenda")
+                cutscene:showNametag("Sans?", {font = "sans"})
+                cutscene:text("[font:sans]* oh.", "neutral", "sans")
+                Game.world.sanscheck = "3alt"
+                sans_meme:resetSprite()
+                cutscene:text("[font:sans]* human..[wait:5] i remember you're [wait:10][facec:sans/meme/nonbinary][func:1][func:2][sound:sparkle_gem][style:GONER][instant][color:#00FFFF]tr[color:pink]an[color:white]sge[color:pink]nd[color:#00FFFF]er.[stopinstant][color:reset]", "serious", "sans", {
+                    functions = {
+                        flashScreen,
+                        remembering,
+                    }
+                })
+                Game.world.sanscheck = 3
+            end
             cutscene:hideNametag()
             Game.world.music:resume()
         elseif Game.world.sanscheck == 4 then
