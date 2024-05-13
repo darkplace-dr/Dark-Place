@@ -8,7 +8,7 @@ function String:init(x, y, fg, top_x)
     self.color = fg and COLORS.green or {0,0.2,0}
     self.inherit_color = true
     self.swing_speed = 0.5
-    self.siner = Utils.random(math.pi*2*30)
+    self.siner = 0
     self.line_rotation = -math.pi/2
 end
 

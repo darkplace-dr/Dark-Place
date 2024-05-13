@@ -77,10 +77,12 @@ function Spamton:init(actor)
     end
     self.fg_strings = {}
     for i=1,6 do
-        local sprite = self.parts[i].sprite
+        local part = self.parts[i]
+        local sprite = part.sprite
         local ox, oy = sprite:getRotationOriginExact()
         local fg_sx, fg_sy = sprite:getRelativePos(ox, oy, self)
         local str = SpamtonString((fg_sx / 1.2) + ((i-1)*2.5), fg_sy, true, (fg_sx / 1.5) + ((i-1)*4))
+        str.swing_speed = part.swing_speed
         self:addChild(str)
         self.fg_strings[i] = str
         table.insert(self.strings, str)
