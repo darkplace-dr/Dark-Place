@@ -5,6 +5,14 @@
 	"authors": [
 		"AcousticJamm"
 	],
+	"keybinds": [
+        {
+            "name": "Quest",
+            "id": "quest",
+            "keys": ["q"],
+            "gamepad": ["gamepad:start"]
+        },
+    ],
     "config": {
         "print_console_intro": true
     }
