@@ -18,7 +18,7 @@ end
 function Mod:updateTaunt()
     if not (OVERLAY_OPEN or TextInput.active)
         and self:isTauntingAvaliable()
-        and Input.pressed("v", false)
+        and Input.pressed("taunt", false)
         and not self.taunt_lock_movement
         and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY"
             and not Game.world:hasCutscene() and not Game.lock_movement)
