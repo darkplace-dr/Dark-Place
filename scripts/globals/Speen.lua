@@ -41,7 +41,7 @@ function Speen:update()
 		self.rotate_speed = 1/240
 	end
 
-	if Input.pressed("s", false) and not Input.ctrl()
+	if Input.pressed("speen", false) and not Input.ctrl()
 		and not self.is_spinning
 		and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene())
 		and not (Game.lock_movement or self.taunt_lock_movement)

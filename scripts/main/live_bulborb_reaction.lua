@@ -59,7 +59,7 @@ function Mod:updateBulborb()
         self.bulborb_reaction:remove()
     end
 
-    if can_show and not (OVERLAY_OPEN or TextInput.active) and Input.pressed("b") and not Input.ctrl() then
+    if can_show and not (OVERLAY_OPEN or TextInput.active) and Input.pressed("bulborb") and not Input.ctrl() then
         if self.bulborb_state == "" then
             self.bulborb_state = "APPEARING"
 
