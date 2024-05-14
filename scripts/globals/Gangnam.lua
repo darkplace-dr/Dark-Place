@@ -19,7 +19,7 @@ function Gangnam:init()
 end
 
 function Gangnam:update()
-	if Input.pressed("a", false)
+	if Input.pressed("gangnam", false)
 		and not self.is_gangnaming
 		and (Game.state == "OVERWORLD" and Game.world.state == "GAMEPLAY" and not Game.world:hasCutscene())
 		and not (Game.lock_movement or self.taunt_lock_movement)
