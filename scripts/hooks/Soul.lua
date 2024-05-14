@@ -154,7 +154,7 @@ function Soul:update()
     self.parried_loop_sfx:setVolume(Utils.clampMap(self.parry_inv, 0, self.parry_length / 4, 0,   0.5))
     --]]
 
-    if Input.pressed("v", false) and self:canParry() then
+    if Input.pressed("taunt", false) and self:canParry() then
         self.parry_lock_movement = 8
 
         self:flash()
@@ -205,7 +205,7 @@ function Soul:update()
         self.outlinefx.active = true
     end
     -- Cut timescale in half when holding A and not out of TP
-    if not self.transitioning and Input.down("f") and Game:getTension() > 0 then
+    if not self.transitioning and Input.down("focus_placebo") and Game:getTension() > 0 then
         -- Make sure the game pauses when object selection and selection slowdown is active.
         if not (Kristal.DebugSystem.state == "SELECTION" and Kristal.Config["objectSelectionSlowdown"]) then
         Game.stage.timescale = Utils.approach(Game.stage.timescale, 0.5, DTMULT / 4)
@@ -226,7 +226,7 @@ function Soul:update()
     end
 
     -- Remove 1 TP for every drain_rate frames of slowdown active
-    if not self.transitioning and Input.down("f") and Game:getTension() > 0 then
+    if not self.transitioning and Input.down("focus_placebo") and Game:getTension() > 0 then
         if self.drain_timer >= self.drain_rate then
             Game:removeTension(DTMULT*1.3) -- Should keep the drain rate roughly the same, regardless of framerate? Hopefully? Kinda looks like it does but I can't be sure?
             self.drain_timer = 0
