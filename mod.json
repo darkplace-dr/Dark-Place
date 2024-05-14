@@ -153,6 +153,11 @@
       "id": "taunt",
       "keys": ["v"]
     },
+    {
+      "name": "Gangnam Style",
+      "id": "gangnam",
+      "keys": ["a"]
+    },
   ],
 
   // Config values for the engine and any libraries you may have.
