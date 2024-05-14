@@ -158,6 +158,11 @@
       "id": "gangnam",
       "keys": ["a"]
     },
+    {
+      "name": "Focus Placebo",
+      "id": "focus_placebo",
+      "keys": ["f"]
+    },
   ],
 
   // Config values for the engine and any libraries you may have.
