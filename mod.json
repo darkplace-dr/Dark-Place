@@ -132,6 +132,28 @@
     "RALSEI",
     "NORWAY"
   ],
+  "keybinds": [
+    {
+      "name": "Relationships",
+      "id": "relationships",
+      "keys": ["r"]
+    },
+    {
+      "name": "Speen",
+      "id": "speen",
+      "keys": ["s"]
+    },
+    {
+      "name": "Bulborb Reaction",
+      "id": "bulborb",
+      "keys": ["b"]
+    },
+    {
+      "name": "Taunt",
+      "id": "taunt",
+      "keys": ["v"]
+    },
+  ],
 
   // Config values for the engine and any libraries you may have.
   // These config values can control chapter-specific features as well.
