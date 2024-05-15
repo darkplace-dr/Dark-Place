@@ -8,6 +8,8 @@ function PipisWall:init(x, y)
     self.sprite.scale_y = 2
     self.sprite:setColor(COLORS.lime)
     self:addChild(self.sprite)
+	
+    self.collider = Hitbox(self, 0, 0, self.sprite.width, 1)
 
     self.alpha = 0
 

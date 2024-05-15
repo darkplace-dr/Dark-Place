@@ -45,17 +45,24 @@ end
 function SneoBombPipis:update()
     super.update(self)
 	
-    if self.y > (Game.battle.arena.y - 81) + Game.battle.arena.height and self.boom == false then
+    if self:collidesWith(self.wave.wall) and self.boom == false then
         Assets.playSound("bump")
         self.physics.gravity = 0.24
         self.physics.speed_y = (-5.5 - Utils.random(3))
     end
 	
-    if self.x < (Game.battle.arena.x + (Game.battle.arena.width / 2) + 20) and self.boom == false then
+    if self.boom == false and ((self.x < (Game.battle.arena.x + (Game.battle.arena.width / 2) + 20)) and not (self.y >= self.wave.wall.y)) then
         Assets.playSound("damage")
         self.physics = {}
         self.boom = true
         self:detonate()
+    elseif self.y >= SCREEN_HEIGHT and self.boom == false then
+        Assets.playSound("damage")
+        self.physics = {}
+        self.boom = true
+        self:detonate()
+    else
+        self.rotation = self.rotation + math.rad(10) * DTMULT
     end
 end
 

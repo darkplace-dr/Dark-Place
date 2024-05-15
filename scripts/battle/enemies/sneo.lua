@@ -17,6 +17,7 @@ function SpamtonNEO:init()
         "sneo/firework_pipis",
         "sneo/phoneshooter",
         "sneo/pendulum",
+        "sneo/pipis_test",
     }
 
 	self.boss = true
@@ -53,6 +54,16 @@ function SpamtonNEO:init()
     self.old_y = self.y
     self.ease = false
     self.ease_timer = 0
+	
+    self.hurttimer = 0
+    self.smoketimer = 0
+	
+    self.funnycheattimer = 0
+    self.funnycheattimer2 = 0
+    self.funnycheattimer3 = 0
+    self.honk = false
+	
+    self.hellmode = false
 end
 
 function SpamtonNEO:setMode(mode)
@@ -97,6 +108,37 @@ function SpamtonNEO:update()
             if self.ease_timer >= 1 then
                 self.ease = false
             end
+        end
+    end
+
+    if Game.battle.encounter.funnycheat > 5 then
+        if self.funnycheattimer < 28 then
+            self.funnycheattimer = self.funnycheattimer + 0.125 * DTMULT
+            self.sprite.head.color = Utils.mergeColor(COLORS["white"], COLORS["red"], self.funnycheattimer / 30)
+        end
+		
+        if self.funnycheattimer >= 24 then
+            Assets.playSound("carhonk")
+            self.funnycheattimer3 = self.funnycheattimer3 + DTMULT
+        end
+		
+        if self.funnycheattimer3 > 0 and self.funnycheattimer3 < 6 then
+            self.sprite.head.sprite:setScale(Utils.lerp(1, 2, self.funnycheattimer3 / 6))
+        end
+        if self.funnycheattimer3 > 8 and self.funnycheattimer3 < 16 then
+            self.sprite.head.sprite:setScale(Utils.lerp(2, 1, (self.funnycheattimer3 - 8) / 8))
+        end
+        if self.funnycheattimer3 > 16 and self.funnycheattimer3 < 24 then
+            self.sprite.head.sprite:setScale(Utils.lerp(1, 2, (self.funnycheattimer3 - 16) / 6))
+        end
+        if self.funnycheattimer3 > 24 and self.funnycheattimer3 < 32 then
+            self.sprite.head.sprite:setScale(Utils.lerp(2, 0.9339, (self.funnycheattimer3 - 24) / 8))
+        end
+		
+        if self.funnycheattimer3 >= 4 and self.funnycheattimer3 <= 10 or self.funnycheattimer3 >= 20 and self.funnycheattimer3 <= 26 then
+            self.sprite:setPartShaking("head", -12 + Utils.random(24))
+        else
+            self.sprite:setPartShaking("head", 0)
         end
     end
 
