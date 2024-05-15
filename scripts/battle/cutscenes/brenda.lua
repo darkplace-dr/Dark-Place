@@ -18,7 +18,7 @@ return {
         cutscene:text("* you're like one of the few people that actually tollerate my existence", "genuine_b", "dess")
         cutscene:text("* why don't we just talk it out", "neutral", "dess")
         cutscene:text("* ...", "shaded_b", "brenda")
-        cutscene:text("* (Dess...[wait:10] I didn't know you cared about him...)", "sad", "susie")
+        cutscene:text("* (Dess...[wait:10] I didn't know you cared about her...)", "sad", "susie")
         brenda:addMercy(10)
         brenda.comfort = brenda.comfort + 1
     end,
