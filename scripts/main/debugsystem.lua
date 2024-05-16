@@ -93,8 +93,12 @@ function Mod:registerDebugOptions(debug)
     local in_battle = function() return in_game() and Game.state == "BATTLE" end
     local in_overworld = function() return in_game() and Game.state == "OVERWORLD" end
     local in_minigame = function() return in_game() and Game.state == "MINIGAME" end
+	
+    debug:registerOption("main", "Dark Place Debug", "Open Dark Place Debug Menu", function() debug:enterMenu("dp_menu", 1) end, in_game)
 
-    debug:registerOption("main", "Open Party Menu", "Change the current party.", function ()
+    debug:registerMenu("dp_menu", "~DARK PLACE DEBUG~")
+
+    debug:registerOption("dp_menu", "Open Party Menu", "Change the current party.", function ()
         debug:enterMenu("party_menu", 1)
     end, in_overworld)
 
@@ -113,10 +117,10 @@ function Mod:registerDebugOptions(debug)
     end, in_overworld)
 
     -- Stole this idea from ULCA Deltarune
-    debug:registerOption("main", "Replenish Party", "Replenishes health.", replenish, in_game)
+    debug:registerOption("dp_menu", "Replenish Party", "Replenishes health.", replenish, in_game)
 
-    debug:registerOption("main", "Create Ach. List Image", "Just for muscle flexing. LMAO", createAchListImage, in_game)
-    debug:registerOption("main", "Start Minigame", "Start a minigame.", function() debug:enterMenu("minigame_menu", 0) end, in_overworld)
+    debug:registerOption("dp_menu", "Create Ach. List Image", "Just for muscle flexing. LMAO", createAchListImage, in_game)
+    debug:registerOption("dp_menu", "Start Minigame", "Start a minigame.", function() debug:enterMenu("minigame_menu", 0) end, in_overworld)
 
     debug:registerMenu("minigame_menu", "Minigame Select", "search")
     for id,_ in pairs(Mod.minigames) do
@@ -126,12 +130,12 @@ function Mod:registerDebugOptions(debug)
         end)
     end
 
-    debug:registerOption("main", "End Minigame", "End the current minigame.", function()
+    debug:registerOption("dp_menu", "End Minigame", "End the current minigame.", function()
 		Game.minigame:endMinigame()
 		debug:closeMenu()
 	end, in_minigame)
 
-    debug:registerOption("main", "Funky", "Enter the  Funky  Menu.", function() debug:enterMenu("funky_menu", 1) end)
+    debug:registerOption("dp_menu", "Funky", "Enter the  Funky  Menu.", function() debug:enterMenu("funky_menu", 1) end)
 
     debug:registerMenu("funky_menu", "Funky Menu")
     debug:registerOption("funky_menu", "Hi", "nice to meet u", function() print("hi") end)
