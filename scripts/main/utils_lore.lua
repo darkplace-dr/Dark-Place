@@ -70,7 +70,8 @@ function Mod:funnytitle()
         "Counter Strike Source Not Found()",
         "Grian Is Watching You.",
         "PLAY THE RIBBIT MOD, NOW!!!",
-        Mod.info.name
+        Mod.info.name,
+        "Thetaseal"
     }
     local funnytitle_rand = love.math.random(#funnytitles)
     local funnytitle = funnytitles[funnytitle_rand] or "Depa Runts"
