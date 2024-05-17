@@ -20,7 +20,9 @@ function Mod:init()
     MUSIC_PITCHES["ruins_beta"] = 0.8
 
     MUSIC_VOLUMES["deltarune/queen_car_radio"] = 0.8
+    MUSIC_VOLUMES["deltarune/spamton_neo_mix_ex_wip"] = 0.7
     MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
+    MUSIC_VOLUMES["beasts"] = 0.7
 
     self.voice_timer = 0
 
