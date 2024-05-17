@@ -208,12 +208,10 @@ function DogCheck:draw()
     super.draw(self)
 
     -- Ported the sun out of boredom, uncomment this if you want. - Agent 7
-    --[[
     if self.variant == "summer" then
         Draw.setColor(1, 1, 0)
         love.graphics.circle("fill", 420 + math.cos(self.summer_siner / 18) * 6, 40 + math.sin(self.summer_siner / 18) * 6, 28 + math.sin(self.summer_siner / 6) * 4, 100)
     end
-    --]]
 end
 
 function DogCheck:chapter2Script(wait)
