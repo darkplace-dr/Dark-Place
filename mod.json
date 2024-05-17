@@ -108,6 +108,8 @@
         "SWELLOW": "[style:GONER][spacing:3.2]AWW THE SCRUNKLY.\nTHE GOOBER. A\nSWELL FELLOW. A\nLITTLE FELLA.",
         "PAUL": "[style:none][spacing:0]KAAAAAAAAA!\nPaul is the favorite\nof all!",
         "BONER": "[style:GONER][spacing:3.2]BIG BONER DOWN\nTHE LANE.",
+        "RICK": "[style:GONER][spacing:3.2]GET RICKROLLED, \nCHUCKLENUTS.",
+        "ASRIEL": "", //No message cause it covers up the text in the video lol.
 
         // Challenges
         // FIXME: Should we use the GONER style on these lower-case messages?
