@@ -129,6 +129,7 @@ function preview:update()
     end
     if self.naming_video then
         self.naming_video:getSource():setVolume(math.min(self.naming_video_fade_timer/0.2, 1) * 0.6)
+        self.menu.mod_list.music[self.mod_id]:setVolume(1 - (self.naming_video_fade_timer * 1))
         -- loop video
         if not self.naming_video:isPlaying() then
             self.naming_video:rewind()
