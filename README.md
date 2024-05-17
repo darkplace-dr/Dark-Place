@@ -126,4 +126,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * The Caretaker - Creator of the [Everywhere at the End of Time](https://thecaretaker.bandcamp.com/album/everywhere-at-the-end-of-time) album
 * SEGA & Sonic Team - Original creators of Sonic.
 * Rovio Entertainment Ltd. - Original creators of Angry Birds.
+* Lemonemy - Author of the naming screen easter egg video for "DECEMBER"
 </details>
