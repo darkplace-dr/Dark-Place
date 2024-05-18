@@ -1,5 +1,4 @@
----@class UIBox : Object
----@overload fun(...) : UIBox
+---@class AngryBirdsUIBox : UIBox
 local AngryBirdsUIBox, super = Class(Object)
 
 function AngryBirdsUIBox:init(x, y, width, height, skin, fill_color)
