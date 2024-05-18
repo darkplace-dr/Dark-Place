@@ -75,7 +75,6 @@ function JukeboxMenu:init(simple)
     for _,song in ipairs(self.songs) do
         if not song.locked and song.file == Game.world.music.current then
             playing_song = song
-            Log:trace(Utils.dump(song))
             break
         end
     end
@@ -84,17 +83,13 @@ function JukeboxMenu:init(simple)
             local found_song
             for song_index,song in ipairs(page) do
                 if song == playing_song then
+                    self.page_index = page_index
                     self.selected_index[page_index] = song_index
                     found_song = true
-                    Log:trace(page_index)
-                    Log:trace(song_index)
                     break
                 end
             end
-            if found_song then
-                self.page_index = page_index
-                break
-            end
+            if found_song then break end
         end
     end
 
