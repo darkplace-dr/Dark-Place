@@ -201,6 +201,13 @@ function JukeboxMenu:update()
     end
 
     if not OVERLAY_OPEN then
+        --close menu
+        if Input.pressed("cancel", false) then
+            Assets.playSound("ui_cancel_small")
+            Game.world:closeMenu()
+            return
+        end
+
         --play song
         if Input.pressed("confirm", false) then
             local song = self.pages[self.page_index][self.selected_index[self.page_index]] or self.default_song
@@ -214,12 +221,6 @@ function JukeboxMenu:update()
             else
                 Assets.playSound("error")
             end
-        end
-
-        --close menu
-        if Input.pressed("cancel", false) then
-            Assets.playSound("ui_cancel_small")
-            Game.world:closeMenu()
         end
 
         --page left
