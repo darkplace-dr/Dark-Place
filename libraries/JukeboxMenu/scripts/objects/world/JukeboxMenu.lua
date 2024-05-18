@@ -67,8 +67,35 @@ function JukeboxMenu:init(simple)
     self.selected_index = {}
     for page = 1, math.ceil(#self.songs / self.songs_per_page) do
         local start_index = 1 + (page-1) * self.songs_per_page
-        self.pages[page] = {unpack(self.songs, start_index, math.min(start_index + self.songs_per_page, #self.songs))}
+        self.pages[page] = {unpack(self.songs, start_index, math.min(start_index + self.songs_per_page - 1, #self.songs))}
         self.selected_index[page] = 1
+    end
+
+    local playing_song = nil
+    for _,song in ipairs(self.songs) do
+        if not song.locked and song.file == Game.world.music.current then
+            playing_song = song
+            Log:trace(Utils.dump(song))
+            break
+        end
+    end
+    if playing_song then
+        for page_index,page in ipairs(self.pages) do
+            local found_song
+            for song_index,song in ipairs(page) do
+                if song == playing_song then
+                    self.selected_index[page_index] = song_index
+                    found_song = true
+                    Log:trace(page_index)
+                    Log:trace(song_index)
+                    break
+                end
+            end
+            if found_song then
+                self.page_index = page_index
+                break
+            end
+        end
     end
 
     self.info_collpasible = not simple and false -- yeah
