@@ -993,6 +993,14 @@ return {
     album = "dge"
   },
   {
+    name = "jungle",
+    file = "jungle",
+    composer = "???",
+    released = "April 18, 2024",
+    origin = "Deltarune Chapters 3-5 \"Throwaway\" take - Chapter 4",
+    album = "sc_artwork_placeholder_6"
+  },
+  {
     name = "Cait's Theme",
     file = "cait",
     composer = "Yasunori Nishiki",
