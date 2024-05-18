@@ -956,7 +956,7 @@ function Mod:onKeyPressed(key)
         return
     end
 
-    if Game.world and Game.world.state == "GAMEPLAY" and Input.is("relationships", key) then
+    if Game.state == "OVERWORLD" and Game.world and Game.world.state == "GAMEPLAY" and Input.is("relationships", key) then
         Assets.stopAndPlaySound("ui_select")
         Game.world:openMenu(DarkRelationshipsMenu())
     end

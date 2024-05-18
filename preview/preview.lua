@@ -113,6 +113,8 @@ function preview:update()
         setVideo(love.math.random(50) <= 12 and "the_new_rick_rolld" or "rickroll")
     elseif self:isNameChosen("ASRIEL", false) then
         setVideo("piles")
+    elseif self:isNameChosen("DECEMBER", false) then
+        setVideo("december")
     elseif self.naming_video then
         self.naming_video_fade_phase = 1
     end
