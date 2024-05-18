@@ -30,9 +30,7 @@ function JukeboxMenu:init(simple)
     self.heart:setScale(2)
     self.heart:setColor(Game:getSoulColor())
     self.heart.layer = 1
-    self.heart_target_x = 16
-    self.heart_target_y = 60
-    self.heart:setPosition(self.heart_target_x, self.heart_target_y)
+    self.heart.x = 16
     self:addChild(self.heart)
 
     self.none_text = "---"
@@ -92,6 +90,9 @@ function JukeboxMenu:init(simple)
             if found_song then break end
         end
     end
+
+    self:calculateHeartTargetY()
+    self.heart.y = self.heart_target_y
 
     self.info_collpasible = not simple and false -- yeah
     self.info_accordion_timer_handle = nil
@@ -277,15 +278,15 @@ function JukeboxMenu:update()
     end
 
     --soul positions
-    self.heart_target_y = 60 + 40 * (self.selected_index[self.page_index] - 1)
-    if math.abs(self.heart_target_x - self.heart.x) <= 2 then
-        self.heart.x = self.heart_target_x
-    end
+    self:calculateHeartTargetY()
     if math.abs(self.heart_target_y - self.heart.y) <= 2 then
         self.heart.y = self.heart_target_y
     end
-    self.heart.x = self.heart.x + (self.heart_target_x - self.heart.x) / 2 * DTMULT
     self.heart.y = self.heart.y + (self.heart_target_y - self.heart.y) / 2 * DTMULT
+end
+
+function JukeboxMenu:calculateHeartTargetY()
+    self.heart_target_y = 60 + 40 * (self.selected_index[self.page_index] - 1)
 end
 
 function JukeboxMenu:close()
