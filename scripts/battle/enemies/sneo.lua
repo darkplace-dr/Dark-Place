@@ -118,7 +118,10 @@ function SpamtonNEO:update()
         end
 		
         if self.funnycheattimer >= 24 then
-            Assets.playSound("carhonk")
+            if self.honk == false then
+                Assets.playSound("carhonk")
+                self.honk = true
+            end
             self.funnycheattimer3 = self.funnycheattimer3 + DTMULT
         end
 		
