@@ -229,29 +229,27 @@ function JukeboxMenu:update()
         if self.info_collpasible and Input.pressed("menu", false) then
             local dest_width = Utils.xor(self.width > self.MIN_WIDTH, self.info_accordion_timer_handle and self.info_accordion_timer_handle.direction)
                 and self.MIN_WIDTH or self.MAX_WIDTH
-            if math.abs(dest_width - self.width) > 32 then
-                --[[Log:print(self.width, self.width > self.MIN_WIDTH,
-                    not not self.info_reveal_timer_handle, self.info_reveal_timer_handle and self.info_reveal_timer_handle.direction,
-                    dest_width)]]
-                Assets.stopAndPlaySound("wing")
-                if self.info_accordion_timer_handle then
-                    Game.world.timer:cancel(self.info_accordion_timer_handle)
-                end
-                self.info_accordion_timer_handle = Game.world.timer:approach(1/3.5,
-                    self.width, dest_width,
-                    function(value)
-                        value = math.floor(value)
-                        self.width = value
-                        self.box.width = value
-                    end,
-                    "out-sine",
-                    function()
-                        self.info_accordion_timer_handle = nil
-                    end
-                )
-                ---@diagnostic disable-next-line: inject-field
-                self.info_accordion_timer_handle.direction = dest_width == self.MIN_WIDTH
+            --[[Log:print(self.width, self.width > self.MIN_WIDTH,
+                not not self.info_reveal_timer_handle, self.info_reveal_timer_handle and self.info_reveal_timer_handle.direction,
+                dest_width)]]
+            Assets.stopAndPlaySound("wing")
+            if self.info_accordion_timer_handle then
+                Game.world.timer:cancel(self.info_accordion_timer_handle)
             end
+            self.info_accordion_timer_handle = Game.world.timer:approach(1/3.5,
+                self.width, dest_width,
+                function(value)
+                    value = math.floor(value)
+                    self.width = value
+                    self.box.width = value
+                end,
+                "out-sine",
+                function()
+                    self.info_accordion_timer_handle = nil
+                end
+            )
+            ---@diagnostic disable-next-line: inject-field
+            self.info_accordion_timer_handle.direction = dest_width == self.MIN_WIDTH
         end
     end
 
