@@ -226,7 +226,7 @@ function JukeboxMenu:update()
         end
         --self.selected_index[self.page_index] = warpIndex(self.selected_index[self.page_index])
 
-        if self.info_collpasible and Input.pressed("menu", true) then
+        if self.info_collpasible and Input.pressed("menu", false) then
             local dest_width = Utils.xor(self.width > self.MIN_WIDTH, self.info_accordion_timer_handle and self.info_accordion_timer_handle.direction)
                 and self.MIN_WIDTH or self.MAX_WIDTH
             if math.abs(dest_width - self.width) > 32 then
