@@ -55,7 +55,7 @@ function SNEORematch:onBattleStart(battler)
 end
 
 function SNEORematch:getPartyPosition(index)
-    if Game.battle.party[4] then
+    if #Game.party == 4 then
 	    if index == 1 then -- if it's the first party member (in this case, kris)
 		    return 103, 136 -- just an example please do not do this number
 		elseif index == 2 then -- if it's the first party member (in this case, kris)
@@ -64,6 +64,18 @@ function SNEORematch:getPartyPosition(index)
 		    return 105, 249 -- just an example please do not do this number
 		elseif index == 4 then -- if it's the first party member (in this case, kris)
 		    return 97, 305 -- just an example please do not do this number
+	    else
+		    return super.getPartyPosition(self, index)
+		end
+    elseif #Game.party == 2 then
+	    if index == 1 then -- if it's the first party member (in this case, kris)
+		    return 103, 172 -- just an example please do not do this number
+	    else
+		    return super.getPartyPosition(self, index)
+		end
+    elseif #Game.party == 1 then
+	    if index == 1 then -- if it's the first party member (in this case, kris)
+		    return 103, 218 -- just an example please do not do this number
 	    else
 		    return super.getPartyPosition(self, index)
 		end
