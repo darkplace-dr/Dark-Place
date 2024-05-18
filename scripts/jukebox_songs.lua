@@ -1013,9 +1013,9 @@ return {
     name = "Dance for Youth (Instrumental)",
     file = "dance_for_youth",
     -- see https://music.163.com/mv?id=432193
-    composer = "Shan Bingbo, Chongchong (Ministry of Education of the PRC)",
+    composer = "Shan Bingbo, Chongchong",
     released = "Sept 1, 2008\nOriginal title: 舞动青春",
-    origin = "Third National Radio Drill for Middle School Students (第三套全国中小学生广播体操)",
+    origin = "Third National Radio Drill for Middle School Students (of the PRC) (第三套全国中小学生广播体操)",
     cjk_info = true,
     album = "national_radio_drill_for_middleschoolers_3"
   },
