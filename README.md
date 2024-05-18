@@ -127,4 +127,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * SEGA & Sonic Team - Original creators of Sonic.
 * Rovio Entertainment Ltd. - Original creators of Angry Birds.
 * Lemonemy - Author of the naming screen easter egg video for "DECEMBER"
+* xnq et al. - Original creators of the Throwaway AC
+* Ministry of Education of the PRC - Creator of a track in the Jukebox
 </details>
