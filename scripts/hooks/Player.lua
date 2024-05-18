@@ -217,6 +217,7 @@ function Player:croak()
     local bubble = Sprite("croak", nil, nil, nil, nil, "party/you")
     bubble:setOriginExact(60, 23) -- center??
     bubble:setPosition(self.width/2 + 2.5, -20.5)
+    bubble:setLayer(WORLD_LAYERS["soul"])
     bubble.physics.speed_y = -0.8
     bubble:fadeOutSpeedAndRemove(0.065)
     self:addChild(bubble)
