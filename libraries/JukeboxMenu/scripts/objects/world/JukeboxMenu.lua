@@ -78,16 +78,11 @@ function JukeboxMenu:init(simple)
     end
     if playing_song then
         for page_index,page in ipairs(self.pages) do
-            local found_song
-            for song_index,song in ipairs(page) do
-                if song == playing_song then
-                    self.page_index = page_index
-                    self.selected_index[page_index] = song_index
-                    found_song = true
-                    break
-                end
+            local song_index = Utils.getIndex(page, playing_song)
+            if song_index then
+                self.page_index = page_index
+                self.selected_index[page_index] = song_index
             end
-            if found_song then break end
         end
     end
 
