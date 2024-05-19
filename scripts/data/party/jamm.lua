@@ -9,6 +9,7 @@ function character:init()
     self:setLightActor("jamm_lw")
     self.actor_hurt = Registry.createActor("jamm_hurt")
     self.lw_actor_hurt = Registry.createActor("jamm_lw_hurt")
+    self:setDarkTransitionActor("jamm_dark_transition")
 
     self.level = 1
     self.title = "Slingshotter\nTakes aim, then\nfires"
