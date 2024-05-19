@@ -6,6 +6,8 @@ function character:init()
     self.name = "Ceroba"
 
     self:setActor("ceroba")
+    --self:setLightActor("ceroba_lw")
+    self:setDarkTransitionActor("ceroba_dark_transition")
 
     self.level = 1
     self.title = "Ketsukane\nA legacy not to\nbe forgotten."
@@ -35,6 +37,15 @@ function character:init()
 
     self.max_stats = {
         health = 220
+    }
+
+    self.lw_health = 30
+
+    self.lw_stats = {
+        health = 40,
+        attack = 14,
+        defense = 10,
+        magic = 5
     }
 
     self.weapon_icon = "ui/menu/equip/staff"
@@ -76,6 +87,15 @@ function character:onLevelUp(level)
         self:increaseStat("attack", 1)
         self:increaseStat("magic", 1)
     end
+end
+
+function character:lightLVStats()
+    self.lw_stats = {
+        health = self:getLightLV() <= 20 and math.min(35 + self:getLightLV() * 5,99) or 25 + self:getLightLV() * 5,
+        attack = 10 + self:getLightLV() * 2 + math.floor(self:getLightLV() / 4),
+        defense = 9 + math.ceil(self:getLightLV() / 4),
+        magic = math.ceil(self:getLightLV() / 4)
+    }
 end
 
 function character:drawPowerStat(index, x, y, menu)
