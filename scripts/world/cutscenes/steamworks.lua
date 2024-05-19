@@ -8,6 +8,10 @@ return {
         Game.world.music:stop()
         cutscene:detachCamera()
         cutscene:detachFollowers()
+        if not ceroba then
+            cutscene:endCutscene()
+            Game.world:mapTransition("misc/dogcheck")
+        end
         cutscene:wait(1)
         Game.world.camera:setPosition(Game.world.camera.x - 150, Game.world.camera.y)
         cutscene:wait(1)
