@@ -9,6 +9,7 @@ function character:init()
     -- Actor (handles overworld/battle sprites)
     self:setActor("pauling")
     self:setLightActor("pauling")
+    self:setDarkTransitionActor("pauling_dark_transition")
 
     -- Display level (saved to the save file)
     self.level = Game.chapter
