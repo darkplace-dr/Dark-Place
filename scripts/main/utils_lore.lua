@@ -41,6 +41,11 @@ function Mod:unlockPartyMember(id)
     table.insert(Game:getFlag("party"), id)
 end
 
+-- Removes a party member from selection in the DarkPartyMenu
+function Mod:lockPartyMember(id)
+    Utils.removeFromTable(Game:getFlag("party"), id)
+end
+
 -- Sets a random title and icon to the game window.
 function Mod:funnytitle()
     love.window.setIcon(Kristal.icon)
