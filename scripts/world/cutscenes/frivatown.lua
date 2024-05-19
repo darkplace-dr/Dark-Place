@@ -86,12 +86,9 @@ return {
 					local partyval = 1
 					for k,v in ipairs(Game.party) do
 						if v.id ~= "jamm" then
-							Kristal.Console:log("true")
 							partymem = Game.world:getPartyCharacter(v)
 							cutscene:walkTo(partymem, "party_" + partyval, 1, "up")
 							partyval = partyval + 1
-						else
-							Kristal.Console:log("false")
 						end
 					end
 					
@@ -102,26 +99,26 @@ return {
 					cutscene:look(jamm, "left")
 					cutscene:showNametag("Jamm")
 					cutscene:text("* This house isn't usually this dark inside.", "stern", "jamm")
-					cutscene:text("* Even if the lights are off,[wait:5] you can still see something.", "stern", "jamm")
+					cutscene:text("* Even if the lights are off,[wait:5] you can still see something.", "worried", "jamm")
 					
 					if Game:hasPartyMember("mario") then
 						cutscene:showNametag("Mario")
 						cutscene:text("* Mario doesn't like dark rooms so much...", "main", "mario")
 						cutscene:showNametag("Jamm")
-						cutscene:text("* Then what were you doing in the Slider,[wait:5] Mario?", "stern", "jamm")
+						cutscene:text("* Then what were you doing in the Slider,[wait:5] Mario?", "neutral", "jamm")
 						cutscene:showNametag("Mario")
 						cutscene:text("* Pingas", "main", "mario")
 						cutscene:showNametag("Jamm")
 						cutscene:text("* ...Knowing you,[wait:5] Mario,[wait:5] that makes sense.", "stern", "jamm")
 					end
 					
-					cutscene:text("* Frivatown gave me a 'master key' of sorts.[wait:5]\n* I can unlock the door.", "stern", "jamm")
-					cutscene:text("* I have my doubts,[wait:5] though...", "stern", "jamm")
+					cutscene:text("* Frivatown gave me a 'master key' of sorts.[wait:5]\n* I can unlock the door.", "side_smile", "jamm")
+					cutscene:text("* I have my doubts,[wait:5] though...", "worried", "jamm")
 					
 					if #Game.party == 1 then
-						cutscene:text("* On second thought,[wait:5] I probably shouldn't go in alone.", "stern", "jamm")
-						cutscene:text("* The last time I did that,[wait:5] Jake had an anxiety attack, and...", "stern", "jamm")
-						cutscene:text("* Well,[wait:5] that didn't end well.", "stern", "jamm")
+						cutscene:text("* On second thought,[wait:5] I probably shouldn't go in alone.", "nervous", "jamm")
+						cutscene:text("* The last time I did that,[wait:5] Jake had an anxiety attack, and...", "worried", "jamm")
+						cutscene:text("* Well,[wait:5] that didn't end well.", "ouch", "jamm")
 						cutscene:hideNametag()
 						cutscene:wait(cutscene:attachCamera(1))
 						cutscene:look(jamm, "down")
@@ -135,8 +132,8 @@ return {
 					if choice == 1 then
 						cutscene:wait(cutscene:walkToSpeed(jamm, "lockpick", 4, "up"))
 						cutscene:showNametag("Jamm")
-						cutscene:text("* It's for the best,[wait:5] right?", "stern", "jamm")
-						cutscene:text("* Let me just find my key...", "stern", "jamm")
+						cutscene:text("* It's for the best,[wait:5] right?", "worried", "jamm")
+						cutscene:text("* Let me just find my key...", "look_left", "jamm")
 						
 						cutscene:hideNametag()
 						
@@ -146,39 +143,40 @@ return {
 							party_talk = true
 							cutscene:showNametag("Brenda")
 							cutscene:text("* I don't know,[wait:5] Jamm...", "frown_side", "brenda")
-							cutscene:text("* Are you sure Frivatown is fine with this?", "frown_side", "brenda")
+							cutscene:text("* Are you sure Frivatown is fine with this?", "frown", "brenda")
 							
 							cutscene:showNametag("Jamm")
-							cutscene:text("* They did say I could check in on them whenever.", "stern", "jamm")
-							cutscene:text("* This seems like a good reason to do so,[wait:5] you know?", "stern", "jamm")
+							cutscene:text("* They did say I could check in on them whenever.", "side_smile", "jamm")
+							cutscene:text("* This seems like a good reason to do so,[wait:5] you know?", "smile", "jamm")
 						end
 						
 						if not party_talk then cutscene:wait(2) end
 						
 						cutscene:showNametag("Jamm")
-						cutscene:text("* And...[wait:5] Done!", "stern", "jamm")
+						cutscene:text("* And...[wait:5] Done!", "smile", "jamm")
 						cutscene:hideNametag()
 						
 						local shape = Game.world.map:getImageLayer("card_door_remove")
 						shape.visible = false
 						Game.world.music:stop()
+						Assets.playSound("locker")
 						
 						cutscene:wait(0.25)
 						cutscene:wait(cutscene:walkToSpeed(jamm, jamm.x, jamm.y + 40, 1, "up", true))
 						cutscene:wait(1)
 						
 						cutscene:showNametag("Jamm")
-						cutscene:text("* Wow...", "stern", "jamm")
-						cutscene:text("* I had no idea there was a dark world here.", "stern", "jamm")
+						cutscene:text("* Wow...", "neutral", "jamm")
+						cutscene:text("* I had no idea there was a dark world here.", "nervous", "jamm")
 						
 						if Game:hasPartyMember("susie") then
 							cutscene:showNametag("Susie")
 							cutscene:text("* ...Neither did I.", "nervous_side", "susie")
 							cutscene:text("* I know I opened all of these dark worlds,[wait:5] but...", "nervous_side", "susie")
-							cutscene:text("* This one's new to me.", "nervous_side", "susie")
+							cutscene:text("* This one's new to me.", "nervous", "susie")
 							
 							cutscene:showNametag("Jamm")
-							cutscene:text("* You don't say...", "stern", "jamm")
+							cutscene:text("* You don't say...", "worried", "jamm")
 						end
 						cutscene:hideNametag()
 						
@@ -193,31 +191,47 @@ return {
 						end
 						Game:removePartyMember("jamm")
 						jamm:remove()
+					
+						shape.visible = true
+						Assets.playSound("locker")
+						cutscene:wait(1)
 						
 						if Game:hasPartyMember("susie") then
 							cutscene:showNametag("Susie")
-							cutscene:text("* ...Should we go after him?", "nervous_side", "susie")
+							if #Game.party == 1 then
+								cutscene:text("* ...Should I go after him?", "nervous_side", "susie")
+							else
+								cutscene:text("* ...Should we go after him?", "nervous_side", "susie")
+							end
 							
 							if Game:hasPartyMember("YOU") then
 								cutscene:hideNametag()
 								Assets.playSound("croak")
 								cutscene:wait(1)
 								cutscene:showNametag("Susie")
-								cutscene:text("* Yeah,[wait:5] that's right,[wait:5] YOU!", "nervous_side", "susie")
-								cutscene:text("* Let's do this!", "nervous_side", "susie")
+								cutscene:text("* Yeah,[wait:5] that's right,[wait:5] YOU!", "closed_grin", "susie")
+								cutscene:text("* Let's do this!", "smile", "susie")
 							elseif Game:hasPartyMember("brenda") then
 								cutscene:showNametag("Brenda")
-								cutscene:text("* Are you seriously questioning this,[wait:5] Susie?", "frown_side", "brenda")
-								cutscene:text("* Whatever happened to enjoying adventure?", "frown_side", "brenda")
+								cutscene:text("* Are you seriously questioning this,[wait:5] Susie?", "neutral", "brenda")
+								cutscene:text("* Whatever happened to enjoying adventure?", "smug", "brenda")
 								
 								cutscene:showNametag("Susie")
-								cutscene:text("* Yeah,[wait:5] you're right,[wait:5] Brenda!", "nervous_side", "susie")
-								cutscene:text("* Let's do this!", "nervous_side", "susie")
+								cutscene:text("* Yeah,[wait:5] you're right,[wait:5] Brenda!", "closed_grin", "susie")
+								cutscene:text("* Let's do this!", "smile", "susie")
 							else
-								cutscene:text("* What am I saying!?", "nervous_side", "susie")
-								cutscene:text("* When have I ever turned down adventure!?", "nervous_side", "susie")
+								cutscene:text("* What am I saying!?", "closed_grin", "susie")
+								cutscene:text("* When have I ever turned down adventure!?", "smile", "susie")
+							end
+						elseif Game:hasPartyMember("brenda") then
+							cutscene:showNametag("Brenda")
+							if #Game.party == 1 then
+								cutscene:text("* Jamm,[wait:5] wait for me!", "neutral", "brenda")
+							else
+								cutscene:text("* Jamm,[wait:5] wait for us!", "neutral", "brenda")
 							end
 						end
+						cutscene:hideNametag()
 						
 						Game.world.player.visible = false
 						for k,v in pairs(Game.world.followers) do
@@ -226,17 +240,120 @@ return {
 						
 						transition = DarkTransition(280)
 						transition.layer = 99999
+						transition.rx1 = 144
+						transition.rx2 = 176
+						transition.ry1 = 68
+						transition.ry2 = 112
 						Game.world:addChild(transition)
 					else
 						cutscene:showNametag("Jamm")
 						cutscene:text("* Probably best that we get prepared first.", "stern", "jamm")
-						cutscene:text("* Who knows what lies beyond this door?", "stern", "jamm")
+						cutscene:text("* Who knows what lies beyond this door?", "worried", "jamm")
 						cutscene:hideNametag()
 						cutscene:attachFollowers(8)
 						cutscene:wait(cutscene:attachCamera(1))
 					end
 				else
-				
+					local jamm = cutscene:getCharacter("jamm")
+					cutscene:showNametag("Jamm")
+					cutscene:text("* ...", "shaded_neutral", "jamm")
+					cutscene:hideNametag()
+					
+					if #Game.party == 1 then
+						cutscene:text("* (Can't go in alone.)", "shaded_neutral", "jamm")
+						cutscene:hideNametag()
+						return
+					end
+					
+					cutscene:detachFollowers()
+					cutscene:detachCamera()
+					
+					local partyval = 1
+					for k,v in ipairs(Game.party) do
+						if v.id ~= "jamm" then
+							partymem = Game.world:getPartyCharacter(v)
+							cutscene:walkTo(partymem, "party_" + partyval, 1, "up")
+							partyval = partyval + 1
+						end
+					end
+					
+					cutscene:panTo("lockpick")
+					cutscene:wait(cutscene:walkToSpeed(jamm, "lockpick", 4, "up"))
+					
+					local shape = Game.world.map:getImageLayer("card_door_remove")
+					shape.visible = false
+					Game.world.music:stop()
+					Assets.playSound("locker")
+					cutscene:wait(1)
+					
+					cutscene:showNametag("Jamm")
+					cutscene:text("* (Maybe this will help me forget.)", "shaded_pissed", "jamm")
+					cutscene:hideNametag()
+					
+					cutscene:wait(cutscene:walkToSpeed(jamm, jamm.x, 220, 4, "up"))
+						
+					Game.stage.timer:tween(0.5, jamm, {alpha = 0}, "linear")
+						
+					cutscene:wait(0.5)
+						
+					if Game.party[1].id == "jamm" then
+						Game.world:getPartyCharacter(Game.party[2]):convertToPlayer()
+					end
+					Game:removePartyMember("jamm")
+					jamm:remove()
+					
+					shape.visible = true
+					Assets.playSound("locker")
+					cutscene:wait(1)
+						
+					if Game:hasPartyMember("susie") then
+						cutscene:showNametag("Susie")
+						if #Game.party == 1 then
+							cutscene:text("* ...Should I go after him?", "nervous_side", "susie")
+						else
+							cutscene:text("* ...Should we go after him?", "nervous_side", "susie")
+						end
+						
+						if Game:hasPartyMember("YOU") then
+							cutscene:hideNametag()
+							Assets.playSound("croak")
+							cutscene:wait(1)
+							cutscene:showNametag("Susie")
+							cutscene:text("* Yeah,[wait:5] that's right,[wait:5] YOU,[wait:5] it's just...", "nervous_side", "susie")
+							cutscene:text("* ...Whatever.[wait:5]\n* Let's do this!", "nervous", "susie")
+						elseif Game:hasPartyMember("brenda") then
+							cutscene:showNametag("Brenda")
+							cutscene:text("* Are you seriously questioning this,[wait:5] Susie?", "neutral", "brenda")
+							cutscene:text("* Whatever happened to enjoying adventure?", "smug", "brenda")
+							
+							cutscene:showNametag("Susie")
+							cutscene:text("* Yeah,[wait:5] you're right,[wait:5] Brenda,[wait:5] it's just...", "nervous_side", "susie")
+							cutscene:text("* ...Whatever.[wait:5]\n* Let's do this", "nervous", "susie")
+						else
+							cutscene:text("* ...I'm going to regret this.", "nervous_side", "susie")
+						end
+					elseif Game:hasPartyMember("brenda") then
+						cutscene:showNametag("Brenda")
+						if #Game.party == 1 then
+							cutscene:text("* Jamm,[wait:5] wait for me!", "neutral", "brenda")
+						else
+							cutscene:text("* Jamm,[wait:5] wait for us!", "neutral", "brenda")
+						end
+					end
+					cutscene:hideNametag()
+						
+					Game.world.player.visible = false
+					for k,v in pairs(Game.world.followers) do
+						v.visible = false
+					end
+					
+					transition = DarkTransition(280)
+					transition.layer = 99999
+					transition.rx1 = 144
+					transition.rx2 = 176
+					transition.ry1 = 68
+					transition.ry2 = 112
+					Game.world:addChild(transition)
 				end
 			end
 		end
