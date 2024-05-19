@@ -76,7 +76,8 @@ function Mod:funnytitle()
         "Grian Is Watching You.",
         "PLAY THE RIBBIT MOD, NOW!!!",
         Mod.info.name,
-        "Thetaseal"
+        "Thetaseal",
+        "Undertale Yellow: The Roba Edition"
     }
     local funnytitle_rand = love.math.random(#funnytitles)
     local funnytitle = funnytitles[funnytitle_rand] or "Depa Runts"
