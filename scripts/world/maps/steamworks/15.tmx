@@ -6,7 +6,7 @@
  <properties>
   <property name="light" type="bool" value="true"/>
   <property name="music" value="undertale_yellow/steamworks_overworld"/>
-  <property name="name" value="Steamw. - Raised Path"/>
+  <property name="name" value="Steamworks - Raised Path"/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/steamworks.tsx"/>
  <tileset firstgid="1497" source="../../tilesets/steamworks_images.tsx"/>

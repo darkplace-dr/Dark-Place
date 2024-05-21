@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="steamworks_objects" tilewidth="416" tileheight="400" tilecount="18" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="steamworks_objects" tilewidth="416" tileheight="400" tilecount="31" columns="0">
  <editorsettings>
   <export target="steamworks_objects.lua" format="lua"/>
  </editorsettings>
@@ -69,5 +69,53 @@
  </tile>
  <tile id="34">
   <image width="416" height="302" source="../../../assets/sprites/world/maps/steamworks/objects/04_generator_10.png"/>
+ </tile>
+ <tile id="35">
+  <image width="66" height="200" source="../../../assets/sprites/world/maps/steamworks/objects/05b_chute.png"/>
+ </tile>
+ <tile id="36">
+  <image width="86" height="230" source="../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_1.png"/>
+ </tile>
+ <tile id="37">
+  <image width="86" height="230" source="../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_2.png"/>
+ </tile>
+ <tile id="38">
+  <image width="96" height="88" source="../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_door.png"/>
+ </tile>
+ <tile id="39">
+  <image width="100" height="140" source="../../../assets/sprites/world/maps/steamworks/objects/05d_lever.png"/>
+ </tile>
+ <tile id="40">
+  <image width="80" height="120" source="../../../assets/sprites/world/maps/steamworks/objects/05_door_1.png"/>
+  <animation>
+   <frame tileid="40" duration="500"/>
+   <frame tileid="41" duration="500"/>
+   <frame tileid="42" duration="500"/>
+   <frame tileid="43" duration="500"/>
+   <frame tileid="44" duration="500"/>
+   <frame tileid="45" duration="500"/>
+   <frame tileid="46" duration="500"/>
+  </animation>
+ </tile>
+ <tile id="41">
+  <image width="80" height="120" source="../../../assets/sprites/world/maps/steamworks/objects/05_door_2.png"/>
+ </tile>
+ <tile id="42">
+  <image width="80" height="120" source="../../../assets/sprites/world/maps/steamworks/objects/05_door_3.png"/>
+ </tile>
+ <tile id="43">
+  <image width="80" height="120" source="../../../assets/sprites/world/maps/steamworks/objects/05_door_4.png"/>
+ </tile>
+ <tile id="44">
+  <image width="80" height="120" source="../../../assets/sprites/world/maps/steamworks/objects/05_door_5.png"/>
+ </tile>
+ <tile id="45">
+  <image width="80" height="120" source="../../../assets/sprites/world/maps/steamworks/objects/05_door_6.png"/>
+ </tile>
+ <tile id="46">
+  <image width="80" height="120" source="../../../assets/sprites/world/maps/steamworks/objects/05_door_7.png"/>
+ </tile>
+ <tile id="47">
+  <image width="148" height="30" source="../../../assets/sprites/world/maps/steamworks/objects/04_door.png"/>
  </tile>
 </tileset>

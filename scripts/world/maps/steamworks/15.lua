@@ -14,7 +14,7 @@ return {
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/steamworks_overworld",
-    ["name"] = "Steamw. - Raised Path"
+    ["name"] = "Steamworks - Raised Path"
   },
   tilesets = {
     {

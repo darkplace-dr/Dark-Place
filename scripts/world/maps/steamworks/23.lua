@@ -14,7 +14,7 @@ return {
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/corner_of_a_circle",
-    ["name"] = "Steamw. - Commons"
+    ["name"] = "Steamworks - Commons"
   },
   tilesets = {
     {
