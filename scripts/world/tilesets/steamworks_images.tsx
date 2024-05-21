@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="steamworks" tilewidth="2800" tileheight="1200" tilecount="23" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="steamworks" tilewidth="2800" tileheight="1200" tilecount="29" columns="0">
  <editorsettings>
   <export target="steamworks_images.lua" format="lua"/>
  </editorsettings>
@@ -86,5 +86,29 @@
  </tile>
  <tile id="25">
   <image width="880" height="1040" source="../../../assets/sprites/world/maps/steamworks/04_light_overlay.png"/>
+ </tile>
+ <tile id="26">
+  <image width="74" height="476" source="../../../assets/sprites/world/maps/steamworks/05_pillar.png"/>
+ </tile>
+ <tile id="27">
+  <image width="74" height="476" source="../../../assets/sprites/world/maps/steamworks/05_pillar_mirrored.png"/>
+ </tile>
+ <tile id="28">
+  <image width="836" height="330" source="../../../assets/sprites/world/maps/steamworks/05d_bg_1.png"/>
+  <animation>
+   <frame tileid="28" duration="250"/>
+   <frame tileid="29" duration="250"/>
+   <frame tileid="30" duration="250"/>
+   <frame tileid="31" duration="250"/>
+  </animation>
+ </tile>
+ <tile id="29">
+  <image width="836" height="330" source="../../../assets/sprites/world/maps/steamworks/05d_bg_2.png"/>
+ </tile>
+ <tile id="30">
+  <image width="836" height="330" source="../../../assets/sprites/world/maps/steamworks/05d_bg_3.png"/>
+ </tile>
+ <tile id="31">
+  <image width="836" height="330" source="../../../assets/sprites/world/maps/steamworks/05d_bg_4.png"/>
  </tile>
 </tileset>

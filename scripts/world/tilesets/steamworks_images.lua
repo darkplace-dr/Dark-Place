@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 23,
+  tilecount = 29,
   tiles = {
     {
       id = 2,
@@ -206,6 +206,60 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/04_light_overlay.png",
       width = 880,
       height = 1040
+    },
+    {
+      id = 26,
+      image = "../../../assets/sprites/world/maps/steamworks/05_pillar.png",
+      width = 74,
+      height = 476
+    },
+    {
+      id = 27,
+      image = "../../../assets/sprites/world/maps/steamworks/05_pillar_mirrored.png",
+      width = 74,
+      height = 476
+    },
+    {
+      id = 28,
+      image = "../../../assets/sprites/world/maps/steamworks/05d_bg_1.png",
+      width = 836,
+      height = 330,
+      animation = {
+        {
+          tileid = 28,
+          duration = 250
+        },
+        {
+          tileid = 29,
+          duration = 250
+        },
+        {
+          tileid = 30,
+          duration = 250
+        },
+        {
+          tileid = 31,
+          duration = 250
+        }
+      }
+    },
+    {
+      id = 29,
+      image = "../../../assets/sprites/world/maps/steamworks/05d_bg_2.png",
+      width = 836,
+      height = 330
+    },
+    {
+      id = 30,
+      image = "../../../assets/sprites/world/maps/steamworks/05d_bg_3.png",
+      width = 836,
+      height = 330
+    },
+    {
+      id = 31,
+      image = "../../../assets/sprites/world/maps/steamworks/05d_bg_4.png",
+      width = 836,
+      height = 330
     }
   }
 }
