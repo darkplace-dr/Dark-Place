@@ -92,40 +92,41 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 <details><summary>For used assets</summary>
 
 * Kristal Team - Creating the Kristal engine
-* Toby Fox - Original author for Undertale and Deltarune
-* Lena Raine - Composer for "Hug for Ralsei" and "Lullaby for Lancer"
+* Toby Fox - Original author of Undertale and Deltarune
+* Lena Raine - Composer of "Hug for Ralsei" and "Lullaby for Lancer"
 * KateBulka - Shadowman Library, Light Transition Library, & more
 * HUECYCLES - Custom BG Library code
-* Team UTY - Original authors of Undertale Yellow.
-* Brylee - Original author for Deltarune: Ozymandias, dialogue portraits for Rook
+* Team UTY - Original authors of Undertale Yellow
+* Brylee - Original author of Deltarune: Ozymandias, dialogue portraits for Rook
 * Mr. Luwigi - Rook, DZ & NG sprites for Deltarune: Ozymandias
 * TrashcatYT - Blue Soul Library
 * Glavvrach - Splitting effect for SNEO bullets
-* Scarm - GM path system and Gaster Blaster libraries.
-* TheMaxine - Original author for [Ribbit](https://gamejolt.com/games/ribbitmod/671888)
-* lvk, RhenaudTheLukark - Original authors for [Unitale](https://github.com/lvk/Unitale) and [Create Your Frisk](https://github.com/RhenaudTheLukark/CreateYourFrisk)/[Create Your Kris](https://github.com/RhenaudTheLukark/CreateYourKris)
-* STD Repaints - Original author for [Deltarune Repainted](https://gamejolt.com/games/nudealert/496504)
-* RynoGG - Original author for [Deltatraveler](https://gamejolt.com/games/deltatraveler/661464)
-* Team Inundation - Original authors for MOBDT
+* Scarm - GM path system, Gaster Blaster and GonerMaker recreations
+* TheMaxine - Original author of [Ribbit](https://gamejolt.com/games/ribbitmod/671888)
+* lvk, RhenaudTheLukark - Original authors of [Unitale](https://github.com/lvk/Unitale) and [Create Your Frisk](https://github.com/RhenaudTheLukark/CreateYourFrisk)/[Create Your Kris](https://github.com/RhenaudTheLukark/CreateYourKris)
+* STD Repaints - Original author of [Deltarune Repainted](https://gamejolt.com/games/nudealert/496504)
+* RynoGG - Original author of [Deltatraveler](https://gamejolt.com/games/deltatraveler/661464)
+* Team Inundation - Original authors of MOBDT
 * Stardust - [NYCTBA Earthbound Remix](https://soundcloud.com/speedwaystardst/nows-your-chance-to-be-a-earthbound-remix)
 * MrkySpices - Deltarune-styled Backrooms tileset
-* OMOCAT, LLC - Original author for OMORI
+* OMOCAT, LLC - Original author of OMORI
 * Ninomae Ina'nis - Creator and designer of the Takodachis
-* Nintendo - Original authors for Pikmin
-* HAL Laboratories - Original author for Kirby
-* Tour de Pizza - Original authors for Pizza Tower
-* Eminus - Original author for Mario's Mystery Meat
+* Nintendo - Original authors of Pikmin
+* HAL Laboratories - Original author of Kirby
+* Tour de Pizza - Original authors of Pizza Tower
+* Eminus - Original author of Mario's Mystery Meat
 * Lester Vine - Original author of Super Diagonal Mario 2
 * Askywalker - Original author of Starwalker party sprites
 * Discarded_Vessel - Original author of Kris LW battle sprites
 * AccurateJaney - Original author of Susie and Noelle LW battle sprites
 * ATLUS - Original authors of SMT and every single SMT spinoff ever
 * Findus - Creator of Croustibat
-* Scott Cawthon - Creator of the Five Nights at Freddy's franchise
+* Scott Cawthon - Original creator of the Five Nights at Freddy's franchise
 * MoviesMovies1 - [U.N Owen Was Her? 8 Bit Remix](https://www.youtube.com/watch?v=YJ3LH6u8G1M)
-* The Caretaker - Creator of the [Everywhere at the End of Time](https://thecaretaker.bandcamp.com/album/everywhere-at-the-end-of-time) album
-* SEGA & Sonic Team - Original creators of Sonic.
-* Rovio Entertainment Ltd. - Original creators of Angry Birds.
+* Leyland Kirby/The Caretaker - Creator of the [Everywhere at the End of Time](https://thecaretaker.bandcamp.com/album/everywhere-at-the-end-of-time) album
+* SEGA & Sonic Team - Original creators of Sonic
+* Rovio Entertainment Ltd. - Original creators of Angry Birds
+* Askiisoft - Original creators of Katana Zero
 * Lemonemy - Author of the naming screen easter egg video for "DECEMBER"
 * xnq et al. - Original creators of the Throwaway AC
 * Ministry of Education of the PRC - Creator of a track in the Jukebox
