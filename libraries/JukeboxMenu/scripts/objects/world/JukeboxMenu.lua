@@ -13,6 +13,7 @@ function JukeboxMenu:init(simple)
     self.parallax_y = 0
     self.layer = WORLD_LAYERS["ui"]
     self:setOrigin(0.5, 0.5)
+    self.draw_children_below = 0
 
     self.box = UIBox(0, 0, self.width, self.height)
     self.box.layer = -1
@@ -92,8 +93,6 @@ function JukeboxMenu:init(simple)
 end
 
 function JukeboxMenu:draw()
-    super.draw(self)
-
     Draw.pushScissor()
     local box_pad = 20 -- HACK because working with UIBoxes is annoying
     Draw.scissor(-box_pad, -box_pad, self.width+box_pad*2, self.height+box_pad*2)
@@ -107,11 +106,11 @@ function JukeboxMenu:draw()
     local page = self.pages[self.page_index]
 
     love.graphics.setLineWidth(1)
+    -- draw the first line
+    love.graphics.setColor(0, 0.4, 0)
+    love.graphics.rectangle("line", 2, 40, 240, 1)
     local world_music = (Game.world.music and Game.world.music:isPlaying()) and Game.world.music
     for i = 1, self.songs_per_page do
-        love.graphics.setColor(0, 0.4, 0)
-        love.graphics.rectangle("line", 2, 40 + 40 * (i - 1), 240, 1)
-
         local song = page[i] or self.default_song
         local name = song.name or self.none_text
         if song.locked then name = "Locked" end
@@ -123,11 +122,10 @@ function JukeboxMenu:draw()
         end
         local scale_x = math.min(math.floor(196 / self.font:getWidth(name) * 100) / 100, 1)
         love.graphics.print(name, 40, 40 + 40 * (i - 1) + 3, 0, scale_x, 1)
-    end
 
-    -- draw the last line
-    love.graphics.setColor(0, 0.4, 0)
-    love.graphics.rectangle("line", 2, 40 + 40 * self.songs_per_page, 240, 1)
+        love.graphics.setColor(0, 0.4, 0)
+        love.graphics.rectangle("line", 2, 40 + 40 * i, 240, 1)
+    end
     love.graphics.setLineWidth(4)
     love.graphics.setColor(1, 1, 1)
 
@@ -182,6 +180,8 @@ function JukeboxMenu:draw()
     love.graphics.setColor(1, 1, 1)
 
     Draw.popScissor()
+
+    super.draw(self)
 end
 
 function JukeboxMenu:update()
