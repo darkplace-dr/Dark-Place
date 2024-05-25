@@ -191,6 +191,9 @@
     "moreparty": { "print_console_intro": false },
     "CharacterKeyItems": { "print_console_intro": false },
     "questline": { "print_console_intro": false },
-    "pie": { "print_console_intro": false }
+    "pie": { "print_console_intro": false },
+    "JukeboxMenu": {
+      "infoCollapsible": false
+    }
   }
 }
