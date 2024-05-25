@@ -192,3 +192,16 @@ function Mod:setPresenceState(details)
         Kristal.setPresence(presence)
     end
 end
+
+-- Gets the index of an item in a 2D table
+---@return integer|nil i
+---@return integer|nil j
+function Mod:getIndex2D(t, value)
+    for i,r in ipairs(t) do
+        local j = Utils.getIndex(r, value)
+        if j then
+            return i, j
+        end
+    end
+    return nil, nil
+end

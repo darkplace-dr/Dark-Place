@@ -46,6 +46,8 @@ function JukeboxMenu:init(simple)
     }
 
     self.songs = modRequire("scripts.jukebox_songs")
+
+    local playing_song = nil
     self.album_art_cache = {}
     self.album_art_cache[self.none_album] = Assets.getTexture("albums/"..self.none_album)
     for _,song in ipairs(self.songs) do
@@ -54,8 +56,13 @@ function JukeboxMenu:init(simple)
         else
             song._locked_explicit = true
         end
+
         if song.album and not self.album_art_cache[song.album] then
             self.album_art_cache[song.album] = Assets.getTexture("albums/"..song.album)
+        end
+
+        if not playing_song and not song.locked and song.file == Game.world.music.current then
+            playing_song = song
         end
     end
 
@@ -69,20 +76,11 @@ function JukeboxMenu:init(simple)
         self.selected_index[page] = 1
     end
 
-    local playing_song = nil
-    for _,song in ipairs(self.songs) do
-        if not song.locked and song.file == Game.world.music.current then
-            playing_song = song
-            break
-        end
-    end
     if playing_song then
-        for page_index,page in ipairs(self.pages) do
-            local song_index = Utils.getIndex(page, playing_song)
-            if song_index then
-                self.page_index = page_index
-                self.selected_index[page_index] = song_index
-            end
+        local i, j = Mod:getIndex2D(self.pages, playing_song)
+        if j then
+            self.page_index = i
+            self.selected_index[self.page_index] = j
         end
     end
 
@@ -159,7 +157,7 @@ function JukeboxMenu:draw()
     if not song.file or song.locked then
         album_art_path = self.none_album
     end
-    local album_art = self.album_art_cache[album_art_path]
+    local album_art = self.album_art_cache[album_art_path] or self.album_art_cache[self.none_album]
     love.graphics.draw(album_art, 410, 162, 0, 1, 1, album_art:getWidth()/2, album_art:getHeight()/2)
 
     local info_font = self.font

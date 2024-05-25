@@ -770,7 +770,7 @@ return {
     composer = "Toby Fox",
     released = "2019",
     origin = "Escaped Chasm (trimmed for Modbt)",
-    album = "escaped_chasm"
+    album = "escaped_chasm" -- FIXME: ultra crusty to be replaced
   },
   {
     name = "The Penis (Eek!)", -- Hehe I changed it to its actual name you cowards - BrendaK7200
@@ -901,6 +901,14 @@ return {
     released = "2001",
     origin = "Shin Megami Tensei (PS1)",
     album = "shin_megami_tensei"
+  },
+  {
+    name = "Cemetary",
+    file = "cemetary",
+    composer = "Daisuke Amaya",
+    released = "Dec 20, 2004",
+    origin = "Cave Story",
+    album = "cave_story" -- FIXME: ultra crusty to be replaced
   },
   {
     name = "Search ~ In the Midst 2002",
