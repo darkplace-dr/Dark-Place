@@ -34,6 +34,8 @@ function JukeboxMenu:init(simple)
     self.heart.x = 16
     self:addChild(self.heart)
 
+    self.music_note = Assets.getTexture("ui/music_note")
+
     self.none_text = "---"
     self.none_album = "default"
     self.default_song = {
@@ -85,7 +87,7 @@ function JukeboxMenu:init(simple)
         end
     end
 
-    self:calculateHeartTargetY()
+    self.heart_target_y = self:calculateHeartTargetY()
     self.heart.y = self.heart_target_y
 
     self.info_collpasible = not simple and false -- yeah
@@ -115,13 +117,25 @@ function JukeboxMenu:draw()
         local name = song.name or self.none_text
         if song.locked then name = "Locked" end
         love.graphics.setColor(1, 1, 1)
+        local is_being_played
         if not song.file or song.locked then
             love.graphics.setColor(0.5, 0.5, 0.5)
         elseif world_music and world_music.current == song.file then
+            is_being_played = true
             love.graphics.setColor(1, 1, 0)
         end
         local scale_x = math.min(math.floor(196 / self.font:getWidth(name) * 100) / 100, 1)
         love.graphics.print(name, 40, 40 + 40 * (i - 1) + 3, 0, scale_x, 1)
+        love.graphics.setColor(1, 1, 1)
+
+        if is_being_played then
+            love.graphics.setColor(1, 1, 1, math.abs(self:calculateHeartTargetY(i) - self.heart.y)/40)
+            love.graphics.draw(self.music_note,
+                16, 40 + 40 * (i - 1) + 40/2 + (math.sin(Kristal.getTime() * 4) * 2),
+                0, 1, 1,
+                self.music_note:getWidth()/2, self.music_note:getHeight()/2
+            )
+        end
 
         love.graphics.setColor(0, 0.4, 0)
         love.graphics.rectangle("line", 2, 40 + 40 * i, 240, 1)
@@ -271,15 +285,16 @@ function JukeboxMenu:update()
     end
 
     --soul positions
-    self:calculateHeartTargetY()
+    self.heart_target_y = self:calculateHeartTargetY()
     if math.abs(self.heart_target_y - self.heart.y) <= 2 then
         self.heart.y = self.heart_target_y
     end
     self.heart.y = self.heart.y + (self.heart_target_y - self.heart.y) / 2 * DTMULT
 end
 
-function JukeboxMenu:calculateHeartTargetY()
-    self.heart_target_y = 60 + 40 * (self.selected_index[self.page_index] - 1)
+function JukeboxMenu:calculateHeartTargetY(i)
+    if i == nil then i = self.selected_index[self.page_index] end
+    return 60 + 40 * (i - 1)
 end
 
 function JukeboxMenu:close()
