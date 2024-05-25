@@ -1,3 +1,5 @@
+-- FIXME: Copy relevant Mod utils into this
+
 ---@class JukeboxMenu : Object
 ---@overload fun(...) : JukeboxMenu
 local JukeboxMenu, super = Class(Object)
@@ -50,6 +52,7 @@ function JukeboxMenu:init(simple)
 
     self.songs = modRequire("scripts.jukebox_songs")
 
+    local navigate_to_playing = Kristal.getLibConfig("JukeboxMenu", "navigateToPlayingSongAtInit")
     local playing_song = nil
     self.album_art_cache = {}
     self.album_art_cache[self.none_album] = Assets.getTexture("albums/"..self.none_album)
@@ -64,7 +67,7 @@ function JukeboxMenu:init(simple)
             self.album_art_cache[song.album] = Assets.getTexture("albums/"..song.album)
         end
 
-        if not playing_song and not song.locked and song.file == Game.world.music.current then
+        if navigate_to_playing and not playing_song and not song.locked and song.file == Game.world.music.current then
             playing_song = song
         end
     end
@@ -79,7 +82,7 @@ function JukeboxMenu:init(simple)
         self.selected_index[page] = 1
     end
 
-    if playing_song then
+    if navigate_to_playing and playing_song then
         local i, j = Mod:getIndex2D(self.pages, playing_song)
         if j then
             self.page_index = i
@@ -90,8 +93,11 @@ function JukeboxMenu:init(simple)
     self.heart_target_y = self:calculateHeartTargetY()
     self.heart.y = self.heart_target_y
 
-    self.info_collpasible = not simple and false -- yeah
+    self.info_collpasible = not simple and Kristal.getLibConfig("JukeboxMenu", "infoCollapsible")
     self.info_accordion_timer_handle = nil
+
+    self.color_playing_song = Kristal.getLibConfig("JukeboxMenu", "indicatePlayingSongWithNameColor")
+    self.show_music_note = Kristal.getLibConfig("JukeboxMenu", "indicatePlayingSongWithMusicNote")
 end
 
 function JukeboxMenu:draw()
@@ -122,13 +128,15 @@ function JukeboxMenu:draw()
             love.graphics.setColor(0.5, 0.5, 0.5)
         elseif world_music and world_music.current == song.file then
             is_being_played = true
-            love.graphics.setColor(1, 1, 0)
+            if self.color_playing_song then
+                love.graphics.setColor(1, 1, 0)
+            end
         end
         local scale_x = math.min(math.floor(196 / self.font:getWidth(name) * 100) / 100, 1)
         love.graphics.print(name, 40, 40 + 40 * (i - 1) + 3, 0, scale_x, 1)
         love.graphics.setColor(1, 1, 1)
 
-        if is_being_played then
+        if self.show_music_note and is_being_played then
             love.graphics.setColor(1, 1, 1, math.abs(self:calculateHeartTargetY(i) - self.heart.y)/40)
             love.graphics.draw(self.music_note,
                 16, 40 + 40 * (i - 1) + 40/2 + (math.sin(Kristal.getTime() * 4) * 2),
@@ -148,13 +156,6 @@ function JukeboxMenu:draw()
     love.graphics.printf("Page "..self.page_index.."/"..#self.pages, -16, (43 + 40 * (self.songs_per_page - 1)) + 60, 276, "center")
     love.graphics.setColor(1, 1, 1)
     love.graphics.setFont(self.font)
-
-    --[[
-    love.graphics.rectangle("line", -16, 330, 276, 1)
-
-    love.graphics.print("[X] Back", 0, 340)
-    love.graphics.printf("[C] Info", 0, 340, 250, "right")
-    ]]
 
     local info_area_sep_padding = 40
     local info_area_sep_a = (self.width - self.SONG_INFO_AREA_X + info_area_sep_padding)/(self.MIN_WIDTH + info_area_sep_padding)
