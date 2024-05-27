@@ -78,7 +78,15 @@ function preview:init(mod, button, menu)
         "Home-made!",
         "There's <<a dog\non ,my\nkeyboard!~",
         "RIBBIT!",
-        "Potassium"
+        "Potassium",
+        "Can You Really Call\nThis Splash Text? I\nDidn't Gain Something\nFrom Reading It\nOr Anything.",
+        "Crazy?\nI was crazy once.",
+        "All toasters toast\ntoast!",
+        "Also try Ribbit!",
+        "spring time\nback to school",
+        "try to withstand\nthe sun's life-giving\nrays.",
+        "sweep a leaf\nsweep away a troubles",
+        "cold outside but stay\nwarm inside of you",
     }
 
     local splash_rand = math.random(#self.splash_list)
