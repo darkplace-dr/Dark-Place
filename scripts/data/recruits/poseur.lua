@@ -28,7 +28,7 @@ function Poseur:init()
     
     -- Sets the animated sprite in the box
     -- Syntax: Sprite/Animation path, offset_x, offset_y
-    self.box_sprite = {"battle/enemies/posuer/idle", 0, 18}
+    self.box_sprite = {"battle/enemies/poseur/idle", 0, 18}
     
     -- Recruit Status (saved to the save file)
     -- Number: Recruit Progress
