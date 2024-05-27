@@ -597,7 +597,7 @@ function JekuShop:buyItem(current_item)
     end
 end
 
-if Kristal.Shatter.active then
+if Kristal.Shatter and Kristal.Shatter.active then
     function JekuShop:onEmote(emote)
         --self.shopkeeper:onEmote(self.jeku_sprites[emote])
         self.shopkeeper.sprite.texture = self.jeku_sprites[emote]
