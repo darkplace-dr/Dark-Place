@@ -32,7 +32,7 @@ function JekuShop:init()
     elseif love.system.getOS() == "OS X" then
         prefix = "Application Support"
     end
-    if Mod:fileExists(prefix.."/frozen_heart/saves/frozen_heart/checkpass0") and (not checkTimeLeft() and not Mod:fileExists("Roaming/frozen_heart/saves/checkpass1")) then
+    if Mod:fileExists(prefix.."/frozen_heart/saves/frozen_heart/checkpass0") and (not checkTimeLeft() and not Mod:fileExists(prefix.."/frozen_heart/saves/checkpass1")) then
         Game:setFlag("meet_jeku_empt", true)
         self:initEmpty()
         self.empty = true
@@ -420,7 +420,9 @@ function JekuShop:startTalk(talk)
             "[emote:crazy]* Truly absurb!![wait:5] Way more than me knowing that you talked to the me in another world.",
         })
     elseif talk == "Where were you" then
-        self:replaceTalk("The Key", 4, COLORS.white)
+        -- I'll fix that later. It's not like you can see it in-game right now
+        --self:replaceTalk("Who are you", 1, COLORS.white)
+        --self:registerTalkAfter("What is true?", 1)
         self:setFlag("talk_came_back", true)
         self:startDialogue({
             "[emote:happy]* Who??[wait:5] Me??[wait:5]\n[emote:crazy]* I HAVE NO IDEA WHAT YOU ARE TALKING ABOUT!!",
@@ -798,7 +800,6 @@ if Kristal.Shatter.active then
                                     if self.char < #str then
                                         self.char = self.char + 1
                                         local current_char = str:sub(self.char, self.char)
-                                        print(current_char)
                                         TextInput.insertString(current_char)
                                     else
                                         self.sentence_step = self.sentence_step + 1
