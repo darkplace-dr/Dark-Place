@@ -55,6 +55,9 @@ function SpamtonNEO:init()
     self.ease = false
     self.ease_timer = 0
 	
+    self.fake_x = 460
+    self.fake_y = 80
+	
     self.hurttimer = 0
     self.smoketimer = 0
 	
