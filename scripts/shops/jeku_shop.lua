@@ -1,5 +1,18 @@
 local JekuShop, super = Class(Shop,  "jeku_shop")
 
+-- You know what? Fuck you.
+--
+--   *Unhook your hook*
+local function unhook(target, name)
+    for i, hook in ipairs(Utils.__MOD_HOOKS) do
+        if hook.target == target and hook.name == name then
+            hook.target[hook.name] = hook.orig
+            table.remove(Utils.__MOD_HOOKS, i)
+            return true
+        end
+    end
+end
+
 function JekuShop:init()
     super.init(self)
 
@@ -125,6 +138,23 @@ function JekuShop:initJeku()
     self.shopkeeper.sprite:setPosition(24, 50)
     self.shopkeeper.slide = true
 
+    if Kristal.Shatter and Kristal.Shatter.active then
+        self.jeku_sprites = {
+            playful = love.graphics.newImage(Mod.info.path.."/assets/sprites/shopkeepers/jeku/playful.png"),
+            crazy = love.graphics.newImage(Mod.info.path.."/assets/sprites/shopkeepers/jeku/crazy.png"),
+            happy = love.graphics.newImage(Mod.info.path.."/assets/sprites/shopkeepers/jeku/happy.png"),
+            insane = love.graphics.newImage(Mod.info.path.."/assets/sprites/shopkeepers/jeku/insane.png"),
+            side = love.graphics.newImage(Mod.info.path.."/assets/sprites/shopkeepers/jeku/side.png"),
+            wink = love.graphics.newImage(Mod.info.path.."/assets/sprites/shopkeepers/jeku/wink.png"),
+            wink_tongueout = love.graphics.newImage(Mod.info.path.."/assets/sprites/shopkeepers/jeku/wink_tongueout.png"),
+        }
+        --self.font = love.graphics.newFont("assets/fonts/main.ttf", 32)
+        self.jeku_voice = love.audio.newSource(Mod.info.path.."/assets/sounds/voice/jeku.wav", "static")
+
+        self.timer_pixel_check = 30*5
+        self.pixel_judge = 0
+    end
+
     self.voice = "jeku"
 end
 
@@ -145,6 +175,12 @@ function JekuShop:initEmpty()
         Sprite("ui/shop/bubble_binary", 399, 78),
         Sprite("ui/shop/bubble_key", 522, 127)
     }
+    --[[if Kristal.Shatter and Kristal.Shatter.active then
+        for i,bubble in ipairs(self.bubbles) do
+            print(bubble.sprite, bubble.path)
+            --bubble:setTexture(love.graphics.newImage(Mod.info.path.."/assets/sprites/"..bubble.sprite..".png"))
+        end
+    end]]
 
     self.bubbles_pos = {
         MAINMENU = {
@@ -247,20 +283,69 @@ function JekuShop:startTalk(talk)
             "[emote:crazy]* I wonder if the person that made them go nuts are as aware as I am...[wait:5] Eh he eh..."
         })
     elseif talk == "This store" then
-        self:startDialogue({
-            "[emote:side]* Whatever my creator touches, I can manifest in it.",
-            "[emote:happy]* Maybe he takes it as a curse? I take it as a wild ride around the universes, eh he he.",
-            "[emote:wink]* I think this place is FUN.",
-            "[emote:happy]* Everything here at its very core is made piece by piece by multiple people. And it continues to evolve.",
-            "[emote:happy]* Such an interesting place I landed in. Why would I interrupt it??",
-            "[emote:crazy]* I could pull the strings down, erase this world, destroy everything...",
-            "[emote:wink_tongueout]* But why would I do that? Your narrator doesn't even seem evil!",
-            "[emote:playful]* So I build this shop.",
-            "[emote:side]* And by build, I mean forcing this \"[color:#00ffff]Kristal[color:reset]\" engine to recognize me as a shop NPC.",
-            "[emote:happy]* I figured it was the best way to interact with you, "..Utils.titleCase(Game.save_name)..". As you need items for future bosses that might appear here.",
-            "[emote:wink]* And talking to shopkeepers is more interesting than talking to a random NPC on the map, I am right?",
-            "[emote:crazy]* EH HE HE! IT IS BUT SO EASY TO UNDERSTAND!"
-        })
+        if Kristal.Shatter and Kristal.Shatter.active then
+            if not self.orig_kristal_keys then
+                local wtf = "NOTHING MAKES ANY SENSE![wait:3]"
+                local shop = "NOT EVEN MY OWN SHOP MAKES SENSE![wait:3]"
+                if Kristal.Config["shatter/sounds"] then
+                    wtf = wtf.." EVERYONE'S VOICE IS DIFFERENT!"
+                end
+                if Kristal.Config["shatter/textures"] then
+                    wtf = wtf.."[wait:3] WHEN I INVOKE A THING, IT DOESN'T LOOK THE SAME,[wait:2] NOT EVEN YOUR PARTY MEMBERS MAKES ANY SENSE!!!"
+                    shop = shop.."\n* WHERE DID MY BACKGROUND GO??[wait:3]\n* WHAT HAPPENED TO THE INTERFACE??"
+                end
+                if Kristal.Config["shatter/music"] then
+                    shop = shop.."[wait:3]\n* WHAT IS THIS MELODY??"
+                end
+                self:startDialogue({
+                    "[emote:side]* Whatever my creator touches, I can manifest in it.",
+                    "[emote:happy]* Maybe he takes it as a curse? I take it as a wild ride around the universes, eh he he.",
+                    "[emote:side]* I think this place is...[wait:5] Well...",
+                    "[emote:crazy]* THIS PLACE IS EVEN FUNNIER NOW!!",
+                    "[emote:crazy]* "..wtf,
+                    "[emote:crazy]* "..shop,
+                    "[emote:playful]* EH HE HE!!![wait:3]\n* I knew you guys loved messing with our worlds but to this level is a first to me!!",
+                    "[emote:happy]* Normally, when assets get messed up, that's because the world is dying.[wait:3][emote:side] But here?[wait:3] [emote:crazy]It's completely unstable in a stable way!",
+                    "[emote:side][speed:0.1]* ...",
+                }, "CHECKCONSOLE")
+            else
+                self:startDialogue({
+                    "[emote:happy]* What? Wanted me to loop my dialogue?",
+                    "[emote:happy][speed:0.3]* ...[speed:1][emote:side]Nah.",
+                    "[emote:playful]* Maybe later, though. I don't get bored of saying the same things over and over!",
+                    "[emote:side]* Maybe I was truly made to be an NPC."
+                })
+            end
+        else
+            self:startDialogue({
+                "[emote:side]* Whatever my creator touches, I can manifest in it.",
+                "[emote:happy]* Maybe he takes it as a curse? I take it as a wild ride around the universes, eh he he.",
+                "[emote:wink]* I think this place is FUN.",
+                "[emote:happy]* Everything here at its very core is made piece by piece by multiple people. And it continues to evolve.",
+                "[emote:happy]* Such an interesting place I landed in. Why would I interrupt it??",
+                "[emote:crazy]* I could pull the strings down, erase this world, destroy everything...",
+                "[emote:wink_tongueout]* But why would I do that? Your narrator doesn't even seem evil!",
+                "[emote:playful]* So I build this shop.",
+                "[emote:side]* And by build, I mean forcing this \"[color:#00ffff]Kristal[color:reset]\" engine to recognize me as a shop NPC.",
+                "[emote:happy]* I figured it was the best way to interact with you, "..Utils.titleCase(Game.save_name)..". As you need items for future bosses that might appear here.",
+                "[emote:wink]* And talking to shopkeepers is more interesting than talking to a random NPC on the map, I am right?",
+                "[emote:crazy]* EH HE HE! IT IS BUT SO EASY TO UNDERSTAND!"
+            })
+        end
+    elseif talk == "post_console" then
+        if not self.shatter_still_install then
+            self:startDialogue({
+                "[emote:side]* ...",
+                "[emote:side]* I am not sure what you did, [emote:wink_tongueout]but don't make me believe you're not behind all of this.",
+                "[emote:crazy]* IN ANY CASE, I ADMIRE YOUR DEDICATION TO TRY EVERYTHING POSSIBLE!! EH HE HE!",
+            })
+        else
+            self:startDialogue({
+                "[emote:side]* So [color:#7000FF]that[color:reset]'s what breaking it,[wait:1] huh?[wait:2] How funny.",
+                "[emote:wink_tongueout]* As always,[wait:1] you impress me,[wait:1] "..Utils.titleCase(Game.save_name)..".",
+                "[emote:crazy]* Well you and every other guy I've met in my indecive lifetime that is!"
+            })
+        end
     elseif talk == "Threaten" then
         local nb = love.filesystem.read("saves/"..Mod.info.id.."/ikilledyouoncedidn'ti_"..Game.save_id)
         nb = tonumber(nb)
@@ -390,6 +475,42 @@ function JekuShop:onStateChange(old, new)
             if not self.music:isPlaying() then
                 self.music:resume()
             end
+        elseif new == "CHECKCONSOLE" then
+            self.console_timer = 0
+            if not self.orig_kristal_keys then
+                self.orig_kristal_keys = Kristal.onKeyPressed
+                self.orig_textinput_keys = TextInput.onKeyPressed
+                Kristal.panic_reset = 0
+                Utils.hook(love, "keypressed", function(orig, love, key, scancode, is_repeat)
+                    if key == 'r' and not is_repeat then
+                        Kristal.panic_reset = Kristal.panic_reset + 1
+                        if Kristal.panic_reset > 5 then
+                            -- tries to close the console
+                            Kristal.Console:close()
+                            -- reset everything making this monstruosity work
+                            self.orig_kristal_keys = nil
+                            self.orig_textinput_keys = nil
+                            self.console_timer = nil
+                            Kristal.panic_reset = nil
+                            unhook(love, "keypressed")
+                            Kristal.quickReload("temp")
+                        end
+                    else
+                        Kristal.panic_reset = 0
+                    end
+                    --orig(love, key, scancode, is_repeat)
+                end)
+            end
+        end
+        if old == "CHECKCONSOLE" then
+            self.console_timer = nil
+            --self.orig_kristal_keys = nil
+            self.orig_textinput_keys = nil
+            self.console_timer = nil
+            Kristal.panic_reset = nil
+            TextInput.clear()
+            TextInput.updateInput(self.old_input)
+            unhook(love, "keypressed")
         end
     end
 end
@@ -470,6 +591,234 @@ function JekuShop:buyItem(current_item)
                     return true
                 end)
             end
+        end
+    end
+end
+
+if Kristal.Shatter.active then
+    function JekuShop:onEmote(emote)
+        --self.shopkeeper:onEmote(self.jeku_sprites[emote])
+        self.shopkeeper.sprite.texture = self.jeku_sprites[emote]
+    end
+
+    function JekuShop:leave()
+        if self.shopkeeper.parent == Game.stage then
+            self.shopkeeper:setParent(self)
+        end
+        super:leave(self)
+    end
+
+    function JekuShop:leaveImmediate()
+        super:leaveImmediate(self)
+    end
+
+    function JekuShop:postInit()
+        super:postInit(self)
+
+        if not self.empty then
+            local shop = self
+            Utils.hook(self.dialogue_text, "playTextSound", function(orig, self, current_node)
+                if self.state.skipping and (Input.down("cancel") or self.played_first_sound) then
+                    return
+                end
+
+                if current_node.type ~= "character" then
+                    return
+                end
+
+                local no_sound = { "\n", " ", "^", "!", ".", "?", ",", ":", "/", "\\", "|", "*" }
+
+                if (Utils.containsValue(no_sound, current_node.character)) then
+                    return
+                end
+
+                if (self.state.typing_sound ~= nil) and (self.state.typing_sound ~= "") then
+                    self.played_first_sound = true
+                    if Kristal.callEvent("onTextSound", self.state.typing_sound, current_node) then
+                        return
+                    end
+                    shop.jeku_voice:play()
+                end
+            end)
+
+            Utils.hook(self.right_text, "playTextSound", function(orig, self, current_node)
+                if self.state.skipping and (Input.down("cancel") or self.played_first_sound) then
+                    return
+                end
+
+                if current_node.type ~= "character" then
+                    return
+                end
+
+                local no_sound = { "\n", " ", "^", "!", ".", "?", ",", ":", "/", "\\", "|", "*" }
+
+                if (Utils.containsValue(no_sound, current_node.character)) then
+                    return
+                end
+
+                if (self.state.typing_sound ~= nil) and (self.state.typing_sound ~= "") then
+                    self.played_first_sound = true
+                    if Kristal.callEvent("onTextSound", self.state.typing_sound, current_node) then
+                        return
+                    end
+                    shop.jeku_voice:play()
+                end
+            end)
+
+            local font = {default=32}
+            font[font.default] = love.graphics.newFont("assets/fonts/main_mono.ttf", 32)
+            Assets.data.fonts["jeku_unfased"] = font
+            self.dialogue_text.font = "jeku_unfased"
+            --self.right_text.font = "jeku_unfased"
+
+            -- I feel like I'm making a giant mess to keep things organized
+            -- As if this whole file wasn't a mess already
+        
+            Utils.hook(self, "update", function(orig, self)
+                orig(self)
+
+                if self.timer_pixel_check > 0 and Utils.containsValue({"crazy", "playful", "happy"}, self.shopkeeper.sprite.sprite) then
+                    self.timer_pixel_check = self.timer_pixel_check - DTMULT
+
+                    -- How horrible can that be?
+                    if math.ceil(self.timer_pixel_check)%15 == 0 then
+                        if not self.checked_pixel then
+                            --print("Check pixel!")
+                            local x = 286
+                            if self.state == "BUYMENU" then
+                                x = 250
+                            end
+                            local screen_pixel = Utils.rgbToHex({SCREEN_CANVAS:newImageData():getPixel(x, 155)})
+                            local expected_pixel = "#E9E267"
+
+                            --print(screen_pixel, expected_pixel)
+                            if screen_pixel == expected_pixel then
+                                --print("Color match up!")
+                                self.pixel_judge = self.pixel_judge + 1
+                            else
+                                --print("Color don't match up.")
+                                self.pixel_judge = self.pixel_judge - 2
+                            end
+                            --print("Balance: "..self.pixel_judge)
+                            self.checked_pixel = true
+                        end
+                    elseif self.checked_pixel then
+                        self.checked_pixel = false
+                    end
+                elseif self.timer_pixel_check > -5 then
+                    --print("Finished.")
+                    if self.pixel_judge <= 0 then
+                        --print("Jeku is possibly below the corrupted UI")
+                        self.shopkeeper:setParent(Game.stage)
+                    end
+                    self.timer_pixel_check = -math.huge
+                end
+
+
+                if self.console_timer then
+                    self.console_timer = self.console_timer + DTMULT
+                    if self.console_timer <= 10 then
+                        self.console_timer = self.console_timer + 10
+                        Kristal.Console:open()
+                        self.old_input = TextInput.input
+                        TextInput.clear()
+                        love.keyboard.setTextInput(false)
+
+                        self.possible_mods = {}
+
+                        self.char = 0
+                        self.prev_index = -1
+                    elseif self.console_timer >= 40 and self.console_timer <= 150 then
+                        local str = "= Kristal.Mods.getMod(\""
+
+                        if self.console_timer%3 == 0 and self.char < #str then
+                            self.char = self.char + 1
+                            local current_char = str:sub(self.char, self.char)
+                            TextInput.insertString(current_char)
+                        end
+                    elseif self.console_timer > 150 and self.console_timer < 9999 then
+                        if #self.possible_mods == 0 then
+                            if not self.loop_index then
+                                self.shatter_still_install = false
+                                for i,v in ipairs(Kristal.Mods.getMods()) do
+                                    if v.name == "shatter" then
+                                        self.shatter_still_install = true
+                                    else
+                                        table.insert(self.possible_mods, {
+                                            name = v.id,
+                                            fake_chunk = Utils.dump(v):sub(1, 90) --Approximatively the number of character that can appear in the console history
+                                        })
+                                    end
+                                end
+                                self.loop_index = 0
+                            elseif self.loop_index > 0 then
+                                TextInput.clear()
+                                if self.shatter_still_install then
+                                    TextInput.insertString("= Kristal.Mods.getMod(\"shatter\")")
+                                else
+                                    self.char = 0
+                                    self.sentence_step = 1
+                                    self:onEmote("insane")
+                                end
+                                self.console_timer = 9999
+                            end
+                        else
+                            if self.console_timer%1 == 0 then
+                                TextInput.clear()
+                                local i_choices = {}
+                                for i = 1,#self.possible_mods do
+                                    if i ~= self.prev_index or #self.possible_mods <= 2 then
+                                        table.insert(i_choices, i)
+                                    end
+                                end
+                                local index = Utils.pick(i_choices)
+                                self.prev_index = index
+                                TextInput.insertString("= Kristal.Mods.getMod(\""..self.possible_mods[index].name.."\")")
+                                if self.loop_index%(#self.possible_mods>=10 and 5 or 15) == 0 then
+                                    table.remove(self.possible_mods, index)
+                                end
+                                self.loop_index = self.loop_index + 1
+                            end
+                        end
+                    elseif self.console_timer >= 9999+100 then
+                        if self.shatter_still_install then
+                            TextInput.clear()
+                            Kristal.Console:push("[color:gray]> = Kristal.Mods.getMod(\"shatter\")")
+                            Kristal.Console:push(Utils.dump(Kristal.Mods.getMod("shatter")):sub(1, 90))
+                            self.console_timer = -math.huge
+                            self.timer:after(3, function()
+                                Kristal.Console:close()
+                                self:startTalk("post_console", "TALKMENU")
+                            end)
+                        else
+                            if self.console_timer >= 9999+150 then
+                                local str = self.sentence_step == 1 and "Where is it?" or "You always know how to amuse me "..Utils.titleCase(Game.save_name).."."
+                                if self.console_timer%5==0 then 
+                                    if TextInput.input[1] == "Where is it?" then TextInput.clear() end
+                                    if self.char < #str then
+                                        self.char = self.char + 1
+                                        local current_char = str:sub(self.char, self.char)
+                                        print(current_char)
+                                        TextInput.insertString(current_char)
+                                    else
+                                        self.sentence_step = self.sentence_step + 1
+                                        if self.sentence_step == 2 then
+                                            self.console_timer = 9999+101
+                                            self.char = 0
+                                        else
+                                            self.console_timer = -math.huge
+                                            self.timer:after(3, function()
+                                                Kristal.Console:close()
+                                                self:startTalk("post_console", "TALKMENU")
+                                            end)
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
         end
     end
 end
