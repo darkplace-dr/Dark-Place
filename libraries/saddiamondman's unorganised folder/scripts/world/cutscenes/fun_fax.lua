@@ -141,7 +141,18 @@ return {
             {"* There is only one being more aware then the self aware characters here...", "* How does it feel to be that being?\n* Don't answer,[speed:0.25]I can't hear you."},
             {"* If my thoughts were still in order...", "* I would be able to socialize agian..."},
             {"* The timelines...", "* They're three of them..."},
-            {"* A DEV tried to fix me...", "* But I was never broken..."} --But holy hell did you optimize my fucking shitty code
+            {"* A DEV tried to fix me...", "* But I was never broken..."}, --But holy hell did you optimize my fucking shitty code
+            {"* I've heard a story once...", "* I forgot how it ends..."},
+            {"* The shop out of bounds...", "* The guy inside it is an handful..."},
+            {"* People often ask what's my head...", "* I'm getting too old for this..."},
+            {"* Simbel once said...", "* I don't have his quote yet..."},
+            {"* I tried to talk to people once...", "* But they all just said \"Why are you in my house?\"..."},
+            {"* Here's a fact about Kristal...", "* It's a combination of \"Crystal\" and \"Kris\"..."},
+            {"* You can recruit your enemies now...", "* But where do they go after the battle..."},
+            {"* Keep your friends close to you...", "* And your enemies even closer..."},
+            {"* What's canon...", "* Well it's a weapon..."},
+            {"* Don't forget to take a break...", "* Lack of sleep is bad, y'know..."},
+            {"* It's raining somewhere else...", "* So take out your umbrella..."}
         }
 
         cutscene:text("[speed:0.5]" .. Utils.pick(dialogue_pairs)[1])
