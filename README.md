@@ -44,7 +44,7 @@ Once the download is done, open Kristal and look in the main menu for the option
 
 After that, you can start the mod as you would start any other Kristal mod by choosing "Play a mod" and select Dark Place.
 
-> *Note: if for some reason it doesn't work and you are sure you did everything correctly, join the [Kristal Discord server](https://discord.gg/8ZGuKXJE2C) to ask for help.*
+> *Note: if for some reason it doesn't work and you are sure you did everything correctly, join either [Dark Place's Discord server](https://discord.gg/RhqPCA6eFN) or [Kristal's Discord server](https://discord.gg/8ZGuKXJE2C) to ask for help.*
 
 </details>
 
@@ -112,8 +112,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * MrkySpices - Deltarune-styled Backrooms tileset
 * OMOCAT, LLC - Original author of OMORI
 * Ninomae Ina'nis - Creator and designer of the Takodachis
+* DOVA-SYNDROME/shimtone - Publisher and composer respectively of ["I hope it will be fine tomorrow"](https://youtu.be/kgNXP6FP3RY)
 * Nintendo - Original authors of Pikmin
 * HAL Laboratories - Original author of Kirby
+* AlphaDream - Original author of the Mario&Luigi series
 * Tour de Pizza - Original authors of Pizza Tower
 * Eminus - Original author of Mario's Mystery Meat
 * Lester Vine - Original author of Super Diagonal Mario 2
