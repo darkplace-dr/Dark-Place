@@ -77,7 +77,8 @@ function preview:init(mod, button, menu)
         "Honey, I dug the beans!‌",
         "Home-made!",
         "There's <<a dog\non ,my\nkeyboard!~",
-        "RIBBIT!"
+        "RIBBIT!",
+        "Potassium"
     }
 
     local splash_rand = math.random(#self.splash_list)
