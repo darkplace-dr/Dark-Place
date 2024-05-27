@@ -6,12 +6,11 @@ function LilGuy:init(x, y)
     self:setSprite("battle/bullets/sneo/lilguy", 0, false)
     self:setScale(1, 1)
 	
-	self.alpha = 0
-	
     self:setHitbox(10, 14, 20, 22)
 	self.collider.collidable = false
 
-    self.yellow_siner = 0
+    self.blue_siner = 0
+    self.red_siner = 0
 	
     self.loop = false
     self.loopy_1 = 90
@@ -21,10 +20,10 @@ function LilGuy:init(x, y)
     self.big_hitbox = 0
     self.big_head = 0
 	
-    self.alt_direction = self.alt_direction
-    self.alt_speed = self.alt_speed
-    self.alt_friction = self.alt_friction
-    self.alt_gravity = self.alt_gravity
+    self.alt_direction = 0
+    self.alt_speed = 0
+    self.alt_friction = 0
+    self.alt_gravity = 0
 	
     self.angle_speed = 0
     self.angle_adjust = 0
@@ -36,6 +35,9 @@ function LilGuy:init(x, y)
     self.is_cutscene = false
 
     self.tp = 2
+	
+    self.timer = Timer()
+    self:addChild(self.timer)
 end
 
 function LilGuy:update()
@@ -47,27 +49,27 @@ function LilGuy:update()
         end
     end
 
-    self.physics.direction = self.physics.direction + self.angle_speed
+    self.physics.direction = self.physics.direction + self.angle_speed * DTMULT
 	
     if self.angle_adjust == 1 then
         self.sprite.angle = self.physics.direction
     end
 	
     if self.collider.collidable == true then
-        self.yellow_siner = self.yellow_siner + DTMULT
-        self:setColor(Utils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + math.sin(self.yellow_siner / 3)) * 0.25))
+        self.blue_siner = self.blue_siner + DTMULT
+        self:setColor(Utils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + math.sin(self.blue_siner / 3)) * 0.25))
     end
 
     if self.loop == true then
         if self.y < self.loopy_1 then
-            self.y = self.loopy_2 - (self.loopy_1 - self.y)
+            self.y = self.loopy_2 - (self.loopy_1 - self.y) * DTMULT
 		end
         if self.y > self.loopy_2 then
-            self.y = self.loopy_1 + (self.y - self.loopy_2)
+            self.y = self.loopy_1 + (self.y - self.loopy_2) * DTMULT
         end
     end
 
-    self.y = self.y + self.false_speed_y
+    self.y = self.y + self.false_speed_y * DTMULT
 
 	for i,shot in ipairs(Game.stage:getObjects(YellowSoulShot)) do
         if self.big_head == 1 and self.bullet_collider:collidesWith(shot) then
@@ -82,12 +84,7 @@ function LilGuy:update()
     end
 end
 
-function LilGuy:draw()
-    super.draw(self)
-end
-
 function LilGuy:switchToAlternatePhysics()
-    self.change_direction = true
     if self.change_direction then
 	    self.physics.direction = self.alt_direction
         self.physics.gravity = self.alt_gravity
