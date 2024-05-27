@@ -36,6 +36,24 @@ function preview:init(mod, button, menu)
     self.naming_video = nil
     self.naming_video_fade_phase = -1
     self.naming_video_fade_timer = 0
+
+    self.splash_list = {
+        "Also try Deltarune!",
+        "Dess wuz here",
+        "Also try Deoxynn!",
+        "Also try Starrune!",
+        "Now with 50% less\nRalsei!",
+        "Now with extra\ndarkness!",
+        "FUCK YOU, CYBER CITY!!",
+        ":]",
+        "Hey all! Scott here!",
+        "Now with 50% more\nSpamton!"
+    }
+
+    local splash_rand = math.random(#self.splash_list)
+    self.splash = self.splash_list[splash_rand]
+
+    self.splash_timer = 0
 end
 
 function preview:update()
@@ -141,6 +159,8 @@ function preview:update()
         self.naming_video_fade_phase = -1
         self.naming_video_fade_timer = 0
     end
+
+    self.splash_timer = self.splash_timer + 1*DTMULT
 end
 
 function preview:draw()
@@ -203,6 +223,13 @@ function preview:draw()
             self.naming_swellow:getWidth()/2, self.naming_swellow:getHeight()/2
         )
     end
+
+    if MainMenu.state == "FILESELECT" then
+        love.graphics.setColor(1,1,0,self.fade)
+        local font = Assets.getFont("main")
+        love.graphics.print(self.splash, 400, 0, math.rad(20), 1 + (1*math.sin(self.splash_timer/30))/10)
+    end
+
 
     if DEBUG_RENDER then
         love.graphics.setColor(0, 0.75, 1, 1)
