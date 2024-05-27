@@ -824,7 +824,7 @@ return {
     composer = "shimtone",
     released = "August 4, 2020",
     -- https://dova-s.jp/bgm/play13226.html
-    origin = "free sound on DOVA-SYNDROME; Ninomae Ina'nis BGM in Dream Labyrinth",
+    origin = "free sound on DOVA-SYNDROME; Ninomae Ina'nis' Loading Screen BGM",
     album = "dova_syndrome"
   },
   {
