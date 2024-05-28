@@ -116,8 +116,7 @@ function preview:init(mod, button, menu)
         "Have a break,\nhave a legally distinct\nGitGog"
     }
 
-    local splash_rand = math.random(#self.splash_list)
-    self.splash = self.splash_list[splash_rand]
+    self.splash = Utils.pick(self.splash_list)
 
     self.splash_timer = 0
 end
