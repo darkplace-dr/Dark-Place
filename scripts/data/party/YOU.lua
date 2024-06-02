@@ -24,8 +24,8 @@ end
 function character:lightLVStats()
     self.lw_stats = {
         health = 3 + self:getLightLV(),
-        attack = 1 + self:getLightLV(),
-        defense = 0 + math.ceil(self:getLightLV() / 4),
+        attack = 11 + self:getLightLV(),
+        defense = 10 + math.ceil(self:getLightLV() / 4),
         magic = 0
     }
 end
