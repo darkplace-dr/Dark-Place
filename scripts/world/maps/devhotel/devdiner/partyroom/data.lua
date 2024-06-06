@@ -9,7 +9,7 @@ return {
   height = 18,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 8,
+  nextlayerid = 9,
   nextobjectid = 84,
   properties = {
     ["border"] = "dev",
@@ -30,6 +30,21 @@ return {
     }
   },
   layers = {
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 8,
+      name = "objects_bg",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {}
+    },
     {
       type = "tilelayer",
       x = 0,
@@ -74,7 +89,7 @@ return {
       id = 2,
       name = "collision",
       class = "",
-      visible = false,
+      visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
