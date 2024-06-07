@@ -14,17 +14,17 @@ function AngryBirdsCredits:init()
 	
 	local about_credits = ( -- I have all the text stuff formatted this way, so it can be read easily instead of it just being on one line lmao.
 	[[
-	[font:font_basic_n900]Angry Birds Kristal\n
-	A Dark Place minigame by J.A.R.U.\n
-	v.0.9.0-dev\n
+[font:font_basic_n900]Angry Birds Kristal\n
+A Dark Place minigame by J.A.R.U.\n
+v.0.9.0-dev\n
 
-	\n
-	@ 2009-2024 Rovio Entertainment Corporation.\n
-	Angry Birds and game characters are trademarks of\n
-	Rovio Entertainment Corporation and are\n
-	protected by international copyright laws\n
-	All rights reserved.\n
-	www.rovio.com
+\n
+@ 2009-2024 Rovio Entertainment Corporation.\n
+Angry Birds and game characters are trademarks of\n
+Rovio Entertainment Corporation and are\n
+protected by international copyright laws\n
+All rights reserved.\n
+www.rovio.com
 	]]
 	)
     self.about_text = Text(about_credits, 0, 0, 640, 420, { align = "center" })
@@ -39,13 +39,13 @@ function AngryBirdsCredits:init()
 	
 	local main_credits = (
 	[[
-	[font:font_basic_n900]MINIGAME TEAM\n
-	\n
-	- PROGRAMMERS -\n
-	J.A.R.U.\n
-	\n
-	- ARTISTS -\n
-	TBA\n
+[font:font_basic_n900]MINIGAME TEAM\n
+\n
+- PROGRAMMERS -\n
+J.A.R.U.\n
+\n
+- ARTISTS -\n
+TBA\n
 	]]
 	)
     self.credits_text = Text(main_credits, 0, 0, 640, 480, { align = "center" })
