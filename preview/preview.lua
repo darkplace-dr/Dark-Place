@@ -132,6 +132,7 @@ function preview:update()
             if self.naming_video_fade_timer == 0 then
                 self.naming_video:pause()
                 self.naming_video = nil
+                self.menu.mod_list.music[self.mod_id]:setVolume(1)
             end
         end
     end
