@@ -26,7 +26,6 @@ function field:onEnter()
 		"I hope my sister will see I only want the best for her.",
 		"I hope my brother stays safe.",
 		"I hope all of the fighting can end.",
-		"I hope Kristal overworlds on the Switch get less laggy.",
 		"I pray for everyone who has passed on.",
 		--"", -- Please, add more.
 		--"", -- All I ask for are your Hopes and Dreams.
