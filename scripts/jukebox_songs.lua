@@ -525,6 +525,14 @@ return {
     album = "uty"
   },
   {
+    name = "The Wild East",
+    file = "undertale_yellow/the_wild_east",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+    album = "uty"
+  },
+  {
     name = "Tomorrow Means The Surface",
     file = "undertale_yellow/abandoned",
     composer = "MasterSwordRemix",

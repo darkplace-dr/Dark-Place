@@ -131,9 +131,6 @@
   <object id="37" name="down" x="400" y="780">
    <point/>
   </object>
-  <object id="38" name="spawn" x="400" y="760">
-   <point/>
-  </object>
  </objectgroup>
  <layer id="5" name="Tile Layer 2" width="20" height="22">
   <data encoding="csv">
