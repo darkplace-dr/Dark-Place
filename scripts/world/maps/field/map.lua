@@ -23,6 +23,10 @@ function field:onEnter()
 		"I hope this world lives on for many years to come.",
 		"I hope you all get to be happy.",
 		"I hope I get to do something meaningful one day.",
+		"I hope my sister will see I only want the best for her.",
+		"I hope my brother stays safe.",
+		"I hope all of the fighting can end.",
+		"I pray for everyone who has passed on.",
 		--"", -- Please, add more.
 		--"", -- All I ask for are your Hopes and Dreams.
 		--"", --       -Charbomber
