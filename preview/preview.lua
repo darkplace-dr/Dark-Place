@@ -1,6 +1,7 @@
 local preview = {}
 
 function preview:init(mod, button, menu)
+    ---@type MainMenu
     self.menu = menu or MainMenu
     button:setColor(1, 1, 1)
     button:setFavoritedColor(138/255, 138/255, 207/255)
@@ -37,85 +38,7 @@ function preview:init(mod, button, menu)
     self.naming_video_fade_phase = -1
     self.naming_video_fade_timer = 0
 
-    self.splash_list = {
-        "Also try Deltarune!",
-        "Dess wuz here",
-        "Also try Deoxynn!",
-        "Also try Starrune!",
-        "Now with 50% less\nRalsei!",
-        "Now with extra\ndarkness!",
-        "FUCK YOU, CYBER CITY!!",
-        ":]",
-        "Hey all! Scott here!",
-        "Now with 50% more\nSpamton!",
-        "May contain nuts!",
-        "More than -1 sold!",
-        "It's a game!",
-        "Singleplayer!",
-        "Keyboard\ncompatible!",
-        "Open source!",
-        "Not on Steam!",
-        "Pixels!",
-        "6% bug free!",
-        "Absolutely memes!",
-        "Indie!",
-        "Now in 2D!",
-        "[Guaranteed]!",
-        "Random splash!",
-        "Fear of Anxiety!",
-        "SMW forever!",
-        "Don't look directly\nat the bugs!",
-        "Kinda like Pokemon!",
-        "Has an ending\n...planned!",
-        "Deja vu!",
-        "Deja vu!",
-        "Mmmph, mmph!",
-        "I have a PR.",
-        "Fixing Magical Glass!",
-        "LOVE 10 + 1 = 11!",
-        "Woah.",
-        "Honey, I dug the beans!‌",
-        "Home-made!",
-        "There's <<a dog\non ,my\nkeyboard!~",
-        "RIBBIT!",
-        "Potassium",
-        "Can You Really Call\nThis Splash Text? I\nDidn't Gain Something\nFrom Reading It\nOr Anything.",
-        "Crazy?\nI was crazy once.",
-        "All toasters toast\ntoast!",
-        "Also try Ribbit!",
-        "spring time\nback to school",
-        "try to withstand\nthe sun's life-giving\nrays.",
-        "sweep a leaf\nsweep away a troubles",
-        "cold outside but stay\nwarm inside of you",
-        "And in that light,\nI find deliverence",
-        "The place that is\nbelieved to be dark",
-        "Everything is going\nto be fine",
-        "No one is around\nto help",
-        "Beep Boop",
-        "I've come to make\nan announcement!",
-        "There is no crashes\nin Dark Place",
-        "I had more splash\nideas but I forgot\nthem",
-        "Smile",
-        "Oh hi :D",
-        "Man I love this clock",
-        "Nice Strike!",
-        "May include\nDeltarune content",
-        "May include bones",
-        "May include flesh",
-        "Good times only",
-        "I found a dog.",
-        "I lost the dog.",
-        "Why is there\n2 dogs??",
-        "Dogs!!",
-        "Gangnam Style",
-        "Do not ask for advice",
-        "Subscribe to\nBikini Spamton",
-        "Welcome to the woods",
-        "Run this on a\nWii you coward",
-        "Right behind you.",
-        "Have a break,\nhave a legally distinct\nGitGog"
-    }
-
+    self.splash_list = self:require("splashes")
     self.splash = Utils.pick(self.splash_list)
 
     self.splash_timer = 0
@@ -225,7 +148,7 @@ function preview:update()
         self.naming_video_fade_timer = 0
     end
 
-    self.splash_timer = self.splash_timer + 1*DTMULT
+    self.splash_timer = self.splash_timer + DT
 end
 
 function preview:draw()
@@ -279,8 +202,8 @@ function preview:draw()
     end
 
     if self:isNameChosen("SWELLOW", true) and self.naming_swellow then
-        local alpha = math.min((self.naming_swellow_timer - 1.8) * 0.2 + self:getNamingScreen().whiten, 0.8)
-        local xs_inc = math.max(0, (self.naming_swellow_timer - 3) * 0.02 + self:getNamingScreen().whiten)
+        local alpha = math.min((self.naming_swellow_timer - 1.8) * 0.2 + self:getNamer().whiten, 0.8)
+        local xs_inc = math.max(0, (self.naming_swellow_timer - 3) * 0.02 + self:getNamer().whiten)
         love.graphics.setColor(1, 1, 1, alpha * self.fade)
         love.graphics.draw(self.naming_swellow,
             SCREEN_WIDTH/2, SCREEN_HEIGHT/2-30, 0,
@@ -288,63 +211,100 @@ function preview:draw()
             self.naming_swellow:getWidth()/2, self.naming_swellow:getHeight()/2
         )
     end
+end
 
-    if MainMenu.state == "FILESELECT" then
-        love.graphics.setColor(1,1,0,self.fade)
-        local font = Assets.getFont("main")
-        love.graphics.print(self.splash, 400, 0, math.rad(20), 1 + (1*math.sin(self.splash_timer/30))/10)
+function preview:drawOverlay()
+    if (TARGET_MOD == self.mod_id and self.menu.state == "TITLE")
+        or (self:areWeSelected() and self.menu.state == "FILESELECT") then
+        self:drawSplashText()
     end
 
-
     if DEBUG_RENDER then
-        love.graphics.setColor(0, 0.75, 1, 1)
+        love.graphics.setColor(Utils.hexToRgb("#0AC1FF"), 1)
         local font = Assets.getFont("main")
         love.graphics.setFont(font)
-        local namer = self:getNamingScreen()
+        local namer = self:getNamer()
         local dbg = string.format(
-            [[fade=%.2f sel=%s%s
+[[fade=%.2f sel=%s%s
 
-            bright=%s
-            gra_s=%.2f
-            p_int=%.2f dess=%.2f
+bright=%s
+gra_s=%.2f sp_t=%.2f
+p_int=%.2f dess=%.2f
 
-            namer : %s name=%s
-            swellow=%s(t=%.2f nam_f=%.2f)
-            sound=%s
-            video=%s(p=%d f=%.2f)]],
+namer : %s name=%s
+swellow=%s(t=%.2f nam_f=%.2f)
+sound=%s
+video=%s(p=%d f=%.2f)]],
             self.fade, self.menu.selected_mod and self.menu.selected_mod.id, TARGET_MOD and string.format("(%s)", TARGET_MOD) or "",
             self.april_fools and "y" or "n",
-            self.bg_gradient_siner,
+            self.bg_gradient_siner, self.splash_timer,
             self.particle_interval, self.particle_interval_dess,
             namer and namer.state or "", namer and string.upper(namer.name) or "",
             self.naming_swellow and "y" or "n", self.naming_swellow_timer, namer and namer.whiten or 0,
             self.naming_sound and "y" or "n",
             self.naming_video and "y" or "n", self.naming_video_fade_phase, self.naming_video_fade_timer
         )
-        love.graphics.printf(dbg, 0, 0, SCREEN_WIDTH*2, "right", 0, 0.5, 0.5)
+        local _, dbg_wrap = font:getWrap(dbg, SCREEN_WIDTH)
+        love.graphics.printf(dbg, 0, SCREEN_HEIGHT-font:getHeight()*0.5*#dbg_wrap, SCREEN_WIDTH*2, "right", 0, 0.5, 0.5)
     end
 end
 
+function preview:drawSplashText()
+    love.graphics.setColor(1, 1, 0, self.fade)
+    local font = Assets.getFont("main")
+    love.graphics.setFont(font)
+    local scale = 1 + math.sin(self.splash_timer) / 10
+    local splash_angle, splash_x, splash_y
+    if self.menu.state == "TITLE" then
+        splash_angle = math.rad(-16)
+        splash_x, splash_y = SCREEN_WIDTH/2+120, 105+48
+    else
+        splash_angle = math.rad(16)
+        splash_x, splash_y = SCREEN_WIDTH-115, 40
+    end
+    if DEBUG_RENDER then
+        love.graphics.setColor(0.9, 0, 0.75, self.fade)
+        love.graphics.rectangle("fill", splash_x, splash_y-4, 2, font:getHeight()+8)
+        love.graphics.push()
+        love.graphics.translate(splash_x, splash_y)
+        love.graphics.rotate(splash_angle)
+        love.graphics.setColor(0.5, 0.1, 0.5, self.fade)
+        love.graphics.rectangle("fill", -2, 0, 2, font:getHeight()*scale)
+        love.graphics.setColor(0.1, 0.5, 0.5, 0.5 * self.fade)
+        love.graphics.rectangle("fill", -font:getWidth(self.splash)/2*scale, 0, font:getWidth(self.splash)*scale, font:getHeight()*scale)
+        love.graphics.pop()
+    end
+    love.graphics.setColor(1, 1, 0, self.fade)
+    love.graphics.print(self.splash, splash_x, splash_y, splash_angle, scale, scale, font:getWidth(self.splash)/2, 0)
+end
+
+function preview:areWeSelected()
+    return self.menu.selected_mod and self.menu.selected_mod.id == self.mod_id
+        or TARGET_MOD == self.mod_id
+end
+
 ---@return FileNamer?
-function preview:getNamingScreen()
-    if not (self.menu.selected_mod
-        and self.menu.selected_mod.id == self.mod_id
-        or TARGET_MOD == self.mod_id)
-    then return nil end
+function preview:getNamer()
+    if not self:areWeSelected() then return nil end
     return
-        (self.menu.file_name_screen and self.menu.file_name_screen.file_namer)
-        or (self.menu.default_name_screen and self.menu.default_name_screen.file_namer)
+        (self.menu.state == "FILENAME" and self.menu.file_name_screen.file_namer)
+        or (self.menu.state == "DEFAULTNAME" and self.menu.default_name_screen.file_namer)
+        ---@diagnostic disable-next-line: undefined-field
         or self.menu.naming_screen
 end
 
 function preview:isNameChosen(name, include_fadeout)
-    local naming_screen = self:getNamingScreen()
+    local naming_screen = self:getNamer()
     return naming_screen
         and string.upper(naming_screen.name) == string.upper(name)
         and (
             naming_screen.state == "CONFIRM"
             or (include_fadeout and naming_screen.state == "FADEOUT")
         )
+end
+
+function preview:require(module, ...)
+    return love.filesystem.load(self.base_path .. "/" .. module:gsub("%.", "/") .. ".lua")(...)
 end
 
 return preview
