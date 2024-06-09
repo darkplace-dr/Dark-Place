@@ -26,14 +26,14 @@ return {
   tilecount = 2,
   tiles = {
     {
-      id = 0,
-      image = "../../../assets/sprites/tilesets/we_saloon.png",
+      id = 4,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/we_saloon.png",
       width = 800,
       height = 880
     },
     {
-      id = 3,
-      image = "../../../assets/sprites/tilesets/we_saloon2.png",
+      id = 5,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/we_saloon2.png",
       width = 800,
       height = 880
     }

@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 37,
+  nextobjectid = 39,
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/happy_hour",
@@ -20,19 +20,19 @@ return {
     {
       name = "we_saloon",
       firstgid = 1,
-      filename = "../tilesets/we_saloon.tsx"
+      filename = "../../tilesets/wild_east_buildings_inside.tsx"
     },
     {
       name = "warp_bin",
-      firstgid = 5,
-      filename = "../tilesets/warp_bin.tsx",
-      exportfilename = "../tilesets/warp_bin.tsx"
+      firstgid = 7,
+      filename = "../../tilesets/warp_bin.tsx",
+      exportfilename = "../../tilesets/warp_bin.tsx"
     },
     {
       name = "city_alleyway",
-      firstgid = 23,
-      filename = "../tilesets/city_alleyway.tsx",
-      exportfilename = "../tilesets/city_alleyway.lua"
+      firstgid = 25,
+      filename = "../../tilesets/city_alleyway.tsx",
+      exportfilename = "../../tilesets/city_alleyway.lua"
     }
   },
   layers = {
@@ -75,7 +75,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
     {
@@ -100,8 +100,8 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 244, 245, 246, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 246, 247, 248, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -507,19 +507,6 @@ return {
           }
         },
         {
-          id = 30,
-          name = "savepoint",
-          type = "",
-          shape = "rectangle",
-          x = 290,
-          y = 190,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 32,
           name = "npc",
           type = "",
@@ -554,7 +541,7 @@ return {
         },
         {
           id = 36,
-          name = "script",
+          name = "transition",
           type = "",
           shape = "rectangle",
           x = 318,
@@ -564,8 +551,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "saloon.exit",
-            ["once"] = false
+            ["map"] = "dunes/37",
+            ["marker"] = "saloon"
           }
         }
       }
@@ -591,6 +578,32 @@ return {
           shape = "point",
           x = 400,
           y = 260,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 37,
+          name = "down",
+          type = "",
+          shape = "point",
+          x = 400,
+          y = 780,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 38,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 400,
+          y = 760,
           width = 0,
           height = 0,
           rotation = 0,
@@ -638,7 +651,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     }
   }

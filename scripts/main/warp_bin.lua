@@ -45,7 +45,7 @@ Mod.warp_bin_codes = {
 	["GARRYMOD"] = { result = "missing" },
 	["JOHNWICK"] = { result = "archives/starting_room" },
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
-    ["WESALOON"] = { result = "saloon" },
+    ["WILDEAST"] = { result = "dunes/37_saloon" },
     ["WTF1998S"] = {
         result = function(cutscene)
             Game:setFlag("wb_wtf1998s", true)
