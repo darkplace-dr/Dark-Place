@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="37">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="39">
  <editorsettings>
-  <export target="saloon.lua" format="lua"/>
+  <export target="37_saloon.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="light" type="bool" value="true"/>
   <property name="music" value="undertale_yellow/happy_hour"/>
   <property name="name" value="Wild East - Saloon"/>
  </properties>
- <tileset firstgid="1" source="../tilesets/we_saloon.tsx"/>
- <tileset firstgid="5" source="../tilesets/warp_bin.tsx"/>
- <tileset firstgid="23" source="../tilesets/city_alleyway.tsx"/>
+ <tileset firstgid="1" source="../../tilesets/wild_east_buildings_inside.tsx"/>
+ <tileset firstgid="7" source="../../tilesets/warp_bin.tsx"/>
+ <tileset firstgid="25" source="../../tilesets/city_alleyway.tsx"/>
  <layer id="1" name="Tile Layer 1" width="20" height="22">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -34,7 +34,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <layer id="7" name="warp bin" width="20" height="22" offsetx="18" offsety="-16">
@@ -43,8 +43,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,244,245,246,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,5,6,7,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,246,247,248,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,7,8,9,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -102,7 +102,6 @@
     <property name="cutscene" value="saloon.saloonshop"/>
    </properties>
   </object>
-  <object id="30" name="savepoint" x="290" y="190" width="40" height="40"/>
   <object id="32" name="npc" x="406" y="626">
    <properties>
     <property name="actor" value="dina"/>
@@ -118,15 +117,18 @@
    </properties>
    <point/>
   </object>
-  <object id="36" name="script" x="318" y="820" width="160" height="20">
+  <object id="36" name="transition" x="318" y="820" width="160" height="20">
    <properties>
-    <property name="cutscene" value="saloon.exit"/>
-    <property name="once" type="bool" value="false"/>
+    <property name="map" value="dunes/37"/>
+    <property name="marker" value="saloon"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="4" name="markers">
   <object id="31" name="spawn" x="400" y="260">
+   <point/>
+  </object>
+  <object id="37" name="down" x="400" y="780">
    <point/>
   </object>
  </objectgroup>
@@ -153,7 +155,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
 </map>

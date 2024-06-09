@@ -136,7 +136,7 @@ Go to &quot;[color:yellow]BOSSRUSH[color:reset]&quot;!)</property>
     <property name="text7">* (Check out the Dark Place X &quot;[color:#5fcde4]GARRYMOD[color:reset]&quot; crossover!
 Mods included!)</property>
     <property name="text8" value="* (Want to play some games? Check out the newly opened &quot;[color:blue]DARKCADE[color:white]&quot;!)"/>
-    <property name="text9" value="* (Visit the Wild East Saloon in &quot;[color:ff7800]WESALOON[color:reset]&quot;!)"/>
+    <property name="text9" value="* (Visit the Wild East in &quot;[color:ff7800]WILDEAST[color:reset]&quot;!)"/>
    </properties>
   </object>
   <object id="46" name="interactable" x="80" y="320" width="80" height="40">
