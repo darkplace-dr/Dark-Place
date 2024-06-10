@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 18,
-  nextobjectid = 71,
+  nextobjectid = 73,
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/the_wild_east",
@@ -1671,6 +1671,22 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 71,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 1160,
+          y = 1960,
+          width = 560,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "dunes/36",
+            ["marker"] = "up"
+          }
         }
       }
     },
@@ -1760,6 +1776,19 @@ return {
           shape = "point",
           x = 1440,
           y = 780,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 72,
+          name = "right",
+          type = "",
+          shape = "point",
+          x = 2120,
+          y = 1000,
           width = 0,
           height = 0,
           rotation = 0,

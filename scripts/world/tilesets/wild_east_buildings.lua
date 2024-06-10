@@ -5,7 +5,7 @@ return {
   name = "wild_east_buildings",
   class = "",
   tilewidth = 622,
-  tileheight = 614,
+  tileheight = 680,
   spacing = 0,
   margin = 0,
   columns = 0,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 10,
+  tilecount = 16,
   tiles = {
     {
       id = 0,
@@ -84,6 +84,42 @@ return {
       image = "../../../assets/sprites/world/maps/dunes/wild_east/news_sign.png",
       width = 78,
       height = 66
+    },
+    {
+      id = 10,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/barn_side.png",
+      width = 156,
+      height = 506
+    },
+    {
+      id = 11,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/shooting_range.png",
+      width = 348,
+      height = 248
+    },
+    {
+      id = 12,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/weapons_store.png",
+      width = 506,
+      height = 680
+    },
+    {
+      id = 13,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/weapons_store_fence.png",
+      width = 350,
+      height = 44
+    },
+    {
+      id = 14,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/exit_gate_open.png",
+      width = 394,
+      height = 256
+    },
+    {
+      id = 15,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/blackjack_sign.png",
+      width = 78,
+      height = 70
     }
   }
 }
