@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="55" height="50" tilewidth="40" tileheight="40" infinite="0" nextlayerid="18" nextobjectid="71">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="55" height="50" tilewidth="40" tileheight="40" infinite="0" nextlayerid="18" nextobjectid="73">
  <editorsettings>
   <export target="37.lua" format="lua"/>
  </editorsettings>
@@ -718,6 +718,12 @@
    <point/>
   </object>
   <object id="69" name="savepoint" x="1420" y="700" width="40" height="40"/>
+  <object id="71" name="transition" x="1160" y="1960" width="560" height="40">
+   <properties>
+    <property name="map" value="dunes/36"/>
+    <property name="marker" value="up"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="9" name="markers">
   <object id="16" name="barn" x="2080" y="781">
@@ -736,6 +742,9 @@
    <point/>
   </object>
   <object id="70" name="spawn" x="1440" y="780">
+   <point/>
+  </object>
+  <object id="72" name="right" x="2120" y="1000">
    <point/>
   </object>
  </objectgroup>
