@@ -1,9 +1,9 @@
-local actor, super = Class(Actor, "breadulous")
+local actor, super = Class(Actor, "loafer")
 
 function actor:init()
     super.init(self)
 
-    self.name = "Breadulous"
+    self.name = "Loafer"
 
     self.width = 32
     self.height = 32
@@ -12,7 +12,7 @@ function actor:init()
 
     self.color = {1, 0, 0}
 
-    self.path = "world/npcs/breadulous"
+    self.path = "world/npcs/loafer"
     if Mod:isNight() then
         self.default = "sleeping"
     else

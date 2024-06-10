@@ -22,11 +22,11 @@ return {
 
     foodbowl = function(cutscene, event)
         cutscene:text("* It's a bowl for putting pet food in.")
-        cutscene:text("* The name on it is \"Breadulous\".")
+        cutscene:text("* The name on it is \"Loafer\".")
         if not Game:getFlag("pikpik_quest") then
             cutscene:showNametag("Brenda")
             cutscene:text("* Ah crap,[wait:5] I gotta get more Pikpik carrots.", "shock", "brenda")
-            cutscene:text("* Breadulous can eat other things,[wait:5] but...", "neutral_side", "brenda")
+            cutscene:text("* Loafer can eat other things,[wait:5] but...", "neutral_side", "brenda")
             cutscene:text("* He really,[wait:5] really likes Pikpik carrots!", "happy_b", "brenda")
             cutscene:text("* I don't blame him either,[wait:5] I like 'em too.", "happy", "brenda")
             if cutscene:getCharacter("susie") then
@@ -45,10 +45,10 @@ return {
             cutscene:text("* Well,[wait:5] you'll see eventually.", "happy", "brenda")
             cutscene:text("* I actually know the Warp Bin code to that place.", "happy_side", "brenda")
             cutscene:text("* It's \"PIKNF404\".", "happy", "brenda")
-            cutscene:text("* Man,[wait:5] hopefully Breadulous doesn't get mad at me...", "suspicious", "brenda")
+            cutscene:text("* Man,[wait:5] hopefully Loafer doesn't get mad at me...", "suspicious", "brenda")
             cutscene:hideNametag()
             Game:setFlag("pikpik_quest", true)
-            Kristal.callEvent("createQuest", "Pikpik Dandori", "pikpik", "Brenda is out of Pikpik carrots to feed Breadulous with. Buying them outright is too expensive, so you're going to have to find naturally grown carrots instead. Brenda said the code to where they grow is \"PIKNF404\", but be warned, the place is dangerous even with a full party!")
+            Kristal.callEvent("createQuest", "Pikpik Dandori", "pikpik", "Brenda is out of Pikpik carrots to feed Loafer with. Buying them outright is too expensive, so you're going to have to find naturally grown carrots instead. Brenda said the code to where they grow is \"PIKNF404\", but be warned, the place is dangerous even with a full party!")
         else
             cutscene:showNametag("Brenda")
             cutscene:text("* Good luck getting those carrots.", "happy_b", "brenda")
@@ -56,7 +56,7 @@ return {
         end
     end,
 
-    breadulous = function(cutscene, event)
+    loafer = function(cutscene, event)
         --WIP (I really gotta sleep)
         if Mod:isNight() then
             cutscene:text("* A mimir.")

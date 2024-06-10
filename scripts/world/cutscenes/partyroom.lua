@@ -204,13 +204,6 @@ return {
                 cutscene:text("* Anyway, you can probably find him somewhere around here.", "happy", "brenda")
                 cutscene:text("* He might want to join your party aswell.", "happy", "brenda")
 
-                cutscene:text("* Next is Willow.", "happy", "brenda")
-                cutscene:text("* She's a very close friend of mine.", "happy_side", "brenda")
-                cutscene:text("* She's helping me with sprites for my fangame.", "happy_b", "brenda")
-                cutscene:text("* She's even working on her own game!", "grin", "brenda")
-                cutscene:text("* It's an RPG inspired by games like OneShot.", "happy", "brenda")
-                cutscene:text("* I \"hope\" you end up enjoying it when it comes out,[wait:5] heh.", "wink", "brenda")
-
                 cutscene:text("* Then there's Sci.", "neutral", "brenda")
                 cutscene:text("* She's the cook for the diner.", "happy", "brenda")
                 cutscene:text("* And I gotta say,[wait:5] she's good at her job.", "happy_side", "brenda")

@@ -1,10 +1,10 @@
-local item, super = Class(Item, "crescentpin")
+local item, super = Class(Item, "crescentpin") -- File name is staying the same just so I don't break an save files.
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "CrescentPin"
+    self.name = "SkyLense"
 
     -- Item type (item, key, weapon, armor)
     self.type = "armor"
@@ -16,7 +16,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "A gift from one close friend to another.\nGrants extra bonuses to a specific person."
+    self.description = "A gift from one lover to another.\nGrants extra bonuses to a specific person."
 
     -- Default shop price (sell price is halved)
     self.price = nil
@@ -48,10 +48,10 @@ function item:init()
     -- Character reactions
     self.reactions = {
         susie = "Looks pretty cool!",
-        ralsei = "Aw, it's cute!",
+        ralsei = "A monocle...?",
         noelle = "(I wonder if I should give Susie a gift...)",
 		dess = "I'm allergic to love",
-        brenda = "Thank you Willow...",
+        brenda = "Thank you Celesy...",
 		jamm = "No use for me."
     }
 end

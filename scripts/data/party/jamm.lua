@@ -50,7 +50,7 @@ function character:init()
 
     self:setWeapon("basic_sling")
 
-    self.lw_weapon_default = "light/pencil"
+    self.lw_weapon_default = "light/rope_sling"
     self.lw_armor_default = "light/bandage"
 
     self.color = {1, 1, 0}

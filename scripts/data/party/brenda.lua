@@ -39,7 +39,7 @@ function character:init()
     self:setArmor(1, "bshot_glasses")
     self:setArmor(2, "syrup_jar")
 
-    self.lw_weapon_default = "light/pencil"
+    self.lw_weapon_default = "light/foam_dart_rifle"
     self.lw_armor_default = "light/bandage"
 
     self.color = {0, 0, 1}

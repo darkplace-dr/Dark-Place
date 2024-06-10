@@ -76,8 +76,8 @@
   <object id="11" gid="210" x="600" y="160" width="80" height="80"/>
   <object id="12" name="npc" x="440" y="210">
    <properties>
-    <property name="actor" value="breadulous"/>
-    <property name="cutscene" value="devhotel_room_001.breadulous"/>
+    <property name="actor" value="loafer"/>
+    <property name="cutscene" value="devhotel_room_001.loafer"/>
    </properties>
    <point/>
   </object>

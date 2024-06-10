@@ -274,8 +274,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "breadulous",
-            ["cutscene"] = "devhotel_room_001.breadulous"
+            ["actor"] = "loafer",
+            ["cutscene"] = "devhotel_room_001.loafer"
           }
         },
         {
