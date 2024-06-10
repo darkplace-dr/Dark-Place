@@ -1,10 +1,10 @@
-local item, super = Class(LightEquipItem, "light/gamecube")
+local item, super = Class(LightEquipItem, "light/gamecube_controller")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Gamecube Controller"
+    self.name = "Gamecube Cont."
 
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
