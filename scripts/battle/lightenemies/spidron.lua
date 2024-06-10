@@ -6,8 +6,8 @@ function Spidron:init()
     self.name = "Spidron"
     self:setActor("rodenteerenemy")
 
-    self.max_health = 30
-    self.health = 30
+    self.max_health = 50
+    self.health = 50
     self.attack = 3
     self.defense = 0
     self.money = 2
@@ -22,38 +22,42 @@ function Spidron:init()
     }
 
     self.dialogue = {
-        "*squeak*",
-		"*squeak*[wait:5]\n*squeak*",
-		"*high-\npitched\nsqueak*"
+        "Hissssss!"
     }
 
-    self.check = "ATK 3 DEF 0\n* "
+    self.check = "ATK 3 DEF 0\n* It's literally just a spider."
 
     self.text = {
-        "* Rodenteer hits the ground with\nits sword tail.",
-        "* Smells like cheese.",
+        "* Spidron marches in place.",
     }
 
     self.low_health_text = {
-        "* Rodenteer lowers its blade to the ground."
+        "* Spidron tries to make a web shield,[wait:5] but fails utterly."
     }
 
     self.low_health = false
 
-    self:registerAct("Squeak")
+    self:registerAct("Knit")
+    self:registerAct("Crush")
 
     self.damage_offset = {0, 80}
-end
-
-function Spidron:getDamageVoice()
-    return "squeak"
+	
+	self.acts[3].color = {255, 0, 0}
 end
 
 function Spidron:onAct(battler, name)
-    if name == "Squeak" then
+    if name == "Knit" then
         self:addMercy(100)
-        self.dialogue_override = "*squeak* ^^"
-        return "* You squeak at Rodenteer.[wait:10]\n* Whatever you said made it not\nwant to fight!"
+        return {
+            "* You knit a pair of socks from Spidron's webs.",
+			"* If these weren't so sticky,[wait:5] they might be usable.",
+			"* Spidron appreciates its web\nbeing useful!"
+        }
+    elseif name == "Crush" then
+        self:hurt(99, battler)
+		return {
+			"* You crush Spidron beneath your\nfoot."
+		}
     elseif name == "Standard" then
         return "* "
     end
