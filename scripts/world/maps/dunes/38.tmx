@@ -545,10 +545,10 @@ sit on the desk.)</property>
 who needs them.)</property>
    </properties>
   </object>
-  <object id="48" name="transition" x="654" y="680" width="134" height="24">
+  <object id="48" name="script" x="654" y="680" width="134" height="24">
    <properties>
-    <property name="lightshop" value="blackjack"/>
-    <property name="marker" value="blackjack_exit"/>
+    <property name="cutscene" value="wildeast.gunshop"/>
+    <property name="once" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -562,7 +562,7 @@ who needs them.)</property>
   <object id="26" name="up" x="1240" y="80">
    <point/>
   </object>
-  <object id="49" name="blackjack_exit" x="721" y="744">
+  <object id="49" name="gunshop" x="721" y="744">
    <point/>
   </object>
  </objectgroup>

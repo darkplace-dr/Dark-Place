@@ -533,6 +533,14 @@ return {
     album = "uty"
   },
   {
+    name = "A Teaspoon of Gunpowder",
+    file = "undertale_yellow/gunshop",
+    composer = "MasterSwordRemix, emBer",
+    released = "2023",
+    origin = "Undertale Yellow",
+    album = "uty"
+  },
+  {
     name = "Tomorrow Means The Surface",
     file = "undertale_yellow/abandoned",
     composer = "MasterSwordRemix",

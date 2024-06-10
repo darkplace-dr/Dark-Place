@@ -1297,7 +1297,7 @@ return {
         },
         {
           id = 48,
-          name = "transition",
+          name = "script",
           type = "",
           shape = "rectangle",
           x = 654,
@@ -1307,8 +1307,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["lightshop"] = "blackjack",
-            ["marker"] = "blackjack_exit"
+            ["cutscene"] = "wildeast.gunshop",
+            ["once"] = false
           }
         }
       }
@@ -1368,7 +1368,7 @@ return {
         },
         {
           id = 49,
-          name = "blackjack_exit",
+          name = "gunshop",
           type = "",
           shape = "point",
           x = 721,
