@@ -6,8 +6,8 @@ function Rodenteer:init()
     self.name = "Rodenteer"
     self:setActor("rodenteerenemy")
 
-    self.max_health = 50
-    self.health = 50
+    self.max_health = 100
+    self.health = 100
     self.attack = 5
     self.defense = 0
     self.money = 10
@@ -27,7 +27,7 @@ function Rodenteer:init()
 		"*high-\npitched\nsqueak*"
     }
 
-    self.check = "ATK 5 DEF 0\n* "
+    self.check = "ATK 5 DEF 0\n* Sharp wits, and a sharp blade, too."
 
     self.text = {
         "* Rodenteer hits the ground with\nits sword tail.",

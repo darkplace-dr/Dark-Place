@@ -6,8 +6,8 @@ function ArchMonk:init()
     self.name = "Arch Monk"
     self:setActor("rodenteerenemy")
 
-    self.max_health = 90
-    self.health = 90
+    self.max_health = 130
+    self.health = 130
     self.attack = 8
     self.defense = 0
     self.money = 25
@@ -22,20 +22,20 @@ function ArchMonk:init()
     }
 
     self.dialogue = {
-        "*squeak*",
-		"*squeak*[wait:5]\n*squeak*",
-		"*high-\npitched\nsqueak*"
+        "Ooh,[wait:5] aah!",
+        "Me want banana!",
+        "Me need banana!",
     }
 
-    self.check = "ATK 8 DEF 0\n* "
+    self.check = "ATK 8 DEF 0\n* Seems this monkey has a lot of target practice."
 
     self.text = {
-        "* Rodenteer hits the ground with\nits sword tail.",
-        "* Smells like cheese.",
+        "* Arch Monk pulls back the bow's drawstring.",
+        "* Smells like...[wait:5] Banana lipstick?",
     }
 
     self.low_health_text = {
-        "* Rodenteer lowers its blade to the ground."
+        "* Arch Monk can barely pull back her drawstring."
     }
 
     self.low_health = false
@@ -43,10 +43,6 @@ function ArchMonk:init()
     self:registerAct("Squeak")
 
     self.damage_offset = {0, 80}
-end
-
-function ArchMonk:getDamageVoice()
-    return "squeak"
 end
 
 function ArchMonk:onAct(battler, name)

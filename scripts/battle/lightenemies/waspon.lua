@@ -6,8 +6,8 @@ function Waspon:init()
     self.name = "Waspon"
     self:setActor("rodenteerenemy")
 
-    self.max_health = 120
-    self.health = 120
+    self.max_health = 160
+    self.health = 160
     self.attack = 8
     self.defense = 0
     self.money = 25
@@ -22,38 +22,52 @@ function Waspon:init()
     }
 
     self.dialogue = {
-        "*squeak*",
-		"*squeak*[wait:5]\n*squeak*",
-		"*high-\npitched\nsqueak*"
+        "Defeat the intruders!",
+        "Buzz,[wait:5] buzz!",
     }
 
-    self.check = "ATK 8 DEF 0\n* "
+    self.check = "ATK " .. self.attack .. " DEF 0\n* You can hear this thing from more than a mile away!"
 
-    self.text = {
-        "* Rodenteer hits the ground with\nits sword tail.",
-        "* Smells like cheese.",
+     self.text = {
+        "* That buzzing is starting to annoy you.",
+        "* Waspon's wings flap really fast.",
     }
 
     self.low_health_text = {
-        "* Rodenteer lowers its blade to the ground."
+        "* Waspon struggles to keep off the ground."
     }
 
     self.low_health = false
 
-    self:registerAct("Squeak")
+    self:registerAct("Shoo")
+    self:registerAct("Smack")
+    self:registerAct("Buzz")
 
     self.damage_offset = {0, 80}
 end
 
-function Waspon:getDamageVoice()
-    return "squeak"
-end
-
 function Waspon:onAct(battler, name)
-    if name == "Squeak" then
+    if name == "Smack" then
         self:addMercy(100)
-        self.dialogue_override = "*squeak* ^^"
-        return "* You squeak at Rodenteer.[wait:10]\n* Whatever you said made it not\nwant to fight!"
+		Assets.playSound("damage")
+		self:hurt(1, battler)
+        return {
+            "* You smack Waspon lightly.",
+			"* Smacking it makes it want to run away!"
+        }
+	elseif name == "Shoo" then
+		self.attack = self.attack + 1
+		return {
+            "* You wave my arms in an attempt to get Waspon\nto fly away.",
+			"* This just makes it more upset![wait:5]\n* Waspon's attack increases!"
+        }
+	elseif name == "Buzz" then
+		self.attack = self.attack + 1
+        self.dialogue_override = "Hey![wait:5] That's MY thing!"
+		return {
+            "* You buzz at the Waspon.",
+			"* This just makes it more upset![wait:5]\n* Waspon's attack increases!"
+        }
     elseif name == "Standard" then
         return "* "
     end
