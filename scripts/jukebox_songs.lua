@@ -533,6 +533,38 @@ return {
     album = "uty"
   },
   {
+    name = "The Stable",
+    file = "undertale_yellow/the_wild_east_barn",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+    album = "uty"
+  },
+  {
+    name = "The Clinic",
+    file = "undertale_yellow/the_wild_east_hospital",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+    album = "uty"
+  },
+  {
+    name = "The Slammer",
+    file = "undertale_yellow/the_wild_east_jail",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+    album = "uty"
+  },
+  {
+    name = "The House",
+    file = "undertale_yellow/the_wild_east_house",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+    album = "uty"
+  },
+  {
     name = "A Teaspoon of Gunpowder",
     file = "undertale_yellow/gunshop",
     composer = "MasterSwordRemix, emBer",
