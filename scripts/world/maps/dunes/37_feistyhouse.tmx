@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="29">
+ <editorsettings>
+  <export target="37_feistyhouse.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="light" type="bool" value="true"/>
+  <property name="music" value="undertale_yellow/the_wild_east_house"/>
+  <property name="name" value="Wild East - Feisty House"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/wild_east_buildings_inside.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="5" x="20" y="12" width="14" height="404"/>
+  <object id="10" x="610" y="12" width="18" height="402"/>
+  <object id="6" x="34" y="394" width="50" height="22"/>
+  <object id="7" x="174" y="394" width="436" height="20"/>
+  <object id="8" x="174" y="414" width="16" height="28"/>
+  <object id="9" x="68" y="416" width="16" height="26"/>
+  <object id="15" x="402" y="200" width="208" height="28"/>
+  <object id="16" x="262" y="126" width="48" height="94"/>
+  <object id="17" x="84" y="100" width="98" height="44"/>
+  <object id="18" x="34" y="114" width="576" height="12"/>
+ </objectgroup>
+ <objectgroup id="6" name="objects">
+  <object id="11" name="interactable" x="44" y="264" width="146" height="96">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (There's a hole in the floor.
+How comfy!)</property>
+   </properties>
+  </object>
+  <object id="13" name="interactable" x="34" y="130" width="62" height="86">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (A firm sleeping bag sits
+in the corner, threatening
+to restrict free sleepers.)</property>
+   </properties>
+  </object>
+  <object id="25" name="interactable" x="182" y="104" width="74" height="108">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (You press on the mattress and
+watch your hand get swallowed
+by the memory foam.)</property>
+    <property name="text2" value="* (So soft!)"/>
+   </properties>
+  </object>
+  <object id="14" name="interactable" x="564" y="162" width="46" height="36">
+   <properties>
+    <property name="text1">* (Weird... You haven't seen
+any cats around.)</property>
+   </properties>
+  </object>
+  <object id="23" name="interactable" x="262" y="200" width="48" height="20">
+   <properties>
+    <property name="text1">* (A target with darts of
+various shapes and sizes suck
+into it.)</property>
+   </properties>
+  </object>
+  <object id="24" name="interactable" x="150" y="110" width="20" height="20">
+   <properties>
+    <property name="text1">* (Some kind of berry-plant. You
+notice a few berries are
+missing.)</property>
+   </properties>
+  </object>
+  <object id="22" name="interactable" x="552" y="362" width="46" height="30">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (A few videotapes with custom
+labels stuck on them.)</property>
+    <property name="text2" value="* &quot;My favorite movie :)&quot;"/>
+    <property name="text3" value="* &quot;My second favorite movie :)&quot;"/>
+    <property name="text4" value="* &quot;Don't watch this one 0/10 :(&quot;"/>
+   </properties>
+  </object>
+  <object id="20" name="interactable" x="304" y="50" width="118" height="96">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (You push the hammock.
+Its sway is hypnotizing.)</property>
+   </properties>
+  </object>
+  <object id="21" name="interactable" x="430" y="256" width="132" height="48">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (A couch not unfit for a
+thrift store.)</property>
+   </properties>
+  </object>
+  <object id="26" name="interactable" x="444" y="358" width="98" height="36">
+   <properties>
+    <property name="cutscene" value="feistyhouse.tv"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="19" name="interactable" x="460" y="126" width="150" height="24">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (A surprisingly clean
+kitchen. Impressive.)</property>
+   </properties>
+  </object>
+  <object id="3" gid="14" x="402" y="200" width="208" height="38"/>
+  <object id="12" gid="15" x="444" y="256" width="106" height="30"/>
+  <object id="28" name="transition" x="84" y="422" width="90" height="20">
+   <properties>
+    <property name="map" value="dunes/37"/>
+    <property name="marker" value="feistyhouse"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="2" name="down" x="129" y="392">
+   <point/>
+  </object>
+  <object id="27" name="spawn" x="320" y="300">
+   <point/>
+  </object>
+ </objectgroup>
+ <layer id="5" name="Tile Layer 2" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>
