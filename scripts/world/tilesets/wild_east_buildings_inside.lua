@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 8,
+  tilecount = 11,
   tiles = {
     {
       id = 6,
@@ -72,6 +72,24 @@ return {
       image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/feistyhouse_couch.png",
       width = 106,
       height = 30
+    },
+    {
+      id = 15,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/hospital_bg.png",
+      width = 640,
+      height = 480
+    },
+    {
+      id = 16,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/hospital_bottom.png",
+      width = 464,
+      height = 48
+    },
+    {
+      id = 17,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/hospital_up.png",
+      width = 508,
+      height = 268
     }
   }
 }
