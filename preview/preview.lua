@@ -20,7 +20,9 @@ function preview:init(mod, button, menu)
     if date.month == 4 and date.day == 1 then
         self.april_fools = true
         local function p_a(f) return self.base_path .. "/april_1/" .. f end
+
         self.particle_tex = love.graphics.newImage(p_a("star.png"))
+        mod.preview_music_path = p_a("preview.ogg")
     end
 
     if date.month == 4 and date.day == 20 then
@@ -220,7 +222,7 @@ function preview:drawOverlay()
         self:drawSplashText()
     end
 
-    if DEBUG_RENDER then
+    if self:areWeSelected() and DEBUG_RENDER then
         love.graphics.setColor(Utils.hexToRgb("#0AC1FF"), 1)
         local font = Assets.getFont("main")
         love.graphics.setFont(font)
@@ -262,10 +264,11 @@ function preview:drawSplashText()
     else
         splash_angle = math.rad(16)
         splash_x, splash_y = SCREEN_WIDTH-115, 40
+        --splash_x, splash_y = SCREEN_WIDTH-120, 32
     end
     if DEBUG_RENDER then
         love.graphics.setColor(0.9, 0, 0.75, self.fade)
-        love.graphics.rectangle("fill", splash_x, splash_y-4, 2, font:getHeight()+8)
+        love.graphics.rectangle("fill", splash_x, splash_y-5, 2, font:getHeight()+10)
         love.graphics.push()
         love.graphics.translate(splash_x, splash_y)
         love.graphics.rotate(splash_angle)
@@ -275,7 +278,7 @@ function preview:drawSplashText()
         love.graphics.rectangle("fill", -font:getWidth(self.splash)/2*scale, 0, font:getWidth(self.splash)*scale, font:getHeight()*scale)
         love.graphics.pop()
     end
-    love.graphics.setColor(1, 1, 0, self.fade)
+    love.graphics.setColor(not self.april_fools and {1, 1, 0} or {0, 0, 1}, self.fade)
     love.graphics.print(self.splash, splash_x, splash_y, splash_angle, scale, scale, font:getWidth(self.splash)/2, 0)
 end
 
