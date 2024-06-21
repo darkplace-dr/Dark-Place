@@ -13,7 +13,6 @@ return function(cutscene, player_name_override)
     dark:setColor(0, 0, 0)
     dark:setParallax(0, 0)
     Game.world:spawnObject(dark, "below_ui")
-    Game.world:addChild(dark)
 
     cutscene:wait(40/30)
 
