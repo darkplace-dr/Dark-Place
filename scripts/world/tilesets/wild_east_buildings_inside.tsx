@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="we_saloon" tilewidth="800" tileheight="880" tilecount="11" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="we_saloon" tilewidth="800" tileheight="880" tilecount="16" columns="0">
  <editorsettings>
   <export target="wild_east_buildings_inside.lua" format="lua"/>
  </editorsettings>
@@ -36,5 +36,20 @@
  </tile>
  <tile id="17">
   <image width="508" height="268" source="../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/hospital_up.png"/>
+ </tile>
+ <tile id="18">
+  <image width="640" height="480" source="../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/jail_bg.png"/>
+ </tile>
+ <tile id="19">
+  <image width="480" height="178" source="../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/jail_bars.png"/>
+ </tile>
+ <tile id="20">
+  <image width="570" height="664" source="../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/barn_bg.png"/>
+ </tile>
+ <tile id="21">
+  <image width="570" height="664" source="../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/barn_overlay.png"/>
+ </tile>
+ <tile id="22">
+  <image width="570" height="664" source="../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/barn_overlay2.png"/>
  </tile>
 </tileset>

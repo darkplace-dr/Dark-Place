@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="22">
+ <editorsettings>
+  <export target="37_barn.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="light" type="bool" value="true"/>
+  <property name="music" value="undertale_yellow/the_wild_east_barn"/>
+  <property name="name" value="Wild East - Barn"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/wild_east_buildings_inside.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,22,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="Tile Layer 3" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="4" name="collision">
+  <object id="2" x="404" y="558" width="146" height="62"/>
+  <object id="3" x="102" y="558" width="146" height="62"/>
+  <object id="4" x="102" y="164" width="448" height="20"/>
+  <object id="5" x="534" y="184" width="16" height="374"/>
+  <object id="6" x="102" y="184" width="16" height="374"/>
+  <object id="7" x="118" y="264" width="124" height="294"/>
+  <object id="8" x="410" y="264" width="124" height="294"/>
+  <object id="9" x="410" y="184" width="30" height="30"/>
+  <object id="10" x="410" y="246" width="28" height="18"/>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="1" name="transition" x="248" y="590" width="156" height="30">
+   <properties>
+    <property name="map" value="dunes/37"/>
+    <property name="marker" value="barn"/>
+   </properties>
+  </object>
+  <object id="11" name="interactable" x="458" y="184" width="74" height="40">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (There are no hay puns
+to be made here.)</property>
+   </properties>
+  </object>
+  <object id="14" name="interactable" x="410" y="288" width="10" height="52">
+   <properties>
+    <property name="text1" value="* (The gate is locked.)"/>
+   </properties>
+  </object>
+  <object id="15" name="interactable" x="410" y="388" width="10" height="52">
+   <properties>
+    <property name="text1" value="* (The gate is locked.)"/>
+   </properties>
+  </object>
+  <object id="16" name="interactable" x="410" y="484" width="10" height="52">
+   <properties>
+    <property name="text1" value="* (The gate is locked.)"/>
+   </properties>
+  </object>
+  <object id="17" name="interactable" x="232" y="480" width="10" height="52">
+   <properties>
+    <property name="text1" value="* (The gate is locked.)"/>
+   </properties>
+  </object>
+  <object id="18" name="interactable" x="232" y="384" width="10" height="52">
+   <properties>
+    <property name="text1" value="* (The gate is locked.)"/>
+   </properties>
+  </object>
+  <object id="19" name="interactable" x="232" y="288" width="10" height="52">
+   <properties>
+    <property name="text1" value="* (The gate is locked.)"/>
+   </properties>
+  </object>
+  <object id="12" name="interactable" x="118" y="184" width="60" height="60">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (The boxes seem to
+be full of oats and
+carrots.)</property>
+    <property name="text2" value="* (It all looks highly inedible.)"/>
+   </properties>
+  </object>
+  <object id="13" name="interactable" x="176" y="158" width="38" height="46">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1">* (The boxes seem to
+be full of oats and
+carrots.)</property>
+    <property name="text2" value="* (It all looks highly inedible.)"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="markers">
+  <object id="20" name="down" x="326" y="550">
+   <point/>
+  </object>
+  <object id="21" name="spawn" x="326" y="400">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
