@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 11,
+  tilecount = 16,
   tiles = {
     {
       id = 6,
@@ -90,6 +90,36 @@ return {
       image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/hospital_up.png",
       width = 508,
       height = 268
+    },
+    {
+      id = 18,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/jail_bg.png",
+      width = 640,
+      height = 480
+    },
+    {
+      id = 19,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/jail_bars.png",
+      width = 480,
+      height = 178
+    },
+    {
+      id = 20,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/barn_bg.png",
+      width = 570,
+      height = 664
+    },
+    {
+      id = 21,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/barn_overlay.png",
+      width = 570,
+      height = 664
+    },
+    {
+      id = 22,
+      image = "../../../assets/sprites/world/maps/dunes/wild_east/buildings_inside/barn_overlay2.png",
+      width = 570,
+      height = 664
     }
   }
 }
