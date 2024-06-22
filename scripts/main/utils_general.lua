@@ -115,7 +115,7 @@ end
 
 -- Directly check if a Kristal mod has any save files using Mod:fileExists()
 --- @return boolean exists
-function Mod:hasSaveFiles(id, fused_identify, specific_file)
+function Mod:hasSaveFiles(id, specific_file, fused_identify)
     local paths = {
         "LOVE/kristal/saves/",                      -- Source code version
         "kristal/saves/",                           -- Executable version
