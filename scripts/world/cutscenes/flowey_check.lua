@@ -148,6 +148,7 @@ return function(cutscene, player_name_override)
             showText("Seriously?[wait:5] Is this a joke?", "pissed")
             showText("Out of ALL the names you could have chosen...", "pissed")
             showText("You just HAD to choose HER name.", "pissed")
+
             cutscene:wait(2)
 
             showText("I'm just gonna say it.", "side")
@@ -217,7 +218,7 @@ return function(cutscene, player_name_override)
             showText("Okay...", "plain")
             showText("Big boner down the lane.", "concerned")
             showText("THERE,[wait:5] I SAID IT![wait:10] ARE YOU HAPPY NOW?!", "enraged")
-            showText("Now leave me alone,[wait:5] asshole.", "pissed")
+            showText("Now leave me alone,[wait:5] idiot.", "pissed")
 
         elseif player_name == "CLOVER" then
             cutscene:wait(1)
@@ -247,6 +248,7 @@ return function(cutscene, player_name_override)
             cutscene:wait(3)
 
             showText("Hey Clover[wait:1s]\nCheck out my new cut")
+
         end
     end
 
