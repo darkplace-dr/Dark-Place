@@ -115,11 +115,11 @@ end
 
 -- Directly check if a Kristal mod has any save files using Mod:fileExists()
 --- @return boolean exists
-function Mod:hasSaveFiles(id, specific_file)
+function Mod:hasSaveFiles(id, fused_identify, specific_file)
     local paths = {
-        "LOVE/kristal/saves/", -- Source code version
-        "kristal/saves/",      -- Executable version
-        id.."/saves/",         -- Executable version but changed Kristal's id in conf.lua
+        "LOVE/kristal/saves/",                      -- Source code version
+        "kristal/saves/",                           -- Executable version
+        (fused_identify or id).."/saves/",  -- Executable version but changed Kristal's id in conf.lua
     }
 
     for i,v in ipairs(paths) do
