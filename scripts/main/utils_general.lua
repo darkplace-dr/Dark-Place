@@ -205,3 +205,12 @@ function Mod:getIndex2D(t, value)
     end
     return nil, nil
 end
+
+function Mod:setDesiredWindowTitleAndIcon()
+    if Kristal.setDesiredWindowTitleAndIcon then
+        Kristal.setDesiredWindowTitleAndIcon()
+    else
+        love.window.setIcon(Kristal.icon)
+        love.window.setTitle(Kristal.getDesiredWindowTitle())
+    end
+end

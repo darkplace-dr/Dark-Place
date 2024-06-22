@@ -48,8 +48,7 @@ end
 
 -- Sets a random title and icon to the game window.
 function Mod:funnytitle()
-    love.window.setIcon(Kristal.icon)
-    love.window.setTitle(Kristal.getDesiredWindowTitle())
+    Mod:setDesiredWindowTitleAndIcon()
     if Utils.random() < 0.5 then return end
     local funnytitles = {
         "Deltarune",

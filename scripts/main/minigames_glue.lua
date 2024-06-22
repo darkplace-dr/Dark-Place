@@ -55,7 +55,11 @@ function Mod:initMinigameHooks()
             Kristal.clearModState()
             -- Reload mods
             Kristal.loadAssets("", "mods", "", function ()
-                love.window.setTitle(Kristal.getDesiredWindowTitle())
+                if Kristal.setDesiredWindowTitleAndIcon then
+                    Kristal.setDesiredWindowTitleAndIcon()
+                else
+                    love.window.setTitle(Kristal.getDesiredWindowTitle())
+                end
                 -- Reload the current mod directly
                 if mode ~= "save" then
                     Kristal.loadMod(mod_id, nil, nil, function ()
