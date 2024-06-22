@@ -33,7 +33,7 @@ return function(cutscene, player_name_override)
         end
 
         text_obj = DialogueText("ass",
-            112, 90, 448, SCREEN_HEIGHT,
+            112, 100, 448, SCREEN_HEIGHT,
             { auto_size = true, line_offset = 0 }
         )
         text_obj:setParallax(0, 0)
