@@ -16,7 +16,7 @@ return function(cutscene, player_name_override)
 
     cutscene:wait(40/30)
 
-    local flowey = Character("flowey_check", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 140)
+    local flowey = Character("flowey_check", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 160)
     flowey:setScale(2)
     flowey:setOrigin(0.5, 1)
     flowey:setLayer(1)
@@ -33,7 +33,7 @@ return function(cutscene, player_name_override)
         end
 
         text_obj = DialogueText("ass",
-            112, 100, 448, SCREEN_HEIGHT,
+            112, 80, 448, SCREEN_HEIGHT,
             { auto_size = true, line_offset = 0 }
         )
         text_obj:setParallax(0, 0)
