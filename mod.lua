@@ -481,7 +481,7 @@ function Mod:postInit(new_file)
             end
         end
     elseif not Game:getFlag("booty_finished") then
-        if not Game.world.map.id == "light/" or Game.world.map.id  == "steamworks/" or Game.world.map.id == "dunes/" then
+        if not Game:isLight() then
             Game.world:startCutscene("booty.bootleg")
         end
     end
