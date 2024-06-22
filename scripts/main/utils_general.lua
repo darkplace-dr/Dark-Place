@@ -133,18 +133,16 @@ function Mod:hasSaveFiles(id, specific_file)
         end
     end
 
-    if specific_file then
-        return Mod:fileExists(path..id.."/"..specific_file)
-    else
-        for _,path in ipairs(paths) do
-            for i = 1, 3 do
+    for _,path in ipairs(paths) do
+        if specific_file then
+            if Mod:fileExists(path..id.."/"..specific_file) then
+                return true
+            end
+        else
+            for i = 0 --[[ for Wii BIOS mod ]], 3 do
                 if Mod:fileExists(path..id.."/file_"..i..".json") then
                     return true
                 end
-            end
-
-            if Mod:fileExists(path..id.."/file_0.json") then
-                return true
             end
         end
     end
