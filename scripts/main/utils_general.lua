@@ -49,11 +49,11 @@ end
 --- @return boolean exists
 function Mod:fileExists(name, try_wine_route, wine_steam_appid)
     local path = ""
-    local function check(path)
+    local function fileExists(path)
         local f = io.open(path, "r")
         return f ~= nil and io.close(f)
     end
-    local function checkDir(file)
+    local function directoryExists(file)
         local ok, err, code = os.rename(file, file)
         if not ok then
             if code == 13 then
@@ -90,36 +90,36 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
             local wineprefix = os.getenv("WINEPREFIX") or os.getenv("HOME").."/.wine"
             local user_wineprefix = wineprefix.."/drive_c/users/"..os.getenv("USER")
             local appdata_wineprefix = user_wineprefix.."/Local Settings/Application Data/" -- 2k3
-            if not checkDir(appdata_wineprefix) then
+            if not directoryExists(appdata_wineprefix) then
                 appdata_wineprefix = user_wineprefix.."/AppData/" -- vista
             end
             local path_wineprefix = appdata_wineprefix..name
-            if check(path_wineprefix) then return true end
+            if fileExists(path_wineprefix) then return true end
 
             if wine_steam_appid then
                 local steamroot = os.getenv("STEAMROOT") or os.getenv("HOME").."/.steam"
                 local steampfx = steamroot.."/steam/steamapps/compatdata/"..tostring(wine_steam_appid).."/pfx"
                 local user_steampfx = steampfx.."/drive_c/users/steamuser"
                 local appdata_steampfx = user_steampfx.."/Local Settings/Application Data/" -- 2k3
-                if not checkDir(appdata_steampfx) then
+                if not directoryExists(appdata_steampfx) then
                     appdata_steampfx = user_steampfx.."/AppData/" -- vista
                 end
                 local path_steampfx = appdata_steampfx..name
-                if check(path_steampfx) then return true end
+                if fileExists(path_steampfx) then return true end
             end
             return false
         end
     end
-    return check(path)
+    return fileExists(path)
 end
 
 -- Directly check if a Kristal mod has any save files using Mod:fileExists()
 --- @return boolean exists
-function Mod:hasSaveFiles(id)
+function Mod:hasSaveFiles(id, fused_identify, specific_file)
     local paths = {
-        "LOVE/kristal/saves/", -- Source code version
-        "kristal/saves/",      -- Executable version
-        id.."/saves/",         -- Executable version but changed Kristal's id in conf.lua
+        "LOVE/kristal/saves/",                      -- Source code version
+        "kristal/saves/",                           -- Executable version
+        (fused_identify or id).."/saves/",  -- Executable version but changed Kristal's id in conf.lua
     }
 
     for i,v in ipairs(paths) do
@@ -133,15 +133,17 @@ function Mod:hasSaveFiles(id)
         end
     end
 
-    for i,path in ipairs(paths) do
-        for i=1,3 do
-            if Mod:fileExists(path..id.."/file_"..i..".json") then
+    for _,path in ipairs(paths) do
+        if specific_file then
+            if Mod:fileExists(path..id.."/"..specific_file) then
                 return true
             end
-        end
-
-        if Mod:fileExists(path..id.."/file_0.json") then
-            return true
+        else
+            for i = 0 --[[ for Wii BIOS mod ]], 3 do
+                if Mod:fileExists(path..id.."/file_"..i..".json") then
+                    return true
+                end
+            end
         end
     end
 
@@ -204,4 +206,13 @@ function Mod:getIndex2D(t, value)
         end
     end
     return nil, nil
+end
+
+function Mod:setDesiredWindowTitleAndIcon()
+    if Kristal.setDesiredWindowTitleAndIcon then
+        Kristal.setDesiredWindowTitleAndIcon()
+    else
+        love.window.setIcon(Kristal.icon)
+        love.window.setTitle(Kristal.getDesiredWindowTitle())
+    end
 end

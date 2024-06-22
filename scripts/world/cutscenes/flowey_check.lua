@@ -12,39 +12,40 @@ return function(cutscene, player_name_override)
     local dark = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
     dark:setColor(0, 0, 0)
     dark:setParallax(0, 0)
-    dark:setLayer(WORLD_LAYERS["below_ui"])
-    Game.world:addChild(dark)
+    Game.world:spawnObject(dark, "below_ui")
 
     cutscene:wait(40/30)
 
-    local flowey = Character("flowey_check", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 130)
+    local flowey = Character("flowey_check", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 160)
     flowey:setScale(2)
     flowey:setOrigin(0.5, 1)
     flowey:setLayer(1)
     flowey:setAnimation("rise_plain")
     dark:addChild(flowey)
     cutscene:wait(4)
-	
-    local text
+
+    local text_obj
 
     cutscene:setSpeaker(flowey)
-    local function showText(str, image, advance, skippable)
+    local function showText(text, image, wait)
         if image then
             flowey.sprite:set(image)
         end
-        text = DialogueText("[font:plain,2][style:none][voice:flowey1]" .. str, 140, 120, 480, 480, { auto_size = true, line_offset = 4})
-        text.layer = WORLD_LAYERS["textbox"]
-        text.parallax_x = 0
-        text.parallax_y = 0
-        Game.world:addChild(text)
-		
-        if advance ~= true then
-            cutscene:wait(function() return Input.pressed("confirm") end)
-            text:remove()
-        end
+
+        text_obj = DialogueText("ass",
+            112, 80, 448, SCREEN_HEIGHT,
+            { auto_size = true, line_offset = 0 }
+        )
+        text_obj:setParallax(0, 0)
+        Game.world:spawnObject(text_obj, "textbox")
+        text_obj:setText("[font:plain,2][style:none][voice:flowey1]" .. text, function()
+            text_obj:remove()
+            cutscene:tryResume()
+        end)
+        cutscene:wait(function() return not text_obj or text_obj:isDone() end)
     end
 
-    showText("Uh...[wait:5]\nHowdy.")
+    showText("Uh...[wait:5] Howdy.")
 
     cutscene:wait(3)
 
@@ -78,14 +79,13 @@ return function(cutscene, player_name_override)
             showText("All you need to do is go to Kristal's GitHub page...", "niceside")
             showText("Click the \"Releases\" link on the right,[wait:5] find the right version,[wait:5] and download it!", "nice")
         end
-        showText("Then unzip the file containing Kristal...\n[wait:5]Blah, blah, blah...", "nicesideum")
+        showText("Then unzip the file containing Kristal... [wait:5]Blah, blah, blah...", "nicesideum")
         showText("I'm SURE you can figure out the rest.", "sassy")
     end
-    showText("Welp.[wait:5]\nThat's all that your old pal Flowey has to say!", "nice")
+    showText("Welp.[wait:5] That's all that your old pal Flowey has to say!", "nice")
     showText("In the meantime though...", "nicesideum")
     showText("I'll just leave you with the dog.", "sassy")
     showText("See ya around,[wait:5] "..player_name..".", "wink")
-
 
     flowey:setSprite("nice")
 
@@ -103,62 +103,57 @@ return function(cutscene, player_name_override)
 
         showText("Wait a second...", "plain")
         showText("Your name is...")
-        showText(""..player_name.."?", "nice")
+        showText(player_name.."?", "nice")
 
         -- Dialogue for YOU is a WIP.
         if player_name == "YOU" then
             cutscene:wait(2)
-        
-            showText("Ah yes...[wait:5]\nThe orphaned amphibian.", "sassy")
-        
+
+            showText("Ah yes...[wait:5] The orphaned amphibian.", "sassy")
+
         elseif player_name == "BLUE" then
-        
             showText("I've been wondering...", "nicesideum")
             showText("Why exactly ARE you blue?", "plain")
             showText("Is it because you're sad or depressed about something?", "side")
             showText("Did someone turn your SOUL blue?", "plain")
-        
+
             cutscene:wait(1)
-        
+
             showText("...or is it because you've been working in a meth lab of some kind?", "sassy")
             showText("Not saying that I would know, of course!", "nicesideum")
             showText("After all...", "niceside")
             showText("I'm not some balding, middle-aged human who owns a drug business.", "nice")
-        
+
         elseif player_name == "PLAGUEIS" then
-        
             showText("I've actually heard a legend of someone who went by that name once...", "nicesideum")
             showText("It was said that he had the power to save the ones he loved from death.", "plain")
             showText("His life however,[wait:5] was cut short.", "side")
             showText("When he taught his apprentice everything he knew...", "niceside")
             showText("His apprentice KILLED him in his sleep!", "nice")
-            showText("Hee hee hee...[wait:5]\nIt's kind of ironic really.", "niceside")
+            showText("Hee hee hee...[wait:5] It's kind of ironic really.", "niceside")
             showText("He had the power to save others...", "nicesideum")
             showText("[voice:flowey2][speed:0.6][shake:2]But he couldn't even use them to save his own SOUL.", "evil")
-        
 
             flowey:setAnimation("laugh")
             Assets.playSound("floweylaugh")
             cutscene:wait(4)
 
-        
             showText("[voice:flowey2]Golly! That's rich!", "grin")
-        
+
         -- People aren't even gonna see this one normally since Dess denies you from using her name, 
 		-- but I thought it'd be funny to include anyways, lol. - J.A.R.U.
         elseif player_name == "DESS" then
-        
             cutscene:wait(2)
-        
-            showText("Seriously?[wait:5]\nIs this a joke?", "pissed")
+
+            showText("Seriously?[wait:5] Is this a joke?", "pissed")
             showText("Out of ALL the names you could have chosen...", "pissed")
             showText("You just HAD to choose HER name.", "pissed")
-        
+
             cutscene:wait(2)
-        
+
             showText("I'm just gonna say it.", "side")
             showText("I think I speak for everyone when I say that I HATE that doe.", "plain")
-            showText("Yeah,[wait:2] that's right.[wait:5]\nEven [color:yellow]I[color:reset] hate her!", "nice")
+            showText("Yeah,[wait:2] that's right.[wait:5] Even [color:yellow]I[color:reset] hate her!", "nice")
             showText("And to think,[wait:2] she's not even the REAL Dess!", "nicesideum")
             showText("She's just some weird clone of a Dess from another timeline!", "nice")
             showText("That makes me wonder though.", "nicesideum")
@@ -169,9 +164,8 @@ return function(cutscene, player_name_override)
             showText("[voice:flowey2][speed:0.6]STAY. [wait:10]AWAY. [wait:10]FROM. [wait:10]HER.", "grin")
             showText("[voice:flowey2]She's like a tumor...", "evil")
             showText("[voice:flowey2]Once she clings on,[wait:5] she'll NEVER come off.", "evil")
-        
+
         elseif player_name == "BELLA" or player_name == "BRENDA" then
-        
             showText("Y'know,[wait:5] I've always wondered what it's like to visit other worlds.", "side")
             showText("To see what endless possibilites lie outside your reach.", "nice")
             showText("[voice:flowey2]Hehehe...[wait:5] imagine all the FUN I could have...", "evil")
@@ -187,35 +181,34 @@ return function(cutscene, player_name_override)
             showText("[voice:flowey2]Hehehe... if only they had the power to RESET,[wait:5] like how I did.", "evil")
             showText("What happened to them after that?", "side")
             showText("[voice:flowey2]Well,[wait:5] let's just say that things didn't go too well for their world.", "evil")
-        
 
             flowey:setAnimation("laugh")
             Assets.playSound("floweylaugh")
             cutscene:wait(4)
+
         elseif player_name == "LUCY" then
-        
             showText("Y'know,[wait:5] there's a person in this world with that name who once said something like...", "niceside")
             showText("\"If I had a nickel for every person I know with my name,[wait:5] I'd have at least 25 cents.\"", "nicesideum")
             showText("Weird thing to say,[wait:5] I know.", "sassy")
             showText("But hey,[wait:5] maybe you'll get to meet her.[wait:5] Once you've updated Kristal, that is.", "plain")
             showText("Then she'd have 30 cents.[wait:10] Kinda useless, but hey.", "nicesideum")
-        
+
             cutscene:wait(2)
-        
+
             showText("Although,[wait:5] she is kind of shy in person, I've heard.", "side")
             showText("So good luck finding her.", "wink")
-        
+
         elseif player_name == "BONER" then
             cutscene:wait(1)
             flowey:setSprite("pissed")
             cutscene:wait(1)
-        
-            showText("Is this a joke?\n[wait:10] Are you \nbraindead?", "pissed")
-            showText("Why the hell is \nyour name \"BONER\"?", "pissed")
+
+            showText("Is this a joke?[wait:10] Are you braindead?", "pissed")
+            showText("Why the hell is your name \"BONER\"?", "pissed")
             showText("Wait a minute...", "plain")
-            showText("[voice:flowey2]You think you're reaaaaally funny,[wait:5] \ndon't you?", "evil")
+            showText("[voice:flowey2]You think you're reaaaaally funny,[wait:5] don't you?", "evil")
             showText("You want me to say...[wait:10] THAT.", "sassy")
-            showText("Seriously,[wait:5] that was just \na one time thing.", "pissed")
+            showText("Seriously,[wait:5] that was just a one time thing.", "pissed")
             showText("[voice:flowey2]And now EVERYONE calls me the \"Big boner down the lane\" guy!", "evil")
             showText("I get people walking up to me on the streets and asking me:", "pissed")
             showText("[voice:default]\"Hey aren't you the guy who said 'Big boner down the lane'?\"", "frisk")
@@ -223,25 +216,25 @@ return function(cutscene, player_name_override)
             showText("...", "side")
             showText("Alright,[wait:5] fine,[wait:5] if it'll get you to leave me alone then I'll say it.", "pissed")
             showText("Okay...", "plain")
-            showText("Big boner down \nthe lane.", "concerned")
-            showText("THERE,[wait:5] I SAID IT![wait:10] \nARE YOU HAPPY NOW?!", "enraged")
-            showText("Now leave me alone,[wait:5] \nidiot.", "pissed")
-        
+            showText("Big boner down the lane.", "concerned")
+            showText("THERE,[wait:5] I SAID IT![wait:10] ARE YOU HAPPY NOW?!", "enraged")
+            showText("Now leave me alone,[wait:5] idiot.", "pissed")
+
         elseif player_name == "CLOVER" then
             cutscene:wait(1)
             flowey:setSprite("side")
             cutscene:wait(1)
-        
+
             showText("Wait, wasn't it actually Gun-Hat?", "plain")
-        
+
             flowey:setSprite("side")
             cutscene:wait(2)
-        
+
             showText("Nah, I'm just kidding.", "wink")
             showText("But anyway,[wait:5] since we've found each other again...", "niceside")
             showText("There's something I've been wanting to show you!", "nice")
             showText("Are you ready?", "happyside")
-        
+
             flowey:setSprite("nice")
             local white = flowey:addFX(ShaderFX(Kristal.Shaders["White"]))
             white.vars["whiteAmount"] = 0
@@ -253,9 +246,9 @@ return function(cutscene, player_name_override)
             flowey:removeFX(white)
             flowey:setSprite("cut")
             cutscene:wait(3)
-        
+
             showText("Hey Clover[wait:1s]\nCheck out my new cut")
-        
+
         end
     end
 

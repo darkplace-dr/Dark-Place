@@ -26,13 +26,7 @@ function JekuShop:init()
         return elapsedTime >= sec_7days
     end
 
-    local prefix = "Roaming"
-    if love.system.getOS() == "Linux" then
-        prefix = ".local/share"
-    elseif love.system.getOS() == "OS X" then
-        prefix = "Application Support"
-    end
-    if Mod:fileExists(prefix.."/frozen_heart/saves/frozen_heart/checkpass0") and (not checkTimeLeft() and not Mod:fileExists(prefix.."/frozen_heart/saves/checkpass1")) then
+    if Mod:hasSaveFiles("frozen_heart", "checkpass0") and (not checkTimeLeft() and not Mod:hasSaveFiles("frozen_heart", "checkpass1")) then
         Game:setFlag("meet_jeku_empt", true)
         self:initEmpty()
         self.empty = true
@@ -114,7 +108,7 @@ function JekuShop:initJeku()
     self.sell_options_text["armors"]  = "[emote:happy]I SELL MONEY!!"
     self.sell_options_text["storage"] = "[emote:happy]I SELL MONEY!!"
 
-    if Game:getFlag("meet_jeku_empt") and not self:getFlag("talk_came_back") and not Mod:fileExists("Roaming/frozen_heart/saves/checkpass1") then
+    if Game:getFlag("meet_jeku_empt") and not self:getFlag("talk_came_back") and not Mod:hasSaveFiles("frozen_heart", "checkpass1") then
         self:registerTalk("Where were you")
     else
         self:registerTalk("Who are you")
@@ -125,7 +119,7 @@ function JekuShop:initJeku()
     else
         self:registerTalk("Threaten")
     end
-    if Game:getFlag("meet_jeku_empt") and not self:getFlag("talk_came_back") and Mod:fileExists("Roaming/frozen_heart/saves/checkpass1") then
+    if Game:getFlag("meet_jeku_empt") and not self:getFlag("talk_came_back") and Mod:hasSaveFiles("frozen_heart", "checkpass1") then
         self:registerTalk("The fight")
     else
         self:registerTalk("The Key")

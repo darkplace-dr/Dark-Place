@@ -39,7 +39,7 @@ return function(cutscene, event, chara)
 									table.insert(new_gifts, game)
 								end
 							else
-								if Mod:hasSaveFiles(game:sub(start+1)) then
+								if Mod:hasSaveFiles(game:sub(start+1), data.fused_identify) then
 									table.insert(new_gifts, game)
 								end
 							end

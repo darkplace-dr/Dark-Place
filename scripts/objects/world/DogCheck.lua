@@ -96,14 +96,9 @@ function DogCheck:start()
         playSong("dance_of_dog", 0.95, 1.05)
     elseif self.variant == "sleep" then
         createDog("misc/dog_sleep", 0.8)
-        local song_here = Utils.pick({"dogcheck", "results", "sigh_of_dog", "dogcheck_anniversary"})
-        local song_is_sog = song_here == "sigh_of_dog" or song_here == "dogcheck"
 
-        if song_here == "dogcheck" then
-            playSong(song_here, song_is_sog and 0.9 or 1, 1)
-		else
-            playSong(song_here, song_is_sog and 0.8 or 1, 1)
-        end
+        local song_here = Utils.pick({"dogcheck", "results", "sigh_of_dog", "dogcheck_anniversary"})
+        playSong(song_here, (song_here == "sigh_of_dog" and 0.8) or (song_here == "dogcheck" and 0.9) or 1, 1)
     elseif self.variant == "maracas" then
         createDog(cust_sprites_base.."/dog_maracas", 0.1, 20, -20)
         playSong("baci_perugina2")
@@ -287,7 +282,7 @@ end
 function DogCheck:onRemove()
     if Mod.dogcheck_banned2_window_hacks then
         Mod.dogcheck_banned2_window_hacks = false
-        Kristal.Config["borders"] = Mod.dogcheck_banned2_orig_banner
+        Kristal.Config["borders"] = Mod.dogcheck_banned2_orig_banner or "off"
         Kristal.resetWindow()
     end
 end
