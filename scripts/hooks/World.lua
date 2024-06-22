@@ -3,9 +3,9 @@ local World, super = Class("World", true)
 
 function World:loadMap(...)
     local args = {...}
-    -- x, y, facing
+    -- x, y, facing, callback
     local map = table.remove(args, 1)
-    local marker, x, y, facing
+    local marker, x, y, facing, callback
     if type(args[1]) == "string" then
         marker = table.remove(args, 1)
     elseif type(args[1]) == "number" then
@@ -16,6 +16,9 @@ function World:loadMap(...)
     end
     if args[1] then
         facing = table.remove(args, 1)
+    end
+    if args[1] then
+        callback = table.remove(args, 1)
     end
 
     -- Recreation of the famous Punch Card glitch
@@ -80,6 +83,10 @@ function World:loadMap(...)
     end
 
     self.map:onEnter()
+	
+    if callback then
+        callback(self.map)
+    end
 end
 
 --[[

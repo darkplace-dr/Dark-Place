@@ -317,14 +317,29 @@ return {
         cutscene:text("* (It's a toilet.)[wait:5]\n* (Flush it?)")
         local choice = cutscene:choicer({"Yes", "No"})
         if choice == 1 then
-            Game.world.music:setVolume(0)
+            Game.world.music:fade(0,0.001)
             Assets.playSound("toilet")
-            cutscene:wait(15/30)
+			
+            cutscene:wait(1)
+			
             Assets.playSound("won")
             cutscene:text("* (You flushed the toilet!)")
-            Game.world.music:fade(1, 1)
+            Game.world.music:fade(1,1)
+        end
+    end,
+	
+    asriel_bed = function(cutscene, event)
+        if Game.party[1].id == "YOU" then
+            cutscene:text("* It looks like one of the beds from the inn you were staying at.")
+            cutscene:text("* Still in perfect condition...[wait:1s] for now.")
+            if Game:hasPartyMember("susie") then
+                cutscene:showNametag("Susie")
+                cutscene:text("* (Why do they look like they want to eat it???)", "nervous_side", "susie")
+                cutscene:hideNametag()
+            end
         else
-
+            cutscene:text("* There are CDs under the bed.\n[wait:5]* Classical,[wait:5] jazz,[wait:5] religious ska...")
+            cutscene:text("* There's also a game console.\n[wait:5]* It has one normal controller,[wait:5] and one knock-off one.")
         end
     end,
 }

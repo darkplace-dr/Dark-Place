@@ -13,7 +13,8 @@ return {
   nextobjectid = 21,
   properties = {
     ["border"] = "leaves",
-    ["light"] = true
+    ["light"] = true,
+    ["music"] = "deltarune/home"
   },
   tilesets = {
     {
@@ -223,9 +224,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["solid"] = true,
-            ["text1"] = "* There are CDs under the bed.\n[wait:5]* Classical,[wait:5] jazz,[wait:5] religious ska...",
-            ["text2"] = "* There's also a game console.\n[wait:5]* It has one normal controller,[wait:5] and one knock-off one."
+            ["cutscene"] = "hometown.asriel_bed",
+            ["solid"] = true
           }
         },
         {

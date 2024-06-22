@@ -481,7 +481,9 @@ function Mod:postInit(new_file)
             end
         end
     elseif not Game:getFlag("booty_finished") then
-        Game.world:startCutscene("booty.bootleg")
+        if not Game.world.map.id == "light/" or Game.world.map.id  == "steamworks/" or Game.world.map.id == "dunes/" then
+            Game.world:startCutscene("booty.bootleg")
+        end
     end
 
     self:initBulborb()

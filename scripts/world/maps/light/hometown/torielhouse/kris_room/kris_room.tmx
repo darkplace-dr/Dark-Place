@@ -6,6 +6,7 @@
  <properties>
   <property name="border" value="leaves"/>
   <property name="light" type="bool" value="true"/>
+  <property name="music" value="deltarune/home"/>
  </properties>
  <tileset firstgid="1" source="../../../../../tilesets/hometownobjects.tsx"/>
  <imagelayer id="2" name="room">
@@ -43,11 +44,8 @@
   </object>
   <object id="11" name="interactable" x="80" y="196" width="100" height="120">
    <properties>
+    <property name="cutscene" value="hometown.asriel_bed"/>
     <property name="solid" type="bool" value="true"/>
-    <property name="text1">* There are CDs under the bed.
-[wait:5]* Classical,[wait:5] jazz,[wait:5] religious ska...</property>
-    <property name="text2">* There's also a game console.
-[wait:5]* It has one normal controller,[wait:5] and one knock-off one.</property>
    </properties>
   </object>
   <object id="12" name="interactable" x="466" y="200" width="94" height="120">

@@ -56,6 +56,14 @@ return {
     album = "dr_ch1"
   },
   {
+    name = "You Can Always Come Home",
+    file = "deltarune/home",
+    composer = "Toby Fox",
+    released = "2018",
+    origin = "Deltarune",
+    album = "dr_ch1"
+  },
+  {
     name = "My Castle Town",
     file = "deltarune/castletown",
     composer = "Toby Fox",

@@ -13,7 +13,8 @@ return {
   nextobjectid = 18,
   properties = {
     ["border"] = "leaves",
-    ["light"] = true
+    ["light"] = true,
+    ["music"] = "deltarune/home"
   },
   tilesets = {},
   layers = {
