@@ -230,7 +230,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "* (It's a toilet.)\n[wait:5]* (Kross is too lazy to program the flush cutscene.)"
+            ["cutscene"] = "hometown.toilet"
           }
         },
         {

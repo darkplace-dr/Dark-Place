@@ -45,8 +45,7 @@
   </object>
   <object id="11" name="interactable" x="340" y="240" width="44" height="40">
    <properties>
-    <property name="text">* (It's a toilet.)
-[wait:5]* (Kross is too lazy to program the flush cutscene.)</property>
+    <property name="cutscene" value="hometown.toilet"/>
    </properties>
   </object>
   <object id="12" name="interactable" x="388" y="240" width="62" height="40">

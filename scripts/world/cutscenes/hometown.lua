@@ -312,4 +312,19 @@ return {
         end
 
     end,
+	
+    toilet = function(cutscene, event)
+        cutscene:text("* (It's a toilet.)[wait:5]\n* (Flush it?)")
+        local choice = cutscene:choicer({"Yes", "No"})
+        if choice == 1 then
+            Game.world.music:setVolume(0)
+            Assets.playSound("toilet")
+            cutscene:wait(15/30)
+            Assets.playSound("won")
+            cutscene:text("* (You flushed the toilet!)")
+            Game.world.music:fade(1, 1)
+        else
+
+        end
+    end,
 }
