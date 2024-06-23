@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 11,
-  nextobjectid = 19,
+  nextobjectid = 21,
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
@@ -183,9 +183,9 @@ return {
           name = "",
           class = "",
           shape = "rectangle",
-          x = 40,
+          x = 91,
           y = 200,
-          width = 560,
+          width = 520,
           height = 40,
           rotation = 0,
           visible = true,
@@ -404,6 +404,22 @@ return {
             ["marker"] = "entryeast",
             ["sound"] = "dooropen"
           }
+        },
+        {
+          id = 19,
+          name = "script",
+          class = "",
+          shape = "rectangle",
+          x = 40,
+          y = 200,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "hometown.secret_path",
+            ["once"] = false
+          }
         }
       }
     },
@@ -441,6 +457,19 @@ return {
           shape = "point",
           x = 337,
           y = 420,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 20,
+          name = "entry_secret",
+          class = "",
+          shape = "point",
+          x = 66,
+          y = 320,
           width = 0,
           height = 0,
           rotation = 0,

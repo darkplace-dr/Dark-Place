@@ -74,29 +74,29 @@
             "fileName": "torielhouse/tor_house/tor_house.tmx",
             "height": 480,
             "width": 1400,
-            "x": -760,
-            "y": -480
+            "x": -1480,
+            "y": 80
         },
         {
             "fileName": "torielhouse/kris_room/kris_room.tmx",
             "height": 480,
             "width": 640,
-            "x": -1080,
-            "y": -1320
+            "x": -1800,
+            "y": -880
         },
         {
             "fileName": "torielhouse/toriel_bathroom/toriel_bathroom.tmx",
             "height": 480,
             "width": 640,
-            "x": -1400,
-            "y": -400
+            "x": -2040,
+            "y": 160
         },
         {
             "fileName": "torielhouse/toriel_hallway/toriel_hallway.tmx",
             "height": 480,
             "width": 1080,
-            "x": -1360,
-            "y": -960
+            "x": -2080,
+            "y": -400
         },
         {
             "fileName": "school/school_lobby/school_lobby.tmx",
@@ -230,6 +230,20 @@
             "width": 640,
             "x": 1520,
             "y": 3120
+        },
+        {
+            "fileName": "secret_path.tmx",
+            "height": 1280,
+            "width": 800,
+            "x": -520,
+            "y": -1240
+        },
+        {
+            "fileName": "pre_ebott/lookout/lookout.tmx",
+            "height": 960,
+            "width": 640,
+            "x": -480,
+            "y": -2240
         }
     ],
     "onlyShowAdjacentMaps": false,

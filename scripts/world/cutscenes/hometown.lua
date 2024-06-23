@@ -342,4 +342,23 @@ return {
             cutscene:text("* There's also a game console.\n[wait:5]* It has one normal controller,[wait:5] and one knock-off one.")
         end
     end,
+	
+    secret_path = function(cutscene, event)
+        local hometown_foundSecretPath = Game:getFlag("hometown_foundSecretPath", false)
+		
+        if hometown_foundSecretPath == false then
+            cutscene:text("* (!?)[wait:5]\n* (There's a secret path hidden \nin the tree line.)")
+            cutscene:text("* (Will you follow it?)")
+
+            local choice = cutscene:choicer({"Yes", "No"})
+            if choice == 1 then
+                Game:setFlag("hometown_foundSecretPath", true)
+                Game.world:mapTransition("light/hometown/secret_path", "entry_down", "up")
+            else
+                cutscene:text("* (Perhaps some things are best left unexplored for now.)")
+            end
+        else
+            Game.world:mapTransition("light/hometown/secret_path", "entry_down", "up")
+        end
+    end,
 }
