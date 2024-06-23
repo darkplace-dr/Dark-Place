@@ -342,6 +342,24 @@ return {
             cutscene:text("* There's also a game console.\n[wait:5]* It has one normal controller,[wait:5] and one knock-off one.")
         end
     end,
+
+    torcar = function(cutscene, event)
+        if Game.party[1].id == "kris" then
+            cutscene:text("* (It's your mom's car.)")
+            cutscene:text("* (Seems like she hasn't replaced the tires yet, judging by the slashes.)")
+        elseif Game.party[1].id == "YOU" then
+            cutscene:text("* (Looks like the same car that you and Toriel drove in to the orphanage.)")
+            cutscene:text("* (...)")
+            cutscene:text("* (Actually wait,[wait:5] wasn't it a freight train?)")
+            cutscene:text("* (Wait,[wait:5] no. It was an airliner,[wait:5] wasn't it?)")
+            cutscene:text("* (No no no,[wait:5] it was a tricycle that suddenly sprouted legs and ran off,[wait:5] right???)")
+            cutscene:text("* (...)")
+            cutscene:text("* (Well regardless,[wait:5] the car just looks familiar to you.)")
+        else
+            cutscene:text("* (A red car that can hold up to at least four people.)")
+            cutscene:text("* (The tires on the car appear to be slashed.)")
+        end
+    end,
 	
     secret_path = function(cutscene, event)
         local hometown_foundSecretPath = Game:getFlag("hometown_foundSecretPath", false)

@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 11,
-  nextobjectid = 21,
+  nextobjectid = 23,
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
@@ -420,6 +420,19 @@ return {
             ["cutscene"] = "hometown.secret_path",
             ["once"] = false
           }
+        },
+        {
+          id = 22,
+          name = "torcar",
+          class = "",
+          shape = "rectangle",
+          x = 460,
+          y = 220,
+          width = 156,
+          height = 148,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

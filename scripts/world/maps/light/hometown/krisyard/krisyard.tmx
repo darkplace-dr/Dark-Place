@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="21">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="23">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -128,6 +128,7 @@
     <property name="once" type="bool" value="false"/>
    </properties>
   </object>
+  <object id="22" name="torcar" x="460" y="220" width="156" height="148"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="8" name="markers">
   <object id="9" name="spawn" x="340" y="800">
