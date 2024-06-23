@@ -356,6 +356,8 @@ return {
                 Game.world:mapTransition("light/hometown/secret_path", "entry_down", "up")
             else
                 cutscene:text("* (Perhaps some things are best left unexplored for now.)")
+                player:walkTo(player.x, player.y + 20)
+                cutscene:wait(2)
             end
         else
             Game.world:mapTransition("light/hometown/secret_path", "entry_down", "up")
