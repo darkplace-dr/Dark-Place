@@ -345,6 +345,7 @@ return {
 	
     secret_path = function(cutscene, event)
         local hometown_foundSecretPath = Game:getFlag("hometown_foundSecretPath", false)
+        local player = Game.world.player
 		
         if hometown_foundSecretPath == false then
             cutscene:text("* (!?)[wait:5]\n* (There's a secret path hidden \nin the tree line.)")
