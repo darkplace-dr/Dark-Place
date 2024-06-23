@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.9" tiledversion="1.9.0" name="devroom-objects" tilewidth="145" tileheight="120" tilecount="19" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="devroom-objects" tilewidth="145" tileheight="120" tilecount="22" columns="0">
  <editorsettings>
   <export target="devroom-objects.lua" format="lua"/>
  </editorsettings>
@@ -70,5 +70,8 @@
  </tile>
  <tile id="52">
   <image width="21" height="21" source="../../../assets/sprites/world/maps/devroom/hotel/lucyplush.png"/>
+ </tile>
+ <tile id="53">
+  <image width="14" height="15" source="../../../assets/sprites/world/book.png"/>
  </tile>
 </tileset>

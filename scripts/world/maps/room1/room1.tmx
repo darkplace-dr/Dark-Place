@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="80">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="82">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -301,6 +301,13 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
+  <object id="80" name="readable" x="518" y="120" width="40" height="40">
+   <properties>
+    <property name="book" value="fountains_of_doom"/>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="81" gid="114" x="522" y="156" width="28" height="30"/>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="20" name="spawn" x="300" y="250">

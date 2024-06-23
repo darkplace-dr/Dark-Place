@@ -1,14 +1,17 @@
 return {
-  version = "1.5",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.8.6",
+  tiledversion = "1.10.2",
   name = "devroom-objects",
+  class = "",
   tilewidth = 145,
   tileheight = 120,
   spacing = 0,
   margin = 0,
   columns = 0,
   objectalignment = "unspecified",
+  tilerendersize = "tile",
+  fillmode = "stretch",
   tileoffset = {
     x = 0,
     y = 0
@@ -20,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 19,
+  tilecount = 22,
   tiles = {
     {
       id = 10,
@@ -157,6 +160,12 @@ return {
       image = "../../../assets/sprites/world/maps/devroom/hotel/lucyplush.png",
       width = 21,
       height = 21
+    },
+    {
+      id = 53,
+      image = "../../../assets/sprites/world/book.png",
+      width = 14,
+      height = 15
     }
   }
 }
