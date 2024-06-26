@@ -41,7 +41,7 @@ function item:init()
         ["iphone"] = Game:getPartyMember("iphone"):getOpinion(Game:getPartyMember(tea_self)),
         ["frisk2"] = Game:getPartyMember("frisk2"):getOpinion(Game:getPartyMember(tea_self)),
         ["alseri"] = Game:getPartyMember("alseri"):getOpinion(Game:getPartyMember(tea_self)),
-        ["jamm"] = 10,
+        ["jamm"] = 40,
         ["mario"] = Game:getPartyMember("mario"):getOpinion(Game:getPartyMember(tea_self)),
         ["pauling"] = Game:getPartyMember("pauling"):getOpinion(Game:getPartyMember(tea_self)),
     }

@@ -1,10 +1,10 @@
-local item, super = Class(HealItem, "pauling_tea")
+local item, super = Class(HealItem, "whale_tea")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Pauling Tea"
+    self.name = "Whale Tea"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
@@ -18,12 +18,12 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "It's own-flavored tea.\nThe flavor just says \"Pauling.\""
+    self.description = "It's own-flavored tea.\nThe flavor just says \"Whale.\""
     -- Amount healed (HealItem variable)
     self.heal_amount = 50
     -- Amount this item heals for specific characters
     -- Party member this tea is from
-    local tea_self = "pauling"
+    local tea_self = "whale"
 
     self.heal_amounts = {
         ["YOU"] = Game:getPartyMember("YOU"):getOpinion(Game:getPartyMember(tea_self)),
@@ -43,8 +43,8 @@ function item:init()
         ["alseri"] = Game:getPartyMember("alseri"):getOpinion(Game:getPartyMember(tea_self)),
         ["jamm"] = Game:getPartyMember("jamm"):getOpinion(Game:getPartyMember(tea_self)),
         ["mario"] = Game:getPartyMember("mario"):getOpinion(Game:getPartyMember(tea_self)),
-        ["pauling"] = 10,
-        ["whale"] = Game:getPartyMember("whale"):getOpinion(Game:getPartyMember(tea_self)),
+        ["pauling"] = Game:getPartyMember("pauling"):getOpinion(Game:getPartyMember(tea_self)),
+        ["whale"] = 10,
     }
 
     -- Default shop price (sell price is halved)
