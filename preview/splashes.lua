@@ -74,5 +74,6 @@ return {
     "Welcome to the woods",
     "Run this on a\nWii you coward",
     "Right behind you.",
-    "Have a break,\nhave a legally distinct\nGitGog"
+    "Have a break,\nhave a legally distinct\nGitGog",
+    "Try FREEWLLY"
 }
