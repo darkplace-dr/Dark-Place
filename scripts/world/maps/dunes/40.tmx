@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="8">
+ <properties>
+  <property name="light" type="bool" value="true"/>
+  <property name="music" value="deltarune/wind"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/dunes_objects.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="24">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="1" x="200" y="0" width="40" height="960"/>
+  <object id="2" x="400" y="0" width="40" height="960"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="3" name="transition" x="240" y="0" width="160" height="40">
+   <properties>
+    <property name="map" value="dunes/41"/>
+    <property name="marker" value="down"/>
+   </properties>
+  </object>
+  <object id="4" name="transition" x="240" y="920" width="160" height="40">
+   <properties>
+    <property name="map" value="dunes/39"/>
+    <property name="marker" value="up"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="5" name="down" x="320" y="880">
+   <point/>
+  </object>
+  <object id="6" name="up" x="320" y="80">
+   <point/>
+  </object>
+  <object id="7" name="spawn" x="320" y="800">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

@@ -581,6 +581,14 @@ return {
     album = "uty"
   },
   {
+    name = "Sunnyside Farm",
+    file = "undertale_yellow/sunnyside_ranch",
+    composer = "MasterSwordRemix",
+    released = "2023",
+    origin = "Undertale Yellow",
+    album = "uty"
+  },
+  {
     name = "Tomorrow Means The Surface",
     file = "undertale_yellow/abandoned",
     composer = "MasterSwordRemix",
