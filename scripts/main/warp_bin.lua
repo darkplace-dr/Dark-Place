@@ -93,6 +93,16 @@ Mod.warp_bin_codes = {
         on_fail = function(cutscene)
             cutscene:text("* The warp exists,[wait:5] but is only available on certain days.")
         end
+    },
+    ["FREEWLLY"] = {
+        result = function(cutscene)
+			if not Utils.containsValue(Game:getFlag("party"), "whale") then
+				Mod:unlockPartyMember("whale")
+				cutscene:text("* You unlocked the fucking whale!")
+			else
+				cutscene:text("* But you already had the whale.")
+			end
+		end
     }
 }
 
