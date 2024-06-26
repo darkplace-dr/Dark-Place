@@ -481,9 +481,7 @@ function Mod:postInit(new_file)
             end
         end
     elseif not Game:getFlag("booty_finished") then
-        if not Game:isLight() then
-            Game.world:startCutscene("booty.bootleg")
-        end
+        Game.world:startCutscene("booty.bootleg")
     end
 
     self:initBulborb()
@@ -594,6 +592,7 @@ function Mod:initializeImportantFlags(new_file)
     local berdly = Game:getPartyMember("berdly")
     local mario = Game:getPartyMember("mario")
     local pauling = Game:getPartyMember("pauling")
+    local whale = Game:getPartyMember("whale")
     if berdly:getBaseStats("health") == 300 then
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Berdly was added.")
@@ -692,6 +691,31 @@ function Mod:initializeImportantFlags(new_file)
         addOpinionsToParty("jamm", { pauling = 50 })
         addOpinionsToParty("mario", { pauling = 50 })
         Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brenda = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
+    end
+
+    if new_file or whale.opinions == nil or table.getn(whale.opinions) == 0 then
+        likely_old_save = true
+        table.insert(old_save_issues, "Save is probably from before the fucking whale was added.")
+
+        addOpinionsToParty("YOU", { whale = 50 })
+        addOpinionsToParty("kris", { whale = 50 })
+        addOpinionsToParty("susie", { whale = 50 })
+        addOpinionsToParty("noelle", { whale = 50 })
+        addOpinionsToParty("dess", { whale = 50 })
+        addOpinionsToParty("brenda", { whale = 50 })
+        addOpinionsToParty("dumbie", { whale = 50 })
+        addOpinionsToParty("ostarwalker", { whale = 50 })
+        addOpinionsToParty("berdly", { whale = 50 })
+        addOpinionsToParty("bor", { whale = 50 })
+        addOpinionsToParty("robo_susie", { whale = 50 })
+        addOpinionsToParty("noyno", { whale = 50 })
+        addOpinionsToParty("iphone", { whale = 50 })
+        addOpinionsToParty("frisk2", { whale = 50 })
+        addOpinionsToParty("alseri", { whale = 50 })
+        addOpinionsToParty("jamm", { whale = 50 })
+        addOpinionsToParty("mario", { whale = 50 })
+        addOpinionsToParty("pauling", { whale = 50 })
+        Game:getPartyMember("whale").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brenda = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40, pauling = 40 }
     end
 
     self.pc_gifts_data = {
