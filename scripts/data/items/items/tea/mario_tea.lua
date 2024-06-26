@@ -44,6 +44,7 @@ function item:init()
         ["jamm"] = Game:getPartyMember("jamm"):getOpinion(Game:getPartyMember(tea_self)),
         ["mario"] = 10,
         ["pauling"] = Game:getPartyMember("pauling"):getOpinion(Game:getPartyMember(tea_self)),
+        ["whale"] = Game:getPartyMember("whale"):getOpinion(Game:getPartyMember(tea_self)),
     }
 
     -- Default shop price (sell price is halved)

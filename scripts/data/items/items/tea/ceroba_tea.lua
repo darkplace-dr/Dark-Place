@@ -44,6 +44,7 @@ function item:init()
         ["jamm"] = Game:getPartyMember("jamm"):getOpinion(Game:getPartyMember(tea_self)),
         ["mario"] = Game:getPartyMember("mario"):getOpinion(Game:getPartyMember(tea_self)),
         ["pauling"] = Game:getPartyMember("pauling"):getOpinion(Game:getPartyMember(tea_self)),
+        ["whale"] = Game:getPartyMember("whale"):getOpinion(Game:getPartyMember(tea_self)),
         ["ceroba"] = 0,
     }
 
