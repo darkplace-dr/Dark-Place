@@ -27,6 +27,7 @@ function field:onEnter()
 		"I hope my brother stays safe.",
 		"I hope all of the fighting can end.",
 		"I pray for everyone who has passed on.",
+		"I hope VexSaber will be okay.",
 		--"", -- Please, add more.
 		--"", -- All I ask for are your Hopes and Dreams.
 		--"", --       -Charbomber
