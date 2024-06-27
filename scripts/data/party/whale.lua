@@ -39,6 +39,8 @@ function character:init()
     }
 
     self.weapon_icon = "ui/menu/equip/sword"
+	
+	self:setWeapon("fin")
 
     self.color = {28/255, 32/255, 43/255}
     self.dmg_color = nil
