@@ -9,8 +9,8 @@ return {
   height = 24,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 9,
-  nextobjectid = 11,
+  nextlayerid = 10,
+  nextobjectid = 12,
   backgroundcolor = { 50, 185, 255 },
   properties = {
     ["border"] = "leaves",
@@ -26,6 +26,35 @@ return {
     }
   },
   layers = {
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 9,
+      name = "objects_bg",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 11,
+          name = "ebott_bgclouds",
+          class = "",
+          shape = "rectangle",
+          x = 0,
+          y = 0,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
     {
       type = "imagelayer",
       image = "../../../../../../../assets/sprites/world/maps/ebott/overview.png",

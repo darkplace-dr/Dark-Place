@@ -110,8 +110,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#ff00ff" id="5" name="markers">
-  <object id="22" name="entrylibrary" x="480" y="186">
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="22" name="entrylibrary" x="480" y="200">
    <point/>
   </object>
   <object id="23" name="entrycyber" x="320" y="188">

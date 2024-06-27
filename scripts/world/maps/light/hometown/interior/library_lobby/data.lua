@@ -446,7 +446,7 @@ return {
           class = "",
           shape = "point",
           x = 480,
-          y = 186,
+          y = 200,
           width = 0,
           height = 0,
           rotation = 0,

@@ -430,7 +430,7 @@
    <image source="../../../../../../assets/sprites/world/maps/hometown/house.png" width="266" height="132"/>
   </imagelayer>
  </group>
- <objectgroup color="#ff00ff" id="26" name="markers">
+ <objectgroup color="#7f00ff" id="26" name="markers">
   <object id="21" name="spawn" x="860" y="40">
    <point/>
   </object>
@@ -440,7 +440,7 @@
   <object id="30" name="entrysouth" x="1340" y="440">
    <point/>
   </object>
-  <object id="46" name="entryflower" x="2540" y="260">
+  <object id="46" name="entryflower" x="2540" y="280">
    <point/>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="24" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#32b9ff" nextlayerid="9" nextobjectid="11">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="24" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#32b9ff" nextlayerid="10" nextobjectid="12">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -9,6 +9,9 @@
   <property name="music" value="deltarune/mus_birdnoise"/>
  </properties>
  <tileset firstgid="1" source="../../../../../tilesets/hometown.tsx"/>
+ <objectgroup color="#ff0000" id="9" name="objects_bg">
+  <object id="11" name="ebott_bgclouds" x="0" y="0"/>
+ </objectgroup>
  <imagelayer id="8" name="bg" offsetx="0" offsety="40" parallaxy="0.9">
   <image source="../../../../../../../assets/sprites/world/maps/ebott/overview.png" width="640" height="320"/>
  </imagelayer>
