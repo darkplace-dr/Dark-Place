@@ -61,10 +61,11 @@ function item:init()
             jamm = "DON'T EAT THAT!!",
             brenda = "DON'T EAT THAT!!",
             kangel = "DON'T EAT THAT!!",
+            noel = "WHY IS EVERYONE YELLING?!",
             dess = "lol",
         },
         brenda = "A ring... for a ring?",
-
+        noel = "Angel... no thanks...",
         noelle = "It's beautiful...!",
         kangel = "It goes with my outfit!"
     }

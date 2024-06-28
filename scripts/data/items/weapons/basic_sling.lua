@@ -50,7 +50,8 @@ function item:init()
         susie = "What is this, a chew toy?",
         ralsei = "U-um... No thanks.",
         noelle = "O-oh, you just... Ow, my eye!",
-        jamm = "Ol' reliable."
+        jamm = "Ol' reliable.",
+        noel = "I will break it..."
     }
 end
 

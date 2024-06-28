@@ -1,5 +1,21 @@
 local greyarea, super = Class(Map)
 
+
+function greyarea:onEnter()
+    Game.stage:setWeather("rain", false, true)
+
+    local savedData = Mod:loadGameN()
+    if savedData then
+    else
+            Mod:unlockPartyMember("noel")
+            if Game:hasPartyMember("noel") then
+            else
+                Game.world:spawnNPC("noel", 2820, 2180, {cutscene = "noel.meet", sprite = "brella"})
+            end
+    end
+
+end
+
 function greyarea:update()
     if Game.world.player.x <= 360 then
         Game.world.player.x = Game.world.player.x + 5060

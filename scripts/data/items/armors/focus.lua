@@ -44,6 +44,7 @@ function item:init()
 
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
+        noel = false,
         robo_susie = false
     }
 
@@ -51,6 +52,7 @@ function item:init()
     self.reactions = {
         robo_susie = "I'm too ultimate for that.",
         noyno = "Ommmmmm.....",
+        noel = "I'm immune to chronomancy.",
         jamm = "Speed. I am speed."
     }
 end

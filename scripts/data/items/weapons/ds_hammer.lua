@@ -50,7 +50,8 @@ function item:init()
         mario = {
 			mario = "Who beat-a my high score!?",
 			brenda = "(Please don't hurt me, but...)"
-		}
+		},
+        noel = "wow... nintendo go supermario nintendo bes company go ninwahooo- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     }
 end
 

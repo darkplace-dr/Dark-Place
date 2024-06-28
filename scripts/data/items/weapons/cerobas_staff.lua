@@ -35,6 +35,7 @@ function item:init()
         noelle = "How is that a weapon?",
         ceroba = "Back to where it belongs.",
         martlet = "This belongs to Ceroba...",
+        noel = "I prefer cats... I WANT IT!!!",
     }
 end
 

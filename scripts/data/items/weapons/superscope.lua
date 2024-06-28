@@ -49,6 +49,7 @@ function item:init()
     -- Character reactions
     self.reactions = {
         susie = "Looks cool, but nah.",
+        noel = "Look, a gun. How origoan- FUCK, I CANT CPELL!!!",
         ralsei = "This looks really retro!",
         noelle = "I think I have one of these at home.",
 		dess = "so retro",

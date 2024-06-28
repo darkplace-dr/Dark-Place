@@ -47,7 +47,8 @@ function item:init()
 
     -- Character reactions
     self.reactions = {
-        jamm = "Don't have a cow, man."
+        jamm = "Don't have a cow, man.",
+        noel = "SnIperMonkeyP"
     }
 end
 

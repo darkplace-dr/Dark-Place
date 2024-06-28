@@ -52,7 +52,8 @@ function item:init()
 		susie = "...That's gonna break.",
 		noelle = "That's not mine!",
         brenda = "SMASH!",
-		jamm = "I... don't think this works."
+		jamm = "I... don't think this works.",
+                noel = "?.. This isn't meant to be here."
     }
 end
 

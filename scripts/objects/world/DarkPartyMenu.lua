@@ -36,6 +36,11 @@ function DarkPartyMenu:init(debug)
 		{"frisk2", "dess", "alseri", "brenda", "jamm", "bor", "dumbie", "iphone", "mario", "ceroba"},
 		{"clover", "whale", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 	}
+        
+        local noel = Game.world:getCharacter("noel")
+        if noel then
+            table.insert(self.list[1], 11, "noel")
+        end
 	
 	self.listreference = Game:getFlag("party", {"YOU", "susie"})
 	

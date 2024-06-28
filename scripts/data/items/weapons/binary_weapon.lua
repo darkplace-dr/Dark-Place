@@ -62,6 +62,7 @@ function item:init()
         noelle = "Oh it's just like that movie!",
         dess = "LMAO wtf is that?",
         brenda = "Does it say something?",
+        noel = "no...",
 		jamm = "What did you say about Ania!?"
     }
 end

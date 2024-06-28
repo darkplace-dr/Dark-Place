@@ -3,6 +3,15 @@ return {
     introcutscene = function(cutscene)
         local text
 
+
+        local savedData = Mod:loadGameN()
+        if savedData then
+            if savedData.Map == "room1" then
+                Game:addPartyMember("noel")
+            end
+        end
+
+
         local function gonerTextFade(wait)
             local this_text = text
             Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function()
@@ -209,6 +218,7 @@ return {
         else
             gonerText("REALLY?[wait:40]\nBITCH, YOU FR?[wait:20]")
             gonerText("WELL FUCK YOU I\nCHOSE IT ANYWAY[wait:20]")
+            
             --[[
             gonerText("ALRIGHT, I GOT\nANOTHER ONE.[wait:20]")
 
@@ -266,6 +276,16 @@ return {
 
         Game:setFlag("vesselChosen", 1)
         cutscene:wait(1)
+
+        if savedData then
+            you_sprite:setSprite("noel")
+            local num = savedData.SaveID
+            Game:setFlag("noel_SaveID", num)
+            Assets.playSound("mysterygo", 1, 1)
+            you_sprite:shake(6)
+            cutscene:wait(0.1)
+            Assets.stopSound("mysterygo", actually_stop)
+        end
 
         background:remove()
         you_sprite:remove()

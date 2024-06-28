@@ -46,6 +46,7 @@ function item:init()
 
     -- Character reactions
     self.reactions = {
+        noel = "*reads it* It's blank...",
         susie = "I can't read this.",
         ralsei = "What language is this in?",
         noelle = "It feels... magical...",
