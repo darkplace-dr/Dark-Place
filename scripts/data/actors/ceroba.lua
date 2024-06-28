@@ -14,7 +14,7 @@ function actor:init()
 
     self.color = {1, 1, 0}
 
-    self.path = "party/ceroba/dark"
+    self.path = "party/ceroba/light"
     self.default = "walk"
 
     self.voice = "ceroba"
