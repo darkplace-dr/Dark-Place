@@ -5,8 +5,8 @@ function character:init()
 
     self.name = "Ceroba"
 
-    self:setActor("ceroba")
-    --self:setLightActor("ceroba_lw")
+    self:setActor("ceroba_dw")
+    self:setLightActor("ceroba")
     self:setDarkTransitionActor("ceroba_dark_transition")
 
     self.level = 1
@@ -39,7 +39,7 @@ function character:init()
         health = 220
     }
 
-    self.lw_health = 30
+    self.lw_health = 40
 
     self.lw_stats = {
         health = 40,
@@ -51,11 +51,10 @@ function character:init()
     self.weapon_icon = "ui/menu/equip/staff"
 
     self:setWeapon("cerobas_staff")
-    --self:setArmor(1, "something")
-    --self:setArmor(2, "something")
+    self:setArmor(1, "hair_ribbon")
 
-    self.lw_weapon_default = "light/pencil"
-    self.lw_armor_default = "light/bandage"
+    self.lw_weapon_default = "light/cerobas_staff"
+    self.lw_armor_default = "light/big_ribbon"
 
     self.color = {1, 0, 0.35}
     self.dmg_color = {1, 0, 0.35}
