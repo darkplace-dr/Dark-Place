@@ -28,15 +28,19 @@ function item:init()
     self.can_equip = {
         ceroba = true,
     }
-
+ 
     self.reactions = {
-        susie = "A stick? Seriously?",
+        susie = "A stick with a ribbon? Seriously?",
         ralsei = "Not sure if I can use this...",
-        noelle = "How is that a weapon?",
-        ceroba = "Back to where it belongs.",
         martlet = "This belongs to Ceroba...",
-        noel = "I prefer cats... I WANT IT!!!",
+        noel = "I prefer cats... (I WANT IT!!!)",
+        noelle = "*ding* I love the bell!",
+        ceroba = "Back where it belongs.",
     }
+end
+
+function item:convertToLightEquip(chara)
+    return "light/cerobas_staff"
 end
 
 return item
