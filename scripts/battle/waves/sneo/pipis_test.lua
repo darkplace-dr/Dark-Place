@@ -32,10 +32,14 @@ function Basic:init()
     self.maxpipis = 10
 
     self.sneo = Game.battle:getEnemyBattler("sneo")
+	
+    self.pipis_timer = 0
 end
 
 function Basic:draw()
     super.draw(self)
+	
+    self.pipis_timer = self.pipis_timer + DT
 	
     self.siner = self.siner + 0.25 * DTMULT
 	
@@ -63,7 +67,7 @@ function Basic:draw()
         end
     end
 	
-	if Game.battle.wave_timer > 16 then
+	if self.pipis_timer > 16 then
 	    self.movecon = 2
     end
 	
@@ -141,7 +145,6 @@ end
 
 function Basic:onEnd()
     self.sneo:setMode("normal")
-    Game.battle.wave_timer = 0
 end
 
 return Basic

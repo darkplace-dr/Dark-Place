@@ -1,6 +1,24 @@
 return {
     dialogue_test = function(cutscene, battler, enemy)
         local sneo = Game.battle:getEnemyBattler("sneo")
+		
+        local leader_nicknames = {
+            kris = {"KRIS", "[Little Sponge]", "[#1ValuedCustomer]"},
+            susie = {"SUSIE", "[Chalk Eater]", "[Class Bully]"},
+            ralsei = {"RALSEI", "[Scringly Dingly]", "[Plogy Spongy]"},
+            noelle = {"NOELLE", "[Angel]", "[Hochi Mama]"},
+            berdly = {"[Burgley]", "[Fried Chicken]", "[Frozen Chicken]"},
+            osw = {"STARWALKER", "", ""},
+            YOU = {"YOU", "FROG", "[Amphibian Friend]"},
+            robo_susie = {"SUSANNA", "[D3adInsideDino]", "[]"},
+            noyno = {"NOYNO", "TIM", "[$4.99 Pepsi]"},
+            ceroba = {"CEROBA", "[The Roba]", "[キツネ]"},
+            clover = {"CLOVER", "[GunHat]", "[]"},
+            dess = {"DESS", "[[Doe-Eyed Dumba$$]]", "[!#%@]"},
+            brenda = {"BRENDA", "",  ""},
+            jamm = {"JAMM", "",  ""},
+            bor = {"BOR", "[Ball]", "[#1 Re-Zero Fan]"}
+        }
 
         --all dialogue is just placeholder stuff for now, until I actually get this implemented.
 	    if Game.battle.turn_count == 1 then
@@ -23,6 +41,11 @@ return {
             cutscene:battlerText(sneo, "BUT CAN THEY MATCH MINE\nIN [[Self-Deflection]]!?", {x=sneo.x - 40, y=sneo.y - 80, left=true})
 		
             sneo.wave_override = "sneo/pendulum"
+		elseif Game.battle.turn_count == 5 then
+            cutscene:battlerText(sneo, "FRIENDS ?\n"..(leader_nicknames[Game.world.player.actor.id][1] or "MY ESTEEM CUSTOMER")..", I'VE GOT\n[plenty to go around]!!!", {x=sneo.x - 40, y=sneo.y - 80, left=true})
+            cutscene:battlerText(sneo, "THERE'S [Me], [[Y O U]],;\nAND WE CAN'T FORGET ABOUT\nTHE [[B0YS 1N BLUE]]!!!", {x=sneo.x - 40, y=sneo.y - 80, left=true})
+		
+            sneo.wave_override = "sneo/pipis_test"
 		end
     end,
 }

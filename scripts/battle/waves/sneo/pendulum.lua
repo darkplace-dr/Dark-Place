@@ -51,4 +51,8 @@ function Pendulum:onStart()
 	end)
 end
 
+function Pendulum:onEnd()
+    self.sneo:setMode("normal")
+end
+
 return Pendulum
