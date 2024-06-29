@@ -1,6 +1,6 @@
 local AfterImageCut, super = Class(Object)
 
-function AfterImageCut:init(texture, after)
+function AfterImageCut:init(texture, x, y, after)
     super.init(self, x, y)
 
     if type(texture) == "string" then
@@ -65,10 +65,10 @@ function AfterImageCut:draw()
     local m = Utils.ease(0, hh, (self.siner + 2)/10, "out-sine")
     love.graphics.setColor(r, g, b, self.spr_alpha)
 	
-    Draw.drawPart(self.texture, (self.x - m - self.xo * self.scale_x / 2) + hw, (self.y - m - self.yo * self.scale_y / 2) + hh/2, 0, 0, hw, hh)
-    Draw.drawPart(self.texture, (self.x + m - self.xo * self.scale_x / 2) + hw, (self.y - m - self.yo * self.scale_y / 2) + hh/2, hw, 0, hw, hh)
-    Draw.drawPart(self.texture, (self.x - m - self.xo * self.scale_x / 2) + hw, (self.y + m - self.yo * self.scale_y / 2) + hh/2, 0, hh, hw, hh)
-    Draw.drawPart(self.texture, (self.x + m - self.xo * self.scale_x / 2) + hw, (self.y + m - self.yo * self.scale_y / 2) + hh/2, hw, hh, hw, hh)
+    Draw.drawPart(self.texture, (self.x - m - self.xo * self.scale_x / 2), (self.y - m - self.yo * self.scale_y / 2), 0, 0, hw, hh)
+    Draw.drawPart(self.texture, (self.x + m - self.xo * self.scale_x / 2), (self.y - m - self.yo * self.scale_y / 2), hw, 0, hw, hh)
+    Draw.drawPart(self.texture, (self.x - m - self.xo * self.scale_x / 2), (self.y + m - self.yo * self.scale_y / 2), 0, hh, hw, hh)
+    Draw.drawPart(self.texture, (self.x + m - self.xo * self.scale_x / 2), (self.y + m - self.yo * self.scale_y / 2), hw, hh, hw, hh)
 
     super.draw(self)
 end
