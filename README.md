@@ -101,7 +101,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Brylee - Original author of Deltarune: Ozymandias, dialogue portraits for Rook
 * Mr. Luwigi - Rook, DZ & NG sprites for Deltarune: Ozymandias
 * TrashcatYT - Blue Soul Library
-* Glavvrach - Splitting effect for SNEO bullets
 * Scarm - GM path system, Gaster Blaster and GonerMaker recreations
 * TheMaxine - Original author of [Ribbit](https://gamejolt.com/games/ribbitmod/671888)
 * lvk, RhenaudTheLukark - Original authors of [Unitale](https://github.com/lvk/Unitale) and [Create Your Frisk](https://github.com/RhenaudTheLukark/CreateYourFrisk)/[Create Your Kris](https://github.com/RhenaudTheLukark/CreateYourKris)

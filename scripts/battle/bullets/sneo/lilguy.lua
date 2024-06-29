@@ -119,7 +119,7 @@ function LilGuy:destroy(shot)
     self.physics = {direction = 0, speed = 0, gravity = 0, friction = 0}
     Assets.playSound("bomb", 0.7, 1.1 + Utils.random(0.2))
 	
-	local death = breakeffect(self.sprite:getTexture(), 0, 0, function() self:remove() end)
+	local death = AfterImageCut(self.sprite:getTexture(), function() self:remove() end)
 	death:setScale(self.sprite:getScale())
     death:setColor(self.color)
 	self:addChild(death)

@@ -30,13 +30,12 @@ function WeirdEndPipisBullet:destroy()
 	    speed = 0,
 	}
     self.collider.collidable = false
-	
-	local death = breakeffect(self.sprite:getTexture(), 0, 0, function() self:remove() end)
+    
+	local death = AfterImageCut(self.sprite:getTexture(), function() self:remove() end)
 	death:setScale(self.sprite:getScale())
     death:setColor(self.color)
 	self:addChild(death)
 	self.sprite.alpha=0
-    self.sprite:setOrigin(0.5, 0.5)
 end
 
 return WeirdEndPipisBullet
