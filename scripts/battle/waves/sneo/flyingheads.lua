@@ -164,7 +164,7 @@ function FlyingHeads:update()
                     guy[guyi].timer:after(44/30, function() guy[guyi]:switchToAlternatePhysics() end)
                     guy[guyi].timer:after(40/30, function() guy[guyi]:fire() end)
                     guy[guyi].timer:after(32/30, function() guy[guyi]:resetAnimationIndex() end)
-                    guy[guyi].physics.gravity = 0.8 - 1.6 * guyi
+                    guy[guyi].physics.gravity = -(0.8 - 1.6 * guyi)
                     guy[guyi].physics.gravity_direction = math.rad(90)
                     guy[guyi].collider.collidable = true
                 end
