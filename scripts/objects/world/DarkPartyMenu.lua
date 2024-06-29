@@ -38,8 +38,9 @@ function DarkPartyMenu:init(debug)
 		{"clover", "whale", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 	}
         
-        local noel = Game.world:getCharacter("noel")
-        if noel then
+        local noel = Game:getFlag("noel_party")
+        local noel2 = Game:getFlag("noel_partyroom")
+        if noel or noel2 then
             table.insert(self.list[1], 11, "noel")
         else
         end
@@ -50,7 +51,11 @@ function DarkPartyMenu:init(debug)
 		for i2,entry in ipairs(list) do
 			if not debug then
 				if not self:hasValue(self.listreference, entry) then
-					self.list[i][i2] = "unknown"
+                                        if self.list[i][i2] == "noel" then
+                                            self.list[i][i2] = "noel"
+                                        else
+					    self.list[i][i2] = "unknown"
+                                        end
 				end
 			end
 		end
@@ -114,37 +119,50 @@ function DarkPartyMenu:onKeyPressed(key)
 				Game.party[self.selected_party] = nil
 			end
 		end
-		if Input.pressed("v") then
-			-- Step 1: Set the list
-			local temp = {}
-			for k,v in pairs(Game:getFlag("party", {"YOU", "susie"})) do
-				temp[k] = v
-			end
-		
-			-- Step 2: Remove every party member
-			Game.party = {}
-			
-			-- Step 3: Set all available slots to random
-			local val = math.min(#self.listreference, Game:getFlag("party_max"))
-			local indexes = Utils.pickMultiple(temp, val)
-			for i=1, #indexes do
-				local id = indexes[i]
-				Game:addPartyMember(id)
-			end
-			
-			-- Step 4: Set all followers
-            for i, follower in ipairs(Game.world.followers) do
-                follower:remove()
+if Input.pressed("v") then
+    -- Step 1: Set the list
+    local temp = {}
+    for k,v in pairs(Game:getFlag("party", {"YOU", "susie"})) do
+        temp[k] = v
+    end
+    
+    -- Step 2: Remove every party member
+    Game.party = {}
+    
+    -- Step 3: Set all available slots to random
+    local val = math.min(#self.listreference, Game:getFlag("party_max"))
+    local indexes = Utils.pickMultiple(temp, val)
+    
+    -- Ensure Noel is not in slot 1
+    local first_slot = indexes[1]
+    if first_slot == "noel" then
+        -- Swap Noel with a non-Noel character if necessary
+        for i = 2, #indexes do
+            if indexes[i] ~= "noel" then
+                indexes[1], indexes[i] = indexes[i], indexes[1]
+                break
             end
-			Game.world.player:setActor(Game.party[1].actor)
-			for k,v in pairs(Game.party) do
-				if k > 1 then
-					Game.world:spawnFollower(v:getActor())
-				end
-			end
-			Game.world.player:alignFollowers()
-			Game.world:attachFollowersImmediate()
-		end
+        end
+    end
+
+    for i=1, #indexes do
+        local id = indexes[i]
+        Game:addPartyMember(id)
+    end
+    
+    -- Step 4: Set all followers
+    for i, follower in ipairs(Game.world.followers) do
+        follower:remove()
+    end
+    Game.world.player:setActor(Game.party[1].actor)
+    for k,v in pairs(Game.party) do
+        if k > 1 then
+            Game.world:spawnFollower(v:getActor())
+        end
+    end
+    Game.world.player:alignFollowers()
+    Game.world:attachFollowersImmediate()
+end
 	elseif self.state == "SELECT" then
         if Input.pressed("confirm") then
             if self.list[self.selected_y][self.selected_x] ~= "unknown" then
@@ -152,6 +170,7 @@ function DarkPartyMenu:onKeyPressed(key)
                 if self.list[self.selected_y][self.selected_x] == "noel" and self.selected_party == 1 then
                     self.noel_no:stop()
                     self.noel_no:play()
+                    self:shake(5, 1)
                     return
                 end
 
@@ -232,11 +251,19 @@ function DarkPartyMenu:update()
         for index,party in pairs(self.list[i]) do
             if party ~= "unknown" then
                 Game:setFlag(party.."_party", false)
+                if party == "noel" then
+                    Game:setFlag("noel_at", "devhotel/devdiner/partyroom")
+                    Game:setFlag("noel_partyroom", true)
+                end
             end
         end
     end
     for index,party in pairs(Game.party) do
         Game:setFlag(party.id.."_party", true)
+        if party.id == "noel" then
+            Game:setFlag("noel_at", "null")
+            Game:setFlag("noel_partyroom", false)
+        end
     end
     super.update(self)
 end

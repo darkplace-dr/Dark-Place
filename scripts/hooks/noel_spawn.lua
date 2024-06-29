@@ -31,7 +31,17 @@ function Mod:LoadNoel(noelsave)
     local savedData = noelsave
     local map = Game.world.map.id
 
-    if savedData.Map == map and savedData.SaveID ~= Game:getFlag("noel_SaveID") then
+    local inparty = Game:getFlag("noel_party")
+
+        if savedData.Map == "devhotel/devdiner/partyroom" or Game:getFlag("noel_at") == "devhotel/devdiner/partyroom" then
+            if inparty then
+                Game:setFlag("noel_partyroom", false)
+            else
+                Game:setFlag("noel_partyroom", true)
+            end
+        end
+    if savedData.Map == map and savedData.SaveID ~= Game:getFlag("noel_SaveID") and inparty then
+
         local w1, w2 = 514, 98
         if Game:getFlag("ceroba_party") then
             w1, w2 = 404, 98

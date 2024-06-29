@@ -176,14 +176,14 @@ function character:save()
 
         local left_behind = Game:getFlag("noel_at")
 
-        if left_behind and left_behind ~= "null" then
+        if left_behind ~= "null" then
             local maptable ={
                 SaveID = num,
                 Map = left_behind
             }
-            Game:setFlag("noel_at", "null")
             Game:setFlag("remember_noel", "true")
             Mod:saveGameN(maptable)
+            Game:setFlag("noel_at", "null")
         elseif Game:hasPartyMember("noel") then
             local maptable ={
                 SaveID = num,

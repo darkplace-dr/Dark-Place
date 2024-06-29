@@ -451,7 +451,7 @@ return {
                     local index = love.window.showMessageBox("Noel", "* Or maybe...", {"   ", escapebutton = 3}, "info")
                     local index = love.window.showMessageBox("Noel", "* You're just a-", {"   ", escapebutton = 3}, "info")
                     cutscene:text("* [speed:0.2]Hirty Dacker", "hey_jeku") -- note: I am not talking to jeku thats just the sprite for when im in the shop
-                    
+                    error("* Game crashed because it became too cringe.\n\n* L")
                 else
                 end
 
