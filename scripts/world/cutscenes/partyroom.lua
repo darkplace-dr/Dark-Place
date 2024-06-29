@@ -510,4 +510,11 @@ return {
         end
         cutscene:hideNametag()
     end,
+    noel = function(cutscene, event)
+        cutscene:showNametag("Noel")
+        cutscene:text("* Don't talk to me.", "neutral", "noel")
+        cutscene:text("* I don't have proper dialouge yet.\nWIP", "bruh", "noel")
+        cutscene:hideNametag()
+    end,
+
 }
