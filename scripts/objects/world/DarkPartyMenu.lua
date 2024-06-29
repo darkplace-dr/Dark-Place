@@ -10,6 +10,7 @@ function DarkPartyMenu:init(debug)
     self.ui_move = Assets.newSound("ui_move")
     self.ui_select = Assets.newSound("ui_select")
     self.ui_cant_select = Assets.newSound("ui_cant_select")
+    self.noel_no = Assets.newSound("shock")
     self.ui_cancel_small = Assets.newSound("ui_cancel_small")
 
     self.heart_sprite = Assets.getTexture("player/heart")
@@ -40,6 +41,7 @@ function DarkPartyMenu:init(debug)
         local noel = Game.world:getCharacter("noel")
         if noel then
             table.insert(self.list[1], 11, "noel")
+        else
         end
 	
 	self.listreference = Game:getFlag("party", {"YOU", "susie"})
@@ -144,44 +146,50 @@ function DarkPartyMenu:onKeyPressed(key)
 			Game.world:attachFollowersImmediate()
 		end
 	elseif self.state == "SELECT" then
-		if Input.pressed("confirm") then
-			if self.list[self.selected_y][self.selected_x] ~= "unknown" then
-				for index,party in pairs(Game.party) do
-					if party.id == self.list[self.selected_y][self.selected_x] then
+        if Input.pressed("confirm") then
+            if self.list[self.selected_y][self.selected_x] ~= "unknown" then
+                -- Check if selected character is Noel and if trying to place in slot 1
+                if self.list[self.selected_y][self.selected_x] == "noel" and self.selected_party == 1 then
+                    self.noel_no:stop()
+                    self.noel_no:play()
+                    return
+                end
+
+                -- Check if the selected character is already in the party
+                for index, party in pairs(Game.party) do
+                    if party.id == self.list[self.selected_y][self.selected_x] then
                         self.ui_cant_select:stop()
                         self.ui_cant_select:play()
                         return
                     end
-				end
-				Game.party[self.selected_party] = Game:getPartyMember(self.list[self.selected_y][self.selected_x])
-				Game:setFlag(self.list[self.selected_y][self.selected_x].."_party", true)
-				--[[for k,v in pairs(Game.world.healthbar.action_boxes) do
-					v:remove()
-				end]]
-				if self.selected_party > 1 then
-					if Game.world.followers[self.selected_party-1] then
-						Game.world.followers[self.selected_party-1]:setActor(Game.party[self.selected_party]:getActor())
-					else
-						local follower = Game.world:spawnFollower(self.list[self.selected_y][self.selected_x])
-						follower:setActor(Game.party[self.selected_party]:getActor())
-						follower:setFacing("down")
-					end
-				else
-					Game.world.player:setActor(Game.party[1]:getActor())
-				end
+                end
+
+                -- Proceed to select the character
+                Game.party[self.selected_party] = Game:getPartyMember(self.list[self.selected_y][self.selected_x])
+                Game:setFlag(self.list[self.selected_y][self.selected_x] .. "_party", true)
+                if self.selected_party > 1 then
+                    if Game.world.followers[self.selected_party - 1] then
+                        Game.world.followers[self.selected_party - 1]:setActor(Game.party[self.selected_party]:getActor())
+                    else
+                        local follower = Game.world:spawnFollower(self.list[self.selected_y][self.selected_x])
+                        follower:setActor(Game.party[self.selected_party]:getActor())
+                        follower:setFacing("down")
+                    end
+                else
+                    Game.world.player:setActor(Game.party[1]:getActor())
+                end
                 self.ui_select:stop()
                 self.ui_select:play()
-				--Game.world.menu:updateSelectedBoxes()
-				self.state = "MAIN"
-				self.selected_x = 1
-				self.selected_y = 1
-			else
+                self.state = "MAIN"
+                self.selected_x = 1
+                self.selected_y = 1
+            else
                 self.ui_cant_select:stop()
                 self.ui_cant_select:play()
-			end
-		end
+            end
+        end
 		if Input.pressed("right") then
-			if self.selected_x < 10 then
+			if self.selected_x < #self.list[self.selected_y] then
                 self.ui_move:stop()
                 self.ui_move:play()
 				self.selected_x = self.selected_x + 1
@@ -194,13 +202,14 @@ function DarkPartyMenu:onKeyPressed(key)
 				self.selected_x = self.selected_x - 1
 			end
 		end
-		if Input.pressed("down") then
-			if self.selected_y < 3 then
-                self.ui_move:stop()
-                self.ui_move:play()
-				self.selected_y = self.selected_y + 1
-			end
-		end
+                if Input.pressed("down") then
+                    if self.selected_y < #self.list then
+                        self.ui_move:stop()
+                        self.ui_move:play()
+                        self.selected_y = self.selected_y + 1
+                        self.selected_x = math.min(self.selected_x, #self.list[self.selected_y])
+                    end
+                end
 		if Input.pressed("up") then
 			if self.selected_y > 1 then
                 self.ui_move:stop()

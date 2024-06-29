@@ -113,6 +113,21 @@ function character:init()
 
     -- Message shown on gameover (optional)
     self.gameover_message = nil
+
+    local save = Mod:loadGameN()
+    if save then
+        self:setWeapon(save.Equipped.weapon.id)
+        if save.Equipped.armor[1] then
+            self:setArmor(1, save.Equipped.armor[1][1])
+        end
+        if save.Equipped.armor[2] then
+            self:setArmor(2, save.Equipped.armor[2][1])
+        end
+        self.health = save.Health
+        self.lw_health = save.Health
+    end
+
+
 end
 
 function character:getGameOverMessage(main)
@@ -122,6 +137,8 @@ function character:getGameOverMessage(main)
         save.Player_Name.."...?\n[wait:5]Is it over?"
     }
 end
+
+--function character:n()
 
 function character:save()
 
@@ -210,8 +227,10 @@ function character:load(data)
         if data.spells then
             self:loadSpells(save.Spells)
         end
-        local noel2 = Game:getPartyMember("noel")
-        noel2:loadEquipment(save.Equipped)
+
+        --local noel2 = Game:getPartyMember("noel")
+        self:loadEquipment(save.Equipped)
+
         self.level = save.Level or data.level or self.level
         self.lw_lv = save.Level or data.lw_lv or self.lw_lv
         self.lw_exp = data.lw_exp or self.lw_exp

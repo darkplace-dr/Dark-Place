@@ -23,14 +23,13 @@ function actor:init()
 
     self.can_blush = false
 
-    --reverse
-    --basic convo reverb
-
-    --these have nothing to do with kristal btw.
-
     self.animations = {
         ["stop"]         = {"stop/stop", 1/12, false},
+        ["battle/a"]         = {"battle/a", 0.2, true},
         ["battle/idle"]         = {"battle/idle", 0.2, true},
+        ["battle/boo_you_suck"]         = {"battle/idle", 0.2, true},
+        ["battle/down"]         = {"battle/down", 0.2, false},
+        ["you_gonna_hit_me"]         = {"battle/you_gonna_hit_me", 0.2, true},
         ["battle/attack_ready"] = {"battle/attack_ready", 1/60, false},
         ["battle/spell_ready"]  = {"battle/attack_ready", 1/8, false},
         ["battle/attack"]         = {"battle/attack", 1/35, false},
@@ -44,8 +43,12 @@ function actor:init()
     }
 
     self.offsets = {
+        ["battle/a"] = {-28, -18},
         ["stop/stop"] = {-28, -18},
         ["battle/idle"] = {-28, -18},
+        ["battle/down"] = {-28, -18},
+        ["battle/you_gonna_hit_me"] = {-28, -18},
+        ["battle/boo_you_suck"] = {-28, -18},
         ["battle/attack"] = {-28, -18},
         ["battle/attack_ready"] = {-28, -18},
 

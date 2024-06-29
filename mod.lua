@@ -302,6 +302,41 @@ function Mod:init()
     ---@field thorns_sound                 string|nil  
     
     Utils.hook(PartyBattler, "hurt", function(orig, self, amount, exact, color, options)
+
+        local function noel_damage(amount) -- DO NOT QUESTION MY CHOICES
+            local meth = love.math.random(1, 3)
+            if meth == 1 then
+                Assets.playSound("awkward")
+                Assets.playSound("voice/noel-#")
+                self:removeHealth(0)
+                self:statusMessage("msg", "null", {0.9,0.9,0.9}, true)
+            else
+                Assets.playSound("voice/noel-#")
+                self:removeHealth(amount*10)
+                self:statusMessage("damage", amount*10, color, true)
+            end
+            if self.noel_hit_counter and self.noel_hit_counter > 5 then
+                self:setAnimation("stop")
+                Assets.playSound("voice/stop_getting_hit")
+                Assets.playSound("grab")
+                Assets.playSound("alert")
+                Assets.playSound("impact")
+                Assets.playSound("jump")
+                Assets.playSound("locker")
+                Assets.playSound("petrify")
+                Assets.playSound("ominous")
+                Assets.playSound("rudebuster_hit")
+                Assets.playSound("rudebuster_swing")
+                love.window.setTitle("STOP GETTING HIT")
+                self.noel_hit_counter = -1
+            elseif self.noel_hit_counter then
+                self.noel_hit_counter = self.noel_hit_counter + 1
+            else 
+                self.noel_hit_counter = 1
+            end
+        end
+
+
         local dodge_item
         local dodge_chance = 0
         local thorns_item
@@ -353,8 +388,11 @@ function Mod:init()
                     local element = 0
                     amount = math.ceil((amount * self:getElementReduction(element)))
                 end
-
-                self:removeHealth(amount)
+                if self.chara.id == "noel" then
+                    noel_damage(amount)
+                else
+                    self:removeHealth(amount)
+                end
             else
                 -- We're targeting everyone.
                 if not exact then
@@ -366,15 +404,22 @@ function Mod:init()
                     if self.defending then
                         amount = math.ceil((3 * amount) / 4) -- Slightly different than the above
                     end
-
-                    self:removeHealthBroken(amount) -- Use a separate function for cleanliness
+                    if self.chara.id == "noel" then
+                        noel_damage(amount)
+                    else
+                        self:removeHealthBroken(amount) -- Use a separate function for cleanliness
+                    end
                 end
             end
 
             if (self.chara:getHealth() <= 0) then
                 self:statusMessage("msg", "down", color, true)
             else
-                self:statusMessage("damage", amount, color, true)
+                if self.chara.id == "noel" then
+                    
+                else
+                    self:statusMessage("damage", amount, color, true)
+                end
             end
 
             self.hurt_timer = 0
@@ -673,24 +718,31 @@ function Mod:initializeImportantFlags(new_file)
         likely_old_save = true
         table.insert(old_save_issues, "Save is probably from before Ms. Pauling was added.")
 
-        addOpinionsToParty("YOU", { pauling = 50 })
-        addOpinionsToParty("kris", { pauling = 50 })
-        addOpinionsToParty("susie", { pauling = 50 })
-        addOpinionsToParty("noelle", { pauling = 50 })
-        addOpinionsToParty("dess", { pauling = 50 })
-        addOpinionsToParty("brenda", { pauling = 50 })
-        addOpinionsToParty("dumbie", { pauling = 50 })
-        addOpinionsToParty("ostarwalker", { pauling = 50 })
-        addOpinionsToParty("berdly", { pauling = 50 })
-        addOpinionsToParty("bor", { pauling = 50 })
-        addOpinionsToParty("robo_susie", { pauling = 50 })
-        addOpinionsToParty("noyno", { pauling = 50 })
-        addOpinionsToParty("iphone", { pauling = 50 })
-        addOpinionsToParty("frisk2", { pauling = 50 })
-        addOpinionsToParty("alseri", { pauling = 50 })
-        addOpinionsToParty("jamm", { pauling = 50 })
-        addOpinionsToParty("mario", { pauling = 50 })
-        Game:getPartyMember("pauling").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brenda = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40 }
+        local party_members = {
+            "YOU", "kris", "susie", "noelle", "dess", "brenda",
+            "dumbie", "ostarwalker", "berdly", "bor", "robo_susie",
+            "noyno", "iphone", "frisk2", "alseri", "jamm", "mario"
+        }
+
+        local default_opinion = {
+            pauling = 50
+        }
+
+        for _, member in ipairs(party_members) do
+            addOpinionsToParty(member, default_opinion)
+        end
+
+        -- Adjusting specific members example
+
+        --addOpinionsToParty("frisk2", { pauling = 4 })
+        --addOpinionsToParty("jamm", { pauling = 77 })
+
+        Game:getPartyMember("pauling").opinions = {
+            YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40,
+            brenda = 40, dumbie = 40, ostarwalker = 40, berdly = 40,
+            bor = 40, robo_susie = 40, noyno = 40, iphone = 40,
+            frisk2 = 40, alseri = 40, jamm = 40, mario = 40
+        }
     end
 
     if new_file or whale.opinions == nil or table.getn(whale.opinions) == 0 then
