@@ -1,4 +1,4 @@
-local actor, super = Class(Actor, "cerobaenemy_p2_hurt")
+local actor, super = Class(Actor, "cerobaboss_p2")
 
 function actor:init()
     super.init(self)
@@ -35,7 +35,7 @@ function actor:init()
 
     self:addLightBattlerPart("body", {
         ["create_sprite"] = function()
-            local sprite = Sprite(self.path.."/lightbattle/body_hurt", 55, 112)
+            local sprite = Sprite(self.path.."/lightbattle/body", 55, 112)
             sprite:setOrigin(0.5, 1)
             sprite.layer = 480
             return sprite
@@ -52,7 +52,7 @@ function actor:init()
     
     self:addLightBattlerPart("head", {
         ["create_sprite"] = function()
-            local sprite = Sprite(self.path.."/lightbattle/head_hurt", 57.5, 55)
+            local sprite = Sprite(self.path.."/lightbattle/head", 57.5, 55)
             sprite:setOrigin(0.5, 1)
             sprite.layer = 500
             return sprite
@@ -69,7 +69,7 @@ function actor:init()
 
     self:addLightBattlerPart("ponytail", {
         ["create_sprite"] = function()
-            local sprite = Sprite(self.path.."/lightbattle/ponytail_hurt", 44.5, 64)
+            local sprite = Sprite(self.path.."/lightbattle/ponytail", 45, 62)
             sprite:setOrigin(0.5, 1)
             sprite.layer = 460
             return sprite
@@ -80,13 +80,13 @@ function actor:init()
         ["update"] = function(part)
             part.timer = part.timer + DTMULT
 
-            part.sprite.y = (-math.sin(part.timer/20) * 3) + 64
+            part.sprite.y = (-math.sin(part.timer/20) * 3) + 62
         end
     })
 
     self:addLightBattlerPart("hand_right", {
         ["create_sprite"] = function()
-            local sprite = Sprite(self.path.."/lightbattle/hand_right_hurt", 71.5, 79)
+            local sprite = Sprite(self.path.."/lightbattle/hand_right", 71, 79)
             sprite:setOrigin(0.5, 1)
             sprite.layer = 490
             return sprite
@@ -103,7 +103,7 @@ function actor:init()
 
     self:addLightBattlerPart("hand_left", {
         ["create_sprite"] = function()
-            local sprite = Sprite(self.path.."/lightbattle/hand_left_hurt", 33.5, 78)
+            local sprite = Sprite(self.path.."/lightbattle/hand_left", 33.5, 80)
             sprite:setOrigin(0.5, 1)
             sprite.layer = 470
             return sprite
@@ -114,13 +114,13 @@ function actor:init()
         ["update"] = function(part)
             part.timer = part.timer + DTMULT
 
-            part.sprite.y = (-math.sin(part.timer/20) * 3) + 78
+            part.sprite.y = (-math.sin(part.timer/20) * 3) + 80
         end
     })
 
     self:addLightBattlerPart("staff", {
         ["create_sprite"] = function()
-            local sprite = Sprite(self.path.."/lightbattle/staff_red_hurt", 48, 109)
+            local sprite = Sprite(self.path.."/lightbattle/staff_red", 48, 112)
             sprite:setOrigin(0.5, 1)
             sprite.layer = 450
             return sprite
@@ -131,7 +131,7 @@ function actor:init()
         ["update"] = function(part)
             part.timer = part.timer + DTMULT
 
-            part.sprite.y = (-math.sin(part.timer/20) * 3) + 109
+            part.sprite.y = (-math.sin(part.timer/20) * 3) + 112
         end
     })
 

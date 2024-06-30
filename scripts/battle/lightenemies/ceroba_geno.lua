@@ -4,7 +4,7 @@ function Ceroba:init()
     super:init(self)
 
     self.name = "Ceroba"
-    self:setActor("cerobaenemy")
+    self:setActor("cerobaboss")
 
     self.max_health = 1000
     self.health = 1000
@@ -15,19 +15,15 @@ function Ceroba:init()
 
     self.spare_percentage = 0
     self.phase = 1
+    self.attack_cycle = 0
     self.low_health = false
     
     self.dialogue_bubble = "ut_wide"
     self.dialogue_offset = {-20, -30}
 
     self.waves = {
-        "basic",
-        "aiming"
+        "steamworks/ceroba_opener"
     }
-
-    --[[self.dialogue = {
-        "[speed:0.5]....."
-    }]]
 
     self.check = "ATK 13 DEF 21\n* Nothing left."
 
@@ -55,6 +51,10 @@ function Ceroba:init()
 end
 
 function Ceroba:onDefeat(damage, battler)
+    self.hurt_timer = -1
+    if Game.battle.battle_ui.attacking then
+        Game.battle.battle_ui:endAttack()
+    end
     Game.battle:setState("NONE")
     Game.battle:startCutscene("ceroba_geno", "death")
 end
@@ -80,15 +80,50 @@ function Ceroba:onHurtEnd()
     end
     if self.low_health == false and self.health < 250 then
         self.low_health = true
-        self:setActor("cerobaenemy_p2_hurt")
+        self:setActor("cerobaboss_p2_hurt")
     end
 end
 
---[[function Ceroba:getNextWaves()
-    if self.progress >= 11 then
-        return nil
+function Ceroba:getNextWaves()
+    if self.attack_cycle == 0 then
+        self.attack_cycle = 1
+        return {"steamworks/ceroba_opener"} -- Opening Attack
+    elseif self.health <= 500 and self.phase == 1 then
+        if self.attack_cycle == 9 then
+            self.attack_cycle = 1
+        else
+            self.attack_cycle = self.attack_cycle + 1
+        end
+        return {"steamworks/ceroba_opener"} -- Phase Switch Attack
+    elseif self.attack_cycle == 1 then
+        self.attack_cycle = 2
+        return {"steamworks/ceroba_opener"} -- Attack 1
+    elseif self.attack_cycle == 2 then
+        self.attack_cycle = 3
+        return {"steamworks/ceroba_opener"} -- Attack 2
+    elseif self.attack_cycle == 3 then
+        self.attack_cycle = 4
+        return {"steamworks/ceroba_opener"} -- Attack 3
+    elseif self.attack_cycle == 4 then
+        self.attack_cycle = 5
+        return {"steamworks/ceroba_opener"} -- Attack 4
+    elseif self.attack_cycle == 5 then
+        self.attack_cycle = 6
+        return {"steamworks/ceroba_opener"} -- Attack 5
+    elseif self.attack_cycle == 6 then
+        self.attack_cycle = 7
+        return {"steamworks/ceroba_opener"} -- Attack 6
+    elseif self.attack_cycle == 7 then
+        self.attack_cycle = 8
+        return {"steamworks/ceroba_opener"} -- Attack 7
+    elseif self.attack_cycle == 8 then
+        self.attack_cycle = 9
+        return {"steamworks/ceroba_opener"} -- Attack 8
+    elseif self.attack_cycle == 9 then
+        self.attack_cycle = 1
+        return {"steamworks/ceroba_opener"} -- Attack 9
     end
     return super.getNextWaves(self)
-end]]
+end
 
 return Ceroba
