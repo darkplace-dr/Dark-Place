@@ -9,7 +9,8 @@ return {
             if savedData.Map == "room1" then
                 Game:addPartyMember("noel")
                 Game:setFlag("noel_party", true)
-                Mod:unlockPartyMember("noel")
+                local num = savedData.SaveID
+                Game:setFlag("noel_SaveID", num)
             end
         end
 
@@ -282,8 +283,6 @@ return {
         if savedData then
             if savedData.Map == "room1" then
                 you_sprite:setSprite("noel")
-                local num = savedData.SaveID
-                Game:setFlag("noel_SaveID", num)
                 Assets.playSound("mysterygo", 1, 1)
                 you_sprite:shake(6)
                 cutscene:wait(0.1)
