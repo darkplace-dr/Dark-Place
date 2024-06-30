@@ -59,8 +59,8 @@ function item:init()
 end
 
 function item:canEquip(character, slot_type, slot_index)
-    if self.can_equip[character.id] then
-        return self.can_equip[character.id] 
+    if character.id == "noel" then
+        return false
     else
         return true
     end

@@ -2,21 +2,30 @@ local greyarea, super = Class(Map)
 
 
 function greyarea:onEnter()
+
     Game.stage:setWeather("rain", false, true)
 
     local savedData = Mod:loadGameN()
     if savedData then
     else
-            Mod:unlockPartyMember("noel")
-            if Game:hasPartyMember("noel") then
-            else
-                Game.world:spawnNPC("noel", 2820, 2180, {cutscene = "noel.meet", sprite = "brella"})
-            end
+        Game.world:spawnNPC("noel", 2820, 2180, {cutscene = "noel.meet", sprite = "brella"})
     end
 
 end
 
 function greyarea:update()
+
+    if Game.world.map.id == "greyarea" then
+        if Game.world.player.walk_speed >= 60 then
+    	    Game.world:InstantMapTransition("room1", "spawn")
+        end
+    end
+
+    if Input.pressed("menu") and not Game.world.cutscene then
+        local eye = Game:getFlag("greyarea_exit_to")
+        Game.world:mapTransition(eye[1], eye[2], eye[3])
+    end
+
     if Game.world.player.x <= 360 then
         Game.world.player.x = Game.world.player.x + 5060
         for _,follower in ipairs(Game.world.followers) do

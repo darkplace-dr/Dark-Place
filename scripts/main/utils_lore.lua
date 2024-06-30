@@ -65,7 +65,7 @@ function Mod:funnytitle()
         "Kris Tea",
         "* REDDIT GOLD POG!!",
         "LOOK ITS BrACON and MEGALORE!!!",
-        "...",
+        "GREYAREA",
         "Kristal",
         "Spamton Sweepstakes",
         "Includes Darkness!",

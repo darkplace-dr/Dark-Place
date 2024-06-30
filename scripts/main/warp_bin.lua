@@ -96,13 +96,29 @@ Mod.warp_bin_codes = {
     },
     ["FREEWLLY"] = {
         result = function(cutscene)
-			if not Utils.containsValue(Game:getFlag("party"), "whale") then
-				Mod:unlockPartyMember("whale")
-				cutscene:text("* You unlocked the fucking whale!")
-			else
-				cutscene:text("* But you already had the whale.")
-			end
-		end
+	    if not Utils.containsValue(Game:getFlag("party"), "whale") then
+	        Mod:unlockPartyMember("whale")
+	        cutscene:text("* You unlocked the fucking whale!")
+	    else
+		cutscene:text("* But you already had the whale.")
+	    end
+	end,
+    },
+    ["GRAYAREA"] = {
+        result = function(cutscene)
+            Game:setFlag("greyarea_exit_to", {Game.world.map.id, Game.world.player.x, Game.world.player.y})
+            cutscene:text("[instant]* OPEN[stopinstant] [wait:10]\n[instant]YOUR[stopinstant] [wait:10]\n[instant]EYES[stopinstant] [wait:0.1]\n", nil, nil, {auto = true, skip = false})
+            Game.world:InstantMapTransition("greyarea", "entry")
+            --return false
+        end,
+    },
+    ["GREYAREA"] = {
+        result = function(cutscene)
+            Game:setFlag("greyarea_exit_to", {Game.world.map.id, Game.world.player.x, Game.world.player.y})
+            cutscene:text("[instant]* OPEN[stopinstant] [wait:10]\n[instant]YOUR[stopinstant] [wait:10]\n[instant]EYES[stopinstant] [wait:0.1]\n", nil, nil, {auto = true, skip = false})
+            Game.world:InstantMapTransition("greyarea", "entry")
+            --return false
+        end,
     }
 }
 

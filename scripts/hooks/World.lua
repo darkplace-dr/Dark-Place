@@ -239,4 +239,21 @@ function World:mapTransition(...)
     end)
 end
 
+function World:InstantMapTransition(...)
+    local args = {...}
+    local map = args[1]
+    if type(map) == "string" then
+        local map = Registry.createMap(map)
+        if not map.keep_music then
+            self:transitionMusic(Kristal.callEvent("onMapMusic", self.map, self.map.music) or map.music, true)
+        end
+        local dark_transition = map.light ~= Game:isLight()
+        local map_border = map:getBorder(dark_transition)
+        if map_border then
+            Game:setBorder(Kristal.callEvent("onMapBorder", self.map, map_border) or map_border, 1)
+        end
+    end
+    self:loadMap(Utils.unpack(args))
+end
+
 return World

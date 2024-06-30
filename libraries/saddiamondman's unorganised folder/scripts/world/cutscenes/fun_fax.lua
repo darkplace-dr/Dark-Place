@@ -113,7 +113,7 @@ return {
             {"* I can see your FUN value...", "* I'm not allowed to tell you though..."},
             {"* Don't forget...", "* I'm with you in the dark..."},
             {"* You need to go fast...", "* As fast as you can..."},
-            {"* It need to be in an infinity room...", "* There stands a goner who could aid you on your quest..."},
+            {"* A room in between...", "* It may go on forever..."},
             {"* The DEVS don't know they aren't the real ones...", "* Never tell them this information..."},
             {"* DeltaDreams died for this...", "* Not really..."},
             {"* I can see things far away...", "* I can't see you..."},
@@ -152,7 +152,8 @@ return {
             {"* Keep your friends close to you...", "* And your enemies even closer..."},
             {"* What's canon...", "* Well it's a weapon..."},
             {"* Don't forget to take a break...", "* Lack of sleep is bad, y'know..."},
-            {"* It's raining somewhere else...", "* So take out your umbrella..."}
+            {"* It's raining somewhere else...", "* So take out your umbrella..."},
+            {"* [color:grey]GREY[color:reset]...", "* [color:grey]AREA[color:reset]..."}
         }
 
         cutscene:text("[speed:0.5]" .. Utils.pick(dialogue_pairs)[1])

@@ -41,6 +41,9 @@ function DarkPartyMenu:init(debug)
         local noel = Game:getFlag("noel_party")
         local noel2 = Game:getFlag("noel_partyroom")
         if noel or noel2 then
+	    if not Utils.containsValue(Game:getFlag("party"), "noel") then
+	        Mod:unlockPartyMember("noel")
+	    end
             table.insert(self.list[1], 11, "noel")
         else
         end
@@ -263,6 +266,10 @@ function DarkPartyMenu:update()
         if party.id == "noel" then
             Game:setFlag("noel_at", "null")
             Game:setFlag("noel_partyroom", false)
+            local savedData = Mod:loadGameN()
+            if savedData then
+                Game:setFlag("noel_saveID", savedData.SaveID)
+            end
         end
     end
     super.update(self)
