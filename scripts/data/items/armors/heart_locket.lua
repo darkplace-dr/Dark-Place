@@ -39,6 +39,7 @@ function item:init()
 
     self.reactions = {
         susie = "I don't want that!",
+        kris = "?",
         noelle = "Wait is that...?",
         dess = "Wanna eat flowers?",
         berdly = {
@@ -48,7 +49,8 @@ function item:init()
         },
         mario = "Bleh!",
         brenda = "Oh god why is it beating.",
-        ceroba = "Reminds me of Kanako..."
+        ceroba = "Reminds me of Kanako...",
+        noel = "oh... you found it...",
     }
 
     self.light_item = "ut_armors/heart_locket"

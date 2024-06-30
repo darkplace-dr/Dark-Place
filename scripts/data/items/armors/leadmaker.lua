@@ -54,7 +54,8 @@ function item:init()
         noelle = "What? How do I use it?",
 		dess = "I hate work",
         brenda = "How the hell does this work?",
-		jamm = "I could use some lead, but if I have to sell it..."
+		jamm = "I could use some lead, but if I have to sell it...",
+        noel = "(I will treat this like a candy dispenser.)",
     }
 end
 

@@ -17,7 +17,8 @@ function greyarea:update()
 
     if Game.world.map.id == "greyarea" then
         if Game.world.player.walk_speed >= 60 then
-    	    Game.world:InstantMapTransition("room1", "spawn")
+            local eye = Game:getFlag("greyarea_exit_to")
+            Game.world:mapTransition(eye[1], eye[2], eye[3])
         end
     end
 

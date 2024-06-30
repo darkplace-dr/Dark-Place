@@ -54,7 +54,8 @@ function item:init()
         noelle = "Sure?????",
 		dess = "These are for femboys",
         brenda = "D-do I look cute?",
-		jamm = "For (i = 0, i < 2, i++), equip socks."
+		jamm = "For (i = 0, i < 2, i++), equip socks.",
+        noel = "*wears like gloves* Same stats...",
     }
 end
 

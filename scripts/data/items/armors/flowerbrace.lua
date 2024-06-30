@@ -53,7 +53,7 @@ function item:init()
 
     -- Character reactions
     self.reactions = {
-        noelle = "(Dead wife? CRINGE.)",
+        noel = "(Dead wife? CRINGE.)",
         susie = "Looks dumb, feels dumb. I don't want it.",
         ralsei = "Look at all the colors!",
         noelle = "(It doesn't fit...?)",

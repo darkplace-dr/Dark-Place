@@ -39,7 +39,9 @@ function item:init()
     self.bonus_icon = "ui/menu/icon/magic"
 
     -- Equippable characters (default true for armors, false for weapons)
-    self.can_equip = {}
+    self.can_equip = {
+        noel = false,
+    }
 
     -- Character reactions
     self.reactions = {
@@ -47,7 +49,8 @@ function item:init()
 		mario = {
 				mario = "But I can just use a fire flower.",
 				jamm = "Eh."
-			}
+			},
+        noel = "A heated blanket would do a better job.",
     }
 end
 

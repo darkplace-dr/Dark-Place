@@ -42,7 +42,9 @@ function item:init()
     self.bonus_icon = "ui/menu/icon/magic"
 
     -- Equippable characters (default true for armors, false for weapons)
-    self.can_equip = {}
+    self.can_equip = {
+        noel = false,
+    }
 
     -- Character reactions
     self.reactions = {
@@ -54,7 +56,8 @@ function item:init()
         },
         brenda = "So I can just say \"no\" to damage sometimes with this?",
 		jamm = "Oof! It's heavy...",
-		mario = "Mario feels like a gladiator again."
+		mario = "Mario feels like a gladiator again.",
+        noel = "(My quirk does a better job.)",
     }
 
     self.dodge_chance = 0.1

@@ -28,7 +28,7 @@ function actor:init()
         ["battle/a"]         = {"battle/a", 0.2, true},
         ["battle/idle"]         = {"battle/idle", 0.2, true},
         ["battle/boo_you_suck"]         = {"battle/idle", 0.2, true},
-        ["battle/down"]         = {"battle/down", 0.2, false},
+        ["battle/defeat"]         = {"battle/down", 0.2, false},
         ["you_gonna_hit_me"]         = {"battle/you_gonna_hit_me", 0.2, true},
         ["battle/attack_ready"] = {"battle/attack_ready", 1/60, false},
         ["battle/spell_ready"]  = {"battle/attack_ready", 1/8, false},

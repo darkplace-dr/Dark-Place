@@ -44,7 +44,8 @@ function item:init()
 
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
-        dess = false
+        dess = false,
+        noel = false,
     }
 
     -- Character reactions
@@ -54,7 +55,8 @@ function item:init()
         noelle = "I love syrup!",
         dess = "im racist against canadians",
         brenda = "O Canada!",
-		jamm = "No, seriously, try it. It's, like, maple syrup and bacon. Yeah, I know it's weird, TRUST ME, IT'S GOOD."
+		jamm = "No, seriously, try it. It's, like, maple syrup and bacon. Yeah, I know it's weird, TRUST ME, IT'S GOOD.",
+        noel = "(I'm not pouring syrup on my head.)",
     }
 end
 
