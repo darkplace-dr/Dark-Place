@@ -100,6 +100,9 @@ return {
                 cutscene:hideNametag()
                 for k,chara in ipairs(Game.party) do
 					Game:setFlag(chara.id .. "_party", false)
+                    if chara.id == "noel" then
+                        Game:setFlag("noel_at", "room1")
+                    end
 				end
 				Game.party = {}
 				Game:addPartyMember("susie")
@@ -116,6 +119,9 @@ return {
                     cutscene:text("* Unfortunatly,[wait:5] none of your *important party members* seem interested in playing it.")
                     cutscene:showNametag("Dess")
                     cutscene:text("* Ey,[wait:5] fuck you Luigi", "angry", "dess")
+                    if cutscene:getCharacter("noel") then
+                        cutscene:text("* I hate this mod.", "...", "noel")
+                    end
                 end
                 cutscene:hideNametag()
             end

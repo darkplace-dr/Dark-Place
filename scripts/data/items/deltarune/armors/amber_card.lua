@@ -8,7 +8,8 @@ function item:init()
 		dess = "Yummy glue",
         brenda = "It stained my clothes!",
 		jamm = "Do I have it on right?",
-		mario = "Tastes like glue!"
+		mario = "Tastes like glue!",
+        noel = "Shawn sells these right?",
     })
 end
 

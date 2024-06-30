@@ -530,6 +530,7 @@ return {
 	
 	diagonal_mario = function(cutscene, event)
 		local susie = cutscene:getCharacter("susie")
+                local diagonal_mario = cutscene:getCharacter("diagonal_mario")
         cutscene:showNametag("Diagonal Mario of C.A.")
         cutscene:text("* Cease and desist,[wait:5] you fucking idiot")
 		if cutscene:getCharacter("susie") then
@@ -537,11 +538,17 @@ return {
             cutscene:text("* Yeah?[wait:5]\n* Or what?", "annoyed", "susie")
 			cutscene:showNametag("Diagonal Mario of C.A.")
 			cutscene:text("* DMCA")
-			cutscene:showNametag("Susie")
-            cutscene:text("* Well,[wait:5] shi--", "shock", "susie", { auto = true })
-			Game:removePartyMember("susie")
-			susie:remove()
-            Game:setFlag("susie_party", false)
+                        if Game.party[2].id == "noel" then
+			    cutscene:showNametag("Noel")
+                            cutscene:text("[speed:2]* SURPRISE ATTACK GORDON!!!", "loud", "noel", { auto = true })
+			    diagonal_mario:explode()
+                        else
+			    cutscene:showNametag("Susie")
+                            cutscene:text("* Well,[wait:5] shi--", "shock", "susie", { auto = true })
+			    Game:removePartyMember("susie")
+			    susie:remove()
+                            Game:setFlag("susie_party", false)
+                        end
 		end
         cutscene:hideNametag()
     end,

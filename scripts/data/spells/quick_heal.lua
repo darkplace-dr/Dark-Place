@@ -14,7 +14,7 @@ function spell:init()
     self.description = "* You need to go fast."
 
     -- TP cost
-    self.cost = 32
+    self.cost = 25
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"

@@ -603,6 +603,25 @@ return {
                     cutscene:text("* I have absolutely zero clue myself.", "grin", "brenda")
                     cutscene:showNametag("Alexa")
                     cutscene:text("[voice:alexa]* Oooookay then.")
+				elseif v.id == "noel" then
+                                    cutscene:showNametag("Noel")
+                                    cutscene:text("* ...", "...", "noel")
+                                    local text = "* Holy water please..."
+                                    local text2 = "* Hi,[wait:10] there.[wait:10]\n[speed:0.5][voice:susie]* Is [voice:noelle]it [voice:dess]okay [voice:berdly]if [voice:ralsei]I [voice:jamm]just [voice:mario]order [voice:alexa]milk?"  
+                                    local speaker = "noel" 
+                                    local texts = {"I", "FORGOT", "THAT", "THIS", "WAS", "A", "CAFE"}                                     
+                                    local faces = {"excusemebutwhatthefuck", "oh", "loud_2", "c_neutral", "madloud_1"}
+                                    cutscene:setTextboxTop(true)
+                                    Mod:UndoMyFuckup(cutscene, text, text2, speaker, texts, faces)
+                                    cutscene:setTextboxTop(false)
+                                    cutscene:showNametag("Alexa")
+                                    cutscene:text("[voice:alexa]* Sure-[wait:30]\n* Wait, [wait:10]just milk?")
+                                    cutscene:showNametag("Noel")
+                                    cutscene:text("* [speed:0.5]Yeah...[wait:5]\n* I don't drink coffee much...", "bruh", "noel")
+                                    cutscene:showNametag("Alexa")
+                                    cutscene:text("[voice:alexa]* I would have to ask my boss.")
+                                    cutscene:showNametag("Noel")
+                                    cutscene:text("* oh...[wait:5][face:...]\n[voice:katy]* Forget it then.", "oh", "noel")
 				elseif v.id == "dumbie" then
 				
 				elseif v.id == "ostarwalker" then

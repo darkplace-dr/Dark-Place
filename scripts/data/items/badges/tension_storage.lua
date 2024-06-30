@@ -12,7 +12,7 @@ function badge:init()
     self.description = "Keep your tension, to cast spells in the overworld."
     self.shop = "Keeps tension\nafter battle."
     -- The cost of putting it on
-    self.badge_points = 1
+    self.badge_points = 4
 
     -- Default shop price (sell price is halved)
     self.price = 830

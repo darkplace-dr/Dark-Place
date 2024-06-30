@@ -6,7 +6,8 @@ function item:init()
     self.reactions = Utils.merge(self.reactions, {
 		dess = "Too heavy",
         brenda = "I can't carry THAT.",
-		jamm = "I mean, I'm not THAT strong..."
+		jamm = "I mean, I'm not THAT strong...",
+        noel = "I'm gonna pull a [Rude Buster].",
     })
 end
 

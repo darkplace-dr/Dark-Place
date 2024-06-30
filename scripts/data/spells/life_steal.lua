@@ -14,7 +14,7 @@ function spell:init()
     self.description = "* I AM THE DRACULA!!!\nGIVE ME YOUR HEALTH POINTS!!!!"
 
     -- TP cost
-    self.cost = 72
+    self.cost = 20
 
 
     -- Target mode (ally, party, enemy, enemies, or none)
@@ -29,8 +29,8 @@ end
 function spell:onCast(user, target)
     Assets.playSound("voice/noel-'")
     Assets.playSound("break2")
-    target:hurt(user.chara:getStat("magic") * 22)
-    user:heal(user.chara:getStat("magic") * 22)
+    target:hurt(user.chara:getStat("magic") * 20 + 10)
+    user:heal(user.chara:getStat("magic") * 20 + 10)
 end
 
 return spell

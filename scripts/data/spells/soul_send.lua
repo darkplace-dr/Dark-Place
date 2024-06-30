@@ -11,7 +11,7 @@ function spell:init()
     -- Battle description
     self.effect = "Heal\nAlly?"
     -- Menu description
-    self.description = "* This is a weird ass spell.\nLike, it heals only one guy and then I die.\nsmh my head.."
+    self.description = "* This is a weird ass spell.\nLike, it heals only one guy and then I die. smh my head.."
 
     -- TP cost
     self.cost = 1
@@ -28,8 +28,8 @@ end
 
 function spell:onCast(user, target)
     Assets.playSound("break1")
-    target:heal(user.chara:getStat("magic") *25)
-    user:hurt(user.chara:getStat("magic") *2.5)
+    target:heal(user.chara:getStat("magic") *20 + 10)
+    user:hurt(user.chara:getStat("magic") *20 + 10)
 end
 
 return spell
