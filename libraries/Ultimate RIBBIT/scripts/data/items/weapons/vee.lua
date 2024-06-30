@@ -54,6 +54,7 @@ function item:init()
         noelle = "(I, um... Am I supposed to hit people with this?)",
         dess = "Who the FUCK do you think i am, jimmy music????'?",
         ralsei = "(W-Wow! Can you play any songs?)",
+        noel = "This makes me want to go and findher.ogg",
     }
 end
 

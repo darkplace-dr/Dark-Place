@@ -59,18 +59,6 @@ function Player:update()
             end
         end
     end
-
-    --haha backroom go brrrrrrr
-    if self.world.map.id == "whitespace" or self.world.map.id == "blackspace" then
-        if self.walk_speed >= 60 then
-    	    self.world:mapTransition("greyarea", "entry")
-        end
-    end
-    if self.world.map.id == "greyarea" then
-        if self.walk_speed >= 60 then
-    	    self.world:mapTransition("room1", "spawn")
-        end
-    end
 end
 
 function Player:interact()

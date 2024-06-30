@@ -75,7 +75,7 @@ function Costumes:init()
                 {"LIGHT", "light", {-4, -6}},
                 {"DARK (OLD)", "old_dark", {0, 0}},
                 {"LIGHT (OLD)", "old_light", {0, 0}},
-                {"ALCHEMY", "alchemy", {-4, -6}}
+                {"DARK (NEW)", "new_dark", {-8, -6}}
             }
         },
         {

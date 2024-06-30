@@ -53,7 +53,8 @@ function item:init()
 		susie = "Too holy for me.",
 		noelle = "How is this Christmas-themed??",
         brenda = "It sure is green.",
-		jamm = "I know I like green, but..."
+		jamm = "I know I like green, but...",
+                noel = [[I WILL RULE "BASEBALL" ENGLAND!!!]],
     }
 end
 

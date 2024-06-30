@@ -346,5 +346,7 @@ return {
         end
         master:setAnimation({"idle", 0.25, true})
     end,
+    noel = function(cutscene, actor)
+    end,
 
 }

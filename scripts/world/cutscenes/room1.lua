@@ -2,6 +2,11 @@ return {
     react_to_YOU = function(cutscene)
         local YOU = cutscene:getCharacter("YOU")
         local susie = cutscene:getCharacter("susie")
+
+        -- just in case :)
+        local noel = cutscene:getCharacter("noel")
+
+
         if not susie then return end
 
         Game.world.music:stop()
@@ -14,8 +19,20 @@ return {
         cutscene:text("* So uh...", "sus_nervous")
         cutscene:hideNametag()
         cutscene:look(YOU, "left")
+
+        if noel then
+            cutscene:walkTo(noel, YOU.x + 61, YOU.y)
+        end
+
+
         cutscene:wait(cutscene:walkTo(susie, YOU.x - 60, YOU.y))
         cutscene:look(susie, "right")
+
+
+        if noel then
+            cutscene:look(noel, "left")
+        end
+
         cutscene:showNametag("Susie")
         cutscene:text("* Who are you supposed to be?", "nervous_side")
         cutscene:text("* ...YOU?", "surprise")
@@ -54,85 +71,72 @@ return {
         YOU:addChild(emotion)
         zoom(8, zoom_sfx, {Game.world.camera.x, Game.world.camera.y - 18})
         emotion:remove()
-        cutscene:attachFollowersImmediate()
-        cutscene:look(susie, "down")
+        if noel then
+        else
+            cutscene:attachFollowersImmediate()
+            cutscene:look(susie, "down")
+        end
         zoom(1, 0)
         cutscene:attachCameraImmediate()
 
-        Game.world.music:play()
-    end,
+        if noel then
+            cutscene:showNametag("Noel")
+            cutscene:text("* So, uhm...", "oh", "noel")
+            --cutscene:hideNametag()
+            cutscene:look(YOU, "right")
+            cutscene:look(YOU, "right")
 
-    wall = function(cutscene, event)
-        -- Open textbox and wait for completion
-        cutscene:text("* The wall seems cracked.")
+            cutscene:text("* Looks like you two already introduced yourselves[speed:0.25]...", "bruh", "noel")
+            cutscene:text("[speed:0.5]* It's my turn,[wait:4][face:...] I guess?", "huh", "noel")
+            cutscene:text("* I'm [wait:1]Noel.\n[wait:4]* Spelled [speed:0.5][wait:1]N-O-E-L.\n[speed:1][wait:4]* Pronounced [wait:1]Null.", "neutral", "noel")
+            cutscene:text("* [speed:0.15]... [wait:4][speed:0.5][face:oh]Uhm ...", "...", "noel")
+            cutscene:showNametag("Susie")
+            cutscene:text("[speed:0.5]* ...", "neutral_side")
+            cutscene:showNametag("Noel")
+            cutscene:text("[speed:0.5]* ...", "oh", "noel")
+            cutscene:showNametag("Susie")
+            cutscene:text("[speed:0.5]* ...", "neutral_side")
+            cutscene:showNametag("Noel")
+            cutscene:text("[speed:0.5]* ...", "oh", "noel")
 
-        -- If we have Susie, play a cutscene
-        local susie = cutscene:getCharacter("susie")
-        if susie then
-            -- Detach camera and followers (since characters will be moved)
+
+            cutscene:hideNametag()
+
+            cutscene:look(YOU, "down")
+            --cutscene:wait(2)
+
+            local zoom_sfx = cutscene:playSound("emotion")
+            local function zoom(scale, wait, overwrite_pos)
+                local tx, ty = YOU:getRelativePos(YOU.width/2, YOU.height/2)
+                Game.world.camera:setZoom(scale)
+                if overwrite_pos then
+                    Game.world.camera:setPosition(overwrite_pos[1], overwrite_pos[2])
+                else
+                    Game.world.camera:setPosition(tx, ty)
+                end
+                cutscene:wait(wait)
+            end
+        
             cutscene:detachCamera()
-            cutscene:detachFollowers()
+            zoom(2, 1/4)
+            zoom(3, 1/4)
+            zoom(4, 1/2)
+            zoom(6, 1/2)
+            local emotion = Sprite("world/cutscenes/react_to_YOU/bigemotion", -5, 6.5)
+            emotion:setScale(0.125, 0.125)
+            YOU:addChild(emotion)
+            zoom(8, zoom_sfx, {Game.world.camera.x, Game.world.camera.y - 18})
+            emotion:remove()
+            cutscene:attachFollowersImmediate()
+            cutscene:look(susie, "down")
+            cutscene:look(noel, "down")
+            zoom(1, 0)
+            cutscene:attachCameraImmediate()
 
-            -- All text from now is spoken by Susie
-            cutscene:setSpeaker(susie)
-            cutscene:showNametag("Susie")
-            cutscene:text("* Hey,[wait:5] think I can break\nthis wall?", "smile")
-            cutscene:hideNametag()
 
-            -- Get the bottom-center of the broken wall
-            local x = event.x + event.width / 2
-            local y = event.y + event.height / 2
-
-            -- Move Susie up to the wall over 0.75 seconds
-            cutscene:walkTo(susie, x, y + 40, 0.75, "up")
-            -- Move other party members behind Susie
-            cutscene:walkTo(Game.world.player, x, y + 100, 0.75, "up")
-            if cutscene:getCharacter("ralsei") then
-                cutscene:walkTo("ralsei", x + 60, y + 100, 0.75, "up")
-            end
-            if cutscene:getCharacter("noelle") then
-                cutscene:walkTo("noelle", x - 60, y + 100, 0.75, "up")
-            end
-
-            -- Wait 1.5 seconds
-            cutscene:wait(1.5)
-
-            -- Walk back,
-            cutscene:wait(cutscene:walkTo(susie, x, y + 60, 0.5, "up", true))
-            -- and run forward!
-            cutscene:wait(cutscene:walkTo(susie, x, y + 20, 0.2))
-
-            -- Slam!!
-            Assets.playSound("impact")
-            susie:shake(4)
-            susie:setSprite("shock_up")
-
-            -- Slide back a bit
-            cutscene:slideTo(susie, x, y + 40, 0.1)
-            cutscene:wait(1.5)
-
-            -- owie
-            susie:setAnimation({ "away_scratch", 0.25, true })
-            susie:shake(4)
-            Assets.playSound("wing")
-
-            cutscene:wait(1)
-            cutscene:showNametag("Susie")
-            cutscene:text("* Guess not.", "nervous")
-            cutscene:hideNametag()
-
-            -- Reset Susie's sprite
-            susie:resetSprite()
-
-            -- Reattach the camera
-            cutscene:attachCamera()
-
-            -- Align the follower positions behind Kris's current position
-            cutscene:alignFollowers()
-            -- And reattach them, making them return to their target positions
-            cutscene:attachFollowers()
-            Game:setFlag("wall_hit", true)
         end
+
+        Game.world.music:play()
     end,
 
     guardian = function(cutscene, event)
@@ -526,6 +530,7 @@ return {
 	
 	diagonal_mario = function(cutscene, event)
 		local susie = cutscene:getCharacter("susie")
+                local diagonal_mario = cutscene:getCharacter("diagonal_mario")
         cutscene:showNametag("Diagonal Mario of C.A.")
         cutscene:text("* Cease and desist,[wait:5] you fucking idiot")
 		if cutscene:getCharacter("susie") then
@@ -533,11 +538,17 @@ return {
             cutscene:text("* Yeah?[wait:5]\n* Or what?", "annoyed", "susie")
 			cutscene:showNametag("Diagonal Mario of C.A.")
 			cutscene:text("* DMCA")
-			cutscene:showNametag("Susie")
-            cutscene:text("* Well,[wait:5] shi--", "shock", "susie", { auto = true })
-			Game:removePartyMember("susie")
-			susie:remove()
-            Game:setFlag("susie_party", false)
+                        if Game.party[2].id == "noel" then
+			    cutscene:showNametag("Noel")
+                            cutscene:text("[speed:2]* SURPRISE ATTACK GORDON!!!", "loud", "noel", { auto = true })
+			    diagonal_mario:explode()
+                        else
+			    cutscene:showNametag("Susie")
+                            cutscene:text("* Well,[wait:5] shi--", "shock", "susie", { auto = true })
+			    Game:removePartyMember("susie")
+			    susie:remove()
+                            Game:setFlag("susie_party", false)
+                        end
 		end
         cutscene:hideNametag()
     end,

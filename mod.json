@@ -87,6 +87,7 @@
       "DESS": "[spacing:3.2]fat chance, lmao.",
       "FRISKTWO": "[spacing:3.2]i feel just like john\nwick",
       "MORSHU": "[style:GONER][spacing:3.2]SORRY. I CAN'T LET YOU USE\nMY NAME! COME BACK WHEN\nYOU'RE A LITTLE...\nMMMMMM...ORIGINAL!",
+      "NOEL": "[style:none][spacing:0]ERROR: NULL",
 
       // Devs
       "BELLA": "[style:GONER][spacing:3.2]WOW, THIS PERSON IS\nSO COOL... I WISH\nCANADIANS WERE REAL.",
@@ -127,7 +128,8 @@
     "SANS",
     "DESS",
     "SPAMTON",
-    "MORSHU"
+    "MORSHU",
+    "NOEL"
   ],
   // Names that crash the game.
   "namesCrash": [

@@ -47,7 +47,8 @@ function item:init()
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
         ralsei = false,
-        noelle = false
+        noelle = false,
+        noel = false,
     }
 
     -- Character reactions
@@ -57,6 +58,7 @@ function item:init()
         noelle = "N-no, I would MELT in that thing, fahaha...",
         dess = "i feel a sudden urge to sell microtransactions",
         brenda = "Uhh... This isn't gonna kill me, is it?",
+        noel = "(I would consume it.)",
     }
 end
 

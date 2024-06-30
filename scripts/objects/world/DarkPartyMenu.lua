@@ -10,6 +10,7 @@ function DarkPartyMenu:init(debug)
     self.ui_move = Assets.newSound("ui_move")
     self.ui_select = Assets.newSound("ui_select")
     self.ui_cant_select = Assets.newSound("ui_cant_select")
+    self.noel_no = Assets.newSound("shock")
     self.ui_cancel_small = Assets.newSound("ui_cancel_small")
 
     self.heart_sprite = Assets.getTexture("player/heart")
@@ -36,6 +37,16 @@ function DarkPartyMenu:init(debug)
 		{"frisk2", "dess", "alseri", "brenda", "jamm", "bor", "dumbie", "iphone", "mario", "ceroba"},
 		{"clover", "whale", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"},
 	}
+        
+        local noel = Game:getFlag("noel_party")
+        local noel2 = Game:getFlag("noel_partyroom")
+        if noel or noel2 then
+	    if not Utils.containsValue(Game:getFlag("party"), "noel") then
+	        Mod:unlockPartyMember("noel")
+	    end
+            table.insert(self.list[1], 11, "noel")
+        else
+        end
 	
 	self.listreference = Game:getFlag("party", {"YOU", "susie"})
 	
@@ -43,7 +54,11 @@ function DarkPartyMenu:init(debug)
 		for i2,entry in ipairs(list) do
 			if not debug then
 				if not self:hasValue(self.listreference, entry) then
-					self.list[i][i2] = "unknown"
+                                        if self.list[i][i2] == "noel" then
+                                            self.list[i][i2] = "noel"
+                                        else
+					    self.list[i][i2] = "unknown"
+                                        end
 				end
 			end
 		end
@@ -107,76 +122,96 @@ function DarkPartyMenu:onKeyPressed(key)
 				Game.party[self.selected_party] = nil
 			end
 		end
-		if Input.pressed("v") then
-			-- Step 1: Set the list
-			local temp = {}
-			for k,v in pairs(Game:getFlag("party", {"YOU", "susie"})) do
-				temp[k] = v
-			end
-		
-			-- Step 2: Remove every party member
-			Game.party = {}
-			
-			-- Step 3: Set all available slots to random
-			local val = math.min(#self.listreference, Game:getFlag("party_max"))
-			local indexes = Utils.pickMultiple(temp, val)
-			for i=1, #indexes do
-				local id = indexes[i]
-				Game:addPartyMember(id)
-			end
-			
-			-- Step 4: Set all followers
-            for i, follower in ipairs(Game.world.followers) do
-                follower:remove()
+if Input.pressed("v") then
+    -- Step 1: Set the list
+    local temp = {}
+    for k,v in pairs(Game:getFlag("party", {"YOU", "susie"})) do
+        temp[k] = v
+    end
+    
+    -- Step 2: Remove every party member
+    Game.party = {}
+    
+    -- Step 3: Set all available slots to random
+    local val = math.min(#self.listreference, Game:getFlag("party_max"))
+    local indexes = Utils.pickMultiple(temp, val)
+    
+    -- Ensure Noel is not in slot 1
+    local first_slot = indexes[1]
+    if first_slot == "noel" then
+        -- Swap Noel with a non-Noel character if necessary
+        for i = 2, #indexes do
+            if indexes[i] ~= "noel" then
+                indexes[1], indexes[i] = indexes[i], indexes[1]
+                break
             end
-			Game.world.player:setActor(Game.party[1].actor)
-			for k,v in pairs(Game.party) do
-				if k > 1 then
-					Game.world:spawnFollower(v:getActor())
-				end
-			end
-			Game.world.player:alignFollowers()
-			Game.world:attachFollowersImmediate()
-		end
+        end
+    end
+
+    for i=1, #indexes do
+        local id = indexes[i]
+        Game:addPartyMember(id)
+    end
+    
+    -- Step 4: Set all followers
+    for i, follower in ipairs(Game.world.followers) do
+        follower:remove()
+    end
+    Game.world.player:setActor(Game.party[1].actor)
+    for k,v in pairs(Game.party) do
+        if k > 1 then
+            Game.world:spawnFollower(v:getActor())
+        end
+    end
+    Game.world.player:alignFollowers()
+    Game.world:attachFollowersImmediate()
+end
 	elseif self.state == "SELECT" then
-		if Input.pressed("confirm") then
-			if self.list[self.selected_y][self.selected_x] ~= "unknown" then
-				for index,party in pairs(Game.party) do
-					if party.id == self.list[self.selected_y][self.selected_x] then
+        if Input.pressed("confirm") then
+            if self.list[self.selected_y][self.selected_x] ~= "unknown" then
+                -- Check if selected character is Noel and if trying to place in slot 1
+                if self.list[self.selected_y][self.selected_x] == "noel" and self.selected_party == 1 then
+                    self.noel_no:stop()
+                    self.noel_no:play()
+                    self:shake(5, 1)
+                    return
+                end
+
+                -- Check if the selected character is already in the party
+                for index, party in pairs(Game.party) do
+                    if party.id == self.list[self.selected_y][self.selected_x] then
                         self.ui_cant_select:stop()
                         self.ui_cant_select:play()
                         return
                     end
-				end
-				Game.party[self.selected_party] = Game:getPartyMember(self.list[self.selected_y][self.selected_x])
-				Game:setFlag(self.list[self.selected_y][self.selected_x].."_party", true)
-				--[[for k,v in pairs(Game.world.healthbar.action_boxes) do
-					v:remove()
-				end]]
-				if self.selected_party > 1 then
-					if Game.world.followers[self.selected_party-1] then
-						Game.world.followers[self.selected_party-1]:setActor(Game.party[self.selected_party]:getActor())
-					else
-						local follower = Game.world:spawnFollower(self.list[self.selected_y][self.selected_x])
-						follower:setActor(Game.party[self.selected_party]:getActor())
-						follower:setFacing("down")
-					end
-				else
-					Game.world.player:setActor(Game.party[1]:getActor())
-				end
+                end
+
+                -- Proceed to select the character
+                Game.party[self.selected_party] = Game:getPartyMember(self.list[self.selected_y][self.selected_x])
+                Game:setFlag(self.list[self.selected_y][self.selected_x] .. "_party", true)
+                if self.selected_party > 1 then
+                    if Game.world.followers[self.selected_party - 1] then
+                        Game.world.followers[self.selected_party - 1]:setActor(Game.party[self.selected_party]:getActor())
+                    else
+                        local follower = Game.world:spawnFollower(self.list[self.selected_y][self.selected_x])
+                        follower:setActor(Game.party[self.selected_party]:getActor())
+                        follower:setFacing("down")
+                    end
+                else
+                    Game.world.player:setActor(Game.party[1]:getActor())
+                end
                 self.ui_select:stop()
                 self.ui_select:play()
-				--Game.world.menu:updateSelectedBoxes()
-				self.state = "MAIN"
-				self.selected_x = 1
-				self.selected_y = 1
-			else
+                self.state = "MAIN"
+                self.selected_x = 1
+                self.selected_y = 1
+            else
                 self.ui_cant_select:stop()
                 self.ui_cant_select:play()
-			end
-		end
+            end
+        end
 		if Input.pressed("right") then
-			if self.selected_x < 10 then
+			if self.selected_x < #self.list[self.selected_y] then
                 self.ui_move:stop()
                 self.ui_move:play()
 				self.selected_x = self.selected_x + 1
@@ -189,13 +224,14 @@ function DarkPartyMenu:onKeyPressed(key)
 				self.selected_x = self.selected_x - 1
 			end
 		end
-		if Input.pressed("down") then
-			if self.selected_y < 3 then
-                self.ui_move:stop()
-                self.ui_move:play()
-				self.selected_y = self.selected_y + 1
-			end
-		end
+                if Input.pressed("down") then
+                    if self.selected_y < #self.list then
+                        self.ui_move:stop()
+                        self.ui_move:play()
+                        self.selected_y = self.selected_y + 1
+                        self.selected_x = math.min(self.selected_x, #self.list[self.selected_y])
+                    end
+                end
 		if Input.pressed("up") then
 			if self.selected_y > 1 then
                 self.ui_move:stop()
@@ -218,11 +254,23 @@ function DarkPartyMenu:update()
         for index,party in pairs(self.list[i]) do
             if party ~= "unknown" then
                 Game:setFlag(party.."_party", false)
+                if party == "noel" then
+                    Game:setFlag("noel_at", "devhotel/devdiner/partyroom")
+                    Game:setFlag("noel_partyroom", true)
+                end
             end
         end
     end
     for index,party in pairs(Game.party) do
         Game:setFlag(party.id.."_party", true)
+        if party.id == "noel" then
+            Game:setFlag("noel_at", "null")
+            Game:setFlag("noel_partyroom", false)
+            local savedData = Mod:loadGameN()
+            if savedData then
+                Game:setFlag("noel_saveID", savedData.SaveID)
+            end
+        end
     end
     super.update(self)
 end

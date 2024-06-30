@@ -28,10 +28,12 @@ function item:init()
     self.can_equip = {
         ceroba = true,
     }
-
+ 
     self.reactions = {
         susie = "A stick with a ribbon? Seriously?",
         ralsei = "Not sure if I can use this...",
+        martlet = "This belongs to Ceroba...",
+        noel = "I prefer cats... (I WANT IT!!!)",
         noelle = "*ding* I love the bell!",
         ceroba = "Back where it belongs.",
     }

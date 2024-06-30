@@ -42,7 +42,8 @@ function item:init()
 
     -- Equippable characters (default true for armors, false for weapons)
     self.can_equip = {
-        dess = false
+        dess = false,
+        noel = false,
     }
 
     -- Character reactions
@@ -52,7 +53,8 @@ function item:init()
         noelle = "(I wonder if I should give Susie a gift...)",
 		dess = "I'm allergic to love",
         brenda = "Thank you Celesy...",
-		jamm = "No use for me."
+		jamm = "No use for me.",
+	noel = "Lame.",
     }
 end
 

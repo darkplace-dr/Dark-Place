@@ -53,6 +53,7 @@ function item:init()
         ralsei = "Do I look good?",
         noelle = "It's pretty...",
         ceroba = "Back where it should be.",
+        noel = "(I'll tie it to my umbrella.)",
     }
 end
 
