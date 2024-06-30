@@ -1,4 +1,4 @@
-local actor, super = Class(Actor, "cerobaenemy_p2")
+local actor, super = Class(Actor, "cerobaboss")
 
 function actor:init()
     super.init(self)
@@ -18,7 +18,7 @@ function actor:init()
     self.voice = "ceroba"
 
     self.animations = {
-        ["lightbattle_hurt"] = {"lightbattle/hurt_phase_2", 1, true},
+        ["lightbattle_hurt"] = {"lightbattle/hurt", 1, true},
         ["intro"] = {"lightbattle/animations/intro", 1/11, false},
         ["phase_switch"] = {"lightbattle/animations/phase_switch", 1/11, false},
         ["staff_spin"] = {"lightbattle/animations/staff_spin", 1/11, false},
@@ -26,7 +26,7 @@ function actor:init()
     }
 
     self.offsets = {
-        ["lightbattle/hurt_phase_2"] = {-9, 5},
+        ["lightbattle/hurt"] = {-9, 5},
         ["lightbattle/animations/intro"] = {-21, -20},
         ["lightbattle/animations/phase_switch"] = {-23, -28},
         ["lightbattle/animations/staff_spin"] = {-23, -28},
@@ -120,7 +120,7 @@ function actor:init()
 
     self:addLightBattlerPart("staff", {
         ["create_sprite"] = function()
-            local sprite = Sprite(self.path.."/lightbattle/staff_red", 48, 112)
+            local sprite = Sprite(self.path.."/lightbattle/staff", 48, 112)
             sprite:setOrigin(0.5, 1)
             sprite.layer = 450
             return sprite

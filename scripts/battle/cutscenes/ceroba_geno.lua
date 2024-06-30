@@ -65,12 +65,12 @@ return {
         Assets.playSound("ceroba_yell")
         Game.battle.music:play("undertale_yellow/trial_by_fury_2")
         cutscene:wait(2)
-        ceroba:setActor("cerobaenemy_p2")
+        ceroba:setActor("cerobaboss_p2")
         Game.battle:setState("DEFENDINGEND")
         cutscene:wait(0.5)
 
         cutscene:after(function()
-            Game.battle:setState("ACTIONSELECT")
+            Game.battle:setState("ENEMYDIALOGUE")
         end, true)
     end
 }
