@@ -20,19 +20,19 @@ function Ceroba:init()
 end
 
 function Ceroba:drawBackground()
-    for i = 1, 4 do
+    for i = 1, 1 do
         Draw.setColor(73/255, 24/255, 31/255)
         love.graphics.rectangle("fill", 0, 230, 640, 106)
     end
-    for i = 2, 4 do
+    for i = 1, 1 do
         Draw.setColor(157/255, 23/255, 50/255)
         love.graphics.rectangle("fill", 0, 242, 640, 88)
     end
-    for i = 3, 4 do
+    for i = 1, 1 do
         Draw.setColor(216/255, 31/255, 68/255)
         love.graphics.rectangle("fill", 0, 268, 640, 56)
     end
-    for i = 4, 4 do
+    for i = 1, 1 do
         Draw.setColor(228/255, 69/255, 101/255)
         love.graphics.rectangle("fill", 0, 310, 640, 14)
     end
