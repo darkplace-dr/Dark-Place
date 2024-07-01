@@ -40,7 +40,7 @@ function Mod:LoadNoel(noelsave)
                 Game:setFlag("noel_partyroom", true)
             end
         end
-    if savedData.Map == map and savedData.SaveID ~= Game:getFlag("noel_SaveID") and inparty then
+    if savedData.Map == map and savedData.SaveID ~= Game:getFlag("noel_SaveID") and not inparty then
 
         local w1, w2 = 514, 98
         if Game:getFlag("ceroba_party") then
