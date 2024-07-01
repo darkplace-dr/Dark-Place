@@ -1,0 +1,27 @@
+{
+    "id": "xtractrl",
+    "authors": ["Elioze"],
+    "version": "v1.0.0",
+    "engineVer": "v0.9.0",
+    "config":{
+
+        //Allow to press cancel to get exit the control menu (false by default)
+        "cancel": true,
+        
+        //Hide the page count if there is only 1 page (true by default)
+        "hide_if_1": true,
+
+        //Show the arrow if true (true by default)
+        "arrow": true,
+
+        //List of key that shouldn't be shown (has the debug key by default)
+        "banned_key": {
+            
+            "Name_of_key": "id_of_key",
+            "Console": "console",
+            "Debug Menu": "debug_menu",
+            "Object Selector": "object_selector",
+            "Fast Forward": "fast_forward"
+        }
+    }
+}
