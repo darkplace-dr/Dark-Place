@@ -6,6 +6,131 @@ function DarkConfigMenu:init()
 
     self.extras_substate = ""
     self.bulborb_positions = {"TopLeft", "TopRight", "BottomLeft", "BottomRight", "Center"}
+
+--  Setup variables
+    self.current_page = 1
+
+    self.key_bindings = {}
+
+    self.banned_key = {}
+
+    self.arrow_sprite = Assets.getTexture("ui/flat_arrow_right")
+
+    self:setKeyBindings()
+
+    self:setGamePad()
+
+--  Set the maximum number of page
+    self.max_page = Utils.ceil(#self.key_bindings/7)
+end
+
+function DarkConfigMenu:setKeyBindings()
+    -- Count how many key bind in everything
+    local count = 0
+
+    for _, _ in pairs(Input.key_bindings) do
+        count = count + 1
+    end
+
+    -- Call a function that verify if get then key binds that are in the mod and the libs while not taking banned key
+    for index = 1, count do
+        self:getKeyBindings(Input.orderedNumberToKey(index))
+    end
+
+    --  Get all key bind that weren't in the banned_key list
+    for index = 1, count do
+        if not Utils.containsValue(self.banned_key, Input.orderedNumberToKey(index)) then 
+            table.insert(self.key_bindings, Input.orderedNumberToKey(index))
+        end
+    end
+end
+
+function DarkConfigMenu:getKeyBindings(key)
+--  Create a variable for later check
+    local valid_keys = {}
+
+--  Check if the mod has key binds and if so, insert said key binds in valid_keys
+    if Mod["info"].keybinds then
+        for index, _ in pairs(Mod["info"].keybinds) do
+            table.insert(valid_keys, Mod["info"].keybinds[index].id)
+        end
+    end
+
+    --  Check for banned key from mod config
+    if Mod["info"].banned_key then
+        for _, name in pairs(Mod["info"].banned_key) do
+            table.insert(self.banned_key, name)
+        end
+    end
+
+    --  Check if the mod's libs has key binds and if so, insert said key binds in valid_keys
+    for _, lib in pairs(Mod.libs) do
+        if lib["info"].keybinds then
+            for index, _ in pairs(lib["info"].keybinds) do
+                table.insert(valid_keys, lib["info"].keybinds[index].id)
+            end
+        end
+        if Kristal.getLibConfig(lib["info"].id, "banned_key") then
+            for _, name in pairs(Kristal.getLibConfig(lib["info"].id, "banned_key")) do
+                table.insert(self.banned_key, name)
+            end
+        end
+    end
+
+--  Check for the vanilla key binds and insert them in valid_keys
+    for index = 1, #Input.order do
+        table.insert(valid_keys, Input.order[index])
+    end
+
+--  Insert all key binds that wern't found in the banned_key list
+    for index, name in pairs(valid_keys) do
+        if not Utils.containsValue(valid_keys, key) then
+            table.insert(self.banned_key, key)
+        end
+    end    
+end
+
+function DarkConfigMenu:setGamePad()
+    --  Check if the mod has controller binds and if not add it.
+    if Mod["info"].keybinds then
+        for index, _ in pairs(Mod["info"].keybinds) do
+            if not Mod["info"].keybinds[index].gamepad then
+                Input.gamepad_bindings[Mod["info"].keybinds[index].id] = {}
+            end
+        end
+    end
+
+    --  Check if the mod's libs has controller binds and if not add it.
+    for _, lib in pairs(Mod.libs) do
+        if lib["info"].keybinds then
+            for index, _ in pairs(lib["info"].keybinds) do
+                if not lib["info"].keybinds[index].gamepad then
+                    Input.gamepad_bindings[lib["info"].keybinds[index].id] = {}
+                end
+            end
+        end
+    end
+end
+
+function DarkConfigMenu:getBindNumberFromIndex(current_index)
+    local shown_bind = 1
+    local alias = self.key_bindings[current_index]
+    print(self.key_bindings[current_index])
+    local keys = Input.getBoundKeys(alias, Input.usingGamepad())
+    for index, current_key in ipairs(keys) do
+        if Input.usingGamepad() then
+            if Utils.startsWith(current_key, "gamepad:") then
+                shown_bind = index
+                break
+            end
+        else
+            if not Utils.startsWith(current_key, "gamepad:") then
+                shown_bind = index
+                break
+            end
+        end
+    end
+    return shown_bind
 end
 
 function DarkConfigMenu:update()
@@ -217,6 +342,128 @@ function DarkConfigMenu:update()
     super.super.update(self)
 end
 
+function DarkConfigMenu:onKeyPressed(key)
+    if self.state == "CONTROLS" then
+
+    --  Check if not rebinding
+        if not self.rebinding then
+        --  If not rebinding and allowed, close the "controls" sub menu
+            if Input.pressed("cancel") and Kristal.getLibConfig("xtractrl", "cancel") then
+                self.reset_flash_timer = 0
+                self.state = "MAIN"
+                self.currently_selected = 2
+                Input.clear("confirm", true)
+            end
+        end
+
+        if self.rebinding then
+            local gamepad = Utils.startsWith(key, "gamepad:")
+
+            local worked = key ~= "escape" and
+                Input.setBind(self.key_bindings[self.currently_selected + 7*(self.current_page-1)], 1, key, gamepad)
+
+            self.rebinding = false
+
+            if worked then
+                self.ui_select:stop()
+                self.ui_select:play()
+            else
+                self.ui_cant_select:stop()
+                self.ui_cant_select:play()
+            end
+
+            return
+        end
+        if Input.pressed("confirm") then
+            if self.currently_selected < 8 then
+                self.ui_select:stop()
+                self.ui_select:play()
+                self.rebinding = true
+                return
+            end
+
+            if self.currently_selected == 8 then
+                Assets.playSound("levelup")
+
+                if Kristal.isConsole() then
+                    Input.resetBinds(true)  -- Console, no keyboard, only reset gamepad binds
+                elseif Input.hasGamepad() then
+                    Input.resetBinds()      -- PC, keyboard and gamepad, reset all binds
+                else
+                    Input.resetBinds(false) -- PC, no gamepad, only reset keyboard binds
+                end
+                self:setGamePad()
+                Input.saveBinds()
+                self.reset_flash_timer = 10
+            end
+
+            if self.currently_selected == 9 then
+                self.reset_flash_timer = 0
+                self.state = "MAIN"
+                self.currently_selected = 2
+                self.ui_select:stop()
+                self.ui_select:play()
+                Input.clear("confirm", true)
+            end
+            return
+        end
+
+        local old_selected = self.currently_selected
+        if Input.pressed("up") then
+            self.currently_selected = self.currently_selected - 1
+            if self.currently_selected ~= 8 and self.current_page == self.max_page and self.max_page ~= 1 and self.key_bindings[self.currently_selected + 7*(self.current_page-1)] == nil then
+                self.currently_selected = #self.key_bindings - 7*(self.current_page-1)
+            end
+        end
+        if Input.pressed("down") then
+            self.currently_selected = self.currently_selected + 1
+            if self.currently_selected <= 8 and self.key_bindings[self.currently_selected + 7*(self.current_page-1)] == nil then
+                self.currently_selected = 8
+            end
+        end
+
+    --  Check if the right key is pressed
+        if Input.pressed("right") then
+
+        --  Check if there is no key with an index = self.currently_select on the next page
+            if self.key_bindings[self.currently_selected + 7*(self.current_page)] == nil and self.current_page ~= self.max_page and self.currently_selected < 8 then
+
+            --  If the cursor is more close to the last key bind set it to the last key
+                if self.currently_selected < 8 - Utils.round((8 - (#self.key_bindings - 7*(self.current_page)/2))) then
+                    self.currently_selected = #self.key_bindings - 7*(self.current_page)
+                    
+            --  Otherwise set it to the 8 selection
+                elseif self.currently_selected >= 8 - Utils.round((8 - (#self.key_bindings - 7*(self.current_page)/2))) and self.currently_selected <= 8 then
+                    self.currently_selected = 8
+                end
+            end
+        end
+
+        self.currently_selected = Utils.clamp(self.currently_selected, 1, 9)
+
+        if old_selected ~= self.currently_selected then
+            self.ui_move:stop()
+            self.ui_move:play()
+        end
+
+    --  Stuff for the page selection
+        local old_page = self.current_page
+        if Input.pressed("left") then
+            self.current_page = self.current_page - 1
+        end
+        if Input.pressed("right") then
+            self.current_page = self.current_page + 1
+        end
+
+        self.current_page = Utils.clamp(self.current_page, 1, self.max_page)
+
+        if old_page ~= self.current_page then
+            self.ui_move:stop()
+            self.ui_move:play()
+        end
+    end
+end
+
 function DarkConfigMenu:draw()
     if Game.state == "EXIT" then
         super.super.draw(self)
@@ -302,54 +549,98 @@ function DarkConfigMenu:draw()
             love.graphics.print(USING_CONSOLE and "Button" or "Gamepad", 353, -12)
         end
 
-        for index, name in ipairs(Input.order) do
-            if index > 7 then
-                break
+--  Lib Stuff
+    --  Show current page/last page if not on the first and supposed to hide it
+    if Kristal.getLibConfig("xtractrl", "hide_if_1") and self.max_page == 1 then
+    else
+        if self.max_page < 10 then
+            love.graphics.print(self.current_page.."/"..self.max_page, 418, -4 + (28 * 9) + 4)
+        elseif self.max_page >= 10 and self.current_page < 10 then
+            love.graphics.print(self.current_page.."/"..self.max_page, 418 - 6, -4 + (28 * 9) + 4)
+        else
+            love.graphics.print(self.current_page.."/"..self.max_page, 418 - 14, -4 + (28 * 9) + 4)
+        end
+    end
+
+--  Code for the arrow sprite
+    local sine_off
+    if sine_off == nil then
+        sine_off = 0
+    end
+
+    sine_off = math.sin((Kristal.getTime()*30)/16) * 3
+
+    if Kristal.getLibConfig("xtractrl", "hide_if_1") and self.max_page == 1 then
+    else
+        if self.current_page ~= 1 then -- Gauche
+            if self.max_page < 10 then
+                Draw.draw(self.arrow_sprite, 418 - 8 + sine_off, 264, 0, -1, 1)
+            elseif self.max_page >= 10 and self.current_page < 10 then
+                Draw.draw(self.arrow_sprite, 418 - 14 + sine_off, 264, 0, -1, 1)
+            else
+                Draw.draw(self.arrow_sprite, 418 - 22 + sine_off, 264, 0, -1, 1)
             end
-            love.graphics.setColor(PALETTE["world_text"])
-            if self.currently_selected == index then
+        end
+        if self.current_page ~= self.max_page then -- Droite
+            if self.max_page < 10 then
+                Draw.draw(self.arrow_sprite, 418 + 50 - sine_off, 264)
+            elseif self.max_page >= 10 and self.current_page < 10 then
+                Draw.draw(self.arrow_sprite, 418 + 56 - sine_off, 264)
+            else
+                Draw.draw(self.arrow_sprite, 418 + 62 - sine_off, 264)
+            end
+        end
+    end
+
+--  Switch out Input.order for the key_bindings list made in init
+    for index, name in ipairs(self.key_bindings) do
+        if index <= 7*self.current_page and index > (self.current_page-1)*7 then
+            Draw.setColor(PALETTE["world_text"])
+            if self.currently_selected == index - (self.current_page-1)*7 then
                 if self.rebinding then
-                    love.graphics.setColor(PALETTE["world_text_rebind"])
+                    Draw.setColor(PALETTE["world_text_rebind"])
                 else
-                    love.graphics.setColor(PALETTE["world_text_hover"])
+                    Draw.setColor(PALETTE["world_text_hover"])
                 end
             end
 
             if dualshock then
-                love.graphics.print(name:gsub("_", " "):upper(),  23, -4 + (29 * index))
+                love.graphics.print(name:gsub("_", " "):upper(), 23, -4 + (29 * (index - (self.current_page-1)*7)))
             else
-                love.graphics.print(name:gsub("_", " "):upper(),  23, -4 + (28 * index) + 4)
+                love.graphics.print(name:gsub("_", " "):upper(), 23, -4 + (28 * (index - (self.current_page-1)*7) + 4))
             end
 
-            local shown_bind = self:getBindNumberFromIndex(index)
+            --local shown_bind = self:getBindNumberFromIndex(index)
 
-            if not USING_CONSOLE then
+            if not Kristal.isConsole() then
                 local alias = Input.getBoundKeys(name, false)[1]
                 if type(alias) == "table" then
                     local title_cased = {}
                     for _, word in ipairs(alias) do
                         table.insert(title_cased, Utils.titleCase(word))
                     end
-                    love.graphics.print(table.concat(title_cased, "+"), 243, 0 + (28 * index))
+                    love.graphics.print(table.concat(title_cased, "+"), 243, 0 + (28 * (index - (self.current_page-1)*7)))
                 elseif alias ~= nil then
-                    love.graphics.print(Utils.titleCase(alias), 243, 0 + (28 * index))
+                    love.graphics.print(Utils.titleCase(alias), 243, 0 + (28 * (index - (self.current_page-1)*7)))
                 end
             end
 
-            love.graphics.setColor(1, 1, 1)
+            Draw.setColor(1, 1, 1)
 
             if Input.hasGamepad() then
                 local alias = Input.getBoundKeys(name, true)[1]
                 if alias then
                     local btn_tex = Input.getButtonTexture(alias)
                     if dualshock then
-                        love.graphics.draw(btn_tex, 353 + 42, -2 + (29 * index), 0, 2, 2, btn_tex:getWidth()/2, 0)
+                        Draw.draw(btn_tex, 353 + 42, -2 + (29 * (index - (self.current_page-1)*7)), 0, 2, 2, btn_tex:getWidth() / 2, 0)
                     else
-                        love.graphics.draw(btn_tex, 353 + 42 + 16 - 6, -2 + (28 * index) + 11 - 6 + 1, 0, 2, 2, btn_tex:getWidth()/2, 0)
+                        Draw.draw(btn_tex, 353 + 42 + 16 - 6, -2 + (28 * (index - (self.current_page-1)*7)) + 11 - 6 + 1, 0, 2, 2,
+                                btn_tex:getWidth() / 2, 0)
                     end
                 end
             end
         end
+    end
 
         love.graphics.setColor(PALETTE["world_text"])
         if self.currently_selected == 8 then
