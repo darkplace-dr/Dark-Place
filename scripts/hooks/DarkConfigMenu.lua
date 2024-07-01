@@ -115,7 +115,6 @@ end
 function DarkConfigMenu:getBindNumberFromIndex(current_index)
     local shown_bind = 1
     local alias = self.key_bindings[current_index]
-    print(self.key_bindings[current_index])
     local keys = Input.getBoundKeys(alias, Input.usingGamepad())
     for index, current_key in ipairs(keys) do
         if Input.usingGamepad() then
