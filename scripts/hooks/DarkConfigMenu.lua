@@ -94,7 +94,7 @@ function DarkConfigMenu:setGamePad()
     --  Check if the mod has controller binds and if not add it.
     if Mod["info"].keybinds then
         for index, _ in pairs(Mod["info"].keybinds) do
-            if not Mod["info"].keybinds[index].gamepad then
+            if not Input.gamepad_bindings[Mod["info"].keybinds[index].id] then
                 Input.gamepad_bindings[Mod["info"].keybinds[index].id] = {}
             end
         end
@@ -104,7 +104,7 @@ function DarkConfigMenu:setGamePad()
     for _, lib in pairs(Mod.libs) do
         if lib["info"].keybinds then
             for index, _ in pairs(lib["info"].keybinds) do
-                if not lib["info"].keybinds[index].gamepad then
+                if not Input.gamepad_bindings[lib["info"].keybinds[index].id] then
                     Input.gamepad_bindings[lib["info"].keybinds[index].id] = {}
                 end
             end
@@ -115,7 +115,6 @@ end
 function DarkConfigMenu:getBindNumberFromIndex(current_index)
     local shown_bind = 1
     local alias = self.key_bindings[current_index]
-    print(self.key_bindings[current_index])
     local keys = Input.getBoundKeys(alias, Input.usingGamepad())
     for index, current_key in ipairs(keys) do
         if Input.usingGamepad() then
