@@ -5,6 +5,7 @@ function Ceroba:init()
 
     self.name = "Ceroba"
     self:setActor("cerobaboss")
+    self.color = {215/255, 166/255, 166/255}
 
     self.max_health = 1000
     self.health = 1000
@@ -19,7 +20,7 @@ function Ceroba:init()
     self.low_health = false
     
     self.dialogue_bubble = "ut_wide"
-    self.dialogue_offset = {-20, -30}
+    self.dialogue_offset = {-40, 20}
 
     self.waves = {
         "steamworks/ceroba_opener"
@@ -78,7 +79,7 @@ function Ceroba:onHurtEnd()
     if self.health > 0 or not self.exit_on_defeat then
         self:toggleOverlay(false, true)
     end
-    if self.low_health == false and self.health < 250 then
+    if self.low_health == false and self.health <= 250 and self.health > 0 then
         self.low_health = true
         self:setActor("cerobaboss_p2_hurt")
     end
