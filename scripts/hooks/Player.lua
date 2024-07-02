@@ -15,6 +15,12 @@ function Player:init(...)
     self.stay_grace = 0
 
     self.state_manager:addState("HOP", { enter = self.beginHop, update = self.updateHop, leave = self.endHop })
+	
+	self.siner = 0
+	
+	self.invincible_colors = false
+	self.inv_timer = 0
+	self.old_song = ""
 end
 
 function Player:setActor(...)
@@ -59,6 +65,30 @@ function Player:update()
             end
         end
     end
+
+    --haha backroom go brrrrrrr
+    if self.world.map.id == "whitespace" or self.world.map.id == "blackspace" then
+        if self.walk_speed >= 60 then
+    	    self.world:mapTransition("greyarea", "entry")
+        end
+    end
+    if self.world.map.id == "greyarea" then
+        if self.walk_speed >= 60 then
+    	    self.world:mapTransition("room1", "spawn")
+        end
+    end
+	
+	if self.invincible_colors then
+		self.siner = self.siner + DT * 40
+		self.inv_timer = self.inv_timer - DT
+		self:setColor(Utils.hsvToRgb(((self.siner * 8) % 255)/255, 255/255, 255/255))
+	end
+	
+	if self.inv_timer <= 0 and self.invincible_colors then
+		self.invincible_colors = false
+		Game.world.music:play(self.old_song)
+		self:setColor(1, 1, 1, 1)
+	end
 end
 
 function Player:interact()
@@ -92,13 +122,17 @@ function Player:handleMovement()
     local speed = self.walk_speed
     if running then
         if self.run_timer > 60 then
-            speed = speed + (Game:isLight() and 6 or 5)
+            speed = speed * 2.25
         elseif self.run_timer > 10 then
-            speed = speed + 4
+            speed = speed * 2
         else
-            speed = speed + 2
+            speed = speed * 1.5
         end
     end
+	
+	if self.invincible_colors then
+		speed = speed * 1.5
+	end
 
     self:move(walk_x, walk_y, speed * DTMULT)
 

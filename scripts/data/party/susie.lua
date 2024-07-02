@@ -48,4 +48,6 @@ function character:getActor(light)
     return super.getActor(self, light)
 end
 
+function character:getStarmanTheme() return "susie" end
+
 return character
