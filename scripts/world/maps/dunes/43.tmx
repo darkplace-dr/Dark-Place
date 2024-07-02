@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="22" height="37" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#31181b" nextlayerid="17" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="22" height="37" tilewidth="40" tileheight="40" infinite="0" backgroundcolor="#31181b" nextlayerid="17" nextobjectid="25">
  <editorsettings>
   <export target="43.lua" format="lua"/>
  </editorsettings>
@@ -560,6 +560,7 @@
   <object id="14" x="80" y="246" width="42" height="60"/>
   <object id="15" x="232" y="360" width="48" height="54"/>
   <object id="16" x="624" y="308" width="48" height="54"/>
+  <object id="18" x="209" y="220" width="462" height="80"/>
  </objectgroup>
  <objectgroup id="11" name="objects">
   <object id="10" name="transition" x="360" y="1440" width="160" height="40">
@@ -568,12 +569,37 @@
     <property name="marker" value="up"/>
    </properties>
   </object>
+  <object id="17" name="steamworks_gate" x="440" y="322">
+   <point/>
+  </object>
+  <object id="19" name="script" x="360" y="480" width="160" height="40">
+   <properties>
+    <property name="cond" value="Game.party[2] and Game:hasPartyMember(&quot;ceroba&quot;) and Game:getFlag(&quot;ceroba_gavequest&quot;)"/>
+    <property name="cutscene" value="dunes.steamworks_gate"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="12" name="markers">
   <object id="11" name="down" x="440" y="1400">
    <point/>
   </object>
   <object id="12" name="spawn" x="440" y="1240">
+   <point/>
+  </object>
+  <object id="20" name="party1" x="440" y="420">
+   <point/>
+  </object>
+  <object id="21" name="party2" x="380" y="420">
+   <point/>
+  </object>
+  <object id="22" name="party3" x="500" y="420">
+   <point/>
+  </object>
+  <object id="23" name="camspot" x="440" y="360">
+   <point/>
+  </object>
+  <object id="24" name="cerobaspot" x="290" y="320">
    <point/>
   </object>
  </objectgroup>

@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 17,
-  nextobjectid = 17,
+  nextobjectid = 25,
   backgroundcolor = { 49, 24, 27 },
   properties = {
     ["light"] = true
@@ -25,8 +25,7 @@ return {
     {
       name = "starlo_farm",
       firstgid = 14,
-      filename = "../../tilesets/starlo_farm.tsx",
-      exportfilename = "../../tilesets/starlo_farm.lua"
+      filename = "../../tilesets/starlo_farm.tsx"
     },
     {
       name = "dunes",
@@ -968,6 +967,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 18,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 209,
+          y = 220,
+          width = 462,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -999,6 +1011,36 @@ return {
           properties = {
             ["map"] = "dunes/42",
             ["marker"] = "up"
+          }
+        },
+        {
+          id = 17,
+          name = "steamworks_gate",
+          type = "",
+          shape = "point",
+          x = 440,
+          y = 322,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 19,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 480,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cond"] = "Game.party[2] and Game:hasPartyMember(\"ceroba\") and Game:getFlag(\"ceroba_gavequest\")",
+            ["cutscene"] = "dunes.steamworks_gate",
+            ["once"] = false
           }
         }
       }
@@ -1037,6 +1079,71 @@ return {
           shape = "point",
           x = 440,
           y = 1240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 20,
+          name = "party1",
+          type = "",
+          shape = "point",
+          x = 440,
+          y = 420,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 21,
+          name = "party2",
+          type = "",
+          shape = "point",
+          x = 380,
+          y = 420,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 22,
+          name = "party3",
+          type = "",
+          shape = "point",
+          x = 500,
+          y = 420,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 23,
+          name = "camspot",
+          type = "",
+          shape = "point",
+          x = 440,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 24,
+          name = "cerobaspot",
+          type = "",
+          shape = "point",
+          x = 290,
+          y = 320,
           width = 0,
           height = 0,
           rotation = 0,

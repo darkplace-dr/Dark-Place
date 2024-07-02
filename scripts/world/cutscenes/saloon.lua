@@ -1,7 +1,7 @@
 return {
     ceroba = function(cutscene, event)
-        ceroba = cutscene:getCharacter("ceroba")
-        susie = cutscene:getCharacter("susie")
+        local ceroba = cutscene:getCharacter("ceroba")
+        local susie = cutscene:getCharacter("susie")
         if Game:getFlag("ceroba_talkedto") == true then
             if #Game.party >= Game:getFlag("party_max") then
                 cutscene:showNametag("Ceroba")
@@ -101,27 +101,6 @@ return {
                 cutscene:text("* You decided not to disturb her.")
             end
         end
-    end,
-    exit = function(cutscene, event)
-        ceroba = cutscene:getCharacter("ceroba")
-
-        if Game:getFlag("ceroba_gavequest")==true and ceroba then
-            cutscene:showNametag("Ceroba")
-            cutscene:text("* You ready to leave?", "neutral", "ceroba")
-            cutscene:text("* Just remember that we [color:red]won't be able to come back for a while[color:reset].", "closed_eyes", "ceroba")
-            cutscene:hideNametag()
-            local opinion = cutscene:choicer({"Yes", "No"})
-            if opinion == 1 then
-                cutscene:text("* Apologies, but this area isn't ready yet.\n-Nelle")
-            else
-                cutscene:showNametag("Ceroba")
-                cutscene:text("* Just don't take too long,[wait:5] alright?", "neutral", "ceroba")
-                cutscene:hideNametag()
-            end
-        else
-            cutscene:text("* Shouldn't leave now.")
-        end
-        cutscene:walkTo(Game.world.player, Game.world.player.x, Game.world.player.y - 40, 0.5)
     end,
     saloonshop = function(cutscene, event)
         Game.world:lightShopTransition("saloon")

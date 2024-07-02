@@ -500,10 +500,11 @@ return {
                 cutscene:text("* Because the only way to get to the Hotland...", "closed_eyes", "ceroba")
                 cutscene:text("* Is through the Steamworks.[wait:5] And that is not a safe place.", "alt", "ceroba")
                 cutscene:text("* So...[wait:10] Whenever you're ready...", "neutral", "ceroba")
-                cutscene:text("* Just take us to the Wild East Saloon's exit.", "closed_eyes", "ceroba")
+                cutscene:text("* Just take us to the Steamworks entrance.", "closed_eyes", "ceroba")
+                cutscene:text("* It's located in the end of the Dunes, right after the Sunnyside farm.", "closed_eyes", "ceroba")
 
                 Game:setFlag("ceroba_gavequest", true)
-                Kristal.callEvent("createQuest", "A Missing Daughter", "cerobafamily", "Some time ago, Ceroba sent her daughter in the lab with other fallen monsters. But recently, Royal Sciensist stopped answering to her mail about the daughter's condition. She needs your assistance to get there safely and confront the Royal Sciensist about that. When you're ready, you'll have to go to the Wild East Saloon's exit.")
+                Kristal.callEvent("createQuest", "A Missing Daughter", "cerobafamily", "Some time ago, Ceroba sent her daughter in the lab with other fallen monsters. But recently, Royal Sciensist stopped answering to her mail about the daughter's condition. She needs your assistance to get there safely and confront the Royal Sciensist about that. When you're ready, you'll have to go to the Steamworks entrance, which is located in the end of the Dunes, past Wild East and the Sunnyside farm.")
             end
         else
             cutscene:text("* Alright then.", "alt", "ceroba")
