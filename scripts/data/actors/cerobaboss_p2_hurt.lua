@@ -31,12 +31,14 @@ function actor:init()
         ["lightbattle/animations/phase_switch"] = {-23, -28},
         ["lightbattle/animations/staff_spin"] = {-23, -28},
         ["lightbattle/animations/death"] = {-9, 5},
+        ["lightbattle/dead"] = {-5, 5},
     }
 
     self:addLightBattlerPart("body", {
         ["create_sprite"] = function()
             local sprite = Sprite(self.path.."/lightbattle/body_hurt", 55, 112)
             sprite:setOrigin(0.5, 1)
+            sprite:setColor(215/255, 166/255, 166/255)
             sprite.layer = 480
             return sprite
         end,
@@ -54,6 +56,7 @@ function actor:init()
         ["create_sprite"] = function()
             local sprite = Sprite(self.path.."/lightbattle/head_hurt", 57.5, 55)
             sprite:setOrigin(0.5, 1)
+            sprite:setColor(215/255, 166/255, 166/255)
             sprite.layer = 500
             return sprite
         end,
@@ -71,6 +74,7 @@ function actor:init()
         ["create_sprite"] = function()
             local sprite = Sprite(self.path.."/lightbattle/ponytail_hurt", 44.5, 64)
             sprite:setOrigin(0.5, 1)
+            sprite:setColor(215/255, 166/255, 166/255)
             sprite.layer = 460
             return sprite
         end,
@@ -88,6 +92,7 @@ function actor:init()
         ["create_sprite"] = function()
             local sprite = Sprite(self.path.."/lightbattle/hand_right_hurt", 71.5, 79)
             sprite:setOrigin(0.5, 1)
+            sprite:setColor(215/255, 166/255, 166/255)
             sprite.layer = 490
             return sprite
         end,
@@ -105,6 +110,7 @@ function actor:init()
         ["create_sprite"] = function()
             local sprite = Sprite(self.path.."/lightbattle/hand_left_hurt", 33.5, 78)
             sprite:setOrigin(0.5, 1)
+            sprite:setColor(215/255, 166/255, 166/255)
             sprite.layer = 470
             return sprite
         end,
@@ -122,6 +128,7 @@ function actor:init()
         ["create_sprite"] = function()
             local sprite = Sprite(self.path.."/lightbattle/staff_red_hurt", 48, 109)
             sprite:setOrigin(0.5, 1)
+            sprite:setColor(215/255, 166/255, 166/255)
             sprite.layer = 450
             return sprite
         end,

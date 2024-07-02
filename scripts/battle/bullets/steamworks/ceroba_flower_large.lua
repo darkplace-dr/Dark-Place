@@ -11,6 +11,7 @@ function CerobaFlowerLarge:init(x, y, dir, speed)
 
     self.destroy_on_hit = false
     self.sprite:setAnimation({"battle/bullets/ceroba/flower_large", 1/10, true})
+    self:setScale(1, 1)
 end
 
 function CerobaFlowerLarge:update()

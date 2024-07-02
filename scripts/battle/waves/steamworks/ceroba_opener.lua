@@ -13,12 +13,12 @@ end
 function Basic:onStart()
     self.timer:after(1/2, function()
         Assets.playSound("ceroba_bullet_rise", 1.5)
-        self.bigflower_one = self:spawnBullet("steamworks/ceroba_flower_large", Game.battle.arena.x, Game.battle.arena.top - 60, math.rad(270), 0)
+        self.bigflower_one = self:spawnBullet("steamworks/ceroba_flower_large", Game.battle.arena.x, Game.battle.arena.top - 40, math.rad(270), 0)
         self.bigflone_x = self.bigflower_one.x
         self.bigflone_y = self.bigflower_one.y
         self.timer:after(1/2, function()
             Assets.playSound("ceroba_bullet_rise", 1.5)
-            self.bigflower_two = self:spawnBullet("steamworks/ceroba_flower_large", Game.battle.arena.x, Game.battle.arena.bottom + 60, math.rad(270), 0)
+            self.bigflower_two = self:spawnBullet("steamworks/ceroba_flower_large", Game.battle.arena.x, Game.battle.arena.bottom + 40, math.rad(270), 0)
             self.bigfltwo_x = self.bigflower_two.x
             self.bigfltwo_y = self.bigflower_two.y
         end)
@@ -66,8 +66,13 @@ function Basic:update()
     self.siner = self.siner + DT
     local offset = math.sin(self.siner * 3) * 160
     self.timer:after(1.5, function()
-        self.bigflower_one:setPosition(self.bigflone_x + offset, self.bigflone_y)
-        self.bigflower_two:setPosition(self.bigfltwo_x - offset, self.bigfltwo_y)
+        if self.type == 1 then
+            self.bigflower_one:setPosition(self.bigflone_x + offset, self.bigflone_y)
+            self.bigflower_two:setPosition(self.bigfltwo_x - offset, self.bigfltwo_y)
+        else
+            self.bigflower_one:setPosition(self.bigflone_x - offset, self.bigflone_y)
+            self.bigflower_two:setPosition(self.bigfltwo_x + offset, self.bigfltwo_y)
+        end
     end)
 
     super.update(self)

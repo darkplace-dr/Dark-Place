@@ -48,8 +48,8 @@ return {
         cutscene:battlerText(ceroba, "...In the meantime...")
         cutscene:battlerText(ceroba, "Go to Hell.")
 
+        ceroba:getActiveSprite():setSprite("lightbattle/dead")
         ceroba:onDefeatVaporized(damage, battler)
-        --Game.battle.battle_ui:endAttack()
         cutscene:after(function()
             Game.battle:setState("VICTORY")
         end, true)
