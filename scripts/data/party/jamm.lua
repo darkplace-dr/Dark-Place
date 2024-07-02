@@ -90,6 +90,8 @@ function character:getActor(light)
     return super.getActor(self, light)
 end
 
+function character:getStarmanTheme() return "jamm" end
+
 function character:onTurnStart(battler)
 	if self.stun then
 		Game.battle:pushForcedAction(battler, "SKIP")
