@@ -19,12 +19,14 @@ function greyarea:update()
         if Game.world.player.walk_speed >= 60 then
             local eye = Game:getFlag("greyarea_exit_to")
             Game.world:mapTransition(eye[1], eye[2], eye[3])
+			Game:setFlag("weather_save", false)
         end
     end
 
     if Input.pressed("menu") and not Game.world.cutscene then
         local eye = Game:getFlag("greyarea_exit_to")
         Game.world:mapTransition(eye[1], eye[2], eye[3])
+		Game:setFlag("weather_save", false)
     end
 
     if Game.world.player.x <= 360 then
