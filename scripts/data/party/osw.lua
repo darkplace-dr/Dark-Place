@@ -6,4 +6,6 @@ function character:init()
     self.lw_portrait = "face/starwalker/neutral"
 end
 
+function character:getStarmanTheme() return "starwalker" end
+
 return character
