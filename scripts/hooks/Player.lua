@@ -82,6 +82,14 @@ function Player:update()
 		self.siner = self.siner + DT * 40
 		self.inv_timer = self.inv_timer - DT
 		self:setColor(Utils.hsvToRgb(((self.siner * 8) % 255)/255, 255/255, 255/255))
+		if (self.inv_timer + DT) % 0.125 < self.inv_timer % 0.125 then
+			local afterimage = Sprite(self.sprite:getTexture(), self.x - self.sprite:getOffset()[1], self.y - self.sprite:getOffset()[2])
+			afterimage:setScale(2, 2)
+			afterimage:setOrigin(0.5, 1)
+			afterimage:setColor(self.color)
+			Game.world:spawnObject(afterimage)
+			Game.world.stage.timer:tween(0.5, afterimage, {alpha = 0})
+		end
 	end
 	
 	if self.inv_timer <= 0 and self.invincible_colors then
