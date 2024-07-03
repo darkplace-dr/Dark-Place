@@ -83,7 +83,6 @@ function Player:update()
 		self.inv_timer = self.inv_timer - DT
 		self:setColor(Utils.hsvToRgb(((self.siner * 8) % 255)/255, 255/255, 255/255))
 		if (self.inv_timer + DT) % 0.125 < self.inv_timer % 0.125 then
-			Kristal.Console:log("Should make trail!")
 			local afterimage = Sprite(self.sprite:getTexture(), self.x - self.sprite:getOffset()[1], self.y - self.sprite:getOffset()[2])
 			afterimage:setScale(2, 2)
 			afterimage:setOrigin(0.5, 1)
