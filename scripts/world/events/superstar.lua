@@ -13,7 +13,7 @@ function SuperStar:onCollide(chara)
 			chara.old_song = Game.world.music.current
 			Game.world.music:play("starman/" .. Game.party[1]:getStarmanTheme())
 		end
-        chara.inv_timer = 15
+        chara.inv_timer = 20
 		chara.invincible_colors = true
 		self:remove()
     end
