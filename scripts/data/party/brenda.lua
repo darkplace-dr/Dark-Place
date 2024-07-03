@@ -101,4 +101,6 @@ function character:drawPowerStat(index, x, y, menu)
     end
 end
 
+function character:getStarmanTheme() return "brenda" end
+
 return character

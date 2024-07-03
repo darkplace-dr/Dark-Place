@@ -30,4 +30,6 @@ function character:lightLVStats()
     }
 end
 
+function character:getStarmanTheme() return "you" end
+
 return character
