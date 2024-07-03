@@ -116,7 +116,12 @@ function character:init()
 
     local save = Mod:loadGameN()
     if save then
-        self:setWeapon(save.Equipped.weapon.id)
+        if save.Equipped.weapon then
+            self:setWeapon(save.Equipped.weapon.id)
+        else
+            print("Error: noel's weapon = null\nResolving....")
+            self:setWeapon("old_umbrella")
+        end
         if save.Equipped.armor[1] then
             self:setArmor(1, save.Equipped.armor[1][1])
         end
