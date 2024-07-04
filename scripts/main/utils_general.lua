@@ -119,7 +119,8 @@ function Mod:hasSaveFiles(id, specific_file, fused_identify)
     local paths = {
         "LOVE/kristal/saves/",                      -- Source code version
         "kristal/saves/",                           -- Executable version
-        (fused_identify or id).."/saves/",  -- Executable version but changed Kristal's id in conf.lua
+        "LOVE/"..(fused_identify or id).."/saves/", -- Source code version but changed Kristal's id in conf.lua
+        (fused_identify or id).."/saves/",  		-- Executable version but changed Kristal's id in conf.lua
     }
 
     for i,v in ipairs(paths) do
