@@ -236,7 +236,7 @@ function Soul:update()
     end
 
     -- Error sound if trying to use slowdown when out of TP
-    if Input.pressed("f") and Game:getTension() <= 0 then
+    if Input.pressed("focus_placebo") and Game:getTension() <= 0 then
         Assets.playSound("ui_cant_select", 2)
     end
 
@@ -406,7 +406,7 @@ function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effec
         self.concentratebg:remove()
         self.timeslow_sfx:stop()
     end
-	Input.clear("f")
+	Input.clear("focus_placebo")
 	super.transitionTo(self, x, y, should_destroy)
 end
 
