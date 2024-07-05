@@ -59,12 +59,7 @@ end
 
 -- Function overrides go here
 function item:getDescription() 
-    print(self.id)
-    if self.id == "focus" then
-        return "Hold [color:yellow][" .. string.upper(Input.key_bindings["focus_placebo"][1]) .. "][color:reset] during battle to slow down time.\nTP bar determines amount of time you can use it."
-    else
-        return self.description
-    end
+    return "Hold [color:yellow][" .. string.upper(Input.key_bindings["focus_placebo"][1]) .. "][color:reset] during battle to slow down time.\nTP bar determines amount of time you can use it."
 end
 
 return item
