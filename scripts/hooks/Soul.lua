@@ -241,7 +241,7 @@ function Soul:update()
     end
 
     -- Soul VFX
-    if not self.transitioning and Input.down("f") and Game:getTension() > 0 then
+    if not self.transitioning and Input.down("focus_placebo") and Game:getTension() > 0 then
     self.outline.alpha = Utils.approach(self.outline.alpha, 1, DTMULT / 4)
     self.concentratebg.alpha_fx.alpha = 1
     if self.afterimage_delay >= 5 then
@@ -275,7 +275,7 @@ function Soul:remove()
     self.outlinefx.active = false
     self.concentratebg:remove()
     if self.timeslow_sfx then self.timeslow_sfx:stop() end
-    Input.clear("f")
+    Input.clear("focus_placebo")
     super.remove(self)
 end
 
