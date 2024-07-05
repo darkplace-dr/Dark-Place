@@ -43,7 +43,7 @@ function Gangnam:update()
 	end
 
 	if self.is_gangnaming then
-		if not Input.down("a") or (Game.state ~= "OVERWORLD" or Game.world:hasCutscene()) then
+		if not Input.down("gangnam") or (Game.state ~= "OVERWORLD" or Game.world:hasCutscene()) then
 			local kris = Game.world:getCharacter("kris_lw")
 			self.is_gangnaming = false
 			kris:resetSprite()

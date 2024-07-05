@@ -73,7 +73,7 @@ function TauntSoul:update()
     self.parried_loop_sfx:setVolume(Utils.clampMap(self.parry_inv, 0, self.parry_length / 2, 0, 1))
     --]]
 
-    if Input.pressed("v", false) and self:canParry() then
+    if Input.pressed("taunt", false) and self:canParry() then
         Game.lock_movement = true
 
         self:flash()

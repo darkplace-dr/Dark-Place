@@ -18,7 +18,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    self.description = "Hold [color:yellow]" .. "[F]" .. "[color:reset] during battle to slow down time.\nTP bar determines amount of time you can use it."
+    self.description = "Hold [color:yellow][F][color:reset] during battle to slow down time.\nTP bar determines amount of time you can use it."
 
     -- Default shop price (sell price is halved)
     self.price = 0
@@ -58,5 +58,8 @@ function item:init()
 end
 
 -- Function overrides go here
+function item:getDescription() 
+    return "Hold [color:yellow][" .. string.upper(Input.key_bindings["focus_placebo"][1]) .. "][color:reset] during battle to slow down time.\nTP bar determines amount of time you can use it."
+end
 
 return item

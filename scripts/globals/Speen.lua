@@ -112,7 +112,7 @@ function Speen:update()
 			self:nextFacing()
 		end
 
-		if not Input.down("s") or (Game.state ~= "OVERWORLD" or Game.world:hasCutscene()) then
+		if not Input.down("speen") or (Game.state ~= "OVERWORLD" or Game.world:hasCutscene()) then
 			self.is_spinning = false
 			if self.lancered then
 				self.lancered = false

@@ -236,12 +236,12 @@ function Soul:update()
     end
 
     -- Error sound if trying to use slowdown when out of TP
-    if Input.pressed("f") and Game:getTension() <= 0 then
+    if Input.pressed("focus_placebo") and Game:getTension() <= 0 then
         Assets.playSound("ui_cant_select", 2)
     end
 
     -- Soul VFX
-    if not self.transitioning and Input.down("f") and Game:getTension() > 0 then
+    if not self.transitioning and Input.down("focus_placebo") and Game:getTension() > 0 then
     self.outline.alpha = Utils.approach(self.outline.alpha, 1, DTMULT / 4)
     self.concentratebg.alpha_fx.alpha = 1
     if self.afterimage_delay >= 5 then
@@ -275,7 +275,7 @@ function Soul:remove()
     self.outlinefx.active = false
     self.concentratebg:remove()
     if self.timeslow_sfx then self.timeslow_sfx:stop() end
-    Input.clear("f")
+    Input.clear("focus_placebo")
     super.remove(self)
 end
 
@@ -406,7 +406,7 @@ function Soul:transitionTo(x, y, should_destroy) -- Fixes the focus visual effec
         self.concentratebg:remove()
         self.timeslow_sfx:stop()
     end
-	Input.clear("f")
+	Input.clear("focus_placebo")
 	super.transitionTo(self, x, y, should_destroy)
 end
 
