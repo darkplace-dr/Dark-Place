@@ -1,3 +1,4 @@
+table.insert(DialogueText.COMMANDS, "name")
 ---@class DialogueText
 local DialogueText, super = Class("DialogueText")
 
@@ -87,6 +88,14 @@ function DialogueText:update()
     super.super.update(self)
 
     self.last_talking = self.state.talk_anim and self.state.typing
+end
+
+function DialogueText:processModifier(node, dry)
+    super.processModifier(self, node, dry)
+
+    if node.command == "name" then
+        self.box_parent.nametext = node.arguments[1]
+    end
 end
 
 return DialogueText
