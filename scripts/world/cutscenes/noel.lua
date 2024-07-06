@@ -541,16 +541,21 @@ return {
 
         local savedData = Mod:loadGameN()
         local name = Game.save_name
-
-        if Game.save_name == savedData.Player_Name then
+        local thing = love.math.random(1, 10)
+        if thing == 1 then
+            cutscene:doki_text("[voice:none]\"So,[wait:5] do you like literature "..savedData.Player_Name.."?\"", nil, noel, {name = "Noel"})
+        elseif Game.save_name == savedData.Player_Name then
             cutscene:text("* Ello.", "bruh")
         else
             cutscene:text("* "..name.."?\n* I thought it was "..savedData.Player_Name..".", "...")
             cutscene:text("* You changed it.", "huh")
             cutscene:text("* Does that mean you want me to forget the old one?", "lookup")
         end
-
-        cutscene:text("* So, may I join the [color:yellow]PARTY[color:white]?", "neutral")
+        if thing == 1 then
+            cutscene:doki_text("[name:Natsuki]\"[voice:none]Oh,[wait:5] may I[name:Noel] also join the [color:yellow]PARTY[color:white] by the way?\"", nil, noel, {name = "Natsuki"})
+        else
+            cutscene:text("* So, may I join the [color:yellow]PARTY[color:white]?", "neutral")
+        end
 
         local cc = cutscene:choicer({"Yes", "No"})
         if cc == 1 then

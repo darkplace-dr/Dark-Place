@@ -77,7 +77,8 @@ function Mod:funnytitle()
         Mod.info.name,
         "Thetaseal",
         "Undertale Yellow: The Roba Edition",
-        "Power Star"
+        "Power Star",
+        "Doki Doki Literature Club!"
     }
     local funnytitle_rand = love.math.random(#funnytitles)
     local funnytitle = funnytitles[funnytitle_rand] or "Depa Runts"
