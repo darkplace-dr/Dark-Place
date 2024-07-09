@@ -334,6 +334,17 @@ function DarkConfigMenu:update()
         if (not Input.down("right")) and (not Input.down("left")) then
             self.noise_timer = 3
         end
+    elseif self.state == "CONTROLS" then
+        --  Check if not rebinding
+        if not self.rebinding then
+        --  If not rebinding and allowed, close the "controls" sub menu
+            if Input.pressed("cancel") and Kristal.getLibConfig("xtractrl", "cancel") then
+                self.reset_flash_timer = 0
+                self.state = "MAIN"
+                self.currently_selected = 2
+                Input.clear("confirm", true)  
+            end
+        end
     end
 
     self.reset_flash_timer = math.max(self.reset_flash_timer - DTMULT, 0)
@@ -343,17 +354,6 @@ end
 
 function DarkConfigMenu:onKeyPressed(key)
     if self.state == "CONTROLS" then
-
-    --  Check if not rebinding
-        if not self.rebinding then
-        --  If not rebinding and allowed, close the "controls" sub menu
-            if Input.pressed("cancel") and Kristal.getLibConfig("xtractrl", "cancel") then
-                self.reset_flash_timer = 0
-                self.state = "MAIN"
-                self.currently_selected = 2
-                Input.clear("confirm", true)
-            end
-        end
 
         if self.rebinding then
             local gamepad = Utils.startsWith(key, "gamepad:")
