@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 31,
+  tilecount = 44,
   tiles = {
     {
       id = 3,
@@ -282,6 +282,138 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/objects/04_door.png",
       width = 148,
       height = 30
+    },
+    {
+      id = 48,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_1.png",
+      width = 142,
+      height = 196,
+      animation = {
+        {
+          tileid = 48,
+          duration = 200
+        },
+        {
+          tileid = 49,
+          duration = 200
+        },
+        {
+          tileid = 50,
+          duration = 200
+        },
+        {
+          tileid = 51,
+          duration = 200
+        }
+      }
+    },
+    {
+      id = 49,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_2.png",
+      width = 142,
+      height = 196
+    },
+    {
+      id = 50,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_3.png",
+      width = 142,
+      height = 196
+    },
+    {
+      id = 51,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_4.png",
+      width = 142,
+      height = 196
+    },
+    {
+      id = 52,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/06_wall_2.png",
+      width = 146,
+      height = 88
+    },
+    {
+      id = 53,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/platform_1_1.png",
+      width = 88,
+      height = 196,
+      animation = {
+        {
+          tileid = 53,
+          duration = 200
+        },
+        {
+          tileid = 54,
+          duration = 200
+        },
+        {
+          tileid = 55,
+          duration = 200
+        },
+        {
+          tileid = 56,
+          duration = 200
+        }
+      }
+    },
+    {
+      id = 54,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/platform_1_2.png",
+      width = 88,
+      height = 196
+    },
+    {
+      id = 55,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/platform_1_3.png",
+      width = 88,
+      height = 196
+    },
+    {
+      id = 56,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/platform_1_4.png",
+      width = 88,
+      height = 196
+    },
+    {
+      id = 57,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/platform_2_1.png",
+      width = 76,
+      height = 88,
+      animation = {
+        {
+          tileid = 57,
+          duration = 200
+        },
+        {
+          tileid = 58,
+          duration = 200
+        },
+        {
+          tileid = 59,
+          duration = 200
+        },
+        {
+          tileid = 60,
+          duration = 200
+        }
+      }
+    },
+    {
+      id = 58,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/platform_2_2.png",
+      width = 76,
+      height = 88
+    },
+    {
+      id = 59,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/platform_2_3.png",
+      width = 76,
+      height = 88
+    },
+    {
+      id = 60,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/platform_2_4.png",
+      width = 76,
+      height = 88
     }
   }
 }
