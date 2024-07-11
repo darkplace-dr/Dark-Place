@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="steamworks_objects" tilewidth="416" tileheight="400" tilecount="31" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="steamworks_objects" tilewidth="416" tileheight="400" tilecount="44" columns="0">
  <editorsettings>
   <export target="steamworks_objects.lua" format="lua"/>
  </editorsettings>
@@ -117,5 +117,62 @@
  </tile>
  <tile id="47">
   <image width="148" height="30" source="../../../assets/sprites/world/maps/steamworks/objects/04_door.png"/>
+ </tile>
+ <tile id="48">
+  <image width="142" height="196" source="../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_1.png"/>
+  <animation>
+   <frame tileid="48" duration="200"/>
+   <frame tileid="49" duration="200"/>
+   <frame tileid="50" duration="200"/>
+   <frame tileid="51" duration="200"/>
+  </animation>
+ </tile>
+ <tile id="49">
+  <image width="142" height="196" source="../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_2.png"/>
+ </tile>
+ <tile id="50">
+  <image width="142" height="196" source="../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_3.png"/>
+ </tile>
+ <tile id="51">
+  <image width="142" height="196" source="../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_4.png"/>
+ </tile>
+ <tile id="52">
+  <image width="146" height="88" source="../../../assets/sprites/world/maps/steamworks/objects/06_wall_2.png"/>
+ </tile>
+ <tile id="53">
+  <image width="88" height="196" source="../../../assets/sprites/world/maps/steamworks/objects/platform_1_1.png"/>
+  <animation>
+   <frame tileid="53" duration="200"/>
+   <frame tileid="54" duration="200"/>
+   <frame tileid="55" duration="200"/>
+   <frame tileid="56" duration="200"/>
+  </animation>
+ </tile>
+ <tile id="54">
+  <image width="88" height="196" source="../../../assets/sprites/world/maps/steamworks/objects/platform_1_2.png"/>
+ </tile>
+ <tile id="55">
+  <image width="88" height="196" source="../../../assets/sprites/world/maps/steamworks/objects/platform_1_3.png"/>
+ </tile>
+ <tile id="56">
+  <image width="88" height="196" source="../../../assets/sprites/world/maps/steamworks/objects/platform_1_4.png"/>
+ </tile>
+ <tile id="57">
+  <image width="76" height="88" source="../../../assets/sprites/world/maps/steamworks/objects/platform_2_1.png"/>
+  <animation>
+   <frame tileid="57" duration="200"/>
+   <frame tileid="58" duration="200"/>
+   <frame tileid="59" duration="200"/>
+   <frame tileid="60" duration="200"/>
+  </animation>
+ </tile>
+ <tile id="58">
+  <image width="76" height="88" source="../../../assets/sprites/world/maps/steamworks/objects/platform_2_2.png"/>
+ </tile>
+ <tile id="59">
+  <image width="76" height="88" source="../../../assets/sprites/world/maps/steamworks/objects/platform_2_3.png"/>
+ </tile>
+ <tile id="60">
+  <image width="76" height="88" source="../../../assets/sprites/world/maps/steamworks/objects/platform_2_4.png"/>
  </tile>
 </tileset>

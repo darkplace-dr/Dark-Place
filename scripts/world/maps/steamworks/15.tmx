@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="25" height="17" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="15">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="25" height="17" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="15">
  <editorsettings>
   <export target="15.lua" format="lua"/>
  </editorsettings>
@@ -10,6 +10,7 @@
  </properties>
  <tileset firstgid="1" source="../../tilesets/steamworks.tsx"/>
  <tileset firstgid="1497" source="../../tilesets/steamworks_images.tsx"/>
+ <tileset firstgid="1529" source="../../tilesets/steamworks_mirrored.tsx"/>
  <layer id="1" name="Tile Layer 1" width="25" height="17">
   <data encoding="csv">
 177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,177,
@@ -48,8 +49,8 @@
 316,316,316,316,316,316,316,316,316,316,316,247,248,248,248,248,248,248,248,248,248,248,248,248,248,
 350,350,350,350,350,350,350,350,350,350,350,315,316,316,316,316,316,316,316,316,316,316,316,316,316,
 0,0,0,0,0,0,0,0,0,0,0,349,350,350,350,350,350,350,350,350,350,350,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,413,414,0,383,384,384,385,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,448,418,385,347,348,0,483,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,413,414,1966,383,384,384,385,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,448,418,385,347,348,1896,483,1999,0,0
 </data>
  </layer>
  <layer id="4" name="Tile Layer 3" width="25" height="17" offsetx="0" offsety="28">
