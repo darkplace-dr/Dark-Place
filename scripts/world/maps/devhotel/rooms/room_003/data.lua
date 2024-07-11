@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 30,
+  nextobjectid = 33,
   properties = {
     ["music"] = "room_003"
   },
@@ -488,6 +488,19 @@ return {
           shape = "point",
           x = 500,
           y = 363,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 32,
+          name = "moveto_marcy",
+          type = "",
+          shape = "point",
+          x = 616,
+          y = 280,
           width = 0,
           height = 0,
           rotation = 0,
