@@ -67,6 +67,13 @@ function character:init()
 		self:setActor("jamm_hurt")
 		self:setLightActor("jamm_lw_hurt")
 		self.menu_icon = "party/jamm/head_shadowed"
+	elseif Game:getFlag("marcy_joined") then
+		self:setActor("jammarcy")
+		self:setLightActor("jammarcy_light")
+		self.menu_icon = "party/jamm/withmarcy/head"
+		self.head_icons = "party/jamm/withmarcy/icon"
+		self.name_sprite = "party/jamm/withmarcy/name"
+		self.name = "J&M"
 	end
 
     self.attack_sprite = "effects/attack/sling"

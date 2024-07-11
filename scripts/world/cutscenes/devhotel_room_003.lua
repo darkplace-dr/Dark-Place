@@ -11,20 +11,52 @@ return {
     end,
 	
     marcy_bed = function(cutscene, event)
-		local susie = cutscene:getCharacter("susie")
-	
-		cutscene:showNametag("Marcy")
-        cutscene:text("[voice:marcy]* Um.[wait:5].[wait:5].[wait:5] Excuse Marcy.[wait:5].[wait:5].", "neutral", "marcy")
-        cutscene:text("[voice:marcy]* But what are you doing with Marcy's bed?", "neutral", "marcy")
+		if Game:getFlag("jamm_party") and Game:getFlag("marcy_joined") then
+			cutscene:walkToSpeed(Game.world.player, "moveto_marcy", 4, "up", true)
+			cutscene:text("* (Put Marcy down?)")
+			if cutscene:choicer({"Yes", "No"}) == 1 then
+				local marcy = NPC("marcy", 548, 192, {cutscene="devhotel_room_003.marcy"})
+				Game.world:spawnObject(marcy)
+				
+				local id = 0
+				for k,v in ipairs(Game.party) do
+					if v.id == "jamm" then
+						id = k
+					end
+				end
+
+				if id == 1 then
+					Game.world.player:setActor("jamm")
+				elseif id >= 0 then
+					Game.world.followers[id-1]:setActor("jamm")
+				end
+				Game:getPartyMember("jamm"):setActor("jamm")
+				Game:getPartyMember("jamm"):setLightActor("jamm_lw")
+				Game:getPartyMember("jamm").menu_icon = "party/jamm/head"
+				Game:getPartyMember("jamm").head_icons = "party/jamm/icon"
+				Game:getPartyMember("jamm").name_sprite = "party/jamm/name"
+				Game:getPartyMember("jamm"):increaseStat("attack", 8)
+				Game:getPartyMember("jamm"):increaseStat("defense", 5)
+				Game:getPartyMember("jamm").has_act = false
+				Game:setFlag("jamm_canact", false)
+				Game:setFlag("marcy_joined", false)
+			end
+		else
+			local susie = cutscene:getCharacter("susie")
 		
-		if susie then
-			cutscene:showNametag("Susie")
-            cutscene:text("[voice:susie]* We're raiding it for crumbs.", "smile", "susie")
-			
 			cutscene:showNametag("Marcy")
-			cutscene:text("[voice:marcy]* Wh-what!?", "surprised", "marcy")
+			cutscene:text("[voice:marcy]* Um.[wait:5].[wait:5].[wait:5] Excuse Marcy.[wait:5].[wait:5].", "neutral", "marcy")
+			cutscene:text("[voice:marcy]* But what are you doing with Marcy's bed?", "neutral", "marcy")
+			
+			if susie then
+				cutscene:showNametag("Susie")
+				cutscene:text("[voice:susie]* We're raiding it for crumbs.", "smile", "susie")
+				
+				cutscene:showNametag("Marcy")
+				cutscene:text("[voice:marcy]* Wh-what!?", "surprised", "marcy")
+			end
+			cutscene:hideNametag()
 		end
-        cutscene:hideNametag()
     end,
 	
     jamm_bed = function(cutscene, event)
@@ -138,10 +170,57 @@ return {
 				end
 			else
 				cutscene:showNametag("Marcy")
-				cutscene:text("[voice:marcy]* Yay! You found papa!", "smile", "marcy")
-				if Game:getFlag("dungeonkiller") then
-					cutscene:text("[voice:marcy]* But...\n* Marcy sees papa is concerned...", "sad", "marcy")
-					cutscene:text("[voice:marcy]* Marcy is worried...\n* Did something happen to papa?", "sad", "marcy")
+				if Game:getFlag("jamm_party") then
+					cutscene:text("[voice:marcy]* Hi, papa!", "happy", "marcy")
+					if Game:getFlag("dungeonkiller") then
+						cutscene:text("[voice:marcy]* Papa, Marcy is worried about you.", "sad", "marcy")
+						cutscene:text("[voice:marcy]* Are you doing alright, papa?", "sad", "marcy")
+						cutscene:showNametag("Jamm")
+						cutscene:text("* I'm fine, Marcy.\n* Don't worry.", "shaded_neutral", "jamm")
+					else
+						cutscene:showNametag("Jamm")
+						cutscene:text("* Hi, Marcy!\n* How's my little buddy doing?", "smile", "jamm")
+						cutscene:showNametag("Marcy")
+						cutscene:text("[voice:marcy]* Marcy is doing perfect, papa!", "happy", "marcy")
+						cutscene:showNametag("Jamm")
+						cutscene:text("* That's great to hear!", "smile", "jamm")
+						cutscene:hideNametag()
+						if Game:getFlag("marcy_unlocked") then
+							cutscene:text("* (Take Marcy out with you?)")
+							if cutscene:choicer({"Yes", "No"}) == 1 then
+								Game.world:getCharacter("marcy"):remove()
+				
+								local id = 0
+								for k,v in ipairs(Game.party) do
+									if v.id == "jamm" then
+										id = k
+									end
+								end
+								
+								if id == 1 then
+									Game.world.player:setActor("jammarcy")
+								elseif id >= 0 then
+									Game.world.followers[id-1]:setActor("jammarcy")
+								end
+								Game:getPartyMember("jamm"):setActor("jammarcy")
+								Game:getPartyMember("jamm"):setLightActor("jammarcy_light")
+								Game:getPartyMember("jamm").menu_icon = "party/jamm/withmarcy/head"
+								Game:getPartyMember("jamm").head_icons = "party/jamm/withmarcy/icon"
+								Game:getPartyMember("jamm").name_sprite = "party/jamm/withmarcy/name"
+								Game:getPartyMember("jamm"):increaseStat("attack", -8)
+								Game:getPartyMember("jamm"):increaseStat("defense", -5)
+								Game:getPartyMember("jamm").has_act = true
+								Game:setFlag("jamm_canact", true)
+								Game:setFlag("marcy_joined", true)
+							end
+						end
+					end
+				else
+					cutscene:text("[voice:marcy]* Yay! You found papa!", "smile", "marcy")
+					if Game:getFlag("dungeonkiller") then
+						cutscene:text("[voice:marcy]* But...\n* Marcy sees papa is concerned...", "sad", "marcy")
+						cutscene:text("[voice:marcy]* Marcy is worried...\n* Did something happen to papa?", "sad", "marcy")
+					end
 				end
 			end
 		elseif choice == 3 then

@@ -37,31 +37,54 @@ return {
         cutscene:text("* It's a door.")
         cutscene:text("* The sign reads \"THIS ROOM BELONGS TO: ACOUSTICJAMM\"")
 		if Game:getFlag("acj_marcy", false) then
-			cutscene:text("* It appears to be locked, but...")
-			cutscene:text("* Didn't Marcy say that she would open the door for you?")
-			cutscene:text("* Will you knock?")
-			
-			if cutscene:choicer({"Yes", "No"}) == 1 then
-				Assets.playSound("knock")
-				cutscene:text("* You knock on the door...")
+			if Game:getFlag("jamm_party") and Game:getFlag("marcy_joined") then
+				cutscene:text("* Unlock the door?")
 				
-				cutscene:showNametag("Marcy")
-				cutscene:text("[voice:marcy]* C-coming!")
-				
-				Assets.playSound("dooropen")
-				cutscene:hideNametag()
-				
-				cutscene:wait(1)
-				
-				cutscene:wait(cutscene:fadeOut(0))
-				Assets.playSound("doorclose")
-				
-				cutscene:wait(1)
-				
-				cutscene:loadMap("devhotel/rooms/room_003", "entry")
-				cutscene:wait(cutscene:fadeIn(0.2))
+				if cutscene:choicer({"Yes", "No"}) == 1 then
+					cutscene:text("* You unlock the door...")
+					
+					Assets.playSound("dooropen")
+					cutscene:hideNametag()
+					
+					cutscene:wait(1)
+					
+					cutscene:wait(cutscene:fadeOut(0))
+					Assets.playSound("doorclose")
+					
+					cutscene:wait(1)
+					
+					cutscene:loadMap("devhotel/rooms/room_003", "entry")
+					cutscene:wait(cutscene:fadeIn(0.2))
+				else
+					cutscene:text("* You unlockn't.")
+				end
 			else
-				cutscene:text("* You knockn't.")
+				cutscene:text("* It appears to be locked, but...")
+				cutscene:text("* Didn't Marcy say that she would open the door for you?")
+				cutscene:text("* Will you knock?")
+				
+				if cutscene:choicer({"Yes", "No"}) == 1 then
+					Assets.playSound("knock")
+					cutscene:text("* You knock on the door...")
+					
+					cutscene:showNametag("Marcy")
+					cutscene:text("[voice:marcy]* C-coming!")
+					
+					Assets.playSound("dooropen")
+					cutscene:hideNametag()
+					
+					cutscene:wait(1)
+					
+					cutscene:wait(cutscene:fadeOut(0))
+					Assets.playSound("doorclose")
+					
+					cutscene:wait(1)
+					
+					cutscene:loadMap("devhotel/rooms/room_003", "entry")
+					cutscene:wait(cutscene:fadeIn(0.2))
+				else
+					cutscene:text("* You knockn't.")
+				end
 			end
 		else
 			cutscene:text("* It appears to be locked.")
