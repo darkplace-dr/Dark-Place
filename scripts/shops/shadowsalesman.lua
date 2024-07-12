@@ -5,48 +5,45 @@ function ShadowShop:init()
 
     self.encounter_text = "[emote:idle]* Welcome to the Dev Diner...[wait:5]\n* How can I help ya?"
     self.shop_text = "[emote:idle]* C'mon kid,[wait:5] I don't have all day, y'know..."
-    self.leaving_text = "[emote:idle]* Feel free to come back, if ya want..."
+    self.leaving_text = "[emote:idle]* Feel free to come back, if you want..."
     -- Shown when you're in the BUY menu
     self.buy_menu_text = "[emote:eyebrow_raise]What'll it be?"
     -- Shown when you're about to buy something.
     self.buy_confirmation_text = "That'll be\n%s ..."
     -- Shown when you refuse to buy something
-    self.buy_refuse_text = "[emote:annoyed]Then why'd ya ask for it, ya schmuck?!"
+    self.buy_refuse_text = "[emote:annoyed]Then why'd you ask for it, you schmuck?!"
     -- Shown when you buy something
-    self.buy_text = "Much obliged, kiddo."
+    self.buy_text = "Much obliged, kid."
     -- Shown when you buy something and it goes in your storage
-    self.buy_storage_text = "Much obliged, kiddo."
+    self.buy_storage_text = "I'll put that in storage for ya."
     -- Shown when you don't have enough money to buy something
-    self.buy_too_expensive_text = "[emote:annoyed]What do I look like, a bank?"
+    self.buy_too_expensive_text = "[emote:annoyed]Come back when you can afford this."
     -- Shown when you don't have enough space to buy something.
-    self.buy_no_space_text = "[emote:idle]"
+    self.buy_no_space_text = "[emote:idle]Clear out some of your stuff, kid."
     -- Shown when something doesn't have a sell price
-    self.sell_no_price_text = "[emote:idle]"
+    self.sell_no_price_text = "[emote:annoyed]The hell is that thing?"
     -- Shown when you're in the SELL menu
-    self.sell_menu_text = "[emote:idle]Sure, you can sell me your crap."
+    self.sell_menu_text = "[emote:idle]Sure, I can take some stuff off ya."
     -- Shown when you try to sell an empty spot
-    self.sell_nothing_text = "[emote:annoyed]I don't have time for magic acts, kid."
+    self.sell_nothing_text = "[emote:annoyed]I don't have time for magic acts, bub."
     -- Shown when you're about to sell something.
-    self.sell_confirmation_text = "I'll take that\noffa ya for \n%s ."
+    self.sell_confirmation_text = "I'll take that\nfor \n%s ."
     -- Shown when you refuse to sell something
-    self.sell_refuse_text = "[emote:annoyed]I don't want whatever the hell that is."
+    self.sell_refuse_text = "[emote:annoyed]Uh, okay then???"
     -- Shown when you sell something
-    self.sell_text = "[emote:idle]Much obliged, kiddo."
+    self.sell_text = "[emote:idle]Much obliged, kid."
     -- Shown when you have nothing in a storage
     self.sell_no_storage_text = "[emote:annoyed]I don't have time for magic acts, kid."
     -- Shown when you enter the talk menu.
     self.talk_text = "[emote:idle]Got nothin' better to do anyways..."
 
-    self.sell_options_text["items"]   = "Sure, you can sell me your crap."
-    self.sell_options_text["weapons"] = "Sure, you can sell me your crap."
-    self.sell_options_text["armors"]  = "Sure, you can sell me your crap."
-    self.sell_options_text["storage"] = "Sure, you can sell me your crap."
+    self.sell_options_text["items"]   = "Sure, I can take some stuff off ya."
+    self.sell_options_text["weapons"] = "Sure, I can take some stuff off ya."
+    self.sell_options_text["armors"]  = "Sure, I can take some stuff off ya."
+    self.sell_options_text["storage"] = "Sure, I can take some stuff off ya."
 
 	-- Base Items
-    self:registerItem("everybodyweapon", {description = "WEAPON\nA weapon for\neveryone."})
-    self:registerItem("favwich")
     self:registerItem("synthsoda")
-    self:registerItem("synthsoda") -- placeholder for now. gonna replace with a new healing item at some point
 
 	
 	-- MistCard Items
