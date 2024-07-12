@@ -178,20 +178,28 @@ return {
     brenda = function(cutscene, actor)
         local master = cutscene:getCharacter("brenda_master")
         master:setAnimation({"bop", 0.25, true})
-        cutscene:text("* I'm Brenda Master.\n[wait:5]* Ask me about BREANDA's.")
+        cutscene:text("* I'm Brenda Master.\n[wait:5]* Ask me about BRENDA's.")
 
-        local choices = {"1", "2", "3"}
+        local choices = {"Magic", "Weapon", "Fact"}
         table.insert(choices, "Bye")
         local c = cutscene:choicer(choices)
         if c == 1 then
-            master:setAnimation({"shocked", 0.25, true})
-            cutscene:text("* BING BING BING ONE.")
+            cutscene:text("* Depsite being a human,[wait:5] Brenda can cast MAGIC.")
+            cutscene:text("* Unlike Kris or YOU,[wait:5] she can't ACT,[wait:5] which is quite TRAGIC.")
+            cutscene:text("* Her GAMMA BEAM may cost lots of TP.")
+            cutscene:text("* But the power is worth it,[wait:5] you will SEE.")
         elseif c == 2 then
-            master:setAnimation({"shocked", 0.25, true})
-            cutscene:text("* BING BING BING TWO.")
+            cutscene:text("* Brenda loves to use her GUN.")
+            cutscene:text("* She thinks her weapon is quite FUN.")
+            cutscene:text("* But did you know that she's not the only ONE?")
+            cutscene:text("* There's another party member that wield's a GUN.")
         elseif c == 3 then
+            cutscene:text("* Brenda loves it when you gives us lots of MONEY.")
+            cutscene:showNametag("Brenda")
+            cutscene:text("* The fact you believe I actually do is quite funny.", "dissapointed", "brenda")
+            cutscene:hideNametag()
             master:setAnimation({"shocked", 0.25, true})
-            cutscene:text("* BING BING BING THREE.")
+            cutscene:text("* HEY,[wait:5] I'M THE ONE WHO'S SUPPOSED TO BE RHYMING!")
         elseif c == 4 then
             cutscene:text("* Later,[wait:5] kid.")
         end
