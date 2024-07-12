@@ -1037,7 +1037,7 @@ function Mod:onTextSound(sound, node)
         return true
     end
     if sound == "noel" then
-        Assets.playSound("voice/noel/"..string.lower(current_node.character), 1, 1)
+        Assets.playSound("voice/noel/"..string.lower(node.character), 1, 1)
         return true
     end
 end

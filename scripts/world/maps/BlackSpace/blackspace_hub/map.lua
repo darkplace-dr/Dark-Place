@@ -7,7 +7,7 @@ function BlackSpace:update()
     if Game.world.map.id == [[Blackspace/blackspace_hub]] then
         if Game.world.player.walk_speed >= 60 then
             Game:setFlag("greyarea_exit_to", {Game.world.map.id, Game.world.player.x, Game.world.player.y})
-    	    Game.world:InstantMapTransition("greyarea", "entry")
+    	    Game.world:loadMap("greyarea", "entry")
         end
     end
 
