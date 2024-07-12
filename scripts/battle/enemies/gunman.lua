@@ -48,6 +48,9 @@ function Gunman:onAct(battler, name)
             return "* Susie gave the gun man a thumbs up."
         else
 			self:addMercy(0)
+			if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+				return "* Jamm and Marcy didn't do anything."
+			end
             return "* "..battler.chara:getName().." didnt even bother to do anything."
         end
     end

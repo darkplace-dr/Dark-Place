@@ -53,6 +53,9 @@ end
 
 function Dummy:onAct(battler, name)
     if name == "Standard" then --X-Action
+		if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+			return "* But neither Jamm nor Marcy knew what to do."
+		end
         return "* " .. battler.chara.name .. " didn't know what to do."
     end
 
