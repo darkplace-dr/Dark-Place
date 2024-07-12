@@ -32,6 +32,7 @@ return {
 				end
 				Game:getPartyMember("jamm"):setActor("jamm")
 				Game:getPartyMember("jamm"):setLightActor("jamm_lw")
+				Game:getPartyMember("jamm"):setDarkTransitionActor("jamm_dark_transition")
 				Game:getPartyMember("jamm").menu_icon = "party/jamm/head"
 				Game:getPartyMember("jamm").head_icons = "party/jamm/icon"
 				Game:getPartyMember("jamm").name_sprite = "party/jamm/name"
@@ -204,6 +205,7 @@ return {
 								end
 								Game:getPartyMember("jamm"):setActor("jammarcy")
 								Game:getPartyMember("jamm"):setLightActor("jammarcy_light")
+								Game:getPartyMember("jamm"):setDarkTransitionActor("jammarcy_dark_transition")
 								Game:getPartyMember("jamm").menu_icon = "party/jamm/withmarcy/head"
 								Game:getPartyMember("jamm").head_icons = "party/jamm/withmarcy/icon"
 								Game:getPartyMember("jamm").name_sprite = "party/jamm/withmarcy/name"
