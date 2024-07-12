@@ -51,7 +51,7 @@ function BossRushMenu:init()
 			},
             {
 				name = "Jamm Rush",
-				requirements = {"sam_defeated","jamm_closure","booty_finished","pauling_inparty","mario_obtained"},
+				requirements = {"sam_defeated","jamm_closure","booty_finished","pauling_inparty","mario_obtained","!marcy_joined"},
 				encounters = {{"sam","Sam"},{"ania_boss","Shade Ania"},{"big_booty","Booty"},{"eggman",Game:getFlag("jamm_rush") and "Eggman" or "???"}},
 				party = {"pauling","jamm","mario"},
 				grad_color = {92/255, 88/255, 188/255},
@@ -67,8 +67,14 @@ function BossRushMenu:init()
     for i, _ in ipairs(self.encounters) do
 	    for n, j in ipairs(self.encounters[i]) do
 			for k, v in ipairs(self.encounters[i][n]["requirements"]) do
-				if Game:getFlag(v) then
-					table.insert(self.rushes, j)
+				if v:sub(1, 1) == "!" then
+					if not Game:getFlag(v:sub(2)) then
+						table.insert(self.rushes, j)
+					end
+				else
+					if Game:getFlag(v) then
+						table.insert(self.rushes, j)
+					end
 				end
 			end
 	    end
@@ -85,9 +91,16 @@ function BossRushMenu:draw()
 	
 	local available = true
     for k, v in ipairs(entry["requirements"]) do
-		if not Game:getFlag(v) then
-			available = false
-			break
+		if v:sub(1, 1) == "!" then
+			if Game:getFlag(v:sub(2)) then
+				available = false
+				break
+			end
+		else
+			if not Game:getFlag(v) then
+				available = false
+				break
+			end
 		end
 	end
 	
@@ -145,32 +158,44 @@ function BossRushMenu:draw()
     for m, encounter in ipairs(self.encounters[self.page]) do
 		local available = true
 		for k, v in ipairs(encounter["requirements"]) do
-			if not Game:getFlag(v) then
-				available = false
-				break
+			if v:sub(1, 1) == "!" then
+				if Game:getFlag(v:sub(2)) then
+					available = false
+					break
+				end
+			else
+				if not Game:getFlag(v) then
+					available = false
+					break
+				end
 			end
 		end
-        if available then
+        if available or Game:getFlag(entry["cf"]) then
             love.graphics.setColor(unpack(self.item_color))
+			if not available then
+				love.graphics.setColor(unpack(self.item_color_unk))
+			end
             love.graphics.print(encounter.name, line_x, line_y)
-			if m == self.currently_selected then
-				local boss_string = ""
-				for k, v in ipairs(encounter["encounters"]) do
-					boss_string = boss_string .. v[2]
-					if k ~= #encounter["encounters"] then
-						boss_string = boss_string .. ", "
-					end
-				end
-				love.graphics.printf("Bosses: " .. boss_string, 260, 192, 200, "left")
-				if encounter["party"] then
-					local party_string = ""
-					for k, v in ipairs(encounter["party"]) do
-						party_string = party_string .. Game:getPartyMember(v).name
-						if k ~= #encounter["party"] then
-							party_string = party_string .. ", "
+			if available then
+				if m == self.currently_selected then
+					local boss_string = ""
+					for k, v in ipairs(encounter["encounters"]) do
+						boss_string = boss_string .. v[2]
+						if k ~= #encounter["encounters"] then
+							boss_string = boss_string .. ", "
 						end
 					end
-					love.graphics.printf("Party: " .. party_string, 260, 256, 200, "left")
+					love.graphics.printf("Bosses: " .. boss_string, 260, 192, 200, "left")
+					if encounter["party"] then
+						local party_string = ""
+						for k, v in ipairs(encounter["party"]) do
+							party_string = party_string .. Game:getPartyMember(v).name
+							if k ~= #encounter["party"] then
+								party_string = party_string .. ", "
+							end
+						end
+						love.graphics.printf("Party: " .. party_string, 260, 256, 200, "left")
+					end
 				end
 			end
         else
@@ -239,10 +264,16 @@ function BossRushMenu:onKeyPressed(key, is_repeat)
         local entry = self.encounters[self.page][self.currently_selected]
 		local available = true
 		for k, v in ipairs(entry["requirements"]) do
-			if not Game:getFlag(v) then
-				print(v)
-				available = false
-				break
+			if v:sub(1, 1) == "!" then
+				if Game:getFlag(v:sub(2)) then
+					available = false
+					break
+				end
+			else
+				if not Game:getFlag(v) then
+					available = false
+					break
+				end
 			end
 		end
         if available then
