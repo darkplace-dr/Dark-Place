@@ -2,6 +2,14 @@ return {
     morshu = function(cutscene, morshu)
         local magolor = cutscene:getCharacter("magolor")
         local doobie = cutscene:getCharacter("doobie")
+        local m_anim = Character("billboard/room3_morshu", SCREEN_WIDTH/2, SCREEN_HEIGHT)
+        Game.world:spawnObject(m_anim, "textbox")
+        m_anim.visible = false
+        m_anim:setParallax(0, 0)
+        m_anim:setScale(2)
+        cutscene:after(function()
+            m_anim:remove()
+        end)
 
         local cust_wait_timer = 0
         local function waitForTimeOrUserCancellation(time)
@@ -16,38 +24,33 @@ return {
             end
         end
 
-        local function showMorshuAnim(sprite, speed)
-            local m_anim = Sprite(sprite, 0, 0, nil, nil, "world/cutscenes/room3_morshu/morshu")
-            m_anim:play(speed, true)
-            m_anim.layer = WORLD_LAYERS["ui"]
-            m_anim.parallax_x = 0
-            m_anim.parallax_y = 0
-            m_anim:setScale(2)
-            Game.world:addChild(m_anim)
-            return m_anim, function(time, disallow_cancel)
+        local function showMorshuAnim(anim)
+            m_anim.visible = true
+            m_anim:setAnimation(anim)
+            return function(time, disallow_cancel)
                 if time > 0 then
                     cutscene:wait(not disallow_cancel and waitForTimeOrUserCancellation(time) or time)
                 end
-                m_anim:remove()
+                m_anim.visible = false
             end
         end
+
         local music_inst = Music()
         cutscene:after(function()
             music_inst:remove()
         end)
-        local function showMorshuAnimWithVoc(sprite, speed, clip, time, disallow_cancel)
-            local anim, rem = showMorshuAnim(sprite, speed)
+        local function showMorshuAnimWithVoc(anim, clip, time, disallow_cancel)
+            local rem = showMorshuAnim(anim)
             Game.world.music:pause()
             music_inst:play(clip, 1, 1, false)
             rem(time, disallow_cancel)
             music_inst:stop()
             Game.world.music:resume()
-            return anim
         end
 
         Input.clear("cancel")
 
-        showMorshuAnimWithVoc("rubies", 0.095, "voiceover/morshu_rubies", 8.8)
+        showMorshuAnimWithVoc("rubies", "voiceover/morshu_rubies", 8.8)
 
         cutscene:text("* (Buy Lamp Oil for 40 dolla-[wait:5] er-[wait:5] rupee-[wait:5] er-[wait:5] rubies?)")
         cutscene:showShop()
@@ -55,12 +58,12 @@ return {
         cutscene:hideShop()
 
         if choice == 2 then
-            showMorshuAnimWithVoc("menacing", 1, "menace", 18.8, false)
+            showMorshuAnimWithVoc("menacing", "menace", 18.8, false)
             return
         end
 
         if Game.money < 40 then
-            showMorshuAnimWithVoc("richer", 0.095, "voiceover/morshu_richer", 7)
+            showMorshuAnimWithVoc("richer", "voiceover/morshu_richer", 7)
             return
         end
 
@@ -79,9 +82,9 @@ return {
         local svfx = Kristal.Config["simplifyVFX"]
         local svfx_suffix = svfx and "_svfx" or ""
         morshu.dance = true
-        local _, dance_anim_rem = showMorshuAnim("dance", svfx and 0.05 or 0.0001)
+        local dance_anim_rem = showMorshuAnim("dance" .. svfx_suffix)
         magolor.dance = true
-        magolor:setAnimation("speen".. svfx_suffix)
+        magolor:setAnimation("speen" .. svfx_suffix)
         if doobie then
             doobie:setAnimation("dance" .. svfx_suffix)
         end

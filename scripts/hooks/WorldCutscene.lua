@@ -147,4 +147,50 @@ function WorldCutscene:doki_text(text, portrait, actor, options)
     end
 end
 
+function WorldCutscene:undoMyFuckup(text, text2, speaker, texts, faces)
+    local len = string.len(text2)
+    local len2 = string.len(text)
+
+    local dif = Mod:findDifferenceIndex(text, text2)
+
+    local fin2 = string.sub(text2, dif, len)
+
+    local currentIndex = 1
+
+    local function nextTag()
+        local nextText = texts[currentIndex]
+        currentIndex = (currentIndex % #texts) + 1
+        return nextText
+    end
+
+    -- I feel like there should be a better way to do this.
+    local isU = true
+    local function toggleCase(text)
+        if isU then
+            isU = false
+            return string.lower(text)
+        else
+            isU = true
+            return string.upper(text)
+        end
+    end
+
+    self:text(text, "neutral", speaker, {auto = true})
+
+    for i = 1, len2 do
+        local rface = faces[math.random(1, #faces)]
+
+        local current = string.sub(text, 1, dif - 1)
+        local current2 = string.sub(text, dif, len2 - i)
+        if i == len2 then
+            self:showNametag("Noel", { top = true, right = false})
+            self:text("[instant]"..current.."[stopinstant]"..fin2, "neutral", speaker)
+        else
+            self:showNametag(nextTag(), { top = true, right = false})
+            --I use speed instead of instant because of the funny sound it makes.
+            self:text("[speed:30]"..toggleCase(current).."[shake:5]"..current2, rface, speaker, {auto = true})
+        end
+    end
+end
+
 return WorldCutscene

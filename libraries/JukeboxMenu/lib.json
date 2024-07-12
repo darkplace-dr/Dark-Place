@@ -10,6 +10,7 @@
         "navigateToPlayingSongAtInit": true,
         "indicatePlayingSongWithNameColor": true,
         "indicatePlayingSongWithMusicNote": true,
-        "infoCollapsible": true
+        "infoCollapsible": true,
+        "showDurationBar": true
     }
 }

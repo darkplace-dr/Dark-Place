@@ -612,7 +612,7 @@ return {
                                     local texts = {"I", "FORGOT", "THAT", "THIS", "WAS", "A", "CAFE"}                                     
                                     local faces = {"excusemebutwhatthefuck", "oh", "loud_2", "c_neutral", "madloud_1"}
                                     cutscene:setTextboxTop(true)
-                                    Mod:UndoMyFuckup(cutscene, text, text2, speaker, texts, faces)
+                                    cutscene:undoMyFuckup(text, text2, speaker, texts, faces)
                                     cutscene:setTextboxTop(false)
                                     cutscene:showNametag("Alexa")
                                     cutscene:text("[voice:alexa]* Sure-[wait:30]\n* Wait, [wait:10]just milk?")

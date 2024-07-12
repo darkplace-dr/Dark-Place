@@ -6,6 +6,7 @@ modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
 modRequire("scripts/main/battle_taunt")
 modRequire("scripts/main/live_bulborb_reaction")
+modRequire("scripts/main/noel_spawn")
 
 function Mod:preInit()
     if Kristal.Version < SemVer(self.info.engineVer) then
@@ -903,14 +904,15 @@ end
 end]]
 
 function Mod:getActionButtons(battler, buttons)
-    if Game:getPartyMember(battler.chara.id).ribbit then
-        if Game:getPartyMember(battler.chara.id).has_act == true
-           and Game:getPartyMember(battler.chara.id).has_spells == true then
-            return {"fight", "skill", "item", "send", "defend"}
-        elseif Game:getPartyMember(battler.chara.id).has_act == true then
-            return {"fight", "act", "item", "send", "defend"}
+    local party = Game:getPartyMember(battler.chara.id)
+    if party.ribbit then
+        if party.has_act
+           and party.has_spells then
+            buttons = {"fight", "skill", "item", "send", "defend"}
+        elseif party.has_act then
+            buttons = {"fight", "act", "item", "send", "defend"}
         else
-            return {"fight", "magic", "item", "send", "defend"}
+            buttons = {"fight", "magic", "item", "send", "defend"}
         end
     end
 
@@ -918,20 +920,33 @@ function Mod:getActionButtons(battler, buttons)
         Utils.removeFromTable(buttons, "fight")
     end
 
-    if battler.chara.id == "susie" and Game.battle.encounter.id == "brenda" then
-        Utils.removeFromTable(buttons, "fight")
+    if battler.chara.id == "noel" then
+        buttons = {"magic", "item", "spare", "tension"}
     end
-    if battler.chara.id == "dess" and Game.battle.encounter.id == "brenda" then
-        if Game:getFlag("dungeonkiller") and not Game:getFlag("b_fight_dess") then
-            -- do nothing
-        else
+
+    if Game.battle.encounter.id == "brenda" then
+        if battler.chara.id == "susie" then
+            Utils.removeFromTable(buttons, "fight")
+        end
+        if battler.chara.id == "dess" then
+            if Game:getFlag("dungeonkiller") and not Game:getFlag("b_fight_dess") then
+                -- do nothing
+            else
+                Utils.removeFromTable(buttons, "fight")
+            end
+        end
+        if battler.chara.id == "jamm" and not Game:getFlag("dungeonkiller") then
             Utils.removeFromTable(buttons, "fight")
         end
     end
-    if battler.chara.id == "jamm" and Game.battle.encounter.id == "brenda" and not Game:getFlag("dungeonkiller") then
-        Utils.removeFromTable(buttons, "fight")
-    end
+
     return buttons
+end
+
+function Mod:onActionSelect(battler, button)
+    if button.type == "tension" then
+        Game.battle:pushAction("TENSION", nil, {tp = -32})
+    end
 end
 
 function Mod:preUpdate()
@@ -1022,9 +1037,8 @@ function Mod:onTextSound(sound, node)
         return true
     end
     if sound == "noel" then
-            
         Assets.playSound("voice/noel/"..string.lower(node.character), 1, 1)
-        --print(string.lower(node.character))
+        return true
     end
 end
 

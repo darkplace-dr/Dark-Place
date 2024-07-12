@@ -85,12 +85,18 @@ end
 
 function Map:onEnter()
     super.onEnter(self)
+
     if Game.world.map.id:find("archives/") then
         self.voidbg = Game.world:spawnObject(VoidBGUT2())
         self.voidbg.layer = -9999
     elseif Game.world.map.id:find("cloudwebs/_ch1/") then
         self.fog = Game.world:spawnObject(TrueLabFog())
         self.fog.layer = WORLD_LAYERS["below_ui"]
+    end
+
+    local noelsave = Mod:loadGameN()
+    if noelsave then
+        Mod:loadNoel(noelsave)
     end
 end
 

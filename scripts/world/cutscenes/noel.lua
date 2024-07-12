@@ -86,64 +86,8 @@ return {
                 Assets.playSound("voice/noel/"..string.lower(letter), 1, 1)
             end
         end
-        
+
         --writeTextWithNametag("* Hello there "..Game.save_name..".", false, "bruh")
-
-        function findDifferenceIndex(text, text2)
-            local minLen = math.min(#text, #text2)
-            for i = 1, minLen do
-                if text:sub(i, i) ~= text2:sub(i, i) then
-                    return i
-                end
-            end
-            return minLen
-        end
-
-        function UndoMyFuckup(text, text2, speaker, texts, faces)
-            local len = string.len(text2)
-            local len2 = string.len(text)
-
-            local dif = findDifferenceIndex(text, text2)
-
-            local fin2 = string.sub(text2, dif, len)
-
-            local currentIndex = 1
-
-            local function nextTag()
-                local nextText = texts[currentIndex]
-                currentIndex = (currentIndex % #texts) + 1
-                return nextText
-            end
-
-            -- I feel like there should be a better way to do this.
-            local isU = true
-            local function toggleCase(text)
-                if isU then
-                    isU = false
-                    return string.lower(text)
-                else
-                    isU = true
-                    return string.upper(text)
-                end
-            end
-            
-            cutscene:text(text, "neutral", speaker, {auto = true})
-
-            for i = 1, len2 do
-                local rface = faces[math.random(1, #faces)]
-
-                local current = string.sub(text, 1, dif - 1)
-                local current2 = string.sub(text, dif, len2 - i)
-                if i == len2 then
-                    cutscene:showNametag("Noel", { top = true, right = false})
-                    cutscene:text("[instant]"..current.."[stopinstant]"..fin2, "neutral", speaker)
-                else
-                    cutscene:showNametag(nextTag(), { top = true, right = false})
-                    --I use speed instead of instant because of the funny sound it makes.
-                    cutscene:text("[speed:30]"..toggleCase(current).."[shake:5]"..current2, rface, speaker, {auto = true})
-                end
-            end
-        end
         
         -- This fucking scares me so much, but it works.
 
@@ -157,7 +101,7 @@ return {
         cutscene:text("* ([shake:1][speed:0.4]"..Game.save_name.."?[shake:0][wait:3][speed:1] Right?)", "bruh")
         cutscene:text("* (Forgive me if I'm wrong.)\n[wait:8]* (I have no real way to verify if it is honestly.)\n[wait:8]* (I really should not rely on Game.save_name for", "neutral", "noel", {auto = true})
 
-        UndoMyFuckup(text, text2, speaker, texts, faces)
+        cutscene:undoMyFuckup(text, text2, speaker, texts, faces)
 
         --[[
         cutscene:text("* (Oh SHIT", "oh", "noel", {auto = true})
@@ -239,16 +183,6 @@ return {
     meet_nah = function(cutscene, event)
         cutscene:showNametag("Noel", { top = true, right = false})
         cutscene:setTextboxTop(true)
-
-        function findDifferenceIndex(text, text2)
-            local minLen = math.min(#text, #text2)
-            for i = 1, minLen do
-                if text:sub(i, i) ~= text2:sub(i, i) then
-                    return i
-                end
-            end
-            return minLen
-        end
 
         function writeTextWithNametag(text, swap, face, auto)
 
@@ -389,7 +323,7 @@ return {
                     local texts = {"YOU'RE", "YOUR"} -- the name tag will cycle through these in order, and loop if necessarry.
                     local faces = {"excusemebutwhatthefuck", "oh", "loud_2", "c_neutral"} -- the faces that will be picked at random.
         
-                    Mod:UndoMyFuckup(cutscene, text, text2, speaker, texts, faces)
+                    cutscene:undoMyFuckup(text, text2, speaker, texts, faces)
 
                     cutscene:showNametag("Dess", { top = true, right = false})
                     cutscene:text("* woah, cool face thing.\n[wait:5][face:genuine]* would be a shame if i used it for [wait:3][color:yellow][face:condescending]personnel[color:white][wait:3] use.", "neutral", "dess") 
@@ -465,7 +399,7 @@ return {
                     local texts = {"I'M", "NOT", "ALLOWED", "TO", "SWEAR"} -- the name tag will cycle through these in order, and loop if necessarry.
                     local faces = {"excusemebutwhatthefuck", "oh", "loud_2", "c_neutral"} -- the faces that will be picked at random.
         
-                    Mod:UndoMyFuckup(cutscene, text, text2, speaker, texts, faces)
+                    cutscene:undoMyFuckup(text, text2, speaker, texts, faces)
                     cutscene:showNametag("???", { top = true, right = false})
                     cutscene:text("* Are you on an old save?", "huh")
                     cutscene:text("* Hang on.", "bruh")
