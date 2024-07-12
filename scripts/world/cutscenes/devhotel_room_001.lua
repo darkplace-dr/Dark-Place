@@ -400,6 +400,14 @@ return {
 
 	window = function(cutscene, event)
 		if Game:getFlag("jamm_closure") and Game:hasPartyMember("susie") and Game:hasPartyMember("dess") and Game:hasPartyMember("jamm") and Game:getFlag("berdly_inparty") then
+			if Game:getFlag("marcy_joined") then
+				cutscene:showNametag("Marcy")
+				cutscene:text("* Marcy doesn't feel comfortable with this...", "sad", "marcy")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* (Let's come back after we put Marcy in my room.)", "neutral", "jamm")
+				cutscene:hideNametag()
+				return
+			end
 			cutscene:text("* Something feels off about this window.")
 			cutscene:text("* Will you go inside?")
 			cutscene:text("* WARNING:[wait:10] The following area is meant to only be available after defeating Spamgolor NEO.")
