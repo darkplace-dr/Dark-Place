@@ -76,23 +76,23 @@ function actor:init()
         ["slide"] = {0, -27},
 
         -- Battle offsets
-        ["battle/idle"] = {-5, -1},
+        ["battle/idle"] = {3, -15},
         ["battle/low_health"] = {-5, -1},
 
-        ["battle/attack"] = {-5, -1},
-        ["battle/attackready"] = {-5, -1},
-        ["battle/act"] = {-5, -1},
-        ["battle/actend"] = {-5, -1},
-        ["battle/actready"] = {-5, -1},
-        ["battle/item"] = {-5, -1},
-        ["battle/itemready"] = {-5, -1},
-        ["battle/defend"] = {-5, -1},
+        ["battle/attack"] = {3, -15},
+        ["battle/attackready"] = {3, -15},
+        ["battle/act"] = {3, -15},
+        ["battle/actend"] = {3, -15},
+        ["battle/actready"] = {3, -15},
+        ["battle/item"] = {3, -15},
+        ["battle/itemready"] = {3, -15},
+        ["battle/defend"] = {3, -15},
 
-        ["battle/defeat"] = {-8, -5},
-        ["battle/hurt"] = {-5, -1},
+        ["battle/defeat"] = {3, -15},
+        ["battle/hurt"] = {3, -15},
 
-        ["battle/intro"] = {-8, -9},
-        ["battle/victory"] = {-3, 0},
+        ["battle/intro"] = {3, -15},
+        ["battle/victory"] = {3, -15},
 		
 		["sit"] = {4, -8},
     }
