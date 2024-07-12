@@ -147,7 +147,7 @@ function WorldCutscene:doki_text(text, portrait, actor, options)
     end
 end
 
-function cutscene:undoMyFuckup(text, text2, speaker, texts, faces)
+function WorldCutscene:undoMyFuckup(text, text2, speaker, texts, faces)
     local len = string.len(text2)
     local len2 = string.len(text)
 
