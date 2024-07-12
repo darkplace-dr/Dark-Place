@@ -7,6 +7,7 @@ return function(cutscene, player_name_override)
         and ("https://github.com/KristalTeam/Kristal" .. "/releases/tag/" .. "v" .. tostring(required_version))
         or ("https://kristal.cc/wiki/downloading#nightly-releases")
 
+    Game:setBorder("none")
     Game.world.music:stop()
 
     local dark = Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -16,7 +17,7 @@ return function(cutscene, player_name_override)
 
     cutscene:wait(40/30)
 
-    local flowey = Character("flowey_check", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 160)
+    local flowey = Character("billboard/flowey_check", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 160)
     flowey:setScale(2)
     flowey:setOrigin(0.5, 1)
     flowey:setLayer(1)
