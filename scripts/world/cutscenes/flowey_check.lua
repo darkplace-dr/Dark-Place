@@ -56,6 +56,10 @@ return function(cutscene, player_name_override)
     showText("The mod actually requires version "..tostring(required_version).." of the engine.")
     if pre then
         showText("With said version,[wait:5] being an in-dev version of the engine.", "side")
+        if Kristal.Version == required_version then
+            showText("Well, I see you *are* using that version, somewhat.", "plain")
+            showText("But since you're seeing this, maybe the mod requires a newer build for whatever reason.", "side")
+        end
     end
     showText("But don't worry!", "nice")
     showText("It's VERY easy to set up!", "nicesideum")

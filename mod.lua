@@ -12,6 +12,12 @@ function Mod:preInit()
     if Kristal.Version < SemVer(self.info.engineVer) then
         self.legacy_kristal = true
     end
+
+    -- this is the worst change
+    -- remove after v0.9.0
+    if not KRISTAL_EVENT then
+        self.legacy_kristal = true
+    end
 end
 
 function Mod:init()
