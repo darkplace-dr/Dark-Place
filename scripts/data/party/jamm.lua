@@ -70,6 +70,7 @@ function character:init()
 	elseif Game:getFlag("marcy_joined") then
 		self:setActor("jammarcy")
 		self:setLightActor("jammarcy_light")
+		self:setDarkTransitionActor("jammarcy_dark_transition")
 		self.menu_icon = "party/jamm/withmarcy/head"
 		self.head_icons = "party/jamm/withmarcy/icon"
 		self.name_sprite = "party/jamm/withmarcy/name"
