@@ -15,7 +15,7 @@ function actor:init()
     self.flip = nil
 
     self.path = "world/npcs/dunes/doc"
-    self.default = "talk_1"
+    self.default = "talk"
 
     self.voice = nil
     self.portrait_path = nil
@@ -25,13 +25,13 @@ function actor:init()
 
     self.talk_sprites = {}
 
-    self.animations = {
-        ["talk"] = {"talk", 1/8, true},
+    self.animations = {}
+
+    self.talk_sprites = {
+        ["talk"] = 0.2,
     }
 
-    self.offsets = {
-        ["npc"]  = {0, 0}
-    }
+    self.offsets = {}
 
 end
 
