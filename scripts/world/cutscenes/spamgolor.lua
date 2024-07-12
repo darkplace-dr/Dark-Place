@@ -13,7 +13,7 @@ return {
                 local texts = {"I'M", "NOT", "ALLOWED", "TO", "SWEAR"}                                     
                 local faces = {"excusemebutwhatthefuck", "oh", "loud_2", "c_neutral", "madloud_1"}
                 cutscene:setTextboxTop(true)
-                Mod:UndoMyFuckup(cutscene, text, text2, speaker, texts, faces)
+                cutscene:undoMyFuckup(text, text2, speaker, texts, faces)
                 cutscene:setTextboxTop(false)
             else
                 cutscene:text("* Wait,[wait:5] who's that guy over there?", "nervous_side", "susie")
