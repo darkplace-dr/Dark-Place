@@ -68,6 +68,9 @@ function Ceroba:onAct(battler, name)
     elseif name == "Mock" then
         return "* You attempt to belittle your\nopponent but she's in another\nworld."
     elseif name == "Standard" then
+		if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+			return "* But there was nothing Jamm and Marcy could do."
+		end
         return "* But there was nothing "..battler.chara:getName().."\ncould do."
     end
 
