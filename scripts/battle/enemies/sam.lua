@@ -20,7 +20,7 @@ function Sam:init()
     self.tired_percentage = 0
 
     self.waves = {
-        -- "",
+        "empty"
     }
 
     self.dialogue = {
