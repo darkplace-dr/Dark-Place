@@ -12,7 +12,7 @@ Utils.hook(Sprite, "setTextureExact", function(_, self, texture)
         end
 
         self.texture = Assets.getTexture("ui/missing_texture")
-        self.texture_path = Assets.getTextureID(self.texture)
+        self.texture_path = Assets.getTextureID(texture) or Assets.getTextureID(self.texture)
         if self.width > 0 and self.height > 0 then
             local resized_texture_canvas = Draw.pushCanvas(self.width, self.height)
             Draw.draw(self.texture, 0, 0, 0, self.width/self.texture:getWidth(), self.height/self.texture:getHeight())
