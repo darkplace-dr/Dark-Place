@@ -1021,6 +1021,11 @@ function Mod:onTextSound(sound, node)
         end
         return true
     end
+    if sound == "noel" then
+            
+        Assets.playSound("voice/noel/"..string.lower(node.character), 1, 1)
+        --print(string.lower(node.character))
+    end
 end
 
 function Mod:onFootstep(char, num)

@@ -94,14 +94,6 @@ function Mod:spawnNoel(x, y, data)
     end
 end
 
-function Mod:onTextSound(typing_sound, current_node)
-    if typing_sound == "noel" then
-            
-        Assets.playSound("voice/noel/"..string.lower(current_node.character), 1, 1)
-        --print(string.lower(current_node.character))
-    end
-end
-
 Utils.hook(Map, "onEnter", function(orig, self, ...)
     orig(self)
 
