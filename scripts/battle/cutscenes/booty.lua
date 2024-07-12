@@ -12,7 +12,7 @@ return {
 		Game.battle.enemies[1].mercy = 100
 		Game.battle.enemies[1].health = 1
 		Game.battle.enemies[1].defeat_once = true
-		Game.battle.enemies[1].waves = {}
+		Game.battle.enemies[1].waves = {"empty"}
 		Game.battle.enemies[1].check = "AT 4 DF 0\n* A greed for cash,[wait:5] and his button eyes were on you."
 		Game.battle:setState("ACTIONSELECT")
     end,
