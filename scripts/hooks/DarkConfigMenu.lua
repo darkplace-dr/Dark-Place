@@ -366,6 +366,8 @@ function DarkConfigMenu:onKeyPressed(key)
             if worked then
                 self.ui_select:stop()
                 self.ui_select:play()
+
+                if Kristal.getLibConfig("xtractrl", "save") then Input.saveBinds() end
             else
                 self.ui_cant_select:stop()
                 self.ui_cant_select:play()

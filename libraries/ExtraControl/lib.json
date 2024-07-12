@@ -4,6 +4,9 @@
     "version": "v1.0.0",
     "engineVer": "v0.9.0",
     "config":{
+        //Save key after binding them (false by default)
+            //Don't save keybind that don't have gamepad set.
+        "save": true,
 
         //Allow to press cancel to get exit the control menu (false by default)
         "cancel": true,

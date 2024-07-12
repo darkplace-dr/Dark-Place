@@ -142,32 +142,38 @@
     {
       "name": "Relationships",
       "id": "relationships",
-      "keys": ["r"]
+      "keys": ["r"],
+      "gamepad": []
     },
     {
       "name": "Speen",
       "id": "speen",
-      "keys": ["s"]
+      "keys": ["s"],
+      "gamepad": []
     },
     {
       "name": "Bulborb Reaction",
       "id": "bulborb",
-      "keys": ["b"]
+      "keys": ["b"],
+      "gamepad": []
     },
     {
       "name": "Taunt",
       "id": "taunt",
-      "keys": ["v"]
+      "keys": ["v"],
+      "gamepad": []
     },
     {
       "name": "Gangnam Style",
       "id": "gangnam",
-      "keys": ["a"]
+      "keys": ["a"],
+      "gamepad": []
     },
     {
       "name": "Focus Placebo",
       "id": "focus_placebo",
-      "keys": ["f"]
+      "keys": ["f"],
+      "gamepad": []
     },
   ],
 
