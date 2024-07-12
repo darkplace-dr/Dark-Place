@@ -77,7 +77,11 @@ return function(cutscene)
                     and "But I guess we can still try.\nRight, Kris?"
                     or string.format("Actually, %s... Can you even seal one?", leader.actor.name))
         })
-    else
+    elseif Game:getFlag("marcy_joined") and Game:getFlag("jamm_party") then
+		showDialog({
+            "[spacing:1.75][voice:marcy]Are we going to the light world, papa?"
+		})
+	else
         showDialog((used_fountain_once and "[noskip:false][speed:1]" or "[speed:0.8]").."(Do you want to return to the Light World?)")
     end
 

@@ -192,6 +192,14 @@ return {
                     cutscene:text("* OH?[wait:3] IS A THONG MORE YOUR [Stylish!]?", nil, "spamtong")
                     cutscene:showNametag("Jamm")
                     cutscene:text("* HELL.[wait:5] NO.", "determined", "jamm")
+					 
+					if Game:getFlag("marcy_joined") then
+						cutscene:showNametag("Marcy")
+						cutscene:text("* Marcy would like one!", "happy", "marcy")
+						
+						cutscene:showNametag("Jamm")
+						cutscene:text("* Hahaha no you don't, Marcy!!!", "nervous", "jamm")
+					end
                 else
                     cutscene:showNametag("Jamm")
                     cutscene:text("* But we didn't even do my second sidequest yet.", "neutral", "jamm")
