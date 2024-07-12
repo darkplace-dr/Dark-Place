@@ -230,10 +230,15 @@ return {
 				cutscene:hideNametag()
 			else
 				cutscene:showNametag("Jamm")
-				cutscene:text("* If you continue this,[wait:5] I'm calling my lawyer.", "stern", "jamm")
-				cutscene:hideNametag()
-				master:setAnimation({"shocked", 0.25, true})
-				cutscene:text("* NO![wait:5] PLEASE![wait:5]\n* JUST GIVE ME A PASS!")
+				if not Game:getFlag("marcy_joined") then
+					cutscene:text("* If you continue this,[wait:5] I'm calling my lawyer.", "stern", "jamm")
+					cutscene:hideNametag()
+					master:setAnimation({"shocked", 0.25, true})
+					cutscene:text("* NO![wait:5] PLEASE![wait:5]\n* JUST GIVE ME A PASS!")
+				else
+					cutscene:text("* Dude,[wait:5] not cool.[wait:10]\n* My child's present.", "stern", "jamm")
+					cutscene:hideNametag()
+				end
 			end
         elseif c == 4 then
             cutscene:text("* Later,[wait:5] kid.")
