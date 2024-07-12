@@ -33,6 +33,10 @@ return {
             cutscene:showNametag("Brenda")
             cutscene:text("* TURN AROUND", "shock", "brenda")
         end
+		if cutscene:getCharacter("jamm") then
+			cutscene:showNametag("Jamm")
+            cutscene:text("* WAIT WHAT THE FU--", "neutral", "jamm", {auto=true})
+		end
         cutscene:hideNametag()
         cutscene:startEncounter("gunman", true)
     end

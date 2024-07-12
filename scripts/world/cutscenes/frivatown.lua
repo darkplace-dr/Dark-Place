@@ -101,6 +101,14 @@ return {
 					cutscene:text("* This house isn't usually this dark inside.", "stern", "jamm")
 					cutscene:text("* Even if the lights are off,[wait:5] you can still see something.", "worried", "jamm")
 					
+					if Game:getFlag("jamm_party") and Game:getFlag("marcy_joined") then
+						cutscene:text("* It's probably best if I drop Marcy off before I investigate...", "worried", "jamm")
+						cutscene:hideNametag()
+						cutscene:attachFollowers(8)
+						cutscene:wait(cutscene:attachCamera(1))
+						return
+					end
+					
 					if Game:hasPartyMember("mario") then
 						cutscene:showNametag("Mario")
 						cutscene:text("* Mario doesn't like dark rooms so much...", "main", "mario")
@@ -581,6 +589,13 @@ return {
 		if Game:hasPartyMember("jamm") then
 			cutscene:showNametag("Jamm")
 			cutscene:text("* The heck...?[wait:5]\n* Is that...[wait:5] Me...?", "stern", "jamm")
+			if Game:getFlag("marcy_joined") then
+				cutscene:showNametag("Marcy")
+				cutscene:text("* How is papa in the room and out here too?", "confused", "marcy")
+				
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Your guess is as good as mine,[wait:5] Marcy...", "nervous_left", "jamm")
+			end
 		end
 		cutscene:hideNametag()
 	end,

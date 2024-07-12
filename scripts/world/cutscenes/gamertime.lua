@@ -32,6 +32,16 @@ return {
                     cutscene:text("* ...", "neutral_side", "susie")
                     cutscene:text("* Anyone other than her?", "annoyed", "susie")
                 end
+				if Game:getFlag("marcy_joined") and cutscene:getCharacter("jamm") then
+					cutscene:showNametag("Marcy")
+					cutscene:text("* Can Marcy play,[wait:5] papa?", "neutral", "marcy")
+					
+					cutscene:showNametag("Jamm")
+					cutscene:text("* How about we wait until you can reach the controls?", "wink", "jamm")
+					
+                    cutscene:showNametag("Susie")
+                    cutscene:text("* Anyone else?", "annoyed", "susie")
+				end
                 cutscene:hideNametag()
                 cutscene:wait(2)
                 cutscene:text("* ...", "shock_nervous", "susie")
@@ -52,6 +62,13 @@ return {
                     cutscene:showNametag("Dess")
                     cutscene:text("* This is literally George Orwell's 1984", "angry", "dess")
                 end
+				if Game:getFlag("marcy_joined") and cutscene:getCharacter("jamm") then
+					cutscene:showNametag("Marcy")
+					cutscene:text("* Can Marcy play,[wait:5] papa?", "neutral", "marcy")
+					
+					cutscene:showNametag("Jamm")
+					cutscene:text("* How about we wait until you can reach the controls?", "wink", "jamm")
+				end
                 cutscene:hideNametag()
                 cutscene:wait(2)
                 cutscene:showNametag("Brenda")
