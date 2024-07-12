@@ -17,6 +17,11 @@ function JukeboxMenu:init(simple)
     self:setOrigin(0.5, 0.5)
     self.draw_children_below = 0
 
+    self.show_duration_bar = Kristal.getLibConfig("JukeboxMenu", "showDurationBar")
+    if self.show_duration_bar then
+        self.height = self.height + 40
+    end
+
     self.box = UIBox(0, 0, self.width, self.height)
     self.box.layer = -1
     self.box.debug_select = false
@@ -117,7 +122,7 @@ function JukeboxMenu:draw()
     -- draw the first line
     love.graphics.setColor(0, 0.4, 0)
     love.graphics.rectangle("line", 2, 40, 240, 1)
-    local world_music = (Game.world.music and Game.world.music:isPlaying()) and Game.world.music
+    local music = (Game.world.music and Game.world.music:isPlaying()) and Game.world.music
     for i = 1, self.songs_per_page do
         local song = page[i] or self.default_song
         local name = song.name or self.none_text
@@ -126,7 +131,7 @@ function JukeboxMenu:draw()
         local is_being_played
         if not song.file or song.locked then
             love.graphics.setColor(0.5, 0.5, 0.5)
-        elseif world_music and world_music.current == song.file then
+        elseif music and music.current == song.file then
             is_being_played = true
             if self.color_playing_song then
                 love.graphics.setColor(1, 1, 0)
@@ -193,6 +198,37 @@ function JukeboxMenu:draw()
     love.graphics.printf(info, 270, 372 - info_yoff, info_w, "left", 0, info_scale, info_scale)
 
     love.graphics.setColor(1, 1, 1)
+
+    if self.show_duration_bar then
+        local music_always = Game.world.music
+        local duration_x, duration_y = 6, 396
+        local duration_w, duration_h = self.width - duration_x * 2, 6
+        local duration_loop_mark_w = duration_h / 2
+
+        love.graphics.rectangle("line", -16, 380, self.width+32, 1)
+
+        love.graphics.setColor(0.25, 0.25, 0.25)
+        love.graphics.rectangle("fill", duration_x, duration_y, duration_w, duration_h)
+
+        local function getDuration(_music) -- too pussy to make this an actual extension
+            return (_music.source_intro and _music.source_intro:getDuration() or 0) + _music.source:getDuration()
+        end
+
+        if music_always.source_intro then
+            local duration_loop_mark_percent = music_always.source_intro:getDuration() / getDuration(music_always)
+            -- i hate doing math
+            local duration_loop_mark_x = duration_loop_mark_percent * (duration_w - duration_loop_mark_w)
+            duration_loop_mark_x = duration_loop_mark_x + (duration_h - duration_loop_mark_w) / 2
+            duration_loop_mark_x = math.floor(duration_loop_mark_x)
+            Draw.setColor(0.5, 0.5, 0.5)
+            love.graphics.rectangle("fill", duration_x + duration_loop_mark_x, duration_y, duration_loop_mark_w, duration_h)
+        end
+
+        local duration_needle_percent = music_always:tell() / getDuration(music_always)
+        local duration_needle_x = math.floor(duration_needle_percent * (duration_w - duration_h))
+        Draw.setColor(1, 1, 1)
+        love.graphics.rectangle("fill", duration_x + duration_needle_x, duration_y, duration_h, duration_h)
+    end
 
     Draw.popScissor()
 
