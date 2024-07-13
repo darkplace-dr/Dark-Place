@@ -70,7 +70,7 @@ function Poseur:onAct(battler, name)
 		if battler.chara.id == "jamm" then
             -- J-Action
 			self:addMercy(10)
-            return "* "..battler.chara:getName().." used their X-Action expertly."
+            return "* Jamm used his X-Action expertly."
         end
 		return "* "..battler.chara:getName().." used their X-Action."
     end

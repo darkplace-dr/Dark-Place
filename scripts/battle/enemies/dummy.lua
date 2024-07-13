@@ -88,6 +88,9 @@ function Dummy:onAct(battler, name)
             return "* Dess spun something around."
 		elseif battler.chara.id == "jamm" then
             -- J-Action text
+			if Game:getFlag("marcy_joined") then
+				return "* Marcy shot a rock in the air.\n* It landed in Dummy's mouth!"
+			end
             return "* Jamm shot a rock in the air.\nIt landed perfectly on Dummy's hat!"
         else
             -- Text for any other character (like Noelle)

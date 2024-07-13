@@ -61,6 +61,9 @@ function GoogleDino:onShortAct(battler, name)
         elseif battler.chara.id == "brenda" then
             return "* Brenda did an epic noscope!"
         elseif battler.chara.id == "jamm" then
+			if Game:getFlag("marcy_joined") then
+				return "* Marcy jumped onto Jamm's head!"
+			end
             return "* Jamm slinged a rock at a cactus!"
         elseif battler.chara.id == "mario" then
             return "* Mario jumped expertly!"
@@ -122,7 +125,10 @@ function GoogleDino:onAct(battler, name)
         elseif battler.chara.id == "jamm" then
             --S-Action text
             self:addMercy(5)
-            return "* Jamm slinged a rock at a distant cactus!\n* The Dino is grateful!"
+			if Game:getFlag("marcy_joined") then
+				return "* Marcy jumped onto Jamm's head.\n* The Dino is encouraged!"
+			end
+            return "* Jamm slinged a rock at a distant cactus.\n* The Dino is grateful!"
         elseif battler.chara.id == "mario" then
             --S-Action text
             self:addMercy(5)
