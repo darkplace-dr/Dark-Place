@@ -16,7 +16,7 @@ return {
             clover = {"CLOVER", "[GunHat]", "[]"},
             dess = {"DESS", "[[Doe-Eyed Dumba$$]]", "[!#%@]"},
             brenda = {"BRENDA", "",  ""},
-            jamm = {"JAMM", "",  ""},
+            jamm = {"JAMM", "[Black Widow]",  ""},
             bor = {"BOR", "[Ball]", "[#1 Re-Zero Fan]"}
         }
 

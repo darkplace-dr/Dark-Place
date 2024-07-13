@@ -114,6 +114,9 @@ function Jandroid:onAct(battler, name)
             else
                 self.dialogue_override = "You are RUDE!\nTake THIS!!"
             end
+			if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+				return "* Jamm and Marcy offer to give Jandroid a scrub. They seem offended."
+			end
             return "* "..battler.chara:getName().." offers to give Jandroid\na scrub. They seem offended."
         end
     end

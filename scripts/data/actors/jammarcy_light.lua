@@ -48,7 +48,18 @@ function actor:init()
         ["slide"] = {0, -27},
     }
 
-    self.taunt_sprites = {"box",  --[["bs_win",  ]] "maid"}
+    self.mirror_sprites = {
+        ["walk/down"] = "walk/up",
+        ["walk/up"] = "walk/down",
+        ["walk/left"] = "walk/left",
+        ["walk/right"] = "walk/right",
+    }
+
+    self.taunt_sprites = {"box", "bs_win", "maid"}
+end
+
+function actor:getSoulOffset()
+	return 13, 22
 end
 
 return actor

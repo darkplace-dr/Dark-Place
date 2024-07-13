@@ -76,28 +76,39 @@ function actor:init()
         ["slide"] = {0, -27},
 
         -- Battle offsets
-        ["battle/idle"] = {3, -15},
-        ["battle/low_health"] = {-5, -1},
+        ["battle/idle"] = {-14, -15},
+        ["battle/low_health"] = {-14, -15},
 
-        ["battle/attack"] = {3, -15},
-        ["battle/attackready"] = {3, -15},
-        ["battle/act"] = {3, -15},
-        ["battle/actend"] = {3, -15},
-        ["battle/actready"] = {3, -15},
-        ["battle/item"] = {3, -15},
-        ["battle/itemready"] = {3, -15},
-        ["battle/defend"] = {3, -15},
+        ["battle/attack"] = {-14, -15},
+        ["battle/attackready"] = {-14, -15},
+        ["battle/act"] = {-14, -15},
+        ["battle/actend"] = {-14, -15},
+        ["battle/actready"] = {-14, -15},
+        ["battle/item"] = {-14, -15},
+        ["battle/itemready"] = {-14, -15},
+        ["battle/defend"] = {-14, -15},
 
-        ["battle/defeat"] = {3, -15},
-        ["battle/hurt"] = {3, -15},
+        ["battle/defeat"] = {-14, -15},
+        ["battle/hurt"] = {-14, -15},
 
-        ["battle/intro"] = {3, -15},
-        ["battle/victory"] = {3, -15},
+        ["battle/intro"] = {-14, -15},
+        ["battle/victory"] = {-14, -15},
 		
 		["sit"] = {4, -8},
     }
 
-    self.taunt_sprites = {"box",  --[["bs_win",  ]] "maid"}
+    self.mirror_sprites = {
+        ["walk/down"] = "walk/up",
+        ["walk/up"] = "walk/down",
+        ["walk/left"] = "walk/left",
+        ["walk/right"] = "walk/right",
+    }
+
+    self.taunt_sprites = {"box", "bs_win", "maid"}
+end
+
+function actor:getSoulOffset()
+	return 13, 22
 end
 
 return actor

@@ -101,6 +101,14 @@ return {
 					cutscene:text("* This house isn't usually this dark inside.", "stern", "jamm")
 					cutscene:text("* Even if the lights are off,[wait:5] you can still see something.", "worried", "jamm")
 					
+					if Game:getFlag("jamm_party") and Game:getFlag("marcy_joined") then
+						cutscene:text("* It's probably best if I drop Marcy off before I investigate...", "worried", "jamm")
+						cutscene:hideNametag()
+						cutscene:attachFollowers(8)
+						cutscene:wait(cutscene:attachCamera(1))
+						return
+					end
+					
 					if Game:hasPartyMember("mario") then
 						cutscene:showNametag("Mario")
 						cutscene:text("* Mario doesn't like dark rooms so much...", "main", "mario")
@@ -245,6 +253,44 @@ return {
 						transition.ry1 = 68
 						transition.ry2 = 112
 						Game.world:addChild(transition)
+						
+						local waiting = true
+						local endData = nil
+
+						transition.land_callback = function()
+							cutscene:loadMap("cardworld/start")
+							
+							Game.world.music:stop()
+						
+							Game.world.player.visible = false
+							for k,v in pairs(Game.world.followers) do
+								v.visible = false
+							end
+						end
+
+						transition.end_callback = function(transition, data)
+							waiting = false
+							endData = data
+						end
+
+						cutscene:wait(function() return not waiting end)
+						
+						cutscene:detachFollowers()
+
+						for _, character in ipairs(endData) do
+							local char = Game.world:getPartyCharacter(character.party)
+							local kx, ky = character.sprite_1:localToScreenPos(character.sprite_1.width / 2, 0)
+							char:setScreenPos(kx, transition.final_y)
+							char.visible = true
+							char:setFacing("down")
+						end
+
+						cutscene:interpolateFollowers()
+						cutscene:attachCamera()
+						cutscene:interpolateFollowers()
+						cutscene:attachFollowers()
+						cutscene:interpolateFollowers()
+						cutscene:text("* (Be warned: This area is not complete and you can't return!)")
 					else
 						cutscene:showNametag("Jamm")
 						cutscene:text("* Probably best that we get prepared first.", "stern", "jamm")
@@ -581,6 +627,13 @@ return {
 		if Game:hasPartyMember("jamm") then
 			cutscene:showNametag("Jamm")
 			cutscene:text("* The heck...?[wait:5]\n* Is that...[wait:5] Me...?", "stern", "jamm")
+			if Game:getFlag("marcy_joined") then
+				cutscene:showNametag("Marcy")
+				cutscene:text("* How is papa in the room and out here too?", "confused", "marcy")
+				
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Your guess is as good as mine,[wait:5] Marcy...", "nervous_left", "jamm")
+			end
 		end
 		cutscene:hideNametag()
 	end,

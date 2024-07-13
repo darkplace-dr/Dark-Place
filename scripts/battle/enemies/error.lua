@@ -60,6 +60,9 @@ function Error:onAct(battler, name)
         -- Change this enemy's dialogue for 1 turn
         -- self.dialogue_override = "... ^^"
         -- Act text (since it's a list, multiple textboxes)
+		if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+			self:addMercy(5)
+		end
         return {
             "* You tried to fix the error.[wait:10].[wait:10].[wait:20]\n* It seems to be working better now.",
             "* But you get that feeling that 2 more things are now broken because of that."

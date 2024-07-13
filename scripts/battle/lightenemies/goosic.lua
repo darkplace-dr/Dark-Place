@@ -145,6 +145,9 @@ function Goosic:onAct(battler, name)
             return "* Jamm refused to act."
         else
             if self.low_health == true then
+				if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+					return "* Jamm and Marcy calm themselves in the midst of battle."
+				end
                 return "* "..battler.chara:getName().." calms themselves in the\nmidst of the battle."
             else
                 if self.track_changed == false then
@@ -154,6 +157,9 @@ function Goosic:onAct(battler, name)
                     else
                         self.dialogue_override = "IF YOU CAN'T\nV-VIBE TO IT,\nGIVE IT U-U-UP !"
                     end
+					if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+						return "*  Jamm and Marcy try to enjoy the music, but can't keep up."
+					end
                     return "* "..battler.chara:getName().." tries to enjoy the music\nbut can't keep up."
                 else
                     self:addMercy(50)
@@ -163,6 +169,9 @@ function Goosic:onAct(battler, name)
                     else
                         self.dialogue_override = "Oh, now THIS\nis groovy !"
                     end
+					if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+						return "* Jamm and Marcy close their eyes and tap to the music."
+					end
                     return "* "..battler.chara:getName().." closes their eyes and taps\ntheir foot to the music. Goosic\njoins them."
                 end
             end

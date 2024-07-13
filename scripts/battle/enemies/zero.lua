@@ -81,6 +81,9 @@ function Zero:onAct(battler, name)
         -- Fun fact! this function crashes if you return a string!
         return
     elseif name == "Standard" then --X-Action
+		if battler.chara.id == "jamm" and Game:getFlag("marcy_joined") then
+			return "* But neither Jamm nor Marcy knew what to do."
+		end
         return "* But "..battler.chara:getName().." didn't know what to do."
     else
         return super.onAct(self, battler, name)
