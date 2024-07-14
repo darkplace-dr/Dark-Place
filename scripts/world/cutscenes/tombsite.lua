@@ -102,6 +102,7 @@ return {
 			Assets.playSound("incorrect", 1, 1)
 			Game:setFlag("jamm_cross", 0)
 			Game:setFlag("jamm_cross_2", 0)
+                
         end
 	end,
 	down = function(cutscene, event)
@@ -173,6 +174,7 @@ return {
 		local jamm = cutscene:getCharacter("jamm")
 		local brenda = cutscene:getCharacter("brenda")
 		local susie = cutscene:getCharacter("susie")
+		local noel = cutscene:getCharacter("noel")
 		
 		local members = {}
 		for _, member in ipairs(Game.party) do
@@ -197,6 +199,7 @@ return {
 		cutscene:wait(1/15)
 		
 		cutscene:setAnimation(leader, "battle/defeat")
+                leader:shake(10, 10)
 		Assets.playSound("hurt", 1, 1)
 		
 		cutscene:wait(cutscene:slideTo(leader, "party_1", 1, "out-cubic"))
@@ -240,7 +243,21 @@ return {
 		cutscene:wait(1/15)
 		
 		for i, member in ipairs(members) do
-			cutscene:setAnimation(member, "battle/defeat")
+                        print(member.actor.id)
+                        if member.actor.id == "noel" then
+                            noel_null = love.math.random(1, 3)
+                            if noel_null == 1 then
+                                Assets.playSound("awkward", 1, 1)
+                                Assets.playSound("voice/noel-#", 2, 1)
+                                cutscene:resetSprite(member)
+                            else
+                                noel_hit = 55
+			        cutscene:setAnimation(member, "battle/defeat")
+                            end
+                        else
+			    cutscene:setAnimation(member, "battle/defeat")
+                        end
+                        member:shake(10, 10)
 		end
 		Assets.playSound("hurt", 1, 1)
 		
@@ -248,7 +265,87 @@ return {
 		
 		cutscene:showNametag("Jamm?")
 		cutscene:text("* Pathetic.", "shaded_revealed", "jamm")
-		cutscene:text("* Well, it's time to--", "shaded_revealed", "jamm", {auto = true})
+		cutscene:hideNametag()
+
+                if noel_null then
+                    if noel_null == 1 then
+		        cutscene:wait(1)
+		        cutscene:showNametag("Noel")
+
+                        cutscene:text("* Wait, where did everybody go???", "...", "noel")
+		        cutscene:hideNametag()
+		        cutscene:wait(1)
+
+		        cutscene:showNametag("Jamm?")
+
+		        cutscene:text("[speed:0.1]* ...", "shaded_neutral", "jamm")
+		        cutscene:hideNametag()
+		        cutscene:setAnimation(fake_jamm, "attack")
+		        cutscene:wait(1/15)
+                        local noel_null = love.math.random(1, 3)
+
+                        noel:shake(10, 10)
+
+                        if noel_null == 1 then
+                            Assets.playSound("awkward", 1, 1)
+                            Assets.playSound("voice/noel-#", 2, 1)
+			    cutscene:setSprite(noel, "walk/right_1")
+		            cutscene:wait(2)
+		            cutscene:showNametag("Noel")
+                            cutscene:text("* Oh...[wait:5] [face:...]Wait, [face:bruh]what?", "neutral", "noel", {auto = true})
+		            cutscene:hideNametag()
+		            for i = 1, 3 do
+
+                                    noel:shake(10, 10)
+
+    		                    local noel_null = love.math.random(1, 2)
+
+    		                    if noel_null == 1 then
+    		                        cutscene:setAnimation(fake_jamm, "attack")
+                                        Assets.playSound("awkward", 1, 1)
+                                        Assets.playSound("voice/noel-#", 2, 1)
+                                    else
+    		                        cutscene:setAnimation(fake_jamm, "attack")
+                                        Assets.playSound("voice/noel-#", 2, 1)
+                                        cutscene:setAnimation(noel, "battle/defeat")
+                                        noel_hit = 55
+                                        break
+   		                    end
+                                    cutscene:wait(1/2)
+		            end
+                            if noel_hit == 55 then
+		                cutscene:showNametag("Jamm?")
+		                cutscene:text("* Stay down.", "shaded_neutral", "jamm")
+		                cutscene:text("* Well, it's time to--", "shaded_revealed", "jamm", {auto = true})
+                            else
+		                cutscene:showNametag("Noel")
+                                cutscene:text("* HEY!", "madloud", "noel", {auto = true})
+		                cutscene:hideNametag()
+                                Game.world.music:fade(0, 0.25)
+                                cutscene:wait(1)
+                                local wobblything = Music("wobblything_loop", 1.5, 1)
+		                cutscene:wait(cutscene:walkToSpeed(noel, 230, 260, 0.5, "right"))
+                                wobblything:stop()
+                                Game.world.music:fade(1, 0.5)
+		                cutscene:showNametag("Noel")
+                                cutscene:text("* You missed [color:yellow]dumbass[color:white].", "bruh", "noel")
+                                cutscene:text("* What kind of construction worker are you?", "huh", "noel")
+
+		                cutscene:showNametag("Jamm?")
+		                cutscene:text("* Why won't you--", "shaded_desperate", "jamm", {auto = true})
+                            end
+                        else
+                            noel:shake(10, 10)
+                            Assets.playSound("voice/noel-#", 2, 1)
+                            cutscene:setAnimation(noel, "battle/defeat")
+                            noel_hit = 55
+                            cutscene:wait(1)
+		            cutscene:text("* Well, it's time to--", "shaded_revealed", "jamm", {auto = true})
+                        end
+                    end
+                else
+		    cutscene:text("* Well, it's time to--", "shaded_revealed", "jamm", {auto = true})
+                end
 		
 		cutscene:showNametag("???")
 		cutscene:text("* Hold it!", nil, "jamm")
@@ -260,6 +357,16 @@ return {
 		cutscene:text("* Well, Enzio.\n* Never thought you'd stoop this low.", "smirk", "jamm")
 		cutscene:text("* Stealing my Guilded account, sure.\n* But impersonation?", "smirk", "jamm")
 		
+                if noel_null then
+                    if not noel_hit == 55 then
+		            cutscene:showNametag("Noel")
+                            cutscene:text("* Ah[wait:5] yes,[wait:5] [speed:0.5][color:yellow]Enzio[color:white][speed:1][wait:5] I remember [speed:0.5][color:yellow]Enzio[color:white][speed:1][wait:5].", "bruh", "noel")
+                            cutscene:text("* I am totally not completely lost at all.", "huh", "noel")
+                            cutscene:text("* [speed:0.5][color:yellow]Enzio[color:white][speed:1][wait:5] was the clown my cat hired for m'eye birthday.", "huh", "noel")
+                            cutscene:text("* (Who the hell is [speed:0.5][color:yellow]Enzio[color:white][speed:1][wait:5]???)", "oh", "noel")
+                    end
+                end
+
 		cutscene:showNametag("Enzio")
 		cutscene:text("* How did you escape!?", "shaded_desperate", "jamm")
 		
@@ -305,8 +412,14 @@ return {
 			cutscene:text("* Phew, you're alright...", "nervous", "jamm")
 			cutscene:text("* Sorry that you were involved in all this..", "look_left", "jamm")
 		end
+
+		if noel then
+			cutscene:showNametag("Noel")
+			cutscene:text("* I don't accept your apology but thank you anyway lego man.", "bruh", "noel")
+		end
 		
 		if #Game.party >= Game:getFlag("party_max") then
+			cutscene:showNametag("Jamm")
 			cutscene:text("* I'd join you guys, but it looks like you have a full party.", "neutral", "jamm")
 			cutscene:text("* I'll see you later then.\n* Let me think for now.", "neutral", "jamm")
 			cutscene:hideNametag()

@@ -5,7 +5,7 @@ function DarkMenu:init()
     
     self.tension_bar = TensionBar(640, 50, true)
     self:addChild(self.tension_bar)
-
+ 
     self.side_rect_x = 640
     self.side_rect_visible = true
 end

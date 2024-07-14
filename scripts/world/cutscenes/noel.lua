@@ -516,7 +516,6 @@ return {
         else
             cutscene:text("* So, may I join the [color:yellow]PARTY[color:white]?", "neutral")
         end
-
         local cc = cutscene:choicer({"Yes", "No"})
         if cc == 1 then
             if Game.party[Game:getFlag("party_max")] then

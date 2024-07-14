@@ -22,6 +22,13 @@ function Mod:loadNoel(noelsave)
         Game:setFlag("noel_party", true)
     end
 
+    if savedData.Map == "cybercity/alleyzero" then
+                    local newData = {
+                        Map = "cybercity/alley1"
+                    }    
+                    Mod:saveGameN(newData)
+    end
+
     local inparty = Game:getFlag("noel_party")
     if savedData.Map == "devhotel/devdiner/partyroom" or Game:getFlag("noel_at") == "devhotel/devdiner/partyroom" then
         if inparty then
@@ -42,6 +49,7 @@ function Mod:loadNoel(noelsave)
             saloon = {w1, w2},
             room1 = {400, 740},
             ["cybercity/alley2"] = {2110, 750},
+            ["cybercity/alleyzero"] = {160, 260}, -- this doesnt fucking work for some reason
             ["devhotel/devdiner/devstart"] = {320, 190},
             ["backrooms/entrance"] = {500, 420},
             ["floor2/lounge"] = {420, 385},
@@ -51,7 +59,8 @@ function Mod:loadNoel(noelsave)
             ["fwood/entry"] = {570, 140},
             ["castle_path/start"] = {150, 400},
             ["christmas/outside/outside_7"] = {150, 205},
-            ["darkcade/floor1"] = {562, 438}
+            ["darkcade/floor1"] = {562, 438},
+            thearena = {300, 200}
         }
 
         local position = spawnPositions[savedData.Map]
@@ -116,3 +125,23 @@ function Mod:findDifferenceIndex(text, text2)
     end
     return minLen
 end
+
+    function Mod:noels_annoyance(cutscene)
+        if not Game:getFlag("noel's_annoyance") then
+            Game:setFlag("noel's_annoyance", 1)
+        elseif Game:getFlag("noel's_annoyance") == 5 then
+            cutscene:showNametag("Noel")
+            local thing = love.math.random(1, 2)
+            if thing == 1 then
+	        cutscene:text("* OH,[wait:5] MY,[wait:5] GOD!!!", "madloud", "noel")
+                cutscene:text("* This is the dumbest puzzle ever, I'm leaving!", "madloud", "noel")
+            elseif thing == 2 then
+	        cutscene:text("* Looks like you're in a bit of a pickle [color:yellow]"..Game.save_name.."[color:white].", "bruh", "noel")
+	        cutscene:text("* Don't worry.[wait:8] [face:neutral]For 12[color:yellow] PlayCoins[font:small]TM[font:main][color:white]\nWe can teleport to the nearest [color:yellow]CHECKPOINT[color:white]!", "lookup", "noel")
+            -- noel random saying "this stinks, im leaving", or "playcoins or sum shit"
+            end
+            cutscene:hideNametag()
+        else
+            Game:setFlag("noel's_annoyance", Game:getFlag("noel's_annoyance") + 1)
+        end
+    end
