@@ -11,5 +11,6 @@ return {
     "mysteryman",
     "jekukilled",
     "dirtyhacker",
-	"music"
+	"music",
+	"gods"
 }
