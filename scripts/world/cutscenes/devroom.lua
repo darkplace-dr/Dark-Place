@@ -619,9 +619,35 @@ return {
                                     cutscene:showNametag("Noel")
                                     cutscene:text("* [speed:0.5]Yeah...[wait:5]\n* I don't drink coffee much...", "bruh", "noel")
                                     cutscene:showNametag("Alexa")
-                                    cutscene:text("[voice:alexa]* I would have to ask my boss.")
+                                    cutscene:text("[voice:alexa]* Umm, sure?")
                                     cutscene:showNametag("Noel")
-                                    cutscene:text("* oh...[wait:5][face:...]\n[voice:katy]* Forget it then.", "oh", "noel")
+                                    cutscene:text("* oh...[wait:5][face:...]\n[voice:katy]* Good.", "oh", "noel")
+			            cutscene:hideNametag()
+                                    Game.world.music:fade(0, 0.25)
+                                    cutscene:wait(1)
+                                    local milk = Sprite("milk")
+                                    Game.world:spawnObject(milk, "above_events")
+                                    milk.x = 480
+                                    milk.y = 135
+                                    Assets.playSound("item", 1, 1)
+
+                                    cutscene:wait(2)
+                                    local wobblything = Music("wobblything_loop", 1.5, 1)
+		                    cutscene:wait(cutscene:slideTo(milk, 480, 225, 10))
+                                    
+                                    wobblything:stop()
+                                    Game.world.music:fade(1, 0.5)
+                                    cutscene:wait(2)
+                                    Assets.playSound("boowomp", 1, 1)
+                                    milk.x = -100
+                                    milk.y = -100
+                                    cutscene:wait(2)
+                                    cutscene:showNametag("Noel")
+                                    cutscene:text("* Good milk.", "bruh", "noel")
+			            cutscene:hideNametag()
+                                    cutscene:wait(2)
+                                    cutscene:text("* Noel either drank the milk or forced it to stop existing.")
+                                    
 				elseif v.id == "dumbie" then
 				
 				elseif v.id == "ostarwalker" then

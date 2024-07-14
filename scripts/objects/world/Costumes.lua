@@ -30,96 +30,110 @@ function Costumes:init()
     self.skin_index = 1
 
     self.costumes = {
-        {
-            name = "Kris",
-            icon = Assets.getTexture("ui/partyselect/kris"),
-            gradient_color = {0, 1, 1},
-            sprite_base_path = "party/kris",
-            skins = {
-                {"DEFAULT", "dark", {0, 0}},
-                {"LIGHT", "light", {0, 0}},
-                {"MTT", "repainted", {0, 0}},
-                {"RODEO", "rodeo", {-8, -8}}
-            }
-        },
-        {
-            name = "Susie",
-            icon = Assets.getTexture("ui/partyselect/susie"),
-            gradient_color = {1, 0.3, 1},
-            sprite_base_path = "party/susie",
-            skins = {
-                {"DEFAULT", "dark", {-6, -12}},
-                {"LIGHT", "light", {-6, -16}},
-                {"DIO", "repainted", {-6, -12}},
-                {"BANGS", "dark_ch1", {-6, -16}}
-            }
-        },
-        {
-            name = "Noelle",
-            icon = Assets.getTexture("ui/partyselect/noelle"),
-            gradient_color = {1, 1, 0},
-            sprite_base_path = "party/noelle",
-            skins = {
-                {"DEFAULT", "dark", {-4, -18}},
-                {"LIGHT", "light", {-4, -18}},
-                {"ANTONYMPH", "antonymph", {-6, -18}}
-            }
-        },
-        {
-            name = "YOU",
-            icon = Assets.getTexture("ui/partyselect/you"),
-            gradient_color = {0, 1, 0},
-            sprite_base_path = "party/you",
-            skins = {
-                {"DEFAULT", "dark", {-8, -6}},
-                {"LIGHT", "light", {-4, -6}},
-                {"DARK (OLD)", "old_dark", {0, 0}},
-                {"LIGHT (OLD)", "old_light", {0, 0}},
-                {"DARK (NEW)", "new_dark", {-8, -6}}
-            }
-        },
-        {
-            name = "Dess",
-            icon = Assets.getTexture("ui/partyselect/dess_lol"),
-            gradient_color = {1, 0, 0},
-            sprite_base_path = "party/dess",
-            skins = {
-                {"DEFAULT", "", {-12, -18}},
-                {"FLIMBO", "", {-12, -18}},
-                {"ELF", "elf", {-12, -16}}
-            }
-        },
-        {
-            name = "Brenda",
-            icon = Assets.getTexture("ui/partyselect/brenda"),
-            gradient_color = {0, 0, 1},
-            sprite_base_path = "party/brenda",
-            skins = {
-                {"DEFAULT", "dark", {-4, -5}},
-                {"BRENDA", "dark", {-4, -5}},
-                {"LIGHT", "light", {-4, -5}},
-            }
-        },
-        {
-            name = "Bor",
-            icon = Assets.getTexture("ui/partyselect/bor"),
-            gradient_color = {113/255, 113/255, 231/255},
-            sprite_base_path = "party/bor",
-            skins = {
-                {"DEFAULT", "dark", {-4, 40}},
-                {"OLD", "dark_old", {-4, 40}}
-            }
-        },
-        {
-            name = "iPhone 7 Plus",
-            icon = Assets.getTexture("ui/partyselect/iphone"),
-            gradient_color = {198/255, 136/255, 132/255},
-            sprite_base_path = "party/iphone",
-            skins = {
-                {"DEFAULT", "dark", {-8, -28}}
-            }
-        }
     }
+
+    self.list = Game:getFlag("party")
+
+    for i, party in ipairs(self.list) do
+        if party == "dess" then
+            table.insert(self.costumes, {
+                name = "Dess",
+                icon = Assets.getTexture("ui/partyselect/dess_lol"),
+                gradient_color = {1, 0, 0},
+                sprite_base_path = "party/dess",
+                skins = {
+                    {"DEFAULT", "", {-12, -18}},
+                    {"FLIMBO", "", {-12, -18}},
+                    {"ELF", "elf", {-12, -16}}
+                }
+            })
+        elseif party == "YOU" then
+            table.insert(self.costumes, {
+                name = "YOU",
+                icon = Assets.getTexture("ui/partyselect/you"),
+                gradient_color = {0, 1, 0},
+                sprite_base_path = "party/you",
+                skins = {
+                    {"DEFAULT", "dark", {-8, -6}},
+                    {"LIGHT", "light", {-4, -6}},
+                    {"DARK (OLD)", "old_dark", {0, 0}},
+                    {"LIGHT (OLD)", "old_light", {0, 0}},
+                    {"DARK (NEW)", "new_dark", {-8, -6}}
+                }
+            })
+        elseif party == "susie" then
+            table.insert(self.costumes, {
+                name = "Susie",
+                icon = Assets.getTexture("ui/partyselect/susie"),
+                gradient_color = {1, 0.3, 1},
+                sprite_base_path = "party/susie",
+                skins = {
+                    {"DEFAULT", "dark", {-6, -12}},
+                    {"LIGHT", "light", {-6, -16}},
+                    {"DIO", "repainted", {-6, -12}},
+                    {"BANGS", "dark_ch1", {-6, -16}}
+                }
+            })
+        elseif party == "kris" then
+            table.insert(self.costumes, {
+                name = "Kris",
+                icon = Assets.getTexture("ui/partyselect/kris"),
+                gradient_color = {0, 1, 1},
+                sprite_base_path = "party/kris",
+                skins = {
+                    {"DEFAULT", "dark", {0, 0}},
+                    {"LIGHT", "light", {0, 0}},
+                    {"MTT", "repainted", {0, 0}},
+                    {"RODEO", "rodeo", {-8, -8}}
+                }
+            })
+        elseif party == "noelle" then
+            table.insert(self.costumes, {
+                name = "Noelle",
+                icon = Assets.getTexture("ui/partyselect/noelle"),
+                gradient_color = {1, 1, 0},
+                sprite_base_path = "party/noelle",
+                skins = {
+                    {"DEFAULT", "dark", {-4, -18}},
+                    {"LIGHT", "light", {-4, -18}},
+                    {"ANTONYMPH", "antonymph", {-6, -18}}
+                }
+            })
+        elseif party == "brenda" then
+            table.insert(self.costumes, {
+                name = "Brenda",
+                icon = Assets.getTexture("ui/partyselect/brenda"),
+                gradient_color = {0, 0, 1},
+                sprite_base_path = "party/brenda",
+                skins = {
+                    {"DEFAULT", "dark", {-4, -5}},
+                    {"BRENDA", "dark", {-4, -5}},
+                    {"LIGHT", "light", {-4, -5}}
+                }
+            })
+        elseif party == "bor" then
+            table.insert(self.costumes, {
+                name = "Bor",
+                icon = Assets.getTexture("ui/partyselect/bor"),
+                gradient_color = {113/255, 113/255, 231/255},
+                sprite_base_path = "party/bor",
+                skins = {
+                    {"DEFAULT", "dark", {-4, 40}},
+                    {"OLD", "dark_old", {-4, 40}}
+                }
+            })
+        elseif party == "iphone" then
+            table.insert(self.costumes, {
+                name = "iPhone 7 Plus",
+                icon = Assets.getTexture("ui/partyselect/iphone"),
+                gradient_color = {198/255, 136/255, 132/255},
+                sprite_base_path = "party/iphone",
+                skins = {
+                    {"DEFAULT", "dark", {-8, -28}}
+                }
+            })
+        end
+    end
 end
 
 function Costumes:draw()

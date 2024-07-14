@@ -472,12 +472,34 @@ return {
         local noel = cutscene:getCharacter("noel")
 
         cutscene:setSpeaker(noel)
-
         local savedData = Mod:loadGameN()
         local name = Game.save_name
-        local thing = love.math.random(1, 10)
+        local thing = love.math.random(1, 20)
         if thing == 1 then
             cutscene:doki_text("[voice:none]\"So,[wait:5] do you like literature "..savedData.Player_Name.."?\"", nil, noel, {name = "Noel"})
+        elseif thing == 2 then
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+            cutscene:text("* Who am I?", "oh")
+           -- check if the player is holding the menu key here because fuck you
+            if Input.down("menu") then
+                cutscene:text("[noskip][speed:0.1]* Go ahead, skip my dialouge the the C button. It's way faster, right?", "bruh")
+                cutscene:text("[noskip][speed:0.1]* Standing here, I realize somthing.", "bruh")
+                cutscene:text("[noskip][speed:0.1]* You're just like me, impaintant, i 100% cpelld that wrong but i dont care.", "bruh")
+            else
+                cutscene:text("* Who am I?", "oh")
+                cutscene:text("* Why arent you skipping my dialouge???", "huh")
+                cutscene:text("* Is it really that damn interisting???", "bruh")
+                cutscene:text("* Freak.", "...")
+            end
+        elseif thing == 7 then
         elseif Game.save_name == savedData.Player_Name then
             cutscene:text("* Ello.", "bruh")
         else
@@ -487,26 +509,47 @@ return {
         end
         if thing == 1 then
             cutscene:doki_text("[name:Natsuki]\"[voice:none]Oh,[wait:5] may I[name:Noel] also join the [color:yellow]PARTY[color:white] by the way?\"", nil, noel, {name = "Natsuki"})
+        elseif thing == 7 then
+            cutscene:text("[color:red]* Was this always here?", "oh")
+        elseif thing == 4 then
+            cutscene:text("* Are you having fun?", "bruh")
         else
             cutscene:text("* So, may I join the [color:yellow]PARTY[color:white]?", "neutral")
         end
-
         local cc = cutscene:choicer({"Yes", "No"})
         if cc == 1 then
             if Game.party[Game:getFlag("party_max")] then
-                cutscene:text("* Empty your party first [color:yellow]DUMBASS[color:white].", "huh")
-            else
-                cutscene:text("* Swag bacon.", "bruh")
-	        cutscene:detachFollowers()
-                noel:convertToFollower()
-                Game:addPartyMember("noel")
-                cutscene:attachFollowers()
-                cutscene:alignFollowers()
-                local num = savedData.SaveID
-                Game:setFlag("noel_SaveID", num)
+                if thing == 4 then
+                    cutscene:text("* Your full party gave it away.", "huh")
+                elseif thing == 7 then
+                    cutscene:text("?pt gniklat uoy era ohW *", "...")
+                    noel:remove()
+                else
+                    cutscene:text("* Empty your party first [color:yellow]DUMBASS[color:white].", "huh")
+                end
+            else 
+                if thing == 4 then
+                    cutscene:text("* Good.", "bruh")
+                elseif thing == 7 then
+                    cutscene:text("* ...", "oh")
+                    noel:remove()
+                else
+                    cutscene:text("* Swag bacon.", "bruh")
+	            cutscene:detachFollowers()
+                    noel:convertToFollower()
+                    Game:addPartyMember("noel")
+                    cutscene:attachFollowers()
+                    cutscene:alignFollowers()
+                    local num = savedData.SaveID
+                    Game:setFlag("noel_SaveID", num)
+                end
             end
         else
-            cutscene:text("* Understood "..savedData.Player_Name..".", "neutral")
+            if thing == 4 then
+                    cutscene:text("* Then why are you playing?", "huh")
+            else
+                cutscene:text("* Understood "..savedData.Player_Name..".", "neutral")
+            end
         end
         cutscene:hideNametag()
     end

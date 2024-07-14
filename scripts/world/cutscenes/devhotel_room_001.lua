@@ -109,6 +109,7 @@ return {
 		local brenda = cutscene:getCharacter("brenda")
 		local dess = cutscene:getCharacter("dess")
 		local jamm = Game:hasPartyMember("jamm")
+		local noel = Game:hasPartyMember("noel")
 	
         cutscene:text("* It's a TV.")
         cutscene:text("* It doesn't seem to be working though...")
@@ -375,6 +376,34 @@ return {
 					cutscene:showNametag("Susie")
 					cutscene:text("* ...", "shy_down", "susie")
 					cutscene:text("* It all makes sense now.", "shy_down", "susie")
+				end
+
+				if noel then
+                                        local thing = love.math.random(1, 5)
+                                        if thing == 1 then
+					cutscene:showNametag("Noel")
+					cutscene:text("* ...", "oh", "noel")
+                                        
+					cutscene:text("* Jamm...", "oh", "noel")
+					cutscene:text("* You left the fucking lens cap on, I couldnt see shit.", "bruh", "noel")
+
+                                        local text = "* May you go back and re-film it plz?" 
+                                        local text2 = "* ... I have decided that my last few line of dialouge is not cannon." 
+                                        local speaker = "noel" 
+                                        local texts = {"THAT", "IS", "SO", "MEAN"} 
+                                        local faces = {"excusemebutwhatthefuck", "oh", "loud_2", "c_neutral"}
+                                        cutscene:UndoMyFuckup(cutscene, text, text2, speaker, texts, faces)
+
+                                        elseif thing == 2 then
+					cutscene:text("(* Your wife's death was kinda cringe ngl.)", "...", "noel")
+                                        elseif thing == 3 then
+					    cutscene:text("* The screen faded to black, what happen?", "oh", "noel")
+                                        elseif thing == 4 then
+					    cutscene:text("* Jamm...", "oh", "noel")
+					    cutscene:text("* Did-[wait:5] [face:madloud]Did you fucking record your wife's damn murder?!?![face:...]", "oh", "noel")
+                                        elseif thing == 5 then
+					    cutscene:text("* Jamm, we are literal children, what do you expect us to do?", "bruh", "noel")
+                                        end
 				end
 				
 				cutscene:showNametag("Jamm")

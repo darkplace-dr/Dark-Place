@@ -5,6 +5,35 @@ function actor:onSpriteInit(sprite)
     sprite:getFX(OutlineFX):setColor(1, 1, 1)
 end
 
+--Up and down didnt look nice enough
+--[[
+function actor:onWorldUpdate(chara) 
+    if chara.running and chara.running == true and not chara.running == false then
+        --print("woah")
+        if chara.facing == "left" then
+            chara.rotation = 0.2
+            chara.scale_y = 2
+        elseif chara.facing == "right" then
+            chara.rotation = -0.2
+            chara.scale_y = 2
+        elseif chara.facing == "down" then
+            chara.rotation = 0
+            chara.scale_y = 2.1
+        elseif chara.facing == "up" then
+            chara.rotation = 0
+            chara.scale_y = 1.9
+        else
+            chara.rotation = 0
+            chara.scale_y = 2
+
+        end
+    elseif chara.rotation ~= 0 or chara.scale_y ~= 2 then
+        chara.rotation = 0
+        chara.scale_y = 2
+    end
+end
+]]
+
 function actor:init()
     super.init(self)
     self.name = "Noel"

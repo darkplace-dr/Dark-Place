@@ -2,19 +2,52 @@ return {
 	dessbegin = function(cutscene)
 		local dess = cutscene:getCharacter("dess")
 
+		if cutscene:getCharacter("noel") then
+			noel_here = 1
+		end
+
 		if cutscene:getCharacter("brenda") then
 			cutscene:showNametag("Brenda")
-			cutscene:text("* (Oh god...[wait:5] it's HER.)", "miffed", "brenda")
+			cutscene:text("* (Oh god...[wait:5] it's HER.)", "miffed", "brenda")     
+                        if noel_here then
+			    noel_here = self.noel_here + 1
+			    cutscene:showNametag("Noel")
+			    cutscene:text("* (Who?)", "huh", "noel")
+			    cutscene:text("* (Why do you seem so [face:oh]darn upset?)", "bruh", "noel")
+                        end
 		end
 
 		if cutscene:getCharacter("dumbie") then
 			cutscene:showNametag("Dumbie")
 			cutscene:text("* NO WAY DESS DELTARUNE", "pog", "dumbie")
+                        if noel_here then
+                            if noel_here == 2 then
+			        noel_here = noel_here + 1
+			        cutscene:showNametag("Noel")
+			        cutscene:text("* Dess?\n[face:...]* Is she one of the baddies?", "bruh", "noel")
+                            else
+			        noel_here = noel_here + 1
+			        cutscene:showNametag("Noel")
+			        cutscene:text("* (Deltarune?)", "...", "noel")
+                                cutscene:text("* (... interisting.)", "huh", "noel")
+                            end
+                        end
 		end
 		
 		if cutscene:getCharacter("jamm") then
 			cutscene:showNametag("Jamm")
             cutscene:text("* (Did we really have to do this one?)", "nervous", "jamm")
+                        if noel_here then
+                            if noel_here == 3 then
+			        cutscene:text("* OKAY, WHY THE [face:oh]FRICK[face:madloud] IS EVERYONE REACING IN THIS MANNER?!", "madloud", "noel")
+                            elseif noel_here == 2 then
+			        cutscene:showNametag("Noel")
+			        cutscene:text("* Is somthing wrong?", "bruh", "noel")
+                            else
+			        cutscene:showNametag("Noel")
+			        cutscene:text("* (Do what?)", "...", "noel")
+                            end
+                        end
 		end
 
 		cutscene:showNametag("Dess Holiday?")
