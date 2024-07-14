@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 8,
+  nextobjectid = 10,
   properties = {
     ["music"] = "deltarune/field_of_hopes",
     ["name"] = "Field - Card Start"
@@ -169,6 +169,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 9,
+          name = "path2",
+          type = "",
+          shape = "point",
+          x = 440,
+          y = 40,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -216,6 +229,22 @@ return {
           properties = {
             ["map"] = "cardworld/start",
             ["marker"] = "spawn"
+          }
+        },
+        {
+          id = 8,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = -40,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "cardworld/path_2",
+            ["marker"] = "path1"
           }
         }
       }
