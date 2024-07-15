@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="26" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="21">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -8,20 +8,12 @@
  </properties>
  <tileset firstgid="1" source="../../../tilesets/bg_darkfield_tiles.tsx"/>
  <tileset firstgid="193" source="../../../tilesets/bg_treetiles_new.tsx"/>
- <layer id="1" name="Tile Layer 1" width="16" height="26">
+ <layer id="1" name="Tile Layer 1" width="16" height="18">
   <data encoding="csv">
 0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
 0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
 0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
-0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
-0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
-0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
-0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
-0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
 194,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
-0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
-0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
-0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
 0,0,0,0,0,0,73,52,52,75,0,0,193,0,0,0,
 0,0,0,0,0,0,73,52,52,75,0,0,0,0,0,0,
 0,0,0,0,0,0,73,52,52,52,68,68,68,68,69,0,
@@ -39,38 +31,38 @@
 </data>
  </layer>
  <objectgroup id="2" name="collision">
-  <object id="1" x="0" y="0" width="240" height="1040"/>
-  <object id="3" x="400" y="0">
-   <polygon points="0,0 0,560 160,560 200,600 200,680 160,720 0,720 0,1040 240,1040 240,0"/>
+  <object id="19" x="0" y="0" width="240" height="720"/>
+  <object id="20" x="400" y="0">
+   <polygon points="0,0 240,0 240,720 0,720 0,400 160,400 200,360 200,280 160,240 0,240"/>
   </object>
  </objectgroup>
  <objectgroup id="3" name="markers">
-  <object id="8" name="walkto_party" x="320" y="640">
+  <object id="8" name="walkto_party" x="320" y="320">
    <point/>
   </object>
-  <object id="9" name="path1" x="320" y="1000">
+  <object id="9" name="path1" x="320" y="680">
    <point/>
   </object>
-  <object id="12" name="terry_walkto" x="400" y="640">
+  <object id="12" name="terry_walkto" x="400" y="320">
    <point/>
   </object>
-  <object id="13" name="jamm_walkto" x="320" y="440">
+  <object id="13" name="jamm_walkto" x="320" y="120">
    <point/>
   </object>
-  <object id="14" name="terry_walkto_2" x="320" y="560">
+  <object id="14" name="terry_walkto_2" x="320" y="240">
    <point/>
   </object>
-  <object id="16" name="terry_walkto_3" x="320" y="360">
+  <object id="16" name="terry_walkto_3" x="320" y="40">
    <point/>
   </object>
  </objectgroup>
  <objectgroup id="4" name="objects">
-  <object id="4" name="script" x="240" y="720" width="160">
+  <object id="4" name="script" x="240" y="400" width="160">
    <properties>
     <property name="cutscene" value="cards.tutorial_terry_1"/>
    </properties>
   </object>
-  <object id="5" name="npc" x="320" y="560">
+  <object id="5" name="npc" x="320" y="240">
    <properties>
     <property name="actor" value="jamm"/>
     <property name="facing" value="up"/>
@@ -78,7 +70,7 @@
    </properties>
    <point/>
   </object>
-  <object id="6" name="npc" x="520" y="640">
+  <object id="6" name="npc" x="520" y="320">
    <properties>
     <property name="actor" value="tutorial_terry"/>
     <property name="facing" value="left"/>
@@ -86,7 +78,7 @@
    </properties>
    <point/>
   </object>
-  <object id="10" name="transition" x="240" y="1040" width="160" height="40">
+  <object id="10" name="transition" x="240" y="720" width="160" height="40">
    <properties>
     <property name="map" value="cardworld/path_1"/>
     <property name="marker" value="path2"/>
