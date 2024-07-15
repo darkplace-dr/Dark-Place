@@ -41,7 +41,7 @@ return {
         elseif c == 3 then
             cutscene:text("* Three's an odd number.")
             if Utils.containsValue(Game.party, Game:getPartyMember("susie")) then
-                cutscene:text("* Well, yeah. Even I could tell you that.", "smile", "susie")
+                cutscene:text("* Even I could tell you that, no wonder.", "smile", "susie")
                 master:setAnimation({ "shocked", 0.25, true })
                 cutscene:text("* I.. I meant it FIGURATIVELY!")
             end
