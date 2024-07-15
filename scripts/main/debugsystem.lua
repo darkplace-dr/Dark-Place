@@ -134,6 +134,16 @@ function Mod:registerDebugOptions(debug)
 		Game.minigame:endMinigame()
 		debug:closeMenu()
 	end, in_minigame)
+	
+    debug:registerOption("dp_menu", "Start Card Game", "Start a card game.", function() debug:enterMenu("card_menu", 0) end, in_overworld)
+
+    debug:registerMenu("card_menu", "Card Game Select", "search")
+    for id,_ in pairs(self.cardgames) do
+        debug:registerOption("card_menu", id, "Start this card game.", function()
+            Mod:startCardGame(id)
+            debug:closeMenu()
+        end)
+    end
 
     debug:registerOption("dp_menu", "Funky", "Enter the  Funky  Menu.", function() debug:enterMenu("funky_menu", 1) end)
 
