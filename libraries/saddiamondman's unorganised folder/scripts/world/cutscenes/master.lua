@@ -21,6 +21,35 @@ return {
         end
         master:setAnimation({"idle", 0.25, true})
     end,
+    bepis = function(cutscene, actor)
+        local master = cutscene:getCharacter("bepis_master")
+        master:setAnimation({ "bop", 0.25, true })
+        cutscene:text("* I'm Bepi Master.\n[wait:5]* Ask me about BEPI's.")
+        local choices = { "Pipis", "2", "3" }
+        table.insert(choices, "Bye")
+        local c = cutscene:choicer(choices)
+        if c == 1 then
+            master:setAnimation({ "idle", 0.25, true })
+            cutscene:text("* This question is out of my domain")
+            master:setAnimation({ "bop", 0.25, true })
+            cutscene:text("* So how about you wake up and taste the [color:red]pain[color:reset]?")
+            master:setAnimation({ "shocked", 0.25, true })
+            cutscene:text("* OH I STILL HAVE IT")
+        elseif c == 2 then
+            master:setAnimation({ "shocked", 0.25, true })
+            cutscene:text("* BING BING BING TWO.")
+        elseif c == 3 then
+            cutscene:text("* Three's an odd number.")
+            if Utils.containsValue(Game.party, Game:getPartyMember("susie")) then
+                cutscene:text("* Well, yeah. Even I could tell you that.", "smile", "susie")
+                master:setAnimation({ "shocked", 0.25, true })
+                cutscene:text("* I.. I meant it FIGURATIVELY!")
+            end
+        elseif c == 4 then
+            cutscene:text("* Later,[wait:5] kid.")
+        end
+        master:setAnimation({ "idle", 0.25, true })
+    end,
     kris = function(cutscene)
         local master = cutscene:getCharacter("kris_master")
         master:setAnimation({"bop", 0.25, true})
