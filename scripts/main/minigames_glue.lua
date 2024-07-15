@@ -4,6 +4,8 @@ function Mod:initMinigameHooks()
         function(orig, self)
             if self.state == "MINIGAME" then
                 return self.minigame.music
+			elseif self.state == "CARD" then
+				return self.card_game.music
             else
                 return orig(self)
             end
@@ -25,6 +27,10 @@ function Mod:initMinigameHooks()
             if self.minigame then
                 self.minigame:onKeyPressed(key)
             end
+		elseif self.state == "CARD" then
+			if self.card_game then
+				self.card_game:onKeyPressed(key)
+			end
         else
             orig(self, key, is_repeat)
         end
@@ -120,4 +126,70 @@ function Mod:startMinigame(game)
     Game.minigame:postInit()
 
     Game.stage:addChild(Game.minigame)
+end
+
+function Mod:registerCards()
+	self.cards = { }
+	
+	for _,path,card in Registry.iterScripts("cards/cards") do
+		assert(card ~= nil, '"cards/' .. path .. '.lua" does not return value')
+		card.id = card.id or path
+		self.cards[card.id] = card
+	end
+	
+	self.cardgames = { }
+	
+	for _,path,cardgame in Registry.iterScripts("cards/games") do
+		assert(cardgame ~= nil, '"games/' .. path .. '.lua" does not return value')
+		cardgame.id = cardgame.id or path
+		self.cardgames[cardgame.id] = cardgame
+	end
+	
+	Mod.cardcut = { }
+	
+	for _,path,cardcuts in Registry.iterScripts("cards/cutscenes") do
+		assert(cardcuts ~= nil, '"cutscenes/' .. path .. '.lua" does not return value')
+		cardcuts.id = cardcuts.id or path
+		Mod.cardcut[cardcuts.id] = cardcuts
+	end
+end
+
+function Mod:createCard(id, ...)
+	if self.cards[id] then
+		return self.cards[id](...)
+	else
+		error("Attempt to create nonexistent card \"" .. tostring(id) .. "\"")
+	end
+end
+
+function Mod:createCardGame(id, ...)
+	if self.cardgames[id] then
+		return self.cardgames[id](...)
+	else
+		error("Attempt to create nonexistent card game \"" .. tostring(id) .. "\"")
+	end
+end
+
+function Mod.getCardCutscene(group, id)
+    local cutscene = Mod.cardcut[group]
+    if type(cutscene) == "table" then
+        return cutscene[id], true
+    elseif type(cutscene) == "function" then
+        return cutscene, false
+    end
+end
+
+function Mod:startCardGame(game)
+
+    if Game.card_game then
+        error("Attempt to enter card game while already in card game")
+    end
+
+    Game.state = "CARD"
+
+    Game.card_game = self:createCardGame(game)
+
+    Game.card_game:postInit()
+	
+    Game.stage:addChild(Game.card_game)
 end

@@ -81,7 +81,8 @@ return {
 			list = {"Yes", "No", "How about I kill you"}
 		end
 		
-		Game:setFlag("collected_cards", {})
+		Game:setFlag("collected_cards", { {"rodenteer", 5}, {"froglin", 5}, {"rodenteer_ex", 4}, {"froglin_ex", 4}, {"owlen", 2} })
+		Game:setFlag("equipped_cards", { {"rodenteer", 5}, {"froglin", 5}, {"rodenteer_ex", 4}, {"froglin_ex", 4}, {"owlen", 2} })
 		
 		cutscene:hideNametag()
 		if cutscene:choicer(list) == 3 then
