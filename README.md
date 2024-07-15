@@ -87,6 +87,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * YoshifanJordan - Contributor
 * NelleMonelle - Contributor
 * french fry - Contributor
+* polypoyo - Contributor
 
 </details>
 
