@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 10,
-  nextobjectid = 15,
+  nextobjectid = 16,
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/treading_lightly"
@@ -432,6 +432,19 @@ return {
             ["map"] = "steamworks/11",
             ["marker"] = "down"
           }
+        },
+        {
+          id = 15,
+          name = "steamworks_trapdoor",
+          type = "",
+          shape = "point",
+          x = 600,
+          y = 340,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

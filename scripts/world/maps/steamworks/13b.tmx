@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="17" tilewidth="40" tileheight="40" infinite="0" nextlayerid="5" nextobjectid="7">
+ <editorsettings>
+  <export target="13b.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="light" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/steamworks.tsx"/>
+ <layer id="1" name="ground" width="16" height="17">
+  <data encoding="csv">
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479,
+479,479,479,479,479,479,446,69,71,444,479,479,479,479,479,479
+</data>
+ </layer>
+ <objectgroup id="2" name="collision">
+  <object id="1" x="360" y="0" width="40" height="680"/>
+  <object id="2" x="240" y="0" width="40" height="680"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="3" name="transition" x="280" y="680" width="80" height="40">
+   <properties>
+    <property name="map" value="steamworks/13"/>
+    <property name="marker" value="door"/>
+   </properties>
+  </object>
+  <object id="4" name="script" x="280" y="360" width="80" height="40">
+   <properties>
+    <property name="cutscene" value="steamworks.basement_axis"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="5" name="npc" x="320" y="40">
+   <properties>
+    <property name="actor" value="axis"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="6" name="spawn" x="320" y="640">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
