@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 10,
-  nextobjectid = 13,
+  nextobjectid = 15,
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/treading_lightly"
@@ -19,8 +19,7 @@ return {
     {
       name = "steamworks",
       firstgid = 1,
-      filename = "../../../tilesets/steamworks.tsx",
-      exportfilename = "../../../tilesets/steamworks.lua"
+      filename = "../../../tilesets/steamworks.tsx"
     }
   },
   layers = {
@@ -417,6 +416,22 @@ return {
             ["map"] = "steamworks/14",
             ["marker"] = "door"
           }
+        },
+        {
+          id = 13,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 1240,
+          y = 0,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "steamworks/11",
+            ["marker"] = "down"
+          }
         }
       }
     },
@@ -454,6 +469,19 @@ return {
           shape = "point",
           x = 320,
           y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "up",
+          type = "",
+          shape = "point",
+          x = 1300,
+          y = 80,
           width = 0,
           height = 0,
           rotation = 0,

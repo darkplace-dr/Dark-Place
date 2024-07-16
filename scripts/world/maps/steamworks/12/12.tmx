@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="37" height="35" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="13">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="37" height="35" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="15">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -195,12 +195,21 @@
     <property name="marker" value="door"/>
    </properties>
   </object>
+  <object id="13" name="transition" x="1240" y="0" width="120" height="40">
+   <properties>
+    <property name="map" value="steamworks/11"/>
+    <property name="marker" value="down"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="7" name="markers">
   <object id="10" name="spawn" x="1060" y="340">
    <point/>
   </object>
   <object id="12" name="door" x="320" y="320">
+   <point/>
+  </object>
+  <object id="14" name="up" x="1300" y="80">
    <point/>
   </object>
  </objectgroup>
