@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.0",
   name = "steamworks_objects",
   class = "",
   tilewidth = 416,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 44,
+  tilecount = 62,
   tiles = {
     {
       id = 3,
@@ -414,6 +414,176 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/objects/platform_2_4.png",
       width = 76,
       height = 88
+    },
+    {
+      id = 61,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/VentDecor.png",
+      width = 236,
+      height = 224
+    },
+    {
+      id = 62,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/VentDecor2.png",
+      width = 192,
+      height = 260
+    },
+    {
+      id = 63,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/gearbig_1.png",
+      width = 68,
+      height = 68,
+      animation = {
+        {
+          tileid = 63,
+          duration = 200
+        },
+        {
+          tileid = 64,
+          duration = 200
+        },
+        {
+          tileid = 65,
+          duration = 200
+        },
+        {
+          tileid = 66,
+          duration = 200
+        }
+      }
+    },
+    {
+      id = 64,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/gearbig_2.png",
+      width = 68,
+      height = 68
+    },
+    {
+      id = 65,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/gearbig_3.png",
+      width = 68,
+      height = 68
+    },
+    {
+      id = 66,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/gearbig_4.png",
+      width = 68,
+      height = 68
+    },
+    {
+      id = 67,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/lava_gear_1.png",
+      width = 114,
+      height = 64,
+      animation = {
+        {
+          tileid = 67,
+          duration = 200
+        },
+        {
+          tileid = 68,
+          duration = 200
+        },
+        {
+          tileid = 69,
+          duration = 200
+        },
+        {
+          tileid = 70,
+          duration = 200
+        }
+      }
+    },
+    {
+      id = 68,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/lava_gear_2.png",
+      width = 114,
+      height = 64
+    },
+    {
+      id = 69,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/lava_gear_3.png",
+      width = 114,
+      height = 64
+    },
+    {
+      id = 70,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/lava_gear_4.png",
+      width = 114,
+      height = 64
+    },
+    {
+      id = 71,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/floating_gear_1.png",
+      width = 162,
+      height = 134,
+      animation = {
+        {
+          tileid = 71,
+          duration = 200
+        },
+        {
+          tileid = 72,
+          duration = 200
+        },
+        {
+          tileid = 73,
+          duration = 200
+        },
+        {
+          tileid = 74,
+          duration = 200
+        },
+        {
+          tileid = 75,
+          duration = 200
+        },
+        {
+          tileid = 76,
+          duration = 200
+        }
+      }
+    },
+    {
+      id = 72,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/floating_gear_2.png",
+      width = 162,
+      height = 134
+    },
+    {
+      id = 73,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/floating_gear_3.png",
+      width = 162,
+      height = 134
+    },
+    {
+      id = 74,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/floating_gear_4.png",
+      width = 162,
+      height = 134
+    },
+    {
+      id = 75,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/floating_gear_5.png",
+      width = 162,
+      height = 134
+    },
+    {
+      id = 76,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/floating_gear_6.png",
+      width = 162,
+      height = 134
+    },
+    {
+      id = 77,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/09_fade.png",
+      width = 120,
+      height = 70
+    },
+    {
+      id = 78,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/09_stairs.png",
+      width = 150,
+      height = 80
     }
   }
 }

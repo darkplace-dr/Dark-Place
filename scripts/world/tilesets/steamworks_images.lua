@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.0",
   name = "steamworks",
   class = "",
   tilewidth = 2800,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 29,
+  tilecount = 32,
   tiles = {
     {
       id = 2,
@@ -260,6 +260,24 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/05d_bg_4.png",
       width = 836,
       height = 330
+    },
+    {
+      id = 32,
+      image = "../../../assets/sprites/world/maps/steamworks/08_stairs.png",
+      width = 326,
+      height = 512
+    },
+    {
+      id = 33,
+      image = "../../../assets/sprites/world/maps/steamworks/09_gradient.png",
+      width = 2000,
+      height = 200
+    },
+    {
+      id = 34,
+      image = "../../../assets/sprites/world/maps/steamworks/10_building.png",
+      width = 838,
+      height = 670
     }
   }
 }
