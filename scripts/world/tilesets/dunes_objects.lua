@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.0",
   name = "dunes_objects",
   class = "",
   tilewidth = 880,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 12,
+  tilecount = 13,
   tiles = {
     {
       id = 0,
@@ -96,6 +96,12 @@ return {
       image = "../../../assets/sprites/world/maps/dunes/43_cone.png",
       width = 48,
       height = 54
+    },
+    {
+      id = 13,
+      image = "../../../assets/sprites/world/maps/dunes/42_cellar_door.png",
+      width = 102,
+      height = 106
     }
   }
 }
