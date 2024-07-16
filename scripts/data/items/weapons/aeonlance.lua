@@ -54,8 +54,8 @@ function item:init()
 		jamm = {
             jamm = "I never was a swords guy.",
             brenda = "Grah, lances aren't swords !! /lh",
-        noel = "Sure, give it to the possesed kid...",
         },
+        noel = "Sure, give it to the possesed kid...",
     }
 end
 
