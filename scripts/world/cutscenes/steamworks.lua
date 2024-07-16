@@ -155,6 +155,7 @@ return {
         local axis = cutscene:getCharacter("axis")
         cutscene:wait(cutscene:walkTo(axis, axis.x, event.y - 80, 0.5, "down"))
 
+        cutscene:showNametag("Axis")
         if Game:getFlag("axis_basement_caught") ~= 1 then
             cutscene:text("* I CANNOT BELIEVE YOU\nFELL FOR THAT.", "normal", "axis")
             cutscene:text("* I AM SMART, THEREFORE I\nPREDICTED YOUR ESCAPE.", "normal", "axis")
@@ -168,6 +169,7 @@ return {
             cutscene:text("* BYE NOW.", "normal", "axis")
             Game:setFlag("axis_basement_caught", 2)
         end
+        cutscene:hideNametag()
         
         cutscene:walkTo(axis, axis.x, axis.y + 200, 2, "down")
         Game.world:mapTransition("steamworks/13", "door")
@@ -201,10 +203,28 @@ return {
             ceroba.alert_icon:remove()
         end)
         cutscene:wait(1)
+        cutscene:showNametag("Ceroba")
         cutscene:text("* Oh! There you are!", "smile", "ceroba")
         cutscene:text("* I knew you'd be smart enough to use the vents.", "snarky", "ceroba")
+		if cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
+            cutscene:showNametag("Jamm")
+            cutscene:text("* A little dusty,[wait:5] aren't they...", "look_left", "jamm")
+            cutscene:showNametag("Ceroba")
+			cutscene:text("* The Steamworks haven't been used in a long time...", "neutral", "ceroba")
+			cutscene:text("* But what matters is that you found a way to escape.", "smile_alt", "ceroba")
+			if Game:getFlag("marcy_joined") then
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Warn me next time we have to go through vents, alright?", "look_left", "jamm")
+				cutscene:text("* I mean,[wait:5] I have my daughter with me,[wait:5] after all.", "neutral", "jamm")
+				cutscene:showNametag("Ceroba")
+				cutscene:text("* Right...[react:1]", "sorrowful", "ceroba", {reactions = { 
+				    {"Did I strike\na nerve???", 302, 50, "nervous", "jamm"}
+			    }})
+			end
+		end
         cutscene:text("* Let's get going.", "smile", "ceroba")
         Game:addPartyMember("ceroba")
+        cutscene:hideNametag()
         ceroba:convertToFollower()
         cutscene:attachFollowers()
         cutscene:wait(1)
@@ -212,6 +232,7 @@ return {
         Game:setFlag("ceroba_party", true)
     end,
     first_robokill = function(cutscene, event)
+        cutscene:showNametag("Ceroba")
         cutscene:text("* What are you thinking!?", "angry", "ceroba")
         cutscene:text("* I know they started the fight but we don't know the situation!", "irked", "ceroba")
         cutscene:text("* What if it was a glitch in their programming?", "irked", "ceroba")
@@ -220,12 +241,15 @@ return {
         cutscene:text("* We have no right to destroy them, got that?", "neutral", "ceroba")
         cutscene:text("* ...Sigh.", "closed_eyes", "ceroba")
         cutscene:text("* Just... don't do anything stupid.", "irked", "ceroba")
+        cutscene:hideNametag()
     end,
     ceroba_kanako_talk = function(cutscene, event)
         local ceroba = cutscene:getCharacter("ceroba")
         cutscene:detachFollowers()
 
+        cutscene:showNametag("Ceroba")
         cutscene:text("* Hey. How about we make a little stop here?", "neutral", "ceroba")
+        cutscene:hideNametag()
 
         if Game.party[1].id == "ceroba" then
             cutscene:walkTo(ceroba, "ceroba_1")
