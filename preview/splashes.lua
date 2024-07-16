@@ -75,5 +75,10 @@ return {
     "Run this on a\nWii you coward",
     "Right behind you.",
     "Have a break,\nhave a legally distinct\nGitGog",
-    "Try FREEWLLY"
+    "Try FREEWLLY",
+    "FRIEND INSIDE ME",
+    "VERY, VERY\nINTERESTING",
+    "Smells like\nsplash text",
+    "human... i remember\nyou're genocides...",
+    "Help! They're forcing\nme to make\nsplash texts!",
 }
