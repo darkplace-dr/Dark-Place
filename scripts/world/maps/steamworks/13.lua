@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 22,
+  nextobjectid = 24,
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/detainment"
@@ -387,9 +387,22 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["cutscene"] = "steamworks_13.door",
+            ["cutscene"] = "steamworks.basement_door",
             ["solid"] = true
           }
+        },
+        {
+          id = 22,
+          name = "steamworks_vent",
+          type = "",
+          shape = "point",
+          x = 697,
+          y = 634,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -427,6 +440,19 @@ return {
           shape = "point",
           x = 590,
           y = 290,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 23,
+          name = "vent",
+          type = "",
+          shape = "point",
+          x = 687,
+          y = 664,
           width = 0,
           height = 0,
           rotation = 0,

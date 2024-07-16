@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="30" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="22">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="26" height="30" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="24">
  <editorsettings>
   <export target="13.lua" format="lua"/>
  </editorsettings>
@@ -98,9 +98,12 @@
  <objectgroup id="4" name="objects">
   <object id="21" name="interactable" x="554" y="240" width="70" height="14">
    <properties>
-    <property name="cutscene" value="steamworks_13.door"/>
+    <property name="cutscene" value="steamworks.basement_door"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
+  </object>
+  <object id="22" name="steamworks_vent" x="697" y="634">
+   <point/>
   </object>
  </objectgroup>
  <objectgroup id="5" name="markers">
@@ -108,6 +111,9 @@
    <point/>
   </object>
   <object id="20" name="door" x="590" y="290">
+   <point/>
+  </object>
+  <object id="23" name="vent" x="687" y="664">
    <point/>
   </object>
  </objectgroup>

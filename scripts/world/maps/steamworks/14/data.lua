@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 10,
+  nextobjectid = 15,
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/treading_lightly"
@@ -19,8 +19,7 @@ return {
     {
       name = "steamworks",
       firstgid = 1,
-      filename = "../../../tilesets/steamworks.tsx",
-      exportfilename = "../../../tilesets/steamworks.lua"
+      filename = "../../../tilesets/steamworks.tsx"
     }
   },
   layers = {
@@ -201,6 +200,67 @@ return {
             ["map"] = "steamworks/15",
             ["marker"] = "door"
           }
+        },
+        {
+          id = 10,
+          name = "steamworks_vent2",
+          type = "",
+          shape = "point",
+          x = 601,
+          y = 198,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 400,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "ceroba",
+            ["facing"] = "left",
+            ["flagcheck"] = "ceroba_separated"
+          }
+        },
+        {
+          id = 13,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 200,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "steamworks.vent"
+          }
+        },
+        {
+          id = 14,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 560,
+          y = 240,
+          width = 80,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "steamworks.ceroba_reunion",
+            ["flagcheck"] = "ceroba_separated"
+          }
         }
       }
     },
@@ -250,6 +310,19 @@ return {
           type = "",
           shape = "point",
           x = 440,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "vent",
+          type = "",
+          shape = "point",
+          x = 600,
           y = 280,
           width = 0,
           height = 0,

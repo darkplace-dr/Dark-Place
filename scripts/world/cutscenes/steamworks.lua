@@ -4,17 +4,28 @@ return {
         local axis = cutscene:getCharacter("axis")
         local ceroba = cutscene:getCharacter("ceroba")
         local jamm = cutscene:getCharacter("jamm")
+        local trapdoor = Game.world.map:getEvent("steamworks_trapdoor")
 
         Game.world.music:stop()
-        cutscene:detachCamera()
         cutscene:detachFollowers()
         if not ceroba then
             cutscene:endCutscene()
             Game.world:mapTransition("misc/dogcheck")
         end
+
+        cutscene:walkTo(leader, event.x + event.width, event.y + event.height/2, 0.5, "left")
+        cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), event.x + event.width + 30, event.y + event.height/2, 0.5, "left")
+        if Game.party[3] then
+            cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), event.x + event.width + 60, event.y + event.height/2, 0.5, "left")
+        end
+        if Game.party[4] then
+            cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), event.x + event.width + 90, event.y + event.height/2, 0.5, "left")
+        end
+
         cutscene:wait(1)
-        Game.world.camera:setPosition(Game.world.camera.x - 150, Game.world.camera.y)
-        cutscene:wait(1)
+        cutscene:detachCamera()
+        cutscene:panTo(Game.world.camera.x - 150, Game.world.camera.y)
+        cutscene:wait(1.5)
         local layer = Game.world.map:getTileLayer("closed_door")
 		layer.visible = false
 		Assets.playSound("metal_door_opens")
@@ -81,14 +92,11 @@ return {
             cutscene:hideNametag()
         
             Game.world.music:stop()
-            local trapdoor = Sprite("world/cutscenes/steamworks/steamworks_trapdoor")
-            trapdoor:setOrigin(0.5, 0.5)
-            trapdoor:play(1/15, false)
-            --leader:addChild(trapdoor)
-            trapdoor:setPosition(leader:getRelativePos(leader.width/2, leader.height/2)) -- why tf it doesn't appear
-            trapdoor.layer = leader.layer - 1
-            cutscene:wait(0.2)
+            trapdoor:setSprite("world/events/steamworks/trapdoor", 1/10)
+            cutscene:wait(0.5)
             Assets.playSound("trapdoor_open")
+            cutscene:wait(1.1)
+            trapdoor:setSprite("world/events/steamworks/trapdoor_16")
 
             cutscene:wait(1)
             cutscene:showNametag("Ceroba")
@@ -131,9 +139,77 @@ return {
                 end
             end
             Game:removePartyMember("ceroba")
+            Game:setFlag("ceroba_separated", true)
             cutscene:mapTransition("steamworks/13")
         end
         Game:setFlag("axis_met", true)
+    end,
+    basement_door = function(cutscene, event)
+        if Game:getFlag("axis_basement_caught") == 2 then
+            cutscene:text("* (The door is locked.)")
+        else
+            Game.world:mapTransition("steamworks/13b")
+        end
+    end,
+    basement_axis = function(cutscene, event)
+        local axis = cutscene:getCharacter("axis")
+        cutscene:wait(cutscene:walkTo(axis, axis.x, event.y - 80, 0.5, "down"))
+
+        if Game:getFlag("axis_basement_caught") ~= 1 then
+            cutscene:text("* I CANNOT BELIEVE YOU\nFELL FOR THAT.", "normal", "axis")
+            cutscene:text("* I AM SMART, THEREFORE I\nPREDICTED YOUR ESCAPE.", "normal", "axis")
+            cutscene:text("* NOW, BACK YOU GO.", "normal", "axis")
+            Game:setFlag("axis_basement_caught", 1)
+        else
+            cutscene:text("* WHAT. WHY.", "normal", "axis")
+            cutscene:text("* DID YOU THINK I WOULD\nJUST LEAVE AFTER ONE\nATTEMPT?", "normal", "axis")
+            cutscene:text("* ... I WAS ABOUT TO,\nACTUALLY. THAT WAS\nCLOSE.", "normal", "axis")
+            cutscene:text("* I WILL LOCK THE DOOR\nFROM NOW ON.", "normal", "axis")
+            cutscene:text("* BYE NOW.", "normal", "axis")
+            Game:setFlag("axis_basement_caught", 2)
+        end
+        
+        cutscene:walkTo(axis, axis.x, axis.y + 200, 2, "down")
+        Game.world:mapTransition("steamworks/13", "door")
+    end,
+    vent = function(cutscene, event)
+        cutscene:text("* A slightly open vent.")
+        local opinion = cutscene:textChoicer("* Go inside?\n", {"Yes", "    No"})
+        if opinion == 1 then
+            Game.world:mapTransition("steamworks/13", "vent")
+        end
+    end,
+    ceroba_reunion = function(cutscene, event)
+        local ceroba = cutscene:getCharacter("ceroba")
+        cutscene:wait(1)
+        for _,member in ipairs(Game.party) do
+            local chara = Game.world:getCharacter(member.id)
+            if chara then
+                chara.sprite:setFacing("left")
+            end
+        end
+        cutscene:wait(0.5)
+        ceroba:setFacing("right")
+        cutscene:wait(0.1)
+        Assets.playSound("alert")
+        ceroba.alert_icon = Sprite("effects/alert_yellow", ceroba.sprite.width/2)
+        ceroba.alert_icon:play(1/10, false)
+        ceroba.alert_icon:setOrigin(0.5, 1)
+        ceroba.alert_icon.layer = 100
+        ceroba:addChild(ceroba.alert_icon)
+        Game.world.timer:after(0.8, function()
+            ceroba.alert_icon:remove()
+        end)
+        cutscene:wait(1)
+        cutscene:text("* Oh! There you are!", "smile", "ceroba")
+        cutscene:text("* I knew you'd be smart enough to use the vents.", "snarky", "ceroba")
+        cutscene:text("* Let's get going.", "smile", "ceroba")
+        Game:addPartyMember("ceroba")
+        ceroba:convertToFollower()
+        cutscene:attachFollowers()
+        cutscene:wait(1)
+        Game:setFlag("ceroba_separated", false)
+        Game:setFlag("ceroba_party", true)
     end,
     first_robokill = function(cutscene, event)
         cutscene:text("* What are you thinking!?", "angry", "ceroba")
