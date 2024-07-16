@@ -103,6 +103,23 @@ return {
                         cutscene:text("* ...", "neutral", "brenda")
                         cutscene:text("* Um,[wait:5] we can stop talking if you want to.", "frown_side", "brenda")
                     end
+                elseif Game:getFlag("marcy_joined") then
+                    cutscene:text("* Oh,[wait:5] hey,[wait:5] Jamm and Marcy.", "happy", "brenda")
+                    cutscene:text("* Hey,[wait:5] Jamm,[wait:5] I wanted to ask you something...", "neutral_side", "brenda")
+                    cutscene:text("* Is your back okay from carrying Marcy like that?", "neutral", "brenda")
+                    cutscene:showNametag("Marcy")
+                    cutscene:text("* Are you calling Marcy heavy,[wait:5] aunt Brenda?", "mad", "marcy")
+                    cutscene:showNametag("Brenda")
+                    cutscene:text("* Hey,[wait:5] wait,[wait:5] I didn't mean it like that!", "shock", "brenda")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Even the lightest of objects can put a strain on your back,[wait:5] Marcy.", "nervous_left", "jamm")
+                    cutscene:text("* But to answer your question,[wait:5] Brenda,[wait:5] it's all fine.", "side_smile", "jamm")
+                    cutscene:showNametag("Brenda")
+                    cutscene:text("* I'm glad to hear it,[wait:5] man.", "joy", "brenda")
+                    cutscene:text("* You know,[wait:5] it's great to see you spending time with Marcy.", "happy", "brenda")
+                    cutscene:text("* Perhaps you could give me some pointers someday?", "happy_b", "brenda")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Y'know,[wait:5] that'd be a great idea!", "happy", "jamm")
                 else
                     cutscene:text("* Oh,[wait:5] hey Acoustic.", "happy", "brenda")
                     cutscene:text("* Y'know,[wait:5] I think now would be a great time to tell you this...", "neutral", "brenda")
@@ -372,18 +389,37 @@ return {
                 cutscene:text("* Ah my b", "neutral_b", "dess")
                 cutscene:showNametag("Dess")
             elseif Game.party[1].id == "jamm" then
-                cutscene:text("* oh hey I heard your wife died", "kind", "dess")
-                cutscene:text("* Yeah that must really suck", "genuine", "dess")
-                cutscene:text("* Trust me,[wait:5] I know how it feels to lose someone you love.", "neutral", "dess")
-                cutscene:text("* One time I was enjoying some Mug:tm: root beer.", "neutral_b", "dess")
-                cutscene:text("* Then some shadow guy hit me with a hammer", "angry", "dess")
-                cutscene:text("* I ended up losing my Mug:tm: root beer that I totally didn't steal", "neutral", "dess")
-                cutscene:text("* Sometimes I still shed a tear thinking about it...", "neutral_c", "dess")
-                cutscene:text("* ...", "genuine", "dess")
-				if Game:getFlag("dungeonkiller") then
-					cutscene:text("* oh hey also do you normally look this pissed off?", "kind", "dess")
+				if Game:getFlag("marcy_joined") then
+					cutscene:text("* oh hey you brought Mini-Jamm with you", "kind", "dess")
+                    cutscene:showNametag("Marcy")
+                    cutscene:text("* Could you seriously stop calling Marcy that?", "sad", "marcy")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* At the very least, could you choose another nickname?", "stern", "jamm")
+					cutscene:showNametag("Dess")
+					cutscene:text("* Oh sure I know a lot", "heckyeah", "dess")
+                    cutscene:showNametag("Dess", {top = true})
+                    -- noskip because fuck you >:]
+                    cutscene:text("[noskip]* there's Small Jamm, Little Jamm, Tiny Jamm, Young Jamm, Baby Jamm, Petite Jamm, Minute Jamm, Scanty Jamm, Short Jamm, Shrimp Jamm, Wee Jamm, Bitty Jamm, Immature Jamm, Runt Jamm, Runty Jamm, Teensy Jamm, Teeny Jamm, Pocket Jamm, Under Jamm, Micro Jamm, Meager Jamm, Bite-Size Jamm, Bit Jamm,", "kind", "dess", {top = true, auto = true})
+					cutscene:showNametag("Dess")
+					cutscene:text("* Wait, did I already say Wee Jamm?", "neutral_c", "dess")
+                    cutscene:showNametag("Jamm")
+                    cutscene:text("* Maybe just call her by her name, then?", "nervous", "jamm")
+					cutscene:showNametag("Dess")
+					cutscene:text("* Nah this is funnier lmao", "condescending", "dess")
 				else
-					cutscene:text("* oh hey, actually, are you okay from before?", "kind", "dess")
+					cutscene:text("* oh hey I heard your wife died", "kind", "dess")
+					cutscene:text("* Yeah that must really suck", "genuine", "dess")
+					cutscene:text("* Trust me,[wait:5] I know how it feels to lose someone you love.", "neutral", "dess")
+					cutscene:text("* One time I was enjoying some Mug:tm: root beer.", "neutral_b", "dess")
+					cutscene:text("* Then some shadow guy hit me with a hammer", "angry", "dess")
+					cutscene:text("* I ended up losing my Mug:tm: root beer that I totally didn't steal", "neutral", "dess")
+					cutscene:text("* Sometimes I still shed a tear thinking about it...", "neutral_c", "dess")
+					cutscene:text("* ...", "genuine", "dess")
+					if Game:getFlag("dungeonkiller") then
+						cutscene:text("* oh hey also do you normally look this pissed off?", "kind", "dess")
+					else
+						cutscene:text("* oh hey, actually, are you okay from before?", "kind", "dess")
+					end
 				end
             elseif Game.party[1].id == "ostarwalker" then
                 cutscene:text("* Oh hey it's the Starman.", "condescending", "dess")
