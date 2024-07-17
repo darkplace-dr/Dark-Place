@@ -48,7 +48,7 @@ function DarkMenu:addButtons()
 			["hovered_sprite"] = Assets.getTexture("ui/menu/btn/card_h"),
 			["desc_sprite"]    = Assets.getTexture("ui/menu/desc/cards"),
 			["callback"]       = function()
-				self.box = DarkCardsMenu() -- Temporary, until I make a menu
+				self.box = DarkCardsMenu()
 				self.box.layer = 1
 				self:addChild(self.box)
 		
