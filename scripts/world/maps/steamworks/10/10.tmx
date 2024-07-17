@@ -143,7 +143,7 @@
   <object id="7" name="right" x="1320" y="500">
    <point/>
   </object>
-  <object id="8" name="left" x="470" y="500">
+  <object id="8" name="left" x="470" y="510">
    <point/>
   </object>
   <object id="9" name="spawn" x="1100" y="500">
