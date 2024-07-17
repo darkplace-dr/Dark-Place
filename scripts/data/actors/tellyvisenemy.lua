@@ -51,7 +51,7 @@ function actor:init()
             local sprite = Sprite(self.path.."/faces/normal", 60, 109)
             sprite:setOrigin(0.5, 1)
             sprite.layer = 410
-            sprite:play(1/10)
+            sprite:play(1/5)
             return sprite
         end
     })
