@@ -27,4 +27,11 @@ function TellyVis:init()
 
 end
 
+function Encounter:onBattleEnd()
+    super.onBattleEnd(self)
+    if Game:getFlag("steamworks_kills") > 0 then
+        Game.world:startCutscene("steamworks", "first_robokill")
+    end
+end
+
 return TellyVis
