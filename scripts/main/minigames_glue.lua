@@ -162,6 +162,22 @@ function Mod:createCard(id, ...)
 	end
 end
 
+function Mod:addCard(id)
+	local found_card = false
+	for k,v in ipairs(Game:getFlag("collected_cards")) do
+		if v[1] == id then
+			found_card = k
+			break
+		end
+	end
+	if found_card then
+		Game:getFlag("collected_cards")[found_card][2] = Game:getFlag("collected_cards")[found_card][2] + 1
+	else
+		table.insert(Game:getFlag("collected_cards"), {id, 1})
+		table.insert(Game:getFlag("equipped_cards"), {id, 0})
+	end
+end
+
 function Mod:createCardGame(id, ...)
 	if self.cardgames[id] then
 		return self.cardgames[id](...)

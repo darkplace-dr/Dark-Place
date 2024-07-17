@@ -4,7 +4,7 @@ function Forest:init()
 	super:init(self)
 	
 	self.image = "cards/owlen"
-	-- self.back = "cards/boss_back"
+	self.name = "Owlen"
 	
 	self.value = 6
 	self.cost = 6
