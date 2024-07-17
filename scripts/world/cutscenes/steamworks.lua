@@ -1,39 +1,4 @@
 return {
-    axis_chase = function(cutscene, event)
-        --local axis = cutscene:getCharacter("axis")
-        local ceroba = cutscene:getCharacter("ceroba")
-        Game.world.music:stop()
-        cutscene:detachCamera()
-        cutscene:detachFollowers()
-
-        cutscene:showNametag("???")
-        cutscene:text("* HALT.", nil, "axis")
-        cutscene:showNametag("Ceroba")
-        cutscene:text("* Huh?", "surprised", "ceroba")
-        cutscene:hideNametag()
-        for _,member in ipairs(Game.party) do
-            local chara = Game.world:getCharacter(member.id)
-            if chara then
-                chara.sprite:setFacing("up")
-            end
-        end
-        cutscene:wait(cutscene:panTo(Game.world.camera.x, Game.world.camera.y-180, 1))
-        cutscene:showNametag("Ceroba")
-        cutscene:text("* Oh![wait:5] Axis!", "nervous_smile", "ceroba")
-        cutscene:text("* What are you", "smile", "ceroba", {auto=true})
-        cutscene:showNametag("Axis")
-        cutscene:text("* INTRUDERS SPOTTED. INITIATING ATTACK.", "normal", "axis")
-        cutscene:showNametag("Ceroba")
-        cutscene:text("* Oh no, run!", "nervous", "ceroba")
-        cutscene:hideNametag()
-        cutscene:attachCamera()
-        for _, follower in ipairs(Game.world.followers) do
-            cutscene:walkTo(follower, -60, follower.y, 4, "left")
-        end
-        Game.world.music:play("undertale_yellow/axis_chase")
-        Game:setFlag("axis_chase_inprogress", true)
-        cutscene:wait(4)
-    end,
     axis_meet = function(cutscene, event)
         local leader = Game.world.player
         local axis = cutscene:getCharacter("axis")
@@ -277,7 +242,6 @@ return {
         cutscene:text("* ...Sigh.", "closed_eyes", "ceroba")
         cutscene:text("* Just... don't do anything stupid.", "irked", "ceroba")
         cutscene:hideNametag()
-        Game:setFlag("ceroba_reacted_to_robokill", true)
     end,
     ceroba_kanako_talk = function(cutscene, event)
         local ceroba = cutscene:getCharacter("ceroba")
