@@ -84,6 +84,7 @@ function actor:init()
         ["battle/act"] = {-14, -15},
         ["battle/actend"] = {-14, -15},
         ["battle/actready"] = {-14, -15},
+        ["battle/spell"] = {-14, -15},
         ["battle/item"] = {-14, -15},
         ["battle/itemready"] = {-14, -15},
         ["battle/defend"] = {-14, -15},
