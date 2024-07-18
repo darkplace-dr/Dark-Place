@@ -285,5 +285,22 @@ return {
 
         cutscene:wait(2)
         cutscene:attachFollowers()
+    end,
+    room_06 = function(cutscene, event)
+        if Game:getFlag(noel_party) == true then
+            cutscene:text("* Oh, I'm pink now.", "neutral", "noel")
+        end
+    end,
+    room_06b = function(cutscene, event)
+        if Game:getFlag(noel_party) == true then
+            cutscene:showNametag("Noel")
+            cutscene:text("* ... Steamworks... Just steamworks...", "neutral", "noel")
+            cutscene:text("* Asgore named this place, that's obvious...", "bruh", "noel")
+            cutscene:text("* The thing I want to know is who bulit the big dumb sign that just says STEAMWORKS.", "...", "noel")
+            cutscene:text("* I mean, you don't see me wear a nametag that just says Noel.", "bruh", "noel", {auto = true})
+            cutscene:showNametag("That would be absurd and ridiculous.")
+            cutscene:text("[instant]* I mean, you don't see me wear a nametag that just says Noel.", "bruh", "noel")
+            cutscene:hideNametag()
+        end
     end
 }

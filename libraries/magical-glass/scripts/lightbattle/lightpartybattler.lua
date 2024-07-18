@@ -131,6 +131,48 @@ function LightPartyBattler:hurt(amount, exact, color, options)
     Game.battle:shakeCamera(2)
 end
 
+-- fuck it, I'll just use a hook.
+    Utils.hook(LightPartyBattler, "hurt", function(orig, self, amount, exact, color, options)
+        if self.chara.id == "noel" then
+            if not self.noel_hit_counter then
+                self.noel_hit_counter = 1
+            end
+            local meth = love.math.random(1, 3)
+            if meth == 1 then
+                Assets.playSound("awkward")
+                Assets.playSound("voice/noel-#")
+                self.noel_hit_counter = self.noel_hit_counter + 1
+                orig(self, 0, exact, color, options)
+            else
+                Assets.playSound("voice/noel-#")
+                self.noel_hit_counter = self.noel_hit_counter + 1
+                orig(self, amount*20, exact, color, options)
+            end
+            if self.noel_hit_counter and self.noel_hit_counter > 5 then
+                --self:setAnimation("stop")
+                Assets.playSound("voice/stop_getting_hit")
+                Assets.playSound("grab")
+                Assets.playSound("alert")
+                Assets.playSound("impact")
+                Assets.playSound("jump")
+                Assets.playSound("locker")
+                Assets.playSound("petrify")
+                Assets.playSound("ominous")
+                Assets.playSound("rudebuster_hit")
+                Assets.playSound("rudebuster_swing")
+                love.window.setTitle("STOP GETTING HIT")
+                self.noel_hit_counter = -1
+            elseif self.noel_hit_counter then
+                self.noel_hit_counter = self.noel_hit_counter + 1
+            else 
+                self.noel_hit_counter = 1
+            end
+
+        else
+            orig(self, amount, exact, color, options)
+        end
+    end)
+
 function LightPartyBattler:removeHealth(amount)
     if (self.chara:getHealth() <= 0) then
         amount = Utils.round(amount / 4)
