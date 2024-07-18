@@ -936,6 +936,7 @@ function CardGame:updateWin()
 			self.textbox = nil
 		end)
 		self:addChild(self.textbox)
+		Game:setFlag("last_battle_won", true)
 		if self.money > 0 then
 			Game.money = Game.money + self.money
 			self.textbox:setText("* You won!\n* " .. self.name .. " gave you " .. self.money .. " D$!")
@@ -963,6 +964,7 @@ function CardGame:updateLoss()
 			self.textbox = nil
 		end)
 		self:addChild(self.textbox)
+		Game:setFlag("last_battle_won", false)
 		self.textbox:setText("* You lost.")
 	end
 	

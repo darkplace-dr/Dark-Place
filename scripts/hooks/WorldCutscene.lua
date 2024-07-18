@@ -193,4 +193,12 @@ function WorldCutscene:undoMyFuckup(text, text2, speaker, texts, faces)
     end
 end
 
+function WorldCutscene:startCards(game)
+	Mod:startCardGame(game)
+	
+	local function waitForGame(self) return (Game.card_game == nil) end
+	
+	return self:wait(waitForGame)
+end
+
 return WorldCutscene
