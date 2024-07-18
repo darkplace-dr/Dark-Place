@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 21,
+  nextobjectid = 22,
   properties = {
     ["music"] = "deltarune/field_of_hopes"
   },
@@ -291,6 +291,22 @@ return {
           visible = true,
           properties = {
             ["map"] = "cardworld/path_1",
+            ["marker"] = "path2"
+          }
+        },
+        {
+          id = 21,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = -40,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "cardworld/path_3",
             ["marker"] = "path2"
           }
         }
