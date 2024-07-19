@@ -5,7 +5,6 @@ local QuestCreatedPopup, super = Class("Object")
 function QuestCreatedPopup:init(id)
     super.init(self, SCREEN_WIDTH, 0, 280, SCREEN_HEIGHT)
 
-    self.first_time = not Game:getFlag("quest_menu_ever_opened")
     self.quest_menu_present_initially = #Game.stage:getObjects(QuestMenu) > 0
 
     local quest_id_what = Kristal.callEvent("getQuest", id)
@@ -20,7 +19,7 @@ function QuestCreatedPopup:init(id)
     self.box:addChild(Text("[font:main,16][color:yellow]New Quest Acquired!"))
     local box_size_w = self.box.x_sizing:getWidth() - self.box.padding[1] - self.box.padding[3]
     self.box:addChild(Text("[font:plain]"..quest_name, nil, nil, box_size_w))
-    if self.first_time then
+    if not Game:getFlag("quest_menu_ever_opened") then
         self.box:addChild(Component(FillSizing(), FixedSizing(1)))
         self.box:addChild(Text("[font:main,16][color:#808080](Press [bind:quest] to view)",
             nil, nil, box_size_w, nil, { align = "center" }))
