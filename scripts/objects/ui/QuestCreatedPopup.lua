@@ -3,7 +3,7 @@
 local QuestCreatedPopup, super = Class("Object")
 
 function QuestCreatedPopup:init(quest_name)
-    super.init(self, SCREEN_WIDTH, 0, 300, SCREEN_HEIGHT)
+    super.init(self, SCREEN_WIDTH, 0, 280, SCREEN_HEIGHT)
 
     self.first_time = not Game:getFlag("quest_menu_ever_opened")
     self.quest_menu_present_initially = #Game.stage:getObjects(QuestMenu) > 0
