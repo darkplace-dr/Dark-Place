@@ -14,6 +14,40 @@ return {
             end
         end
 
+        -- Save File Reading
+        local function file_exists(name)
+            local f = io.open(name, "r")
+            return f ~= nil and io.close(f)
+        end
+
+        local function getFileLines(fileName)
+            local f = io.open(fileName, "r")
+
+            tab={}
+            for l in f:lines() do
+                table.insert(tab, l)
+            end
+
+            f:close()
+            return tab
+        end
+
+        local current_os = love.system.getOS()
+        oriSaves={}
+        local fileFound = false
+        if current_os == "Windows" then
+            for i=0,2 do
+                file = string.gsub(os.getenv('UserProfile'), "\\", "/").."/AppData/Local/DELTARUNE/filech2_".. i
+                if file_exists(file) then
+                    if tonumber(getFileLines(file)[1468])>=1 then
+                        --print("Snowgrave Save file "..i.." found!")
+                        oriSaves=getFileLines(file)
+                        fileFound=true
+                        break
+                    end
+                end
+            end
+        end
 
         local function gonerTextFade(wait)
             local this_text = text
@@ -105,6 +139,65 @@ return {
         gonerText("TRULY[wait:20]\nEXCELLENT.[wait:20]")
         cutscene:wait(0.5)
         gonerText("NOW.[wait:20]")
+
+        if fileFound then
+            cutscene:wait(0.5)
+            gonerText("BEFORE WE BEGIN.[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("I'D LIKE TO[wait:20]\nNOTICE...[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("THAT DURING ONE OF[wait:20]\nOUR EXPERIMENTS...[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("YOU MADE SOME VERY,[wait:20]\nVERY INTERESTING...[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("CHOICES.[wait:20]\nTHAT WERE MADE.[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("CHOICES THAT HAD[wait:20]\nCONSEQUENCES.[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("SO WHAT IF[wait:20]\nI SAY...[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("I HAVE A[wait:20]\nPROPOSITION[wait:20]\nFOR YOU?[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("A PROPOSITION OF[wait:20]\nTRANSFERRING THESE...[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("CHOICES AND[wait:20]\nCONSEQUENCES...[wait:20]\nHERE?[wait:20]")
+            cutscene:wait(0.5)
+            gonerText("WOULD YOU[wait:20]\nAGREE TO THAT?[wait:20]")
+            cutscene:wait(0.5)
+
+            local chosen = nil
+            local choicer = GonerChoice(220, 360, {
+                { { "YES", 0, 0 }, { "<<" }, { ">>" }, { "NO", 160, 0 } }
+            }, function(choice)
+                chosen = choice
+            end)
+            choicer:setSelectedOption(2, 1)
+            choicer:setSoulPosition(80, 0)
+            Game.stage:addChild(choicer)
+            cutscene:wait(function() return chosen ~= nil end)
+
+            gonerTextFade()
+
+            if chosen == "YES" then
+                cutscene:wait(0.5)
+                gonerText("VERY WELL THEN.[wait:20]")
+                cutscene:wait(0.5)
+                gonerText("THERE'S NO[wait:20]\nGOING BACK NOW.[wait:20]")
+                cutscene:wait(0.5)
+                gonerText("...[wait:20]")
+                Game:setFlag("POST_SNOWGRAVE", true)
+                cutscene:wait(0.5)
+                gonerText("IT IS DONE.[wait:20]")
+                cutscene:wait(0.5)
+                gonerText("NOW.[wait:20]")
+            else
+                cutscene:wait(0.5)
+                gonerText("OF COURSE.[wait:20]\nOF COURSE.[wait:20]")
+                cutscene:wait(0.5)
+                gonerText("IN THAT CASE...[wait:20]")
+            end
+        end
+
         cutscene:wait(0.5)
         gonerText("WE MAY-")
 
