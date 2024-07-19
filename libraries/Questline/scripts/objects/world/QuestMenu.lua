@@ -33,6 +33,7 @@ end
 
 function QuestMenu:onAdd()
 	Assets.playSound("dimbox")
+	Game:setFlag("quest_menu_ever_opened", true)
 end
 
 function QuestMenu:update()

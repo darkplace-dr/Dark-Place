@@ -13,6 +13,9 @@ function Lib:onKeyPressed(key)
 end
 
 function Lib:postInit(new_file)
+	if Game:getFlag("quest_menu_ever_opened") == nil then
+		Game:setFlag("quest_menu_ever_opened", false)
+	end
 	if not Game:getFlag("quest_name") then
 		Game:setFlag("quest_name", {Mod.info.name})
 		Game:setFlag("quest_id", {"mainline"})

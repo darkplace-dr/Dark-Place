@@ -107,8 +107,10 @@ end
 
 function JukeboxMenu:draw()
     Draw.pushScissor()
-    local box_pad = 20 -- HACK because working with UIBoxes is annoying
-    Draw.scissor(-box_pad, -box_pad, self.width+box_pad*2, self.height+box_pad*2)
+    -- HACK because working with UIBoxes is annoying
+    local box_border_w, box_border_h = self.box:getBorder()
+    box_border_w, box_border_h = box_border_w-12, box_border_h-12
+    Draw.scissor(-box_border_w, -box_border_h, self.width+box_border_w*2, self.height+box_border_h*2)
 
     love.graphics.setColor(1, 1, 1)
     love.graphics.setFont(self.font)
