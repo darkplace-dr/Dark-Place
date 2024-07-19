@@ -1168,6 +1168,6 @@ end
 
 function Mod:createQuest(name, id, desc, progress_max, silent)
     if not silent and Game.stage then
-        Game.stage:addChild(QuestCreatedPopup(name))
+        Game.stage:addChild(QuestCreatedPopup(id))
     end
 end
