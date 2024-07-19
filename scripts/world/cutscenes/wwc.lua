@@ -6,7 +6,7 @@ return {
         cutscene:text("* I hope that whatever has befell on my reality doesn't befell yours.")
         cutscene:text("* Take what remains of my essence,[wait:5] and do your strongest.")
         if cutscene:getCharacter("susie") then
-            cutscene:showNametag("susie")
+            cutscene:showNametag("Susie")
             cutscene:text("* The complete destruction of reality?", "nervous_side", "susie")
             cutscene:text("* The hell does this person mean by that?", "nervous", "susie")
         end
