@@ -222,7 +222,7 @@ return {
 					party_talk = true
 					cutscene:showNametag("Brenda")
 					cutscene:text("* Oh, I remember that day!", "grin", "brenda")
-					cutscene:text("* Jamm had invited me to be his best man!", "joy", "brenda")
+					cutscene:text("* Jamm had invited me to be his best woman!", "joy", "brenda")
 					cutscene:text("* Wow, time really flies!", "happy", "brenda")
 					
 					if jamm then
