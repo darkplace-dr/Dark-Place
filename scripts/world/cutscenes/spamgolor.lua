@@ -111,12 +111,12 @@ return {
 
             spamgolor:shake(3)
             cutscene:showNametag("Spamgolor")
-            cutscene:text("* WHAT DID YOU JUST SAY!?", "", "spamgolor")
-            cutscene:text("* AM I STILL...", "", "spamgolor")
+            cutscene:text("* WHAT DID YOU JUST SAY!?", nil, "spamgolor")
+            cutscene:text("* AM I STILL...", nil, "spamgolor")
             spamgolor:setSprite("hurt")
-            cutscene:text("* Not big enough...?", "", "spamgolor")
+            cutscene:text("* Not big enough...?", nil, "spamgolor")
             spamgolor:setAnimation("glitch")
-            cutscene:text("* I'LL SHOW YOU WHAT I'VE GOT!", "", "spamgolor")
+            cutscene:text("* I'LL SHOW YOU WHAT I'VE GOT!", nil, "spamgolor")
 
             cutscene:showNametag("Susie")
             cutscene:text("* Well,[wait:5] if it's a fight you want...", "teeth_smile", "susie")
@@ -124,8 +124,8 @@ return {
             cutscene:hideNametag()
         else
             spamgolor:setSprite("hurt")
-            cutscene:text("* You forgot that Susie could never always exist [DEVELOPER].", "", "spamgolor")
-            cutscene:text("* Shame on you.", "", "spamgolor")
+            cutscene:text("* You forgot that Susie could never always exist [DEVELOPER].", nil, "spamgolor")
+            cutscene:text("* Shame on you.", nil, "spamgolor")
             if cutscene:getCharacter("noel") then
                 cutscene:showNametag("Noel")
                 cutscene:text("* Player, tab out the game.", "...", "noel")
