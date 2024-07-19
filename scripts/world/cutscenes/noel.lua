@@ -475,6 +475,8 @@ return {
         local savedData = Mod:loadGameN()
         local name = Game.save_name
         local thing = love.math.random(1, 20)
+
+
         if thing == 1 then
             cutscene:doki_text("[voice:none]\"So,[wait:5] do you like literature "..savedData.Player_Name.."?\"", nil, noel, {name = "Noel"})
         elseif thing == 2 then
@@ -488,7 +490,9 @@ return {
             cutscene:text("* Who am I?", "oh")
             cutscene:text("* Who am I?", "oh")
             cutscene:text("* Who am I?", "oh")
+
            -- check if the player is holding the menu key here because fuck you
+
             if Input.down("menu") then
                 cutscene:text("[noskip][speed:0.1]* Go ahead, skip my dialouge the the C button. It's way faster, right?", "bruh")
                 cutscene:text("[noskip][speed:0.1]* Standing here, I realize somthing.", "bruh")
@@ -507,6 +511,8 @@ return {
             cutscene:text("* You changed it.", "huh")
             cutscene:text("* Does that mean you want me to forget the old one?", "lookup")
         end
+
+
         if thing == 1 then
             cutscene:doki_text("[name:Natsuki]\"[voice:none]Oh,[wait:5] may I[name:Noel] also join the [color:yellow]PARTY[color:white] by the way?\"", nil, noel, {name = "Natsuki"})
         elseif thing == 7 then
@@ -516,7 +522,10 @@ return {
         else
             cutscene:text("* So, may I join the [color:yellow]PARTY[color:white]?", "neutral")
         end
+
+
         local cc = cutscene:choicer({"Yes", "No"})
+
         if cc == 1 then
             if Game.party[Game:getFlag("party_max")] then
                 if thing == 4 then
