@@ -870,7 +870,7 @@ function Mod:initializeImportantFlags(new_file)
     if not new_file and likely_old_save then
         Log:print("Save seems to be from an old version")
         if #old_save_issues == 0 then
-            Lod:print("No possible reasons found. That is weird.")
+            Log:print("No possible reasons found. That is weird.")
         else
             Log:print("Possible reasons:")
             for i,v in ipairs(old_save_issues) do
@@ -1164,4 +1164,10 @@ function Mod:getPresenceDetails()
 end
 function Mod:getPresenceState()
     return self.rpc_state
+end
+
+function Mod:createQuest(name, id, desc, progress_max, silent)
+    if not silent and Game.stage then
+        Game.stage:addChild(QuestCreatedPopup(name))
+    end
 end
