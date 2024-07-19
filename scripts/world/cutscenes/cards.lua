@@ -228,7 +228,7 @@ return {
 			cutscene:showNametag("Jamm")
 			cutscene:text("* Well,[wait:5] that was something.", "nervous", "jamm")
 			cutscene:look(jamm, "down")
-			cutscene:text("* I don't know what's past this forest,[wait:5] but...", "neutral", "jamm")
+			cutscene:text("* I don't know what's past this field,[wait:5] but...", "neutral", "jamm")
 			cutscene:text("* Well,[wait:5] we'll find out together.", "side_smile", "jamm")
 			cutscene:hideNametag()
 			jamm = jamm:convertToFollower()
