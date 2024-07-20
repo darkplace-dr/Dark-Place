@@ -232,6 +232,17 @@ return {
         
     end,
 
+    hospitaltoy = function(cutscene, event)
+
+        cutscene:text("* (It's a toy with beads on a track.)")
+        if Game:getFlag("POST_SNOWGRAVE") then
+            cutscene:text("* (One of the blue beads is broken and torn off.)")
+        else
+            cutscene:text("* (The beads of the toy march on.)")
+        end
+        
+    end,
+
     asgorefridge = function(cutscene, event)
         
         cutscene:text("* (It's a rusty fridge with some photos on it.)")

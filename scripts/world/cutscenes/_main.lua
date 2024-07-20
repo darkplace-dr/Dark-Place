@@ -184,6 +184,22 @@ return {
                 cutscene:wait(0.5)
                 gonerText("...[wait:20]")
                 Game:setFlag("POST_SNOWGRAVE", true)
+                Game:getPartyMember("kris").title = "Leader\nCommands."
+                local noelle = Game:getPartyMember("noelle")
+                noelle:addSpell("snowgrave")
+                noelle.health = 170
+                noelle.stats = {
+                    health = 170,
+                    attack = 8,
+                    defense = 1,
+                    magic = 16
+                }
+                noelle:setWeapon("thornring")
+                noelle.flags = {
+                    ["iceshocks_used"] = 20,
+                    ["boldness"] = 100,
+                    ["weird"] = true
+                }
                 cutscene:wait(0.5)
                 gonerText("IT IS DONE.[wait:20]")
                 cutscene:wait(0.5)
