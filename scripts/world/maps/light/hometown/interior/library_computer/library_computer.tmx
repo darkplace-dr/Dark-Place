@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="39">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="40">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -113,6 +113,13 @@
     <property name="flagcheck" value="POST_SNOWGRAVE"/>
     <property name="solid" type="bool" value="true"/>
     <property name="text" value="* (He doesn't seem to be awake.)"/>
+   </properties>
+  </object>
+  <object id="39" name="script" x="280" y="400" width="80" height="40">
+   <properties>
+    <property name="cutscene" value="hometown.berdly"/>
+    <property name="flagcheck" value="POST_SNOWGRAVE"/>
+    <property name="once" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

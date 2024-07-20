@@ -16,7 +16,7 @@ return {
     end,
 
     station = function(cutscene, event)
-        if Game:getFlag("berdly_inparty") then
+        if Game:getFlag("omegaspamton_defeated") then
             cutscene:text("* The gaming stations don't seem to be working.")
         else
             cutscene:text("* It looks like there's two gaming stations here.")

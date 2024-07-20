@@ -382,4 +382,29 @@ return {
             Game.world:mapTransition("light/hometown/secret_path", "entry_down", "up")
         end
     end,
+
+    berdly = function(cutscene, event)
+        cutscene:wait(2.5)
+        if cutscene:getCharacter("susie_lw") then
+            cutscene:showNametag("Susie")
+            cutscene:text("* ...", "shock", "susie")
+            cutscene:text("* Is...[wait:10]\n* Is that Berdly...?", "shock_down", "susie")
+            cutscene:text("* Is this where he's been this whole time...?", "sad_frown", "susie")
+            cutscene:text("* ...", "sad", "susie")
+            cutscene:text("* He's...[wait:10]\n* He's just sleeping...", "shy_down", "susie")
+            cutscene:text("* Right...?", "bangs_neutral", "susie")
+        end
+        if cutscene:getCharacter("brenda_lw") then
+            cutscene:showNametag("Brenda")
+            cutscene:text("* Oh no...", "ohgod", "brenda")
+            cutscene:text("* Oh nonononono.", "panicattack", "brenda")
+            cutscene:text("* I think I'm gonna be sick...", "sad", "brenda")
+        end
+        if cutscene:getCharacter("dess") then
+            cutscene:showNametag("Dess")
+            cutscene:text("* oh...[wait:10]\n* oh that's a dead body...", "genuine", "dess")
+            cutscene:text("* there is a dead body inside of the library's computer lab", "neutral", "dess")
+        end
+        cutscene:hideNametag()
+    end,
 }

@@ -428,7 +428,7 @@ return {
     end,
 
 	window = function(cutscene, event)
-		if Game:getFlag("jamm_closure") and Game:hasPartyMember("susie") and Game:hasPartyMember("dess") and Game:hasPartyMember("jamm") and Game:getFlag("berdly_inparty") then
+		if Game:getFlag("jamm_closure") and Game:hasPartyMember("susie") and Game:hasPartyMember("dess") and Game:hasPartyMember("jamm") and Game:getFlag("omegaspamton_defeated") then
 			if Game:getFlag("marcy_joined") then
 				cutscene:showNametag("Marcy")
 				cutscene:text("* Marcy doesn't feel comfortable with this...", "sad", "marcy")
@@ -630,8 +630,8 @@ return {
 			if not Game:hasPartyMember("susie") or not Game:hasPartyMember("dess") or not Game:hasPartyMember("jamm") then
 				cutscene:text("* Have Susie,[wait:5] Dess,[wait:5] and Jamm in your party.")
 			end
-			if not Game:getFlag("berdly_inparty") then
-				cutscene:text("* Rescue Berdly.")
+			if not Game:getFlag("omegaspamton_defeated") then
+				cutscene:text("* Complete the Gamer Time section.")
 			end
 			cutscene:text("* Come back when have done that.")
 			cutscene:text("* Oh uh and technically you also need to defeat Spamgolor NEO.")

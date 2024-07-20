@@ -286,13 +286,19 @@ return {
                 cutscene:text("* Which is strange considering how much of a jerk I was...", "nervous_side", "susie")
                 cutscene:text("* Wonder what's up with her?", "neutral", "susie")
             elseif opinion == 4 then
-                cutscene:text("* Ah,[wait:5] Berdly.", "neutral", "susie")
-                cutscene:text("* He's um...", "neutral_side", "susie")
-                cutscene:text("* Okay he's not BAD,[wait:5] he's just...", "nervous", "susie")
-                cutscene:text("* Really annoying.", "nervous_side", "susie")
-                cutscene:text("* But uh,[wait:5] even with THAT...", "shy", "susie")
-                cutscene:text("* I still consider him a friend.", "small_smile", "susie")
-                cutscene:text("* Somewhat.", "shy_b", "susie")
+                if Game:getFlag("POST_SNOWGRAVE") then
+                    cutscene:text("* ... Berdly?", "surprise", "susie")
+                    cutscene:text("* He's NOT someone I'd call a \"Delta Warrior\",[wait:5] but...", "sus_nervous", "susie")
+                    cutscene:text("* I actually haven't seen him for a while now...", "suspicious", "susie")
+                else
+                    cutscene:text("* Ah,[wait:5] Berdly.", "neutral", "susie")
+                    cutscene:text("* He's um...", "neutral_side", "susie")
+                    cutscene:text("* Okay he's not BAD,[wait:5] he's just...", "nervous", "susie")
+                    cutscene:text("* Really annoying.", "nervous_side", "susie")
+                    cutscene:text("* But uh,[wait:5] even with THAT...", "shy", "susie")
+                    cutscene:text("* I still consider him a friend.", "small_smile", "susie")
+                    cutscene:text("* Somewhat.", "shy_b", "susie")
+                end
             end
             if not Game:getFlag("drcastsplitup_known") then
                 cutscene:text("* Y'know,[wait:5] speaking of those guys...", "neutral_side", "susie")
@@ -301,7 +307,9 @@ return {
                 cutscene:text("* Not gonna lie,[wait:5] I'm starting to worry for them...", "shy_down", "susie")
                 Kristal.callEvent("createQuest", "Where's Kris", "krismissing", "Susie mentioned Kris not being with her when she entered the Dark World. Go search for clues on their wherabouts.")
                 Kristal.callEvent("createQuest", "Lost Girl", "noellemissing", "Susie mentioned Noelle not being with her when she entered the Dark World. Go search for clues on her wherabouts.")
-                Kristal.callEvent("createQuest", "Missing Berd", "berdlymissing", "Susie mentioned Berdly not being with her when she entered the Dark World. Go search for clues on his wherabouts.")
+                if not Game:getFlag("POST_SNOWGRAVE") then
+                    Kristal.callEvent("createQuest", "Missing Berd", "berdlymissing", "Susie mentioned Berdly not being with her when she entered the Dark World. Go search for clues on his wherabouts.")
+                end
                 Game:setFlag("drcastsplitup_known", true)
             end
         elseif opinion == 2 then
