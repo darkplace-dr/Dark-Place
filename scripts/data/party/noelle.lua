@@ -6,4 +6,10 @@ function character:init()
     self.lw_portrait = "face/noelle/smile"
 end
 
+function character:onLevelUpLVLib()
+    self:increaseStat("health", 10)
+    self:increaseStat("attack", 1)
+    self:increaseStat("magic", 1)
+end
+
 return character

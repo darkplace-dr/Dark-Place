@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.11.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -226,7 +226,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -239,7 +239,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2120,
           y = 0,
@@ -252,7 +252,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 360,
@@ -265,7 +265,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 360,
@@ -278,7 +278,7 @@ return {
         {
           id = 6,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 360,
@@ -291,7 +291,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 320,
@@ -304,7 +304,7 @@ return {
         {
           id = 8,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 240,
@@ -317,7 +317,7 @@ return {
         {
           id = 9,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 120,
@@ -330,7 +330,7 @@ return {
         {
           id = 10,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 1540,
@@ -343,7 +343,7 @@ return {
         {
           id = 15,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 120,
@@ -356,7 +356,7 @@ return {
         {
           id = 16,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2400,
           y = 120,
@@ -369,7 +369,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 600,
@@ -382,7 +382,7 @@ return {
         {
           id = 18,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 600,
@@ -395,7 +395,7 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1000,
           y = 600,
@@ -408,7 +408,7 @@ return {
         {
           id = 20,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1200,
           y = 640,
@@ -421,7 +421,7 @@ return {
         {
           id = 21,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1320,
           y = 600,
@@ -434,7 +434,7 @@ return {
         {
           id = 22,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1640,
           y = 600,
@@ -447,7 +447,7 @@ return {
         {
           id = 23,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 960,
@@ -460,7 +460,7 @@ return {
         {
           id = 24,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 680,
           y = 960,
@@ -473,7 +473,7 @@ return {
         {
           id = 25,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1000,
           y = 960,
@@ -486,7 +486,7 @@ return {
         {
           id = 26,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1320,
           y = 960,
@@ -499,7 +499,7 @@ return {
         {
           id = 27,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1640,
           y = 960,
@@ -512,7 +512,7 @@ return {
         {
           id = 32,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 120,
@@ -541,7 +541,7 @@ return {
         {
           id = 30,
           name = "warp1",
-          class = "",
+          type = "",
           shape = "point",
           x = 2020,
           y = 40,
@@ -554,7 +554,7 @@ return {
         {
           id = 29,
           name = "SaveReturn",
-          class = "",
+          type = "",
           shape = "point",
           x = 100,
           y = 220,
@@ -567,7 +567,7 @@ return {
         {
           id = 28,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 300,
           y = 230,
@@ -596,7 +596,7 @@ return {
         {
           id = 31,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 200,
@@ -613,7 +613,7 @@ return {
         {
           id = 33,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -40,
           y = 120,
@@ -628,7 +628,7 @@ return {
         {
           id = 34,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 520,
           y = 120,
@@ -644,7 +644,7 @@ return {
         {
           id = 36,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 240,
           y = 160,
@@ -660,7 +660,7 @@ return {
         {
           id = 37,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 180,
           y = 480,
@@ -677,7 +677,7 @@ return {
         {
           id = 38,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 680,
@@ -692,7 +692,7 @@ return {
         {
           id = 39,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1080,
           y = 680,
@@ -707,7 +707,7 @@ return {
         {
           id = 41,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1400,
           y = 680,
@@ -722,7 +722,7 @@ return {
         {
           id = 42,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1720,
           y = 680,
@@ -737,7 +737,7 @@ return {
         {
           id = 43,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 1040,
@@ -752,7 +752,7 @@ return {
         {
           id = 44,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 1040,
@@ -767,7 +767,7 @@ return {
         {
           id = 45,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1080,
           y = 1040,
@@ -782,7 +782,7 @@ return {
         {
           id = 46,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1400,
           y = 1040,
@@ -797,7 +797,7 @@ return {
         {
           id = 47,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1720,
           y = 1040,
@@ -812,7 +812,7 @@ return {
         {
           id = 48,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1200,
           y = 640,
@@ -829,7 +829,7 @@ return {
         {
           id = 49,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2400,
           y = 120,
@@ -844,7 +844,7 @@ return {
         {
           id = 50,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 740,
           y = 1360,
@@ -862,7 +862,7 @@ return {
         {
           id = 51,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1470,
           y = 1250,
@@ -880,7 +880,7 @@ return {
         {
           id = 52,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1810,
           y = 820,
@@ -898,7 +898,7 @@ return {
         {
           id = 53,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1930,
           y = 200,
@@ -916,7 +916,7 @@ return {
         {
           id = 54,
           name = "enemy",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 2140,
           y = 280,
@@ -934,7 +934,7 @@ return {
         {
           id = 55,
           name = "npc",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 780,
           y = 720,
@@ -944,15 +944,15 @@ return {
           visible = true,
           properties = {
             ["actor"] = "berdly",
+            ["cond"] = "not Game:getFlag(\"POST_SNOWGRAVE\") and not Game:getFlag(\"berdly_inparty\")",
             ["cutscene"] = "gamertime.berdly",
-            ["facing"] = "up",
-            ["flagcheck"] = "!berdly_inparty"
+            ["facing"] = "up"
           }
         },
         {
           id = 56,
           name = "Script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 720,
           y = 680,
@@ -968,7 +968,7 @@ return {
         {
           id = 57,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 760,
           y = 680,
@@ -983,7 +983,7 @@ return {
         {
           id = 58,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1920,
           y = -40,

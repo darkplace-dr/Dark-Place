@@ -1591,8 +1591,8 @@ return {
         cutscene:showNametag("Susie")
         cutscene:text("* Hey,[wait:5] Brenda,[wait:5] you awake?", "neutral", "susie")
         cutscene:showNametag("Brenda")
-        cutscene:text("* Yeah,[wait:5] I am.", "", "brenda")
-        cutscene:text("* I'm just getting dressed,[wait:5] so you guys can go ahead without me.", "", "brenda")
+        cutscene:text("* Yeah,[wait:5] I am.", nil, "brenda")
+        cutscene:text("* I'm just getting dressed,[wait:5] so you guys can go ahead without me.", nil, "brenda")
         cutscene:showNametag("Susie")
         cutscene:text("* Got it.", "neutral", "susie")
         if Game:getFlag("dungeonkiller") then

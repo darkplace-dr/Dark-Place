@@ -17,7 +17,7 @@ end
 function Tutorial:enemyAI()
 	for k,v in pairs(self.opponent_hand) do
 		if self.opponent_points >= v.cost then
-			if (self.turn_attacking == false and v.attack == true) or (self.turn_attacking == true and v.defense == true) then
+			if ((self.turn_attacking == false and v.attack == true) or (self.turn_attacking == true and v.defense == true)) and not v.webbed then
 				if #self.selected_cards_o < 2 then
 					table.insert(self.selected_cards_o, v)
 					v:selectUnselect(true)

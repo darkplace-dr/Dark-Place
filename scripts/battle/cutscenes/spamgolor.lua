@@ -65,7 +65,7 @@ return {
         cutscene:text("* Hey,[wait:5] we should like...", "nervous_side", "susie")
         cutscene:text("* Stop fighting,[wait:5] or something...", "nervous", "susie")
 
-        cutscene:text("* WHY THE [[$4.99]] SHOULD WE DO THAT?", "", "spamgolor")
+        cutscene:text("* WHY THE [[$4.99]] SHOULD WE DO THAT?", nil, "spamgolor")
 
         cutscene:text("* Uh...[wait:10] I dunno...", "shock_nervous", "susie")
         cutscene:text("* PACIFISM IS HARD,[wait:5] OKAY?!", "teeth_b", "susie")
@@ -78,7 +78,7 @@ return {
 
         cutscene:text("* Your Jordans are completely fake!", "miffed", "brenda")
 
-        cutscene:text("* ... WHAT...", "", "spamgolor")
+        cutscene:text("* ... WHAT...", nil, "spamgolor")
 
         cutscene:text("* Wait I forgot you don't even have feet.", "shock", "brenda")
 
@@ -91,7 +91,7 @@ return {
         cutscene:text("* So do you like.", "neutral", "frisk2")
         cutscene:text("* Come here often?", "neutral", "frisk2")
 		
-        cutscene:text("* NO[wait:5], NOT REALLY.", "", "spamgolor")
+        cutscene:text("* NO[wait:5], NOT REALLY.", nil, "spamgolor")
 
         cutscene:text("* Oh ok I see, Thanks.", "neutral", "frisk2")
     end,

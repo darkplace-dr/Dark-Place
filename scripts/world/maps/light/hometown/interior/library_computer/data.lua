@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 37,
+  nextobjectid = 40,
   properties = {
     ["border"] = "leaves",
     ["light"] = true,
@@ -470,6 +470,55 @@ return {
           visible = true,
           properties = {
             ["text"] = "* (It's a computer. The monitor is flickering brightly.)"
+          }
+        },
+        {
+          id = 37,
+          name = "berdly_desk",
+          class = "",
+          shape = "point",
+          x = 357,
+          y = 208,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flagcheck"] = "POST_SNOWGRAVE"
+          }
+        },
+        {
+          id = 38,
+          name = "interactable",
+          class = "",
+          shape = "rectangle",
+          x = 332,
+          y = 166,
+          width = 50,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flagcheck"] = "POST_SNOWGRAVE",
+            ["solid"] = true,
+            ["text"] = "* (He doesn't seem to be awake.)"
+          }
+        },
+        {
+          id = 39,
+          name = "script",
+          class = "",
+          shape = "rectangle",
+          x = 280,
+          y = 400,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "hometown.berdly",
+            ["flagcheck"] = "POST_SNOWGRAVE",
+            ["once"] = true
           }
         }
       }

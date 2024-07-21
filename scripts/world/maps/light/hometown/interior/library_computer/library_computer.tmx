@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="37">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="40">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -100,6 +100,26 @@
   <object id="36" name="interactable" x="170" y="240" width="40" height="40">
    <properties>
     <property name="text" value="* (It's a computer. The monitor is flickering brightly.)"/>
+   </properties>
+  </object>
+  <object id="37" name="berdly_desk" x="357" y="208">
+   <properties>
+    <property name="flagcheck" value="POST_SNOWGRAVE"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="38" name="interactable" x="332" y="166" width="50" height="40">
+   <properties>
+    <property name="flagcheck" value="POST_SNOWGRAVE"/>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text" value="* (He doesn't seem to be awake.)"/>
+   </properties>
+  </object>
+  <object id="39" name="script" x="280" y="400" width="80" height="40">
+   <properties>
+    <property name="cutscene" value="hometown.berdly"/>
+    <property name="flagcheck" value="POST_SNOWGRAVE"/>
+    <property name="once" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

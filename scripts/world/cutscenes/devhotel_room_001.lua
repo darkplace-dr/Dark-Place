@@ -222,7 +222,7 @@ return {
 					party_talk = true
 					cutscene:showNametag("Brenda")
 					cutscene:text("* Oh, I remember that day!", "grin", "brenda")
-					cutscene:text("* Jamm had invited me to be his best man!", "joy", "brenda")
+					cutscene:text("* Jamm had invited me to be his maid of honor!", "joy", "brenda")
 					cutscene:text("* Wow, time really flies!", "happy", "brenda")
 					
 					if jamm then
@@ -428,7 +428,7 @@ return {
     end,
 
 	window = function(cutscene, event)
-		if Game:getFlag("jamm_closure") and Game:hasPartyMember("susie") and Game:hasPartyMember("dess") and Game:hasPartyMember("jamm") and Game:getFlag("berdly_inparty") then
+		if Game:getFlag("jamm_closure") and Game:hasPartyMember("susie") and Game:hasPartyMember("dess") and Game:hasPartyMember("jamm") and Game:getFlag("omegaspamton_defeated") then
 			if Game:getFlag("marcy_joined") then
 				cutscene:showNametag("Marcy")
 				cutscene:text("* Marcy doesn't feel comfortable with this...", "sad", "marcy")
@@ -478,13 +478,13 @@ return {
 					cutscene:wait(cutscene:fadeIn(0.75))
 					cutscene:wait(1)
 					cutscene:showNametag("Susie")
-					cutscene:text("* Urghh...", "", "susie")
+					cutscene:text("* Urghh...", nil, "susie")
 					cutscene:hideNametag()
 					Assets.stopAndPlaySound("wing")
 					susie:shake(5)
 					cutscene:wait(1)
 					cutscene:showNametag("Susie")
-					cutscene:text("* Where...", "", "susie")
+					cutscene:text("* Where...", nil, "susie")
 					cutscene:hideNametag()
 					susie:setSprite("landed_2")
 					Assets.stopAndPlaySound("wing")
@@ -630,8 +630,8 @@ return {
 			if not Game:hasPartyMember("susie") or not Game:hasPartyMember("dess") or not Game:hasPartyMember("jamm") then
 				cutscene:text("* Have Susie,[wait:5] Dess,[wait:5] and Jamm in your party.")
 			end
-			if not Game:getFlag("berdly_inparty") then
-				cutscene:text("* Rescue Berdly.")
+			if not Game:getFlag("omegaspamton_defeated") then
+				cutscene:text("* Complete the Gamer Time section.")
 			end
 			cutscene:text("* Come back when have done that.")
 			cutscene:text("* Oh uh and technically you also need to defeat Spamgolor NEO.")

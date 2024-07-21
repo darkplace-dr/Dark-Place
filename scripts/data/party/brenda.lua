@@ -7,6 +7,7 @@ function character:init()
 
     self:setActor("brenda")
     self:setLightActor("brenda_lw")
+    self:setDarkTransitionActor("kris_dark_transition") -- placeholder
 
     self.level = 1
     self.title = "Marksman\nTakes aim with\na rifle."

@@ -4,7 +4,11 @@ return {
         cutscene:text("* Please,[wait:5] Brenda,[wait:5] you're a great friend,[wait:5] I don't want to fight you.", "sad_frown", "susie")
         cutscene:text("* And what makes you think that?", "shaded", "brenda")
         cutscene:text("* Well you're fun to be around,[wait:5] for one.", "sincere_smile", "susie")
-        cutscene:text("* Remember that time we saved Berdly together?", "sincere", "susie")
+        if Game:getFlag("POST_SNOWGRAVE") then
+            cutscene:text("* Remember that time we played that one game together?", "sincere", "susie")
+        else
+            cutscene:text("* Remember that time we saved Berdly together?", "sincere", "susie")
+        end
         cutscene:text("* I...", "shaded_b", "brenda")
         brenda:addMercy(10)
         brenda.comfort = brenda.comfort + 1

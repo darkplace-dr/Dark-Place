@@ -9,6 +9,7 @@ function character:init()
     -- Actor (handles overworld/battle sprites)
     self:setActor("dess")
     self:setLightActor("dess")
+    self:setDarkTransitionActor("kris_dark_transition") -- placeholder
 
     -- Display level (saved to the save file)
     self.level = 1

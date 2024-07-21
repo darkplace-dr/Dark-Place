@@ -109,6 +109,8 @@ function  CardGame:init()
 	self.ui_rect.color = {0,0,0}
 	
 	self.ending = false
+	
+	self.counter = false
 end
 
 function CardGame:postInit()
@@ -751,6 +753,9 @@ function CardGame:updateAttack()
 							end
 						elseif v.special == "block" then
 							self:drawCard(true, "fake")
+						elseif v.special == "counter" then
+							self.counter = true
+							Kristal.Console:log("Counter")
 						end
 					end
 				end
@@ -813,6 +818,9 @@ function CardGame:updateAttack()
 							end
 						elseif v.special == "block" then
 							self:drawCard(false, "fake")
+						elseif v.special == "counter" then
+							self.counter = true
+							Kristal.Console:log("Counter")
 						end
 					end
 				end
@@ -885,6 +893,14 @@ function CardGame:updatePostTurn()
 		if self.opponent_points > 9 then
 			self.opponent_points = 9
 		end
+		if self.counter then
+			self.counter = false
+			if self.turn_attacking then
+				self.player_points = self.player_points + 2
+			else
+				self.opponent_points = self.opponent_points + 2
+			end
+		end
 	
 		for k,v in pairs(self.player_hand) do
 			if v.expire then
@@ -936,6 +952,7 @@ function CardGame:updateWin()
 			self.textbox = nil
 		end)
 		self:addChild(self.textbox)
+		Game:setFlag("last_battle_won", true)
 		if self.money > 0 then
 			Game.money = Game.money + self.money
 			self.textbox:setText("* You won!\n* " .. self.name .. " gave you " .. self.money .. " D$!")
@@ -963,6 +980,7 @@ function CardGame:updateLoss()
 			self.textbox = nil
 		end)
 		self:addChild(self.textbox)
+		Game:setFlag("last_battle_won", false)
 		self.textbox:setText("* You lost.")
 	end
 	
