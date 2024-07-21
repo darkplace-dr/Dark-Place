@@ -247,17 +247,34 @@ return {
         
         cutscene:text("* (It's a rusty fridge with some photos on it.)")
         local opinion = cutscene:choicer({"\nOpen\nFridge\n", "Don't", "See photos"})
-            if opinion == 1 then
-              cutscene:text("* (All that's inside is a jar with a single pickle in it...)")
-            elseif opinion == 3 then 
-              cutscene:text("* (A photo of your mother and father on their wedding day.)")
-              cutscene:text("* (She's holding a bouquet of seven flowers.)")
-              cutscene:text("* (A reindeer-looking monster stands nearby in a tuxedo.)")
-              cutscene:text("* (They all look happy.)")
+        if opinion == 1 then
+          cutscene:text("* (All that's inside is a jar with a single pickle in it...)")
+        elseif opinion == 3 then
+            local characters_who_knows_dreemurr = {
+                "susie",
+                "noelle",
+                "berdly",
+                "brenda",
+                "jamm",
+                "noel"
+            }
+            local leader_id = Mod:getLeader().id
+            if leader_id == "kris" then
+                cutscene:text("* (A photo of your mother and father on their wedding day.)")
+            elseif leader_id == "YOU" then
+                cutscene:text("* (A photo of Toriel and a random goat man on a wedding day.)")
+                cutscene:text("* (Wait... Toriel was married??)")
+            elseif Utils.containsValue(characters_who_knows_dreemurr, leader_id) then
+                cutscene:text("* (A photo of Toriel and Asgore on their wedding day.)")
             else
-              cutscene:text("* (You decide not to look.)")  
+                cutscene:text("* (A photo of two goat monsters on their wedding day.)")
             end
-
+          cutscene:text("* (She's holding a bouquet of seven flowers.)")
+          cutscene:text("* (A reindeer-looking monster stands nearby in a tuxedo.)")
+          cutscene:text("* (They all look happy.)")
+        else
+          cutscene:text("* (You decide not to look.)")  
+        end
     end,
 
     librarybook1 = function(cutscene, event)
@@ -269,8 +286,13 @@ return {
           cutscene:text("* (According to the card in the back...)")
           cutscene:text("* (... looks like your mother took it repeatedly many years ago.)")
         else
-          cutscene:text("* (There are photos of unfamiliar humans inside.)")
-          cutscene:text("* (You shut the book quickly.)")
+            cutscene:text("* (There are photos of unfamiliar humans inside.)")
+            local leader_id = Mod:getLeader().id
+            if leader_id == "kris" then
+                cutscene:text("* (You shut the book quickly.)")
+            elseif leader_id == "YOU" then
+                cutscene:text("* (Unfortunately, there's no photos of frogs like you.)")
+            end
         end
 
     end,
@@ -284,8 +306,6 @@ return {
           cutscene:text("* The font of our compassion. The source of our will.")
           cutscene:text("* The container of our \"life force.\"")
           cutscene:text("* But even now,[wait:5] the true function of it is unknown.")
-        else
-          
         end
 
     end,
@@ -318,8 +338,6 @@ return {
           cutscene:text("* FLAMIN HOT CHEESE SODA")
           cutscene:text("* GAMER BLOOD ENERGY DRINK")
           cutscene:text("* Juice (Red Flavor)")
-        else
-
         end
 
     end,

@@ -65,6 +65,10 @@ function Mod:init()
         "​"
     }
 
+    self.talkiewalkie_blacklist = {
+        "​",
+    }
+
     self.rpc_state = nil
 
     self:initTaunt()
