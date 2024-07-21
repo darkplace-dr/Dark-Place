@@ -75,22 +75,6 @@ return {
             end
         end
 
-        local can_exit = true
-        cutscene:during(function()
-            if not can_exit then return false end
-            if Input.down("menu") and Input.down("d") then
-                Assets.playSound("item", 0.1, 1.2)
-                Input.clear("d")
-                Game:setFlag("skipped_intro", true)
-                -- NOTE: when this cutscene gets complex we may need to do
-                -- some fallback configurations here
-                cutscene:after(function()
-                    Game.world:loadMap("room1", nil, "down")
-                end)
-                cutscene:endCutscene()
-            end
-        end)
-
         ---@type Music -- satisfy LLS
         local world_music = Game.world.music
         world_music:play("DRONE", 0.8)
@@ -112,7 +96,34 @@ return {
         skip_hint:setParallax(0, 0)
         skip_hint:setLayer(WORLD_LAYERS["ui"])
         Game.world:addChild(skip_hint)
+
+        local can_exit = true
+        cutscene:during(function()
+            if not can_exit then return false end
+            if Input.down("c") and Input.down("d") then
+                Assets.playSound("item", 0.1, 1.2)
+                Input.clear("d")
+                Input.clear("c")
+                Game:setFlag("skipped_intro", true)
+                -- NOTE: when this cutscene gets complex we may need to do
+                -- some fallback configurations here
+                cutscene:after(function()
+                    if fileFound then
+                        skip_hint:remove()
+                        Game.world.music:stop()
+                        Game.world.timer:after(2, function()
+                            Game.world:startCutscene("_main.snowgraveskip")
+                        end)
+                    else
+                        Game.world:loadMap("room1", nil, "down")
+                    end
+                end)
+                cutscene:endCutscene()
+            end
+        end)
+
         cutscene:wait(2)
+
         skip_hint:remove()
         can_exit = false
 
@@ -405,6 +416,73 @@ return {
 
         cutscene:after(function()
             Game.world:mapTransition("room1", nil, "down")
+        end)
+    end,
+    snowgraveskip = function(cutscene)
+        local text = DialogueText({
+            "A save file with the snowgrave route achieved has been found.",
+            "The consequences of your route can be carried over here.",
+            "Would you want that?"
+        }, 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT,
+        {
+            align = "center"
+        })
+        text:setParallax(0, 0)
+        text:setLayer(WORLD_LAYERS["ui"])
+        Game.world:addChild(text)
+        cutscene:wait(function()
+            return text:isDone()
+        end)
+
+        local chosen = nil
+        local choicer = GonerChoice(220, 360, {
+            { { "YES", 0, 0 }, { "<<" }, { ">>" }, { "NO", 160, 0 } }
+        }, function(choice)
+            chosen = choice
+        end)
+        choicer:setSelectedOption(2, 1)
+        choicer:setSoulPosition(80, 0)
+        Game.stage:addChild(choicer)
+        cutscene:wait(function() return chosen ~= nil end)
+
+        if chosen == "YES" then
+            text.alpha = 0
+            cutscene:wait(2)
+
+            Game:setFlag("POST_SNOWGRAVE", true)
+            Game:getPartyMember("kris").title = "Leader\nCommands."
+            local noelle = Game:getPartyMember("noelle")
+            noelle:addSpell("snowgrave")
+            noelle.health = 170
+            noelle.stats = {
+                health = 170,
+                attack = 8,
+                defense = 1,
+                magic = 16
+            }
+            noelle:setWeapon("thornring")
+            noelle.flags = {
+                ["iceshocks_used"] = 20,
+                ["boldness"] = 100,
+                ["weird"] = true
+            }
+
+            text.alpha = 1
+            text:setText("It is done.")
+        else
+            text:setText("Your snowgrave route won't be acknoledged here.")
+        end
+
+        cutscene:wait(function()
+            return not text:isTyping()
+        end)
+
+        cutscene:wait(2)
+        cutscene:wait(cutscene:fadeOut(5, {global=true, color={1, 1, 1}}))
+        cutscene:wait(1)
+        cutscene:after(function()
+            Game.world:loadMap("room1", nil, "down")
+            Game.fader.alpha = 0
         end)
     end,
     unlock_ralsei = function(cutscene)
