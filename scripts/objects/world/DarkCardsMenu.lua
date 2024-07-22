@@ -85,6 +85,14 @@ function DarkCardsMenu:update()
 		if current_equipped ~= 0 then
 			if current_equipped[2] > 0 then
 				current_equipped[2] = current_equipped[2] - 1
+				local card = Mod:createCard(self.obtained[self.selected_item][1])
+				local reactions = card:getReactionUnequipped()
+				for index,chara in ipairs(Game.party) do
+					if reactions[chara.id] then
+						Game.world.healthbar.action_boxes[index].reaction_alpha = 50
+						Game.world.healthbar.action_boxes[index].reaction_text = reactions[chara.id]
+					end
+				end
 			end
 		end
     end
@@ -93,6 +101,14 @@ function DarkCardsMenu:update()
 		if current_equipped ~= 0 then
 			if current_equipped[2] < self.obtained[self.selected_item][3] then
 				current_equipped[2] = current_equipped[2] + 1
+				local card = Mod:createCard(self.obtained[self.selected_item][1])
+				local reactions = card:getReactionEquipped()
+				for index,chara in ipairs(Game.party) do
+					if reactions[chara.id] then
+						Game.world.healthbar.action_boxes[index].reaction_alpha = 50
+						Game.world.healthbar.action_boxes[index].reaction_text = reactions[chara.id]
+					end
+				end
 			end
 		end
     end
