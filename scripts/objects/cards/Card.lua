@@ -71,4 +71,12 @@ function Card:webUnweb()
 	end
 end
 
+function Card:getReactionEquipped()
+	return {}
+end
+
+function Card:getReactionUnequipped()
+	return {}
+end
+
 return Card
