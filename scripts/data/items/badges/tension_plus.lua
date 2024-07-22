@@ -12,7 +12,7 @@ function badge:init()
     self.description = "Increases maximum tension points stored."
 
     -- The cost of putting it on
-    self.badge_points = 3
+    self.badge_points = 5
 
     -- Default shop price (sell price is halved)
     self.price = 180
