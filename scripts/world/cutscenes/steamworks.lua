@@ -243,6 +243,40 @@ return {
         cutscene:text("* Just... don't do anything stupid.", "irked", "ceroba")
         cutscene:hideNametag()
     end,
+    grandfather_clock = function(cutscene, event)
+        if not Game:getFlag("grandfather_clock_talk") then
+            cutscene:showNametag("Clock")
+            cutscene:text("* Tick-tock - tick-tock -\ntick-tock...", nil, event)
+            cutscene:text("* The current time is 6:26,\nMonday morning!", nil, event)
+            cutscene:text("* You may have noticed the\napple trees outside the\nSteamworks are blooming.", nil, event)
+            cutscene:text("* That means Spring is upon us!", nil, event)
+            cutscene:text("* This time of year, my creator\nrecommends a picnic by the\nriver just south of here!", nil, event)
+            cutscene:hideNametag()
+            Game:setFlag("grandfather_clock_talk", 1)
+        elseif Game:getFlag("grandfather_clock_talk") == 1 then
+            cutscene:showNametag("Clock")
+            cutscene:text("* Why the puzzled look? Have we\nnot met before?", nil, event)
+            cutscene:showNametag("Grandfather Clock")
+            cutscene:text("* I am the Grandfather Clock of\nthe Underground!", nil, event)
+            cutscene:text("* It is my responsibility to\nkeep the standard time for all\nmonsters.", nil, event)
+            cutscene:text("* However, I cannot help but\nfeel there is a miscalculation\nin my tick-tocking.", nil, event)
+            cutscene:text("* It is simply driving me mad!", nil, event)
+            cutscene:hideNametag()
+            Game:setFlag("grandfather_clock_talk", 2)
+        elseif Game:getFlag("grandfather_clock_talk") == 2 then
+            cutscene:showNametag("Grandfather Clock")
+            cutscene:text("* I do not sense the gears\nturning within these walls.", nil, event)
+            cutscene:text("* Hm, yes, I believe the main\nclock face outside has stalled!", nil, event)
+            cutscene:text("* An engineer should arrive to\nfix it soon.", nil, event)
+            cutscene:text("* Do not worry, I will continue\nto keep the time!", nil, event)
+            cutscene:hideNametag()
+            Game:setFlag("grandfather_clock_talk", 3)
+        elseif Game:getFlag("grandfather_clock_talk") == 3 then
+            cutscene:showNametag("Grandfather Clock")
+            cutscene:text("* Tick-tock - tick-tock -\ntick-tock...", nil, event)
+            cutscene:hideNametag()
+        end
+    end,
     ceroba_kanako_talk = function(cutscene, event)
         local ceroba = cutscene:getCharacter("ceroba")
         cutscene:detachFollowers()
@@ -285,5 +319,5 @@ return {
 
         cutscene:wait(2)
         cutscene:attachFollowers()
-    end
+    end,
 }

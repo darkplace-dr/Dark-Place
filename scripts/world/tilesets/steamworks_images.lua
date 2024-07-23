@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 32,
+  tilecount = 38,
   tiles = {
     {
       id = 2,
@@ -278,6 +278,60 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/10_building.png",
       width = 838,
       height = 670
+    },
+    {
+      id = 35,
+      image = "../../../assets/sprites/world/maps/steamworks/17_clocktower.png",
+      width = 472,
+      height = 694
+    },
+    {
+      id = 36,
+      image = "../../../assets/sprites/world/maps/steamworks/17_gate_1.png",
+      width = 874,
+      height = 616,
+      animation = {
+        {
+          tileid = 36,
+          duration = 100
+        },
+        {
+          tileid = 37,
+          duration = 100
+        },
+        {
+          tileid = 38,
+          duration = 100
+        },
+        {
+          tileid = 39,
+          duration = 100
+        }
+      }
+    },
+    {
+      id = 37,
+      image = "../../../assets/sprites/world/maps/steamworks/17_gate_2.png",
+      width = 874,
+      height = 616
+    },
+    {
+      id = 38,
+      image = "../../../assets/sprites/world/maps/steamworks/17_gate_3.png",
+      width = 874,
+      height = 616
+    },
+    {
+      id = 39,
+      image = "../../../assets/sprites/world/maps/steamworks/17_gate_4.png",
+      width = 874,
+      height = 616
+    },
+    {
+      id = 40,
+      image = "../../../assets/sprites/world/maps/steamworks/17_bars.png",
+      width = 448,
+      height = 214
     }
   }
 }
