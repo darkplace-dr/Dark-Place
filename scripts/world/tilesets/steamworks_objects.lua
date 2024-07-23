@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 62,
+  tilecount = 68,
   tiles = {
     {
       id = 3,
@@ -584,6 +584,60 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/objects/09_stairs.png",
       width = 150,
       height = 80
+    },
+    {
+      id = 79,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/pillar_1.png",
+      width = 232,
+      height = 386,
+      animation = {
+        {
+          tileid = 79,
+          duration = 200
+        },
+        {
+          tileid = 80,
+          duration = 200
+        },
+        {
+          tileid = 81,
+          duration = 200
+        },
+        {
+          tileid = 82,
+          duration = 200
+        }
+      }
+    },
+    {
+      id = 80,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/pillar_2.png",
+      width = 232,
+      height = 386
+    },
+    {
+      id = 81,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/pillar_3.png",
+      width = 232,
+      height = 386
+    },
+    {
+      id = 82,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/pillar_4.png",
+      width = 232,
+      height = 386
+    },
+    {
+      id = 83,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/lever.png",
+      width = 50,
+      height = 42
+    },
+    {
+      id = 84,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/17b_gate_button.png",
+      width = 166,
+      height = 140
     }
   }
 }

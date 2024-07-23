@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.0" name="steamworks_objects" tilewidth="416" tileheight="400" tilecount="62" columns="0">
+<tileset version="1.10" tiledversion="1.11.0" name="steamworks_objects" tilewidth="416" tileheight="400" tilecount="68" columns="0">
  <editorsettings>
   <export target="steamworks_objects.lua" format="lua"/>
  </editorsettings>
@@ -248,5 +248,29 @@
  </tile>
  <tile id="78">
   <image source="../../../assets/sprites/world/maps/steamworks/objects/09_stairs.png" width="150" height="80"/>
+ </tile>
+ <tile id="79">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/pillar_1.png" width="232" height="386"/>
+  <animation>
+   <frame tileid="79" duration="200"/>
+   <frame tileid="80" duration="200"/>
+   <frame tileid="81" duration="200"/>
+   <frame tileid="82" duration="200"/>
+  </animation>
+ </tile>
+ <tile id="80">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/pillar_2.png" width="232" height="386"/>
+ </tile>
+ <tile id="81">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/pillar_3.png" width="232" height="386"/>
+ </tile>
+ <tile id="82">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/pillar_4.png" width="232" height="386"/>
+ </tile>
+ <tile id="83">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/lever.png" width="50" height="42"/>
+ </tile>
+ <tile id="84">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/17b_gate_button.png" width="166" height="140"/>
  </tile>
 </tileset>
