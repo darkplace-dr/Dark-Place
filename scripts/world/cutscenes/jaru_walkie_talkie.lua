@@ -1,5 +1,13 @@
 return function(cutscene, event_override)
     cutscene:text("* You turn on the walkie talkie...")
+
+    for i,map_id in ipairs(Mod.talkiewalkie_blacklist) do
+        if Utils.startsWith(Game.world.map.id, map_id) then
+            cutscene:text("* But the signal is jammed here...")
+            cutscene:endCutscene()
+            return
+        end
+    end
 	
     local jaru_talked_first_time = Game:getFlag("jaruHasUsedWalkieTalkie", false)
 	local jaru_talked_in_devroom = Game:getFlag("jaruCommunicationTest", false)

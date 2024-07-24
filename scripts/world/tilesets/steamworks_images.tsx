@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.0" name="steamworks" tilewidth="2800" tileheight="1200" tilecount="32" columns="0">
+<tileset version="1.10" tiledversion="1.11.0" name="steamworks" tilewidth="2800" tileheight="1200" tilecount="38" columns="0">
  <editorsettings>
   <export target="steamworks_images.lua" format="lua"/>
  </editorsettings>
@@ -119,5 +119,29 @@
  </tile>
  <tile id="34">
   <image source="../../../assets/sprites/world/maps/steamworks/10_building.png" width="838" height="670"/>
+ </tile>
+ <tile id="35">
+  <image source="../../../assets/sprites/world/maps/steamworks/17_clocktower.png" width="472" height="694"/>
+ </tile>
+ <tile id="36">
+  <image source="../../../assets/sprites/world/maps/steamworks/17_gate_1.png" width="874" height="616"/>
+  <animation>
+   <frame tileid="36" duration="100"/>
+   <frame tileid="37" duration="100"/>
+   <frame tileid="38" duration="100"/>
+   <frame tileid="39" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="37">
+  <image source="../../../assets/sprites/world/maps/steamworks/17_gate_2.png" width="874" height="616"/>
+ </tile>
+ <tile id="38">
+  <image source="../../../assets/sprites/world/maps/steamworks/17_gate_3.png" width="874" height="616"/>
+ </tile>
+ <tile id="39">
+  <image source="../../../assets/sprites/world/maps/steamworks/17_gate_4.png" width="874" height="616"/>
+ </tile>
+ <tile id="40">
+  <image source="../../../assets/sprites/world/maps/steamworks/17_bars.png" width="448" height="214"/>
  </tile>
 </tileset>

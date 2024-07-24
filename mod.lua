@@ -65,6 +65,10 @@ function Mod:init()
         "​"
     }
 
+    self.talkiewalkie_blacklist = {
+        "​",
+    }
+
     self.rpc_state = nil
 
     self:initTaunt()
@@ -1170,4 +1174,15 @@ function Mod:createQuest(name, id, desc, progress_max, silent)
     if not silent and Game.stage then
         Game.stage:addChild(QuestCreatedPopup(id))
     end
+end
+
+function Mod:updateMaxTension() 
+    local max_tension_modifier = BadgesLib:getBadgeEquipped("tension_plus")
+    local max_tension = 100
+    if max_tension_modifier > 0 then
+        max_tension = max_tension + (max_tension_modifier * 50)
+    elseif max_tension_modifier < 0 then
+        max_tension = max_tension * (1/max_tension_modifier)
+    end
+    Game:setMaxTension(max_tension)
 end
