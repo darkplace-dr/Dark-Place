@@ -52,7 +52,8 @@ function Diamond_Store:init()
   self.sell_options_text["storage"] = "[emote:talk]* I am gonna buy.[emote:idle]"
 
   self:registerItem("tension_storage", {stock = 1})
-  self:registerItem("dark_candy")
+  self:registerItem("friend_buster", {stock = 1})
+
   
   self:registerTalk("Yourself")
   --self:registerTalk("...")
