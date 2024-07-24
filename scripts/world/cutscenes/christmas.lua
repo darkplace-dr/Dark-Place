@@ -4,8 +4,8 @@ return {
 		
 		if cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
 			cutscene:showNametag("Jamm", {right = false})
-			cutscene:text("* Too bad my fire magic is on the fritz...", "nervous", "jamm")
-			cutscene:text("* I'd actually be able to get us in here.", "nervous", "jamm")
+			cutscene:text("* If my fire magic weren't on the fritz...", "nervous", "jamm")
+			cutscene:text("* Then maybe this stubborn door I could blitz.", "nervous", "jamm")
 			cutscene:hideNametag()
 		end
 	end,
@@ -19,51 +19,53 @@ return {
 				cutscene:showNametag("Susie", {right = false})
 				cutscene:text("* You??", "teeth_b", "susie")
 				if cutscene:getCharacter("YOU") then
-					cutscene:text("* No,[wait:2] not you, YOU..[wait:5]\n[face:teeth_b]* THAT guy!!", "sus_nervous", "susie")
+					cutscene:text("* No,[wait:2] not you, YOU.[wait:5]\n[face:teeth_b]* That guy there!", "sus_nervous", "susie")
 				end
 				cutscene:showNametag("self", {font = "sans", right = false})
-				cutscene:text("[font:sans]* huh?[wait:5]\n* you talking to me?", "neutral", "self")
+				cutscene:text("[font:sans]* huh?[wait:5]\n* you talking to me?[wait:5] should i be scared?", "neutral", "self")
 				
 				cutscene:showNametag("Susie", {right = false})
 				cutscene:text("* You're that guy from the convenience store!", "teeth_b", "susie")
 				
 				cutscene:showNametag("self", {font = "sans", right = false})
 				cutscene:text("[font:sans]* hmm...[wait:5]\n* i would remember working at a convenience store.", "neutral", "self")
-				cutscene:text("[font:sans]* you must have me confused with someone else.", "neutral", "self")
+				cutscene:text("[font:sans]* mistaken identity,[wait:5] that's for sure.", "neutral", "self")
 			end
 			
-			cutscene:text("[font:sans]* the name's self.[wait:5]\n* self the skelf.", "neutral", "self")
-			cutscene:text("[font:sans]* i run this hotdog stand on the outskirts of santa's workshop.", "neutral", "self")
+			cutscene:text("[font:sans]* the name's self,[wait:5] a cheerful skelf,[wait:5] that's me.", "neutral", "self")
+			cutscene:text("[font:sans]* this hotdog stand's my haunt,[wait:5] by santa's workshop,[wait:5] you see.", "neutral", "self")
 			
 			if cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
 				cutscene:showNametag("Jamm", {right = false})
-				cutscene:text("* Hot dogs?[wait:5]\n* So how do you keep them warm?", "nervous", "jamm")
-				cutscene:text("* It's f-freezing out here!", "ouch", "jamm")
+				cutscene:text("* Hot dogs,[wait:5] huh?[wait:10]\n* That's what's for lunch?", "nervous", "jamm")
+				cutscene:text("* But this cold's enough to make your b-buns bunch!", "ouch", "jamm")
 			
 				cutscene:showNametag("self", {font = "sans", right = false})
-				cutscene:text("[font:sans]* really?[wait:5]\n* i don't feel cold.", "neutral", "self")
-				cutscene:text("[font:sans]* you must be imagining things.", "neutral", "self")
+				cutscene:text("[font:sans]* really,[wait:5] now?[wait:10] i don't feel any sense of cold.", "neutral", "self")
+				cutscene:text("[font:sans]* you must be imagining things,[wait:5] if i may be so bold.", "neutral", "self")
 			end
 			
 			if cutscene:getCharacter("brenda") then
 				cutscene:showNametag("Brenda", {right = false})
-				cutscene:text("* Wait,[wait:5] uh,[wait:5] Self...", "neutral", "brenda")
-				cutscene:text("* Are these hot dogs...[wait:5]\n* Legal?", "neutral", "brenda")
+				cutscene:text("* Hold on a sec,[wait:5] Self,[wait:5] I gotta know...", "neutral", "brenda")
+				cutscene:text("* That meat...[wait:5] is it some you're allowed to show?", "neutral", "brenda")
 			
 				cutscene:showNametag("self", {font = "sans", right = false})
-				cutscene:text("[font:sans]* will you buy them if i said they weren't?", "neutral", "self")
+				cutscene:text("[font:sans]* would these taste worse if the answer went south?", "neutral", "self")
 				
 				cutscene:showNametag("Brenda", {right = false})
 				cutscene:text("* I don't think so???", "shock", "brenda")
 			
 				cutscene:showNametag("self", {font = "sans", right = false})
-				cutscene:text("[font:sans]* well that's good,[wait:5] because they are legal.", "neutral", "self")
+				cutscene:text("[font:sans]* relax,[wait:5] these 'dogs are all aboveboard,[wait:5] no doubt.", "neutral", "self")
 			end
 			cutscene:showShop()
 			cutscene:text("[font:sans]* how about it?[wait:5]\n* only 200 D$.", "neutral", "self")
+			cutscene:text("[font:sans]* all you have'ta do is share me a hollar.", "neutral", "self")
 		else
 			cutscene:showShop()
 			cutscene:text("[font:sans]* want a hot dog?[wait:5]\n* only 200 D$.", "neutral", "self")
+			cutscene:text("[font:sans]* all you have'ta do is share me a hollar.", "neutral", "self")
 		end
 		cutscene:hideNametag()
 		
@@ -71,18 +73,18 @@ return {
 			if Game.money >= 200 then
 				if Game.inventory:isFull("items", false) then
 					cutscene:showNametag("self", {font = "sans", right = false})
-					cutscene:text("[font:sans]* sorry,[wait:5] kid.[wait:5]\n* your [color:yellow]ITEMs[color:white] pocket is full.", "neutral", "self")
-					cutscene:text("[font:sans]* try emptying it a bit and come back.", "neutral", "self")
+					cutscene:text("[font:sans]* that [color:yellow]ITEMs[color:white] pocket's full,[wait:5] it seems like a crime...", "neutral", "self")
+					cutscene:text("[font:sans]* but clear some space,[wait:5] and come back anytime.", "neutral", "self")
 					cutscene:hideShop()
 					if not Game.inventory:isFull("storage", false) then
 						if cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
 							cutscene:showNametag("Jamm", {right = false})
-							cutscene:text("* What!?[wait:5]\n* But our [color:yellow]STORAGE[color:white] isn't full!", "determined", "jamm")
-							cutscene:text("* Just put it in there!", "determined", "jamm")
+							cutscene:text("* But our STORAGE ain't overflowin',[wait:5] that's a fact!", "determined", "jamm")
+							cutscene:text("* Just shove it in there,[wait:5] this whole thing's a whack!", "determined", "jamm")
 							
 							cutscene:showNametag("self", {font = "sans", right = false})
 							cutscene:text("[font:sans]* sorry,[wait:5] kid.[wait:5]\n* i don't make the rules.", "neutral", "self")
-							cutscene:text("[font:sans]* my boss makes the rules.", "neutral", "self")
+							cutscene:text("[font:sans]* my boss is the one with the tools.", "neutral", "self")
 							
 							if cutscene:getCharacter("susie") then
 								cutscene:showNametag("Jamm", {right = false})
@@ -102,9 +104,8 @@ return {
 				end
 			else
 				cutscene:showNametag("self", {font = "sans", right = false})
-				cutscene:text("[font:sans]* sorry,[wait:5] kid.[wait:5]\n* i don't offer credit.", "neutral", "self")
-				cutscene:text("[font:sans]* try again when you're a little...", "neutral", "self")
-				cutscene:text("[font:sans]* wait.[wait:5]\n* don't we have this character already?", "neutral", "self")
+				cutscene:text("[font:sans]* no credit here,[wait:5] that must be a bummer...", "neutral", "self")
+				cutscene:text("[font:sans]* but with more jingle,[wait:5] your belly's a rumbler.", "neutral", "self")
 				cutscene:hideShop()
 			end
 		else
@@ -116,19 +117,20 @@ return {
 	end,
     s_elf_2 = function(cutscene, event)
 		cutscene:showNametag("self", {font = "sans"})
-		cutscene:text("[font:sans]* wow,[wait:5] you solved that puzzle quickly.", "neutral", "self")
-		cutscene:text("[font:sans]* it's almost as if you saw xo puzzles before.", "neutral", "self")
-		cutscene:text("[font:sans]* which is weird,[wait:5] since they're exclusive to here.", "neutral", "self")
+		cutscene:text("[font:sans]* that puzzle solved fast,[wait:5] a right nifty trick...", "neutral", "self")
+		cutscene:text("[font:sans]* have you,[wait:5] by chance,[wait:5] encountered xo's slick picks?", "neutral", "self")
+		cutscene:text("[font:sans]* but hold on,[wait:5] that can't be right...", "neutral", "self")
+		cutscene:text("[font:sans]* xo puzzles are exclusive to here,[wait:5] in plain sight.", "neutral", "self")
 		cutscene:hideNametag()
 	end,
     s_elf_3 = function(cutscene, event)
 		cutscene:showNametag("self", {font = "sans"})
-		cutscene:text("[font:sans]* did you see the puzzle about 2 rooms ago?", "neutral", "self")
-		cutscene:text("[font:sans]* yeah, my brother asked santa for that one year.", "neutral", "self")
-		cutscene:text("[font:sans]* it almost looks a little like him, i think.", "neutral", "self")
-		cutscene:text("[font:sans]* my brother's busy around this time of year, but he's cool.", "neutral", "self")
-		cutscene:text("[font:sans]* anyways, i decided i wanted a puzzle for myself.", "neutral", "self")
-		cutscene:text("[font:sans]* i'm no artist, but i think it looks good.", "neutral", "self")
+		cutscene:text("[font:sans]* did that puzzle look oddly familiar and quaint?", "neutral", "self")
+		cutscene:text("[font:sans]* my brother begged santa for it,[wait:5] a real brain-teaser,[wait:5] no saint!", "neutral", "self")
+		cutscene:text("[font:sans]* the likeness is spooky,[wait:5] a right festive flair.", "neutral", "self")
+		cutscene:text("[font:sans]* my brother's quite busy,[wait:5] but jolly and rare.", "neutral", "self")
+		cutscene:text("[font:sans]* enough spooky talk,[wait:5] this puzzle's my prize.", "neutral", "self")
+		cutscene:text("[font:sans]* no picassos here,[wait:5] but it shines in my eyes.", "neutral", "self")
 		cutscene:hideNametag()
 	end,
 }
