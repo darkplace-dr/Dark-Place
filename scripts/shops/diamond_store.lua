@@ -53,7 +53,7 @@ function Diamond_Store:init()
 
   self:registerItem("tension_storage", {stock = 1})
   self:registerItem("tension_plus", {stock = 4})
-  self:registerItem("dark_candy")
+  self:registerItem("friend_buster", {stock = 1})
   
   self:registerTalk("Yourself")
   --self:registerTalk("...")

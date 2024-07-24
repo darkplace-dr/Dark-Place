@@ -27,6 +27,8 @@ function DarkPartyMenu:init(debug)
     -- MAIN, SELECT
     self.state = "MAIN"
 
+    local noelsave = Mod:loadGameN()
+
     self.selected_x = 1
 	self.selected_y = 1
 	
@@ -40,7 +42,7 @@ function DarkPartyMenu:init(debug)
         
         local noel = Game:getFlag("noel_party")
         local noel2 = Game:getFlag("noel_partyroom")
-        if noel or noel2 then
+        if noel or noel2 or noelsave.Map == "devhotel/devdiner/partyroom" then
 	    if not Utils.containsValue(Game:getFlag("party"), "noel") then
 	        Mod:unlockPartyMember("noel")
 	    end
@@ -200,6 +202,11 @@ end
                 else
                     Game.world.player:setActor(Game.party[1]:getActor())
                 end
+                if self.list[self.selected_y][self.selected_x] == "noel" then
+                    local savedData = Mod:loadGameN()
+                    local num = savedData.SaveID
+                    Game:setFlag("noel_SaveID", num)
+                end 
                 self.ui_select:stop()
                 self.ui_select:play()
                 self.state = "MAIN"

@@ -79,11 +79,8 @@ function spell:onCast(user, target)
 end
 
 function spell:hasWorldUsage(chara)
-    return true
+    return false
 end
 
-function spell:onWorldCast(chara)
-    Assets.playSound("scytheburst")
-end
 
 return spell

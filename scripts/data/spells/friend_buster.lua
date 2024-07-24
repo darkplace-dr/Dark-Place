@@ -76,4 +76,14 @@ function spell:onCast(user, target)
     return false
 end
 
+function spell:hasWorldUsage(chara)
+    return true
+end
+
+function spell:onWorldCast(chara)
+    Assets.playSound("scytheburst")
+    local damage = 250
+    Game.world:hurt(chara, damage)
+end
+
 return spell
