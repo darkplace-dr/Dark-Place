@@ -792,8 +792,9 @@ return {
           properties = {
             ["solid"] = true,
             ["text1"] = "* WARNING![wait:5]\n* The North Pole is extremely cold!",
-            ["text2"] = "* Try not to stay out for too long!",
-            ["text3"] = "* If you do,[wait:5] you are at risk of freezing!"
+            ["text2"] = "* This path's only for the strong and the bold!",
+            ["text3"] = "* Don't linger too long,[wait:5] heed this icy plea...",
+            ["text4"] = "* A frosty fate awaits,[wait:5] eternally!\n\n"
           }
         },
         {

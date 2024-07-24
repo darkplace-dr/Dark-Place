@@ -167,8 +167,11 @@
     <property name="solid" type="bool" value="true"/>
     <property name="text1">* WARNING![wait:5]
 * The North Pole is extremely cold!</property>
-    <property name="text2" value="* Try not to stay out for too long!"/>
-    <property name="text3" value="* If you do,[wait:5] you are at risk of freezing!"/>
+    <property name="text2" value="* This path's only for the strong and the bold!"/>
+    <property name="text3" value="* Don't linger too long,[wait:5] heed this icy plea..."/>
+    <property name="text4">* A frosty fate awaits,[wait:5] eternally!
+
+</property>
    </properties>
   </object>
   <object id="47" name="enemy" x="1000" y="280">
