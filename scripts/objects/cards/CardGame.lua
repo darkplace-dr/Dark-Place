@@ -700,6 +700,21 @@ function CardGame:updateAttack()
 			end
 		end
 		local webbed = 0
+
+
+                -- this part is so some cards can always do a thing
+                -- like draw more cards and stuff
+		for k,v in pairs(self.selected_cards) do
+			if v.special == "card_draw" then
+                            for i = 1, v.card_draw do
+  			        self:drawCard(true)
+                            end
+                        end
+                end
+
+
+               --this is the basic math, turn based thing
+
 		self.timer:tween(0.5, self.attacking, {x = self.defending.x}, "in-cubic", function()
 			if self.turn_attacking == true then
 				local can_web = 0
