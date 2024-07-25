@@ -27,6 +27,8 @@ function Card:init()
 	self:addChild(self.sprite)
 	
 	self.selected = false
+
+	self.card_draw = 0 --for pot of greed	
 end
 
 function Card:flip()
