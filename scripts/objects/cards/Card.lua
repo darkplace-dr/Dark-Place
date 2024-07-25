@@ -4,7 +4,10 @@ function Card:init()
 	super:init(self)
 	
 	self.image = "cards/rodenteer"					-- For template use
-	self.back = "cards/norm_back"
+        if self.back then
+        else
+	    self.back = "cards/norm_back"
+        end
 	
 	self.value = 2									-- For template use
 	self.cost = 2									-- For template use
