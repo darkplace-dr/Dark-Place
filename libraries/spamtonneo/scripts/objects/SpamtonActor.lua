@@ -2,6 +2,7 @@ local Spamton, super = Class(ActorSprite)
 
 function Spamton:init(actor)
     super.init(self, actor)
+    self:setSprite(nil)
 
     self.body = SpamtonPart("npcs/sneo/body", 11, 25, 0, 0.33)
     self.body.id = "body"
