@@ -7,7 +7,7 @@ function GGuard:init()
     self.text = "* [C] in function 'pcall'\nmain.lua:405: in function <main.lua:403>\n[C] in function 'error'\nsrc/engine/registry.lua:166: in function 'createActor'\n\n\n\n"
 
     -- Battle music ("battle" is rude buster)
-    self.music = "黒塗り世界宛て書簡"
+    self.music = "letter_to_the_black_world"
     -- Enables the purple grid battle background
     self.background = true
 

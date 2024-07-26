@@ -131,8 +131,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * Rovio Entertainment Ltd. - Original creators of Angry Birds
 * Askiisoft - Original creators of Katana Zero
 * Lemonemy - Author of the naming screen easter egg video for "DECEMBER"
-* xnq et al. - Original creators of the Throwaway AC
+* xnq et al. (see SoundCloud page) - Original creators of the [Throwaway](https://soundcloud.com/user454494283) alternative chapters
 * Ministry of Education of the PRC - Creator of a track in the Jukebox
 * Hummer Team - Creator of the Donkey Kong Country bootleg for the NES
-* 黒塗り世界宛て書簡 - フロクロ
+* フロクロ(Frog96) - Author of 黒塗り世界宛て書簡 (Letter to the Black World)
 </details>
