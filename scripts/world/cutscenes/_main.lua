@@ -1,19 +1,6 @@
 return {
     ---@param cutscene WorldCutscene
     introcutscene = function(cutscene)
-        local text
-
-
-        local savedData = Mod:loadGameN()
-        if savedData then
-            if savedData.Map == "room1" then
-                Game:addPartyMember("noel")
-                Game:setFlag("noel_party", true)
-                local num = savedData.SaveID
-                Game:setFlag("noel_SaveID", num)
-            end
-        end
-
         -- Save File Reading
         local function file_exists(name)
             local f = io.open(name, "r")
@@ -33,7 +20,6 @@ return {
         end
 
         local current_os = love.system.getOS()
-        oriSaves={}
         local fileFound = false
         if current_os == "Windows" then
             for i=0,2 do
@@ -41,7 +27,6 @@ return {
                 if file_exists(file) then
                     if tonumber(getFileLines(file)[1468])>=1 then
                         --print("Snowgrave Save file "..i.." found!")
-                        oriSaves=getFileLines(file)
                         fileFound=true
                         break
                     end
@@ -49,16 +34,7 @@ return {
             end
         end
 
-        local function gonerTextFade(wait)
-            local this_text = text
-            Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function()
-                this_text:remove()
-            end)
-            if wait ~= false then
-                cutscene:wait(1)
-            end
-        end
-
+        local text, gonerTextFade
         -- FIXME: actually use skippable
         local function gonerText(str, advance, skippable)
             text = DialogueText("[speed:0.5][spacing:6][style:GONER][voice:none]" .. str, 160, 100, 640, 480,
@@ -72,6 +48,16 @@ return {
             if advance ~= false then
                 cutscene:wait(function() return not text:isTyping() end)
                 gonerTextFade(true)
+            end
+        end
+
+        gonerTextFade = function(wait)
+            local this_text = text
+            Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function()
+                this_text:remove()
+            end)
+            if wait ~= false then
+                cutscene:wait(1)
             end
         end
 

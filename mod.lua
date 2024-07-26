@@ -554,6 +554,16 @@ function Mod:postInit(new_file)
             Game:setPartyMembers("kris")
             Game.world:loadMap("woods/spawn")
         else
+            local noel = Mod:loadGameN()
+            if noel then
+                if noel.Map == "room1" then
+                    Game:addPartyMember("noel")
+                    Game:setFlag("noel_party", true)
+                    local num = noel.SaveID
+                    Game:setFlag("noel_SaveID", num)
+                end
+            end
+
             Game.world:startCutscene("_main.introcutscene")
         end
     end
