@@ -96,3 +96,14 @@ function Mod:isTauntingAvaliable()
     end
     return false
 end
+
+function Mod:updateMaxTension()
+    local max_tension_modifier = BadgesLib:getBadgeEquipped("tension_plus")
+    local max_tension = 100
+    if max_tension_modifier > 0 then
+        max_tension = max_tension + (max_tension_modifier * 50)
+    elseif max_tension_modifier < 0 then
+        max_tension = max_tension * (1/max_tension_modifier)
+    end
+    Game:setMaxTension(max_tension)
+end
