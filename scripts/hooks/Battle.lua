@@ -39,6 +39,8 @@ function Battle:init()
     if BadgesLib:getBadgeEquipped("phasebadge") >= 1 then
         self.phasearmor = BadgesLib:getBadgeEquipped("phasebadge")
     end
+	
+	self.attack_left = false
 end
 
 -- FIXME: \/ copied from libraries/EnemyTension/scripts/hooks/Battle.lua
@@ -76,6 +78,40 @@ end
 
 function Battle:onStateChange(old,new)
     super.onStateChange(self,old,new)
+
+    if new == "INTRO" then
+
+        for i,battler in ipairs(self.party) do
+            if self.encounter.PINCER then
+				if Mod.libs["moreparty"] then
+					local classic = (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4)
+					if classic == 3 and #Game.party == 4 then classic = 2 end
+					if #Game.party <= classic then
+						if i%2 == 0 then
+							battler.sprite.flip_x = true
+							battler.left = true
+						else
+							battler.left = false
+						end
+					else
+						if i > classic then
+							battler.sprite.flip_x = true
+							battler.left = true
+						else
+							battler.left = false
+						end
+					end
+				else
+					if i%2 == 0 then
+						battler.sprite.flip_x = true
+						battler.left = true
+					else
+						battler.left = false
+					end
+				end
+			end
+        end
+    end
 
     if new == "VICTORY" then
         if self.enemy_tension_bar then
@@ -384,6 +420,99 @@ function Battle:onStateChange(old,new)
 
 end
 
+function Battle:hurt(amount, exact, target)
+    -- Note: 0, 1 and 2 are to target a specific party member.
+    -- In Kristal, we'll allow them to be objects as well.
+    -- Also in Kristal, they're 1, 2 and 3.
+    -- 3 is "ALL" in Kristal,
+    -- while 4 is "ANY".
+    target = target or "ANY"
+
+    -- Alright, first let's try to adjust targets.
+
+    if type(target) == "number" then
+        target = self.party[target]
+    end
+
+    if isClass(target) and target:includes(PartyBattler) then
+        if (not target) or (target.chara:getHealth() <= 0) then -- Why doesn't this look at :canTarget()? Weird.
+            target = self:randomTargetOld()
+        end
+    end
+
+    if target == "ANY" then
+        target = self:randomTargetOld()
+
+        -- Calculate the average HP of the party.
+        -- This is "scr_party_hpaverage", which gets called multiple times in the original script.
+        -- We'll only do it once here, just for the slight optimization. This won't affect accuracy.
+
+        -- Speaking of accuracy, this function doesn't work at all!
+        -- It contains a bug which causes it to always return 0, unless all party members are at full health.
+        -- This is because of a random floor() call.
+        -- I won't bother making the code accurate; all that matters is the output.
+
+        local party_average_hp = 1
+
+        for _,battler in ipairs(self.party) do
+            if battler.chara:getHealth() ~= battler.chara:getStat("health") then
+                party_average_hp = 0
+                break
+            end
+        end
+
+        -- Retarget... twice.
+        if target.chara:getHealth() / target.chara:getStat("health") < (party_average_hp / 2) then
+            target = self:randomTargetOld()
+        end
+        if target.chara:getHealth() / target.chara:getStat("health") < (party_average_hp / 2) then
+            target = self:randomTargetOld()
+        end
+
+        -- If we landed on Kris (or, well, the first party member), and their health is low, retarget (plot armor lol)
+        if (target == self.party[1]) and ((target.chara:getHealth() / target.chara:getStat("health")) < 0.35) then
+            target = self:randomTargetOld()
+        end
+
+        -- They got hit, so un-darken them
+        target.should_darken = false
+        target.targeted = true
+    end
+
+    -- Now it's time to actually damage them!
+    if isClass(target) and target:includes(PartyBattler) then
+		if self.encounter.PINCER and self.attack_left ~= target.left then
+			target:hurt(amount * Kristal.getLibConfig("pincer_battles", "opposite_mult") or 1.25, exact)
+			if Kristal.getLibConfig("pincer_battles", "hit_face") then
+				target.left = self.attack_left
+				target.sprite.flip_x = target.left
+			end
+		else
+			target:hurt(amount, exact)
+		end
+        return {target}
+    end
+
+    if target == "ALL" then
+        Assets.playSound("hurt")
+        for _,battler in ipairs(self.party) do
+            if not battler.is_down then
+				if self.encounter.PINCER and self.attack_left ~= battler.left then
+					battler:hurt(amount * Kristal.getLibConfig("pincer_battles", "opposite_mult") or 1.25, exact, nil, {all = true})
+					if Kristal.getLibConfig("pincer_battles", "hit_face") then
+						battler.left = self.attack_left
+						battler.sprite.flip_x = battler.left
+					end
+				else
+					battler:hurt(amount, exact, nil, {all = true})
+				end
+            end
+        end
+        -- Return the battlers who aren't down, aka the ones we hit.
+        return Utils.filter(self.party, function(item) return not item.is_down end)
+    end
+end
+
 function Battle:swapSoul(object)
 
     Game.stage.timescale = 1
@@ -506,7 +635,7 @@ function Battle:processAction(action)
                 sparkle:play(4/30, true)
                 sparkle:setScale(2)
                 sparkle.layer = BATTLE_LAYERS["above_battlers"]
-                sparkle.physics.speed_x = Utils.random(2, 6)
+                sparkle.physics.speed_x = Utils.random(2, 6) * (battler.left and -1 or 1)
                 sparkle.physics.friction = -0.25
                 sparkle:fadeOutSpeedAndRemove()
                 self:addChild(sparkle)
@@ -706,6 +835,13 @@ end
 function Battle:commitSingleAction(action)
     super.commitSingleAction(self, action)
     local battler = self.party[action.character_id]
+	local target = action.target
+	
+	if self.encounter.PINCER and target and not target[1] then
+		battler.old_left = battler.left
+		battler.left = target.left
+		battler.sprite.flip_x = battler.left
+	end
 
     -- Spawns RefundTxt when using instant items.
     if (action.action == "ITEM" and action.data and (action.data.instant)) then
@@ -718,6 +854,46 @@ function Battle:commitSingleAction(action)
     end
 end
 
+function Battle:removeSingleAction(action)
+    local battler = self.party[action.character_id]
+	
+	if self.encounter.PINCER then
+		battler.left = battler.old_left
+		battler.sprite.flip_x = battler.left
+	end
+
+    if Kristal.callEvent("onBattleActionUndo", action, action.action, battler, action.target) then
+        battler.action = nil
+        self.character_actions[action.character_id] = nil
+        return
+    end
+
+    battler:resetSprite()
+
+    if action.tp then
+        if action.tp < 0 then
+            Game:giveTension(-action.tp)
+        elseif action.tp > 0 then
+            Game:removeTension(action.tp)
+        end
+    end
+
+    if action.action == "ITEM" and action.data and action.item_index then
+        if action.consumed then
+            if action.result_item then
+                Game.inventory:setItem(action.item_storage, action.item_index, action.data)
+            else
+                Game.inventory:addItemTo(action.item_storage, action.item_index, action.data)
+            end
+        end
+        action.data:onBattleDeselect(battler, action.target)
+    elseif action.action == "SPELL" and action.data then
+        action.data:onDeselect(battler, action.target)
+    end
+
+    battler.action = nil
+    self.character_actions[action.character_id] = nil
+end
 
 function Battle:pierce(amount, exact, target)
     target = target or "ANY"

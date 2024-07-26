@@ -1,0 +1,16 @@
+{
+    "id": "pincer_battles",
+    "version": "v2.0",
+    "engineVer": "v0.9.0",
+    "authors": [
+        "AcousticJamm"
+    ],
+    "config": {
+		// This option is the multiplier for an enemy's attack if
+		// the party member is facing away.
+		"opposite_mult": 1.25,
+		// This option will decide if a hit party member will turn
+		// to face the enemy that hit them.
+		"hit_face": true
+	}
+}

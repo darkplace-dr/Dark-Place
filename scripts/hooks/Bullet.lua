@@ -10,6 +10,8 @@ end
 function Bullet:onCollide(soul)
     if not Game.battle.superpower then
 		super.onCollide(self, soul)
+
+        Game.battle.attack_left = self.attacker.left
 	end
 end
 
