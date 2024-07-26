@@ -30,10 +30,8 @@ function DarkPlaceLogo:init()
         }
     end
     self.text_timer = 0
-    self.current_letter = 1
 
     self.intro_sound = love.audio.newSource(Assets.getMusicPath("darkplace_intro"), "stream")
-    self.played_intro_sound = false
 
     self.tagline = Assets.getTexture("ui/title/tagline")
     self.tagline_alpha = 0
@@ -66,11 +64,8 @@ function DarkPlaceLogo:update()
     if self.phase == 1 then
         if self.change_time then
             self.timer = 60
-            self.change_time = false
-        end
-        if self.played_intro_sound == false then
             self.intro_sound:play()
-            self.played_intro_sound = true
+            self.change_time = false
         end
     end
 
