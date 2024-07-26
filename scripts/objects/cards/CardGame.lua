@@ -35,7 +35,7 @@ function  CardGame:init()
     self.ui_select = Assets.newSound("ui_select")
 	self.ui_error = Assets.newSound("error")
     self.ui_cant_select = Assets.newSound("ui_cant_select")
-	self.ui_block = Assets.newSound("ding")
+	self.ui_block = Assets.newSound("bell")
     self.ui_hit = Assets.newSound("damage")
 	
 	self.intro_timer = 0
