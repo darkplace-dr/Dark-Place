@@ -217,3 +217,22 @@ function Mod:setDesiredWindowTitleAndIcon()
         love.window.setTitle(Kristal.getDesiredWindowTitle())
     end
 end
+
+-- "Linear interpolation" that snaps into place when there is little distance left.
+-- This is meaningful in case m (typically named t) is constant.
+--
+-- Derived from GML snippet by cecil (@attic-stuff) on GameMaker Discord
+--
+---@param a number # Left edge
+---@param b number # Right edge
+---@param m number # Progress or increment amount
+---@param snap_delta? number # Distance at which to snap to b
+---@return number
+function Mod:lerpSnap(a, b, m, snap_delta)
+    if snap_delta == nil then snap_delta = 0.001 end
+    local result = Utils.lerp(a, b, m)
+    if b - result <= snap_delta then
+        return b
+    end
+    return result
+end

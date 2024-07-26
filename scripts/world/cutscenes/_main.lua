@@ -548,4 +548,10 @@ return {
 			cutscene:text("* It seems you can't dig without a spade.")
 		end
 	end,
+
+    logo_debug = function(cutscene)
+        Game.world.music:stop()
+        local logo = Game.world:spawnObject(DarkPlaceLogo(), "ui")
+        cutscene:wait(function() return logo:isRemoved() end)
+    end
 }
