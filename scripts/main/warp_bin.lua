@@ -46,6 +46,7 @@ Mod.warp_bin_codes = {
 	["JOHNWICK"] = { result = "archives/starting_room" },
     ["TOMBSITE"] = { result = "fwood/entry", marker = "warp" },
     ["WILDEAST"] = { result = "dunes/37_saloon" },
+    ["WOODROOM"] = { result = "gallery/galleryentrance" },
     ["WTF1998S"] = {
         result = function(cutscene)
             Game:setFlag("wb_wtf1998s", true)
