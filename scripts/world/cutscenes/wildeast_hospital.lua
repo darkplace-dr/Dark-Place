@@ -49,7 +49,7 @@ return {
                     if Game.party[4] then
                         Game.party[4]:setHealth(Game.party[4]:getStat("health") + 15)
                     end
-                    Assets.playSound("success")
+                    Assets.playSound("won")
                     cutscene:text("* (You gained +15 extra HP!)")
                     cutscene:showNametag("The Doc")
                     cutscene:text("* When the energy wears off,[wait:5] it's\ngone for good!", nil, event)
@@ -110,7 +110,7 @@ return {
                         if Game.party[4] then
                             Game.party[4]:setHealth(Game.party[4]:getStat("health") + 15)
                         end
-                        Assets.playSound("success")
+                        Assets.playSound("won")
                         cutscene:text("* (You gained +15 extra HP!)")
                         cutscene:showNametag("The Doc")
                         cutscene:text("* Thank you![wait:5] Come again soon!", nil, event)
