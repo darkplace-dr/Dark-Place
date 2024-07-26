@@ -134,4 +134,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). **Please make sure to read the aforement
 * xnq et al. - Original creators of the Throwaway AC
 * Ministry of Education of the PRC - Creator of a track in the Jukebox
 * Hummer Team - Creator of the Donkey Kong Country bootleg for the NES
+* 黒塗り世界宛て書簡 - フロクロ
 </details>
