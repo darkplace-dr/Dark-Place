@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 44,
+  nextobjectid = 50,
   properties = {
     ["music"] = "hauntedhouse",
     ["name"] = "Wooden Abyss - Room 1"
@@ -127,9 +127,9 @@ return {
         0, 0, 0, 4, 0, 0, 0, 10, 11, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0
       }
     },
     {
@@ -400,14 +400,27 @@ return {
           properties = {}
         },
         {
-          id = 37,
+          id = 44,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 800,
+          y = 280,
+          width = 40,
+          height = 200,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 45,
           name = "",
           type = "",
           shape = "rectangle",
           x = 720,
           y = 320,
           width = 40,
-          height = 40,
+          height = 160,
           rotation = 0,
           visible = true,
           properties = {}
@@ -486,6 +499,35 @@ return {
           y = 80,
           width = 0,
           height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 48,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 760,
+          y = 480,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "galleryentrance",
+            ["marker"] = "spawn"
+          }
+        },
+        {
+          id = 49,
+          name = "slidearea",
+          type = "",
+          shape = "rectangle",
+          x = 760,
+          y = 360,
+          width = 40,
+          height = 120,
           rotation = 0,
           visible = true,
           properties = {}
