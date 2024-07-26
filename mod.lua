@@ -1,6 +1,7 @@
 modRequire("scripts/main/utils_general")
 modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/utils_lore")
+modRequire("scripts/main/utils_files")
 modRequire("scripts/main/minigames_glue")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
