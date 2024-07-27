@@ -1,6 +1,7 @@
 modRequire("scripts/main/utils_general")
 modRequire("scripts/main/debugsystem")
 modRequire("scripts/main/utils_lore")
+modRequire("scripts/main/utils_files")
 modRequire("scripts/main/minigames_glue")
 modRequire("scripts/main/warp_bin")
 modRequire("scripts/main/ow_taunt")
@@ -554,6 +555,14 @@ function Mod:postInit(new_file)
             Game:setPartyMembers("kris")
             Game.world:loadMap("woods/spawn")
         else
+            local noel = Mod:loadGameN()
+            if noel and noel.Map == "room1" then
+                Game:addPartyMember("noel")
+                Game:setFlag("noel_party", true)
+                local num = noel.SaveID
+                Game:setFlag("noel_SaveID", num)
+            end
+
             Game.world:startCutscene("_main.introcutscene")
         end
     end
@@ -1174,15 +1183,4 @@ function Mod:createQuest(name, id, desc, progress_max, silent)
     if not silent and Game.stage then
         Game.stage:addChild(QuestCreatedPopup(id))
     end
-end
-
-function Mod:updateMaxTension() 
-    local max_tension_modifier = BadgesLib:getBadgeEquipped("tension_plus")
-    local max_tension = 100
-    if max_tension_modifier > 0 then
-        max_tension = max_tension + (max_tension_modifier * 50)
-    elseif max_tension_modifier < 0 then
-        max_tension = max_tension * (1/max_tension_modifier)
-    end
-    Game:setMaxTension(max_tension)
 end
