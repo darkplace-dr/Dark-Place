@@ -1,7 +1,7 @@
 -- Yep
 Utils.hook(Sprite, "setTextureExact", function(orig, self, texture)
     -- TODO: getter
-    if self.allow_replacement_texture or (self.actor and self.actor.allow_replacement_texture) then
+    if self.disallow_replacement_texture or (self.actor and self.actor.disallow_replacement_texture) then
         return orig(self, texture)
     end
 
