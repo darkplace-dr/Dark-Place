@@ -1,5 +1,10 @@
 -- Yep
-Utils.hook(Sprite, "setTextureExact", function(_, self, texture)
+Utils.hook(Sprite, "setTextureExact", function(orig, self, texture)
+    -- TODO: getter
+    if self.allow_replacement_texture or (self.actor and self.actor.allow_replacement_texture) then
+        return orig(self, texture)
+    end
+
     if type(texture) == "string" then
         self.texture = Assets.getTexture(texture)
     else
