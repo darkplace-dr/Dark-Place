@@ -2,9 +2,11 @@
 -- Can/Will be used to check if the player has played certain games like Undertale or Deltarune.
 ---@param try_wine_route? boolean # If true, an attempt to check wineprefixs for the file will be made on Linux. In this case name should be a path for Windows.
 ---@param wine_steam_appid? number # The Steam AppID of the game to check for; if specified, wine route will also check the wineprefix corresponding to that AppID.
---- @return boolean exists
+---@return boolean exists
+---@return string? path
 function Mod:fileExists(name, try_wine_route, wine_steam_appid)
     local path = ""
+
     local function fileExists(path)
         local f = io.open(path, "r")
         return f ~= nil and io.close(f)
@@ -19,6 +21,7 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
         end
         return ok, err
     end
+
     if love.system.getOS() == "Windows" then
         local function unixizePathSep(path)
             return string.gsub(path, "\\", "/")
@@ -50,7 +53,7 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
                 appdata_wineprefix = user_wineprefix.."/AppData/" -- vista
             end
             local path_wineprefix = appdata_wineprefix..name
-            if fileExists(path_wineprefix) then return true end
+            if fileExists(path_wineprefix) then return true, path_wineprefix end
 
             if wine_steam_appid then
                 local steamroot = os.getenv("STEAMROOT") or os.getenv("HOME").."/.steam"
@@ -61,12 +64,14 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
                     appdata_steampfx = user_steampfx.."/AppData/" -- vista
                 end
                 local path_steampfx = appdata_steampfx..name
-                if fileExists(path_steampfx) then return true end
+                if fileExists(path_steampfx) then return true, path_steampfx end
             end
             return false
         end
     end
-    return fileExists(path)
+
+    if fileExists(path) then return true, path end
+    return false
 end
 
 -- Directly check if a Kristal mod has any save files using Mod:fileExists()
@@ -109,4 +114,46 @@ end
 
 function Mod:hasWiiBIOS()
     return not not love.filesystem.getInfo("wii_settings.json")
+end
+
+-- Check if the SnowGrave route has been progressed (flag[915] > 0) in any Deltarune save the player has
+---@see https://github.com/Jacky720/FloweysTimeMachine/blob/deltarune/flags.js#L903
+function Mod:hasDRSidebSave()
+    if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
+        return false
+    end
+
+    local found = false
+
+    local info = Mod.pc_gifts_data["DELTARUNE"]
+
+    for i = 0, 3 - 1 do -- this checks the main files, not the completion files
+        local save_file = "filech2_".. i
+
+        local os = love.system.getOS():gsub(" ", "_")
+        assert(info.prefix_os[os])
+        local exists, true_path = Mod:fileExists(info.prefix_os[os].."/"..save_file)
+        if not exists and love.system.getOS() == "Linux" and info.prefix_os["Windows"] then
+            exists, true_path = Mod:fileExists(info.prefix_os["Windows"].."/"..save_file, true, info.wine_steam_appid)
+        end
+
+        if exists then
+            local f = io.open(true_path, "r")
+            if f then
+                local line_c = 1
+                for line in f:lines() do
+                    if line_c == 553 --[[ global.flag array start ]] + 915 then
+                        found = tonumber(line) > 0
+                    end
+                    line_c = line_c + 1
+                end
+
+                f:close()
+            end
+        end
+
+        if found then break end
+    end
+
+    return found
 end

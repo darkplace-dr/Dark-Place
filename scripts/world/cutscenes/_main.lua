@@ -1,40 +1,18 @@
 return {
     ---@param cutscene WorldCutscene
     introcutscene = function(cutscene)
-        -- Save File Reading
-        local function file_exists(name)
-            local f = io.open(name, "r")
-            return f ~= nil and io.close(f)
-        end
+        local text
 
-        local function getFileLines(fileName)
-            local f = io.open(fileName, "r")
-
-            tab={}
-            for l in f:lines() do
-                table.insert(tab, l)
-            end
-
-            f:close()
-            return tab
-        end
-
-        local current_os = love.system.getOS()
-        local fileFound = false
-        if current_os == "Windows" then
-            for i=0,2 do
-                file = string.gsub(os.getenv('UserProfile'), "\\", "/").."/AppData/Local/DELTARUNE/filech2_".. i
-                if file_exists(file) then
-                    if tonumber(getFileLines(file)[1468])>=1 then
-                        --print("Snowgrave Save file "..i.." found!")
-                        fileFound=true
-                        break
-                    end
-                end
+        local function gonerTextFade(wait)
+            local this_text = text
+            Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function()
+                this_text:remove()
+            end)
+            if wait ~= false then
+                cutscene:wait(1)
             end
         end
 
-        local text, gonerTextFade
         -- FIXME: actually use skippable
         local function gonerText(str, advance, skippable)
             text = DialogueText("[speed:0.5][spacing:6][style:GONER][voice:none]" .. str, 160, 100, 640, 480,
@@ -51,16 +29,6 @@ return {
             end
         end
 
-        gonerTextFade = function(wait)
-            local this_text = text
-            Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function()
-                this_text:remove()
-            end)
-            if wait ~= false then
-                cutscene:wait(1)
-            end
-        end
-
         ---@type Music -- satisfy LLS
         local world_music = Game.world.music
         world_music:play("DRONE", 0.8)
@@ -70,6 +38,8 @@ return {
         cover:setParallax(0, 0)
         cover:setLayer(WORLD_LAYERS["below_ui"])
         Game.world:addChild(cover)
+
+        local sideb_file_found = Mod:hasDRSidebSave()
 
         local skip_hint = Text("Hold C+D to skip",
             0, SCREEN_HEIGHT/2+50, SCREEN_WIDTH, SCREEN_HEIGHT,
@@ -86,17 +56,19 @@ return {
         local can_exit = true
         cutscene:during(function()
             if not can_exit then return false end
+
             if Input.down("c") and Input.down("d") then
-                Assets.playSound("item", 0.1, 1.2)
-                Input.clear("d")
-                Input.clear("c")
                 Game:setFlag("skipped_intro", true)
+                Assets.playSound("item", 0.1, 1.2)
+                skip_hint:remove()
+                Game.world.music:stop()
+                Input.clear("c")
+                Input.clear("d")
+
                 -- NOTE: when this cutscene gets complex we may need to do
                 -- some fallback configurations here
                 cutscene:after(function()
-                    if fileFound then
-                        skip_hint:remove()
-                        Game.world.music:stop()
+                    if sideb_file_found then
                         Game.world.timer:after(2, function()
                             Game.world:startCutscene("_main.snowgraveskip")
                         end)
@@ -137,7 +109,7 @@ return {
         cutscene:wait(0.5)
         gonerText("NOW.[wait:20]")
 
-        if fileFound then
+        if sideb_file_found then
             cutscene:wait(0.5)
             gonerText("BEFORE WE BEGIN.[wait:20]")
             cutscene:wait(0.5)
@@ -384,14 +356,12 @@ return {
         Game:setFlag("vesselChosen", 1)
         cutscene:wait(1)
 
-        if savedData then
-            if savedData.Map == "room1" then
-                you_sprite:setSprite("noel")
-                Assets.playSound("mysterygo", 1, 1)
-                you_sprite:shake(6)
-                cutscene:wait(0.1)
-                Assets.stopSound("mysterygo", actually_stop)
-            end
+        if Game:getFlag("noel_party") then -- Noel has already been set up at this point
+            you_sprite:setSprite("noel")
+            Assets.playSound("mysterygo", 1, 1)
+            you_sprite:shake(6)
+            cutscene:wait(0.1)
+            Assets.stopSound("mysterygo")
         end
 
         background:remove()
@@ -404,6 +374,7 @@ return {
             Game.world:mapTransition("room1", nil, "down")
         end)
     end,
+
     snowgraveskip = function(cutscene)
         local text = DialogueText({
             "A save file with the snowgrave route achieved has been found.",
