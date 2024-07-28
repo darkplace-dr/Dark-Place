@@ -1,14 +1,11 @@
 function Mod:checkNoel()
     local noelsave = Mod:loadGameN()
-    if not noelsave then return end
-    if Game:hasPartyMember("noel") then
-        if noelsave.SaveID ~= Game:getFlag("noel_SaveID") then
-            Game:removePartyMember("noel")
-            Game.world:removeFollower("noel")
-            local noel = Game.world:getCharacter("noel")
-            if noel then noel:remove() end
-            Mod:loadNoel(noelsave)
-        end
+    if noelsave and Game:hasPartyMember("noel") and noelsave.SaveID ~= Game:getFlag("noel_SaveID") then
+        Game:removePartyMember("noel")
+        Game.world:removeFollower("noel")
+        local noel = Game.world:getCharacter("noel")
+        if noel then noel:remove() end
+        Mod:loadNoel(noelsave)
     end
 end
 
@@ -111,9 +108,8 @@ function Mod:loadGameN()
     if love.filesystem.getInfo(n_save) then
         local data = JSON.decode(love.filesystem.read(n_save))
         return data
-    else
-        return false
     end
+    return nil
 end
 
 function Mod:findDifferenceIndex(text, text2)

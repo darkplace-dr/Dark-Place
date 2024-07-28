@@ -1,32 +1,27 @@
 local greyarea, super = Class(Map)
 
-
 function greyarea:onEnter()
-
     Game.stage:setWeather("rain", false, true)
 
     local savedData = Mod:loadGameN()
-    if savedData then
-    else
+    if not savedData then
         Game.world:spawnNPC("noel", 2820, 2180, {cutscene = "noel.meet", sprite = "brella"})
     end
+end
 
+function greyarea:onExit()
+    Game.stage:resetWeather()
 end
 
 function greyarea:update()
-
-    if Game.world.map.id == "greyarea" then
-        if Game.world.player.walk_speed >= 60 then
-            local eye = Game:getFlag("greyarea_exit_to")
-            Game.world:mapTransition(eye[1], eye[2], eye[3])
-			Game:setFlag("weather_save", false)
-        end
+    if Game.world.player.walk_speed >= 60 then
+        local eye = Game:getFlag("greyarea_exit_to")
+        Game.world:mapTransition(eye[1], eye[2], eye[3])
     end
 
     if Input.pressed("menu") and not Game.world.cutscene then
         local eye = Game:getFlag("greyarea_exit_to")
         Game.world:mapTransition(eye[1], eye[2], eye[3])
-		Game:setFlag("weather_save", false)
     end
 
     if Game.world.player.x <= 360 then
@@ -63,6 +58,7 @@ function greyarea:update()
             end
         end
     end
+
     super.update(self)
 end
 

@@ -444,13 +444,14 @@ return {
 
                 cutscene:text("* So, may I join the [color:yellow]PARTY[color:white]?", "neutral")
                 local savedData = Mod:loadGameN()
+                assert(savedData) -- the file must've have been created above
                 local cc = cutscene:choicer({"Yes", "No"})
                 if cc == 1 then
                     if Game.party[Game:getFlag("party_max")] then
                         cutscene:text("* Empty your party first [color:yellow]DUMBASS[color:white].", "huh")
                     else
                         cutscene:text("* Swag bacon.", "bruh")
-          	        cutscene:detachFollowers()
+          	            cutscene:detachFollowers()
                         noel:convertToFollower()
                         Game:addPartyMember("noel")
                         cutscene:attachFollowers()
@@ -473,6 +474,7 @@ return {
 
         cutscene:setSpeaker(noel)
         local savedData = Mod:loadGameN()
+        assert(savedData)
         local name = Game.save_name
         local thing = love.math.random(1, 20)
 
