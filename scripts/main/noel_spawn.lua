@@ -20,10 +20,10 @@ function Mod:loadNoel(noelsave)
     end
 
     if savedData.Map == "cybercity/alleyzero" then
-                    local newData = {
-                        Map = "cybercity/alley1"
-                    }    
-                    Mod:saveGameN(newData)
+        local newData = {
+            Map = "cybercity/alley1"
+        }
+        Mod:saveGameN(newData)
     end
 
     local inparty = Game:getFlag("noel_party")
@@ -88,26 +88,21 @@ end
 local save_dir = "saves/"..Mod.info.id
 local n_save = save_dir.."/null.char"
 
-function Mod:saveGameN(data)
-    local existingData = {}
-    if love.filesystem.getInfo(n_save) then
-        local contents, _ = love.filesystem.read(n_save)
-        if contents then
-            existingData = JSON.decode(contents)
+function Mod:saveGameN(new_data)
+    local data = self:loadGameN() or {}
+    if new_data then
+        for k, v in pairs(new_data) do
+            data[k] = v
         end
-    end
-    for k, v in pairs(data) do
-        existingData[k] = v
     end
 
     love.filesystem.createDirectory(save_dir)
-    love.filesystem.write(n_save, JSON.encode(existingData))
+    love.filesystem.write(n_save, JSON.encode(data))
 end
 
 function Mod:loadGameN()
     if love.filesystem.getInfo(n_save) then
-        local data = JSON.decode(love.filesystem.read(n_save))
-        return data
+        return JSON.decode(love.filesystem.read(n_save))
     end
     return nil
 end
@@ -122,22 +117,22 @@ function Mod:findDifferenceIndex(text, text2)
     return minLen
 end
 
-    function Mod:noels_annoyance(cutscene)
-        if not Game:getFlag("noel's_annoyance") then
-            Game:setFlag("noel's_annoyance", 1)
-        elseif Game:getFlag("noel's_annoyance") == 5 then
-            cutscene:showNametag("Noel")
-            local thing = love.math.random(1, 2)
-            if thing == 1 then
-	        cutscene:text("* OH,[wait:5] MY,[wait:5] GOD!!!", "madloud", "noel")
-                cutscene:text("* This is the dumbest puzzle ever, I'm leaving!", "madloud", "noel")
-            elseif thing == 2 then
-	        cutscene:text("* Looks like you're in a bit of a pickle [color:yellow]"..Game.save_name.."[color:white].", "bruh", "noel")
-	        cutscene:text("* Don't worry.[wait:8] [face:neutral]For 12[color:yellow] PlayCoins[font:small]TM[font:main][color:white]\nWe can teleport to the nearest [color:yellow]CHECKPOINT[color:white]!", "lookup", "noel")
-            -- noel random saying "this stinks, im leaving", or "playcoins or sum shit"
-            end
-            cutscene:hideNametag()
-        else
-            Game:setFlag("noel's_annoyance", Game:getFlag("noel's_annoyance") + 1)
+function Mod:noels_annoyance(cutscene)
+    if not Game:getFlag("noel's_annoyance") then
+        Game:setFlag("noel's_annoyance", 1)
+    elseif Game:getFlag("noel's_annoyance") == 5 then
+        cutscene:showNametag("Noel")
+        local thing = love.math.random(1, 2)
+        if thing == 1 then
+        cutscene:text("* OH,[wait:5] MY,[wait:5] GOD!!!", "madloud", "noel")
+            cutscene:text("* This is the dumbest puzzle ever, I'm leaving!", "madloud", "noel")
+        elseif thing == 2 then
+        cutscene:text("* Looks like you're in a bit of a pickle [color:yellow]"..Game.save_name.."[color:white].", "bruh", "noel")
+        cutscene:text("* Don't worry.[wait:8] [face:neutral]For 12[color:yellow] PlayCoins[font:small]TM[font:main][color:white]\nWe can teleport to the nearest [color:yellow]CHECKPOINT[color:white]!", "lookup", "noel")
+        -- noel random saying "this stinks, im leaving", or "playcoins or sum shit"
         end
+        cutscene:hideNametag()
+    else
+        Game:setFlag("noel's_annoyance", Game:getFlag("noel's_annoyance") + 1)
     end
+end
