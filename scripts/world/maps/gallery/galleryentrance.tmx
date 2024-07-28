@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="25" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="50">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="25" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="51">
  <editorsettings>
   <export target="galleryentrance.lua" format="lua"/>
  </editorsettings>
@@ -50,7 +50,7 @@
 0,0,11,0,4,0,0,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,10,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,11,11,0,10,4,0,0,11,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,4,0,0,0,10,11,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,4,0,0,0,10,11,0,0,11,0,0,0,0,0,0,0,0,2,0,0,0,0,
 0,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,
@@ -87,13 +87,13 @@
   <object id="29" x="880" y="120" width="120" height="40"/>
   <object id="30" x="1000" y="160" width="40" height="120"/>
   <object id="31" x="920" y="280" width="80" height="40"/>
-  <object id="32" x="800" y="240" width="120" height="40"/>
   <object id="33" x="720" y="160" width="40" height="40"/>
   <object id="34" x="680" y="200" width="40" height="40"/>
   <object id="35" x="640" y="240" width="40" height="40"/>
   <object id="36" x="680" y="280" width="40" height="40"/>
   <object id="44" x="800" y="280" width="40" height="200"/>
   <object id="45" x="720" y="320" width="40" height="160"/>
+  <object id="50" x="840" y="240" width="80" height="40"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="6" name="objects">
   <object id="40" name="npc" x="959.333" y="221.333">
@@ -124,8 +124,8 @@
   </object>
   <object id="48" name="transition" x="760" y="480" width="40" height="40">
    <properties>
-    <property name="map" value="galleryentrance"/>
-    <property name="marker" value="spawn"/>
+    <property name="map" value="gallery/wood2"/>
+    <property name="marker" value="slide"/>
    </properties>
   </object>
   <object id="49" name="slidearea" x="760" y="360" width="40" height="120"/>
