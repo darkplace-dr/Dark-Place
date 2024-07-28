@@ -177,7 +177,7 @@ return {
     end,
     fohad_sign_3 = function(cutscene)
         cutscene:text("* (These types of trees DON'T contain an item that can heal you.)")
-        cutscene:text("* (Whatever you do,[wait:5] DON'T check the tree and use [".. Input.key_bindings["menu"][1]:upper() .."] to open your menu!)")
+        cutscene:text("* (Whatever you do,[wait:5] DON'T check the tree and use [bind:menu] to open your menu!)")
         cutscene:text("* (You got it!?)\n* (SIGNED,[wait:5] LANCER)")
     end,
 

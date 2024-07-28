@@ -267,7 +267,7 @@ end
 function DarkPartyMenu:draw()
     love.graphics.printf("PARTY", 0, 0, self.bg.width, "center")
     if self.state == "MAIN" then
-        love.graphics.printf("[" .. Input.key_bindings["menu"][1]:upper() .. "] REMOVE", 185, -20, self.bg.width,
+        love.graphics.printf(Input.getText("menu") .. " REMOVE", 185, -20, self.bg.width,
             "center")
         love.graphics.printf("[V] RANDOM", 185, 12, self.bg.width, "center")
     end
