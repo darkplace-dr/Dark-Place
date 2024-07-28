@@ -161,12 +161,14 @@ function Mod:hasDRSidebSave()
     local found = false
 
     local info = Mod.pc_gifts_data["DELTARUNE"]
+    local os = love.system.getOS():gsub(" ", "_")
+    if not info.prefix_os[os] then
+        return false
+    end
 
     for i = 0, 3 - 1 do -- this checks the main files, not the completion files
         local save_file = "filech2_".. i
 
-        local os = love.system.getOS():gsub(" ", "_")
-        assert(info.prefix_os[os])
         local exists, true_path = Mod:fileExists(info.prefix_os[os].."/"..save_file)
         if not exists and love.system.getOS() == "Linux" and info.prefix_os["Windows"] then
             exists, true_path = Mod:fileExists(info.prefix_os["Windows"].."/"..save_file, true, info.wine_steam_appid)
