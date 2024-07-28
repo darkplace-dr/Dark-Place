@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 50,
+  nextobjectid = 51,
   properties = {
     ["music"] = "hauntedhouse",
     ["name"] = "Wooden Abyss - Room 1"
@@ -124,7 +124,7 @@ return {
         0, 0, 11, 0, 4, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 10, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 11, 11, 0, 10, 4, 0, 0, 11, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 4, 0, 0, 0, 10, 11, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 4, 0, 0, 0, 10, 11, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0,
         0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0,
@@ -335,19 +335,6 @@ return {
           properties = {}
         },
         {
-          id = 32,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 800,
-          y = 240,
-          width = 120,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 33,
           name = "",
           type = "",
@@ -421,6 +408,19 @@ return {
           y = 320,
           width = 40,
           height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 50,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 840,
+          y = 240,
+          width = 80,
+          height = 40,
           rotation = 0,
           visible = true,
           properties = {}
@@ -515,8 +515,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "galleryentrance",
-            ["marker"] = "spawn"
+            ["map"] = "gallery/wood2",
+            ["marker"] = "slide"
           }
         },
         {
