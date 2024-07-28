@@ -30,7 +30,7 @@ Mod.pc_gifts_data = {
     -- Use "KR_" as a prefix to check for a Kristal Mod instead
     KR_frozen_heart = {item_id = "angelring"},
     KR_wii_bios = {item_id = "wiimote"},
-    ["KR_acj_deoxynn/act1"] = {name = "Deoxynn Act 1", item_id = "victory_bell"}
+    ["KR_acj_deoxynn/act1"] = {name = "DEOXYNN ACT 1", item_id = "victory_bell"}
 }
 
 -- Check if a file exists in the AppData/Home folder.
