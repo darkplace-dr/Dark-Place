@@ -1,8 +1,11 @@
 # XREF: https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/lua.template.editorconfig
 
-root = true
-
 [*]
+end_of_line = crlf
+insert_final_newline = false
+charset = utf-8
+
+[*.lua]
 end_of_line = crlf
 insert_final_newline = false
 charset = utf-8
@@ -10,3 +13,6 @@ charset = utf-8
 indent_style = space
 indent_size = 4
 quote_style = double
+
+align_array_table = false
+align_continuous_assign_statement = false

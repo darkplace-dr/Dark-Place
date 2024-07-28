@@ -820,40 +820,6 @@ function Mod:initializeImportantFlags(new_file)
         Game:getPartyMember("whale").opinions = { YOU = 40, kris = 40, susie = 40, noelle = 40, dess = 40, brenda = 40, dumbie = 40, ostarwalker = 40, berdly = 40, bor = 40, robo_susie = 40, noyno = 40, iphone = 40, frisk2 = 40, alseri = 40, jamm = 40, mario = 40, pauling = 40 }
     end
 
-    self.pc_gifts_data = {
-        UNDERTALE = {
-            file = "undertale.ini",
-            item_id = "heart_locket",
-            prefix_os = {Windows = "Local/UNDERTALE", Linux = "%XDG_CONFIG_HOME%/UNDERTALE", OS_X = "com.tobyfox.undertale"},
-            wine_steam_appid = 391540
-        },
-        DELTARUNE = {
-            file = "dr.ini",
-            item_id = "egg",
-            prefix_os = {Windows = "Local/DELTARUNE", Linux = "%XDG_CONFIG_HOME%/DELTARUNE", OS_X = "com.tobyfox.deltarune"},
-            wine_steam_appid = 1690940
-        },
-        UTY = {
-            name = "UNDERTALE YELLOW",
-            file = {"Save.sav", "Save02.sav", "Controls.sav", "tempsave.sav"},
-            item_id = "wildrevolver",
-            prefix_os = {Windows = "Local/Undertale_Yellow", Linux = "%XDG_CONFIG_HOME%/Undertale_Yellow"}
-        },
-        PT = {
-            name = "PIZZA TOWER",
-            file = {"saves/saveData1.ini", "saves/saveData2.ini", "saves/saveData3.ini"},
-            item_id = "pizza_toque",
-            -- Not sure what the Mac OS_X or Linux directories for PT are.
-            -- If anyone else knows tho, feel free to add them in here lol.
-            prefix_os = {Windows = "Roaming/PizzaTower_GM2"},
-            wine_steam_appid = 2231450
-        },
-
-        -- Use "KR_" as a prefix to check for a Kristal Mod instead
-        KR_frozen_heart = {item_id = "angelring"},
-        KR_wii_bios = {item_id = "wiimote"},
-        ["KR_acj_deoxynn/act1"] = {name = "Deoxynn Act 1", item_id = "victory_bell"}
-    }
     local function generateStatusTable(data)
         local status = {}
         for game, info in pairs(data) do

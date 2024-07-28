@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.0",
+  tiledversion = "1.10.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -674,8 +674,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["speed"] = 0,
-            ["texture"] = "world/maps/devroom/pc_1"
+            ["speed"] = -1,
+            ["texture"] = "world/maps/devroom/pc"
           }
         },
         {

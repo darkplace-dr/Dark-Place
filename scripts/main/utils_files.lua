@@ -1,3 +1,38 @@
+Mod.pc_gifts_data = {
+    UNDERTALE = {
+        file = "undertale.ini",
+        item_id = "heart_locket",
+        prefix_os = {Windows = "Local/UNDERTALE", Linux = "%XDG_CONFIG_HOME%/UNDERTALE", OS_X = "com.tobyfox.undertale"},
+        wine_steam_appid = 391540
+    },
+    DELTARUNE = {
+        file = "dr.ini",
+        item_id = "egg",
+        prefix_os = {Windows = "Local/DELTARUNE", Linux = "%XDG_CONFIG_HOME%/DELTARUNE", OS_X = "com.tobyfox.deltarune"},
+        wine_steam_appid = 1690940
+    },
+    UTY = {
+        name = "UNDERTALE YELLOW",
+        file = {"Save.sav", "Save02.sav", "Controls.sav", "tempsave.sav"},
+        item_id = "wildrevolver",
+        prefix_os = {Windows = "Local/Undertale_Yellow", Linux = "%XDG_CONFIG_HOME%/Undertale_Yellow"}
+    },
+    PT = {
+        name = "PIZZA TOWER",
+        file = {"saves/saveData1.ini", "saves/saveData2.ini", "saves/saveData3.ini"},
+        item_id = "pizza_toque",
+        -- Not sure what the Mac OS_X or Linux directories for PT are.
+        -- If anyone else knows tho, feel free to add them in here lol.
+        prefix_os = {Windows = "Roaming/PizzaTower_GM2"},
+        wine_steam_appid = 2231450
+    },
+
+    -- Use "KR_" as a prefix to check for a Kristal Mod instead
+    KR_frozen_heart = {item_id = "angelring"},
+    KR_wii_bios = {item_id = "wiimote"},
+    ["KR_acj_deoxynn/act1"] = {name = "DEOXYNN ACT 1", item_id = "victory_bell"}
+}
+
 -- Check if a file exists in the AppData/Home folder.
 -- Can/Will be used to check if the player has played certain games like Undertale or Deltarune.
 ---@param try_wine_route? boolean # If true, an attempt to check wineprefixs for the file will be made on Linux. In this case name should be a path for Windows.
@@ -126,12 +161,14 @@ function Mod:hasDRSidebSave()
     local found = false
 
     local info = Mod.pc_gifts_data["DELTARUNE"]
+    local os = love.system.getOS():gsub(" ", "_")
+    if not info.prefix_os[os] then
+        return false
+    end
 
     for i = 0, 3 - 1 do -- this checks the main files, not the completion files
         local save_file = "filech2_".. i
 
-        local os = love.system.getOS():gsub(" ", "_")
-        assert(info.prefix_os[os])
         local exists, true_path = Mod:fileExists(info.prefix_os[os].."/"..save_file)
         if not exists and love.system.getOS() == "Linux" and info.prefix_os["Windows"] then
             exists, true_path = Mod:fileExists(info.prefix_os["Windows"].."/"..save_file, true, info.wine_steam_appid)

@@ -137,6 +137,7 @@ end
 
 function character:getGameOverMessage(main)
     local save = Mod:loadGameN()
+    assert(save)
     return {
         "...[wait:5] odd...",
         save.Player_Name.."...?\n[wait:5]Is it over?"
