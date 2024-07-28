@@ -92,7 +92,7 @@ function WeatherLib:init()
             end
             Game.stage.weather = {}
             Game.stage.weather_type = typer
-            if #Game.stage.weather > 0 then Game:setFlag("weather_save", false) end
+            Game:setFlag("weather_save", false)
 
             --Game.stage.overlay = nil
             self.addto = nil
@@ -486,7 +486,7 @@ end
 function WeatherLib:postInit()
     local weather = Game:getFlag("weather_save")
     --print(weather, " (this is the weather)")
-    if weather then
+    if weather and weather[1] then
         Game.stage:setWeather(weather[1], weather[2], weather[3], Game.stage:getWeatherParent())
     end
 end
