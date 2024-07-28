@@ -1,3 +1,23 @@
+local function updatePostSidebData()
+    Game:setFlag("POST_SNOWGRAVE", true)
+    Game:getPartyMember("kris").title = "Leader\nCommands."
+    local noelle = Game:getPartyMember("noelle")
+    noelle:addSpell("snowgrave")
+    noelle.health = 170
+    noelle.stats = {
+        health = 170,
+        attack = 8,
+        defense = 1,
+        magic = 16
+    }
+    noelle:setWeapon("thornring")
+    noelle.flags = {
+        ["iceshocks_used"] = 20,
+        ["boldness"] = 100,
+        ["weird"] = true
+    }
+end
+
 return {
     ---@param cutscene WorldCutscene
     introcutscene = function(cutscene)
@@ -152,23 +172,7 @@ return {
                 gonerText("THERE'S NO[wait:20]\nGOING BACK NOW.[wait:20]")
                 cutscene:wait(0.5)
                 gonerText("...[wait:20]")
-                Game:setFlag("POST_SNOWGRAVE", true)
-                Game:getPartyMember("kris").title = "Leader\nCommands."
-                local noelle = Game:getPartyMember("noelle")
-                noelle:addSpell("snowgrave")
-                noelle.health = 170
-                noelle.stats = {
-                    health = 170,
-                    attack = 8,
-                    defense = 1,
-                    magic = 16
-                }
-                noelle:setWeapon("thornring")
-                noelle.flags = {
-                    ["iceshocks_used"] = 20,
-                    ["boldness"] = 100,
-                    ["weird"] = true
-                }
+                updatePostSidebData()
                 cutscene:wait(0.5)
                 gonerText("IT IS DONE.[wait:20]")
                 cutscene:wait(0.5)
@@ -406,23 +410,7 @@ return {
             text.alpha = 0
             cutscene:wait(2)
 
-            Game:setFlag("POST_SNOWGRAVE", true)
-            Game:getPartyMember("kris").title = "Leader\nCommands."
-            local noelle = Game:getPartyMember("noelle")
-            noelle:addSpell("snowgrave")
-            noelle.health = 170
-            noelle.stats = {
-                health = 170,
-                attack = 8,
-                defense = 1,
-                magic = 16
-            }
-            noelle:setWeapon("thornring")
-            noelle.flags = {
-                ["iceshocks_used"] = 20,
-                ["boldness"] = 100,
-                ["weird"] = true
-            }
+            updatePostSidebData()
 
             text.alpha = 1
             text:setText("It is done.")
@@ -442,6 +430,7 @@ return {
             Game.fader.alpha = 0
         end)
     end,
+
     unlock_ralsei = function(cutscene)
         Game.world.music:stop()
 
@@ -463,47 +452,49 @@ return {
         Assets.playSound("ralsei_unlock")
         Game.world.timer:tween(0.5, ral, {alpha = 1}, "linear")
     end,
-	bean_spot = function(cutscene, event)
-		if Game:getFlag("hasObtainedLancer") then
-			cutscene:detachFollowers()
-			cutscene:detachCamera()
 
-            Assets.playSound("ultraswing")
-			local player = Game.world.player
-			cutscene:setAnimation(player, "battle/act")
-			cutscene:wait(cutscene:slideTo(player, player.x - 80, player.y, 0.5, "out-cubic"))
-			
-            Assets.playSound("lancerwhistle")
-			local lancer = NPC("lancer", player.x, player.y, {facing = "down"})
-			lancer.layer = player.layer - 0.01
-			Game.world:addChild(lancer)
-			event.layer = lancer.layer - 0.01
-			
-			cutscene:wait(cutscene:slideTo(lancer, event.x, event.y, 0.5, "out-cubic"))
-			
-            Assets.playSound("lancercough")
-			cutscene:setAnimation(lancer, "wave")
-			
-			cutscene:wait(0.5)
-			
-			cutscene:text("* Lancer dug up a " .. event.name .. ".")
-			Game:addFlag(event.flag_inc, 1)
-			event:setFlag("dont_load", true)
-			
-			event:remove()
-			
-			cutscene:resetSprite(player)
-			cutscene:resetSprite(lancer)
-			cutscene:look(lancer, "left")
-			cutscene:wait(cutscene:walkTo(player, lancer.x, lancer.y, 1))
-			lancer:remove()
-			
-			cutscene:attachFollowers()
-			cutscene:attachCamera(0.5)
-			cutscene:wait(1)
-		else
+	bean_spot = function(cutscene, event)
+		if not Game:getFlag("hasObtainedLancer") then
 			cutscene:text("* It seems you can't dig without a spade.")
+            return
 		end
+
+        cutscene:detachFollowers()
+        cutscene:detachCamera()
+
+        Assets.playSound("ultraswing")
+        local player = Game.world.player
+        cutscene:setAnimation(player, "battle/act")
+        cutscene:wait(cutscene:slideTo(player, player.x - 80, player.y, 0.5, "out-cubic"))
+        
+        Assets.playSound("lancerwhistle")
+        local lancer = NPC("lancer", player.x, player.y, {facing = "down"})
+        lancer.layer = player.layer - 0.01
+        Game.world:addChild(lancer)
+        event.layer = lancer.layer - 0.01
+        
+        cutscene:wait(cutscene:slideTo(lancer, event.x, event.y, 0.5, "out-cubic"))
+        
+        Assets.playSound("lancercough")
+        cutscene:setAnimation(lancer, "wave")
+        
+        cutscene:wait(0.5)
+        
+        cutscene:text("* Lancer dug up a " .. event.name .. ".")
+        Game:addFlag(event.flag_inc, 1)
+        event:setFlag("dont_load", true)
+        
+        event:remove()
+        
+        cutscene:resetSprite(player)
+        cutscene:resetSprite(lancer)
+        cutscene:look(lancer, "left")
+        cutscene:wait(cutscene:walkTo(player, lancer.x, lancer.y, 1))
+        lancer:remove()
+        
+        cutscene:attachFollowers()
+        cutscene:attachCamera(0.5)
+        cutscene:wait(1)
 	end,
 
     logo_debug = function(cutscene)
