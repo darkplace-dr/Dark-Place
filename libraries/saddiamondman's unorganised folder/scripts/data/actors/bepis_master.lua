@@ -8,7 +8,7 @@ function actor:init(chara)
 	self.height = 34
 	self.hitbox = { 0, 24.5, 34, 9.5 }
 	self.color = { 1, 1, 1 }
-	self.path = "tutorial_masters/test_master"
+	self.path = "tutorial_masters/bepis_master"
 	self.default = "idle"
 	self.voice = nil
 
