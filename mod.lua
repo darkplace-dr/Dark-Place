@@ -1169,3 +1169,7 @@ function Mod:createCombo(id, ...)
         error("Attempt to create nonexistent combo \"" .. tostring(id) .. "\"")
     end
 end
+
+function Mod:getActionOrder()
+	return {"ACT", {"SPELL", "ITEM", "SPARE", "COMBO"}}
+end
