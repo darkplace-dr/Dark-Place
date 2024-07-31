@@ -1216,6 +1216,7 @@ Learning to live with shades, yet be.
 			Game:getPartyMember("dess"):addCombo("jd_batter")
 		end
 		cutscene:hideNametag()
+		cutscene:text("* (Jamm and Dess learned [color:yellow]JD Batter[color:white]!)")
 		Game:setFlag("jamm_closure", true)
 		Kristal.callEvent("completeQuest", "acj2")
         Game:getPartyMember("jamm").has_act = false
