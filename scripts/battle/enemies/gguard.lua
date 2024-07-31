@@ -14,7 +14,7 @@ function GGuard:init()
     self.max_health = 1500
     self.health = 1500
     -- Enemy attack (determines bullet damage)
-    self.attack = 99.9
+    self.attack = 22.2
     -- Enemy defense (usually 0)
     self.defense = 9.9
     -- Enemy reward
@@ -25,7 +25,7 @@ function GGuard:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "aimingr",
+        "aimingrr",
         "aimingrr"
     }
 

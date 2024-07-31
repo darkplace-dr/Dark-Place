@@ -10,8 +10,10 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 55,
-  properties = {},
+  nextobjectid = 63,
+  properties = {
+    ["music"] = "deltarune/wind"
+  },
   tilesets = {
     {
       name = "gallery2",
@@ -604,6 +606,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 58,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 960,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -781,6 +796,53 @@ return {
           visible = true,
           properties = {
             ["item"] = "corruptbit"
+          }
+        },
+        {
+          id = 55,
+          name = "enemy",
+          type = "",
+          shape = "point",
+          x = 280,
+          y = 840,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "gguard",
+            ["encounter"] = "gguard2"
+          }
+        },
+        {
+          id = 61,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 222.667,
+          y = 940.667,
+          width = 142,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "gallery/galleryentrance",
+            ["marker"] = "spawn"
+          }
+        },
+        {
+          id = 62,
+          name = "chest",
+          type = "",
+          shape = "point",
+          x = 240,
+          y = 880,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["item"] = "ultimate_candy"
           }
         }
       }

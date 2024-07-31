@@ -7,8 +7,8 @@ function actor:init()
     self.name = "ErrorGuardian"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 27
-    self.height = 45
+    self.width = 24
+    self.height = 48
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
     self.hitbox = {0, 25, 19, 14}
@@ -20,7 +20,7 @@ function actor:init()
     self.flip = nil
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "world/npc/gguard"
+    self.path = "battle/enemies/gguard"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "idle"
 
@@ -35,7 +35,11 @@ function actor:init()
     self.can_blush = false
 
     -- Table of talk sprites and their talk speeds (default 0.25)
-    self.talk_sprites = {"gguard",0.1}
+    self.animations = {
+        ["idle"] = {"idle", 0.5, true},
+        ["attack"] = {"attack", 0.1, true},
+        ["hurt"] = {"hurt", 0.05, true}
+    }
 
     -- Table of sprite animations
     
