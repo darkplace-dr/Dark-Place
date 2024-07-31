@@ -25,7 +25,7 @@ return {
         local master = cutscene:getCharacter("bepis_master")
         master:setAnimation({ "bop", 0.25, true })
         cutscene:text("* I'm Bepi Master.\n[wait:5]* Ask me about BEPI's.")
-        local choices = { "Pipis", "2", "3" }
+        local choices = { "Pipis", "About", "3" }
         table.insert(choices, "Bye")
         local c = cutscene:choicer(choices)
         if c == 1 then
@@ -36,8 +36,13 @@ return {
             master:setAnimation({ "shocked", 0.25, true })
             cutscene:text("* OH I STILL HAVE IT")
         elseif c == 2 then
-            master:setAnimation({ "shocked", 0.25, true })
-            cutscene:text("* BING BING BING TWO.")
+            cutscene:text("* The reason I'm here is quite CRAZY.")
+            cutscene:text("* Yet simple, for the DEVS are LAZY.")
+            if Utils.containsValue(Game.party, Game:getPartyMember("brenda")) then
+                cutscene:text("* It would be nice if the real me wrote some dialog here.", "miffed", "brenda")
+                master:setAnimation({ "shocked", 0.25, true })
+                cutscene:text("* Well, from in here, it's really HAZY!")
+            end
         elseif c == 3 then
             cutscene:text("* Three's an odd number.")
             if Utils.containsValue(Game.party, Game:getPartyMember("susie")) then
