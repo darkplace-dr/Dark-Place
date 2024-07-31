@@ -13,6 +13,7 @@ function Battle:init()
 
     self.killed = false
 
+	self.selected_combo = nil
 
     -- Base pitch for the music to return to when not using timeslow.
     -- This must be changed along with music.pitch in order to correctly change the music's pitch.
@@ -1018,5 +1019,331 @@ function Battle:drawBackground()
     end
 end
 --]]
+
+function Battle:onKeyPressed(key)
+    if Kristal.Config["debug"] and Input.ctrl() then
+        if key == "h" then
+            for _,party in ipairs(self.party) do
+                party:heal(math.huge)
+            end
+        end
+        if key == "y" then
+			if self.state == "DEFENDING" and Game:isLight() then
+				Game.battle:setState("DEFENDINGEND", "NONE")
+			else
+				Input.clear(nil, true)
+				self:setState("VICTORY")
+			end
+        end
+        if key == "m" then
+            if self.music then
+                if self.music:isPlaying() then
+                    self.music:pause()
+                else
+                    self.music:resume()
+                end
+            end
+        end
+        if self.state == "DEFENDING" and key == "f" then
+            self.encounter:onWavesDone()
+        end
+        if self.soul and key == "j" then
+            self.soul:shatter(6)
+            self:getPartyBattler(Game:getSoulPartyMember().id):hurt(math.huge)
+        end
+        if key == "b" then
+            for _,battler in ipairs(self.party) do
+                battler:hurt(math.huge)
+            end
+        end
+        if key == "k" then
+            Game:setTension(Game:getMaxTension() * 2, true)
+        end
+        if key == "n" then
+            NOCLIP = not NOCLIP
+        end
+    end
+
+    if self.state == "MENUSELECT" then
+        local menu_width = 2
+        local menu_height = math.ceil(#self.menu_items / 2)
+
+        if Input.isConfirm(key) then
+            local menu_item = self.menu_items[self:getItemIndex()]
+            local can_select = self:canSelectMenuItem(menu_item)
+            if self.encounter:onMenuSelect(self.state_reason, menu_item, can_select) then return end
+            if Kristal.callEvent(KRISTAL_EVENT.onBattleMenuSelect, self.state_reason, menu_item, can_select) then return end
+            if can_select then
+                self.ui_select:stop()
+                self.ui_select:play()
+                menu_item["callback"](menu_item)
+                return
+            end
+        elseif Input.isCancel(key) then
+            if self.encounter:onMenuCancel(self.state_reason, menu_item) then return end
+            if Kristal.callEvent(KRISTAL_EVENT.onBattleMenuCancel, self.state_reason, menu_item, can_select) then return end
+            self.ui_move:stop()
+            self.ui_move:play()
+            Game:setTensionPreview(0)
+            self:setState("ACTIONSELECT", "CANCEL")
+            return
+        elseif Input.is("left", key) then -- TODO: pagination
+            self.current_menu_x = self.current_menu_x - 1
+            if self.current_menu_x < 1 then
+                self.current_menu_x = menu_width
+                if not self:isValidMenuLocation() then
+                    self.current_menu_x = 1
+                end
+            end
+        elseif Input.is("right", key) then
+            self.current_menu_x = self.current_menu_x + 1
+            if not self:isValidMenuLocation() then
+                self.current_menu_x = 1
+            end
+        end
+        if Input.is("up", key) then
+            self.current_menu_y = self.current_menu_y - 1
+            if self.current_menu_y < 1 then
+                self.current_menu_y = 1 -- No wrapping in this menu.
+            end
+        elseif Input.is("down", key) then
+            if self:getItemIndex() % 6 == 0 and #self.menu_items % 6 == 1 and self.current_menu_y == menu_height - 1 then
+                self.current_menu_x = self.current_menu_x - 1
+            end
+            self.current_menu_y = self.current_menu_y + 1
+            if (self.current_menu_y > menu_height) or (not self:isValidMenuLocation()) then
+                self.current_menu_y = menu_height -- No wrapping in this menu.
+                if not self:isValidMenuLocation() then
+                    self.current_menu_y = menu_height - 1
+                end
+            end
+        end
+    elseif self.state == "ENEMYSELECT" or self.state == "XACTENEMYSELECT" then
+        if Input.isConfirm(key) then
+            if self.encounter:onEnemySelect(self.state_reason, self.current_menu_y) then return end
+            if Kristal.callEvent(KRISTAL_EVENT.onBattleEnemySelect, self.state_reason, self.current_menu_y) then return end
+            self.ui_select:stop()
+            self.ui_select:play()
+            if #self.enemies_index == 0 then return end
+            self.selected_enemy = self.current_menu_y
+            if self.state == "XACTENEMYSELECT" then
+                local xaction = Utils.copy(self.selected_xaction)
+                if xaction.default then
+                    xaction.name = self.enemies_index[self.selected_enemy]:getXAction(self.party[self.current_selecting])
+                end
+                self:pushAction("XACT", self.enemies_index[self.selected_enemy], xaction)
+            elseif self.state_reason == "SPARE" then
+                self:pushAction("SPARE", self.enemies_index[self.selected_enemy])
+            elseif self.state_reason == "ACT" then
+                self:clearMenuItems()
+                local enemy = self.enemies_index[self.selected_enemy]
+                for _,v in ipairs(enemy.acts) do
+                    local insert = not v.hidden
+                    if v.character and self.party[self.current_selecting].chara.id ~= v.character then
+                        insert = false
+                    end
+                    if v.party and (#v.party > 0) then
+                        for _,party_id in ipairs(v.party) do
+                            if not self:getPartyIndex(party_id) then
+                                insert = false
+                                break
+                            end
+                        end
+                    end
+                    if insert then
+                        self:addMenuItem({
+                            ["name"] = v.name,
+                            ["tp"] = v.tp or 0,
+                            ["description"] = v.description,
+                            ["party"] = v.party,
+                            ["color"] = v.color or {1, 1, 1, 1},
+                            ["highlight"] = v.highlight or enemy,
+                            ["icons"] = v.icons,
+                            ["callback"] = function(menu_item)
+                                self:pushAction("ACT", enemy, menu_item)
+                            end
+                        })
+                    end
+                end
+                self:setState("MENUSELECT", "ACT")
+            elseif self.state_reason == "ATTACK" then
+                self:pushAction("ATTACK", self.enemies_index[self.selected_enemy])
+            elseif self.state_reason == "SPELL" then
+                self:pushAction("SPELL", self.enemies_index[self.selected_enemy], self.selected_spell)
+            elseif self.state_reason == "ITEM" then
+                self:pushAction("ITEM", self.enemies_index[self.selected_enemy], self.selected_item)
+            elseif self.state_reason == "COMBO" then
+                self:pushAction("COMBO", self.enemies_index[self.selected_enemy], self.selected_combo)
+            else
+                self:nextParty()
+            end
+            return
+        end
+        if Input.isCancel(key) then
+            if self.encounter:onEnemyCancel(self.state_reason, self.current_menu_y) then return end
+            if Kristal.callEvent(KRISTAL_EVENT.onBattleEnemyCancel, self.state_reason, self.current_menu_y) then return end
+            self.ui_move:stop()
+            self.ui_move:play()
+            if self.state_reason == "SPELL" then
+                self:setState("MENUSELECT", "SPELL")
+            elseif self.state_reason == "ITEM" then
+                self:setState("MENUSELECT", "ITEM")
+            elseif self.state_reason == "COMBO" then
+                self:setState("MENUSELECT", "COMBO")
+            else
+                self:setState("ACTIONSELECT", "CANCEL")
+            end
+            return
+        end
+        if Input.is("up", key) then
+            if #self.enemies_index == 0 then return end
+            local old_location = self.current_menu_y
+            local give_up = 0
+            repeat
+                give_up = give_up + 1
+                if give_up > 100 then return end
+                -- Keep decrementing until there's a selectable enemy.
+                self.current_menu_y = self.current_menu_y - 1
+                if self.current_menu_y < 1 then
+                    self.current_menu_y = #self.enemies_index
+                end
+            until (self.enemies_index[self.current_menu_y] and self.enemies_index[self.current_menu_y].selectable)
+
+            if self.current_menu_y ~= old_location then
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
+        elseif Input.is("down", key) then
+            if #self.enemies_index == 0 then return end
+            local old_location = self.current_menu_y
+            local give_up = 0
+            repeat
+                give_up = give_up + 1
+                if give_up > 100 then return end
+                -- Keep decrementing until there's a selectable enemy.
+                self.current_menu_y = self.current_menu_y + 1
+                if self.current_menu_y > #self.enemies_index then
+                    self.current_menu_y = 1
+                end
+            until (self.enemies_index[self.current_menu_y] and self.enemies_index[self.current_menu_y].selectable)
+
+            if self.current_menu_y ~= old_location then
+                self.ui_move:stop()
+                self.ui_move:play()
+            end
+        end
+    elseif self.state == "PARTYSELECT" then
+        if Input.isConfirm(key) then
+            if self.encounter:onPartySelect(self.state_reason, self.current_menu_y) then return end
+            if Kristal.callEvent(KRISTAL_EVENT.onBattlePartySelect, self.state_reason, self.current_menu_y) then return end
+            self.ui_select:stop()
+            self.ui_select:play()
+            if self.state_reason == "SPELL" then
+                self:pushAction("SPELL", self.party[self.current_menu_y], self.selected_spell)
+            elseif self.state_reason == "ITEM" then
+                self:pushAction("ITEM", self.party[self.current_menu_y], self.selected_item)
+            elseif self.state_reason == "COMBO" then
+                self:pushAction("COMBO", self.party[self.current_menu_y], self.selected_combo)
+            else
+                self:nextParty()
+            end
+            return
+        end
+        if Input.isCancel(key) then
+            if self.encounter:onPartyCancel(self.state_reason, self.current_menu_y) then return end
+            if Kristal.callEvent(KRISTAL_EVENT.onBattlePartyCancel, self.state_reason, self.current_menu_y) then return end
+            self.ui_move:stop()
+            self.ui_move:play()
+            if self.state_reason == "SPELL" then
+                self:setState("MENUSELECT", "SPELL")
+            elseif self.state_reason == "ITEM" then
+                self:setState("MENUSELECT", "ITEM")
+            else
+                self:setState("ACTIONSELECT", "CANCEL")
+            end
+            return
+        end
+        if Input.is("up", key) then
+            self.ui_move:stop()
+            self.ui_move:play()
+            self.current_menu_y = self.current_menu_y - 1
+            if self.current_menu_y < 1 then
+                self.current_menu_y = #self.party
+            end
+        elseif Input.is("down", key) then
+            self.ui_move:stop()
+            self.ui_move:play()
+            self.current_menu_y = self.current_menu_y + 1
+            if self.current_menu_y > #self.party then
+                self.current_menu_y = 1
+            end
+        end
+    elseif self.state == "BATTLETEXT" then
+        -- Nothing here
+    elseif self.state == "SHORTACTTEXT" then
+        if Input.isConfirm(key) then
+            if (not self.battle_ui.short_act_text_1:isTyping()) and
+               (not self.battle_ui.short_act_text_2:isTyping()) and
+               (not self.battle_ui.short_act_text_3:isTyping()) then
+                self.battle_ui.short_act_text_1:setText("")
+                self.battle_ui.short_act_text_2:setText("")
+                self.battle_ui.short_act_text_3:setText("")
+                for _,iaction in ipairs(self.short_actions) do
+                    self:finishAction(iaction)
+                end
+                self.short_actions = {}
+                self:setState("ACTIONS", "SHORTACTTEXT")
+            end
+        end
+    elseif self.state == "ENEMYDIALOGUE" then
+        -- Nothing here
+    elseif self.state == "ACTIONSELECT" then
+        self:handleActionSelectInput(key)
+    elseif self.state == "ATTACKING" then
+        self:handleAttackingInput(key)
+    end
+end
+
+function Battle:processAction(action)
+    local battler = self.party[action.character_id]
+    local party_member = battler.chara
+    local enemy = action.target
+
+    self.current_processing_action = action
+
+    local next_enemy = self:retargetEnemy()
+    if not next_enemy then
+        return true
+    end
+
+    if enemy and enemy.done_state then
+        enemy = next_enemy
+        action.target = next_enemy
+    end
+
+    -- Call mod callbacks for onBattleAction to either add new behaviour for an action or override existing behaviour
+    -- Note: non-immediate actions require explicit "return false"!
+    local callback_result = Kristal.modCall("onBattleAction", action, action.action, battler, enemy)
+    if callback_result ~= nil then
+        return callback_result
+    end
+    for lib_id,_ in Kristal.iterLibraries() do
+        callback_result = Kristal.libCall(lib_id, "onBattleAction", action, action.action, battler, enemy)
+        if callback_result ~= nil then
+            return callback_result
+        end
+    end
+	
+	if action.action == "COMBO" then
+        self.battle_ui:clearEncounterText()
+
+        -- The combo itself handles the animation and finishing
+        action.data:onStart(battler, action.target)
+
+        return false
+	end
+	
+	return super.processAction(self, action)
+end
 
 return Battle
