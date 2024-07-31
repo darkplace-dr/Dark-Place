@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="15" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="55">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="15" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="63">
  <editorsettings>
   <export target="wood2.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="music" value="deltarune/wind"/>
+ </properties>
  <tileset firstgid="1" source="../../tilesets/gallery2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="15" height="40">
   <data encoding="csv">
@@ -167,6 +170,7 @@
   <object id="36" x="400" y="360" width="120" height="40"/>
   <object id="38" x="440" y="280" width="80" height="80"/>
   <object id="39" x="480" y="240" width="40" height="40"/>
+  <object id="58" x="240" y="960" width="120" height="40"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="5" name="objects">
   <object id="40" name="slidearea" x="280" y="400" width="40" height="160"/>
@@ -222,6 +226,25 @@
   <object id="54" name="chest" x="375.333" y="736.667">
    <properties>
     <property name="item" value="corruptbit"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="55" name="enemy" x="280" y="840">
+   <properties>
+    <property name="actor" value="gguard"/>
+    <property name="encounter" value="gguard2"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="61" name="transition" x="222.667" y="940.667" width="142" height="40">
+   <properties>
+    <property name="map" value="gallery/galleryentrance"/>
+    <property name="marker" value="spawn"/>
+   </properties>
+  </object>
+  <object id="62" name="chest" x="240" y="880">
+   <properties>
+    <property name="item" value="ultimate_candy"/>
    </properties>
    <point/>
   </object>
