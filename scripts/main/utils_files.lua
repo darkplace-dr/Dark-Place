@@ -73,7 +73,7 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
     elseif love.system.getOS() == "Linux" then
         if not try_wine_route then
             -- don't ask why %
-            name = string.gsub(name, "%XDG_CONFIG_HOME%", os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config")
+            name = string.gsub(name, "%%XDG_CONFIG_HOME%%", os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config")
             local starts_at_root, _ = Utils.startsWith(name, "/")
             if not starts_at_root then
                 path = os.getenv("HOME").."/"..name
@@ -126,7 +126,7 @@ function Mod:hasSaveFiles(id, specific_file, fused_identify)
             paths[i] = v
         elseif love.system.getOS() == "Linux" then
             local data_home = os.getenv("XDG_DATA_HOME") or os.getenv("HOME").."/.local/share"
-            paths[i] = data_home..v
+            paths[i] = data_home.."/"..v
         end
     end
 
