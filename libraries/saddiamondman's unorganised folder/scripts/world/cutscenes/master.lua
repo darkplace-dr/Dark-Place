@@ -22,7 +22,7 @@ return {
         master:setAnimation({"idle", 0.25, true})
     end,
     bepis = function(cutscene, actor)
-        local master = cutscene:getCharacter("bepis_master")
+        local master = actor or cutscene:getCharacter("bepis_master")
         master:setAnimation({ "bop", 0.25, true })
         cutscene:text("* I'm Bepi Master.\n[wait:5]* Ask me about BEPI's.")
         local choices = { "Pipis", "About", "3" }
