@@ -73,7 +73,7 @@ function PartyMember:onLoad(data)
     self.exp = data.exp or self.exp
     self.love = data.love or self.love
 	
-    self:loadCombos(data.combos)
+    self:loadCombos(data.combos or {})
 end
 
 function PartyMember:getCombos()
