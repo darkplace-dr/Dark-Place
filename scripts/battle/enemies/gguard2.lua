@@ -1,47 +1,52 @@
-local GGuard, super = Class(EnemyBattler)
+local GGuard2, super = Class(EnemyBattler)
 
-function GGuard:init()
+function GGuard2:init()
     super.init(self)
 
     -- Enemy name
-    self.name = "ErrorGuardian"
+    self.name = "ErrorGuardian EX"
     -- Sets the actor, which handles the enemy's sprites (see scripts/data/actors/dummy.lua)
-    self:setActor("gguard")
+    self:setActor("errorman")
 
     self.defeat_type = "fatal"
 
     -- Enemy health
-    self.max_health = 1500
-    self.health = 1500
+    self.max_health = 9999.9
+    self.health = 9999.9
     -- Enemy attack (determines bullet damage)
-    self.attack = 22.2
+    self.attack = 12.12
     -- Enemy defense (usually 0)
     self.defense = 9.9
     -- Enemy reward
-    self.money = -99.9
+    self.money = 999.9
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
-    self.spare_points = 20
+    self.spare_points = -20
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
+        "aiming",
+        "aimingr",
         "aimingrr",
-        "aimingrr"
+        "bobberry1",
+        "zero/Aiming",
+        "spamgolor/everything",
+        "thestars/starcircle",
+        "gun",
+        "ch1_fields/neo_ponman/spreadshot"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "self.check = AT 4 DF 0* Cotton heart and button eye* Looks just like a fluffy guy'."
+    self.check = "self.check = AT DF."
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
-        "* pain",
-        "* <EOF> expected near END",
-        "* .",
+        "*************************************************************************************"
     }
     -- Text displayed at the bottom of the screen when the enemy has low health
-    self.low_health_text = "* The true way to deal with errors."
+    self.low_health_text = "* The Err*r151."
 
     -- Register act called "Smile"
     self:registerAct("Smile")
@@ -50,10 +55,10 @@ function GGuard:init()
     self:registerAct("Tell Story", "", {"ralsei"})
 end
 
-function GGuard:onAct(battler, name)
+function GGuard2:onAct(battler, name)
     if name == "Smile" then
         -- Give the enemy 100% mercy
-        self:addMercy(9.9)
+        self:addMercy(0.0000000000000000000001)
         -- Change this enemy's dialogue for 1 turn
         self.dialogue_override = "yo what ^^"
         -- Act text (since it's a list, multiple textboxes)
@@ -72,7 +77,7 @@ function GGuard:onAct(battler, name)
 
     elseif name == "Standard" then --X-Action
         -- Give the enemy 50% mercy
-        self:addMercy(9.9)
+        self:addMercy(0.0000000000000000000001)
         if battler.chara.id == "ralsei" then
             -- R-Action text
             return "* Ralsei bowed politely.\n* The dummy spiritually bowed\nin return."
@@ -91,7 +96,7 @@ function GGuard:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
-function GGuard:onDefeat(damage, battler)
+function GGuard2:onDefeat(damage, battler)
     self:onDefeatFatal(damage, battler)
 end
 
@@ -120,4 +125,4 @@ function EnemyBattler:onDefeatFatal(damage, battler)
     
 end
 
-return GGuard
+return GGuard2
