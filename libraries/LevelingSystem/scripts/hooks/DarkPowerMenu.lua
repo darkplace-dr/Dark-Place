@@ -81,6 +81,19 @@ function DarkPowerMenu:update()
 
                     self:updateDescription()
                 end
+			elseif self.data_shown == "combos" and #self.party:getSelected():getCombos() > 0 then
+                self.ui_select:stop()
+                self.ui_select:play()
+                if #self:getSpells() > 0 then
+                    self.state = "COMBOS"
+
+                    self.party.focused = false
+
+                    self.selected_spell = 1
+                    self.scroll_y = 1
+
+                    self:updateDescription()
+                end
             end
         end
     elseif self.state == "SPELLS" then
@@ -96,6 +109,37 @@ function DarkPowerMenu:update()
             return
         else
             super.update(self)
+        end
+	elseif self.state == "COMBOS" then
+        if Input.pressed("cancel") then
+            self.state = "CHOOSETAB"
+
+            self.ui_cancel_small:stop()
+            self.ui_cancel_small:play()
+
+            self.scroll_y = 1
+
+            self:updateDescription()
+            return
+        end
+        local spells = self:getCombos()
+        local old_selected = self.selected_spell
+        if Input.pressed("up", true) then
+            self.selected_spell = self.selected_spell - 1
+        end
+        if Input.pressed("down", true) then
+            self.selected_spell = self.selected_spell + 1
+        end
+        self.selected_spell = Utils.clamp(self.selected_spell, 1, #spells)
+        if self.selected_spell ~= old_selected then
+            local spell_limit = self:getSpellLimit()
+            local min_scroll = math.max(1, self.selected_spell - (spell_limit - 1))
+            local max_scroll = math.min(math.max(1, #spells - (spell_limit - 1)), self.selected_spell)
+            self.scroll_y = Utils.clamp(self.scroll_y, min_scroll, max_scroll)
+
+            self.ui_move:stop()
+            self.ui_move:play()
+            self:updateDescription()
         end
     else
         super.update(self)
@@ -190,8 +234,67 @@ function DarkPowerMenu:drawExperience()
 end
 
 function DarkPowerMenu:drawCombos()
-    Draw.setColor(1, 1, 1, 1)
-	love.graphics.print( "WIP",   260,  190)
+    local combos = self:getCombos()
+
+    local tp_x, tp_y
+    local name_x, name_y
+
+    if #combos <= 6 then
+        tp_x, tp_y = 258, 118
+        name_x, name_y = 328, 118
+    else
+        tp_x, tp_y = 242, 118
+        name_x, name_y = 302, 118
+    end
+
+    Draw.setColor(1, 1, 1)
+    Draw.draw(self.tp_sprite, tp_x, tp_y - 5)
+
+    local spell_limit = self:getSpellLimit()
+
+    for i = self.scroll_y, math.min(#combos, self.scroll_y + (spell_limit - 1)) do
+        local spell = combos[i]
+        local offset = i - self.scroll_y
+
+        Draw.setColor(0.5, 0.5, 0.5)
+        love.graphics.print(tostring(spell:getTPCost(self.party:getSelected())).."%", tp_x, tp_y + (offset * 25))
+        love.graphics.print(spell:getName(), name_x, name_y + (offset * 25))
+    end
+
+    -- Draw scroll arrows if needed
+    if #combos > spell_limit then
+        Draw.setColor(1, 1, 1)
+
+        -- Move the arrows up and down only if we're in the spell selection state
+        local sine_off = 0
+        if self.state == "COMBOS" then
+            sine_off = math.sin((Kristal.getTime()*30)/12) * 3
+        end
+
+        if self.scroll_y > 1 then
+            -- up arrow
+            Draw.draw(self.arrow_sprite, 469, (name_y + 25 - 3) - sine_off, 0, 1, -1)
+        end
+        if self.scroll_y + spell_limit <= #combos then
+            -- down arrow
+            Draw.draw(self.arrow_sprite, 469, (name_y + (25 * spell_limit) - 12) + sine_off)
+        end
+    end
+
+    if self.state == "COMBOS" then
+        Draw.setColor(Game:getSoulColor())
+        Draw.draw(self.heart_sprite, tp_x - 20, tp_y + 10 + ((self.selected_spell - self.scroll_y) * 25))
+
+        -- Draw scrollbar if needed (unless the spell limit is 2, in which case the scrollbar is too small)
+        if spell_limit > 2 and #combos > spell_limit then
+            local scrollbar_height = (spell_limit - 2) * 25
+            Draw.setColor(0.25, 0.25, 0.25)
+            love.graphics.rectangle("fill", 473, name_y + 30, 6, scrollbar_height)
+            local percent = (self.scroll_y - 1) / (#combos - spell_limit)
+            Draw.setColor(1, 1, 1)
+            love.graphics.rectangle("fill", 473, name_y + 30 + math.floor(percent * (scrollbar_height-6)), 6, 6)
+        end
+    end
 end
 
 
@@ -206,9 +309,21 @@ function DarkPowerMenu:updateDescription()
     if self.state == "SPELLS" then
         local spell = self:getSpells()[self.selected_spell]
         Game.world.menu:setDescription(spell and spell:getDescription() or "", true)
+    elseif self.state == "COMBOS" then
+        local combo = self:getCombos()[self.selected_spell]
+        Game.world.menu:setDescription(combo and combo:getDescription() or "", true)
     else
         Game.world.menu:setDescription("", false)
     end
+end
+
+function DarkPowerMenu:getCombos()
+    local combos = {}
+    local party = self.party:getSelected()
+    for _,combo in ipairs(party:getCombos()) do
+        table.insert(combos, combo)
+    end
+    return combos
 end
 
 return DarkPowerMenu
