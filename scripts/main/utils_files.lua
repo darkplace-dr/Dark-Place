@@ -126,7 +126,7 @@ function Mod:hasSaveFiles(id, specific_file, fused_identify)
             paths[i] = v
         elseif love.system.getOS() == "Linux" then
             local data_home = os.getenv("XDG_DATA_HOME") or os.getenv("HOME").."/.local/share"
-            paths[i] = data_home..v
+            paths[i] = data_home.."/"..v
         end
     end
 
