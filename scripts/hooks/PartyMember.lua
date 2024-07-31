@@ -268,7 +268,7 @@ function PartyMember:getSkills()
         end})
 	end
 	if #self.combos > 0 then
-		table.insert(skills, {"Combos", "Multi-\nParty\nAction", nil, function()
+		table.insert(skills, {"Combos", "Multi\nParty\nAction", nil, function()
             Game.battle:clearMenuItems()
 
             -- Now, register SPELLs as menu items.
@@ -282,7 +282,7 @@ function PartyMember:getSkills()
                     ["color"] = {1, 1, 1, 1},
                     ["data"] = combo,
                     ["callback"] = function(menu_item)
-                        Game.battle.selected_spell = menu_item
+						Game.battle.selected_combo = menu_item
 
                         if not combo.target or combo.target == "none" then
                             Game.battle:pushAction("COMBO", nil, menu_item)

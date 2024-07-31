@@ -41,22 +41,22 @@ function Combo:hasTag(tag)
     return Utils.containsValue(self.tags, tag)
 end
 
-function Combo:onCast(user, target)
+function Combo:onCast(target)
     -- Returning false here allows you to call 'Game.battle:finishActionBy(user)' yourself
 	Game.battle:startActCutscene(function(cutscene)
-		self:doCutscene(cutscene)
+		self:doCutscene(cutscene, target)
 	end)
 end
 
 function Combo:onStart(user, target)
     Game.battle:clearActionIcon(user)
-    local result = self:onCast(user, target)
+    local result = self:onCast(target)
     if result or result == nil then
         Game.battle:finishActionBy(user)
     end
 end
 
-function Combo:doCutscene(cutscene) end
+function Combo:doCutscene(cutscene, target) end
 
 function Combo:onSelect(user, target) end
 function Combo:onDeselect(user, target) end

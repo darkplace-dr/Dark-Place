@@ -7,7 +7,7 @@ function test:init()
     self.cast_name = nil
 
     -- Battle description
-    self.effect = ""
+    self.effect = "Test\nCase"
     -- Menu description
     self.description = "Jamm's combo test lol"
 
@@ -26,8 +26,10 @@ function test:init()
     self.party = {"jamm", "mario"}
 end
 
-function test:doCutscene(cutscene)
+function test:doCutscene(cutscene, target)
 	cutscene:text("* test")
+	target:hurt(1)
+	cutscene:wait(1)
 end
 
 return test
