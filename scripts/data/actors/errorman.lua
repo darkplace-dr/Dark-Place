@@ -1,10 +1,10 @@
-local actor, super = Class(Actor, "gguard")
+local actor, super = Class(Actor, "errorman")
 
 function actor:init()
     super.init(self)
 
     -- Display name (optional)
-    self.name = "ErrorGuardian"
+    self.name = "ErrorGuardian EX"
 
     -- Width and height for this actor, used to determine its center
     self.width = 24
