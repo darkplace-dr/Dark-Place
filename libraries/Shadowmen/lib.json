@@ -7,7 +7,7 @@
     "engineVer": "v0.8.0",
 	
     "config": {
-		"name": "Shadowmen",
+		"name": "Shadowguy",
 		
 		"play_sfx": true,
 		
@@ -29,12 +29,13 @@
 			"Hee Hee!"
 		],
 		
-		"low_health_text": "* Crime rates goes up.",
+		"low_health_text": "* Crime rates are going up.",
 		
-		"check": "Has a collection\nof nice socks!",
+		"check": "AT 10 DF 1\n* Battling's just a side gig. Playing on the stage is the dream!",
 		
 		"spare_points": 25,
 		"attack": 10,
+		"defense": 1,
 		"health": 320,
 		"gold": 96,
 		

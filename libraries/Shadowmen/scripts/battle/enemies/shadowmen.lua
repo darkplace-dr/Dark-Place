@@ -55,12 +55,13 @@ function MyEnemy:init()
 		"shadowmen/gunfight",
 	}
 	
-	self.check = Kristal.getLibConfig("shadowmen", "check")
+	self.check = "AT 10 DF 1\n* Battling's just a side gig. Playing on stage is the dream!"
 	
 	self.prev_wave = nil
 	
 	self.spare_points = Kristal.getLibConfig("shadowmen", "spare_points")
 	self.attack = Kristal.getLibConfig("shadowmen", "attack")
+    self.defense = Kristal.getLibConfig("shadowmen", "defense")
 	self.health = Kristal.getLibConfig("shadowmen", "health") or Kristal.getLibConfig("shadowmen", "hp")
 	self.max_health = self.health
 	self.gold = Kristal.getLibConfig("shadowmen", "gold") or Kristal.getLibConfig("shadowmen", "money")

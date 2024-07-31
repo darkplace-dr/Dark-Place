@@ -3,7 +3,7 @@ local ShadowMen, super = Class(Encounter)
 function ShadowMen:init()
     super.init(self)
 
-    self.text = "* The shawdowmen blends into the battle!"
+    self.text = "* Two Shadowguys blend into the battle!"
 
     self.music = "battle"
     self.background = true
