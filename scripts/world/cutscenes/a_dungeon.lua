@@ -1212,6 +1212,8 @@ Learning to live with shades, yet be.
 			"Shadows' Lament: A Sorceress' Tale")
 			Game:getPartyMember("jamm"):addOpinion("dess", 20)
 			Game:getPartyMember("dess"):addOpinion("jamm", 20)
+			Game:getPartyMember("jamm"):addCombo("jd_batter")
+			Game:getPartyMember("dess"):addCombo("jd_batter")
 		end
 		cutscene:hideNametag()
 		Game:setFlag("jamm_closure", true)
