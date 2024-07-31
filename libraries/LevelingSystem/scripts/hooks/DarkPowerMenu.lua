@@ -9,6 +9,7 @@ function DarkPowerMenu:init()
     self.data_shown = "spells"
 
     self.caption_sprites["experience"] = Assets.getTexture("ui/menu/caption_exp")
+    self.caption_sprites["combos"] = Assets.getTexture("ui/menu/caption_combo")
     self.caption_sprites["arrow_l"] = Assets.getTexture("ui/flat_arrow_left_opaque")
     self.caption_sprites["arrow_r"] = Assets.getTexture("ui/flat_arrow_right_opaque")
 end
@@ -52,11 +53,19 @@ function DarkPowerMenu:update()
             self.ui_cancel_small:stop()
             self.ui_cancel_small:play()
             return
-        elseif Input.pressed("left") or Input.pressed("right") then
+        elseif Input.pressed("right") then
             self.ui_move:stop()
             self.ui_move:play()
 
             if self.data_shown == "spells" then self.data_shown = "experience"
+            elseif self.data_shown == "experience" then self.data_shown = "combos"
+            elseif self.data_shown == "combos" then self.data_shown = "spells" end
+        elseif Input.pressed("left") then
+            self.ui_move:stop()
+            self.ui_move:play()
+
+            if self.data_shown == "spells" then self.data_shown = "combos"
+            elseif self.data_shown == "combos" then self.data_shown = "experience"
             elseif self.data_shown == "experience" then self.data_shown = "spells" end
         elseif Input.pressed("confirm") then
             if self.data_shown == "spells" then
@@ -113,10 +122,14 @@ function DarkPowerMenu:draw()
         x = 298
         y = 98
         offset = 91+28
-    else
+    elseif self.data_shown == "experience" then
         x = 265
         y = 218-14
         offset = 91+95
+    else
+        x = 298
+        y = 98
+        offset = 91+28
     end
 
     local arrow_weave = 0
@@ -136,8 +149,10 @@ function DarkPowerMenu:draw()
     self:drawStats()
     if self.data_shown == "spells" then
         self:drawSpells()
-    else
+    elseif self.data_shown == "experience" then
         self:drawExperience()
+    else
+        self:drawCombos()
     end
 
     super.super.draw(self)
@@ -172,6 +187,11 @@ function DarkPowerMenu:drawExperience()
     love.graphics.print(                self:getExp(),  242+49, 156)
     love.graphics.print(             self:getNextLv(),  242+62, 190)
     love.graphics.print(Game:getFlag("library_kills"),  242+76, 224)
+end
+
+function DarkPowerMenu:drawCombos()
+    Draw.setColor(1, 1, 1, 1)
+	love.graphics.print( "WIP",   260,  190)
 end
 
 
