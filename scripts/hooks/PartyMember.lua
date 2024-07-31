@@ -9,6 +9,9 @@ function PartyMember:init()
     self.flee_text = {}
     
     self.has_command = false
+
+    -- Combos
+    self.combos = {}
     
     self.love = 1
     self.exp = 0
@@ -56,6 +59,8 @@ function PartyMember:onSave(data)
 
     data.exp = self.exp
     data.love = self.love
+	
+    data.combos = self:saveCombos()
 end
 
 function PartyMember:onLoad(data)
@@ -67,6 +72,64 @@ function PartyMember:onLoad(data)
 
     self.exp = data.exp or self.exp
     self.love = data.love or self.love
+	
+    self:loadCombos(data.combos)
+end
+
+function PartyMember:getCombos()
+    return self.combos
+end
+
+function PartyMember:addCombo(combo)
+    if type(combo) == "string" then
+        combo = Mod:createCombo(combo)
+    end
+    table.insert(self.combos, combo)
+end
+
+function PartyMember:removeCombo(combo)
+    for i,v in ipairs(self.combos) do
+        if v == combo or (type(combo) == "string" and v.id == combo) then
+            table.remove(self.combos, i)
+            return
+        end
+    end
+end
+
+function PartyMember:hasCombo(combo)
+    for i,v in ipairs(self.combos) do
+        if v == combo or (type(combo) == "string" and v.id == combo) then
+            return true
+        end
+    end
+    return false
+end
+
+function PartyMember:replaceCombo(combo, replacement)
+    local tempcombos = {}
+    for _,v in ipairs(self.combos) do
+        if v == combo or (type(combo) == "string" and v.id == combo) then
+            table.insert(tempcombos, Mod:createCombo(replacement))
+        else
+            table.insert(tempcombos, v)
+        end
+    end
+    self.combos = tempcombos
+end
+
+function PartyMember:saveCombos()
+    local result = {}
+    for _,v in pairs(self.combos) do
+        table.insert(result, v.id)
+    end
+    return result
+end
+
+function PartyMember:loadCombos(data)
+    self.combos = {}
+    for _,v in ipairs(data) do
+        self:addCombo(v)
+    end
 end
 
 function PartyMember:getMaxShield()
@@ -74,7 +137,17 @@ function PartyMember:getMaxShield()
 end
 
 function PartyMember:hasSkills()
-    return (self:hasAct() and self:hasSpells())
+	local has_stuff = 0
+	if self:hasAct() then
+		has_stuff = has_stuff + 1
+	end
+	if self:hasSpells() then
+		has_stuff = has_stuff + 1
+	end
+	if #self.combos > 0 then
+		has_stuff = has_stuff + 1
+	end
+    return (has_stuff > 1)
 end
 
 function PartyMember:getSkills()
@@ -93,9 +166,12 @@ function PartyMember:getSkills()
             end
         end
     end
-    return {
-        {"ACT", "Do all\nsorts of\nthings", nil, function() Game.battle:setState("ENEMYSELECT", "ACT") end},
-        {(Kristal.getLibConfig("better_battles", "magic_name")) or "Magic", Kristal.getLibConfig("better_battles", "magic_description") or "Cast\nSpells", color, function()
+	local skills = {}
+	if self:hasAct() then
+		table.insert(skills, {"ACT", "Do all\nsorts of\nthings", nil, function() Game.battle:setState("ENEMYSELECT", "ACT") end})
+	end
+	if self:hasSpells() then
+		table.insert(skills, {(Kristal.getLibConfig("better_battles", "magic_name")) or "Magic", Kristal.getLibConfig("better_battles", "magic_description") or "Cast\nSpells", color, function()
             Game.battle:clearMenuItems()
 
             -- First, register X-Actions as menu items.
@@ -189,8 +265,44 @@ function PartyMember:getSkills()
             end
 
             Game.battle:setState("MENUSELECT", "SPELL")
-        end}
-    }
+        end})
+	end
+	if #self.combos > 0 then
+		table.insert(skills, {"Combos", "Multi-\nParty\nAction", nil, function()
+            Game.battle:clearMenuItems()
+
+            -- Now, register SPELLs as menu items.
+            for _,combo in ipairs(self:getCombos()) do
+                Game.battle:addMenuItem({
+                    ["name"] = combo:getName(),
+                    ["tp"] = combo:getTPCost(self),
+                    ["unusable"] = not combo:isUsable(self),
+                    ["description"] = combo:getBattleDescription(),
+                    ["party"] = combo.party,
+                    ["color"] = {1, 1, 1, 1},
+                    ["data"] = combo,
+                    ["callback"] = function(menu_item)
+                        Game.battle.selected_spell = menu_item
+
+                        if not combo.target or combo.target == "none" then
+                            Game.battle:pushAction("COMBO", nil, menu_item)
+                        elseif combo.target == "ally" then
+                            Game.battle:setState("PARTYSELECT", "COMBO")
+                        elseif combo.target == "enemy" then
+                            Game.battle:setState("ENEMYSELECT", "COMBO")
+                        elseif combo.target == "party" then
+                            Game.battle:pushAction("COMBO", Game.battle.party, menu_item)
+                        elseif combo.target == "enemies" then
+                            Game.battle:pushAction("COMBO", Game.battle:getActiveEnemies(), menu_item)
+                        end
+                    end
+                })
+            end
+
+            Game.battle:setState("MENUSELECT", "COMBO")
+        end})
+	end
+    return skills
 end
 
 function PartyMember:hasLightSkills()
