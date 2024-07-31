@@ -587,6 +587,7 @@ function Mod:onRegistered()
     self:registerShaders()
     self:registerMinigames()
     self:registerCards()
+    self:registerCombos()
 end
 
 function Mod:initializeImportantFlags(new_file)
@@ -1148,5 +1149,23 @@ end
 function Mod:createQuest(name, id, desc, progress_max, silent)
     if not silent and Game.stage then
         Game.stage:addChild(QuestCreatedPopup(id))
+    end
+end
+
+function Mod:registerCombos()
+    self.combos = {}
+
+    for _,path,combo in Registry.iterScripts("battle/combos") do
+        assert(combo ~= nil, '"battle/combos/' .. path .. '.lua" does not return value')
+        combo.id = combo.id or path
+        self.combos[combo.id] = combo
+    end
+end
+
+function Mod:createCombo(id, ...)
+    if self.combos[id] then
+        return self.combos[id](...)
+    else
+        error("Attempt to create nonexistent combo \"" .. tostring(id) .. "\"")
     end
 end
