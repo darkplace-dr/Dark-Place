@@ -432,6 +432,20 @@ return {
 		else
 			cutscene:text("* Oh,[wait:5] hey,[wait:5] guys![wait:5] Nice seeing you again!", "smile", "jamm")
 			cutscene:text("* I've just been keeping my daughter company, is all.", "smile", "jamm")
+			if Game:getFlag("jamm_closure") == true and Game:getFlag("dess_party") and not Game:getPartyMember("jamm"):hasCombo("jd_batter") then
+				cutscene:text("* Oh,[wait:5] Dess![wait:10]\n* Before I forget...", "neutral", "jamm")
+				cutscene:text("* After we left that dungeon, I thought of something...", "look_left", "jamm")
+				cutscene:text("* A new combo move for us to use!", "smile", "jamm")
+				cutscene:showNametag("Dess")
+				cutscene:text("* a'ight let's do it", "heckyeah", "dess")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Alright then!", "smug", "jamm")
+				cutscene:hideNametag()
+				Game:getPartyMember("jamm"):addCombo("jd_batter")
+				Game:getPartyMember("dess"):addCombo("jd_batter")
+				cutscene:text("* (Jamm and Dess learned [color:yellow]JD Batter[color:white]!)")
+				cutscene:showNametag("Jamm")
+			end
 			cutscene:text("* Did you want to talk about something?", "smile", "jamm")
 		end
 		cutscene:hideNametag()
