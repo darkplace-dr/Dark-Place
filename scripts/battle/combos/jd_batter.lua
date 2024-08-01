@@ -41,8 +41,8 @@ function test:doCutscene(cutscene, target)
 	local dess_input_2 = false
 	local jamm_input_2 = false
 	local miss = false
-	local dess_damage = ((Game:getPartyMember("dess"):getStat("attack") * 100) / 20) - (target.defense * 3)
-	local jamm_damage = ((Game:getPartyMember("jamm"):getStat("attack") * 100) / 20) - (target.defense * 3)
+	local dess_damage = ((Game:getPartyMember("dess"):getStat("attack") * 130) / 20) - (target.defense * 3)
+	local jamm_damage = ((Game:getPartyMember("jamm"):getStat("attack") * 130) / 20) - (target.defense * 3)
 	local marcy
 	if Game:getFlag("marcy_joined") then
 		marcy = Sprite("world/npcs/marcy/right_1", jamm.x-30, jamm.y)
@@ -53,6 +53,7 @@ function test:doCutscene(cutscene, target)
 		Game.battle.timer:after(1/30, function()
 			cutscene:setAnimation(jamm, "battle/idle")
 		end)
+		cutscene:wait(1/30)
 	end
 	cutscene:slideTo(dess, 130, 200, 0.5)
 	cutscene:wait(cutscene:slideTo(jamm, 210, 200, 0.5))
@@ -89,6 +90,7 @@ function test:doCutscene(cutscene, target)
 				Game.battle.timer:after(1/30, function()
 					cutscene:setAnimation(jamm, "battle/idle")
 				end)
+				cutscene:wait(1/30)
 			end
 			return
 		end
@@ -135,6 +137,7 @@ function test:doCutscene(cutscene, target)
 			Game.battle.timer:after(1/30, function()
 				cutscene:setAnimation(jamm, "battle/idle")
 			end)
+			cutscene:wait(1/30)
 		end
 		return
 	end
@@ -191,6 +194,7 @@ function test:doCutscene(cutscene, target)
 			Game.battle.timer:after(1/30, function()
 				cutscene:setAnimation(jamm, "battle/idle")
 			end)
+			cutscene:wait(1/30)
 		end
 		return
 	end
@@ -270,6 +274,7 @@ function test:doCutscene(cutscene, target)
 		Game.battle.timer:after(1/30, function()
 			cutscene:setAnimation(jamm, "battle/idle")
 		end)
+		cutscene:wait(1/30)
 	end
 end
 
