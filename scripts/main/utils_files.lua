@@ -81,24 +81,45 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
                 path = name
             end
         else -- assuming that a Windows path is passed
+            local folder_type = Utils.split(name, "/")[1]
+            local rest = Utils.sub(name, utf8.len(folder_type) + 2)
+
             local wineprefix = os.getenv("WINEPREFIX") or os.getenv("HOME").."/.wine"
             local user_wineprefix = wineprefix.."/drive_c/users/"..os.getenv("USER")
-            local appdata_wineprefix = user_wineprefix.."/Local Settings/Application Data/" -- 2k3
-            if not directoryExists(appdata_wineprefix) then
-                appdata_wineprefix = user_wineprefix.."/AppData/" -- vista
+            local appdata_wineprefix
+            -- 2k3
+            if folder_type == "Local" or folder_type == "LocalLow" then
+                appdata_wineprefix = user_wineprefix.."/Local Settings/Application Data/"
+            else
+                appdata_wineprefix = user_wineprefix.."/Application Data/"
             end
-            local path_wineprefix = appdata_wineprefix..name
+            local path_wineprefix
+            if directoryExists(appdata_wineprefix) then
+                path_wineprefix = appdata_wineprefix..rest
+            else
+                appdata_wineprefix = user_wineprefix.."/AppData/" -- vista
+                path_wineprefix = appdata_wineprefix..name
+            end
             if fileExists(path_wineprefix) then return true, path_wineprefix end
 
             if wine_steam_appid then
                 local steamroot = os.getenv("STEAMROOT") or os.getenv("HOME").."/.steam"
                 local steampfx = steamroot.."/steam/steamapps/compatdata/"..tostring(wine_steam_appid).."/pfx"
                 local user_steampfx = steampfx.."/drive_c/users/steamuser"
-                local appdata_steampfx = user_steampfx.."/Local Settings/Application Data/" -- 2k3
-                if not directoryExists(appdata_steampfx) then
-                    appdata_steampfx = user_steampfx.."/AppData/" -- vista
+                local appdata_steampfx
+                -- 2k3
+                if folder_type == "Local" or folder_type == "LocalLow" then
+                    appdata_steampfx = user_steampfx.."/Local Settings/Application Data/"
+                else
+                    appdata_steampfx = user_steampfx.."/Application Data/"
                 end
-                local path_steampfx = appdata_steampfx..name
+                local path_steampfx
+                if directoryExists(appdata_steampfx) then
+                    path_steampfx = appdata_steampfx..rest
+                else
+                    appdata_steampfx = user_steampfx.."/AppData/" -- vista
+                    path_steampfx = appdata_steampfx..name
+                end
                 if fileExists(path_steampfx) then return true, path_steampfx end
             end
             return false
