@@ -1,35 +1,29 @@
-local test, super = Class(Combo, "jamm_combo_test")
+local Forest, super = Class(Combo, "rude_slashers_k")
 
-function test:init()
+function Forest:init()
     -- Display name
-    self.name = "JammCbTest"
+    self.name = "Rude Slash K"
     -- Name displayed when cast (optional)
     self.cast_name = nil
 
     -- Battle description
-    self.effect = "Test\nCase"
+    self.effect = ""
     -- Menu description
-    self.description = "Jamm's combo test lol"
+    self.description = "Kris and Susie slash at the enemy many times."
 
     -- TP cost
-    self.cost = 16
+    self.cost = 48
     -- Whether the combo can be used
     self.usable = true
 
     -- Target mode (ally, party, enemy, enemies, or none)
-    self.target = "enemy"
+    self.target = "none"
 
     -- Tags that apply to this combo
     self.tags = {}
 
     -- Other party members that are required to be in the party.
-    self.party = {"jamm", "mario"}
+    self.party = {"kris","susie"}
 end
 
-function test:doCutscene(cutscene, target)
-	cutscene:text("* test")
-	target:hurt(1)
-	cutscene:wait(1)
-end
-
-return test
+return Forest
