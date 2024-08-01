@@ -2,9 +2,9 @@
   // The ID of your mod. Should be unique!
   "id": "dark_place",
   // Displays on the main menu.
-  "name": "Dark Place",
+  "name": "sad",
   // Displays underneath the name. Optional.
-  "subtitle": "An open source Kristal mod that anyone can contribute to",
+  "subtitle": "Crystal Mod is open source and anyone can contribute.",
 
   // The version of your mod.
   "version": "v0.420.69",
@@ -75,54 +75,54 @@
 
   // Reaction messages for specific names that players may input in the naming screen.
   "namesMessages": {
-      // Characters (I guess)
-      "KRIS": "[style:GONER][spacing:3.2]THE FUTURE IS IN\nYOUR HANDS.",
-      "SUSIE": "[spacing:3.2]That's MY name, punk!\nGo get your own!",
-      "ROUXLS": "[spacing:3.2]I DID NOT GIVE THOUST\nTHE PERMITS TO USETH\nMINE NAME!",
-      "STARWALKER": "[spacing:3.2]This name is [color:yellow]pissing[color:reset]\nme off.",
-      "SPAMTON": "[style:GONER][spacing:3.2]GET YOUR OWN [Account\nName] YOU [!@?#]!!!",
-      "SOAMTON": "[style:GONER][spacing:3.2]YOU KNOW WHAT? I'LL\n[[Accept Terms &\nAgreements]] THIS TIME...",
-      "SANS": "[spacing:3.2]nope.",
-      "YOU": "[spacing:3.2]*croak*",
-      "DESS": "[spacing:3.2]fat chance, lmao.",
-      "FRISKTWO": "[spacing:3.2]i feel just like john\nwick",
-      "MORSHU": "[style:GONER][spacing:3.2]SORRY. I CAN'T LET YOU USE\nMY NAME! COME BACK WHEN\nYOU'RE A LITTLE...\nMMMMMM...ORIGINAL!",
-      "NOEL": "[style:none][spacing:0]ERROR: NULL",
-      "CEROBA": "[spacing:3.2]Find your own name.",
-      "CLOVER": "[style:GONER][spacing:3.2]INTERESTING... YOU INVOKE\nTHE NAME OF JUSTICE.",
+    // Characters (I guess)
+    "KRIS": "[style:GONER][spacing:3.2]The future is in\nyour hands..",
+    "SUSIE": "[spacing:3.2]My name is Banks!\nplease",
+    "ROUXLS": "[spacing:3.2]you don't know\nmy name",
+    "STARWALKER": "[spacing:3.2]Approval of title I.",
+    "SPAMTON": "[style:GONER][spacing:3.2][MP][!@?#]!!!",
+    "SOAMTON": "[style:GONER][spacing:3.2]I understand the\n[[Terms of Use]]...",
+    "SANS": "[spacing:3.2]no",
+    "YOU": "[spacing:3.2]*river*",
+    "DESS": "[spacing:3.2]I am not afraid of\nthe right to laugh.",
+    "FRISKTWO": "[spacing:3.2]That's some shit. \"",
+    "MORSHU": "[style:GONER][spacing:3.2]Unfortunately I can't\nstop you from\nusing my name.\nMy little...well...look!",
+    "NOEL": "[style:none][spacing:0]Error: empty.",
+    "CEROBA": "[spacing:3.2]Find your name.",
+    "CLOVER": "[style:GONER][spacing:3.2]Some benefits of\nstretching.",
 
-      // Devs
-      "BELLA": "[style:GONER][spacing:3.2]WOW, THIS PERSON IS\nSO COOL... I WISH\nCANADIANS WERE REAL.",
-      "BRENDA": "[style:GONER][spacing:3.2]WOW, THIS PERSON IS\nSO COOL... I WISH\nCANADIANS WERE REAL.",
-      "JARU": "[style:GONER][spacing:3.2]NOT TO BE CONFUSED WITH\nA CERTAIN DELTARUNE\nTHEORIST.",
-      // Agent 7? ~~(Would her Dess% speedrun be invalid just for this change)~~
-      "LUCY": "[style:GONER][spacing:3.2]HEY, THAT'S ME!",
-      "JAMM": "[style:GONER][spacing:3.2]AS IN THAT ASSHAT WHO\nMADE 16 BITS OF CANNED\nSPAM?",
-      "NELLE":"[style:GONER][spacing:3.2]FOR SOME WEIRD REASON...\nTHIS NAME SHINES WITH\nYELLOW POWER.",
+    // Devs
+    "BELLA": "[style:GONER][spacing:3.2]Wow, this guy is such\na cool guy...looks\nlike a real Canadian.",
+    "BRENDA": "[style:GONER][spacing:3.2]Wow, this guy is such\na cool guy...looks\nlike a real Canadian.",
+    "JARU": "[style:GONER][spacing:3.2]Delta Physics.",
+    // Agent 7? ~~(Would her Dess% speedrun be invalid just for this change)~~
+    "LUCY": "[style:GONER][spacing:3.2]bell!",
+    "JAMM": "[style:GONER][spacing:3.2]So what's going on with\nAssassin's Creed 16?",
+    "NELLE": "[style:GONER][spacing:3.2]Somehow...the name of\nthe club rings a bell.",
 
-      // Misc. jokes
-      "GHASTTEAR": "[style:GONER][spacing:3.2]HOLY SHIT!!!!!\nGHAST TEAR REAL!!!!!!!!!!",
-      "AMOGUS": "[style:GONER][spacing:3.2]WHEN THE LIGHT IS\nRUNNING LOW!!! :flushed:",
-      "WALTER": "[style:GONER][spacing:3.2]I AM THE ONE WHO\nPROCEEDS.",
-      "PLAGUEIS": "[style:GONER][spacing:3.2]IT'S NOT A STORY THE\nLIGHTNERS WOULD TELL\nYOU...",
-      "GARFZONE": "[style:GONER][spacing:3.2]GEE...SOME PEOPLE ENJOY\nA LITTLE MUSIC IN THE\nMORNING...",
-      "SWALLOW": "[style:GONER][spacing:3.2]WHAT DO YOU MEAN?\nAFRICAN OR EUROPEAN?",
-      "A": "[spacing:3.2]Oh wow, reeaaal\ncreative there,\nbucko...",
-      // Extra visual bit is handled by preview.lua
-      "SWELLOW": "[style:GONER][spacing:3.2]AWW THE SCRUNKLY.\nTHE GOOBER. A\nSWELL FELLOW. A\nLITTLE FELLA.",
-      "PAUL": "[style:none][spacing:0]KAAAAAAAAA!\nPaul is the favorite\nof all!",
-      "BONER": "[style:GONER][spacing:3.2]BIG BONER DOWN\nTHE LANE.",
-      "RICK": "[style:GONER][spacing:3.2]GET RICKROLLED, \nCHUCKLENUTS.",
-      "ASRIEL": "", //No message cause it covers up the text in the video lol.
-      "DECEMBER": "[style:none][spacing:0]OH MY GOD! DECEMBER! DECEMBER! DECEMBER! DECEM",
+    // Misc. jokes
+    "GHASTTEAR": "[style:GONER][spacing:3.2]What's wrong! ! ! !\nLet's find out the\ntruth about Manisa! ! ! ! ! ! !",
+    "AMOGUS": "[style:GONER][spacing:3.2]Best view ever! ! !\nhunger:",
+    "WALTER": "[style:GONER][spacing:3.2]Me first",
+    "PLAGUEIS": "[style:GONER][spacing:3.2]Let me tell you,\nthis is not a scene.",
+    "GARFZONE": "[style:GONER][spacing:3.2]So... let's enjoy\nthe morning show...",
+    "SWALLOW": "[style:GONER][spacing:3.2]Pythias, what is this?\nAfrica or Europe?",
+    "A": "[spacing:3.2]Ah, why are you\nso creative…",
+    // Extra visual bit is handled by preview.lua
+    "SWELLOW": "[style:GONER][spacing:3.2]Oh, how terrible the\nfire was flying.\nbest friend.",
+    "PAUL": "[style:none][spacing:0]oh! Everyone loves Paul!",
+    "BONER": "[style:GONER][spacing:3.2]This is Bonner's voice.",
+    "RICK": "[style:GONER][spacing:3.2]Buy nuts and chips\nat Lisaro.",
+    "ASRIEL": "", //No message cause it covers up the text in the video lol.
+    "DECEMBER": "[style:none][spacing:0]Great book! December! December!\nDecember! ten*",
 
-      // Challenges
-      // FIXME: Should we use the GONER style on these lower-case messages?
-      "BLUE": "[style:GONER][spacing:3.2][color:blue]WHAT IS WRONG WITH YOU?\nWHY ARE YOU BLUE?",
-      "PEPPINO": "[style:GONER][spacing:3.2]I'M NOT GONNA\nSUGARCOAT IT:\n\nDID YOU KNOW THAT\nYOU CAN BLOCK AND\n\n\nPARRY ANY PROJECTILE\nOR DAMAGE BY PRESSING \n[V] BEFORE GETTING HURT?",
-      "MERG": "[style:GONER][spacing:3.2]You will be challenged.",
-      "SUPER": "[style:GONER][spacing:3.2]Start with seven\nChaos Emeralds?",
-      "WOODS": "[style:GONER][spacing:3.2]IT'S [color:#802a00]WOODS[color:reset] TIME\nFOR YOU."
+    // Challenges
+    // FIXME: Should we use the GONER style on these lower-case messages?
+    "BLUE": "[style:GONER][spacing:3.2][color:blue]Do you have another story?\nWhy is it red?",
+    "PEPPINO": "[style:GONER][spacing:3.2]Sugar Gonight: Can you\nexplode or destroy it\nwith 5 spells before\nit attacks?",
+    "MERG": "[style:GONER][spacing:3.2]It has everything you need\nto get the job done.",
+    "SUPER": "[style:GONER][spacing:3.2]Why not start with\nEmerald 7 Chaos?",
+    "WOODS": "[style:GONER][spacing:3.2]Beaten and wounded."
   },
   // Names to disallow player from using in the naming screen.
   "namesDeny": [
@@ -146,39 +146,39 @@
     {
       "name": "Relationships",
       "id": "relationships",
-      "keys": ["r"],
+      "keys": [ "r" ],
       "gamepad": []
     },
     {
       "name": "Speen",
       "id": "speen",
-      "keys": ["s"],
+      "keys": [ "s" ],
       "gamepad": []
     },
     {
       "name": "Bulborb Reaction",
       "id": "bulborb",
-      "keys": ["b"],
+      "keys": [ "b" ],
       "gamepad": []
     },
     {
       "name": "Taunt",
       "id": "taunt",
-      "keys": ["v"],
+      "keys": [ "v" ],
       "gamepad": []
     },
     {
       "name": "Gangnam Style",
       "id": "gangnam",
-      "keys": ["a"],
+      "keys": [ "a" ],
       "gamepad": []
     },
     {
       "name": "Focus Placebo",
       "id": "focus_placebo",
-      "keys": ["f"],
+      "keys": [ "f" ],
       "gamepad": []
-    },
+    }
   ],
 
   // Config values for the engine and any libraries you may have.
