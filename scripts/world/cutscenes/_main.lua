@@ -61,7 +61,7 @@ return {
 
         local sideb_file_found = Mod:hasDRSidebSave()
 
-        local skip_hint = Text("Hold C+D to skip",
+        local skip_hint = Text("To exit, press C + D",
             0, SCREEN_HEIGHT/2+50, SCREEN_WIDTH, SCREEN_HEIGHT,
             {
                 align = "center",
@@ -105,9 +105,9 @@ return {
         skip_hint:remove()
         can_exit = false
 
-        gonerText("ARE YOU[wait:40]\nTHERE?[wait:20]")
+        gonerText("DAN[wait:20]")
         cutscene:wait(0.5)
-        gonerText("ARE WE[wait:40]\nCONNECTED?[wait:20]")
+        gonerText("we talk[wait:20]")
 
         cutscene:wait(0.5)
 
@@ -123,38 +123,38 @@ return {
         end)
         cutscene:wait(1.75)
 
-        gonerText("EXCELLENT.[wait:20]")
+        gonerText("ah[wait:20]")
         cutscene:wait(0.5)
-        gonerText("TRULY[wait:20]\nEXCELLENT.[wait:20]")
+        gonerText("This is good.[wait:20]")
         cutscene:wait(0.5)
-        gonerText("NOW.[wait:20]")
+        gonerText("income[wait:20]")
 
         if sideb_file_found then
             cutscene:wait(0.5)
-            gonerText("BEFORE WE BEGIN.[wait:20]")
+            gonerText("I learned this\nquickly.[wait:20]")
             cutscene:wait(0.5)
-            gonerText("I'D LIKE TO[wait:20]\nNOTICE...[wait:20]")
+            gonerText("Let me know...[wait:20]")
             cutscene:wait(0.5)
-            gonerText("THAT DURING ONE OF[wait:20]\nOUR EXPERIMENTS...[wait:20]")
+            gonerText("We had the same\nexperience.[wait:20]")
             cutscene:wait(0.5)
-            gonerText("YOU MADE SOME VERY,[wait:20]\nVERY INTERESTING...[wait:20]\nCHOICES.[wait:20]")
+            gonerText("Thank you for\nyour decision.[wait:20]")
             cutscene:wait(0.5)
-            gonerText("CHOICES THAT HAD[wait:20]\nCONSEQUENCES.[wait:20]")
+            gonerText("Selected results[wait:20]")
             cutscene:wait(0.5)
-            gonerText("SO WHAT IF[wait:20]\nI SAY...[wait:20]")
+            gonerText("What can I say\nabout this?[wait:20]")
             cutscene:wait(0.5)
-            gonerText("I HAVE A[wait:20]\nPROPOSITION[wait:20]\nFOR YOU?[wait:20]")
+            gonerText("how are you i'm\nthere[wait:20]")
             cutscene:wait(0.5)
-            gonerText("A PROPOSITION OF[wait:20]\nTRANSFERRING THESE...[wait:20]")
+            gonerText("Here is a\ntranslation guide…[wait:20]")
             cutscene:wait(0.5)
-            gonerText("CHOICES AND[wait:20]\nCONSEQUENCES...[wait:20]\nHERE?[wait:20]")
+            gonerText("How are the elections\nheld and what are\nthe results? -[wait:20]")
             cutscene:wait(0.5)
-            gonerText("WOULD YOU[wait:20]\nAGREE TO THAT?[wait:20]")
+            gonerText("Did you like this?[wait:20]")
             cutscene:wait(0.5)
 
             local chosen = nil
             local choicer = GonerChoice(220, 360, {
-                { { "YES", 0, 0 }, { "<<" }, { ">>" }, { "NO", 160, 0 } }
+                { { "It's\neverything.", 0, 0 }, { "<<" }, { ">>" }, { "voice", 160, 0 } }
             }, function(choice)
                 chosen = choice
             end)
@@ -165,67 +165,67 @@ return {
 
             gonerTextFade()
 
-            if chosen == "YES" then
+            if chosen == "It's\neverything." then
                 cutscene:wait(0.5)
-                gonerText("VERY WELL THEN.[wait:20]")
+                gonerText("Everything done\nhere is good.[wait:20]")
                 cutscene:wait(0.5)
-                gonerText("THERE'S NO[wait:20]\nGOING BACK NOW.[wait:20]")
+                gonerText("I can't return\nit now.[wait:20]")
                 cutscene:wait(0.5)
-                gonerText("...[wait:20]")
+                gonerText("-[wait:20]")
                 updatePostSidebData()
                 cutscene:wait(0.5)
-                gonerText("IT IS DONE.[wait:20]")
+                gonerText("in public[wait:20]")
                 cutscene:wait(0.5)
-                gonerText("NOW.[wait:20]")
+                gonerText("a moment[wait:20]")
             else
                 cutscene:wait(0.5)
-                gonerText("OF COURSE.[wait:20]\nOF COURSE.[wait:20]")
+                gonerText("unnecessary[wait:20]")
                 cutscene:wait(0.5)
-                gonerText("IN THAT CASE...[wait:20]")
+                gonerText("Your sign?[wait:20]")
             end
         end
 
         cutscene:wait(0.5)
-        gonerText("WE MAY-")
+        gonerText("next time-[wait:20]")
 
         world_music:stop()
         Assets.playSound("phone")
         cutscene:wait(1)
 
-        gonerText("...HM?[wait:20]")
+        gonerText("... is it good?[wait:20]")
         cutscene:wait(0.5)
-        gonerText("APOLOGIES.[wait:20]")
+        gonerText("He said sorry[wait:20]")
         cutscene:wait(0.5)
-        gonerText("I NEED TO TAKE[wait:20]\nTHIS CALL.[wait:20]")
+        gonerText("Contact us here.[wait:20]")
         cutscene:wait(0.5)
 		Assets.playSound("item")
         cutscene:wait(1.25)
-        gonerText("HELLO?[wait:20]")
+        gonerText("thank you[wait:20]")
 
         local wahwah = Music("voiceover/wahwah", 0.8)
         wahwah:play()
         cutscene:wait(1.25)
 		
-        gonerText("YES...[wait:20]")
+        gonerText("well...[wait:20]")
         cutscene:wait(0.5)
-        gonerText("MM-HM...[wait:20]")
+        gonerText("He is...[wait:20]")
         cutscene:wait(0.5)
-        gonerText("EXCELLENT.[wait:20]")
+        gonerText("ah[wait:20]")
         cutscene:wait(0.5)
-        gonerText("I SHALL BE THERE[wait:20]\nSHORTLY.[wait:20]")
+        gonerText("They are grown\nfrom seeds[wait:20]")
         cutscene:wait(0.5)
 		wahwah:stop()
 		wahwah:remove()
 		Assets.playSound("item")
         cutscene:wait(1)
 
-        gonerText("SINCEREST[wait:20]\nAPOLOGIES...[wait:20]")
+        gonerText("With permission...[wait:20]")
         cutscene:wait(0.5)
-        gonerText("IT APPEARS THAT I[wait:20]\nAM NEEDED ELSEWHERE.[wait:20]")
+        gonerText("I think it should\nbe done.[wait:20]")
         cutscene:wait(0.5)
-        gonerText("IN THE MEANTIME,[wait:20]\nHOWEVER...[wait:20]")
+        gonerText("But...")
         cutscene:wait(0.5)
-        gonerText("HERE'S THE REST[wait:20]\nOF THE OLD-ASS\nCUTSCENE...[wait:20]")
+        gonerText("Before, there were\ncases...[wait:20]")
         cutscene:wait(1.25)
 		
         world_music:stop()
@@ -237,7 +237,7 @@ return {
         background.layer = WORLD_LAYERS["ui"]
         Game.world:addChild(background)
 
-        gonerText("YOU MUST CHOOSE[wait:40]\nA VESSEL.[wait:20]")
+        gonerText("You have to choose\nan option.[wait:20]")
 
         cutscene:wait(1)
 
@@ -271,13 +271,13 @@ return {
         end)
 
 
-        gonerText("THIS SHOULD BE[wait:40]\nGOOD ENOUGH.[wait:20]", false)
+        gonerText("balanced", false)
 
         cutscene:wait(4)
 
         local chosen = nil
         local choicer = GonerChoice(220, 360, {
-            { { "YES", 0, 0 }, { "<<" }, { ">>" }, { "NO", 160, 0 } }
+            { { "The\nsame\nthing", 0, 0 }, { "<<" }, { ">>" }, { "voice", 160, 0 } }
         }, function(choice)
             chosen = choice
         end)
@@ -289,9 +289,9 @@ return {
 
         gonerTextFade()
 
-        if chosen == "YES" then
-            gonerText("EXCELLENT.[wait:20]")
-            gonerText("TRULY[wait:40]\nEXCELLENT.[wait:20]")
+        if chosen == "The\nsame\nthing" then
+            gonerText("ah[wait:20]")
+            gonerText("This is good.[wait:20]")
             text.x = 136
             text.y = 40
 
@@ -299,8 +299,8 @@ return {
 
             cutscene:wait(0.75)
         else
-            gonerText("REALLY?[wait:40]\nBITCH, YOU FR?[wait:20]")
-            gonerText("WELL FUCK YOU I\nCHOSE IT ANYWAY[wait:20]")
+            gonerText("Is your dog French?[wait:20]")
+            gonerText("But if you want to,\nyou're in luck.[wait:20]")
             
             --[[
             gonerText("ALRIGHT, I GOT\nANOTHER ONE.[wait:20]")
@@ -329,7 +329,7 @@ return {
         end, function(key, x, y, namer)
             if namer.text == "GASTE" and key == "R" then
                 Assets.playSound("vineboom", 5)
-                gonerText("[speed:99][color:red]BITCH!!.")
+                gonerText("[speed:99][color:red]Dogs! -[wait:20]")
                 cutscene:wait(0.02)
                 Game.stage.timescale = 0
                 Game.stage.active = false
@@ -347,14 +347,14 @@ return {
         Game.world.timer:tween(1, chara_y, { 240 })
 
         if chara_name ~= "DOOBIE" then
-            gonerText("WRONG.[wait:40]\nYOU ARE SO[wait:40] STUPID.[wait:20]")
+            gonerText("you are so stupid[wait:20]")
             gonerText(chara_name .. "?[wait:20]")
-            gonerText("UNFORTUNATELY, YOU\nHAVE NOT PASSED\nTHE IQ TEST.[wait:20]")
-            gonerText("BUT, I GUESS\nWE CAN... MAKE\nSOME EXCEPTIONS.[wait:20]")
+            gonerText("Unfortunately, I\nfailed the IQ test.[wait:20]")
+            gonerText("But I find it\ninteresting.[wait:20]")
         else
             --gonerText("CORRECT-A-MUNDO![wait:20]\nITS NAME IS YOU.[wait:20]")
-            gonerText("CORRECT-A-MUNDO![wait:20]\nITS NAME IS DOOBIE.[wait:20]")
-            gonerText("ALRIGHT KIDDO,\nSENDING YA OFF\nNOW![wait:20] BYE-BYE![wait:20]")
+            gonerText("The world deserves it![wait:20]")
+            gonerText("Now clear, peanut\nbutter! Farewell![wait:20]")
         end
 
         Game:setFlag("vesselChosen", 1)
