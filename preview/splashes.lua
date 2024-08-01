@@ -81,4 +81,5 @@ return {
     "Smells like\nsplash text",
     "human... i remember\nyou're genocides...",
     "Help! They're forcing\nme to make\nsplash texts!",
+    "Knockback Bros.\nbut like not\nadvanced",
 }
