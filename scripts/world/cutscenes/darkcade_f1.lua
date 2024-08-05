@@ -39,6 +39,14 @@ return {
 			cutscene:hideNametag()
 		else
 			cutscene:text("* The table looks brand new, yet the condiments are old.")
+			if jamm and Game:getFlag("marcy_joined") then
+				cutscene:showNametag("Marcy")
+				cutscene:text("* Marcy doesn't like old condiments...", "frown", "marcy")
+				
+				cutscene:showNametag("Jamm")
+				cutscene:text("* I mean,[wait:5] it's not like there's anything worth it here...", "nervous_left", "jamm")
+				cutscene:text("* You won't have to worry about it,[wait:5] Marcy.", "smile_side", "jamm")
+			end
 		end
     end,
 

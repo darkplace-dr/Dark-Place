@@ -60,6 +60,14 @@ return {
         else
             cutscene:text("* It's a lone dumpster.")
             cutscene:text("* There doesn't seem to be anything, or anyone, inside it.")
+			
+			if cutscene:getCharacter("jamm") and Game:getFlag("marcy_joined") then
+				cutscene:showNametag("Marcy")
+				cutscene:text("* It wouldn't hurt to check though,[wait:5] right?", "neutral", "marcy")
+				cutscene:showNametag("Jamm")
+				cutscene:text("* Marcy,[wait:5] are you talking to your imaginary friend again?", "look_left", "jamm")
+				cutscene:hideNametag()
+			end
         end
 
     end,
