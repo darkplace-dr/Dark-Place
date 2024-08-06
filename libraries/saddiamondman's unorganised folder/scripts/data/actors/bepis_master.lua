@@ -52,7 +52,7 @@ function actor:onSpriteInit(sprite)
 
 	sprite.hat = Sprite(self.path .. "/hat")
 	sprite.hat:set({
-		self.path .. "/hat", 0.2,
+		self.path .. "/hat", 0.2, true
 	})
 	sprite:addChild(sprite.hat)
 	sprite.hat:setOrigin(0, 0)
