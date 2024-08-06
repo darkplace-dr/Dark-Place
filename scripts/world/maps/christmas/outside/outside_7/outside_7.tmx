@@ -74,7 +74,11 @@
     <property name="text1" value="* The Christmas cheer fills you with power."/>
    </properties>
   </object>
-  <object id="13" name="wardrobe" x="560" y="200" width="40" height="40"/>
+  <object id="13" name="wardrobe" x="560" y="200" width="40" height="40">
+   <properties>
+    <property name="sprite" value="world/events/workshop/wardrobe_closed"/>
+   </properties>
+  </object>
   <object id="18" name="transition" x="280" y="480" width="120" height="40">
    <properties>
     <property name="map" value="christmas/outside/outside_6"/>

@@ -326,7 +326,9 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["sprite"] = "world/events/workshop/wardrobe_closed"
+          }
         },
         {
           id = 18,
