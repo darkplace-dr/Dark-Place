@@ -8,8 +8,10 @@ function Wardrobe:init(data)
 	self.solid = true
 	
 	self:setHitbox(0, 78, 60, 25)
+	
+	self.sprite = data.properties["sprite"] or "world/events/devroom/wardrobe_closed"
 
-    self:setSprite("world/events/devroom/wardrobe_closed")
+    self:setSprite(self.sprite)
 end
 
 function Wardrobe:onInteract(chara, dir)

@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 19,
+  nextobjectid = 27,
   properties = {
     ["music"] = "christmas_outside",
     ["name"] = "WORKSHOP - Workshop"
@@ -21,6 +21,12 @@ return {
       firstgid = 1,
       filename = "../../../../tilesets/snowdin.tsx",
       exportfilename = "../../../../tilesets/snowdin.lua"
+    },
+    {
+      name = "city_alleyway",
+      firstgid = 1090,
+      filename = "../../../../tilesets/city_alleyway.tsx",
+      exportfilename = "../../../../tilesets/city_alleyway.lua"
     }
   },
   layers = {
@@ -198,39 +204,13 @@ return {
           properties = {}
         },
         {
-          id = 5,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 0,
-          y = 160,
-          width = 108,
-          height = 96,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 6,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 532,
-          y = 160,
-          width = 108,
-          height = 96,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 16,
           name = "",
           type = "",
           shape = "rectangle",
           x = 0,
           y = 160,
-          width = 20,
+          width = 40,
           height = 200,
           rotation = 0,
           visible = true,
@@ -241,9 +221,9 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 620,
+          x = 600,
           y = 160,
-          width = 20,
+          width = 40,
           height = 200,
           rotation = 0,
           visible = true,
@@ -296,7 +276,7 @@ return {
           name = "wardrobe_unstuck",
           type = "",
           shape = "point",
-          x = 492,
+          x = 560,
           y = 260,
           width = 0,
           height = 0,
@@ -340,13 +320,15 @@ return {
           name = "wardrobe",
           type = "",
           shape = "rectangle",
-          x = 492,
+          x = 560,
           y = 200,
           width = 40,
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["sprite"] = "world/events/workshop/wardrobe_closed"
+          }
         },
         {
           id = 18,
@@ -363,6 +345,118 @@ return {
             ["map"] = "christmas/outside/outside_6",
             ["marker"] = "out_7"
           }
+        },
+        {
+          id = 19,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 600,
+          y = 200,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 1318,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 20,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 600,
+          y = 280,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 1318,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 21,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 600,
+          y = 240,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 1318,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 22,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 600,
+          y = 320,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 1318,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 23,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 200,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 1318,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 24,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 240,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 1318,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 25,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 280,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 1318,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 26,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 320,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          gid = 1318,
+          visible = true,
+          properties = {}
         }
       }
     }
