@@ -23,7 +23,7 @@ function spell:onCast(user, target)
 		target:addShield(math.floor(target.chara:getStat("health")) / 4)
 
         local function generateSlash(scale_x)
-            local cutAnim = Sprite("effects/spells/ceroba/diamond")
+            local cutAnim = Sprite("battle/bullets/ceroba/diamond")
             cutAnim:setOrigin(0.5, 0.5)
             cutAnim:setScale(2.5 * scale_x, 2.5)
             cutAnim:setColor(1, 1, 0)
