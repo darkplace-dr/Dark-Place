@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 27,
+  nextobjectid = 29,
   properties = {
     ["music"] = "christmas_outside",
     ["name"] = "WORKSHOP - Workshop"
@@ -457,6 +457,37 @@ return {
           gid = 1318,
           visible = true,
           properties = {}
+        },
+        {
+          id = 27,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 280,
+          y = 240,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "christmas.enter",
+            ["once"] = false
+          }
+        },
+        {
+          id = 28,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 96,
+          y = 140,
+          width = 46,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "christmas.s_elf_door"
+          }
         }
       }
     }
