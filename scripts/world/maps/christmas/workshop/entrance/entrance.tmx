@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="28">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <imagelayer id="2" name="Image Layer 1">
+  <image source="../../../../../../assets/sprites/world/maps/workshop/workshop_entry.png" width="640" height="480"/>
+ </imagelayer>
+ <objectgroup id="3" name="collision">
+  <object id="1" x="0" y="0" width="40" height="480"/>
+  <object id="2" x="40" y="440" width="80" height="40"/>
+  <object id="3" x="200" y="440" width="440" height="40"/>
+  <object id="4" x="600" y="320" width="40" height="120"/>
+  <object id="5" x="600" y="0" width="40" height="280"/>
+  <object id="6" x="194" y="0" width="406" height="160"/>
+  <object id="7" x="0" y="0" width="128" height="160"/>
+  <object id="8" x="280" y="160" width="40" height="280"/>
+  <object id="9" x="120" y="0" width="80" height="40"/>
+  <object id="20" x="320" y="236" width="40" height="96"/>
+  <object id="21" x="320" y="160" width="60" height="34"/>
+ </objectgroup>
+ <objectgroup id="4" name="markers">
+  <object id="14" name="entry" x="160" y="580">
+   <point/>
+  </object>
+  <object id="15" name="player_walkto" x="160" y="240">
+   <point/>
+  </object>
+  <object id="16" name="f2" x="160" y="280">
+   <point/>
+  </object>
+  <object id="17" name="f3" x="160" y="320">
+   <point/>
+  </object>
+  <object id="18" name="f4" x="160" y="360">
+   <point/>
+  </object>
+  <object id="24" name="self_walk_1" x="448" y="300">
+   <point/>
+  </object>
+  <object id="26" name="self_walk_3" x="688" y="300">
+   <point/>
+  </object>
+  <object id="25" name="self_walk_2" x="448" y="180">
+   <point/>
+  </object>
+  <object id="27" name="player_walkto_2" x="160" y="160">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="objects">
+  <object id="10" name="npc" x="380" y="300">
+   <properties>
+    <property name="actor" value="self"/>
+    <property name="facing" value="left"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>
