@@ -95,7 +95,7 @@ return {
 			
 			if brenda then
 				cutscene:showNametag("Brenda")
-				cutscene:text("* Huh?[wait:5]\nBut I thought you were a lightner?", "shock", "brenda")
+				cutscene:text("* Huh?[wait:5]\n* But I thought you were a lightner?", "shock", "brenda")
 			elseif susie then
 				cutscene:showNametag("Susie")
 				cutscene:text("[voice:susie]* You don't look like a darkner.", "nervous", "susie")
@@ -138,7 +138,7 @@ return {
 						cutscene:text("* You don't say it,[wait:5] but Marcy seems pretty weak.")
 					
 						cutscene:showNametag("Marcy")
-						cutscene:text("[voice:marcy]* Oh,[wait:5] I'm stronger than I actually seem.", "disappointed", "marcy")
+						cutscene:text("[voice:marcy]* Oh,[wait:5] Marcy is stronger than she seems.", "disappointed", "marcy")
 						
 						cutscene:showNametag("Susie")
 						cutscene:text("[voice:susie]* (Who's she talking to?)", "nervous_side", "susie")
