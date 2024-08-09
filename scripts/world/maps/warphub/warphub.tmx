@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="107">
+<map version="1.5" tiledversion="2021.03.23" orientation="orthogonal" renderorder="right-down" width="23" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="107">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -14,7 +14,7 @@
  <tileset firstgid="385" source="../../tilesets/space.tsx"/>
  <tileset firstgid="397" source="../../tilesets/warphub_doors.tsx"/>
  <tileset firstgid="457" source="../../tilesets/devroom-objects.tsx"/>
- <tileset firstgid="510" source="../../tilesets/warp_bin.tsx"/>
+ <tileset firstgid="511" source="../../tilesets/warp_bin.tsx"/>
  <objectgroup id="9" name="objects_bg">
   <object id="103" name="entry" x="845.455" y="-339.394">
    <point/>
@@ -66,7 +66,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,291,292,293,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,510,511,512,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,511,512,513,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -123,20 +123,8 @@
   </object>
   <object id="45" name="interactable" x="390" y="280" width="140" height="60">
    <properties>
+    <property name="cutscene" value="warphub.warp_codes"/>
     <property name="solid" type="bool" value="true"/>
-    <property name="text1" value="* There appears to be some advertisements for codes here."/>
-    <property name="text10" value="* (Hello! Go to &quot;[color:red]SLIDER[color:reset]&quot; for lotsa fun!)"/>
-    <property name="text11" value="* It looks like until someone posts another ad,[wait:10] that's all there is here."/>
-    <property name="text2" value="* (Go to the code &quot;[color:yellow]SPAM[color:pink]ROOM[color:reset]&quot;! It's where all the [BIG SHOT]s are!)"/>
-    <property name="text3" value="* (yo whaddup. go to &quot;[color:red]DESSHERE[color:reset]&quot;.)"/>
-    <property name="text4">* (Want to fight bosses you've previously fought?[wait:10]
-Go to &quot;[color:yellow]BOSSRUSH[color:reset]&quot;!)</property>
-    <property name="text5" value="* (Want to meet the devs of this game? Check out &quot;[color:blue]DEVDINER[color:reset]&quot;!)"/>
-    <property name="text6" value="* (Do you have horrible internet? Visit &quot;[color:black]WIFIDOWN[color:reset]&quot; now to resolve all of your network troubles!)"/>
-    <property name="text7">* (Check out the Dark Place X &quot;[color:#5fcde4]GARRYMOD[color:reset]&quot; crossover!
-Mods included!)</property>
-    <property name="text8" value="* (Want to play some games? Check out the newly opened &quot;[color:blue]DARKCADE[color:white]&quot;!)"/>
-    <property name="text9" value="* (Visit the Wild East in &quot;[color:ff7800]WILDEAST[color:reset]&quot;!)"/>
    </properties>
   </object>
   <object id="46" name="interactable" x="80" y="320" width="80" height="40">

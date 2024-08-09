@@ -13,7 +13,7 @@ function Mod:loadNoel(noelsave)
     local savedData = noelsave
     local map = Game.world.map.id
 
-    if not Utils.containsValue(Game.party, "noel") then
+    if not Game:hasPartyMember("noel") then
         Game:setFlag("noel_party", false)
     else
         Game:setFlag("noel_party", true)
@@ -124,11 +124,11 @@ function Mod:noels_annoyance(cutscene)
         cutscene:showNametag("Noel")
         local thing = love.math.random(1, 2)
         if thing == 1 then
-        cutscene:text("* OH,[wait:5] MY,[wait:5] GOD!!!", "madloud", "noel")
+            cutscene:text("* OH,[wait:5] MY,[wait:5] GOD!!!", "madloud", "noel")
             cutscene:text("* This is the dumbest puzzle ever, I'm leaving!", "madloud", "noel")
         elseif thing == 2 then
-        cutscene:text("* Looks like you're in a bit of a pickle [color:yellow]"..Game.save_name.."[color:white].", "bruh", "noel")
-        cutscene:text("* Don't worry.[wait:8] [face:neutral]For 12[color:yellow] PlayCoins[font:small]TM[font:main][color:white]\nWe can teleport to the nearest [color:yellow]CHECKPOINT[color:white]!", "lookup", "noel")
+            cutscene:text("* Looks like you're in a bit of a pickle [color:yellow]"..Game.save_name.."[color:white].", "bruh", "noel")
+            cutscene:text("* Don't worry.[wait:8] [face:neutral]For 12[color:yellow] PlayCoins[font:small]TM[font:main][color:white]\nWe can teleport to the nearest [color:yellow]CHECKPOINT[color:white]!", "lookup", "noel")
         -- noel random saying "this stinks, im leaving", or "playcoins or sum shit"
         end
         cutscene:hideNametag()

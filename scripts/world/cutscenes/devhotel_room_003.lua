@@ -282,6 +282,11 @@ return {
 			cutscene:hideNametag()
 			
 			if cutscene:choicer({"Yes", "No"}) == 1 then
+                                if Game:getFlag("noel_party") == true then
+				    cutscene:showNametag("Marcy, actually it's Noel but I have no funny textbox manipulations right now so please bear with me.")
+				    cutscene:text("(* Wait, we are?)", "excusemebutwhatthefuck", "noel", {auto = true})
+                                end
+
 				cutscene:showNametag("Marcy")
 				cutscene:text("[voice:marcy]* Y-yay!", "happy", "marcy")
 				cutscene:text("[voice:marcy]* Papa's hotel room is room 003!", "smile", "marcy")

@@ -8,7 +8,7 @@ end
 --Up and down didnt look nice enough
 --[[
 --print(Game.world.player.sprite.sprite_options[1])
-function actor:onWorldUpdate(chara) 
+function Actor:onWorldDraw(chara)
     if chara.running and chara.running == true and not chara.running == false then
         --print("woah")
         if chara.facing == "left" then
