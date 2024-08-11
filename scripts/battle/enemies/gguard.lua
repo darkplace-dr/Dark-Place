@@ -95,29 +95,4 @@ function GGuard:onDefeat(damage, battler)
     self:onDefeatFatal(damage, battler)
 end
 
-function onHurt(damage, battler)
-	super:onHurt(damage, battler)
-	self:resetSprite()
-end
-
-function EnemyBattler:onDefeatFatal(damage, battler)
-    self.hurt_timer = -1
-
-    Assets.playSound("deathnoise")
-
-    local sprite = self:getActiveSprite()
-
-    sprite.visible = false
-    sprite.shake_x = 0
-
-    local death_x, death_y = sprite:getRelativePos(0, 0, self)
-    local death = FatalEffect(sprite:getTexture(), death_x, death_y, function() self:remove() end)
-    death:setColor(1, 1, 1)
-    death:setScale(sprite:getScale())
-    self:addChild(death)
-
-    self:defeat("KILLED", true)
-    
-end
-
 return GGuard

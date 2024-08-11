@@ -14,9 +14,9 @@ function Mod:preInit()
         self.legacy_kristal = true
     end
 
-    -- this is the worst change
+    -- KRISTAL_EVENT is the worst change
     -- remove after v0.9.0
-    if not KRISTAL_EVENT then
+    if not KRISTAL_EVENT or not PartyMember["setDarkTransitionActor"] then
         self.legacy_kristal = true
     end
 end
@@ -31,31 +31,6 @@ function Mod:init()
     MUSIC_VOLUMES["deltarune/spamton_neo_mix_ex_wip"] = 0.7
     MUSIC_VOLUMES["marble_ft_ultra"] = 0.8
     MUSIC_VOLUMES["beasts"] = 0.7
-	
-	CARD_LAYERS = {
-		["bottom"] = -1000,
-		["below_ui"] = 0,
-		["ui"] = 100,
-		["above_ui"] = 150,
-		["below_cards"] = 150,
-		["enemy_cards"] = 200,
-		["between_cards"] = 250,
-		["cards"] = 300,
-		["above_cards"] = 350,
-		["below_select"] = 350,
-		["select"] = 400,
-		["above_select"] = 450,
-		["below_soul"] = 450,
-		["soul"] = 500,
-		["above_soul"] = 550,
-		["below_coin"] = 550,
-		["coin"] = 600,
-		["above_coin"] = 650,
-		["below_textbox"] = 700,
-		["textbox"] = 800,
-		["above_textbox"] = 900,
-		["top"] = 1000
-	}
 
     self.voice_timer = 0
 
@@ -86,6 +61,15 @@ function Mod:init()
         function(_, self)
             if self.soul_offset then return unpack(self.soul_offset) end
             return 0, 0
+        end)
+    end
+    -- v0.8.1 setDarkTransitionActor absence HACK
+    if not PartyMember["setDarkTransitionActor"] then
+        Utils.hook(PartyMember, "setDarkTransitionActor",
+        ---@overload fun(orig:function, self:PartyMember, actor:Actor|string) : nil
+        ---@diagnostic disable-next-line: redefined-local
+        function(_, self, actor)
+            -- NOOP
         end)
     end
     -- v0.9.0 string add tweak HACK (yuck) for MG

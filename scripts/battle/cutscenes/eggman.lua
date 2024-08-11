@@ -18,8 +18,31 @@ return {
         cutscene:wait(2)
 		
 		cutscene:battlerText(enemy, "Oh no!", {})
-		
-		enemy:onDefeatRun(0, jamm)
+
+        local function neutheredOnDefeatRun(self, damage, battler) -- COPY OF EnemyBattler:onDefeatRun
+            self.hurt_timer = -1
+            self.defeated = true
+
+            Assets.playSound("defeatrun")
+
+            local sweat = Sprite("effects/defeat/sweat")
+            sweat:setOrigin(0.5, 0.5)
+            sweat:play(5/30, true)
+            sweat.layer = 100
+            self:addChild(sweat)
+
+            Game.battle.timer:after(15/30, function()
+                sweat:remove()
+                self:getActiveSprite().run_away = true
+
+                Game.battle.timer:after(15/30, function()
+                    self:remove()
+                end)
+            end)
+
+            self.done_state = "VIOLENCED"
+        end
+		neutheredOnDefeatRun(enemy, 0, jamm)
 		cutscene:wait(1)
 		
 		for _,battler in ipairs(Game.battle.party) do

@@ -1,4 +1,29 @@
 function Mod:initMinigameHooks()
+	CARD_LAYERS = {
+		["bottom"] = -1000,
+		["below_ui"] = 0,
+		["ui"] = 100,
+		["above_ui"] = 150,
+		["below_cards"] = 150,
+		["enemy_cards"] = 200,
+		["between_cards"] = 250,
+		["cards"] = 300,
+		["above_cards"] = 350,
+		["below_select"] = 350,
+		["select"] = 400,
+		["above_select"] = 450,
+		["below_soul"] = 450,
+		["soul"] = 500,
+		["above_soul"] = 550,
+		["below_coin"] = 550,
+		["coin"] = 600,
+		["above_coin"] = 650,
+		["below_textbox"] = 700,
+		["textbox"] = 800,
+		["above_textbox"] = 900,
+		["top"] = 1000
+	}
+
     Utils.hook(Game, "getActiveMusic",
         ---@overload fun(orig:function, self:Game) : Music
         function(orig, self)
