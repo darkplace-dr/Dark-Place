@@ -34,10 +34,29 @@ return {
 		end
 		enemy:statusMessage("damage", 9999, player and {player.chara:getDamageColor()})
 		---@diagnostic disable-next-line: redundant-parameter
-		enemy:hurt(enemy.max_health, player, enemy.onDefeatFatal, player and {player.chara:getDamageColor()}, false)
+		enemy:hurt(enemy.max_health, player, function(damage, battler) -- COPY OF onDefeatFatal
+			enemy.hurt_timer = -1
+
+			Assets.playSound("deathnoise")
+
+			local sprite = enemy:getActiveSprite()
+
+			sprite.visible = false
+			sprite:stopShake()
+
+			local death_x, death_y = sprite:getRelativePos(0, 0, enemy)
+			local death = FatalEffect(sprite:getTexture(), death_x, death_y, function() enemy:remove() end)
+			death:setColor(sprite:getDrawColor())
+			death:setScale(sprite:getScale())
+			enemy:addChild(death)
+
+			enemy.done_state = "KILLED"
+		end, player and {player.chara:getDamageColor()}, false)
 
 		cutscene:wait(1)
-		player:setSprite("right_1")
+		player:getActiveSprite():setSprite("walk")
+		player:getActiveSprite():setFacing("right")
+		player:getActiveSprite():setFrame(1)
 
 		cutscene:wait(1.5)
 		cutscene:wait(cutscene:fadeOut(1))
