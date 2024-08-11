@@ -126,6 +126,8 @@ function preview:update()
     elseif self.naming_video then
         self.naming_video_fade_phase = 1
     end
+    local mod_music_table = self.menu.mod_list and self.menu.mod_list.music
+    if not mod_music_table then mod_music_table = self.menu.mod_music end
     if self.naming_video then
         if self.naming_video_fade_phase == 0 then
             self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 1, 0.02*DTMULT)
@@ -134,13 +136,13 @@ function preview:update()
             if self.naming_video_fade_timer == 0 then
                 self.naming_video:pause()
                 self.naming_video = nil
-                self.menu.mod_list.music[self.mod_id]:setVolume(1)
+                mod_music_table[self.mod_id]:setVolume(1)
             end
         end
     end
     if self.naming_video then
         self.naming_video:getSource():setVolume(math.min(self.naming_video_fade_timer/0.2, 1) * 0.6)
-        self.menu.mod_list.music[self.mod_id]:setVolume(1 - (self.naming_video_fade_timer * 1))
+        mod_music_table[self.mod_id]:setVolume(1 - (self.naming_video_fade_timer * 1))
         -- loop video
         if not self.naming_video:isPlaying() then
             self.naming_video:rewind()
@@ -291,8 +293,8 @@ end
 function preview:getNamer()
     if not self:areWeSelected() then return nil end
     return
-        (self.menu.state == "FILENAME" and self.menu.file_name_screen.file_namer)
-        or (self.menu.state == "DEFAULTNAME" and self.menu.default_name_screen.file_namer)
+        (self.menu.state == "FILENAME" and self.menu.file_name_screen and self.menu.file_name_screen.file_namer)
+        or (self.menu.state == "DEFAULTNAME" and self.menu.default_name_screen and self.menu.default_name_screen.file_namer)
         ---@diagnostic disable-next-line: undefined-field
         or self.menu.naming_screen
 end

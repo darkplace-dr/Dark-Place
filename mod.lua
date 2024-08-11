@@ -88,6 +88,15 @@ function Mod:init()
             return 0, 0
         end)
     end
+    -- v0.8.1 setDarkTransitionActor absence HACK
+    if not PartyMember["setDarkTransitionActor"] then
+        Utils.hook(PartyMember, "setDarkTransitionActor",
+        ---@overload fun(orig:function, self:PartyMember, actor:Actor|string) : nil
+        ---@diagnostic disable-next-line: redefined-local
+        function(_, self, actor)
+            -- NOOP
+        end)
+    end
     -- v0.9.0 string add tweak HACK (yuck) for MG
     local string_metatable = getmetatable(" ")
     if not string_metatable.__add then
