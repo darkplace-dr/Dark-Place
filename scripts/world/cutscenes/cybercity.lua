@@ -197,7 +197,7 @@ return {
             cutscene:text("* Well,[wait:5] hey,[wait:5] you know\nwhat?", "annoyed", "susie")
             cutscene:text("* You piss us off too.", "smirk", "susie")
             --Game.world.music:fade(1,0)
-            local cutscene_music = Music("s_neo")
+            local cutscene_music = Music("deltarune/s_neo")
             cutscene:detachFollowers()
             if kris then
                 cutscene:walkTo(kris, kris.x, kris.y - 40, 1, "down", true)
@@ -210,17 +210,8 @@ return {
             Assets.playSound("boost")
     
             event.sprite:set("wings")
-    
-            local offset = event.sprite:getOffset()
-    
-            local flash_x = event.x - (event.actor:getWidth() / 2 - offset[1]) * 2
-            local flash_y = event.y - (event.actor:getHeight() - offset[2]) * 2
-    
-            local flash = FlashFade("npcs/starwalker/starwalker_wings", flash_x, flash_y)
-            flash.flash_speed = 0.5
-            flash:setScale(2, 2)
-            flash.layer = event.layer + 1
-            event.parent:addChild(flash)
+
+            event.sprite:flash()
     
             cutscene:wait(1)
             cutscene:text("* Uh,[wait:5] what-", "surprise_frown", "susie", {auto=true})
