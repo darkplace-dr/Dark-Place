@@ -105,7 +105,7 @@ function actor:init()
         ["walk/right"] = "walk/right",
     }
 
-    self.taunt_sprites = {"box", "bs_win", "maid"}
+    self.taunt_sprites = {"box", --[["bs_win",]] "maid", "pirate"}
 end
 
 function actor:getSoulOffset()
