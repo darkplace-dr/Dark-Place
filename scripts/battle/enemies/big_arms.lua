@@ -48,6 +48,8 @@ function Dummy:init()
     self.killable = false
 	
 	self:registerActFor("pauling", "Order", "Revive\nparty", {}, 75)
+	
+	self.tired_percentage = 0
 end
 
 function Dummy:onAct(battler, name)

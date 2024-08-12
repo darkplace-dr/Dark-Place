@@ -40,6 +40,8 @@ function Dummy:init()
     }
     -- Text displayed at the bottom of the screen when the enemy has low health
     self.low_health_text = "* One of Booty's button eyes fall off."
+	
+	self.tired_percentage = 0
 end
 
 function Dummy:onAct(battler, name)
