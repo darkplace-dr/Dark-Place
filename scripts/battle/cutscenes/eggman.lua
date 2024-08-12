@@ -69,6 +69,7 @@ return {
 		cutscene:wait(1)
 		
 		Game.battle.music:play("egg_2", 1, 1)
+		Game.battle.enemies_index = {}
 		
 		Game.battle.encounter.big_arms = Game.battle.encounter:addEnemy("big_arms", 900, 200)
 		
