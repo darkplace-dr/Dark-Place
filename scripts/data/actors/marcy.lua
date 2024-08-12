@@ -11,7 +11,7 @@ function actor:init()
     self.height = 32
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = {0, 0, 21, 32}
+    self.hitbox = {5, 27, 10, 5}
 
     -- Color for this actor used in outline areas (optional, defaults to red)
     self.color = {1, 0, 0}
@@ -22,7 +22,7 @@ function actor:init()
     -- Path to this actor's sprites (defaults to "")
     self.path = "world/npcs/marcy"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-    self.default = "down_1"
+    self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
     self.voice = "marcy"
