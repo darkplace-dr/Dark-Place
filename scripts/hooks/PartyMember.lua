@@ -178,7 +178,7 @@ function PartyMember:getSkills()
 
             if Game.battle.encounter.default_xactions and self:hasXAct() then
                 local spell = {
-                    ["name"] = Game.battle.enemies[1]:getXAction(self.battler),
+                    ["name"] = Game.battle.enemies[1]:getXAction(Game.battle:getPartyBattler(self.id)),
                     ["target"] = "xact",
                     ["id"] = 0,
                     ["default"] = true,

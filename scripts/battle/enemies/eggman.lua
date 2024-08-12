@@ -49,6 +49,8 @@ function Dummy:init()
 
     self.exit_on_defeat = false
     self.killable = false
+	
+	self.tired_percentage = 0
 end
 
 function Dummy:onAct(battler, name)
