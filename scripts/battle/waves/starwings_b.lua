@@ -10,7 +10,16 @@ function StarWingsB:init()
     self.timescale = 4
 end
 
+function StarWingsB:onArenaEnter()
+	if self.encounter.id == "seawalker" then
+		Game.battle.arena.bg_color = {0, 0, 0.2}
+	end
+end
+
 function StarWingsB:onStart()
+	if self.encounter.id == "seawalker" then
+		Game.battle.soul.speed = 2
+	end
     -- Get the arena object
     local arena = Game.battle.arena
 

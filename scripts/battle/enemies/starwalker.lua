@@ -84,6 +84,8 @@ function Starwalker:onAct(battler, name)
             return "* Susie more like sussy\n(it got [color:yellow]absorbed[color:reset])"
         elseif battler.chara.id == "bor" then
             return "* Bor got bored\n(it got [color:yellow]absorbed[color:reset])"
+        elseif battler.chara.id == "jamm" then
+            return "* Mmm strawberry jamm\n(it got [color:yellow]absorbed[color:reset])"
         else
             return "* " .. battler.chara.name .. " did a thing\n(it got [color:yellow]absorbed[color:reset])"
         end
@@ -101,6 +103,8 @@ function Starwalker:onShortAct(battler, name)
             return "* Susie more like sussy"
         elseif battler.chara.id == "bor" then
             return "* Bor got bored"
+        elseif battler.chara.id == "jamm" then
+            return "* Mmm strawberry jamm"
         else
             return "* " .. battler.chara.name .. " did a thing"
         end

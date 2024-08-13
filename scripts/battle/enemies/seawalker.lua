@@ -1,61 +1,57 @@
----@class OGStarwalker : EnemyBattler
----@field sprite ActorSprite
-local OGStarwalker, super = Class(EnemyBattler)
+local Seawalker, super = Class(EnemyBattler)
 
-function OGStarwalker:init()
+function Seawalker:init()
     super.init(self)
 
-    self.name = "Starwalker"
-    self:setActor("og_starwalker")
+    self.name = "Seawalker"
+    self:setActor("seawalker")
 
+    self.path = "enemies/seawalker"
+    self.default = ""
     self.sprite:set("wings")
 
     self.max_health = 6000
     self.health = 6000
     self.attack = 12
     self.defense = 2
-    self.money = Game:getFlag("starwalker_money") / 3
-    self.experience = Mod:isInRematchMode() and 0 or 0
+    self.money = 420
+    self.experience = 420
 	self.service_mercy = 0
 	
 	self.boss = true
 
-    self.usedWalkerTimes = 0
-
     self.spare_points = 0
 
+    self.killable = true
     self.exit_on_defeat = false
     self.auto_spare = true
 
     self.movearound = true
 
     self.waves = {
-        "starwings",
-        --"starwings_b",
-        "starwings_normal"
-        --"solidtest"
+        "starwings_normal",
+        "starcomets"
     }
 
-    self.check = "The   original\n            ..."
+    self.check = "The   original\n            ."
 
     self.text = {
-        "* Star walker",
-        "* Smells like   [color:yellow]pissed off[color:reset]",
-        "*               this encounter\n is against star  walker",
-        "* this [color:yellow]battle[color:reset] is     [color:yellow]pissing[color:reset] me\noff...",
-        "* You are     [color:yellow]pissing[color:reset] me\noff..."
+        "* Sea walker",
+        "* Smells like   [color:blue]pissed off[color:reset]",
+        "*               this encounter\n is against sea  walker",
+        "* this [color:blue]battle[color:reset] is     [color:blue]pissing[color:reset] me\noff..."
     }
 
-    self.low_health_text = "* Star walker has      hurt"
+    self.low_health_text = "* Sea walker has      hurt"
 
-    self:registerAct("Walker", "")
+    self:registerAct("Sea walker", "")
     self:registerAct("Red Buster", "Red\nDamage", "susie", 60)
     self:registerAct("DualHeal", "Heals\neveryone", "ralsei", 50)
 
     self.text_override = nil
 end
 
-function OGStarwalker:onSpared()
+function Seawalker:onSpared()
     super.onSpared(self)
 
     self.sprite:resetSprite()
@@ -66,31 +62,22 @@ function OGStarwalker:onSpared()
     end
 end
 
-function OGStarwalker:isXActionShort(battler)
+function Seawalker:isXActionShort(battler)
     return true
 end
 
-function OGStarwalker:onActStart(battler, name)
+function Seawalker:onActStart(battler, name)
     super.onActStart(self, battler, name)
 end
 
-function OGStarwalker:onAct(battler, name)
-    self:spare()
+function Seawalker:onAct(battler, name)
     if name == "DualHeal" then
         Game.battle:powerAct("dual_heal", battler, "ralsei")
     elseif name == "Red Buster" then
         Game.battle:powerAct("red_buster", battler, "susie", self)
-    elseif name == "Walker" then
-        if self.usedWalkerTimes == 0 then
-            self:addMercy(8)
-            self.usedWalkerTimes = 1
-        elseif self.usedWalkerTimes == 1 then
-            self:addMercy(16)
-            self.usedWalkerTimes = 2
-        else
-            self:addMercy(32)
-        end
-        return "* The Original Starwalker  absorbs the\nACT"
+    elseif name == "Sea walker" then
+        self:addMercy(8)
+        return "* The Original Seawalker  absorbs the\nACT"
     elseif name == "Standard" then
         self:addMercy(4)
         if battler.chara.id == "ralsei" then
@@ -109,7 +96,7 @@ function OGStarwalker:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
-function OGStarwalker:onShortAct(battler, name)
+function Seawalker:onShortAct(battler, name)
     if name == "Standard" then
         self:addMercy(4)
         if battler.chara.id == "ralsei" then
@@ -129,7 +116,7 @@ function OGStarwalker:onShortAct(battler, name)
 end
 
 
-function OGStarwalker:getEnemyDialogue()
+function Seawalker:getEnemyDialogue()
     if self.text_override then
         local dialogue = self.text_override
         self.text_override = nil
@@ -140,22 +127,22 @@ function OGStarwalker:getEnemyDialogue()
     if self.mercy >= 100 then
         dialogue = {
             "walk",
-            "star"
+            "sea"
         }
     else
         dialogue = {
-            "star",
+            "sea",
             "walker"
         }
     end
     return dialogue[math.random(#dialogue)]
 end
 
-function OGStarwalker:onDefeat(damage, battler)
+function Seawalker:onDefeat(damage, battler)
     if self.encounter.id ~= "starwalker" and self.encounter.id ~= "og_starwalker" and self.encounter.id ~= "seawalker" then
         return super.onDefeatFatal(self, damage, battler)
     end
     self:defeat("KILLED", true)
 end
 
-return OGStarwalker
+return Seawalker
