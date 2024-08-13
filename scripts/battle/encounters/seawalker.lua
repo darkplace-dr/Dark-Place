@@ -3,7 +3,7 @@ local Seawalker, super = Class(Encounter)
 function Seawalker:init()
     super.init(self)
 
-    self.text = "* Sea walker has      changed forms"
+    self.text = "* Sea walker has      changed forms and      is [color:blue]underwater"
 
     self.seawalker = self:addEnemy("seawalker", 530, 238)
 
