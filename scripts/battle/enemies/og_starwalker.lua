@@ -152,7 +152,7 @@ function OGStarwalker:getEnemyDialogue()
 end
 
 function OGStarwalker:onDefeat(damage, battler)
-    if self.encounter.id ~= "starwalker" and self.encounter.id ~= "og_starwalker" then
+    if self.encounter.id ~= "starwalker" and self.encounter.id ~= "og_starwalker" and self.encounter.id ~= "seawalker" then
         return super.onDefeatFatal(self, damage, battler)
     end
     self:defeat("KILLED", true)
