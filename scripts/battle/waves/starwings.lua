@@ -6,7 +6,16 @@ function Starwings:init()
     self.starwalker = self:getAttackers()[1]
 end
 
+function Starwings:onArenaEnter()
+	if self.encounter.id == "seawalker" then
+		Game.battle.arena.bg_color = {0, 0, 0.2}
+	end
+end
+
 function Starwings:onStart()
+	if self.encounter.id == "seawalker" then
+		Game.battle.soul.speed = 2
+	end
     self.encounter:setMode("shoot")
     self.timer:every(1.85, function ()
         self.starwalker.sprite:set("starwalker_shoot_1")
