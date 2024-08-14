@@ -13,7 +13,7 @@ function Goosic:init()
     self.money = 18
     self.experience = 0
     
-    self.dialogue_bubble = "ut_wide"
+    self.dialogue_bubble = "uty_2"
     self.dialogue_offset = {-30, 10}
 
     self.waves = {
