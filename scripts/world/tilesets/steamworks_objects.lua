@@ -23,55 +23,13 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 68,
+  tilecount = 75,
   tiles = {
     {
-      id = 3,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/23_table_chair1.png",
-      width = 17,
-      height = 16
-    },
-    {
-      id = 4,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/23_table_chair2.png",
-      width = 15,
-      height = 4
-    },
-    {
-      id = 5,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/23_table1.png",
-      width = 54,
-      height = 48
-    },
-    {
-      id = 6,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/23_table2.png",
-      width = 54,
-      height = 48
-    },
-    {
-      id = 11,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/04b_puzzle.png",
-      width = 318,
-      height = 264
-    },
-    {
-      id = 12,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/04b_puzzle_background.png",
-      width = 316,
-      height = 266
-    },
-    {
-      id = 13,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/04c_puzzle.png",
-      width = 300,
-      height = 300
-    },
-    {
-      id = 14,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/04c_puzzle_back.png",
-      width = 400,
-      height = 400
+      id = 47,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/04_door.png",
+      width = 148,
+      height = 30
     },
     {
       id = 25,
@@ -176,34 +134,28 @@ return {
       height = 302
     },
     {
-      id = 35,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/05b_chute.png",
-      width = 66,
-      height = 200
+      id = 11,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/04b_puzzle.png",
+      width = 318,
+      height = 264
     },
     {
-      id = 36,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_1.png",
-      width = 86,
-      height = 230
+      id = 12,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/04b_puzzle_background.png",
+      width = 316,
+      height = 266
     },
     {
-      id = 37,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_2.png",
-      width = 86,
-      height = 230
+      id = 13,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/04c_puzzle.png",
+      width = 300,
+      height = 300
     },
     {
-      id = 38,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_door.png",
-      width = 96,
-      height = 88
-    },
-    {
-      id = 39,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/05d_lever.png",
-      width = 100,
-      height = 140
+      id = 14,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/04c_puzzle_back.png",
+      width = 400,
+      height = 400
     },
     {
       id = 40,
@@ -278,10 +230,34 @@ return {
       height = 120
     },
     {
-      id = 47,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/04_door.png",
-      width = 148,
-      height = 30
+      id = 35,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/05b_chute.png",
+      width = 66,
+      height = 200
+    },
+    {
+      id = 36,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_1.png",
+      width = 86,
+      height = 230
+    },
+    {
+      id = 37,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_2.png",
+      width = 86,
+      height = 230
+    },
+    {
+      id = 38,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/05c_lockers_door.png",
+      width = 96,
+      height = 88
+    },
+    {
+      id = 39,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/05d_lever.png",
+      width = 100,
+      height = 140
     },
     {
       id = 48,
@@ -330,6 +306,66 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/objects/06_wall_2.png",
       width = 146,
       height = 88
+    },
+    {
+      id = 77,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/09_fade.png",
+      width = 120,
+      height = 70
+    },
+    {
+      id = 78,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/09_stairs.png",
+      width = 150,
+      height = 80
+    },
+    {
+      id = 84,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/17b_gate_button.png",
+      width = 166,
+      height = 140
+    },
+    {
+      id = 92,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/18_hint.png",
+      width = 44,
+      height = 68
+    },
+    {
+      id = 87,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/18_macro_froggit_room_shutter.png",
+      width = 52,
+      height = 92
+    },
+    {
+      id = 85,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/18_platform.png",
+      width = 120,
+      height = 228
+    },
+    {
+      id = 3,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/23_table_chair1.png",
+      width = 17,
+      height = 16
+    },
+    {
+      id = 4,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/23_table_chair2.png",
+      width = 15,
+      height = 4
+    },
+    {
+      id = 5,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/23_table1.png",
+      width = 54,
+      height = 48
+    },
+    {
+      id = 6,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/23_table2.png",
+      width = 54,
+      height = 48
     },
     {
       id = 53,
@@ -414,18 +450,6 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/objects/platform_2_4.png",
       width = 76,
       height = 88
-    },
-    {
-      id = 61,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/VentDecor.png",
-      width = 236,
-      height = 224
-    },
-    {
-      id = 62,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/VentDecor2.png",
-      width = 192,
-      height = 260
     },
     {
       id = 63,
@@ -574,18 +598,6 @@ return {
       height = 134
     },
     {
-      id = 77,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/09_fade.png",
-      width = 120,
-      height = 70
-    },
-    {
-      id = 78,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/09_stairs.png",
-      width = 150,
-      height = 80
-    },
-    {
       id = 79,
       image = "../../../assets/sprites/world/maps/steamworks/objects/pillar_1.png",
       width = 232,
@@ -634,10 +646,58 @@ return {
       height = 42
     },
     {
-      id = 84,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/17b_gate_button.png",
-      width = 166,
-      height = 140
+      id = 61,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/VentDecor.png",
+      width = 236,
+      height = 224
+    },
+    {
+      id = 62,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/VentDecor2.png",
+      width = 192,
+      height = 260
+    },
+    {
+      id = 88,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/smallgear_1.png",
+      width = 38,
+      height = 38,
+      animation = {
+        {
+          tileid = 88,
+          duration = 100
+        },
+        {
+          tileid = 89,
+          duration = 100
+        },
+        {
+          tileid = 90,
+          duration = 100
+        },
+        {
+          tileid = 91,
+          duration = 100
+        }
+      }
+    },
+    {
+      id = 89,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/smallgear_2.png",
+      width = 38,
+      height = 38
+    },
+    {
+      id = 90,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/smallgear_3.png",
+      width = 38,
+      height = 38
+    },
+    {
+      id = 91,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/smallgear_4.png",
+      width = 38,
+      height = 38
     }
   }
 }

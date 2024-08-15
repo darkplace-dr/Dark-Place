@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 23,
-  nextobjectid = 65,
+  nextobjectid = 67,
   properties = {
     ["light"] = true,
     ["music"] = "undertale_yellow/steamworks_overworld"
@@ -19,13 +19,13 @@ return {
     {
       name = "steamworks",
       firstgid = 1,
-      filename = "../../tilesets/steamworks.tsx"
+      filename = "../../tilesets/steamworks.tsx",
+      exportfilename = "../../tilesets/steamworks.lua"
     },
     {
       name = "steamworks_gothic",
       firstgid = 1497,
-      filename = "../../tilesets/steamworks_gothic.tsx",
-      exportfilename = "../../tilesets/steamworks_gothic.lua"
+      filename = "../../tilesets/steamworks_gothic.tsx"
     },
     {
       name = "steamworks",
@@ -1939,6 +1939,32 @@ return {
           shape = "point",
           x = 466,
           y = 1634,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 65,
+          name = "up",
+          type = "",
+          shape = "point",
+          x = 1380,
+          y = 80,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 66,
+          name = "left",
+          type = "",
+          shape = "point",
+          x = 80,
+          y = 680,
           width = 0,
           height = 0,
           rotation = 0,

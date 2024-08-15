@@ -19,7 +19,8 @@ return {
     {
       name = "steamworks",
       firstgid = 1,
-      filename = "../../tilesets/steamworks.tsx"
+      filename = "../../tilesets/steamworks.tsx",
+      exportfilename = "../../tilesets/steamworks.lua"
     },
     {
       name = "steamworks_objects",
@@ -805,7 +806,7 @@ return {
       objects = {
         {
           id = 1,
-          name = "",
+          name = "transition",
           type = "",
           shape = "rectangle",
           x = 2440,

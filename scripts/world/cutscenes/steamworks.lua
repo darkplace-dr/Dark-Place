@@ -277,6 +277,34 @@ return {
             cutscene:hideNametag()
         end
     end,
+    boba_npc = function(cutscene, event)
+        if not Game:getFlag("boba_npc_talk") then
+            cutscene:showNametag("Robot")
+            cutscene:text("* (Slurp slurrrrp)", nil, event)
+            cutscene:text("* Ahhhh!", nil, event)
+            cutscene:text("* Nothing like Steamworks\nBoba-Soup (TM) to fuel the\nengine!", nil, event)
+            cutscene:text("* What? Don't act like you've\nnever heard of it.", nil, event)
+            cutscene:hideNametag()
+            Game:setFlag("boba_npc_talk", 1)
+        elseif Game:getFlag("boba_npc_talk") == 1 then
+            cutscene:showNametag("Robot")
+            cutscene:text("* Did you know that humans also\nrun on a liquid? It's called\n\"blood.\"", nil, event)
+            cutscene:text("* Apparently it doesn't taste\nany good, which is like, a\ntotal shame.", nil, event)
+            cutscene:hideNametag()
+            Game:setFlag("boba_npc_talk", 2)
+        elseif Game:getFlag("boba_npc_talk") == 2 then
+            cutscene:showNametag("Robot")
+            cutscene:text("* I'd let you try this stuff but\nit's total poison to\nnon-robots.", nil, event)
+            cutscene:text("* How do I know that? I don't.", nil, event)
+            cutscene:text("* I just wanna deter you from\ndraining my sweet sweet lake.", nil, event)
+            cutscene:hideNametag()
+            Game:setFlag("boba_npc_talk", 3)
+        elseif Game:getFlag("boba_npc_talk") == 3 then
+            cutscene:showNametag("Robot")
+            cutscene:text("* (Slurp slurrrp)", nil, event)
+            cutscene:hideNametag()
+        end
+    end,
     ceroba_kanako_talk = function(cutscene, event)
         local ceroba = cutscene:getCharacter("ceroba")
         cutscene:detachFollowers()
