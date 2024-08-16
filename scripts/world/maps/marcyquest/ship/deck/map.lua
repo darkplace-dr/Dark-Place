@@ -27,4 +27,8 @@ function Ship:onEnter()
 	end
 end
 
+function Ship:onExit()
+	Game.world.disable_dark_menu = false
+end
+
 return Ship
