@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="22">
+ <editorsettings>
+  <export target="data.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music" value="weller"/>
+ </properties>
+ <imagelayer id="3" name="upper_half" opacity="0">
+  <image source="../../../../../../assets/sprites/world/maps/ship/captain_upper_half.png" width="640" height="480"/>
+ </imagelayer>
+ <imagelayer id="2" name="lower_half">
+  <image source="../../../../../../assets/sprites/world/maps/ship/captain_lower_half.png" width="640" height="480"/>
+ </imagelayer>
+ <objectgroup id="4" name="collision">
+  <object id="1" x="0" y="0" width="640" height="120"/>
+  <object id="2" x="0" y="120" width="40" height="240"/>
+  <object id="3" x="0" y="400" width="40" height="80"/>
+  <object id="4" x="40" y="440" width="600" height="40"/>
+  <object id="5" x="600" y="120" width="40" height="320"/>
+  <object id="7" x="40" y="278" width="256" height="20"/>
+  <object id="10" x="40" y="298" width="250" height="20"/>
+  <object id="8" x="348" y="278" width="252" height="20"/>
+  <object id="9" x="352" y="298" width="248" height="20"/>
+  <object id="15" x="290" y="317">
+   <polygon points="0,0 -0.0909091,10.8182 -8,42.8182 -15.8182,43 -16.8182,-0.636364"/>
+  </object>
+  <object id="16" x="40" y="120" width="36" height="160"/>
+  <object id="17" x="76" y="154" width="36" height="54"/>
+ </objectgroup>
+ <objectgroup id="5" name="markers">
+  <object id="20" name="deck" x="80" y="380">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="objects">
+  <object id="11" name="script" x="280" y="280" width="80" height="36">
+   <properties>
+    <property name="cutscene" value="marcyquest.captain_room"/>
+    <property name="once" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="18" name="interactable" x="40" y="120" width="36" height="34">
+   <properties>
+    <property name="cutscene" value="marcyquest.journal"/>
+   </properties>
+  </object>
+  <object id="19" name="interactable" x="112" y="0" width="114" height="120">
+   <properties>
+    <property name="cutscene" value="marcyquest.map"/>
+   </properties>
+  </object>
+  <object id="21" name="transition" x="0" y="360" width="20" height="40">
+   <properties>
+    <property name="map" value="marcyquest/ship/deck"/>
+    <property name="marker" value="captain"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
