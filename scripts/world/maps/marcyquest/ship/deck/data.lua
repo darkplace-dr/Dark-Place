@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 29,
+  nextobjectid = 36,
   properties = {
     ["music"] = "weller",
     ["name"] = "Sally O' The Sea"
@@ -19,8 +19,7 @@ return {
     {
       name = "ship",
       firstgid = 1,
-      filename = "../../../../tilesets/ship.tsx",
-      exportfilename = "../../../../tilesets/ship.lua"
+      filename = "../../../../tilesets/ship.tsx"
     }
   },
   layers = {
@@ -406,7 +405,34 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 30,
+          name = "captain",
+          type = "",
+          shape = "point",
+          x = 1476,
+          y = 800,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 33,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 1400,
+          y = 770,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "objectgroup",
@@ -463,6 +489,57 @@ return {
           gid = 2,
           visible = true,
           properties = {}
+        },
+        {
+          id = 29,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 1502,
+          y = 760,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "marcyquest.deckdoor",
+            ["once"] = false
+          }
+        },
+        {
+          id = 31,
+          name = "savepoint",
+          type = "",
+          shape = "point",
+          x = 1400,
+          y = 734,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flagcheck"] = "!marcy_with_party",
+            ["override_power"] = true,
+            ["text1"] = "* Marcy is filled with the excitement of new adventure.",
+            ["text2"] = "[facec:marcy/happy][voice:marcy]* You know it!",
+            ["text3"] = "* The power of the seven seas shines within her."
+          }
+        },
+        {
+          id = 35,
+          name = "savepoint",
+          type = "",
+          shape = "point",
+          x = 1400,
+          y = 734,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flagcheck"] = "marcy_with_party",
+            ["text1"] = "* The power of the seven seas shines within you."
+          }
         }
       }
     }
