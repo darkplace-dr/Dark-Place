@@ -6,7 +6,7 @@ function SavePoint:init(x, y, properties)
 	super:init(self, x, y, properties)
 
 
-	if Game:getFlag("weird") and (self.text and #self.text > 0) then
+	if Game:getFlag("weird") and (self.text and #self.text > 0) and not properties["override_power"] then
 		print("hey")
 		local party_text = ""
 		for i,member in ipairs(Game.party) do
