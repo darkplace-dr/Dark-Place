@@ -96,7 +96,7 @@ return {
 			cutscene:text("* You remind me of someone I knew,[wait:5] you know?", "smile", "ceroba")
 			cutscene:text("* I've never been sailing,[wait:5] so this is new to me.", "notsure", "ceroba")
 			cutscene:showNametag("Marcy")
-			cutscene:text("* It's new to Marcy,[wait:5] too.", "disappointed", "marcy")
+			cutscene:text("* It's new to Marcy,[wait:5] too.", "smile", "marcy")
 			cutscene:showNametag("Ceroba")
 			cutscene:text("* Good to know I'm not alone,[wait:5] then.", "smile", "ceroba")
 		elseif id == "YOU" then
@@ -107,6 +107,11 @@ return {
 			cutscene:wait(1)
 			cutscene:wait(Game.world.music:fade(1, 0.5))
 			cutscene:wait(1)
+		elseif id == "pauling" then
+			cutscene:text("* She seems to be writing some sort of contract...")
+		else
+			cutscene:text("* This character's cutscene text has not been written.")
+			cutscene:text("* Please contact " .. Game.party[event.partyslot].name .. "'s dev and tell them to write for marcyquest.party_1.")
 		end
 		cutscene:hideNametag()
     end,
