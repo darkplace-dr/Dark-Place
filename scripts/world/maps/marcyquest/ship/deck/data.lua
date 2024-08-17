@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 39,
+  nextobjectid = 42,
   properties = {
     ["music"] = "weller",
     ["name"] = "Sally O' The Sea"
@@ -470,6 +470,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 39,
+          name = "marcy_start",
+          type = "",
+          shape = "point",
+          x = 1040,
+          y = 694,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -578,6 +591,23 @@ return {
           properties = {
             ["flagcheck"] = "marcy_with_party",
             ["text1"] = "* The power of the seven seas shines within you."
+          }
+        },
+        {
+          id = 41,
+          name = "NPC",
+          type = "",
+          shape = "point",
+          x = 1082,
+          y = 694,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "jamm",
+            ["flagcheck"] = "!marcyquest_started",
+            ["sprite"] = "talk_to_marcy"
           }
         }
       }
