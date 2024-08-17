@@ -356,7 +356,7 @@ return {
 
             cutscene:showNametag("Ceroba")
             cutscene:text("*[speed:0.3] ...", "wat", "ceroba")
-            cutscene:text("* What are you even saying???", "suprised", "ceroba")
+            cutscene:text("* What are you even saying???", "surprised", "ceroba")
             cutscene:hideNametag()
 
             cutscene:text("* I don't know, help me.")

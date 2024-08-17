@@ -13,6 +13,7 @@ function MacroFroggitChest:onInteract(chara, dir)
         if not Game:getFlag("ceroba_told_chest_story") then
             cutscene:text("* (An empty chest.)")
             if cutscene:getCharacter("ceroba") then
+                cutscene:showNametag("Ceroba")
                 cutscene:text("* Oh,[wait:5] an interesting story about this thing.", "neutral", "ceroba")
                 cutscene:text("* When I was here for the first time,[wait:5] I was not alone.", "alt", "ceroba")
                 cutscene:text("* I was with...[wait:5] A certain someone.", "closed_eyes", "ceroba")
@@ -25,6 +26,7 @@ function MacroFroggitChest:onInteract(chara, dir)
                 cutscene:text("* And then,[wait:5] when they opened that chest...", "closed_eyes", "ceroba")
                 cutscene:text("* There was a Golden Bandana.", "alt", "ceroba")
                 cutscene:text("* And so,[wait:5] they just wore it until the end.", "neutral", "ceroba")
+                cutscene:hideNametag()
                 Game:setFlag("ceroba_told_chest_story", true)
             end
         else
