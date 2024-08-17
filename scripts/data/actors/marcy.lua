@@ -33,6 +33,22 @@ function actor:init()
 
     -- Whether this actor as a follower will blush when close to the player
     self.can_blush = false
+	
+	self.offsets = {
+        -- Movement offsets
+        ["walk/left"] = {0, 0},
+        ["walk/right"] = {0, 0},
+        ["walk/up"] = {0, 0},
+        ["walk/down"] = {0, 0},
+
+        ["criss_cross"] = {0, 8},
+        ["criss_cross_right"] = {0, 8},
+        ["criss_cross_down"] = {0, 8},
+    }
+end
+
+function actor:getDefaultSprite()
+	return Game:getFlag("marcy_pirate") and "patch" or "walk"
 end
 
 return actor

@@ -97,6 +97,10 @@ function actor:init()
 		["sit"] = {4, -8},
 		
 		["ball"] = {0, 18},
+		
+        ["talk_to_marcy"] = {0, 13},
+        ["talk_to_marcy_reach"] = {-7, 13},
+        ["talk_to_marcy_relate"] = {-7, 13},
     }
 
     self.mirror_sprites = {
