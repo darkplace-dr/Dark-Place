@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 22,
+  nextobjectid = 24,
   properties = {
     ["music"] = "weller"
   },
@@ -224,6 +224,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 22,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 536,
+          y = 120,
+          width = 64,
+          height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -330,6 +343,21 @@ return {
           properties = {
             ["map"] = "marcyquest/ship/deck",
             ["marker"] = "captain"
+          }
+        },
+        {
+          id = 23,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 536,
+          y = 120,
+          width = 80,
+          height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "marcyquest.captain_bed"
           }
         }
       }

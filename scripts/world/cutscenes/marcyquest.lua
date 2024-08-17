@@ -97,6 +97,12 @@ return {
 		end
     end,
 	
+    captain_bed = function(cutscene, event)
+		cutscene:text("* It's the captain's bed,[wait:5] chained to the wall.")
+		cutscene:text("* There's a small amount of vomit on the pillow.")
+		cutscene:text("* ...Smells like corn.")
+    end,
+	
     journal = function(cutscene, event)
 		cutscene:text("* (On the desk lies the captain's log, closed.)")
 		cutscene:text("* (Will you read it?)")
