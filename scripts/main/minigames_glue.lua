@@ -1,5 +1,5 @@
 function Mod:initMinigameHooks()
-	CARD_LAYERS = {
+	Registry.registerGlobal("CARD_LAYERS", {
 		["bottom"] = -1000,
 		["below_ui"] = 0,
 		["ui"] = 100,
@@ -22,7 +22,7 @@ function Mod:initMinigameHooks()
 		["textbox"] = 800,
 		["above_textbox"] = 900,
 		["top"] = 1000
-	}
+	})
 
     Utils.hook(Game, "getActiveMusic",
         ---@overload fun(orig:function, self:Game) : Music

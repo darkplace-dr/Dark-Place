@@ -1,11 +1,13 @@
-ReadableBook = libRequire("books", "scripts/Book")
-ReadableNote = libRequire("books", "scripts/Note")
-
 booksLib = {}
 local lib = booksLib
 
+function lib:init()
+    Registry.registerGlobal("ReadableBook", libRequire("books", "scripts/Book"))
+    Registry.registerGlobal("ReadableNote", libRequire("books", "scripts/Note"))
+end
+
 function lib:unload()
-    Book = nil
+    _G["booksLib"] = nil
 end
 
 function lib:save(data)

@@ -77,6 +77,10 @@ function lib:init()
     
 end
 
+function lib:unload()
+    _G["deltacrackLib"] = nil
+end
+
 function lib:switchRalsei(style)
     local ralsei = Game.world:getCharacter("ralsei")
     local actor = ralsei.actor

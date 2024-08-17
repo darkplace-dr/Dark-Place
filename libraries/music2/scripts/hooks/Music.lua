@@ -203,9 +203,15 @@ function Music:stop(full, starting_another)
 
     if self.source_intro then
         self.source_intro:stop()
+        if full then
+            self.source_intro:release()
+        end
     end
     if self.source then
         self.source:stop()
+        if full then
+            self.source:release()
+        end
     end
     if full then
         self.source_intro = nil

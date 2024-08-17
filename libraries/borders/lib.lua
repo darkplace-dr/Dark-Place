@@ -22,6 +22,10 @@ function lib:init()
 
 end
 
+function lib:unload()
+    _G["BordersLib"] = nil
+end
+
 function lib:preUpdate(dt)
     local to_remove = {}
     for _,particle in ipairs(self.particles) do

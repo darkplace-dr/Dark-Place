@@ -48,6 +48,11 @@ function lib:postInit()
     end
 end
 
+-- Removes AchLib from the global variables.
+function lib:unload()
+    _G["AchLib"] = nil
+end
+
 -- Called during saving. Writes the achievement savedata.
 function lib:save(data)
     if self.global then
