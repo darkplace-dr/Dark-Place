@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.0",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -20,7 +20,8 @@ return {
     {
       name = "steamworks",
       firstgid = 1,
-      filename = "../../tilesets/steamworks.tsx"
+      filename = "../../tilesets/steamworks.tsx",
+      exportfilename = "../../tilesets/steamworks.lua"
     },
     {
       name = "steamworks",
@@ -30,7 +31,7 @@ return {
     },
     {
       name = "steamworks_objects",
-      firstgid = 1513,
+      firstgid = 1540,
       filename = "../../tilesets/steamworks_objects.tsx",
       exportfilename = "../../tilesets/steamworks_objects.lua"
     }
@@ -656,7 +657,7 @@ return {
           width = 108,
           height = 96,
           rotation = 0,
-          gid = 1518,
+          gid = 1545,
           visible = true,
           properties = {}
         },
@@ -670,7 +671,7 @@ return {
           width = 30,
           height = 8,
           rotation = 0,
-          gid = 1517,
+          gid = 1544,
           visible = true,
           properties = {}
         },
@@ -684,7 +685,7 @@ return {
           width = 34,
           height = 32,
           rotation = 0,
-          gid = 1516,
+          gid = 1543,
           visible = true,
           properties = {}
         },
@@ -698,7 +699,7 @@ return {
           width = 108,
           height = 96,
           rotation = 0,
-          gid = 1519,
+          gid = 1546,
           visible = true,
           properties = {}
         },
@@ -773,51 +774,12 @@ return {
           properties = {}
         },
         {
-          id = 40,
-          name = "ceroba_2",
-          type = "",
-          shape = "point",
-          x = 900,
-          y = 322,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 41,
-          name = "ceroba_3",
+          name = "ceroba_spot",
           type = "",
           shape = "point",
           x = 817,
-          y = 322,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 42,
-          name = "ceroba_1",
-          type = "",
-          shape = "point",
-          x = 900,
-          y = 500,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 43,
-          name = "party1_1",
-          type = "",
-          shape = "point",
-          x = 817,
-          y = 500,
+          y = 350,
           width = 0,
           height = 0,
           rotation = 0,
@@ -826,24 +788,11 @@ return {
         },
         {
           id = 46,
-          name = "party1_2",
+          name = "party1",
           type = "",
           shape = "point",
           x = 817,
-          y = 420,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 45,
-          name = "party3_1",
-          type = "",
-          shape = "point",
-          x = 857,
-          y = 500,
+          y = 436,
           width = 0,
           height = 0,
           rotation = 0,
@@ -852,7 +801,7 @@ return {
         },
         {
           id = 48,
-          name = "party3_2",
+          name = "party3",
           type = "",
           shape = "point",
           x = 857,
@@ -864,21 +813,8 @@ return {
           properties = {}
         },
         {
-          id = 44,
-          name = "party2_1",
-          type = "",
-          shape = "point",
-          x = 777,
-          y = 500,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 47,
-          name = "party2_2",
+          name = "party2",
           type = "",
           shape = "point",
           x = 777,

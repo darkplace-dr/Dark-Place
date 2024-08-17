@@ -23,19 +23,31 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 38,
+  tilecount = 40,
   tiles = {
     {
-      id = 2,
-      image = "../../../assets/sprites/world/maps/steamworks/13_bg.png",
-      width = 1024,
-      height = 1200
+      id = 15,
+      image = "../../../assets/sprites/world/maps/steamworks/03_door.png",
+      width = 234,
+      height = 460
     },
     {
-      id = 3,
-      image = "../../../assets/sprites/world/maps/steamworks/13_obj.png",
-      width = 1024,
-      height = 1200
+      id = 24,
+      image = "../../../assets/sprites/world/maps/steamworks/04_bg.png",
+      width = 880,
+      height = 1040
+    },
+    {
+      id = 25,
+      image = "../../../assets/sprites/world/maps/steamworks/04_light_overlay.png",
+      width = 880,
+      height = 1040
+    },
+    {
+      id = 17,
+      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_pink.png",
+      width = 880,
+      height = 342
     },
     {
       id = 4,
@@ -78,60 +90,6 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/15_building_4.png",
       width = 624,
       height = 520
-    },
-    {
-      id = 8,
-      image = "../../../assets/sprites/world/maps/steamworks/23_office_exit.png",
-      width = 624,
-      height = 728
-    },
-    {
-      id = 9,
-      image = "../../../assets/sprites/world/maps/steamworks/34_furnace_entrance.png",
-      width = 424,
-      height = 480
-    },
-    {
-      id = 10,
-      image = "../../../assets/sprites/world/maps/steamworks/36_furnace_exit.png",
-      width = 424,
-      height = 480
-    },
-    {
-      id = 11,
-      image = "../../../assets/sprites/world/maps/steamworks/35_bg.png",
-      width = 2800,
-      height = 480
-    },
-    {
-      id = 12,
-      image = "../../../assets/sprites/world/maps/steamworks/32_bg.png",
-      width = 2000,
-      height = 840
-    },
-    {
-      id = 13,
-      image = "../../../assets/sprites/world/maps/steamworks/33_bg.png",
-      width = 1200,
-      height = 800
-    },
-    {
-      id = 14,
-      image = "../../../assets/sprites/world/maps/steamworks/33_bridge.png",
-      width = 360,
-      height = 84
-    },
-    {
-      id = 15,
-      image = "../../../assets/sprites/world/maps/steamworks/03_door.png",
-      width = 234,
-      height = 460
-    },
-    {
-      id = 17,
-      image = "../../../assets/sprites/world/maps/steamworks/04_overlay_pink.png",
-      width = 880,
-      height = 342
     },
     {
       id = 18,
@@ -194,18 +152,6 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/04_overlay_top_pink_6.png",
       width = 874,
       height = 256
-    },
-    {
-      id = 24,
-      image = "../../../assets/sprites/world/maps/steamworks/04_bg.png",
-      width = 880,
-      height = 1040
-    },
-    {
-      id = 25,
-      image = "../../../assets/sprites/world/maps/steamworks/04_light_overlay.png",
-      width = 880,
-      height = 1040
     },
     {
       id = 26,
@@ -280,6 +226,24 @@ return {
       height = 670
     },
     {
+      id = 2,
+      image = "../../../assets/sprites/world/maps/steamworks/13_bg.png",
+      width = 1024,
+      height = 1200
+    },
+    {
+      id = 3,
+      image = "../../../assets/sprites/world/maps/steamworks/13_obj.png",
+      width = 1024,
+      height = 1200
+    },
+    {
+      id = 40,
+      image = "../../../assets/sprites/world/maps/steamworks/17_bars.png",
+      width = 448,
+      height = 214
+    },
+    {
       id = 35,
       image = "../../../assets/sprites/world/maps/steamworks/17_clocktower.png",
       width = 472,
@@ -328,10 +292,58 @@ return {
       height = 616
     },
     {
-      id = 40,
-      image = "../../../assets/sprites/world/maps/steamworks/17_bars.png",
-      width = 448,
-      height = 214
+      id = 41,
+      image = "../../../assets/sprites/world/maps/steamworks/19_office.png",
+      width = 470,
+      height = 452
+    },
+    {
+      id = 42,
+      image = "../../../assets/sprites/world/maps/steamworks/21_bg.png",
+      width = 1056,
+      height = 848
+    },
+    {
+      id = 8,
+      image = "../../../assets/sprites/world/maps/steamworks/23_office_exit.png",
+      width = 624,
+      height = 728
+    },
+    {
+      id = 12,
+      image = "../../../assets/sprites/world/maps/steamworks/32_bg.png",
+      width = 2000,
+      height = 840
+    },
+    {
+      id = 13,
+      image = "../../../assets/sprites/world/maps/steamworks/33_bg.png",
+      width = 1200,
+      height = 800
+    },
+    {
+      id = 14,
+      image = "../../../assets/sprites/world/maps/steamworks/33_bridge.png",
+      width = 360,
+      height = 84
+    },
+    {
+      id = 9,
+      image = "../../../assets/sprites/world/maps/steamworks/34_furnace_entrance.png",
+      width = 424,
+      height = 480
+    },
+    {
+      id = 11,
+      image = "../../../assets/sprites/world/maps/steamworks/35_bg.png",
+      width = 2800,
+      height = 480
+    },
+    {
+      id = 10,
+      image = "../../../assets/sprites/world/maps/steamworks/36_furnace_exit.png",
+      width = 424,
+      height = 480
     }
   }
 }
