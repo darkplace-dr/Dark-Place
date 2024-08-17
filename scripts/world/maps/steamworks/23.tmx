@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="62" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="50">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="62" height="18" tilewidth="40" tileheight="40" infinite="0" nextlayerid="11" nextobjectid="50">
  <editorsettings>
   <export target="23.lua" format="lua"/>
  </editorsettings>
@@ -10,7 +10,7 @@
  </properties>
  <tileset firstgid="1" source="../../tilesets/steamworks.tsx"/>
  <tileset firstgid="1497" source="../../tilesets/steamworks_images.tsx"/>
- <tileset firstgid="1513" source="../../tilesets/steamworks_objects.tsx"/>
+ <tileset firstgid="1540" source="../../tilesets/steamworks_objects.tsx"/>
  <layer id="10" name="bg" width="62" height="18">
   <data encoding="csv">
 479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,1401,1402,1474,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,479,
@@ -172,10 +172,10 @@
   <object id="24" name="vendy" x="520" y="240">
    <point/>
   </object>
-  <object id="32" gid="1518" x="760" y="416" width="108" height="96"/>
-  <object id="33" gid="1517" x="802" y="322" width="30" height="8"/>
-  <object id="34" gid="1516" x="800" y="436" width="34" height="32"/>
-  <object id="35" gid="1519" x="580" y="416" width="108" height="96"/>
+  <object id="32" gid="1545" x="760" y="416" width="108" height="96"/>
+  <object id="33" gid="1544" x="802" y="322" width="30" height="8"/>
+  <object id="34" gid="1543" x="800" y="436" width="34" height="32"/>
+  <object id="35" gid="1546" x="580" y="416" width="108" height="96"/>
   <object id="49" name="script" x="1000" y="480" width="40" height="120">
    <properties>
     <property name="cutscene" value="steamworks.ceroba_kanako_talk"/>
@@ -192,31 +192,16 @@
   <object id="17" name="left" x="80" y="520">
    <point/>
   </object>
-  <object id="40" name="ceroba_2" x="900" y="322">
+  <object id="41" name="ceroba_spot" x="817" y="350">
    <point/>
   </object>
-  <object id="41" name="ceroba_3" x="817" y="322">
+  <object id="46" name="party1" x="817" y="436">
    <point/>
   </object>
-  <object id="42" name="ceroba_1" x="900" y="500">
+  <object id="48" name="party3" x="857" y="430">
    <point/>
   </object>
-  <object id="43" name="party1_1" x="817" y="500">
-   <point/>
-  </object>
-  <object id="46" name="party1_2" x="817" y="420">
-   <point/>
-  </object>
-  <object id="45" name="party3_1" x="857" y="500">
-   <point/>
-  </object>
-  <object id="48" name="party3_2" x="857" y="430">
-   <point/>
-  </object>
-  <object id="44" name="party2_1" x="777" y="500">
-   <point/>
-  </object>
-  <object id="47" name="party2_2" x="777" y="430">
+  <object id="47" name="party2" x="777" y="430">
    <point/>
   </object>
  </objectgroup>

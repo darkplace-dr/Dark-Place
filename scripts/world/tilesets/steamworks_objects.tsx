@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.0" name="steamworks_objects" tilewidth="416" tileheight="400" tilecount="75" columns="0">
+<tileset version="1.10" tiledversion="1.11.0" name="steamworks_objects" tilewidth="416" tileheight="400" tilecount="87" columns="0">
  <editorsettings>
   <export target="steamworks_objects.lua" format="lua"/>
  </editorsettings>
@@ -145,6 +145,39 @@
  <tile id="85">
   <image source="../../../assets/sprites/world/maps/steamworks/objects/18_platform.png" width="120" height="228"/>
  </tile>
+ <tile id="96">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/18b_mo_stand.png" width="162" height="44"/>
+ </tile>
+ <tile id="97">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/18b_mo_stand_sign.png" width="48" height="36"/>
+ </tile>
+ <tile id="93">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/20_lightbeam_big.png" width="264" height="190"/>
+ </tile>
+ <tile id="94">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/20_lightbeam_big_bottom.png" width="224" height="82"/>
+ </tile>
+ <tile id="98">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/21_locker.png" width="86" height="230"/>
+ </tile>
+ <tile id="99">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/21_locker_tall.png" width="86" height="230"/>
+ </tile>
+ <tile id="100">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/21_overlay.png" width="126" height="100"/>
+ </tile>
+ <tile id="101">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/21_wall_crack_1.png" width="104" height="82"/>
+ </tile>
+ <tile id="102">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/21_wall_crack_2.png" width="68" height="78"/>
+ </tile>
+ <tile id="103">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/21_wall_crack_3.png" width="90" height="80"/>
+ </tile>
+ <tile id="104">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/21_wall_crack_4.png" width="84" height="62"/>
+ </tile>
  <tile id="3">
   <image source="../../../assets/sprites/world/maps/steamworks/objects/23_table_chair1.png" width="17" height="16"/>
  </tile>
@@ -275,6 +308,9 @@
  </tile>
  <tile id="83">
   <image source="../../../assets/sprites/world/maps/steamworks/objects/lever.png" width="50" height="42"/>
+ </tile>
+ <tile id="95">
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/vent.png" width="70" height="50"/>
  </tile>
  <tile id="61">
   <image source="../../../assets/sprites/world/maps/steamworks/objects/VentDecor.png" width="236" height="224"/>

@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 75,
+  tilecount = 87,
   tiles = {
     {
       id = 47,
@@ -344,6 +344,72 @@ return {
       height = 228
     },
     {
+      id = 96,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/18b_mo_stand.png",
+      width = 162,
+      height = 44
+    },
+    {
+      id = 97,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/18b_mo_stand_sign.png",
+      width = 48,
+      height = 36
+    },
+    {
+      id = 93,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/20_lightbeam_big.png",
+      width = 264,
+      height = 190
+    },
+    {
+      id = 94,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/20_lightbeam_big_bottom.png",
+      width = 224,
+      height = 82
+    },
+    {
+      id = 98,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/21_locker.png",
+      width = 86,
+      height = 230
+    },
+    {
+      id = 99,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/21_locker_tall.png",
+      width = 86,
+      height = 230
+    },
+    {
+      id = 100,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/21_overlay.png",
+      width = 126,
+      height = 100
+    },
+    {
+      id = 101,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/21_wall_crack_1.png",
+      width = 104,
+      height = 82
+    },
+    {
+      id = 102,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/21_wall_crack_2.png",
+      width = 68,
+      height = 78
+    },
+    {
+      id = 103,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/21_wall_crack_3.png",
+      width = 90,
+      height = 80
+    },
+    {
+      id = 104,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/21_wall_crack_4.png",
+      width = 84,
+      height = 62
+    },
+    {
       id = 3,
       image = "../../../assets/sprites/world/maps/steamworks/objects/23_table_chair1.png",
       width = 17,
@@ -644,6 +710,12 @@ return {
       image = "../../../assets/sprites/world/maps/steamworks/objects/lever.png",
       width = 50,
       height = 42
+    },
+    {
+      id = 95,
+      image = "../../../assets/sprites/world/maps/steamworks/objects/vent.png",
+      width = 70,
+      height = 50
     },
     {
       id = 61,

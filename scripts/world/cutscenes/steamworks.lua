@@ -305,6 +305,12 @@ return {
             cutscene:hideNametag()
         end
     end,
+    burned_stand = function(cutscene, event)
+        cutscene:showNametag("Ceroba")
+        cutscene:text("* Oh,[wait:5] yeah,[wait:5] this...[wait:10] Thing.", "alt", "ceroba")
+        cutscene:text("* It's WIP.", "irked", "ceroba")
+        cutscene:hideNametag()
+    end,
     ceroba_kanako_talk = function(cutscene, event)
         local ceroba = cutscene:getCharacter("ceroba")
         cutscene:detachFollowers()
@@ -312,38 +318,92 @@ return {
         cutscene:showNametag("Ceroba")
         cutscene:text("* Hey. How about we make a little stop here?", "neutral", "ceroba")
         cutscene:hideNametag()
+        local c_x, c_y = Game.world.map:getMarker("ceroba_spot")
+        local one_x, one_y = Game.world.map:getMarker("party1")
+        local two_x, two_y = Game.world.map:getMarker("party2")
+        local three_x, three_y = Game.world.map:getMarker("party3")
 
         if Game.party[1].id == "ceroba" then
-            cutscene:walkTo(ceroba, "ceroba_1")
-            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), "party1_1")
+            cutscene:walkTo(ceroba, c_x+83, c_y+90, 0.8, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), one_x, one_y+44, 0.8, "up")
             if Game.party[3] then
-                cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), "party2_1")
+                cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), two_x, two_y+50, 0.8, "up")
             end
             if Game.party[4] then
-                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), "party3_1")
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), three_x, three_y+50, 0.8, "up")
             end
+            cutscene:wait(1)
+            cutscene:wait(cutscene:walkTo(ceroba, c_x+83, c_y, 0.4, "left"))
+
+            cutscene:walkTo(ceroba, c_x, c_y, 0.5, "down")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), one_x, one_y, 0.5, "up")
+            if Game.party[3] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), two_x, two_y, 0.5, "up")
+            end
+            if Game.party[4] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), three_x, three_y, 0.5, "up")
+            end
+            cutscene:wait(0.7)
         elseif Game.party[2].id == "ceroba" then
-            cutscene:walkTo(ceroba, "ceroba_1")
-            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), "party1_1")
+            cutscene:walkTo(ceroba, c_x+83, c_y+90, 0.8, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), one_x, one_y+44, 0.8, "up")
             if Game.party[3] then
-                cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), "party2_1")
+                cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), two_x, two_y+50, 0.8, "up")
             end
             if Game.party[4] then
-                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), "party3_1")
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), three_x, three_y+50, 0.8, "up")
             end
+            cutscene:wait(1)
+            cutscene:wait(cutscene:walkTo(ceroba, c_x+83, c_y, 0.4, "left"))
+
+            cutscene:walkTo(ceroba, c_x, c_y, 0.5, "down")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), one_x, one_y, 0.5, "up")
+            if Game.party[3] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), two_x, two_y, 0.5, "up")
+            end
+            if Game.party[4] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), three_x, three_y, 0.5, "up")
+            end
+            cutscene:wait(0.7)
         elseif Game.party[3].id == "ceroba" then
-            cutscene:walkTo(ceroba, "ceroba_1")
-            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), "party1_1")
-            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), "party2_1")
+            cutscene:walkTo(ceroba, c_x+83, c_y+90, 0.8, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), one_x, one_y+44, 0.8, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), two_x, two_y+50, 0.8, "up")
             if Game.party[4] then
-                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), "party3_1")
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), three_x, three_y+50, 0.8, "up")
             end
+            cutscene:wait(1)
+            cutscene:wait(cutscene:walkTo(ceroba, c_x+83, c_y, 0.4, "left"))
+
+            cutscene:walkTo(ceroba, c_x, c_y, 0.5, "down")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), one_x, one_y, 0.5, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), two_x, two_y, 0.5, "up")
+            if Game.party[4] then
+                cutscene:walkTo(cutscene:getCharacter(Game.party[4].id), three_x, three_y, 0.5, "up")
+            end
+            cutscene:wait(0.7)
         elseif Game.party[4].id == "ceroba" then
-            cutscene:walkTo(ceroba, "ceroba_1")
-            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), "party1_1")
-            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), "party2_1")
-            cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), "party3_1")
+            cutscene:walkTo(ceroba, c_x+83, c_y+90, 0.8, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), one_x, one_y+44, 0.8, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), two_x, two_y+50, 0.8, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), three_x, three_y+50, 0.8, "up")
+            cutscene:wait(1)
+            cutscene:wait(cutscene:walkTo(ceroba, c_x+83, c_y, 0.4, "left"))
+
+            cutscene:walkTo(ceroba, c_x, c_y, 0.5, "down")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[1].id), one_x, one_y+44, 0.5, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[2].id), two_x, two_y+50, 0.5, "up")
+            cutscene:walkTo(cutscene:getCharacter(Game.party[3].id), three_x, three_y+50, 0.5, "up")
+            cutscene:wait(0.7)
         end
+
+        Game.world.music:stop()
+        cutscene:text("* ...", "neutral", "ceroba")
+        Game.world.music:play("undertale_yellow/kanako")
+        cutscene:text("* WIP", "dissapproving", "ceroba")
+        Game.world.music:stop()
+        cutscene:text("* ...", "alt", "ceroba")
+        Game.world.music:play("undertale_yellow/corner_of_a_circle")
 
         cutscene:wait(2)
         cutscene:attachFollowers()
