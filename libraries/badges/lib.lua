@@ -5,6 +5,9 @@ function lib:init()
     self.total_bp = 3
 end
 
+function lib:unload()
+    _G["BadgesLib"] = nil
+end
 
 Utils.hook(Item, 'getTypeName',
 ---@overload fun(orig:function, self:Item, ...) : string

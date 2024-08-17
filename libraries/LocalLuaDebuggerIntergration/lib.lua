@@ -2,6 +2,7 @@ local lib = {}
 LLDbg = lib
 
 function lib:preInit()
+    lib.had_lldebugger = package.loaded["lldebugger"] ~= nil
     if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" and not package.loaded["lldebugger"] then
         require("lldebugger")
     end
@@ -30,6 +31,11 @@ end
 
 function lib:unload()
     self:stopDebugger()
+    _G["LLDbg"] = nil
+    if not lib.had_lldebugger then
+        package.loaded["lldebugger"] = nil
+        _G["lldebugger"] = nil
+    end
 end
 
 return lib

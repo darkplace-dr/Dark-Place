@@ -491,4 +491,8 @@ function WeatherLib:postInit()
     end
 end
 
+function WeatherLib:unload()
+    _G["WeatherLib"] = nil
+end
+
 return WeatherLib
