@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.2",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -13,7 +13,8 @@ return {
   nextobjectid = 24,
   properties = {
     ["border"] = "dev",
-    ["music"] = "castle_funk"
+    ["music"] = "castle_funk",
+    ["name"] = "Dark-cade"
   },
   tilesets = {
     {
@@ -24,7 +25,7 @@ return {
     },
     {
       name = "warp_bin",
-      firstgid = 54,
+      firstgid = 55,
       filename = "../../../tilesets/warp_bin.tsx",
       exportfilename = "../../../tilesets/warp_bin.tsx"
     }
@@ -63,7 +64,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 0,
@@ -76,7 +77,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 392,
           y = 0,
@@ -89,7 +90,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 240,
@@ -102,7 +103,7 @@ return {
         {
           id = 4,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 600,
           y = 240,
@@ -115,7 +116,7 @@ return {
         {
           id = 5,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 40,
           y = 440,
@@ -128,7 +129,7 @@ return {
         {
           id = 7,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 101,
           y = 237,
@@ -157,7 +158,7 @@ return {
         {
           id = 8,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 101,
           y = 193,
@@ -173,7 +174,7 @@ return {
         {
           id = 13,
           name = "savepoint",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 500,
           y = 340,
@@ -188,7 +189,7 @@ return {
         {
           id = 15,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 320,
           y = 160,
@@ -204,7 +205,7 @@ return {
         {
           id = 16,
           name = "chest",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 480,
           y = 200,
@@ -219,7 +220,7 @@ return {
         {
           id = 17,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 240,
@@ -233,7 +234,7 @@ return {
         {
           id = 18,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 200,
@@ -250,42 +251,42 @@ return {
         {
           id = 19,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 94,
           y = 282,
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 54,
+          gid = 55,
           visible = true,
           properties = {}
         },
         {
           id = 22,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 174,
           y = 282,
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 56,
+          gid = 57,
           visible = true,
           properties = {}
         },
         {
           id = 23,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 134,
           y = 282,
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 55,
+          gid = 56,
           visible = true,
           properties = {}
         }
@@ -308,7 +309,7 @@ return {
         {
           id = 9,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "point",
           x = 460,
           y = 360,
@@ -321,7 +322,7 @@ return {
         {
           id = 10,
           name = "exit",
-          class = "",
+          type = "",
           shape = "point",
           x = 360,
           y = 280,
@@ -334,7 +335,7 @@ return {
         {
           id = 11,
           name = "warp",
-          class = "",
+          type = "",
           shape = "point",
           x = 160,
           y = 320,

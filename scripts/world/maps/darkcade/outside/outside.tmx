@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="24">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="24">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="border" value="dev"/>
   <property name="music" value="castle_funk"/>
+  <property name="name" value="Dark-cade"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/devroom-objects.tsx"/>
- <tileset firstgid="54" source="../../../tilesets/warp_bin.tsx"/>
+ <tileset firstgid="55" source="../../../tilesets/warp_bin.tsx"/>
  <imagelayer id="2" name="Image Layer 1">
   <image source="../../../../../assets/sprites/world/maps/darkcade/outside.png" width="640" height="480"/>
  </imagelayer>
@@ -51,9 +52,9 @@
     <property name="text2" value="* I want a refund, dammit!"/>
    </properties>
   </object>
-  <object id="19" gid="54" x="94" y="282" width="40" height="40"/>
-  <object id="22" gid="56" x="174" y="282" width="40" height="40"/>
-  <object id="23" gid="55" x="134" y="282" width="40" height="40"/>
+  <object id="19" gid="55" x="94" y="282" width="40" height="40"/>
+  <object id="22" gid="57" x="174" y="282" width="40" height="40"/>
+  <object id="23" gid="56" x="134" y="282" width="40" height="40"/>
  </objectgroup>
  <objectgroup id="5" name="markers">
   <object id="9" name="spawn" x="460" y="360">
