@@ -83,6 +83,7 @@ return {
 		Game.world.player:resetSprite()
 		cutscene:showNametag("Marcy")
 		cutscene:text("* Marcy should probably apologize to the captain...", "frown", "marcy")
+		cutscene:hideNametag()
     end,
 	
     captain_room = function(cutscene, event)
@@ -138,7 +139,7 @@ return {
 			cutscene:showNametag("Dess")
 			cutscene:text("* yoooo sup Mini Jamm", "heckyeah", "dess")
 			cutscene:showNametag("Marcy")
-			cutscene:text("* Could you pl--", "happy", "marcy", {auto=true})
+			cutscene:text("* Could you pl--", "disappointed", "marcy", {auto=true})
 			cutscene:showNametag("Dess")
 			cutscene:text("* Bro,[wait:5] this ship is sick", "heckyeah", "dess")
 			cutscene:text("* I wonder how much Mug:tm: rootbeer I can smuggle into this thing", "wink", "dess")
