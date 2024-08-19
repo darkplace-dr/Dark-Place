@@ -1,7 +1,7 @@
 return {
-  version = "1.9",
+  version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.9.0",
+  tiledversion = "1.10.1",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -80,7 +80,7 @@ return {
         {
           id = 1,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 200,
@@ -93,7 +93,7 @@ return {
         {
           id = 2,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 240,
@@ -106,7 +106,7 @@ return {
         {
           id = 3,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 440,
           y = 440,
@@ -119,7 +119,7 @@ return {
         {
           id = 11,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 960,
           y = 200,
@@ -132,7 +132,7 @@ return {
         {
           id = 20,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 840,
           y = 0,
@@ -145,7 +145,7 @@ return {
         {
           id = 21,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 960,
           y = 0,
@@ -158,7 +158,7 @@ return {
         {
           id = 63,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 160,
           y = 440,
@@ -171,7 +171,7 @@ return {
         {
           id = 64,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 0,
           y = 400,
@@ -200,7 +200,7 @@ return {
         {
           id = 4,
           name = "script",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1320,
           y = 240,
@@ -216,7 +216,7 @@ return {
         {
           id = 8,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 880,
           y = 40,
@@ -232,7 +232,7 @@ return {
         {
           id = 13,
           name = "whitedoor",
-          class = "",
+          type = "",
           shape = "point",
           x = 1160,
           y = 244,
@@ -247,7 +247,7 @@ return {
         {
           id = 18,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 620,
           y = 262,
@@ -263,7 +263,7 @@ return {
         {
           id = 19,
           name = "interactable",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1000,
           y = 120,
@@ -278,9 +278,9 @@ return {
         {
           id = 22,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
-          x = 340,
+          x = 180,
           y = 420,
           width = 0,
           height = 0,
@@ -294,7 +294,7 @@ return {
         {
           id = 23,
           name = "setflag",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 720,
           y = 240,
@@ -310,7 +310,7 @@ return {
         {
           id = 28,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 840,
           y = 260,
@@ -326,7 +326,7 @@ return {
         {
           id = 29,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 440,
           y = 262,
@@ -342,7 +342,7 @@ return {
         {
           id = 43,
           name = "blackdoor",
-          class = "",
+          type = "",
           shape = "point",
           x = 1160,
           y = 244,
@@ -357,7 +357,7 @@ return {
         {
           id = 48,
           name = "",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 970,
           y = 180,
@@ -371,7 +371,7 @@ return {
         {
           id = 51,
           name = "npc",
-          class = "",
+          type = "",
           shape = "point",
           x = 262.236,
           y = 262,
@@ -387,7 +387,7 @@ return {
         {
           id = 53,
           name = "beanspot",
-          class = "",
+          type = "",
           shape = "point",
           x = 560,
           y = 400,
@@ -403,7 +403,7 @@ return {
         {
           id = 55,
           name = "beanspot",
-          class = "",
+          type = "",
           shape = "point",
           x = 960,
           y = 360,
@@ -419,7 +419,7 @@ return {
         {
           id = 56,
           name = "beanspot",
-          class = "",
+          type = "",
           shape = "point",
           x = 1200,
           y = 320,
@@ -435,7 +435,7 @@ return {
         {
           id = 57,
           name = "beanspot",
-          class = "",
+          type = "",
           shape = "point",
           x = 800,
           y = 400,
@@ -451,7 +451,7 @@ return {
         {
           id = 58,
           name = "beanspot",
-          class = "",
+          type = "",
           shape = "point",
           x = 680,
           y = 320,
@@ -467,7 +467,7 @@ return {
         {
           id = 59,
           name = "transition",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = -20,
           y = 280,
@@ -483,7 +483,7 @@ return {
         {
           id = 61,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 360,
           y = 440,
@@ -498,7 +498,7 @@ return {
         {
           id = 62,
           name = "dogconegroup",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 400,
           y = 440,
@@ -529,7 +529,7 @@ return {
         {
           id = 6,
           name = "entry",
-          class = "",
+          type = "",
           shape = "point",
           x = 1280,
           y = 350,
@@ -542,7 +542,7 @@ return {
         {
           id = 7,
           name = "exit_spamroom",
-          class = "",
+          type = "",
           shape = "point",
           x = 920,
           y = 120,
@@ -555,7 +555,7 @@ return {
         {
           id = 12,
           name = "spawn",
-          class = "",
+          type = "",
           shape = "rectangle",
           x = 1280,
           y = 350,
@@ -568,7 +568,7 @@ return {
         {
           id = 14,
           name = "exit_whitespace",
-          class = "",
+          type = "",
           shape = "point",
           x = 1160,
           y = 280,
@@ -581,7 +581,7 @@ return {
         {
           id = 60,
           name = "exit_shop",
-          class = "",
+          type = "",
           shape = "point",
           x = 60,
           y = 360,
@@ -610,7 +610,7 @@ return {
         {
           id = 24,
           name = "toggle",
-          class = "",
+          type = "",
           shape = "point",
           x = 400,
           y = 360,
