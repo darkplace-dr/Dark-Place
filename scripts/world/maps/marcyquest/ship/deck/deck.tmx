@@ -84,7 +84,7 @@
   <object id="38" name="follower3_spawn_1" x="1360" y="940">
    <point/>
   </object>
-  <object id="39" name="marcy_start" x="1040" y="694">
+  <object id="39" name="marcy_start" x="1040" y="698">
    <point/>
   </object>
  </objectgroup>
@@ -115,7 +115,7 @@
    </properties>
    <point/>
   </object>
-  <object id="41" name="NPC" x="1082" y="694">
+  <object id="41" name="NPC" x="1082" y="698">
    <properties>
     <property name="actor" value="jamm"/>
     <property name="flagcheck" value="!marcyquest_started"/>
