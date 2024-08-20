@@ -201,6 +201,12 @@ return {
 			cutscene:wait(1)
 		elseif id == "pauling" then
 			cutscene:text("* She seems to be writing some sort of contract...")
+		--elseif id == "noel" then
+		--	cutscene:text("* This character's cutscene text has not been written.")
+		--	cutscene:text("* Please contact " .. Game.party[event.partyslot].name .. "'s dev and tell them to write for marcyquest.party_1.")
+
+		--	cutscene:showNametag("Noel")
+		--	cutscene:text("* (Shut up placeholder text,[wait:10] I got this.)")
 		else
 			cutscene:text("* This character's cutscene text has not been written.")
 			cutscene:text("* Please contact " .. Game.party[event.partyslot].name .. "'s dev and tell them to write for marcyquest.party_1.")
