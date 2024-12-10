@@ -1183,5 +1183,23 @@ function Mod:afmSpawnBackground(style, bg)
         bg.gbg.timescale = 2
         bg.gbg.timer:tween(10, bg.gbg, {timescale = 1})
         bg:addChild(bg.gbg)
+        local splashes = modRequire("preview.splashes")
+        local splash_angle = math.rad(16)
+        local splash_x, splash_y = SCREEN_WIDTH-115, 40
+        bg.splashobj = Text(Utils.pick(splashes))
+        bg.splashobj:setColor(COLORS.yellow)
+        bg.splashobj:setPosition(splash_x, splash_y)--, splash_angle, scale, scale, font:getWidth(self.splash)/2, 0)
+        bg.splashobj:setSize(bg.splashobj:getSize())
+
+        bg.splashobj:setOrigin(0.5,0)
+        bg.splashobj:setScaleOrigin(0.5)
+        bg.splashobj.rotation = splash_angle
+        bg:addChild(bg.splashobj)
+        bg.splashtimer = 0
+        bg.gbg.timer:during(math.huge, function()
+            bg.splashtimer = bg.splashtimer + DT
+            local scale = 1 + math.sin(bg.splashtimer*2) / 10
+            bg.splashobj:setScale(scale)
+        end)
     end
 end
