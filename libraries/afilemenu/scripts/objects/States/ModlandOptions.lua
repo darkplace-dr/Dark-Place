@@ -3,8 +3,8 @@
 local ModlandOptions, super = Class(MainMenuOptions)
 
 function ModlandOptions:onKeyPressed(key)
-    if Input.isCancel(key) then
-        Assets.stopAndPlaySound("ui_move")
+    if Input.isCancel(key) and self.state == "MENU" then
+        Assets.stopAndPlaySound("ui_cancel")
         Kristal.saveConfig()
         self.menu:popState()
         return
@@ -12,15 +12,12 @@ function ModlandOptions:onKeyPressed(key)
     local page = self.pages[self.selected_page]
     local options = self.options[page].options
     local max_option = #options + 1
-    if Input.isConfirm(key) then
+    if Input.isConfirm(key) and self.selected_option == max_option then        
         Assets.stopAndPlaySound("ui_select")
-
-        if self.selected_option == max_option then
-            -- "Back" button
-            Kristal.saveConfig()
-            self.menu:popState()
-            return
-        end
+        -- "Back" button
+        Kristal.saveConfig()
+        self.menu:popState()
+        return
     end
     super.onKeyPressed(self,key)
 end
