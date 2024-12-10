@@ -511,7 +511,7 @@ function Mod:getLightBattleMenuOffsets()
     }
 end
 
-function Mod:postInit(new_file)
+function Mod:afmPostInit(new_file)
     if self.legacy_kristal then
         Game.world:startCutscene("flowey_check")
         return
