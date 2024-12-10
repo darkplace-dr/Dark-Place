@@ -16,7 +16,8 @@ end
 function map:onEnter()
     self.world:openMenu(self.menu)
     if FileSelectBackground then
-        self.world:spawnObject(FileSelectBackground(self.menu), WORLD_LAYERS["below_ui"])
+        local bg = self.world:spawnObject(FileSelectBackground(self.menu), WORLD_LAYERS["below_ui"])
+        Kristal.callEvent("afmSpawnBackground", self.menustyle, bg)
     end
 end
 

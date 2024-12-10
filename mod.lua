@@ -1157,3 +1157,31 @@ end
 function Mod:getActionOrder()
 	return {"ACT", {"SPELL", "ITEM", "SPARE", "COMBO"}}
 end
+
+function Mod:afmGetStyle()
+    local dessimations = 0
+    for i = 1,3 do
+        local data = Kristal.loadData("file_"..i)
+        if data and data.flags then
+            if data.flags.can_kill then
+                dessimations = dessimations + 1
+            end
+        end
+    end
+    return "gonerambience"
+end
+
+function Mod:afmGetMusic(style)
+    if style == "gonerambience" then
+        return "AUDIO_DONKEY_b"
+    end
+end
+
+function Mod:afmSpawnBackground(style, bg)
+    if style == "gonerambience" then
+        bg.gbg = SimpleGonerBackground(nil, nil)
+        bg.gbg.timescale = 2
+        bg.gbg.timer:tween(10, bg.gbg, {timescale = 1})
+        bg:addChild(bg.gbg)
+    end
+end
