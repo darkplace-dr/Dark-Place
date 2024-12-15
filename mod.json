@@ -200,6 +200,7 @@
     "afilemenu": {
       "map": "nothing",
       "configButtonOverride": false,
+      "hookOverlay": true,
       "style": "greatdoor"
     },
     // Stop doing this

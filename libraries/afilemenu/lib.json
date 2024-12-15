@@ -13,5 +13,7 @@
         "noStyledOptions": false,
         // Set to false if you are hooking DarkConfigMenu yourself.
         "configButtonOverride": true,
+        // Experimental. Makes holding ESC in-game bring you to the file select.
+        "hookOverlay": false,
     }
 }
