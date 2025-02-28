@@ -1470,6 +1470,7 @@ function lib:init()
         end, {instant = false})
     
         self.advance_callback = nil
+        self.minifaces = {}
     end)
 
     Utils.hook(Textbox, "advance", function(orig, self)
