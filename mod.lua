@@ -511,7 +511,7 @@ function Mod:getLightBattleMenuOffsets()
     }
 end
 
-function Mod:postInit(new_file)
+function Mod:afmPostInit(new_file)
     if self.legacy_kristal then
         Game.world:startCutscene("flowey_check")
         return
@@ -1156,4 +1156,50 @@ end
 
 function Mod:getActionOrder()
 	return {"ACT", {"SPELL", "ITEM", "SPARE", "COMBO"}}
+end
+
+function Mod:afmGetStyle()
+    local dessimations = 0
+    for i = 1,3 do
+        local data = Kristal.loadData("file_"..i)
+        if data and data.flags then
+            if data.flags.can_kill then
+                dessimations = dessimations + 1
+            end
+        end
+    end
+    return "gonerambience"
+end
+
+function Mod:afmGetMusic(style)
+    if style == "gonerambience" then
+        return "AUDIO_DONKEY_b"
+    end
+end
+
+function Mod:afmSpawnBackground(style, bg)
+    if style == "gonerambience" then
+        bg.gbg = SimpleGonerBackground(nil, nil)
+        bg.gbg.timescale = 2
+        bg.gbg.timer:tween(10, bg.gbg, {timescale = 1})
+        bg:addChild(bg.gbg)
+        local splashes = modRequire("preview.splashes")
+        local splash_angle = math.rad(16)
+        local splash_x, splash_y = SCREEN_WIDTH-115, 40
+        bg.splashobj = Text(Utils.pick(splashes))
+        bg.splashobj:setColor(COLORS.yellow)
+        bg.splashobj:setPosition(splash_x, splash_y)--, splash_angle, scale, scale, font:getWidth(self.splash)/2, 0)
+        bg.splashobj:setSize(bg.splashobj:getSize())
+
+        bg.splashobj:setOrigin(0.5,0)
+        bg.splashobj:setScaleOrigin(0.5)
+        bg.splashobj.rotation = splash_angle
+        bg:addChild(bg.splashobj)
+        bg.splashtimer = 0
+        bg.gbg.timer:during(math.huge, function()
+            bg.splashtimer = bg.splashtimer + DT
+            local scale = 1 + math.sin(bg.splashtimer*2) / 10
+            bg.splashobj:setScale(scale)
+        end)
+    end
 end

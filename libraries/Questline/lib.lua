@@ -12,7 +12,7 @@ function Lib:onKeyPressed(key)
 	end
 end
 
-function Lib:postInit(new_file)
+function Lib:afmPostInit(new_file)
 	if Game:getFlag("quest_menu_ever_opened") == nil then
 		Game:setFlag("quest_menu_ever_opened", false)
 	end

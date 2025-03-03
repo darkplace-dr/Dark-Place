@@ -6,7 +6,7 @@ function Lib:init()
     end
 end
 
-function Lib:postInit(new_file)
+function Lib:afmPostInit(new_file)
     if new_file then
         Game:setFlag("library_love", 1)
         Game:setFlag("library_experience", 0)

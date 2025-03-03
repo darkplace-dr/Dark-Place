@@ -1,6 +1,6 @@
 local Lib = {}
 
-function Lib:postInit()
+function Lib:afmPostInit()
 	Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color)
 		if amount == 0 or (amount < 0 and Game:getConfig("damageUnderflowFix")) and battler.chara.id == "pauling" then
 			self:statusMessage("msg", "miss_pauling", color or (battler and {battler.chara:getDamageColor()}))

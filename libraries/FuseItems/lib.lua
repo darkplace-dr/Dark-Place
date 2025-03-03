@@ -37,7 +37,7 @@ function Lib:init()
 	end
 end
 
-function Lib:postInit()
+function Lib:afmPostInit()
 	Game:setFlag("fuse_items_data", {})
 end
 
