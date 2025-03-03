@@ -9,7 +9,6 @@ return {
     "dummy",
     "takodownbad",
     "mysteryman",
-    "jekukilled",
     "dirtyhacker",
 	"music",
 	"gods"
