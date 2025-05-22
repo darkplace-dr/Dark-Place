@@ -37,7 +37,7 @@ function DarkPartyMenu:init(debug)
     self.list = {
         { "kris", "susie", "noelle", "berdly", "ostarwalker", "YOU", "robo_susie", "noyno", "pauling", "eusei" },
         { "frisk2", "dess", "alseri", "brenda", "jamm", "bor", "dumbie", "iphone", "mario", "ceroba" },
-        { "clover", "whale", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown" },
+        { "clover", "whale", "frisk", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown" },
     }
 
     if Game:getFlag("noel_party") or Game:getFlag("noel_partyroom") or (noelsave and noelsave.Map == "devhotel/devdiner/partyroom") then
