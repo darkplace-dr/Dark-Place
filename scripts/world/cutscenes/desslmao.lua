@@ -1,5 +1,6 @@
 return {
 	dessbegin = function(cutscene)
+        local noel_here
 		local dess = cutscene:getCharacter("dess")
 
 		if cutscene:getCharacter("noel") then
@@ -10,7 +11,7 @@ return {
 			cutscene:showNametag("Brenda")
 			cutscene:text("* (Oh god...[wait:5] it's HER.)", "miffed", "brenda")     
                         if noel_here then
-			    noel_here = self.noel_here + 1
+			    noel_here = noel_here + 1
 			    cutscene:showNametag("Noel")
 			    cutscene:text("* (Who?)", "huh", "noel")
 			    cutscene:text("* (Why do you seem so [face:oh]darn upset?)", "bruh", "noel")
