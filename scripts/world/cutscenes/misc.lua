@@ -7,4 +7,10 @@ return {
     test1 = function(cutscene, event)
         cutscene:text("* If you're kawaii and you know it clap your hands.")
     end,
+    frisk = function(cutscene, event)
+        cutscene:text("(* you unlocked frisk from undertale.)")
+        Mod:unlockPartyMember("frisk")
+        Game:setFlag("frisk_unlock", true)
+        Game.world:getCharacter("frisk"):explode()
+    end,
 }
