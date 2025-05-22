@@ -569,7 +569,7 @@ function Lib:init()
             orig(self)
         end
     end)
-    
+
     Utils.hook(BattleUI, "init", function(orig, self)
         if #Game.battle.party <= (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4) then
             orig(self)
@@ -674,6 +674,37 @@ function Lib:init()
                 v.y = v.y - (Game:getConfig("oldUIPositions") and 36 or 37)
             end
         end
+
+
+        if #self.action_boxes > 8 then
+            for k,v in ipairs(self.action_boxes) do
+                if 9 > k then
+                    v.y = v.y - 37
+                end
+
+                if k > 4 then
+                    local u = ((k - 1) % 4) + 1
+                    u = u - 1
+                    u = u * 159.75
+                    v.x = u
+                end
+
+                if k > 8 and #self.action_boxes < 12 then
+                    local brt = #self.action_boxes
+
+                    local positions = {
+                        [9]  = {239.625},
+                        [10] = {159.75, 319.5},
+                        [11] = {79.875, 239.625, 399.375}
+                    }
+
+                    local group = positions[brt]
+                    if group then
+                        v.x = group[k - 8]
+                    end
+                end
+            end
+        end
     end)
     
     Utils.hook(BattleUI, "update", function(orig, self)
@@ -698,28 +729,43 @@ function Lib:init()
     end)
     
     Utils.hook(Encounter, "getPartyPosition", function(orig, self, index)
-        if #Game.battle.party <= 3 then return orig(self, index) end
-        
+        local partyCount = #Game.battle.party
+        local classic = Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4
+
+        if partyCount <= 3 then
+            return orig(self, index)
+        end
+
         local x, y = 0, 0
         local column = 0
         local reset = 0
         local middle = 0
-        local classic = (Kristal.getLibConfig("moreparty", "classic_mode") and 3 or 4)
-        if #Game.battle.party > classic then
+
+        if partyCount > classic then
             if index <= classic then
                 column = 80
+            elseif index <= 8 then
+                column = 0
+                reset = 4
+                local secondRowCount = math.min(4, partyCount - 4)
+                middle = (classic - secondRowCount) * (Kristal.getLibConfig("moreparty", "classic_mode") and 40 or 35)
             else
-                reset = classic
-                middle = (classic * 2 - #Game.battle.party) * ((Kristal.getLibConfig("moreparty", "classic_mode") and 40 or 35))
+                column = -80
+                reset = 8
+                local thirdRowCount = partyCount - 8
+                middle = (4 - thirdRowCount) * (Kristal.getLibConfig("moreparty", "classic_mode") and 40 or 35)
             end
         end
+
         x = 80 + column
-        y = (((not Kristal.getLibConfig("moreparty", "classic_mode") and #Game.battle.party <= 4) and 120 or 50) / classic) + ((SCREEN_HEIGHT * 0.5) / classic) * (index - 1 - reset) + middle
+        local baseYSpacing = (not Kristal.getLibConfig("moreparty", "classic_mode") and partyCount <= 4) and 120 or 50
+        y = (baseYSpacing / 4) + ((SCREEN_HEIGHT * 0.5) / 4) * (index - 1 - reset) + middle
 
         local battler = Game.battle.party[index]
         local ox, oy = battler.chara:getBattleOffset()
-        x = x + (battler.actor:getWidth()/2 + ox) * 2
-        y = y + (battler.actor:getHeight()  + oy) * 2
+        x = x + (battler.actor:getWidth() / 2 + ox) * 2
+        y = y + (battler.actor:getHeight() + oy) * 2
+
         return x, y
     end)
     
@@ -874,6 +920,39 @@ function Lib:init()
                 v.y = v.y - 44
             end
         end
+
+        if #parent.action_boxes > 8 then
+            for k,v in ipairs(parent.action_boxes) do
+                if 9 > k then
+                    
+                    v.y = v.y - 44
+                end
+
+                if k > 4 then
+                    local u = ((k - 1) % 4) + 1
+                    u = u - 1
+                    u = u * 159.75
+                    v.x = u
+                end
+
+                if k > 8 and #parent.action_boxes < 12 then
+                    local brt = #parent.action_boxes
+
+                    local positions = {
+                        [9]  = {239.625},
+                        [10] = {159.75, 319.5},
+                        [11] = {79.875, 239.625, 399.375}
+                    }
+
+                    local group = positions[brt]
+                    if group then
+                        v.x = group[k - 8]
+                    end
+                end
+            end
+        end
+
+
       
         local string_width = self.font:getWidth(tostring(self.chara:getStat("health")))
         
@@ -999,6 +1078,10 @@ function Lib:init()
         -- Draw the black background
         Draw.setColor(PALETTE["world_fill"])
         love.graphics.rectangle("fill", 0, -23, 640, 124)
+
+        if #Game.party > 8 then
+            love.graphics.rectangle("fill", 0, -69, 640, 124)
+        end
           
         Object.draw(self)
    end)
@@ -1853,7 +1936,7 @@ function Lib:init()
 end
 
 function Lib:postUpdate()
-    local max_members = (Kristal.getLibConfig("moreparty", "classic_mode") and 6 or 8)
+    local max_members = (Kristal.getLibConfig("moreparty", "classic_mode") and 6 or 11)
     if #Game.party > max_members and not Lib.warned["too_many_pm"] then
         Kristal.Console:warn("too many party members than MoreParty can support. (MAX: ".. max_members ..")")
         if Kristal.getLibConfig("moreparty", "classic_mode") then
