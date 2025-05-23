@@ -279,6 +279,11 @@ function DarkConfigMenu:update()
                 elseif self.currently_selected == 4 then
                     self.extras_substate = "BULBORBLOCATION"
                 elseif self.currently_selected == 5 then
+                    self.fading = true
+                    Game.world.fader:fadeOut(function ()
+                        Game:load(nil,nil,true)
+                    end, {speed = 1})
+                elseif self.currently_selected == 6 then
                     self.state = "MAIN"
                     self.currently_selected = 1
                 end
@@ -466,7 +471,7 @@ function DarkConfigMenu:onKeyPressed(key)
 end
 
 function DarkConfigMenu:draw()
-    if Game.state == "EXIT" then
+    if Game.state == "EXIT" or self.fading then
         super.super.draw(self)
         return
     end
@@ -492,7 +497,8 @@ function DarkConfigMenu:draw()
         end
         love.graphics.print("Bulborb Location", 88, 38 + (3 * 32))
         love.graphics.setColor(PALETTE["world_text"])
-        love.graphics.print("Back",             88, 38 + (4 * 32))
+        love.graphics.print("File select", 88, 38 + (4 * 32))
+        love.graphics.print("Back",             88, 38 + (5 * 32))
 
         if self.extras_substate == "BORDER" then
             love.graphics.setColor(PALETTE["world_text_selected"])

@@ -17,7 +17,8 @@
   "chapter": 2,
 
   // The map that you start in when first starting the mod.
-  "map": "nothing",
+  "map": "fileselect",
+  "useSaves": false,
 
   // The party. The first character is the player.
   "party": [
@@ -195,6 +196,12 @@
     "ribbit": {
       "changeSavepointSound": true,
       "addCheckSound": true
+    },
+    "afilemenu": {
+      "map": "nothing",
+      "configButtonOverride": false,
+      "hookOverlay": true,
+      "style": "greatdoor"
     },
     // Stop doing this
     "leveling": { "print_console_intro": false },
