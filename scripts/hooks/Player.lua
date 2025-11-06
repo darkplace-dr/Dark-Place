@@ -1,5 +1,5 @@
 ---@class Player
-local Player, super = Class("Player", true)
+local Player, super = Utils.hookScript(Player)
 
 function Player:init(...)
     super.init(self, ...)
@@ -73,7 +73,27 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
 
     ]]
     self.so_gamer = love.graphics.newShader(so_gamer)
+end
 
+function Player:getBaseWalkSpeed()
+    return Game:isLight() and 6 or 4
+end
+
+function Player:getCurrentSpeed(running)
+    local speed = self:getBaseWalkSpeed()
+    if running then
+        if self.run_timer > 60 then
+            speed = speed + (Game:isLight() and 6 or 5)
+        elseif self.run_timer > 10 then
+            speed = speed + 4
+        else
+            speed = speed + 2
+        end
+    end
+	if self.invincible_colors then
+		speed = speed + 2
+	end
+    return speed
 end
 
 function Player:setActor(...)
@@ -215,20 +235,7 @@ function Player:handleMovement()
         self.run_timer = 200
     end
 
-    local speed = self.walk_speed
-    if running then
-        if self.run_timer > 60 then
-            speed = speed * 2.25
-        elseif self.run_timer > 10 then
-            speed = speed * 2
-        else
-            speed = speed * 1.5
-        end
-    end
-	
-	if self.invincible_colors then
-		speed = speed * 1.5
-	end
+    local speed = self:getCurrentSpeed(running)
 
     self:move(walk_x, walk_y, speed * DTMULT)
 
