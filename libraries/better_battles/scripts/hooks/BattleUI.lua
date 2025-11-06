@@ -69,7 +69,7 @@ function BattleUI:drawState()
             end
 
             if able then
-                Draw.setColor(item.color or {1, 1, 1, 1})
+                Draw.setColor(item:color() or {1, 1, 1, 1})
             else
                 Draw.setColor(COLORS.gray)
             end
