@@ -112,7 +112,7 @@ function Larpy:onAct(battler, name)
 
     -- If the act is none of the above, run the base onAct function
     -- (this handles the Check act)
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Larpy:onDefeat(damage, battler)

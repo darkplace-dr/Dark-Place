@@ -1,7 +1,7 @@
 local encounter, super = Class(Encounter)
 
 function encounter:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "[font:main_mono,15]* But nobody came."

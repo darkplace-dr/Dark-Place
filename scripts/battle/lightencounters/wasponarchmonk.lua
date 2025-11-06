@@ -1,7 +1,7 @@
 local WasponArchMonk, super = Class(LightEncounter)
 
 function WasponArchMonk:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Bug and monkey.[wait:5]\n* An unlikely alliance."
 

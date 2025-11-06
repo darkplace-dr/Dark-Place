@@ -1,7 +1,7 @@
 local Waspon, super = Class(LightEnemyBattler)
 
 function Waspon:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Waspon"
     self:setActor("rodenteerenemy")
@@ -72,7 +72,7 @@ function Waspon:onAct(battler, name)
         return "* "
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Waspon:getEncounterText()

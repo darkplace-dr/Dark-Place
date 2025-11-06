@@ -1,7 +1,7 @@
 local bullet, super = Class(Bullet)
 
 function bullet:init(x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
     self:setSprite("bullets/froggit/bulletsm", 1, true)
 
     self:setScale(1, 1)

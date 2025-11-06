@@ -1,7 +1,7 @@
 local Card, super = Class(Object)
 
 function Card:init()
-	super:init(self)
+	super.init(self)
 	
 	self.image = "cards/rodenteer"					-- For template use
         if self.back then

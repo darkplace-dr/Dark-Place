@@ -1,7 +1,7 @@
 local ArchMonk, super = Class(LightEnemyBattler)
 
 function ArchMonk:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Arch Monk"
     self:setActor("rodenteerenemy")
@@ -54,7 +54,7 @@ function ArchMonk:onAct(battler, name)
         return "* "
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function ArchMonk:getEncounterText()

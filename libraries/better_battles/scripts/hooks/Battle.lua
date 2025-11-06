@@ -19,7 +19,7 @@ function Battle:updateIntro()
 end
 
 function Battle:onStateChange(old,new)
-	super:onStateChange(self, old, new)
+	super.onStateChange(self, old, new)
 	
 	if new == "ENEMYDIALOGUE" then
 		local had_started = self.started

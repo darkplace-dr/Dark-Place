@@ -1,7 +1,7 @@
 local TellyVis, super = Class(LightEncounter)
 
 function TellyVis:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* Telly-Vis tunes in!"

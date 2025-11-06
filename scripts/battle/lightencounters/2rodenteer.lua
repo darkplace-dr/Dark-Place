@@ -1,7 +1,7 @@
 local TwoRodenteer, super = Class(LightEncounter)
 
 function TwoRodenteer:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Rodenteers block your path."
 

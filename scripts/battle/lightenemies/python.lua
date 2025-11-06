@@ -1,7 +1,7 @@
 local Python, super = Class(LightEnemyBattler)
 
 function Python:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Python"
     self:setActor("rodenteerenemy")
@@ -69,7 +69,7 @@ function Python:onAct(battler, name)
         return "* "
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Python:getEncounterText()

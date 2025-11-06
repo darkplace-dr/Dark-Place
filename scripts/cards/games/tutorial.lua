@@ -1,7 +1,7 @@
 local Tutorial, super = Class(CardGame)
 
 function Tutorial:init()
-	super:init(self)
+	super.init(self)
 	
 	self.cards = { {"rodenteer", 5},
 				   {"froglin", 5},

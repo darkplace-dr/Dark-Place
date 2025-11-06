@@ -2,7 +2,7 @@ local bullet, super = Class(Bullet)
 
 function bullet:init(x, y)
     -- Last argument = sprite path
-    super:init(self, x, y, "bullets/froggit/leapfrog_idle")
+    super.init(self, x, y, "bullets/froggit/leapfrog_idle")
 
     self:setScale(1, 1)
     self:setOrigin(0.5, 1)

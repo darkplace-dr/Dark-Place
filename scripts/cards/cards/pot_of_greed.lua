@@ -3,7 +3,7 @@ local Card, super = Class(Card, "pot_of_greed")
 function Card:init()
         self.back = "cards/yugioh_back"
 
-	super:init(self)
+	super.init(self)
 
 	self.image = "cards/pot_of_greed"
 

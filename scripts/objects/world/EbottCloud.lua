@@ -1,7 +1,7 @@
 local EbottCloud, super = Class(Object)
 
 function EbottCloud:init(asset, x, y, speed, parallax_x, parallax_y)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.asset = asset
     self.speed = speed or 0.2

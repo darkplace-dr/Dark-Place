@@ -1,7 +1,7 @@
 local TwoWaspon, super = Class(LightEncounter)
 
 function TwoWaspon:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Waspon swarm the area."
 

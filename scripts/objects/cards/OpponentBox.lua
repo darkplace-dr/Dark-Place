@@ -1,7 +1,7 @@
 local OpponentBox, super = Class(Object)
 
 function OpponentBox:init(x, y, name, head, color)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.animation_timer = 0
     self.selection_siner = 0

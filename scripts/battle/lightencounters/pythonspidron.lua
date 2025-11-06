@@ -1,7 +1,7 @@
 local PythonSpidron, super = Class(LightEncounter)
 
 function PythonSpidron:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Looks like web development."
 

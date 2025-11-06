@@ -1,7 +1,7 @@
 local ArchMonk, super = Class(LightEncounter)
 
 function ArchMonk:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Arch Monk raises her bow."
 

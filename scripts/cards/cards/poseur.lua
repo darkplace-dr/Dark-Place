@@ -1,7 +1,7 @@
 local Forest, super = Class(Card, "poseur")
 
 function Forest:init()
-	super:init(self)
+	super.init(self)
 	
 	self.image = "cards/poseur"
 	self.name = "Poseur"

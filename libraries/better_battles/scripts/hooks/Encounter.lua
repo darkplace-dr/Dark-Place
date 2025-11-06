@@ -3,7 +3,7 @@
 local Encounter, super = Class("Encounter", true)
 
 function Encounter:init()
-	super:init(self)
+	super.init(self)
 	
 	-- Can the player flee the battle?
 	self.flee = true

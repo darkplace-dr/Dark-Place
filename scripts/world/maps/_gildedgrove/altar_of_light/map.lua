@@ -1,7 +1,7 @@
 local mymap, super = Class(Map)
 
 function mymap:init(world, data)
-    super:init(self, world, data)
+    super.init(self, world, data)
 
     Game.world.fader:fadeOut(0, {alpha = 0})
 end

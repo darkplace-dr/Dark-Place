@@ -1,7 +1,7 @@
 local ShelterSound, super = Class(Event)
 
 function ShelterSound:init(data)
-    super:init(self, data)
+    super.init(self, data)
 end
 
 function ShelterSound:onAddToStage()

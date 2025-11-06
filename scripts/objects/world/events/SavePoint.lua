@@ -3,7 +3,7 @@
 local SavePoint, super = Class("Savepoint", true)
 
 function SavePoint:init(x, y, properties)
-	super:init(self, x, y, properties)
+	super.init(self, x, y, properties)
 
 	self.override_power = properties["override_power"]
 end
@@ -22,7 +22,7 @@ function SavePoint:onInteract()
 		local verb = #Game.party == 1 and "is" or "are"
 		self.text = {"* " .. party_text .. " "..verb.." filled with power."}
 	end
-	super:onInteract(self)
+	super.onInteract(self)
 end
 
 return SavePoint

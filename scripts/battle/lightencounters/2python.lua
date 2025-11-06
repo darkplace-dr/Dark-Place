@@ -1,7 +1,7 @@
 local TwoPython, super = Class(LightEncounter)
 
 function TwoPython:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Pythons stop your way!"
 

@@ -1,7 +1,7 @@
 local ScissorDancer, super = Class(WorldBullet, "scissor_dancer")
 
 function ScissorDancer:init(data)
-    super:init(self, data.x, data.y, "events/scissor_dancer/dancer")
+    super.init(self, data.x, data.y, "events/scissor_dancer/dancer")
 	
 	self:setOrigin(0.5,1)
 	
@@ -29,7 +29,7 @@ function ScissorDancer:init(data)
 end
 
 function ScissorDancer:onInteract(player, dir)
-	super:onInteract(self, player, dir)
+	super.onInteract(self, player, dir)
 	Assets.playSound("scissorbell", 1, Utils.random(0.7, 1))
 	return true
 end
@@ -40,11 +40,11 @@ function ScissorDancer:postLoad()
 end
 
 function ScissorDancer:onTextEnd()
-	super:onTextEnd(self)
+	super.onTextEnd(self)
 end
 
 function ScissorDancer:getDebugInformation()
-	local info = super:getDebugInformation(self)
+	local info = super.getDebugInformation(self)
 	table.insert(info, "Path: "..tostring(self.path))
 	table.insert(info, "Speed: "..tostring(self.speed))
 	return info

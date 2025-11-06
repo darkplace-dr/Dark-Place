@@ -1,7 +1,7 @@
 local FroglinRodenteer, super = Class(LightEncounter)
 
 function FroglinRodenteer:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* You are halted by Froglin and Rodenteer."
 

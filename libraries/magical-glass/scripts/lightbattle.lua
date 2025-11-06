@@ -1894,7 +1894,7 @@ function LightBattle:draw()
         self.encounter:drawBackground()
     end
 
-    super:draw(self)
+    super.draw(self)
 
     self.encounter:draw()
 

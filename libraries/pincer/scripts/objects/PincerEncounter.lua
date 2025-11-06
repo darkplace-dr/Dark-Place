@@ -3,7 +3,7 @@
 local PincerEncounter, super = Class(Encounter)
 
 function PincerEncounter:init()
-    super:init(self)
+    super.init(self)
 	
 	self.left = {}
 	self.right = {}

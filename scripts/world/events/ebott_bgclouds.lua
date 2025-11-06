@@ -1,7 +1,7 @@
 local EbottBGClouds, super = Class(Event)
 
 function EbottBGClouds:init(data)
-    super:init(self, data.center_x, data.center_y)
+    super.init(self, data.center_x, data.center_y)
 
     self.cloud_1 = Assets.getTexture("world/maps/ebott/cloud")
     self.cloud_2 = Assets.getTexture("world/maps/ebott/cloud")
@@ -34,7 +34,7 @@ end
 
 function EbottBGClouds:draw()
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return EbottBGClouds

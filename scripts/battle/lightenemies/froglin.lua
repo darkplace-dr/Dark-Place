@@ -1,7 +1,7 @@
 local Froglin, super = Class(LightEnemyBattler)
 
 function Froglin:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Froglin"
     self:setActor("rodenteerenemy")
@@ -67,7 +67,7 @@ function Froglin:onAct(battler, name)
         return "* "
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Froglin:getEncounterText()

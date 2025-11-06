@@ -1,7 +1,7 @@
 local OpponentBoxDisplay, super = Class(Object)
 
 function OpponentBoxDisplay:init(actbox, color, x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.font = Assets.getFont("smallnumbers")
 
@@ -50,7 +50,7 @@ function OpponentBoxDisplay:draw()
     local string_width = self.font:getWidth(tostring(Game.card_game.max_hp))
     love.graphics.print(Game.card_game.max_hp, 205 - string_width, 9 - self.actbox.data_offset)
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return OpponentBoxDisplay

@@ -1,7 +1,7 @@
 local BG, super = Class(Object)
 
 function BG:init()
-    super:init(self)
+    super.init(self)
 	
     self.background = Assets.getTexture("battle/backgrounds/sneo/cityscape_background")
     self.midground  = Assets.getTexture("battle/backgrounds/sneo/cityscape_midground")
@@ -27,7 +27,7 @@ function BG:init()
 end
 
 function BG:draw()
-    super:draw(self)
+    super.draw(self)
 	
     Draw.setColor(0, 0, 0, 1)
     Draw.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)

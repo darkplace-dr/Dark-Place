@@ -1,7 +1,7 @@
 local CardGame, super = Class(Object)
 
 function  CardGame:init()
-    super:init(self)
+    super.init(self)
 
     self.money = 0
 	
@@ -230,7 +230,7 @@ function CardGame:showUI()
 end
 
 function CardGame:onRemove(parent)
-    super:onRemove(self, parent)
+    super.onRemove(self, parent)
 
     self.music:remove()
 end
@@ -258,7 +258,7 @@ end
 
 function CardGame:update()
 	if not self.cutscene then
-		super:update(self)
+		super.update(self)
 		
 		self.state_timer = self.state_timer + DTMULT
 		

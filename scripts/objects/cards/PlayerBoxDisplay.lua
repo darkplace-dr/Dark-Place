@@ -1,7 +1,7 @@
 local PlayerBoxDisplay, super = Class(Object)
 
 function PlayerBoxDisplay:init(actbox, x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.font = Assets.getFont("smallnumbers")
 
@@ -55,7 +55,7 @@ function PlayerBoxDisplay:draw()
 	love.graphics.setFont(Assets.getFont("main"))
 	love.graphics.print(Game.card_game.player_points, 20, 38)
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return PlayerBoxDisplay

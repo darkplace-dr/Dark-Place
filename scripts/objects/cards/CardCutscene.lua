@@ -22,7 +22,7 @@ function CardCutscene:init(group, id, ...)
 	
 	self.layer = CARD_LAYERS["textbox"]
 
-    super:init(self, scene, unpack(args))
+    super.init(self, scene, unpack(args))
 end
 
 function CardCutscene:canEnd()
@@ -45,7 +45,7 @@ function CardCutscene:update()
 		self.textbox:update()
 	end
 
-    super:update(self)
+    super.update(self)
 end
 
 function CardCutscene:onEnd()
@@ -64,7 +64,7 @@ function CardCutscene:onEnd()
         self.choicebox:remove()
     end
 
-    super:onEnd(self)
+    super.onEnd(self)
 end
 
 function CardCutscene:getCharacter(id, index)

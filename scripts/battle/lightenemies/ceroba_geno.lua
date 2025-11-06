@@ -1,7 +1,7 @@
 local Ceroba, super = Class(LightEnemyBattler)
 
 function Ceroba:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Ceroba"
     self:setActor("cerobaboss")
@@ -74,7 +74,7 @@ function Ceroba:onAct(battler, name)
         return "* But there was nothing "..battler.chara:getName().."\ncould do."
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Ceroba:onHurtEnd()

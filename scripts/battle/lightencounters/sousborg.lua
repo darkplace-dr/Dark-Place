@@ -1,7 +1,7 @@
 local Sousborg, super = Class(LightEncounter)
 
 function Sousborg:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Sousborg is ready to put your\nculinary skills to the test!"
 

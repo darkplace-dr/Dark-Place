@@ -1,7 +1,7 @@
 local book, super = Class(ReadableBook)
 
 function book:init()
-    super:init(self)
+    super.init(self)
 
     self.id     = "warp_bin_code_book"
     self.title  = "CODE BOOK"

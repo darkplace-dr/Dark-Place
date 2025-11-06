@@ -2,7 +2,7 @@ local SmallBullet, super = Class(Bullet)
 
 function SmallBullet:init(x, y, flip)
     -- Last argument = sprite path
-    super:init(self, x, y, "battle/bullets/deoxynn/mouse_house")
+    super.init(self, x, y, "battle/bullets/deoxynn/mouse_house")
 
     -- Origin point (will be rotated around it)
     self:setOrigin(1, 0)

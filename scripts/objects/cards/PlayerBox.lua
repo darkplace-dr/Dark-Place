@@ -1,7 +1,7 @@
 local PlayerBox, super = Class(Object)
 
 function PlayerBox:init(x, y)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self.animation_timer = 0
     self.selection_siner = 0
@@ -35,7 +35,7 @@ end
 
 function PlayerBox:draw()
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return PlayerBox

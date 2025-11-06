@@ -1,7 +1,7 @@
 local Froglin, super = Class(LightEncounter)
 
 function Froglin:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Froglin jumps in your way!"
 

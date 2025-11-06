@@ -2,7 +2,7 @@ local Fire, super = Class(Event, "firedarken")
 -- Recreated by Bor for Dark Place, included here with their permission
 
 function Fire:init(data)
-    super:init(self, data.x, data.y, data.width, data.height)
+    super.init(self, data.x, data.y, data.width, data.height)
 
     data.properties = data.properties or {}
 

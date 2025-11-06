@@ -1,7 +1,7 @@
 local book, super = Class(ReadableBook)
 
 function book:init()
-    super:init(self)
+    super.init(self)
 
     self.id     = "fountains_of_doom"
     self.title  = "Deltarune: Fountains of Doom"

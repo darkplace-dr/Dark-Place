@@ -1,7 +1,7 @@
 local map, super = Class(Map)
 
 function map:load()
-    super:load(self)
+    super.load(self)
 end
 
 function map:onEnter()

@@ -1,7 +1,7 @@
 local Spidron, super = Class(LightEncounter)
 
 function Spidron:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Spidron blocks your way."
 

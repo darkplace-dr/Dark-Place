@@ -1,7 +1,7 @@
 local Jandroid, super = Class(LightEnemyBattler)
 
 function Jandroid:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Jandroid"
     self:setActor("jandroidenemy")
@@ -121,7 +121,7 @@ function Jandroid:onAct(battler, name)
         end
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Jandroid:onDefeat(damage, battler)

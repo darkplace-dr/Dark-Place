@@ -1,7 +1,7 @@
 local RoomFourTransitionC, super = Class(Map)
 
 function RoomFourTransitionC:load()
-  super:load(self)
+  super.load(self)
 end
 
 function RoomFourTransitionC:onFootstep(chara, num)

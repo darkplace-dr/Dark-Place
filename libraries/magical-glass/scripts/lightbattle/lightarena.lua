@@ -179,7 +179,7 @@ function LightArena:update()
         self:setSize(self.width, self.height)
     end
 
-    super:update(self)
+    super.update(self)
 
     if NOCLIP then return end
 

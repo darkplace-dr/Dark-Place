@@ -1,7 +1,7 @@
 local AngryBirdsButton, super = Class(Object)
 
 function AngryBirdsButton:init(x, y, sx, sy, s_begin, s_end, image, sound)
-	super:init(self, x, y, 0, 0)
+	super.init(self, x, y, 0, 0)
 	
     self.scale_x, self.scale_y = sx, sy
     self.scale_begin = s_begin
@@ -66,7 +66,7 @@ function AngryBirdsButton:update()
 	--end
 end
 
-function AngryBirdsButton:draw() super:draw(self) end
+function AngryBirdsButton:draw() super.draw(self) end
 
 function AngryBirdsButton:onClick()
 	Assets.playSound(self.sound)

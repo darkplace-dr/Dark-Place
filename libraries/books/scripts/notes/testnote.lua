@@ -1,7 +1,7 @@
 local note, super = Class(ReadableNote)
 
 function note:init()
-    super:init(self)
+    super.init(self)
 
     self.id     = "testnote"
     self.title  = "TestNote"

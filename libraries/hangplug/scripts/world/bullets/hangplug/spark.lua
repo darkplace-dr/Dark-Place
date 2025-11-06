@@ -1,7 +1,7 @@
 local PlugSpark, super = Class(WorldBullet, "hangplug/spark")
 
 function PlugSpark:init(x, y, damage, dist, buffed)
-    super:init(self, x, y)
+    super.init(self, x, y)
 
     self:setScale(1, 1)
 
@@ -73,7 +73,7 @@ function PlugSpark:update()
         end
     end
 
-    super:update(self)
+    super.update(self)
 end
 
 function PlugSpark:draw()
@@ -94,7 +94,7 @@ function PlugSpark:draw()
 
     love.graphics.setColor(1, 1, 1)
 
-    super:draw(self)
+    super.draw(self)
 end
 
 return PlugSpark

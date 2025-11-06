@@ -1,7 +1,7 @@
 local Goosic, super = Class(LightEnemyBattler)
 
 function Goosic:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Goosic"
     self:setActor("goosicenemy")
@@ -178,7 +178,7 @@ function Goosic:onAct(battler, name)
         end
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Goosic:onDefeat(damage, battler)

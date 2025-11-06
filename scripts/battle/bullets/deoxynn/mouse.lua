@@ -2,7 +2,7 @@ local SmallBullet, super = Class(Bullet)
 
 function SmallBullet:init(x, y, speed)
     -- Last argument = sprite path
-    super:init(self, x, y, "battle/bullets/deoxynn/mouse")
+    super.init(self, x, y, "battle/bullets/deoxynn/mouse")
 
     -- Origin point (will be rotated around it)
     self:setOrigin(0.5, 0.5)
@@ -24,7 +24,7 @@ end
 function SmallBullet:update()
     -- For more complicated bullet behaviours, code here gets called every update
 
-    super:update(self)
+    super.update(self)
 	if self.x < Game.battle.arena.x then
 		self:setParent(Game.battle)
 	end

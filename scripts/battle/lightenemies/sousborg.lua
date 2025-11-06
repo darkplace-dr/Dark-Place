@@ -1,7 +1,7 @@
 local Sousborg, super = Class(LightEnemyBattler)
 
 function Sousborg:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Sousborg"
     self:setActor("sousborgenemy")
@@ -165,7 +165,7 @@ function Sousborg:onAct(battler, name)
         end
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Sousborg:onDefeat(damage, battler)

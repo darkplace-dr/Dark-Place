@@ -1,7 +1,7 @@
 local Python, super = Class(LightEncounter)
 
 function Python:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Python slithers down the wall."
 

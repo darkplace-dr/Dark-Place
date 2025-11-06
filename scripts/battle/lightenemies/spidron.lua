@@ -1,7 +1,7 @@
 local Spidron, super = Class(LightEnemyBattler)
 
 function Spidron:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Spidron"
     self:setActor("rodenteerenemy")
@@ -62,7 +62,7 @@ function Spidron:onAct(battler, name)
         return "* "
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function Spidron:getEncounterText()

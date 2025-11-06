@@ -1,7 +1,7 @@
 local TwoFroglin, super = Class(LightEncounter)
 
 function TwoFroglin:init()
-    super:init(self)
+    super.init(self)
 
     self.text = "* Talk about a double-decker slime sandwich!"
 

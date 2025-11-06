@@ -1,7 +1,7 @@
 local TellyVis, super = Class(LightEnemyBattler)
 
 function TellyVis:init()
-    super:init(self)
+    super.init(self)
 
     self.name = "Telly-Vis"
     self:setActor("tellyvisenemy")
@@ -148,7 +148,7 @@ function TellyVis:onAct(battler, name)
         end
     end
 
-    return super:onAct(self, battler, name)
+    return super.onAct(self, battler, name)
 end
 
 function TellyVis:onDefeat(damage, battler)

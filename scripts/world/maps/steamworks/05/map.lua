@@ -1,7 +1,7 @@
 local RoomFive, super = Class(Map)
 
 function RoomFive:load()
-  super:load(self)
+  super.load(self)
 end
 
 function RoomFive:onFootstep(chara, num)

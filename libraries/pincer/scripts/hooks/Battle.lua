@@ -3,7 +3,7 @@
 local Battle, super = Class("Battle", true)
 
 function Battle:init()
-	super:init(self)
+	super.init(self)
 	
 	self.attack_left = false
 end
