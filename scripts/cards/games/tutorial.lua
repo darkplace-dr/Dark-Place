@@ -27,7 +27,7 @@ function Tutorial:enemyAI()
 		end
 	end
 	for k,v in pairs(self.selected_cards_o) do
-		Utils.removeFromTable(self.opponent_hand, self.selected_cards_o[k])
+		TableUtils.removeValue(self.opponent_hand, self.selected_cards_o[k])
 	end
 end
 

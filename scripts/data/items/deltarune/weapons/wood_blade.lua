@@ -3,7 +3,7 @@ local item, super = Class("wood_blade", true)
 function item:init()
     super.init(self)
 
-    self.reactions = Utils.merge(self.reactions, {
+    self.reactions = TableUtils.merge(self.reactions, {
 		dess = "I'm not a fucking nerd",
         brenda = "How do you even hurt someone with this?",
 		jamm = "Ow! Splinter...",

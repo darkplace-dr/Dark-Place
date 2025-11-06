@@ -83,7 +83,7 @@ function LightAttackBox:createBolts()
             else
                 centerizer = 51 + (#self.attackers - 5) * 2
             end
-            bolt.y = math.ceil(bolt.y - (bolt.sprite.height * scale_y * (#self.attackers - Utils.getIndex(self.attackers, lane.battler)))) + centerizer
+            bolt.y = math.ceil(bolt.y - (bolt.sprite.height * scale_y * (#self.attackers - TableUtils.getIndex(self.attackers, lane.battler)))) + centerizer
             bolt.layer = BATTLE_LAYERS["above_ui"]
             table.insert(lane.bolts, bolt)
             Game.battle:addChild(bolt)
@@ -96,12 +96,12 @@ function LightAttackBox:getClose(battler)
     if battler.attack_type == "shoe" then
         return math.floor(battler.bolts[1].x / battler.speed) - math.floor(self.bolt_target / battler.speed)
     elseif battler.attack_type == "slice" then
-        return Utils.round(battler.bolts[1].x - self.bolt_target)
+        return MathUtils.round(battler.bolts[1].x - self.bolt_target)
     end
 end
 
 function LightAttackBox:getFirstBolt(battler)
-    return Utils.round(battler.bolts[1].x - self.bolt_target)
+    return MathUtils.round(battler.bolts[1].x - self.bolt_target)
 end
 
 function LightAttackBox:evaluateHit(battler, close)

@@ -209,7 +209,7 @@ function Emitter:init(x, y, w, h, o)
         elseif convert[k] then
             k = convert[k]
         end
-        local valid_suff = Utils.containsValue(suffixes, suff)
+        local valid_suff = TableUtils.contains(suffixes, suff)
         if self.data.physics[valid_suff and subj or k] then
             self.data.physics[k] = v
         elseif k == "round" then

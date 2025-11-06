@@ -11,7 +11,7 @@ function DarkFountain:update()
 
     local function fcolor(h, s, v)
         self.hue = (h / 255) % 1
-        return Utils.hsvToRgb((h / 255) % 1, s / 255, v / 255)
+        return ColorUtils.HSVToRGB((h / 255) % 1, s / 255, v / 255)
     end
 
     if self.adjust == 0 then

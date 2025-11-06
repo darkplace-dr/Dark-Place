@@ -38,7 +38,7 @@ function lib:preUpdate(dt)
     end
 
     for _,particle in ipairs(to_remove) do
-        Utils.removeFromTable(self.particles, particle)
+        TableUtils.removeValue(self.particles, particle)
     end
 
     self.particle_timer = self.particle_timer + DT
@@ -86,7 +86,7 @@ function lib:onBorderDraw(border_sprite)
         if idle_frame > 0 then
             for index, pos in pairs(self.flower_positions) do
                 local x, y = (pos[1] * BORDER_SCALE), (pos[2] * BORDER_SCALE) - 1
-                local round = Utils.round
+                local round = MathUtils.round
                 love.graphics.setBlendMode("replace")
                 local flower = Assets.getTexture("borders/undertale/sepia/" .. tostring(index) .. ((idle_frame == 1) and "a" or "b"))
                 love.graphics.setColor(1, 1, 1, BORDER_ALPHA)

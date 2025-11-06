@@ -33,7 +33,7 @@ function Cog:update()
             self.landed = true
             self:onRoll()
             if self.x ~= Game.battle.soul.x then
-                self.movedir = Utils.sign(Game.battle.soul.x - self.x)
+                self.movedir = MathUtils.sign(Game.battle.soul.x - self.x)
             end
         end
         if self.landed == true then

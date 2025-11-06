@@ -40,7 +40,7 @@ return {
             cutscene:text("* BING BING BING TWO.")
         elseif c == 3 then
             cutscene:text("* Three's an odd number.")
-            if Utils.containsValue(Game.party, Game:getPartyMember("susie")) then
+            if TableUtils.contains(Game.party, Game:getPartyMember("susie")) then
                 cutscene:text("* Even I could tell you that, no wonder.", "smile", "susie")
                 master:setAnimation({ "shocked", 0.25, true })
                 cutscene:text("* I.. I meant it FIGURATIVELY!")

@@ -31,13 +31,13 @@ function RudeBusterBeam:update()
     self.alpha = MathUtils.approach(self.alpha, 1, 0.25 * DTMULT)
 
     local dir = Utils.angle(self.x, self.y, self.target_x, self.target_y)
-    self.rotation = self.rotation + (Utils.angleDiff(dir, self.rotation) / 4) * DTMULT
+    self.rotation = self.rotation + (MathUtils.angleDiff(dir, self.rotation) / 4) * DTMULT
 
     if Input.pressed("confirm") then
         self.pressed = true
     end
 
-    if Utils.dist(self.x, self.y, self.target_x, self.target_y) <= 40 then
+    if MathUtils.dist(self.x, self.y, self.target_x, self.target_y) <= 40 then
         if self.after_func then
             self.after_func(self.pressed)
         end

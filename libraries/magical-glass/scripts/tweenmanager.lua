@@ -7,7 +7,7 @@ function TweenManager.tween(obj, prop, time, ease)
     local tween = {}
     tween.object = obj
     tween.properties = prop
-    tween.init_properties = Utils.copy(tween.object)
+    tween.init_properties = TableUtils.copy(tween.object)
     tween.time = time
     tween.easing = ease or "linear"
     if not Ease[tween.easing] then error(tween.easing.." is not a valid ease curve") end
@@ -68,11 +68,11 @@ function TweenManager.updateTweensToRemove()
             tween.callback()
             tween.callback = nil
         end
-        Utils.removeFromTable(TweenManager.__TWEENS, tween)
+        TableUtils.removeValue(TweenManager.__TWEENS, tween)
     end
 end
 
-Utils.hook(Game, "update", function(orig, self)
+HookSystem.hook(Game, "update", function(orig, self)
     orig(self)
     TweenManager.updateTweens()
     TweenManager.updateTweensToRemove()

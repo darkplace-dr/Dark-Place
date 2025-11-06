@@ -59,8 +59,8 @@ function actor:onWorldUpdate(chara)
         if not Game.world.map.ina:isPlaying() then
             Game.world.map.ina:resume()
         end
-        local dist = Utils.dist(chara.x+chara.width/2, chara.y+chara.height/2, Game.world.player.x+Game.world.player.width, Game.world.player.y+Game.world.player.height)
-        local vol = Utils.clamp(Utils.clampMap(dist, 50, 150, 1, 0), 0, 1)
+        local dist = MathUtils.dist(chara.x+chara.width/2, chara.y+chara.height/2, Game.world.player.x+Game.world.player.width, Game.world.player.y+Game.world.player.height)
+        local vol = MathUtils.clamp(Utils.clampMap(dist, 50, 150, 1, 0), 0, 1)
         Game.world.map.ina:setVolume(vol)
         if Game.world.map.ina.volume > 0 then
             Game.world.music:setVolume(1 - vol)

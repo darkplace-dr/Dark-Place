@@ -27,26 +27,26 @@ function Darkness:draw()
     for _,light in ipairs(Game.stage:getObjects(LightSource)) do
         if light:isFullyVisible() then
             local x, y = light:getRelativePos(0,0, self)
-            local color = Utils.copy(light.color)
+            local color = TableUtils.copy(light.color)
             local alpha = color[4] or light.alpha
             local radius = light:getRadius()
 
             if light.style == "solid" then
-                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
+                love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha))
                 love.graphics.circle("fill", x, y, radius)
             elseif light.style == "soft" then
-                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
+                love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha))
                 love.graphics.circle("fill", x, y, radius)
-                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha/2))
+                love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha/2))
                 if light.extend then
                     love.graphics.circle("fill", x, y, radius + light.extend)
                 else
                     love.graphics.circle("fill", x, y, radius*1.3)
-                    love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha/4))
+                    love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha/4))
                     love.graphics.circle("fill", x, y, radius*1.6)
-                    love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha/6))
+                    love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha/6))
                     love.graphics.circle("fill", x, y, radius*1.9)
-                    love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha/8))
+                    love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha/8))
                     love.graphics.circle("fill", x, y, radius*2.2)
                 end
             end
@@ -55,21 +55,21 @@ function Darkness:draw()
     for _,light in ipairs(Game.stage:getObjects(RectangleLightSource)) do
         if light:isFullyVisible() then
             local x, y = light:getRelativePos(0,0, self)
-            local color = Utils.copy(light.color)
+            local color = TableUtils.copy(light.color)
             local alpha = color[4] or light.alpha
             local w, h = light:getSize()
 
             if light.style == "solid" then
-                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
+                love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha))
                 love.graphics.rectangle("fill", x, y, w, h)
             elseif light.style == "soft" then
                 local extend = light.extend
                 if not extend then
                     extend = math.min(w/2, h/2)
                 end
-                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
+                love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha))
                 love.graphics.rectangle("fill", x, y, w, h)
-                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha/2))
+                love.graphics.setColor(MathUtils.lerp({0,0,0}, color, alpha/2))
                 love.graphics.rectangle("fill", x-extend, y-extend, w+extend*2, h+extend*2)
             end
         end

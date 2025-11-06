@@ -132,8 +132,8 @@ function CardGame:postInit()
 		self:addToPlayerDeck(v)
 	end
 	
-	self.deck = Utils.shuffle(self.deck)
-	self.player_deck = Utils.shuffle(self.player_deck)
+	self.deck = TableUtils.shuffle(self.deck)
+	self.player_deck = TableUtils.shuffle(self.player_deck)
 	
 	if self.coinflip == "Heads" then
 		self.flips = 4
@@ -437,7 +437,7 @@ function CardGame:updateCoinflip()
 	if self.state_timer >= 10 and self.flipped < self.flips then
 		self.coin.scale_x = (math.sin((self.state_timer - 10) * 0.5)) * 2
 		local prev = self.state_timer - DTMULT
-		if Utils.sign(math.cos((self.state_timer - 10) * 0.5)) ~= Utils.sign(math.cos((prev - 10) * 0.5)) then
+		if MathUtils.sign(math.cos((self.state_timer - 10) * 0.5)) ~= MathUtils.sign(math.cos((prev - 10) * 0.5)) then
 			self.flipped = self.flipped + 1
 		end
 	end
@@ -507,7 +507,7 @@ end
 function CardGame:updateDraw()
 	if self.init_draw == false then
 		self.init_draw = true
-		self.discard = Utils.shuffle(self.discard)
+		self.discard = TableUtils.shuffle(self.discard)
 		
 		for k,v in pairs(self.discard) do
 			v:flip()
@@ -522,11 +522,11 @@ function CardGame:updateDraw()
 		end
 		
 		for k,v in pairs(self.deck) do
-			Utils.removeFromTable(self.discard, v)
+			TableUtils.removeValue(self.discard, v)
 		end
 		
 		for k,v in pairs(self.player_deck) do
-			Utils.removeFromTable(self.player_discard, v)
+			TableUtils.removeValue(self.player_discard, v)
 		end
 		
 		self.attacking = Sprite("cards/icons/attack")
@@ -594,7 +594,7 @@ function CardGame:updateCardSlide()
 			end
 		end
 		for k,v in pairs(self.selected_cards) do
-			Utils.removeFromTable(self.player_hand, self.selected_cards[k])
+			TableUtils.removeValue(self.player_hand, self.selected_cards[k])
 		end
 		
 		self:enemyAI()
@@ -654,7 +654,7 @@ function CardGame:enemyAI()
 		end
 	end
 	for k,v in pairs(self.selected_cards_o) do
-		Utils.removeFromTable(self.opponent_hand, self.selected_cards_o[k])
+		TableUtils.removeValue(self.opponent_hand, self.selected_cards_o[k])
 	end
 end
 
@@ -740,7 +740,7 @@ function CardGame:updateAttack()
 							if #self.player_hand > 0 then
 								local choice = TableUtils.pick(self.opponent_hand)
 								table.insert(self.player_hand, choice)
-								Utils.removeFromTable(self.opponent_hand, choice)
+								TableUtils.removeValue(self.opponent_hand, choice)
 								choice:flip()
 							end
 						elseif v.special == "block" then
@@ -763,7 +763,7 @@ function CardGame:updateAttack()
 							if #self.player_hand > 0 then
 								local choice = TableUtils.pick(self.player_hand)
 								table.insert(self.opponent_hand, choice)
-								Utils.removeFromTable(self.player_hand, choice)
+								TableUtils.removeValue(self.player_hand, choice)
 								choice:flip()
 							end
 						elseif v.special == "block" then
@@ -805,7 +805,7 @@ function CardGame:updateAttack()
 							if #self.opponent_hand > 0 then
 								local choice = TableUtils.pick(self.player_hand)
 								table.insert(self.opponent_hand, choice)
-								Utils.removeFromTable(self.player_hand, choice)
+								TableUtils.removeValue(self.player_hand, choice)
 								choice:flip()
 							end
 						elseif v.special == "block" then
@@ -828,7 +828,7 @@ function CardGame:updateAttack()
 							if #self.opponent_hand > 0 then
 								local choice = TableUtils.pick(self.opponent_hand)
 								table.insert(self.player_hand, choice)
-								Utils.removeFromTable(self.opponent_hand, choice)
+								TableUtils.removeValue(self.opponent_hand, choice)
 								choice:flip()
 							end
 						elseif v.special == "block" then
@@ -888,14 +888,14 @@ function CardGame:updatePostTurn()
 		for k,v in pairs(self.selected_cards) do
 			self.timer:tween(0.5, v, {y = v.y - 350}, "in-linear", function()
 				table.insert(self.player_discard, v)
-				Utils.removeFromTable(self.selected_cards, v)
+				TableUtils.removeValue(self.selected_cards, v)
 				v:remove()
 			end)
 		end
 		for k,v in pairs(self.selected_cards_o) do
 			self.timer:tween(0.5, v, {y = v.y - 350}, "in-linear", function()
 				table.insert(self.discard, v)
-				Utils.removeFromTable(self.selected_cards_o, v)
+				TableUtils.removeValue(self.selected_cards_o, v)
 				v:remove()
 			end)
 		end
@@ -921,7 +921,7 @@ function CardGame:updatePostTurn()
 			if v.expire then
 				v.expire = v.expire - 1
 				if v.expire <= 0 then
-					Utils.removeFromTable(self.player_hand, v)
+					TableUtils.removeValue(self.player_hand, v)
 					self.timer:tween(0.25, v, {y = v.y + 150}, "in-linear", function()
 						v:remove()
 					end)
@@ -937,7 +937,7 @@ function CardGame:updatePostTurn()
 			if v.expire then
 				v.expire = v.expire - 1
 				if v.expire <= 0 then
-					Utils.removeFromTable(self.opponent_hand, v)
+					TableUtils.removeValue(self.opponent_hand, v)
 					self.timer:tween(0.25, v, {y = v.y + 150}, "in-linear", function()
 						v:remove()
 					end)

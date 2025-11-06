@@ -43,8 +43,8 @@ function HomingSoul:update()
 			local distance = math.huge
 			
 			for _,bullet in ipairs(connected) do
-				if Utils.dist(self.x,self.y,bullet.x,bullet.y) < distance then
-					distance = Utils.dist(self.x,self.y,bullet.x,bullet.y)
+				if MathUtils.dist(self.x,self.y,bullet.x,bullet.y) < distance then
+					distance = MathUtils.dist(self.x,self.y,bullet.x,bullet.y)
 					bulletselect = bullet
 				end
 			end

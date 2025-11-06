@@ -37,7 +37,7 @@ function NoelleTraffic:update()
     if clamp then
         self.ideal_x = player.x - 4 + math.abs(player.width - self.width)
         self.ideal_y = player.y + 30 + (math.abs(player.height - self.height) * 2)
-        self.ideal_y = Utils.clamp(self.ideal_y, 0, clamp)
+        self.ideal_y = MathUtils.clamp(self.ideal_y, 0, clamp)
     else
         if player.y > player.last_y  then
             self.pos = "down"
@@ -63,8 +63,8 @@ function NoelleTraffic:update()
     self.ideal_x = self.ideal_x
     self.ideal_y = self.ideal_y
 
-    self.x = Utils.lerp(self.x, self.ideal_x, self.ideal_pos_progress)
-    self.y = Utils.lerp(self.y, self.ideal_y, self.ideal_pos_progress)
+    self.x = MathUtils.lerp(self.x, self.ideal_x, self.ideal_pos_progress)
+    self.y = MathUtils.lerp(self.y, self.ideal_y, self.ideal_pos_progress)
 
     if self.last_x < self.x then
         self:set("noelle_cower_right")

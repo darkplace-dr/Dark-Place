@@ -102,7 +102,7 @@ function CardCutscene:walkTo(chara, x, y, time, facing, keep_facing, ease)
     end
     local walked = false
     if chara:walkTo(x, y, time, facing, keep_facing, ease) then
-        chara.physics.move_target.after = Utils.override(chara.physics.move_target.after, function(orig) orig() walked = true end)
+        chara.physics.move_target.after = HookSystem.override(chara.physics.move_target.after, function(orig) orig() walked = true end)
         table.insert(self.moving_objects, chara)
         return function() return walked end
     else
@@ -116,7 +116,7 @@ function CardCutscene:walkToSpeed(chara, x, y, speed, facing, keep_facing)
     end
     local walked = false
     if chara:walkToSpeed(x, y, speed, facing, keep_facing) then
-        chara.physics.move_target.after = Utils.override(chara.physics.move_target.after, function(orig) orig() walked = true end)
+        chara.physics.move_target.after = HookSystem.override(chara.physics.move_target.after, function(orig) orig() walked = true end)
         table.insert(self.moving_objects, chara)
         return function() return walked end
     else
@@ -132,7 +132,7 @@ function CardCutscene:walkPath(chara, path, options)
     local walked = false
 
     options = options or {}
-    options.after = Utils.override(options.after, function(orig) orig() walked = true end)
+    options.after = HookSystem.override(options.after, function(orig) orig() walked = true end)
 
     chara:walkPath(path, options)
     table.insert(self.moving_objects, chara)

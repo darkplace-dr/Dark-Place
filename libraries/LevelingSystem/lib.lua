@@ -15,7 +15,7 @@ function Lib:postInit(new_file)
 end
 
 function Lib:addGlobalEXP(exp)
-    Game:setFlag("library_experience", Utils.clamp(Game:getFlag("library_experience", 0) + exp, 0, 99999))
+    Game:setFlag("library_experience", MathUtils.clamp(Game:getFlag("library_experience", 0) + exp, 0, 99999))
 
     local max_love = #Kristal.getLibConfig("leveling", "global_xp_requirements")
     local leveled_up = false
@@ -38,7 +38,7 @@ function Lib:getGlobalNextLvRequiredEXP()
 end
 
 function Lib:getGlobalNextLv()
-    return Utils.clamp(Kristal.callEvent("getGlobalNextLvRequiredEXP") - Game:getFlag("library_experience"), 0, 99999)
+    return MathUtils.clamp(Kristal.callEvent("getGlobalNextLvRequiredEXP") - Game:getFlag("library_experience"), 0, 99999)
 end
 
 return Lib

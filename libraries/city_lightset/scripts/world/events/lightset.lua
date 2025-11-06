@@ -26,7 +26,7 @@ function Lightset:init(data)
 
         sp.barsiner     = MathUtils.random(4600)
         sp.scale_y      = MathUtils.random(1) * self.scale_y
-        local r, g, b   = Utils.hsvToRgb((i * 255 / self.l)/255, 128/255, 255/255)
+        local r, g, b   = ColorUtils.HSVToRGB((i * 255 / self.l)/255, 128/255, 255/255)
         sp.color        = {r, g, b}
     end
 end
@@ -48,7 +48,7 @@ function Lightset:draw()
     for i=0, math.ceil(self.l - 1) do
         local sp = self.sprites[i]
         if self.mode < 2 then
-            sp.scale_y = Utils.lerp(sp.scale_y, 0, 0.06 * DTMULT)
+            sp.scale_y = MathUtils.lerp(sp.scale_y, 0, 0.06 * DTMULT)
             if sp.scale_y > 0 then
                 sp.scale_y = sp.scale_y - (0.02 * DTMULT)
             end

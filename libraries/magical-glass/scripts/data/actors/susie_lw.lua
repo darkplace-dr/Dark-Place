@@ -4,7 +4,7 @@ function actor:init(style)
     super.init(self)
 
     -- Table of sprite animations
-    Utils.merge(self.animations, {
+    TableUtils.merge(self.animations, {
 
         -- Battle animations
         ["battle/idle"]         = {"battle/idle", 0.2, true},
@@ -38,7 +38,7 @@ function actor:init(style)
     end
 
     -- Table of sprite offsets (indexed by sprite name)
-    Utils.merge(self.offsets, {
+    TableUtils.merge(self.offsets, {
 
         -- Battle offsets
         ["battle/idle"] = {-22, -1},

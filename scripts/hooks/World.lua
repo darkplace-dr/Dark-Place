@@ -46,7 +46,7 @@ function World:loadMap(...)
     if not Game:getFlag("s", false)
         and love.math.random(1, 1000) == 1
         and (not Game.world.cutscene and not Game.battle)
-        and not (contain_but_weirder or Utils.containsValue(Mod.MB_room_blacklist, map))
+        and not (contain_but_weirder or TableUtils.contains(Mod.MB_room_blacklist, map))
     then
         Mod.world_dest_map_bak = map
         Mod.world_dest_mk_bak = marker or {x, y}
@@ -235,7 +235,7 @@ function World:mapTransition(...)
         end
     end
     self:fadeInto(function()
-        self:loadMap(Utils.unpack(args))
+        self:loadMap(TableUtils.unpack(args))
     end)
 end
 

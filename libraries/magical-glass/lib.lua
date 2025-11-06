@@ -140,13 +140,13 @@ function lib:init()
     self.encounters_enabled = false
     self.steps_until_encounter = nil
     
-    Utils.hook(World, "transitionMusic", function(orig, self, next, fade_out)
+    HookSystem.hook(World, "transitionMusic", function(orig, self, next, fade_out)
         if self.music.current ~= "toomuch" then
             orig(self, next, fade_out)
         end
     end)
     
-    Utils.hook(World, "mapTransition", function(orig, self, ...)
+    HookSystem.hook(World, "mapTransition", function(orig, self, ...)
         orig(self, ...)
         if lib.initiating_random_encounter then
             Game.lock_movement = false
@@ -154,7 +154,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Game, "enterShop", function(orig, self, shop, options)
+    HookSystem.hook(Game, "enterShop", function(orig, self, shop, options)
         if lib.in_light_shop then
             MagicalGlassLib:enterLightShop(shop, options)
         else
@@ -162,19 +162,19 @@ function lib:init()
         end
     end)
 
-    Utils.hook(World, "lightShopTransition", function(orig, self, shop, options)
+    HookSystem.hook(World, "lightShopTransition", function(orig, self, shop, options)
         self:fadeInto(function()
             MagicalGlassLib:enterLightShop(shop, options)
         end)
     end)
     
-    Utils.hook(Battle, "init", function(orig, self)
+    HookSystem.hook(Battle, "init", function(orig, self)
         orig(self)
         self.light = false
         self.soul_speed_bonus = 0
     end)
     
-    Utils.hook(Battle, "onKeyPressed", function(orig, self, key)
+    HookSystem.hook(Battle, "onKeyPressed", function(orig, self, key)
         if Kristal.Config["debug"] and Input.ctrl() then
             if key == "y" and self.state == "DEFENDING" and Game:isLight() then
                 Game.battle:setState("DEFENDINGEND", "NONE")
@@ -183,7 +183,7 @@ function lib:init()
         orig(self, key)
     end)
     
-    Utils.hook(Battle, "drawBackground", function(orig, self)
+    HookSystem.hook(Battle, "drawBackground", function(orig, self)
         if Game:isLight() then
             Draw.setColor(0, 0, 0, self.transition_timer / 10)
             love.graphics.rectangle("fill", -8, -8, SCREEN_WIDTH+16, SCREEN_HEIGHT+16)
@@ -207,7 +207,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Battle, "nextTurn", function(orig, self)
+    HookSystem.hook(Battle, "nextTurn", function(orig, self)
         self.turn_count = self.turn_count + 1
         if self.turn_count > 1 then
             for _,party in ipairs(self.party) do
@@ -220,7 +220,7 @@ function lib:init()
         return orig(self)
     end)
     
-    Utils.hook(Battle, "onStateChange", function(orig, self, old, new)
+    HookSystem.hook(Battle, "onStateChange", function(orig, self, old, new)
         local result = self.encounter:beforeStateChange(old,new)
         if result or self.state ~= new then
             return
@@ -303,7 +303,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Soul, "onDamage", function(orig, self)
+    HookSystem.hook(Soul, "onDamage", function(orig, self)
         for _,party in ipairs(Game.battle.party) do
             for _,equip in ipairs(party.chara:getEquipment()) do
                 if equip.applyInvBonus then
@@ -314,12 +314,12 @@ function lib:init()
         orig(self)
     end)
     
-    Utils.hook(Soul, "init", function(orig, self, x, y, color)
+    HookSystem.hook(Soul, "init", function(orig, self, x, y, color)
         orig(self, x, y, color)
         self.speed = self.speed + Game.battle.soul_speed_bonus
     end)
 
-    Utils.hook(Game, "setLight", function(orig, self, light, temp)
+    HookSystem.hook(Game, "setLight", function(orig, self, light, temp)
         if lib.temp_light == nil and temp then
             lib.temp_light = self:isLight()
         end
@@ -492,12 +492,12 @@ function lib:init()
         end
     end)
     
-    Utils.hook(LightInventory, "getDarkInventory", function(orig, self)
+    HookSystem.hook(LightInventory, "getDarkInventory", function(orig, self)
         Game:setLight(false, true)
         return Game.inventory
     end)
     
-    Utils.hook(LightInventory, "tryGiveItem", function(orig, self, item, ignore_dark)
+    HookSystem.hook(LightInventory, "tryGiveItem", function(orig, self, item, ignore_dark)
         if type(item) == "string" then
             item = Registry.createItem(item)
         end
@@ -522,7 +522,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Inventory, "addItem", function(orig, self, item, ignore_convert)
+    HookSystem.hook(Inventory, "addItem", function(orig, self, item, ignore_convert)
         if type(item) == "string" then
             item = Registry.createItem(item)
         end
@@ -539,7 +539,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Inventory, "loadStorage", function(orig, self, storage, data)
+    HookSystem.hook(Inventory, "loadStorage", function(orig, self, storage, data)
         storage.max = data.max
         for i = 1, storage.max do
             local item = data.items[tostring(i)]
@@ -556,7 +556,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Inventory, "tryGiveItem", function(orig, self, item, ignore_convert)
+    HookSystem.hook(Inventory, "tryGiveItem", function(orig, self, item, ignore_convert)
         if type(item) == "string" then
             item = Registry.createItem(item)
         end
@@ -578,7 +578,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Inventory, "removeItem", function(orig, self, item, light)
+    HookSystem.hook(Inventory, "removeItem", function(orig, self, item, light)
         if light == nil then
             if Game.inventory:hasItem(item) then
                 return orig(self, item)
@@ -591,7 +591,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(TensionItem, "onBattleSelect", function(orig, self, user, target)
+    HookSystem.hook(TensionItem, "onBattleSelect", function(orig, self, user, target)
         if Game.battle.light then
             self.tension_given = Game:giveTension(self:getTensionAmount())
 
@@ -604,14 +604,14 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Actor, "init", function(orig, self)
+    HookSystem.hook(Actor, "init", function(orig, self)
         orig(self)
 
         self.use_light_battler_sprite = false
         self.light_battler_parts = {}
     end)
 
-    Utils.hook(Actor, "getWidth", function(orig, self)
+    HookSystem.hook(Actor, "getWidth", function(orig, self)
         if Game.battle and Game.battle.light and not Game.battle.ended and self.use_light_battler_sprite then
             return self.light_battle_width or self.width
         else
@@ -619,7 +619,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Actor, "getHeight", function(orig, self)
+    HookSystem.hook(Actor, "getHeight", function(orig, self)
         if Game.battle and Game.battle.light and not Game.battle.ended and self.use_light_battler_sprite then
             return self.light_battle_height or self.height
         else
@@ -627,25 +627,25 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Actor, "addLightBattlerPart", function(orig, self, id, data)
+    HookSystem.hook(Actor, "addLightBattlerPart", function(orig, self, id, data)
         self.light_battler_parts[id] = data
     end)
 
-    Utils.hook(Actor, "getLightBattlerPart", function(orig, self, part)
+    HookSystem.hook(Actor, "getLightBattlerPart", function(orig, self, part)
         return self.light_battler_parts[part]
     end)
 
-    Utils.hook(Actor, "createLightBattleSprite", function(orig, self)
+    HookSystem.hook(Actor, "createLightBattleSprite", function(orig, self)
         return LightEnemySprite(self)
     end)
 
-    Utils.hook(ActorSprite, "init", function(orig, self, actor)
+    HookSystem.hook(ActorSprite, "init", function(orig, self, actor)
         orig(self, actor)
         
         self.run_away_light = false
     end)
 
-    Utils.hook(ActorSprite, "update", function(orig, self)
+    HookSystem.hook(ActorSprite, "update", function(orig, self)
         orig(self)
     
         if self.run_away_light then
@@ -653,7 +653,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(ActorSprite, "draw", function(orig, self)
+    HookSystem.hook(ActorSprite, "draw", function(orig, self)
         if self.actor:preSpriteDraw(self) then
             return
         end
@@ -671,7 +671,7 @@ function lib:init()
         orig(self)
     end)
 
-    Utils.hook(DebugSystem, "registerDefaults", function(orig, self)
+    HookSystem.hook(DebugSystem, "registerDefaults", function(orig, self)
         -- wish i didn't have to do this but
     
         local in_game = function() return Kristal.getState() == Game end
@@ -769,7 +769,7 @@ function lib:init()
 
     end)
 
-    Utils.hook(Game, "encounter", function(orig, self, encounter, transition, enemy, context, light)
+    HookSystem.hook(Game, "encounter", function(orig, self, encounter, transition, enemy, context, light)
         if Game:getFlag("current_battle_system#") then
             if Game:getFlag("current_battle_system#") == "undertale" then
                 Game:encounterLight(encounter, transition, enemy, context)
@@ -803,7 +803,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Game, "encounterLight", function(orig, self, encounter, transition, enemy, context)
+    HookSystem.hook(Game, "encounterLight", function(orig, self, encounter, transition, enemy, context)
         if transition == nil then transition = true end
 
         if self.battle then
@@ -833,7 +833,7 @@ function lib:init()
         self.stage:addChild(self.battle)
     end)
 
-    Utils.hook(ChaserEnemy, "init", function(orig, self, actor, x, y, properties)
+    HookSystem.hook(ChaserEnemy, "init", function(orig, self, actor, x, y, properties)
         orig(self, actor, x, y, properties)
 
         self.sprite.aura = nil
@@ -854,7 +854,7 @@ function lib:init()
 
     end)
 
-    Utils.hook(ChaserEnemy, "onCollide", function(orig, self, player)
+    HookSystem.hook(ChaserEnemy, "onCollide", function(orig, self, player)
 
         if self:isActive() and player:includes(Player) then
             self.encountered = true
@@ -912,7 +912,7 @@ function lib:init()
     end)
 
     if not Mod.libs["widescreen"] then
-        Utils.hook(Battle, "postInit", function(orig, self, state, encounter)
+        HookSystem.hook(Battle, "postInit", function(orig, self, state, encounter)
             self.state = state
         
             if type(encounter) == "string" then
@@ -1014,19 +1014,19 @@ function lib:init()
         end)
     end
 
-    Utils.hook(Battle, "returnToWorld", function(orig, self)
+    HookSystem.hook(Battle, "returnToWorld", function(orig, self)
         orig(self)
         Game:setFlag("current_battle_system#", nil)
     end)
 
-    Utils.hook(Wave, "init", function(orig, self)
+    HookSystem.hook(Wave, "init", function(orig, self)
         orig(self)
         self.has_soul = true
         self.darken = false
         self.auto_clear = true
     end)
     
-    Utils.hook(Wave, "setArenaSize", function(orig, self, width, height)
+    HookSystem.hook(Wave, "setArenaSize", function(orig, self, width, height)
         if Game.battle.light then
             self.arena_width = width
             self.arena_height = height or width
@@ -1035,7 +1035,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Wave, "setArenaPosition", function(orig, self, x, y)
+    HookSystem.hook(Wave, "setArenaPosition", function(orig, self, x, y)
         if Game.battle.light then
             self.arena_x = x
             self.arena_y = y
@@ -1044,7 +1044,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Wave, "getMenuAttackers", function(orig, self)
+    HookSystem.hook(Wave, "getMenuAttackers", function(orig, self)
         local result = {}
         for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
             local wave = enemy.selected_menu_wave
@@ -1055,7 +1055,7 @@ function lib:init()
         return result
     end)
 
-    Utils.hook(Wave, "spawnBulletTo", function(orig, self, parent, bullet, ...)
+    HookSystem.hook(Wave, "spawnBulletTo", function(orig, self, parent, bullet, ...)
         local new_bullet
         if isClass(bullet) and bullet:includes(Bullet) then
             new_bullet = bullet
@@ -1089,7 +1089,7 @@ function lib:init()
         return new_bullet
     end)
 
-    Utils.hook(Item, "init", function(orig, self)
+    HookSystem.hook(Item, "init", function(orig, self)
     
         orig(self)
         -- Short name for the light battle item menu
@@ -1111,7 +1111,7 @@ function lib:init()
     
     end)
     
-    Utils.hook(Item, "getLightBattleText", function(orig, self, user, target)
+    HookSystem.hook(Item, "getLightBattleText", function(orig, self, user, target)
         if self.target == "ally" then
             return "* " .. target.chara:getNameOrYou() .. " "..self:getUseMethod(target.chara).." the " .. self:getUseName() .. "."
         elseif self.target == "party" then
@@ -1127,7 +1127,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Item, "getLightBattleHealingText", function(orig, self, user, target, amount)
+    HookSystem.hook(Item, "getLightBattleHealingText", function(orig, self, user, target, amount)
         if target then
             if self.target == "ally" then
                 maxed = target.chara:getHealth() >= target.chara:getStat("health") or amount >= math.huge
@@ -1159,19 +1159,19 @@ function lib:init()
         return message
     end)
 
-    Utils.hook(Item, "getLightShopDescription", function(orig, self)
+    HookSystem.hook(Item, "getLightShopDescription", function(orig, self)
         return self.shop
     end)
     
-    Utils.hook(Item, "getLightShopShowMagic", function(orig, self)
+    HookSystem.hook(Item, "getLightShopShowMagic", function(orig, self)
         return self.shop_magic
     end)
     
-    Utils.hook(Item, "getLightShopDontShowChange", function(orig, self)
+    HookSystem.hook(Item, "getLightShopDontShowChange", function(orig, self)
         return self.shop_dont_show_change
     end)
 
-    Utils.hook(Item, "getLightTypeName", function(orig, self)
+    HookSystem.hook(Item, "getLightTypeName", function(orig, self)
         if self.type == "weapon" then
             if self:getLightShopShowMagic() then
                 return "Weapon: " .. self:getStatBonus("magic") .. "MG"
@@ -1188,10 +1188,10 @@ function lib:init()
         return ""
     end)
 
-    Utils.hook(Item, "getShortName", function(orig, self) return self.short_name or self.serious_name or self.name end)
-    Utils.hook(Item, "getSeriousName", function(orig, self) return self.serious_name or self.short_name or self.name end)
+    HookSystem.hook(Item, "getShortName", function(orig, self) return self.short_name or self.serious_name or self.name end)
+    HookSystem.hook(Item, "getSeriousName", function(orig, self) return self.serious_name or self.short_name or self.name end)
 
-    Utils.hook(Item, "getUseName", function(orig, self)
+    HookSystem.hook(Item, "getUseName", function(orig, self)
         if (Game.state == "OVERWORLD" and Game:isLight()) or (Game.state == "BATTLE" and Game.battle.light)  then
             return self.light and self.use_name or self:getName()
         else
@@ -1199,7 +1199,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Item, "getUseMethod", function(orig, self, target)
+    HookSystem.hook(Item, "getUseMethod", function(orig, self, target)
         if type(target) == "string" then
             if target == "other" and self.use_method_other then
                 return self.use_method_other
@@ -1217,9 +1217,9 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Item, "battleUseSound", function(orig, self, user, target) end)
+    HookSystem.hook(Item, "battleUseSound", function(orig, self, user, target) end)
 
-    Utils.hook(Item, "onLightBattleUse", function(orig, self, user, target)
+    HookSystem.hook(Item, "onLightBattleUse", function(orig, self, user, target)
         self:battleUseSound(user, target)
         if self:getLightBattleText(user, target) then
             Game.battle:battleText(self:getLightBattleText(user, target))
@@ -1228,7 +1228,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(Item, "onLightAttack", function(orig, self, battler, enemy, damage, stretch)
+    HookSystem.hook(Item, "onLightAttack", function(orig, self, battler, enemy, damage, stretch)
         local src = Assets.stopAndPlaySound(self.getLightAttackSound and self:getLightAttackSound() or "laz_c") 
         src:setPitch(self.getLightAttackPitch and self:getLightAttackPitch() or 1)
 
@@ -1236,7 +1236,7 @@ function lib:init()
         local scale = (stretch * 2) - 0.5
         sprite:setScale(scale, scale)
         sprite:setOrigin(0.5, 0.5)
-        sprite:setPosition(enemy:getRelativePos((enemy.width / 2) - 5 - (#Game.battle.attackers - 1) * 5 / 2 + (Utils.getIndex(Game.battle.attackers, battler) - 1) * 5, (enemy.height / 2) - 5))
+        sprite:setPosition(enemy:getRelativePos((enemy.width / 2) - 5 - (#Game.battle.attackers - 1) * 5 / 2 + (TableUtils.getIndex(Game.battle.attackers, battler) - 1) * 5, (enemy.height / 2) - 5))
         sprite.layer = BATTLE_LAYERS["above_ui"] + 5
         sprite.color = {battler.chara:getLightAttackColor()}
         enemy.parent:addChild(sprite)
@@ -1256,11 +1256,11 @@ function lib:init()
         return false
     end)
 
-    Utils.hook(Item, "onLightMiss", function(orig, self, battler, enemy, anim, attacked)
+    HookSystem.hook(Item, "onLightMiss", function(orig, self, battler, enemy, anim, attacked)
         enemy:hurt(0, battler, nil, nil, anim, attacked)
     end)
 
-    Utils.hook(Item, "onCheck", function(orig, self)
+    HookSystem.hook(Item, "onCheck", function(orig, self)
         if type(self.check) == "string" then
             Game.world:showText("* \""..self:getName().."\" - "..self:getCheck())
         elseif type(self.check) == "table" then
@@ -1274,7 +1274,7 @@ function lib:init()
         end
     end)
         
-    Utils.hook(Item, "onToss", function(orig, self)
+    HookSystem.hook(Item, "onToss", function(orig, self)
         if Game:isLight() then
             local choice = love.math.random(30)
             if choice == 1 then
@@ -1292,9 +1292,9 @@ function lib:init()
         return true
     end)
 
-    Utils.hook(Item, "onActionSelect", function(orig, self, battler) end)
+    HookSystem.hook(Item, "onActionSelect", function(orig, self, battler) end)
 
-    Utils.hook(Item, "save", function(orig, self)
+    HookSystem.hook(Item, "save", function(orig, self)
         local saved_dark_item = self.dark_item
         local saved_light_item = self.light_item
         if isClass(self.dark_item) then saved_dark_item = self.dark_item:save() end
@@ -1314,7 +1314,7 @@ function lib:init()
         return data
     end)
 
-    Utils.hook(Battler, "lightStatusMessage", function(orig, self, x, y, type, arg, color, kill)
+    HookSystem.hook(Battler, "lightStatusMessage", function(orig, self, x, y, type, arg, color, kill)
         x, y = self:getRelativePos(x, y)
         
         if self.active_msg <= 0 then
@@ -1322,7 +1322,7 @@ function lib:init()
             self.hit_count = 0
         end
         
-        local offset_x, offset_y = Utils.unpack(self:getDamageOffset())
+        local offset_x, offset_y = TableUtils.unpack(self:getDamageOffset())
         
         local function y_msg_position()
             return y + (offset_y - 2) - (not kill and self.hit_count * (Assets.getFont("lwdmg"):getHeight() + 2) or 0)
@@ -1362,7 +1362,7 @@ function lib:init()
         return percent
     end)
 
-    Utils.hook(Textbox, "init", function(orig, self, x, y, width, height, default_font, default_font_size, battle_box)
+    HookSystem.hook(Textbox, "init", function(orig, self, x, y, width, height, default_font, default_font_size, battle_box)
         Object.init(self, x, y, width, height)
 
         self.box = UIBox(0, 0, width, height)
@@ -1473,25 +1473,25 @@ function lib:init()
         self.minifaces = {}
     end)
 
-    Utils.hook(Textbox, "advance", function(orig, self)
+    HookSystem.hook(Textbox, "advance", function(orig, self)
         self.timer:after(self.wait, function()
             self.text:advance()
         end)
     end)
 
-    Utils.hook(DialogueText, "init", function(orig, self, text, x, y, w, h, options)
+    HookSystem.hook(DialogueText, "init", function(orig, self, text, x, y, w, h, options)
         orig(self, text, x, y, w, h, options)
         options = options or {}
         self.default_sound = options["default_sound"] or "default"
         self.no_sound_overlap = options["no_sound_overlap"] or false
     end)
 
-    Utils.hook(DialogueText, "resetState", function(orig, self)
+    HookSystem.hook(DialogueText, "resetState", function(orig, self)
         Text.resetState(self)
         self.state["typing_sound"] = self.default_sound
     end)
 
-    Utils.hook(DialogueText, "playTextSound", function(orig, self, current_node)
+    HookSystem.hook(DialogueText, "playTextSound", function(orig, self, current_node)
         if self.state.skipping and (Input.down("cancel") or self.played_first_sound) then
             return
         end
@@ -1502,7 +1502,7 @@ function lib:init()
     
         local no_sound = {"\n", " ", "^", "!", ".", "?", ",", ":", "/", "\\", "|", "*"}
     
-        if (Utils.containsValue(no_sound, current_node.character)) then
+        if (TableUtils.contains(no_sound, current_node.character)) then
             return
         end
     
@@ -1519,7 +1519,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(DialogueText, "update", function(orig, self)
+    HookSystem.hook(DialogueText, "update", function(orig, self)
         local speed = self.state.speed
 
         if not OVERLAY_OPEN then
@@ -1611,7 +1611,7 @@ function lib:init()
         self.last_talking = self.state.talk_anim and self.state.typing
     end)
 
-    Utils.hook(Bullet, "init", function(orig, self, x, y, texture)
+    HookSystem.hook(Bullet, "init", function(orig, self, x, y, texture)
     
         orig(self, x, y, texture)
         if Game:isLight() then
@@ -1621,7 +1621,7 @@ function lib:init()
 
     end)
 
-    Utils.hook(Bullet, "update", function(orig, self)
+    HookSystem.hook(Bullet, "update", function(orig, self)
         orig(self)
         if self.remove_outside_of_arena then
             if self.x < Game.battle.arena.left then
@@ -1636,7 +1636,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(LightItemMenu, "init", function(orig, self)
+    HookSystem.hook(LightItemMenu, "init", function(orig, self)
     
         orig(self)
 
@@ -1658,7 +1658,7 @@ function lib:init()
 
     end)
     
-    Utils.hook(LightItemMenu, "update", function(orig, self)
+    HookSystem.hook(LightItemMenu, "update", function(orig, self)
     
         if self.state == "ITEMOPTION" then
             if Input.pressed("cancel") then
@@ -1676,7 +1676,7 @@ function lib:init()
             end
     
             -- this wraps in deltatraveler lmao
-            self.option_selecting = Utils.clamp(self.option_selecting, 1, 3)
+            self.option_selecting = MathUtils.clamp(self.option_selecting, 1, 3)
     
             if self.option_selecting ~= old_selecting then
                 self.ui_move:stop()
@@ -1754,7 +1754,7 @@ function lib:init()
 
     end)
 
-    Utils.hook(LightItemMenu, "draw", function(orig, self)
+    HookSystem.hook(LightItemMenu, "draw", function(orig, self)
         love.graphics.setFont(self.font)
 
         local inventory = Game.inventory:getStorage(self.storage)
@@ -1828,7 +1828,7 @@ function lib:init()
 
     end)
 
-    Utils.hook(LightItemMenu, "useItem", function(orig, self, item)
+    HookSystem.hook(LightItemMenu, "useItem", function(orig, self, item)
         local result
         if item.target == "ally" then
             result = item:onWorldUse(Game.party[self.party_selecting])
@@ -1846,7 +1846,7 @@ function lib:init()
 
     end)
 
-    Utils.hook(World, "heal", function(orig, self, target, amount, text, item)
+    HookSystem.hook(World, "heal", function(orig, self, target, amount, text, item)
         if Game:isLight() then
             if type(target) == "string" then
                 target = Game:getPartyMember(target)
@@ -1877,7 +1877,7 @@ function lib:init()
     end)
 
     if not Mod.libs["widescreen"] then
-        Utils.hook(WorldCutscene, "text", function(orig, self, text, portrait, actor, options)
+        HookSystem.hook(WorldCutscene, "text", function(orig, self, text, portrait, actor, options)
             local function waitForTextbox(self) return not self.textbox or self.textbox:isDone() end
             if type(actor) == "table" and not isClass(actor) then
                 options = actor
@@ -1987,7 +1987,7 @@ function lib:init()
         end)
     end
     
-    Utils.hook(PartyBattler, "calculateDamage", function(orig, self, amount)
+    HookSystem.hook(PartyBattler, "calculateDamage", function(orig, self, amount)
         if Game:isLight() then
             local def = self.chara:getStat("defense")
             local max_hp = self.chara:getStat("health")
@@ -1997,7 +1997,7 @@ function lib:init()
                     amount = amount + 1
                 end
             end
-            amount = Utils.round((amount - def) / 5)
+            amount = MathUtils.round((amount - def) / 5)
             
             if min and amount < min then
                 amount = min
@@ -2013,7 +2013,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(EnemyBattler, "getAttackDamage", function(orig, self, damage, battler, points)
+    HookSystem.hook(EnemyBattler, "getAttackDamage", function(orig, self, damage, battler, points)
         if damage > 0 then
             return damage
         end
@@ -2024,14 +2024,14 @@ function lib:init()
         end
     end)
     
-    Utils.hook(EnemyBattler, "freeze", function(orig, self)
+    HookSystem.hook(EnemyBattler, "freeze", function(orig, self)
         if Game:isLight() then
             Game.battle.money = Game.battle.money - 24 + 2
         end
         orig(self)
     end)
 
-    Utils.hook(PartyMember, "init", function(orig, self)
+    HookSystem.hook(PartyMember, "init", function(orig, self)
         orig(self)
 
         self.short_name = nil
@@ -2065,7 +2065,7 @@ function lib:init()
 
     end)
 
-    Utils.hook(PartyMember, "heal", function(orig, self, amount, playsound)
+    HookSystem.hook(PartyMember, "heal", function(orig, self, amount, playsound)
         if Game:isLight() then
             if playsound == nil or playsound then
                 Assets.stopAndPlaySound("power")
@@ -2080,21 +2080,21 @@ function lib:init()
     end)
     
     -- Prevents the heal when starting the game in the Light World so you can customize the starting Light World HP
-    Utils.hook(PartyMember, "convertToLight", function(orig, self)
+    HookSystem.hook(PartyMember, "convertToLight", function(orig, self)
         local lw_health = self.lw_health
         orig(self)
         self.lw_health = lw_health
     end)
 
-    Utils.hook(PartyMember, "getLightEXP", function(orig, self)
+    HookSystem.hook(PartyMember, "getLightEXP", function(orig, self)
         return self.lw_exp
     end)
     
-    Utils.hook(PartyMember, "getShortName", function(orig, self)
+    HookSystem.hook(PartyMember, "getShortName", function(orig, self)
         return self.short_name or string.sub(self:getName(), 1, 6)
     end)
 
-    Utils.hook(PartyMember, "onActionSelect", function(orig, self, battler, undo)
+    HookSystem.hook(PartyMember, "onActionSelect", function(orig, self, battler, undo)
         if Game.battle.turn_count == 1 and not undo then
             if self:getWeapon() and self:getWeapon().onActionSelect then
                 self:getWeapon():onActionSelect(self)
@@ -2105,7 +2105,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(PartyMember, "onTurnEnd", function(orig, self, battler)
+    HookSystem.hook(PartyMember, "onTurnEnd", function(orig, self, battler)
         for _,equip in ipairs(self:getEquipment()) do
             if equip.onTurnEnd then
                 equip:onTurnEnd(self)
@@ -2113,7 +2113,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(PartyMember, "getNameOrYou", function(orig, self, lower)
+    HookSystem.hook(PartyMember, "getNameOrYou", function(orig, self, lower)
         if self.id == Game.party[1].id then
             if lower then
                 return "you"
@@ -2125,7 +2125,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(PartyMember, "onLightLevelUp", function(orig, self)
+    HookSystem.hook(PartyMember, "onLightLevelUp", function(orig, self)
         if self:getLightLV() < #self.lw_exp_needed then
             local old_lv = self:getLightLV()
 
@@ -2144,28 +2144,28 @@ function lib:init()
         end
     end)
 
-    Utils.hook(PartyMember, "setLightEXP", function(orig, self, exp, level_up)
-        self.lw_exp = Utils.clamp(exp, self.lw_exp_needed[1], self.lw_exp_needed[#self.lw_exp_needed])
+    HookSystem.hook(PartyMember, "setLightEXP", function(orig, self, exp, level_up)
+        self.lw_exp = MathUtils.clamp(exp, self.lw_exp_needed[1], self.lw_exp_needed[#self.lw_exp_needed])
 
         if level_up then
             self:onLightLevelUp()
         end
     end)
 
-    Utils.hook(PartyMember, "gainLightEXP", function(orig, self, exp, level_up)
-        self.lw_exp = Utils.clamp(self.lw_exp + exp, self.lw_exp_needed[1], self.lw_exp_needed[#self.lw_exp_needed])
+    HookSystem.hook(PartyMember, "gainLightEXP", function(orig, self, exp, level_up)
+        self.lw_exp = MathUtils.clamp(self.lw_exp + exp, self.lw_exp_needed[1], self.lw_exp_needed[#self.lw_exp_needed])
 
         if level_up then
             self:onLightLevelUp()
         end
     end)
 
-    Utils.hook(PartyMember, "setLightLV", function(orig, self, level)
+    HookSystem.hook(PartyMember, "setLightLV", function(orig, self, level)
         self.lw_lv = level
         self:onLightLevelUp(level)
     end)
 
-    Utils.hook(PartyMember, "forceLightLV", function(orig, self, level)
+    HookSystem.hook(PartyMember, "forceLightLV", function(orig, self, level)
         self.lw_lv = level
 
         if self.lw_lv >= #self.lw_exp_needed then
@@ -2176,7 +2176,7 @@ function lib:init()
         self:lightLVStats()
     end)
     
-    Utils.hook(PartyMember, "lightLVStats", function(orig, self)
+    HookSystem.hook(PartyMember, "lightLVStats", function(orig, self)
         self.lw_stats = {
             health = self:getLightLV() == 20 and 99 or 16 + self:getLightLV() * 4,
             attack = 8 + self:getLightLV() * 2,
@@ -2185,10 +2185,10 @@ function lib:init()
         }
     end)
 
-    Utils.hook(PartyMember, "getLightStatText", function(orig, self) return self.lw_stat_text end)
-    Utils.hook(PartyMember, "getLightPortrait", function(orig, self) return self.lw_portrait end)
+    HookSystem.hook(PartyMember, "getLightStatText", function(orig, self) return self.lw_stat_text end)
+    HookSystem.hook(PartyMember, "getLightPortrait", function(orig, self) return self.lw_portrait end)
 
-    Utils.hook(PartyMember, "getLightColor", function(orig, self)
+    HookSystem.hook(PartyMember, "getLightColor", function(orig, self)
         if Game.battle and not Game.battle.multi_mode then
             return Utils.unpackColor({1, 1, 1})
         elseif self.light_color and type(self.light_color) == "table" then
@@ -2198,7 +2198,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(PartyMember, "getLightDamageColor", function(orig, self)
+    HookSystem.hook(PartyMember, "getLightDamageColor", function(orig, self)
         if Game.battle and not Game.battle.multi_mode then
             return Utils.unpackColor({1, 0, 0})
         elseif self.light_dmg_color and type(self.light_dmg_color) == "table" then
@@ -2208,7 +2208,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(PartyMember, "getLightMissColor", function(orig, self)
+    HookSystem.hook(PartyMember, "getLightMissColor", function(orig, self)
         if Game.battle and not Game.battle.multi_mode then
             return Utils.unpackColor({192/255, 192/255, 192/255})
         elseif self.light_miss_color and type(self.light_miss_color) == "table" then
@@ -2218,7 +2218,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(PartyMember, "getLightAttackColor", function(orig, self)
+    HookSystem.hook(PartyMember, "getLightAttackColor", function(orig, self)
         if Game.battle and not Game.battle.multi_mode then
             return Utils.unpackColor({1, 105/255, 105/255})
         elseif self.light_attack_color and type(self.light_attack_color) == "table" then
@@ -2228,7 +2228,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(PartyMember, "getLightMultiboltAttackColor", function(orig, self)
+    HookSystem.hook(PartyMember, "getLightMultiboltAttackColor", function(orig, self)
         if Game.battle and not Game.battle.multi_mode then
             return Utils.unpackColor({1, 1, 1})
         elseif self.light_multibolt_attack_color and type(self.light_multibolt_attack_color) == "table" then
@@ -2238,7 +2238,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(PartyMember, "getLightAttackBarColor", function(orig, self)
+    HookSystem.hook(PartyMember, "getLightAttackBarColor", function(orig, self)
         if Game.battle and not Game.battle.multi_mode then
             return Utils.unpackColor({1, 1, 1})
         elseif self.light_attack_bar_color and type(self.light_attack_bar_color) == "table" then
@@ -2248,7 +2248,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(PartyMember, "getLightXActColor", function(orig, self)
+    HookSystem.hook(PartyMember, "getLightXActColor", function(orig, self)
         if self.light_xact_color and type(self.light_xact_color) == "table" then
             return Utils.unpackColor(self.light_xact_color)
         else
@@ -2256,21 +2256,21 @@ function lib:init()
         end
     end)
     
-    Utils.hook(PartyMember, "onLightAttackHit", function(orig, self, enemy, damage) end)
+    HookSystem.hook(PartyMember, "onLightAttackHit", function(orig, self, enemy, damage) end)
     
-    Utils.hook(PartyMember, "onSave", function(orig, self, data)
+    HookSystem.hook(PartyMember, "onSave", function(orig, self, data)
         orig(self, data)
         data.lw_stat_text = self.lw_stat_text
         data.lw_portrait = self.lw_portrait
     end)
     
-    Utils.hook(PartyMember, "onLoad", function(orig, self, data)
+    HookSystem.hook(PartyMember, "onLoad", function(orig, self, data)
         orig(self, data)
         self.lw_stat_text = data.lw_stat_text or self.lw_stat_text
         self.lw_portrait = data.lw_portrait or self.lw_portrait
     end)
 
-    Utils.hook(LightMenu, "init", function(orig, self)
+    HookSystem.hook(LightMenu, "init", function(orig, self)
         Object.init(self, 0, 0)
 
         self.layer = 1 -- TODO
@@ -2324,7 +2324,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(LightMenu, "onKeyPressed", function(orig, self, key)
+    HookSystem.hook(LightMenu, "onKeyPressed", function(orig, self, key)
         if (Input.isMenu(key) or Input.isCancel(key)) and self.state == "MAIN" then
             Game.world:closeMenu()
             return
@@ -2335,7 +2335,7 @@ function lib:init()
             if Input.is("up", key)    then self.current_selecting = self.current_selecting - 1 end
             if Input.is("down", key) then self.current_selecting = self.current_selecting + 1 end
     
-            self.current_selecting = Utils.clamp(self.current_selecting, 1, self.max_selecting)
+            self.current_selecting = MathUtils.clamp(self.current_selecting, 1, self.max_selecting)
             if old_selected ~= self.current_selecting then
                 self.ui_move:stop()
                 self.ui_move:play()
@@ -2346,7 +2346,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(LightMenu, "draw", function(orig, self)
+    HookSystem.hook(LightMenu, "draw", function(orig, self)
         Object.draw(self)
         
         love.graphics.setFont(self.font)
@@ -2403,7 +2403,7 @@ function lib:init()
         love.graphics.print(Game.lw_money, 82, 136 + offset)
     end)
 
-    Utils.hook(LightStatMenu, "init", function(orig, self)
+    HookSystem.hook(LightStatMenu, "init", function(orig, self)
         orig(self)
         self.party_selecting = 1
 
@@ -2415,7 +2415,7 @@ function lib:init()
         self.leftpressed = false
     end)
 
-    Utils.hook(LightStatMenu, "update", function(orig, self)
+    HookSystem.hook(LightStatMenu, "update", function(orig, self)
         local chara = Game.party[self.party_selecting]
 
         local old_selecting = self.party_selecting
@@ -2466,7 +2466,7 @@ function lib:init()
 
     end)
 
-    Utils.hook(LightStatMenu, "draw", function(orig, self)
+    HookSystem.hook(LightStatMenu, "draw", function(orig, self)
         love.graphics.setFont(self.font)
         Draw.setColor(PALETTE["world_text"])
         
@@ -2561,11 +2561,11 @@ function lib:init()
         end
     end)
 
-    Utils.hook(World, "registerCall", function(orig, self, name, scene, sound)
+    HookSystem.hook(World, "registerCall", function(orig, self, name, scene, sound)
         table.insert(self.calls, {name, scene, sound})
     end)
 
-    Utils.hook(World, "spawnPlayer", function(orig, self, ...)
+    HookSystem.hook(World, "spawnPlayer", function(orig, self, ...)
         local args = {...}
 
         local x, y = 0, 0
@@ -2616,7 +2616,7 @@ function lib:init()
         end
     end)
 
-    Utils.hook(LightCellMenu, "runCall", function(orig, self, call)
+    HookSystem.hook(LightCellMenu, "runCall", function(orig, self, call)
         if call[3] == nil or call[3] then
             Assets.playSound("phone", 0.7)
         end
@@ -2627,7 +2627,7 @@ function lib:init()
         Game.world:startCutscene(call[2])
     end)
 
-    Utils.hook(Savepoint, "init", function(orig, self, x, y, properties)
+    HookSystem.hook(Savepoint, "init", function(orig, self, x, y, properties)
         orig(self, x, y, properties)
         Game.world.timer:after(1/30, function()
             if Game:isLight() then
@@ -2636,14 +2636,14 @@ function lib:init()
         end)
     end)
 
-    Utils.hook(LightSaveMenu, "update", function(orig, self)
+    HookSystem.hook(LightSaveMenu, "update", function(orig, self)
         if self.state == "MAIN" and ((Input.pressed("confirm") and self.selected_x == 1) or (Input.pressed("left") or Input.pressed("right"))) then
             Assets.playSound("ui_move")
         end
         orig(self)
     end)
 
-    Utils.hook(LightSaveMenu, "draw", function(orig, self)
+    HookSystem.hook(LightSaveMenu, "draw", function(orig, self)
         love.graphics.setFont(self.font)
 
         if self.state == "SAVED" then
@@ -2685,7 +2685,7 @@ function lib:init()
         Object.draw(self)
     end)
 
-    Utils.hook(Spell, "onLightStart", function(orig, self, user, target)
+    HookSystem.hook(Spell, "onLightStart", function(orig, self, user, target)
         local result = self:onLightCast(user, target)
         Game.battle:battleText(self:getLightCastMessage(user, target))
         if result or result == nil then
@@ -2693,13 +2693,13 @@ function lib:init()
         end
     end)
 
-    Utils.hook(Spell, "onLightCast", function(orig, self, user, target) end)
+    HookSystem.hook(Spell, "onLightCast", function(orig, self, user, target) end)
 
-    Utils.hook(Spell, "getLightCastMessage", function(orig, self, user, target)
+    HookSystem.hook(Spell, "getLightCastMessage", function(orig, self, user, target)
         return "* "..user.chara:getNameOrYou().." cast "..self:getName().."."
     end)
     
-    Utils.hook(Spell, "getHealMessage", function(orig, self, user, target, amount) 
+    HookSystem.hook(Spell, "getHealMessage", function(orig, self, user, target, amount) 
         local maxed = false
         if self.target == "ally" then
             maxed = target.chara:getHealth() >= target.chara:getStat("health") or amount == math.huge
@@ -2733,12 +2733,12 @@ function lib:init()
         return message
     end)
 
-    Utils.hook(SpeechBubble, "init", function(orig, self, text, x, y, options, speaker)
+    HookSystem.hook(SpeechBubble, "init", function(orig, self, text, x, y, options, speaker)
         orig(self, text, x, y, options, speaker)
         self.text.no_sound_overlap = options["no_sound_overlap"] or true
     end)
 
-    Utils.hook(SpeechBubble, "draw", function(orig, self)
+    HookSystem.hook(SpeechBubble, "draw", function(orig, self)
         if not self.auto then
             if self.right and Game.battle.light then
                 local width = self:getSpriteSize()
@@ -2753,12 +2753,12 @@ function lib:init()
         Object.draw(self)
     end)
 
-    Utils.hook(Game, "gameOver", function(orig, self, x, y)
+    HookSystem.hook(Game, "gameOver", function(orig, self, x, y)
         orig(self, x, y)
         lib.game_overs = lib.game_overs + 1
     end)
     
-    Utils.hook(SnowGraveSpell, "update", function(orig, self)
+    HookSystem.hook(SnowGraveSpell, "update", function(orig, self)
         if Game.battle.light then
             Object.update(self)
             self.timer = self.timer + DTMULT
@@ -2769,7 +2769,7 @@ function lib:init()
                 for i, enemy in ipairs(Game.battle.enemies) do
                     if enemy then
                         enemy.hit_count = 0
-                        enemy:hurt(self.damage + Utils.round(math.random(100)), self.caster)
+                        enemy:hurt(self.damage + MathUtils.round(math.random(100)), self.caster)
                         if enemy.health <= 0 then
                             enemy.can_die = true
                         end
@@ -2781,7 +2781,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(SnowGraveSpell, "createSnowflake", function(orig, self, x, y)
+    HookSystem.hook(SnowGraveSpell, "createSnowflake", function(orig, self, x, y)
         if Game.battle.light then
             local snowflake = SnowGraveSnowflake(x, y)
             snowflake.physics.gravity = 2
@@ -2796,7 +2796,7 @@ function lib:init()
         end
     end)
     
-    Utils.hook(SnowGraveSpell, "draw", function(orig, self)
+    HookSystem.hook(SnowGraveSpell, "draw", function(orig, self)
         if Game.battle.light then
             Object.draw(self)
 

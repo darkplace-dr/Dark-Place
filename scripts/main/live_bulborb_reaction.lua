@@ -54,7 +54,7 @@ function Mod:updateBulborb()
     -- doesn't get its mood ruined by a Live Bulborb Reaction
 
     -- hi -sam
-    local can_show = not Utils.containsValue(self.anti_bulborb_maps, Game.world.map.id)
+    local can_show = not TableUtils.contains(self.anti_bulborb_maps, Game.world.map.id)
     if not can_show then
         self.bulborb_reaction:remove()
     end

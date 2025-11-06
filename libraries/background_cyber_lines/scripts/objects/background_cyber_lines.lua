@@ -70,7 +70,7 @@ function lines:draw()
     end
 
     for i = 1, 19 do
-        self.line_y[i] = Utils.lerp(self.line_y[i], -400, 0.005 * DTMULT * self.line_speed)
+        self.line_y[i] = MathUtils.lerp(self.line_y[i], -400, 0.005 * DTMULT * self.line_speed)
         if self.line_y[i] <= -100 then
             self.line_y[i] = self.line_y[i] + self.line_y[20]
         end

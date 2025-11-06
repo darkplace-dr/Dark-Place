@@ -399,7 +399,7 @@ return {
                             cutscene:text("* Search inside the [color:yellow]default Kristal mods[color:reset]?", "talk_look_away", "sam")
                             cutscene:text("* But don't worry too much about finding him.", "shy_look_away", "sam")
                             local timeDiff = (7*60*24*24) - (os.time() - Game:getFlag("shop#jeku_shop:jeku_left_time_left"))
-                            local days = Utils.round(timeDiff/(60*24*24))
+                            local days = MathUtils.round(timeDiff/(60*24*24))
                             if days < 0 then
                                 cutscene:text("* He's probably back by now.", "happy_look_side", "sam")
                             elseif days == 0 then
@@ -424,7 +424,7 @@ return {
                     cutscene:text("* That's weird but,[wait:2] uh...[wait:3] What does it have to do with me?", "shy_look_away", "sam")
                     cutscene:text("* Maybe the shop owner just left or something...", "shy_look_away", "sam")
                     local timeDiff = (7*60*24*24) - (os.time() - Game:getFlag("shop#jeku_shop:jeku_left_time_left"))
-                    local days = Utils.round(timeDiff/(60*24*24))
+                    local days = MathUtils.round(timeDiff/(60*24*24))
                     if days < 0 then
                         cutscene:text("* Or maybe you're just messing with me, I dunno.", "talk_look_away", "sam")
                     elseif days == 0 then

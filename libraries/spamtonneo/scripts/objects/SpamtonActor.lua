@@ -196,7 +196,7 @@ function Spamton:tweenPartSwingRange(name, min, max, time, ease)
         min, max = -min, min
     end
     if not part.swing_range then
-        part.swing_range = Utils.copy(self.swing_range)
+        part.swing_range = TableUtils.copy(self.swing_range)
     end
     self.timer:tween(time or 0.5, part.swing_range, {min, max}, ease or "linear")
 end
@@ -256,7 +256,7 @@ function Spamton:setStringCount(num)
     local keep = TableUtils.pickMultiple(self.fg_strings, num)
     for i=1,6 do
         local str = self.fg_strings[i]
-        if Utils.containsValue(keep, str) then
+        if TableUtils.contains(keep, str) then
             str.visible = true
         else
             str.visible = false
@@ -273,7 +273,7 @@ function Spamton:snapString(index, remove)
     end
     if remove then
         str:remove()
-        Utils.removeFromTable(self.fg_strings, str)
+        TableUtils.removeValue(self.fg_strings, str)
     else
         str.alpha = 0
         self.timer:after(1, function()

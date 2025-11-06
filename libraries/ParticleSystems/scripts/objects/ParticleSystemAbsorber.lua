@@ -198,7 +198,7 @@ function Absorber:init(x, y, o)
         elseif convert[k] then
             k = convert[k]
         end
-        local valid_suff = Utils.containsValue(suffixes, suff)
+        local valid_suff = TableUtils.contains(suffixes, suff)
         if k == "round" then
             for k2,v2 in pairs(v) do
                 self.data[k][k2] = v2

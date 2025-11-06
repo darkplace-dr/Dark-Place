@@ -72,7 +72,7 @@ function TrafficSwitch:update()
 
     if self.numberdisplay then
         local timernumber = math.ceil(self.timer / self.timefactor)
-        timernumber = Utils.clamp(timernumber, 0, 9)
+        timernumber = MathUtils.clamp(timernumber, 0, 9)
         if timernumber == 1 then
             self.text.x = 10
         else

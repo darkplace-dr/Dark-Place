@@ -50,7 +50,7 @@ function Elevator:init(data)
         self.floors[floor_number][floor_property] = value
 
         if floor_property == "color" then
-            self.floors[floor_number][floor_property] = Utils.parseColorProperty(value)
+            self.floors[floor_number][floor_property] = TiledUtils.parseColorProperty(value)
         end
     end
 
@@ -244,7 +244,7 @@ function Elevator:update()
         end
     end
     if (self.rectcon == 3) then
-        self.rectspeed = Utils.clamp(self.rectspeed, -6, 6)
+        self.rectspeed = MathUtils.clamp(self.rectspeed, -6, 6)
         if (self.rectspeed > 0) then
             self.rectspeed = self.rectspeed - 0.5 * DTMULT
         end
@@ -924,9 +924,9 @@ function Elevator:update()
                 self.volcount = self.volcount - 0.05 * DTMULT
             end
             if (self.pitchcount > 0) then
-                Game.world.music:setPitch(Utils.clamp(self.pitchcount, 0, 1))
+                Game.world.music:setPitch(MathUtils.clamp(self.pitchcount, 0, 1))
             end
-            Game.world.music:setVolume(Utils.clamp(self.volcount, 0, 1))
+            Game.world.music:setVolume(MathUtils.clamp(self.volcount, 0, 1))
             if (self.continuetimer >= self.length) then
                 self.con = self.con + 1
             end

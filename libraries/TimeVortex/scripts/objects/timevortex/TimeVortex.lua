@@ -790,10 +790,10 @@ function DarkTransition:draw()
             if (self.quick_mode) then
                 self.linecon = false
             end
-            self.susie_y  = Utils.round(self.susie_y)
-            self.susie_x  = Utils.round(self.susie_x)
-            self.kris_y = Utils.round(self.kris_y)
-            self.kris_x = Utils.round(self.kris_x)
+            self.susie_y  = MathUtils.round(self.susie_y)
+            self.susie_x  = MathUtils.round(self.susie_x)
+            self.kris_y = MathUtils.round(self.kris_y)
+            self.kris_x = MathUtils.round(self.kris_x)
             self.timer = 0
             self.velocity = -0.2
             self.friction = 0.01

@@ -307,7 +307,7 @@ function Battle:onStateChange(old,new)
             self:setWaves(self.state_reason)
             local enemy_found = false
             for i,enemy in ipairs(self.enemies) do
-                if Utils.containsValue(enemy.waves, self.state_reason[1]) then
+                if TableUtils.contains(enemy.waves, self.state_reason[1]) then
                     enemy.selected_wave = self.state_reason[1]
                     enemy_found = true
                 end
@@ -379,7 +379,7 @@ function Battle:onStateChange(old,new)
     local remove_arena = {"DEFENDINGEND", "TRANSITIONOUT", "ACTIONSELECT", "VICTORY", "INTRO", "ACTIONS", "ENEMYSELECT", "XACTENEMYSELECT", "PARTYSELECT", "MENUSELECT", "ATTACKING"}
 
     local should_end = true
-    if Utils.containsValue(remove_arena, new) then
+    if TableUtils.contains(remove_arena, new) then
         for _,wave in ipairs(self.waves) do
             if wave:beforeEnd() then
                 should_end = false
@@ -634,7 +634,7 @@ function Battle:hurt(amount, exact, target)
             end
         end
         -- Return the battlers who aren't down, aka the ones we hit.
-        return Utils.filter(self.party, function(item) return not item.is_down end)
+        return TableUtils.filter(self.party, function(item) return not item.is_down end)
     end
 end
 
@@ -722,13 +722,13 @@ function Battle:processAction(action)
                 end
             end
 
-            local damage = Utils.round(enemy:getAttackDamage(action.damage or 0, battler, action.points or 0))
+            local damage = MathUtils.round(enemy:getAttackDamage(action.damage or 0, battler, action.points or 0))
             if damage < 0 then
                 damage = 0
             end
 
             if damage > 0 then
-                Game:giveTension(Utils.round(enemy:getAttackTension(action.points or 100)))
+                Game:giveTension(MathUtils.round(enemy:getAttackTension(action.points or 100)))
 
                 local dmg_sprite = Sprite(battler.chara:getAttackSprite() or "effects/attack/cut")
                 dmg_sprite:setOrigin(0.5, 0.5)
@@ -755,8 +755,8 @@ function Battle:processAction(action)
 
             self:finishAction(action)
 
-            Utils.removeFromTable(self.normal_attackers, battler)
-            Utils.removeFromTable(self.auto_attackers, battler)
+            TableUtils.removeValue(self.normal_attackers, battler)
+            TableUtils.removeValue(self.auto_attackers, battler)
 
             if not self:retargetEnemy() then
                 self.cancel_attack = true

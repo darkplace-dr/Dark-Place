@@ -89,16 +89,16 @@ function System:getValue(particle, name, tbl)
     local round = tbl[name.."_round"] or self.data.round[name]
     if round and type(val) == "number" then
         if type(round) == "number" then
-            val = Utils.round(val, round)
+            val = MathUtils.round(val, round)
         else
-            val = Utils.round(val, 1)
+            val = MathUtils.round(val, 1)
         end
     end
     return val
 end
 
 function System:getColorValue(particle)
-    local color = Utils.copy(self.data.color)
+    local color = TableUtils.copy(self.data.color)
     if type(color[1]) == "table" then
         color = TableUtils.pick(color)
     end

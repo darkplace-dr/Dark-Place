@@ -12,21 +12,21 @@ end
 
 function lib:init()
 
-    Utils.hook(EnemyBattler, "executeFlash", function(orig, self, color)
+    HookSystem.hook(EnemyBattler, "executeFlash", function(orig, self, color)
         color = color or {1, 0, 0}
 
         local recolor = self:addFX(RecolorFX())
         Game.battle.timer:during(8/30, function()
-            recolor.color = Utils.lerp(recolor.color, color, 0.12 * DTMULT)
+            recolor.color = MathUtils.lerp(recolor.color, color, 0.12 * DTMULT)
         end, function()
             Game.battle.timer:during(8/30, function()
-                recolor.color = Utils.lerp(recolor.color, {1, 1, 1}, 0.16 * DTMULT)
+                recolor.color = MathUtils.lerp(recolor.color, {1, 1, 1}, 0.16 * DTMULT)
             end, function()
                 self:removeFX(recolor)
             end)
         end)
     end)
-    Utils.hook(EnemyBattler, "getNameColorsExecutable", function(orig, self)
+    HookSystem.hook(EnemyBattler, "getNameColorsExecutable", function(orig, self)
         local result = {}
         if self.mercy >= 75 and self.health <= (self.max_health/2) then
             table.insert(result, {1, 0, 0})
@@ -37,7 +37,7 @@ function lib:init()
         return result
     end)
     --[[
-    Utils.hook(DarkPowerMenu, "getSpells", function(orig, self)
+    HookSystem.hook(DarkPowerMenu, "getSpells", function(orig, self)
         local spells = {}
         local party = self.party:getSelected()
         if party:hasAct() then
@@ -53,7 +53,7 @@ function lib:init()
         return spells
     end)
     --]]
-    Utils.hook(EnemyBattler, "incinerate", function(orig, self)
+    HookSystem.hook(EnemyBattler, "incinerate", function(orig, self)
         self:recruitMessage("incinerated")
     
         self.hurt_timer = -1

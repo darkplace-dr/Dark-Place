@@ -79,7 +79,7 @@ return function (cutscene, event, self)
             if hue > (300/360) then
                 hue = hue - (300/360 - 150/360)
             end
-            warpbg:setColor(Utils.hslToRgb(hue, 0.75, 0.8))
+            warpbg:setColor(ColorUtils.HSLToRGB(hue, 0.75, 0.8))
 
         end
 

@@ -266,7 +266,7 @@ end
 --- Set the precision of the path.
 ---@param precision number The precision of the path (clamped between 0 and 8).
 function GMPath:setPrecision(precision)
-    self.precision = Utils.clamp(precision or 4, 0, 8)
+    self.precision = MathUtils.clamp(precision or 4, 0, 8)
     self:processInternal()
 end
 

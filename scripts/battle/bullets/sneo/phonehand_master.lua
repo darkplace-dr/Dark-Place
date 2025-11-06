@@ -79,7 +79,7 @@ function PhoneHandMaster:update()
 	
     if self.phonehand_top then
         if self.difficulty < 2 then
-            self.x = Utils.lerp(self.x, (self.phonehand_top.x + self.xdist), 0.2)
+            self.x = MathUtils.lerp(self.x, (self.phonehand_top.x + self.xdist), 0.2)
         else
             self.x = self.x - DTMULT
         end

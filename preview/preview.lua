@@ -59,7 +59,7 @@ function preview:update()
         end
     end
     for _,particle in ipairs(particle_to_remove) do
-        Utils.removeFromTable(self.particles, particle)
+        TableUtils.removeValue(self.particles, particle)
     end
 
     self.particle_interval = self.particle_interval + DT
@@ -225,7 +225,7 @@ function preview:drawOverlay()
     end
 
     if self:areWeSelected() and DEBUG_RENDER then
-        love.graphics.setColor(Utils.hexToRgb("#0AC1FF"), 1)
+        love.graphics.setColor(ColorUtils.hexToRGB("#0AC1FF"), 1)
         local font = Assets.getFont("main")
         love.graphics.setFont(font)
         local namer = self:getNamer()

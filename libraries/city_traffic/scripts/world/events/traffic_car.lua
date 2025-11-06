@@ -254,7 +254,7 @@ function TrafficCar:update()
     if self.speedadjust then
         local sx, sy = self:getPosition()
         local px, py = Game.world.player:getPosition()
-        local chardist = Utils.dist(sx, sy, px, py)
+        local chardist = MathUtils.dist(sx, sy, px, py)
 
         if chardist >= 200 then
             self.idealspeed = 24
@@ -274,7 +274,7 @@ function TrafficCar:update()
             if carcheck.freshness > self.freshness then
                 self.y = self.y - 12
                 self.speed = self.speed - 12
-                self.speed = Utils.clamp(self.speed, 0, 24)
+                self.speed = MathUtils.clamp(self.speed, 0, 24)
             end
         end
     end
@@ -344,7 +344,7 @@ function TrafficCar:draw()
         end
     end
     self.walkx = ((math.sin((self.animsiner / 4)) * self.walklerp) * 2)
-    self.walky = Utils.lerp(0, self.walklerp, -26, true)
+    self.walky = MathUtils.lerp(0, self.walklerp, -26, true)
     if self.alwayswalking then
         self.walky = -26
     end

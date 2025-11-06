@@ -45,7 +45,7 @@ end
 
 function PartyBattler:removeHealth(amount, pierce)
     if (self.chara:getHealth() <= 0) then
-        amount = Utils.round(amount / 4)
+        amount = MathUtils.round(amount / 4)
 		if not pierce then
 			if self.shield < amount then
 				amount = amount - self.shield
@@ -69,7 +69,7 @@ function PartyBattler:removeHealth(amount, pierce)
         self.chara:setHealth(self.chara:getHealth() - amount)
         if (self.chara:getHealth() <= 0) then
             amount = math.abs((self.chara:getHealth() - (self.chara:getStat("health") / 2)))
-            self.chara:setHealth(Utils.round(((-self.chara:getStat("health")) / 2)))
+            self.chara:setHealth(MathUtils.round(((-self.chara:getStat("health")) / 2)))
         end
     end
     self:checkHealth()

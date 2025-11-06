@@ -271,8 +271,8 @@ function FuseMenu:draw()
 	local result = self.list[1+self.offset*2]["result"]
 
 	local temp_storages = {
-		Utils.copy(Game.inventory.storages[item1.type == "key" and "key_items" or item1.type.."s"]),
-		Utils.copy(Game.inventory.storages[item2.type == "key" and "key_items" or item2.type.."s"])
+		TableUtils.copy(Game.inventory.storages[item1.type == "key" and "key_items" or item1.type.."s"]),
+		TableUtils.copy(Game.inventory.storages[item2.type == "key" and "key_items" or item2.type.."s"])
 	}
 
 	for i=1,2 do
@@ -281,9 +281,9 @@ function FuseMenu:draw()
 
 			if v.id == item.id then
 				hasItems[i] = true
-				Utils.removeFromTable(temp_storages[i], v)
+				TableUtils.removeValue(temp_storages[i], v)
 				if i==1 and item1.type == item2.type then
-					Utils.removeFromTable(temp_storages[2], v)
+					TableUtils.removeValue(temp_storages[2], v)
 				end
 				break
 			end
@@ -335,8 +335,8 @@ function FuseMenu:draw()
 		result = self.list[2+self.offset*2]["result"]
 
 		temp_storages = {
-			Utils.copy(Game.inventory.storages[item1.type == "key" and "key_items" or item1.type.."s"]),
-			Utils.copy(Game.inventory.storages[item2.type == "key" and "key_items" or item2.type.."s"])
+			TableUtils.copy(Game.inventory.storages[item1.type == "key" and "key_items" or item1.type.."s"]),
+			TableUtils.copy(Game.inventory.storages[item2.type == "key" and "key_items" or item2.type.."s"])
 		}
 
 		for i=1,2 do
@@ -344,9 +344,9 @@ function FuseMenu:draw()
 			for _,v in ipairs(temp_storages[i]) do
 				if v.id == item.id then
 					hasItems[i] = true
-					Utils.removeFromTable(temp_storages[i], v)
+					TableUtils.removeValue(temp_storages[i], v)
 					if i==1 and item1.type == item2.type then
-						Utils.removeFromTable(temp_storages[2], v)
+						TableUtils.removeValue(temp_storages[2], v)
 					end
 					break
 				end

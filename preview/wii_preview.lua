@@ -32,7 +32,7 @@ function wii_preview:iconUpdate(data, timer, is_maintenance)
     end
 
     for _,particle in ipairs(to_remove) do
-        Utils.removeFromTable(data.particles, particle)
+        TableUtils.removeValue(data.particles, particle)
     end
 
     data.particle_timer = data.particle_timer + DT

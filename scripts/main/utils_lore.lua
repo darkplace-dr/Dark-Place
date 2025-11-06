@@ -43,7 +43,7 @@ end
 
 -- Removes a party member from selection in the DarkPartyMenu
 function Mod:lockPartyMember(id)
-    Utils.removeFromTable(Game:getFlag("party"), id)
+    TableUtils.removeValue(Game:getFlag("party"), id)
 end
 
 -- Sets a random title and icon to the game window.

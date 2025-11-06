@@ -158,7 +158,7 @@ function LightSoul:move(x, y, speed)
 end
 
 function LightSoul:moveX(amount, move_y)
-    local last_collided = self.last_collided_x and (Utils.sign(amount) == self.last_collided_x)
+    local last_collided = self.last_collided_x and (MathUtils.sign(amount) == self.last_collided_x)
 
     if amount == 0 then
         return not last_collided, true
@@ -178,7 +178,7 @@ function LightSoul:moveX(amount, move_y)
 end
 
 function LightSoul:moveY(amount, move_x)
-    local last_collided = self.last_collided_y and (Utils.sign(amount) == self.last_collided_y)
+    local last_collided = self.last_collided_y and (MathUtils.sign(amount) == self.last_collided_y)
 
     if amount == 0 then
         return not last_collided, true
@@ -198,7 +198,7 @@ function LightSoul:moveY(amount, move_x)
 end
 
 function LightSoul:moveXExact(amount, move_y)
-    local sign = Utils.sign(amount)
+    local sign = MathUtils.sign(amount)
     for i = sign, amount, sign do
         local last_x = self.x
         local last_y = self.y
@@ -248,7 +248,7 @@ function LightSoul:moveXExact(amount, move_y)
 end
 
 function LightSoul:moveYExact(amount, move_x)
-    local sign = Utils.sign(amount)
+    local sign = MathUtils.sign(amount)
     for i = sign, amount, sign do
         local last_x = self.x
         local last_y = self.y
@@ -360,10 +360,10 @@ function LightSoul:update()
             end
         else
             self:setExactPosition(
-                Utils.lerp(self.original_x, self.target_x, self.timer / 7),
-                Utils.lerp(self.original_y, self.target_y, self.timer / 7)
+                MathUtils.lerp(self.original_x, self.target_x, self.timer / 7),
+                MathUtils.lerp(self.original_y, self.target_y, self.timer / 7)
             )
-            self.alpha = Utils.lerp(0, self.target_alpha or 1, self.timer / 3)
+            self.alpha = MathUtils.lerp(0, self.target_alpha or 1, self.timer / 3)
             self.sprite:setColor(self.color[1], self.color[2], self.color[3], self.alpha)
             self.timer = self.timer + (1 * DTMULT)
         end

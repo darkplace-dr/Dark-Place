@@ -129,16 +129,16 @@ function SpamtonNEO:update()
         end
 		
         if self.funnycheattimer3 > 0 and self.funnycheattimer3 < 6 then
-            self.sprite.head.sprite:setScale(Utils.lerp(1, 2, self.funnycheattimer3 / 6))
+            self.sprite.head.sprite:setScale(MathUtils.lerp(1, 2, self.funnycheattimer3 / 6))
         end
         if self.funnycheattimer3 > 8 and self.funnycheattimer3 < 16 then
-            self.sprite.head.sprite:setScale(Utils.lerp(2, 1, (self.funnycheattimer3 - 8) / 8))
+            self.sprite.head.sprite:setScale(MathUtils.lerp(2, 1, (self.funnycheattimer3 - 8) / 8))
         end
         if self.funnycheattimer3 > 16 and self.funnycheattimer3 < 24 then
-            self.sprite.head.sprite:setScale(Utils.lerp(1, 2, (self.funnycheattimer3 - 16) / 6))
+            self.sprite.head.sprite:setScale(MathUtils.lerp(1, 2, (self.funnycheattimer3 - 16) / 6))
         end
         if self.funnycheattimer3 > 24 and self.funnycheattimer3 < 32 then
-            self.sprite.head.sprite:setScale(Utils.lerp(2, 0.9339, (self.funnycheattimer3 - 24) / 8))
+            self.sprite.head.sprite:setScale(MathUtils.lerp(2, 0.9339, (self.funnycheattimer3 - 24) / 8))
         end
 		
         if self.funnycheattimer3 >= 4 and self.funnycheattimer3 <= 10 or self.funnycheattimer3 >= 20 and self.funnycheattimer3 <= 26 then

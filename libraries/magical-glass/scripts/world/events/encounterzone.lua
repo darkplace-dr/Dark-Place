@@ -19,7 +19,7 @@ function EncounterZone:init(data)
     local s = data.shape
     if s == "rectangle" or s == "circle" or s == "ellipse" or s == "polygon" or s == "polyline" then
         self.type = "zone"
-        self.collider = Utils.colliderFromShape(self, data)
+        self.collider = TiledUtils.colliderFromShape(self, data)
     else
         self.type = "map"
     end

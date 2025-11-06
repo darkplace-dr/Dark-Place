@@ -33,8 +33,8 @@ function VaporEffect:init(texture, x, y, after)
 
             local qx = (i * self.block_size)
             local qy = (j * self.block_size)
-            local qw = Utils.clamp(self.block_size, 0, self.width - qx)
-            local qh = Utils.clamp(self.block_size, 0, self.height - qy)
+            local qw = MathUtils.clamp(self.block_size, 0, self.width - qx)
+            local qh = MathUtils.clamp(self.block_size, 0, self.height - qy)
 
             block.quad = love.graphics.newQuad(qx, qy, qw, qh, self.width, self.height)
 

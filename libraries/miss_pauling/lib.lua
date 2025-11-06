@@ -1,7 +1,7 @@
 local Lib = {}
 
 function Lib:postInit()
-	Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color)
+	HookSystem.hook(EnemyBattler, "hurt", function(orig, self, amount, battler, on_defeat, color)
 		if amount == 0 or (amount < 0 and Game:getConfig("damageUnderflowFix")) and battler.chara.id == "pauling" then
 			self:statusMessage("msg", "miss_pauling", color or (battler and {battler.chara:getDamageColor()}))
 		else
@@ -9,7 +9,7 @@ function Lib:postInit()
 		end
 	end)
 	
-	Utils.hook(ActionBox, "init", function(orig, self, ...)
+	HookSystem.hook(ActionBox, "init", function(orig, self, ...)
 		orig(self, ...)
 		if self.battler.chara.id == "pauling" then
 			self.kr_sprite = Sprite("ui/bleed", 128, 22)
@@ -18,7 +18,7 @@ function Lib:postInit()
 		end
 	end)
 
-	Utils.hook(ActionBoxDisplay, "draw", function(orig, self)
+	HookSystem.hook(ActionBoxDisplay, "draw", function(orig, self)
 		if (self.actbox.battler.chara.id == "pauling") and (#Game.party <= 3) then
 			if Game.battle.current_selecting == self.actbox.index then
 				Draw.setColor(self.actbox.battler.chara:getColor())

@@ -75,7 +75,7 @@ return function(cutscene, event, chara)
 			local kristal, start = gift:find("KR_")
 			local game_name = gifts[gift].name
 			if not game_name then
-				game_name = kristal and Utils.titleCase(gift:sub(start+1):gsub("_", " ")) or gift
+				game_name = kristal and StringUtils.titleCase(gift:sub(start+1):gsub("_", " ")) or gift
 			end
 			local item = Registry.createItem(gifts[gift].item_id)
 			local item_name = item:getName()

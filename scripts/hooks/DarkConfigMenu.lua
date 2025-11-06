@@ -21,7 +21,7 @@ function DarkConfigMenu:init()
     self:setGamePad()
 
 --  Set the maximum number of page
-    self.max_page = Utils.ceil(#self.key_bindings/7)
+    self.max_page = math.ceil(#self.key_bindings/7)
 end
 
 function DarkConfigMenu:setKeyBindings()
@@ -39,7 +39,7 @@ function DarkConfigMenu:setKeyBindings()
 
     --  Get all key bind that weren't in the banned_key list
     for index = 1, count do
-        if not Utils.containsValue(self.banned_key, Input.orderedNumberToKey(index)) then 
+        if not TableUtils.contains(self.banned_key, Input.orderedNumberToKey(index)) then 
             table.insert(self.key_bindings, Input.orderedNumberToKey(index))
         end
     end
@@ -84,7 +84,7 @@ function DarkConfigMenu:getKeyBindings(key)
 
 --  Insert all key binds that wern't found in the banned_key list
     for index, name in pairs(valid_keys) do
-        if not Utils.containsValue(valid_keys, key) then
+        if not TableUtils.contains(valid_keys, key) then
             table.insert(self.banned_key, key)
         end
     end    
@@ -180,7 +180,7 @@ function DarkConfigMenu:update()
             self.ui_move:play()
         end
 
-        self.currently_selected = Utils.clamp(self.currently_selected, 1, 7)
+        self.currently_selected = MathUtils.clamp(self.currently_selected, 1, 7)
     elseif self.state == "EXTRAS" then
         if self.extras_substate == "BORDER" then
             -- FIXME: if we write to Kristal.Config, we completely change the global setting,
@@ -305,11 +305,11 @@ function DarkConfigMenu:update()
                 self.ui_move:play()
             end
 
-            self.currently_selected = Utils.clamp(self.currently_selected, 1, 6)
+            self.currently_selected = MathUtils.clamp(self.currently_selected, 1, 6)
         end
     elseif self.state == "VOLUME" then
         if Input.pressed("cancel") or Input.pressed("confirm") then
-            Kristal.setVolume(Utils.round(Kristal.getVolume() * 100) / 100)
+            Kristal.setVolume(MathUtils.round(Kristal.getVolume() * 100) / 100)
             self.ui_select:stop()
             self.ui_select:play()
             self.state = "MAIN"
@@ -356,7 +356,7 @@ function DarkConfigMenu:onKeyPressed(key)
     if self.state == "CONTROLS" then
 
         if self.rebinding then
-            local gamepad = Utils.startsWith(key, "gamepad:")
+            local gamepad = StringUtils.startsWith(key, "gamepad:")
 
             local worked = key ~= "escape" and
                 Input.setBind(self.key_bindings[self.currently_selected + 7*(self.current_page-1)], 1, key, gamepad)
@@ -430,17 +430,17 @@ function DarkConfigMenu:onKeyPressed(key)
             if self.key_bindings[self.currently_selected + 7*(self.current_page)] == nil and self.current_page ~= self.max_page and self.currently_selected < 8 then
 
             --  If the cursor is more close to the last key bind set it to the last key
-                if self.currently_selected < 8 - Utils.round((8 - (#self.key_bindings - 7*(self.current_page)/2))) then
+                if self.currently_selected < 8 - MathUtils.round((8 - (#self.key_bindings - 7*(self.current_page)/2))) then
                     self.currently_selected = #self.key_bindings - 7*(self.current_page)
                     
             --  Otherwise set it to the 8 selection
-                elseif self.currently_selected >= 8 - Utils.round((8 - (#self.key_bindings - 7*(self.current_page)/2))) and self.currently_selected <= 8 then
+                elseif self.currently_selected >= 8 - MathUtils.round((8 - (#self.key_bindings - 7*(self.current_page)/2))) and self.currently_selected <= 8 then
                     self.currently_selected = 8
                 end
             end
         end
 
-        self.currently_selected = Utils.clamp(self.currently_selected, 1, 9)
+        self.currently_selected = MathUtils.clamp(self.currently_selected, 1, 9)
 
         if old_selected ~= self.currently_selected then
             self.ui_move:stop()
@@ -456,7 +456,7 @@ function DarkConfigMenu:onKeyPressed(key)
             self.current_page = self.current_page + 1
         end
 
-        self.current_page = Utils.clamp(self.current_page, 1, self.max_page)
+        self.current_page = MathUtils.clamp(self.current_page, 1, self.max_page)
 
         if old_page ~= self.current_page then
             self.ui_move:stop()
@@ -529,7 +529,7 @@ function DarkConfigMenu:draw()
         if self.state == "VOLUME" then
             love.graphics.setColor(PALETTE["world_text_selected"])
         end
-        love.graphics.print(Utils.round(Kristal.getVolume() * 100) .. "%",      348, 38 + (0 * 32))
+        love.graphics.print(MathUtils.round(Kristal.getVolume() * 100) .. "%",      348, 38 + (0 * 32))
         love.graphics.setColor(PALETTE["world_text"])
         love.graphics.print(Kristal.Config["simplifyVFX"] and "ON" or "OFF",    348, 38 + (2 * 32))
         love.graphics.print(Kristal.Config["fullscreen"]  and "ON" or "OFF",    348, 38 + (3 * 32))
@@ -618,11 +618,11 @@ function DarkConfigMenu:draw()
                 if type(alias) == "table" then
                     local title_cased = {}
                     for _, word in ipairs(alias) do
-                        table.insert(title_cased, Utils.titleCase(word))
+                        table.insert(title_cased, StringUtils.titleCase(word))
                     end
                     love.graphics.print(table.concat(title_cased, "+"), 243, 0 + (28 * (index - (self.current_page-1)*7)))
                 elseif alias ~= nil then
-                    love.graphics.print(Utils.titleCase(alias), 243, 0 + (28 * (index - (self.current_page-1)*7)))
+                    love.graphics.print(StringUtils.titleCase(alias), 243, 0 + (28 * (index - (self.current_page-1)*7)))
                 end
             end
 

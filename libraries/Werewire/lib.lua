@@ -1,7 +1,7 @@
 local Lib = {}
 
 function Lib:init()
-    Utils.hook(Battle, "spawnEnemyTextbox", function(orig, self, enemy, ...)
+    HookSystem.hook(Battle, "spawnEnemyTextbox", function(orig, self, enemy, ...)
         if enemy and enemy.id == "werewire" then
             local x, y = enemy.sprite:getRelativePos(0, enemy.sprite.height/2, self)
             if enemy.dialogue_offset then

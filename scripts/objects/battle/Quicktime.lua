@@ -96,7 +96,7 @@ function Quicktime:draw()
     love.graphics.setFont(self.font)
     local shakeAmount = 2
 
-    Draw.setColor(Utils.hslToRgb((Kristal.getTime()/2) % 1, 1, 0.5))
+    Draw.setColor(ColorUtils.HSLToRGB((Kristal.getTime()/2) % 1, 1, 0.5))
     love.graphics.rectangle("fill", 160, 110, self.thing*70, 15)
     love.graphics.circle("line", 320, 190, self.thing*60)
     --Draw.setColor(1, 1, 1, 1)

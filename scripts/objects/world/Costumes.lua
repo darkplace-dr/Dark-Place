@@ -209,7 +209,7 @@ function Costumes:update()
 	    self.selected_index = self.selected_index + 1
         self.skin_index = 1
     end
-    self.selected_index = Utils.clamp(self.selected_index, 1, #self.costumes)
+    self.selected_index = MathUtils.clamp(self.selected_index, 1, #self.costumes)
 
     if Input.pressed("up") then
         Assets.playSound("ui_move")
@@ -235,7 +235,7 @@ function Costumes:update()
 
         end
     end
-    self.skin_index = Utils.clamp(self.skin_index, 1, #self.costumes[self.selected_index].skins)
+    self.skin_index = MathUtils.clamp(self.skin_index, 1, #self.costumes[self.selected_index].skins)
 
     self.heart_target_y = 112 + (self.skin_index - 1) * 30
     self.heart:setPosition(self.heart_target_x, self.heart_target_y)

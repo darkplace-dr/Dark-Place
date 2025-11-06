@@ -53,7 +53,7 @@ function Basic:draw()
 	
     if self.movecon == 0 and self.sneo.x == 818 then
         self.movetimer = self.movetimer + DTMULT
-        xx = Utils.lerp((SCREEN_WIDTH + 70), (SCREEN_WIDTH - 10), (self.movetimer / 10))
+        xx = MathUtils.lerp((SCREEN_WIDTH + 70), (SCREEN_WIDTH - 10), (self.movetimer / 10))
         if self.movetimer == 10 then
             self.movetimer = 0
             self.movecon = 1
@@ -62,7 +62,7 @@ function Basic:draw()
 
     if self.movecon == 2 then
         self.movetimer = self.movetimer + DTMULT
-        xx = Utils.lerp((SCREEN_WIDTH - 10), (SCREEN_WIDTH + 70), (self.movetimer / 10))
+        xx = MathUtils.lerp((SCREEN_WIDTH - 10), (SCREEN_WIDTH + 70), (self.movetimer / 10))
         if self.movetimer == 10 then
         end
     end
@@ -111,10 +111,10 @@ function Basic:draw()
         if self.con == 2 then
             self.attack_timer = self.attack_timer + DTMULT
             if self.attack_timer < 11 then
-                self.arm_cannon_angle = Utils.lerp(self.arm_cannon_angle, self.angle_final, (self.attack_timer / 10))
+                self.arm_cannon_angle = MathUtils.lerp(self.arm_cannon_angle, self.angle_final, (self.attack_timer / 10))
             end
             if self.attack_timer < (self.timervariance - 15) and self.eggcount > 0.4 then
-                self.arm_cannon_scale_x = Utils.lerp(1.8, 2.5, (self.attack_timer / (self.timervariance - 15)))
+                self.arm_cannon_scale_x = MathUtils.lerp(1.8, 2.5, (self.attack_timer / (self.timervariance - 15)))
             end
             if self.attack_timer >= (self.timervariance - 15) and self.eggcount > 0.4 then
                 self.arm_cannon_spr = Assets.getTexture("battle/bullets/sneo/arm_cannon_pipis")

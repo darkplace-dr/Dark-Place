@@ -19,7 +19,7 @@ function LightGauge:init(type, amount, x, y, enemy, color)
     end
 
     self.enemy = enemy
-    self.width, self.height = Utils.unpack(self.enemy:getGaugeSize())
+    self.width, self.height = TableUtils.unpack(self.enemy:getGaugeSize())
 
     self.amount = math.abs(tonumber(amount))
 
@@ -56,7 +56,7 @@ function LightGauge:update()
         end
     end
 
-    self.value = Utils.clamp(self.value, 0, self.max_value)
+    self.value = MathUtils.clamp(self.value, 0, self.max_value)
 end
 
 function LightGauge:draw()
@@ -64,22 +64,22 @@ function LightGauge:draw()
 
     if self.type == "mercy" then
         Draw.setColor(COLORS["black"])
-        love.graphics.rectangle("fill", -1, 7, Utils.round(self.max_value * self.extra_width + 2), self.height + 2)
+        love.graphics.rectangle("fill", -1, 7, MathUtils.round(self.max_value * self.extra_width + 2), self.height + 2)
         Draw.setColor(64 / 255, 64 / 255, 64 / 255) -- temp
-        love.graphics.rectangle("fill", 0, 8, Utils.round(self.max_value * self.extra_width), self.height)
+        love.graphics.rectangle("fill", 0, 8, MathUtils.round(self.max_value * self.extra_width), self.height)
         if self.value > 0 then
             Draw.setColor(self.color)
-            love.graphics.rectangle("fill", 0, 8, Utils.round(self.value * self.extra_width), self.height)
+            love.graphics.rectangle("fill", 0, 8, MathUtils.round(self.value * self.extra_width), self.height)
         end
     end
     if self.type == "damage" then
         Draw.setColor(COLORS["black"])
-        love.graphics.rectangle("fill", -1, 7, Utils.round(self.max_value * self.extra_width + 2), self.height + 2)
+        love.graphics.rectangle("fill", -1, 7, MathUtils.round(self.max_value * self.extra_width + 2), self.height + 2)
         Draw.setColor(64 / 255, 64 / 255, 64 / 255) -- temp
-        love.graphics.rectangle("fill", 0, 8, Utils.round(self.max_value * self.extra_width), self.height)
+        love.graphics.rectangle("fill", 0, 8, MathUtils.round(self.max_value * self.extra_width), self.height)
         if self.value > 0 then
             Draw.setColor(self.color)
-            love.graphics.rectangle("fill", 0, 8, Utils.round(self.value * self.extra_width), self.height)
+            love.graphics.rectangle("fill", 0, 8, MathUtils.round(self.value * self.extra_width), self.height)
         end
     end
 

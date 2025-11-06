@@ -3,7 +3,7 @@ local lib = {}
 function lib:init()
     if Kristal.getLibConfig("gameover_sf", "replaces_original") then
         ---@diagnostic disable-next-line: redefined-local
-        Utils.hook(Game, "gameOver", function(_, self, x, y)
+        HookSystem.hook(Game, "gameOver", function(_, self, x, y)
             Kristal.hideBorder(0)
 
             self.state = "GAMEOVER"

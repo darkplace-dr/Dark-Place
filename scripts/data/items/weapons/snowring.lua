@@ -3,7 +3,7 @@ local item, super = Class("snowring", true)
 function item:init()
     super.init(self)
 
-    self.reactions = Utils.merge(self.reactions, {
+    self.reactions = TableUtils.merge(self.reactions, {
 		dess = "You did snowgrave lmao",
 		noel = "... proceed...",
         brenda = "Uh, no thanks.",

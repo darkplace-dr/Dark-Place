@@ -19,8 +19,8 @@ function Gramophone:update()
     if not Game.world.map.gramophone_music:isPlaying() then
         Game.world.map.gramophone_music:resume()
     end
-    local dist = Utils.dist(self.x+self.width/2, self.y+self.height/2, Game.world.player.x+Game.world.player.width, Game.world.player.y+Game.world.player.height)
-    local vol = Utils.clamp(Utils.clampMap(dist, -750, 750, 1, 0), 0, 1)
+    local dist = MathUtils.dist(self.x+self.width/2, self.y+self.height/2, Game.world.player.x+Game.world.player.width, Game.world.player.y+Game.world.player.height)
+    local vol = MathUtils.clamp(Utils.clampMap(dist, -750, 750, 1, 0), 0, 1)
     Game.world.map.gramophone_music:setVolume(vol)
     if Game.world.map.gramophone_music.volume > 0 then
         Game.world.music:setVolume(1 - vol)

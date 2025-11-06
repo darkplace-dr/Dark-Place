@@ -25,7 +25,7 @@ function Lib:init()
 
     -----  NEW PROPERTIES AND CALLBACKS
 
-    Utils.hook(Item, "init", function(orig, self)
+    HookSystem.hook(Item, "init", function(orig, self)
 
         orig(self)
 
@@ -44,43 +44,43 @@ function Lib:init()
     
     end)
 
-    Utils.hook(Item, "getBoltCount", function(orig, self)
+    HookSystem.hook(Item, "getBoltCount", function(orig, self)
         return self.bolt_count
     end)
 
-    Utils.hook(Item, "getBoltSpeed", function(orig, self)
+    HookSystem.hook(Item, "getBoltSpeed", function(orig, self)
         return self.bolt_speed
     end)
 
-    Utils.hook(Item, "getBoltOffset", function(orig, self)
+    HookSystem.hook(Item, "getBoltOffset", function(orig, self)
         return self.bolt_offset
     end)
 
-    Utils.hook(Item, "getMultiboltVariance", function(orig, self, index)
+    HookSystem.hook(Item, "getMultiboltVariance", function(orig, self, index)
         return self.multibolt_variance
     end)
 
-    Utils.hook(Item, "getBoltAcceleration", function(orig, self)
+    HookSystem.hook(Item, "getBoltAcceleration", function(orig, self)
         return self.bolt_accel
     end)
 
-    Utils.hook(Item, "getBoltTarget", function(orig, self)
+    HookSystem.hook(Item, "getBoltTarget", function(orig, self)
         return self.bolt_target
     end)
 
-    Utils.hook(Item, "getBoltMissThreshold", function(orig, self)
+    HookSystem.hook(Item, "getBoltMissThreshold", function(orig, self)
         return self.bolt_miss_threshold
     end)
  
-    Utils.hook(Item, "getCriticalThreshold", function(orig, self)
+    HookSystem.hook(Item, "getCriticalThreshold", function(orig, self)
         return self.critical_threshold
     end)
 
-    Utils.hook(Item, "getCriticalBonus", function(orig, self)
+    HookSystem.hook(Item, "getCriticalBonus", function(orig, self)
         return self.critical_bonus
     end)
 
-    Utils.hook(Item, "getMaxPoints", function(orig, self)
+    HookSystem.hook(Item, "getMaxPoints", function(orig, self)
 
         if not self.max_points then
             self.max_points = self.critical_threshold * 3.5
@@ -92,7 +92,7 @@ function Lib:init()
 
     ----- CALLBACKS
 
-    Utils.hook(Item, "onHit", function(orig, self, battler, score, bolts, close)
+    HookSystem.hook(Item, "onHit", function(orig, self, battler, score, bolts, close)
 
         local attackbox
         for _,box in ipairs(Game.battle.battle_ui.attack_boxes) do
@@ -116,7 +116,7 @@ function Lib:init()
 
     end)
 
-    Utils.hook(Item, "onAttack", function(orig, self, action, battler, enemy, score, bolts, close)
+    HookSystem.hook(Item, "onAttack", function(orig, self, action, battler, enemy, score, bolts, close)
 
         local src = Assets.stopAndPlaySound(battler.chara:getAttackSound() or "laz_c")
         src:setPitch(battler.chara:getAttackPitch() or 1)
@@ -153,13 +153,13 @@ function Lib:init()
                 end
             end
 
-            local damage = Utils.round(enemy:getAttackDamage(action.damage or 0, battler, action.points or 0))
+            local damage = MathUtils.round(enemy:getAttackDamage(action.damage or 0, battler, action.points or 0))
             if damage < 0 then
                 damage = 0
             end
 
             if damage > 0 then
-                Game:giveTension(Utils.round(enemy:getAttackTension(action.points or 100)))
+                Game:giveTension(MathUtils.round(enemy:getAttackTension(action.points or 100)))
 
                 local dmg_sprite = Sprite(battler.chara:getAttackSprite() or "effects/attack/cut")
                 dmg_sprite:setOrigin(0.5, 0.5)
@@ -186,8 +186,8 @@ function Lib:init()
 
             Game.battle:finishAction(action)
 
-            Utils.removeFromTable(Game.battle.normal_attackers, battler)
-            Utils.removeFromTable(Game.battle.auto_attackers, battler)
+            TableUtils.removeValue(Game.battle.normal_attackers, battler)
+            TableUtils.removeValue(Game.battle.auto_attackers, battler)
 
             if not Game.battle:retargetEnemy() then
                 Game.battle.cancel_attack = true
@@ -204,7 +204,7 @@ function Lib:init()
 
     end)
 
-    Utils.hook(Item, "onWeaponMiss", function(orig, self, battler, score, bolts, close)
+    HookSystem.hook(Item, "onWeaponMiss", function(orig, self, battler, score, bolts, close)
 
         local attackbox
         for _,box in ipairs(Game.battle.battle_ui.attack_boxes) do
@@ -226,7 +226,7 @@ function Lib:init()
     
     end)
 
-    Utils.hook(Item, "onArmorMiss", function(orig, self, battler, score, bolts, close)
+    HookSystem.hook(Item, "onArmorMiss", function(orig, self, battler, score, bolts, close)
 
         local attackbox
         for _,box in ipairs(Game.battle.battle_ui.attack_boxes) do
@@ -239,7 +239,7 @@ function Lib:init()
         return self:checkAttackEnd(battler, attackbox.score, bolts, close)
     end)
 
-    Utils.hook(Item, "checkAttackEnd", function(orig, self, battler, score, bolts, close)
+    HookSystem.hook(Item, "checkAttackEnd", function(orig, self, battler, score, bolts, close)
     
         local attackbox
         for _,box in ipairs(Game.battle.battle_ui.attack_boxes) do
@@ -256,7 +256,7 @@ function Lib:init()
     
     end)
 
-    Utils.hook(Item, "onBoltBurst", function(orig, self, battler, score, bolts, close)
+    HookSystem.hook(Item, "onBoltBurst", function(orig, self, battler, score, bolts, close)
 
         local bolt = bolts[1]
 
@@ -293,7 +293,7 @@ function Lib:init()
 
     ----- EVALUATEHIT
 
-    Utils.hook(Item, "evaluateHit", function(orig, self, battler, close)
+    HookSystem.hook(Item, "evaluateHit", function(orig, self, battler, close)
 
         if battler:getBoltCount() > 1 then
 
@@ -361,7 +361,7 @@ function Lib:init()
 
     ----- EVALUATESCORE
 
-    Utils.hook(Item, "evaluateScore", function(orig, self, battler, score, bolts, close)
+    HookSystem.hook(Item, "evaluateScore", function(orig, self, battler, score, bolts, close)
 
         if battler:getBoltCount() > 1 then
 
@@ -375,7 +375,7 @@ function Lib:init()
             elseif perfect_score - score <= 150 - crit then
                 return 110
             else
-                return Utils.round(score / 3)
+                return MathUtils.round(score / 3)
             end
 
         elseif battler:getBoltCount() == 1 and score == 150 then
@@ -396,7 +396,7 @@ function Lib:init()
 
     -----  NEW PROPERTIES AND CALLBACKS
 
-    Utils.hook(PartyBattler, "createPartyBattlers", function(orig, self)
+    HookSystem.hook(PartyBattler, "createPartyBattlers", function(orig, self)
 
         orig(self)
 
@@ -407,7 +407,7 @@ function Lib:init()
     end)
 
     -- these are initialized as 0, so math.max is used to set it to 1 if no bolts are added
-    Utils.hook(PartyBattler, "getBoltCount", function(orig, self)
+    HookSystem.hook(PartyBattler, "getBoltCount", function(orig, self)
 
         self.bolt_count = 0
 
@@ -426,7 +426,7 @@ function Lib:init()
     end)
 
     -- 8 is the default speed. if you change this, i recommend setting it to a multiple of 8 so the bolts don't desync
-    Utils.hook(PartyBattler, "getBoltSpeed", function(orig, self)
+    HookSystem.hook(PartyBattler, "getBoltSpeed", function(orig, self)
 
         self.bolt_speed = 0
 
@@ -444,7 +444,7 @@ function Lib:init()
 
     end)
 
-    Utils.hook(PartyBattler, "getBoltOffset", function(orig, self)
+    HookSystem.hook(PartyBattler, "getBoltOffset", function(orig, self)
 
         self.bolt_offset = 0
 
@@ -463,7 +463,7 @@ function Lib:init()
     -----  INIT
 
     if not Lib.MOREPARTY then
-        Utils.hook(AttackBox, "init", function(orig, self, battler, offset, index, x, y)
+        HookSystem.hook(AttackBox, "init", function(orig, self, battler, offset, index, x, y)
 
             AttackBox.__super.init(self, x, y)
         
@@ -561,13 +561,13 @@ function Lib:init()
 
     -----  GETCLOSE
 
-    Utils.hook(AttackBox, "getClose", function(orig, self)
-        return Utils.round((self.bolts[1].x - self.bolt_target) / self.battler:getBoltSpeed())
+    HookSystem.hook(AttackBox, "getClose", function(orig, self)
+        return MathUtils.round((self.bolts[1].x - self.bolt_target) / self.battler:getBoltSpeed())
     end)
 
     -----  HIT
 
-    Utils.hook(AttackBox, "hit", function(orig, self)
+    HookSystem.hook(AttackBox, "hit", function(orig, self)
         
         local close = self:getClose()
 
@@ -579,7 +579,7 @@ function Lib:init()
 
     -----  MISS
 
-    Utils.hook(AttackBox, "miss", function(orig, self)
+    HookSystem.hook(AttackBox, "miss", function(orig, self)
 
         local close = self:getClose()
 
@@ -596,7 +596,7 @@ function Lib:init()
     -----  UPDATE
 
     if not Mod.libs["moreparty"] then
-        Utils.hook(AttackBox, "update", function(orig, self)
+        HookSystem.hook(AttackBox, "update", function(orig, self)
             if self.removing or Game.battle.cancel_attack then
                 self.fade_rect.alpha = MathUtils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
             end
@@ -647,13 +647,13 @@ function Lib:init()
     -----  DRAW
 
     if not Lib.MOREPARTY then
-        Utils.hook(AttackBox, "draw", function(orig, self)
+        HookSystem.hook(AttackBox, "draw", function(orig, self)
 
             local target_color = {self.battler.chara:getAttackBarColor()}
             local box_color = {self.battler.chara:getAttackBoxColor()}
         
             if self.flash > 0 then
-                box_color = Utils.lerp(box_color, {1, 1, 1}, self.flash)
+                box_color = MathUtils.lerp(box_color, {1, 1, 1}, self.flash)
             end
         
             love.graphics.setLineWidth(2)
@@ -684,7 +684,7 @@ function Lib:init()
 
     -----  PROCESSACTION
 
-    Utils.hook(Battle, "processAction", function(orig, self, action)
+    HookSystem.hook(Battle, "processAction", function(orig, self, action)
         local battler = self.party[action.character_id]
         local party_member = battler.chara
         local enemy = action.target
@@ -739,7 +739,7 @@ function Lib:init()
 
     -----  UPDATEATTACKING
 
-    Utils.hook(Battle, "updateAttacking", function(orig, self)
+    HookSystem.hook(Battle, "updateAttacking", function(orig, self)
 
         if self.cancel_attack then
             self:finishAllActions()
@@ -812,7 +812,7 @@ function Lib:init()
 
     -----  DRAWDEBUG
 
-    Utils.hook(Battle, "drawDebug", function(orig, self)
+    HookSystem.hook(Battle, "drawDebug", function(orig, self)
         orig(self)
 
         local ui = self.battle_ui

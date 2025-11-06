@@ -77,7 +77,7 @@ function MyEnemy:init()
 	socks:setOrigin(.5, .5)
 	socks.hit = 0
 	
-	Utils.hook(socks, "update", function(orig, obj)
+	HookSystem.hook(socks, "update", function(orig, obj)
 		orig(obj)
 		obj:setFrame(self.sprite.frame)
 	end)

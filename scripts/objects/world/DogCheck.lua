@@ -248,7 +248,7 @@ function DogCheck:chapter2Script(wait)
             small_dog:play(anim_speed, true)
             -- auto-cleanup
             ---@diagnostic disable-next-line: redefined-local
-            Utils.hook(small_dog, "update", function(orig, self, ...)
+            HookSystem.hook(small_dog, "update", function(orig, self, ...)
                 orig(self, ...)
                 local max_dist = 3*TILE_WIDTH
                 if self.x < -max_dist or self.x > SCREEN_WIDTH + max_dist then

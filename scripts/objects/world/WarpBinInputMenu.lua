@@ -46,7 +46,7 @@ function WarpBinInputMenu:onAdd(...)
         end
     })
     TextInput.text_callback = function()
-        self.input[1] = Utils.sub(self.input[1], 1, self.code_len)
+        self.input[1] = StringUtils.sub(self.input[1], 1, self.code_len)
     end
     TextInput.submit_callback = function()
         if self.finish_cb then
@@ -66,7 +66,7 @@ function WarpBinInputMenu:draw()
     assert(actual_input_len <= self.code_len)
     for i = 1, self.code_len do
         if actual_input_len >= i then
-            local char = Utils.sub(self.input[1], i, i)
+            local char = StringUtils.sub(self.input[1], i, i)
             love.graphics.printf(char, draw_x, draw_y, self.char_w, "center")
         end
 

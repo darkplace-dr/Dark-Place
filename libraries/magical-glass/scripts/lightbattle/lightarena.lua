@@ -48,8 +48,8 @@ function LightArena:setSize(width, height)
 end
 
 function LightArena:setShape(shape)
-    self.shape = Utils.copy(shape, true)
-    self.processed_shape = Utils.copy(shape, true)
+    self.shape = TableUtils.copy(shape, true)
+    self.processed_shape = TableUtils.copy(shape, true)
     
     local min_x, min_y, max_x, max_y
     for _,point in ipairs(self.shape) do
@@ -77,7 +77,7 @@ function LightArena:setShape(shape)
 
     self.clockwise = Utils.isPolygonClockwise(self.shape)
 
-    self.area_collider = PolygonCollider(self, Utils.copy(shape, true))
+    self.area_collider = PolygonCollider(self, TableUtils.copy(shape, true))
 
     self.collider.colliders = {}
     for _,v in ipairs(Utils.getPolygonEdges(self.shape)) do

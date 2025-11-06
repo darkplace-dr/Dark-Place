@@ -109,7 +109,7 @@ function BG:draw()
 	
     if self.bg_active == true then
         if self.bg_alpha < 1 then
-            self.bg_alpha = Utils.lerp(self.bg_alpha, 1, 0.2)
+            self.bg_alpha = MathUtils.lerp(self.bg_alpha, 1, 0.2)
         end
 		
         if self.cityscapefade == 1 then

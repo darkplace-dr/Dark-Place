@@ -55,7 +55,7 @@ function Mod:init()
 
     -- v0.8.1 getSoulOffset absence HACK
     if not Actor["getSoulOffset"] then
-        Utils.hook(Actor, "getSoulOffset",
+        HookSystem.hook(Actor, "getSoulOffset",
         ---@overload fun(orig:function, self:Actor) : x:number, y:number
         ---@diagnostic disable-next-line: redefined-local
         function(_, self)
@@ -65,7 +65,7 @@ function Mod:init()
     end
     -- v0.8.1 setDarkTransitionActor absence HACK
     if not PartyMember["setDarkTransitionActor"] then
-        Utils.hook(PartyMember, "setDarkTransitionActor",
+        HookSystem.hook(PartyMember, "setDarkTransitionActor",
         ---@overload fun(orig:function, self:PartyMember, actor:Actor|string) : nil
         ---@diagnostic disable-next-line: redefined-local
         function(_, self, actor)
@@ -79,7 +79,7 @@ function Mod:init()
     end
     
     if Mod.libs["magical-glass"] then
-        Utils.hook(LightActionBox, "createButtons", function(orig, self)
+        HookSystem.hook(LightActionBox, "createButtons", function(orig, self)
             for _,button in ipairs(self.buttons or {}) do
                 button:remove()
             end
@@ -88,8 +88,8 @@ function Mod:init()
 
             local btn_types = {"fight", "act", "spell", "item", "mercy"}
 
-            if not self.battler.chara:hasAct() then Utils.removeFromTable(btn_types, "act") end
-            if not self.battler.chara:hasSpells() then Utils.removeFromTable(btn_types, "spell") end
+            if not self.battler.chara:hasAct() then TableUtils.removeValue(btn_types, "act") end
+            if not self.battler.chara:hasSpells() then TableUtils.removeValue(btn_types, "spell") end
             
             if self.battler.chara:hasSkills() then
                 btn_types = {"fight", "skill", "item", "mercy"}
@@ -129,11 +129,11 @@ function Mod:init()
                 end
             end
 
-            self.selected_button = Utils.clamp(self.selected_button, 1, #self.buttons)
+            self.selected_button = MathUtils.clamp(self.selected_button, 1, #self.buttons)
 
         end)
         
-        Utils.hook(LightActionButton, "select", function(orig, self)
+        HookSystem.hook(LightActionButton, "select", function(orig, self)
             orig(self)
             -- Custom buttons start here.
 
@@ -227,7 +227,7 @@ function Mod:init()
             end
         end)
 
-        Utils.hook(ChaserEnemy, "onCollide", function(orig, self, player)
+        HookSystem.hook(ChaserEnemy, "onCollide", function(orig, self, player)
 
             if self:isActive() and player:includes(Player) then
 				if player.invincible_colors then
@@ -326,7 +326,7 @@ function Mod:init()
     --- When set to `"none"`, no sound will be played.
     ---@field thorns_sound                 string|nil  
     
-    Utils.hook(PartyBattler, "hurt", function(orig, self, amount, exact, color, options)
+    HookSystem.hook(PartyBattler, "hurt", function(orig, self, amount, exact, color, options)
 
         local function noel_damage(amount) -- DO NOT QUESTION MY CHOICES
             local meth = love.math.random(1, 3)
@@ -483,7 +483,7 @@ function Mod:init()
                 
                 local enemy = TableUtils.pick(enemies)
                 if enemy then
-                    enemy:hurt(math.min(Utils.round(amount * thorns_item.thorns_damage_proportion), enemy.health - 1))
+                    enemy:hurt(math.min(MathUtils.round(amount * thorns_item.thorns_damage_proportion), enemy.health - 1))
                     -- If the sound is none then don't play anything.
                     if snd ~= "none" then
                         Assets.playSound(snd)
@@ -493,7 +493,7 @@ function Mod:init()
         end
     end)
 
-    Utils.hook(Textbox, "init", function(orig, self, x, y, width, height, default_font, default_font_size, battle_box)
+    HookSystem.hook(Textbox, "init", function(orig, self, x, y, width, height, default_font, default_font_size, battle_box)
         default_font = default_font
             or Kristal.callEvent("getDefaultDialogTextFont")
         orig(self, x, y, width, height, default_font, default_font_size, battle_box)
@@ -723,7 +723,7 @@ function Mod:initializeImportantFlags(new_file)
         local party_obj = Game:getPartyMember(party)
         assert(party_obj, "unknown party member ID " .. party)
         assert(party_obj.opinions)
-        party_obj.opinions = Utils.merge(party_obj.opinions, new_opinions)
+        party_obj.opinions = TableUtils.merge(party_obj.opinions, new_opinions)
     end
 
     if new_file or mario.opinions == nil then
@@ -826,7 +826,7 @@ function Mod:initializeImportantFlags(new_file)
         end
         Game:setFlag("pc_gifts_status", generateStatusTable(self.pc_gifts_data))
     else
-        Game:setFlag("pc_gifts_status", Utils.merge(generateStatusTable(self.pc_gifts_data), Game:getFlag("pc_gifts_status")))
+        Game:setFlag("pc_gifts_status", TableUtils.merge(generateStatusTable(self.pc_gifts_data), Game:getFlag("pc_gifts_status")))
     end
 
     ----------
@@ -913,7 +913,7 @@ function Mod:getActionButtons(battler, buttons)
     end
 
     if battler.chara.id == "mario" and Game:getFlag("acj_mario_fightless") then
-        Utils.removeFromTable(buttons, "fight")
+        TableUtils.removeValue(buttons, "fight")
     end
 
     if battler.chara.id == "noel" then
@@ -922,17 +922,17 @@ function Mod:getActionButtons(battler, buttons)
 
     if Game.battle.encounter.id == "brenda" then
         if battler.chara.id == "susie" then
-            Utils.removeFromTable(buttons, "fight")
+            TableUtils.removeValue(buttons, "fight")
         end
         if battler.chara.id == "dess" then
             if Game:getFlag("dungeonkiller") and not Game:getFlag("b_fight_dess") then
                 -- do nothing
             else
-                Utils.removeFromTable(buttons, "fight")
+                TableUtils.removeValue(buttons, "fight")
             end
         end
         if battler.chara.id == "jamm" and not Game:getFlag("dungeonkiller") then
-            Utils.removeFromTable(buttons, "fight")
+            TableUtils.removeValue(buttons, "fight")
         end
     end
 

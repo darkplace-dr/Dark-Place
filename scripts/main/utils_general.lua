@@ -49,7 +49,7 @@ function Mod:evaluateCond(data, ...)
     if data.cond then
         result = data.cond(...)
     elseif data.flagcheck then
-        local inverted, flag = Utils.startsWith(data.flagcheck, "!")
+        local inverted, flag = StringUtils.startsWith(data.flagcheck, "!")
 
         local flag_value = Game.flags[flag]
         local expected_value = data.flagvalue
@@ -88,7 +88,7 @@ end
 ---@return integer|nil j
 function Mod:getIndex2D(t, value)
     for i,r in ipairs(t) do
-        local j = Utils.getIndex(r, value)
+        local j = TableUtils.getIndex(r, value)
         if j then
             return i, j
         end
@@ -117,7 +117,7 @@ end
 ---@return number
 function Mod:lerpSnap(a, b, m, snap_delta)
     if snap_delta == nil then snap_delta = 0.001 end
-    local result = Utils.lerp(a, b, m)
+    local result = MathUtils.lerp(a, b, m)
     if b - result <= snap_delta then
         return b
     end

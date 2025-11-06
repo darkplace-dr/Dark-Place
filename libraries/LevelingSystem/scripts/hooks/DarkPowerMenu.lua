@@ -130,12 +130,12 @@ function DarkPowerMenu:update()
         if Input.pressed("down", true) then
             self.selected_spell = self.selected_spell + 1
         end
-        self.selected_spell = Utils.clamp(self.selected_spell, 1, #spells)
+        self.selected_spell = MathUtils.clamp(self.selected_spell, 1, #spells)
         if self.selected_spell ~= old_selected then
             local spell_limit = self:getSpellLimit()
             local min_scroll = math.max(1, self.selected_spell - (spell_limit - 1))
             local max_scroll = math.min(math.max(1, #spells - (spell_limit - 1)), self.selected_spell)
-            self.scroll_y = Utils.clamp(self.scroll_y, min_scroll, max_scroll)
+            self.scroll_y = MathUtils.clamp(self.scroll_y, min_scroll, max_scroll)
 
             self.ui_move:stop()
             self.ui_move:play()
@@ -178,7 +178,7 @@ function DarkPowerMenu:draw()
 
     local arrow_weave = 0
     if self.state == "CHOOSETAB" then
-        arrow_weave = Utils.round(math.sin(Kristal.getTime() * 5)) * 2
+        arrow_weave = MathUtils.round(math.sin(Kristal.getTime() * 5)) * 2
         Draw.setColor(1, 1, 0, 1)
     end
     Draw.draw(self.caption_sprites["arrow_l"], x-19-arrow_weave, 95, 0, 2, 2)

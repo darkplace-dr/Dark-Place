@@ -177,7 +177,7 @@ return {
             Game:setFlag("starwalker_money", Game.money)
             
             while Game.money > 0 do
-                Game.money = math.floor(Utils.lerp(Game.money, 0, 0.33))
+                Game.money = math.floor(MathUtils.lerp(Game.money, 0, 0.33))
                 cutscene:wait(1/30)
             end
             

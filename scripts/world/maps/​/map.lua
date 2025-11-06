@@ -33,10 +33,10 @@ function mb_map:update()
 		mb_ev.x = MathUtils.approach(mb_ev.x, player.x-mb_ev.width/2, self.stepback*DTMULT)
 		mb_ev.y = MathUtils.approach(mb_ev.y, player.y-mb_ev.height*2, self.stepback*DTMULT)
 		local limit = not Game.party[1]:checkArmor("pizza_toque")
-		self.stepback = Utils.clamp(self.stepback + 0.1*DTMULT, 0.01, limit and 12 or math.huge)
+		self.stepback = MathUtils.clamp(self.stepback + 0.1*DTMULT, 0.01, limit and 12 or math.huge)
 		if player:collidesWith(mb_ev) then
 			Game:setFlag("s", true)
-			Game:setPartyMembers(Utils.unpack(self.old_party))
+			Game:setPartyMembers(TableUtils.unpack(self.old_party))
 			player:remove()
 			self.back = false
 			Game.world:closeMenu()
@@ -87,7 +87,7 @@ end
 
 function mb_map:onExit()
 	if Game:getFlag("mb_partySet", nil) then
-		Game:setPartyMembers(Utils.dump(self.old_party))
+		Game:setPartyMembers(TableUtils.dump(self.old_party))
 		for i,follower in ipairs(Game.world.followers) do
 	    	follower.visible = true
 	    end

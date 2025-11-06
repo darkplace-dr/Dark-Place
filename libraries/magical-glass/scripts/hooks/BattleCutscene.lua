@@ -98,7 +98,7 @@ function BattleCutscene:closeText()
         self.textchoicebox = nil
     end
 
-    for _,battler in ipairs(Utils.mergeMultiple(Game.battle.party, Game.battle:getActiveEnemies())) do
+    for _,battler in ipairs(TableUtils.mergeMany(Game.battle.party, Game.battle:getActiveEnemies())) do
         if battler.bubble then
             battler:onBubbleRemove(battler.bubble)
             battler.bubble:remove()

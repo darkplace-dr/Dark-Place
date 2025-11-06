@@ -25,7 +25,7 @@ function Speen:init()
 
 	self.beyblade_sound = love.audio.newSource(Assets.getMusicPath("full_beyblade_theme_song"), "stream")
 
-	Utils.hook(Player, "isMovementEnabled",
+	HookSystem.hook(Player, "isMovementEnabled",
         ---@overload fun(orig:function, self:Player):boolean
         function(orig, g_self)
             return orig(g_self)
@@ -139,7 +139,7 @@ end
 
 function Speen:nextFacing()
 	local order = {"down", "up", "left", "right"}
-	local i = Utils.getIndex(order, self.current_facing)
+	local i = TableUtils.getIndex(order, self.current_facing)
 	self.current_facing = order[Utils.clampWrap(i + 1, 1, #order)]
 end
 

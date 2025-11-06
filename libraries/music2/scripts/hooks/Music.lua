@@ -251,7 +251,7 @@ end
 function Music:remove()
     self:stop(true)
 
-    Utils.removeFromTable(_instances, self)
+    TableUtils.removeValue(_instances, self)
     self.removed = true
 end
 
@@ -308,7 +308,7 @@ local function getAll()
 end
 
 local function getPlaying()
-    return Utils.filter(_instances, function(x)
+    return TableUtils.filter(_instances, function(x)
         return x:isPlaying()
     end)
 end

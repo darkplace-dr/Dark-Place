@@ -1,7 +1,7 @@
 return function(cutscene)
     local last_positions = {}
 
-    local werewires = Utils.filter(Game.battle:getActiveEnemies(), function(e) return e.id == "werewire" end)
+    local werewires = TableUtils.filter(Game.battle:getActiveEnemies(), function(e) return e.id == "werewire" end)
 
     local werewire_index = 0
     for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
@@ -55,7 +55,7 @@ return function(cutscene)
     cutscene:wait(0.5)
 
     for _,enemy in ipairs(werewires) do
-        if Utils.containsValue(hit, enemy) then
+        if TableUtils.contains(hit, enemy) then
             enemy:addMercy(50)
         else
             enemy:addMercy(0)

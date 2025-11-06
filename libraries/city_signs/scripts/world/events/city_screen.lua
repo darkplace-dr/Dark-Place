@@ -23,7 +23,7 @@ function CityScreen:init(data)
     if type(extra_sprites) == "string" then
         table.insert(spritelist, extra_sprites)
     elseif type(extra_sprites) == "table" then
-        spritelist = Utils.merge(spritelist, extra_sprites)
+        spritelist = TableUtils.merge(spritelist, extra_sprites)
     end
 
     ::skip::
@@ -78,13 +78,13 @@ function CityScreen:update()
         if self.frame_timer >= self.frame_timer_threshold then
             if self.con == 0 then
                 self.timer = self.timer + 1
-                self:setScale(Utils.lerp(self.scale_x, 1.5, 0.5))
+                self:setScale(MathUtils.lerp(self.scale_x, 1.5, 0.5))
                 if self.scale_x >= 1.25 then
                     self.con = 1
                 end
             end
             if self.con == 1 then
-                self:setScale(Utils.lerp(self.scale_x, 1, 0.5))
+                self:setScale(MathUtils.lerp(self.scale_x, 1, 0.5))
                 if (math.abs(self.scale_x) - 2) <= 0.05 then
                     self:setScale(1)
                     self.con = 2
@@ -108,13 +108,13 @@ function CityScreen:update()
         if self.frame_timer >= self.frame_timer_threshold then
             if self.con == 0 then
                 self.timer = self.timer + 1
-                self:setScale(Utils.lerp(self.scale_x, 1.5, 0.5))
+                self:setScale(MathUtils.lerp(self.scale_x, 1.5, 0.5))
                 if self.scale_x >= 1.25 then
                     self.con = 1
                 end
             end
             if self.con == 1 then
-                self:setScale(Utils.lerp(self.scale_x, 1, 0.5))
+                self:setScale(MathUtils.lerp(self.scale_x, 1, 0.5))
                 if (math.abs(self.scale_x) - 2) <= 0.05 then
                     self:setScale(1)
                     self.con = 2

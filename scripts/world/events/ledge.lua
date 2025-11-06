@@ -5,7 +5,7 @@ function Ledge:init(data)
 
     data.properties = data.properties or {}
 
-    self.collider = Utils.colliderFromShape(self, data)
+    self.collider = TiledUtils.colliderFromShape(self, data)
     
     self.x_axis = data.properties["x"] or false
 

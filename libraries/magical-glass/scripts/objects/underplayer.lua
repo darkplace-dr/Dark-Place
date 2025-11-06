@@ -152,7 +152,7 @@ function UnderPlayer:doMoveAmount(type, amount, other_amount)
 
     local other = type == "x" and "y" or "x"
 
-    local sign = Utils.sign(amount)
+    local sign = MathUtils.sign(amount)
     for i = 1, math.ceil(math.abs(amount)) do
         local moved = sign
         if (i > math.abs(amount)) then

@@ -213,28 +213,28 @@ function bookText:textToNodes(input_string)
     local last_char = ""
     local i = 1
     while i <= utf8.len(input_string) do
-        local current_char = Utils.sub(input_string, i, i)
+        local current_char = StringUtils.sub(input_string, i, i)
         local leaving_modifier = false
         if current_char == "[" and last_char ~= "\\" then -- We got a [, time to see if it's a modifier
             local j = i + 1
             local current_modifier = ""
             while j <= utf8.len(input_string) do
-                if Utils.sub(input_string, j, j) == "]" then -- We found a bracket!
+                if StringUtils.sub(input_string, j, j) == "]" then -- We found a bracket!
                     local old_i = i
                     i = j                                    -- Let's set i so the modifier isn't processed as normal text
 
                     -- Let's split some values in the modifier!
-                    local split = Utils.splitFast(current_modifier, ":")
+                    local split = StringUtils.splitFast(current_modifier, ":")
                     local command = split[1]
                     local arguments = {}
                     if #split > 1 then
-                        -- arguments = Utils.splitFast(split[2], ",")
+                        -- arguments = StringUtils.splitFast(split[2], ",")
                         local k = 1
                         local k_start = 1
                         local escaping = false
                         local arg = ""
                         while k <= utf8.len(split[2]) do
-                            local char = Utils.sub(split[2], k, k)
+                            local char = StringUtils.sub(split[2], k, k)
                             if escaping then
                                 escaping = false
                                 arg = arg .. char
@@ -273,9 +273,9 @@ function bookText:textToNodes(input_string)
 
                             -- Cut out the bind modifier from the text and insert the key name
                             local input_text = Input.getText(arguments[1])
-                            input_string = Utils.sub(input_string, 1, i - 1) ..
-                                input_text .. Utils.sub(input_string, j + 1)
-                            current_char = Utils.sub(input_string, i, i)
+                            input_string = StringUtils.sub(input_string, 1, i - 1) ..
+                                input_text .. StringUtils.sub(input_string, j + 1)
+                            current_char = StringUtils.sub(input_string, i, i)
 
                             -- Go back and parse the rest like normal text
                             break
@@ -291,7 +291,7 @@ function bookText:textToNodes(input_string)
                         if self.preprocess then
                             local prior_state
                             if self.wrap then
-                                prior_state = Utils.copy(self.state, true)
+                                prior_state = TableUtils.copy(self.state, true)
                             end
                             self:processNode(new_node, true)
                             if self.wrap and self.state.current_x > self.width then
@@ -313,7 +313,7 @@ function bookText:textToNodes(input_string)
                                     }
                                     nodes[last_space + 1] = newline_node
                                     self:processNode(newline_node, true)
-                                    display_text = Utils.stringInsert(display_text, "\n", last_space_char + 1)
+                                    display_text = StringUtils.insert(display_text, "\n", last_space_char + 1)
                                     for i = last_space + 1, #nodes + 1 do
                                         if nodes[i] then
                                             self:processNode(nodes[i], true)
@@ -332,10 +332,10 @@ function bookText:textToNodes(input_string)
                         i = old_i
                     end
 
-                    current_char = Utils.sub(input_string, i, i) -- Set current_char to the new value
+                    current_char = StringUtils.sub(input_string, i, i) -- Set current_char to the new value
                     break
                 else
-                    current_modifier = current_modifier .. Utils.sub(input_string, j, j)
+                    current_modifier = current_modifier .. StringUtils.sub(input_string, j, j)
                 end
                 j = j + 1
             end
@@ -347,7 +347,7 @@ function bookText:textToNodes(input_string)
             if self.wrap and (current_char == " " or current_char == "\n") then
                 last_space = #nodes
                 last_space_char = utf8.len(display_text)
-                last_space_state = Utils.copy(self.state, true)
+                last_space_state = TableUtils.copy(self.state, true)
             end
             local new_node = {
                 ["type"] = "character",
@@ -358,7 +358,7 @@ function bookText:textToNodes(input_string)
             if self.preprocess then
                 local prior_state
                 if self.wrap then
-                    prior_state = Utils.copy(self.state, true)
+                    prior_state = TableUtils.copy(self.state, true)
                 end
                 self:processNode(new_node, true)
                 if self.wrap and self.state.current_x > self.width then
@@ -380,7 +380,7 @@ function bookText:textToNodes(input_string)
                         }
                         nodes[last_space + 1] = newline_node
                         --self:processNode(newline_node, true)
-                        display_text = Utils.stringInsert(display_text, "\n", last_space_char + 1)
+                        display_text = StringUtils.insert(display_text, "\n", last_space_char + 1)
                         for i = last_space + 1, #nodes + 1 do
                             if nodes[i] then
                                 self:processNode(nodes[i], true)
@@ -477,7 +477,7 @@ function bookText:processNode(node, dry)
             self.state.newline = false
             self.state.typed_characters = self.state.typed_characters - 1
         elseif not self.state.escaping then
-            if node.character == Utils.sub(self.state.indent_string, 1, 1) then
+            if node.character == StringUtils.sub(self.state.indent_string, 1, 1) then
                 if self.state.indent_mode and self.state.newline then
                     self.state.current_x = 0
                     self.state.newline = false
@@ -486,7 +486,7 @@ function bookText:processNode(node, dry)
             --print("INSERTING " .. node.character .. " AT " .. self.state.current_x .. ", " .. self.state.current_y)
             if not dry then
                 self:drawChar(node, self.state)
-                table.insert(self.nodes_to_draw, { node, Utils.copy(self.state, true) })
+                table.insert(self.nodes_to_draw, { node, TableUtils.copy(self.state, true) })
             end
             local w, h = self:getNodeSize(node, self.state)
             self.state.current_x = self.state.current_x + w + self.state.spacing
@@ -494,10 +494,10 @@ function bookText:processNode(node, dry)
         else
             self.state.newline = false
             self.state.escaping = false
-            if node.character == "\\" or node.character == Utils.sub(self.state.indent_string, 1, 1) or node.character == "[" or node.character == "]" then
+            if node.character == "\\" or node.character == StringUtils.sub(self.state.indent_string, 1, 1) or node.character == "[" or node.character == "]" then
                 if not dry then
                     self:drawChar(node, self.state)
-                    table.insert(self.nodes_to_draw, { node, Utils.copy(self.state, true) })
+                    table.insert(self.nodes_to_draw, { node, TableUtils.copy(self.state, true) })
                 end
                 local w, h = self:getNodeSize(node, self.state)
                 self.state.current_x = self.state.current_x + w + self.state.spacing
@@ -522,11 +522,11 @@ function bookText:processNode(node, dry)
     else
         self.state.line_lengths[self.state.current_line] = self.state.current_x
     end
-    --print(Utils.dump(node))
+    --print(TableUtils.dump(node))
 end
 
 function bookText:isModifier(command)
-    return Utils.containsValue(bookText.COMMANDS, command) or self.custom_commands[command]
+    return TableUtils.contains(bookText.COMMANDS, command) or self.custom_commands[command]
 end
 --"b", "i", "s1", "s2"
 function bookText:processModifier(node, dry)
@@ -589,10 +589,10 @@ function bookText:processModifier(node, dry)
             self.state.color = self.text_color
         elseif #node.arguments[1] == 6 then
             -- It's 6 letters long, assume hashless hex
-            self.state.color = Utils.hexToRgb("#" .. node.arguments[1])
+            self.state.color = ColorUtils.hexToRGB("#" .. node.arguments[1])
         elseif #node.arguments[1] == 7 then
             -- It's 7 letters long, assume hex
-            self.state.color = Utils.hexToRgb(node.arguments[1])
+            self.state.color = ColorUtils.hexToRGB(node.arguments[1])
         end
     elseif node.command == "font" then
         if node.arguments[1] == "reset" then
@@ -704,8 +704,8 @@ function bookText:drawChar(node, state, use_color)
     if state.shake > 0 then
         if self.timer - state.last_shake >= (1 * DTMULT) then
             state.last_shake = self.timer
-            state.offset_x = Utils.round(MathUtils.random(-state.shake, state.shake))
-            state.offset_y = Utils.round(MathUtils.random(-state.shake, state.shake))
+            state.offset_x = MathUtils.round(MathUtils.random(-state.shake, state.shake))
+            state.offset_y = MathUtils.round(MathUtils.random(-state.shake, state.shake))
         end
     end
 

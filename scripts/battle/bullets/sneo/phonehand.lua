@@ -188,8 +188,8 @@ function PhoneHand:draw()
         love.graphics.setLineWidth(4)
         love.graphics.line(self.joint_x, self.joint_y, self.boss.x, self.boss.y)
         for i = 0, 4 do
-            Draw.draw(Assets.getTexture("battle/bullets/sneo/phonehand/joint"), Utils.lerp(29, self.joint_x, (i / 4)), Utils.lerp(13, self.joint_y, (i / 4)), 0, 2, 2, 11/2, 11/2)
-            Draw.draw(Assets.getTexture("battle/bullets/sneo/phonehand/joint"), Utils.lerp(self.joint_x, self.boss.x, (i / 4)), Utils.lerp(self.joint_y, self.boss.y, (i / 4)), 0, 2, 2, 11/2, 11/2)
+            Draw.draw(Assets.getTexture("battle/bullets/sneo/phonehand/joint"), MathUtils.lerp(29, self.joint_x, (i / 4)), MathUtils.lerp(13, self.joint_y, (i / 4)), 0, 2, 2, 11/2, 11/2)
+            Draw.draw(Assets.getTexture("battle/bullets/sneo/phonehand/joint"), MathUtils.lerp(self.joint_x, self.boss.x, (i / 4)), MathUtils.lerp(self.joint_y, self.boss.y, (i / 4)), 0, 2, 2, 11/2, 11/2)
         end
     end
 	

@@ -128,7 +128,7 @@ function Player:starman()
     if Kristal.Config["simplifyVFX"] == true then
 		self.siner = self.siner + DT * 40
 		self.inv_timer = self.inv_timer - DT
-		self:setColor(Utils.hsvToRgb(((self.siner * 8) % 255)/255, 255/255, 255/255))
+		self:setColor(ColorUtils.HSVToRGB(((self.siner * 8) % 255)/255, 255/255, 255/255))
 		if (self.inv_timer + DT) % 0.125 < self.inv_timer % 0.125 then
 			local afterimage = Sprite(self.sprite:getTexture(), self.x - self.sprite:getOffset()[1], self.y - self.sprite:getOffset()[2])
 			afterimage:setScale(2, 2)
@@ -232,10 +232,10 @@ function Player:handleMovement()
 
     self:move(walk_x, walk_y, speed * DTMULT)
 
-    local followers = Utils.filter(self.world.followers, function(member)
+    local followers = TableUtils.filter(self.world.followers, function(member)
         return member:getTarget() == self
     end)
-    local members = Utils.merge({self}, followers)
+    local members = TableUtils.merge({self}, followers)
     local walkers = 0
     for _, member in ipairs(members) do
         if member.state == "WALK" then walkers = walkers + 1 end
@@ -356,8 +356,8 @@ end
 function Player:updateHop()
     self.hop_timer = self.hop_timer + DT
 
-    self.x = Utils.lerp(self.hop_start_x, self.hop_target_x, self.hop_timer / self.hop_speed)
-    self.y = Utils.lerp(self.hop_start_y, self.hop_target_y, self.hop_timer / self.hop_speed)
+    self.x = MathUtils.lerp(self.hop_start_x, self.hop_target_x, self.hop_timer / self.hop_speed)
+    self.y = MathUtils.lerp(self.hop_start_y, self.hop_target_y, self.hop_timer / self.hop_speed)
 
     local half_hop = self.hop_speed / 2
     if self.hop_timer < half_hop then

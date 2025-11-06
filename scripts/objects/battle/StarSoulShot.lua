@@ -34,7 +34,7 @@ function Shot:update()
 		end
     end
 
-    local bullets = Utils.filter(Game.stage:getObjects(Bullet), function(v)
+    local bullets = TableUtils.filter(Game.stage:getObjects(Bullet), function(v)
         if self.hit_bullets[v] then return false end
         return v.onShot
     end)

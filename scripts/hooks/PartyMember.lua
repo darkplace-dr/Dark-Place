@@ -440,7 +440,7 @@ end
 -- Functions / Getters & Setters
 
 function PartyMember:addExp(amount)
-    self.exp = Utils.clamp(self.exp + amount, 0, self.max_exp)
+    self.exp = MathUtils.clamp(self.exp + amount, 0, self.max_exp)
 
     local leveled_up = false
     while self.exp >= self:getNextLvRequiredEXP() and self.love < #self.exp_needed do
@@ -467,7 +467,7 @@ function PartyMember:getNextLvRequiredEXP()
 end
 
 function PartyMember:getNextLv()
-    return Utils.clamp(self:getNextLvRequiredEXP() - self.exp, 0, self.max_exp)
+    return MathUtils.clamp(self:getNextLvRequiredEXP() - self.exp, 0, self.max_exp)
 end
 
 function PartyMember:getCommandOptions()

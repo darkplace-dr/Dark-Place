@@ -2,7 +2,7 @@ local Light, super = Class(Event)
 
 function Light:init(data)
     super.init(self, data.x, data.y, data.width, data.height)
-    local color = Utils.parseColorProperty(data.properties["color"] or "#ffffffff")
+    local color = TiledUtils.parseColorProperty(data.properties["color"] or "#ffffffff")
     if data.properties["alpha"] then
         color[4] = data.properties["alpha"]
     end

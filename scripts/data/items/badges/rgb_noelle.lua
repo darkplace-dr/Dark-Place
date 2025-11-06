@@ -25,7 +25,7 @@ function badge:update(equipped)
             if not noelle:getFX(OutlineFX) then
                 noelle:addFX(OutlineFX())
             end
-            noelle:getFX(OutlineFX):setColor(Utils.hslToRgb(Kristal.getTime() / 4 % 1, 1, 0.5))
+            noelle:getFX(OutlineFX):setColor(ColorUtils.HSLToRGB(Kristal.getTime() / 4 % 1, 1, 0.5))
         end
     else
         if noelle then

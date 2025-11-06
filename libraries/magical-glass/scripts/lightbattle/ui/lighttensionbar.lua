@@ -81,9 +81,9 @@ end
 
 function LightTensionBar:getDebugInfo()
     local info = super.getDebugInfo(self)
-    table.insert(info, "Tension: "  .. Utils.round(self:getPercentageFor(Game:getTension()) * 100) .. "%")
-    table.insert(info, "Apparent: " .. Utils.round(self.apparent / 2.5))
-    table.insert(info, "Current: "  .. Utils.round(self.current / 2.5))
+    table.insert(info, "Tension: "  .. MathUtils.round(self:getPercentageFor(Game:getTension()) * 100) .. "%")
+    table.insert(info, "Apparent: " .. MathUtils.round(self.apparent / 2.5))
+    table.insert(info, "Current: "  .. MathUtils.round(self.current / 2.5))
     return info
 end
 

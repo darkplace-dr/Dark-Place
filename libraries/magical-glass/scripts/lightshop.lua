@@ -552,7 +552,7 @@ function LightShop:draw()
         else
             Draw.draw(self.heart_sprite, 30 + 420, 228 + 80 + 10 + (self.current_selecting_choice * 30), 0, 2)
             Draw.setColor(COLORS.white)
-            local lines = Utils.split(string.format(self.buy_confirmation_text, string.format(self.currency_text, self.items[self.current_selecting].options["price"] or 0)), "\n")
+            local lines = StringUtils.split(string.format(self.buy_confirmation_text, string.format(self.currency_text, self.items[self.current_selecting].options["price"] or 0)), "\n")
             for i = 1, #lines do
                 love.graphics.print(lines[i], 60 + 400, 420 - 160 + ((i - 1) * 30))
             end

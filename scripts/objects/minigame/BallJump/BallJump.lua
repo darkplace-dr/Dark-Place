@@ -253,7 +253,7 @@ function BallJump:onStateChange(old, new)
         self.player.y = 284
         self.player.sprite:setSprite("player_pose")
 
-        self.all_coins = not Utils.containsValue(self.coins_gotten, false)
+        self.all_coins = not TableUtils.contains(self.coins_gotten, false)
         self.total_score = self.score + (250 * self.lives) + (self.all_coins and 1000 or 0)
     elseif new == "DEAD" then
         self.player.on_ground = true

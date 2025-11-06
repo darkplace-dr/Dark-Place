@@ -396,7 +396,7 @@ function LightBattle:processActionGroup(group)
     else
         for i,battler in ipairs(self.party) do
             local action = self.character_actions[i]
-            if action and Utils.containsValue(group, action.action) then
+            if action and TableUtils.contains(group, action.action) then
                 self.character_actions[i] = nil
                 self:beginAction(action)
                 return true
@@ -553,7 +553,7 @@ function LightBattle:processAction(action)
             if self:enemyExists(enemy) then
                 if not action.force_miss and action.points > 0 then
                     damage, crit = enemy:getAttackDamage(action.damage or 0, lane, action.points or 0, action.stretch)
-                    damage = Utils.round(damage)
+                    damage = MathUtils.round(damage)
 
                     if damage < 0 then
                         damage = 0
@@ -712,14 +712,14 @@ function LightBattle:finishAction(action, keep_animation)
         local all_processed = self:allActionsDone()
 
         if all_processed then
-            for _,iaction in ipairs(Utils.copy(self.current_actions)) do
+            for _,iaction in ipairs(TableUtils.copy(self.current_actions)) do
                 local ibattler = self.party[iaction.character_id]
 
                 local party_num = 1
                 local callback = function()
                     party_num = party_num - 1
                     if party_num == 0 then
-                        Utils.removeFromTable(self.current_actions, iaction)
+                        TableUtils.removeValue(self.current_actions, iaction)
                         self:tryProcessNextAction()
                     end
                 end
@@ -733,7 +733,7 @@ function LightBattle:finishAction(action, keep_animation)
 
                             local dont_end = false
                             if (keep_animation) then
-                                if Utils.containsValue(keep_animation, party) then
+                                if TableUtils.contains(keep_animation, party) then
                                     dont_end = true
                                 end
                             end
@@ -750,7 +750,7 @@ function LightBattle:finishAction(action, keep_animation)
 
                 local dont_end = false
                 if (keep_animation) then
-                    if Utils.containsValue(keep_animation, ibattler.chara.id) then
+                    if TableUtils.contains(keep_animation, ibattler.chara.id) then
                         dont_end = true
                     end
                 end
@@ -958,7 +958,7 @@ function LightBattle:onStateChange(old,new)
                 self:setWaves(self.state_reason)
                 local enemy_found = false
                 for i,enemy in ipairs(self.enemies) do
-                    if Utils.containsValue(enemy.waves, self.state_reason[1]) then
+                    if TableUtils.contains(enemy.waves, self.state_reason[1]) then
                         enemy.selected_wave = self.state_reason[1]
                         enemy_found = true
                     end
@@ -1470,8 +1470,8 @@ function LightBattle:returnToWorld()
     self.encounter:setFlag("done", true)
 
     local all_enemies = {}
-    Utils.merge(all_enemies, self.defeated_enemies)
-    Utils.merge(all_enemies, self.enemies)
+    TableUtils.merge(all_enemies, self.defeated_enemies)
+    TableUtils.merge(all_enemies, self.enemies)
     for _,enemy in ipairs(all_enemies) do
         local world_chara = self.enemy_world_characters[enemy]
         if world_chara then
@@ -1631,7 +1631,7 @@ end
 
 function LightBattle:update()
     for _,enemy in ipairs(self.enemies_to_remove) do
-        Utils.removeFromTable(self.enemies, enemy)
+        TableUtils.removeValue(self.enemies, enemy)
         self.enemies_index[Utils.getKey(self.enemies_index, enemy)] = false
     end
     self.enemies_to_remove = {}
@@ -1790,11 +1790,11 @@ function LightBattle:update()
 
     local update_menu_waves = {"ACTIONSELECT", "MENUSELECT", "ENEMYSELECT", "PARTYSELECT", "FLEEING", "FLEEFAIL"}
 
-    if Utils.containsValue(update_menu_waves, self.state) then
+    if TableUtils.contains(update_menu_waves, self.state) then
         self:updateMenuWaves()
     end
     
-    if Utils.containsValue({"DEFENDINGEND", "ACTIONSELECT", "ACTIONS", "VICTORY", "TRANSITIONOUT", "BATTLETEXT"}, self.state) then
+    if TableUtils.contains({"DEFENDINGEND", "ACTIONSELECT", "ACTIONS", "VICTORY", "TRANSITIONOUT", "BATTLETEXT"}, self.state) then
         self.darkify_fader.alpha = MathUtils.approach(self.darkify_fader.alpha, 0, DTMULT * 0.05)
     end
     
@@ -1950,7 +1950,7 @@ function LightBattle:advanceBoxes()
 
     for _,dialogue in ipairs(to_remove) do
         if #self.arena.target_shape == 0 then
-            Utils.removeFromTable(self.enemy_dialogue, dialogue)
+            TableUtils.removeValue(self.enemy_dialogue, dialogue)
         end
     end
 
@@ -2015,7 +2015,7 @@ function LightBattle:commitAction(battler, action_type, target, data, extra)
 
     local tp_diff = 0
     if data.tp then
-        tp_diff = Utils.clamp(-data.tp, -Game:getTension(), Game:getMaxTension() - Game:getTension())
+        tp_diff = MathUtils.clamp(-data.tp, -Game:getTension(), Game:getMaxTension() - Game:getTension())
     end
 
     local party_id = self:getPartyIndex(battler.chara.id)
@@ -2043,7 +2043,7 @@ function LightBattle:commitAction(battler, action_type, target, data, extra)
         end
     end
 
-    self:commitSingleAction(Utils.merge({
+    self:commitSingleAction(TableUtils.merge({
         ["character_id"] = party_id,
         ["action"] = action_type:upper(),
         ["party"] = data.party,
@@ -2068,7 +2068,7 @@ function LightBattle:commitAction(battler, action_type, target, data, extra)
                     end
                 end
 
-                self:commitSingleAction(Utils.merge({
+                self:commitSingleAction(TableUtils.merge({
                     ["character_id"] = index,
                     ["action"] = "SKIP",
                     ["reason"] = action_type:upper(),
@@ -2246,7 +2246,7 @@ function LightBattle:hasAction(character_id)
 end
 
 function LightBattle:getActiveParty()
-    return Utils.filter(self.party, function(party) return not party.is_down end)
+    return TableUtils.filter(self.party, function(party) return not party.is_down end)
 end
 
 function LightBattle:getActiveEnemies()
@@ -2255,7 +2255,7 @@ function LightBattle:getActiveEnemies()
             enemy.done_state = nil
         end
     end
-    return Utils.filter(self.enemies, function(enemy) return not enemy.done_state end)
+    return TableUtils.filter(self.enemies, function(enemy) return not enemy.done_state end)
 end
 
 function LightBattle:shakeCamera(x, y, friction)
@@ -2343,7 +2343,7 @@ function LightBattle:getPartyFromTarget(target)
         if target == "ANY" then
             return {TableUtils.pick(self.party)}
         elseif target == "ALL" then
-            return Utils.copy(self.party)
+            return TableUtils.copy(self.party)
         else
             for _,battler in ipairs(self.party) do
                 if battler.chara.id == string.lower(target) then
@@ -2413,7 +2413,7 @@ function LightBattle:hurt(amount, exact, target)
             end
         end
 
-        return Utils.filter(self.party, function(item) return not item.is_down end)
+        return TableUtils.filter(self.party, function(item) return not item.is_down end)
     end
 end
 
@@ -2496,7 +2496,7 @@ end
 
 function LightBattle:nextParty()
     table.insert(self.selected_character_stack, self.current_selecting)
-    table.insert(self.selected_action_stack, Utils.copy(self.character_actions))
+    table.insert(self.selected_action_stack, TableUtils.copy(self.character_actions))
 
     local all_done = true
     local last_selected = self.current_selecting
@@ -2589,8 +2589,8 @@ function LightBattle:removeEnemy(enemy, defeated)
 end
 
 function LightBattle:parseEnemyIdentifier(id)
-    local args = Utils.split(id, ":")
-    local enemies = Utils.filter(self.enemies, function(enemy) return enemy.id == args[1] end)
+    local args = StringUtils.split(id, ":")
+    local enemies = TableUtils.filter(self.enemies, function(enemy) return enemy.id == args[1] end)
     return enemies[args[2] and tonumber(args[2]) or 1]
 end
 
@@ -2840,7 +2840,7 @@ function LightBattle:onKeyPressed(key)
             if #self.enemies_index == 0 then return end
             self.selected_enemy = self.current_menu_y
             if self.state_reason == "XACT" then
-                local xaction = Utils.copy(self.selected_xaction)
+                local xaction = TableUtils.copy(self.selected_xaction)
                 if xaction.default then
                     xaction.name = self.enemies_index[self.selected_enemy]:getXAction(self.party[self.current_selecting])
                 end

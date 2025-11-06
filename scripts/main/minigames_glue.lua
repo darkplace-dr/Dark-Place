@@ -24,7 +24,7 @@ function Mod:initMinigameHooks()
 		["top"] = 1000
 	})
 
-    Utils.hook(Game, "getActiveMusic",
+    HookSystem.hook(Game, "getActiveMusic",
         ---@overload fun(orig:function, self:Game) : Music
         function(orig, self)
             if self.state == "MINIGAME" then
@@ -37,7 +37,7 @@ function Mod:initMinigameHooks()
         end
     )
 
-    Utils.hook(Game, "onKeyPressed", function(orig, self, key, is_repeat)
+    HookSystem.hook(Game, "onKeyPressed", function(orig, self, key, is_repeat)
         if Kristal.callEvent("onKeyPressed", key, is_repeat) then
             -- Mod:onKeyPressed returned true, cancel default behaviour
             return
@@ -64,7 +64,7 @@ function Mod:initMinigameHooks()
     -- There's no way to detect unfixed versions afaik, so...
     if not self.legacy_kristal then
         -- This is so quick reload puts you in the last game
-        Utils.hook(Kristal, "quickReload", function(orig, mode)
+        HookSystem.hook(Kristal, "quickReload", function(orig, mode)
             -- Temporarily save game variables
             local save, save_id, encounter, shop, minigame
             if mode == "temp" then

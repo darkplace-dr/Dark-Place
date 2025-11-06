@@ -26,7 +26,7 @@ function PlugSpark:init(x, y, damage, dist, buffed)
 end
 
 function PlugSpark:update()
-    self.scaler = Utils.lerp(self.scaler, 1, 0.25 * DTMULT)
+    self.scaler = MathUtils.lerp(self.scaler, 1, 0.25 * DTMULT)
 
     self.afterimg_timer = self.afterimg_timer + DTMULT
     if self.afterimg_timer >= 1 then
@@ -58,7 +58,7 @@ function PlugSpark:update()
     end
     if self.state == "FALLING" then
         self.physics.speed_y = self.physics.speed_y + (self.physics.speed_y * (self.buffed and 0.6 or 0.5)) * DTMULT
-        self.physics.speed_y = Utils.clamp(self.physics.speed_y, 0, self.buffed and 18 or 14)
+        self.physics.speed_y = MathUtils.clamp(self.physics.speed_y, 0, self.buffed and 18 or 14)
 
         if self.y >= self.start_y + self.distance then
             self.y = self.start_y + self.distance

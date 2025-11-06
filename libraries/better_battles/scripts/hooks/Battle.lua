@@ -203,7 +203,7 @@ function Battle:pierce(amount, exact, target)
             end
         end
         -- Return the battlers who aren't down, aka the ones we hit.
-        return Utils.filter(self.party, function(item) return not item.is_down end)
+        return TableUtils.filter(self.party, function(item) return not item.is_down end)
     end
 end
 

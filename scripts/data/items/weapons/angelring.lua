@@ -73,7 +73,7 @@ end
 
 function item:getReaction(user_id, reactor_id)
     if user_id == "mario" and reactor_id == "mario" then
-        local dess_party = Utils.containsValue(Game.party, Game:getPartyMember("dess"))
+        local dess_party = TableUtils.contains(Game.party, Game:getPartyMember("dess"))
         if dess_party then
             local yummy = true
             for i,member in ipairs(Game.party) do

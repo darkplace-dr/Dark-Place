@@ -572,7 +572,7 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
             total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.363)
         end
         total_damage = total_damage * ((points / 160) * (4 / lane.weapon:getLightBoltCount()))
-        total_damage = Utils.round(total_damage) + MathUtils.random(0, 2, 1)
+        total_damage = MathUtils.round(total_damage) + MathUtils.random(0, 2, 1)
 
         if points > (400 * (lane.weapon:getLightBoltCount() / 4)) then
             crit = true
@@ -598,9 +598,9 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
             total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.363) + MathUtils.random(0, 2, 1)
         end
         if points <= 12 then
-            total_damage = Utils.round(total_damage * 2.2)
+            total_damage = MathUtils.round(total_damage * 2.2)
         else
-            total_damage = Utils.round((total_damage * stretch) * 2)
+            total_damage = MathUtils.round((total_damage * stretch) * 2)
         end
         
         if points <= 12 then

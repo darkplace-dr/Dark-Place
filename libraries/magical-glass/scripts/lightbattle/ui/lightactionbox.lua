@@ -33,8 +33,8 @@ function LightActionBox:createButtons()
 
     local btn_types = {"fight", "act", "spell", "item", "mercy"}
 
-    if not self.battler.chara:hasAct() then Utils.removeFromTable(btn_types, "act") end
-    if not self.battler.chara:hasSpells() then Utils.removeFromTable(btn_types, "spell") end
+    if not self.battler.chara:hasAct() then TableUtils.removeValue(btn_types, "act") end
+    if not self.battler.chara:hasSpells() then TableUtils.removeValue(btn_types, "spell") end
 
     for lib_id,_ in Kristal.iterLibraries() do
         btn_types = Kristal.libCall(lib_id, "getLightActionButtons", self.battler, btn_types) or btn_types
@@ -70,7 +70,7 @@ function LightActionBox:createButtons()
         end
     end
 
-    self.selected_button = Utils.clamp(self.selected_button, 1, #self.buttons)
+    self.selected_button = MathUtils.clamp(self.selected_button, 1, #self.buttons)
 
 end
 
@@ -157,9 +157,9 @@ function LightActionBox:drawStatusStripStory()
         love.graphics.setColor(karma_mode and {192/255, 0, 0} or COLORS["red"])
         love.graphics.rectangle("fill", x + 110 - karma_mode_offset, y, size * 1.25, 21)
         love.graphics.setColor({1,0,1})
-        love.graphics.rectangle("fill", x + 110 - karma_mode_offset, y, (limit == true and math.ceil((Utils.clamp(current, 0, max + (karma_mode and 5 or 10)) / max) * size) * 1.25 or Utils.clamp(current, 0, max + (karma_mode and 5 or 10)) * 1.25) + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
+        love.graphics.rectangle("fill", x + 110 - karma_mode_offset, y, (limit == true and math.ceil((MathUtils.clamp(current, 0, max + (karma_mode and 5 or 10)) / max) * size) * 1.25 or MathUtils.clamp(current, 0, max + (karma_mode and 5 or 10)) * 1.25) + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
         love.graphics.setColor(COLORS["yellow"])
-        love.graphics.rectangle("fill", x + 110 - karma_mode_offset, y, (limit == true and math.ceil((Utils.clamp(current - karma, 0, max + 10) / max) * size) * 1.25 or Utils.clamp(current - karma, 0, max + 10) * 1.25) - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
+        love.graphics.rectangle("fill", x + 110 - karma_mode_offset, y, (limit == true and math.ceil((MathUtils.clamp(current - karma, 0, max + 10) / max) * size) * 1.25 or MathUtils.clamp(current - karma, 0, max + 10) * 1.25) - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
 
         if max < 10 and max >= 0 then
             max = "0" .. tostring(max)
@@ -221,9 +221,9 @@ function LightActionBox:drawStatusStrip()
         love.graphics.setColor(karma_mode and {192/255, 0, 0} or COLORS["red"])
         love.graphics.rectangle("fill", x + 245 - karma_mode_offset, y, size * 1.25, 21)
         love.graphics.setColor({1,0,1})
-        love.graphics.rectangle("fill", x + 245 - karma_mode_offset, y, (limit == true and math.ceil((Utils.clamp(current, 0, max + (karma_mode and 5 or 10)) / max) * size) * 1.25 or Utils.clamp(current, 0, max + (karma_mode and 5 or 10)) * 1.25) + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
+        love.graphics.rectangle("fill", x + 245 - karma_mode_offset, y, (limit == true and math.ceil((MathUtils.clamp(current, 0, max + (karma_mode and 5 or 10)) / max) * size) * 1.25 or MathUtils.clamp(current, 0, max + (karma_mode and 5 or 10)) * 1.25) + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
         love.graphics.setColor(COLORS["yellow"])
-        love.graphics.rectangle("fill", x + 245 - karma_mode_offset, y, (limit == true and math.ceil((Utils.clamp(current - karma, 0, max + (karma_mode and 5 or 10)) / max) * size) * 1.25 or Utils.clamp(current - karma, 0, max + (karma_mode and 5 or 10)) * 1.25) - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
+        love.graphics.rectangle("fill", x + 245 - karma_mode_offset, y, (limit == true and math.ceil((MathUtils.clamp(current - karma, 0, max + (karma_mode and 5 or 10)) / max) * size) * 1.25 or MathUtils.clamp(current - karma, 0, max + (karma_mode and 5 or 10)) * 1.25) - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
 
         if max < 10 and max >= 0 then
             max = "0" .. tostring(max)
@@ -280,9 +280,9 @@ function LightActionBox:drawStatusStrip()
         love.graphics.setColor(karma_mode and {192/255, 0, 0} or COLORS["red"])
         love.graphics.rectangle("fill", x + 92, y, (small and 20 or 32) * 1.25, 21)
         love.graphics.setColor({1,0,1})
-        love.graphics.rectangle("fill", x + 92, y, math.ceil((Utils.clamp(current, 0, max) / max) * (small and 20 or 32)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
+        love.graphics.rectangle("fill", x + 92, y, math.ceil((MathUtils.clamp(current, 0, max) / max) * (small and 20 or 32)) * 1.25 + (karma_mode and karma == 0 and current > 0 and current < max and 1 or 0), 21)
         love.graphics.setColor(COLORS["yellow"])
-        love.graphics.rectangle("fill", x + 92, y, math.ceil((Utils.clamp(current - karma, 0, max) / max) * (small and 20 or 32)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
+        love.graphics.rectangle("fill", x + 92, y, math.ceil((MathUtils.clamp(current - karma, 0, max) / max) * (small and 20 or 32)) * 1.25 - (karma_mode and (karma == 0 or current - karma >= max) and current > 0 and current >= max and 1 or 0), 21)
         
         love.graphics.setFont(Assets.getFont("namelv", 16))
         if max < 10 and max >= 0 then
@@ -301,7 +301,7 @@ function LightActionBox:drawStatusStrip()
                 color = {0,0,1}
             elseif Game.battle:getActionBy(self.battler) and Game.battle:getActionBy(self.battler).action == "DEFEND" then
                 color = COLORS.aqua
-            elseif Game.battle:getActionBy(self.battler) and Utils.containsValue({"ACTIONSELECT", "MENUSELECT", "ENEMYSELECT", "PARTYSELECT"}, Game.battle:getState()) then
+            elseif Game.battle:getActionBy(self.battler) and TableUtils.contains({"ACTIONSELECT", "MENUSELECT", "ENEMYSELECT", "PARTYSELECT"}, Game.battle:getState()) then
                 color = COLORS.yellow
             elseif karma > 0 then
                 color = {1,0,1}

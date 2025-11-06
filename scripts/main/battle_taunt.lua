@@ -20,7 +20,7 @@ function Mod:updateBattleTaunt()
         and Input.pressed("taunt", false)
         and self.taunt_cooldown == 0
         and (Game.state == "BATTLE" and not Game.battle:hasCutscene())
-        and not Utils.containsValue(self.state_blacklist, Game.battle.state)
+        and not TableUtils.contains(self.state_blacklist, Game.battle.state)
         and not (OVERLAY_OPEN or TextInput.active)
     then
         self.taunt_cooldown = 2.1

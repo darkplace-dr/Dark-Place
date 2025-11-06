@@ -41,7 +41,7 @@ function DarkPartyMenu:init(debug)
     }
 
     if Game:getFlag("noel_party") or Game:getFlag("noel_partyroom") or (noelsave and noelsave.Map == "devhotel/devdiner/partyroom") then
-        if not Utils.containsValue(Game:getFlag("party"), "noel") then
+        if not TableUtils.contains(Game:getFlag("party"), "noel") then
             Mod:unlockPartyMember("noel")
         end
         table.insert(self.list[1], 11, "noel")
@@ -51,7 +51,7 @@ function DarkPartyMenu:init(debug)
 
     for i, list in ipairs(self.list) do
         for i2, entry in ipairs(list) do
-            if not debug and not Utils.containsValue(self.listreference, entry) and entry ~= "noel" then
+            if not debug and not TableUtils.contains(self.listreference, entry) and entry ~= "noel" then
                 self.list[i][i2] = "unknown"
             end
         end

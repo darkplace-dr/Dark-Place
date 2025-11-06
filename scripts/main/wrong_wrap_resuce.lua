@@ -1,6 +1,6 @@
 function Mod:addWrongWrapResuceHooks()
     --[[
-    Utils.hook(World, "setupMap", function(orig, self, map, ...)
+    HookSystem.hook(World, "setupMap", function(orig, self, map, ...)
         for _,child in ipairs(self.children) do
             if not child.persistent then
                 self:removeChild(child)
@@ -67,7 +67,7 @@ function Mod:addWrongWrapResuceHooks()
         end
     end)
 
-    Utils.hook(World, "mapTransition", function(orig, self, ...)
+    HookSystem.hook(World, "mapTransition", function(orig, self, ...)
         local args = {...}
         local map = args[1]
         if type(map) == "string" then
@@ -92,7 +92,7 @@ function Mod:addWrongWrapResuceHooks()
             end
         end
         self:fadeInto(function()
-            self:loadMap(Utils.unpack(args))
+            self:loadMap(TableUtils.unpack(args))
         end)
     end)
     ]]

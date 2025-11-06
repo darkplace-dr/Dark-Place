@@ -74,15 +74,15 @@ function Mod:fileExists(name, try_wine_route, wine_steam_appid)
         if not try_wine_route then
             -- don't ask why %
             name = string.gsub(name, "%%XDG_CONFIG_HOME%%", os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config")
-            local starts_at_root, _ = Utils.startsWith(name, "/")
+            local starts_at_root, _ = StringUtils.startsWith(name, "/")
             if not starts_at_root then
                 path = os.getenv("HOME").."/"..name
             else
                 path = name
             end
         else -- assuming that a Windows path is passed
-            local folder_type = Utils.split(name, "/")[1]
-            local rest = Utils.sub(name, utf8.len(folder_type) + 2)
+            local folder_type = StringUtils.split(name, "/")[1]
+            local rest = StringUtils.sub(name, utf8.len(folder_type) + 2)
 
             local wineprefix = os.getenv("WINEPREFIX") or os.getenv("HOME").."/.wine"
             local user_wineprefix = wineprefix.."/drive_c/users/"..os.getenv("USER")

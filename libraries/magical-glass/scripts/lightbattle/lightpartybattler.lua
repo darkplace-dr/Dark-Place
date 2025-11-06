@@ -43,7 +43,7 @@ function LightPartyBattler:calculateDamage(amount, min, cap)
                 amount = amount + 1
             end
         end
-        amount = Utils.round((amount - def) / 5)
+        amount = MathUtils.round((amount - def) / 5)
     else
         local threshold_a = (max_hp / 5)
         local threshold_b = (max_hp / 8)
@@ -132,7 +132,7 @@ function LightPartyBattler:hurt(amount, exact, color, options)
 end
 
 -- fuck it, I'll just use a hook.
-    Utils.hook(LightPartyBattler, "hurt", function(orig, self, amount, exact, color, options)
+    HookSystem.hook(LightPartyBattler, "hurt", function(orig, self, amount, exact, color, options)
         if self.chara.id == "noel" then
             if not self.noel_hit_counter then
                 self.noel_hit_counter = 1
@@ -175,7 +175,7 @@ end
 
 function LightPartyBattler:removeHealth(amount)
     if (self.chara:getHealth() <= 0) then
-        amount = Utils.round(amount / 4)
+        amount = MathUtils.round(amount / 4)
         self.chara:setHealth(self.chara:getHealth() - amount)
     else
         self.chara:setHealth(self.chara:getHealth() - amount)
@@ -184,7 +184,7 @@ function LightPartyBattler:removeHealth(amount)
                 self.chara:setHealth(0)
             else
                 amount = math.abs((self.chara:getHealth() - (self.chara:getStat("health") / 2)))
-                self.chara:setHealth(Utils.round(((-self.chara:getStat("health")) / 2)))
+                self.chara:setHealth(MathUtils.round(((-self.chara:getStat("health")) / 2)))
             end
         end
     end
@@ -198,7 +198,7 @@ function LightPartyBattler:removeHealthBroken(amount)
             self.chara:setHealth(0)
         else
             -- BUG: Use Kris' max health...
-            self.chara:setHealth(Utils.round(((-Game.party[1]:getStat("health")) / 2)))
+            self.chara:setHealth(MathUtils.round(((-Game.party[1]:getStat("health")) / 2)))
         end
     end
     self:checkHealth()
@@ -291,7 +291,7 @@ function LightPartyBattler:update()
     end
     
     -- Karma (KR) calculations
-    self.karma = Utils.clamp(self.karma, 0, 40)
+    self.karma = MathUtils.clamp(self.karma, 0, 40)
     if self.karma >= self.chara:getHealth() and self.chara:getHealth() > 0 then
         self.karma = self.chara:getHealth() - 1
     end

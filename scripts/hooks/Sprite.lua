@@ -1,5 +1,5 @@
 -- Yep
-Utils.hook(Sprite, "setTextureExact", function(orig, self, texture)
+HookSystem.hook(Sprite, "setTextureExact", function(orig, self, texture)
     -- TODO: getter
     if self.disallow_replacement_texture or (self.actor and self.actor.disallow_replacement_texture) then
         return orig(self, texture)
@@ -14,7 +14,7 @@ Utils.hook(Sprite, "setTextureExact", function(orig, self, texture)
     self.texture_path = Assets.getTextureID(texture)
     if not self.texture then
         if texture ~= nil then
-            Kristal.Console:warn("Texture not found: " .. Utils.dump(texture))
+            Kristal.Console:warn("Texture not found: " .. TableUtils.dump(texture))
 
             self.texture = Assets.getTexture("ui/missing_texture")
             self.texture_path = self.texture_path or Assets.getTextureID(self.texture)

@@ -2,7 +2,7 @@
 local lib = {}
 
 function lib:postInit()
-    Utils.hook(DarkPowerMenu, "drawStats", function(orig, self)
+    HookSystem.hook(DarkPowerMenu, "drawStats", function(orig, self)
         local party = self.party:getSelected()
 
         if party.ribbit == true then
@@ -33,7 +33,7 @@ function lib:postInit()
         end
     end)
 
-    Utils.hook(DarkEquipMenu, "drawStats", function(orig, self)
+    HookSystem.hook(DarkEquipMenu, "drawStats", function(orig, self)
         local party = self.party:getSelected()
 
         if party.ribbit == true then
@@ -57,7 +57,7 @@ function lib:postInit()
         end
     end)
 
-    Utils.hook(DarkEquipMenu, "drawAbilityPreview", function(orig, self, index, x, y, abilities, compare)
+    HookSystem.hook(DarkEquipMenu, "drawAbilityPreview", function(orig, self, index, x, y, abilities, compare)
         local party = self.party:getSelected()
 
         if party.ribbit == true then
@@ -96,7 +96,7 @@ function lib:postInit()
 
     --///////////////// ACTION BUTTONS
 
-    Utils.hook(ActionButton, "select", function(orig, self)
+    HookSystem.hook(ActionButton, "select", function(orig, self)
         if self.type == "send" then
             local battle_leader = 1
             if Kristal.getLibConfig("better_battles", "dynamic_battle_leader") then
@@ -182,7 +182,7 @@ function lib:postInit()
             orig(self)
         end
     end)
-    Utils.hook(ActionButton, "hasSpecial", function(orig, self)
+    HookSystem.hook(ActionButton, "hasSpecial", function(orig, self)
         if self.type == "send" then
             for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
                 if enemy.mercy >= 100 then
@@ -194,7 +194,7 @@ function lib:postInit()
             return orig(self)
         end
     end)
-    Utils.hook(EnemyBattler, "getSpareText", function(orig, self, battler, success)
+    HookSystem.hook(EnemyBattler, "getSpareText", function(orig, self, battler, success)
         local text = orig(self, battler, success)
         if Game:getPartyMember(battler.chara.id).ribbit then
             if type(text)=="table" then

@@ -40,7 +40,7 @@ function actor:onWorldUpdate(chara)
             dist_y = math.min(math.abs(player.y - chara.y), math.abs(player.y - (chara.y + chara.height)))
         end
 
-        local fade_dist = Utils.clamp(math.max(dist_x, dist_y), 20, 80)
+        local fade_dist = MathUtils.clamp(math.max(dist_x, dist_y), 20, 80)
 
         chara.sprite.alpha = 1 - (fade_dist - 20) / 60
     end

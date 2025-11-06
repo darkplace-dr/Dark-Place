@@ -51,7 +51,7 @@ function Hang:update()
 
                     local dx, dy = -3 + MathUtils.random(6), -9 + MathUtils.random(2)
                     local angle = Utils.angle(0, 0, dx, dy)
-                    local dist = Utils.dist(dx, dy, 0, 0)
+                    local dist = MathUtils.dist(dx, dy, 0, 0)
 
                     bullet.rotation = angle
                     bullet.physics.speed = dist

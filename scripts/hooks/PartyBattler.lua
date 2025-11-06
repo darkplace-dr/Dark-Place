@@ -48,7 +48,7 @@ function PartyBattler:removeHealth(amount)
 		amount = amount * (BadgesLib:getBadgeEquipped("double_pain") + 1)
 		amount = amount / (BadgesLib:getBadgeEquipped("deal") + 1)
 		if (self.chara:getHealth() <= 0) then
-			amount = Utils.round(amount / 4)
+			amount = MathUtils.round(amount / 4)
 			if self.shield < amount then
 				amount = amount - self.shield
 				self.shield = 0
@@ -68,7 +68,7 @@ function PartyBattler:removeHealth(amount)
 			self.chara:setHealth(self.chara:getHealth() - amount)
 			if (self.chara:getHealth() <= 0) then
 				amount = math.abs((self.chara:getHealth() - (self.chara:getStat("health") / 2)))
-				self.chara:setHealth(Utils.round(((-self.chara:getStat("health")) / 2)))
+				self.chara:setHealth(MathUtils.round(((-self.chara:getStat("health")) / 2)))
 			end
 		end
 		self:checkHealth()
@@ -80,7 +80,7 @@ function PartyBattler:removeHealthBroken(amount)
 		amount = amount * (BadgesLib:getBadgeEquipped("double_pain") + 1)
 		amount = amount / (BadgesLib:getBadgeEquipped("deal") + 1)
 		if (self.chara:getHealth() <= 0) then
-			amount = Utils.round(amount / 4)
+			amount = MathUtils.round(amount / 4)
 			if self.shield < amount then
 				amount = amount - self.shield
 				self.shield = 0
@@ -100,7 +100,7 @@ function PartyBattler:removeHealthBroken(amount)
 			self.chara:setHealth(self.chara:getHealth() - amount)
 			if (self.chara:getHealth() <= 0) then
 				amount = math.abs((self.chara:getHealth() - (self.chara:getStat("health") / 2)))
-				self.chara:setHealth(Utils.round(((-self.chara:getStat("health")) / 2)))
+				self.chara:setHealth(MathUtils.round(((-self.chara:getStat("health")) / 2)))
 			end
 		end
 		self:checkHealth()

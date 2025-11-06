@@ -181,7 +181,7 @@ return {
 			-- Scanning
 			for k,v in ipairs(to_scan) do
 				cutscene:look(cutscene:getCharacter("self"), "up")
-				if Utils.containsValue(available, v) then
+				if TableUtils.contains(available, v) then
 					scanned = scanned + 1
 					if v == "jamm" then
 						if Game:getFlag("marcy_joined") then

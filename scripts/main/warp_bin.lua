@@ -97,7 +97,7 @@ Mod.warp_bin_codes = {
     },
     ["FREEWLLY"] = {
         result = function(cutscene)
-            if not Utils.containsValue(Game:getFlag("party"), "whale") then
+            if not TableUtils.contains(Game:getFlag("party"), "whale") then
                 Mod:unlockPartyMember("whale")
                 cutscene:text("* You unlocked the fucking whale!")
             else

@@ -60,7 +60,7 @@ function item:onWorldUse(target)
 end
 
 function item:getLightBattleText(user, target)
-    if Utils.containsValue(target.chara:getWeapon().tags, "punch") then
+    if TableUtils.contains(target.chara:getWeapon().tags, "punch") then
         if target.chara.id == Game.battle.party[1].chara.id then
             return {
                 "* OOOORAAAAA!!![wait:10]\n* You rip up the punch card!",
@@ -92,7 +92,7 @@ function item:getBattleText(user, target)
 end
 
 function item:onLightBattleUse(user, target)
-    if Utils.containsValue(target.chara:getWeapon().tags, "punch") then
+    if TableUtils.contains(target.chara:getWeapon().tags, "punch") then
         Assets.playSound("tearcard")
         target.chara:addStatBuff("attack", self:getATIncrease(target))
     end
@@ -101,7 +101,7 @@ function item:onLightBattleUse(user, target)
 end
 
 function item:onBattleUse(user, target)
-    if Utils.containsValue(target.chara:getWeapon().tags, "punch") then
+    if TableUtils.contains(target.chara:getWeapon().tags, "punch") then
         Assets.playSound("tearcard")
         target.chara:addStatBuff("attack", self:getATIncrease(target))
     end

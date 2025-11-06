@@ -8,7 +8,7 @@ function Map:init(world, data)
 
     if data and data.full_path then
         local map_path = data.full_path
-        map_path = Utils.split(map_path, "/")
+        map_path = StringUtils.split(map_path, "/")
         map_path = table.concat(map_path, "/", 1, #map_path - 1)
         self.full_map_path = map_path
     else
@@ -115,23 +115,23 @@ function Map:loadLayer(layer, depth)
     elseif layer.type == "imagelayer" then
         self:loadImage(layer, depth)
     elseif layer.type == "objectgroup" then
-        if Utils.startsWith(layer.name:lower(), "objects") then
+        if StringUtils.startsWith(layer.name:lower(), "objects") then
             self:loadObjects(layer, depth, "events")
-        elseif Utils.startsWith(layer.name:lower(), "controllers") then
+        elseif StringUtils.startsWith(layer.name:lower(), "controllers") then
             self:loadObjects(layer, depth, "controllers")
-        elseif Utils.startsWith(layer.name:lower(), "markers") then
+        elseif StringUtils.startsWith(layer.name:lower(), "markers") then
             self:loadMarkers(layer)
-        elseif Utils.startsWith(layer.name:lower(), "collision") then
+        elseif StringUtils.startsWith(layer.name:lower(), "collision") then
             self:loadCollision(layer)
-        elseif Utils.startsWith(layer.name:lower(), "enemycollision") then
+        elseif StringUtils.startsWith(layer.name:lower(), "enemycollision") then
             self:loadEnemyCollision(layer)
-        elseif Utils.startsWith(layer.name:lower(), "blockcollision") then
+        elseif StringUtils.startsWith(layer.name:lower(), "blockcollision") then
             self:loadBlockCollision(layer)
-        elseif Utils.startsWith(layer.name:lower(), "stonecollision") then
+        elseif StringUtils.startsWith(layer.name:lower(), "stonecollision") then
             self:loadStoneCollision(layer)
-        elseif Utils.startsWith(layer.name:lower(), "paths") then
+        elseif StringUtils.startsWith(layer.name:lower(), "paths") then
             self:loadPaths(layer)
-        elseif Utils.startsWith(layer.name:lower(), "battleareas") then
+        elseif StringUtils.startsWith(layer.name:lower(), "battleareas") then
             self:loadBattleAreas(layer)
         end
         self:loadShapes(layer)
@@ -139,7 +139,7 @@ function Map:loadLayer(layer, depth)
 end
 
 function Map:loadStoneCollision(layer)
-    Utils.merge(self.stone_collision, self:loadHitboxes(layer))
+    TableUtils.merge(self.stone_collision, self:loadHitboxes(layer))
 end
 
 return Map

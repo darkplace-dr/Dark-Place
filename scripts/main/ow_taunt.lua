@@ -1,12 +1,12 @@
 function Mod:initTaunt()
     self.taunt_lock_movement = false
 
-    Utils.hook(Actor, "init", function(orig, self)
+    HookSystem.hook(Actor, "init", function(orig, self)
         orig(self)
         self.taunt_sprites = {}
     end)
 
-    Utils.hook(Player, "isMovementEnabled",
+    HookSystem.hook(Player, "isMovementEnabled",
         ---@overload fun(orig:function, self:Player) : boolean
         function(orig, self)
             return orig(self)

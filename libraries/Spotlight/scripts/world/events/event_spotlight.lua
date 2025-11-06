@@ -25,9 +25,9 @@ function SpotlightEvent:init(data)
         offset_x = data.properties.offset_x, --x offset of entire spotlight
         offset_y = data.properties.offset_y, --y "
 
-        top_color = data.properties.top_color and Utils.parseColorProperty(data.properties.top_color), --color of top of beam
-        bottom_color = data.properties.bottom_color and Utils.parseColorProperty(data.properties.bottom_color), --color of bottom of beam
-        base_color = data.properties.base_color and Utils.parseColorProperty(data.properties.base_color), --color of circular base
+        top_color = data.properties.top_color and TiledUtils.parseColorProperty(data.properties.top_color), --color of top of beam
+        bottom_color = data.properties.bottom_color and TiledUtils.parseColorProperty(data.properties.bottom_color), --color of bottom of beam
+        base_color = data.properties.base_color and TiledUtils.parseColorProperty(data.properties.base_color), --color of circular base
 
         shader = data.properties.shader, --custom shader code to apply to beam
         shader_fields = praseLuaNames(data.properties.shader_fields) --values of self[<field>] that are passed into shader

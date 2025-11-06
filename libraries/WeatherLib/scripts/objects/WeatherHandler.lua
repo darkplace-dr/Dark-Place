@@ -145,7 +145,7 @@ function WeatherHandler:update()
             if self.snowtimerreset then
                 self.snowtimerreset = false
                 self.snowtimerthres = math.random(5, 10)
-                self.snowcount = Utils.clamp(math.random(Utils.round(2 * self.intensity), Utils.round(4 * self.intensity)), 2, 20)
+                self.snowcount = MathUtils.clamp(math.random(MathUtils.round(2 * self.intensity), MathUtils.round(4 * self.intensity)), 2, 20)
 
             elseif self.snowtimer >= self.snowtimerthres then
 
@@ -154,7 +154,7 @@ function WeatherHandler:update()
 
                 for i = self.snowcount, 1, -1 do
                     local number = TableUtils.pick({"a", "b", "c", "d", "e"})
-                    local speed = Utils.clamp(MathUtils.random(Utils.round(3 * self.intensity), Utils.round(6 * self.intensity)), 3, 14)
+                    local speed = MathUtils.clamp(MathUtils.random(MathUtils.round(3 * self.intensity), MathUtils.round(6 * self.intensity)), 3, 14)
                     local rotspeed = MathUtils.random(0.5, 6)
                     local sinerspeed = MathUtils.random(0.6, 4)
                     local lifespan = MathUtils.random(70, 120)

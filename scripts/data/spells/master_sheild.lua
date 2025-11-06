@@ -36,7 +36,7 @@ function spell:onCast(user, target)
 end
 
 function spell:getTPCost(chara)
-    return Utils.clamp(self.cost + chara.health, 50, 100)
+    return MathUtils.clamp(self.cost + chara.health, 50, 100)
 end
 
 function spell:hasWorldUsage(chara)

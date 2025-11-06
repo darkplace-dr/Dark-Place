@@ -49,7 +49,7 @@ return function(cutscene)
         if type(text) == "string" then
             _text = style .. text
         else
-            _text = Utils.copy(text)
+            _text = TableUtils.copy(text)
             for i, v in ipairs(_text) do
                 _text[i] = style .. v
             end

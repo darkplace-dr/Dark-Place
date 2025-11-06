@@ -510,7 +510,7 @@ function Battle:hurt(amount, exact, target)
             end
         end
         -- Return the battlers who aren't down, aka the ones we hit.
-        return Utils.filter(self.party, function(item) return not item.is_down end)
+        return TableUtils.filter(self.party, function(item) return not item.is_down end)
     end
 end
 
@@ -656,7 +656,7 @@ function Battle:processAction(action)
                 end
             end
 
-            local damage = Utils.round(enemy:getAttackDamage(action.damage or 0, battler, action.points or 0))
+            local damage = MathUtils.round(enemy:getAttackDamage(action.damage or 0, battler, action.points or 0))
             if damage < 0 then
                 damage = 0
             end
@@ -685,7 +685,7 @@ function Battle:processAction(action)
 				local message = DTText(enemy.dt_text, -40, -20)
 				enemy:addChild(message)
 			elseif damage > 0 then
-				Game:giveTension(Utils.round(enemy:getAttackTension(action.points or 100)))
+				Game:giveTension(MathUtils.round(enemy:getAttackTension(action.points or 100)))
 
 				local dmg_sprite = Sprite(battler.chara:getAttackSprite() or "effects/attack/cut")
 				dmg_sprite:setOrigin(0.5, 0.5)
@@ -712,8 +712,8 @@ function Battle:processAction(action)
 
 			self:finishAction(action)
 
-			Utils.removeFromTable(self.normal_attackers, battler)
-			Utils.removeFromTable(self.auto_attackers, battler)
+			TableUtils.removeValue(self.normal_attackers, battler)
+			TableUtils.removeValue(self.auto_attackers, battler)
 
 			if not self:retargetEnemy() then
 				self.cancel_attack = true
@@ -946,7 +946,7 @@ function Battle:pierce(amount, exact, target)
             end
         end
         -- Return the battlers who aren't down, aka the ones we hit.
-        return Utils.filter(self.party, function(item) return not item.is_down end)
+        return TableUtils.filter(self.party, function(item) return not item.is_down end)
     end
 end
 
@@ -966,8 +966,8 @@ function Battle:returnToWorld()
         end
     end
     local all_enemies = {}
-    Utils.merge(all_enemies, self.defeated_enemies)
-    Utils.merge(all_enemies, self.enemies)
+    TableUtils.merge(all_enemies, self.defeated_enemies)
+    TableUtils.merge(all_enemies, self.enemies)
     for _,enemy in ipairs(all_enemies) do
         local world_chara = self.enemy_world_characters[enemy]
         if world_chara then
@@ -1127,7 +1127,7 @@ function Battle:onKeyPressed(key)
             if #self.enemies_index == 0 then return end
             self.selected_enemy = self.current_menu_y
             if self.state == "XACTENEMYSELECT" then
-                local xaction = Utils.copy(self.selected_xaction)
+                local xaction = TableUtils.copy(self.selected_xaction)
                 if xaction.default then
                     xaction.name = self.enemies_index[self.selected_enemy]:getXAction(self.party[self.current_selecting])
                 end

@@ -3,7 +3,7 @@ local water, super = Class(Event, "watertile")
 function water:init(data)
     super.init(self, data.x + 22, data.y + 14, data.width - 40, data.height - 24)
 
-	self.color = Utils.parseColorProperty(data.properties["color"] or "#00000180")
+	self.color = TiledUtils.parseColorProperty(data.properties["color"] or "#00000180")
 	--self.depth = data.properties["depth"] or 5
 	self.depth = 5 -- this shit is broken rn
 	--[[
@@ -43,7 +43,7 @@ function water:onExit(chara)
 			
 		end
 
-		if Utils.containsValue(colliding, true) == false then
+		if TableUtils.contains(colliding, true) == false then
 			--chara:removeChild(self.watersprite)
 			if chara.watersprite then
 				chara:removeChild(chara.watersprite)

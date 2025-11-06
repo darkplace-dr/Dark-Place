@@ -40,7 +40,7 @@ function FloorMirror:drawCharacter(chara)
     local oyd = chara.y - self.bottom
     love.graphics.translate(0, -oyd + self.offset)
     local oldsprite = string.sub(chara.sprite.texture_path, #chara.sprite.path + 2)
-    local t = Utils.split(oldsprite, "_")
+    local t = StringUtils.split(oldsprite, "_")
     local pathless = t[1]
     local frame = t[2]
     local newsprite = oldsprite

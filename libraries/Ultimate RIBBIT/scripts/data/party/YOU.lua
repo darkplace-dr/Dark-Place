@@ -134,7 +134,7 @@ function character:onAttackHit(enemy, damage)
     if self:checkWeapon("aeonlance") then
         for i, v in ipairs(Game.battle:getActiveEnemies()) do
             if v ~= enemy then
-                v:hurt(Utils.round(damage/3), nil, nil, self.dmg_color)
+                v:hurt(MathUtils.round(damage/3), nil, nil, self.dmg_color)
             end
         end
     end

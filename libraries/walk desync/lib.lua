@@ -2,7 +2,7 @@ local Lib, super = Class()
 
 function Lib:init()
 
-    Utils.hook(ActorSprite, 'update', function(orig, self, actor, ...)
+    HookSystem.hook(ActorSprite, 'update', function(orig, self, actor, ...)
         if self.actor:preSpriteUpdate(self) then
             return
         end

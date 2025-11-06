@@ -38,7 +38,7 @@ function Combo:getTPCost(chara) return self.cost end
 function Combo:isUsable(chara) return self.usable end
 
 function Combo:hasTag(tag)
-    return Utils.containsValue(self.tags, tag)
+    return TableUtils.contains(self.tags, tag)
 end
 
 function Combo:onCast(target)

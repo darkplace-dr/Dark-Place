@@ -110,7 +110,7 @@ end
 
 function actor.doAnimTimer(sprite, wait)
     while true do
-        sprite:setFrame(Utils.clamp(Utils.round(sprite.werewire_anim_timer) + 1, 1, 14))
+        sprite:setFrame(MathUtils.clamp(MathUtils.round(sprite.werewire_anim_timer) + 1, 1, 14))
         wait()
     end
 end

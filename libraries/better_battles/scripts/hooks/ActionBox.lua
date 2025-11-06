@@ -14,8 +14,8 @@ function ActionBox:createButtons()
 	if self.battler.chara:hasSkills() and Kristal.getLibConfig("better_battles", "skill_button") then
 		btn_types = {"fight", "skill", "item", "spare", "defend"}
 	else
-		if not self.battler.chara:hasAct() then Utils.removeFromTable(btn_types, "act") end
-		if not self.battler.chara:hasSpells() then Utils.removeFromTable(btn_types, "magic") end
+		if not self.battler.chara:hasAct() then TableUtils.removeValue(btn_types, "act") end
+		if not self.battler.chara:hasSpells() then TableUtils.removeValue(btn_types, "magic") end
 	end
 
     for lib_id,_ in pairs(Mod.libs) do
@@ -44,7 +44,7 @@ function ActionBox:createButtons()
         end
     end
 
-    self.selected_button = Utils.clamp(self.selected_button, 1, #self.buttons)
+    self.selected_button = MathUtils.clamp(self.selected_button, 1, #self.buttons)
 end
 
 return ActionBox

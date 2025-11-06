@@ -12,7 +12,7 @@ end
 function ShelterSound:update()
     local player = Game.world.player
     local event = self
-    local distance = Utils.dist(player.x, player.y, event.x, event.y)
+    local distance = MathUtils.dist(player.x, player.y, event.x, event.y)
     local volume = Utils.clampMap(distance, 50, 150, 2, 0)
     local volume2 = Utils.clampMap(distance, 50, 150, 0.01, 1)
     Game.world.music:setVolume(volume2)

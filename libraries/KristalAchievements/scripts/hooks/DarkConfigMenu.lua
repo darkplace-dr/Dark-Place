@@ -54,10 +54,10 @@ function DarkConfigMenu:update()
             self.ui_move:play()
         end
 
-        self.currently_selected = Utils.clamp(self.currently_selected, 1, 8)
+        self.currently_selected = MathUtils.clamp(self.currently_selected, 1, 8)
     elseif self.state == "VOLUME" then
         if Input.pressed("cancel") or Input.pressed("confirm") then
-            Kristal.setVolume(Utils.round(Kristal.getVolume() * 100) / 100)
+            Kristal.setVolume(MathUtils.round(Kristal.getVolume() * 100) / 100)
             self.ui_select:stop()
             self.ui_select:play()
             self.state = "MAIN"
@@ -116,7 +116,7 @@ function DarkConfigMenu:draw()
         if self.state == "VOLUME" then
             love.graphics.setColor(PALETTE["world_text_selected"])
         end
-        love.graphics.print(Utils.round(Kristal.getVolume() * 100) .. "%",      348, 38 + (0 * 32))
+        love.graphics.print(MathUtils.round(Kristal.getVolume() * 100) .. "%",      348, 38 + (0 * 32))
         love.graphics.setColor(PALETTE["world_text"])
         love.graphics.print(Kristal.Config["simplifyVFX"] and "ON" or "OFF", 348, 38 + (2 * 32))
         love.graphics.print(Kristal.Config["fullscreen"]  and "ON" or "OFF", 348, 38 + (3 * 32))
@@ -164,11 +164,11 @@ function DarkConfigMenu:draw()
                 if type(alias) == "table" then
                     local title_cased = {}
                     for _, word in ipairs(alias) do
-                        table.insert(title_cased, Utils.titleCase(word))
+                        table.insert(title_cased, StringUtils.titleCase(word))
                     end
                     love.graphics.print(table.concat(title_cased, "+"), 243, 0 + (28 * index))
                 elseif alias ~= nil then
-                    love.graphics.print(Utils.titleCase(alias), 243, 0 + (28 * index))
+                    love.graphics.print(StringUtils.titleCase(alias), 243, 0 + (28 * index))
                 end
             end
 

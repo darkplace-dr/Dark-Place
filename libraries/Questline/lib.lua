@@ -156,7 +156,7 @@ function Lib:setDesc(id, desc)
 end
 
 function Lib:getQuest(id)
-	return Utils.getIndex(Game:getFlag("quest_id"), id)
+	return TableUtils.getIndex(Game:getFlag("quest_id"), id)
 end
 
 function Lib:setName(id, name)

@@ -94,7 +94,7 @@ function EnemyBattler:onMercy(battler, spare_all)
                     alive = alive + 1
                 end
             end
-            local mercy_points = Utils.round(self.spare_points * alive/#Game.battle:getActiveEnemies())
+            local mercy_points = MathUtils.round(self.spare_points * alive/#Game.battle:getActiveEnemies())
             self:addMercy(math.min(mercy_points,100))
             -- if mercy_points > 100 and self:canSpare() then
                 -- self:spare()

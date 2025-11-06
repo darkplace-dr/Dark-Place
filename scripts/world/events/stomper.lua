@@ -45,7 +45,7 @@ function Stomper:update()
 	end
     if self.form == 4 then
         if (Game.world.player.x >= self.x) then
-            self.x = Utils.lerp(self.x, Game.world.player.x, 0.25)
+            self.x = MathUtils.lerp(self.x, Game.world.player.x, 0.25)
         end
         self.physics.speed_y = 15
         if (self.y >= (Game.world.player.y - 70)) then
@@ -80,7 +80,7 @@ function Stomper:update()
             self.layer = Game.world.player.layer - 0.1
             self.subform = 1.5
         end
-        Game.world.player.x = Utils.lerp(Game.world.player.x, self.x - 80, 0.1)
+        Game.world.player.x = MathUtils.lerp(Game.world.player.x, self.x - 80, 0.1)
         if (Game.world.player.x <= (self.x - 73)) then
             Game.world.player:resetSprite()
             self.layer = Game.world.player.layer + 0.1

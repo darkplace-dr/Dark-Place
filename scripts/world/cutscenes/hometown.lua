@@ -264,7 +264,7 @@ return {
             elseif leader_id == "YOU" then
                 cutscene:text("* (A photo of Toriel and a random goat man on a wedding day.)")
                 cutscene:text("* (Wait... Toriel was married??)")
-            elseif Utils.containsValue(characters_who_knows_dreemurr, leader_id) then
+            elseif TableUtils.contains(characters_who_knows_dreemurr, leader_id) then
                 cutscene:text("* (A photo of Toriel and Asgore on their wedding day.)")
             else
                 cutscene:text("* (A photo of two goat monsters on their wedding day.)")

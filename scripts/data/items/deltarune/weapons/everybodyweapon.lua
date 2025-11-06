@@ -3,11 +3,11 @@ local item, super = Class("everybodyweapon", true)
 function item:init()
     super.init(self)
 
-    self.can_equip = Utils.merge(self.can_equip, {
+    self.can_equip = TableUtils.merge(self.can_equip, {
         noel = false,
     })
 
-    self.reactions = Utils.merge(self.reactions, {
+    self.reactions = TableUtils.merge(self.reactions, {
         noel = "(SO COOL!) I... can't...",
     })
 end

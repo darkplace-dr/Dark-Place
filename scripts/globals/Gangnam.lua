@@ -9,7 +9,7 @@ function Gangnam:init()
 
 	self.gangnam_sound = love.audio.newSource(Assets.getMusicPath("gangnam"), "stream")
 
-	Utils.hook(Player, "isMovementEnabled",
+	HookSystem.hook(Player, "isMovementEnabled",
         ---@overload fun(orig:function, self:Player):boolean
         function(orig, g_self)
             return orig(g_self)

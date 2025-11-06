@@ -4,7 +4,7 @@ function item:init()
     super.init(self)
 
     -- Character reactions
-    self.reactions = Utils.merge(self.reactions, {
+    self.reactions = TableUtils.merge(self.reactions, {
 		dess = "Yummy glue",
         brenda = "It stained my clothes!",
 		jamm = "Do I have it on right?",

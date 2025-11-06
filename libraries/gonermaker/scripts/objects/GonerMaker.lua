@@ -40,7 +40,7 @@ function GonerMaker:update()
     if Input.pressed("right") then self.parts[self.step].selected = self.parts[self.step].selected + 1 end
 
     for _, part in ipairs(self.parts) do
-        part.selected = Utils.clamp(part.selected, 1, #part.spr)
+        part.selected = MathUtils.clamp(part.selected, 1, #part.spr)
         part.ideal_x = (part.selected - 1) * -25
 
         if part.x < part.ideal_x then
