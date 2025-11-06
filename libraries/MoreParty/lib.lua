@@ -184,7 +184,7 @@ function Lib:init()
         local box_color = {self.battler.chara:getAttackBoxColor()}
 
         if self.flash > 0 then
-            box_color = MathUtils.lerp(box_color, {1, 1, 1}, self.flash)
+            box_color = TableUtils.lerp(box_color, {1, 1, 1}, self.flash)
         end
 
         love.graphics.setLineWidth(2)
