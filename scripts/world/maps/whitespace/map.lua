@@ -4,7 +4,7 @@ function WhiteSpace:update()
 
     --haha backroom go brrrrrrr
     if Game.world.map.id == "whitespace" then
-        if Game.world.player.walk_speed >= 60 then
+        if Game.world.player:getCurrentSpeed(false) >= 60 then
             Game:setFlag("greyarea_exit_to", {Game.world.map.id, Game.world.player.x, Game.world.player.y})
     	    Game.world:loadMap("greyarea", "entry")
         end
