@@ -120,7 +120,7 @@ return{
             cutscene:wait(function () return zero.x <= susie.x+50 end)
             zero.x = susie.x + 50
             zero.y = susie.y
-            Assets.playSound("zero/normal_slash_" .. math.ceil(Utils.random(3)))
+            Assets.playSound("zero/normal_slash_" .. math.ceil(MathUtils.random(3)))
             zero:setAnimation("struggle")
             cutscene:setSprite(susie, "hold_axe")
             susie.graphics.shake_x = 1
@@ -222,7 +222,7 @@ return{
             zero:setAnimation("attack")
             local slashfx = Sprite("effects/KatanaSlash")
             zero:addChild(slashfx)
-            Assets.playSound("zero/normal_slash_" .. math.ceil(Utils.random(3)))
+            Assets.playSound("zero/normal_slash_" .. math.ceil(MathUtils.random(3)))
             slashfx.x = slashfx.x - 45
             slashfx:play(1/25, false, function ()
                 slashfx:remove()
@@ -302,7 +302,7 @@ return{
             cutscene:wait(function () return zero.x <= susie.x+50 end)
             zero.x = susie.x + 50
             zero.y = susie.y
-            Assets.playSound("zero/normal_slash_" .. math.ceil(Utils.random(3)))
+            Assets.playSound("zero/normal_slash_" .. math.ceil(MathUtils.random(3)))
             zero:setAnimation("struggle")
             cutscene:detachFollowers()
             cutscene:setSprite(susie, "hold_axe")
@@ -387,7 +387,7 @@ return{
             zero:setAnimation("attack")
             local slashfx = Sprite("effects/KatanaSlash")
             zero:addChild(slashfx)
-            Assets.playSound("zero/normal_slash_" .. math.ceil(Utils.random(3)))
+            Assets.playSound("zero/normal_slash_" .. math.ceil(MathUtils.random(3)))
             slashfx.x = slashfx.x - 45
             slashfx:play(1/25, false, function ()
                 slashfx:remove()

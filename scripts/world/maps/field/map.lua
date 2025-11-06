@@ -58,7 +58,7 @@ function field:onEnter()
 	}
 
 	self.text_gen = Game.world.timer:every(2.5, function()
-		local text = Text(Utils.pick(self.hopes_and_dreams),
+		local text = Text(TableUtils.pick(self.hopes_and_dreams),
 			20, SCREEN_HEIGHT/2,
 			SCREEN_WIDTH - 40, SCREEN_HEIGHT,
 			{
@@ -78,12 +78,12 @@ function field:onEnter()
 
 	self.star_gen = Game.world.timer:everyInstant(0.5, function()
 		for _ = 1, 2 do
-			local star = Sprite("effects/star", Utils.random(40, SCREEN_WIDTH - 40), SCREEN_HEIGHT)
+			local star = Sprite("effects/star", MathUtils.random(40, SCREEN_WIDTH - 40), SCREEN_HEIGHT)
 			star:setParallax(0, 0)
 			star:setOrigin(0.5, 0.5)
-			star.rotation = Utils.random(0, 12)
+			star.rotation = MathUtils.random(0, 12)
 			star.graphics.spin = -1/30
-			star.physics.speed_y = -Utils.random(1, 2)
+			star.physics.speed_y = -MathUtils.random(1, 2)
 			star.physics.friction = 0.005
 			star:fadeOutAndRemove(3)
 			Game.world:spawnObject(star, "top")

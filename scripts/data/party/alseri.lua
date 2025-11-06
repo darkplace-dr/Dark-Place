@@ -138,7 +138,7 @@ function character:onLevelUp(level)
 end
 
 function character:onPowerSelect(menu)
-    if Utils.random() <= 0.03 then
+    if MathUtils.random() <= 0.03 then
         menu.ralsei_dog = true
     else
         menu.ralsei_dog = false

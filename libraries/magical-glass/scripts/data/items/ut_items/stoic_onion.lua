@@ -41,7 +41,7 @@ end
 
 function item:getWorldUseText(target)
     local message = ""
-    local picker = Utils.random(10)
+    local picker = MathUtils.random(10)
     if picker > 8 then
         message = "\n* "..target:getNameOrYou().." didn't cry..."
     end
@@ -50,7 +50,7 @@ end
 
 function item:getLightBattleText(user, target)
     local message = ""
-    local picker = Utils.random(10)
+    local picker = MathUtils.random(10)
     if picker > 8 then
         message = "\n* "..target.chara:getNameOrYou().." didn't cry..."
     end

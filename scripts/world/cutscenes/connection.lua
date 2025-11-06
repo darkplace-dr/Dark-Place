@@ -179,7 +179,7 @@ return {
 
         pitch_timer = Game.world.timer:every(0.2, function()
             if Game.world.music and Game.world.music:isPlaying() then
-                Game.world.music.pitch = Utils.random(0.9, 1.1)
+                Game.world.music.pitch = MathUtils.random(0.9, 1.1)
             else
                 return false
             end

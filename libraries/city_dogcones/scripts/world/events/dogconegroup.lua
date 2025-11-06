@@ -129,7 +129,7 @@ function DogConeGroup:onInteract(player, dir)
     local interact = self:getFlag("interact", 0)
 
     if interact > 3 then
-        Assets.playSound("snd_pombark", 1, Utils.pick({1, 1, 1, 1, 1, 1, 1, Utils.random(0.6, 1.6)}))
+        Assets.playSound("snd_pombark", 1, TableUtils.pick({1, 1, 1, 1, 1, 1, 1, MathUtils.random(0.6, 1.6)}))
 
     else
         Assets.playSound("snd_pombark")

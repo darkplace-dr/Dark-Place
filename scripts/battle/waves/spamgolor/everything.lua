@@ -53,7 +53,7 @@ function Spamgolor_Everything:onStart()
 
 	self:spawnBullet("blackhole", SCREEN_WIDTH/2, 40, 0, 0)
 	self.timer:every(1/2, function()
-		local x = Utils.random(Game.battle.arena.left - 20, Game.battle.arena.right + 20)
+		local x = MathUtils.random(Game.battle.arena.left - 20, Game.battle.arena.right + 20)
 		local y = SCREEN_HEIGHT + 20
 
 		local angle = Utils.angle(x, y, SCREEN_WIDTH/2, 50)

@@ -117,7 +117,7 @@ function SpamtonNEO:update()
     if Game.battle.encounter.funnycheat > 5 then
         if self.funnycheattimer < 28 then
             self.funnycheattimer = self.funnycheattimer + 0.125 * DTMULT
-            self.sprite.head.color = Utils.mergeColor(COLORS["white"], COLORS["red"], self.funnycheattimer / 30)
+            self.sprite.head.color = ColorUtils.mergeColor(COLORS["white"], COLORS["red"], self.funnycheattimer / 30)
         end
 		
         if self.funnycheattimer >= 24 then
@@ -142,7 +142,7 @@ function SpamtonNEO:update()
         end
 		
         if self.funnycheattimer3 >= 4 and self.funnycheattimer3 <= 10 or self.funnycheattimer3 >= 20 and self.funnycheattimer3 <= 26 then
-            self.sprite:setPartShaking("head", -12 + Utils.random(24))
+            self.sprite:setPartShaking("head", -12 + MathUtils.random(24))
         else
             self.sprite:setPartShaking("head", 0)
         end

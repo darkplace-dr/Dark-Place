@@ -169,7 +169,7 @@ function Soul:update()
             if not sprites or #sprites <= 0 then goto continue end
 
             chara:toggleOverlay(true)
-            chara.overlay_sprite:setSprite(Utils.pick(sprites))
+            chara.overlay_sprite:setSprite(TableUtils.pick(sprites))
 
             -- the shine effect
             local effect = Sprite("effects/taunt", 10, 15)
@@ -191,9 +191,9 @@ function Soul:update()
         self.once = false
     end
 
-    if self.parry_timer > 0 then self.parry_timer = Utils.approach(self.parry_timer, 0, DTMULT) end
-    if self.cooldown_timer > 0 then self.cooldown_timer = Utils.approach(self.cooldown_timer, 0, DTMULT) end
-    if self.parry_inv > 0 then self.parry_inv = Utils.approach(self.parry_inv, 0, DTMULT) end
+    if self.parry_timer > 0 then self.parry_timer = MathUtils.approach(self.parry_timer, 0, DTMULT) end
+    if self.cooldown_timer > 0 then self.cooldown_timer = MathUtils.approach(self.cooldown_timer, 0, DTMULT) end
+    if self.parry_inv > 0 then self.parry_inv = MathUtils.approach(self.parry_inv, 0, DTMULT) end
 	end
 	end
 	-- Taunt code ends here
@@ -208,19 +208,19 @@ function Soul:update()
     if not self.transitioning and Input.down("focus_placebo") and Game:getTension() > 0 then
         -- Make sure the game pauses when object selection and selection slowdown is active.
         if not (Kristal.DebugSystem.state == "SELECTION" and Kristal.Config["objectSelectionSlowdown"]) then
-        Game.stage.timescale = Utils.approach(Game.stage.timescale, 0.5, DTMULT / 4)
+        Game.stage.timescale = MathUtils.approach(Game.stage.timescale, 0.5, DTMULT / 4)
         end
-        Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch/2, DTMULT / 4)
-        self.timescale = Utils.approach(self.timescale, 2, DTMULT / 4)
+        Game.battle.music.pitch = MathUtils.approach(Game.battle.music.pitch, Game.battle.music.basepitch/2, DTMULT / 4)
+        self.timescale = MathUtils.approach(self.timescale, 2, DTMULT / 4)
         self.vhsfx.active = true
         if self.timeslow_sfx then self.timeslow_sfx:play() end
 	else
         -- Make sure the game pauses when object selection and selection slowdown is active.
         if not (Kristal.DebugSystem.state == "SELECTION" and Kristal.Config["objectSelectionSlowdown"]) then
-        Game.stage.timescale = Utils.approach(Game.stage.timescale, 1, DTMULT / 4)
+        Game.stage.timescale = MathUtils.approach(Game.stage.timescale, 1, DTMULT / 4)
         end
-        Game.battle.music.pitch = Utils.approach(Game.battle.music.pitch, Game.battle.music.basepitch, DTMULT / 4)
-        self.timescale = Utils.approach(self.timescale, 1, DTMULT / 4)
+        Game.battle.music.pitch = MathUtils.approach(Game.battle.music.pitch, Game.battle.music.basepitch, DTMULT / 4)
+        self.timescale = MathUtils.approach(self.timescale, 1, DTMULT / 4)
         self.vhsfx.active = false
         if self.timeslow_sfx then self.timeslow_sfx:stop() end
     end
@@ -242,7 +242,7 @@ function Soul:update()
 
     -- Soul VFX
     if not self.transitioning and Input.down("focus_placebo") and Game:getTension() > 0 then
-    self.outline.alpha = Utils.approach(self.outline.alpha, 1, DTMULT / 4)
+    self.outline.alpha = MathUtils.approach(self.outline.alpha, 1, DTMULT / 4)
     self.concentratebg.alpha_fx.alpha = 1
     if self.afterimage_delay >= 5 then
         local afterimage = AfterImage(self.outline, 0.5)
@@ -253,8 +253,8 @@ function Soul:update()
         self.afterimage_delay = self.afterimage_delay + DTMULT
     end
     else
-    self.outline.alpha = Utils.approach(self.outline.alpha, 0, DTMULT / 4)
-    self.concentratebg.alpha_fx.alpha = Utils.approach(self.concentratebg.alpha_fx.alpha, 0, DTMULT / 4)
+    self.outline.alpha = MathUtils.approach(self.outline.alpha, 0, DTMULT / 4)
+    self.concentratebg.alpha_fx.alpha = MathUtils.approach(self.concentratebg.alpha_fx.alpha, 0, DTMULT / 4)
     end
     if self.focus_holder then self.outlinefx:setAlpha(self.outline.alpha - 0.2) end
 	end

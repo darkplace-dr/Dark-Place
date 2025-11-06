@@ -261,7 +261,7 @@ function TrafficCar:update()
         else
             self.idealspeed = math.max((chardist / 16), 10)
         end
-        self.speed = Utils.approach(self.speed, self.idealspeed, 1)
+        self.speed = MathUtils.approach(self.speed, self.idealspeed, 1)
         -- This should be the equivalent of what instance_place is doing in DELTARUNE
         local carcheck
         for _, car in ipairs(Game.world:getEvents("traffic_car")) do

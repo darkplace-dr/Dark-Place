@@ -48,7 +48,7 @@ function SneoBombPipis:update()
     if self:collidesWith(self.wave.wall) and self.boom == false then
         Assets.playSound("bump")
         self.physics.gravity = 0.24
-        self.physics.speed_y = (-5.5 - Utils.random(3))
+        self.physics.speed_y = (-5.5 - MathUtils.random(3))
     end
 	
     if self.boom == false and ((self.x < (Game.battle.arena.x + (Game.battle.arena.width / 2) + 20)) and not (self.y >= self.wave.wall.y)) then

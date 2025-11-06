@@ -21,7 +21,7 @@ function WeirdEndPipisBullet:update()
     super.update(self)
 	
     self.blue_siner = self.blue_siner + DTMULT
-    self:setColor(Utils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + math.sin(self.blue_siner / 3)) * 0.25))
+    self:setColor(ColorUtils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + math.sin(self.blue_siner / 3)) * 0.25))
 end
 
 function WeirdEndPipisBullet:destroy()

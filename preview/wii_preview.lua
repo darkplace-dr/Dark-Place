@@ -38,11 +38,11 @@ function wii_preview:iconUpdate(data, timer, is_maintenance)
     data.particle_timer = data.particle_timer + DT
     if data.particle_timer >= 1.2 then
         data.particle_timer = 0
-        local radius = Utils.random(12)
+        local radius = MathUtils.random(12)
         table.insert(data.particles, {
             radius = radius, max_radius = radius,
-            x = Utils.random(125), y = 96 + radius,
-            speed = Utils.random(0.5, 1)
+            x = MathUtils.random(125), y = 96 + radius,
+            speed = MathUtils.random(0.5, 1)
         })
     end
 	return data

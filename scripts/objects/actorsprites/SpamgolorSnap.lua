@@ -41,7 +41,7 @@ function SnapString:update()
         if self.shake_timer > 2 then
             self.shake_timer = self.shake_timer - 2
             self.shake_amt = self.shake_amt - 1
-            self.visible_shake = Utils.random(-self.shake_amt, self.shake_amt)
+            self.visible_shake = MathUtils.random(-self.shake_amt, self.shake_amt)
         end
     else
         self.visible_shake = 0

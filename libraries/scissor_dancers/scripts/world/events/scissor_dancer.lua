@@ -30,7 +30,7 @@ end
 
 function ScissorDancer:onInteract(player, dir)
 	super.onInteract(self, player, dir)
-	Assets.playSound("scissorbell", 1, Utils.random(0.7, 1))
+	Assets.playSound("scissorbell", 1, MathUtils.random(0.7, 1))
 	return true
 end
 

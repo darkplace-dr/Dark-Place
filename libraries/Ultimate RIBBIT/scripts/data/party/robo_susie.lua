@@ -19,7 +19,7 @@ function character:init()
     if self.level < 20 then
         self.title = "Oddity\nPurple girl with\ntrust issues."
     else
-        if Utils.random() < 0.5 then
+        if MathUtils.random() < 0.5 then
             self.title = "Nuisance\nWould be nice if she\nwas gone"
         else
             self.title = "BFF\nTrustworthy.\nTell her everything."
@@ -141,7 +141,7 @@ function PartyMember:getTitle()
     if Game:getPartyMember("robo_susie").level < 20 then
         Game:getPartyMember("robo_susie").title = "Oddity\nPurple girl with\ntrust issues."
     elseif Game:getPartyMember("robo_susie").level >= 20 then
-        if Utils.random() <= 0.5 then
+        if MathUtils.random() <= 0.5 then
             Game:getPartyMember("robo_susie").title = "Nuisance\nWould be nice if\nshe was gone"
         else
             Game:getPartyMember("robo_susie").title = "BFF\nTrustworthy.\nTell her everything."

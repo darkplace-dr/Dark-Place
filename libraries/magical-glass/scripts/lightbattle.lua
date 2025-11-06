@@ -1761,9 +1761,9 @@ function LightBattle:update()
         end
 
         if darken and self.wave_timer <= time - 9/30 then
-            self.darkify_fader.alpha = Utils.approach(self.darkify_fader.alpha, 0.5, DTMULT * 0.05)
+            self.darkify_fader.alpha = MathUtils.approach(self.darkify_fader.alpha, 0.5, DTMULT * 0.05)
         else
-            self.darkify_fader.alpha = Utils.approach(self.darkify_fader.alpha, 0, DTMULT * 0.05)
+            self.darkify_fader.alpha = MathUtils.approach(self.darkify_fader.alpha, 0, DTMULT * 0.05)
         end
 
         self:updateWaves()
@@ -1795,7 +1795,7 @@ function LightBattle:update()
     end
     
     if Utils.containsValue({"DEFENDINGEND", "ACTIONSELECT", "ACTIONS", "VICTORY", "TRANSITIONOUT", "BATTLETEXT"}, self.state) then
-        self.darkify_fader.alpha = Utils.approach(self.darkify_fader.alpha, 0, DTMULT * 0.05)
+        self.darkify_fader.alpha = MathUtils.approach(self.darkify_fader.alpha, 0, DTMULT * 0.05)
     end
     
     self.update_child_list = true
@@ -2277,7 +2277,7 @@ function LightBattle:randomTargetOld()
 
     local target = nil
     while not target do
-        local party = Utils.pick(self.party)
+        local party = TableUtils.pick(self.party)
         if party:canTarget() then
             target = party
         end
@@ -2341,7 +2341,7 @@ function LightBattle:getPartyFromTarget(target)
         return {target}
     elseif type(target) == "string" then
         if target == "ANY" then
-            return {Utils.pick(self.party)}
+            return {TableUtils.pick(self.party)}
         elseif target == "ALL" then
             return Utils.copy(self.party)
         else

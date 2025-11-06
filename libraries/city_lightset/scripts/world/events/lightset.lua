@@ -24,8 +24,8 @@ function Lightset:init(data)
         sp:setScaleOrigin(0, 1)
         self:addChild(sp)
 
-        sp.barsiner     = Utils.random(4600)
-        sp.scale_y      = Utils.random(1) * self.scale_y
+        sp.barsiner     = MathUtils.random(4600)
+        sp.scale_y      = MathUtils.random(1) * self.scale_y
         local r, g, b   = Utils.hsvToRgb((i * 255 / self.l)/255, 128/255, 255/255)
         sp.color        = {r, g, b}
     end
@@ -59,14 +59,14 @@ function Lightset:draw()
         end
         if self.mode == 0 then
             if sp.scale_y < (0.8 * self.h) then
-                if math.floor(Utils.random(12)) == 0 then
+                if math.floor(MathUtils.random(12)) == 0 then
                     sp.scale_y = self.h
                 end
             end
         end
         if self.mode == 1 then
             if self.timer >= self.timerthreshold then
-                sp.scale_y = math.min(sp.scale_y + Utils.random(0.5 * self.h), self.h)
+                sp.scale_y = math.min(sp.scale_y + MathUtils.random(0.5 * self.h), self.h)
             end
         end
 

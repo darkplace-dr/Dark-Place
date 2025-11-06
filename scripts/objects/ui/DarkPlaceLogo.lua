@@ -43,7 +43,7 @@ end
 
 function DarkPlaceLogo:update()
     if self.phase < 4 then
-        self.timer = Utils.approach(self.timer, 0, DTMULT)
+        self.timer = MathUtils.approach(self.timer, 0, DTMULT)
     end
 
     if self.timer <= 0 and self.phase < 4 and self.change_time == false then
@@ -85,7 +85,7 @@ function DarkPlaceLogo:update()
 
             if i <= math.min(10, math.floor((self.text_timer + 4) / 4)) then
                 off.x = Utils.ease(-10, 10, off.alpha, "out-cubic")
-                off.alpha = Utils.approach(off.alpha, 1, 0.05 * DTMULT)
+                off.alpha = MathUtils.approach(off.alpha, 1, 0.05 * DTMULT)
             end
         end
     end
@@ -98,7 +98,7 @@ function DarkPlaceLogo:update()
     end
 
     if self.phase >= 3 then
-        self.tagline_alpha = Utils.approach(self.tagline_alpha, 1, 0.01 * DTMULT)
+        self.tagline_alpha = MathUtils.approach(self.tagline_alpha, 1, 0.01 * DTMULT)
     end
 
     super.update(self)

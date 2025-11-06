@@ -29,7 +29,7 @@ function CityScreen:init(data)
     ::skip::
 
     if not self.sprite then
-        self.sprite = Utils.pick(spritelist)
+        self.sprite = TableUtils.pick(spritelist)
     end
 
     self:setSprite("world/events/screen/" .. self.sprite, self.spritespeed)

@@ -49,7 +49,7 @@ end
 -- Sets a random title and icon to the game window.
 function Mod:funnytitle()
     Mod:setDesiredWindowTitleAndIcon()
-    if Utils.random() < 0.5 then return end
+    if MathUtils.random() < 0.5 then return end
     local funnytitles = {
         "Deltarune",
         "Half-Life",

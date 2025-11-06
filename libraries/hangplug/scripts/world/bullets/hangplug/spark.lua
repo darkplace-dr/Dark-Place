@@ -89,7 +89,7 @@ function PlugSpark:draw()
 
     love.graphics.setColor(1, 1, 1, 0.4 * self.alpha)
     for i = 1, 5 do
-        love.graphics.draw(Utils.pick(textures), 0, 0, math.rad(33 * love.math.random(0, 8)), 2 * self.scaler, 2 * self.scaler, tex_w / 2, tex_h / 2)
+        love.graphics.draw(TableUtils.pick(textures), 0, 0, math.rad(33 * love.math.random(0, 8)), 2 * self.scaler, 2 * self.scaler, tex_w / 2, tex_h / 2)
     end
 
     love.graphics.setColor(1, 1, 1)

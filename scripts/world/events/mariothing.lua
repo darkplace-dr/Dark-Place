@@ -58,8 +58,8 @@ end
 function WobblyThing:wobble()
     if self.evil then
         self.world:setBattle(true)
-        Assets.playSound("wobbler", 1, 0.5 + Utils.random(0.2))
-        Assets.playSound("wobbler", 1, 0.9 + Utils.random(0.2))
+        Assets.playSound("wobbler", 1, 0.5 + MathUtils.random(0.2))
+        Assets.playSound("wobbler", 1, 0.9 + MathUtils.random(0.2))
 
         local rel_x, rel_y = self:getRelativePos(self.width/2, self.height, self.world)
         for i = 1, self.shoot_amount do
@@ -67,7 +67,7 @@ function WobblyThing:wobble()
             bullet.physics.speed = self.shoot_speed
         end
     else
-        Assets.playSound("hellomario", 1, 0.8 + Utils.random(0.3))
+        Assets.playSound("hellomario", 1, 0.8 + MathUtils.random(0.3))
     end
     self.sprite:play(5 / 30)
     self.wobbled = true

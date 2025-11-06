@@ -39,7 +39,7 @@ end
 
 function EnemySoul:update()
     if self.alpha < 1 then
-        self.alpha = Utils.approach(self.alpha, 1, DT)
+        self.alpha = MathUtils.approach(self.alpha, 1, DT)
     end
 
     if self.graze_timer > 0 then

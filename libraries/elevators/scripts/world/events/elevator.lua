@@ -180,7 +180,7 @@ function Elevator:update()
             self.merge_amt = 1
             self.mergecon = 3
         end
-        self.cur_bg_c = Utils.mergeColor(self.prev_bg_c, self.ideal_bg_c, self.merge_amt)
+        self.cur_bg_c = ColorUtils.mergeColor(self.prev_bg_c, self.ideal_bg_c, self.merge_amt)
     end
     if (self.mergecon == 3) then
         self.mergecon = 0
@@ -202,8 +202,8 @@ function Elevator:update()
         self.shakecon = 4
         local timer = Game.world.timer:everyInstant(1/30, function()
             if (self.shakeamt >= 0) then
-                Game.world.camera.ox = (0 - Utils.random(self.shakeamt)) + Utils.random(self.shakeamt)
-                Game.world.camera.oy = (0 - Utils.random(self.shakeamt)) + Utils.random(self.shakeamt)
+                Game.world.camera.ox = (0 - MathUtils.random(self.shakeamt)) + MathUtils.random(self.shakeamt)
+                Game.world.camera.oy = (0 - MathUtils.random(self.shakeamt)) + MathUtils.random(self.shakeamt)
                 self.shakeamt = self.shakeamt - 0.5
                 return true
             else
@@ -954,7 +954,7 @@ function Elevator:draw()
     love.graphics.draw(Assets.getTexture("bg/elevator"), 0, 0, 0, 2, 2)
 
     if (self.rectcon >= 1) then
-        love.graphics.setColor(Utils.mergeColor(self.cur_bg_c, COLORS.black, 1 - self.rect_alpha))
+        love.graphics.setColor(ColorUtils.mergeColor(self.cur_bg_c, COLORS.black, 1 - self.rect_alpha))
         for i = 0, 7 do
             local x1 = -10
             local y1 = (-100 + self.recty) + (i * self.rectspacing)

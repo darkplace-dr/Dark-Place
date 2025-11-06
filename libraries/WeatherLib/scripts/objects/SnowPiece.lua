@@ -23,7 +23,7 @@ function SnowPiece:init(number, x, y, speed, rotspeed, sinerspeed, lifespan, han
     --self:setPosition(self.x, self.y - (self.snowsprite.height * 2))
     --self:addChild(self.rainsprite)
     self.initx, self.inity = self.x, self.y
-    self.alpha_mult = Utils.random(0.4, 1.95)
+    self.alpha_mult = MathUtils.random(0.4, 1.95)
     self.fade = self.alpha_mult
     
     self.width, self.height = 6, 6

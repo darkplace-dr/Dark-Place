@@ -193,7 +193,7 @@ function DarkConfigMenu:draw()
         end
 
         if (self.reset_flash_timer > 0) then
-            love.graphics.setColor(Utils.mergeColor(PALETTE["world_text_hover"], PALETTE["world_text_selected"], ((self.reset_flash_timer / 10) - 0.1)))
+            love.graphics.setColor(ColorUtils.mergeColor(PALETTE["world_text_hover"], PALETTE["world_text_selected"], ((self.reset_flash_timer / 10) - 0.1)))
         end
 
         if dualshock then

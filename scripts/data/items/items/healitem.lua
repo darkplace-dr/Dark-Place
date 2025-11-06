@@ -22,7 +22,7 @@ function item:init()
     self.description = "An item that is supposed to heal. Does not have texture, taste or anything. +?? HP."
 
     -- Amount healed (HealItem variable) (It's "broken" on purpose)
-    self.heal_amount = Utils.random(5, 200)
+    self.heal_amount = MathUtils.random(5, 200)
 
     -- Default shop price (sell price is halved)
     self.price = 150

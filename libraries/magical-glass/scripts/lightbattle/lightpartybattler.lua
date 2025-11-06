@@ -306,10 +306,10 @@ function LightPartyBattler:update()
                 end
             end
             if self.inv_bonus >= 15/30 then
-                self.karma_bonus = Utils.pick({0,1})
+                self.karma_bonus = TableUtils.pick({0,1})
             end
             if self.inv_bonus >= 30/30 then
-                self.karma_bonus = Utils.pick({0,1,1})
+                self.karma_bonus = TableUtils.pick({0,1,1})
             end
             if self.inv_bonus >= 45/30 then
                 self.karma_bonus = 1

@@ -57,7 +57,7 @@ function LilGuy:update()
 	
     if self.collider.collidable == true then
         self.blue_siner = self.blue_siner + DTMULT
-        self:setColor(Utils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + math.sin(self.blue_siner / 3)) * 0.25))
+        self:setColor(ColorUtils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + math.sin(self.blue_siner / 3)) * 0.25))
     end
 
     if self.loop == true then
@@ -73,10 +73,10 @@ function LilGuy:update()
 
 	for i,shot in ipairs(Game.stage:getObjects(YellowSoulShot)) do
         if self.big_head == 1 and self.bullet_collider:collidesWith(shot) then
-            Assets.playSound("bell", 0.8, 0.7 + Utils.random(0.1))
+            Assets.playSound("bell", 0.8, 0.7 + MathUtils.random(0.1))
             shot.x = shot.x - math.abs(shot.physics.speed_x)
             shot.physics.speed_x = -8
-            shot.physics.speed_y = Utils.pick{-8, 8, 10, -10}
+            shot.physics.speed_y = TableUtils.pick{-8, 8, 10, -10}
         end
         if self.big_hitbox == 1 then
         
@@ -117,7 +117,7 @@ end
 function LilGuy:destroy(shot)
     self.collider.collidable = false
     self.physics = {direction = 0, speed = 0, gravity = 0, friction = 0}
-    Assets.playSound("bomb", 0.7, 1.1 + Utils.random(0.2))
+    Assets.playSound("bomb", 0.7, 1.1 + MathUtils.random(0.2))
 	
 	local death = AfterImageCut(self.sprite:getTexture(), 8, 4, function() self:remove() end)
 	death:setScale(self.sprite:getScale())

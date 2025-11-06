@@ -85,7 +85,7 @@ end
 function LightBattleUI:beginAttack()
     Game.battle.current_selecting = 0
 
-    local attack_order = Utils.pickMultiple(Game.battle.normal_attackers, #Game.battle.normal_attackers)
+    local attack_order = TableUtils.pickMultiple(Game.battle.normal_attackers, #Game.battle.normal_attackers)
 
     local last_offset = -1
     local offset = 0

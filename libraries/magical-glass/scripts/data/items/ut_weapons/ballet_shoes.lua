@@ -77,8 +77,8 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
     Game.battle.timer:during(1, function() -- can't even tell if this is accurate
         sprite.x = sprite.x - 2 * DTMULT
         sprite.y = sprite.y - 2 * DTMULT
-        sprite.x = sprite.x + Utils.random(4) * DTMULT
-        sprite.y = sprite.y + Utils.random(4) * DTMULT
+        sprite.x = sprite.x + MathUtils.random(4) * DTMULT
+        sprite.y = sprite.y + MathUtils.random(4) * DTMULT
     end)
 
     sprite:play(2/30, false, function(this) -- timing may still be incorrect    

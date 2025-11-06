@@ -129,11 +129,11 @@ function Lib:init()
 
             for i = 1, 3 do
                 local sx, sy = battler:getRelativePos(battler.width, 0)
-                local sparkle = Sprite("effects/criticalswing/sparkle", sx + Utils.random(50), sy + 30 + Utils.random(30))
+                local sparkle = Sprite("effects/criticalswing/sparkle", sx + MathUtils.random(50), sy + 30 + MathUtils.random(30))
                 sparkle:play(4/30, true)
                 sparkle:setScale(2)
                 sparkle.layer = BATTLE_LAYERS["above_battlers"]
-                sparkle.physics.speed_x = Utils.random(2, 6)
+                sparkle.physics.speed_x = MathUtils.random(2, 6)
                 sparkle.physics.friction = -0.25
                 sparkle:fadeOutSpeedAndRemove()
                 Game.battle:addChild(sparkle)
@@ -502,7 +502,7 @@ function Lib:init()
                             if type(variance[index]) == "number" then
                                 next_bolt_x = variance[index]
                             elseif type(variance[index]) == "table" then
-                                next_bolt_x = Utils.pick(variance[index])
+                                next_bolt_x = TableUtils.pick(variance[index])
                             else
                                 error("self.multibolt_variance must either be an integer, a table populated with integers, or a table of tables populated with integers.")
                             end
@@ -521,7 +521,7 @@ function Lib:init()
                                 if type(variance[index]) == "number" then
                                     next_bolt_x = variance[index]
                                 elseif type(variance[index]) == "table" then
-                                    next_bolt_x = Utils.pick(variance[index])
+                                    next_bolt_x = TableUtils.pick(variance[index])
                                 else
                                     error("self.multibolt_variance must either be an integer, a table populated with integers, or a table of tables populated with integers.")
                                 end
@@ -531,7 +531,7 @@ function Lib:init()
                                 error("self.multibolt_variance must be either a table or a number value.")
                             end
                         else
-                            next_bolt_x = Utils.pick(variance[#variance]) + (Utils.pick(variance[#variance]) * (index - #variance))
+                            next_bolt_x = TableUtils.pick(variance[#variance]) + (TableUtils.pick(variance[#variance]) * (index - #variance))
                         end
 
                         bolt = AttackBar(self.bolts[1].x + next_bolt_x, 0, 6, 38)
@@ -598,7 +598,7 @@ function Lib:init()
     if not Mod.libs["moreparty"] then
         Utils.hook(AttackBox, "update", function(orig, self)
             if self.removing or Game.battle.cancel_attack then
-                self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
+                self.fade_rect.alpha = MathUtils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
             end
         
             if not self.attacked then
@@ -637,7 +637,7 @@ function Lib:init()
             if not Game.battle.cancel_attack and Input.pressed("confirm") then
                 self.flash = 1
             else
-                self.flash = Utils.approach(self.flash, 0, DTMULT/5)
+                self.flash = MathUtils.approach(self.flash, 0, DTMULT/5)
             end
 
             AttackBox.__super.update(self)

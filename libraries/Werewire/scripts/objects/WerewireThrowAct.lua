@@ -164,7 +164,7 @@ function WerewireThrowAct:draw()
     if self.state == "WAIT" then
         local lx, ly = math.cos(self.angle) * self.power, math.sin(self.angle) * self.power
 
-        love.graphics.setColor(Utils.mergeColor(COLORS.blue, COLORS.white, 0.5))
+        love.graphics.setColor(ColorUtils.mergeColor(COLORS.blue, COLORS.white, 0.5))
         love.graphics.setLineWidth(2)
         for i = 1, 12 do
             local x1 = (self.kx + (lx * (i - 1) * 2))

@@ -17,7 +17,7 @@ function ColorSlash:init(x, y, dir, speed, color)
     elseif color:lower() == "green" then
         self.color = {0, 1, 0}
     end
-    Assets.playSound("zero/color_slash_" .. math.ceil(Utils.random(3)))
+    Assets.playSound("zero/color_slash_" .. math.ceil(MathUtils.random(3)))
     -- Amount to heal for green bullets.
     self.healing = 5
 

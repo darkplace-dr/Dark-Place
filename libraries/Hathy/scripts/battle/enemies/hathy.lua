@@ -90,7 +90,7 @@ function Hathy:getEnemyDialogue()
         return dialogue
     end
     
-    return Utils.pick(self.dialogue)
+    return TableUtils.pick(self.dialogue)
 end
 
 function Hathy:update()

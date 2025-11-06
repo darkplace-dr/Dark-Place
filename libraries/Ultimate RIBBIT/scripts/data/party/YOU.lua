@@ -107,7 +107,7 @@ function character:init()
 end
 
 function character:onPowerSelect(menu)
-    if Utils.random() < 0.03 then
+    if MathUtils.random() < 0.03 then
         menu.kris_dog = true
     else
         menu.kris_dog = false

@@ -16,7 +16,7 @@ function BallJumpChucc:init(x, y, w, h)
 end
 
 function BallJumpChucc:updateMainCollision()
-    self.stomp_grace_period = Utils.approach(self.stomp_grace_period, 0, DT)
+    self.stomp_grace_period = MathUtils.approach(self.stomp_grace_period, 0, DT)
     if self.stomp_collider and self.stomp_collider:collidesWith(Game.minigame.player.collider) then
         if self.stomp_grace_period <= 0 then
             Game.minigame.score = Game.minigame.score + 300 + 150 * Game.minigame.player.stomp_combo

@@ -25,7 +25,7 @@ function Mod:updateBattleTaunt()
     then
         self.taunt_cooldown = 2.1
 
-        Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
+        Assets.playSound("taunt", 0.5, MathUtils.random(0.9, 1.1))
 
         for _,chara in ipairs(Game.battle.party) do
             if not chara.actor or chara.is_down then goto continue end
@@ -41,7 +41,7 @@ function Mod:updateBattleTaunt()
             Game.battle:addChild(shine)
 
             chara:toggleOverlay(true)
-            chara.overlay_sprite:setSprite(Utils.pick(sprites))
+            chara.overlay_sprite:setSprite(TableUtils.pick(sprites))
             shine:play(1/30, false, function()
                 shine:remove()
                 chara:toggleOverlay(false)
@@ -52,5 +52,5 @@ function Mod:updateBattleTaunt()
 
     end
 
-    self.taunt_cooldown = Utils.approach(self.taunt_cooldown, 0, DT)
+    self.taunt_cooldown = MathUtils.approach(self.taunt_cooldown, 0, DT)
 end

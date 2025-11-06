@@ -29,7 +29,7 @@ return {
         end
     end,
     bb = function(cutscene, event)
-        cutscene:playSound(Utils.pick({
+        cutscene:playSound(TableUtils.pick({
             "bb_hi",
             "bb_hello",
             "bb_laugh"

@@ -117,7 +117,7 @@ function DarkPartyMenu:onKeyPressed(key)
 
             -- Step 3: Set all available slots to random
             local val = math.min(#self.listreference, Game:getFlag("party_max"))
-            local indexes = Utils.pickMultiple(temp, val)
+            local indexes = TableUtils.pickMultiple(temp, val)
 
             -- Ensure Noel is not in slot 1
             local first_slot = indexes[1]

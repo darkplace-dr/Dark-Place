@@ -39,11 +39,11 @@ function PlugWave:update()
         self.world:addChild(afterimg)
     end
 
-    self.physics.speed_x = Utils.approach(self.physics.speed_x, self.speed, (math.abs(self.physics.speed_x) * 0.5) * DTMULT)
+    self.physics.speed_x = MathUtils.approach(self.physics.speed_x, self.speed, (math.abs(self.physics.speed_x) * 0.5) * DTMULT)
 
     if self.scale_y < 2 then
         self.alpha = self.scale_y / 2
-        self.scale_y = Utils.approach(self.scale_y, 2, (self.scale_y * 0.3) * DTMULT)
+        self.scale_y = MathUtils.approach(self.scale_y, 2, (self.scale_y * 0.3) * DTMULT)
     end
 
     if not self.fade_away then

@@ -17,13 +17,13 @@ function WerewireTextbox:init(x, y)
 
     self.letters = {"z", "z", "t", "exclaim"}
     for i = 1, 3 do
-        self.letters[i] = Utils.pick(letter_options)
+        self.letters[i] = TableUtils.pick(letter_options)
     end
-    if Utils.random() < 0.66 then
+    if MathUtils.random() < 0.66 then
         self.letters[1] = "z"
     end
 
-    local preset_rand = Utils.random()
+    local preset_rand = MathUtils.random()
     if preset_rand < 0.25 then
         self.letters = {"z", "z", "t", "exclaim"}
     elseif preset_rand < 0.5 then
@@ -53,7 +53,7 @@ function WerewireTextbox:onAddToStage(stage)
 end
 
 function WerewireTextbox:update()
-    self.wait_timer = Utils.approach(self.wait_timer, 0, DT)
+    self.wait_timer = MathUtils.approach(self.wait_timer, 0, DT)
 
     if Input.pressed("confirm") or Input.down("menu") then
         self:advance()
@@ -75,8 +75,8 @@ function WerewireTextbox:draw()
         local frames = Assets.getFramesOrTexture("bubbles/werewire/text_"..self.letters[i])
         local texture = frames[(math.floor(self.letter_siner) % #frames) + 1]
 
-        local letter_x = (i - 1) * 10   + Utils.random()
-        local letter_y = (i - 1) * -3.5 + Utils.random() + math.sin((i - 1) / 2 + (self.siner / 3)) / 2
+        local letter_x = (i - 1) * 10   + MathUtils.random()
+        local letter_y = (i - 1) * -3.5 + MathUtils.random() + math.sin((i - 1) / 2 + (self.siner / 3)) / 2
 
         Draw.draw(texture, letter_x, letter_y)
     end

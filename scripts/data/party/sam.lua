@@ -43,7 +43,7 @@ function character:init()
     self.lw_weapon_default = "light/pencil"
     self.lw_armor_default = "light/bandage"
 
-    self.color = Utils.mergeColor({0, 1, 1}, {0, 1, 0}, 0.5)
+    self.color = ColorUtils.mergeColor({0, 1, 1}, {0, 1, 0}, 0.5)
     self.dmg_color = nil
     self.attack_bar_color = {0, 0, 232/255}
     self.attack_box_color = {0, 0, 0.5}

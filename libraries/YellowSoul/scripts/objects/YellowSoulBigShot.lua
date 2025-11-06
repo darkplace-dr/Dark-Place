@@ -15,13 +15,13 @@ end
 
 function BigShot:update()
     if self.scale_x < 1 then
-        self.scale_x = Utils.approach(self.scale_x, 1, 0.2*DTMULT)
+        self.scale_x = MathUtils.approach(self.scale_x, 1, 0.2*DTMULT)
     end
     if self.scale_y > 1 then
-        self.scale_y = Utils.approach(self.scale_y, 1, 0.2*DTMULT)
+        self.scale_y = MathUtils.approach(self.scale_y, 1, 0.2*DTMULT)
     end
     if self.alpha < 1 then
-        self.alpha = Utils.approach(self.alpha, 1, 0.2*DTMULT)
+        self.alpha = MathUtils.approach(self.alpha, 1, 0.2*DTMULT)
     end
     super.update(self)
 end

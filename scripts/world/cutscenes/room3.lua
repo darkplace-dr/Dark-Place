@@ -15,7 +15,7 @@ return {
         local function waitForTimeOrUserCancellation(time)
             cust_wait_timer = time
             return function()
-                cust_wait_timer = Utils.approach(cust_wait_timer, 0, DT)
+                cust_wait_timer = MathUtils.approach(cust_wait_timer, 0, DT)
                 if morshu.interact_count > 1 and Input.pressed("cancel") then
                     cust_wait_timer = 0
                     return true

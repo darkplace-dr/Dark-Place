@@ -23,7 +23,7 @@ function FlippedRainPiece:handleMovement()
     self.x, self.y = self.x + self.speed * 0.5 * DTMULT, self.y + self.speed * DTMULT
 
     if self.y - self.inity > (Game.world.map.height * Game.world.map.tile_height) + 120 then
-        Utils.approach(self.alpha, 0, DTMULT)
+        MathUtils.approach(self.alpha, 0, DTMULT)
         if self.alpha < 0.5 then self:remove() end
     end
 end

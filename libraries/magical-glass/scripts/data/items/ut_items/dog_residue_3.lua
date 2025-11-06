@@ -69,7 +69,7 @@ function item:onWorldUse(target)
             "ut_items/dog_residue_5",
             "ut_items/dog_residue_6",
         }
-        Game.inventory:addItem(Utils.pick(items))
+        Game.inventory:addItem(TableUtils.pick(items))
     end
     return false
 end
@@ -109,7 +109,7 @@ function item:onLightBattleUse(user, target)
             "ut_items/dog_residue_5",
             "ut_items/dog_residue_6",
         }
-        Game.inventory:addItem(Utils.pick(items))
+        Game.inventory:addItem(TableUtils.pick(items))
     end
     Game.battle:battleText(self:getLightBattleText(user, target))
     return true
@@ -128,7 +128,7 @@ function item:onBattleUse(user, target)
             "ut_items/dog_residue_5",
             "ut_items/dog_residue_6",
         }
-        Game.inventory:addItem(Utils.pick(items))
+        Game.inventory:addItem(TableUtils.pick(items))
     end
     return true
 end

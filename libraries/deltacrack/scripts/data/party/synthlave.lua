@@ -149,7 +149,7 @@ function character:onLevelUp(level)
 end
 
 function character:onPowerSelect(menu)
-    if Utils.random() <= 0.03 then
+    if MathUtils.random() <= 0.03 then
         menu.synthlave_dog = true
     else
         menu.synthlave_dog = false

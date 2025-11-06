@@ -58,10 +58,10 @@ function YellowSoul:update()
 
     if self.can_rotate then
 
-        if self.direction == "down" then self.rotation = Utils.approach(self.rotation, math.rad(0), DTMULT) end
-	    if self.direction == "up" then self.rotation = Utils.approach(self.rotation, math.rad(180), DTMULT) end
-	    if self.direction == "left" then self.rotation = Utils.approach(self.rotation, math.rad(90), DTMULT) end
-	    if self.direction == "right" then self.rotation = Utils.approach(self.rotation, math.rad(270), DTMULT) end
+        if self.direction == "down" then self.rotation = MathUtils.approach(self.rotation, math.rad(0), DTMULT) end
+	    if self.direction == "up" then self.rotation = MathUtils.approach(self.rotation, math.rad(180), DTMULT) end
+	    if self.direction == "left" then self.rotation = MathUtils.approach(self.rotation, math.rad(90), DTMULT) end
+	    if self.direction == "right" then self.rotation = MathUtils.approach(self.rotation, math.rad(270), DTMULT) end
 
         if Input.pressed("w") then self.direction = "up" end
         if Input.pressed("a") then self.direction = "left" end

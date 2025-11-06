@@ -384,7 +384,7 @@ function Battle:onStateChange(old,new)
         end
 		
         if earn_text == "" then
-            flee_text = flee_text .. Utils.pick(flee_list)
+            flee_text = flee_text .. TableUtils.pick(flee_list)
         else
             flee_text = earn_text
         end
@@ -632,11 +632,11 @@ function Battle:processAction(action)
 
             for i = 1, 3 do
                 local sx, sy = battler:getRelativePos(battler.width, 0)
-                local sparkle = Sprite("effects/criticalswing/sparkle", sx + Utils.random(50), sy + 30 + Utils.random(30))
+                local sparkle = Sprite("effects/criticalswing/sparkle", sx + MathUtils.random(50), sy + 30 + MathUtils.random(30))
                 sparkle:play(4/30, true)
                 sparkle:setScale(2)
                 sparkle.layer = BATTLE_LAYERS["above_battlers"]
-                sparkle.physics.speed_x = Utils.random(2, 6) * (battler.left and -1 or 1)
+                sparkle.physics.speed_x = MathUtils.random(2, 6) * (battler.left and -1 or 1)
                 sparkle.physics.friction = -0.25
                 sparkle:fadeOutSpeedAndRemove()
                 self:addChild(sparkle)

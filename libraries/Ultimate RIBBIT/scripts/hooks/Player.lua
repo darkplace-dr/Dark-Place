@@ -16,7 +16,7 @@ local Player, super = Class("Player", true)
 end]]
 
 function Player:croak()
-    Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))
+    Assets.stopAndPlaySound("croak", nil, 0.8 + MathUtils.random(0.4))
 
     local bubble = Sprite("croak", nil, nil, nil, nil, "party/you")
     bubble:setOriginExact(60, 23) -- center??

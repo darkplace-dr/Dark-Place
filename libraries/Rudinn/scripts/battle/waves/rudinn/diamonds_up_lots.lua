@@ -8,8 +8,8 @@ end
 
 function DiamondsUpLots:onStart()
     self.timer:every(1/15, function()
-        local x = Utils.random(Game.battle.arena.left - 20, Game.battle.arena.right + 20)
-        local y = Utils.random(Game.battle.arena.bottom + 50, Game.battle.arena.bottom + 100)
+        local x = MathUtils.random(Game.battle.arena.left - 20, Game.battle.arena.right + 20)
+        local y = MathUtils.random(Game.battle.arena.bottom + 50, Game.battle.arena.bottom + 100)
 
         self:spawnBullet("rudinn/diamond_mix", x, y, math.rad(270))
     end)

@@ -19,7 +19,7 @@ function ____Shop:init()
 
     self.timer:everyInstant(1, function()
         for i=1,#self.menu_options do
-            if Utils.random()>0.8 then
+            if MathUtils.random()>0.8 then
                 self.menu_options[i][1] = generateBS()
             else
                 self.menu_options[i][1] = self.og_options[i]
@@ -37,8 +37,8 @@ function ____Shop:postInit()
     super.postInit(self)
     local function offsetChildren(obj)
         for i,child in ipairs(obj.children) do
-            child.x = child.x + Utils.random(-5, 5)
-            child.y = child.y + Utils.random(-5, 5)
+            child.x = child.x + MathUtils.random(-5, 5)
+            child.y = child.y + MathUtils.random(-5, 5)
             if child.children then
                 offsetChildren(child)
             end

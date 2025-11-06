@@ -12,7 +12,7 @@ function Aiming:onStart()
             local x, y = attacker:getRelativePos(attacker.width/2, attacker.height/2)
             -- Spawn smallbullet angled towards the player with speed 8 (see scripts/battle/bullets/smallbullet.lua)
             self:spawnBullet("starbullet", x, y, math.rad(self.shootangle), 4, 0.5)
-			self.shootangle = math.floor((self.shootangle + 16 + (Utils.random() * 32)) % 360)
+			self.shootangle = math.floor((self.shootangle + 16 + (MathUtils.random() * 32)) % 360)
         end
     end)
 end

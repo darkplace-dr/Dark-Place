@@ -10,7 +10,7 @@ function Basic:init()
     self.is_cutscene = true
 	
     self.attack_timer = 0
-    self.siner = Utils.random(100)
+    self.siner = MathUtils.random(100)
     self.con = 0
 	
     self.movecon = 0
@@ -48,7 +48,7 @@ function Basic:draw()
     local shake = 0
 	
     if self.arm_cannon_spr == Assets.getTexture("battle/bullets/sneo/arm_cannon_pipis") then
-        shake = -4 + Utils.random(8)
+        shake = -4 + MathUtils.random(8)
     end
 	
     if self.movecon == 0 and self.sneo.x == 818 then
@@ -84,24 +84,24 @@ function Basic:draw()
         if self.con == 1 then
             xx = (SCREEN_WIDTH - 10)
             for i = 1, 3 do
-                if (Utils.random(10) < 6) then
+                if (MathUtils.random(10) < 6) then
                     bul = self:spawnBullet("sneo/pipis", (xx + 5) + (math.sin(self.arm_cannon_angle) * 50), yy + (math.cos(self.arm_cannon_angle + 270) * 50))
                     bul.type = 2
-                    bul.physics.gravity = (0.2 + (Utils.random(3) / 100))
-                    bul.physics.speed_y = (-6 - Utils.random(2))
-                    bul.physics.speed_x = (-1.6 - Utils.random(3))
+                    bul.physics.gravity = (0.2 + (MathUtils.random(3) / 100))
+                    bul.physics.speed_y = (-6 - MathUtils.random(2))
+                    bul.physics.speed_x = (-1.6 - MathUtils.random(3))
                     bul.layer = (self.layer - 1)
                 else
                     bul = self:spawnBullet("sneo/sneobomb_pipis", (xx + 5) + (math.sin(self.arm_cannon_angle) * 50), yy + (math.cos(self.arm_cannon_angle + 270) * 50))
-                    bul.physics.gravity = (0.2 + (Utils.random(3) / 100))
-                    bul.physics.speed_y = (-6 - Utils.random(2))
-                    bul.physics.speed_x = (-1.8 - Utils.random(1.5))
+                    bul.physics.gravity = (0.2 + (MathUtils.random(3) / 100))
+                    bul.physics.speed_y = (-6 - MathUtils.random(2))
+                    bul.physics.speed_x = (-1.8 - MathUtils.random(1.5))
                     bul.layer = (self.layer - 1)
                 end
             end
             self.arm_cannon_spr = Assets.getTexture("battle/bullets/sneo/arm_cannon")
             self.arm_cannon_origin_x = 7.5
-            self.angle_final = (180 + Utils.random(-50))
+            self.angle_final = (180 + MathUtils.random(-50))
             for i = 0, 3 do
                 bul = self:spawnBullet(obj_sneo_armcannon_smoke, (xx + 5) + (math.sin(self.arm_cannon_angle + 270) * 50), yy + (math.cos(self.arm_cannon_angle + 270) * 50))
                 bul.layer = (self.layer - 2)
@@ -123,7 +123,7 @@ function Basic:draw()
             end
             if self.attack_timer >= self.timervariance then
                 self.eggcount = self.eggcount - 0.4 * DTMULT
-                self.timervariance = (60 + Utils.random(15))
+                self.timervariance = (60 + MathUtils.random(15))
                 self.con = 1
                 self.attack_timer = 0
             end

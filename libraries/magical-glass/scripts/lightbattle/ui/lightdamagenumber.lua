@@ -144,7 +144,7 @@ function LightDamageNumber:draw()
             }
             Draw.setColor(1, 0, 0, 1)
             love.graphics.setFont(Assets.getFont("main"))
-            love.graphics.print(Utils.pick(messages))
+            love.graphics.print(TableUtils.pick(messages))
         end
     elseif self.type == "mercy" then
         if self.timer >= self.delay then

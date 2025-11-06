@@ -15,9 +15,9 @@ function Bullet:update()
     -- Sorry Vitellary :c
     local soul = Game.battle.soul
     local angle = Utils.angle(self.x, self.y, soul.x, soul.y)
-    self.physics.speed_x = Utils.approach(self.physics.speed_x, 8*math.cos(angle), 0.25*DTMULT)
-    self.physics.speed_y = Utils.approach(self.physics.speed_y, 8*math.sin(angle), 0.25*DTMULT)
-    self.rotation = Utils.approach(self.rotation, angle, 1*DTMULT)
+    self.physics.speed_x = MathUtils.approach(self.physics.speed_x, 8*math.cos(angle), 0.25*DTMULT)
+    self.physics.speed_y = MathUtils.approach(self.physics.speed_y, 8*math.sin(angle), 0.25*DTMULT)
+    self.rotation = MathUtils.approach(self.rotation, angle, 1*DTMULT)
 
     super.update(self)
 end

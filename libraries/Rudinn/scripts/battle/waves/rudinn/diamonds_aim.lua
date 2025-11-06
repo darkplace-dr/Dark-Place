@@ -6,8 +6,8 @@ end
 
 function DiamondsAim:onStart()
     self.timer:every(2/5, function()
-        local x = Utils.random(Game.battle.arena.left - 100, Game.battle.arena.right + 100)
-        local y = Utils.random(Game.battle.arena.top - 20, Game.battle.arena.top - 70)
+        local x = MathUtils.random(Game.battle.arena.left - 100, Game.battle.arena.right + 100)
+        local y = MathUtils.random(Game.battle.arena.top - 20, Game.battle.arena.top - 70)
 
         local bullet = self:spawnBullet("rudinn/diamond_black", x, y)
 		self.timer:script(function(wait)

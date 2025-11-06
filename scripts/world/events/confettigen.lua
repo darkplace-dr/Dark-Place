@@ -13,8 +13,8 @@ function ConfettiGen:init(data)
         for i = 1, love.math.random(1,3) do
             local confetti = Confetti()
             self:addChild(confetti)
-            confetti.x = confetti.x + Utils.random(-50, 50)
-            confetti.y = confetti.y + Utils.random(-50, 0)
+            confetti.x = confetti.x + MathUtils.random(-50, 50)
+            confetti.y = confetti.y + MathUtils.random(-50, 0)
         end
     end)
 end

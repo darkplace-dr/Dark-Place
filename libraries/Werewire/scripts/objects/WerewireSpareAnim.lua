@@ -38,7 +38,7 @@ function WerewireSpareAnim:init(x, y, after)
             spare_flash.amount = spare_flash.amount + 0.2 * DTMULT
             sparkle_timer = sparkle_timer + DTMULT
             if sparkle_timer >= 0.5 then
-                local x, y = Utils.random(-self.actor_sprite.width*2, 0), Utils.random(-self.actor_sprite.height*2, -self.actor_sprite.height)
+                local x, y = MathUtils.random(-self.actor_sprite.width*2, 0), MathUtils.random(-self.actor_sprite.height*2, -self.actor_sprite.height)
                 local sparkle = SpareSparkle(x, y)
                 sparkle.layer = 0.5
                 self:addChild(sparkle)

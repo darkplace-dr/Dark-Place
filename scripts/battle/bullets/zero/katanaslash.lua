@@ -9,7 +9,7 @@ function KatanaSlash:init(x, y, dir, speed)
     self:setSprite("battle/bullets/zero_boss/KatanaSlash", 1/15, false, function ()
         self:remove()
     end)
-    Assets.playSound("zero/normal_slash_" .. math.ceil(Utils.random(3)))
+    Assets.playSound("zero/normal_slash_" .. math.ceil(MathUtils.random(3)))
     self.collider = Hitbox(self, 20, 4, 69, 19) -- Eh, good enough
 
 

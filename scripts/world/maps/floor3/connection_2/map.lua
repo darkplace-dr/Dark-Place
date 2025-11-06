@@ -7,7 +7,7 @@ function Room1:load()
     self.timer:every(0.25, function()
         if self.world:inBattle() then
             local marker = self.markers["shooter_down"]
-            self.world:spawnBullet("diamondbullet", Utils.random(marker.x, marker.x+marker.width), marker.center_y)
+            self.world:spawnBullet("diamondbullet", MathUtils.random(marker.x, marker.x+marker.width), marker.center_y)
         end
     end)
     ]]

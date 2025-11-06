@@ -33,10 +33,10 @@ function LightRudeBusterBeam:update()
         self.physics.friction = 3
     end
 
-    self.scale_x = Utils.approach(self.scale_x, 2, 0.2*DTMULT)
-    self.scale_y = Utils.approach(self.scale_y, 2, 0.2*DTMULT)
+    self.scale_x = MathUtils.approach(self.scale_x, 2, 0.2*DTMULT)
+    self.scale_y = MathUtils.approach(self.scale_y, 2, 0.2*DTMULT)
 
-    self.alpha = Utils.approach(self.alpha, 1, 0.25 * DTMULT)
+    self.alpha = MathUtils.approach(self.alpha, 1, 0.25 * DTMULT)
 
     local dir = Utils.angle(self.x, self.y, self.target_x, self.target_y)
     self.rotation = self.rotation + (Utils.angleDiff(dir, self.rotation) / 3.3) * DTMULT

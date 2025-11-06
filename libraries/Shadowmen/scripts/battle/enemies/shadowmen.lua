@@ -4,10 +4,10 @@ local MyEnemy, super = Class(EnemyBattler)
     -- local waves = self:getNextWaves()
 	
     -- if waves and #waves > 0 then
-        -- local wave = Utils.pick(waves)
+        -- local wave = TableUtils.pick(waves)
 		
 		-- while wave == self.prev_wave do
-			-- wave = Utils.pick(waves)
+			-- wave = TableUtils.pick(waves)
 		-- end
 		
         -- self.selected_wave = wave

@@ -8,7 +8,7 @@ function Basic:onStart()
 	end
     self.timer:every(timer, function()
         -- Our X position is offscreen, to the right
-        local x = Utils.random(Game.battle.arena.left, Game.battle.arena.right)
+        local x = MathUtils.random(Game.battle.arena.left, Game.battle.arena.right)
         -- Get a random Y position between the top and the bottom of the arena
         local y = -12
 

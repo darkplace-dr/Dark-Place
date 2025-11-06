@@ -51,7 +51,7 @@ function item:onLightAttack(battler, enemy, damage, stretch, crit)
 
     local sprite = Sprite("effects/attack/frypan_impact")
     local stars = {}
-    local angle = 6 * Utils.pick({1, -1})
+    local angle = 6 * TableUtils.pick({1, -1})
     local form = 0
     local size = 2
     sprite:setScale(2, 2)

@@ -738,7 +738,7 @@ function CardGame:updateAttack()
 						end
 						if v.special == "steal" then
 							if #self.player_hand > 0 then
-								local choice = Utils.pick(self.opponent_hand)
+								local choice = TableUtils.pick(self.opponent_hand)
 								table.insert(self.player_hand, choice)
 								Utils.removeFromTable(self.opponent_hand, choice)
 								choice:flip()
@@ -761,7 +761,7 @@ function CardGame:updateAttack()
 					for k,v in pairs(self.selected_cards_o) do
 						if v.special == "steal" then
 							if #self.player_hand > 0 then
-								local choice = Utils.pick(self.player_hand)
+								local choice = TableUtils.pick(self.player_hand)
 								table.insert(self.opponent_hand, choice)
 								Utils.removeFromTable(self.player_hand, choice)
 								choice:flip()
@@ -775,7 +775,7 @@ function CardGame:updateAttack()
 					end
 				end
 				while webbed > 0 do
-					local choice = Utils.pick(self.opponent_hand)
+					local choice = TableUtils.pick(self.opponent_hand)
 					if not choice.webbed then
 						choice:webUnweb()
 						webbed = webbed - 1
@@ -803,7 +803,7 @@ function CardGame:updateAttack()
 						end
 						if v.special == "steal" then
 							if #self.opponent_hand > 0 then
-								local choice = Utils.pick(self.player_hand)
+								local choice = TableUtils.pick(self.player_hand)
 								table.insert(self.opponent_hand, choice)
 								Utils.removeFromTable(self.player_hand, choice)
 								choice:flip()
@@ -826,7 +826,7 @@ function CardGame:updateAttack()
 					for k,v in pairs(self.selected_cards) do
 						if v.special == "steal" then
 							if #self.opponent_hand > 0 then
-								local choice = Utils.pick(self.opponent_hand)
+								local choice = TableUtils.pick(self.opponent_hand)
 								table.insert(self.player_hand, choice)
 								Utils.removeFromTable(self.opponent_hand, choice)
 								choice:flip()
@@ -840,7 +840,7 @@ function CardGame:updateAttack()
 					end
 				end
 				while webbed > 0 do
-					local choice = Utils.pick(self.player_hand)
+					local choice = TableUtils.pick(self.player_hand)
 					if not choice.webbed then
 						choice:webUnweb()
 						webbed = webbed - 1

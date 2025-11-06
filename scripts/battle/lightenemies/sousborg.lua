@@ -190,13 +190,13 @@ function Sousborg:getEncounterText()
     local has_spareable_text = self.spareable_text and self:canSpare()
 
     if self.low_health_text and self.health <= (self.max_health * self.low_health_percentage) then
-        return Utils.pick(self.low_health_text)
+        return TableUtils.pick(self.low_health_text)
 
     elseif has_spareable_text then
         return self.spareable_text
     end
 
-    return Utils.pick(self.text)
+    return TableUtils.pick(self.text)
 end
 
 function Sousborg:getEnemyDialogue()
@@ -206,9 +206,9 @@ function Sousborg:getEnemyDialogue()
         return dialogue
     end
     if self.low_health_dialogue and self.health <= (self.max_health * self.low_health_percentage) then
-        return Utils.pick(self.low_health_dialogue)
+        return TableUtils.pick(self.low_health_dialogue)
     end
-    return Utils.pick(self.dialogue)
+    return TableUtils.pick(self.dialogue)
 end
 
 function Sousborg:onHurtEnd()

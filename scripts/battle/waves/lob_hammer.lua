@@ -13,7 +13,7 @@ function Basic:onStart()
             local x, y = attacker:getRelativePos(attacker.width/2, attacker.height/2)
 
             -- Spawn smallbullet angled towards the player with speed 8 (see scripts/battle/bullets/smallbullet.lua)
-            self:spawnBullet("lob_hammer", x, y, Utils.random(math.pi, 2.5 * math.pi / 2), 6)
+            self:spawnBullet("lob_hammer", x, y, MathUtils.random(math.pi, 2.5 * math.pi / 2), 6)
         end
     end)
 end

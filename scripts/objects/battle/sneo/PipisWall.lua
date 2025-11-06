@@ -16,7 +16,7 @@ function PipisWall:init(x, y)
     self.con = 0
     self.timer = 0
     self.type = 0
-    self.siner = Utils.random(100)
+    self.siner = MathUtils.random(100)
 	
     --self.init_x = self.x
 end

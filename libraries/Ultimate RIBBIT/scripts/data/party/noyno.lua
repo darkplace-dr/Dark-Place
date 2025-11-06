@@ -96,7 +96,7 @@ function character:init()
 end
 
 function character:onPowerSelect(menu)
-    if Utils.random() <= 0.03 then
+    if MathUtils.random() <= 0.03 then
         menu.noyno_dog = true
     else
         menu.noyno_dog = false

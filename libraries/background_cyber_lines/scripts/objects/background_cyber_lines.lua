@@ -54,7 +54,7 @@ function lines:draw()
         local x2 = Game.world.width + 100
         local y2 = y1 + ((i-1) * 15)
 
-        Draw.setColor(Utils.mergeColor(self.background_color, COLORS.black, (i-1) * 0.05), 0.1)
+        Draw.setColor(ColorUtils.mergeColor(self.background_color, COLORS.black, (i-1) * 0.05), 0.1)
         love.graphics.rectangle("fill", x1, y1, x2 - x1, y2 - y1)
     end
 

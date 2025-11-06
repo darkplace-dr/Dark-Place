@@ -11,7 +11,7 @@ function ColorSlash:onStart()
     self.time = -1
     self.user = self:getAttackers()[1]
     self.order = {}
-    for i = 1, self.user.difficulty+3 do self.order[i] = Utils.pick{"Blue", "Orange"} end
+    for i = 1, self.user.difficulty+3 do self.order[i] = TableUtils.pick{"Blue", "Orange"} end
     local currtell = 1
     local currslash = 1
 
@@ -66,9 +66,9 @@ end
 function ColorSlash:update()
     -- Code here gets called every frame
     Game.battle.arena:setBackgroundColor(self.rgb)
-    self.rgb[1] = Utils.approach(self.rgb[1], 0, DTMULT/8)
-    self.rgb[2] = Utils.approach(self.rgb[2], 0, DTMULT/8)
-    self.rgb[3] = Utils.approach(self.rgb[3], 0, DTMULT/8)
+    self.rgb[1] = MathUtils.approach(self.rgb[1], 0, DTMULT/8)
+    self.rgb[2] = MathUtils.approach(self.rgb[2], 0, DTMULT/8)
+    self.rgb[3] = MathUtils.approach(self.rgb[3], 0, DTMULT/8)
 
     super.update(self)
 end

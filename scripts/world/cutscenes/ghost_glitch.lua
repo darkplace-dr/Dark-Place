@@ -28,14 +28,14 @@ return function(cutscene)
     	walk = cutscene:walkTo(ghost, ghost.x-100, ghost.y)
     end
     cutscene:wait(walk)
-    leader:setFacing(Utils.pick({"left", "up", "down", "right"}))
+    leader:setFacing(TableUtils.pick({"left", "up", "down", "right"}))
 
     cutscene:wait(0.2)
 
     for i=1,love.math.random(1, 10) do
 	    local text = ""
 	    for _=1,love.math.random(10, 1000) do
-	    	local special_text = Utils.random(-10, 300)
+	    	local special_text = MathUtils.random(-10, 300)
 	    	print(special_text)
 	    	if special_text < -5 then
 	    		text = text.."MOM"
@@ -48,10 +48,10 @@ return function(cutscene)
 		    end
 	    end
 	    --print(text)
-	    if Utils.random(0, 100) <= 25 then
+	    if MathUtils.random(0, 100) <= 25 then
 	    	Game.world.timer:after((1/60)*2, function()
 	    		local dialogue_text = Game.stage:getObjects(Textbox)[1].text
-	    		dialogue_text:setPosition(Utils.random(-50, 50), Utils.random(-350, 50))
+	    		dialogue_text:setPosition(MathUtils.random(-50, 50), MathUtils.random(-350, 50))
 	    	end)
 	    end
 	    cutscene:text(text)

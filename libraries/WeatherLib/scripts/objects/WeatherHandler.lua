@@ -72,8 +72,8 @@ function WeatherHandler:update()
                 for i = amount, 1, -1 do
                     self.raintimer = 0
                     self.raintimerreset = true
-                    local number = Utils.pick({"three", "five", "six", "nine", "nine_alt"})
-                    if self.type == "cd" then number = Utils.pick({"cat", "dog"}) end
+                    local number = TableUtils.pick({"three", "five", "six", "nine", "nine_alt"})
+                    if self.type == "cd" then number = TableUtils.pick({"cat", "dog"}) end
                     local x = math.random(SCREEN_WIDTH * 0, SCREEN_WIDTH/4)
                     local y = math.random(0, 40)
                     local worldx, worldy = self:getRelativePos(x, 0 - y, self.addto)
@@ -83,8 +83,8 @@ function WeatherHandler:update()
 
                     self.raintimer = 0
                     self.raintimerreset = true
-                    local number = Utils.pick({"three", "five", "six", "nine", "nine_alt"})
-                    if self.type == "cd" then number = Utils.pick({"cat", "dog"}) end
+                    local number = TableUtils.pick({"three", "five", "six", "nine", "nine_alt"})
+                    if self.type == "cd" then number = TableUtils.pick({"cat", "dog"}) end
                     local x = math.random(SCREEN_WIDTH * 0.25, SCREEN_WIDTH * 0.5)
                     local y = math.random(0, 40)
                     local worldx, worldy = self:getRelativePos(x, 0 - y, self.addto)
@@ -94,8 +94,8 @@ function WeatherHandler:update()
 
                     self.raintimer = 0
                     self.raintimerreset = true
-                    local number = Utils.pick({"three", "five", "six", "nine", "nine_alt"})
-                    if self.type == "cd" then number = Utils.pick({"cat", "dog"}) end
+                    local number = TableUtils.pick({"three", "five", "six", "nine", "nine_alt"})
+                    if self.type == "cd" then number = TableUtils.pick({"cat", "dog"}) end
                     local x = math.random(SCREEN_WIDTH * 0.5, SCREEN_WIDTH * 0.75)
                     local y = math.random(0, 40)
                     local worldx, worldy = self:getRelativePos(x, 0 - y, self.addto)
@@ -105,8 +105,8 @@ function WeatherHandler:update()
 
                     self.raintimer = 0
                     self.raintimerreset = true
-                    local number = Utils.pick({"three", "five", "six", "nine", "nine_alt"})
-                    if self.type == "cd" then number = Utils.pick({"cat", "dog"}) end
+                    local number = TableUtils.pick({"three", "five", "six", "nine", "nine_alt"})
+                    if self.type == "cd" then number = TableUtils.pick({"cat", "dog"}) end
                     local x = math.random(SCREEN_WIDTH * 0.75, SCREEN_WIDTH)
                     local y = math.random(0, 40)
                     local worldx, worldy = self:getRelativePos(x, 0 - y, self.addto)
@@ -116,8 +116,8 @@ function WeatherHandler:update()
 
                     self.raintimer = 0
                     self.raintimerreset = true
-                    local number = Utils.pick({"three", "five", "six", "nine", "nine_alt"})
-                    if self.type == "cd" then number = Utils.pick({"cat", "dog"}) end
+                    local number = TableUtils.pick({"three", "five", "six", "nine", "nine_alt"})
+                    if self.type == "cd" then number = TableUtils.pick({"cat", "dog"}) end
                     local x = math.random(SCREEN_WIDTH, SCREEN_WIDTH * 1.25)
                     local y = math.random(0, 40)
                     local worldx, worldy = self:getRelativePos(x, 0 - y, self.addto)
@@ -127,8 +127,8 @@ function WeatherHandler:update()
 
                     self.raintimer = 0
                     self.raintimerreset = true
-                    local number = Utils.pick({"three", "five", "six", "nine", "nine_alt"})
-                    if self.type == "cd" then number = Utils.pick({"cat", "dog"}) end
+                    local number = TableUtils.pick({"three", "five", "six", "nine", "nine_alt"})
+                    if self.type == "cd" then number = TableUtils.pick({"cat", "dog"}) end
                     local x = math.random(SCREEN_WIDTH * 1.25, SCREEN_WIDTH * 1.5)
                     local y = math.random(0, 40)
                     local worldx, worldy = self:getRelativePos(x, 0 - y, self.addto)
@@ -153,11 +153,11 @@ function WeatherHandler:update()
                 self.snowtimerreset = true
 
                 for i = self.snowcount, 1, -1 do
-                    local number = Utils.pick({"a", "b", "c", "d", "e"})
-                    local speed = Utils.clamp(Utils.random(Utils.round(3 * self.intensity), Utils.round(6 * self.intensity)), 3, 14)
-                    local rotspeed = Utils.random(0.5, 6)
-                    local sinerspeed = Utils.random(0.6, 4)
-                    local lifespan = Utils.random(70, 120)
+                    local number = TableUtils.pick({"a", "b", "c", "d", "e"})
+                    local speed = Utils.clamp(MathUtils.random(Utils.round(3 * self.intensity), Utils.round(6 * self.intensity)), 3, 14)
+                    local rotspeed = MathUtils.random(0.5, 6)
+                    local sinerspeed = MathUtils.random(0.6, 4)
+                    local lifespan = MathUtils.random(70, 120)
                     local x = math.random(SCREEN_WIDTH * - 0.25, SCREEN_WIDTH * 1.25)
                     local y = math.random(40, 60)
                     local worldx, worldy = self:getRelativePos(x, 0 - y, self.addto)
@@ -218,7 +218,7 @@ function WeatherHandler:update()
                     Assets.stopAndPlaySound("wind", 0.8, 1.2)
                     Game.stage.timer:script(function(wait)
                         wait(1.5)
-                        local speed = Utils.random(15, 19)
+                        local speed = MathUtils.random(15, 19)
                         local y = math.random(SCREEN_HEIGHT * - 0.5, SCREEN_HEIGHT * 0.25)
                         local x = math.random(40, 60) + (i * 120)
                         local worldx, worldy = self:getRelativePos(SCREEN_WIDTH + x, y, self.addto)
@@ -242,8 +242,8 @@ function WeatherHandler:update()
                 local ammount = math.random(3, 5)
                 for i = ammount, 1, -1 do
 
-                    local letter = Utils.pick({"a", "b", "c", "d", "e"})
-                    local speed = Utils.random(15, 19)
+                    local letter = TableUtils.pick({"a", "b", "c", "d", "e"})
+                    local speed = MathUtils.random(15, 19)
                     local y = math.random(0, SCREEN_HEIGHT)
                     local x = math.random(40, 60) + (i * 120)
                     local worldx, worldy = self:getRelativePos(SCREEN_WIDTH + x, y, self.addto)

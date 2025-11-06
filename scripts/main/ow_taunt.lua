@@ -35,7 +35,7 @@ function Mod:updateTaunt()
         Game.world.player:resetFollowerHistory()
         self.taunt_lock_movement = true
 
-        Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
+        Assets.playSound("taunt", 0.5, MathUtils.random(0.9, 1.1))
 
         for _,chara in ipairs(Game.stage:getObjects(Character)) do
             if not chara.actor or not chara.visible then goto continue end
@@ -52,7 +52,7 @@ function Mod:updateTaunt()
             shine.layer = chara.layer - 0.1
             Game.world:addChild(shine)
 
-            chara.sprite:set(Utils.pick(sprites))
+            chara.sprite:set(TableUtils.pick(sprites))
             shine:play(1/30, false, function()
                 shine:remove()
                 chara:resetSprite()

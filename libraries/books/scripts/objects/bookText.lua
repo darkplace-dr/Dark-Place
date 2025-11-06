@@ -704,8 +704,8 @@ function bookText:drawChar(node, state, use_color)
     if state.shake > 0 then
         if self.timer - state.last_shake >= (1 * DTMULT) then
             state.last_shake = self.timer
-            state.offset_x = Utils.round(Utils.random(-state.shake, state.shake))
-            state.offset_y = Utils.round(Utils.random(-state.shake, state.shake))
+            state.offset_x = Utils.round(MathUtils.random(-state.shake, state.shake))
+            state.offset_y = Utils.round(MathUtils.random(-state.shake, state.shake))
         end
     end
 

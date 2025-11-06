@@ -49,7 +49,7 @@ function Hang:update()
 
                     bullet.tp = 2.4
 
-                    local dx, dy = -3 + Utils.random(6), -9 + Utils.random(2)
+                    local dx, dy = -3 + MathUtils.random(6), -9 + MathUtils.random(2)
                     local angle = Utils.angle(0, 0, dx, dy)
                     local dist = Utils.dist(dx, dy, 0, 0)
 

@@ -252,7 +252,7 @@ function Player:handleMovement()
     end
 
     if self.old_xv == self.x and self.old_yv == self.y and walkers ~= #members then
-        self.stay_grace = Utils.approach(self.stay_grace, 2, DTMULT)
+        self.stay_grace = MathUtils.approach(self.stay_grace, 2, DTMULT)
     end
     self.old_xv = self.x
     self.old_yv = self.y
@@ -330,7 +330,7 @@ function Player:updateRun()
 end
 
 function Player:croak()
-    Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))
+    Assets.stopAndPlaySound("croak", nil, 0.8 + MathUtils.random(0.4))
 
     local bubble = Sprite("croak", nil, nil, nil, nil, "party/you")
     bubble:setOriginExact(60, 23) -- center??

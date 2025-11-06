@@ -59,7 +59,7 @@ function RainPiece:update()
     --if self.x < x2 then self:remove() end
 
     if self.y - self.inity > (Game.world.map.height * Game.world.map.tile_height) + 120 then
-        Utils.approach(self.rainsprite.alpha, 0, DTMULT)
+        MathUtils.approach(self.rainsprite.alpha, 0, DTMULT)
         if self.alpha < 1 then self:remove() end
     end
 end

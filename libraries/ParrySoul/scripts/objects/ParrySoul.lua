@@ -48,15 +48,15 @@ function ParrySoul:update()
     end
 
     if self.targetrot and self.rotation ~= self.targetrot then
-        if self.targetrot == math.rad(180) then self.rotation = Utils.approach(self.rotation, math.rad(180), DTMULT/2) end
-        if self.targetrot == math.rad(-180) then self.rotation = Utils.approach(self.rotation, math.rad(-180), DTMULT/2) end
+        if self.targetrot == math.rad(180) then self.rotation = MathUtils.approach(self.rotation, math.rad(180), DTMULT/2) end
+        if self.targetrot == math.rad(-180) then self.rotation = MathUtils.approach(self.rotation, math.rad(-180), DTMULT/2) end
     end
 
-    if self.parry_timer > 0 then self.parry_timer = Utils.approach(self.parry_timer, 0, DTMULT) end
-    if self.cooldown_timer > 0 then self.cooldown_timer = Utils.approach(self.cooldown_timer, 0, DTMULT) end
+    if self.parry_timer > 0 then self.parry_timer = MathUtils.approach(self.parry_timer, 0, DTMULT) end
+    if self.cooldown_timer > 0 then self.cooldown_timer = MathUtils.approach(self.cooldown_timer, 0, DTMULT) end
 
-    if self.sprite.scale_x > 1 then self.sprite.scale_x = Utils.approach(self.sprite.scale_x, 1, DT*2) end
-    if self.sprite.scale_y > 1 then self.sprite.scale_y = Utils.approach(self.sprite.scale_y, 1, DT*2) end
+    if self.sprite.scale_x > 1 then self.sprite.scale_x = MathUtils.approach(self.sprite.scale_x, 1, DT*2) end
+    if self.sprite.scale_y > 1 then self.sprite.scale_y = MathUtils.approach(self.sprite.scale_y, 1, DT*2) end
 
 end
 

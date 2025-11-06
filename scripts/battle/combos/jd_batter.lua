@@ -241,7 +241,7 @@ function test:doCutscene(cutscene, target)
 	Game.battle.timer:tween(0.5, jamm, {scale_y = 2}, "out-elastic")
 	cutscene:wait(0.5)
 	if not miss then
-		Assets.playSound("taunt", 0.5, Utils.random(0.9, 1.1))
+		Assets.playSound("taunt", 0.5, MathUtils.random(0.9, 1.1))
 		local dess_effect = Sprite("effects/taunt", dess:getRelativePos(dess.width/2, dess.height/2))
         dess_effect:setOrigin(0.5, 0.5)
         dess_effect:setScale(1)

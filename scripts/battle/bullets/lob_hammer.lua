@@ -7,7 +7,7 @@ function SmallBullet:init(x, y, dir, speed)
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
     self.physics.direction = dir
 	self.dx = math.cos(dir)
-	self.dy = 4/3.5 * (math.sin(dir) - Utils.random(0, 0.6))
+	self.dy = 4/3.5 * (math.sin(dir) - MathUtils.random(0, 0.6))
     -- Speed the bullet moves (pixels per frame at 30FPS)
     self.physics.speed = speed
 end

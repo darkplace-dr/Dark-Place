@@ -256,7 +256,7 @@ function Absorber:emit()
                 local change = (grow_x > 0) and grow_x or grow
                 if change > 0 then
                     while p.scale_x ~= sx do
-                        p.scale_x = Utils.approach(p.scale_x, sx, change*DTMULT)
+                        p.scale_x = MathUtils.approach(p.scale_x, sx, change*DTMULT)
                         wait()
                     end
                 end
@@ -265,7 +265,7 @@ function Absorber:emit()
                 local change = (grow_y > 0) and grow_y or grow
                 if change > 0 then
                     while p.scale_y ~= sy do
-                        p.scale_y = Utils.approach(p.scale_y, sy, change*DTMULT)
+                        p.scale_y = MathUtils.approach(p.scale_y, sy, change*DTMULT)
                         wait()
                     end
                 end
@@ -287,8 +287,8 @@ function Absorber:emit()
                     shrink_to_y = shrink_to
                 end
                 while p.scale_x ~= shrink_to_x and p.scale_y ~= shrink_to_y do
-                    p.scale_x = Utils.approach(p.scale_x, shrink_to_x, change_x*DTMULT)
-                    p.scale_y = Utils.approach(p.scale_y, shrink_to_y, change_y*DTMULT)
+                    p.scale_x = MathUtils.approach(p.scale_x, shrink_to_x, change_x*DTMULT)
+                    p.scale_y = MathUtils.approach(p.scale_y, shrink_to_y, change_y*DTMULT)
                     wait()
                 end
                 if shrink_to_x == 0 or shrink_to_y == 0 then

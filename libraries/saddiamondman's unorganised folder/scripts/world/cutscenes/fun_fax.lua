@@ -84,7 +84,7 @@ return {
         Assets.playSound("ui_select")
         cutscene:wait(0.1)
 
-        local random_theme = Music(Utils.pick{
+        local random_theme = Music(TableUtils.pick{
             "deltarune/castletown_empty", "deltarune/field_of_hopes", "deltarune/lancer", "battle",
             "deltarune/forest", "deltarune/THE_HOLY", "deltarune/town", "deltarune/castletown",
             "deltarune/berdly_theme", "deltarune/cybercity", "deltarune/cybercity_alt", "deltarune/queen_car_radio",
@@ -156,14 +156,14 @@ return {
             {"* [color:grey]GREY[color:reset]...", "* [color:grey]AREA[color:reset]..."}
         }
 
-        cutscene:text("[speed:0.5]" .. Utils.pick(dialogue_pairs)[1])
+        cutscene:text("[speed:0.5]" .. TableUtils.pick(dialogue_pairs)[1])
 
         fun_fax:setSprite("searching")
         cutscene:wait(1.5)
         fun_fax:setSprite("watching")
         cutscene:wait(1.5)
 
-        cutscene:text("[speed:0.5]" .. Utils.pick(dialogue_pairs)[2])
+        cutscene:text("[speed:0.5]" .. TableUtils.pick(dialogue_pairs)[2])
 
         cutscene:wait(3)
         fun_fax:setSprite("searching")

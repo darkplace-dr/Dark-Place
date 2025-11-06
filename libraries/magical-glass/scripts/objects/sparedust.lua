@@ -7,13 +7,13 @@ function SpareDust:init(x, y)
 
     self.physics.friction = 0.8
 
-    self.scale_variance = Utils.random(0, 1, 1) + 0.7
+    self.scale_variance = MathUtils.random(0, 1, 1) + 0.7
     self:setScale(self.scale_variance)
 
 end
 
 function SpareDust:spread()
-    self.physics.direction = math.rad(Utils.random(360)) -- why
+    self.physics.direction = math.rad(MathUtils.random(360)) -- why
 
     local low = 0.75
     local high = 1.25

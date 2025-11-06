@@ -52,22 +52,22 @@ function FlyingHeads:update()
     if self.type == 1 or self.type == 2 or self.type == 3 or self.type == 4 or self.type == 5 or self.type == 6 or self.type == 7 then
         if self.spawn_timer == 1 then
             if self.type == 1 then
-                self.row = Utils.pick{0, 1}
+                self.row = TableUtils.pick{0, 1}
                 if self.prevrow == 2 then
-                    self.row = Utils.pick{0, 1}
+                    self.row = TableUtils.pick{0, 1}
                 end
             end
 			
             if self.type == 2 then
-                local aa = Utils.pick{0, 1, 2}
+                local aa = TableUtils.pick{0, 1, 2}
                 if prevrow_y == 0 then
-                    aa = Utils.pick{1, 2}
+                    aa = TableUtils.pick{1, 2}
                 end
                 if prevrow_y == 1 then
-                    aa = Utils.pick{0, 2}
+                    aa = TableUtils.pick{0, 2}
                 end
                 if prevrow_y == 2 then
-                    aa = Utils.pick{0, 1}
+                    aa = TableUtils.pick{0, 1}
                 end
                 self.rowy = 210 - 46 * aa
                 prevrow_y = aa
@@ -75,28 +75,28 @@ function FlyingHeads:update()
             end
 			
             if self.type == 3 or self.type == 4 then
-                self.rowy = 210 - 40 * (Utils.pick{0, 1})
-                self.row = Utils.pick{0, 1, 3, 6}
+                self.rowy = 210 - 40 * (TableUtils.pick{0, 1})
+                self.row = TableUtils.pick{0, 1, 3, 6}
                 if self.prevrow == 2 then
-                    self.row = Utils.pick{0, 1, 3, 6}
+                    self.row = TableUtils.pick{0, 1, 3, 6}
                 end
                 if self.prevrow == 3 then
-                    self.row = Utils.pick{0, 1}
+                    self.row = TableUtils.pick{0, 1}
                 end
                 if self.row == 3 and self.firstspawn == 0 then
-                    self.row = Utils.pick{0, 1}
+                    self.row = TableUtils.pick{0, 1}
                 end
                 self.firstspawn = 1
             end
 			
             if self.type == 5 then
-                self.rowy = 210 - 40 * (Utils.pick{0, 1, 2})
-                self.row = Utils.pick{0, 1, 2, 2, 3, 6}
+                self.rowy = 210 - 40 * (TableUtils.pick{0, 1, 2})
+                self.row = TableUtils.pick{0, 1, 2, 2, 3, 6}
                 if self.prevrow == 2 then
-                    self.row = Utils.pick{0, 1, 3, 6}
+                    self.row = TableUtils.pick{0, 1, 3, 6}
                 end
                 if self.prevrow == 3 then
-                    self.row = Utils.pick{0, 1, 2}
+                    self.row = TableUtils.pick{0, 1, 2}
                 end
             end
 		   

@@ -13,8 +13,8 @@ function WerewireThrowTarget:init(x, y)
 
     self.y = self.y - 120
 
-    self.progress = Utils.random(360)
-    self.increment = Utils.random(3.8, 4.2)
+    self.progress = MathUtils.random(360)
+    self.increment = MathUtils.random(3.8, 4.2)
     self.amplitude = 75
 
     self.shift_y = self.y

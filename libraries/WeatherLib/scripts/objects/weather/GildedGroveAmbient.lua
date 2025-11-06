@@ -46,7 +46,7 @@ function GildedGroveAmbient:update()
                 for i = ammount, 1, -1 do
                     Game.stage.timer:script(function(wait)
                         wait(1.5)
-                        local speed = Utils.random(6, 10)
+                        local speed = MathUtils.random(6, 10)
                         local y = math.random(SCREEN_HEIGHT * - 0.5, SCREEN_HEIGHT * 0.25)
                         local x = math.random(40, 60) + (i * 120)
                         local worldx, worldy = self:getRelativePos(SCREEN_WIDTH + x, y, self.addto)

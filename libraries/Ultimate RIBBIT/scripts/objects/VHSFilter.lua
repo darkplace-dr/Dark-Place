@@ -14,9 +14,9 @@ function VHSFilter:init(priority)
     self.vhslines_x = -350
 
     local mix_amt = 0.05
-    self.color1 = Utils.mergeColor(COLORS.white, COLORS.red, mix_amt)
-    self.color2 = Utils.mergeColor(COLORS.white, COLORS.blue, mix_amt)
-    self.color3 = Utils.mergeColor(COLORS.white, COLORS.green, mix_amt)
+    self.color1 = ColorUtils.mergeColor(COLORS.white, COLORS.red, mix_amt)
+    self.color2 = ColorUtils.mergeColor(COLORS.white, COLORS.blue, mix_amt)
+    self.color3 = ColorUtils.mergeColor(COLORS.white, COLORS.green, mix_amt)
 end
 
 function VHSFilter:update()

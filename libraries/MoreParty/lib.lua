@@ -212,7 +212,7 @@ function Lib:init()
 
         if #Game.battle.party <= 3 then orig(self) return end
 
-        local attack_order = Utils.pickMultiple(Game.battle.normal_attackers, #Game.battle.normal_attackers)
+        local attack_order = TableUtils.pickMultiple(Game.battle.normal_attackers, #Game.battle.normal_attackers)
 
         for _,box in ipairs(self.attack_boxes) do
             box:remove()
@@ -233,9 +233,9 @@ function Lib:init()
             table.insert(self.attack_boxes, attack_box)
 
             if i < #attack_order and last_offset ~= 0 then
-                last_offset = Utils.pick{0, 10, 15}
+                last_offset = TableUtils.pick{0, 10, 15}
             else
-                last_offset = Utils.pick{10, 15}
+                last_offset = TableUtils.pick{10, 15}
             end
         end
         self.attacking = true
@@ -244,7 +244,7 @@ function Lib:init()
     Utils.hook(AttackBox, "update", function(orig, self)
 
         if self.removing or Game.battle.cancel_attack then
-            self.fade_rect.alpha = Utils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
+            self.fade_rect.alpha = MathUtils.approach(self.fade_rect.alpha, 1, 0.08 * DTMULT)
         end
 
         if not self.attacked then
@@ -295,7 +295,7 @@ function Lib:init()
         if not Game.battle.cancel_attack and Input.pressed("confirm") then
             self.flash = 1
         else
-            self.flash = Utils.approach(self.flash, 0, DTMULT/5)
+            self.flash = MathUtils.approach(self.flash, 0, DTMULT/5)
         end
 
         Object.update(self)
@@ -352,7 +352,7 @@ function Lib:init()
                             if type(variance[index]) == "number" then
                                 next_bolt_x = variance[index]
                             elseif type(variance[index]) == "table" then
-                                next_bolt_x = Utils.pick(variance[index])
+                                next_bolt_x = TableUtils.pick(variance[index])
                             else
                                 error("self.multibolt_variance must either be an integer, a table populated with integers, or a table of tables populated with integers.")
                             end
@@ -371,7 +371,7 @@ function Lib:init()
                                 if type(variance[index]) == "number" then
                                     next_bolt_x = variance[index]
                                 elseif type(variance[index]) == "table" then
-                                    next_bolt_x = Utils.pick(variance[index])
+                                    next_bolt_x = TableUtils.pick(variance[index])
                                 else
                                     error("self.multibolt_variance must either be an integer, a table populated with integers, or a table of tables populated with integers.")
                                 end
@@ -381,7 +381,7 @@ function Lib:init()
                                 error("self.multibolt_variance must be either a table or a number value.")
                             end
                         else
-                            next_bolt_x = Utils.pick(variance[#variance]) + (Utils.pick(variance[#variance]) * (index - #variance))
+                            next_bolt_x = TableUtils.pick(variance[#variance]) + (TableUtils.pick(variance[#variance]) * (index - #variance))
                         end
 
                         bolt = AttackBar(self.bolts[1].x + next_bolt_x, 0, 6, 38)

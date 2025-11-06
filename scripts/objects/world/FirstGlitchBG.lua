@@ -23,7 +23,7 @@ function FirstGlitchBG:init()
     
     for _,scanline in ipairs(self.scanlines_random) do
         Game.world.timer:every(1/5, function()
-            scanline.alpha = Utils.random(0, 0.8)
+            scanline.alpha = MathUtils.random(0, 0.8)
             scanline.y = love.math.random(0, SCREEN_HEIGHT/6)*6
         end)
         if scanline.y >= 464 then

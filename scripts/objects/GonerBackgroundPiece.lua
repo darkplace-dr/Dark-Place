@@ -25,9 +25,9 @@ function GonerBackgroundPiece:update()
     self.x_stretch = self.x_stretch + self.stretch_speed * DTMULT
     self.y_stretch = self.y_stretch + self.stretch_speed * DTMULT
 
-    self.alpha = Utils.approach(0, 0.2, self.timer * 0.01) + math.sin(self.timer / 34) * 0.2
+    self.alpha = MathUtils.approach(0, 0.2, self.timer * 0.01) + math.sin(self.timer / 34) * 0.2
     if self.y_stretch > 2 then
-        self.alpha_out = Utils.approach(self.alpha_out, 0.5, 0.01 * DTMULT)
+        self.alpha_out = MathUtils.approach(self.alpha_out, 0.5, 0.01 * DTMULT)
         self.alpha = self.alpha - self.alpha_out
         if self.alpha_out >= 0.5 then
             self:remove()

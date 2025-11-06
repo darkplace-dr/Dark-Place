@@ -17,7 +17,7 @@ function PhoneHandMaster:init(x, y)
     self.phone_init = false
 
     self.bluesiner = 0
-    self.blue_color = Utils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + (math.sin((self.bluesiner / 3)) * 0.25)))
+    self.blue_color = ColorUtils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + (math.sin((self.bluesiner / 3)) * 0.25)))
 	
     self.graze_timer = 0
 end
@@ -116,7 +116,7 @@ function PhoneHandMaster:update()
                 shot.physics.speed = 10
             end
 			
-            shot.physics.direction = 180 + (Utils.random(-5, 5))
+            shot.physics.direction = 180 + (MathUtils.random(-5, 5))
             shot.layer = self.layer - 1
             self:setSprite("battle/bullets/sneo/phonehand/head_open")
         else

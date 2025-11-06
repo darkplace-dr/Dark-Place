@@ -257,7 +257,7 @@ end
 
 function Music:_update()
     if self.fade_speed ~= 0 and self.volume ~= self.target_volume then
-        self.volume = Utils.approach(self.volume, self.target_volume, DT / self.fade_speed)
+        self.volume = MathUtils.approach(self.volume, self.target_volume, DT / self.fade_speed)
 
         if self.volume == self.target_volume then
             self.fade_speed = 0

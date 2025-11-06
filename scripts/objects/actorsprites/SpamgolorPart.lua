@@ -43,7 +43,7 @@ function Part:update()
         self.sprite.rotation = self.swing_rotation
     end
     if self.swing_shake > 0 then
-        self.sprite.rotation = self.sprite.rotation + Utils.random(-self.swing_shake, self.swing_shake)
+        self.sprite.rotation = self.sprite.rotation + MathUtils.random(-self.swing_shake, self.swing_shake)
     end
 end
 

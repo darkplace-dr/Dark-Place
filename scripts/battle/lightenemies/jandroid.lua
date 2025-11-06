@@ -151,7 +151,7 @@ function Jandroid:getEncounterText()
     end
 
     if self.low_health_text and self.health <= (self.max_health * self.low_health_percentage) then
-        return Utils.pick(self.low_health_text)
+        return TableUtils.pick(self.low_health_text)
 
     elseif self.tired_text and self.tired then
         return self.tired_text
@@ -160,7 +160,7 @@ function Jandroid:getEncounterText()
         return self.spareable_text
     end
 
-    return Utils.pick(self.text)
+    return TableUtils.pick(self.text)
 end
 
 function Jandroid:getEnemyDialogue()
@@ -170,9 +170,9 @@ function Jandroid:getEnemyDialogue()
         return dialogue
     end
     if self.low_health_dialogue and self.health <= (self.max_health * self.low_health_percentage) then
-        return Utils.pick(self.low_health_dialogue)
+        return TableUtils.pick(self.low_health_dialogue)
     end
-    return Utils.pick(self.dialogue)
+    return TableUtils.pick(self.dialogue)
 end
 
 function Jandroid:onHurtEnd()

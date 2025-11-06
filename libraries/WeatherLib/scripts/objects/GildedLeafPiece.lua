@@ -14,12 +14,12 @@ function GildedLeafPiece:init(x, y, speed, handler)
     self.leafsprite = Sprite("world/wind/gold_leaf")
     self:addChild(self.leafsprite)
     self.leafsprite:setScale(1)
-    local spspeed = Utils.random(0.2, 0.5)
+    local spspeed = MathUtils.random(0.2, 0.5)
     self.leafsprite:play(spspeed)
     --self:setPosition(self.x, self.y - (self.snowsprite.height * 2))
     --self:addChild(self.rainsprite)
     self.initx, self.inity = self.x, self.y
-    self.alpha_mult = Utils.random(0.4, 1.2)
+    self.alpha_mult = MathUtils.random(0.4, 1.2)
     self.fade = self.alpha_mult
     
     self.width, self.height = 6, 6

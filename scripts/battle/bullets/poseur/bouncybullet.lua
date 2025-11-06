@@ -8,7 +8,7 @@ function BouncyBullet:init(x, y)
     self.destroy_on_hit = false
 
     -- very unfortature
-    self.velocity_x = 1 - 2*Utils.random()
+    self.velocity_x = 1 - 2*MathUtils.random()
     self.velocity_y = 0
 end
 

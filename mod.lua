@@ -200,7 +200,7 @@ function Mod:init()
             elseif self.type == "scott" then
                 Assets.playSound("scott_here")
             elseif self.type == "croak" then
-                Assets.stopAndPlaySound("croak", nil, 0.8 + Utils.random(0.4))
+                Assets.stopAndPlaySound("croak", nil, 0.8 + MathUtils.random(0.4))
 
                 local bubble = Sprite("croak", nil, nil, nil, nil, "party/you")
                 bubble:setOriginExact(60, 23) -- center??
@@ -481,7 +481,7 @@ function Mod:init()
                     end
                 end
                 
-                local enemy = Utils.pick(enemies)
+                local enemy = TableUtils.pick(enemies)
                 if enemy then
                     enemy:hurt(math.min(Utils.round(amount * thorns_item.thorns_damage_proportion), enemy.health - 1))
                     -- If the sound is none then don't play anything.
@@ -950,7 +950,7 @@ function Mod:preUpdate()
         return
     end
 
-    self.voice_timer = Utils.approach(self.voice_timer, 0, DTMULT)
+    self.voice_timer = MathUtils.approach(self.voice_timer, 0, DTMULT)
 end
 
 function Mod:postUpdate()
@@ -990,28 +990,28 @@ function Mod:onTextSound(sound, node)
 
     if sound == "omori" then
         if self.voice_timer == 0 then
-            Assets.playSound("voice/omori", nil, 0.9 + Utils.random(0.18))
+            Assets.playSound("voice/omori", nil, 0.9 + MathUtils.random(0.18))
             self.voice_timer = 1.1
         end
         return true
     end
     if sound == "frisk2" then
         if self.voice_timer == 0 then
-            Assets.playSound("voice/frisk2", nil, 0.9 + Utils.random(0.18))
+            Assets.playSound("voice/frisk2", nil, 0.9 + MathUtils.random(0.18))
             self.voice_timer = 1.1
         end
         return true
     end
     if sound == "mago1" then
         if self.voice_timer == 0 then
-            local snd = Assets.playSound(Utils.pick{"voice/mago1", "voice/mago2", "voice/mago3", "voice/mago4", "voice/mago5", "voice/mago6", "voice/mago7"})
+            local snd = Assets.playSound(TableUtils.pick{"voice/mago1", "voice/mago2", "voice/mago3", "voice/mago4", "voice/mago5", "voice/mago6", "voice/mago7"})
             self.voice_timer = 2
         end
         return true
     end
     if sound == "rx1" then
         if self.voice_timer == 0 then
-            local snd = Assets.playSound(Utils.pick{"voice/rx1", "voice/rx2", "voice/rx3"})
+            local snd = Assets.playSound(TableUtils.pick{"voice/rx1", "voice/rx2", "voice/rx3"})
             self.voice_timer = 2
         end
         return true
@@ -1019,7 +1019,7 @@ function Mod:onTextSound(sound, node)
     if sound == "hat_badge" then
         -- Sounds are taken from the badge seller in A Hat in Time.
         if self.voice_timer == 0 then
-            local snd = Assets.playSound(Utils.pick{
+            local snd = Assets.playSound(TableUtils.pick{
             "voice/hat_badge1",
             "voice/hat_badge2",
             "voice/hat_badge3",

@@ -21,7 +21,7 @@ function PhoneShooter:init(x, y)
 	self.init_x = x
 	self.init_y = y
 	
-    Assets.playSound("phone", 1, Utils.random(0.95, 1.05))
+    Assets.playSound("phone", 1, MathUtils.random(0.95, 1.05))
 end
 
 function PhoneShooter:update()
@@ -76,7 +76,7 @@ function PhoneShooter:update()
 end
 
 function PhoneShooter:onYellowShot(shot)
-    Assets.playSound("damage", 1.1, 0.7 + Utils.random(0.4))
+    Assets.playSound("damage", 1.1, 0.7 + MathUtils.random(0.4))
 
     if self.destroyable == true then
         self:flash()

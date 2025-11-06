@@ -142,7 +142,7 @@ function LightEncounter:onBattleEnd() end
 
 function LightEncounter:onTurnStart() end
 function LightEncounter:onTurnEnd()
-    self.flee_chance = Utils.random(100) + (10 * (Game.battle.turn_count - 1))
+    self.flee_chance = MathUtils.random(100) + (10 * (Game.battle.turn_count - 1))
 end
 
 function LightEncounter:onActionsStart() end
@@ -299,7 +299,7 @@ function LightEncounter:addEnemy(enemy, x, y, ...)
 end
 
 function LightEncounter:getFleeMessage()
-    local message = Utils.random(0, 20, 1)
+    local message = MathUtils.random(0, 20, 1)
 
     if message == 0 or message == 1 then
         return self.flee_messages[1]
@@ -318,7 +318,7 @@ end
 
 function LightEncounter:getEncounterText()
     local enemies = Game.battle:getActiveEnemies()
-    local enemy = Utils.pick(enemies, function(v)
+    local enemy = TableUtils.pick(enemies, function(v)
         if not v.text then
             return true
         else
@@ -373,7 +373,7 @@ function LightEncounter:onWavesDone()
 
     if Game.battle.turn_count > 2 then
         if chance == 0 or chance == nil then
-            self.flee_chance = Utils.random(0, 100, 1)
+            self.flee_chance = MathUtils.random(0, 100, 1)
         else
             self.flee_chance = self.flee_chance + 10
         end

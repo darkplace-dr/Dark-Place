@@ -22,7 +22,7 @@ end
 
 function RandomEncounter:getNextEncounter()
     if not self:nobodyCame() then
-        return Utils.pick(self.encounters)
+        return TableUtils.pick(self.encounters)
     else
         return self.nobody_encounter
     end
@@ -36,7 +36,7 @@ function RandomEncounter:start()
     if self.bubble then
         Game.lock_movement = true
         MagicalGlassLib.initiating_random_encounter = true
-        Game.world.player:alert(15/30 + Utils.random(5/30), {layer = WORLD_LAYERS["above_events"], sprite = self.bubble, callback = function() Game:encounter(self:getNextEncounter(), true, nil, nil, self.light);Game.lock_movement = false;MagicalGlassLib.initiating_random_encounter = nil end})
+        Game.world.player:alert(15/30 + MathUtils.random(5/30), {layer = WORLD_LAYERS["above_events"], sprite = self.bubble, callback = function() Game:encounter(self:getNextEncounter(), true, nil, nil, self.light);Game.lock_movement = false;MagicalGlassLib.initiating_random_encounter = nil end})
     else
         Game:encounter(self:getNextEncounter(), true, nil, nil, self.light)
     end

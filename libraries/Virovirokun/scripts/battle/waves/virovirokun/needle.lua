@@ -8,11 +8,11 @@ function Needle:onStart()
     self.timer:every((ratio == 1 and 6 or (10 * ratio)) / 30, function()
         local arena = Game.battle.arena
 
-        local x, y = arena.right + 40 + Utils.random(140), Utils.random(arena.top, arena.bottom)
+        local x, y = arena.right + 40 + MathUtils.random(140), MathUtils.random(arena.top, arena.bottom)
         self:spawnBullet("virovirokun/needle", x, y, #attackers > 1)
 
         if #attackers > 1 then
-            x, y = arena.left - 40 - Utils.random(140), Utils.random(arena.top, arena.bottom)
+            x, y = arena.left - 40 - MathUtils.random(140), MathUtils.random(arena.top, arena.bottom)
             self:spawnBullet("virovirokun/needle", x, y, true, true)
         end
     end)

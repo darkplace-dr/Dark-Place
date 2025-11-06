@@ -44,17 +44,17 @@ function lib:preUpdate(dt)
     self.particle_timer = self.particle_timer + DT
     if self.particle_timer >= 0.4 then
         self.particle_timer = 0
-        local radius = Utils.random(12)
+        local radius = MathUtils.random(12)
         -- Create a star on each side of the border
         table.insert(self.particles, {
             radius = radius, max_radius = radius,
             x = love.math.random(0, 200), y = SCREEN_HEIGHT+50 + radius,
-            speed = Utils.random(0.5, 1)
+            speed = MathUtils.random(0.5, 1)
         })
         table.insert(self.particles, {
             radius = radius, max_radius = radius,
             x = love.math.random(SCREEN_WIDTH+140, SCREEN_WIDTH+300), y = SCREEN_HEIGHT+50 + radius,
-            speed = Utils.random(0.5, 1)
+            speed = MathUtils.random(0.5, 1)
         })
     end
 end

@@ -17,8 +17,8 @@ function DiamondsAimMimic:onStart()
 		end)
     end
     self.timer:every(1/7, function()
-        local x = Utils.random(Game.battle.arena.left - 100, Game.battle.arena.right + 100)
-        local y = Utils.random(Game.battle.arena.top - 20, Game.battle.arena.top - 70)
+        local x = MathUtils.random(Game.battle.arena.left - 100, Game.battle.arena.right + 100)
+        local y = MathUtils.random(Game.battle.arena.top - 20, Game.battle.arena.top - 70)
 
         local bullet = self:spawnBullet("grounder/diamond_black", x, y)
 		self.timer:script(function(wait)

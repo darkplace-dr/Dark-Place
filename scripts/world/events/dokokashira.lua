@@ -52,7 +52,7 @@ function Dokokashira:onEnter(chara)
     		Game.world.music:play("glitch_music")
     		Game.world:spawnNPC("ghost", 2340, 1395)
     		for i=1,love.math.random(10,30) do
-    			local script = Script(Utils.random(2035, 2830), Utils.random(1150, 1680), 40, 40, {cutscene="ghost_glitch"})
+    			local script = Script(MathUtils.random(2035, 2830), MathUtils.random(1150, 1680), 40, 40, {cutscene="ghost_glitch"})
     			script.layer = Game.world:parseLayer("objects")
     			Game.world:addChild(script)
     		end

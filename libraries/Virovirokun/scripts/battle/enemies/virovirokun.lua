@@ -73,7 +73,7 @@ function Virovirokun:onActStart(battler, name)
     local function getSpriteAndOffset(id)
         local selected_sprite = sprite_lookup[id] or ("enemies/virovirokun/take_care/"..id)
         if type(selected_sprite) == "table" then
-            selected_sprite = Utils.pick(sprite_lookup[id])
+            selected_sprite = TableUtils.pick(sprite_lookup[id])
         end
         local selected_offset = offset_lookup[id] or {0, 0}
         return selected_sprite, selected_offset[1], selected_offset[2]

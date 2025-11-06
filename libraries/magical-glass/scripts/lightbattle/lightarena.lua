@@ -131,11 +131,11 @@ end
 function LightArena:update()
     if #self.target_shape > 0 then
         if not Utils.equal(self.width, self.target_shape[1], true) then
-            self.width = Utils.approach(self.width, self.target_shape[1], DTMULT * 30)
+            self.width = MathUtils.approach(self.width, self.target_shape[1], DTMULT * 30)
         end
 
         if not Utils.equal(self.height, self.target_shape[2], true) then
-            self.height = Utils.approach(self.height, self.target_shape[2], DTMULT * 30)
+            self.height = MathUtils.approach(self.height, self.target_shape[2], DTMULT * 30)
         end
 
         if Utils.equal(self.width, self.target_shape[1], true) and Utils.equal(self.height, self.target_shape[2], true) then
@@ -154,11 +154,11 @@ function LightArena:update()
         end
 
         if not Utils.equal(self.x, self.target_position[1], true) then
-            self.x = Utils.approach(self.x, self.target_position[1], math.ceil(DTMULT * 15))
+            self.x = MathUtils.approach(self.x, self.target_position[1], math.ceil(DTMULT * 15))
         end
 
         if not Utils.equal(self.y, self.target_position[2], true) then
-            self.y = Utils.approach(self.y, self.target_position[2], math.ceil(DTMULT * 15))
+            self.y = MathUtils.approach(self.y, self.target_position[2], math.ceil(DTMULT * 15))
         end
 
         if Utils.equal(self.x, self.target_position[1], true) and Utils.equal(self.y, self.target_position[2], true) then

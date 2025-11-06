@@ -88,7 +88,7 @@ function TauntSoul:update()
             if not sprites or #sprites <= 0 then goto continue end
 
             chara:toggleOverlay(true)
-            chara.overlay_sprite:setSprite(Utils.pick(sprites))
+            chara.overlay_sprite:setSprite(TableUtils.pick(sprites))
 
             -- the shine effect
             local effect = Sprite("effects/taunt", 10, 15)
@@ -111,9 +111,9 @@ function TauntSoul:update()
         self.once = false
     end
 
-    if self.parry_timer > 0 then self.parry_timer = Utils.approach(self.parry_timer, 0, DTMULT) end
-    if self.cooldown_timer > 0 then self.cooldown_timer = Utils.approach(self.cooldown_timer, 0, DTMULT) end
-    if self.parry_inv > 0 then self.parry_inv = Utils.approach(self.parry_inv, 0, DTMULT) end
+    if self.parry_timer > 0 then self.parry_timer = MathUtils.approach(self.parry_timer, 0, DTMULT) end
+    if self.cooldown_timer > 0 then self.cooldown_timer = MathUtils.approach(self.cooldown_timer, 0, DTMULT) end
+    if self.parry_inv > 0 then self.parry_inv = MathUtils.approach(self.parry_inv, 0, DTMULT) end
 
 
 

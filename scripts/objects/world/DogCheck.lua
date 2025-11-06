@@ -68,7 +68,7 @@ function DogCheck:start()
         pitch_rand_max = pitch_rand_max or pitch_rand_min
 
         self.song = path
-        self.song_pitch = Utils.random(pitch_rand_min, pitch_rand_max)
+        self.song_pitch = MathUtils.random(pitch_rand_min, pitch_rand_max)
         if self.music then
             self.music:play(path, nil, self.song_pitch)
         end
@@ -86,7 +86,7 @@ function DogCheck:start()
         elseif month == 12 and month <= 2 then
             table.insert(variant_choices, "winter")
         end
-        self.variant = Utils.pick(variant_choices)
+        self.variant = TableUtils.pick(variant_choices)
     end
 
     local cust_sprites_base = "world/cutscenes/dogcheck"
@@ -97,14 +97,14 @@ function DogCheck:start()
     elseif self.variant == "sleep" then
         createDog("misc/dog_sleep", 0.8)
 
-        local song_here = Utils.pick({"dogcheck", "results", "sigh_of_dog", "dogcheck_anniversary"})
+        local song_here = TableUtils.pick({"dogcheck", "results", "sigh_of_dog", "dogcheck_anniversary"})
         playSong(song_here, (song_here == "sigh_of_dog" and 0.8) or (song_here == "dogcheck" and 0.9) or 1, 1)
     elseif self.variant == "maracas" then
         createDog(cust_sprites_base.."/dog_maracas", 0.1, 20, -20)
         playSong("baci_perugina2")
     elseif self.variant == "piano" then
         createDog(cust_sprites_base.."/dog_piano", 0.5)
-        local song_here = Utils.pick({"legend_piano", "snowdin_piano", "home_piano", "5_4_improv", "bowser_piano_victory"})
+        local song_here = TableUtils.pick({"legend_piano", "snowdin_piano", "home_piano", "5_4_improv", "bowser_piano_victory"})
         playSong(song_here)
     elseif self.variant == "spring" then
         createDog(cust_sprites_base.."/dog_spring", 0.2, -2, -13)
@@ -243,7 +243,7 @@ function DogCheck:chapter2Script(wait)
             end
             small_dog.flip_x = axis > 0
             small_dog.physics.speed = axis * love.math.random(10, 16)
-            small_dog.physics.friction = Utils.random(0.01, -0.01)
+            small_dog.physics.friction = MathUtils.random(0.01, -0.01)
             local anim_speed = (1 + (small_dog.physics.speed / 4)) * 0.25
             small_dog:play(anim_speed, true)
             -- auto-cleanup

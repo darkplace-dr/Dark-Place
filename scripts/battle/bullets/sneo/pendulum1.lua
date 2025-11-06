@@ -73,7 +73,7 @@ function Pendulum1:draw()
 end
 
 function Pendulum1:onYellowShot(shot)
-    Assets.playSound("bell", 0.8, 0.7 + Utils.random(0.1))
+    Assets.playSound("bell", 0.8, 0.7 + MathUtils.random(0.1))
     if self.collider.collidable == true then
         if not shot.big then
             self.myspeed = self.myspeed - 1

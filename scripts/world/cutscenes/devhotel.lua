@@ -103,7 +103,7 @@ return {
             if cutscene:choicer({"Yes", "No"})==1 then
                 cutscene:wait(0.25)
                 Assets.playSound("dooropen")
-                if Utils.random(0, 100)<=1 then
+                if MathUtils.random(0, 100)<=1 then
                     Game:setFlag("gonergirl", true)
                     cutscene:wait(cutscene:mapTransition("chair_room"))
                 else
@@ -153,7 +153,7 @@ return {
         cutscene:wait(0.3)
         
         local gb = Game.world:spawnBullet("gaster_blaster", event.x, event.y)
-        local dd = Utils.random(360)
+        local dd = MathUtils.random(360)
 		
         Assets.stopSound("gaster_blaster")
 

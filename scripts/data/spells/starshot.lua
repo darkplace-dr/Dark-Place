@@ -38,7 +38,7 @@ function spell:onCast(user, target)
 		Game.battle.starbasic.layer = BATTLE_LAYERS["above_battlers"]
 		Game.battle:addChild(Game.battle.starbasic)
 		Game.battle.starbasic:slideToSpeed(targetX, targetY, 20, function()
-			local damage = math.ceil((user.chara:getStat("magic") * 20) + 100 + (Utils.random(10) * 2))
+			local damage = math.ceil((user.chara:getStat("magic") * 20) + 100 + (MathUtils.random(10) * 2))
 			target:hurt(damage, user)
 
 			Assets.playSound("celestial_hit")
@@ -51,7 +51,7 @@ function spell:onCast(user, target)
 		end)
 
 		Game.battle.timer:every(0.01, function()
-			local starparticle = Sprite("effects/spells/dess/rainbow_star", Game.battle.starbasic.x + Utils.random(32), Game.battle.starbasic.y + Utils.random(32))
+			local starparticle = Sprite("effects/spells/dess/rainbow_star", Game.battle.starbasic.x + MathUtils.random(32), Game.battle.starbasic.y + MathUtils.random(32))
 			starparticle:setOrigin(0.5, 0.5)
 			starparticle:setScale(2)
 			starparticle.layer = BATTLE_LAYERS["above_battlers"]

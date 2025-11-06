@@ -13,7 +13,7 @@ function BouncyMimic:onStart()
 		end)
     end
     self.timer:every(1/8, function()
-        local posx = Utils.random(Game.battle.arena.left, Game.battle.arena.right)
+        local posx = MathUtils.random(Game.battle.arena.left, Game.battle.arena.right)
         local posy = Game.battle.arena.top
 
         -- Spawn smallbullet going left with speed 8 (see scripts/battle/bullets/smallbullet.lua)

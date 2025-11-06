@@ -27,9 +27,9 @@ function LancerGotchi:init(x, y)
 	
     self.timer:every(3, function()
         self.remmovecon = self.movecon
-        self.movecon = math.floor(Utils.random(5))
+        self.movecon = math.floor(MathUtils.random(5))
         if self.movecon == self.remmovecon then
-            self.movecon = math.floor(Utils.random(5))
+            self.movecon = math.floor(MathUtils.random(5))
         end
         self.con = 0
         if self.sleeptimer >= 900 then
@@ -64,9 +64,9 @@ function LancerGotchi:update()
             self.con = 1
             self.contimer = 0
             self.contimermax = 30
-            self.flipchance = Utils.random(2)
+            self.flipchance = MathUtils.random(2)
             if self.flipchance == 2 then
-                self.lancer:setAnimation(Utils.pick{"walk/down", "up_flip"})
+                self.lancer:setAnimation(TableUtils.pick{"walk/down", "up_flip"})
 			end
 		end
         if self.con == 1 then
@@ -87,7 +87,7 @@ function LancerGotchi:update()
                 self:setPhysics({
                     speed_x = 0,
                 })
-                self.lancer:setAnimation(Utils.pick{"walk/down", "walk/down", "up_flip"})
+                self.lancer:setAnimation(TableUtils.pick{"walk/down", "walk/down", "up_flip"})
                 self.con = 2
 			end
 		end

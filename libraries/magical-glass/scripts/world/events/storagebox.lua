@@ -28,7 +28,7 @@ function StorageBox:init(x, y, properties)
                     "* You put a little effort\ninto the box.",
                     "* You put a little feeling\ninto the box."
                 }
-                cutscene:text("* You have no items.\n"..Utils.pick(message))
+                cutscene:text("* You have no items.\n"..TableUtils.pick(message))
             else
                 self.should_open_menu = true
             end

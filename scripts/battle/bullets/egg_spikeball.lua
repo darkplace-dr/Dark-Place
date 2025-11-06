@@ -4,7 +4,7 @@ function SmallBullet:init(x, y)
     -- Last argument = sprite path
     super.init(self, x, y, "battle/bullets/eggman/spikeball")
 
-    self.dx = Utils.random(-2,2)
+    self.dx = MathUtils.random(-2,2)
 	
 	self.dy = -4
 end

@@ -1,7 +1,7 @@
 return {
     terrorize = function(cutscene, battler, enemy)
 		
-		local randomText = Utils.random(0, 3, 1)
+		local randomText = MathUtils.random(0, 3, 1)
 		
 		if randomText == 0 then
 			cutscene:text("* Alright pipsqueak![wait:10]\n* Go away unless you wanna be double-dead!", "teeth_smile", "susie")

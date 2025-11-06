@@ -60,7 +60,7 @@ function Basic:update()
 			end
 		end
 		
-		local member = Utils.pick(list)
+		local member = TableUtils.pick(list)
 		
 		member:hurt(math.huge)
 		Game.battle.encounter:onWavesDone()

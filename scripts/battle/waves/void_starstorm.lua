@@ -11,7 +11,7 @@ function VoidStarStorm:onStart()
     self.attackers = self:getAttackers()
     if #self.attackers == 1 then
         self.timer:every(1/4, function()
-            local x = Utils.random(Game.battle.arena.left, Game.battle.arena.right) + 200
+            local x = MathUtils.random(Game.battle.arena.left, Game.battle.arena.right) + 200
             local y = -20
     
             Assets.stopAndPlaySound("stardrop", 1, 1)
@@ -21,7 +21,7 @@ function VoidStarStorm:onStart()
         end)
     elseif #self.attackers == 2 then
         self.timer:every(1/2, function()
-            local x = Utils.random(Game.battle.arena.left, Game.battle.arena.right) + 200
+            local x = MathUtils.random(Game.battle.arena.left, Game.battle.arena.right) + 200
             local y = -20
     
             Assets.stopAndPlaySound("stardrop", 1, 0.8)
@@ -31,7 +31,7 @@ function VoidStarStorm:onStart()
         end)
     elseif #self.attackers >= 3 then
         self.timer:every(2, function()
-            local x = Utils.random(Game.battle.arena.left, Game.battle.arena.right) + 200
+            local x = MathUtils.random(Game.battle.arena.left, Game.battle.arena.right) + 200
             local y = -60
     
             Assets.stopAndPlaySound("stardrop", 1, 0.4)

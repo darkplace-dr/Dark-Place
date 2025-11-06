@@ -103,7 +103,7 @@ return {
 					cutscene:text("* (What the fuck.)")
 					Game.world.music:resume()
 				elseif song == 5 then
-					if Utils.random(0, 100) <= 5 then
+					if MathUtils.random(0, 100) <= 5 then
 						cutscene:wait(2)
 						Game.world.music:resume()
 						cutscene:text("* (Sounds like a song about a girl that saw a ghost.)")

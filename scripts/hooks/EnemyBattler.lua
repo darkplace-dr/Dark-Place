@@ -181,7 +181,7 @@ function EnemyBattler:spare(pacify)
             spare_flash.amount = spare_flash.amount + 0.2 * DTMULT
             sparkle_timer = sparkle_timer + DTMULT
             if sparkle_timer >= 0.5 then
-                local x, y = Utils.random(0, self.width), Utils.random(0, self.height)
+                local x, y = MathUtils.random(0, self.width), MathUtils.random(0, self.height)
                 local sparkle = SpareSparkle(self:getRelativePos(x, y))
                 sparkle.layer = self.layer + 0.001
                 parent:addChild(sparkle)

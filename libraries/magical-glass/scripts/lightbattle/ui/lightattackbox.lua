@@ -30,11 +30,11 @@ function LightAttackBox:createBolts()
         lane.battler = battler
         lane.bolts = {}
         lane.weapon = battler.chara:getWeapon()
-        lane.speed = lane.weapon and lane.weapon.getLightBoltSpeed and lane.weapon:getLightBoltSpeed() or 11 + (not Game.battle.multi_mode and Utils.random(0, 2, 1) or 0)
+        lane.speed = lane.weapon and lane.weapon.getLightBoltSpeed and lane.weapon:getLightBoltSpeed() or 11 + (not Game.battle.multi_mode and MathUtils.random(0, 2, 1) or 0)
         lane.attacked = false
         lane.score = 0
         lane.stretch = nil
-        lane.direction = Game.battle.multi_mode and "left" or lane.weapon and lane.weapon.getLightBoltDirection and lane.weapon:getLightBoltDirection() or Game:isLight() and "right" or Utils.pick({"right", "left"})
+        lane.direction = Game.battle.multi_mode and "left" or lane.weapon and lane.weapon.getLightBoltDirection and lane.weapon:getLightBoltDirection() or Game:isLight() and "right" or TableUtils.pick({"right", "left"})
 
         if (lane.weapon and lane.weapon.getLightBoltCount and lane.weapon:getLightBoltCount() or 1) > 1 then
             lane.attack_type = "shoe"
@@ -42,7 +42,7 @@ function LightAttackBox:createBolts()
             lane.attack_type = "slice"
         end
 
-        local randomizer = #self.attackers == 1 and 0 or Utils.random(0,3,1) * 40
+        local randomizer = #self.attackers == 1 and 0 or MathUtils.random(0,3,1) * 40
         local start_x
         if lane.direction == "left" then
             start_x = (self.target_sprite.x + self.target_sprite.width / 1.8) - randomizer

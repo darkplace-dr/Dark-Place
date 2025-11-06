@@ -17,7 +17,7 @@ function Quicktime:init(user, target)
     self.limit = meth
 
     for i = 1, self.limit do
-        self["n"..i.."n"] = Utils.pick(rbm)
+        self["n"..i.."n"] = TableUtils.pick(rbm)
     end
 
     local halfLimit = self.limit / 2

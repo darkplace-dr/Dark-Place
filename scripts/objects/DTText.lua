@@ -17,7 +17,7 @@ function DTText:init(arg, x, y)
     self.layer = BATTLE_LAYERS["top"]
 
 	self.dt_list = arg
-	self.text = Utils.pick(self.dt_list)
+	self.text = TableUtils.pick(self.dt_list)
     self.font = Assets.getFont("main_mono", 16)
 
     self.width = self.font:getWidth(self.text)
@@ -65,7 +65,7 @@ function DTText:update()
     end
 
     if self.timer >= self.delay then
-        self.physics.speed_x = Utils.approach(self.physics.speed_x, 0, DTMULT)
+        self.physics.speed_x = MathUtils.approach(self.physics.speed_x, 0, DTMULT)
 
         if self.bounces < 2 then
             self.physics.speed_y = self.physics.speed_y + DTMULT
@@ -106,7 +106,7 @@ function DTText:update()
     end
 	
 	if self.timer%2 == 0 then
-		self.text = Utils.pick(self.dt_list)
+		self.text = TableUtils.pick(self.dt_list)
 		self.width = self.font:getWidth(self.text)
 	end
 

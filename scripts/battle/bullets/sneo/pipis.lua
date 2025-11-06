@@ -30,7 +30,7 @@ function Pipis:onYellowShot(shot, damage)
         piece.layer = 800
         piece:play(0.05, true)
         piece:setScale(1)
-        piece.physics.direction = math.rad(Utils.random(360))
+        piece.physics.direction = math.rad(MathUtils.random(360))
         piece.rotation = math.rad(0) + 15
         piece.graphics.spin = 0.15
         piece.physics.speed = 4
@@ -70,7 +70,7 @@ function Pipis:update()
         if self:collidesWith(self.wave.wall) then
             Assets.playSound("bump")
             self.physics.gravity = 0.24
-            self.physics.speed_y = (-5 - Utils.random(3))
+            self.physics.speed_y = (-5 - MathUtils.random(3))
         end
 	
         if self.boom == false and ((self.x < (Game.battle.arena.x + (Game.battle.arena.width / 2) + 20)) and not (self.y >= self.wave.wall.y)) then
@@ -138,7 +138,7 @@ function Pipis:destroy(shot)
 		piece.layer = 800
         piece:play(0.05, true)
         piece:setScale(2)
-        piece.physics.direction = math.rad(Utils.random(360))
+        piece.physics.direction = math.rad(MathUtils.random(360))
 		piece.rotation = math.rad(0) + 15
 		piece.graphics.spin = 0.15
         piece.physics.speed = 4

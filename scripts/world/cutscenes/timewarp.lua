@@ -89,10 +89,10 @@ return function (cutscene, event, self)
             star:setScale(2)
 			star:setParallax(0, 0)
 			star:setOrigin(0.5, 0.5)
-			star.rotation = Utils.random(0, 12)
+			star.rotation = MathUtils.random(0, 12)
 			star.graphics.spin = -1/30
-			star.physics.speed_y = Utils.random(5, 10)
-            star.physics.speed_x = Utils.random(-5, 5)
+			star.physics.speed_y = MathUtils.random(5, 10)
+            star.physics.speed_x = MathUtils.random(-5, 5)
 			star.physics.friction = 0.005
 			star:fadeOutAndRemove(1)
 			Game.stage:addChild(star)

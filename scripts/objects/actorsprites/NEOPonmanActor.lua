@@ -129,7 +129,7 @@ function NEOPonmanActor:update()
                     self.maxtimer = 1
                 end
 				
-                Assets.playSound("hurt", 1, 0.7 + Utils.random(0.5))
+                Assets.playSound("hurt", 1, 0.7 + MathUtils.random(0.5))
 
                 local bullet = self.wave:spawnBullet("ch1_fields/neo_ponman/diamond_black", (self.eye.x + 28) + self.x, (self.eye.y + 32) + self.y)
                 bullet.physics.speed = 8

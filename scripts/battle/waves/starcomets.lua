@@ -20,7 +20,7 @@ function Starwings:onStart()
 
     self.timer:every(1, function()
         Assets.playSound("stardrop")
-        local x = Utils.random(Game.battle.arena.left - 20, Game.battle.arena.right + 20)
+        local x = MathUtils.random(Game.battle.arena.left - 20, Game.battle.arena.right + 20)
         local bullet = self:spawnBullet("starcomet", x, -20)
     end)
 end

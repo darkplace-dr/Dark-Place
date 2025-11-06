@@ -58,11 +58,11 @@ function System:getValue(particle, name, tbl)
                 val = val[1]
                 break
             else
-                val = Utils.random(val[1], val[2])
+                val = MathUtils.random(val[1], val[2])
                 break
             end
         else
-            val = Utils.pick(val)
+            val = TableUtils.pick(val)
         end
     end
     if type(val) == "function" then
@@ -76,14 +76,14 @@ function System:getValue(particle, name, tbl)
         end
         if min then
             if max then
-                val = val + Utils.random(min, max)*Utils.randomSign()
+                val = val + MathUtils.random(min, max)*MathUtils.randomSign()
             elseif vary then
-                val = val + Utils.random(min, min+vary)*Utils.randomSign()
+                val = val + MathUtils.random(min, min+vary)*MathUtils.randomSign()
             else
-                val = val + min*Utils.randomSign()
+                val = val + min*MathUtils.randomSign()
             end
         elseif vary then
-            val = val + Utils.random(-vary, vary)
+            val = val + MathUtils.random(-vary, vary)
         end
     end
     local round = tbl[name.."_round"] or self.data.round[name]
@@ -100,7 +100,7 @@ end
 function System:getColorValue(particle)
     local color = Utils.copy(self.data.color)
     if type(color[1]) == "table" then
-        color = Utils.pick(color)
+        color = TableUtils.pick(color)
     end
     if type(color) == "function" then
         color = color(particle)

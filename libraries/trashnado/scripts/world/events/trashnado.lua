@@ -27,21 +27,21 @@ function Trashnado:init(x, y, w, h, properties)
     self.tspr5 = {}
 
     for i = 0,4-1 do
-        self.tspr1[i] = Utils.pick{"world/events/trashnado/trash_paperball", "world/events/trashnado/trash_dustorb"}
+        self.tspr1[i] = TableUtils.pick{"world/events/trashnado/trash_paperball", "world/events/trashnado/trash_dustorb"}
         self.trash1[i] = Sprite(self.tspr1[i])
         self.trash1[i]:setScale(2)
         self.trash1[i]:setOrigin(0.5, 0.5)
         self:addChild(self.trash1[i])
     end
     for i = 0,4-1 do
-        self.tspr2[i] = Utils.pick{"world/events/trashnado/trash_paperball", "world/events/trashnado/trash_dustorb"}
+        self.tspr2[i] = TableUtils.pick{"world/events/trashnado/trash_paperball", "world/events/trashnado/trash_dustorb"}
         self.trash2[i] = Sprite(self.tspr2[i])
         self.trash2[i]:setScale(2)
         self.trash2[i]:setOrigin(0.5, 0.5)
         self:addChild(self.trash2[i])
     end
     for i = 0,4-1 do
-        self.tspr3[i] = Utils.pick{"world/events/trashnado/trash_paperball", "world/events/trashnado/trash_dustorb", "world/events/trashnado/trash_paperball", "world/events/trashnado/notepaper"}
+        self.tspr3[i] = TableUtils.pick{"world/events/trashnado/trash_paperball", "world/events/trashnado/trash_dustorb", "world/events/trashnado/trash_paperball", "world/events/trashnado/notepaper"}
         self.trash3[i] = Sprite(self.tspr3[i])
         self.trash3[i]:setScale(2)
         self.trash3[i]:setOrigin(0.5, 0.5)
@@ -64,7 +64,7 @@ function Trashnado:init(x, y, w, h, properties)
         else
             self.tspr5[0] = "world/events/trashnado/trash_paperball"
             self.tspr5[2] = "world/events/trashnado/trash_takeout"
-            self.tspr5[1] = Utils.pick{"world/events/trashnado/trash_takeout", "world/events/trashnado/trash_paperball", "world/events/trashnado/book", "misc/dog_sleep"}
+            self.tspr5[1] = TableUtils.pick{"world/events/trashnado/trash_takeout", "world/events/trashnado/trash_paperball", "world/events/trashnado/book", "misc/dog_sleep"}
         end
         self.trash5[i] = Sprite(self.tspr5[i])
         self.trash5[i]:play(0.2, true)

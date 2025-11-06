@@ -5,7 +5,7 @@ function PhoneBullet:init(x, y, dir, speed)
 	
     self:setScale(1)
 	
-    self.current_frame = Utils.pick{1, 2, 3, 4}
+    self.current_frame = TableUtils.pick{1, 2, 3, 4}
     self.sprite:setFrame(self.current_frame)
     --self.sprite:setOrigin(0.5, 0.5)
 
@@ -29,14 +29,14 @@ function PhoneBullet:update()
 
     if self.destroy_on_hit == true then
         self.flashsiner = self.flashsiner + DTMULT
-        self:setColor(Utils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + (math.sin((self.flashsiner / 3)) * 0.25))))
+        self:setColor(ColorUtils.mergeColor({0/255, 162/255, 232/255}, COLORS.aqua, (0.25 + (math.sin((self.flashsiner / 3)) * 0.25))))
     end
 end
 
 function PhoneBullet:onYellowShot(shot)
     self.collider.collidable = false
     self.physics = {direction = 0, speed = 0, gravity = 0, friction = 0}
-    Assets.playSound("bomb", 0.7, 1.4 + Utils.random(0.2))
+    Assets.playSound("bomb", 0.7, 1.4 + MathUtils.random(0.2))
 
 	local death = AfterImageCut(self.sprite:getTexture(), 0, 0, function() self:remove() end)
 	death:setScale(self.sprite:getScale())

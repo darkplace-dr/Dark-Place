@@ -6,7 +6,7 @@ function wave:init()
 end
 
 function wave:onStart()
-    local x = Utils.random(Game.battle.arena.left, Game.battle.arena.right)
+    local x = MathUtils.random(Game.battle.arena.left, Game.battle.arena.right)
 
     local bullet = self:spawnBullet("fly", x, Game.battle.arena.top)
 
@@ -18,7 +18,7 @@ function wave:onStart()
     end
 
     self.timer:every(time, function()
-        local x = Utils.random(Game.battle.arena.left, Game.battle.arena.right)
+        local x = MathUtils.random(Game.battle.arena.left, Game.battle.arena.right)
 
         local bullet = self:spawnBullet("fly", x, Game.battle.arena.top)
     end)

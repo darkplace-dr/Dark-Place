@@ -113,10 +113,10 @@ function PhoneHand:update()
         if self.btimer >= threshold then
             local shot = self.wave:spawnBullet("battle/bullets/sneo/phonehand/soundbullet", self.x, self.y)
             if self.orientation == "top" then
-                shot.physics.direction = 270 + (Utils.random(-2, 2))
+                shot.physics.direction = 270 + (MathUtils.random(-2, 2))
             end
             if self.orientation == "bottom" then
-                shot.physics.direction = 90 + (Utils.random(-2, 2))
+                shot.physics.direction = 90 + (MathUtils.random(-2, 2))
             end
             shot:setScale(1)
             shot.physics.speed = 3
@@ -143,10 +143,10 @@ function PhoneHand:update()
             for i = 1, 3 do
                 local shot = self.wave:spawnBullet("battle/bullets/sneo/phonehand/soundbullet", self.x, self.y)
                 if self.orientation == "top" then
-                    shot.physics.direction = 270 + (Utils.random(-10, 10))
+                    shot.physics.direction = 270 + (MathUtils.random(-10, 10))
                 end
                 if self.orientation == "bottom" then
-                    shot.physics.direction = 90 + (Utils.random(-10, 10))
+                    shot.physics.direction = 90 + (MathUtils.random(-10, 10))
                 end
 			    shot:setScale(1)
                 shot.physics.speed = 8
@@ -160,10 +160,10 @@ function PhoneHand:update()
         if self.btimer >= 6 then
             local shot = self.wave:spawnBullet("battle/bullets/sneo/phonehand/soundbullet", self.x, self.y)
 			if self.orientation == "top" then
-                shot.physics.direction = math.rad(270) + (Utils.random(-4, 4))
+                shot.physics.direction = math.rad(270) + (MathUtils.random(-4, 4))
 			end
 			if self.orientation == "bottom" then
-                shot.physics.direction = math.rad(90) + (Utils.random(-4, 4))
+                shot.physics.direction = math.rad(90) + (MathUtils.random(-4, 4))
 			end
 			shot:setScale(1)
 			shot.physics.speed = 4

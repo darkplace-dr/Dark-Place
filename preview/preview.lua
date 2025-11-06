@@ -13,7 +13,7 @@ function preview:init(mod, button, menu)
     self.particles = {}
     self.particle_interval = 0
     self.particle_tex = love.graphics.newImage(p("star.png"))
-    self.particle_interval_dess = Utils.random(1*2.2, 6.9*4*20*3, 0.25)
+    self.particle_interval_dess = MathUtils.random(1*2.2, 6.9*4*20*3, 0.25)
     self.particle_tex_dess = love.graphics.newImage(p("dess.png"))
 
     local date = os.date("*t")
@@ -41,7 +41,7 @@ function preview:init(mod, button, menu)
     self.naming_video_fade_timer = 0
 
     self.splash_list = self:require("splashes")
-    self.splash = Utils.pick(self.splash_list)
+    self.splash = TableUtils.pick(self.splash_list)
 
     self.splash_timer = 0
 end
@@ -51,7 +51,7 @@ function preview:update()
 
     local particle_to_remove = {}
     for _,particle in ipairs(self.particles) do
-        particle.radius = Utils.approach(particle.radius, 0, DT)
+        particle.radius = MathUtils.approach(particle.radius, 0, DT)
         particle.y = particle.y - particle.speed * DTMULT
 
         if particle.radius <= 0 then
@@ -65,23 +65,23 @@ function preview:update()
     self.particle_interval = self.particle_interval + DT
     if self.particle_interval >= 0.4 then
         self.particle_interval = 0
-        local radius = Utils.random(2, 12)
+        local radius = MathUtils.random(2, 12)
         table.insert(self.particles, {
             type = "star",
             radius = radius, max_radius = radius,
-            x = Utils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + radius,
-            speed = 2 * Utils.random(0.5, 1)
+            x = MathUtils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + radius,
+            speed = 2 * MathUtils.random(0.5, 1)
         })
     end
 
-    self.particle_interval_dess = Utils.approach(self.particle_interval_dess, 0, DT)
+    self.particle_interval_dess = MathUtils.approach(self.particle_interval_dess, 0, DT)
     if self.particle_interval_dess <= 0 then
-        self.particle_interval_dess = Utils.random(1*2.2, 6.9*4*20*3, 0.25)
+        self.particle_interval_dess = MathUtils.random(1*2.2, 6.9*4*20*3, 0.25)
         table.insert(self.particles, {
             type = "dess",
             radius = 12, max_radius = 12,
-            x = Utils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + 12,
-            speed = 6 * Utils.random(0.5, 1)
+            x = MathUtils.random(SCREEN_WIDTH), y = SCREEN_HEIGHT + 12,
+            speed = 6 * MathUtils.random(0.5, 1)
         })
     end
 
@@ -130,9 +130,9 @@ function preview:update()
     if not mod_music_table then mod_music_table = self.menu.mod_music end
     if self.naming_video then
         if self.naming_video_fade_phase == 0 then
-            self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 1, 0.02*DTMULT)
+            self.naming_video_fade_timer = MathUtils.approach(self.naming_video_fade_timer, 1, 0.02*DTMULT)
         else
-            self.naming_video_fade_timer = Utils.approach(self.naming_video_fade_timer, 0, 0.06*DTMULT)
+            self.naming_video_fade_timer = MathUtils.approach(self.naming_video_fade_timer, 0, 0.06*DTMULT)
             if self.naming_video_fade_timer == 0 then
                 self.naming_video:pause()
                 self.naming_video = nil
@@ -184,7 +184,7 @@ function preview:draw()
     love.graphics.setColor(1, 1, 1, self.fade)
 
     if self.naming_video then
-        local vid_alpha = Utils.approach(0, 0.5, self.naming_video_fade_timer)
+        local vid_alpha = MathUtils.approach(0, 0.5, self.naming_video_fade_timer)
 
         love.graphics.setColor(0, 0, 0, vid_alpha * 0.8 * self.fade)
         love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)

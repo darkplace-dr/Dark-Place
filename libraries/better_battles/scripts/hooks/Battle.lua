@@ -137,7 +137,7 @@ function Battle:onStateChange(old,new)
         end
 		
         if earn_text == "" then
-            flee_text = flee_text .. Utils.pick(flee_list)
+            flee_text = flee_text .. TableUtils.pick(flee_list)
         else
             flee_text = earn_text
         end

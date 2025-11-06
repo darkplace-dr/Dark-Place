@@ -18,7 +18,7 @@ function Rolls:onStart()
     self.timer:after(0.5, function ()
         self:attackSoul("right")
         self.timer:every(0.7, function ()
-            self:attackSoul(Utils.pick{"left", "right"})
+            self:attackSoul(TableUtils.pick{"left", "right"})
         end)
     end)
 
@@ -26,7 +26,7 @@ end
 
 function Rolls:update()
     -- Code here gets called every frame
-    self.user.color[1] = Utils.approach(self.user.color[1], 1, DTMULT/8)
+    self.user.color[1] = MathUtils.approach(self.user.color[1], 1, DTMULT/8)
     super.update(self)
 end
 

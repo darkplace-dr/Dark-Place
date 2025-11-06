@@ -25,7 +25,7 @@ function FlippedRain:onThreshold()
             local a = 0.25 * (i - 1)
             local b = 0.25 * i
 
-            local number = Utils.pick({"three", "five", "six", "nine", "nine_alt"})
+            local number = TableUtils.pick({"three", "five", "six", "nine", "nine_alt"})
             local x = math.random(SCREEN_WIDTH * a, SCREEN_WIDTH * b)
             local y = math.random(0, 40)
             local worldx, worldy = self:getRelativePos(x, 0 - y, self.addto)

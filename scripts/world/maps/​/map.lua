@@ -30,8 +30,8 @@ function mb_map:update()
 	if self.back then
 		local player = Game.world.player
 		local mb_ev = Game.world:getEvent(10)
-		mb_ev.x = Utils.approach(mb_ev.x, player.x-mb_ev.width/2, self.stepback*DTMULT)
-		mb_ev.y = Utils.approach(mb_ev.y, player.y-mb_ev.height*2, self.stepback*DTMULT)
+		mb_ev.x = MathUtils.approach(mb_ev.x, player.x-mb_ev.width/2, self.stepback*DTMULT)
+		mb_ev.y = MathUtils.approach(mb_ev.y, player.y-mb_ev.height*2, self.stepback*DTMULT)
 		local limit = not Game.party[1]:checkArmor("pizza_toque")
 		self.stepback = Utils.clamp(self.stepback + 0.1*DTMULT, 0.01, limit and 12 or math.huge)
 		if player:collidesWith(mb_ev) then

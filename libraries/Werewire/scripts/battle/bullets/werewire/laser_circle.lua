@@ -29,8 +29,8 @@ function LaserCircle:update()
     self.timer = self.timer + DTMULT
 
     if self.state == "GROW" then
-        self.scale_x = Utils.approach(self.scale_x, 1.6, 0.8 * DTMULT)
-        self.scale_y = Utils.approach(self.scale_y, 1.6, 0.8 * DTMULT)
+        self.scale_x = MathUtils.approach(self.scale_x, 1.6, 0.8 * DTMULT)
+        self.scale_y = MathUtils.approach(self.scale_y, 1.6, 0.8 * DTMULT)
 
         if self.timer >= 3 then
             self.timer = self.timer - 3
@@ -54,8 +54,8 @@ function LaserCircle:update()
             self.state = "SHRINK"
         end
     elseif self.state == "SHRINK" then
-        self.scale_x = Utils.approach(self.scale_x, 0, 0.1 * DTMULT)
-        self.scale_y = Utils.approach(self.scale_y, 0, 0.1 * DTMULT)
+        self.scale_x = MathUtils.approach(self.scale_x, 0, 0.1 * DTMULT)
+        self.scale_y = MathUtils.approach(self.scale_y, 0, 0.1 * DTMULT)
 
         if self.scale_x == 0 and self.scale_y == 0 then
             self:remove()

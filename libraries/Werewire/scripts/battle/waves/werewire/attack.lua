@@ -12,7 +12,7 @@ function Attack:onStart()
 
     for i, attacker in ipairs(self:getAttackers()) do
         self.attacker_id[attacker] = i
-        self:queueAttack(Utils.random(5/30) + ((i - 1) % 4), attacker)
+        self:queueAttack(MathUtils.random(5/30) + ((i - 1) % 4), attacker)
     end
 end
 
@@ -37,10 +37,10 @@ function Attack:queueAttack(time, attacker)
     self.timer:after(time, function()
         if self.finished then return end
 
-        --self:doAttack(attacker, Utils.pick{"throw", "shoot"})
-        self:doAttack(attacker, Utils.pick{"shoot", "throw"}, function()
+        --self:doAttack(attacker, TableUtils.pick{"throw", "shoot"})
+        self:doAttack(attacker, TableUtils.pick{"shoot", "throw"}, function()
             local attackers = math.min(#self:getAttackers(), 4)
-            local next_attack_time = ((attackers * 6/30) + Utils.random(7/30)) * attackers
+            local next_attack_time = ((attackers * 6/30) + MathUtils.random(7/30)) * attackers
 
             self:queueAttack(next_attack_time, attacker)
         end)
@@ -60,7 +60,7 @@ function Attack:doAttack(attacker, type, after)
                 local laser_x, laser_y = attacker_x - 52, attacker_y + 18 + 32
                 local laser_angle = Utils.angle(laser_x, laser_y, Game.battle.soul.x, Game.battle.soul.y)
                 for i = 1, 3 do
-                    local angle = laser_angle + math.rad(-5 + ((i - 1) * 5)) + math.rad(Utils.random(4))
+                    local angle = laser_angle + math.rad(-5 + ((i - 1) * 5)) + math.rad(MathUtils.random(4))
                     local spin = math.rad((i - 2) * 1.6)
 
                     local laser = self:spawnBullet("werewire/laser_circle", laser_x, laser_y, 4, 4, 0.2, angle, spin)
@@ -91,7 +91,7 @@ function Attack:doAttack(attacker, type, after)
 
         local throw_angle = Utils.angle(attacker_x + throw_positions[2][1], attacker_y + throw_positions[2][2] + 32,
                                         Game.battle.soul.x, Game.battle.soul.y)
-        throw_angle = throw_angle + math.rad(Utils.random(20))
+        throw_angle = throw_angle + math.rad(MathUtils.random(20))
 
         attacker:setSprite("attack_throw")
         self.timer:after(7.5/30, function()

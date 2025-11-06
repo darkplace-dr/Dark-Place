@@ -253,7 +253,7 @@ function Spamton:setStringCount(num)
             str.visible = true
         end
     end
-    local keep = Utils.pickMultiple(self.fg_strings, num)
+    local keep = TableUtils.pickMultiple(self.fg_strings, num)
     for i=1,6 do
         local str = self.fg_strings[i]
         if Utils.containsValue(keep, str) then
@@ -269,7 +269,7 @@ function Spamton:snapString(index, remove)
     if index then
         str = self.fg_strings[index]
     else
-        str = Utils.pick(self.fg_strings, function(v) return v.visible and v.alpha == 1 end)
+        str = TableUtils.pick(self.fg_strings, function(v) return v.visible and v.alpha == 1 end)
     end
     if remove then
         str:remove()

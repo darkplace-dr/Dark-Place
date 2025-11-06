@@ -252,8 +252,8 @@ function LightEnemyBattler:spare(pacify)
         Game.battle.spare_sound:play()
 
         for i = 0, 15 do
-            local x = ((Utils.random((self.width / 2)) + (self.width / 4))) - 8
-            local y = ((Utils.random((self.height / 2)) + (self.height / 4))) - 8
+            local x = ((MathUtils.random((self.width / 2)) + (self.width / 4))) - 8
+            local y = ((MathUtils.random((self.height / 2)) + (self.height / 4))) - 8
 
             local sx, sy = self:getRelativePos(x, y)
 
@@ -407,7 +407,7 @@ function LightEnemyBattler:getEncounterText()
         return self.spareable_text
     end
 
-    return Utils.pick(self.text)
+    return TableUtils.pick(self.text)
 end
 
 function LightEnemyBattler:getTarget()
@@ -420,7 +420,7 @@ function LightEnemyBattler:getEnemyDialogue()
         self.dialogue_override = nil
         return dialogue
     end
-    return Utils.pick(self.dialogue)
+    return TableUtils.pick(self.dialogue)
 end
 
 function LightEnemyBattler:getNextWaves()
@@ -443,7 +443,7 @@ end
 function LightEnemyBattler:selectWave()
     local waves = self:getNextWaves()
     if waves and #waves > 0 then
-        local wave = Utils.pick(waves)
+        local wave = TableUtils.pick(waves)
         self.selected_wave = wave
         return wave
     end
@@ -452,7 +452,7 @@ end
 function LightEnemyBattler:selectMenuWave()
     local waves = self:getNextMenuWaves()
     if waves and #waves > 0 then
-        local wave = Utils.pick(waves)
+        local wave = TableUtils.pick(waves)
         self.selected_menu_wave = wave
         return wave
     end
@@ -572,7 +572,7 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
             total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.363)
         end
         total_damage = total_damage * ((points / 160) * (4 / lane.weapon:getLightBoltCount()))
-        total_damage = Utils.round(total_damage) + Utils.random(0, 2, 1)
+        total_damage = Utils.round(total_damage) + MathUtils.random(0, 2, 1)
 
         if points > (400 * (lane.weapon:getLightBoltCount() / 4)) then
             crit = true
@@ -593,9 +593,9 @@ function LightEnemyBattler:getAttackDamage(damage, lane, points, stretch)
         end
 
         if Game:isLight() then
-            total_damage = (lane.battler.chara:getStat("attack") - self.defense) + Utils.random(0, 2, 1)
+            total_damage = (lane.battler.chara:getStat("attack") - self.defense) + MathUtils.random(0, 2, 1)
         else
-            total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.363) + Utils.random(0, 2, 1)
+            total_damage = (lane.battler.chara:getStat("attack") * 3.375 - self.defense * 1.363) + MathUtils.random(0, 2, 1)
         end
         if points <= 12 then
             total_damage = Utils.round(total_damage * 2.2)
@@ -921,7 +921,7 @@ function LightEnemyBattler:update()
     end
 
     if self.hurt_timer > 0 then
-        self.hurt_timer = Utils.approach(self.hurt_timer, 0, DT)
+        self.hurt_timer = MathUtils.approach(self.hurt_timer, 0, DT)
 
         if self.hurt_timer == 0 then
             self:onHurtEnd()

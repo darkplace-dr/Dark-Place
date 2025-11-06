@@ -21,12 +21,12 @@ function HangPlug:init(data)
         self.sprite:getScaledHeight() + self.extension:getScaledHeight(),
     }
 
-    self.siner = Utils.random(460)
+    self.siner = MathUtils.random(460)
 
     self.attack = data.properties["attack"] ~= false
 
     self.attack_timer_max = data.properties["interval"] or 150
-    self.attack_timer = self.attack_timer_max - Utils.random(math.max(0, self.attack_timer_max - 20))
+    self.attack_timer = self.attack_timer_max - MathUtils.random(math.max(0, self.attack_timer_max - 20))
     self.attack_dist = data.properties["dist"] or 160
     self.attack_range = data.properties["range"] or 300
     self.damage = data.properties["damage"] or 18
@@ -70,7 +70,7 @@ function HangPlug:update()
                     self.timer:after(self.buffed and 8/30 or 15/30, function()
                         Assets.playSound("spearappear", 0.6)
 
-                        self.attack_timer = Utils.random(self.attack_timer_max / 2) - 30
+                        self.attack_timer = MathUtils.random(self.attack_timer_max / 2) - 30
 
                         local bullet = self.world:spawnBullet("hangplug/spark", self.x, self.y, self.damage, self.attack_dist, self.buffed)
                         bullet:setLayer(self.world.map.object_layer - (self.world.map.depth_per_layer / 4))

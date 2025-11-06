@@ -80,7 +80,7 @@ end
 
 function GoogleDino:onAct(battler, name)
     if name == "Reboot" then
-        Assets.playSound(Utils.pick{
+        Assets.playSound(TableUtils.pick{
             "dialup_0",
             "dialup_1",
             "dialup_2",
@@ -94,7 +94,7 @@ function GoogleDino:onAct(battler, name)
             "* You attempted to reboot the internet...\n[wait:5]* Difficulty increased!",
         }
     elseif name == "X-Reboot" then
-        Assets.playSound(Utils.pick{
+        Assets.playSound(TableUtils.pick{
             "dialup_0",
             "dialup_1",
             "dialup_2",
