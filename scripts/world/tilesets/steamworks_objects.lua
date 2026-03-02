@@ -303,7 +303,7 @@ return {
     },
     {
       id = 52,
-      image = "../../../assets/sprites/world/maps/steamworks/objects/06_wall_2.png",
+      image = "../../../assets/sprites/world/maps/steamworks/objects/06_wall_2n.png",
       width = 146,
       height = 88
     },

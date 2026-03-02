@@ -1,7 +1,7 @@
 return {
-  version = "1.10",
+  version = "1.11",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.2",
   name = "objects_sf",
   class = "",
   tilewidth = 20,
@@ -27,91 +27,91 @@ return {
   tiles = {
     {
       id = 0,
-      image = "../../../assets/sprites/world/events/scarlet_forest/suitsbutton_0.png",
-      width = 20,
-      height = 20
-    },
-    {
-      id = 1,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsbutton_1.png",
       width = 20,
       height = 20
     },
     {
-      id = 2,
+      id = 1,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsbutton_2.png",
       width = 20,
       height = 20
     },
     {
-      id = 3,
+      id = 2,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsbutton_3.png",
       width = 20,
       height = 20
     },
     {
-      id = 4,
+      id = 3,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsbutton_4.png",
       width = 20,
       height = 20
     },
     {
-      id = 5,
+      id = 4,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsbutton_5.png",
       width = 20,
       height = 20
     },
     {
-      id = 6,
-      image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_0.png",
+      id = 5,
+      image = "../../../assets/sprites/world/events/scarlet_forest/suitsbutton_6.png",
       width = 20,
       height = 20
     },
     {
-      id = 7,
+      id = 6,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_1.png",
       width = 20,
       height = 20
     },
     {
-      id = 8,
+      id = 7,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_2.png",
       width = 20,
       height = 20
     },
     {
-      id = 9,
+      id = 8,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_3.png",
       width = 20,
       height = 20
     },
     {
-      id = 10,
+      id = 9,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_4.png",
       width = 20,
       height = 20
     },
     {
-      id = 11,
-      image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_fade_0.png",
+      id = 10,
+      image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_5.png",
       width = 20,
       height = 20
     },
     {
-      id = 12,
+      id = 11,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_fade_1.png",
       width = 20,
       height = 20
     },
     {
-      id = 13,
+      id = 12,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_fade_2.png",
       width = 20,
       height = 20
     },
     {
-      id = 14,
+      id = 13,
       image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_fade_3.png",
+      width = 20,
+      height = 20
+    },
+    {
+      id = 14,
+      image = "../../../assets/sprites/world/events/scarlet_forest/suitsicon_fade_4.png",
       width = 20,
       height = 20
     }
