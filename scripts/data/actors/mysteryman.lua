@@ -38,7 +38,7 @@ function actor:init()
         ["idle"]        = {"mysteryman_1", 0, false},
         ["interact"]    = {"mysteryman_2", 0, false},
         ["fast"]        = {"mysteryman", 1/30, true},
-        ["blaster"]     = {"blaster/gasterblaster_0", 0, false},
+        ["blaster"]     = {"blaster/gasterblaster_s", 0, false},
         ["blasterfire"] = {"blaster/gasterblaster", 1/30, false}
     }
 

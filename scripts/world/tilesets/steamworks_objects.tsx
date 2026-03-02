@@ -125,7 +125,7 @@
   <image source="../../../assets/sprites/world/maps/steamworks/objects/06_wall_1_4.png" width="142" height="196"/>
  </tile>
  <tile id="52">
-  <image source="../../../assets/sprites/world/maps/steamworks/objects/06_wall_2.png" width="146" height="88"/>
+  <image source="../../../assets/sprites/world/maps/steamworks/objects/06_wall_2n.png" width="146" height="88"/>
  </tile>
  <tile id="77">
   <image source="../../../assets/sprites/world/maps/steamworks/objects/09_fade.png" width="120" height="70"/>

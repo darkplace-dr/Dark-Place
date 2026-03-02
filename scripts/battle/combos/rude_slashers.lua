@@ -56,7 +56,7 @@ function Forest:doCutscene(cutscene, enemy)
 	local susieAttack = true
 
 	--local buttons = Object(Game.world.width/2, Game.world.height/2, 280, 280)
-	local krisButton = Sprite("buttons/buttonPrompt1_0")
+	local krisButton = Sprite("buttons/buttonPrompt1_1")
 	krisButton.alpha = 1
 	krisButton:setScale(2, 2)
 	krisButton.x = Game.battle.width/2 + 150
@@ -64,7 +64,7 @@ function Forest:doCutscene(cutscene, enemy)
 	krisButton.layer = WORLD_LAYERS["above_ui"] + 100
 	Game.battle:addChild(krisButton)
 
-	local susButton = Sprite("buttons/buttonPrompt2_0")
+	local susButton = Sprite("buttons/buttonPrompt2_1")
 	susButton.alpha = 1
 	susButton:setScale(2, 2)
 	susButton.x = Game.battle.width/2 + 450

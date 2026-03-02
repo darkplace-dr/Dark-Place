@@ -1,12 +1,12 @@
 # XREF: https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/lua.template.editorconfig
 
 [*]
-end_of_line = crlf
+end_of_line = lf
 insert_final_newline = false
 charset = utf-8
 
 [*.lua]
-end_of_line = crlf
+end_of_line = lf
 insert_final_newline = false
 charset = utf-8
 
