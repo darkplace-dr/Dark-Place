@@ -168,7 +168,7 @@ return {
                 trashnado:remove()
 
                 cutscene:wait(0.5)
-                cutscene:text("* [facec:sans/meme/lich, -18, -10][voice:nil][sound:fall_lich][style:GONER][color:18be14]F a l l .", nil, "sans")
+                cutscene:text("* [facec:sans/meme/lich, -18, -10][voice:none][sound:fall_lich][style:GONER][color:18be14]F a l l .", nil, "sans")
                 cutscene:hideNametag()
 			
                 Assets.playSound("locker")

@@ -44,7 +44,7 @@ return function(cutscene)
         cutscene:look(chara, dir)
     end)
     local function showDialog(text)
-        local style = "[noskip][speed:0.3][voice:nil]"
+        local style = "[noskip][speed:0.3][voice:none]"
         local _text
         if type(text) == "string" then
             _text = style .. text
