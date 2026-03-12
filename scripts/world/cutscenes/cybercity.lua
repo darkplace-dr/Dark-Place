@@ -293,7 +293,7 @@ return {
     notypee = function(cutscene, event)
         if event.actor.debt then
             cutscene:showNametag("???")
-            cutscene:text("[voice:nil]* Nothing happened on December 23, 2023")
+            cutscene:text("[voice:none]* Nothing happened on December 23, 2023")
             cutscene:hideNametag()
             Game:setFlag("notypee_saw_debt", true)
             event:remove()

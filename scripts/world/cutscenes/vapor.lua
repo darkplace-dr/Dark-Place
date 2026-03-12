@@ -34,11 +34,11 @@ return {
             "bb_hello",
             "bb_laugh"
         }))
-        cutscene:text("[voice:nil]* HELLO FRIEND[wait:5]\n* WOULD YOU LIKE TO BUY SOME WARES", "90sbb/default")
+        cutscene:text("[voice:none]* HELLO FRIEND[wait:5]\n* WOULD YOU LIKE TO BUY SOME WARES", "90sbb/default")
         if cutscene:choicer({"Yes", "HELL NO"}) == 1 then
         else
             cutscene:playSound("bb_laugh")
-            cutscene:text("[voice:nil]* FUCK YOU", "90sbb/default")
+            cutscene:text("[voice:none]* FUCK YOU", "90sbb/default")
         end
     end,
     snick = function(cutscene, event)

@@ -121,7 +121,7 @@ return {
             end
         end
         cutscene:showNametag("Spamton")
-        cutscene:text("[style:GONER][voice:silent][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD", nil, "cungaderospamton", {
+        cutscene:text("[style:GONER][voice:none][noskip]* [instant][shake:1][func:gigatalk]WRONG[stopinstant][wait:20] [instant][func:gigatalk]CARD", nil, "cungaderospamton", {
             functions = {
                 gigatalk = function ()
                     event:setSprite("laugh_1")

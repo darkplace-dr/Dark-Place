@@ -329,7 +329,7 @@ return {
         if event.interact_count == 1 then
             cutscene:showNametag("Trash Rudinn")
             music_inst:play("voiceover/garbage", 1, 1, false)
-            cutscene:text("[noskip][voice:nil]* Hellooo...[wait:1.5]", nil, garbage, { auto = true })
+            cutscene:text("[noskip][voice:none]* Hellooo...[wait:1.5]", nil, garbage, { auto = true })
             cutscene:hideNametag()
             genBigText("I'm", 240, 40)
             genBigText("a", 360, 40, 2, false, 0.1)
@@ -341,7 +341,7 @@ return {
         else
             cutscene:showNametag("Trash Rudinn")
             music_inst:play("voiceover/stillgarbage", 1, 1, false)
-            cutscene:text("[noskip][voice:nil]* Oh hi,[wait:1] thanks for checking in.[wait:2]\n* I'm...", nil, garbage, { auto = true })
+            cutscene:text("[noskip][voice:none]* Oh hi,[wait:1] thanks for checking in.[wait:2]\n* I'm...", nil, garbage, { auto = true })
             cutscene:hideNametag()
             genBigText("still", 210, 40)
             genBigText("a", 380, 40, 2, false, 0.1)
