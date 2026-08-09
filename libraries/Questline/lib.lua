@@ -8,8 +8,11 @@ end
 
 function Lib:onKeyPressed(key)
     if Game.world and Game.world.state == "GAMEPLAY" and Input.is("quest", key) and not Game.battle and not Game.shop then
-		Game.world:openMenu(QuestMenu())
-	end
+        -- Prevent the menu from opening if a cutscene/dialogue is playing or another menu is already open
+        if not Game.world:hasCutscene() and not Game.world.menu then
+            Game.world:openMenu(QuestMenu())
+        end
+    end
 end
 
 function Lib:postInit(new_file)
