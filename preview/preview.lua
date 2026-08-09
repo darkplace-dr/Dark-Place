@@ -1,5 +1,25 @@
 local preview = {}
 
+-- Backwards compatibility for Kristal v0.9.0 where Utils was in the process of being split
+local MathUtils = MathUtils or Utils
+local TableUtils = TableUtils or Utils
+local ColorUtils = ColorUtils or Utils
+
+if TableUtils and not TableUtils.removeValue then
+    TableUtils.removeValue = function(t, val)
+        for i, v in ipairs(t) do
+            if v == val then
+                table.remove(t, i)
+                return i
+            end
+        end
+    end
+end
+
+if ColorUtils and not ColorUtils.hexToRGB and ColorUtils.hexToRgb then
+    ColorUtils.hexToRGB = ColorUtils.hexToRgb
+end
+
 function preview:init(mod, button, menu)
     ---@type MainMenu
     self.menu = menu or MainMenu
